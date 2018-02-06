@@ -1,0 +1,19 @@
+/.idea
+node_modules
+.DS_Store
+Thumbs.db
+*.log
+package-lock.json
+
+/dist
+/temp
+
+# ignore everything in 'app' folder what had been generated from 'src' folder
+/app/app.js
+/app/background.js
+/app/**/*.map
+
+
+
+# ignore bower_components in 'app' folder
+/app/bower_components

@@ -1,0 +1,11 @@
+{
+  "name": "esteem-desktop",
+  "description": "eSteem Desktop",
+  "license": "MIT",
+  "homepage": "http://esteem.ws",
+  "private": true,
+  "dependencies": {
+    "components-font-awesome": "^4.7.0",
+    "bootstrap": "3"
+  }
+}

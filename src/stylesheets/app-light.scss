@@ -1,0 +1,102 @@
+
+
+$navbarBgColorDefault: #2c5393;
+$navbarBgColorHighlight: #4879c9;
+$navbarColorDefault: #eeeeee;
+$navbarColorHighlight: #ffffff;
+$navbarColorizeDropDown: true;
+@import "navbar";
+
+$footerBgColor: #f2f2f2;
+$footerColor: #838383;
+$footerHeight: 30px;
+@import "footer";
+
+$appBg: #FCFCFC;
+
+$listBgColor: #ffffff;
+$listBorderColor: #e8e8e8;
+
+$textColor: #333;
+$textColorLight: #788187;
+$textColorLighter: #8c979e;
+$linkHoverColor: #4879c9;
+
+$seperatorColor: #eeeeee;
+
+@import "layout";
+
+.side-tag-list {
+  background: $listBgColor;
+  border: 1px solid $listBorderColor;
+  box-shadow: 0 0 1px 0 $listBorderColor;
+  float: left;
+  padding: 20px 20px;
+  width: 200px;
+
+  header {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  footer {
+    margin-top: 10px;
+
+    a {
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+
+  ul.tag-list {
+    margin: 0;
+    padding: 0;
+
+    li {
+      list-style: none;
+      margin-bottom: 6px;
+
+      a {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.post-list {
+  background: $listBgColor;
+  border: 1px solid $listBorderColor;
+  box-shadow: 0 0 1px 0 $listBorderColor;
+  float: right;
+  margin-left: 20px;
+  min-height: 100%;
+  padding: 20px 30px;
+  width: calc(100% - 220px);
+
+  header {
+    border-bottom: 1px solid $seperatorColor;
+    margin-bottom: 20px;
+
+    h1 {
+      color: $text-color;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 20px 0;
+    }
+  }
+
+  ul.feed {
+    margin: 0;
+    padding: 0;
+
+    > li {
+      border-bottom: 1px solid $seperatorColor;
+      list-style: none;
+      margin-bottom: 20px;
+      padding: 10px 0;
+    }
+  }
+}
+
+@import "components";
