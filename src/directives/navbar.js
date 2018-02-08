@@ -1,20 +1,21 @@
-export const navBarDirective = function () {
+export const navBarDirective = ($location) => {
   return {
     restrict: 'AE',
     replace: true,
     scope: {
-      selectedItem: '@selectedItem'
-    },
-    link: function ($scope, $element) {
-
+      selectedCat: '=',
+      selectedTag: '='
     },
     templateUrl: 'templates/directives/navbar.html',
-    controller: function ($scope) {
+    controller: ($scope, steemCategories) => {
+      $scope.cats = steemCategories;
 
-      // console.log($scope.selectedItem)
-
-      $scope.fn = function () {
-
+      $scope.linkClicked = (c) => {
+        let u = `/posts/${c}`;
+        if ($scope.selectedTag) {
+          u += `/${$scope.selectedTag}`;
+        }
+        $location.path(u);
       };
     }
   };

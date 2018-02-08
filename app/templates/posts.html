@@ -1,0 +1,23 @@
+<nav-bar selected-cat="category" selected-tag="tag"></nav-bar>
+<div class="app-container">
+  <div class="app-content">
+    <div class="side-tag-list">
+      <header>{{ 'TAGS' | translate }}</header>
+      <ul class="tag-list">
+        <li ng-repeat="t in tags" ng-class="{'active': (tag===t)}"><a ng-click="tagClicked(t)">{{ t }}</a></li>
+      </ul>
+      <footer><a href="#">{{ _('View all tags..') }}</a></footer>
+    </div>
+    <div class="post-list">
+      <header>
+        <h1>{{ title | translate }}</h1>
+      </header>
+      <ul class="feed">
+        <li ng-repeat="post in posts">
+          <post-list-item post="post"></post-list-item>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

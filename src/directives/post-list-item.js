@@ -9,7 +9,7 @@ export const postListItemDirective = function () {
 
     },
     // Instead of templateUrl, this way angular can render faster
-    template: `<div class="post-list-item">
+    template: `<div class="post-list-item" ng-init="postImage = (post | catchPostImage)">
       <div class="post-header">
         <div class="post-author-left">
           <div class="post-author-pic">
@@ -25,10 +25,10 @@ export const postListItemDirective = function () {
           <span class="post-info-date"><a href="#"> {{post.created|timeAgo}}</a></span>
         </div>
       </div>
-      <div class="post-body with-image">
-        <div class="post-image">
+      <div class="post-body" ng-class="{'with-image': postImage}">
+        <div class="post-image" ng-if="postImage">
           <a href="#">
-            <img ng-src="{{ post | catchPostImage }}">
+            <img ng-src="{{ postImage }}">
           </a>
         </div>
         <div class="post-body-content">

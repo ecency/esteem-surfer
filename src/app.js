@@ -23,15 +23,16 @@ const manifest = appDir.read("package.json", "json");
 
 
 import marked from 'marked';
-import steem from '@steemit/steem-js'
+import steem from 'steem';
+
+import {steemCategories} from './constants';
 
 
 import angular from 'angular';
 import {angularRoute} from 'angular-route';
 import {angularTranslate} from 'angular-translate';
 
-
-import {homeCtrl} from './controllers/home';
+import {postsCtrl} from './controllers/posts';
 import {faqCtrl} from './controllers/faq';
 
 import {navBarDirective} from './directives/navbar';
@@ -45,21 +46,43 @@ const theApp = angular.module('eSteem', ['ngRoute', 'pascalprecht.translate'])
     steem.api.setOptions({url: "https://api.steemit.com"});
     return steem;
   })
+  .factory('steemCategories', () => {
+    return steemCategories;
+  })
   .factory('discussionsService', discussionsService)
   .factory('tagsService', tagsService)
   .directive('navBar', navBarDirective)
   .directive('appFooter', footerDirective)
   .directive('postListItem', postListItemDirective)
-  .controller('homeCtrl', homeCtrl)
+  .controller('postsCtrl', postsCtrl)
   .controller('faqCtrl', faqCtrl)
+  .config(($translateProvider) => {
+
+    $translateProvider.translations('en-US', require('./locales/en-US')); //English
+
+    $translateProvider.useSanitizeValueStrategy(null);
+    $translateProvider.preferredLanguage('en-US');
+    $translateProvider.fallbackLanguage('en-US');
+  })
   .config(($routeProvider) => {
     $routeProvider
       .when('/', {
-        templateUrl: 'templates/home.html',
-        controller: 'homeCtrl'
+        template: '',
+        controller: function ($location, steemCategories) {
+          // Redirect to first category page.(Trending) [Better than hard coding category name]
+          $location.path('/posts/' + steemCategories[0].name);
+        }
+      })
+      .when('/posts/:category', {
+        templateUrl: 'templates/posts.html',
+        controller: 'postsCtrl',
+      })
+      .when('/posts/:category/:tag', {
+        templateUrl: 'templates/posts.html',
+        controller: 'postsCtrl',
       })
       .when('/contact', {
-        templateUrl: 'contact/home.html',
+        templateUrl: 'contact/posts.html',
         controller: 'contactCtrl',
       })
       .when('/faq', {
@@ -83,11 +106,11 @@ const theApp = angular.module('eSteem', ['ngRoute', 'pascalprecht.translate'])
     return (inp) => {
 
       let meta = JSON.parse(inp.json_metadata);
-      if (meta.image.length > 0) {
+      if (meta.image && meta.image.length > 0) {
         return meta.image[0];
       }
 
-      return 'img/noimage.png';
+      return null;
     }
   }).filter('sumPostTotal', () => {
     return (post, rate) => {
@@ -229,6 +252,6 @@ const theApp = angular.module('eSteem', ['ngRoute', 'pascalprecht.translate'])
 
 window.onload = () => {
   setTimeout(() => {
-    document.getElementById('root').style.visibility = 'visible';
+    document.body.style.visibility = 'visible';
   }, 300);
 };

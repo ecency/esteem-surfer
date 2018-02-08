@@ -1,4 +1,7 @@
 
+a[ng-click] {
+  cursor: pointer;
+}
 
 $navbarBgColorDefault: #2c5393;
 $navbarBgColorHighlight: #4879c9;
@@ -60,6 +63,13 @@ $seperatorColor: #eeeeee;
       a {
         font-size: 16px;
       }
+
+      &.active {
+        a {
+          font-weight: 600;
+          color: $linkHoverColor;
+        }
+      }
     }
   }
 }
@@ -93,7 +103,7 @@ $seperatorColor: #eeeeee;
     > li {
       border-bottom: 1px solid $seperatorColor;
       list-style: none;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       padding: 10px 0;
     }
   }
