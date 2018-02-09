@@ -9,7 +9,7 @@ $ cd desk
 
 ## Install dependencies
 
-> Make sure you have Node.js and npm installed
+> Make sure you have node.js and npm installed
 
 > Make sure bower installed globally (npm install -g bower)
 
