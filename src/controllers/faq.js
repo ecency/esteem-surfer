@@ -1,5 +1,3 @@
-export const faqCtrl = function ($scope, $window, $steem) {
-  $scope.foo = 'Hello';
-
+export const faqCtrl = ($scope) => {
 
 };

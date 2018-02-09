@@ -1,58 +1,66 @@
-export const postsCtrl = function ($scope, $rootScope, $window, $routeParams, $timeout, $location, discussionsService, tagsService, steemCategories) {
+export const postsCtrl = ($scope, $routeParams, $filter, discussionsService, constants) => {
 
   let category = $routeParams.category;
   let tag = $routeParams.tag;
 
-
-
   $scope.category = category;
   $scope.tag = tag;
-  $scope.title = steemCategories.find(i => i.name === category).key;
 
-
-  const loadTags = (finallyCb) => {
-    tagsService.getTrendingTags().then(function (resp) {
-      $rootScope.$apply(
-        $rootScope.tags = resp.map(a => a.name).filter(a => a.length > 0)
-      );
-    }).catch(() => {
-    }).then(() => {
-      if (finallyCb) {
-        finallyCb();
-      }
-    });
-  };
-
-  // Keep tags in root scope
-  if ($rootScope.tags === undefined) {
-    $scope.loadingTags = true;
-    loadTags(function () {
-      $scope.loadingTags = false;
-    });
+  $scope.catTitle = constants.categories.find(i => i.name === category).key;
+  if (tag) {
+    $scope.tagTitle = $filter('capWord')(tag);
   }
 
-  // Refresh tags in every 2 minutes
-  $timeout(function () {
-    loadTags();
-  }, 120000);
-
-
   $scope.posts = [];
+  let ids = [];
+  let hasMore = true;
 
-  const loadPosts = () => {
+  const loadPosts = (startAuthor = null, startPermalink = null) => {
     // Convert category's fist letter to upper to use as function argument
-    let by = category.substr(0, 1).toUpperCase() + category.substr(1);
-    discussionsService.getDiscussionsBy(by, tag, 20).then(function (resp) {
-      $scope.$apply(
-        $scope.posts = $scope.posts.concat($scope.posts, ...resp)
-      )
+    let by = $filter('capWord')(category);
+
+    $scope.loadingPosts = true;
+    discussionsService.getDiscussionsBy(by, (tag ? tag : null), startAuthor, startPermalink, constants.postListSize).then((resp) => {
+
+      // if server returned less than 2 posts, it means end of pagination
+      // comparison value is 2 because it returns at least 1 post on pagination
+      if (resp.length < 2) {
+        hasMore = false;
+        return false;
+      }
+
+      resp.forEach((i) => {
+        if (ids.indexOf(i.id) === -1) {
+          $scope.posts.push(i);
+        }
+        ids.push(i.id);
+      });
+
+      $scope.$apply();
+    }).catch(() => {
+    }).then(() => {
+      $scope.loadingPosts = false;
+      $scope.$apply();
     });
   };
 
   loadPosts();
 
+  $scope.reload = () => {
+    if ($scope.loadingPosts) {
+      return false;
+    }
+    $scope.posts = [];
+    ids = [];
+    loadPosts();
+  };
 
-  $scope.tagClicked = (t) => {
-    $location.path(`/posts/${category}/${t}`);
+  $scope.reachedBottom = () => {
+    if ($scope.loadingPosts || !hasMore) {
+      return false;
+    }
+
+    let lastPost = [...$scope.posts].pop();
+    loadPosts(lastPost.author, lastPost.permlink)
   }
 };

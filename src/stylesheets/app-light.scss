@@ -1,112 +1,149 @@
+@import "common";
 
-a[ng-click] {
-  cursor: pointer;
-}
+body.light-theme {
 
-$navbarBgColorDefault: #2c5393;
-$navbarBgColorHighlight: #4879c9;
-$navbarColorDefault: #eeeeee;
-$navbarColorHighlight: #ffffff;
-$navbarColorizeDropDown: true;
-@import "navbar";
+  $navbarBgColorDefault: #2c5393;
+  $navbarBgColorHighlight: #4879c9;
+  $navbarColorDefault: #eeeeee;
+  $navbarColorHighlight: #ffffff;
+  $navbarColorizeDropDown: true;
+  @import "navbar";
 
-$footerBgColor: #f2f2f2;
-$footerColor: #838383;
-$footerHeight: 30px;
-@import "footer";
+  $footerBgColor: #f2f2f2;
+  $footerColor: #838383;
+  $footerHeight: 30px;
+  @import "footer";
 
-$appBg: #FCFCFC;
+  $appBg: #FCFCFC;
 
-$listBgColor: #ffffff;
-$listBorderColor: #e8e8e8;
+  $listBgColor: #ffffff;
+  $listBorderColor: #e8e8e8;
 
-$textColor: #333;
-$textColorLight: #788187;
-$textColorLighter: #8c979e;
-$linkHoverColor: #4879c9;
+  $textColor: #333;
+  $textColorLight: #788187;
+  $textColorLighter: #8c979e;
 
-$seperatorColor: #eeeeee;
+  $linkHoverColor: #4879c9;
 
-@import "layout";
+  $seperatorColor: #eeeeee;
 
-.side-tag-list {
-  background: $listBgColor;
-  border: 1px solid $listBorderColor;
-  box-shadow: 0 0 1px 0 $listBorderColor;
-  float: left;
-  padding: 20px 20px;
-  width: 200px;
+  $loadingColor: #5892f4;
 
-  header {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
+  @import "layout";
 
-  footer {
-    margin-top: 10px;
+  .side-tag-list {
+    background: $listBgColor;
+    border: 1px solid $listBorderColor;
+    box-shadow: 0 0 1px 0 $listBorderColor;
+    float: left;
+    padding: 20px 20px;
+    width: 200px;
 
-    a {
-      font-size: 16px;
-      font-weight: 600;
+    header {
+      margin-bottom: 10px;
+      @include clearfix();
+
+      h2 {
+        float: left;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .btn-remove-tag {
+        color: $textColorLight;
+        float: right;
+        opacity: 0.6;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
     }
-  }
 
-  ul.tag-list {
-    margin: 0;
-    padding: 0;
-
-    li {
-      list-style: none;
-      margin-bottom: 6px;
+    footer {
+      margin-top: 10px;
 
       a {
         font-size: 16px;
+        font-weight: 600;
       }
+    }
 
-      &.active {
+    ul.tag-list {
+      margin: 0;
+      padding: 0;
+
+      li {
+        list-style: none;
+        margin-bottom: 6px;
+
         a {
-          font-weight: 600;
-          color: $linkHoverColor;
+          font-size: 16px;
+        }
+
+        &.active {
+          a {
+            color: $linkHoverColor;
+            font-weight: 600;
+          }
         }
       }
     }
   }
-}
 
-.post-list {
-  background: $listBgColor;
-  border: 1px solid $listBorderColor;
-  box-shadow: 0 0 1px 0 $listBorderColor;
-  float: right;
-  margin-left: 20px;
-  min-height: 100%;
-  padding: 20px 30px;
-  width: calc(100% - 220px);
+  .post-list {
+    background: $listBgColor;
+    border: 1px solid $listBorderColor;
+    box-shadow: 0 0 1px 0 $listBorderColor;
+    float: right;
+    margin-left: 20px;
+    min-height: 100%;
+    padding: 20px 30px;
+    width: calc(100% - 220px);
 
-  header {
-    border-bottom: 1px solid $seperatorColor;
-    margin-bottom: 20px;
-
-    h1 {
-      color: $text-color;
-      font-size: 18px;
-      font-weight: 600;
-      margin: 0 0 20px 0;
-    }
-  }
-
-  ul.feed {
-    margin: 0;
-    padding: 0;
-
-    > li {
+    header {
       border-bottom: 1px solid $seperatorColor;
-      list-style: none;
-      margin-bottom: 10px;
-      padding: 10px 0;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      @include clearfix();
+
+      h1 {
+        color: $text-color;
+        float: left;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .btn-reload {
+        float: right;
+        font-size: 16px;
+        color: $loadingColor;
+      }
+    }
+
+    ul.feed {
+      margin: 0;
+      padding: 0;
+
+      > li {
+        border-bottom: 1px solid $seperatorColor;
+        list-style: none;
+        margin-bottom: 10px;
+        padding: 10px 0;
+      }
+    }
+
+    footer {
+      text-align: center;
+
+      .fa {
+        font-size: 30px;
+        color: $loadingColor;
+      }
     }
   }
-}
 
-@import "components";
+  @import "components";
+}

@@ -1,9 +1,10 @@
-export const discussionsService = ($steem) => {
+export const discussionsService = (steemApi) => {
   return {
-    getDiscussionsBy: (what, tag, limit = 10) => {
-      return new Promise(function (resolve, reject) {
+    getDiscussionsBy: (what, tag, startAuthor, startPermalink, limit = 20) => {
+      return new Promise((resolve, reject) => {
         let fn = `getDiscussionsBy${what}`;
-        return $steem.api[fn]({limit: limit, tag: tag}, function (err, response) {
+        let params = {tag: tag, start_author: startAuthor, start_permlink: startPermalink, limit: limit};
+        return steemApi[fn](params, (err, response) => {
           if (err) {
             reject(err);
           } else {
@@ -15,11 +16,11 @@ export const discussionsService = ($steem) => {
   }
 };
 
-export const tagsService = ($steem) => {
+export const tagsService = (steemApi) => {
   return {
     getTrendingTags: (limit = 50) => {
-      return new Promise(function (resolve, reject) {
-        $steem.api.getTrendingTags(null, limit, function (err, response) {
+      return new Promise((resolve, reject) => {
+        steemApi.getTrendingTags(null, limit, (err, response) => {
           if (err) {
             reject(err);
           } else {

@@ -1,32 +1,18 @@
+// Styles
 import "./stylesheets/app-light.scss";
-
-// Disable zooming
-const electron = require('electron');
-electron.webFrame.setZoomLevelLimits(1, 1);
+import "./stylesheets/app-dark.scss";
 
 // Small helpers you might want to keep
 import "./helpers/context_menu.js";
 import "./helpers/external_links.js";
 
+// Disable zooming
+import electron from "electron";
 
-import {remote} from "electron";
-import jetpack from "fs-jetpack";
-// import {greet} from "./hello_world/hello_world";
-import env from "env";
-
-const app = remote.app;
-const appDir = jetpack.cwd(app.getAppPath());
-
-// Holy crap! This is browser window with HTML and stuff, but I can read
-// files from disk like it's node.js! Welcome to Electron world :)
-const manifest = appDir.read("package.json", "json");
-
+electron.webFrame.setZoomLevelLimits(1, 1);
 
 import marked from 'marked';
 import steem from 'steem';
-
-import {steemCategories} from './constants';
-
 
 import angular from 'angular';
 import {angularRoute} from 'angular-route';
@@ -34,43 +20,35 @@ import {angularTranslate} from 'angular-translate';
 
 import {postsCtrl} from './controllers/posts';
 import {faqCtrl} from './controllers/faq';
+import {aboutCtrl} from './controllers/about'
 
-import {navBarDirective} from './directives/navbar';
-import {footerDirective} from './directives/footer';
-import {postListItemDirective} from "./directives/post-list-item";
+import {navBarDir} from './directives/navbar';
+import {footerDir} from './directives/footer';
+import {postListItemDir} from "./directives/post-list-item";
+import {sideTagListDir} from "./directives/side-tag-list";
 
 import {discussionsService, tagsService} from "./services";
 
-const theApp = angular.module('eSteem', ['ngRoute', 'pascalprecht.translate'])
-  .factory('$steem', ($rootScope) => {
-    steem.api.setOptions({url: "https://api.steemit.com"});
-    return steem;
-  })
-  .factory('steemCategories', () => {
-    return steemCategories;
-  })
-  .factory('discussionsService', discussionsService)
-  .factory('tagsService', tagsService)
-  .directive('navBar', navBarDirective)
-  .directive('appFooter', footerDirective)
-  .directive('postListItem', postListItemDirective)
-  .controller('postsCtrl', postsCtrl)
-  .controller('faqCtrl', faqCtrl)
-  .config(($translateProvider) => {
+import constants from './constants';
 
+angular.module('eSteem', ['ngRoute', 'pascalprecht.translate'])
+
+  .config(($translateProvider, $routeProvider, $httpProvider) => {
+
+    // Translations
     $translateProvider.translations('en-US', require('./locales/en-US')); //English
 
     $translateProvider.useSanitizeValueStrategy(null);
     $translateProvider.preferredLanguage('en-US');
     $translateProvider.fallbackLanguage('en-US');
-  })
-  .config(($routeProvider) => {
+
+    // Routing
     $routeProvider
       .when('/', {
         template: '',
-        controller: function ($location, steemCategories) {
+        controller: ($location, constants) => {
           // Redirect to first category page.(Trending) [Better than hard coding category name]
-          $location.path('/posts/' + steemCategories[0].name);
+          $location.path('/posts/' + constants.categories[0].name);
         }
       })
       .when('/posts/:category', {
@@ -81,30 +59,58 @@ const theApp = angular.module('eSteem', ['ngRoute', 'pascalprecht.translate'])
         templateUrl: 'templates/posts.html',
         controller: 'postsCtrl',
       })
-      .when('/contact', {
-        templateUrl: 'contact/posts.html',
-        controller: 'contactCtrl',
-      })
       .when('/faq', {
         templateUrl: 'templates/faq.html',
         controller: 'faqCtrl',
-      })
+      }).when('/about', {
+      templateUrl: 'templates/about.html',
+      controller: 'aboutCtrl',
+    })
       .when('/posts/:postId', {
         templateUrl: 'templates/post.html',
         controller: 'PostCtrl'
       })
       .otherwise({redirectTo: '/'});
-  }).config(($httpProvider) => {
-    // Prevent $http caching
+
+    // $http
+    // Prevent caching
     if (!$httpProvider.defaults.headers.get) {
       $httpProvider.defaults.headers.get = {};
     }
     $httpProvider.defaults.headers.get['If-Modified-Since'] = 'Mon, 26 Jul 1997 05:00:00 GMT';
     $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
     $httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
-  }).filter('catchPostImage', () => {
-    return (inp) => {
 
+  })
+  .factory('constants', () => {
+    return constants;
+  })
+  .factory('steemApi', (constants) => {
+    steem.api.setOptions({url: constants.defaultServer.url});
+    return steem.api;
+  })
+  .factory('discussionsService', discussionsService)
+  .factory('tagsService', tagsService)
+  .directive('navBar', navBarDir)
+  .directive('appFooter', footerDir)
+  .directive('sideTagList', sideTagListDir)
+  .directive('postListItem', postListItemDir)
+  .directive('scrolledBottom', () => {
+    return (scope, elm, attr) => {
+      let raw = elm[0];
+
+      elm.bind('scroll', () => {
+        if ((raw.scrollTop + raw.offsetHeight) + 100 >= raw.scrollHeight) {
+          scope.$apply(attr.scrolledBottom);
+        }
+      });
+    };
+  })
+  .controller('postsCtrl', postsCtrl)
+  .controller('faqCtrl', faqCtrl)
+  .controller('aboutCtrl', aboutCtrl)
+  .filter('catchPostImage', () => {
+    return (inp) => {
       let meta = JSON.parse(inp.json_metadata);
       if (meta.image && meta.image.length > 0) {
         return meta.image[0];
@@ -112,7 +118,8 @@ const theApp = angular.module('eSteem', ['ngRoute', 'pascalprecht.translate'])
 
       return null;
     }
-  }).filter('sumPostTotal', () => {
+  })
+  .filter('sumPostTotal', () => {
     return (post, rate) => {
       if (post && post.pending_payout_value && post.last_payout === '1970-01-01T00:00:00') {
 
@@ -123,7 +130,8 @@ const theApp = angular.module('eSteem', ['ngRoute', 'pascalprecht.translate'])
         return post.total_payout_value ? ((parseFloat(post.total_payout_value.split(" ")[0])) + (parseFloat(post.curator_payout_value.split(" ")[0])) * rate).toFixed(2) : 0;
       }
     };
-  }).filter('authorReputation', function () {
+  })
+  .filter('authorReputation', () => {
     return (value, bool) => {
       let reputation_level = 1;
       let neg = false;
@@ -147,7 +155,8 @@ const theApp = angular.module('eSteem', ['ngRoute', 'pascalprecht.translate'])
 
       return bool ? reputation_level : Math.floor(reputation_level);
     }
-  }).filter('timeAgo', function ($filter) {
+  })
+  .filter('timeAgo', ($filter) => {
 
     const timeAgo = (input, allowFuture = false) => {
 
@@ -225,7 +234,8 @@ const theApp = angular.module('eSteem', ['ngRoute', 'pascalprecht.translate'])
     timeAgo.$stateful = true;
     return timeAgo;
 
-  }).filter('postSummary', ($sce) => {
+  })
+  .filter('postSummary', ($sce) => {
     return (postBody, length = 200) => {
 
       // Convert markdown to html
@@ -240,14 +250,25 @@ const theApp = angular.module('eSteem', ['ngRoute', 'pascalprecht.translate'])
       });
 
       // Remove html tags
-      text = text.replace(/<[^>]+>/gim, '');
+      // Remove new lines
+      // Remove urls
+      text = text.replace(/(<([^>]+)>)/ig, '').replace(/\r?\n|\r/g, ' ').replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
 
       // Truncate
       text = text.substring(0, length);
 
       return $sce.trustAsHtml(text);
     }
-  });
+  })
+  .filter('capWord', () => {
+    return (s) => {
+      return s.substr(0, 1).toUpperCase() + s.substr(1)
+    }
+  }).filter('__', () => {
+  return (s) => {
+    return s
+  }
+});
 
 
 window.onload = () => {

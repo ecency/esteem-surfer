@@ -1,22 +1,20 @@
 <nav-bar selected-cat="category" selected-tag="tag"></nav-bar>
-<div class="app-container">
+<div class="app-container" scrolled-bottom="reachedBottom()">
   <div class="app-content">
-    <div class="side-tag-list">
-      <header>{{ 'TAGS' | translate }}</header>
-      <ul class="tag-list">
-        <li ng-repeat="t in tags" ng-class="{'active': (tag===t)}"><a ng-click="tagClicked(t)">{{ t }}</a></li>
-      </ul>
-      <footer><a href="#">{{ _('View all tags..') }}</a></footer>
-    </div>
+    <side-tag-list selected-cat="category" selected-tag="tag"></side-tag-list>
     <div class="post-list">
       <header>
-        <h1>{{ title | translate }}</h1>
+        <h1>{{ catTitle | translate }}<span ng-if="tag">: {{ tagTitle }}</span> </h1>
+        <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingPosts" title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
       </header>
       <ul class="feed">
         <li ng-repeat="post in posts">
           <post-list-item post="post"></post-list-item>
         </li>
       </ul>
+      <footer>
+        <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="loadingPosts"></i>
+      </footer>
     </div>
   </div>
 </div>

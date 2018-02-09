@@ -18,7 +18,6 @@ module.exports = env => {
     devtool: "source-map",
     module: {
       rules: [
-
         // Loaders for sass
         {
           test: /\.scss$/,

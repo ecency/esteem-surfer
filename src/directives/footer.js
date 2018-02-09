@@ -1,16 +1,15 @@
-export const footerDirective = function () {
+export const footerDir = () => {
   return {
     restrict: 'AE',
     replace: true,
     scope: {},
-    link: function ($scope, $element) {
+    link: ($scope, $element) => {
 
     },
     templateUrl: 'templates/directives/footer.html',
-    controller: function ($scope) {
+    controller: ($scope) => {
 
-
-      $scope.fn = function () {
+      $scope.fn = () => {
 
       };
     }

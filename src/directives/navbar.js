@@ -1,4 +1,4 @@
-export const navBarDirective = ($location) => {
+export const navBarDir = ($location) => {
   return {
     restrict: 'AE',
     replace: true,
@@ -7,8 +7,8 @@ export const navBarDirective = ($location) => {
       selectedTag: '='
     },
     templateUrl: 'templates/directives/navbar.html',
-    controller: ($scope, steemCategories) => {
-      $scope.cats = steemCategories;
+    controller: ($scope, constants) => {
+      $scope.cats = constants.categories;
 
       $scope.linkClicked = (c) => {
         let u = `/posts/${c}`;
