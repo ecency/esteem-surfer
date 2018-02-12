@@ -1,0 +1,14 @@
+{
+	"HOME": "Hasiera",
+	"LOGOUT": "Irten",
+	"PROFILE": "Profila",
+	"FOLLOW": "Jarraitu",
+	"BOOKMARKS": "Faboritoak",
+	"TRANSFER": "Transferitu",
+	"MARKET": "Merkatua",
+	"SETTINGS": "Ajusteak",
+	"ABOUT": "XXX-ri buruz",
+	"ABOUT_1": "Edonork bere edukiengatik sariak jasotzeko tokia!",
+	"ABOUT_2": "{{platformname}} plataformarengatik bulkatua. App{{platformname}}-ek sortua ",
+	"ABOUT_3": "eta open-source"
+}

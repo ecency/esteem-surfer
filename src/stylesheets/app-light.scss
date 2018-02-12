@@ -145,5 +145,11 @@ body.light-theme {
     }
   }
 
+  .settingsModal{
+    .success-icon{
+      color: #009c00;
+    }
+  }
+
   @import "components";
 }
