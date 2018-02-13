@@ -1,4 +1,4 @@
-export const footerDir = () => {
+export default () => {
   return {
     restrict: 'AE',
     replace: true,

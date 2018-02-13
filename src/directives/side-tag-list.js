@@ -1,4 +1,4 @@
-export const sideTagListDir = () => {
+export default () => {
   return {
     restrict: 'AE',
     replace: true,

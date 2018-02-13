@@ -28,8 +28,16 @@ body.light-theme {
   $seperatorColor: #eeeeee;
 
   $loadingColor: #5892f4;
+  $loadingSuccessColor: #009c00;
 
   @import "layout";
+
+  a.disabled-link {
+    pointer-events: none;
+    cursor: default;
+    color: $textColorLighter;
+  }
+
 
   .side-tag-list {
     background: $listBgColor;
@@ -117,9 +125,9 @@ body.light-theme {
       }
 
       .btn-reload {
+        color: $loadingColor;
         float: right;
         font-size: 16px;
-        color: $loadingColor;
       }
     }
 
@@ -139,15 +147,63 @@ body.light-theme {
       text-align: center;
 
       .fa {
-        font-size: 30px;
         color: $loadingColor;
+        font-size: 30px;
       }
     }
   }
 
-  .settingsModal{
-    .success-icon{
-      color: #009c00;
+  .settingsModal {
+    .modal-body {
+      .server-control {
+
+        .server-list {
+          max-height: 120px;
+          border: 1px solid $listBorderColor;
+          overflow-x: auto;
+          margin-bottom: 10px;
+
+          .table {
+            margin: 0;
+            tr:first-of-type {
+              td {
+                border-top: 0
+              }
+            }
+
+            tr {
+              td {
+                a {
+                  text-decoration: underline;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .alert{
+        margin: 10px 0;
+        padding: 10px;
+      }
+    }
+    .modal-footer {
+      .indicator {
+        display: inline-block;
+        font-size: 18px;
+        height: 34px;
+        padding-top: 5px;
+        text-align: center;
+        vertical-align: middle;
+        width: 30px;
+
+        .loading-icon {
+          color: $loadingColor;
+        }
+        .success-icon {
+          color: $loadingSuccessColor;
+        }
+      }
     }
   }
 

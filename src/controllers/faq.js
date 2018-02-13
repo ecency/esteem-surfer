@@ -1,3 +1,3 @@
-export const faqCtrl = ($scope) => {
+export default ($scope) => {
 
 };

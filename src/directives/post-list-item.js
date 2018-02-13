@@ -1,4 +1,4 @@
-export const postListItemDir = () => {
+export default () => {
   return {
     restrict: 'AE',
     replace: true,

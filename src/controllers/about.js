@@ -1,3 +1,3 @@
-export const aboutCtrl = ($scope) => {
+export default ($scope) => {
 
 };

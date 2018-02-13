@@ -1,4 +1,4 @@
-export const navBarDir = ($location, $uibModal) => {
+export default ($location, $uibModal) => {
   return {
     restrict: 'AE',
     replace: true,
@@ -18,12 +18,17 @@ export const navBarDir = ($location, $uibModal) => {
         $location.path(u);
       };
 
-
       $scope.openSettings = () => {
         $uibModal.open({
           templateUrl: 'templates/settings.html',
           controller: 'settingsCtrl',
-          windowClass: 'settingsModal'
+          windowClass: 'settingsModal',
+          backdrop: 'static',
+          keyboard: false
+        }).result.then(function (data) {
+          // Success
+        }, function () {
+          // Cancel
         });
       }
     }

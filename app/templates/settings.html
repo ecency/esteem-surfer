@@ -7,46 +7,63 @@
 <div class="modal-body">
   <form class="form-horizontal">
     <div class="form-group">
-      <label for="select-lang" class="col-sm-3 control-label">
-        <i class="fa fa-spin fa-spinner" ng-if="langState==2"></i>
-        <i class="fa fa-check success-icon" ng-if="langState==3"></i>
-        {{ 'LANGUAGE' | translate }}</label>
+      <label for="select-lang" class="col-sm-3 control-label"> {{ 'LANGUAGE' | translate }}</label>
       <div class="col-sm-9">
-        <select id="select-lang" class="form-control" ng-model="language" ng-disabled="langState==2">
+        <select id="select-lang" class="form-control" ng-model="language" ng-disabled="formState==2">
           <option ng-repeat="option in languages" value="{{option.id}}">{{option.name}}</option>
         </select>
       </div>
     </div>
     <div class="form-group">
-      <label for="select-cur" class="col-sm-3 control-label">
-        <i class="fa fa-spin fa-spinner" ng-if="currState==2"></i>
-        <i class="fa fa-check success-icon" ng-if="currState==3"></i>
-        {{ 'CURRENCY' | translate }}</label>
+      <label for="select-cur" class="col-sm-3 control-label">{{ 'CURRENCY' | translate }}</label>
       <div class="col-sm-9">
-        <select id="select-cur" class="form-control" ng-model="currency" ng-disabled="currState==2">
+        <select id="select-cur" class="form-control" ng-model="currency" ng-disabled="formState==2">
           <option ng-repeat="cur in currencies" value="{{cur.id}}">{{cur.name}}</option>
         </select>
       </div>
     </div>
     <div class="form-group">
       <label class="col-sm-3 control-label">{{ 'SERVER' | translate }}</label>
-      <div class="col-sm-9"> {{server}}
-        <!--
-        <select id="select-server" class="form-control" ng-model="server">
-          <option ng-repeat="server in servers" value="{{server}}">{{server}}</option>
-        </select>
-        -->
+      <div class="col-sm-9">
+        <p class="form-control-static">
+          <span>{{ server }}</span>
+          <a class="btn btn-default btn-link btn-xs" ng-click="toggleServerControl()"><i class="fa fa-pencil"></i></a>
+        </p>
+        <div class="server-control" ng-show="serverControlVisible">
+
+          <div class="server-list">
+            <table class="table table-striped">
+              <tbody>
+              <tr ng-repeat="server in servers">
+                <td>
+                  <a ng-class="{'disabled-link': formState==2}" ng-click="setServer(server)"> {{ server }} </a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="custom-server">
+            <div class="input-group">
+              <input type="text" class="form-control input-sm" ng-model="customServerAddr"
+                     placeholder="{{ 'CUSTOM_SERVER' | __ }}" ng-disabled="formState==2">
+              <span class="input-group-btn">
+                <button class="btn btn-primary btn-sm" type="button" ng-click="setServer()"
+                        ng-disabled="formState==2"><i class="fa fa-arrow-right"></i>
+                </button>
+              </span>
+            </div>
+            <div class="alert alert-danger" ng-show="formState == 11">{{ 'INVALID_SERVER_ADDRESS' | __ }}</div>
+          </div>
+          <div class="alert alert-danger" ng-show="formState == 12">{{ 'SERVER_FAILED' | __ }}</div>
+          <div class="alert alert-danger" ng-show="formState == 13">{{ 'SERVER_TIME_ERR' | __ }}</div>
+        </div>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-3 control-label">
-        <i class="fa fa-spin fa-spinner" ng-if="nightState==2"></i>
-        <i class="fa fa-check success-icon" ng-if="nightState==3"></i>
-      </label>
-      <div class="col-sm-9">
+      <div class="col-sm-offset-3 col-sm-9">
         <div class="checkbox">
           <label>
-            <input type="checkbox" ng-model="nightMode" ng-disabled="nightState==2">
+            <input type="checkbox" ng-model="nightMode" ng-disabled="formState==2">
             <i class="fa fa-moon-o"></i> {{ 'NIGHT_MODE' | translate }}
           </label>
         </div>
@@ -55,8 +72,16 @@
   </form>
 </div>
 <div class="modal-footer">
+  <div class="pull-left">
+    <button class="btn btn-warning" ng-click="defaults()" ng-disabled="formState==2">{{ 'DEFAULT_SETTINGS' | __ }}</button>
+  </div>
+  <!--
   <button class="btn btn-primary" ng-click="save()" ng-disabled="processing"><i
     class="fa fa-spinner fa-spin" ng-show="processing"></i> {{ 'SAVE' | __ }}
   </button>
-  <button class="btn btn-warning" ng-click="cancel()">{{ 'CANCEL' | translate }}</button>
+  -->
+  <div class="indicator">
+    <i class="fa fa-spin fa-spinner loading-icon" ng-if="formState==2"></i>
+    <i class="fa fa-check success-icon" ng-if="formState==3"></i>
+  </div>
 </div>

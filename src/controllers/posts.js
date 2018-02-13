@@ -1,4 +1,4 @@
-export const postsCtrl = ($scope, $routeParams, $filter, discussionsService, constants) => {
+export default ($scope, $routeParams, $filter, discussionsService, constants) => {
 
   let category = $routeParams.category;
   let tag = $routeParams.tag;
