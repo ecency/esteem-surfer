@@ -1,5 +1,7 @@
-export default () => {
-  return (post, rate) => {
+export default ($rootScope) => {
+  return (post) => {
+    let rate = $rootScope.currencyRate;
+
     if (post && post.pending_payout_value && post.last_payout === '1970-01-01T00:00:00') {
 
       //value.total_payout_value.split(" ")[0])+parseFloat(value.total_pending_payout_value.split(" ")[0])

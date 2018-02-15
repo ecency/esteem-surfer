@@ -17,25 +17,25 @@ export default () => {
           </div>
         </div>
         <div class="post-author-right">
-          <span class="post-author-name"><a ng-click="authorClicked(post)">{{ post.author }}</a></span>
+          <span class="post-author-name"><a ng-click="authorClicked()">{{ post.author }}</a></span>
           <span class="post-author-reputation">{{ post.author_reputation|authorReputation|number:0 }}</span>
         </div>
         <div class="post-info">
-          <span class="post-info-cat"><a ng-click="parentClicked(post)">in {{ post.parent_permlink }}</a></span>
-          <span class="post-info-date"><a ng-click="createdClicked(post)"> {{post.created|timeAgo}}</a></span>
+          <span class="post-info-cat"><a ng-click="parentClicked()">in {{ post.parent_permlink }}</a></span>
+          <span class="post-info-date"><a ng-click="createdClicked()"> {{post.created|timeAgo}}</a></span>
         </div>
       </div>
       <div class="post-body" ng-class="{'with-image': postImage}">
         <div class="post-image" ng-if="postImage">
-          <a ng-click="imageClicked(post)">
+          <a ng-click="imageClicked()">
             <img ng-src="{{ postImage }}">
           </a>
         </div>
         <div class="post-body-content">
           <h2 class="post-body-content-title">
-            <a ng-click="titleClicked(post)">{{ post.title }}</a>
+            <a ng-click="titleClicked()">{{ post.title }}</a>
           </h2>
-          <div class="post-body-content-summary"><a ng-click="summaryClicked(post)" ng-bind-html="post.body | postSummary"></a></div>
+          <div class="post-body-content-summary"><a ng-click="summaryClicked()" ng-bind-html="post.body | postSummary"></a></div>
           <div class="post-body-content-controls">
             <div class="control-vote">
               <div class="up-vote">
@@ -44,13 +44,13 @@ export default () => {
                 </a>
               </div>
               <div class="post-total">
-                <a ng-click="totalClicked(post)">
-                  <span class="cur-prefix">$</span> {{post | sumPostTotal:1 | number}}
+                <a ng-click="totalClicked(post)" uib-popover-html="postTotalInfo" popover-placement="right" popover-trigger="'focus'" tabindex="0" ng-class="{'payout-declined': !isMaxAcceptedPayout}">
+                  <span class="cur-prefix">{{ $root.currency | currencySymbol }}</span>  {{ post | sumPostTotal | number }}
                 </a>
               </div>
             </div>
             <div class="control-voters">
-              <a ng-click="votesClicked(post)">
+              <a ng-click="votersClicked(post)">
                 <i class="fa fa-users"></i> {{ post.net_votes }}
               </a>
             </div>
@@ -64,12 +64,50 @@ export default () => {
       </div>
     </div>
     `,
-    controller: ($scope) => {
+    controller: ($scope, $rootScope, $location, $sce, $filter, $uibModal) => {
       // console.log(typeof $scope.post)
 
-      $scope.fn = () => {
+      $scope.isMaxAcceptedPayout = $scope.post.max_accepted_payout.split(' ')[0] !== '0.000';
+
+      $scope.postTotalInfo = $filter('postPaymentDetail')($scope.post);
+
+
+      $scope.votersClicked = (post) => {
+
+        $uibModal.open({
+          templateUrl: 'templates/post-voters.html',
+          controller: 'postVotersCtrl',
+          windowClass: 'postVotersModal',
+          resolve: {
+            post: function () {
+              return post;
+            }
+          }
+        }).result.then(function (data) {
+          // Success
+        }, function () {
+          // Cancel
+        });
 
       };
+
+      const goPost = () => {
+        let u = `/post/${$scope.post.category}/${$scope.post.author}/${$scope.post.permlink}`;
+        console.log(u)
+        $location.path(u);
+      };
+
+      $scope.titleClicked = () => {
+        goPost();
+      };
+
+      $scope.summaryClicked = () => {
+        goPost();
+      };
+
+      $scope.imageClicked = () => {
+        goPost();
+      }
     }
   };
 };

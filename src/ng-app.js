@@ -11,6 +11,9 @@ import postsCtrl from './controllers/posts';
 import faqCtrl from './controllers/faq';
 import aboutCtrl from './controllers/about'
 import settingsCtrl from './controllers/settings';
+import postVotersCtrl from './controllers/post-voters';
+import postCtrl from './controllers/post';
+
 
 // Directives
 import navBarDir from './directives/navbar';
@@ -20,7 +23,8 @@ import sideTagListDir from './directives/side-tag-list';
 import scrolledBottomDir from './directives/scrolled-bottom';
 
 // Services
-import {discussionsService, tagsService} from "./services";
+import steemService from './services/steem';
+
 
 // Filters
 import catchPostImageFilter from './filters/catch-post-image';
@@ -29,6 +33,9 @@ import authorReputation from './filters/author-reputation';
 import timeAgoFilter from './filters/time-ago';
 import postSummaryFilter from './filters/post-summary';
 import capWordFilter from './filters/cap-word';
+import currencySymbolFilter from './filters/currency-symbol';
+import postPaymentDetailFilter from './filters/post-payment-detail';
+
 
 import constants from './constants';
 
@@ -120,13 +127,22 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
         templateUrl: 'templates/posts.html',
         controller: 'postsCtrl',
       })
+      .when('/posts/:category/:tag', {
+        templateUrl: 'templates/posts.html',
+        controller: 'postsCtrl',
+      })
+      .when('/post/:category/:author/:permlink', {
+        templateUrl: 'templates/post.html',
+        controller: 'postCtrl',
+      })
       .when('/faq', {
         templateUrl: 'templates/faq.html',
         controller: 'faqCtrl',
-      }).when('/about', {
-      templateUrl: 'templates/about.html',
-      controller: 'aboutCtrl',
-    })
+      })
+      .when('/about', {
+        templateUrl: 'templates/about.html',
+        controller: 'aboutCtrl',
+      })
       .when('/posts/:postId', {
         templateUrl: 'templates/post.html',
         controller: 'PostCtrl'
@@ -143,12 +159,17 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
     $httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
 
   })
+
   .factory('constants', () => {
     return constants;
   })
   .factory('steemApi', (constants, $rootScope) => {
-    steem.api.setOptions({url: $rootScope.server});
-    return steem.api;
+    return {
+      getApi: () => {
+        steem.api.setOptions({url: $rootScope.server});
+        return steem.api;
+      }
+    }
   })
   .factory('eSteemService', ($http) => {
     return {
@@ -157,8 +178,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
       }
     }
   })
-  .factory('discussionsService', discussionsService)
-  .factory('tagsService', tagsService)
+  .factory('steemService', steemService)
   .factory('storageService', () => {
     return {
       get: (key) => {
@@ -195,21 +215,28 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
       }
     }
   })
+
   .directive('navBar', navBarDir)
   .directive('appFooter', footerDir)
   .directive('sideTagList', sideTagListDir)
   .directive('postListItem', postListItemDir)
   .directive('scrolledBottom', scrolledBottomDir)
+
   .controller('postsCtrl', postsCtrl)
   .controller('faqCtrl', faqCtrl)
   .controller('aboutCtrl', aboutCtrl)
   .controller('settingsCtrl', settingsCtrl)
+  .controller('postVotersCtrl', postVotersCtrl)
+  .controller('postCtrl', postCtrl)
+
   .filter('catchPostImage', catchPostImageFilter)
   .filter('sumPostTotal', sumPostTotalFilter)
   .filter('authorReputation', authorReputation)
   .filter('timeAgo', timeAgoFilter)
   .filter('postSummary', postSummaryFilter)
   .filter('capWord', capWordFilter)
+  .filter('currencySymbol', currencySymbolFilter)
+  .filter('postPaymentDetail', postPaymentDetailFilter)
   .filter('__', () => {
     // Temporary filter to figure out different language entries from eSteem mobile app's locale files
     return (s) => {
@@ -229,6 +256,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
       }
     }
   })
+
   .run(function ($rootScope, $uibModal, $translate, $timeout, $interval, eSteemService, settingsService, constants) {
 
     // SETTINGS
@@ -277,7 +305,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
 
 
     // CURRENCY
-    // Default currency's (usd) rate = 1
+    // Default currency's (USD) rate = 1
     $rootScope.currencyRate = 1;
 
     const fetchCurrencyRate = (broadcast = false) => {
@@ -286,29 +314,18 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
         if (newCurrRate !== $rootScope.currencyRate) {
           $rootScope.currencyRate = newCurrRate;
           if (broadcast) {
-            $rootScope.$broadcast('currRateChanged')
+            $rootScope.$broadcast('currencyChanged')
           }
         }
-      });
-
-      // TODO: Handle catch
+      }); // TODO: Handle catch
     };
 
-    // Watch currency variable. Refresh rate when changed
-    // It can only change from settingsService
-    $rootScope.$watch('currency', (n, o) => {
-      if (n === o) {
-        return
-      }
-
-      fetchCurrencyRate(true);
-    });
-
     if ($rootScope.currency !== constants.defaultCurrency) {
-      // If selected currency is not default currency then fetch rate data
-      fetchCurrencyRate()
+      // Fetch currency rate data on startup if selected currency is not default currency.
+      fetchCurrencyRate();
     }
 
-    // Refresh currency rate in every minute. Broadcast if changed
+    // Refresh currency rate in every minute. Broadcast if changed.
     $interval(() => fetchCurrencyRate(true), 60000);
+
   });

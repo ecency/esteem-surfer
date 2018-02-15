@@ -32,6 +32,7 @@ export default ($scope, $rootScope, $timeout, $uibModalInstance, settingsService
     11 = Server Invalid
     12 = Server Failed
     13 = Server Timing Error
+
     */
     $scope.formState = 1;
   };
@@ -59,12 +60,13 @@ export default ($scope, $rootScope, $timeout, $uibModalInstance, settingsService
     }
     $scope.formState = 2;
 
-    $timeout(() => {
+    eSteemService.getCurrencyRate(newVal).then((resp) => {
       settingsService.set('currency', newVal);
       $rootScope.readSettings();
+      $rootScope.currencyRate = resp.data;
+      $scope.$broadcast('currencyChanged');
       $scope.formState = 3;
-
-    }, 300);
+    }); // TODO: Handle catch
   });
 
 
@@ -133,6 +135,7 @@ export default ($scope, $rootScope, $timeout, $uibModalInstance, settingsService
     });
   };
 
+
   $scope.defaults = () => {
     $scope.formState = 2;
 
@@ -142,6 +145,7 @@ export default ($scope, $rootScope, $timeout, $uibModalInstance, settingsService
       init();
     }, 300);
   };
+
 
   $scope.cancel = () => {
     if ($scope.formState === 2) {

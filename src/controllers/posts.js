@@ -1,4 +1,7 @@
-export default ($scope, $routeParams, $filter, discussionsService, constants) => {
+export default ($scope, $routeParams, $filter, steemService, constants) => {
+
+  // 1 get initial (cache) data
+  // 2 set cache data when updated
 
   let category = $routeParams.category;
   let tag = $routeParams.tag;
@@ -20,7 +23,7 @@ export default ($scope, $routeParams, $filter, discussionsService, constants) =>
     let by = $filter('capWord')(category);
 
     $scope.loadingPosts = true;
-    discussionsService.getDiscussionsBy(by, (tag ? tag : null), startAuthor, startPermalink, constants.postListSize).then((resp) => {
+    steemService.getDiscussionsBy(by, (tag ? tag : null), startAuthor, startPermalink, constants.postListSize).then((resp) => {
 
       // if server returned less than 2 posts, it means end of pagination
       // comparison value is 2 because it returns at least 1 post on pagination
@@ -36,11 +39,10 @@ export default ($scope, $routeParams, $filter, discussionsService, constants) =>
         ids.push(i.id);
       });
 
-      $scope.$apply();
     }).catch(() => {
+      // TODO: Handle catch
     }).then(() => {
       $scope.loadingPosts = false;
-      $scope.$apply();
     });
   };
 

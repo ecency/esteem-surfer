@@ -1,31 +1,21 @@
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
     basePath: './',
-    frameworks: ['jasmine'],
-    plugins: ['karma-babel-preprocessor'],
+    frameworks: [
+      'jasmine'
+    ],
+    plugins: [
+      'karma-jasmine',
+      'karma-chrome-launcher'
+    ],
     files: [
       './node_modules/angular/angular.js',
-      './src/ng-app.js',
       './src/**/*.spec.js'
     ],
-    exclude: [
+    exclude: [],
+    reporters: [
+      'progress'
     ],
-    preprocessors: {
-      'src/**/*.js': ['babel']
-    },
-    babelPreprocessor: {
-      options: {
-        presets: ['env'],
-        sourceMap: 'inline'
-      },
-      filename: function (file) {
-        return file.originalPath.replace(/\.js$/, '.es5.js');
-      },
-      sourceFileName: function (file) {
-        return file.originalPath;
-      }
-    },
-    reporters: ['progress'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,

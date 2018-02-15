@@ -7,12 +7,11 @@ export default () => {
       selectedTag: '='
     },
     templateUrl: 'templates/directives/side-tag-list.html',
-    controller: ($scope, $rootScope, $timeout, $location, tagsService) => {
+    controller: ($scope, $rootScope, $timeout, $location, steemService) => {
 
       const loadTags = (finallyCb) => {
-        tagsService.getTrendingTags().then((resp) => {
+        steemService.getTrendingTags().then((resp) => {
           $rootScope.tags = resp.map(a => a.name).filter(a => a.length > 0);
-          $rootScope.$apply();
         }).catch(() => {
         }).then(() => {
           if (finallyCb) {

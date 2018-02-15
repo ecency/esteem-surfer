@@ -38,7 +38,6 @@ body.light-theme {
     color: $textColorLighter;
   }
 
-
   .side-tag-list {
     background: $listBgColor;
     border: 1px solid $listBorderColor;
@@ -182,7 +181,7 @@ body.light-theme {
         }
       }
 
-      .alert{
+      .alert {
         margin: 10px 0;
         padding: 10px;
       }
@@ -203,6 +202,24 @@ body.light-theme {
         .success-icon {
           color: $loadingSuccessColor;
         }
+      }
+    }
+  }
+
+  .postVotersModal {
+    .modal-body {
+      .indicator {
+        font-size: 20px;
+        text-align: center;
+
+        .loading-icon {
+          color: $loadingColor;
+        }
+      }
+
+      .data-list {
+        max-height: 300px;
+        overflow-y: auto;
       }
     }
   }

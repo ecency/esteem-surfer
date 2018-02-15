@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'CANCEL' | translate }}" ng-click="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h4 class="modal-title">{{ 'VOTERS_INFO' | translate }} <span ng-show="dataLen">({{ dataLen }})</span></h4>
+</div>
+<div class="modal-body">
+  <div class="indicator">
+    <i class="fa fa-spin fa-spinner fa-circle-o-notch loading-icon" ng-show="loading"></i>
+  </div>
+  <div class="data-list">
+    <table class="table table-striped">
+      <tbody>
+      <tr ng-repeat="v in data | orderBy:'-time'">
+        <td><a ng-click="authorClicked(v.voter)">{{ v.voter }}</a> <span class="badge"> {{ v.reputation | authorReputation }}</span></td>
+        <td style="width: 30px">{{ v.percent / 100 }}%</td>
+        <td style="width: 120px">{{ v.time | timeAgo }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
