@@ -1,3 +1,19 @@
+String.prototype.hashCode = function () {
+  // See: https://stackoverflow.com/a/8831937/3720614
+
+  let hash = 0;
+  if (this.length === 0) {
+    return hash;
+  }
+  for (let i = 0; i < this.length; i++) {
+    let char = this.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash; // Convert to 32bit integer
+  }
+  return hash;
+};
+
+
 import steem from 'steem';
 
 // Angular and related dependencies
@@ -257,7 +273,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
     }
   })
 
-  .run(function ($rootScope, $uibModal, $translate, $timeout, $interval, eSteemService, settingsService, constants) {
+  .run(function ($rootScope, $uibModal, $translate, $timeout, $interval, $location, $window, eSteemService, settingsService, constants) {
 
     // SETTINGS
     /*
@@ -328,4 +344,109 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
     // Refresh currency rate in every minute. Broadcast if changed.
     $interval(() => fetchCurrencyRate(true), 60000);
 
+    // NAVIGATION CACHE
+    // The purpose of navigation caching is show last position and data of the page to user without
+    // reloading when the user clicks back button.
+    // It is not nice to scroll the page at the top and reload when the user clicks the back button.
+
+    // HISTORY MANAGER
+
+    $rootScope.navHistory = [];
+
+    // A flag to find out user triggered $rootScope.goBack (clicked back button)
+    $rootScope.isBack = false;
+
+    // Pops last path from navHistory and redirects.
+    $rootScope.goBack = () => {
+      if (!$rootScope.navHistory.length) {
+        return false;
+      }
+
+      let l = $rootScope.navHistory.pop();
+      $rootScope.isBack = true;
+      $location.path(l);
+    };
+
+    $rootScope.lastVisitedPath = null;
+
+    $rootScope.$on('$routeChangeSuccess', () => {
+
+      /* Before push a path to navHistory:
+      Last visited path should be not empty (at least one path visited)
+      $rootScope.goBack should not be triggered (go back button should not be clicked)
+      Path should not be root (there is a redirect rule for /)
+      */
+      if ($rootScope.lastVisitedPath && !$rootScope.isBack && $rootScope.lastVisitedPath !== '/') {
+        // push last visited path to history
+        $rootScope.navHistory.push($rootScope.lastVisitedPath);
+      }
+
+      // update last visited path
+      $rootScope.lastVisitedPath = $location.$$path;
+    });
+
+
+    // POSITION MANAGER
+    $rootScope.navPosCache = {};
+
+    $rootScope.$on('$routeChangeStart', function () {
+      // Save last position of main content when leaving
+      let mainEl = document.querySelector('#content-main.keep-pos');
+      if (mainEl) {
+        let key = $window.location.href.hashCode();
+
+        $rootScope.navPosCache[key] = mainEl.scrollTop;
+      }
+    });
+
+    $rootScope.$on('$routeChangeSuccess', function () {
+
+      // Do nothing if back button not clicked
+      if (!$rootScope.isBack) {
+        return false;
+      }
+
+      $timeout(function () {
+        let mainEl = document.querySelector('#content-main.keep-pos');
+        if (mainEl) {
+          let key = $window.location.href.hashCode();
+          let top = $rootScope.navPosCache[key];
+          if (top) {
+            mainEl.scrollTop = top;
+          }
+        }
+      }, 0);
+    });
+
+    // DATA MANAGER
+    $rootScope.cacheData = {};
+    $rootScope.Data = {};
+
+    $rootScope.setNavVar = (varKey, val) => {
+      let key = $window.location.href.hashCode();
+
+      if (!$rootScope.cacheData[key]) {
+        $rootScope.cacheData[key] = {};
+      }
+
+      $rootScope.cacheData[key][varKey] = val;
+    };
+
+    $rootScope.$on('$routeChangeSuccess', () => {
+      let key = $window.location.href.hashCode();
+
+      $rootScope.Data = $rootScope.cacheData[key] || {};
+    });
+
+
+    // After all navigation cache managers, toggle $rootScope.isBack if true
+    $rootScope.$on('$routeChangeSuccess', () => {
+      if ($rootScope.isBack) {
+        $rootScope.isBack = false;
+      }
+    });
+
+
+    //
+    $rootScope.visitedPosts = [];
   });

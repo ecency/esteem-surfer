@@ -18,6 +18,14 @@ export default ($location, $uibModal) => {
         $location.path(u);
       };
 
+      $scope.hideBack = true;
+
+      $scope.goBack = () => {
+        console.log(document.referrer);
+
+        // history.back();
+      };
+
       $scope.openSettings = () => {
         $uibModal.open({
           templateUrl: 'templates/settings.html',

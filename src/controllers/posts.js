@@ -1,7 +1,14 @@
-export default ($scope, $routeParams, $filter, steemService, constants) => {
+export default ($scope, $rootScope, $routeParams, $filter, $timeout, steemService, constants) => {
 
-  // 1 get initial (cache) data
-  // 2 set cache data when updated
+  $scope.posts = $rootScope.Data['posts'] || [];
+
+  $scope.$watchCollection('posts', (n, o) => {
+    if (n === o) {
+      return;
+    }
+
+    $rootScope.setNavVar('posts', n);
+  });
 
   let category = $routeParams.category;
   let tag = $routeParams.tag;
@@ -14,7 +21,7 @@ export default ($scope, $routeParams, $filter, steemService, constants) => {
     $scope.tagTitle = $filter('capWord')(tag);
   }
 
-  $scope.posts = [];
+
   let ids = [];
   let hasMore = true;
 
@@ -65,4 +72,6 @@ export default ($scope, $routeParams, $filter, steemService, constants) => {
     let lastPost = [...$scope.posts].pop();
     loadPosts(lastPost.author, lastPost.permlink)
   }
+
+  $scope.$broadcast('$routeLoaded')
 };

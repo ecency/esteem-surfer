@@ -1,3 +1,5 @@
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss";
+
 .app-navbar {
 
   // Coloring created with https://work.smarchal.com/twbscolor/
@@ -6,6 +8,27 @@
   border: 0;
   border-radius: 0;
   margin-bottom: 0;
+
+  .navbar-back {
+    float: left;
+    height: $navbar-height;
+    margin-right: 15px;
+    padding: 12px 0 10px 0;
+    text-align: center;
+
+    a {
+      color: $navbarColorDefault;
+      font-size: 20px;
+      &:hover, &:focus {
+        color: $navbarColorHighlight;
+      }
+    }
+
+    &.hide-it{
+     visibility: hidden;
+    }
+  }
+
   .navbar-brand {
     color: $navbarColorDefault;
     &:hover, &:focus {
@@ -95,7 +118,7 @@
   .navbar-right {
     li {
       a {
-        line-height:100%;
+        line-height: 100%;
         padding-bottom: 12px;
         padding-top: 13px;
         .fa {

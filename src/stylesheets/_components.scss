@@ -83,6 +83,10 @@
     .post-body-content {
       .post-body-content-title, .post-body-content-summary {
         font-size: 16px;
+
+        a.visited{
+          color: $textColorLighter;
+        }
       }
 
       .post-body-content-title {

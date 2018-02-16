@@ -33,9 +33,9 @@ export default () => {
         </div>
         <div class="post-body-content">
           <h2 class="post-body-content-title">
-            <a ng-click="titleClicked()">{{ post.title }}</a>
+            <a ng-click="titleClicked()" ng-class="{'visited': isVisited}">{{ post.title }}</a>
           </h2>
-          <div class="post-body-content-summary"><a ng-click="summaryClicked()" ng-bind-html="post.body | postSummary"></a></div>
+          <div class="post-body-content-summary"><a ng-click="summaryClicked()" ng-class="{'visited': isVisited}" ng-bind-html="post.body | postSummary"></a></div>
           <div class="post-body-content-controls">
             <div class="control-vote">
               <div class="up-vote">
@@ -65,15 +65,12 @@ export default () => {
     </div>
     `,
     controller: ($scope, $rootScope, $location, $sce, $filter, $uibModal) => {
-      // console.log(typeof $scope.post)
 
       $scope.isMaxAcceptedPayout = $scope.post.max_accepted_payout.split(' ')[0] !== '0.000';
 
       $scope.postTotalInfo = $filter('postPaymentDetail')($scope.post);
 
-
       $scope.votersClicked = (post) => {
-
         $uibModal.open({
           templateUrl: 'templates/post-voters.html',
           controller: 'postVotersCtrl',
@@ -88,12 +85,12 @@ export default () => {
         }, function () {
           // Cancel
         });
-
       };
+
+      $scope.isVisited = $rootScope.visitedPosts.indexOf($scope.post.id) >= 0;
 
       const goPost = () => {
         let u = `/post/${$scope.post.category}/${$scope.post.author}/${$scope.post.permlink}`;
-        console.log(u)
         $location.path(u);
       };
 
