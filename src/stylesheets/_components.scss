@@ -27,7 +27,6 @@
     .post-author-right {
       float: left;
       margin-right: 5px;
-      padding-top: 2px;
 
       .post-author-name {
         font-weight: 600;
@@ -46,7 +45,6 @@
     .post-info {
       color: $textColorLight;
       float: left;
-      padding-top: 2px;
 
       .post-info-cat {
         margin-right: 2px;
@@ -84,7 +82,7 @@
       .post-body-content-title, .post-body-content-summary {
         font-size: 16px;
 
-        a.visited{
+        a.visited {
           color: $textColorLighter;
         }
       }
@@ -207,5 +205,114 @@
         width: calc(100% - 143px);
       }
     }
+  }
+}
+
+.the-post {
+
+  width: 800px;
+  margin: auto;
+
+  .post-header {
+    @include clearfix();
+
+    margin-bottom: 30px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid $seperatorColor;
+
+    h1.post-title {
+      font-size: 28px;
+      line-height: 140%;
+      margin: 30px 0 30px 0;
+    }
+
+    .post-author-left {
+      float: left;
+      margin-right: 10px;
+
+      .post-author-pic {
+        border-radius: 50%;
+        height: 40px;
+        overflow: hidden;
+        width: 40px;
+
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+
+    .post-author-right {
+      float: left;
+      margin-right: 10px;
+      height: 40px;
+
+      .post-author-name {
+        font-weight: 600;
+        font-size: 18px;
+        vertical-align: sub;
+        line-height: 100%;
+      }
+
+      .post-author-reputation {
+        font-size: 14px;
+        vertical-align: sub;
+        &:before {
+          content: '(';
+        }
+        &:after {
+          content: ')';
+        }
+      }
+    }
+
+    .post-info {
+      color: $textColorLight;
+      float: left;
+
+      .post-info-cat {
+        margin-right: 2px;
+
+        a {
+          font-weight: bold;
+        }
+
+        &:after {
+          content: '•';
+          padding-left: 6px;
+        }
+      }
+
+      .post-info-cat, .post-info-date {
+        vertical-align: sub;
+        a {
+          color: $textColorLight;
+        }
+      }
+    }
+  }
+
+  font-size: 18px;
+
+  p {
+    margin: 0 0 24px 0;
+  }
+
+  center {
+    margin: 0 0 24px 0;
+  }
+
+  .post-img-holder {
+    max-width: 100%;
+    text-align: center;
+    display: block;
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .to-user {
+    color: $linkHoverColor
   }
 }

@@ -21,8 +21,8 @@ export default () => {
           <span class="post-author-reputation">{{ post.author_reputation|authorReputation|number:0 }}</span>
         </div>
         <div class="post-info">
-          <span class="post-info-cat"><a ng-click="parentClicked()">in {{ post.parent_permlink }}</a></span>
-          <span class="post-info-date"><a ng-click="createdClicked()"> {{post.created|timeAgo}}</a></span>
+          <span class="post-info-cat">{{ 'IN' | translate }} <a ng-click="parentClicked()">{{ post.parent_permlink }}</a></span>
+          <span class="post-info-date"><a ng-click="createdClicked()" title="{{ post.created|dateFormatted }}"> {{post.created|timeAgo}}</a></span>
         </div>
       </div>
       <div class="post-body" ng-class="{'with-image': postImage}">
@@ -90,6 +90,7 @@ export default () => {
       $scope.isVisited = $rootScope.visitedPosts.indexOf($scope.post.id) >= 0;
 
       const goPost = () => {
+        $rootScope.selectedPost = $scope.post;
         let u = `/post/${$scope.post.category}/${$scope.post.author}/${$scope.post.permlink}`;
         $location.path(u);
       };
@@ -103,6 +104,14 @@ export default () => {
       };
 
       $scope.imageClicked = () => {
+        goPost();
+      };
+
+      $scope.createdClicked = () => {
+        goPost();
+      };
+
+      $scope.commentsClicked = () => {
         goPost();
       }
     }

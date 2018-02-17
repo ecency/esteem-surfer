@@ -152,6 +152,17 @@ body.light-theme {
     }
   }
 
+  .post-page {
+    .indicator {
+      text-align: center;
+
+      .fa {
+        color: $loadingColor;
+        font-size: 30px;
+      }
+    }
+  }
+
   .settingsModal {
     .modal-body {
       .server-control {

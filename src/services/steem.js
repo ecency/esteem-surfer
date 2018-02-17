@@ -42,6 +42,20 @@ export default (steemApi, $q) => {
       });
 
       return defer.promise;
+    },
+
+    getContent: (author, permLink) => {
+      let defer = $q.defer();
+
+      steemApi.getApi().getContent(author, permLink, (err, response) => {
+        if (err) {
+          defer.reject(err);
+        } else {
+          defer.resolve(response);
+        }
+      });
+
+      return defer.promise;
     }
   }
 };

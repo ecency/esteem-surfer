@@ -3,6 +3,10 @@ import marked from 'marked';
 export default ($sce) => {
   return (postBody, length = 200) => {
 
+    if (postBody === undefined) {
+      return $sce.trustAsHtml('');
+    }
+
     // Convert markdown to html
     let text = marked(postBody, {
       gfm: true,

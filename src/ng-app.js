@@ -13,7 +13,6 @@ String.prototype.hashCode = function () {
   return hash;
 };
 
-
 import steem from 'steem';
 
 // Angular and related dependencies
@@ -38,6 +37,7 @@ import postListItemDir from './directives/post-list-item';
 import sideTagListDir from './directives/side-tag-list';
 import scrolledBottomDir from './directives/scrolled-bottom';
 
+
 // Services
 import steemService from './services/steem';
 
@@ -48,9 +48,11 @@ import sumPostTotalFilter from './filters/sum-post-total';
 import authorReputation from './filters/author-reputation';
 import timeAgoFilter from './filters/time-ago';
 import postSummaryFilter from './filters/post-summary';
+import postBodyFilter from './filters/post-body'
 import capWordFilter from './filters/cap-word';
 import currencySymbolFilter from './filters/currency-symbol';
 import postPaymentDetailFilter from './filters/post-payment-detail';
+import dateFormattedDir from './filters/date-formatted.js';
 
 
 import constants from './constants';
@@ -250,9 +252,11 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
   .filter('authorReputation', authorReputation)
   .filter('timeAgo', timeAgoFilter)
   .filter('postSummary', postSummaryFilter)
+  .filter('postBody', postBodyFilter)
   .filter('capWord', capWordFilter)
   .filter('currencySymbol', currencySymbolFilter)
   .filter('postPaymentDetail', postPaymentDetailFilter)
+  .filter('dateFormatted', dateFormattedDir)
   .filter('__', () => {
     // Temporary filter to figure out different language entries from eSteem mobile app's locale files
     return (s) => {

@@ -21,7 +21,6 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, steemServic
     $scope.tagTitle = $filter('capWord')(tag);
   }
 
-
   let ids = [];
   let hasMore = true;
 
@@ -53,7 +52,15 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, steemServic
     });
   };
 
-  loadPosts();
+  if ($scope.posts.length === 0) {
+    // if initial data is empty then load posts
+    loadPosts();
+  } else {
+    // else count ids
+    $scope.posts.forEach((i) => {
+      ids.push(i.id);
+    })
+  }
 
   $scope.reload = () => {
     if ($scope.loadingPosts) {
@@ -71,7 +78,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, steemServic
 
     let lastPost = [...$scope.posts].pop();
     loadPosts(lastPost.author, lastPost.permlink)
-  }
+  };
 
   $scope.$broadcast('$routeLoaded')
 };
