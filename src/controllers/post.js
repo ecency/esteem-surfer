@@ -1,6 +1,5 @@
 export default ($scope, $rootScope, $routeParams, $filter, steemService, steemApi) => {
 
-  let category = $routeParams.category;
   let author = $routeParams.author;
   let permlink = $routeParams.permlink;
 
@@ -10,7 +9,11 @@ export default ($scope, $rootScope, $routeParams, $filter, steemService, steemAp
     $scope.post = resp;
 
     // Better to filter here. Angular calls filter twice in view.
-    $scope.postBody = $filter('postBody')(resp.body)
+    $scope.postBody = $filter('markDown2Html')(resp.body);
+
+   // console.log(JSON.stringify(resp.body))
+
+   // console.log($scope.post.body)
 
   }).catch(() => {
     // TODO: Handle catch

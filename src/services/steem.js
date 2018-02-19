@@ -43,7 +43,6 @@ export default (steemApi, $q) => {
 
       return defer.promise;
     },
-
     getContent: (author, permLink) => {
       let defer = $q.defer();
 
@@ -54,7 +53,6 @@ export default (steemApi, $q) => {
           defer.resolve(response);
         }
       });
-
       return defer.promise;
     }
   }

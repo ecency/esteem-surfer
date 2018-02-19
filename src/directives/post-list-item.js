@@ -91,7 +91,7 @@ export default () => {
 
       const goPost = () => {
         $rootScope.selectedPost = $scope.post;
-        let u = `/post/${$scope.post.category}/${$scope.post.author}/${$scope.post.permlink}`;
+        let u = `/post/${$scope.post.author}/${$scope.post.permlink}`;
         $location.path(u);
       };
 

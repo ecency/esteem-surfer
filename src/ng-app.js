@@ -36,6 +36,7 @@ import footerDir from './directives/footer';
 import postListItemDir from './directives/post-list-item';
 import sideTagListDir from './directives/side-tag-list';
 import scrolledBottomDir from './directives/scrolled-bottom';
+import authorBgImgStyleDir from './directives/author-bg-img-style';
 
 
 // Services
@@ -48,8 +49,8 @@ import sumPostTotalFilter from './filters/sum-post-total';
 import authorReputation from './filters/author-reputation';
 import timeAgoFilter from './filters/time-ago';
 import postSummaryFilter from './filters/post-summary';
-import postBodyFilter from './filters/post-body'
-import capWordFilter from './filters/cap-word';
+import {markDown2HtmlFilter} from './filters/markdown-2-html'
+import {capWordFilter} from './filters/cap-word';
 import currencySymbolFilter from './filters/currency-symbol';
 import postPaymentDetailFilter from './filters/post-payment-detail';
 import dateFormattedDir from './filters/date-formatted.js';
@@ -145,11 +146,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
         templateUrl: 'templates/posts.html',
         controller: 'postsCtrl',
       })
-      .when('/posts/:category/:tag', {
-        templateUrl: 'templates/posts.html',
-        controller: 'postsCtrl',
-      })
-      .when('/post/:category/:author/:permlink', {
+      .when('/post/:author/:permlink', {
         templateUrl: 'templates/post.html',
         controller: 'postCtrl',
       })
@@ -239,6 +236,8 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
   .directive('sideTagList', sideTagListDir)
   .directive('postListItem', postListItemDir)
   .directive('scrolledBottom', scrolledBottomDir)
+  .directive('authorBgImgStyle', authorBgImgStyleDir)
+
 
   .controller('postsCtrl', postsCtrl)
   .controller('faqCtrl', faqCtrl)
@@ -252,7 +251,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
   .filter('authorReputation', authorReputation)
   .filter('timeAgo', timeAgoFilter)
   .filter('postSummary', postSummaryFilter)
-  .filter('postBody', postBodyFilter)
+  .filter('markDown2Html', markDown2HtmlFilter)
   .filter('capWord', capWordFilter)
   .filter('currencySymbol', currencySymbolFilter)
   .filter('postPaymentDetail', postPaymentDetailFilter)

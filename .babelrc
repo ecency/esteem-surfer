@@ -10,5 +10,13 @@
       }
     ]
   ],
-  "plugins": [["transform-object-rest-spread", { "useBuiltIns": true }],  "transform-es2015-arrow-functions"]
+  "plugins": [
+    [
+      "transform-object-rest-spread",
+      {
+        "useBuiltIns": true
+      }
+    ],
+    "transform-es2015-arrow-functions"
+  ]
 }
