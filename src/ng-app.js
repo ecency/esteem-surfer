@@ -44,11 +44,11 @@ import steemService from './services/steem';
 
 
 // Filters
-import catchPostImageFilter from './filters/catch-post-image';
+import {catchPostImageFilter} from './filters/catch-post-image';
 import sumPostTotalFilter from './filters/sum-post-total';
-import authorReputation from './filters/author-reputation';
+import {authorReputationFilter} from './filters/author-reputation';
 import timeAgoFilter from './filters/time-ago';
-import postSummaryFilter from './filters/post-summary';
+import {postSummaryFilter} from './filters/post-summary';
 import {markDown2HtmlFilter} from './filters/markdown-2-html'
 import {capWordFilter} from './filters/cap-word';
 import currencySymbolFilter from './filters/currency-symbol';
@@ -248,7 +248,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
 
   .filter('catchPostImage', catchPostImageFilter)
   .filter('sumPostTotal', sumPostTotalFilter)
-  .filter('authorReputation', authorReputation)
+  .filter('authorReputation', authorReputationFilter)
   .filter('timeAgo', timeAgoFilter)
   .filter('postSummary', postSummaryFilter)
   .filter('markDown2Html', markDown2HtmlFilter)

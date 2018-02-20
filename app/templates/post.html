@@ -8,22 +8,51 @@
       <div class="the-post" ng-show="!loadingPost">
         <div class="post-header">
           <h1 class="post-title">{{ post.title }}</h1>
-
           <div class="post-info-bar">
             <div class="post-author-pic" author-bg-img-style author="{{ post.author }}"></div>
             <div class="post-info-right-side">
-              <span class="post-author-name">
-                <a ng-click="authorClicked()">{{ post.author }}
-                 <span class="post-author-reputation">{{ post.author_reputation|authorReputation|number:0 }}</span>
-                </a>
-              </span>
+              <span class="post-author"><a ng-click="authorClicked()">{{ post.author }}</a></span>
+              <span class="post-author-reputation">{{ post.author_reputation|authorReputation|number:0 }}</span>
               <span class="post-cat"><span>{{ 'IN' | translate }}</span> <a ng-click="parentClicked()">{{ post.parent_permlink }}</a></span>
-              <span class="post-date"><span  title="{{ post.created|dateFormatted }}"> {{post.created|timeAgo}}</span></span>
+              <span class="post-date"><span
+                title="{{ post.created|dateFormatted }}"> {{post.created|timeAgo}}</span></span>
             </div>
           </div>
         </div>
-
-        <div class="post-body markdown-view" ng-bind-html="postBody"></div>
+        <div class="post-body markdown-view" ng-bind-html="post.body | markDown2Html"></div>
+        <div class="post-footer">
+          <div class="tag-list">
+            <a ng-repeat="tag in postTags" href="#">{{ tag }}</a>
+          </div>
+          <div class="post-info-bar">
+            <span class="post-date"><i class="fa fa-clock-o"></i> <span title="{{ post.created|dateFormatted }}"> {{post.created|timeAgo}}</span></span>
+            <span class="post-author">{{ 'BY' | translate }} <a ng-click="authorClicked()">{{ post.author }}</a></span>
+            <span class="post-author-reputation">{{ post.author_reputation|authorReputation|number:0 }}</span>
+            <div class="post-interaction">
+              <a class="post-resteem" ng-click="resteem()"><i class="fa fa-retweet"></i></a>
+              <a class="post-leave-comment" ng-click="leaveComment()">Reply</a>
+              <span class="post-comment-count"><i class="fa fa-comments"></i> {{ post.children }}</span>
+            </div>
+          </div>
+          <div class="post-voting">
+            <div class="post-up-vote">
+              <a ng-click="upVoteClicked(post)">
+                <i class="fa fa-chevron-circle-up"></i>
+              </a>
+            </div>
+            <div class="post-total">
+              <a ng-click="totalClicked(post)" uib-popover-html="postTotalInfo" popover-placement="top"
+                 popover-trigger="'focus'" tabindex="0" ng-class="{'payout-declined': isPayoutDeclined}">
+                <span class="cur-prefix">{{ $root.currency | currencySymbol }}</span> {{ post | sumPostTotal | number }}
+              </a>
+            </div>
+          </div>
+          <div class="post-voters">
+            <a ng-click="votersClicked(post)">
+              <i class="fa fa-users"></i> {{ post.net_votes }}
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

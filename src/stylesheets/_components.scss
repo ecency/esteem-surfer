@@ -1,69 +1,95 @@
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_mixins.scss";
 
 .post-list-item {
+  /*
+  STRUCTURE:
+  .post-list-item
+    .post-header
+      .post-info-bar
+        .post-author-pic
+        .post-info-right-side
+          .post-author
+          .post-author-reputation
+          .post-cat
+          .post-date
+
+    .post-body
+      .post-image
+      .post-body-title
+      .post-body-summary
+
+
+    .post-footer
+      .post-voting
+        .post-up-vote
+        .post-total
+          a
+            .cur-prefix
+      .post-voters
+      .post-comment-count
+   */
+  @include clearfix();
+
+  width: 100%;
 
   .post-header {
     @include clearfix();
+
     font-size: 14px;
     margin-bottom: 10px;
 
-    .post-author-left {
-      float: left;
-      margin-right: 10px;
+    .post-info-bar {
+      align-items: center;
+      display: flex;
 
       .post-author-pic {
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
         border-radius: 50%;
+        float: left;
         height: 24px;
-        overflow: hidden;
         width: 24px;
-
-        img {
-          height: 100%;
-          width: 100%;
-        }
-      }
-    }
-
-    .post-author-right {
-      float: left;
-      margin-right: 5px;
-
-      .post-author-name {
-        font-weight: 600;
       }
 
-      .post-author-reputation {
-        &:before {
-          content: '(';
-        }
-        &:after {
-          content: ')';
-        }
-      }
-    }
+      .post-info-right-side {
+        float: left;
+        margin-left: 10px;
+        margin-right: 5px;
 
-    .post-info {
-      color: $textColorLight;
-      float: left;
-
-      .post-info-cat {
-        margin-right: 2px;
-        &:after {
-          content: '•';
-          padding-left: 6px;
+        .post-author {
+          font-weight: 600;
         }
-      }
 
-      .post-info-cat, .post-info-date {
-        a {
+        .post-author-reputation {
+          &:before {
+            content: '(';
+          }
+          &:after {
+            content: ')';
+          }
+        }
+
+        .post-cat {
+          margin-right: 2px;
+          &:after {
+            content: '•';
+            padding-left: 6px;
+          }
+        }
+
+        .post-cat, .post-date {
           color: $textColorLight;
+
+          a {
+            color: $textColorLight;
+          }
         }
       }
     }
   }
 
   .post-body {
-    @include clearfix();
 
     .post-image {
       float: left;
@@ -78,137 +104,169 @@
       }
     }
 
-    .post-body-content {
-      .post-body-content-title, .post-body-content-summary {
-        font-size: 16px;
+    .post-body-title, .post-body-summary {
+      font-size: 16px;
 
-        a.visited {
-          color: $textColorLighter;
+      a.visited {
+        color: $textColorLighter;
+      }
+    }
+
+    .post-body-title {
+      line-height: 130%;
+      margin: 0 0 8px 0;
+    }
+
+    .post-body-summary {
+      margin-bottom: 10px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+    }
+  }
+
+  .post-footer {
+    @include clearfix();
+
+    .post-voting {
+      border-right: 1px solid $seperatorColor;
+      float: left;
+      margin-right: 20px;
+      padding-right: 20px;
+
+      .post-up-vote {
+        float: left;
+        margin-right: 10px;
+        a {
+          color: $textColorLight;
+          font-size: 20px;
+          line-height: 22px;
         }
       }
 
-      .post-body-content-title {
-        line-height: 130%;
-        margin: 0 0 8px 0;
-      }
+      .post-total {
+        float: left;
+        font-size: 15px;
+        position: relative;
 
-      .post-body-content-summary {
-        margin-bottom: 10px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        width: 100%;
-      }
+        .popover {
+          .table {
+            font-size: 90%;
+            margin: 0;
+            width: 250px;
 
-      .post-body-content-controls {
-        @include clearfix();
+            tr {
+              td, th {
+                padding: 6px 4px;
+              }
 
-        .control-vote {
-          border-right: 1px solid $seperatorColor;
-          float: left;
-          margin-right: 20px;
-          padding-right: 20px;
-
-          .up-vote {
-            float: left;
-            margin-right: 10px;
-            a {
-              color: $textColorLight;
-              font-size: 20px;
-              line-height: 22px;
-            }
-          }
-
-          .post-total {
-            float: left;
-            font-size: 15px;
-            position: relative;
-
-            .popover {
-              .table {
-                font-size: 90%;
-                margin: 0;
-                width: 250px;
-
-                tr {
-                  td, th {
-                    padding: 6px 4px;
-                  }
-
-                  &:first-of-type {
-                    td, th {
-                      border-top: 0
-                    }
-                  }
+              &:first-of-type {
+                td, th {
+                  border-top: 0
                 }
               }
             }
-
-            a {
-              outline: 0;
-
-              .cur-prefix {
-              }
-
-              &.payout-declined {
-                color: $textColorLighter;
-                text-decoration: line-through;
-              }
-            }
           }
         }
 
-        .control-voters {
-          border-right: 1px solid $seperatorColor;
-          float: left;
-          margin-right: 20px;
-          padding-right: 20px;
+        a {
+          outline: 0;
 
-          a {
-            .fa {
-              color: $textColorLight;
-              margin-right: 7px;
-            }
+          .cur-prefix {
 
-            &:hover {
-              .fa {
-                color: $linkHoverColor;
-              }
-            }
           }
 
-        }
-
-        .control-comments {
-          float: left;
-
-          a {
-            .fa {
-              color: $textColorLight;
-              margin-right: 6px;
-            }
-
-            &:hover {
-              .fa {
-                color: $linkHoverColor;
-              }
-            }
+          &.payout-declined {
+            color: $textColorLighter;
+            text-decoration: line-through;
           }
         }
       }
     }
 
-    &.with-image {
-      .post-body-content {
-        float: right;
-        // 130 = image width + 13 margin space
-        width: calc(100% - 143px);
+    .post-voters {
+      border-right: 1px solid $seperatorColor;
+      float: left;
+      margin-right: 20px;
+      padding-right: 20px;
+
+      a {
+        .fa {
+          color: $textColorLight;
+          margin-right: 7px;
+        }
+
+        &:hover {
+          .fa {
+            color: $linkHoverColor;
+          }
+        }
       }
+    }
+
+    .post-comment-count {
+      float: left;
+
+      a {
+        .fa {
+          color: $textColorLight;
+          margin-right: 6px;
+        }
+
+        &:hover {
+          .fa {
+            color: $linkHoverColor;
+          }
+        }
+      }
+    }
+  }
+
+  &.with-image {
+    .post-body .post-body-title,
+    .post-body .post-body-summary,
+    .post-footer {
+      // 130 = image width + 10 margin space
+      float: right;
+      width: calc(100% - 140px);
     }
   }
 }
 
 .the-post {
+  /*
+  STRUCTURE:
+
+  .the-post
+    .post-header
+      .post-title
+      .post-info-bar
+        .post-author-pic
+        .post-info-right-side
+          .post-author
+          .post-author-reputation
+          .post-cat
+          .post-date
+    .post-body
+    .post-footer
+      .tag-list
+      .post-info-bar
+        .post-date
+        .post-author
+        .post-author-reputation
+        .post-interaction
+          .post-resteem
+          .post-leave-comment
+          .post-comment-count
+      .post-voting
+        .post-up-vote
+        .post-total
+          a
+            .cur-prefix
+      .post-voters
+   */
+
   margin: auto;
   width: 800px;
 
@@ -242,22 +300,23 @@
       }
 
       .post-info-right-side {
+
         margin-left: 13px;
 
-        .post-author-name {
+        .post-author {
           font-weight: 600;
           line-height: 100%;
+        }
+
+        .post-author-reputation {
+          font-size: 14px;
           margin-right: 8px;
 
-          .post-author-reputation {
-            font-size: 14px;
-
-            &:before {
-              content: '(';
-            }
-            &:after {
-              content: ')';
-            }
+          &:before {
+            content: '(';
+          }
+          &:after {
+            content: ')';
           }
         }
 
@@ -284,13 +343,182 @@
       }
     }
   }
+
+  .post-body {
+    padding: 0 0 2rem 0;
+  }
+
+  .post-footer {
+    @include clearfix();
+
+    .tag-list {
+      margin: 0 0 1.5rem 0;
+
+      width: 100%;
+
+      a {
+        background: $boxBg;
+        border: 1px solid $seperatorColor;
+
+        border-radius: 0.3rem;
+        display: inline-block;
+        margin: 0.1rem 0.4rem 0.1rem 0;
+        padding: 0.4rem 1rem;
+      }
+    }
+
+    .post-info-bar {
+      margin: 0 0 2rem 0;
+
+      @include clearfix();
+
+      .post-date {
+
+      }
+
+      .post-author {
+        a {
+          font-weight: 600;
+        }
+      }
+
+      .post-date, .post-author {
+        color: $textColorLight;
+        font-size: 14px;
+      }
+
+      .post-author-reputation {
+        color: $textColor;
+        font-size: 12px;
+        margin-right: 24px;
+
+        &:before {
+          content: '(';
+        }
+        &:after {
+          content: ')';
+        }
+      }
+
+      .post-interaction {
+        float: right;
+        line-height: 150%;
+
+        .post-resteem, .post-leave-comment, .post-comment-count {
+          color: $textColorLight;
+          float: left;
+        }
+
+        .post-resteem, .post-leave-comment {
+          border-right: 1px solid $seperatorColor;
+          margin-right: 10px;
+          padding-right: 10px;
+        }
+
+        .post-resteem {
+          font-size: 15px;
+        }
+
+        .post-leave-comment, .post-comment-count {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .post-voting {
+      border-right: 1px solid $seperatorColor;
+      float: left;
+      margin-right: 10px;
+      padding-right: 10px;
+
+      .post-up-vote {
+        float: left;
+        margin-right: 7px;
+
+        a {
+          color: $textColorLight;
+          font-size: 16px;
+          line-height: 16px;
+        }
+      }
+
+      .post-total {
+        float: left;
+        position: relative;
+
+
+        .popover {
+          .table {
+            font-size: 90%;
+            margin: 0;
+            width: 250px;
+
+            tr {
+              td, th {
+                padding: 6px 4px;
+              }
+
+              &:first-of-type {
+                td, th {
+                  border-top: 0
+                }
+              }
+            }
+          }
+        }
+
+        a {
+          outline: 0;
+          color: $textColorLight;
+
+          .cur-prefix {
+
+          }
+
+          &.payout-declined {
+            color: $textColorLighter;
+            text-decoration: line-through;
+          }
+        }
+      }
+    }
+
+    .post-voters {
+      float: left;
+
+      a {
+        color: $textColorLight;
+
+        .fa {
+          margin-right: 6px;
+        }
+
+        &:hover {
+          .fa {
+            color: $linkHoverColor;
+          }
+        }
+      }
+    }
+
+    .post-voting, .post-voters {
+      font-size: 14px;
+    }
+
+  }
 }
 
 .markdown-view {
+  font-size: 18px;
+  word-wrap: break-word;
+  br {
+    font-size: 100%;
+  }
+
   h1 {
     font-size: 28px;
-    margin: 40px 0 0.3rem 0;
     line-height: 1.2 !important;
+    margin: 40px 0 0.3rem 0;
   }
 
   h2 {
@@ -308,23 +536,36 @@
   p {
     line-height: 150%;
     margin: 0 0 1.5rem 0;
+    text-rendering: optimizeLegibility;
+  }
+
+  ul li, ol li {
     font-size: 18px;
+    line-height: 150%;
+    margin: 0 0 1rem 0;
   }
 
   center {
     margin: 0 0 24px 0;
   }
 
+  .markdown-external-link{
+
+  }
+
   .markdown-img-holder {
     display: block;
     max-width: 100%;
-    text-align: center;
-    img {
-      max-width: 100%;
-    }
+
+  }
+
+  img {
+    max-width: 100%;
   }
 
   a {
     color: $linkHoverColor !important;
   }
+
+  overflow-wrap: break-word;
 }

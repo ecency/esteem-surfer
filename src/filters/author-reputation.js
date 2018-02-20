@@ -1,25 +1,34 @@
-export default () => {
-  return (value, bool) => {
-    let reputation_level = 1;
-    let neg = false;
+export const authorReputation = (input) => {
 
-    if (value < 0)
-      neg = true;
-
-    if (value !== 0) {
-      reputation_level = Math.log10(Math.abs(value));
-      reputation_level = Math.max(reputation_level - 9, 0);
-
-      if (reputation_level < 0)
-        reputation_level = 0;
-      if (neg)
-        reputation_level *= -1;
-
-      reputation_level = (reputation_level * 9) + 25;
-    } else {
-      return 25;
-    }
-
-    return bool ? reputation_level : Math.floor(reputation_level);
+  if (input === 0) {
+    return 25;
   }
-}
+
+  if (!input) {
+    return input;
+  }
+
+  let neg = false;
+
+  if (input < 0)
+    neg = true;
+
+  let reputation_level = Math.log10(Math.abs(input));
+  reputation_level = Math.max(reputation_level - 9, 0);
+
+  if (reputation_level < 0)
+    reputation_level = 0;
+  if (neg)
+    reputation_level *= -1;
+
+  reputation_level = (reputation_level * 9) + 25;
+
+  return Math.floor(reputation_level);
+};
+
+
+export const authorReputationFilter = () => {
+  return (value) => {
+    return authorReputation(value);
+  }
+};

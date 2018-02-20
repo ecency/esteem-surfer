@@ -14,7 +14,7 @@
       <tr ng-repeat="v in data | orderBy:'-time'">
         <td><a ng-click="authorClicked(v.voter)">{{ v.voter }}</a> <span class="badge"> {{ v.reputation | authorReputation }}</span></td>
         <td style="width: 30px">{{ v.percent / 100 }}%</td>
-        <td style="width: 120px">{{ v.time | timeAgo }}</td>
+        <td style="width: 160px">{{ v.time | timeAgo }}</td>
       </tr>
       </tbody>
     </table>

@@ -1,5 +1,10 @@
 export default ($rootScope) => {
   return (post) => {
+
+    if(!post){
+      return null;
+    }
+
     let rate = $rootScope.currencyRate;
 
     if (post && post.pending_payout_value && post.last_payout === '1970-01-01T00:00:00') {

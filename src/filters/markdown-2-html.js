@@ -1,24 +1,26 @@
 import marked from 'marked';
 
 export const replaceAuthorNames = (input) => {
-  let exp = /@(\w+)/ig;
-  return input.replace(exp, "<a class='markdown-author-link' data-author='$1'>@$1</a>");
+  let exp = /(^|\s|[\(])(@)([a-z][-\.a-z\d]+[a-z\d])/gim;
+  return input.replace(exp, "$1<a class='markdown-author-link' data-author='$3'>@$3</a>");
 };
 
 export const replaceTags = (input) => {
-  let exp = /#(\w+)/ig;
+  let exp = /#([a-zA-Z0-9-]{2,})/gi;
   return input.replace(exp, "<a class='markdown-tag-link' data-tag='$1'>#$1</a>");
 };
 
 
 export const markDown2Html = (input) => {
 
+ // console.log(input)
+
   if (!input) {
     return '';
   }
 
   // Convert markdown to html
-  let html = marked(input, {
+  let output = marked(input, {
     gfm: true,
     tables: true,
     smartLists: true,
@@ -29,11 +31,11 @@ export const markDown2Html = (input) => {
   });
 
   const imgRegex = /(https?:\/\/.*\.(?:tiff?|jpe?g|gif|png|svg|ico))(.*)/gim;
-  const postRegex = /^https?:\/\/(.*)\/(.*)\/@(\w+)\/(.*)/;
+  const postRegex = /^https?:\/\/(.*)\/(.*)\/(@[\w\.\d-]+)\/(.*)/i;
 
   // Create temporary element to manipulate html
   let tempEl = document.createElement('div');
-  tempEl.innerHTML = html;
+  tempEl.innerHTML = output;
 
   // Manipulate link (a) elements
   let links = tempEl.querySelectorAll('a');
@@ -58,8 +60,8 @@ export const markDown2Html = (input) => {
         el.className = 'markdown-post-link';
         el.removeAttribute('href');
 
-        el.setAttribute('data-category', postMatch[2]);
-        el.setAttribute('data-author', postMatch[3]);
+        el.setAttribute('data-tag', postMatch[2]);
+        el.setAttribute('data-author', postMatch[3].replace('@', ''));
         el.setAttribute('data-permlink', postMatch[4]);
 
         f = true;
@@ -73,7 +75,7 @@ export const markDown2Html = (input) => {
     // TODO: Else, open url on default OS browser
 
     // If nothing matched mark element as external link so it will be opened in external window
-    if(!f){
+    if (!f) {
       el.className = 'markdown-external-link';
 
       el.setAttribute('data-href', href);
@@ -95,43 +97,17 @@ export const markDown2Html = (input) => {
     wrapper.appendChild(el);
   });
 
-
-  // Remove empty paragraphs
-  /* i set marked option breaks to false. i think i dont need it any more. [NO! I need it!] [YES I DONT NEED IT] */
-  /*
-  let paragraphs = tempEl.querySelectorAll('p');
-  paragraphs.forEach((p) => {
-
-    // make a unique list from elements paragraph contains
-    let subTagList = [];
-    p.childNodes.forEach((c) => {
-      if (c.tagName && subTagList.indexOf(c.tagName) === -1) {
-        subTagList.push(c.tagName);
-      }
-    });
-
-    // If paragraph contains only breaks (<br>) remove it
-    if (subTagList.length === 1 && subTagList[0] === 'BR') {
-      p.parentNode.removeChild(p);
-    }
-  });
-  */
-
-
-  html = tempEl.innerHTML;
-
-  // Replace images
-  // let r = /(https?:\/\/.*\.(?:tiff?|jpe?g|gif|png|svg|ico))(.*)/gim;
-  // text = text.replace(r, '<div class="post-img-holder"><img src="$1" /></div>');
+  output = tempEl.innerHTML;
 
   // Replace author names
-  html = replaceAuthorNames(html);
+  output = replaceAuthorNames(output);
 
   // Replace tags
-  html = replaceTags(html);
+  output = replaceTags(output);
 
-  // console.log(JSON.stringify(html))
-  return html;
+  // console.log(output)
+
+  return output;
 };
 
 export const markDown2HtmlFilter = ($sce) => {

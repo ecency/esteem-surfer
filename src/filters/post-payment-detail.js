@@ -1,5 +1,10 @@
 export default ($rootScope, $filter, $sce) => {
   return (post) => {
+
+    if(!post){
+      return null;
+    }
+
     const pendingPayout = (Number(post.pending_payout_value.split(' ')[0]) * $rootScope.currencyRate);
     const promotedPayout = (Number(post.promoted.split(' ')[0]) * $rootScope.currencyRate);
     const authorPayout = (Number(post.total_payout_value.split(' ')[0]) * $rootScope.currencyRate);

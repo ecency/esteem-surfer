@@ -6,8 +6,8 @@ const path = require('path');
 const fs = require('fs');
 
 
-describe('Replace Author Names', function () {
-  it('Should replace author names with link for given string', function () {
+describe('Replace Author Names', () => {
+  it('Should replace author names with link for given string', () => {
 
     let input = 'lorem ipsum @dolor sit amet';
     let expected = "lorem ipsum <a class='markdown-author-link' data-author='dolor'>@dolor</a> sit amet";
@@ -36,18 +36,16 @@ describe('Replace Author Names', function () {
 });
 
 
-describe('Replace Tags', function () {
-  it('Should replace tags with link for given string', function () {
+describe('Replace Tags', () => {
+  it('Should replace tags with link for given string', () => {
 
     let input = 'lorem ipsum #dolor sit amet';
     let expected = "lorem ipsum <a class='markdown-tag-link' data-tag='dolor'>#dolor</a> sit amet";
     expect(replaceTags(input)).to.equal(expected);
 
-
     input = '#lorem ipsum #dolor sit amet';
     expected = "<a class='markdown-tag-link' data-tag='lorem'>#lorem</a> ipsum <a class='markdown-tag-link' data-tag='dolor'>#dolor</a> sit amet";
     expect(replaceTags(input)).to.equal(expected);
-
 
     input = '#lorem #ipsum #dolor sit amet';
     expected = "<a class='markdown-tag-link' data-tag='lorem'>#lorem</a> <a class='markdown-tag-link' data-tag='ipsum'>#ipsum</a> <a class='markdown-tag-link' data-tag='dolor'>#dolor</a> sit amet";
@@ -61,27 +59,36 @@ describe('Replace Tags', function () {
     expected = "<a class='markdown-tag-link' data-tag='lorem'>#lorem</a> <a class='markdown-tag-link' data-tag='ipsum'>#ipsum</a> <a class='markdown-tag-link' data-tag='dolor'>#dolor</a> \n <a class='markdown-tag-link' data-tag='Sit'>#Sit</a> amet";
     expect(replaceTags(input)).to.equal(expected);
 
+    input = 'you are #1';
+    expected = "you are #1";
+    expect(replaceTags(input)).to.equal(expected);
+
+    input = 'you are #1 #steemit-promo';
+    expected = "you are #1 <a class='markdown-tag-link' data-tag='steemit-promo'>#steemit-promo</a>";
+    expect(replaceTags(input)).to.equal(expected);
+
   });
 });
 
 
-describe('Mark Down -> Html', function () {
-  it('Should convert mark down to html as expected', function () {
+describe('Mark Down -> Html', () => {
 
-    expect(markDown2Html('foo').trim()).to.equal('<p>foo</p>');
+  expect(markDown2Html('foo').trim()).to.equal('<p>foo</p>');
 
-    const dataDir = './test-data/markdown-2-html';
-    let files = fs.readdirSync(dataDir);
+  const dataDir = './test-data/markdown-2-html';
+  let files = fs.readdirSync(dataDir);
 
 
-    for (let file of files) {
-      const fileContents = fs.readFileSync(path.join(dataDir, file), 'utf8');
-      const testData = fileContents.split("\n----------\n");
-      const input = testData[1];
-      const expected = testData[2];
+  for (let file of files) {
+    const fileContents = fs.readFileSync(path.join(dataDir, file), 'utf8');
+    const testData = fileContents.split("\n!-----$-----!\n");
+
+    const permlink = testData[0];
+    const input = testData[1];
+    const expected = testData[2];
+
+    it(permlink, function () {
       expect(markDown2Html(input)).to.equal(expected);
-    }
-
-
-  })
+    })
+  }
 });
