@@ -54,6 +54,18 @@ export default (steemApi, $q) => {
         }
       });
       return defer.promise;
+    },
+    getState: (path) => {
+      let defer = $q.defer();
+
+      steemApi.getApi().getState(path, (err, response) => {
+        if (err) {
+          defer.reject(err);
+        } else {
+          defer.resolve(response);
+        }
+      });
+      return defer.promise;
     }
   }
 };

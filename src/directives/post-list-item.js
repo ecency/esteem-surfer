@@ -59,13 +59,18 @@ export default () => {
         </div>
     </div>
     `,
-    controller: ($scope, $rootScope, $location, $sce, $filter, $uibModal) => {
-
-      // $scope.isMaxAcceptedPayout = $scope.post.max_accepted_payout.split(' ')[0] !== '0.000';
+    controller: ($scope, $rootScope, $location, $sce, $filter, $uibModal, storageService, helperService) => {
 
       $scope.isPayoutDeclined = $scope.post.max_accepted_payout.split(' ')[0] === '0.000';
 
       $scope.postTotalInfo = $filter('postPaymentDetail')($scope.post);
+
+      $scope.isVisited = helperService.isPostRead($scope.post.id);
+
+      const goPost = () => {
+        let u = helperService.genPostUrl($scope.post.parent_permlink, $scope.post.author, $scope.post.permlink);
+        $location.path(u);
+      };
 
       $scope.votersClicked = (post) => {
         $uibModal.open({
@@ -82,14 +87,6 @@ export default () => {
         }, function () {
           // Cancel
         });
-      };
-
-      $scope.isVisited = $rootScope.visitedPosts.indexOf($scope.post.id) >= 0;
-
-      const goPost = () => {
-        $rootScope.selectedPost = $scope.post;
-        let u = `/post/${$scope.post.author}/${$scope.post.permlink}`;
-        $location.path(u);
       };
 
       $scope.titleClicked = () => {

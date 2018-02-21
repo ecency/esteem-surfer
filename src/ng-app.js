@@ -37,10 +37,14 @@ import postListItemDir from './directives/post-list-item';
 import sideTagListDir from './directives/side-tag-list';
 import scrolledBottomDir from './directives/scrolled-bottom';
 import authorBgImgStyleDir from './directives/author-bg-img-style';
+import commentListDir from './directives/comment-list';
+import commentListItemDir from './directives/comment-list-item';
+
 
 
 // Services
 import steemService from './services/steem';
+import {helperService} from './services/helper';
 
 
 // Filters
@@ -146,7 +150,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
         templateUrl: 'templates/posts.html',
         controller: 'postsCtrl',
       })
-      .when('/post/:author/:permlink', {
+      .when('/post/:parent/:author/:permlink', {
         templateUrl: 'templates/post.html',
         controller: 'postCtrl',
       })
@@ -230,6 +234,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
       }
     }
   })
+  .factory('helperService', helperService)
 
   .directive('navBar', navBarDir)
   .directive('appFooter', footerDir)
@@ -237,6 +242,8 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
   .directive('postListItem', postListItemDir)
   .directive('scrolledBottom', scrolledBottomDir)
   .directive('authorBgImgStyle', authorBgImgStyleDir)
+  .directive('commentList', commentListDir)
+  .directive('commentListItem', commentListItemDir)
 
 
   .controller('postsCtrl', postsCtrl)

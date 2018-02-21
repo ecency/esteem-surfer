@@ -41,7 +41,6 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, steemServic
       resp.forEach((i) => {
         if (ids.indexOf(i.id) === -1) {
           $scope.posts.push(i);
-          console.log(i)
         }
         ids.push(i.id);
       });

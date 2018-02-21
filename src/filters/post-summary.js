@@ -19,10 +19,14 @@ export const postSummary = (postBody, length) => {
   // Remove html tags
   // Remove new lines
   // Remove urls
-  text = text.replace(/(<([^>]+)>)/ig, '').replace(/\r?\n|\r/g, ' ').replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
+  // Remove white spaces between words
+  text = text.replace(/(<([^>]+)>)/ig, '').replace(/\r?\n|\r/g, ' ').replace(/(?:https?|ftp):\/\/[\n\S]+/g, '').replace(/ +/g, ' ').trim();
 
-  // Truncate
-  text = text.substring(0, length);
+  if (length) {
+    // Truncate
+    text = text.substring(0, length);
+  }
+
 
   return text;
 };
