@@ -4,32 +4,29 @@ export default ($scope, $rootScope, $routeParams, $filter, $uibModal, steemServi
   let author = $routeParams.author;
   let permlink = $routeParams.permlink;
 
-  $scope.loadingPost = true;
-
   let routePath = `/${parent}/@${author}/${permlink}`;
   let contentPath = `${author}/${permlink}`;
 
-
   let pathData = {};
 
-  const makeComments = (parent) => {
+  const compileComments = (parent, sortField = 'pending_payout_value') => {
     let comments = [];
     for (let k of parent.replies) {
       let reply = pathData.content[k];
-      let comment = {
-        author: reply.author,
-        author_reputation: reply.author_reputation,
-        body: reply.body,
-        pending_payout_value: reply.pending_payout_value,
-        created: reply.created,
-        replies: makeComments(reply)
-      };
-      comments.push(comment);
+
+      comments.push(
+        Object.assign(
+          {},
+          reply,
+          {comments: compileComments(reply)},
+          {author_data: pathData.accounts[reply.author]}
+        )
+      )
     }
 
     comments.sort(function (a, b) {
-      let keyA = a.pending_payout_value,
-        keyB = b.pending_payout_value;
+      let keyA = a[sortField],
+        keyB = b[sortField];
 
       if (keyA > keyB) return -1;
       if (keyA < keyB) return 1;
@@ -39,8 +36,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $uibModal, steemServi
     return comments
   };
 
-
-  $scope.comments = [];
+  $scope.loadingPost = true;
 
   steemService.getState(routePath).then((stateData) => {
 
@@ -48,19 +44,13 @@ export default ($scope, $rootScope, $routeParams, $filter, $uibModal, steemServi
 
     let post = stateData.content[contentPath];
 
-    $scope.comments = makeComments(post);
-
     $scope.post = post;
 
-    $scope.postTotalInfo = $filter('postPaymentDetail')(post);
+    $scope.author_data = pathData.accounts[author];
 
-    const postMeta = JSON.parse(post.json_metadata);
-    $scope.postTags = postMeta.tags;
+    $scope.postTags = JSON.parse(post.json_metadata).tags;
 
-    $scope.isPayoutDeclined = post.max_accepted_payout.split(' ')[0] === '0.000';
-
-    // console.log(post)
-    // console.log(stateData)
+    $scope.comments = compileComments(post);
 
     // Mark post as read
     helperService.setPostRead(post.id);

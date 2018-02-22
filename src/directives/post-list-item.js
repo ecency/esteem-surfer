@@ -41,9 +41,7 @@ export default () => {
                     </a>
                 </div>
                 <div class="post-total">
-                    <a ng-click="totalClicked(post)" uib-popover-html="postTotalInfo" popover-placement="right" popover-trigger="'focus'" tabindex="0" ng-class="{'payout-declined': isPayoutDeclined}">
-                        <span class="cur-prefix">{{ $root.currency | currencySymbol }}</span> {{ post | sumPostTotal | number }}
-                    </a>
+                    <content-payout-info content="post"></content-payout-info>
                 </div>
             </div>
             <div class="post-voters">
@@ -60,11 +58,6 @@ export default () => {
     </div>
     `,
     controller: ($scope, $rootScope, $location, $sce, $filter, $uibModal, storageService, helperService) => {
-
-      $scope.isPayoutDeclined = $scope.post.max_accepted_payout.split(' ')[0] === '0.000';
-
-      $scope.postTotalInfo = $filter('postPaymentDetail')($scope.post);
-
       $scope.isVisited = helperService.isPostRead($scope.post.id);
 
       const goPost = () => {

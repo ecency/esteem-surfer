@@ -1,0 +1,26 @@
+<div class="content-payout-popover-content">
+  <table class="table">
+    <tbody>
+    <tr>
+      <th>{{ 'POTENTIAL_PAYOUT' | translate }}</th>
+      <td>{{ $root.currency | currencySymbol }} {{ pendingPayout | number:3 }} </td>
+    </tr>
+    <tr>
+      <th>{{ 'PROMOTED' | translate }}</th>
+      <td>{{ $root.currency | currencySymbol }} {{ promotedPayout | number:3 }}</td>
+    </tr>
+    <tr>
+      <th>{{ 'AUTHOR_PAYOUT' | translate }}</th>
+      <td>{{ $root.currency | currencySymbol }} {{ authorPayout | number:3 }}</td>
+    </tr>
+    <tr>
+      <th>{{ 'CURATION_PAYOUT' | translate }}</th>
+      <td>{{ $root.currency | currencySymbol }} {{ curationPayout | number:3 }}</td>
+    </tr>
+    <tr>
+      <th>{{ 'PAYOUT' | translate }}</th>
+      <td>{{ payout | timeAgo }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

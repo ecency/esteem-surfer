@@ -13,6 +13,7 @@ export default ($rootScope) => {
       //return (parseFloat(value.pending_payout_value.split(" ")[0])*rate);
       return post.total_payout_value ? ((parseFloat(post.total_payout_value.split(" ")[0])) + (parseFloat(post.pending_payout_value.split(" ")[0])) * rate).toFixed(2) : 0;
     } else {
+
       return post.total_payout_value ? ((parseFloat(post.total_payout_value.split(" ")[0])) + (parseFloat(post.curator_payout_value.split(" ")[0])) * rate).toFixed(2) : 0;
     }
   };

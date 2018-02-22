@@ -26,6 +26,13 @@
     margin: 0 0 4px 0;
   }
 
+  blockquote {
+    color: $textColorLighter;
+    font-size: 18px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+  }
+
   p {
     line-height: 150%;
     margin: 0 0 1.5rem 0;
@@ -60,12 +67,30 @@
     color: $linkHoverColor !important;
   }
 
-  overflow-wrap: break-word;
-
   &.mini-markdown {
-    font-size: 13px;
+    font-size: 14px;
     word-wrap: break-word;
+
+    blockquote {
+      font-size: 14px;
+    }
+
+    p {
+      margin: 0 0 0.6rem 0;
+
+      &:last-child {
+        margin-bottom: 0.2rem;
+      }
+    }
+
+    img {
+      max-height: 400px;
+      max-width: 400px;
+    }
+
   }
+
+  overflow-wrap: break-word;
 }
 
 .post-list-item {
@@ -181,9 +206,9 @@
     }
 
     .post-body-title {
-      width: 100%;
       line-height: 130%;
       margin: 0 0 8px 0;
+      width: 100%;
     }
 
     .post-body-summary {
@@ -218,26 +243,6 @@
         float: left;
         font-size: 15px;
         position: relative;
-
-        .popover {
-          .table {
-            font-size: 90%;
-            margin: 0;
-            width: 250px;
-
-            tr {
-              td, th {
-                padding: 6px 4px;
-              }
-
-              &:first-of-type {
-                td, th {
-                  border-top: 0
-                }
-              }
-            }
-          }
-        }
 
         a {
           outline: 0;
@@ -359,6 +364,7 @@
       margin: 1rem 0 1rem 0;
 
       .post-author-pic {
+        background-color: $profilePicBg;
         background-position: 50% 50%;
         background-repeat: no-repeat;
         background-size: cover;
@@ -375,6 +381,10 @@
         .post-author {
           font-weight: 600;
           line-height: 100%;
+          position: relative;
+          a {
+            outline: 0;
+          }
         }
 
         .post-author-reputation {
@@ -420,9 +430,9 @@
   .post-footer {
     @include clearfix();
 
-    padding-bottom: 20px;
-    margin-bottom: 20px;
     border-bottom: 1px solid $seperatorColor;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
 
     .tag-list {
       margin: 0 0 1.5rem 0;
@@ -519,29 +529,9 @@
         float: left;
         position: relative;
 
-        .popover {
-          .table {
-            font-size: 90%;
-            margin: 0;
-            width: 250px;
-
-            tr {
-              td, th {
-                padding: 6px 4px;
-              }
-
-              &:first-of-type {
-                td, th {
-                  border-top: 0
-                }
-              }
-            }
-          }
-        }
-
         a {
-          outline: 0;
           color: $textColorLight;
+          outline: 0;
 
           .cur-prefix {
 
@@ -585,17 +575,18 @@
 }
 
 .comment-list-item {
+  @include clearfix();
 
   .comment-list-item-inner {
     @include clearfix();
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 
     .comment-author-pic {
-      float: left;
-      width: 48px;
-      height: 48px;
+      background: $profilePicBg;
       border-radius: 50%;
-      background: #dfdfdf;
+      float: left;
+      height: 48px;
+      width: 48px;
     }
 
     .comment-header, .comment-body, .comment-footer {
@@ -607,12 +598,15 @@
 
       .comment-author {
         font-weight: 600;
+        position: relative;
+        a {
+          outline: 0;
+        }
       }
 
       .comment-author-reputation {
         color: $textColor;
         font-size: 13px;
-        margin-right: 4px;
         &:before {
           content: '(';
         }
@@ -623,23 +617,153 @@
 
       .comment-date {
         color: $textColorLight;
+
+        &:before {
+          content: '•';
+
+          margin-left: 6px;
+          margin-right: 5px;
+        }
       }
     }
 
     .comment-body {
+      @include clearfix();
 
+      padding: 0.2em 0;
     }
 
     .comment-footer {
+      @include clearfix();
 
+      font-size: 13px;
+
+      .comment-voting {
+        border-right: 1px solid $seperatorColor;
+        float: left;
+        margin-right: 10px;
+        padding-right: 10px;
+
+        .comment-up-vote {
+          float: left;
+          margin-right: 7px;
+
+          a {
+            color: $textColorLight;
+            font-size: 16px;
+            line-height: 16px;
+          }
+        }
+
+        .comment-total {
+          float: left;
+          position: relative;
+
+          a {
+            color: $textColorLight;
+            outline: 0;
+
+            .cur-prefix {
+
+            }
+
+            &.payout-declined {
+              color: $textColorLighter;
+              text-decoration: line-through;
+            }
+          }
+        }
+      }
+
+      .comment-voters {
+        border-right: 1px solid $seperatorColor;
+        float: left;
+        margin-right: 10px;
+        padding-right: 10px;
+
+        a {
+          color: $textColorLight;
+        }
+      }
+
+      .comment-reply {
+        a {
+          color: $textColorLight;
+        }
+      }
     }
   }
 
   .comment-list {
     @include clearfix();
-    width: calc(100% - 5%);
-    margin-left: 8%;
+    margin-left: 10%;
+    width: calc(100% - 10%);
   }
 }
 
+.author-popover-content {
+  @include clearfix();
+  width: 240px;
 
+  .author-pic {
+    background-color: $profilePicBg;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    float: left;
+    height: 80px;
+    width: 80px;
+  }
+
+  .author-name, .author-username, .author-follow {
+    margin-left: 110px;
+
+  }
+
+  .author-name, .author-username {
+    margin-bottom: 6px;
+  }
+
+  .author-name {
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .author-username {
+    font-size: 13px;
+    color: $textColorLight;
+  }
+
+  .author-follow {
+
+  }
+
+  .author-bio {
+    color: $textColorLighter;
+    font-size: 13px;
+    line-height: 120%;
+    word-break: break-all;
+
+  }
+}
+
+.content-payout-popover-content {
+  .table {
+    font-size: 90%;
+    margin: 0;
+    width: 250px;
+
+    tr {
+      td, th {
+        padding: 6px 4px;
+      }
+
+      &:first-of-type {
+        td, th {
+          border-top: 0
+        }
+      }
+    }
+  }
+}

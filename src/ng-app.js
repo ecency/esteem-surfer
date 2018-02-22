@@ -39,7 +39,8 @@ import scrolledBottomDir from './directives/scrolled-bottom';
 import authorBgImgStyleDir from './directives/author-bg-img-style';
 import commentListDir from './directives/comment-list';
 import commentListItemDir from './directives/comment-list-item';
-
+import authorNamePopoverDir from './directives/author-name-popover';
+import contentPayoutInfoDir from './directives/content-payout-info';
 
 
 // Services
@@ -56,7 +57,6 @@ import {postSummaryFilter} from './filters/post-summary';
 import {markDown2HtmlFilter} from './filters/markdown-2-html'
 import {capWordFilter} from './filters/cap-word';
 import currencySymbolFilter from './filters/currency-symbol';
-import postPaymentDetailFilter from './filters/post-payment-detail';
 import dateFormattedDir from './filters/date-formatted.js';
 
 
@@ -244,6 +244,8 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
   .directive('authorBgImgStyle', authorBgImgStyleDir)
   .directive('commentList', commentListDir)
   .directive('commentListItem', commentListItemDir)
+  .directive('authorNamePopover', authorNamePopoverDir)
+  .directive('contentPayoutInfo', contentPayoutInfoDir)
 
 
   .controller('postsCtrl', postsCtrl)
@@ -261,7 +263,6 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
   .filter('markDown2Html', markDown2HtmlFilter)
   .filter('capWord', capWordFilter)
   .filter('currencySymbol', currencySymbolFilter)
-  .filter('postPaymentDetail', postPaymentDetailFilter)
   .filter('dateFormatted', dateFormattedDir)
   .filter('__', () => {
     // Temporary filter to figure out different language entries from eSteem mobile app's locale files

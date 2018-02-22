@@ -5,13 +5,13 @@
       <div class="indicator">
         <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="loadingPost"></i>
       </div>
-      <div class="the-post" ng-show="!loadingPost">
+      <div class="the-post" ng-if="!loadingPost">
         <div class="post-header">
           <h1 class="post-title">{{ post.title }}</h1>
           <div class="post-info-bar">
             <div class="post-author-pic" author-bg-img-style author="{{ post.author }}"></div>
             <div class="post-info-right-side">
-              <span class="post-author"><a ng-click="authorClicked()">{{ post.author }}</a></span>
+              <span class="post-author"><author-name-popover author-data="author_data"></author-name-popover></span>
               <span class="post-author-reputation">{{ post.author_reputation|authorReputation|number:0 }}</span>
               <span class="post-cat"><span>{{ 'IN' | translate }}</span> <a ng-click="parentClicked()">{{ post.parent_permlink }}</a></span>
               <span class="post-date"><span
@@ -41,10 +41,7 @@
               </a>
             </div>
             <div class="post-total">
-              <a ng-click="totalClicked(post)" uib-popover-html="postTotalInfo" popover-placement="top"
-                 popover-trigger="'focus'" tabindex="0" ng-class="{'payout-declined': isPayoutDeclined}">
-                <span class="cur-prefix">{{ $root.currency | currencySymbol }}</span> {{ post | sumPostTotal | number }}
-              </a>
+              <content-payout-info content="post"></content-payout-info>
             </div>
           </div>
           <div class="post-voters">

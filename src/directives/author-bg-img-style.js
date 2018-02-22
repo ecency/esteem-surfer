@@ -5,8 +5,7 @@ export default () => {
         return;
       }
       element.css({
-        'background-image': 'url(https://steemitimages.com/u/' + value + '/avatar/small)',
-        'background-size': 'cover'
+        'background-image': 'url(https://steemitimages.com/u/' + value + '/avatar/small)'
       });
     });
   };
