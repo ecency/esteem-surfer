@@ -10,13 +10,13 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, steemServic
     $rootScope.setNavVar('posts', n);
   });
 
-  let category = $routeParams.category;
+  let filter = $routeParams.filter;
   let tag = $routeParams.tag;
 
-  $scope.category = category;
+  $scope.filter = filter;
   $scope.tag = tag;
 
-  $scope.catTitle = constants.categories.find(i => i.name === category).key;
+  $scope.filterKey = constants.filters.find(i => i.name === filter).key;
   if (tag) {
     $scope.tagTitle = $filter('capWord')(tag);
   }
@@ -25,14 +25,14 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, steemServic
   let hasMore = true;
 
   const loadPosts = (startAuthor = null, startPermalink = null) => {
-    // Convert category's fist letter to upper to use as function argument
-    let by = $filter('capWord')(category);
+    // Convert filter's fist letter to upper to use as function argument
+    let by = $filter('capWord')(filter);
 
     $scope.loadingPosts = true;
     steemService.getDiscussionsBy(by, (tag ? tag : null), startAuthor, startPermalink, constants.postListSize).then((resp) => {
 
       // if server returned less than 2 posts, it means end of pagination
-      // comparison value is 2 because it returns at least 1 post on pagination
+      // comparison value is 2 because steem api returns at least 1 post on pagination
       if (resp.length < 2) {
         hasMore = false;
         return false;
@@ -79,6 +79,4 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, steemServic
     let lastPost = [...$scope.posts].pop();
     loadPosts(lastPost.author, lastPost.permlink)
   };
-
-  $scope.$broadcast('$routeLoaded')
 };

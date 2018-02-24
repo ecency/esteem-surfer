@@ -13,7 +13,7 @@ export default () => {
         <div class="comment-list-item-inner">
           <div class="comment-author-pic" author-bg-img-style author="{{ comment.author }}"></div>
           <div class="comment-header">
-           <span class="comment-author"><author-name-popover author-data="comment.author_data"></author-name-popover> </span>
+           <span class="comment-author"><author-name author-data="comment.author_data"></author-name> </span>
             <span class="comment-author-reputation">{{ comment.author_reputation|authorReputation|number:0 }}</span>
             <span class="comment-date"><span title="{{ comment.created|dateFormatted }}"> {{comment.created|timeAgo}}</span></span>
           </div>
@@ -30,9 +30,7 @@ export default () => {
               </div>
             </div>
             <div class="comment-voters" ng-if="comment.net_votes>0">
-              <a ng-click="votersClicked(post)">
-               {{ comment.net_votes }} {{ 'VOTES' | translate | lowercase }}
-              </a>
+              <content-voters-info content="comment"></content-voters-info>
             </div>
             <div class="comment-reply">
               <a ng-click="replyClicked(post)">{{ 'REPLY' | translate }}</a>
@@ -43,22 +41,7 @@ export default () => {
       </div>
     `,
     controller: ($scope, $rootScope, $filter, $uibModal) => {
-      $scope.votersClicked = (post) => {
-        $uibModal.open({
-          templateUrl: 'templates/post-voters.html',
-          controller: 'postVotersCtrl',
-          windowClass: 'postVotersModal',
-          resolve: {
-            post: function () {
-              return $scope.comment;
-            }
-          }
-        }).result.then(function (data) {
-          // Success
-        }, function () {
-          // Cancel
-        });
-      };
+
 
     }
   };

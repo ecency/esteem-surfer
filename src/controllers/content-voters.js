@@ -1,7 +1,7 @@
-export default ($scope, $uibModalInstance, post, steemService) => {
+export default ($scope, $uibModalInstance, content, steemService) => {
   $scope.loading = true;
 
-  steemService.getActiveVotesAsync(post.author, post.permlink).then((resp) => {
+  steemService.getActiveVotesAsync(content.author, content.permlink).then((resp) => {
     $scope.data = resp;
     $scope.dataLen = resp.length;
   }).catch(() => {

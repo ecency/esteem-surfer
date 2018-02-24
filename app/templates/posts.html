@@ -1,10 +1,10 @@
-<nav-bar selected-cat="category" selected-tag="tag"></nav-bar>
+<nav-bar selected-filter="filter" selected-tag="tag"></nav-bar>
 <div class="app-container keep-pos" scrolled-bottom="reachedBottom()" id="content-main">
   <div class="app-content">
-    <side-tag-list selected-cat="category" selected-tag="tag"></side-tag-list>
-    <div class="post-list">
+    <side-tag-list selected-filter="filter" selected-tag="tag"></side-tag-list>
+    <div class="post-list" ng-class="{'fetching': loadingPosts}">
       <header>
-        <h1>{{ catTitle | translate }}<span ng-if="tag">: {{ tagTitle }}</span> </h1>
+        <h1>{{ filterKey | translate }}<span ng-if="tag">: {{ tagTitle }}</span> </h1>
         <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingPosts" title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
       </header>
       <ul class="feed">

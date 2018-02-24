@@ -1,9 +1,9 @@
 <div class="side-tag-list">
   <header>
-    <h2>{{ 'TAGS' | translate }}</h2><a ng-click="removeTag()" class="btn btn-xs btn-default btn-remove-tag" ng-if="selectedTag" title="{{ 'Remove Tag' | __ }}"><i class="fa fa-times"></i></a>
+    <h2>{{ 'TAGS' | translate }}</h2><a ng-click="removeTag()" class="btn btn-xs btn-default btn-remove-tag" ng-if="selectedTag" title="{{ ('Remove Tag' | __) + ' \'' + (selectedTag|capWord) + '\''  }}"><i class="fa fa-times"></i></a>
   </header>
-  <ul class="tag-list">
-    <li ng-repeat="t in $root.tags" ng-class="{'active': (selectedTag===t)}"><a ng-click="tagClicked(t)">{{ t }}</a></li>
+  <ul class="tag-list" ng-class="{'fetching': loadingTags}">
+    <li ng-repeat="t in $root.tags" ng-class="{'active': (selectedTag===t)}" data-key="{{ t }}"><a ng-click="tagClicked(t)">{{ t }}</a></li>
   </ul>
   <footer><a href="#">{{ 'View all tags..' | __ }}</a></footer>
 </div>

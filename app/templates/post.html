@@ -11,7 +11,7 @@
           <div class="post-info-bar">
             <div class="post-author-pic" author-bg-img-style author="{{ post.author }}"></div>
             <div class="post-info-right-side">
-              <span class="post-author"><author-name-popover author-data="author_data"></author-name-popover></span>
+              <span class="post-author"><author-name author-data="author_data"></author-name></span>
               <span class="post-author-reputation">{{ post.author_reputation|authorReputation|number:0 }}</span>
               <span class="post-cat"><span>{{ 'IN' | translate }}</span> <a ng-click="parentClicked()">{{ post.parent_permlink }}</a></span>
               <span class="post-date"><span
@@ -22,11 +22,11 @@
         <div class="post-body markdown-view" ng-bind-html="post.body | markDown2Html"></div>
         <div class="post-footer">
           <div class="tag-list">
-            <a ng-repeat="tag in postTags" href="#">{{ tag }}</a>
+            <a ng-repeat="tag in postTags" ng-click="tagClicked(tag)">{{ tag }}</a>
           </div>
           <div class="post-info-bar">
             <span class="post-date"><i class="fa fa-clock-o"></i> <span title="{{ post.created|dateFormatted }}"> {{post.created|timeAgo}}</span></span>
-            <span class="post-author">{{ 'BY' | translate }} <a ng-click="authorClicked()">{{ post.author }}</a></span>
+            <span class="post-author">{{ 'BY' | translate }} <author-name author-data="author_data"></author-name></span>
             <span class="post-author-reputation">{{ post.author_reputation|authorReputation|number:0 }}</span>
             <div class="post-interaction">
               <a class="post-resteem" ng-click="resteem()"><i class="fa fa-retweet"></i></a>
@@ -45,9 +45,7 @@
             </div>
           </div>
           <div class="post-voters">
-            <a ng-click="votersClicked(post)">
-              <i class="fa fa-users"></i> {{ post.net_votes }}
-            </a>
+            <content-voters-info content="post"></content-voters-info>
           </div>
         </div>
         <div class="post-comment-list">

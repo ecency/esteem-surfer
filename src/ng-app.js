@@ -23,11 +23,12 @@ import ui from 'angular-ui-bootstrap';
 
 // Controllers
 import postsCtrl from './controllers/posts';
+import postCtrl from './controllers/post';
+import contentVotersCtrl from './controllers/content-voters';
+
 import faqCtrl from './controllers/faq';
 import aboutCtrl from './controllers/about'
 import settingsCtrl from './controllers/settings';
-import postVotersCtrl from './controllers/post-voters';
-import postCtrl from './controllers/post';
 
 
 // Directives
@@ -39,8 +40,9 @@ import scrolledBottomDir from './directives/scrolled-bottom';
 import authorBgImgStyleDir from './directives/author-bg-img-style';
 import commentListDir from './directives/comment-list';
 import commentListItemDir from './directives/comment-list-item';
-import authorNamePopoverDir from './directives/author-name-popover';
+import authorNameDir from './directives/author-name';
 import contentPayoutInfoDir from './directives/content-payout-info';
+import contentVotersInfoDir from './directives/content-voters-info';
 
 
 // Services
@@ -138,15 +140,15 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
       .when('/', {
         template: '',
         controller: ($location, constants) => {
-          // Redirect to first category page.(Trending) [Better than hard coding category name]
-          $location.path('/posts/' + constants.categories[0].name);
+          // Redirect to default filter page
+          $location.path('/posts/' + constants.defaultFilter);
         }
       })
-      .when('/posts/:category', {
+      .when('/posts/:filter', {
         templateUrl: 'templates/posts.html',
         controller: 'postsCtrl',
       })
-      .when('/posts/:category/:tag', {
+      .when('/posts/:filter/:tag', {
         templateUrl: 'templates/posts.html',
         controller: 'postsCtrl',
       })
@@ -244,15 +246,15 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
   .directive('authorBgImgStyle', authorBgImgStyleDir)
   .directive('commentList', commentListDir)
   .directive('commentListItem', commentListItemDir)
-  .directive('authorNamePopover', authorNamePopoverDir)
+  .directive('authorName', authorNameDir)
   .directive('contentPayoutInfo', contentPayoutInfoDir)
-
+  .directive('contentVotersInfo', contentVotersInfoDir)
 
   .controller('postsCtrl', postsCtrl)
   .controller('faqCtrl', faqCtrl)
   .controller('aboutCtrl', aboutCtrl)
   .controller('settingsCtrl', settingsCtrl)
-  .controller('postVotersCtrl', postVotersCtrl)
+  .controller('contentVotersCtrl', contentVotersCtrl)
   .controller('postCtrl', postCtrl)
 
   .filter('catchPostImage', catchPostImageFilter)
@@ -458,6 +460,6 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
     });
 
 
-    //
-    $rootScope.visitedPosts = [];
+    // The last selected filter from navbar
+    $rootScope.selectedFilter = constants.defaultFilter;
   });

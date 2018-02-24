@@ -17,7 +17,7 @@ export default () => {
                 <div class="post-info-right-side">
                     <span class="post-author"><a ng-click="authorClicked()">{{ post.author }}</a></span>
                     <span class="post-author-reputation">{{ post.author_reputation|authorReputation|number:0 }}</span>
-                    <span class="post-cat">{{ 'IN' | translate }} <a ng-click="parentClicked()">{{ post.parent_permlink }}</a></span>
+                    <span class="post-parent">{{ 'IN' | translate }} <a ng-click="parentClicked()">{{ post.parent_permlink }}</a></span>
                     <span class="post-date"><a ng-click="createdClicked()" title="{{ post.created|dateFormatted }}"> {{post.created|timeAgo}}</a></span>
                 </div>
             </div>
@@ -45,9 +45,7 @@ export default () => {
                 </div>
             </div>
             <div class="post-voters">
-                <a ng-click="votersClicked(post)">
-                    <i class="fa fa-users"></i> {{ post.net_votes }}
-                </a>
+                <content-voters-info content="post"></content-voters-info>
             </div>
             <div class="post-comment-count">
                 <a ng-click="commentsClicked(post)">
@@ -60,47 +58,35 @@ export default () => {
     controller: ($scope, $rootScope, $location, $sce, $filter, $uibModal, storageService, helperService) => {
       $scope.isVisited = helperService.isPostRead($scope.post.id);
 
-      const goPost = () => {
-        let u = helperService.genPostUrl($scope.post.parent_permlink, $scope.post.author, $scope.post.permlink);
+      const goDetail = () => {
+        let u = `/post/${$scope.post.parent_permlink}/${$scope.post.author}/${$scope.post.permlink}`;
         $location.path(u);
       };
 
-      $scope.votersClicked = (post) => {
-        $uibModal.open({
-          templateUrl: 'templates/post-voters.html',
-          controller: 'postVotersCtrl',
-          windowClass: 'postVotersModal',
-          resolve: {
-            post: function () {
-              return post;
-            }
-          }
-        }).result.then(function (data) {
-          // Success
-        }, function () {
-          // Cancel
-        });
-      };
-
       $scope.titleClicked = () => {
-        goPost();
+        goDetail();
       };
 
       $scope.summaryClicked = () => {
-        goPost();
+        goDetail();
       };
 
       $scope.imageClicked = () => {
-        goPost();
+        goDetail();
       };
 
       $scope.createdClicked = () => {
-        goPost();
+        goDetail();
       };
 
       $scope.commentsClicked = () => {
-        goPost();
-      }
+        goDetail();
+      };
+
+      $scope.parentClicked = () => {
+        let u = `/posts/${$rootScope.selectedFilter}/${$scope.post.parent_permlink}`;
+        $location.path(u);
+      };
     }
   };
 };

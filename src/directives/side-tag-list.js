@@ -3,7 +3,7 @@ export default () => {
     restrict: 'AE',
     replace: true,
     scope: {
-      selectedCat: '=',
+      selectedFilter: '=',
       selectedTag: '='
     },
     templateUrl: 'templates/directives/side-tag-list.html',
@@ -34,11 +34,11 @@ export default () => {
       }, 120000);
 
       $scope.tagClicked = (t) => {
-        $location.path(`/posts/${$scope.selectedCat}/${t}`);
+        $location.path(`/posts/${$scope.selectedFilter}/${t}`);
       };
 
       $scope.removeTag = () => {
-        $location.path(`/posts/${$scope.selectedCat}`);
+        $location.path(`/posts/${$scope.selectedFilter}`);
       };
 
     }

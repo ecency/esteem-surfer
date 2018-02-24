@@ -163,7 +163,7 @@
           }
         }
 
-        .post-cat {
+        .post-parent {
           margin-right: 2px;
           &:after {
             content: '•';
@@ -171,7 +171,7 @@
           }
         }
 
-        .post-cat, .post-date {
+        .post-parent, .post-date {
           color: $textColorLight;
 
           a {
@@ -460,8 +460,9 @@
       }
 
       .post-author {
+        font-weight: 600;
         a {
-          font-weight: 600;
+          outline: 0;
         }
       }
 
@@ -583,6 +584,9 @@
 
     .comment-author-pic {
       background: $profilePicBg;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: cover;
       border-radius: 50%;
       float: left;
       height: 48px;
@@ -716,26 +720,35 @@
     width: 80px;
   }
 
-  .author-name, .author-username, .author-follow {
-    margin-left: 110px;
+  .popover-content-right {
+    width: 144px;
+    float: right;
 
-  }
+    .author-name, .author-username {
+      margin-bottom: 6px;
+    }
 
-  .author-name, .author-username {
-    margin-bottom: 6px;
-  }
+    .author-name {
+      font-weight: 600;
+      font-size: 16px;
 
-  .author-name {
-    font-weight: 600;
-    font-size: 16px;
-  }
+    }
 
-  .author-username {
-    font-size: 13px;
-    color: $textColorLight;
-  }
+    .author-username {
+      font-size: 13px;
+      color: $textColorLight;
+    }
 
-  .author-follow {
+    .author-name, .author-username {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+    }
+
+    .author-follow {
+
+    }
 
   }
 
@@ -744,6 +757,7 @@
     font-size: 13px;
     line-height: 120%;
     word-break: break-all;
+    margin-top: 16px;
 
   }
 }
@@ -763,6 +777,78 @@
         td, th {
           border-top: 0
         }
+      }
+    }
+  }
+}
+
+.content-voters-modal {
+  .modal-body {
+    .indicator {
+      font-size: 20px;
+      text-align: center;
+
+      .loading-icon {
+        color: $loadingColor;
+      }
+    }
+
+    .data-list {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+  }
+}
+
+.settings-modal {
+  .modal-body {
+    .server-control {
+
+      .server-list {
+        max-height: 120px;
+        border: 1px solid $listBorderColor;
+        overflow-x: auto;
+        margin-bottom: 10px;
+
+        .table {
+          margin: 0;
+          tr:first-of-type {
+            td {
+              border-top: 0
+            }
+          }
+
+          tr {
+            td {
+              a {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .alert {
+      margin: 10px 0;
+      padding: 10px;
+    }
+  }
+  .modal-footer {
+    .indicator {
+      display: inline-block;
+      font-size: 18px;
+      height: 34px;
+      padding-top: 5px;
+      text-align: center;
+      vertical-align: middle;
+      width: 30px;
+
+      .loading-icon {
+        color: $loadingColor;
+      }
+      .success-icon {
+        color: $loadingSuccessColor;
       }
     }
   }

@@ -3,14 +3,16 @@ export default ($location, $uibModal) => {
     restrict: 'AE',
     replace: true,
     scope: {
-      selectedCat: '=',
+      selectedFilter: '=',
       selectedTag: '='
     },
     templateUrl: 'templates/directives/navbar.html',
-    controller: ($scope, constants) => {
-      $scope.cats = constants.categories;
+    controller: ($scope, $rootScope, constants) => {
+      $scope.filters = constants.filters;
 
       $scope.linkClicked = (c) => {
+        $rootScope.selectedFilter = c;
+
         let u = `/posts/${c}`;
         if ($scope.selectedTag) {
           u += `/${$scope.selectedTag}`;
@@ -30,7 +32,7 @@ export default ($location, $uibModal) => {
         $uibModal.open({
           templateUrl: 'templates/settings.html',
           controller: 'settingsCtrl',
-          windowClass: 'settingsModal',
+          windowClass: 'settings-modal',
           backdrop: 'static',
           keyboard: false
         }).result.then(function (data) {

@@ -1,7 +1,7 @@
 import electron from "electron";
 import { Application } from "spectron";
 
-const beforeEach = function() {
+const beforeTest = function() {
   this.timeout(10000);
   this.app = new Application({
     path: electron,
@@ -12,7 +12,7 @@ const beforeEach = function() {
   return this.app.start();
 };
 
-const afterEach = function() {
+const afterTest = function() {
   this.timeout(10000);
   if (this.app && this.app.isRunning()) {
     return this.app.stop();
@@ -21,6 +21,6 @@ const afterEach = function() {
 };
 
 export default {
-  beforeEach,
-  afterEach
+  beforeTest,
+  afterTest
 };

@@ -1,4 +1,4 @@
-export default ($scope, $rootScope, $routeParams, $filter, $uibModal, steemService, steemApi, helperService) => {
+export default ($scope, $rootScope, $routeParams, $filter, $uibModal, $location, steemService, helperService) => {
 
   let parent = $routeParams.parent;
   let author = $routeParams.author;
@@ -48,36 +48,28 @@ export default ($scope, $rootScope, $routeParams, $filter, $uibModal, steemServi
 
     $scope.author_data = pathData.accounts[author];
 
-    $scope.postTags = JSON.parse(post.json_metadata).tags;
+    // Sometimes tag list comes with duplicate items. Needs to singularize.
+    $scope.postTags = [...new Set(JSON.parse(post.json_metadata).tags)];
 
     $scope.comments = compileComments(post);
 
     // Mark post as read
     helperService.setPostRead(post.id);
   }).catch((e) => {
-    console.log(e)
+
     // TODO: Handle catch
   }).then(() => {
     $scope.loadingPost = false;
   });
 
 
-  $scope.votersClicked = (post) => {
-    $uibModal.open({
-      templateUrl: 'templates/post-voters.html',
-      controller: 'postVotersCtrl',
-      windowClass: 'postVotersModal',
-      resolve: {
-        post: function () {
-          return post;
-        }
-      }
-    }).result.then(function (data) {
-      // Success
-    }, function () {
-      // Cancel
-    });
+  $scope.parentClicked = () => {
+    let u = `/posts/${$rootScope.selectedFilter}/${$scope.post.parent_permlink}`;
+    $location.path(u);
   };
 
-
+  $scope.tagClicked = (tag) => {
+    let u = `/posts/${$rootScope.selectedFilter}/${tag}`;
+    $location.path(u);
+  }
 };

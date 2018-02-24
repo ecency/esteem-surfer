@@ -1,5 +1,5 @@
 export default {
-  categories: [
+  filters: [
     {
       key: 'TRENDING',
       name: 'trending'
@@ -33,6 +33,7 @@ export default {
       name: 'payout'
     }
   ],
+  defaultFilter: 'trending',
   postListSize: 20,
   servers: [
     'https://api.steemit.com',

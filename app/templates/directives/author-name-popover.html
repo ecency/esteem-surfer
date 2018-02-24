@@ -1,8 +1,12 @@
 <div class="author-popover-content">
   <div class="author-pic" author-bg-img-style author="{{ username }}"></div>
-  <div class="author-name"><a ng-click="goToAuthor()">{{ name }}</a></div>
-  <div class="author-username"><a ng-click="goToAuthor()">@{{ username }}</a></div>
-  <div class="author-follow"><button ng-click="followClicked()" class="btn btn-primary btn-sm">{{ 'FOLLOW' | translate }}</button></div>
+  <div class="popover-content-right">
+    <div class="author-name"><a ng-click="goToAuthor()">{{ name }}</a></div>
+    <div class="author-username"><a ng-click="goToAuthor()">@{{ username }}</a></div>
+    <div class="author-follow">
+      <button ng-click="followClicked()" class="btn btn-primary btn-sm">{{ 'FOLLOW' | translate }}</button>
+    </div>
+  </div>
   <br clear="all">
   <div class="author-bio">{{ bio }}</div>
 </div>
