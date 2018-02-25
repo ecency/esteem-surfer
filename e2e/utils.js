@@ -1,7 +1,7 @@
 import electron from "electron";
-import { Application } from "spectron";
+import {Application} from "spectron";
 
-const beforeTest = function() {
+const beforeTest = function () {
   this.timeout(10000);
   this.app = new Application({
     path: electron,
@@ -12,7 +12,7 @@ const beforeTest = function() {
   return this.app.start();
 };
 
-const afterTest = function() {
+const afterTest = function () {
   this.timeout(10000);
   if (this.app && this.app.isRunning()) {
     return this.app.stop();
@@ -20,7 +20,14 @@ const afterTest = function() {
   return undefined;
 };
 
+const timeout = ms => new Promise(res => setTimeout(res, ms));
+
+const afterEach = async () => {
+  await timeout(100)
+};
+
 export default {
   beforeTest,
-  afterTest
+  afterTest,
+  afterEach
 };
