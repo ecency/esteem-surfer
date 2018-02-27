@@ -12,9 +12,9 @@ describe("Post detail test 1. Testing with a trending post. Asuuming it has a lo
 
   before(testUtils.beforeTest);
   after(testUtils.afterTest);
-  afterEach(testUtils.afterEach);
-
-  // Current location: #!/posts/trending
+  afterEach(async () => {
+    await testUtils.timeout(400)
+  });
 
   it('Should go post detail after picked a post from post list.', async function () {
     await this.app.client.waitUntil(() => {
@@ -27,7 +27,7 @@ describe("Post detail test 1. Testing with a trending post. Asuuming it has a lo
     this.app.client.elementIdClick(posts[1].ELEMENT);
   }).timeout(apiTimeout);
 
-  it("Should show post immediately", async function () {
+  it('Should show post immediately', async function () {
     const isVisible = await this.app.client.isVisible('.post-page .indicator.post-indicator');
     expect(isVisible).to.deep.equal(false);
   }).timeout(100);

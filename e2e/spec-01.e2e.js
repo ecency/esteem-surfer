@@ -12,7 +12,9 @@ describe("Post lists, tags, filters", () => {
 
   before(testUtils.beforeTest);
   after(testUtils.afterTest);
-  afterEach(testUtils.afterEach);
+  afterEach(async () => {
+    await testUtils.timeout(200)
+  });
 
   // Current location: #!/posts/trending
 
@@ -26,16 +28,17 @@ describe("Post lists, tags, filters", () => {
     expect(isVisible).to.deep.equal(false);
   });
 
-  it("Should load tags", async function () {
-    const tagElements = await this.app.client.waitUntil(() => {
+  it('Should load tags', async function () {
+
+    await this.app.client.waitUntil(() => {
       return this.app.client.getAttribute('.side-tag-list ul.tag-list', 'class').then(res => {
         return res.indexOf('fetching') === -1;
       });
-    }).then(() => {
-      return this.app.client.$$('.side-tag-list ul.tag-list li')
     });
 
+    const tagElements = await this.app.client.$$('.side-tag-list ul.tag-list li');
     expect(tagElements.length).to.greaterThan(10);
+
   }).timeout(apiTimeout);
 
   it('"Remove tag" button should be hidden', async function () {
@@ -49,16 +52,51 @@ describe("Post lists, tags, filters", () => {
   });
 
   it('Should load posts', async function () {
-    const postElements = await this.app.client.waitUntil(() => {
+    await this.app.client.waitUntil(() => {
       return this.app.client.getAttribute('.post-list', 'class').then(res => {
         return res.indexOf('fetching') === -1;
       });
-    }).then(() => {
-      return this.app.client.$$('.post-list .post-list-item')
     });
 
+    const postElements = await this.app.client.$$('.post-list .post-list-item');
     expect(postElements.length).to.equal(20);
   }).timeout(apiTimeout);
+
+  it('Click payout detail for 10 different post list items. Popover should be opened for each', async function () {
+    let elements = await this.app.client.$$('.post-list .post-list-item .post-voting .post-total');
+    for (let i = 0; i < 10; i++) {
+      let el = elements[i];
+
+      await this.app.client.elementIdClick(el.ELEMENT);
+
+      // Popover should be opened
+      let popovers = await this.app.client.elementIdElements(el.ELEMENT, '.popover');
+      expect(popovers.value.length).to.deep.equal(1);
+    }
+  }).timeout(15000);
+
+  it('Click voters for 4 different post list items. Modal window should be opened for each', async function () {
+    let elements = await this.app.client.$$('.post-list .post-list-item .post-voters');
+    for (let i = 0; i < 4; i++) {
+      let el = elements[i];
+
+      await this.app.client.elementIdClick(el.ELEMENT);
+
+      // Modal should be opened
+      let modal = await this.app.client.$$('.modal.content-voters-modal');
+      expect(modal.length).to.deep.equal(1);
+
+      // Wait to load voters data list
+      await this.app.client.waitUntil(() => {
+        return this.app.client.getAttribute('.modal.content-voters-modal .data-list ', 'class').then(res => {
+          return res.indexOf('fetching') === -1;
+        });
+      });
+
+      // Close modal
+      await this.app.client.keys('Escape');
+    }
+  }).timeout(20000);
 
   it('"Refresh button" should be enabled when loading posts finished', async function () {
     const isDisabled = await this.app.client.getAttribute('.post-list .btn-reload', 'disabled');
@@ -74,31 +112,29 @@ describe("Post lists, tags, filters", () => {
     expect(isDisabled).to.deep.equal('true');
   });
 
-  it("Should load previous posts because of scrolled down", async function () {
-    const postElements = await this.app.client.waitUntil(() => {
+  it('Should load previous posts because of scrolled down', async function () {
+    await this.app.client.waitUntil(() => {
       return this.app.client.getAttribute('.post-list', 'class').then(res => {
         return res.indexOf('fetching') === -1;
       });
-    }).then(() => {
-      return this.app.client.$$('.post-list .post-list-item')
     });
 
+    const postElements = await this.app.client.$$('.post-list .post-list-item');
     expect(postElements.length).to.equal(39);
   }).timeout(apiTimeout);
 
-  it("Should load previous posts because of scrolled down (Again)", async function () {
-    const postElements = await this.app.client.execute('document.getElementById("content-main").scrollTop=7000')
-      .then(() => {
-        return this.app.client.waitUntil(() => {
-          return this.app.client.getAttribute('.post-list', 'class').then(res => {
-            return res.indexOf('fetching') === -1;
-          });
-        });
-      })
-      .then(() => {
-        return this.app.client.$$('.post-list .post-list-item')
-      });
+  it('Scroll down', async function () {
+    await this.app.client.execute('document.getElementById("content-main").scrollTop=7000');
+  });
 
+  it('Should load previous posts because of scrolled down (Again)', async function () {
+    await this.app.client.waitUntil(() => {
+      return this.app.client.getAttribute('.post-list', 'class').then(res => {
+        return res.indexOf('fetching') === -1;
+      });
+    });
+
+    const postElements = await this.app.client.$$('.post-list .post-list-item');
     expect(postElements.length).to.equal(58);
   }).timeout(apiTimeout);
 
@@ -129,14 +165,13 @@ describe("Post lists, tags, filters", () => {
   });
 
   it('Should load posts', async function () {
-    const postElements = await this.app.client.waitUntil(() => {
+    await this.app.client.waitUntil(() => {
       return this.app.client.getAttribute('.post-list', 'class').then(res => {
         return res.indexOf('fetching') === -1;
       });
-    }).then(() => {
-      return this.app.client.$$('.post-list .post-list-item')
     });
 
+    const postElements = await this.app.client.$$('.post-list .post-list-item');
     expect(postElements.length).to.equal(20);
   }).timeout(apiTimeout);
 
@@ -173,13 +208,13 @@ describe("Post lists, tags, filters", () => {
   });
 
   it("Should load posts", async function () {
-    const postElements = await this.app.client.waitUntil(() => {
+    await this.app.client.waitUntil(() => {
       return this.app.client.getAttribute('.post-list', 'class').then(res => {
         return res.indexOf('fetching') === -1;
       });
-    }).then(() => {
-      return this.app.client.$$('.post-list .post-list-item')
     });
+
+    const postElements = await this.app.client.$$('.post-list .post-list-item');
 
     expect(postElements.length).to.equal(20);
   }).timeout(apiTimeout);
@@ -189,13 +224,13 @@ describe("Post lists, tags, filters", () => {
   });
 
   it('Should load previous posts because of scrolled down', async function () {
-    const postElements = await this.app.client.waitUntil(() => {
+    await this.app.client.waitUntil(() => {
       return this.app.client.getAttribute('.post-list', 'class').then(res => {
         return res.indexOf('fetching') === -1;
       });
-    }).then(() => {
-      return this.app.client.$$('.post-list .post-list-item')
     });
+
+    const postElements = await this.app.client.$$('.post-list .post-list-item');
 
     expect(postElements.length).to.equal(39);
   }).timeout(apiTimeout);
@@ -205,14 +240,13 @@ describe("Post lists, tags, filters", () => {
   });
 
   it("Should load posts", async function () {
-    const postElements = await this.app.client.waitUntil(() => {
+    await this.app.client.waitUntil(() => {
       return this.app.client.getAttribute('.post-list', 'class').then(res => {
         return res.indexOf('fetching') === -1;
       });
-    }).then(() => {
-      return this.app.client.$$('.post-list .post-list-item')
     });
 
+    const postElements = await this.app.client.$$('.post-list .post-list-item');
     expect(postElements.length).to.equal(20);
   }).timeout(apiTimeout);
 
@@ -228,14 +262,13 @@ describe("Post lists, tags, filters", () => {
   });
 
   it("Should load posts", async function () {
-    const postElements = await this.app.client.waitUntil(() => {
+    await this.app.client.waitUntil(() => {
       return this.app.client.getAttribute('.post-list', 'class').then(res => {
         return res.indexOf('fetching') === -1;
       });
-    }).then(() => {
-      return this.app.client.$$('.post-list .post-list-item')
     });
 
+    const postElements = await this.app.client.$$('.post-list .post-list-item');
     expect(postElements.length).to.equal(20);
   }).timeout(apiTimeout);
 
@@ -251,14 +284,13 @@ describe("Post lists, tags, filters", () => {
   });
 
   it("Should load posts", async function () {
-    const postElements = await this.app.client.waitUntil(() => {
+    await this.app.client.waitUntil(() => {
       return this.app.client.getAttribute('.post-list', 'class').then(res => {
         return res.indexOf('fetching') === -1;
       });
-    }).then(() => {
-      return this.app.client.$$('.post-list .post-list-item')
     });
 
+    const postElements = await this.app.client.$$('.post-list .post-list-item');
     expect(postElements.length).to.equal(20);
   }).timeout(apiTimeout);
 
@@ -291,7 +323,7 @@ describe("Post lists, tags, filters", () => {
     expect(url).to.endWith('#!/posts/promoted');
   });
 
-  it("Should be posts loaded immediately from nav history", async function () {
+  it("Should be posts loaded immediately from cache", async function () {
     const postElements = await this.app.client.$$('.post-list .post-list-item');
     expect(postElements.length).to.equal(20);
   }).timeout(50);
@@ -307,7 +339,7 @@ describe("Post lists, tags, filters", () => {
     expect(url).to.endWith('#!/posts/trending');
   });
 
-  it("Should be posts loaded immediately from nav history", async function () {
+  it("Should be posts loaded immediately from cache", async function () {
     const postElements = await this.app.client.$$('.post-list .post-list-item');
     expect(postElements.length).to.equal(58);
   }).timeout(50);
@@ -323,7 +355,7 @@ describe("Post lists, tags, filters", () => {
     expect(url).to.endWith('#!/posts/trending/photography');
   });
 
-  it("Should be posts loaded immediately from nav history", async function () {
+  it("Should be posts loaded immediately from cache", async function () {
     const postElements = await this.app.client.$$('.post-list .post-list-item');
     expect(postElements.length).to.equal(20);
   }).timeout(50);

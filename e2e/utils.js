@@ -22,13 +22,9 @@ const afterTest = function () {
 
 const timeout = ms => new Promise(res => setTimeout(res, ms));
 
-const afterEach = async () => {
-  await timeout(200)
-};
 
 export default {
   beforeTest,
   afterTest,
-  afterEach,
   timeout
 };

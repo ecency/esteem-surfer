@@ -64,20 +64,14 @@ export default ($scope, $rootScope, $routeParams, $filter, $uibModal, $location,
     })
   };
 
-  const scrollToComments = () => {
-    document.querySelector('#content-main').scrollTop = 100;
-  };
-
   $scope.commentsGoNext = () => {
     $scope.commentsCurPage += 1;
     $scope.sliceComments();
-    scrollToComments();
   };
 
   $scope.commentsGoPrev = () => {
     $scope.commentsCurPage -= 1;
     $scope.sliceComments();
-    scrollToComments();
   };
 
   $scope.sliceComments = () => {
