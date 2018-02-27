@@ -280,6 +280,10 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
           return 'Server does not seem alive ';
         case 'DEFAULT_SETTINGS':
           return 'Default Settings';
+        case 'NO_COMMENTS_YET':
+          return 'No comments yet';
+        case 'COMMENTS_PAGE':
+          return 'page:';
         default:
           return s;
       }
@@ -432,23 +436,24 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
     });
 
     // DATA MANAGER
-    $rootScope.cacheData = {};
+    let cacheData = {};
     $rootScope.Data = {};
 
     $rootScope.setNavVar = (varKey, val) => {
       let key = $window.location.href.hashCode();
 
-      if (!$rootScope.cacheData[key]) {
-        $rootScope.cacheData[key] = {};
+      if (!cacheData[key]) {
+        cacheData[key] = {};
       }
 
-      $rootScope.cacheData[key][varKey] = val;
+      cacheData[key][varKey] = val;
     };
 
     $rootScope.$on('$routeChangeSuccess', () => {
+      // When route changed pass relative data from cacheData to $rootScope.Data
       let key = $window.location.href.hashCode();
 
-      $rootScope.Data = $rootScope.cacheData[key] || {};
+      $rootScope.Data = cacheData[key] || {};
     });
 
 
@@ -462,4 +467,8 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
 
     // The last selected filter from navbar
     $rootScope.selectedFilter = constants.defaultFilter;
+
+
+    // The last selected post from post list
+    $rootScope.selectedPost = {};
   });

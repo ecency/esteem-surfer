@@ -8,7 +8,7 @@ const expect = chai.expect;
 const apiTimeout = 50000;
 
 
-describe("Spec 01", () => {
+describe("Post lists, tags, filters", () => {
 
   before(testUtils.beforeTest);
   after(testUtils.afterTest);

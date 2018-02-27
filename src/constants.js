@@ -35,6 +35,7 @@ export default {
   ],
   defaultFilter: 'trending',
   postListSize: 20,
+  commentListSize: 10,
   servers: [
     'https://api.steemit.com',
     'https://rpc.esteem.ws',

@@ -1,4 +1,4 @@
-export default ($scope, $rootScope, $routeParams, $filter, $uibModal, $location, steemService, helperService) => {
+export default ($scope, $rootScope, $routeParams, $filter, $uibModal, $location, $q, steemService, helperService, constants) => {
 
   let parent = $routeParams.parent;
   let author = $routeParams.author;
@@ -9,9 +9,21 @@ export default ($scope, $rootScope, $routeParams, $filter, $uibModal, $location,
 
   let pathData = {};
 
+  let commentsData = [];
+
+  const commentsPerPage = constants.commentListSize;
+
+  $scope.commentsLength = 0; // Length of compiled comments array (Not total comments count)
+  $scope.commentsHasPrev = false;
+  $scope.commentsHasNext = false;
+  $scope.commentsCurPage = 1;
+  $scope.commentsTotalPages = 0;
+
+
   const compileComments = (parent, sortField = 'pending_payout_value') => {
     let comments = [];
     for (let k of parent.replies) {
+
       let reply = pathData.content[k];
 
       comments.push(
@@ -36,30 +48,98 @@ export default ($scope, $rootScope, $routeParams, $filter, $uibModal, $location,
     return comments
   };
 
+  const loadState = () => {
+    return steemService.getState(routePath).then(stateData => {
+      pathData = stateData;
+
+      let content = stateData.content[contentPath];
+      $scope.post = content;
+
+      $scope.author = pathData.accounts[author];
+      commentsData = compileComments(content);
+
+      $scope.commentsLength = commentsData.length;
+      $scope.commentsTotalPages = Math.ceil(commentsData.length / commentsPerPage);
+      $scope.sliceComments();
+    })
+  };
+
+  const scrollToComments = () => {
+    document.querySelector('#content-main').scrollTop = 100;
+  };
+
+  $scope.commentsGoNext = () => {
+    $scope.commentsCurPage += 1;
+    $scope.sliceComments();
+    scrollToComments();
+  };
+
+  $scope.commentsGoPrev = () => {
+    $scope.commentsCurPage -= 1;
+    $scope.sliceComments();
+    scrollToComments();
+  };
+
+  $scope.sliceComments = () => {
+    let start = ( $scope.commentsCurPage - 1) * commentsPerPage;
+    let end = start + commentsPerPage;
+
+    $scope.comments = commentsData.slice(start, end);
+
+    $scope.commentsHasPrev = $scope.commentsCurPage > 1;
+    $scope.commentsHasNext = $scope.commentsCurPage < $scope.commentsTotalPages;
+  };
+
+  $scope.post = $rootScope.Data['post'] || null;
+
+  let init = () => {
+    let defer = $q.defer();
+
+    if ($scope.post) {
+      defer.resolve($scope.post);
+    } else if ($rootScope.selectedPost.permlink === permlink && $rootScope.selectedPost.author === author) {
+      // The last selected post from list === this post
+      defer.resolve($rootScope.selectedPost);
+    } else {
+      // When refreshed in development environment
+      steemService.getContent(author, permlink).then((resp) => {
+        defer.resolve(resp);
+      }).catch((e) => {
+        defer.reject(e)
+      })
+    }
+    return defer.promise;
+  };
+
   $scope.loadingPost = true;
+  $scope.loadingRest = true;
 
-  steemService.getState(routePath).then((stateData) => {
+  init().then((content) => {
+    $scope.post = content;
 
-    pathData = stateData;
-
-    let post = stateData.content[contentPath];
-
-    $scope.post = post;
-
-    $scope.author_data = pathData.accounts[author];
+    // Defined separately because $scope.post will be changed after state loaded.
+    $scope.title = content.title;
+    $scope.body = content.body;
 
     // Sometimes tag list comes with duplicate items. Needs to singularize.
-    $scope.postTags = [...new Set(JSON.parse(post.json_metadata).tags)];
+    $scope.tags = [...new Set(JSON.parse($scope.post.json_metadata).tags)];
 
-    $scope.comments = compileComments(post);
+    // Temporary author data while loading original in background
+    $scope.author = {name: $scope.post.author};
+
+    $scope.loadingPost = false;
+
+    loadState().catch((e) => {
+      // TODO: Handle catch
+    }).then(() => {
+      $scope.loadingRest = false;
+    });
 
     // Mark post as read
-    helperService.setPostRead(post.id);
-  }).catch((e) => {
+    helperService.setPostRead(content.id);
 
-    // TODO: Handle catch
-  }).then(() => {
-    $scope.loadingPost = false;
+    // Add to nav history
+    $rootScope.setNavVar('post', content);
   });
 
 

@@ -59,6 +59,7 @@ export default () => {
       $scope.isVisited = helperService.isPostRead($scope.post.id);
 
       const goDetail = () => {
+        $rootScope.selectedPost = $scope.post;
         let u = `/post/${$scope.post.parent_permlink}/${$scope.post.author}/${$scope.post.permlink}`;
         $location.path(u);
       };

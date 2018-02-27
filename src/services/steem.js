@@ -66,6 +66,31 @@ export default (steemApi, $q) => {
         }
       });
       return defer.promise;
+    },
+    getAccounts: (names) => {
+      let defer = $q.defer();
+
+      steemApi.getApi().getAccounts(names, (err, response) => {
+        if (err) {
+          defer.reject(err);
+        } else {
+          defer.resolve(response);
+        }
+      });
+      return defer.promise;
+    },
+    getContentReplies: (author, parentPermlink) => {
+      let defer = $q.defer();
+
+      steemApi.getApi().getContentReplies(author, parentPermlink , (err, response) => {
+
+        if (err) {
+          defer.reject(err);
+        } else {
+          defer.resolve(response);
+        }
+      });
+      return defer.promise;
     }
   }
 };

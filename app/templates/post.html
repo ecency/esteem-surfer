@@ -2,16 +2,16 @@
 <div class="app-container">
   <div class="app-content keep-pos" id="content-main">
     <div class="post-page">
-      <div class="indicator">
-        <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="loadingPost"></i>
+      <div class="indicator post-indicator" ng-show="loadingPost">
+        <i class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
       </div>
-      <div class="the-post" ng-if="!loadingPost">
+      <div class="the-post" ng-if="!loadingPost" ng-class="{'fetching': loadingPost || loadingRest}">
         <div class="post-header">
-          <h1 class="post-title">{{ post.title }}</h1>
+          <h1 class="post-title">{{ title }}</h1>
           <div class="post-info-bar">
             <div class="post-author-pic" author-bg-img-style author="{{ post.author }}"></div>
             <div class="post-info-right-side">
-              <span class="post-author"><author-name author-data="author_data"></author-name></span>
+              <span class="post-author"><author-name author-data="author"></author-name></span>
               <span class="post-author-reputation">{{ post.author_reputation|authorReputation|number:0 }}</span>
               <span class="post-cat"><span>{{ 'IN' | translate }}</span> <a ng-click="parentClicked()">{{ post.parent_permlink }}</a></span>
               <span class="post-date"><span
@@ -19,14 +19,14 @@
             </div>
           </div>
         </div>
-        <div class="post-body markdown-view" ng-bind-html="post.body | markDown2Html"></div>
+        <div class="post-body markdown-view selectable" ng-bind-html="body | markDown2Html"></div>
         <div class="post-footer">
           <div class="tag-list">
-            <a ng-repeat="tag in postTags" ng-click="tagClicked(tag)">{{ tag }}</a>
+            <a ng-repeat="tag in tags" ng-click="tagClicked(tag)">{{ tag }}</a>
           </div>
           <div class="post-info-bar">
             <span class="post-date"><i class="fa fa-clock-o"></i> <span title="{{ post.created|dateFormatted }}"> {{post.created|timeAgo}}</span></span>
-            <span class="post-author">{{ 'BY' | translate }} <author-name author-data="author_data"></author-name></span>
+            <span class="post-author">{{ 'BY' | translate }} <author-name author-data="author"></author-name></span>
             <span class="post-author-reputation">{{ post.author_reputation|authorReputation|number:0 }}</span>
             <div class="post-interaction">
               <a class="post-resteem" ng-click="resteem()"><i class="fa fa-retweet"></i></a>
@@ -48,8 +48,36 @@
             <content-voters-info content="post"></content-voters-info>
           </div>
         </div>
-        <div class="post-comment-list">
+        <div class="indicator comments-indicator" ng-show="loadingRest">
+          <i class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
+        </div>
+        <div class="post-comment-list" ng-if="!loadingRest && commentsLength">
+          <div class="comment-list-header">
+            <div class="list-pagination">
+              <span class="page-label">page:</span>
+              <span class="cur-page">{{ commentsCurPage }}</span><span
+              class="total-pages">{{ commentsTotalPages }}</span>
+              <a class="btn-prev" ng-class="{'disabled': !commentsHasPrev}" ng-click="commentsGoPrev()"><i
+                class="fa fa-chevron-left"></i></a>
+              <a class="btn-next" ng-class="{'disabled': !commentsHasNext}" ng-click="commentsGoNext()"><i
+                class="fa fa-chevron-right"></i></a>
+            </div>
+          </div>
           <comment-list comments="comments"></comment-list>
+          <div class="comment-list-footer">
+            <div class="list-pagination">
+              <span class="page-label">{{ 'COMMENTS_PAGE' | __ }}</span>
+              <span class="cur-page">{{ commentsCurPage }}</span><span
+              class="total-pages">{{ commentsTotalPages }}</span>
+              <a class="btn-prev" ng-class="{'disabled': !commentsHasPrev}" ng-click="commentsGoPrev()"><i
+                class="fa fa-chevron-left"></i></a>
+              <a class="btn-next" ng-class="{'disabled': !commentsHasNext}" ng-click="commentsGoNext()"><i
+                class="fa fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="post-comment-list-empty" ng-if="!loadingRest && !commentsLength">
+          {{ 'NO_COMMENTS_YET' | __ }}
         </div>
       </div>
     </div>

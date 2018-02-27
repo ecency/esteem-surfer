@@ -571,7 +571,45 @@
   }
 
   .post-comment-list {
+    .comment-list-header, .comment-list-footer {
+      @include clearfix();
+      margin: 10px 0;
 
+      .list-pagination {
+        float: right;
+
+        .page-label, .cur-page, .total-pages {
+          color: $textColorLight
+        }
+
+        .cur-page {
+          &:after {
+            content: "/";
+            margin-right: 4px;
+            padding-left: 4px;
+          }
+        }
+
+        .btn-prev, .btn-next {
+          color: $linkHoverColor;
+          &.disabled {
+            color: $textColorLighter;
+            pointer-events: none;
+          }
+        }
+
+        .btn-prev {
+          margin-left: 5px;
+          margin-right: 5px;
+        }
+
+      }
+    }
+  }
+
+  .post-comment-list-empty {
+    color: $textColorLight;
+    font-style: italic;
   }
 }
 

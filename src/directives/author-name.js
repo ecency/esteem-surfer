@@ -1,3 +1,25 @@
+const prepareAuthorData = (authorData) => {
+
+  let id = authorData.id;
+  let username = authorData.name;
+  let name = '';
+  let bio = '';
+
+  if (authorData.json_metadata !== undefined && authorData.json_metadata !== '') {
+    try {
+      let profile = JSON.parse(authorData.json_metadata).profile;
+      name = profile.name;
+
+      if (profile.about !== undefined) {
+        bio = profile.about;
+      }
+    } catch (e) {
+    }
+  }
+
+  return [id, username, name, bio];
+};
+
 export default () => {
   return {
     restrict: 'E',
@@ -5,25 +27,13 @@ export default () => {
     scope: {
       authorData: '='
     },
-    template: `<a ng-click="" uib-popover-template="'templates/directives/author-name-popover.html'" popover-placement="bottom" popover-trigger="'outsideClick'" tabindex="0">{{ authorData.name }}</a>`,
+    template: `<a ng-click="" class="author-name-popover" popover-enable="id" uib-popover-template="'templates/directives/author-name-popover.html'" popover-placement="bottom" popover-trigger="'outsideClick'" tabindex="0">{{ username }}</a>`,
     controller: ($scope) => {
-
-      $scope.name = '';
-      $scope.username = $scope.authorData.name;
-      $scope.bio = '';
-
-
-      if ($scope.authorData.json_metadata !== undefined && $scope.authorData.json_metadata !== '') {
-        try {
-          let profile = JSON.parse($scope.authorData.json_metadata).profile;
-          $scope.name = profile.name;
-
-          if (profile.about !== undefined) {
-            $scope.bio = profile.about;
-          }
-        } catch (e) {
+      $scope.$watch('authorData', (n, o) => {
+        if (n) {
+          [$scope.id, $scope.username, $scope.name, $scope.bio] = prepareAuthorData(n);
         }
-      }
+      });
 
       $scope.followClicked = () => {
         console.log($scope.username + ' clicked ');
