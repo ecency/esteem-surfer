@@ -13,24 +13,28 @@ String.prototype.hashCode = function () {
   return hash;
 };
 
+import {remote, shell} from "electron";
+import env from "env";
+import jetpack from "fs-jetpack";
 import steem from 'steem';
+import path from 'path';
 
+
+import jq from 'jquery';
 // Angular and related dependencies
 import angular from 'angular';
 import {angularRoute} from 'angular-route';
 import {angularTranslate} from 'angular-translate';
 import ui from 'angular-ui-bootstrap';
-
 // Controllers
 import postsCtrl from './controllers/posts';
 import postCtrl from './controllers/post';
 import contentVotersCtrl from './controllers/content-voters';
+import authorCtrl from './controllers/author';
 
 import faqCtrl from './controllers/faq';
 import aboutCtrl from './controllers/about'
 import settingsCtrl from './controllers/settings';
-
-
 // Directives
 import navBarDir from './directives/navbar';
 import footerDir from './directives/footer';
@@ -43,26 +47,24 @@ import commentListItemDir from './directives/comment-list-item';
 import authorNameDir from './directives/author-name';
 import contentPayoutInfoDir from './directives/content-payout-info';
 import contentVotersInfoDir from './directives/content-voters-info';
-
-
 // Services
 import steemService from './services/steem';
 import {helperService} from './services/helper';
-
-
 // Filters
 import {catchPostImageFilter} from './filters/catch-post-image';
 import sumPostTotalFilter from './filters/sum-post-total';
 import {authorReputationFilter} from './filters/author-reputation';
 import timeAgoFilter from './filters/time-ago';
 import {postSummaryFilter} from './filters/post-summary';
-import {markDown2HtmlFilter} from './filters/markdown-2-html'
+import {markDown2Html, markDown2HtmlFilter} from './filters/markdown-2-html'
 import {capWordFilter} from './filters/cap-word';
 import currencySymbolFilter from './filters/currency-symbol';
 import dateFormattedDir from './filters/date-formatted.js';
 
-
 import constants from './constants';
+
+const app = remote.app;
+
 
 // will be hidden
 const apiUrl = 'http://api.esteem.ws:8080';
@@ -155,6 +157,10 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
       .when('/post/:parent/:author/:permlink', {
         templateUrl: 'templates/post.html',
         controller: 'postCtrl',
+      })
+      .when('/author/:author', {
+        templateUrl: 'templates/author.html',
+        controller: 'authorCtrl',
       })
       .when('/faq', {
         templateUrl: 'templates/faq.html',
@@ -256,6 +262,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
   .controller('settingsCtrl', settingsCtrl)
   .controller('contentVotersCtrl', contentVotersCtrl)
   .controller('postCtrl', postCtrl)
+  .controller('authorCtrl', authorCtrl)
 
   .filter('catchPostImage', catchPostImageFilter)
   .filter('sumPostTotal', sumPostTotalFilter)
@@ -471,4 +478,64 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
 
     // The last selected post from post list
     $rootScope.selectedPost = {};
+
+
+    //// ----------------------
+
+
+    $rootScope.$on('go-to-path', (o, u) => {
+      $location.path(u);
+      if (!$rootScope.$$phase) {
+        $rootScope.$apply();
+      }
+    });
+
+    jq('body').on('click', '.markdown-view .markdown-external-link', function (event) {
+      event.preventDefault();
+      let href = jq(this).data('href');
+      shell.openExternal(href);
+    });
+
+    jq('body').on('click', '.markdown-view .markdown-post-link', function (event) {
+      event.preventDefault();
+      let tag = jq(this).data('tag');
+      let author = jq(this).data('author');
+      let permLink = jq(this).data('permlink');
+      let u = `/post/${tag}/${author}/${permLink}`;
+      $rootScope.$broadcast('go-to-path', u);
+    });
+
+    jq('body').on('click', '.markdown-view .markdown-author-link', function (event) {
+      event.preventDefault();
+      let author = jq(this).data('author');
+      let u = `/author/${author}`;
+      $rootScope.$broadcast('go-to-path', u);
+    });
+
+    jq('body').on('click', '.markdown-view .markdown-tag-link', function (event) {
+      event.preventDefault();
+      let tag = jq(this).data('tag');
+      let u = `/posts/${$rootScope.selectedFilter}/${tag}`;
+      $rootScope.$broadcast('go-to-path', u);
+    });
+
+    // -----------
+
+    // An helper to collect post body samples
+    $rootScope.showMarkdownResultHelper = (env.name === 'development');
+    $rootScope.saveMarkdownResult = (id, markdown) => {
+
+      let savePath = path.join(app.getAppPath(), 'test-data', 'markdown-2-html', id + '.json');
+      if (jetpack.exists(savePath)) {
+        if (!confirm(savePath + ' exists. Overwrite?')) {
+          return false;
+        }
+      }
+
+      let html = markDown2Html(markdown);
+      let writeData = {'id': id, input: markdown, result: html};
+
+      jetpack.write(savePath, writeData);
+      console.log('Saved to: ' + savePath);
+    };
   });

@@ -79,7 +79,7 @@ describe("Post detail test 1. Testing with a trending post. Asuuming it has a lo
       const comments = await this.app.client.$$('.the-post .post-comment-list .comment-list-item');
       expect(comments.length).to.be.at.least(1);
     }
-  });
+  }).timeout(10000);
 
   it('Should pagination prev button enabled', async function () {
     const prop = await this.app.client.getCssProperty('.the-post .post-comment-list .comment-list-header .list-pagination .btn-prev', 'pointer-events');
@@ -97,7 +97,7 @@ describe("Post detail test 1. Testing with a trending post. Asuuming it has a lo
       const comments = await this.app.client.$$('.the-post .post-comment-list .comment-list-item');
       expect(comments.length).to.be.at.least(1);
     }
-  });
+  }).timeout(10000);
 
   it('Should pagination prev button disabled', async function () {
     const prop = await this.app.client.getCssProperty('.the-post .post-comment-list .comment-list-header .list-pagination .btn-prev', 'pointer-events');

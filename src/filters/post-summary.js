@@ -1,4 +1,6 @@
-import marked from 'marked';
+const Remarkable = require('remarkable');
+
+const md = new Remarkable({html: true, breaks: true, linkify: false});
 
 export const postSummary = (postBody, length) => {
   if (!postBody) {
@@ -6,21 +8,14 @@ export const postSummary = (postBody, length) => {
   }
 
   // Convert markdown to html
-  let text = marked(postBody, {
-    gfm: true,
-    tables: true,
-    breaks: true,
-    pedantic: false,
-    sanitize: false,
-    smartLists: true,
-    smartypants: false
-  });
+  let text = md.render(postBody);
 
-  // Remove html tags
-  // Remove new lines
-  // Remove urls
-  // Remove white spaces between words
-  text = text.replace(/(<([^>]+)>)/ig, '').replace(/\r?\n|\r/g, ' ').replace(/(?:https?|ftp):\/\/[\n\S]+/g, '').replace(/ +/g, ' ').trim();
+  text = text
+    .replace(/(<([^>]+)>)/ig, '') // Remove html tags
+    .replace(/\r?\n|\r/g, ' ') // Remove new lines
+    .replace(/(?:https?|ftp):\/\/[\n\S]+/g, '') // Remove urls
+    .trim()
+    .replace(/ +(?= )/g, ''); // Remove all multiple spaces
 
   if (length) {
     // Truncate

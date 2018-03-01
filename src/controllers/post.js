@@ -67,11 +67,13 @@ export default ($scope, $rootScope, $routeParams, $filter, $uibModal, $location,
   $scope.commentsGoNext = () => {
     $scope.commentsCurPage += 1;
     $scope.sliceComments();
+
   };
 
   $scope.commentsGoPrev = () => {
     $scope.commentsCurPage -= 1;
     $scope.sliceComments();
+    scrollToComments();
   };
 
   $scope.sliceComments = () => {
@@ -145,5 +147,11 @@ export default ($scope, $rootScope, $routeParams, $filter, $uibModal, $location,
   $scope.tagClicked = (tag) => {
     let u = `/posts/${$rootScope.selectedFilter}/${tag}`;
     $location.path(u);
+  };
+
+
+  $scope.markdownHelperClicked = () => {
+    let m = $scope.post.body;
+    $rootScope.saveMarkdownResult($scope.post.id, m);
   }
 };

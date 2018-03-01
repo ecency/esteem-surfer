@@ -49,14 +49,8 @@
     margin: 0 0 24px 0;
   }
 
-  .markdown-external-link {
-
-  }
-
-  .markdown-img-holder {
-    display: block;
-    max-width: 100%;
-
+  .markdown-external-link, .markdown-post-link, .markdown-author-link, .markdown-tag-link {
+    cursor: pointer;
   }
 
   img {

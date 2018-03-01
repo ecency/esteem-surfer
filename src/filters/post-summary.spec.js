@@ -66,14 +66,14 @@ describe('Post summary', () => {
 
     input = `<html>
 <center><a href='https://d.tube/#!/v/surfermarly/x2zm8s26'><img src='https://steemitimages.com/DQmdxVxFgLu8PT1TchgQUHtd7LGvKtF5u1DbHmDDKALiwxi/dreamsd1.jpg'></a></center><hr>
-<p><b>Everybody has a dream. Most of the time it takes us a while to turn these great wishes into reality, especially because they usually come with a bigger price tag.</b></p>
+<p><b>Everybody has a dream. Most of the time it takes us a while to turn these great wishes into reality, especially   because they usually come with a bigger     price tag.</b></p>
 <p>Now thanks to Steem some of us will be able to cut corners in order to achieve their goals more quickly. The additional income can be a game changer to many players.</p>
 <p>My Steem earnings enabled me to buy a piece of land where I'll build my first own house. Writing down these words still seems a bit unreal to me, since I didn't believe to come to that point so quickly.</p>
 <h3>Click on the above image or <a href='https://d.tube/#!/v/surfermarly/x2zm8s26'>HERE ▶️</a> to watch my video statement.</h3>
 <p>Without hard work and dedication as well as the great support from the community this wouldn't have been possible. Also the timing was brilliant, I joined in the earlier stages.</p>
 <p><b>I'm both grateful and proud.</b></p>
 <p>Many people supported me along the way, some tried to tear me down. I'm glad I only stayed with those who pushed me, they have a large stake in my success story.</p></html>`;
-    expected = "Everybody has a dream. Most of the time it takes us a while to turn these great wishes into reality, especially because they usually come with a bigger price tag.Now thanks to Steem some of us will be";
+    expected = "Everybody has a dream. Most of the time it takes us a while to turn these great wishes into reality, especially because they usually come with a bigger price tag. Now thanks to Steem some of us will b";
     expect(postSummary(input, 200)).to.equal(expected);
 
 
@@ -91,7 +91,7 @@ describe('Post summary', () => {
 ### Boooommm!!!
 I'm giving Three DTUBE & STEEMIT BRANDED TEES to three people for free. Yes, for free. *E fit be you ooo!*
 So, how can you qualify to get one?`;
-    expected = "Hey Dtube! Hey Steemian It&#39;s your boy marpe @marpemusic. I greet you from my stable, Ibadan Nigeria. There&#39;s excitement in the air! The epoch making STEEMIB (that is, STEEMIT IBADAN) meet up i";
+    expected = "Hey Dtube! Hey Steemian It's your boy marpe @marpemusic. I greet you from my stable, Ibadan Nigeria. There's excitement in the air! The epoch making STEEMIB (that is, STEEMIT IBADAN) meet up is around";
     expect(postSummary(input, 200)).to.equal(expected);
 
   });

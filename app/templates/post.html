@@ -1,6 +1,6 @@
 <nav-bar></nav-bar>
-<div class="app-container">
-  <div class="app-content keep-pos" id="content-main">
+<div class="app-container keep-pos" id="content-main">
+  <div class="app-content">
     <div class="post-page">
       <div class="indicator post-indicator" ng-show="loadingPost">
         <i class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
@@ -19,6 +19,7 @@
             </div>
           </div>
         </div>
+        <button class="btn btn-primary" ng-click="markdownHelperClicked()" ng-if="$root.showMarkdownResultHelper">Save Markdown Result to Test</button>
         <div class="post-body markdown-view selectable" ng-bind-html="body | markDown2Html"></div>
         <div class="post-footer">
           <div class="tag-list">
@@ -84,5 +85,3 @@
   </div>
 </div>
 <app-footer></app-footer>
-
-
