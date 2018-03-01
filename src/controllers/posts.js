@@ -13,6 +13,9 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, steemServic
   let filter = $routeParams.filter;
   let tag = $routeParams.tag;
 
+  // Update last selected filter
+  $rootScope.selectedFilter = filter;
+
   $scope.filter = filter;
   $scope.tag = tag;
 

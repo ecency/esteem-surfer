@@ -2,12 +2,16 @@
 <html ng-app="eSteem">
 <head>
   <meta charset="utf-8">
-  <title>eSteem</title>
+  <title>eSteem Surfer</title>
   <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body  style="visibility: hidden;" ng-class="theme" dir="{{ textDir }}">
 <div id="root" class="root" ng-view></div>
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script>if (window.module) module = window.module;</script>
 <script src="app.js"></script>
 </body>
 </html>

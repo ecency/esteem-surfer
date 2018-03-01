@@ -6,6 +6,7 @@
   "private": true,
   "dependencies": {
     "components-font-awesome": "^4.7.0",
-    "bootstrap": "3"
+    "bootstrap": "3",
+    "jquery": "^3.3.1"
   }
 }

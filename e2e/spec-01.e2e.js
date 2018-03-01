@@ -192,6 +192,7 @@ describe("Post lists, tags, filters", () => {
   }).timeout(50);
 
   it('Should switch to "promoted" filter', async function () {
+    await this.app.client.click('.navbar .filter-dropdown');
     await this.app.client.click('.navbar li[data-key="PROMOTED"] a');
   });
 
@@ -273,6 +274,7 @@ describe("Post lists, tags, filters", () => {
   }).timeout(apiTimeout);
 
   it('Should switch to "comments" filter', async function () {
+    await this.app.client.click('.navbar .filter-dropdown');
     await this.app.client.click('.navbar li[data-key="COMMENTS"] a');
   });
 

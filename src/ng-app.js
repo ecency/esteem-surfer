@@ -21,20 +21,26 @@ import path from 'path';
 
 
 import jq from 'jquery';
+
 // Angular and related dependencies
 import angular from 'angular';
 import {angularRoute} from 'angular-route';
 import {angularTranslate} from 'angular-translate';
 import ui from 'angular-ui-bootstrap';
+
 // Controllers
 import postsCtrl from './controllers/posts';
 import postCtrl from './controllers/post';
-import contentVotersCtrl from './controllers/content-voters';
 import authorCtrl from './controllers/author';
+import contentVotersCtrl from './controllers/content-voters';
+import settingsCtrl from './controllers/settings';
 
 import faqCtrl from './controllers/faq';
 import aboutCtrl from './controllers/about'
-import settingsCtrl from './controllers/settings';
+import tokenMarketCtrl from './controllers/token-market';
+import marketPlaceCtrl from './controllers/market-place';
+
+
 // Directives
 import navBarDir from './directives/navbar';
 import footerDir from './directives/footer';
@@ -47,9 +53,11 @@ import commentListItemDir from './directives/comment-list-item';
 import authorNameDir from './directives/author-name';
 import contentPayoutInfoDir from './directives/content-payout-info';
 import contentVotersInfoDir from './directives/content-voters-info';
+
 // Services
 import steemService from './services/steem';
 import {helperService} from './services/helper';
+
 // Filters
 import {catchPostImageFilter} from './filters/catch-post-image';
 import sumPostTotalFilter from './filters/sum-post-total';
@@ -170,6 +178,14 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
         templateUrl: 'templates/about.html',
         controller: 'aboutCtrl',
       })
+      .when('/token-market', {
+        templateUrl: 'templates/token-market.html',
+        controller: 'tokenMarketCtrl',
+      })
+      .when('/market-place', {
+        templateUrl: 'templates/market-place.html',
+        controller: 'marketPlaceCtrl',
+      })
       .when('/posts/:postId', {
         templateUrl: 'templates/post.html',
         controller: 'PostCtrl'
@@ -263,6 +279,8 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
   .controller('contentVotersCtrl', contentVotersCtrl)
   .controller('postCtrl', postCtrl)
   .controller('authorCtrl', authorCtrl)
+  .controller('tokenMarketCtrl', tokenMarketCtrl)
+  .controller('marketPlaceCtrl', marketPlaceCtrl)
 
   .filter('catchPostImage', catchPostImageFilter)
   .filter('sumPostTotal', sumPostTotalFilter)
@@ -291,6 +309,8 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
           return 'No comments yet';
         case 'COMMENTS_PAGE':
           return 'page:';
+        case 'TOKEN_MARKET':
+          return 'Token Market';
         default:
           return s;
       }

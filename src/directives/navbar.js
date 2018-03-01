@@ -3,16 +3,15 @@ export default ($location, $uibModal) => {
     restrict: 'AE',
     replace: true,
     scope: {
-      selectedFilter: '=',
+      selectedSection: '=',
       selectedTag: '='
     },
     templateUrl: 'templates/directives/navbar.html',
     controller: ($scope, $rootScope, constants) => {
       $scope.filters = constants.filters;
+      $scope.selectedFilterName = $scope.filters.find(i => i.name === $rootScope.selectedFilter).key;
 
-      $scope.linkClicked = (c) => {
-        $rootScope.selectedFilter = c;
-
+      $scope.filterClicked = (c) => {
         let u = `/posts/${c}`;
         if ($scope.selectedTag) {
           u += `/${$scope.selectedTag}`;
@@ -20,12 +19,12 @@ export default ($location, $uibModal) => {
         $location.path(u);
       };
 
-      $scope.hideBack = true;
+      $scope.tokenMarketClicked = () => {
+        $location.path('/token-market');
+      };
 
-      $scope.goBack = () => {
-        console.log(document.referrer);
-
-        // history.back();
+      $scope.marketPlaceClicked = () => {
+        $location.path('/market-place');
       };
 
       $scope.openSettings = () => {

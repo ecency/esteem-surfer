@@ -28,6 +28,7 @@ describe("Post detail test 2. Testing with a new post. Asuuming it has no commen
   });
 
   it('Should switch to "New" filter', async function () {
+    await this.app.client.click('.navbar .filter-dropdown');
     await this.app.client.click('.navbar li[data-key="NEW"] a');
   });
 
@@ -100,6 +101,7 @@ describe("Post detail test 2. Testing with a new post. Asuuming it has no commen
   });
 
   it('Go Trending', async function () {
+    await this.app.client.click('.navbar .filter-dropdown');
     await this.app.client.click('.navbar li[data-key="TRENDING"] a');
 
     await this.app.client.waitUntil(() => {
@@ -110,6 +112,7 @@ describe("Post detail test 2. Testing with a new post. Asuuming it has no commen
   }).timeout(apiTimeout);
 
   it('Go Votes', async function () {
+    await this.app.client.click('.navbar .filter-dropdown');
     await this.app.client.click('.navbar li[data-key="VOTES"] a');
 
     await this.app.client.waitUntil(() => {
