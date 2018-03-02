@@ -311,6 +311,12 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
           return 'page:';
         case 'TOKEN_MARKET':
           return 'Token Market';
+        case 'VOTING_POWER':
+          return 'Voting Power';
+        case 'POST_COUNT':
+          return 'Post Count';
+        case 'RESTEEMED':
+          return 'resteemed';
         default:
           return s;
       }
@@ -495,14 +501,18 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
     // The last selected filter from navbar
     $rootScope.selectedFilter = constants.defaultFilter;
 
-
     // The last selected post from post list
     $rootScope.selectedPost = {};
 
 
-    //// ----------------------
+    // Click handler for external links
+    jq('body').on('click', 'a[target="_external"]', function (event) {
+      event.preventDefault();
+      let href = jq(this).attr('href');
+      shell.openExternal(href);
+    });
 
-
+    // Click handlers for markdown
     $rootScope.$on('go-to-path', (o, u) => {
       $location.path(u);
       if (!$rootScope.$$phase) {
@@ -538,8 +548,6 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
       let u = `/posts/${$rootScope.selectedFilter}/${tag}`;
       $rootScope.$broadcast('go-to-path', u);
     });
-
-    // -----------
 
     // An helper to collect post body samples
     $rootScope.showMarkdownResultHelper = (env.name === 'development');

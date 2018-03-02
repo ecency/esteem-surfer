@@ -4,8 +4,10 @@ export default () => {
       if (value === '') {
         return;
       }
+      let size = attrs.size || 'medium';
+
       element.css({
-        'background-image': 'url(https://steemitimages.com/u/' + value + '/avatar/medium)'
+        'background-image': 'url(https://steemitimages.com/u/' + value + '/avatar/' + size + ')'
       });
     });
   };

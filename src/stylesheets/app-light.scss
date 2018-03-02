@@ -1,23 +1,22 @@
-@import "common";
 
 body.light-theme {
+
+  $themePrimaryTone: #2c5393;
 
   $navbarBgColorDefault: #2c5393;
   $navbarBgColorHighlight: #4879c9;
   $navbarColorDefault: #eeeeee;
   $navbarColorHighlight: #ffffff;
   $navbarColorizeDropDown: true;
-  @import "navbar";
 
   $footerBgColor: #f2f2f2;
   $footerColor: #838383;
   $footerHeight: 30px;
-  @import "footer";
 
   $appBg: #FCFCFC;
   $boxBg: #f8f8f8;
 
-  $profilePicBg: #dfdfdf;
+  $profilePicBg: #eeeeee;
 
   $listBgColor: #ffffff;
   $listBorderColor: #e8e8e8;
@@ -25,6 +24,7 @@ body.light-theme {
   $textColor: #333;
   $textColorLight: #788187;
   $textColorLighter: #8c979e;
+  $textColorLightest: #fff;
 
   $linkHoverColor: #4879c9;
 
@@ -33,142 +33,9 @@ body.light-theme {
   $loadingColor: #5892f4;
   $loadingSuccessColor: #009c00;
 
+  @import "navbar";
+  @import "footer";
+  @import "common";
   @import "layout";
-
-  a.disabled-link {
-    pointer-events: none;
-    cursor: default;
-    color: $textColorLighter;
-  }
-
-  .side-tag-list {
-    background: $listBgColor;
-    border: 1px solid $listBorderColor;
-    box-shadow: 0 0 1px 0 $listBorderColor;
-    float: left;
-    padding: 20px 20px;
-    width: 200px;
-
-    header {
-      margin-bottom: 10px;
-      @include clearfix();
-
-      h2 {
-        float: left;
-        font-size: 18px;
-        font-weight: 600;
-        margin: 0;
-      }
-
-      .btn-remove-tag {
-        color: $textColorLight;
-        float: right;
-        opacity: 0.6;
-
-        &:hover {
-          opacity: 1;
-        }
-      }
-    }
-
-    footer {
-      margin-top: 10px;
-
-      a {
-        font-size: 16px;
-        font-weight: 600;
-      }
-    }
-
-    ul.tag-list {
-      margin: 0;
-      padding: 0;
-
-      li {
-        list-style: none;
-        margin-bottom: 6px;
-
-        a {
-          font-size: 16px;
-        }
-
-        &.active {
-          a {
-            color: $linkHoverColor;
-            font-weight: 600;
-          }
-        }
-      }
-    }
-  }
-
-  .post-list {
-    background: $listBgColor;
-    border: 1px solid $listBorderColor;
-    box-shadow: 0 0 1px 0 $listBorderColor;
-    float: right;
-    margin-left: 20px;
-    min-height: 100%;
-    padding: 20px 30px;
-    width: calc(100% - 220px);
-
-    header {
-      border-bottom: 1px solid $seperatorColor;
-      margin-bottom: 20px;
-      padding-bottom: 10px;
-      @include clearfix();
-
-      h1 {
-        color: $text-color;
-        float: left;
-        font-size: 18px;
-        font-weight: 600;
-        margin: 0;
-      }
-
-      .btn-reload {
-        color: $loadingColor;
-        float: right;
-        font-size: 16px;
-      }
-    }
-
-    ul.feed {
-      margin: 0;
-      padding: 0;
-
-      > li {
-        border-bottom: 1px solid $seperatorColor;
-        list-style: none;
-        margin-bottom: 10px;
-        padding: 10px 0;
-      }
-    }
-
-    footer {
-      text-align: center;
-
-      .fa {
-        color: $loadingColor;
-        font-size: 30px;
-      }
-    }
-  }
-
-  .post-page {
-    .indicator {
-      text-align: center;
-
-      .fa {
-        color: $loadingColor;
-        font-size: 30px;
-      }
-    }
-  }
-
-
-
-
-
   @import "components";
 }

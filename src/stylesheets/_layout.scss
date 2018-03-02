@@ -9,15 +9,12 @@
   width: 100%;
 }
 
-
 .app-container {
   background: $appBg;
   box-sizing: border-box;
   color: $textColor;
   height: calc(100% - #{$navbar-height + $footerHeight});
   overflow-y: auto;
-
-  padding: 20px;
 
   a {
     color: $textColor;
@@ -28,10 +25,257 @@
   }
 }
 
-
 .app-content {
   @include clearfix();
   margin: auto;
   max-width: 1300px;
+  padding: 20px;
   width: 100%;
+}
+
+.posts-page {
+  .post-list {
+    background: $listBgColor;
+    border: 1px solid $listBorderColor;
+    box-shadow: 0 0 1px 0 $listBorderColor;
+    float: right;
+    margin-left: 20px;
+    min-height: 100%;
+    padding: 20px 30px;
+    width: calc(100% - 220px);
+
+    header {
+      border-bottom: 1px solid $seperatorColor;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      @include clearfix();
+
+      h1 {
+        color: $text-color;
+        float: left;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .btn-reload {
+        color: $loadingColor;
+        float: right;
+        font-size: 16px;
+      }
+    }
+
+    ul.feed {
+      margin: 0;
+      padding: 0;
+
+      > li {
+        border-bottom: 1px solid $seperatorColor;
+        list-style: none;
+        margin-bottom: 10px;
+        padding: 10px 0;
+      }
+    }
+
+    footer {
+      text-align: center;
+
+      .fa {
+        color: $loadingColor;
+        font-size: 30px;
+      }
+    }
+  }
+}
+
+.post-page {
+  .indicator {
+    text-align: center;
+
+    .fa {
+      color: $loadingColor;
+      font-size: 30px;
+    }
+  }
+}
+
+.author-page {
+  max-width: 100%;
+  padding: 0;
+
+  .indicator {
+    padding-top: 20px;
+    text-align: center;
+
+    .fa {
+      color: $loadingColor;
+      font-size: 30px;
+    }
+  }
+
+  .the-author {
+    .author-header {
+      height: 200px;
+
+      .cover-image {
+        background-color: #171F24;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 155px;
+      }
+
+      .profile-image-holder {
+        margin: auto;
+        max-width: 1300px;
+        position: relative;
+
+        .profile-image {
+          background-color: $profilePicBg;
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          border: 5px solid lighten($seperatorColor, 50);
+          border-radius: 50%;
+          bottom: -40px;
+
+          height: 140px;
+          left: 50px;
+          position: absolute;
+          width: 140px;
+          z-index: 10;
+
+          .author-reputation{
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 5px solid lighten($seperatorColor, 50);
+            border-radius: 50%;
+            background-color: lighten($themePrimaryTone, 20);
+            color: $textColorLightest;
+            text-align: center;
+            padding-top: 7px;
+            line-height: 100%;
+            right: -10px;
+            top: 0
+          }
+        }
+
+      }
+
+      .author-navbar {
+        border-left: none;
+        border-radius: 0;
+        border-right: none;
+        border-top: none;
+        margin: 0;
+        .container-fluid {
+          margin: auto;
+          max-width: 1300px;
+          padding-left: 263px;
+        }
+      }
+    }
+
+    .author-content {
+      @include clearfix();
+      margin: auto;
+      max-width: 1300px;
+      padding: 20px;
+      width: 100%;
+
+      .author-content-left {
+        float: left;
+        width: 240px;
+
+        .author-name {
+          font-size: 20px;
+          font-weight: 600;
+          margin-bottom: 4px;
+        }
+
+        .author-username {
+          color: $linkHoverColor;
+          font-size: 18px;
+          font-weight: 600;
+          margin-bottom: 20px;
+        }
+
+        .author-bio {
+          color: $textColorLight;
+          margin-bottom: 20px;
+        }
+
+        .author-prop {
+          align-items: center;
+          color: $textColorLight;
+          display: flex;
+          margin-bottom: 13px;
+
+          .prop-key {
+            display: inline-block;
+            font-size: 15px;
+            width: 26px;
+          }
+
+          .prop-value {
+            display: inline-block;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: calc(100% - 26px);
+          }
+
+          a {
+            color: $textColorLight;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+
+        }
+      }
+
+      .author-content-right {
+        .post-list {
+          background: $listBgColor;
+          border: 1px solid $listBorderColor;
+          box-shadow: 0 0 1px 0 $listBorderColor;
+          float: right;
+          margin-left: 20px;
+          min-height: 100%;
+          padding: 20px 30px;
+          width: calc(100% - 260px);
+
+          ul.feed {
+            margin: 0;
+            padding: 0;
+
+            > li {
+              border-bottom: 1px solid $seperatorColor;
+              list-style: none;
+              margin-bottom: 10px;
+              padding: 10px 0;
+            }
+          }
+
+          footer {
+            text-align: center;
+
+            .fa {
+              color: $loadingColor;
+              font-size: 30px;
+            }
+          }
+        }
+
+      }
+    }
+  }
+}
+
+.static-page {
+
 }

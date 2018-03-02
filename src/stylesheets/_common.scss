@@ -2,3 +2,8 @@ a[ng-click] {
   cursor: pointer;
 }
 
+a.disabled-link {
+  pointer-events: none;
+  cursor: default;
+  color: $textColorLighter;
+}

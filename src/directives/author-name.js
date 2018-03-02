@@ -28,7 +28,7 @@ export default () => {
       authorData: '='
     },
     template: `<a ng-click="" class="author-name-popover" popover-enable="id" uib-popover-template="'templates/directives/author-name-popover.html'" popover-placement="bottom" popover-trigger="'outsideClick'" tabindex="0">{{ username }}</a>`,
-    controller: ($scope) => {
+    controller: ($scope, $location) => {
       $scope.$watch('authorData', (n, o) => {
         if (n) {
           [$scope.id, $scope.username, $scope.name, $scope.bio] = prepareAuthorData(n);
@@ -40,7 +40,8 @@ export default () => {
       };
 
       $scope.goToAuthor = () => {
-
+        let u = `/author/${$scope.username}`;
+        $location.path(u);
       };
     }
   };

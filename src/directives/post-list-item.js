@@ -3,7 +3,8 @@ export default () => {
     restrict: 'AE',
     replace: true,
     scope: {
-      post: '='
+      post: '=',
+      asAuthor: '='
     },
     link: ($scope, $element) => {
 
@@ -12,6 +13,7 @@ export default () => {
     template: `
       <div class="post-list-item" ng-init="postImage = (post | catchPostImage)" ng-class="{'with-image': postImage}">
         <div class="post-header">
+            <div class="post-resteemed" ng-if="reSteemed"><i class="fa fa-retweet"></i> {{ 'RESTEEMED' | __  }}</div>
             <div class="post-info-bar">
                 <div class="post-author-pic" author-bg-img-style author="{{ post.author }}"></div>
                 <div class="post-info-right-side">
@@ -57,6 +59,7 @@ export default () => {
     `,
     controller: ($scope, $rootScope, $location, $sce, $filter, $uibModal, storageService, helperService) => {
       $scope.isVisited = helperService.isPostRead($scope.post.id);
+      $scope.reSteemed = ($scope.asAuthor && $scope.post.author !== $scope.asAuthor);
 
       const goDetail = () => {
         $rootScope.selectedPost = $scope.post;
@@ -82,6 +85,11 @@ export default () => {
 
       $scope.commentsClicked = () => {
         goDetail();
+      };
+
+      $scope.authorClicked = () => {
+        let u = `/author/${$scope.post.author}`;
+        $location.path(u);
       };
 
       $scope.parentClicked = () => {

@@ -82,7 +82,20 @@ export default (steemApi, $q) => {
     getContentReplies: (author, parentPermlink) => {
       let defer = $q.defer();
 
-      steemApi.getApi().getContentReplies(author, parentPermlink , (err, response) => {
+      steemApi.getApi().getContentReplies(author, parentPermlink, (err, response) => {
+
+        if (err) {
+          defer.reject(err);
+        } else {
+          defer.resolve(response);
+        }
+      });
+      return defer.promise;
+    },
+    getFollowCount: (author) => {
+      let defer = $q.defer();
+
+      steemApi.getApi().getFollowCount(author, (err, response) => {
 
         if (err) {
           defer.reject(err);

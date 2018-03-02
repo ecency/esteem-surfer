@@ -1,8 +1,80 @@
 <nav-bar></nav-bar>
 <div class="app-container keep-pos" id="content-main">
-  <div class="app-content">
-    <div class="author-page">
-      {{ author }}
+  <div class="app-content author-page">
+    <div class="indicator author-indicator" ng-show="loadingAuthor">
+      <i class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
+    </div>
+    <div class="the-author" ng-if="!loadingAuthor" ng-class="{'fetching': loadingAuthor || loadingRest}">
+      <header class="author-header">
+        <div class="cover-image" style="background-image: url('{{ authorData.cover_image }}')"></div>
+        <div class="profile-image-holder">
+          <div class="profile-image" author-bg-img-style author="{{ author }}" size="large"><div class="author-reputation">{{ authorData.reputation | authorReputation }}</div> </div>
+        </div>
+        <nav class="navbar navbar-default author-navbar">
+          <div class="container-fluid">
+            <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a ng-click="">Blog</a></li>
+                <li><a ng-click="">Comments</a></li>
+                <li><a ng-click="">Replies</a></li>
+                <li><a ng-click="">Wallet</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="author-content">
+        <div class="author-content-left">
+          <div class="author-name" ng-if="authorData.name">{{ authorData.name }}</div>
+          <div class="author-username">@{{ author }}</div>
+          <div class="author-bio" ng-if="authorData.about">{{ authorData.about }}</div>
+          <div class="author-prop author-prop-location" ng-if="authorData.location">
+            <span class="prop-key"><i class="fa fa-map-marker"></i></span>
+            <span class="prop-value">{{ authorData.location }}</span>
+          </div>
+          <div class="author-prop author-prop-website" ng-if="authorData.website">
+            <span class="prop-key"><i class="fa fa-external-link"></i></span>
+            <a class="prop-value" target="_external" ng-href="{{ authorData.website }}"> {{ authorData.website}}</a>
+          </div>
+          <div class="author-prop author-prop-created" tooltip-placement="top-left"
+               uib-tooltip="{{ authorData.created | timeAgo }}">
+            <span class="prop-key"><i class="fa fa-calendar-o"></i></span>
+            <span class="prop-value">{{ authorData.created | dateFormatted:'short' }}</span>
+          </div>
+          <div class="author-prop author-prop-post-count" tooltip-placement="top-left"
+               uib-tooltip="{{ 'POST_COUNT' | __ }}">
+            <span class="prop-key"><i class="fa fa-list"></i></span>
+            <span class="prop-value">{{ authorData.post_count }}</span>
+          </div>
+          <div class="author-prop author-prop-follower-count" tooltip-placement="top-left"
+               uib-tooltip="{{ 'FOLLOWERS' | translate }}">
+            <span class="prop-key"><i class="fa fa-users"></i></span>
+            <span class="prop-value">{{ authorData.follower_count }}</span>
+          </div>
+          <div class="author-prop author-prop-following-count" tooltip-placement="top-left"
+               uib-tooltip="{{ 'FOLLOWING' | translate }}">
+            <span class="prop-key"><i class="fa fa-user-plus"></i></span>
+            <span class="prop-value">{{ authorData.following_count }}</span>
+          </div>
+          <div class="author-prop author-prop-following-count" tooltip-placement="top-left"
+               uib-tooltip="{{ 'VOTING_POWER' | __ }}">
+            <span class="prop-key"><i class="fa fa-bolt"></i></span>
+            <span class="prop-value">{{ authorData.voting_power / 100 | number:2 }}</span>
+          </div>
+        </div>
+        <div class="author-content-right">
+          <div class="post-list" ng-class="{'fetching': loadingRest}">
+            <ul class="feed">
+              <li ng-repeat="post in dataList">
+                <post-list-item post="post" as-author="author"></post-list-item>
+              </li>
+            </ul>
+            <footer>
+              <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="loadingRest"></i>
+            </footer>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
