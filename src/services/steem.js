@@ -17,6 +17,19 @@ export default (steemApi, $q) => {
 
       return defer.promise;
     },
+    getRepliesByLastUpdate: (startAuthor, startPermalink, limit = 20) => {
+      let defer = $q.defer();
+
+      steemApi.getApi().getRepliesByLastUpdate(startAuthor, startPermalink, limit, (err, response) => {
+        if (err) {
+          defer.reject(err);
+        } else {
+          defer.resolve(response);
+        }
+      });
+
+      return defer.promise;
+    },
     getTrendingTags: (limit = 50) => {
       let defer = $q.defer();
 

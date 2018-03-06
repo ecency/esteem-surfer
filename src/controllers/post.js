@@ -97,7 +97,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $uibModal, $location,
       // The last selected post from list === this post
       defer.resolve($rootScope.selectedPost);
     } else {
-      // When refreshed in development environment
+      // When clicked outside from posts lists (post body) or refreshed in development environment
       steemService.getContent(author, permlink).then((resp) => {
         defer.resolve(resp);
       }).catch((e) => {

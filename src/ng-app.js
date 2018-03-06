@@ -54,6 +54,8 @@ import authorNameDir from './directives/author-name';
 import contentPayoutInfoDir from './directives/content-payout-info';
 import contentVotersInfoDir from './directives/content-voters-info';
 
+import contentListItemChildDir from './directives/content-list-item-child'
+
 // Services
 import steemService from './services/steem';
 import {helperService} from './services/helper';
@@ -68,6 +70,8 @@ import {markDown2Html, markDown2HtmlFilter} from './filters/markdown-2-html'
 import {capWordFilter} from './filters/cap-word';
 import currencySymbolFilter from './filters/currency-symbol';
 import dateFormattedDir from './filters/date-formatted.js';
+import {contentSummaryChildFilter} from './filters/content-summary-child';
+
 
 import constants from './constants';
 
@@ -166,7 +170,11 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
         templateUrl: 'templates/post.html',
         controller: 'postCtrl',
       })
-      .when('/author/:author', {
+      .when('/author/:username', {
+        templateUrl: 'templates/author.html',
+        controller: 'authorCtrl',
+      })
+      .when('/author/:username/:section', {
         templateUrl: 'templates/author.html',
         controller: 'authorCtrl',
       })
@@ -271,6 +279,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
   .directive('authorName', authorNameDir)
   .directive('contentPayoutInfo', contentPayoutInfoDir)
   .directive('contentVotersInfo', contentVotersInfoDir)
+  .directive('contentListItemChild', contentListItemChildDir)
 
   .controller('postsCtrl', postsCtrl)
   .controller('faqCtrl', faqCtrl)
@@ -291,6 +300,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
   .filter('capWord', capWordFilter)
   .filter('currencySymbol', currencySymbolFilter)
   .filter('dateFormatted', dateFormattedDir)
+  .filter('contentSummaryChild', contentSummaryChildFilter)
   .filter('__', () => {
     // Temporary filter to figure out different language entries from eSteem mobile app's locale files
     return (s) => {

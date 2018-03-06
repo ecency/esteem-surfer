@@ -49,16 +49,26 @@
     margin: 0 0 24px 0;
   }
 
-  .markdown-external-link, .markdown-post-link, .markdown-author-link, .markdown-tag-link {
-    cursor: pointer;
-  }
-
   img {
     max-width: 100%;
   }
 
   a {
     color: $linkHoverColor !important;
+  }
+
+  hr {
+    clear: both;
+    margin: 6px auto;
+  }
+
+  .pull-left, .pull-right {
+    max-width: 50%;
+    padding-left: 10px;
+  }
+
+  .markdown-external-link, .markdown-post-link, .markdown-author-link, .markdown-tag-link {
+    cursor: pointer;
   }
 
   &.mini-markdown {
@@ -186,7 +196,7 @@
     font-size: 14px;
     margin-bottom: 10px;
 
-    .post-resteemed{
+    .post-resteemed {
       color: $textColorLighter;
       margin-bottom: 8px;
     }
@@ -951,3 +961,225 @@
     }
   }
 }
+
+
+
+.content-list-item-child {
+  /*
+  STRUCTURE:
+  .content-list-item-child
+    .content-header
+      .content-info-bar
+        .content-author-pic
+        .content-info-right-side
+          .content-author
+          .content-author-reputation
+          .content-cat
+          .content-date
+
+    .content-body
+      .content-image
+      .content-body-title
+      .content-body-summary
+
+
+    .content-footer
+      .content-voting
+        .content-up-vote
+        .content-total
+          a
+            .cur-prefix
+      .content-voters
+      .content-comment-count
+   */
+  @include clearfix();
+
+  width: 100%;
+
+  .content-header {
+    @include clearfix();
+
+    font-size: 14px;
+    margin-bottom: 10px;
+
+    .content-info-bar {
+      align-items: center;
+      display: flex;
+
+      .content-author-pic {
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 50%;
+        float: left;
+        height: 24px;
+        width: 24px;
+      }
+
+      .content-info-right-side {
+        float: left;
+        margin-left: 10px;
+        margin-right: 5px;
+
+        .content-author {
+          font-weight: 600;
+        }
+
+        .content-author-reputation {
+          &:before {
+            content: '(';
+          }
+          &:after {
+            content: ')';
+          }
+        }
+
+        .content-parent {
+          margin-right: 2px;
+          &:after {
+            content: '•';
+            padding-left: 6px;
+          }
+        }
+
+        .content-parent, .content-date {
+          color: $textColorLight;
+
+          a {
+            color: $textColorLight;
+          }
+        }
+      }
+    }
+  }
+
+  .content-body {
+
+    .content-image {
+      float: left;
+      height: 77px;
+      overflow: hidden;
+      padding-top: 2px;
+      width: 130px;
+
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .content-body-title, .content-body-summary {
+      font-size: 16px;
+
+      a.visited {
+        color: $textColorLighter;
+      }
+    }
+
+    .content-body-title {
+      line-height: 130%;
+      margin: 0 0 8px 0;
+      width: 100%;
+    }
+
+    .content-body-summary {
+      margin-bottom: 10px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+    }
+  }
+
+  .content-footer {
+    @include clearfix();
+
+    .content-voting {
+      border-right: 1px solid $seperatorColor;
+      float: left;
+      margin-right: 20px;
+      padding-right: 20px;
+
+      .content-up-vote {
+        float: left;
+        margin-right: 10px;
+        a {
+          color: $textColorLight;
+          font-size: 20px;
+          line-height: 22px;
+        }
+      }
+
+      .content-total {
+        float: left;
+        font-size: 15px;
+        position: relative;
+
+        a {
+          outline: 0;
+
+          .cur-prefix {
+
+          }
+
+          &.payout-declined {
+            color: $textColorLighter;
+            text-decoration: line-through;
+          }
+        }
+      }
+    }
+
+    .content-voters {
+      border-right: 1px solid $seperatorColor;
+      float: left;
+      margin-right: 20px;
+      padding-right: 20px;
+
+      a {
+        .fa {
+          color: $textColorLight;
+          margin-right: 7px;
+        }
+
+        &:hover {
+          .fa {
+            color: $linkHoverColor;
+          }
+        }
+      }
+    }
+
+    .content-comment-count {
+      float: left;
+
+      a {
+        .fa {
+          color: $textColorLight;
+          margin-right: 6px;
+        }
+
+        &:hover {
+          .fa {
+            color: $linkHoverColor;
+          }
+        }
+      }
+    }
+  }
+
+  &.with-image {
+    .content-body .content-body-title,
+    .content-body .content-body-summary,
+    .content-footer {
+      // 130 = image width + 10 margin space
+      float: right;
+      width: calc(100% - 140px);
+    }
+  }
+}
+
+
+
+
+

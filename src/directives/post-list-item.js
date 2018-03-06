@@ -19,7 +19,7 @@ export default () => {
                 <div class="post-info-right-side">
                     <span class="post-author"><a ng-click="authorClicked()">{{ post.author }}</a></span>
                     <span class="post-author-reputation">{{ post.author_reputation|authorReputation|number:0 }}</span>
-                    <span class="post-parent">{{ 'IN' | translate }} <a ng-click="parentClicked()">{{ post.parent_permlink }}</a></span>
+                    <span class="post-parent">{{ 'IN' | translate }} <a ng-click="parentClicked()">{{ post.category }}</a></span>
                     <span class="post-date"><a ng-click="createdClicked()" title="{{ post.created|dateFormatted }}"> {{post.created|timeAgo}}</a></span>
                 </div>
             </div>
@@ -63,7 +63,7 @@ export default () => {
 
       const goDetail = () => {
         $rootScope.selectedPost = $scope.post;
-        let u = `/post/${$scope.post.parent_permlink}/${$scope.post.author}/${$scope.post.permlink}`;
+        let u = `/post/${$scope.post.category}/${$scope.post.author}/${$scope.post.permlink}`;
         $location.path(u);
       };
 
@@ -93,7 +93,7 @@ export default () => {
       };
 
       $scope.parentClicked = () => {
-        let u = `/posts/${$rootScope.selectedFilter}/${$scope.post.parent_permlink}`;
+        let u = `/posts/${$rootScope.selectedFilter}/${$scope.post.category}`;
         $location.path(u);
       };
     }

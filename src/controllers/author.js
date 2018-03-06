@@ -1,54 +1,192 @@
-export default ($scope, $routeParams, steemService, constants) => {
-  let author = $routeParams.author;
+export default ($scope, $rootScope, $routeParams, $q, $location, $window, $filter, steemService, constants) => {
+  let username = $routeParams.username;
+  let section = $routeParams.section || 'blog';
 
-  // let routePath = `/@${author}`;
-
+  $scope.authorData = null;
   $scope.loadingAuthor = true;
-  $scope.loadingRest = true;
 
-  $scope.authorData = {
-    username: author,
-    follower_count: '...',
-    following_count: '...'
+  $scope.dataList = $rootScope.Data['dataList'] || [];
+
+  $scope.$watchCollection('authorData', (n, o) => {
+    // Persist author data
+    if (n === o) {
+      return;
+    }
+
+    $rootScope.lastAuthorData = n;
+  });
+
+  $scope.$watchCollection('dataList', (n, o) => {
+    if (n === o) {
+      return;
+    }
+
+    $rootScope.setNavVar('dataList', n);
+  });
+
+  const init = () => {
+    let defer = $q.defer();
+
+    if ($rootScope.lastAuthorData && $rootScope.lastAuthorData.name === username) {
+      defer.resolve($rootScope.lastAuthorData);
+    } else {
+      steemService.getAccounts([username]).then(resp => {
+        defer.resolve(resp[0]);
+      }).catch((e) => {
+        defer.reject(e)
+      })
+    }
+
+    return defer.promise;
   };
 
-  $scope.dataList = [];
+  init().then(account => {
 
-  const loadPosts = (startAuthor = null, startPermalink = null) => {
-    $scope.loadingPosts = true;
-    steemService.getDiscussionsBy('Blog', author, startAuthor, startPermalink, constants.postListSize).then((resp) => {
-      $scope.dataList = resp;
-    }).catch(() => {
+    $scope.authorData = account;
+
+    if (account._merged_ === undefined) {
+      $scope.authorData.profile = {};
+
+      try {
+        let profile = JSON.parse(account.json_metadata).profile;
+        angular.extend($scope.authorData.profile, profile);
+      } catch (e) {
+      }
+
+      steemService.getFollowCount(username).then(resp => {
+        account.follower_count = resp.follower_count;
+        account.following_count = resp.following_count;
+        account._merged_ = true;
+
+        $scope.authorData = account;
+      });
+    }
+
+    $scope.loadingAuthor = false;
+
+    if ($scope.dataList.length === 0) {
+      // if initial data is empty then load contents
+      loadContentsFirst();
+    } else {
+      // else count ids
+      $scope.dataList.forEach((i) => {
+        ids.push(i.id);
+      })
+    }
+  });
+
+  let ids = [];
+  let hasMore = true;
+
+  const loadContentsFirst = () => {
+    $scope.loadingRest = true;
+
+    let statePath = null;
+    switch (section) {
+      case 'blog':
+        statePath = '';
+        break;
+      case 'comments':
+        statePath = 'comments';
+        break;
+      case 'replies':
+        statePath = 'recent-replies';
+        break;
+    }
+
+    steemService.getState(`/@${username}/${statePath}`).then(resp => {
+      for (let k in resp.content) {
+        let i = resp.content[k];
+
+        if (ids.indexOf(i.id) === -1) {
+          $scope.dataList.push(i);
+        }
+        ids.push(i.id);
+      }
+
+      // Sort list items by id
+      $scope.dataList.sort(function (a, b) {
+        let keyA = a.id,
+          keyB = b.id;
+
+        if (keyA > keyB) return -1;
+        if (keyA < keyB) return 1;
+        return 0;
+      });
+
+    }).catch((e) => {
+      console.log(e)
       // TODO: Handle catch
     }).then(() => {
+
       $scope.loadingRest = false;
     });
   };
 
-  steemService.getAccounts([author]).then(resp => {
-    let account = resp[0];
+  const loadContents = (startAuthor = null, startPermalink = null) => {
 
-    try {
-      let profile = JSON.parse(account.json_metadata).profile;
-      angular.extend($scope.authorData, profile);
-    } catch (e) {
+    $scope.loadingRest = true;
+
+    let prms = null;
+
+    switch (section) {
+      case 'blog':
+        prms = steemService.getDiscussionsBy('Blog', username, startAuthor, startPermalink, constants.postListSize);
+        break;
+      case 'comments':
+        prms = steemService.getDiscussionsBy('Comments', username, startAuthor, startPermalink, constants.postListSize);
+        break;
+      case 'replies':
+        prms = steemService.getRepliesByLastUpdate(startAuthor, startPermalink, constants.postListSize);
+        break;
     }
 
-    $scope.authorData.created = account.created;
-    $scope.authorData.post_count = account.post_count;
-    $scope.authorData.voting_power = account.voting_power;
-    $scope.authorData.reputation = account.reputation
+    prms.then((resp) => {
+      // if server returned less than 2 posts, it means end of pagination
+      // comparison value is 2 because steem api returns at least 1 post on pagination
+      if (resp.length < 2) {
+        hasMore = false;
+        return false;
+      }
 
-  }).then(() => {
-    $scope.loadingAuthor = false;
+      resp.forEach((i) => {
+        if (ids.indexOf(i.id) === -1) {
+          $scope.dataList.push(i);
+        }
+        ids.push(i.id);
+      });
 
-    return steemService.getFollowCount(author).then(resp => {
-      $scope.authorData.follower_count = resp.follower_count;
-      $scope.authorData.following_count = resp.following_count;
+    }).catch((e) => {
+      console.log(e)
+      // TODO: Handle catch
+    }).then(() => {
+
+      $scope.loadingRest = false;
     });
-  }).then(() => {
-    loadPosts();
-  });
+  };
 
-  $scope.author = author;
+  $scope.changeSection = (section) => {
+    $location.path(`/author/${username}/${section}`);
+  };
+
+  $scope.reload = () => {
+    if ($scope.loadingRest) {
+      return false;
+    }
+    $scope.dataList = [];
+    ids = [];
+    loadContentsFirst();
+  };
+
+  $scope.reachedBottom = () => {
+    if ($scope.loadingRest || !hasMore) {
+      return false;
+    }
+
+    let lastPost = [...$scope.dataList].pop();
+    loadContents(lastPost.author, lastPost.permlink)
+  };
+
+  $scope.section = section;
+  $scope.username = username;
 };

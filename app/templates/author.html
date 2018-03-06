@@ -1,23 +1,25 @@
 <nav-bar></nav-bar>
-<div class="app-container keep-pos" id="content-main">
+<div class="app-container keep-pos" scrolled-bottom="reachedBottom()" id="content-main">
   <div class="app-content author-page">
     <div class="indicator author-indicator" ng-show="loadingAuthor">
       <i class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
     </div>
-    <div class="the-author" ng-if="!loadingAuthor" ng-class="{'fetching': loadingAuthor || loadingRest}">
+    <div class="the-author" ng-if="!loadingAuthor" ng-class="{'fetching': loadingAuthor}">
       <header class="author-header">
-        <div class="cover-image" style="background-image: url('{{ authorData.cover_image }}')"></div>
+        <div class="cover-image" style="background-image: url('{{ authorData.profile.cover_image }}')"></div>
         <div class="profile-image-holder">
-          <div class="profile-image" author-bg-img-style author="{{ author }}" size="large"><div class="author-reputation">{{ authorData.reputation | authorReputation }}</div> </div>
+          <div class="profile-image" author-bg-img-style author="{{ username }}" size="large">
+            <div class="author-reputation">{{ authorData.reputation | authorReputation }}</div>
+          </div>
         </div>
         <nav class="navbar navbar-default author-navbar">
           <div class="container-fluid">
             <div class="collapse navbar-collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><a ng-click="">Blog</a></li>
-                <li><a ng-click="">Comments</a></li>
-                <li><a ng-click="">Replies</a></li>
-                <li><a ng-click="">Wallet</a></li>
+                <li ng-class="{'active': section==='blog'}"><a ng-click="changeSection('blog')">{{ 'BLOG' | translate }}</a></li>
+                <li ng-class="{'active': section==='comments'}"><a ng-click="changeSection('comments')">{{ 'COMMENTS' | translate }}</a></li>
+                <li ng-class="{'active': section==='replies'}"><a ng-click="changeSection('replies')">{{ 'REPLIES' | translate }}</a></li>
+                <li ng-class="{'active': section==='wallet'}"><a ng-click="changeSection('wallet')">{{ 'WALLET' | translate }}</a></li>
               </ul>
             </div>
           </div>
@@ -25,19 +27,18 @@
       </header>
       <div class="author-content">
         <div class="author-content-left">
-          <div class="author-name" ng-if="authorData.name">{{ authorData.name }}</div>
-          <div class="author-username">@{{ author }}</div>
-          <div class="author-bio" ng-if="authorData.about">{{ authorData.about }}</div>
+          <div class="author-name" ng-if="authorData.profile.name">{{ authorData.profile.name }}</div>
+          <div class="author-username">@{{ username }}</div>
+          <div class="author-bio" ng-if="authorData.profile.about">{{ authorData.profile.about }}</div>
           <div class="author-prop author-prop-location" ng-if="authorData.location">
             <span class="prop-key"><i class="fa fa-map-marker"></i></span>
             <span class="prop-value">{{ authorData.location }}</span>
           </div>
-          <div class="author-prop author-prop-website" ng-if="authorData.website">
+          <div class="author-prop author-prop-website" ng-if="authorData.profile.website">
             <span class="prop-key"><i class="fa fa-external-link"></i></span>
-            <a class="prop-value" target="_external" ng-href="{{ authorData.website }}"> {{ authorData.website}}</a>
+            <a class="prop-value" target="_external" ng-href="{{ authorData.profile.website }}"> {{ authorData.profile.website}}</a>
           </div>
-          <div class="author-prop author-prop-created" tooltip-placement="top-left"
-               uib-tooltip="{{ authorData.created | timeAgo }}">
+          <div class="author-prop author-prop-created" tooltip-placement="top-left" uib-tooltip="{{ authorData.created | timeAgo }}">
             <span class="prop-key"><i class="fa fa-calendar-o"></i></span>
             <span class="prop-value">{{ authorData.created | dateFormatted:'short' }}</span>
           </div>
@@ -49,12 +50,12 @@
           <div class="author-prop author-prop-follower-count" tooltip-placement="top-left"
                uib-tooltip="{{ 'FOLLOWERS' | translate }}">
             <span class="prop-key"><i class="fa fa-users"></i></span>
-            <span class="prop-value">{{ authorData.follower_count }}</span>
+            <span class="prop-value">{{ authorData.follower_count  || '...' }}</span>
           </div>
           <div class="author-prop author-prop-following-count" tooltip-placement="top-left"
                uib-tooltip="{{ 'FOLLOWING' | translate }}">
             <span class="prop-key"><i class="fa fa-user-plus"></i></span>
-            <span class="prop-value">{{ authorData.following_count }}</span>
+            <span class="prop-value">{{ authorData.following_count  || '...' }}</span>
           </div>
           <div class="author-prop author-prop-following-count" tooltip-placement="top-left"
                uib-tooltip="{{ 'VOTING_POWER' | __ }}">
@@ -63,10 +64,23 @@
           </div>
         </div>
         <div class="author-content-right">
-          <div class="post-list" ng-class="{'fetching': loadingRest}">
-            <ul class="feed">
-              <li ng-repeat="post in dataList">
-                <post-list-item post="post" as-author="author"></post-list-item>
+          <div class="content-list" ng-class="{'fetching': loadingRest}">
+            <header>
+              <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingRest" title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
+            </header>
+            <ul class="feed" ng-if="section==='blog'">
+              <li ng-repeat="row in dataList">
+                <post-list-item post="row" as-author="username"></post-list-item>
+              </li>
+            </ul>
+            <ul class="feed" ng-if="section==='comments'">
+              <li ng-repeat="row in dataList">
+                <content-list-item-child content="row"></content-list-item-child>
+              </li>
+            </ul>
+            <ul class="feed" ng-if="section==='replies'">
+              <li ng-repeat="row in dataList">
+                <content-list-item-child content="row"></content-list-item-child>
               </li>
             </ul>
             <footer>
