@@ -1,10 +1,10 @@
-# eSteem Desktop
+# eSteem Surfer - desktop application
 
 ## Clone
 
 ```
-$ git clone https://github.com/eSteemApp/desk
-$ cd desk
+$ git clone https://github.com/eSteemApp/esteem-surfer
+$ cd esteem-surfer
 ```
 
 ## Install dependencies
