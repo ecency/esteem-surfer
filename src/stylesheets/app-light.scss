@@ -33,6 +33,10 @@ body.light-theme {
   $loadingColor: #5892f4;
   $loadingSuccessColor: #009c00;
 
+  $altRowColor: #fbfbfb;
+
+  $highlightColor: #FFFBCC;
+
   @import "navbar";
   @import "footer";
   @import "common";

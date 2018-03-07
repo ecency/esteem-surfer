@@ -71,6 +71,8 @@ import {capWordFilter} from './filters/cap-word';
 import currencySymbolFilter from './filters/currency-symbol';
 import dateFormattedDir from './filters/date-formatted.js';
 import {contentSummaryChildFilter} from './filters/content-summary-child';
+import steemPowerFilter from './filters/steem-power';
+import steemDollarFilter from './filters/steem-dollar';
 
 
 import constants from './constants';
@@ -167,6 +169,10 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
         controller: 'postsCtrl',
       })
       .when('/post/:parent/:author/:permlink', {
+        templateUrl: 'templates/post.html',
+        controller: 'postCtrl',
+      })
+      .when('/post/:parent/:author/:permlink/:comment', {
         templateUrl: 'templates/post.html',
         controller: 'postCtrl',
       })
@@ -301,6 +307,17 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
   .filter('currencySymbol', currencySymbolFilter)
   .filter('dateFormatted', dateFormattedDir)
   .filter('contentSummaryChild', contentSummaryChildFilter)
+  .filter('steemPower', steemPowerFilter)
+  .filter('steemDollar', steemDollarFilter)
+  .filter('money2Number', () => {
+    return (input) => {
+      if (input) {
+        return (Number(input.split(" ")[0]).toFixed(3));
+      }
+
+      return ''
+    }
+  })
   .filter('__', () => {
     // Temporary filter to figure out different language entries from eSteem mobile app's locale files
     return (s) => {
@@ -327,13 +344,29 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
           return 'Post Count';
         case 'RESTEEMED':
           return 'resteemed';
+        case 'GO_BACK':
+          return 'Back';
+        case 'PLATFORM_NAME':
+          return 'Steem';
+        case 'PLATFORM_POWER':
+          return 'Steem Power';
+        case 'PLATFORM_DOLLAR':
+          return 'Steem Dollar';
+        case 'PLATFORM_L_UNIT':
+          return 'STEEM';
+        case 'PLATFORM_P_UNIT':
+          return 'SP';
+        case 'PLATFORM_D_UNIT':
+          return 'SBD';
+        case 'NO_DATA':
+          return 'No Data';
         default:
           return s;
       }
     }
   })
 
-  .run(function ($rootScope, $uibModal, $translate, $timeout, $interval, $location, $window, eSteemService, settingsService, constants) {
+  .run(function ($rootScope, $uibModal, $translate, $timeout, $interval, $location, $window, eSteemService, steemService, settingsService, constants) {
 
     // SETTINGS
     /*
@@ -403,6 +436,31 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
 
     // Refresh currency rate in every minute. Broadcast if changed.
     $interval(() => fetchCurrencyRate(true), 60000);
+
+
+    // STEEM GLOBAL PROPERTIES
+    $rootScope.steemPerMVests = 1;
+    $rootScope.base = 1;
+
+    const fetchSteemGlobalProperties = () => {
+      steemService.getDynamicGlobalProperties()
+        .then(r => {
+          let steemPerMVests = (Number(r.total_vesting_fund_steem.substring(0, r.total_vesting_fund_steem.length - 6)) / Number(r.total_vesting_shares.substring(0, r.total_vesting_shares.length - 6))) * 1e6;
+          $rootScope.steemPerMVests = steemPerMVests;
+
+          return steemService.getFeedHistory()
+        })
+        .then(r => {
+          let base = r.current_median_history.base.split(" ")[0];
+          $rootScope.base = base;
+        })
+    };
+
+    fetchSteemGlobalProperties();
+
+    // Refresh global properties in every minute.
+    $interval(() => fetchSteemGlobalProperties(), 60000);
+
 
     // NAVIGATION CACHE
     // The purpose of navigation caching is show last position and data of the page to user without

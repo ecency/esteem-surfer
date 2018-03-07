@@ -23,11 +23,9 @@ export default () => {
             </div>
         </div>
         <div class="content-body">
-            <div class="content-image" ng-if="contentImage">
-                <a ng-click="imageClicked()">
-                    <img ng-src="{{ contentImage }}">
-                </a>
-            </div>
+            <a ng-click="imageClicked()" class="content-image" ng-if="contentImage">
+              <img ng-src="{{ contentImage }}">  
+            </a>
             <h2 class="content-body-title"><a ng-click="titleClicked()">RE: {{ content.root_title }}</a></h2>
             <div class="content-body-summary">
                 <a ng-click="summaryClicked()" ng-bind-html="content.body | contentSummaryChild"></a>
@@ -58,7 +56,7 @@ export default () => {
     controller: ($scope, $rootScope, $location, $sce, $filter, $uibModal, storageService, helperService) => {
 
       const goDetail = () => {
-        let u = `/post${$scope.content.url.split("#")[0].replace('@', '')}`;
+        let u = `/post${$scope.content.url.split("#")[0].replace('@', '')}/${$scope.content.id}`;
         $location.path(u);
       };
 

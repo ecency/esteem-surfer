@@ -16,10 +16,18 @@
           <div class="container-fluid">
             <div class="collapse navbar-collapse">
               <ul class="nav navbar-nav">
-                <li ng-class="{'active': section==='blog'}"><a ng-click="changeSection('blog')">{{ 'BLOG' | translate }}</a></li>
-                <li ng-class="{'active': section==='comments'}"><a ng-click="changeSection('comments')">{{ 'COMMENTS' | translate }}</a></li>
-                <li ng-class="{'active': section==='replies'}"><a ng-click="changeSection('replies')">{{ 'REPLIES' | translate }}</a></li>
-                <li ng-class="{'active': section==='wallet'}"><a ng-click="changeSection('wallet')">{{ 'WALLET' | translate }}</a></li>
+                <li ng-class="{'active': section==='blog'}">
+                  <a ng-click="changeSection('blog')">{{ 'BLOG' | translate }}</a>
+                </li>
+                <li ng-class="{'active': section==='comments'}">
+                  <a ng-click="changeSection('comments')">{{ 'COMMENTS' | translate }}</a>
+                </li>
+                <li ng-class="{'active': section==='replies'}">
+                  <a ng-click="changeSection('replies')">{{ 'REPLIES' | translate }}</a>
+                </li>
+                <li ng-class="{'active': section==='wallet'}">
+                  <a ng-click="changeSection('wallet')">{{ 'WALLET' | translate }}</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -30,15 +38,17 @@
           <div class="author-name" ng-if="authorData.profile.name">{{ authorData.profile.name }}</div>
           <div class="author-username">@{{ username }}</div>
           <div class="author-bio" ng-if="authorData.profile.about">{{ authorData.profile.about }}</div>
-          <div class="author-prop author-prop-location" ng-if="authorData.location">
+          <div class="author-prop author-prop-location" ng-if="authorData.profile.location">
             <span class="prop-key"><i class="fa fa-map-marker"></i></span>
-            <span class="prop-value">{{ authorData.location }}</span>
+            <span class="prop-value">{{ authorData.profile.location }}</span>
           </div>
           <div class="author-prop author-prop-website" ng-if="authorData.profile.website">
             <span class="prop-key"><i class="fa fa-external-link"></i></span>
-            <a class="prop-value" target="_external" ng-href="{{ authorData.profile.website }}"> {{ authorData.profile.website}}</a>
+            <a class="prop-value" target="_external" ng-href="{{ authorData.profile.website }}">
+              {{ authorData.profile.website}}</a>
           </div>
-          <div class="author-prop author-prop-created" tooltip-placement="top-left" uib-tooltip="{{ authorData.created | timeAgo }}">
+          <div class="author-prop author-prop-created" tooltip-placement="top-left"
+               uib-tooltip="{{ authorData.created | timeAgo }}">
             <span class="prop-key"><i class="fa fa-calendar-o"></i></span>
             <span class="prop-value">{{ authorData.created | dateFormatted:'short' }}</span>
           </div>
@@ -66,7 +76,12 @@
         <div class="author-content-right">
           <div class="content-list" ng-class="{'fetching': loadingRest}">
             <header>
-              <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingRest" title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
+              <h1 ng-if="section==='blog'">{{ 'BLOG' | translate }}</h1>
+              <h1 ng-if="section==='comments'">{{ 'COMMENTS' | translate }}</h1>
+              <h1 ng-if="section==='replies'">{{ 'REPLIES' | translate }}</h1>
+              <h1 ng-if="section==='wallet'">{{ 'WALLET' | translate }}</h1>
+              <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingRest"
+                      title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
             </header>
             <ul class="feed" ng-if="section==='blog'">
               <li ng-repeat="row in dataList">
@@ -83,6 +98,128 @@
                 <content-list-item-child content="row"></content-list-item-child>
               </li>
             </ul>
+            <div class="author-wallet" ng-if="section==='wallet'">
+              <div class="row alternate" ng-if="has_unclaimed_rewards">
+                <div class="col-sm-12">
+                  <strong>{{ 'UNCLAIMED_REWARDS'|translate }}:</strong>
+                  <span ng-if="authorData.reward_steem_balance.split(' ')[0]>0">
+                    {{ authorData.reward_steem_balance.split(' ')[0]}} {{ 'PLATFORM_L_UNIT' | __ }}
+                  </span>
+                  <span ng-if="authorData.reward_sbd_balance.split(' ')[0]>0">
+                    {{ authorData.reward_sbd_balance.split(' ')[0]}} {{ 'PLATFORM_D_UNIT' | __ }}
+                  </span>
+                  <span ng-if="authorData.reward_vesting_steem.split(' ')[0]>0">
+                    {{ authorData.reward_vesting_steem.split(' ')[0]}} {{ 'PLATFORM_P_UNIT' | __ }}
+                  </span>
+                </div>
+              </div>
+              <h3 class="section-header">{{'BALANCES'|translate}}</h3>
+              <div class="row">
+                <div class="col-sm-6 col-key">
+                  <span>{{ 'PLATFORM_NAME' | __ }}</span>
+                  <p class="help-block">
+                    {{ 'PROFILE_1' | translate:translationData }}
+                  </p>
+                </div>
+                <div class="col-sm-6 col-value">
+                  {{ authorData.balance | money2Number | number }} {{ 'PLATFORM_L_UNIT' | __ }}
+                </div>
+              </div>
+              <div class="row alternate">
+                <div class="col-sm-6 col-key">
+                  <span>{{ 'PLATFORM_POWER' | __ }}</span>
+                  <p class="help-block">
+                    {{ 'PROFILE_2' | translate:translationData }}
+                  </p>
+                </div>
+                <div class="col-sm-6 col-value">
+                  <span>
+                    {{ authorData.vesting_shares | steemPower | number }} {{ 'PLATFORM_P_UNIT' | __ }}
+                  </span>
+                  <span ng-if="authorData.delegated_vesting_shares != '0.000000 VESTS'">
+                    -{{ authorData.delegated_vesting_shares | steemPower | number }} {{ 'PLATFORM_P_UNIT' | __ }}
+                  </span>
+                  <span ng-if="authorData.received_vesting_shares != '0.000000 VESTS'">
+                    +{{ authorData.received_vesting_shares | steemPower | number }} {{ 'PLATFORM_P_UNIT' | __ }}
+                  </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6 col-key">
+                  <span>{{ 'PLATFORM_DOLLAR' | __ }}</span>
+                  <p class="help-block">
+                    {{ 'PROFILE_3' | translate:translationData }}
+                  </p>
+                </div>
+                <div class="col-sm-6 col-value">
+                  {{ authorData.sbd_balance | money2Number | number }} {{ 'PLATFORM_D_UNIT' | __ }}
+                </div>
+              </div>
+
+              <div class="row alternate">
+                <div class="col-sm-6 col-key">
+                  <span>{{ 'ESTIMATED_VALUE' | translate }}</span>
+                  <p class="help-block">
+                    {{ 'PROFILE_4' | translate:translationData }}
+                  </p>
+                </div>
+                <div class="col-sm-6 col-value">{{ $root.currency|currencySymbol }}
+                  {{ authorData.vesting_shares | steemDollar:authorData.balance:authorData.sbd_balance | number }}
+                </div>
+              </div>
+              <p class="next-power-down" ng-if="authorData.next_vesting_withdrawal !== '1969-12-31T23:59:59'">
+                {{ 'POWER_DOWN_SCHEDULE' | translate }} {{ authorData.next_vesting_withdrawal | timeAgo }}
+              </p>
+              <h3 class="section-header">{{ 'TRANSACTION_HISTORY' | translate }}</h3>
+              <p class="empty-list" ng-if="dataList.length===0">{{ 'NO_DATA' | __ }}</p>
+              <table class="table table-striped">
+                <tbody>
+                <tr ng-repeat="tr in dataList | orderBy:'-[0]' | limitTo:50 track by $index">
+                  <th style="width: 120px">{{ tr[1].timestamp | timeAgo }}</th>
+                  <td>{{ tr[1].op[0] }}</td>
+                  <td>
+                    <div ng-if="tr[1].op[0]=='comment_reward'">
+                      {{ tr[1].op[1].sbd_payout }} | {{ tr[1].op[1].vesting_payout }}
+                      <p>@{{ tr[1].op[1].author }} / {{ tr[1].op[1].permlink }}</p>
+                    </div>
+                    <div ng-if="tr[1].op[0]=='author_reward'">
+                      {{ tr[1].op[1].sbd_payout }} | {{ tr[1].op[1].steem_payout }} | {{ tr[1].op[1].vesting_payout }}
+                      <p>@{{ tr[1].op[1].author}}/{{ tr[1].op[1].permlink}}</p>
+                    </div>
+                    <div ng-if="tr[1].op[0]=='curation_reward'">
+                      {{ tr[1].op[1].reward}} | {{ tr[1].op[1].vesting_payout }}
+                      <p>@{{ tr[1].op[1].comment_author}} / {{ tr[1].op[1].comment_permlink }}</p>
+                    </div>
+                    <div ng-if="tr[1].op[0]=='transfer'">
+                      <p>{{ tr[1].op[1].amount}}</p>
+                      <p ng-if="tr[1].op[1].memo"><em>{{ tr[1].op[1].memo }}</em></p>
+                      <p>@{{ tr[1].op[1].from }} {{ 'TO'| translate | lowercase }} @{{ tr[1].op[1].to }}</p>
+                    </div>
+                    <div ng-if="tr[1].op[0]=='interest'">{{ tr[1].op[1].interest }}</div>
+                    <div ng-if="tr[1].op[0]=='transfer_to_vesting'">
+                      <p>{{ tr[1].op[1].amount }} </p>
+                      <p ng-if="tr[1].op[1].memo"><em>{{ tr[1].op[1].memo }}</em></p>
+                      <p>@{{ tr[1].op[1].from }} {{ 'TO' | translate | lowercase }} @{{ tr[1].op[1].to }}</p>
+                    </div>
+                    <div ng-if="tr[1].op[0]=='withdraw_vesting'">
+                      {{ tr[1].op[1].vesting_shares }} | {{ tr[1].op[1].memo }}
+                      <p>{{ tr[1].op[1].account | uppercase }}</p>
+                    </div>
+                    <div ng-if="tr[1].op[0]=='fill_order'">
+                      {{ tr[1].op[1].current_pays }} = {{ tr[1].op[1].open_pays }}
+                    </div>
+                    <div ng-if="tr[1].op[0]=='claim_reward_balance'">
+                      {{ tr[1].op[1].reward_steem }} | {{ tr[1].op[1].reward_sbd }} | {{ tr[1].op[1].reward_vests }}
+                    </div>
+                    <div ng-if="tr[1].op[0]=='comment_benefactor_reward'">
+                      {{ tr[1].op[1].benefactor | uppercase }} | {{ tr[1].op[1].permlink }}
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+
             <footer>
               <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="loadingRest"></i>
             </footer>

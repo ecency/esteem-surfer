@@ -9,7 +9,7 @@ export default () => {
 
     },
     template: `
-      <div class="comment-list-item">
+      <div class="comment-list-item" ng-class="{'selected': comment._selected_}">
         <div class="comment-list-item-inner">
           <div class="comment-author-pic" author-bg-img-style author="{{ comment.author }}"></div>
           <div class="comment-header">

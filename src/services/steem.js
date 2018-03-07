@@ -117,6 +117,32 @@ export default (steemApi, $q) => {
         }
       });
       return defer.promise;
+    },
+    getDynamicGlobalProperties: () => {
+      let defer = $q.defer();
+
+      steemApi.getApi().getDynamicGlobalPropertiesAsync((err, response) => {
+
+        if (err) {
+          defer.reject(err);
+        } else {
+          defer.resolve(response);
+        }
+      });
+      return defer.promise;
+    },
+    getFeedHistory: () => {
+      let defer = $q.defer();
+
+      steemApi.getApi().getFeedHistoryAsync((err, response) => {
+
+        if (err) {
+          defer.reject(err);
+        } else {
+          defer.resolve(response);
+        }
+      });
+      return defer.promise;
     }
   }
 };

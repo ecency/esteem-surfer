@@ -64,14 +64,30 @@ export default ($scope, $rootScope, $routeParams, $q, $location, $window, $filte
 
     $scope.loadingAuthor = false;
 
-    if ($scope.dataList.length === 0) {
-      // if initial data is empty then load contents
-      loadContentsFirst();
-    } else {
-      // else count ids
-      $scope.dataList.forEach((i) => {
-        ids.push(i.id);
-      })
+    if (['blog', 'comments', 'replies'].indexOf(section) !== -1) {
+      if ($scope.dataList.length === 0) {
+        // if initial data is empty then load contents
+        loadContentsFirst();
+      } else {
+        // else count ids
+        $scope.dataList.forEach((i) => {
+          ids.push(i.id);
+        })
+      }
+    }
+
+    if (section === 'wallet') {
+      // $scope.steemPower = (Number(account.vesting_shares.split(" ")[0]) / 1e6 * $rootScope.steemPerMVests).toFixed(3);
+      // console.log( $scope.steemPower)
+      // console.log(account)
+
+
+      $scope.has_unclaimed_rewards = (account.reward_steem_balance.split(' ')[0] > 0) ||
+        (account.reward_sbd_balance.split(' ')[0] > 0) ||
+        (account.reward_vesting_steem.split(' ')[0] > 0);
+
+
+      loadTransactions();
     }
   });
 
@@ -165,6 +181,21 @@ export default ($scope, $rootScope, $routeParams, $q, $location, $window, $filte
     });
   };
 
+  const loadTransactions = () => {
+    $scope.loadingRest = true;
+    steemService.getState(`/@${username}/transfers`).then(resp => {
+      if (resp.accounts[username]) {
+        let transfers = resp.accounts[username].transfer_history.slice(Math.max(resp.accounts[username].transfer_history.length - 100, 0))
+        $scope.dataList = transfers;
+      }
+    }).catch((e) => {
+      console.log(e)
+      // TODO: Handle catch
+    }).then(() => {
+      $scope.loadingRest = false;
+    });
+  };
+
   $scope.changeSection = (section) => {
     $location.path(`/author/${username}/${section}`);
   };
@@ -173,12 +204,21 @@ export default ($scope, $rootScope, $routeParams, $q, $location, $window, $filte
     if ($scope.loadingRest) {
       return false;
     }
+
     $scope.dataList = [];
-    ids = [];
-    loadContentsFirst();
+    if (section === 'wallet') {
+      loadTransactions();
+    } else {
+      ids = [];
+      loadContentsFirst();
+    }
   };
 
   $scope.reachedBottom = () => {
+    if (section === 'wallet') {
+      return false;
+    }
+
     if ($scope.loadingRest || !hasMore) {
       return false;
     }
@@ -189,4 +229,7 @@ export default ($scope, $rootScope, $routeParams, $q, $location, $window, $filte
 
   $scope.section = section;
   $scope.username = username;
+
+  // Can be deleted in the future after locale files changed.
+  $scope.translationData = {platformname: 'Steem', platformsunit: "$1.00", platformpower: "Steem Power"};
 };

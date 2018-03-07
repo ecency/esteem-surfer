@@ -81,10 +81,26 @@
 
     p {
       margin: 0 0 0.6rem 0;
-
       &:last-child {
         margin-bottom: 0.2rem;
       }
+    }
+
+    h1 {
+      font-size: 20px;
+      margin: 6px 0;
+    }
+
+    h2 {
+      font-size: 18px;
+    }
+
+    h3 {
+      font-size: 16px;
+    }
+
+    ul li, ol li {
+      font-size: 14px;
     }
 
     img {
@@ -157,6 +173,13 @@
     }
   }
 }
+
+
+.empty-list{
+  margin: 10px 0;
+  font-style: italic;
+}
+
 
 .post-list-item {
   /*
@@ -255,6 +278,8 @@
   .post-body {
 
     .post-image {
+      align-items: center;
+      display: flex;
       float: left;
       height: 77px;
       overflow: hidden;
@@ -262,8 +287,10 @@
       width: 130px;
 
       img {
-        height: 100%;
-        width: 100%;
+        display: inline-block;
+        height: auto;
+        max-width: 100%;
+        vertical-align: middle;
       }
     }
 
@@ -811,6 +838,13 @@
     margin-left: 10%;
     width: calc(100% - 10%);
   }
+
+  &.selected {
+
+    & > .comment-list-item-inner {
+      background: #fff6b4;
+    }
+  }
 }
 
 .author-popover-content {
@@ -829,22 +863,22 @@
   }
 
   .popover-content-right {
-    width: 144px;
     float: right;
+    width: 144px;
 
     .author-name, .author-username {
       margin-bottom: 6px;
     }
 
     .author-name {
-      font-weight: 600;
       font-size: 16px;
+      font-weight: 600;
 
     }
 
     .author-username {
-      font-size: 13px;
       color: $textColorLight;
+      font-size: 13px;
     }
 
     .author-name, .author-username {
@@ -864,8 +898,8 @@
     color: $textColorLighter;
     font-size: 13px;
     line-height: 120%;
-    word-break: break-all;
     margin-top: 16px;
+    word-break: break-all;
 
   }
 }
@@ -913,10 +947,10 @@
     .server-control {
 
       .server-list {
-        max-height: 120px;
         border: 1px solid $listBorderColor;
-        overflow-x: auto;
         margin-bottom: 10px;
+        max-height: 120px;
+        overflow-x: auto;
 
         .table {
           margin: 0;
@@ -961,8 +995,6 @@
     }
   }
 }
-
-
 
 .content-list-item-child {
   /*
@@ -1056,15 +1088,20 @@
   .content-body {
 
     .content-image {
+      align-items: center;
+      display: flex;
       float: left;
       height: 77px;
       overflow: hidden;
+
       padding-top: 2px;
       width: 130px;
 
       img {
-        height: 100%;
-        width: 100%;
+        display: inline-block;
+        height: auto;
+        max-width: 100%;
+        vertical-align: middle;
       }
     }
 

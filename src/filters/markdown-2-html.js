@@ -119,7 +119,7 @@ export const markDown2Html = (input) => {
   let pars = tempEl.querySelectorAll('*');
   pars.forEach((el) => {
     el.childNodes.forEach((n) => {
-      if (n.nodeValue && n.nodeValue.trim() && ['P', 'DIV'].indexOf(n.parentNode.tagName) !== -1) {
+      if (n.nodeValue && n.nodeValue.trim() && ['P', 'DIV', 'CENTER', 'STRONG'].indexOf(n.parentNode.tagName) !== -1) {
         let href = n.nodeValue.trim();
         if (href.match(imgRegex)) {
 

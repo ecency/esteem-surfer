@@ -1,7 +1,7 @@
 {
-  "name": "esteem-desktop",
-  "productName": "eSteem",
-  "description": "Application to get paid for blogging, curating and more...",
+  "name": "esteem-surfer",
+  "productName": "eSteem Surfer",
+  "description": "eSteem desktop application reimagined for Windows, Mac, Linux users, start earning cryptocurrency!",
   "version": "0.0.0",
   "private": true,
   "author": "eSteem <info@esteem.ws>",

@@ -145,7 +145,7 @@
           width: 140px;
           z-index: 10;
 
-          .author-reputation{
+          .author-reputation {
             position: absolute;
             width: 40px;
             height: 40px;
@@ -250,13 +250,23 @@
           padding: 12px 25px 15px 25px;
 
           header {
+            border-bottom: 1px solid $seperatorColor;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
             @include clearfix();
+
+            h1 {
+              color: $text-color;
+              float: left;
+              font-size: 20px;
+              font-weight: 600;
+              margin: 8px 0 0 0;
+            }
+
             .btn-reload {
               color: $loadingColor;
+              float: right;
               font-size: 16px;
-              position: absolute;
-              right: 10px;
-              top: 10px
             }
           }
 
@@ -269,6 +279,49 @@
               list-style: none;
               margin-bottom: 10px;
               padding: 10px 0;
+            }
+          }
+
+          .author-wallet {
+            .row {
+              margin: 0 0 10px 0;
+              padding: 10px 0;
+
+              .help-block {
+                margin: 0
+              }
+
+              &.alternate {
+                background-color: $altRowColor;
+              }
+
+              .col-key {
+                span {
+                  font-weight: 600;
+                }
+              }
+
+              .col-value {
+                text-align: right;
+                padding-top: 10px;
+
+                span {
+                  display: block;
+                  margin-bottom: 4px;
+                }
+              }
+            }
+
+            .section-header {
+              margin: 20px 0 16px 0;
+              font-size: 20px;
+            }
+
+            .next-power-down {
+              display: inline-block;
+              padding: 3px;
+              margin: 20px 0;
+              background: $highlightColor;
             }
           }
 
