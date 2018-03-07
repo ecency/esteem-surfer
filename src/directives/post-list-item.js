@@ -25,11 +25,9 @@ export default () => {
             </div>
         </div>
         <div class="post-body">
-            <div class="post-image" ng-if="postImage">
-                <a ng-click="imageClicked()">
-                    <img ng-src="{{ postImage }}">
-                </a>
-            </div>
+            <a ng-click="imageClicked()" class="post-image" ng-if="postImage">
+              <img ng-src="{{ postImage }}">
+            </a>
             <h2 class="post-body-title"><a ng-click="titleClicked()" ng-class="{'visited': isVisited}">{{ post.title }}</a></h2>
             <div class="post-body-summary">
                 <a ng-click="summaryClicked()" ng-class="{'visited': isVisited}" ng-bind-html="post.body | postSummary"></a>

@@ -3,6 +3,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $uibModal, $location,
   let parent = $routeParams.parent;
   let author = $routeParams.author;
   let permlink = $routeParams.permlink;
+  let commentId = parseInt($routeParams.comment);
 
   let routePath = `/${parent}/@${author}/${permlink}`;
   let contentPath = `${author}/${permlink}`;
@@ -31,7 +32,8 @@ export default ($scope, $rootScope, $routeParams, $filter, $uibModal, $location,
           {},
           reply,
           {comments: compileComments(reply)},
-          {author_data: pathData.accounts[reply.author]}
+          {author_data: pathData.accounts[reply.author]},
+          {_selected_: reply.id === commentId}
         )
       )
     }
@@ -61,6 +63,10 @@ export default ($scope, $rootScope, $routeParams, $filter, $uibModal, $location,
       $scope.commentsLength = commentsData.length;
       $scope.commentsTotalPages = Math.ceil(commentsData.length / commentsPerPage);
       $scope.sliceComments();
+
+      if (commentId) {
+        // console.log(commentsData)
+      }
     })
   };
 
@@ -138,7 +144,6 @@ export default ($scope, $rootScope, $routeParams, $filter, $uibModal, $location,
     $rootScope.setNavVar('post', content);
   });
 
-
   $scope.parentClicked = () => {
     let u = `/posts/${$rootScope.selectedFilter}/${$scope.post.parent_permlink}`;
     $location.path(u);
@@ -149,9 +154,10 @@ export default ($scope, $rootScope, $routeParams, $filter, $uibModal, $location,
     $location.path(u);
   };
 
-
   $scope.markdownHelperClicked = () => {
     let m = $scope.post.body;
     $rootScope.saveMarkdownResult($scope.post.id, m);
-  }
+  };
+
+  $scope.commentId = commentId;
 };

@@ -1,10 +1,10 @@
 <nav class="navbar navbar-default app-navbar">
   <div class="container-fluid">
-    <div class="navbar-back" ng-class="{'hide-it': $root.navHistory.length===0}"><a ng-click="$root.goBack()"><i class="fa fa-chevron-circle-left"></i></a></div>
     <div class="navbar-header">
       <a class="navbar-brand" href="#"><img src="img/navbar-brand.png"></a>
     </div>
     <div class="collapse navbar-collapse">
+      <div class="navbar-back" ng-class="{'hide-it': $root.navHistory.length===0}"><a ng-click="$root.goBack()" title="{{ 'GO_BACK' | __ }}"><i class="fa fa-chevron-circle-left"></i></a></div>
       <ul class="nav navbar-nav">
         <li class="dropdown filter-dropdown" ng-class="{'active': selectedSection==='filters'}">
           <a ng-click="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"

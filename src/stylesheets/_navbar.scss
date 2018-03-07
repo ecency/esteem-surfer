@@ -90,7 +90,8 @@
   .navbar-back {
     float: left;
     height: $navbar-height;
-    margin-right: 20px;
+
+    margin: 0 20px 0 6px;
     padding: 12px 0 10px 0;
     text-align: center;
 
@@ -131,9 +132,6 @@
 
   .filter-dropdown {
     width: 140px;
-    margin-right: 20px;
-    margin-left: 20px;
-    border-left: 3px solid $navbarColorHighlight;
 
     .dropdown-toggle {
       .caret {

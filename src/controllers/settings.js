@@ -121,6 +121,7 @@ export default ($scope, $rootScope, $timeout, $uibModalInstance, settingsService
           // Server Timing Error
           $scope.formState = 13;
         } else {
+
           // Everything is ok. Change server.
           settingsService.set('server', serverAddr);
           $rootScope.readSettings();
