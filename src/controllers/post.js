@@ -1,4 +1,4 @@
-export default ($scope, $rootScope, $routeParams, $filter, $uibModal, $location, $q, steemService, helperService, constants) => {
+export default ($scope, $rootScope, $routeParams, $timeout, $uibModal, $location, $q, steemService, helperService, constants) => {
 
   let parent = $routeParams.parent;
   let author = $routeParams.author;
@@ -65,21 +65,67 @@ export default ($scope, $rootScope, $routeParams, $filter, $uibModal, $location,
       $scope.sliceComments();
 
       if (commentId) {
-        // console.log(commentsData)
+        // If comment specified (coming from author detail page comments or replies)
+        // find out comment row and move pagination according to it's place.
+
+        let i = 1;
+        let commentPlace = null;
+        for (let k of commentsData) {
+          if (k.id === commentId) {
+            commentPlace = i;
+            break;
+          } else {
+            // TODO: Find better approach like recursive lookup.
+            let j = JSON.stringify(k);
+            if (j.match(new RegExp(`"id": ?${commentId},`))) {
+              commentPlace = i;
+              break;
+            }
+          }
+          i += 1;
+        }
+
+        if (commentPlace) {
+          // Find out which page comment is on and set forward the pagination
+          let commentPage = Math.ceil(commentPlace / commentsPerPage);
+          if (commentPage > 1) {
+            $scope.commentsGoPage(commentPage);
+          }
+
+          // Scroll page to selected comment
+          $timeout(() => {
+            scrollToSelectedComment();
+          }, 500)
+        }
+
       }
     })
+  };
+
+  const scrollToComments = () => {
+    let e = document.querySelector('#content-main');
+    e.scrollTop = e.scrollHeight;
+  };
+
+  const scrollToSelectedComment = () => {
+    let e = document.querySelector('#content-main');
+    let c = document.querySelector('.comment-list-item.selected');
+    e.scrollTop = (c.offsetTop - 200);
+  };
+
+  $scope.commentsGoPage = (page) => {
+    $scope.commentsCurPage = page;
+    $scope.sliceComments();
   };
 
   $scope.commentsGoNext = () => {
     $scope.commentsCurPage += 1;
     $scope.sliceComments();
-
   };
 
   $scope.commentsGoPrev = () => {
     $scope.commentsCurPage -= 1;
     $scope.sliceComments();
-    scrollToComments();
   };
 
   $scope.sliceComments = () => {
@@ -142,6 +188,14 @@ export default ($scope, $rootScope, $routeParams, $filter, $uibModal, $location,
 
     // Add to nav history
     $rootScope.setNavVar('post', content);
+
+
+    if (commentId) {
+      // Scroll page to comments section
+      $timeout(() => {
+        scrollToComments();
+      }, 800)
+    }
   });
 
   $scope.parentClicked = () => {

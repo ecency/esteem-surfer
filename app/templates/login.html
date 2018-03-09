@@ -1,0 +1,50 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'CANCEL' | translate }}" ng-click="cancel()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h4 class="modal-title">{{ 'LOGIN' | translate }}</h4>
+</div>
+<div class="modal-body">
+  <div class="logo">
+    <img src="img/logo.png">
+  </div>
+  <h1 class="login-title">{{ 'WELCOME_BACK' | translate }}</h1>
+  <p class="help-block login-sub-title">{{ 'LOGIN_1' | translate }}</p>
+  <form class="login-form">
+    <div class="alert alert-danger" ng-if="loginErr">
+      {{ 'PASSWORD_INCORRECT' | translate }}
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-addon">@</span>
+        <input type="text" class="form-control" placeholder="{{ 'USERNAME' | translate }}" ng-model="formData.username" auto-focus>
+      </div>
+    </div>
+    <div class="form-group" ng-if="!advanced">
+      <input type="password" class="form-control" placeholder="{{ 'MASTER_PASS' | translate }}" ng-model="formData.pass">
+    </div>
+    <div class="form-group" ng-if="advanced">
+      <input type="password" class="form-control" placeholder="{{ 'POSTING_PRIKEY' | translate }}" ng-model="formData.postingKey">
+    </div>
+    <div class="form-group" ng-if="advanced">
+      <input type="password" class="form-control" placeholder="{{ 'ACTIVE_PRIKEY' | translate }}" ng-model="formData.activeKey">
+    </div>
+    <div ng-if="advanced" class="text-center">
+      <p class="help-block"><i class="fa fa-info-circle"></i> {{ 'LOGIN_2' | translate }}</p>
+      <p class="help-block"><i class="fa fa-info-circle"></i> {{ 'LOGIN_3' | translate }}</p>
+    </div>
+    <div class="text-center">
+      <button class="btn btn-default btn-sm " ng-class="{'active': advanced}" ng-click="advancedClicked()">
+        {{ 'ADVANCED' | translate }}
+      </button>
+    </div>
+    <hr>
+    <p class="help-block text-center"><i class="fa fa-info-circle"></i> {{ 'LOGIN_4' | translate }}</p>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary btn-block" ng-disabled="!isLoginButtonVisible() || processing" ng-click="loginClicked()"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="processing"></i> {{ 'LOGIN' | translate }}</button>
+    </div>
+  </form>
+  <p class="text-center">{{ 'DONT_HAVE' | translate }} <a href="https://steemit.com/create_account" target="_external">{{
+    'SIGN_UP_NOW' | translate }}</a></p>
+</div>
+
