@@ -34,6 +34,7 @@ import postCtrl from './controllers/post';
 import authorCtrl from './controllers/author';
 import contentVotersCtrl from './controllers/content-voters';
 import settingsCtrl from './controllers/settings';
+import loginCtrl from './controllers/login'
 
 import faqCtrl from './controllers/faq';
 import aboutCtrl from './controllers/about'
@@ -53,8 +54,8 @@ import commentListItemDir from './directives/comment-list-item';
 import authorNameDir from './directives/author-name';
 import contentPayoutInfoDir from './directives/content-payout-info';
 import contentVotersInfoDir from './directives/content-voters-info';
-
 import contentListItemChildDir from './directives/content-list-item-child'
+import autoFocusDir from './directives/autofocus';
 
 // Services
 import steemService from './services/steem';
@@ -286,11 +287,13 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
   .directive('contentPayoutInfo', contentPayoutInfoDir)
   .directive('contentVotersInfo', contentVotersInfoDir)
   .directive('contentListItemChild', contentListItemChildDir)
+  .directive('autoFocus', autoFocusDir)
 
   .controller('postsCtrl', postsCtrl)
   .controller('faqCtrl', faqCtrl)
   .controller('aboutCtrl', aboutCtrl)
   .controller('settingsCtrl', settingsCtrl)
+  .controller('loginCtrl', loginCtrl)
   .controller('contentVotersCtrl', contentVotersCtrl)
   .controller('postCtrl', postCtrl)
   .controller('authorCtrl', authorCtrl)

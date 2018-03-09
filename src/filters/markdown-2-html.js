@@ -44,6 +44,12 @@ export const markDown2Html = (input) => {
   let links = tempEl.querySelectorAll('a');
   links.forEach((el) => {
     const href = el.getAttribute('href');
+
+    // Continue if href has no value
+    if(!href){
+      return;
+    }
+
     let f = false;
 
     // if href is an image url and innerHTML same with href then mark it as image

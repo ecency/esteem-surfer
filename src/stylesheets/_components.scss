@@ -45,10 +45,6 @@
     margin: 0 0 1rem 0;
   }
 
-  center {
-    margin: 0 0 24px 0;
-  }
-
   img {
     max-width: 100%;
   }
@@ -65,6 +61,14 @@
   .pull-left, .pull-right {
     max-width: 50%;
     padding-left: 10px;
+  }
+
+  .pull-left {
+    padding-right: 10px;
+  }
+
+  .pull-right {
+    padding-right: 10px;
   }
 
   .markdown-external-link, .markdown-post-link, .markdown-author-link, .markdown-tag-link {
@@ -174,12 +178,10 @@
   }
 }
 
-
-.empty-list{
+.empty-list {
   margin: 10px 0;
   font-style: italic;
 }
-
 
 .post-list-item {
   /*
@@ -942,60 +944,6 @@
   }
 }
 
-.settings-modal {
-  .modal-body {
-    .server-control {
-
-      .server-list {
-        border: 1px solid $listBorderColor;
-        margin-bottom: 10px;
-        max-height: 120px;
-        overflow-x: auto;
-
-        .table {
-          margin: 0;
-          tr:first-of-type {
-            td {
-              border-top: 0
-            }
-          }
-
-          tr {
-            td {
-              a {
-                text-decoration: underline;
-              }
-            }
-          }
-        }
-      }
-    }
-
-    .alert {
-      margin: 10px 0;
-      padding: 10px;
-    }
-  }
-  .modal-footer {
-    .indicator {
-      display: inline-block;
-      font-size: 18px;
-      height: 34px;
-      padding-top: 5px;
-      text-align: center;
-      vertical-align: middle;
-      width: 30px;
-
-      .loading-icon {
-        color: $loadingColor;
-      }
-      .success-icon {
-        color: $loadingSuccessColor;
-      }
-    }
-  }
-}
-
 .content-list-item-child {
   /*
   STRUCTURE:
@@ -1216,7 +1164,93 @@
   }
 }
 
+.settings-modal {
+  .modal-body {
+    .server-control {
 
+      .server-list {
+        border: 1px solid $listBorderColor;
+        margin-bottom: 10px;
+        max-height: 120px;
+        overflow-x: auto;
 
+        .table {
+          margin: 0;
+          tr:first-of-type {
+            td {
+              border-top: 0
+            }
+          }
 
+          tr {
+            td {
+              a {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .alert {
+      margin: 10px 0;
+      padding: 10px;
+    }
+  }
+  .modal-footer {
+    .indicator {
+      display: inline-block;
+      font-size: 18px;
+      height: 34px;
+      padding-top: 5px;
+      text-align: center;
+      vertical-align: middle;
+      width: 30px;
+
+      .loading-icon {
+        color: $loadingColor;
+      }
+      .success-icon {
+        color: $loadingSuccessColor;
+      }
+    }
+  }
+}
+
+.login-modal {
+  .modal-body {
+
+    .logo {
+      width: 140px;
+      margin: 0 auto 20px auto;
+      img {
+        width: 100%;
+      }
+    }
+
+    .login-title {
+      text-align: center;
+      font-size: 26px;
+      margin: 0 0 20px 0;
+    }
+
+    .login-sub-title {
+      text-align: center;
+    }
+
+    .login-form {
+      width: 320px;
+      margin: 30px auto 0 auto;
+
+      .help-block {
+        font-size: 12px;
+      }
+
+      hr {
+        margin: 10px 0;
+      }
+    }
+  }
+}
 

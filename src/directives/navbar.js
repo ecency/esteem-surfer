@@ -34,9 +34,21 @@ export default ($location, $uibModal) => {
           windowClass: 'settings-modal',
           backdrop: 'static',
           keyboard: false
-        }).result.then(function (data) {
+        }).result.then((data) => {
           // Success
-        }, function () {
+        }, () => {
+          // Cancel
+        });
+      };
+
+      $scope.openLogin = () => {
+        $uibModal.open({
+          templateUrl: 'templates/login.html',
+          controller: 'loginCtrl',
+          windowClass: 'login-modal'
+        }).result.then((data) => {
+          // Success
+        }, () => {
           // Cancel
         });
       }

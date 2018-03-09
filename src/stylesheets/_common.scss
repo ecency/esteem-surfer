@@ -7,3 +7,11 @@ a.disabled-link {
   cursor: default;
   color: $textColorLighter;
 }
+
+.btn:focus {
+  outline: none;
+}
+
+.alert {
+  padding: 10px;
+}
