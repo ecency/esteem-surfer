@@ -247,6 +247,9 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
       set: (key, val) => {
         let val_ = JSON.stringify(val);
         return localStorage.setItem(key, val_);
+      },
+      remove: (key) => {
+        return localStorage.removeItem(key);
       }
     }
   })
@@ -270,6 +273,44 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
         }
 
         return false;
+      }
+    }
+  })
+  .factory('userService', (storageService) => {
+    return {
+      getAll: () => {
+        // TODO: Not tested
+        let l = [];
+        for (let key in localStorage) {
+          if (key.indexOf('user_') === 0) {
+            let v = JSON.parse(localStorage[key]);
+            l.append(v)
+          }
+        }
+
+        return l;
+      },
+      getActive: () => {
+        let activeUserId = storageService.get('active_user');
+        if (activeUserId) {
+          return storageService.get(`user_${ activeUserId }`);
+        }
+
+        return null;
+      },
+      setActive: (id) => {
+        if (id === null) {
+          storageService.remove('active_user');
+          return;
+        }
+        storageService.set('active_user', id);
+      },
+      add: (id, username, keys) => {
+        let val = {'id': id, 'username': username, 'keys': keys};
+        storageService.set(`user_${ id }`, val);
+      },
+      remove: (id) => {
+        storageService.remove(`user_${ id }`);
       }
     }
   })
@@ -363,13 +404,17 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
           return 'SBD';
         case 'NO_DATA':
           return 'No Data';
+        case 'LOGIN_PUBLIC_KEY_ERROR':
+          return 'You need a private password or key (not a public key)';
+        case 'LOGIN_SUCCESS':
+          return 'Logged In';
         default:
           return s;
       }
     }
   })
 
-  .run(function ($rootScope, $uibModal, $translate, $timeout, $interval, $location, $window, eSteemService, steemService, settingsService, constants) {
+  .run(function ($rootScope, $uibModal, $translate, $timeout, $interval, $location, $window, eSteemService, steemService, settingsService, userService, constants) {
 
     // SETTINGS
     /*
@@ -464,6 +509,17 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
     // Refresh global properties in every minute.
     $interval(() => fetchSteemGlobalProperties(), 60000);
 
+    // Last logged user
+    $rootScope.user = userService.getActive();
+
+    // Set active user when new user logged in
+    $rootScope.$on('userLoggedIn', () => {
+      $rootScope.user = userService.getActive();
+    });
+
+    $rootScope.$on('userLoggedOut', () => {
+      $rootScope.user = null;
+    });
 
     // NAVIGATION CACHE
     // The purpose of navigation caching is show last position and data of the page to user without
@@ -471,7 +527,6 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
     // It is not nice to scroll the page at the top and reload when the user clicks the back button.
 
     // HISTORY MANAGER
-
     $rootScope.navHistory = [];
 
     // A flag to find out user triggered $rootScope.goBack (clicked back button)
@@ -505,7 +560,6 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
       // update last visited path
       $rootScope.lastVisitedPath = $location.$$path;
     });
-
 
     // POSITION MANAGER
     $rootScope.navPosCache = {};
@@ -560,7 +614,6 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
       $rootScope.Data = cacheData[key] || {};
     });
 
-
     // After all navigation cache managers, toggle $rootScope.isBack if true
     $rootScope.$on('$routeChangeSuccess', () => {
       if ($rootScope.isBack) {
@@ -568,13 +621,11 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
       }
     });
 
-
     // The last selected filter from navbar
     $rootScope.selectedFilter = constants.defaultFilter;
 
     // The last selected post from post list
     $rootScope.selectedPost = {};
-
 
     // Click handler for external links
     jq('body').on('click', 'a[target="_external"]', function (event) {

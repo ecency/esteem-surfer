@@ -179,8 +179,8 @@
 }
 
 .empty-list {
-  margin: 10px 0;
   font-style: italic;
+  margin: 10px 0;
 }
 
 .post-list-item {
@@ -1222,17 +1222,17 @@
   .modal-body {
 
     .logo {
-      width: 140px;
       margin: 0 auto 20px auto;
+      width: 140px;
       img {
         width: 100%;
       }
     }
 
     .login-title {
-      text-align: center;
       font-size: 26px;
       margin: 0 0 20px 0;
+      text-align: center;
     }
 
     .login-sub-title {
@@ -1240,8 +1240,8 @@
     }
 
     .login-form {
-      width: 320px;
       margin: 30px auto 0 auto;
+      width: 320px;
 
       .help-block {
         font-size: 12px;
@@ -1251,6 +1251,58 @@
         margin: 10px 0;
       }
     }
+
+    .hr-or {
+      border: 0;
+      color: black;
+      height: 1.5em;
+      line-height: 1em;
+      margin: 20px 0 !important;
+      opacity: .5;
+      outline: 0;
+      position: relative;
+      text-align: center;
+
+      &:before {
+        background: linear-gradient(to right, transparent, $textColorLight, transparent);
+        // use the linear-gradient for the fading effect
+        // use a solid background color for a solid bar
+        content: '';
+        height: 1px;
+        left: 0;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+      }
+      &:after {
+        background-color: #fcfcfa;
+        color: black;
+        color: $textColorLight;
+        content: attr(data-content);
+
+        display: inline-block;
+        line-height: 1.5em;
+        // this is really the only tricky part, you need to specify the background color of the container element...
+        padding: 0 .5em;
+        position: relative;
+      }
+    }
+
+    .steem-connect {
+      cursor: pointer;
+      margin: 10px 0 30px 0;
+      text-align: center;
+
+      .via {
+        font-weight: bold;
+      }
+
+      .logo {
+        margin: auto;
+        width: 200px;
+      }
+    }
+
   }
 }
 
