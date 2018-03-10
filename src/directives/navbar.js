@@ -1,4 +1,4 @@
-export default ($location, $uibModal) => {
+export default ($rootScope, $location, $uibModal, userService) => {
   return {
     restrict: 'AE',
     replace: true,
@@ -51,6 +51,16 @@ export default ($location, $uibModal) => {
         }, () => {
           // Cancel
         });
+      };
+
+      $scope.logout = () => {
+        userService.remove($rootScope.user.id);
+        userService.setActive(null);
+        $rootScope.$broadcast('userLoggedOut');
+      };
+
+      $scope.goProfile = () => {
+        $location.path(`/author/${$rootScope.user.username}`);
       }
     }
   };

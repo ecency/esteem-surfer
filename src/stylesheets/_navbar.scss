@@ -2,12 +2,16 @@
 
 .app-navbar {
 
-  // Coloring created with https://work.smarchal.com/twbscolor/
   background-color: $navbarBgColorDefault;
 
+  // Coloring created with https://work.smarchal.com/twbscolor/
   border: 0;
+
   border-radius: 0;
   margin-bottom: 0;
+  .container-fluid {
+    padding-right: 2px;
+  }
 
   .navbar-brand {
     color: $navbarColorDefault;
@@ -117,7 +121,7 @@
   }
 
   .navbar-right {
-    li {
+    .settings, .login {
       a {
         line-height: 100%;
         padding-bottom: 12px;
@@ -128,41 +132,72 @@
       }
     }
 
+    .user-dropdown {
+      .dropdown-toggle {
+        padding: 9px 10px 0 10px;
+
+        .profile-pic {
+          background: $profilePicBg;
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          border-radius: 50%;
+          display: inline-block;
+          height: 34px;
+          width: 34px;
+        }
+      }
+
+      ul.dropdown-menu {
+
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        min-width: 138px;
+        padding-bottom: 0;
+        padding-top: 0;
+        width: 138px;
+
+        li {
+          a {
+            padding-bottom: 10px;
+            padding-top: 10px;
+          }
+        }
+      }
+    }
   }
 
   .filter-dropdown {
     width: 140px;
 
     .dropdown-toggle {
+      font-weight: bold;
       .caret {
         float: right;
         margin-top: 10px;
       }
-      font-weight: bold;
     }
 
     ul.dropdown-menu {
-      min-width: 138px;
-      width: 138px;
+      border: 0;
       border-radius: 0;
       box-shadow: none;
-      padding-top: 0;
+      min-width: 138px;
       padding-bottom: 0;
-      border: 0;
+      padding-top: 0;
+      width: 138px;
 
       li {
-
         a {
-          padding-top: 10px;
           padding-bottom: 10px;
+          padding-top: 10px;
         }
       }
     }
   }
 
   .navbar-form {
-
-
 
   }
 }

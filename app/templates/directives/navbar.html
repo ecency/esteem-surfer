@@ -6,6 +6,7 @@
     <div class="collapse navbar-collapse">
       <div class="navbar-back" ng-class="{'hide-it': $root.navHistory.length===0}"><a ng-click="$root.goBack()" title="{{ 'GO_BACK' | __ }}"><i class="fa fa-chevron-circle-left"></i></a></div>
       <ul class="nav navbar-nav">
+        <li ng-class="" ng-if="$root.user"><a ng-click="">{{ 'FEED' | translate }}</a></li>
         <li class="dropdown filter-dropdown" ng-class="{'active': selectedSection==='filters'}">
           <a ng-click="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
              aria-expanded="false">{{ selectedFilterName|translate }} <span class="caret"></span></a>
@@ -27,8 +28,25 @@
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a ng-click="openSettings()" title="{{ 'SETTINGS' | translate }}"><i class="fa fa-cog"></i></a></li>
-        <li><a ng-click="openLogin()" title="{{ 'LOGIN' | translate }}"><i class="fa fa-sign-in"></i></a></li>
+        <li class="settings"><a ng-click="openSettings()" title="{{ 'SETTINGS' | translate }}"><i class="fa fa-cog"></i></a></li>
+        <li class="login" ng-if="!$root.user"><a ng-click="openLogin()" title="{{ 'LOGIN' | translate }}"><i class="fa fa-sign-in"></i></a></li>
+        <li ng-if="$root.user" class="dropdown user-dropdown">
+          <a ng-click="" class="dropdown-toggle" data-toggle="dropdown" role="button">
+            <span class="profile-pic" author-bg-img-style author="{{ $root.user.username }}"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a ng-click="goProfile()">{{ 'PROFILE' | translate }}</a>
+              <a ng-click="">{{ 'WALLET' | translate }}</a>
+              <a ng-click="">{{ 'BOOKMARKS' | translate }}</a>
+              <a ng-click="">{{ 'DRAFTS' | translate }}</a>
+              <a ng-click="">{{ 'GALLERY' | translate }}</a>
+              <a ng-click="">{{ 'NOTIFICATIONS' | translate }}</a>
+              <a ng-click="">Accounts</a>
+              <a ng-click="logout()">{{ 'LOGOUT' | translate }}</a>
+            </li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>

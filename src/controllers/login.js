@@ -1,72 +1,107 @@
 import steem from 'steem';
 
-export default ($scope, $rootScope, $uibModalInstance, steemService) => {
+export default ($scope, $rootScope, $timeout, $uibModalInstance, steemService, userService, storageService) => {
 
-  $scope.formData = {username: '', pass: '', postingKey: '', activeKey: ''};
-
-  $scope.advanced = false;
-
-  $scope.advancedClicked = () => {
-    $scope.advanced = !$scope.advanced;
+  $scope.formData = {
+    username: storageService.get('last_username'),
+    code: ''
   };
 
   $scope.isLoginButtonVisible = () => {
-    if ($scope.advanced) {
-      return $scope.formData.username.trim().length > 0 &&
-        ($scope.formData.postingKey.trim().length > 0 || $scope.formData.activeKey.trim().length > 0)
-    } else {
-      return $scope.formData.username.trim().length > 0 && $scope.formData.pass.trim().length > 0
-    }
+    return $scope.formData.username.trim().length > 0 && $scope.formData.code.trim().length > 0
   };
 
-  $scope.loginErr = false;
-  $scope.loginSuccess = false;
-  $scope.processing = false;
 
   $scope.loginClicked = () => {
 
-    let roles = ['posting', 'active', 'owner'];
-    let username = $scope.formData.username.trim();
-
     $scope.loginErr = false;
+    $scope.loginErrPublicKey = false;
     $scope.loginSuccess = false;
+
+    let username = $scope.formData.username.trim();
+    let code = $scope.formData.code.trim();
+
+    storageService.set('last_username', username);
+
+    if (steem.auth.isPubkey(code)) {
+      $scope.loginErrPublicKey = true;
+      return false;
+    }
+
+    // true if the code entered is password else false
+    let codeIsPassword = !steem.auth.isWif(code);
+
     $scope.processing = true;
 
-    steemService.getAccounts([username]).then((resp) => {
+    steemService.getAccounts([username]).then((r) => {
+      if (r && r.length === 0) {
+        $scope.loginErr = true;
+        return false;
+      }
 
-      if (resp && resp.length > 0) {
-        let userData = resp[0];
+      let rUser = r[0];
+      let rUserPublicKeys = {
+        active: rUser['active'].key_auths[0][0],
+        memo: rUser['memo_key'],
+        owner: rUser['owner'].key_auths[0][0],
+        posting: rUser['posting'].key_auths[0][0]
+      };
 
-        let wif = '';
+      let loginFlag = false;
+      let resultKeys = {active: null, memo: null, owner: null, posting: null};
 
-        if (!$scope.advanced) {
-          let pass = $scope.formData.pass.trim();
-          wif = steem.auth.toWif(username, pass, roles[0]);
-        } else {
-          wif = steem.auth.isWif($scope.formData.postingKey) ? $scope.formData.postingKey : '';
-        }
+      if (codeIsPassword) {
 
-        let isWifValid = false;
-        let publicWif = steem.auth.wifToPublic(wif);
+        // Get all private keys by username and password
+        let userKeys = steem.auth.getPrivateKeys(username, code);
 
-        roles.map(function (role) {
-          if (userData[role].key_auths[0][0] === publicWif) {
-            isWifValid = true;
+        // Compare remote user keys and generated keys
+        for (let k  in rUserPublicKeys) {
+          let k2 = `${k}Pubkey`;
+
+          let v = rUserPublicKeys[k];
+          let v2 = userKeys[k2];
+
+          if (v === v2) {
+            loginFlag = true;
+            resultKeys[k] = userKeys[k];
           }
-        });
-
-        if (!isWifValid) {
-          $scope.loginErr = true;
-          return false;
         }
 
       } else {
-        $scope.loginErr = true;
+        let publicWif = steem.auth.wifToPublic(code);
+
+        for (let k  in rUserPublicKeys) {
+          let v = rUserPublicKeys[k];
+          if (v === publicWif) {
+            loginFlag = true;
+            resultKeys[k] = code;
+            break;
+          }
+        }
       }
+
+      if (!loginFlag) {
+        $scope.loginErr = true;
+        return false;
+      }
+
+      let userId = rUser.id;
+      let userName = rUser.name;
+
+      userService.add(userId, userName, resultKeys);
+      userService.setActive(userId);
+      $rootScope.$broadcast('userLoggedIn');
+
+      $scope.loginSuccess = true;
+
+      $timeout(() => {
+        $uibModalInstance.dismiss('cancel');
+      }, 800);
+
+
     }).catch((e) => {
-
       console.log(e)
-
       // TODO: Handle error
     }).then(() => {
       $scope.processing = false;

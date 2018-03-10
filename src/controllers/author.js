@@ -50,8 +50,7 @@ export default ($scope, $rootScope, $routeParams, $q, $location, $window, $filte
       try {
         let profile = JSON.parse(account.json_metadata).profile;
         angular.extend($scope.authorData.profile, profile);
-      } catch (e) {
-      }
+      } catch (e) { }
 
       steemService.getFollowCount(username).then(resp => {
         account.follower_count = resp.follower_count;
