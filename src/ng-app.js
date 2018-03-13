@@ -156,9 +156,14 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
     $routeProvider
       .when('/', {
         template: '',
-        controller: ($location, constants) => {
-          // Redirect to default filter page
-          $location.path('/posts/' + constants.defaultFilter);
+        controller: ($rootScope, $location, constants) => {
+          if ($rootScope.user) {
+            // If user logged in redirect to feed
+            $location.path('/posts/' + constants.defaultFilter);
+          } else {
+            // Redirect to default filter page
+            $location.path('/posts/' + constants.defaultFilter);
+          }
         }
       })
       .when('/posts/:filter', {
