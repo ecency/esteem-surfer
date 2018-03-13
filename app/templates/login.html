@@ -1,9 +1,3 @@
-<div class="modal-header">
-  <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'CANCEL' | translate }}" ng-click="cancel()">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  <h4 class="modal-title">{{ 'LOGIN' | translate }}</h4>
-</div>
 <div class="modal-body">
   <div class="logo">
     <img src="img/logo.png">
@@ -30,9 +24,9 @@
     <div class="form-group">
       <button type="submit" class="btn btn-primary btn-block" ng-disabled="!isLoginButtonVisible() || processing" ng-click="loginClicked()"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="processing"></i> {{ 'LOGIN' | translate }}</button>
     </div>
-    <p class="text-center">{{ 'DONT_HAVE' | translate }} <a href="https://steemit.com/create_account" target="_external">{{ 'SIGN_UP_NOW' | translate }}</a></p>
+    <p class="text-center">{{ 'DONT_HAVE' | translate }} <a href="https://signup.steemit.com/?ref=esteemapp" target="_external">{{ 'SIGN_UP_NOW' | translate }}</a></p>
     <hr class="hr-or" data-content="{{ 'OR' | translate }}">
-    <div class="steem-connect">
+    <div class="steem-connect" ng-click="loginWith()">
       <div class="via">Login with</div>
       <div class="logo"><img src="img/steem-connect.svg"></div>
     </div>

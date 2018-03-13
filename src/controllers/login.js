@@ -1,5 +1,8 @@
 import steem from 'steem';
 
+import {openSCDialog} from '../helpers/sc';
+
+
 export default ($scope, $rootScope, $timeout, $uibModalInstance, steemService, userService, storageService) => {
 
   $scope.formData = {
@@ -98,8 +101,6 @@ export default ($scope, $rootScope, $timeout, $uibModalInstance, steemService, u
       $timeout(() => {
         $uibModalInstance.dismiss('cancel');
       }, 800);
-
-
     }).catch((e) => {
       console.log(e)
       // TODO: Handle error
@@ -111,4 +112,18 @@ export default ($scope, $rootScope, $timeout, $uibModalInstance, steemService, u
   $scope.cancel = () => {
     $uibModalInstance.dismiss('cancel');
   };
+
+  let scWindowFlag = true;
+  $scope.loginWith = () => {
+    if (!scWindowFlag) {
+      return;
+    }
+    scWindowFlag = false;
+    openSCDialog((accessToken, username, expiresIn) => {
+      console.log(accessToken, username, expiresIn);
+    }, () => {
+      scWindowFlag = true;
+    });
+  }
+
 };
