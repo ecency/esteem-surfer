@@ -1,12 +1,10 @@
 import steem from 'steem';
-
 import {openSCDialog} from '../helpers/sc';
 
-
-export default ($scope, $rootScope, $timeout, $uibModalInstance, steemService, userService, storageService) => {
+export default ($scope, $rootScope, $timeout, $uibModalInstance, $q, steemService, userService, storageService) => {
 
   $scope.formData = {
-    username: storageService.get('last_username'),
+    username: storageService.get('last_username') || '',
     code: ''
   };
 
@@ -89,18 +87,17 @@ export default ($scope, $rootScope, $timeout, $uibModalInstance, steemService, u
         return false;
       }
 
-      let userId = rUser.id;
-      let userName = rUser.name;
+      let username = rUser.name;
 
-      userService.add(userId, userName, resultKeys);
-      userService.setActive(userId);
+      userService.add(username, resultKeys);
+      userService.setActive(username);
       $rootScope.$broadcast('userLoggedIn');
 
       $scope.loginSuccess = true;
-
       $timeout(() => {
         $uibModalInstance.dismiss('cancel');
       }, 800);
+
     }).catch((e) => {
       console.log(e)
       // TODO: Handle error
@@ -115,15 +112,21 @@ export default ($scope, $rootScope, $timeout, $uibModalInstance, steemService, u
 
   let scWindowFlag = true;
   $scope.loginWith = () => {
-    if (!scWindowFlag) {
-      return;
-    }
-    scWindowFlag = false;
+
     openSCDialog((accessToken, username, expiresIn) => {
-      console.log(accessToken, username, expiresIn);
+      userService.addSc(username, accessToken, expiresIn);
+      userService.setActive(username);
+      $rootScope.$broadcast('userLoggedIn');
+
+      $scope.loginSuccess = true;
+      $scope.$apply();
+
+      setTimeout(() => {
+        // $uibModalInstance.dismiss not working. close modal by clicking backdrop element
+        document.querySelector('div.in').click();
+      }, 800);
     }, () => {
       scWindowFlag = true;
     });
   }
-
 };

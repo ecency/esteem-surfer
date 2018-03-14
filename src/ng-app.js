@@ -303,19 +303,23 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
 
         return null;
       },
-      setActive: (id) => {
-        if (id === null) {
+      setActive: (username) => {
+        if (username === null) {
           storageService.remove('active_user');
           return;
         }
-        storageService.set('active_user', id);
+        storageService.set('active_user', username);
       },
-      add: (id, username, keys) => {
-        let val = {'id': id, 'username': username, 'keys': keys};
-        storageService.set(`user_${ id }`, val);
+      add: (username, keys) => {
+        let val = {'type': 'standard', 'username': username, 'keys': keys};
+        storageService.set(`user_${ username }`, val);
       },
-      remove: (id) => {
-        storageService.remove(`user_${ id }`);
+      addSc: (username, token, expiresIn) => {
+        let val = {'type': 'sc', 'username': username, 'token': token, 'expires': expiresIn};
+        storageService.set(`user_${ username }`, val);
+      },
+      remove: (username) => {
+        storageService.remove(`user_${ username }`);
       }
     }
   })
