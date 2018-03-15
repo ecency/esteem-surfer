@@ -1,0 +1,21 @@
+<nav-bar selected-section="'feed'"></nav-bar>
+<div class="app-container keep-pos" scrolled-bottom="reachedBottom()" id="content-main">
+  <div class="app-content posts-page">
+    <side-tag-list selected-filter="filter" selected-tag="tag"></side-tag-list>
+    <div class="post-list" ng-class="{'fetching': loadingPosts}">
+      <header>
+        <h1>{{ 'FEED' | translate }}</h1>
+        <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingPosts" title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
+      </header>
+      <ul class="feed">
+        <li ng-repeat="post in posts">
+          <post-list-item post="post"></post-list-item>
+        </li>
+      </ul>
+      <footer>
+        <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="loadingPosts"></i>
+      </footer>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
