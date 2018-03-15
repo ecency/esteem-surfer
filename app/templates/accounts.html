@@ -1,0 +1,23 @@
+<nav-bar></nav-bar>
+<div class="app-container" id="content-main">
+  <div class="app-content dynamic-page accounts-page">
+    <h1 class="page-title">ACCOUNTS</h1>
+
+    <table class="table table-striped accounts-list">
+      <tbody>
+      <tr ng-repeat="account in accounts">
+        <td style="width: 30px">
+          <img class="login-type-image" ng-if="account.type==='s'" src="img/steem.svg" title="Steem">
+          <img class="login-type-image" ng-if="account.type==='sc'" src="img/steem-connect-logo.svg" title="Steem Connect">
+        </td>
+        <td style="width: 30px"><div class="profile-image" author-bg-img-style author="{{ account.username }}"> </div> </td>
+        <td>@{{ account.username }} <span class="active" nf-if="activeUsername === account.username">{{ 'ACTIVE' | translate }}</span></td>
+        <td style="width: 30px"><button class="btn btn-primary btn-sm" ng-disabled="activeUsername === account.username">Login</button> </td>
+        <td style="width: 30px"><button class="btn btn-danger btn-sm" ng-disabled="activeUsername === account.username">Remove</button> </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<app-footer></app-footer>
+

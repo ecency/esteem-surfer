@@ -1,4 +1,4 @@
-export default ($rootScope, $location, $uibModal, userService) => {
+export default ($rootScope, $location, $uibModal, userService, activeUsername) => {
   return {
     restrict: 'AE',
     replace: true,
@@ -27,6 +27,10 @@ export default ($rootScope, $location, $uibModal, userService) => {
         $location.path('/market-place');
       };
 
+      $scope.feedClicked = () => {
+        $location.path(`/feed/${activeUsername()}`);
+      };
+
       $scope.openSettings = () => {
         $uibModal.open({
           templateUrl: 'templates/settings.html',
@@ -45,7 +49,12 @@ export default ($rootScope, $location, $uibModal, userService) => {
         $uibModal.open({
           templateUrl: 'templates/login.html',
           controller: 'loginCtrl',
-          windowClass: 'login-modal'
+          windowClass: 'login-modal',
+          resolve: {
+            onLogin: function () {
+              return onLogin
+            }
+          }
         }).result.then((data) => {
           // Success
         }, () => {
@@ -53,14 +62,38 @@ export default ($rootScope, $location, $uibModal, userService) => {
         });
       };
 
-      $scope.logout = () => {
-        userService.remove($rootScope.user.id);
-        userService.setActive(null);
-        $rootScope.$broadcast('userLoggedOut');
+      const onLogin = (r) => {
+        switch (r.type) {
+          case 's':
+            userService.add(r.username, r.keys);
+            userService.setActive(r.username);
+            break;
+          case 'sc':
+            userService.addSc(r.username, r.accessToken, r.expiresIn);
+            userService.setActive(r.username);
+        }
+
+        $rootScope.$broadcast('userLoggedIn');
+        $location.path(`/feed/${activeUsername()}`);
       };
 
-      $scope.goProfile = () => {
-        $location.path(`/author/${$rootScope.user.username}`);
+      $scope.logout = () => {
+        // userService.remove($rootScope.user.username);
+        userService.setActive(null);
+
+        $rootScope.$broadcast('userLoggedOut');
+
+        if ($location.path().indexOf('/feed/') !== -1) {
+          $location.path(`/`);
+        }
+      };
+
+      $scope.profileClicked = () => {
+        $location.path(`/feed/${activeUsername()}`);
+      };
+
+      $scope.accountsClicked = () => {
+        $location.path(`/accounts`);
       }
     }
   };

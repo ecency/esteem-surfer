@@ -35,6 +35,8 @@ import authorCtrl from './controllers/author';
 import contentVotersCtrl from './controllers/content-voters';
 import settingsCtrl from './controllers/settings';
 import loginCtrl from './controllers/login'
+import feedCtrl from './controllers/feed';
+import accountsCtrl from './controllers/accounts';
 
 import faqCtrl from './controllers/faq';
 import aboutCtrl from './controllers/about'
@@ -60,6 +62,9 @@ import autoFocusDir from './directives/autofocus';
 // Services
 import steemService from './services/steem';
 import {helperService} from './services/helper';
+import storageService from './services/storage';
+import settingsService from './services/settings';
+import userService from './services/user';
 
 // Filters
 import {catchPostImageFilter} from './filters/catch-post-image';
@@ -156,10 +161,10 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
     $routeProvider
       .when('/', {
         template: '',
-        controller: ($rootScope, $location, constants) => {
-          if ($rootScope.user) {
+        controller: ($rootScope, $location, activeUsername, constants) => {
+          if (activeUsername()) {
             // If user logged in redirect to feed
-            $location.path('/posts/' + constants.defaultFilter);
+            $location.path(`/feed/${activeUsername()}`);
           } else {
             // Redirect to default filter page
             $location.path('/posts/' + constants.defaultFilter);
@@ -206,9 +211,13 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
         templateUrl: 'templates/market-place.html',
         controller: 'marketPlaceCtrl',
       })
-      .when('/posts/:postId', {
-        templateUrl: 'templates/post.html',
-        controller: 'PostCtrl'
+      .when('/feed/:username', {
+        templateUrl: 'templates/feed.html',
+        controller: 'feedCtrl'
+      })
+      .when('/accounts', {
+        templateUrl: 'templates/accounts.html',
+        controller: 'accountsCtrl'
       })
       .otherwise({redirectTo: '/'});
 
@@ -242,88 +251,18 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
     }
   })
   .factory('steemService', steemService)
-  .factory('storageService', () => {
-    return {
-      get: (key) => {
-        let val = localStorage.getItem(key);
-        // Parse to json because it is stringify from object.
-        return JSON.parse(val);
-      },
-      set: (key, val) => {
-        let val_ = JSON.stringify(val);
-        return localStorage.setItem(key, val_);
-      },
-      remove: (key) => {
-        return localStorage.removeItem(key);
-      }
-    }
-  })
-  .factory('settingsService', (storageService) => {
-    return {
-      get: (key, def = null) => {
-        let val = storageService.get(`app_setting_${ key }`);
-        if (val === null) {
-          return def;
-        }
-        return val;
-      },
-      set: (key, val) => {
-        return storageService.set(`app_setting_${ key }`, val);
-      },
-      hasSettings: () => {
-        for (let key in localStorage) {
-          if (key.indexOf('app_setting_') === 0) {
-            return true;
-          }
-        }
-
-        return false;
-      }
-    }
-  })
-  .factory('userService', (storageService) => {
-    return {
-      getAll: () => {
-        // TODO: Not tested
-        let l = [];
-        for (let key in localStorage) {
-          if (key.indexOf('user_') === 0) {
-            let v = JSON.parse(localStorage[key]);
-            l.append(v)
-          }
-        }
-
-        return l;
-      },
-      getActive: () => {
-        let activeUserId = storageService.get('active_user');
-        if (activeUserId) {
-          return storageService.get(`user_${ activeUserId }`);
-        }
-
-        return null;
-      },
-      setActive: (username) => {
-        if (username === null) {
-          storageService.remove('active_user');
-          return;
-        }
-        storageService.set('active_user', username);
-      },
-      add: (username, keys) => {
-        let val = {'type': 'standard', 'username': username, 'keys': keys};
-        storageService.set(`user_${ username }`, val);
-      },
-      addSc: (username, token, expiresIn) => {
-        let val = {'type': 'sc', 'username': username, 'token': token, 'expires': expiresIn};
-        storageService.set(`user_${ username }`, val);
-      },
-      remove: (username) => {
-        storageService.remove(`user_${ username }`);
-      }
-    }
-  })
+  .factory('storageService', storageService)
+  .factory('settingsService', settingsService)
+  .factory('userService', userService)
   .factory('helperService', helperService)
+  .factory('activeUsername', ($rootScope) => {
+    return () => {
+      if ($rootScope.user) {
+        return $rootScope.user.username
+      }
+      return null;
+    };
+  })
 
   .directive('navBar', navBarDir)
   .directive('appFooter', footerDir)
@@ -349,6 +288,8 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
   .controller('authorCtrl', authorCtrl)
   .controller('tokenMarketCtrl', tokenMarketCtrl)
   .controller('marketPlaceCtrl', marketPlaceCtrl)
+  .controller('feedCtrl', feedCtrl)
+  .controller('accountsCtrl', accountsCtrl)
 
   .filter('catchPostImage', catchPostImageFilter)
   .filter('sumPostTotal', sumPostTotalFilter)

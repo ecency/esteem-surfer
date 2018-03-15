@@ -1,0 +1,56 @@
+export default (storageService) => {
+  return {
+    getAll: () => {
+
+      let l = [];
+      for (let key in localStorage) {
+        if (key.indexOf('user_') === 0) {
+          let v = JSON.parse(localStorage[key]);
+          l.push(v)
+        }
+      }
+
+      return l;
+    },
+    getActive: () => {
+      let activeUserId = storageService.get('active_user');
+      if (activeUserId) {
+        return storageService.get(`user_${ activeUserId }`);
+      }
+
+      return null;
+    },
+    setActive: (username) => {
+      if (username === null) {
+        storageService.remove('active_user');
+        return;
+      }
+      storageService.set('active_user', username);
+    },
+    add: (username, keys) => {
+      let val = {
+        'type': 's',
+        'username': username,
+        'keys': keys,
+        'modified': new Date().getTime()
+      };
+
+      storageService.set(`user_${ username }`, val);
+    },
+    addSc: (username, token, expiresIn) => {
+      let val = {
+        'type': 'sc',
+        'username': username,
+        'token': token,
+        'expires': expiresIn,
+        'modified': new Date().getTime()
+      };
+
+      storageService.set(`user_${ username }`, val);
+    },
+    remove: (username) => {
+      storageService.remove(`user_${ username }`);
+    }
+  }
+};
+
