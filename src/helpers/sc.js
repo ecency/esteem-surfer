@@ -16,24 +16,13 @@ export const openSCDialog = (successCb, windowCloseCb) => {
     return `https://v2.steemconnect.com/oauth2/authorize?client_id=${scAppName}&redirect_uri=${ encodeURIComponent(serverAddr)}&scope=${ encodeURIComponent(scScope)}`;
   };
 
-  const BrowserWindow = remote.BrowserWindow;
-  const windowSettings = {
-    center: true,
-    width: 800,
-    height: 600,
-    minWidth: 800,
-    minHeight: 600,
-    maxWidth: 800,
-    maxHeight: 600,
-    maximizable: false,
-    alwaysOnTop: true
-  };
 
   const expressApp = express();
   const server = http.createServer(expressApp);
 
   expressApp.get('/', (req, res) => {
 
+      // Prevent users open web server in browser
       if (req.headers['user-agent'].indexOf('eSteemSurfer') === -1) {
         res.send(400);
         return;
@@ -43,14 +32,20 @@ export const openSCDialog = (successCb, windowCloseCb) => {
       let username = req.query.username;
       let expiresIn = req.query.expires_in;
 
-      if (accessToken && username && expiresIn) {
-        res.send('<script>window.close(this);</script>');
-        successCb(accessToken, username, expiresIn);
+      let error = req.query.error;
+      let errorDescription = req.query.error_description;
+
+      if (error) {
+        res.send(`Error: ${error} - ${errorDescription}`);
       } else {
-        let authUrl = genAuthUrl();
-        let css = `body{color: #333; padding: 40px 20px 0 20px; text-align:center; font-size: 16px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; word-wrap: break-word; line-height: 20px; }`;
-        let js = `setTimeout(function(){ window.location.href = '${authUrl}'}, 1000)`;
-        let resp = `
+        if (accessToken && username && expiresIn) {
+          res.send('<script>window.close(this);</script>');
+          successCb(accessToken, username, expiresIn);
+        } else {
+          let authUrl = genAuthUrl();
+          let css = `body{color: #333; padding: 40px 20px 0 20px; text-align:center; font-size: 16px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; word-wrap: break-word; line-height: 20px; }`;
+          let js = `setTimeout(function(){ window.location.href = '${authUrl}'}, 1000)`;
+          let resp = `
           <!doctype html>
           <html>
           <head>
@@ -61,12 +56,32 @@ export const openSCDialog = (successCb, windowCloseCb) => {
           </head>
           <body>You are redirecting to: <a href="${authUrl}">${authUrl}</a> </body>
           </html>`;
-        res.send(resp);
+          res.send(resp);
+        }
       }
     }
   );
 
-  const win = new BrowserWindow(windowSettings);
+  const windowSettings = {
+    center: true,
+    width: 800,
+    height: 600,
+    minWidth: 800,
+    minHeight: 600,
+    maxWidth: 800,
+    maxHeight: 600,
+    maximizable: false,
+    alwaysOnTop: true,
+    parent: remote.getCurrentWindow(),
+    webPreferences: {
+      nodeIntegration: false,
+    }
+  };
+
+  const win = new remote.BrowserWindow(windowSettings);
+
+  // We don't want to auth window cache. Login window should be opened evert time.
+  win.webContents.session.clearStorageData([], function () { });
 
   server.listen(serverPort, serverIp);
   server.on('listening', function () {
@@ -78,6 +93,4 @@ export const openSCDialog = (successCb, windowCloseCb) => {
     server.unref();
     windowCloseCb();
   });
-
 };
-
