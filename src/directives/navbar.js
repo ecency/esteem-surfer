@@ -7,9 +7,13 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
       selectedTag: '='
     },
     templateUrl: 'templates/directives/navbar.html',
-    controller: ($scope, $rootScope, constants) => {
+    controller: ($scope, $rootScope, $location, $filter, constants) => {
       $scope.filters = constants.filters;
       $scope.selectedFilterName = $scope.filters.find(i => i.name === $rootScope.selectedFilter).key;
+
+      if ($scope.selectedSection === 'feed') {
+        $scope.selectedFilterName = $filter('translate')('FEED');
+      }
 
       $scope.filterClicked = (c) => {
         let u = `/posts/${c}`;
@@ -49,12 +53,7 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
         $uibModal.open({
           templateUrl: 'templates/login.html',
           controller: 'loginCtrl',
-          windowClass: 'login-modal',
-          resolve: {
-            onLogin: function () {
-              return onLogin
-            }
-          }
+          windowClass: 'login-modal'
         }).result.then((data) => {
           // Success
         }, () => {
@@ -62,39 +61,14 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
         });
       };
 
-      const onLogin = (r) => {
-        switch (r.type) {
-          case 's':
-            userService.add(r.username, r.keys);
-            userService.setActive(r.username);
-            break;
-          case 'sc':
-            userService.addSc(r.username, r.accessToken, r.expiresIn);
-            userService.setActive(r.username);
-        }
-
-        $rootScope.$broadcast('userLoggedIn');
-        $location.path(`/feed/${activeUsername()}`);
-      };
-
       $scope.logout = () => {
-        // userService.remove($rootScope.user.username);
         userService.setActive(null);
-
         $rootScope.$broadcast('userLoggedOut');
-
-        if ($location.path().indexOf('/feed/') !== -1) {
-          $location.path(`/`);
-        }
       };
 
       $scope.profileClicked = () => {
-        $location.path(`/feed/${activeUsername()}`);
+        $location.path(`/author/${activeUsername()}`);
       };
-
-      $scope.accountsClicked = () => {
-        $location.path(`/accounts`);
-      }
     }
   };
 };

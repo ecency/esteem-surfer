@@ -25,6 +25,12 @@ export default (storageService) => {
         storageService.remove('active_user');
         return;
       }
+
+      // update last active date
+      let val = storageService.get(`user_${ username }`);
+      val['lastActive'] = new Date().getTime();
+      storageService.set(`user_${ username }`, val);
+
       storageService.set('active_user', username);
     },
     add: (username, keys) => {
@@ -32,7 +38,8 @@ export default (storageService) => {
         'type': 's',
         'username': username,
         'keys': keys,
-        'modified': new Date().getTime()
+        'modified': new Date().getTime(),
+        'lastActive': -1
       };
 
       storageService.set(`user_${ username }`, val);
@@ -43,7 +50,8 @@ export default (storageService) => {
         'username': username,
         'token': token,
         'expires': expiresIn,
-        'modified': new Date().getTime()
+        'modified': new Date().getTime(),
+        'lastActive': -1
       };
 
       storageService.set(`user_${ username }`, val);

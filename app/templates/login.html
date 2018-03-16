@@ -3,16 +3,34 @@
     <img src="img/logo.png">
   </div>
   <h1 class="login-title">{{ 'WELCOME_BACK' | translate }}</h1>
-  <p class="help-block login-sub-title">{{ 'LOGIN_1' | translate }}</p>
+
+  <div class="account-list" ng-if="accounts.length > 0">
+    <p class="account-list-title">{{ 'LOGIN_AS' | __ }}</p>
+    <div class="account-list-item" ng-repeat="account in accounts | orderBy:'-lastActive'" ng-class="{'active': activeUsername===account.username}">
+      <div class="login-type-image">
+      <img  ng-if="account.type==='s'" src="img/steem.svg" title="Steem">
+      <img ng-if="account.type==='sc'" src="img/steem-connect-logo.svg" title="Steem Connect">
+      </div>
+      <div class="profile-image" author-bg-img-style author="{{ account.username }}"></div>
+      <span class="username">@{{ account.username }}</span>
+      <div class="control-box">
+        <button class="btn btn-default btn-xs btn-logout" title="{{ 'LOGOUT' | translate }}" ng-if="activeUsername==account.username" ng-click="accountLogoutClicked()"><i class="fa fa-sign-out"></i></button>
+        <button class="btn btn-success btn-xs btn-login" title="{{ 'LOGIN' | translate }}" ng-if="activeUsername!=account.username" ng-click="accountLoginClicked(account)" ><i class="fa fa-sign-in"></i></button>
+        <button class="btn btn-danger btn-xs btn-remove" title="{{ 'REMOVE' | translate }}" ng-if="activeUsername!=account.username" ng-click="accountRemoveClicked(account)" ><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+  </div>
+  <hr class="hr-or" data-content="{{ 'OR' | translate }}" ng-if="accounts.length > 0">
   <form class="login-form">
+    <p class="login-form-title">{{ 'LOGIN_1' | translate }}</p>
     <div class="form-group">
       <div class="input-group">
         <span class="input-group-addon">@</span>
-        <input type="text" class="form-control" placeholder="{{ 'USERNAME' | translate }}" ng-model="formData.username" auto-focus>
+        <input type="text" class="form-control" placeholder="{{ 'USERNAME' | translate }}" ng-model="formData.username" id="login-username">
       </div>
     </div>
     <div class="form-group">
-      <input type="password" class="form-control" placeholder="Password or WIF" ng-model="formData.code">
+      <input type="password" class="form-control" placeholder="Password or WIF" ng-model="formData.code" id="login-code">
     </div>
     <div class="alert alert-danger" ng-if="loginErr">{{ 'PASSWORD_INCORRECT' | translate }}</div>
     <div class="alert alert-danger" ng-if="loginErrPublicKey"> {{ 'LOGIN_PUBLIC_KEY_ERROR' | __ }}</div>
