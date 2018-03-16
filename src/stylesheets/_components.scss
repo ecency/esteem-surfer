@@ -1222,8 +1222,8 @@
   .modal-body {
 
     .logo {
-      margin: 0 auto 20px auto;
-      width: 140px;
+      margin: 0 auto 14px auto;
+      width: 100px;
       img {
         width: 100%;
       }
@@ -1231,17 +1231,94 @@
 
     .login-title {
       font-size: 26px;
-      margin: 0 0 20px 0;
+      margin: 0 0 14px 0;
       text-align: center;
     }
 
-    .login-sub-title {
-      text-align: center;
+    .account-list {
+      margin: 0 auto 0 auto;
+      width: 320px;
+
+      .account-list-title {
+        text-align: center;
+        font-size: 14px;
+        color: $textColorLighter;
+      }
+
+      .account-list-item {
+        cursor: pointer;
+        padding: 8px;
+
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+
+        .login-type-image {
+          width: 20px;
+          display: inline-block;
+          margin-right: 10px;
+
+          img {
+            width: 100%;
+          }
+        }
+
+        .profile-image {
+          background-color: $profilePicBg;
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          width: 40px;
+          height: 40px;
+          display: inline-block;
+          border-radius: 50%;
+          float: left;
+          margin-right: 10px;
+        }
+
+        .username {
+          width: 140px;
+          overflow: hidden;
+          font-size: 16px;
+          color: $textColorLight;
+          margin-right: 4px;
+
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          line-height: 16px;
+
+        }
+
+        .control-box {
+          opacity: 0.6;
+          .btn-login {
+            margin-right: 6px;
+          }
+        }
+
+        &:hover {
+          background-color: $hoverColor;
+          .username {
+            color: $textColor;
+          }
+
+          .control-box {
+            opacity: 1;
+          }
+        }
+      }
     }
 
     .login-form {
-      margin: 30px auto 0 auto;
-      width: 320px;
+
+      .login-form-title {
+        text-align: center;
+        font-size: 14px;
+        color: $textColorLighter;
+      }
+
+      margin: 0 auto 0 auto;
+      width: 360px;
 
       .help-block {
         font-size: 12px;
@@ -1253,11 +1330,12 @@
     }
 
     .hr-or {
+      width: 360px;
       border: 0;
       color: black;
       height: 1.5em;
       line-height: 1em;
-      margin: 20px 0 !important;
+      margin: 20px auto !important;
       opacity: .5;
       outline: 0;
       position: relative;

@@ -36,7 +36,6 @@ import contentVotersCtrl from './controllers/content-voters';
 import settingsCtrl from './controllers/settings';
 import loginCtrl from './controllers/login'
 import feedCtrl from './controllers/feed';
-import accountsCtrl from './controllers/accounts';
 
 import faqCtrl from './controllers/faq';
 import aboutCtrl from './controllers/about'
@@ -215,10 +214,6 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
         templateUrl: 'templates/feed.html',
         controller: 'feedCtrl'
       })
-      .when('/accounts', {
-        templateUrl: 'templates/accounts.html',
-        controller: 'accountsCtrl'
-      })
       .otherwise({redirectTo: '/'});
 
     // $http
@@ -289,7 +284,6 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
   .controller('tokenMarketCtrl', tokenMarketCtrl)
   .controller('marketPlaceCtrl', marketPlaceCtrl)
   .controller('feedCtrl', feedCtrl)
-  .controller('accountsCtrl', accountsCtrl)
 
   .filter('catchPostImage', catchPostImageFilter)
   .filter('sumPostTotal', sumPostTotalFilter)
@@ -358,6 +352,12 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
           return 'You need a private password or key (not a public key)';
         case 'LOGIN_SUCCESS':
           return 'Logged In';
+        case 'ACCOUNTS':
+          return 'Accounts';
+        case 'LOGIN_AS':
+          return 'Login As';
+        case 'EMPTY_LIST':
+          return 'Nothing here...';
         default:
           return s;
       }

@@ -1,7 +1,7 @@
 import steem from 'steem';
 import {openSCDialog} from '../helpers/sc';
 
-export default ($scope, $rootScope, $timeout, $uibModalInstance, $q, steemService, storageService, onLogin) => {
+export default ($scope, $rootScope, $timeout, $location, $uibModalInstance, $q, $window, $filter, steemService, storageService, userService, activeUsername) => {
 
   $scope.formData = {
     username: storageService.get('last_username') ? storageService.get('last_username').trim() : '',
@@ -98,7 +98,9 @@ export default ($scope, $rootScope, $timeout, $uibModalInstance, $q, steemServic
       let username = rUser.name;
 
       $scope.loginSuccess = true;
-      onLogin({type: 's', username: username, keys: resultKeys});
+
+      userService.add(username, resultKeys);
+      afterLogin(username);
 
       $timeout(() => {
         $uibModalInstance.dismiss('cancel');
@@ -117,7 +119,7 @@ export default ($scope, $rootScope, $timeout, $uibModalInstance, $q, steemServic
     $uibModalInstance.dismiss('cancel');
   };
 
-  // Flag to prevent reopen steem connect dialog window
+  // Flag to prevent reopen steemconnect dialog window
   let scWindowFlag = true;
   $scope.loginWith = () => {
 
@@ -132,7 +134,8 @@ export default ($scope, $rootScope, $timeout, $uibModalInstance, $q, steemServic
       $scope.loginSuccess = true;
       $scope.$apply();
 
-      onLogin({type: 'sc', username: username, accessToken: accessToken, expiresIn: expiresIn});
+      userService.addSc(username, accessToken, expiresIn);
+      afterLogin(username);
 
       setTimeout(() => {
         // $uibModalInstance.close(cb) not working properly.
@@ -143,5 +146,62 @@ export default ($scope, $rootScope, $timeout, $uibModalInstance, $q, steemServic
     }, () => {
       scWindowFlag = true;
     });
+  };
+
+  const afterLogin = (username) => {
+    userService.setActive(username);
+    $rootScope.$broadcast('userLoggedIn');
+    $uibModalInstance.dismiss('cancel');
+    if ($location.path().indexOf('/feed/') === -1) {
+      $location.path(`/feed/${username}`);
+    }
+  };
+
+  const loadAccounts = () => {
+    $scope.accounts = userService.getAll();
+    $scope.activeUsername = activeUsername();
+  };
+
+  loadAccounts();
+
+  $scope.accountLoginClicked = (account) => {
+    afterLogin(account.username);
+  };
+
+  $scope.accountLogoutClicked = () => {
+    userService.setActive(null);
+    $rootScope.$broadcast('userLoggedOut');
+  };
+
+  $scope.accountRemoveClicked = (account) => {
+    if (activeUsername() === account.username) {
+      return false;
+    }
+
+    if ($window.confirm($filter('translate')('ARE_YOU_SURE'))) {
+      userService.remove(account.username);
+      loadAccounts();
+    }
+  };
+
+  $rootScope.$on('userLoggedOut', () => {
+    loadAccounts();
+  });
+
+  $rootScope.$on('userLoggedIn', () => {
+    loadAccounts();
+  });
+
+  // Focus on user name field if account list is empty
+  if ($scope.accounts.length === 0) {
+    $timeout(function () {
+      let i = document.querySelector('#login-username');
+      if ($scope.formData.username !== '') {
+        i = document.querySelector('#login-code');
+      }
+      if (i) {
+        i.focus();
+      }
+    }, 800);
   }
 };

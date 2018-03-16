@@ -1,15 +1,8 @@
-export default ($scope, $rootScope, $routeParams, steemService, activeUsername, constants) => {
+export default ($scope, $rootScope, $routeParams, $location, steemService, activeUsername, constants) => {
 
   let username = $routeParams.username;
 
-  if (!$rootScope.user) {
-    return false;
-  }
-
-  if (activeUsername() !== username) {
-    return false;
-  }
-
+  $scope.username = username;
   $scope.posts = $rootScope.Data['feed'] || [];
 
   $scope.$watchCollection('posts', (n, o) => {
@@ -19,6 +12,8 @@ export default ($scope, $rootScope, $routeParams, steemService, activeUsername, 
 
     $rootScope.setNavVar('feed', n);
   });
+
+  $scope.filter = constants.defaultFilter;
 
   let ids = [];
   let hasMore = true;
@@ -76,4 +71,11 @@ export default ($scope, $rootScope, $routeParams, steemService, activeUsername, 
     let lastPost = [...$scope.posts].pop();
     loadPosts(lastPost.author, lastPost.permlink)
   };
+
+  $rootScope.$on('userLoggedIn', () => {
+    // Navigate new user's feed when user changed
+    if (username !== activeUsername()) {
+      $location.path(`/feed/${activeUsername()}`);
+    }
+  });
 };

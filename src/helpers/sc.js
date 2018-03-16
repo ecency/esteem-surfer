@@ -62,6 +62,7 @@ export const openSCDialog = (successCb, windowCloseCb) => {
     }
   );
 
+
   const windowSettings = {
     center: true,
     width: 800,
@@ -72,7 +73,6 @@ export const openSCDialog = (successCb, windowCloseCb) => {
     maxHeight: 600,
     maximizable: false,
     alwaysOnTop: true,
-    parent: remote.getCurrentWindow(),
     webPreferences: {
       nodeIntegration: false,
     }
@@ -80,8 +80,23 @@ export const openSCDialog = (successCb, windowCloseCb) => {
 
   const win = new remote.BrowserWindow(windowSettings);
 
-  // We don't want to auth window cache. Login window should be opened evert time.
-  win.webContents.session.clearStorageData([], function () { });
+  // Clear session in order to steemconnect ask username and password for each request.
+  win.webContents.session.clearStorageData(
+    {
+      'origin': 'https://v2.steemconnect.com',
+      storages: [
+        'appcache',
+        'cookies',
+        'filesystem',
+        'indexdb',
+        'localstorage',
+        'shadercache',
+        'websql',
+        'serviceworkers'
+      ]
+    }, function () {
+    });
+
 
   server.listen(serverPort, serverIp);
   server.on('listening', function () {
