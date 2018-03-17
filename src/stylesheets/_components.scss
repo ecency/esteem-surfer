@@ -457,7 +457,9 @@
     }
 
     .post-info-bar {
+      width: 600px;
       align-items: center;
+      float: left;
       display: flex;
       font-size: 18px;
       margin: 1rem 0 1rem 0;
@@ -517,6 +519,23 @@
           a {
             color: $textColorLight;
           }
+        }
+      }
+    }
+
+    .post-tools {
+      width: 200px;
+      align-items: center;
+      float: left;
+      display: flex;
+      height: 40px;
+      margin: 1rem 0 0 0;
+
+      .btn-bookmark {
+        width: 40px;
+
+        &.bookmarked {
+
         }
       }
     }
@@ -1232,6 +1251,12 @@
     .login-title {
       font-size: 26px;
       margin: 0 0 14px 0;
+      text-align: center;
+    }
+
+    .login-message {
+      margin: 0 auto 20px auto;
+      width: 320px;
       text-align: center;
     }
 

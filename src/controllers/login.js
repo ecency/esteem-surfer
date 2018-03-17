@@ -1,7 +1,9 @@
 import steem from 'steem';
 import {openSCDialog} from '../helpers/sc';
 
-export default ($scope, $rootScope, $timeout, $location, $uibModalInstance, $q, $window, $filter, steemService, storageService, userService, activeUsername) => {
+export default ($scope, $rootScope, $timeout, $location, $uibModalInstance, $q, $window, $filter, steemService, storageService, userService, activeUsername, loginMessage, afterLogin) => {
+
+  $scope.loginMessage = loginMessage;
 
   $scope.formData = {
     username: storageService.get('last_username') ? storageService.get('last_username').trim() : '',
@@ -100,7 +102,7 @@ export default ($scope, $rootScope, $timeout, $location, $uibModalInstance, $q, 
       $scope.loginSuccess = true;
 
       userService.add(username, resultKeys);
-      afterLogin(username);
+      afterLoginLocal(username);
 
       $timeout(() => {
         $uibModalInstance.dismiss('cancel');
@@ -135,7 +137,7 @@ export default ($scope, $rootScope, $timeout, $location, $uibModalInstance, $q, 
       $scope.$apply();
 
       userService.addSc(username, accessToken, expiresIn);
-      afterLogin(username);
+      afterLoginLocal(username);
 
       setTimeout(() => {
         // $uibModalInstance.close(cb) not working properly.
@@ -148,13 +150,11 @@ export default ($scope, $rootScope, $timeout, $location, $uibModalInstance, $q, 
     });
   };
 
-  const afterLogin = (username) => {
+  const afterLoginLocal = (username) => {
     userService.setActive(username);
     $rootScope.$broadcast('userLoggedIn');
     $uibModalInstance.dismiss('cancel');
-    if ($location.path().indexOf('/feed/') === -1) {
-      $location.path(`/feed/${username}`);
-    }
+    afterLogin(username);
   };
 
   const loadAccounts = () => {
@@ -165,7 +165,7 @@ export default ($scope, $rootScope, $timeout, $location, $uibModalInstance, $q, 
   loadAccounts();
 
   $scope.accountLoginClicked = (account) => {
-    afterLogin(account.username);
+    afterLoginLocal(account.username);
   };
 
   $scope.accountLogoutClicked = () => {

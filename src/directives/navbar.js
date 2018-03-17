@@ -53,7 +53,19 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
         $uibModal.open({
           templateUrl: 'templates/login.html',
           controller: 'loginCtrl',
-          windowClass: 'login-modal'
+          windowClass: 'login-modal',
+          resolve: {
+            loginMessage: () => {
+              return null;
+            },
+            afterLogin: () => {
+              return (username) => {
+                if ($location.path().indexOf('/feed/') === -1) {
+                  $location.path(`/feed/${username}`);
+                }
+              }
+            }
+          }
         }).result.then((data) => {
           // Success
         }, () => {

@@ -1,4 +1,4 @@
-export default ($scope, $rootScope, $routeParams, $timeout, $uibModal, $location, $q, steemService, helperService, constants) => {
+export default ($scope, $rootScope, $routeParams, $timeout, $uibModal, $location, $q, steemService, eSteemService, helperService, activeUsername, constants) => {
 
   let parent = $routeParams.parent;
   let author = $routeParams.author;
@@ -206,6 +206,23 @@ export default ($scope, $rootScope, $routeParams, $timeout, $uibModal, $location
   $scope.tagClicked = (tag) => {
     let u = `/posts/${$rootScope.selectedFilter}/${tag}`;
     $location.path(u);
+  };
+
+  $scope.addBookmark = () => {
+    if ($scope.bookmarked) {
+      return false;
+    }
+
+    $scope.bookmarking = true;
+    $scope.bookmarked = false;
+    eSteemService.addBookmark(activeUsername(), $scope.post).then((resp) => {
+      $scope.bookmarked = true;
+      $rootScope.$broadcast('newBookmark', {id: $scope.post.id});
+    }).catch((e) => {
+      $rootScope.showError('Server error. Could not bookmarked.')
+    }).then(() => {
+      $scope.bookmarking = false;
+    });
   };
 
   $scope.markdownHelperClicked = () => {
