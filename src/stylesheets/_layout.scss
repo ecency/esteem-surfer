@@ -1,6 +1,29 @@
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_mixins.scss";
 
+.error-messages {
+  position: fixed;
+  bottom: 60px;
+  right: 60px;
+  background: rgb(239, 132, 130);
+  color: #571010;
+  width: 360px;
+  max-height: 400px;
+  overflow: auto;
+  border-radius: 6px;
+  font-size: 14px;
+  z-index: 999999;
+
+  .error-message {
+    padding: 7px;
+
+    &:not(:last-child) {
+      margin-bottom: 7px;
+      border-bottom: 1px dashed rgba(87, 16, 16, 0.3);
+    }
+  }
+}
+
 .root {
   height: 100%;
   left: 0;

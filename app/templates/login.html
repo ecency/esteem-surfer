@@ -4,6 +4,8 @@
   </div>
   <h1 class="login-title">{{ 'WELCOME_BACK' | translate }}</h1>
 
+  <div class="login-message alert alert-info" ng-if="loginMessage">{{ loginMessage }}</div>
+
   <div class="account-list" ng-if="accounts.length > 0">
     <p class="account-list-title">{{ 'LOGIN_AS' | __ }}</p>
     <div class="account-list-item" ng-repeat="account in accounts | orderBy:'-lastActive'" ng-class="{'active': activeUsername===account.username}">

@@ -17,6 +17,13 @@
               title="{{ post.created|dateFormatted }}"> {{post.created|timeAgo}}</span></span>
           </div>
         </div>
+        <div class="post-tools">
+          <button class="btn btn-primary btn-bookmark" login-required on-login-success="addBookmark" uib-tooltip="{{ 'BOOKMARK' | translate }}"  ng-disabled="bookmarked">
+            <i class="fa fa-bookmark-o" ng-if="!bookmarking && !bookmarked"></i>
+            <i class="fa fa-bookmark" ng-if="bookmarked"></i>
+            <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="bookmarking"></i>
+          </button>
+        </div>
       </div>
       <button class="btn btn-primary" ng-click="markdownHelperClicked()" ng-if="$root.showMarkdownResultHelper">Save
         Markdown Result to Test

@@ -12,6 +12,9 @@
           <post-list-item post="post"></post-list-item>
         </li>
       </ul>
+      <div class="empty-list" ng-if="posts.length === 0 && !loadingPosts">
+        {{ 'EMPTY_LIST' | __ }}
+      </div>
       <footer>
         <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="loadingPosts"></i>
       </footer>

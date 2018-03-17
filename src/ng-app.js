@@ -13,6 +13,10 @@ String.prototype.hashCode = function () {
   return hash;
 };
 
+const genRandom = function () {
+  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+};
+
 import {remote, shell} from "electron";
 import env from "env";
 import jetpack from "fs-jetpack";
@@ -57,6 +61,8 @@ import contentPayoutInfoDir from './directives/content-payout-info';
 import contentVotersInfoDir from './directives/content-voters-info';
 import contentListItemChildDir from './directives/content-list-item-child'
 import autoFocusDir from './directives/autofocus';
+import loginRequiredDir from './directives/login-required';
+
 
 // Services
 import steemService from './services/steem';
@@ -242,7 +248,21 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
     return {
       getCurrencyRate: (cur) => {
         return $http.get(`${apiUrl}/api/currencyRate/${ cur.toUpperCase() }/steem`)
-      }
+      },
+      addBookmark: function (username, content) {
+        return $http.post(`${apiUrl}/api/bookmark`, {
+          username: username,
+          author: content.author,
+          permlink: content.permlink,
+          chain: 'steem'
+        });
+      },
+      getBookmarks: function (user) {
+        return $http.get(`${apiUrl}/api/bookmarks/${user}`);
+      },
+      removeBookmark: function (id, user) {
+        return $http.delete(`${apiUrl}/api/bookmarks/${user}/${id}/`);
+      },
     }
   })
   .factory('steemService', steemService)
@@ -272,6 +292,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
   .directive('contentVotersInfo', contentVotersInfoDir)
   .directive('contentListItemChild', contentListItemChildDir)
   .directive('autoFocus', autoFocusDir)
+  .directive('loginRequired', loginRequiredDir)
 
   .controller('postsCtrl', postsCtrl)
   .controller('faqCtrl', faqCtrl)
@@ -620,6 +641,19 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
       let u = `/posts/${$rootScope.selectedFilter}/${tag}`;
       $rootScope.$broadcast('go-to-path', u);
     });
+
+
+    // Error messages to show user when remote server errors occurred
+    $rootScope.errorMessages = [];
+    $rootScope.showError = (message) => {
+      $rootScope.errorMessages.push({
+        id: genRandom(),
+        text: message
+      });
+      $timeout(() => {
+        $rootScope.errorMessages.shift();
+      }, 5000)
+    };
 
     // An helper to collect post body samples
     $rootScope.showMarkdownResultHelper = (env.name === 'development');
