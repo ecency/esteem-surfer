@@ -1409,3 +1409,74 @@
   }
 }
 
+.bookmarks-modal {
+  .modal-body {
+    .bookmarks-search {
+      margin-bottom: 20px;
+    }
+
+    .bookmarks-loading {
+      text-align: center;
+
+      .fa {
+        color: $loadingColor;
+        font-size: 30px;
+      }
+    }
+
+    .bookmarks-list {
+      height: 400px;
+      overflow-y: auto;
+
+      .bookmarks-list-item {
+        align-items: center;
+        display: flex;
+        margin-bottom: 16px;
+        border-radius: 6px;
+        padding: 4px;
+
+        .profile-image {
+          background-color: $profilePicBg;
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          border-radius: 50%;
+          height: 30px;
+          margin-right: 10px;
+          width: 30px;
+        }
+
+        .bookmark-link {
+          font-size: 16px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: 440px;
+          display: inline-block;
+          margin-right: 30px;
+        }
+
+        .control-box {
+          opacity: 0.6;
+        }
+
+        &:hover {
+          background-color: $hoverColor;
+          .control-box {
+            opacity: 1;
+          }
+        }
+      }
+
+      &.processing {
+        opacity: 0.6;
+
+        .control-box {
+          .btn {
+            pointer-events: none;
+          }
+        }
+      }
+    }
+  }
+}

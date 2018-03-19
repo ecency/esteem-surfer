@@ -189,6 +189,13 @@ export default ($scope, $rootScope, $routeParams, $timeout, $uibModal, $location
     // Add to nav history
     $rootScope.setNavVar('post', content);
 
+    // Check if post bookmarked
+    for (let i of $rootScope.bookmarks) {
+      if (i.permlink === $scope.post.permlink) {
+        $scope.bookmarked = true;
+        break;
+      }
+    }
 
     if (commentId) {
       // Scroll page to comments section
