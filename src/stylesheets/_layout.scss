@@ -2,24 +2,24 @@
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_mixins.scss";
 
 .error-messages {
-  position: fixed;
-  bottom: 60px;
-  right: 60px;
   background: rgb(239, 132, 130);
+  border-radius: 6px;
+  bottom: 60px;
   color: #571010;
-  width: 360px;
+  font-size: 14px;
   max-height: 400px;
   overflow: auto;
-  border-radius: 6px;
-  font-size: 14px;
+  position: fixed;
+  right: 60px;
+  width: 360px;
   z-index: 999999;
 
   .error-message {
     padding: 7px;
 
     &:not(:last-child) {
-      margin-bottom: 7px;
       border-bottom: 1px dashed rgba(87, 16, 16, 0.3);
+      margin-bottom: 7px;
     }
   }
 }
@@ -169,18 +169,18 @@
           z-index: 10;
 
           .author-reputation {
-            position: absolute;
-            width: 40px;
-            height: 40px;
+            background-color: lighten($themePrimaryTone, 20);
             border: 5px solid lighten($seperatorColor, 50);
             border-radius: 50%;
-            background-color: lighten($themePrimaryTone, 20);
             color: $textColorLightest;
-            text-align: center;
-            padding-top: 7px;
+            height: 40px;
             line-height: 100%;
+            padding-top: 7px;
+            position: absolute;
             right: -10px;
-            top: 0
+            text-align: center;
+            top: 0;
+            width: 40px;
           }
         }
 
@@ -266,11 +266,11 @@
         width: calc(100% - 260px);
 
         .content-list {
-          position: relative;
           background: $listBgColor;
           border: 1px solid $listBorderColor;
           box-shadow: 0 0 1px 0 $listBorderColor;
           padding: 12px 25px 15px 25px;
+          position: relative;
 
           header {
             border-bottom: 1px solid $seperatorColor;
@@ -325,8 +325,8 @@
               }
 
               .col-value {
-                text-align: right;
                 padding-top: 10px;
+                text-align: right;
 
                 span {
                   display: block;
@@ -336,15 +336,15 @@
             }
 
             .section-header {
-              margin: 20px 0 16px 0;
               font-size: 20px;
+              margin: 20px 0 16px 0;
             }
 
             .next-power-down {
-              display: inline-block;
-              padding: 3px;
-              margin: 20px 0;
               background: $highlightColor;
+              display: inline-block;
+              margin: 20px 0;
+              padding: 3px;
             }
           }
 
@@ -373,4 +373,3 @@
     margin: 0 0 20px 0;
   }
 }
-

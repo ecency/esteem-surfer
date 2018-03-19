@@ -22,6 +22,7 @@ import env from "env";
 import jetpack from "fs-jetpack";
 import steem from 'steem';
 import path from 'path';
+import moment from 'moment';
 
 
 import jq from 'jquery';
@@ -40,6 +41,8 @@ import contentVotersCtrl from './controllers/content-voters';
 import settingsCtrl from './controllers/settings';
 import loginCtrl from './controllers/login'
 import feedCtrl from './controllers/feed';
+import bookmarksCtrl from './controllers/bookmarks';
+
 
 import faqCtrl from './controllers/faq';
 import aboutCtrl from './controllers/about'
@@ -70,6 +73,7 @@ import {helperService} from './services/helper';
 import storageService from './services/storage';
 import settingsService from './services/settings';
 import userService from './services/user';
+
 
 // Filters
 import {catchPostImageFilter} from './filters/catch-post-image';
@@ -305,6 +309,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
   .controller('tokenMarketCtrl', tokenMarketCtrl)
   .controller('marketPlaceCtrl', marketPlaceCtrl)
   .controller('feedCtrl', feedCtrl)
+  .controller('bookmarksCtrl', bookmarksCtrl)
 
   .filter('catchPostImage', catchPostImageFilter)
   .filter('sumPostTotal', sumPostTotalFilter)
@@ -379,6 +384,8 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
           return 'Login As';
         case 'EMPTY_LIST':
           return 'Nothing here...';
+        case 'SEARCH_BOOKMARKS':
+          return 'Search in bookmarks...';
         default:
           return s;
       }
@@ -640,6 +647,46 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
       let tag = jq(this).data('tag');
       let u = `/posts/${$rootScope.selectedFilter}/${tag}`;
       $rootScope.$broadcast('go-to-path', u);
+    });
+
+    // BOOKMARKS
+    $rootScope.bookmarks = [];
+    const fetchBookmarks = () => {
+      $rootScope.bookmarks = [];
+      eSteemService.getBookmarks($rootScope.user.username).then((resp) => {
+        let temp = [];
+
+        // Create timestamps and search titles for each bookmark item. Timestamps will be used for sorting.
+        for (let i of resp.data) {
+          temp.push(Object.assign(
+            {},
+            i,
+            {createdTime: moment(i.created).format('X')},
+            {searchTitle: `${i.author} ${i.permlink} ${i.author.replace(/-/g, ' ')} ${i.permlink.replace(/-/g, ' ')}`.toLowerCase()}
+          ));
+        }
+
+        $rootScope.bookmarks = temp;
+      });
+    };
+
+    if ($rootScope.user) {
+      fetchBookmarks();
+    }
+
+    // Fetch bookmarks on login
+    $rootScope.$on('userLoggedIn', () => {
+      fetchBookmarks();
+    });
+
+    // Set bookmarks to empty list when user logged out
+    $rootScope.$on('userLoggedOut', () => {
+      $rootScope.bookmarks = [];
+    });
+
+    // Refresh bookmarks when new bookmark created
+    $rootScope.$on('newBookmark', () => {
+      fetchBookmarks();
     });
 
 

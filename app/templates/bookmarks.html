@@ -1,0 +1,24 @@
+<div class="modal-body">
+  <div class="bookmarks-search">
+    <input type="text" class="form-control" placeholder="{{ 'SEARCH_BOOKMARKS' | __ }}" ng-model="term">
+  </div>
+  <div class="bookmarks-list" ng-class="{'processing': processing}">
+    <div class="bookmarks-list-item" ng-repeat="b in bookmarks | orderBy:'-createdTime'">
+      <div class="profile-image" author-bg-img-style author="{{ b.author }}"></div>
+      <span class="bookmark-link">
+        <span class="bookmark-author-at-sign">@</span><span class="bookmark-author">{{ b.author }}</span><span class="bookmark-path-separator">/</span><span class="bookmark-permlink">{{ b.permlink }}</span>
+      </span>
+      <div class="control-box">
+        <button class="btn btn-primary btn-xs btn-go" ng-click="bookmarkClicked(b)"><i class="fa fa-arrow-right"></i></button>
+        <button class="btn btn-danger btn-xs btn-remove" title="{{ 'REMOVE' | translate }}" ng-click="removeClicked(b)" ><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <div class="empty-list" ng-if="bookmarks.length === 0">
+      {{ 'EMPTY_LIST' | __ }}
+    </div>
+  </div>
+</div>
+
+
+
+

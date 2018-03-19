@@ -37,12 +37,14 @@
           <ul class="dropdown-menu">
             <li>
               <a ng-click="profileClicked()">{{ 'PROFILE' | translate }}</a>
+              <a ng-click="bookmarksClicked()">{{ 'BOOKMARKS' | translate }}</a>
+
               <!--
               <a ng-click="">{{ 'WALLET' | translate }}</a>
-              <a ng-click="">{{ 'BOOKMARKS' | translate }}</a>
               <a ng-click="">{{ 'DRAFTS' | translate }}</a>
               <a ng-click="">{{ 'GALLERY' | translate }}</a>
               <a ng-click="">{{ 'NOTIFICATIONS' | translate }}</a> -->
+
               <a ng-click="openLogin()">{{ 'LOGIN_AS' | __ }}</a>
               <a ng-click="logout()">{{ 'LOGOUT' | translate }}</a>
             </li>

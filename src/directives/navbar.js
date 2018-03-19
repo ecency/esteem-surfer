@@ -78,9 +78,22 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
         $rootScope.$broadcast('userLoggedOut');
       };
 
+
       $scope.profileClicked = () => {
         $location.path(`/author/${activeUsername()}`);
       };
+
+      $scope.bookmarksClicked = () => {
+        $uibModal.open({
+          templateUrl: 'templates/bookmarks.html',
+          controller: 'bookmarksCtrl',
+          windowClass: 'bookmarks-modal'
+        }).result.then((data) => {
+          // Success
+        }, () => {
+          // Cancel
+        });
+      }
     }
   };
 };
