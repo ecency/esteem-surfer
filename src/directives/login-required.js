@@ -6,8 +6,6 @@ export default ($rootScope, $uibModal) => {
     },
     link: (scope, elem, attrs) => {
 
-
-
       const checkLogin = () => {
         let openLogin = false;
 
@@ -50,6 +48,7 @@ export default ($rootScope, $uibModal) => {
       elem.bind('click', function () {
         if (checkLogin()) {
           scope.onLoginSuccess();
+          scope.$applyAsync();
         }
       });
     }

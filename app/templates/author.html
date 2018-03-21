@@ -6,6 +6,12 @@
     </div>
     <div class="the-author" ng-if="!loadingAuthor" ng-class="{'fetching': loadingAuthor}">
       <header class="author-header">
+        <div class="control-box" ng-class="{'fetching': loadingVisitor}">
+          <button class="btn btn-default btn-follow" ng-if="visitorData.canFollow" login-required on-login-success="follow" ng-disabled="loadingVisitor || followingProcess"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="followingProcess"></i> {{ 'FOLLOW' | translate }}</button>
+          <button class="btn btn-default btn-unfollow" ng-if="visitorData.canUnfollow">{{ 'UNFOLLOW' | translate }}</button>
+          <button class="btn btn-default btn-mute" ng-if="visitorData.canMute">{{ 'MUTE' | translate }}</button>
+          <button class="btn btn-default btn-unmute" ng-if="visitorData.canUnmute">{{ 'UNMUTE' | translate }}</button>
+       </div>
         <div class="cover-image" style="background-image: url('{{ authorData.profile.cover_image }}')"></div>
         <div class="profile-image-holder">
           <div class="profile-image" author-bg-img-style author="{{ username }}" size="large">
@@ -74,13 +80,13 @@
           </div>
         </div>
         <div class="author-content-right">
-          <div class="content-list" ng-class="{'fetching': loadingRest}">
+          <div class="content-list" ng-class="{'fetching': loadingContents}">
             <header>
               <h1 ng-if="section==='blog'">{{ 'BLOG' | translate }}</h1>
               <h1 ng-if="section==='comments'">{{ 'COMMENTS' | translate }}</h1>
               <h1 ng-if="section==='replies'">{{ 'REPLIES' | translate }}</h1>
               <h1 ng-if="section==='wallet'">{{ 'WALLET' | translate }}</h1>
-              <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingRest"
+              <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingContents"
                       title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
             </header>
             <ul class="feed" ng-if="section==='blog'">
@@ -221,7 +227,7 @@
             </div>
 
             <footer>
-              <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="loadingRest"></i>
+              <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="loadingContents"></i>
             </footer>
           </div>
         </div>

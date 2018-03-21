@@ -41,6 +41,9 @@ export default () => {
         $location.path(`/posts/${$scope.selectedFilter}`);
       };
 
+      $scope.viewAllClicked = () => {
+        // $location.path(`/tags`);
+      }
     }
   };
 };

@@ -5,5 +5,5 @@
   <ul class="tag-list" ng-class="{'fetching': loadingTags}">
     <li ng-repeat="t in $root.tags" ng-class="{'active': (selectedTag===t)}" data-key="{{ t }}"><a ng-click="tagClicked(t)">{{ t }}</a></li>
   </ul>
-  <footer><a href="#">{{ 'View all tags..' | __ }}</a></footer>
+  <footer><a ng-click="viewAllClicked()">{{ 'View all tags..' | __ }}</a></footer>
 </div>
