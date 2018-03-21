@@ -24,7 +24,6 @@ import steem from 'steem';
 import path from 'path';
 import moment from 'moment';
 
-
 import jq from 'jquery';
 
 // Angular and related dependencies
@@ -42,6 +41,7 @@ import settingsCtrl from './controllers/settings';
 import loginCtrl from './controllers/login'
 import feedCtrl from './controllers/feed';
 import bookmarksCtrl from './controllers/bookmarks';
+import tagsCtrl from './controllers/tags';
 
 
 import faqCtrl from './controllers/faq';
@@ -73,6 +73,7 @@ import {helperService} from './services/helper';
 import storageService from './services/storage';
 import settingsService from './services/settings';
 import userService from './services/user';
+import steemAuthenticatedService from './services/steem-authenticated';
 
 
 // Filters
@@ -224,6 +225,10 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
         templateUrl: 'templates/feed.html',
         controller: 'feedCtrl'
       })
+      .when('/tags', {
+        templateUrl: 'templates/tags.html',
+        controller: 'tagsCtrl'
+      })
       .otherwise({redirectTo: '/'});
 
     // $http
@@ -270,6 +275,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
     }
   })
   .factory('steemService', steemService)
+  .factory('steemAuthenticatedService', steemAuthenticatedService)
   .factory('storageService', storageService)
   .factory('settingsService', settingsService)
   .factory('userService', userService)
@@ -310,6 +316,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
   .controller('marketPlaceCtrl', marketPlaceCtrl)
   .controller('feedCtrl', feedCtrl)
   .controller('bookmarksCtrl', bookmarksCtrl)
+  .controller('tagsCtrl', tagsCtrl)
 
   .filter('catchPostImage', catchPostImageFilter)
   .filter('sumPostTotal', sumPostTotalFilter)
@@ -392,7 +399,8 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
     }
   })
 
-  .run(function ($rootScope, $uibModal, $translate, $timeout, $interval, $location, $window, eSteemService, steemService, settingsService, userService, constants) {
+  .run(function ($rootScope, $uibModal, $translate, $timeout, $interval, $location, $window, $q, eSteemService, steemService, settingsService, userService, constants) {
+
 
     // SETTINGS
     /*
@@ -661,7 +669,6 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
           temp.push(Object.assign(
             {},
             i,
-            {createdTime: moment(i.created).format('X')},
             {searchTitle: `${i.author} ${i.permlink} ${i.author.replace(/-/g, ' ')} ${i.permlink.replace(/-/g, ' ')}`.toLowerCase()}
           ));
         }
@@ -688,6 +695,55 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
     $rootScope.$on('newBookmark', () => {
       fetchBookmarks();
     });
+
+
+    // FOLLOWING
+    const collectFollowing = async () => {
+      $rootScope.following = [];
+
+      let startFollowing = '';
+      let list = [];
+      let i = 0;
+
+      while (true) {
+
+        // protection
+        if (i >= 40) {
+          break;
+        }
+
+        let resp = await steemService.getFollowing($rootScope.user.username, startFollowing, 'blog', 100).then((resp) => {
+          return resp;
+        }).catch(() => {
+          return null;
+        });
+
+        i += 1;
+
+        if (!resp) {
+          continue;
+        }
+
+        for (let r of resp) {
+          list.push(r.following);
+        }
+
+        // set new starting following user
+        startFollowing = resp[resp.length - 1].following;
+
+        // break if last page of following list
+        if (resp.length < 100) {
+          break;
+        }
+      }
+
+      // make list unique
+      $rootScope.following = [...new Set(list)];
+    };
+
+    if ($rootScope.user) {
+      // collectFollowing();
+    }
 
 
     // Error messages to show user when remote server errors occurred

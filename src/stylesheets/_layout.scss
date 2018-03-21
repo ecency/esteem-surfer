@@ -138,7 +138,14 @@
 
   .the-author {
     .author-header {
+      position:relative;
       height: 200px;
+
+      .control-box{
+        position: absolute;
+        top:20px;
+        right:20px;
+      }
 
       .cover-image {
         background-color: #171F24;

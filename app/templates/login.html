@@ -23,7 +23,7 @@
     </div>
   </div>
   <hr class="hr-or" data-content="{{ 'OR' | translate }}" ng-if="accounts.length > 0">
-  <form class="login-form">
+  <form class="login-form" id="login-form">
     <p class="login-form-title">{{ 'LOGIN_1' | translate }}</p>
     <div class="form-group">
       <div class="input-group">
@@ -42,7 +42,7 @@
     <hr>
     <p class="help-block text-center"><i class="fa fa-info-circle"></i> {{ 'LOGIN_4' | translate }}</p>
     <div class="form-group">
-      <button type="submit" class="btn btn-primary btn-block" ng-disabled="!isLoginButtonVisible() || processing" ng-click="loginClicked()"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="processing"></i> {{ 'LOGIN' | translate }}</button>
+      <button type="submit" class="btn btn-primary btn-block" id="btn-login" ng-disabled="!isLoginButtonVisible() || processing" ng-click="loginClicked()"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="processing"></i> {{ 'LOGIN' | translate }}</button>
     </div>
     <p class="text-center">{{ 'DONT_HAVE' | translate }} <a href="https://signup.steemit.com/?ref=esteemapp" target="_external">{{ 'SIGN_UP_NOW' | translate }}</a></p>
     <hr class="hr-or" data-content="{{ 'OR' | translate }}">

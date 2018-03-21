@@ -143,6 +143,19 @@ export default (steemApi, $q) => {
         }
       });
       return defer.promise;
+    },
+    getFollowing: (follower, startFollowing, followType = 'blog', limit = 100) => {
+      let defer = $q.defer();
+
+      steemApi.getApi().getFollowing(follower, startFollowing, followType, limit, (err, response) => {
+
+        if (err) {
+          defer.reject(err);
+        } else {
+          defer.resolve(response);
+        }
+      });
+      return defer.promise;
     }
   }
 };

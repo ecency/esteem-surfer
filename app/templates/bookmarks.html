@@ -3,7 +3,7 @@
     <input type="text" class="form-control" placeholder="{{ 'SEARCH_BOOKMARKS' | __ }}" ng-model="term">
   </div>
   <div class="bookmarks-list" ng-class="{'processing': processing}">
-    <div class="bookmarks-list-item" ng-repeat="b in bookmarks | orderBy:'-createdTime'">
+    <div class="bookmarks-list-item" ng-repeat="b in bookmarks | orderBy:'-timestamp'">
       <div class="profile-image" author-bg-img-style author="{{ b.author }}"></div>
       <span class="bookmark-link">
         <span class="bookmark-author-at-sign">@</span><span class="bookmark-author">{{ b.author }}</span><span class="bookmark-path-separator">/</span><span class="bookmark-permlink">{{ b.permlink }}</span>
