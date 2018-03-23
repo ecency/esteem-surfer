@@ -3,18 +3,43 @@ export default ($rootScope, $uibModal) => {
     restrict: 'A',
     scope: {
       onLoginSuccess: '=',
+      onLoginOpen: '=',
+      requiredKeys: '='
     },
     link: (scope, elem, attrs) => {
 
       const checkLogin = () => {
         let openLogin = false;
+        let loginMsg = 'This action requires login';
 
         if (!$rootScope.user) {
           openLogin = true;
+        } else {
+          if ($rootScope.user.type === 's' && scope.requiredKeys) {
+            let requiredKeys = scope.requiredKeys.split(',');
+            let f = false;
+
+            for (let k of requiredKeys) {
+              if ($rootScope.user.keys[k]) {
+                f = true;
+                break;
+              }
+            }
+
+            if (!f) {
+              let km = '';
+              for (let k of requiredKeys) {
+                km += k.substr(0, 1).toUpperCase() + k.substr(1) + ' key or ';
+              }
+
+              loginMsg = `This action requires ${ km } Master password`;
+              openLogin = true;
+            }
+          }
         }
 
         if (openLogin) {
-          openLoginModalWindow('This action requires login');
+          openLoginModalWindow(loginMsg);
           return false;
         }
 
@@ -36,6 +61,13 @@ export default ($rootScope, $uibModal) => {
                   scope.onLoginSuccess();
                 }
               }
+            },
+            onOpen: function () {
+              return () => {
+                if (scope.onLoginOpen) {
+                  scope.onLoginOpen();
+                }
+              }
             }
           }
         }).result.then((data) => {
@@ -44,6 +76,7 @@ export default ($rootScope, $uibModal) => {
           // Cancel
         });
       };
+
 
       elem.bind('click', function () {
         if (checkLogin()) {

@@ -81,7 +81,7 @@ export default () => {
       };
 
       $scope.authorClicked = () => {
-        let u = `/author/${$scope.content.author}`;
+        let u = `/account/${$scope.content.author}`;
         $location.path(u);
       };
 

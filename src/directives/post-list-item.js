@@ -36,9 +36,7 @@ export default () => {
         <div class="post-footer">
             <div class="post-voting">
                 <div class="post-up-vote">
-                    <a ng-click="upVoteClicked(post)">
-                        <i class="fa fa-chevron-circle-up"></i>
-                    </a>
+                    <content-vote></content-vote>
                 </div>
                 <div class="post-total">
                     <content-payout-info content="post"></content-payout-info>
@@ -86,7 +84,7 @@ export default () => {
       };
 
       $scope.authorClicked = () => {
-        let u = `/author/${$scope.post.author}`;
+        let u = `/account/${$scope.post.author}`;
         $location.path(u);
       };
 

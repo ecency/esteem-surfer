@@ -264,14 +264,10 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     }
 
     if (section === 'wallet') {
-      // $scope.steemPower = (Number(account.vesting_shares.split(" ")[0]) / 1e6 * $rootScope.steemPerMVests).toFixed(3);
-      // console.log( $scope.steemPower)
-      // console.log(account)
 
-
-      $scope.has_unclaimed_rewards = (account.reward_steem_balance.split(' ')[0] > 0) ||
-        (account.reward_sbd_balance.split(' ')[0] > 0) ||
-        (account.reward_vesting_steem.split(' ')[0] > 0);
+      $scope.has_unclaimed_rewards = ($scope.authorData.reward_steem_balance.split(' ')[0] > 0) ||
+        ($scope.authorData.reward_sbd_balance.split(' ')[0] > 0) ||
+        ($scope.authorData.reward_vesting_steem.split(' ')[0] > 0);
 
 
       loadTransactions();
@@ -289,7 +285,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
   });
 
   const loadTransactions = () => {
-    $scope.loadingRest = true;
+    $scope.loadingContents = true;
     steemService.getState(`/@${username}/transfers`).then(resp => {
       if (resp.accounts[username]) {
         let transfers = resp.accounts[username].transfer_history.slice(Math.max(resp.accounts[username].transfer_history.length - 100, 0));
@@ -298,12 +294,12 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     }).catch((e) => {
       // TODO: Handle catch
     }).then(() => {
-      $scope.loadingRest = false;
+      $scope.loadingContents = false;
     });
   };
 
   $scope.changeSection = (section) => {
-    $location.path(`/author/${username}/${section}`);
+    $location.path(`/account/${username}/${section}`);
   };
 
   $scope.reload = () => {
@@ -352,10 +348,10 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     $scope.vBlockControl = true;
     $scope.vFollowing = true;
     steemAuthenticatedService.follow(username).then((resp) => {
-      console.log(resp);
       afterFollow();
     }).catch((e) => {
       // TODO: handle error
+      console.log(e)
     }).then(() => {
       $scope.vBlockControl = false;
       $scope.vFollowing = false;

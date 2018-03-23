@@ -57,7 +57,7 @@
           <content-voters-info content="post"></content-voters-info>
         </div>
       </div>
-      <div class="indicator comments-indicator" ng-show="loadingRest">
+      <div class="indicator comments-indicator" ng-if="loadingRest">
         <i class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
       </div>
       <div class="post-comment-list" ng-if="!loadingRest && commentsLength">

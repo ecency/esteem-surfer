@@ -38,7 +38,7 @@ export default ($rootScope, steemApi, $q) => {
   const unfollow = (wif, unfollower, unfollowing) => {
     const json = ['follow', {follower: unfollower, following: unfollowing, what: []}];
     let defer = $q.defer();
-    steem.broadcast.customJson(wif, [], [follower], 'follow', JSON.stringify(json), (err, response) => {
+    steem.broadcast.customJson(wif, [], [unfollower], 'follow', JSON.stringify(json), (err, response) => {
       if (err) {
         defer.reject(err);
       } else {

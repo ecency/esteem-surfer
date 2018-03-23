@@ -1,7 +1,9 @@
 import steem from 'steem';
 import {openSCDialog} from '../helpers/sc';
 
-export default ($scope, $rootScope, $timeout, $location, $uibModalInstance, $q, $window, $filter, steemService, storageService, userService, activeUsername, loginMessage, afterLogin) => {
+export default ($scope, $rootScope, $timeout, $location, $uibModalInstance, $q, $window, $filter, steemService, storageService, userService, activeUsername, loginMessage, afterLogin, onOpen) => {
+
+  onOpen();
 
   $scope.loginMessage = loginMessage;
 
