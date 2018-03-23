@@ -22,7 +22,6 @@ import env from "env";
 import jetpack from "fs-jetpack";
 import steem from 'steem';
 import path from 'path';
-import moment from 'moment';
 
 import jq from 'jquery';
 
@@ -65,6 +64,7 @@ import contentVotersInfoDir from './directives/content-voters-info';
 import contentListItemChildDir from './directives/content-list-item-child'
 import autoFocusDir from './directives/autofocus';
 import loginRequiredDir from './directives/login-required';
+import contentVoteDir from './directives/content-vote';
 
 
 // Services
@@ -197,11 +197,11 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
         templateUrl: 'templates/post.html',
         controller: 'postCtrl',
       })
-      .when('/author/:username', {
+      .when('/account/:username', {
         templateUrl: 'templates/author.html',
         controller: 'authorCtrl',
       })
-      .when('/author/:username/:section', {
+      .when('/account/:username/:section', {
         templateUrl: 'templates/author.html',
         controller: 'authorCtrl',
       })
@@ -303,6 +303,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
   .directive('contentListItemChild', contentListItemChildDir)
   .directive('autoFocus', autoFocusDir)
   .directive('loginRequired', loginRequiredDir)
+  .directive('contentVote', contentVoteDir)
 
   .controller('postsCtrl', postsCtrl)
   .controller('faqCtrl', faqCtrl)
@@ -646,7 +647,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
     jq('body').on('click', '.markdown-view .markdown-author-link', function (event) {
       event.preventDefault();
       let author = jq(this).data('author');
-      let u = `/author/${author}`;
+      let u = `/account/${author}`;
       $rootScope.$broadcast('go-to-path', u);
     });
 

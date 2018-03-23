@@ -64,6 +64,11 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
                   $location.path(`/feed/${username}`);
                 }
               }
+            },
+            onOpen: function () {
+              return () => {
+
+              }
             }
           }
         }).result.then((data) => {
@@ -80,7 +85,7 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
 
 
       $scope.profileClicked = () => {
-        $location.path(`/author/${activeUsername()}`);
+        $location.path(`/account/${activeUsername()}`);
       };
 
       $scope.bookmarksClicked = () => {

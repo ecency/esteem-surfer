@@ -4,7 +4,11 @@
     <div class="author-name"><a ng-click="goToAuthor()">{{ name }}</a></div>
     <div class="author-username"><a ng-click="goToAuthor()">@{{ username }}</a></div>
     <div class="author-follow">
-      <button ng-click="followClicked()" class="btn btn-primary btn-sm">{{ 'FOLLOW' | translate }}</button>
+      <button class="btn btn-primary btn-sm btn-follow" ng-if="!visitorName && visitorData.canFollow" login-required on-login-success="loginSuccess" on-login-open="loginDialogOpened" ng-disabled="loadingVisitor || vBlockControl"> {{ 'FOLLOW' | translate }}</button>
+      <button class="btn btn-primary btn-sm btn-follow" ng-if="visitorName && visitorData.canFollow" ng-click="follow()"  ng-disabled="loadingVisitor || vBlockControl"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="vFollowing"></i> {{ 'FOLLOW' | translate }}</button>
+      <button class="btn btn-primary btn-sm btn-unfollow" ng-if="visitorData.canUnfollow" ng-click="unfollow()"  ng-disabled="loadingVisitor || vBlockControl"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="vUnfollowing"></i> {{ 'UNFOLLOW' | translate }}</button>
+      <button class="btn btn-primary btn-sm btn-mute" ng-if="visitorData.canMute" ng-disabled="loadingVisitor || vBlockControl" ng-click="mute()"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="vMuting"></i> {{ 'MUTE' | translate }}</button>
+      <button class="btn btn-primary btn-sm btn-unmute" ng-if="visitorData.canUnmute" ng-disabled="loadingVisitor || vBlockControl" ng-click="unMute()"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="vUnmuting"></i> {{ 'UNMUTE' | translate }}</button>
     </div>
   </div>
   <br clear="all">
