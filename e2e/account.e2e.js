@@ -1,5 +1,6 @@
 import chai from "chai";
 import testUtils from "./utils";
+import steem from 'steem';
 
 chai.use(require('chai-string'));
 
@@ -19,18 +20,44 @@ describe("account", () => {
   before(async function () {
     // Delete browser local storage data
     await this.app.client.localStorage('DELETE');
+
+    // User name to test
+    this.testUser = 'good-karma';
   });
+
+  it('Unfollow test user before test', async function () {
+    const username = this.loginData[1]['username'];
+    const wif = this.loginData[1]['active'];
+    const following = this.testUser;
+
+    const unfollow = function () {
+      return new Promise(function (resolve, reject) {
+        const json = ['follow', {follower: username, following: following, what: []}];
+        steem.broadcast.customJson(wif, [], [username], 'follow', JSON.stringify(json), (err, response) => {
+          if (err) {
+            reject(err);
+          }
+          if (response) {
+            resolve(response);
+          }
+        });
+      });
+    };
+
+    await unfollow();
+
+  }).timeout(apiTimeout);
 
   it('Should navigate account page', async function () {
     const url = await this.app.client.getUrl();
     this.urlPrefix = url.split('#')[0];
 
-    const newUrl = `${this.urlPrefix}#!/author/good-karma`;
+    const newUrl = `${this.urlPrefix}#!/author/${this.testUser}`;
     await this.app.client.url(newUrl);
 
   }).timeout(apiTimeout);
 
-  it('Wait until page completely load', async function () {
+  it('Wait until account data loaded', async function () {
     await this.app.client.waitUntil(() => {
       return this.app.client.getAttribute('.the-author', 'class').then(res => {
         return res.indexOf('fetching') === -1;
@@ -38,14 +65,10 @@ describe("account", () => {
     });
   }).timeout(apiTimeout);
 
-
-  /*
-  it('Header control box should be loading', async function () {
+  it('Header control box should be loaded immediately', async function () {
     const c = await this.app.client.getAttribute('.author-header .control-box', 'class');
-    console.log(c)
-    // expect(c.indexOf('fetching') !== -1).to.deep.equal(true);
+    expect(c.indexOf('fetching') === -1).to.deep.equal(true);
   });
-*/
 
   it('Blog section should be active', async function () {
     const activeSectionText = await this.app.client.getText('.author-navbar .navbar-nav li.active');
@@ -93,14 +116,6 @@ describe("account", () => {
     });
   }).timeout(apiTimeout);
 
-
-  /* ---
-  it('Follow button should be disabled while visitor data loading', async function () {
-    const d = await this.app.client.getAttribute('.author-header .control-box .btn-follow', 'disabled');
-    expect(d).to.deep.equal(true);
-  });
-*/
-
   it('Follow button should be visible', async function () {
     const e = await this.app.client.isExisting('.author-header .control-box .btn-follow');
     expect(e).to.deep.equal(true);
@@ -126,8 +141,8 @@ describe("account", () => {
 
     await testUtils.timeout(200);
 
-    // Login dialog should be opened
     let e = await this.app.client.isExisting('.modal.login-modal');
+    expect(e).to.deep.equal(true);
   });
 
   it('Username field should be focused', async function () {
@@ -153,23 +168,54 @@ describe("account", () => {
     });
   }).timeout(apiTimeout);
 
+  it('Header control box should be in loading state', async function () {
+    const c = await this.app.client.getAttribute('.author-header .control-box', 'class');
+    expect(c.indexOf('fetching') !== -1).to.deep.equal(true);
+  });
+
   it('Follow button should be visible', async function () {
     const e = await this.app.client.isExisting('.author-header .control-box .btn-follow');
     expect(e).to.deep.equal(true);
   });
 
   it('Follow button should be disabled', async function () {
-    const d = await this.app.client.getAttribute('.author-header .control-box .btn-follow', 'disabled');
-    expect(d).to.deep.equal('true');
+    const e = await this.app.client.getAttribute('.author-header .control-box .btn-follow', 'disabled');
+    expect(e).to.deep.equal('true');
   });
+
+  it('Loading icon should be visible in follow button', async function () {
+    const e = await this.app.client.isExisting('.author-header .control-box .btn-follow .fa');
+    expect(e).to.deep.equal(true);
+  });
+
+  it('Wait until visitor data loaded', async function () {
+    await this.app.client.waitUntil(() => {
+      return this.app.client.getAttribute('.author-header .control-box', 'class').then(res => {
+        return res.indexOf('fetching') === -1;
+      });
+    });
+  }).timeout(apiTimeout);
+
+  it('Mute button should be visible', async function () {
+    const e = await this.app.client.isExisting('.author-header .control-box .btn-mute');
+    expect(e).to.deep.equal(true);
+  });
+
+  it('Mute button should be disabled', async function () {
+    const e = await this.app.client.getAttribute('.author-header .control-box .btn-mute', 'disabled');
+    expect(e).to.deep.equal('true');
+  });
+
+  it('Wait until following process finished', async function () {
+    await this.app.client.waitUntil(() => {
+      return this.app.client.isExisting('.author-header .control-box .btn-follow .fa').then(res => {
+        return !res
+      });
+    });
+  }).timeout(apiTimeout);
 
   it('Unfollow button should be hidden', async function () {
     const e = await this.app.client.isExisting('.author-header .control-box .btn-unfollow');
-    expect(e).to.deep.equal(false);
-  });
-
-  it('Mute button should be hidden', async function () {
-    const e = await this.app.client.isExisting('.author-header .control-box .btn-mute');
     expect(e).to.deep.equal(false);
   });
 
@@ -178,23 +224,36 @@ describe("account", () => {
     expect(e).to.deep.equal(false);
   });
 
-  it('Wait until visitor data loading', async function () {
-    await this.app.client.waitUntil(() => {
-      return this.app.client.getAttribute('.author-header .control-box', 'class').then(res => {
-        return res.indexOf('fetching') === -1;
-      });
+
+  /*
+
+it('Follow button should be disabled', async function () {
+  const d = await this.app.client.getAttribute('.author-header .control-box .btn-follow', 'disabled');
+  expect(d).to.deep.equal('true');
+});
+
+
+
+it('Wait until visitor data loading', async function () {
+  await this.app.client.waitUntil(() => {
+    return this.app.client.getAttribute('.author-header .control-box', 'class').then(res => {
+      return res.indexOf('fetching') === -1;
     });
-  }).timeout(apiTimeout);
-
-  it('Follow button should be visible', async function () {
-    const e = await this.app.client.isExisting('.author-header .control-box .btn-follow');
-    expect(e).to.deep.equal(true);
   });
+}).timeout(apiTimeout);
 
-  it('Follow button should be enabled', async function () {
-    const d = await this.app.client.getAttribute('.author-header .control-box .btn-follow', 'disabled');
-    expect(d).to.deep.equal(null);
-  });
+it('Follow button should be visible', async function () {
+  const e = await this.app.client.isExisting('.author-header .control-box .btn-follow');
+  expect(e).to.deep.equal(true);
+});
+
+it('Follow button should be enabled', async function () {
+  const d = await this.app.client.getAttribute('.author-header .control-box .btn-follow', 'disabled');
+  expect(d).to.deep.equal(null);
+});
+
+
+*/
 
 
   // Click follow button

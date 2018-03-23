@@ -88,6 +88,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
 
   const loadVisitor = async (refresh = false) => {
     $scope.loadingVisitor = true;
+
     let visitorName = activeUsername();
 
     $scope.visitorData = {
@@ -145,16 +146,16 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
           username: username,
           following: following,
           muted: muted,
-          canFollow: following === false,
-          canUnfollow: following === true,
-          canMute: following && muted === false,
-          canUnmute: muted === true
+          canFollow: !following,
+          canUnfollow: following,
+          canMute: !muted,
+          canUnmute: muted
         };
       }
+      $scope.$applyAsync();
     }
 
     $scope.loadingVisitor = false;
-    $scope.$applyAsync();
   };
 
   let contentIds = [];
@@ -278,7 +279,6 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
 
   };
 
-
   loadAccount().then(() => {
     // console.log("account data ok");
     loadVisitor().then(() => {
@@ -296,7 +296,6 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
         $scope.dataList = transfers;
       }
     }).catch((e) => {
-      console.log(e)
       // TODO: Handle catch
     }).then(() => {
       $scope.loadingRest = false;
@@ -340,19 +339,93 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
   // Can be deleted in the future after locale files changed.
   $scope.translationData = {platformname: 'Steem', platformsunit: "$1.00", platformpower: "Steem Power"};
 
+  const afterFollow = () => {
+    $scope.visitorData.following = true;
+    $scope.visitorData.muted = false;
+    $scope.visitorData.canFollow = false;
+    $scope.visitorData.canUnfollow = true;
+    $scope.visitorData.canMute = true;
+    $scope.visitorData.canUnmute = false;
+  };
 
   $scope.follow = () => {
-    $scope.followingProcess = true;
+    $scope.vBlockControl = true;
+    $scope.vFollowing = true;
     steemAuthenticatedService.follow(username).then((resp) => {
-      $timeout(() => {
-        loadVisitor(true).then(() => {
-          $scope.followingProcess = false;
-        })
-      }, 2000);
+      console.log(resp);
+      afterFollow();
     }).catch((e) => {
       // TODO: handle error
-      $scope.followingProcess = false;
+    }).then(() => {
+      $scope.vBlockControl = false;
+      $scope.vFollowing = false;
     })
+  };
+
+  const afterUnfollow = () => {
+    $scope.visitorData.following = false;
+    $scope.visitorData.muted = false;
+    $scope.visitorData.canFollow = true;
+    $scope.visitorData.canUnfollow = false;
+    $scope.visitorData.canMute = true;
+    $scope.visitorData.canUnmute = false;
+  };
+
+  $scope.unfollow = () => {
+    $scope.vBlockControl = true;
+    $scope.vUnfollowing = true;
+    steemAuthenticatedService.unfollow(username).then((resp) => {
+      afterUnfollow();
+    }).catch((e) => {
+      // TODO: handle error
+    }).then(() => {
+      $scope.vBlockControl = false;
+      $scope.vUnfollowing = false;
+    });
+  };
+
+  const afterMute = () => {
+    $scope.visitorData.following = false;
+    $scope.visitorData.muted = true;
+    $scope.visitorData.canFollow = true;
+    $scope.visitorData.canUnfollow = false;
+    $scope.visitorData.canMute = false;
+    $scope.visitorData.canUnmute = true;
+  };
+
+  $scope.mute = () => {
+    $scope.vBlockControl = true;
+    $scope.vMuting = true;
+    steemAuthenticatedService.mute(username).then((resp) => {
+      afterMute();
+    }).catch((e) => {
+      // TODO: handle error
+    }).then(() => {
+      $scope.vBlockControl = false;
+      $scope.vMuting = false;
+    })
+  };
+
+  const afterUnmute = () => {
+    $scope.visitorData.following = false;
+    $scope.visitorData.muted = false;
+    $scope.visitorData.canFollow = true;
+    $scope.visitorData.canUnfollow = false;
+    $scope.visitorData.canMute = true;
+    $scope.visitorData.canUnmute = false;
+  };
+
+  $scope.unMute = () => {
+    $scope.vBlockControl = true;
+    $scope.vUnmuting = true;
+    steemAuthenticatedService.unfollow(username).then((resp) => {
+      afterUnmute();
+    }).catch((e) => {
+      // TODO: handle error
+    }).then(() => {
+      $scope.vBlockControl = false;
+      $scope.vUnmuting = false;
+    });
   };
 
   $rootScope.$on('userLoggedIn', () => {
@@ -362,125 +435,4 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
   $rootScope.$on('userLoggedOut', () => {
     loadVisitor(true);
   });
-
-  /*
-  let visitorUsername = activeUsername();
-
-  $scope.visitorUsername = activeUsername();
-  $scope.loadingVisitor = true;
-  $scope.isFollowing = false;
-  $scope.isMuted = false;
-
-  $scope.selfPage = "";
-  $scope.canFollow = false;
-  $scope.canUnfollow = false;
-  $scope.canMute = false;
-  $scope.canUnmute = false;
-
-
-  const fetchVisitorRelations = async () => {
-
-    let defer = $q.defer();
-
-    let following = undefined;
-    let muted = undefined;
-
-    // Is following
-    await steemService.getFollowing(activeUsername(), username, 'blog', 1).then((resp) => {
-      following = false;
-      if (resp.length > 0) {
-        if (resp[0].follower === activeUsername() && resp[0].following === username) {
-          following = true;
-        }
-      }
-    }).catch((e) => {
-      // TODO: Handle error
-    });
-
-    // Is muted
-    await steemService.getFollowing(activeUsername(), username, 'ignore', 1).then((resp) => {
-      muted = false;
-      if (resp.length > 0) {
-        if (resp[0].follower === activeUsername() && resp[0].following === username) {
-          muted = true;
-        }
-      }
-    }).catch((e) => {
-      // TODO: Handle error
-    });
-
-    defer.resolve({following: following, muted: muted});
-
-    return defer.promise;
-  };
-
-  const loadVisitor = () => {
-    let visitorUsername = activeUsername();
-
-    if (visitorUsername === username) {
-
-      return;
-    }
-
-    if(!visitorUsername){
-
-
-      return;
-    }
-
-    if (visitorUsername) {
-      $scope.loadingVisitor = true;
-
-      fetchVisitorRelations().then((r) => {
-        if (r.following) {
-          $scope.canFollow = false;
-          $scope.canUnfollow = true;
-        }
-
-        if (r.muted) {
-          $scope.canMute = false;
-          $scope.canUnmute = true;
-        }
-
-        $scope.loadingVisitor = false;
-      });
-    } else {
-      $scope.canFollow = true;
-    }
-  };
-
-  loadVisitor();
-
-  */
-
-  /*
-  $scope.canFollow = () => {
-    if (!visitorUsername) {
-      return true;
-    }
-
-    if (visitorUsername !== username) {
-      return true;
-    }
-  };*/
-
-
-  /*
-  $scope.canUnfollow = () => {
-    if (!visitorUsername) {
-      return false;
-    }
-  };
-
-  $scope.canMute = () => {
-    if (!visitorUsername) {
-      return false;
-    }
-  };
-
-  $scope.canUnmute = () => {
-    if (!visitorUsername) {
-      return false;
-    }
-  };*/
 };
