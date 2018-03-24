@@ -99,6 +99,40 @@ export default ($rootScope, steemApi, $q) => {
     return defer.promise;
   };
 
+  const vote = (wif, voter, author, permlink, weight) => {
+    let defer = $q.defer();
+
+    steem.broadcast.vote(wif, voter, author, permlink, weight, function (err, response) {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(response);
+      }
+    });
+
+    return defer.promise;
+  };
+
+  const voteSC = (token, voter, author, permlink, weight) => {
+
+    let defer = $q.defer();
+
+    const api = sc2.Initialize({
+      accessToken: token
+    });
+
+    api.vote(voter, author, permlink, weight, function (err, res) {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(res);
+      }
+    });
+
+    return defer.promise;
+
+  };
+
   const getProperWif = (r) => {
     for (let i of r) {
       if ($rootScope.user.keys[i]) {
@@ -154,6 +188,21 @@ export default ($rootScope, steemApi, $q) => {
         case 'sc':
           const token = getAccessToken();
           return ignoreSC(token, follower, following);
+          break;
+      }
+    },
+    vote: (author, permlink, weight) => {
+      // requires Posting key
+      
+      const voter = $rootScope.user.username;
+      switch ($rootScope.user.type) {
+        case 's':
+          const wif = getProperWif(['posting']);
+          return vote(wif, voter, author, permlink, weight);
+          break;
+        case 'sc':
+          const token = getAccessToken();
+          return voteSC(token, voter, author, permlink, weight);
           break;
       }
     }

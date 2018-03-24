@@ -1,0 +1,37 @@
+// Bootstrap
+.btn:focus {
+  outline: none;
+}
+
+.alert {
+  padding: 10px;
+}
+
+.popover {
+  z-index: 1035 !important
+}
+
+// Angularjs Slider
+
+.rzslider .rz-pointer {
+  top: -8px !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 10px !important;
+  outline: 0;
+}
+
+.rzslider .rz-pointer:after {
+  top: 8px !important;
+  left: 8px !important;
+  width: 4px !important;
+  height: 4px !important;
+  border-radius: 2px !important;
+}
+
+.rzslider .rz-tick {
+  top: -5px;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+}

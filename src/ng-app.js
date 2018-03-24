@@ -30,6 +30,7 @@ import angular from 'angular';
 import {angularRoute} from 'angular-route';
 import {angularTranslate} from 'angular-translate';
 import ui from 'angular-ui-bootstrap';
+import {slider} from 'angularjs-slider';
 
 // Controllers
 import postsCtrl from './controllers/posts';
@@ -41,6 +42,7 @@ import loginCtrl from './controllers/login'
 import feedCtrl from './controllers/feed';
 import bookmarksCtrl from './controllers/bookmarks';
 import tagsCtrl from './controllers/tags';
+import contentVoteCtrl from './controllers/content-vote.js';
 
 
 import faqCtrl from './controllers/faq';
@@ -73,6 +75,7 @@ import {helperService} from './services/helper';
 import storageService from './services/storage';
 import settingsService from './services/settings';
 import userService from './services/user';
+import voteHistoryService from './services/vote-history';
 import steemAuthenticatedService from './services/steem-authenticated';
 
 
@@ -93,13 +96,14 @@ import steemDollarFilter from './filters/steem-dollar';
 
 import constants from './constants';
 
+
 const app = remote.app;
 
 
 // will be hidden
 const apiUrl = 'http://api.esteem.ws:8080';
 
-angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
+angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', 'rzModule'])
 
   .config(($translateProvider, $routeProvider, $httpProvider) => {
 
@@ -279,6 +283,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
   .factory('storageService', storageService)
   .factory('settingsService', settingsService)
   .factory('userService', userService)
+  .factory('voteHistoryService', voteHistoryService)
   .factory('helperService', helperService)
   .factory('activeUsername', ($rootScope) => {
     return () => {
@@ -318,6 +323,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
   .controller('feedCtrl', feedCtrl)
   .controller('bookmarksCtrl', bookmarksCtrl)
   .controller('tagsCtrl', tagsCtrl)
+  .controller('contentVoteCtrl', contentVoteCtrl)
 
   .filter('catchPostImage', catchPostImageFilter)
   .filter('sumPostTotal', sumPostTotalFilter)
@@ -471,7 +477,6 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
 
     // Refresh currency rate in every minute. Broadcast if changed.
     $interval(() => fetchCurrencyRate(true), 60000);
-
 
     // STEEM GLOBAL PROPERTIES
     $rootScope.steemPerMVests = 1;
@@ -696,55 +701,6 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate'])
     $rootScope.$on('newBookmark', () => {
       fetchBookmarks();
     });
-
-
-    // FOLLOWING
-    const collectFollowing = async () => {
-      $rootScope.following = [];
-
-      let startFollowing = '';
-      let list = [];
-      let i = 0;
-
-      while (true) {
-
-        // protection
-        if (i >= 40) {
-          break;
-        }
-
-        let resp = await steemService.getFollowing($rootScope.user.username, startFollowing, 'blog', 100).then((resp) => {
-          return resp;
-        }).catch(() => {
-          return null;
-        });
-
-        i += 1;
-
-        if (!resp) {
-          continue;
-        }
-
-        for (let r of resp) {
-          list.push(r.following);
-        }
-
-        // set new starting following user
-        startFollowing = resp[resp.length - 1].following;
-
-        // break if last page of following list
-        if (resp.length < 100) {
-          break;
-        }
-      }
-
-      // make list unique
-      $rootScope.following = [...new Set(list)];
-    };
-
-    if ($rootScope.user) {
-      // collectFollowing();
-    }
 
 
     // Error messages to show user when remote server errors occurred

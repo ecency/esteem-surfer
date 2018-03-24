@@ -36,7 +36,7 @@ export default () => {
         <div class="post-footer">
             <div class="post-voting">
                 <div class="post-up-vote">
-                    <content-vote></content-vote>
+                    <content-vote content="post" is-voted="isVoted"></content-vote>
                 </div>
                 <div class="post-total">
                     <content-payout-info content="post"></content-payout-info>
@@ -53,9 +53,10 @@ export default () => {
         </div>
     </div>
     `,
-    controller: ($scope, $rootScope, $location, $sce, $filter, $uibModal, storageService, helperService) => {
+    controller: ($scope, $rootScope, $location, $sce, $filter, $uibModal, storageService, helperService, activeUsername, voteHistoryService) => {
       $scope.isVisited = helperService.isPostRead($scope.post.id);
       $scope.reSteemed = ($scope.asAuthor && $scope.post.author !== $scope.asAuthor);
+      $scope.isVoted = !!voteHistoryService.get(activeUsername(), $scope.post.id);
 
       const goDetail = () => {
         $rootScope.selectedPost = $scope.post;
