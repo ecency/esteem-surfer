@@ -1,0 +1,9 @@
+<div class="modal-body">
+  <div class="voting-slider">
+    <rzslider rz-slider-model="slider.value" rz-slider-options="slider.options"></rzslider>
+  </div>
+  <div class="voting-buttons">
+    <button class="btn btn-primary" ng-disabled="voting" ng-click="vote()"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="voting"></i> {{ 'VOTE' | translate }}</button>
+  </div>
+</div>
+

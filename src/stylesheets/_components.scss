@@ -327,14 +327,27 @@
       float: left;
       margin-right: 20px;
       padding-right: 20px;
+      position: relative;
 
       .post-up-vote {
         float: left;
         margin-right: 10px;
+
         a {
           color: $textColorLight;
+          display: block;
           font-size: 20px;
           line-height: 22px;
+          outline: 0;
+          width: 20px;
+
+          &:hover, &.voted {
+            color: $linkHoverColor;
+          }
+
+          &.voting{
+            pointer-events: none;
+          }
         }
       }
 
@@ -457,12 +470,12 @@
     }
 
     .post-info-bar {
-      width: 600px;
       align-items: center;
-      float: left;
       display: flex;
+      float: left;
       font-size: 18px;
       margin: 1rem 0 1rem 0;
+      width: 600px;
 
       .post-author-pic {
         background-color: $profilePicBg;
@@ -524,12 +537,12 @@
     }
 
     .post-tools {
-      width: 200px;
       align-items: center;
-      float: left;
       display: flex;
+      float: left;
       height: 40px;
       margin: 1rem 0 0 0;
+      width: 200px;
 
       .btn-bookmark {
         width: 40px;
@@ -1256,8 +1269,8 @@
 
     .login-message {
       margin: 0 auto 20px auto;
-      width: 320px;
       text-align: center;
+      width: 320px;
     }
 
     .account-list {
@@ -1265,23 +1278,23 @@
       width: 320px;
 
       .account-list-title {
-        text-align: center;
-        font-size: 14px;
         color: $textColorLighter;
+        font-size: 14px;
+        text-align: center;
       }
 
       .account-list-item {
+        align-items: center;
+        border-radius: 8px;
+
         cursor: pointer;
+        display: flex;
         padding: 8px;
 
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-
         .login-type-image {
-          width: 20px;
           display: inline-block;
           margin-right: 10px;
+          width: 20px;
 
           img {
             width: 100%;
@@ -1293,24 +1306,24 @@
           background-position: 50% 50%;
           background-repeat: no-repeat;
           background-size: cover;
-          width: 40px;
-          height: 40px;
-          display: inline-block;
           border-radius: 50%;
+          display: inline-block;
           float: left;
+          height: 40px;
           margin-right: 10px;
+          width: 40px;
         }
 
         .username {
-          width: 140px;
-          overflow: hidden;
-          font-size: 16px;
           color: $textColorLight;
-          margin-right: 4px;
-
-          white-space: nowrap;
-          text-overflow: ellipsis;
+          font-size: 16px;
           line-height: 16px;
+          margin-right: 4px;
+          overflow: hidden;
+
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: 140px;
 
         }
 
@@ -1336,14 +1349,14 @@
 
     .login-form {
 
-      .login-form-title {
-        text-align: center;
-        font-size: 14px;
-        color: $textColorLighter;
-      }
-
       margin: 0 auto 0 auto;
+
       width: 360px;
+      .login-form-title {
+        color: $textColorLighter;
+        font-size: 14px;
+        text-align: center;
+      }
 
       .help-block {
         font-size: 12px;
@@ -1355,7 +1368,6 @@
     }
 
     .hr-or {
-      width: 360px;
       border: 0;
       color: black;
       height: 1.5em;
@@ -1365,6 +1377,7 @@
       outline: 0;
       position: relative;
       text-align: center;
+      width: 360px;
 
       &:before {
         background: linear-gradient(to right, transparent, $textColorLight, transparent);
@@ -1430,9 +1443,9 @@
 
       .bookmarks-list-item {
         align-items: center;
+        border-radius: 6px;
         display: flex;
         margin-bottom: 16px;
-        border-radius: 6px;
         padding: 4px;
 
         .profile-image {
@@ -1447,13 +1460,13 @@
         }
 
         .bookmark-link {
+          display: inline-block;
           font-size: 16px;
+          margin-right: 30px;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
           width: 440px;
-          display: inline-block;
-          margin-right: 30px;
         }
 
         .control-box {
@@ -1478,5 +1491,38 @@
         }
       }
     }
+  }
+}
+
+.content-vote-popover-content {
+  @include clearfix();
+  width: 240px;
+
+  .voting-slider {
+    float: left;
+    margin-right: 10px;
+    width: 130px;
+  }
+
+  .voting-button {
+    float: left;
+    padding-top: 16px;
+    text-align: right;
+    width: 100px;
+
+    .btn {
+      padding-left: 7px;
+      padding-right: 7px;
+    }
+  }
+}
+
+.content-vote-modal {
+  .voting-slider {
+    padding: 30px 0;
+  }
+
+  .voting-buttons {
+    text-align: center;
   }
 }

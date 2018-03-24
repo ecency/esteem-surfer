@@ -625,10 +625,12 @@ describe("account", () => {
     expect(postElements.length > 1).to.deep.equal(true);
   }).timeout(apiTimeout);
 
+  /*
   // Enable to see last state of window for a while
   it("Should Wait", function (done) {
     setTimeout(function () {
       done()
     }, 10000)
   }).timeout(11000)
+  */
 });
