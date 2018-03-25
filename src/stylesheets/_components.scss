@@ -345,7 +345,7 @@
             color: $linkHoverColor;
           }
 
-          &.voting{
+          &.voting {
             pointer-events: none;
           }
         }
@@ -652,9 +652,21 @@
 
         a {
           color: $textColorLight;
-          font-size: 16px;
-          line-height: 16px;
+          display: block;
+          font-size: 20px;
+          line-height: 22px;
+          outline: 0;
+          width: 20px;
+
+          &:hover, &.voted {
+            color: $linkHoverColor;
+          }
+
+          &.voting {
+            pointer-events: none;
+          }
         }
+
       }
 
       .post-total {
@@ -823,8 +835,19 @@
 
           a {
             color: $textColorLight;
-            font-size: 16px;
-            line-height: 16px;
+            display: block;
+            font-size: 20px;
+            line-height: 22px;
+            outline: 0;
+            width: 20px;
+
+            &:hover, &.voted {
+              color: $linkHoverColor;
+            }
+
+            &.voting {
+              pointer-events: none;
+            }
           }
         }
 
@@ -1120,10 +1143,22 @@
       .content-up-vote {
         float: left;
         margin-right: 10px;
+
         a {
           color: $textColorLight;
+          display: block;
           font-size: 20px;
           line-height: 22px;
+          outline: 0;
+          width: 20px;
+
+          &:hover, &.voted {
+            color: $linkHoverColor;
+          }
+
+          &.voting {
+            pointer-events: none;
+          }
         }
       }
 
