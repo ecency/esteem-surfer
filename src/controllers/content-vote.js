@@ -1,8 +1,7 @@
-export default ($scope, $rootScope, $timeout, $uibModalInstance, voteHistoryService, activeUsername, steemAuthenticatedService, content) => {
-  $scope.voting = false;
+export default ($scope, $rootScope, $uibModalInstance, activeUsername, steemAuthenticatedService, content, voteWeight) => {
 
   $scope.slider = {
-    value: voteHistoryService.get(activeUsername(), content.id) || 100,
+    value: voteWeight ? (voteWeight / 100) : 100,
     options: {
       floor: 0,
       ceil: 100,
@@ -19,15 +18,10 @@ export default ($scope, $rootScope, $timeout, $uibModalInstance, voteHistoryServ
     $scope.voting = true;
 
     const sliderVal = $scope.slider.value;
-    const weight = sliderVal * 100;
+    const weight = parseInt(sliderVal * 100);
 
     steemAuthenticatedService.vote(content.author, content.permlink, weight).then((resp) => {
-      if (sliderVal === 0) {
-        voteHistoryService.remove(activeUsername(), content.id);
-      } else {
-        voteHistoryService.set(activeUsername(), content.id, sliderVal);
-      }
-      $uibModalInstance.dismiss();
+      $uibModalInstance.dismiss(weight);
     }).catch((e) => {
       $rootScope.showError(`Error${e.message ? ': ' + e.message : ''}`);
     }).then(() => {

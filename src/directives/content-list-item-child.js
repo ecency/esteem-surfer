@@ -34,9 +34,7 @@ export default () => {
         <div class="content-footer">
             <div class="content-voting">
                 <div class="content-up-vote">
-                    <a ng-click="upVoteClicked()">
-                        <i class="fa fa-chevron-circle-up"></i>
-                    </a>
+                  <content-vote content="content"></content-vote>
                 </div>
                 <div class="content-total">
                     <content-payout-info content="content"></content-payout-info>

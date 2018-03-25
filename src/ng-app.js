@@ -75,7 +75,6 @@ import {helperService} from './services/helper';
 import storageService from './services/storage';
 import settingsService from './services/settings';
 import userService from './services/user';
-import voteHistoryService from './services/vote-history';
 import steemAuthenticatedService from './services/steem-authenticated';
 
 
@@ -283,7 +282,6 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .factory('storageService', storageService)
   .factory('settingsService', settingsService)
   .factory('userService', userService)
-  .factory('voteHistoryService', voteHistoryService)
   .factory('helperService', helperService)
   .factory('activeUsername', ($rootScope) => {
     return () => {
@@ -702,6 +700,73 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
       fetchBookmarks();
     });
 
+    // VOTING
+    // Update active_votes for cached content after voting
+    $rootScope.$on('contentVoted', (e, d) => {
+      const contentId = d.id;
+      const weight = d.weight;
+      const voter = d.voter;
+
+      // Iterate over all cache data
+      for (let cacheKey in cacheData) {
+        let cacheVal = cacheData[cacheKey];
+
+        for (let cacheKey2 in cacheVal) {
+
+          // For content lists
+          if (Array.isArray(cacheData[cacheKey][cacheKey2])) {
+            for (let k in cacheData[cacheKey][cacheKey2]) {
+
+              // Make sure if it is content list
+              if (!(cacheData[cacheKey][cacheKey2][0] && cacheData[cacheKey][cacheKey2][0].active_votes !== undefined)) {
+                continue;
+              }
+
+              // When contentId of voted matched with iterated content
+              if (cacheData[cacheKey][cacheKey2][k].id === contentId) {
+
+                let f = false;
+                // Update if exists
+                for (let a in cacheData[cacheKey][cacheKey2][k].active_votes) {
+                  if (cacheData[cacheKey][cacheKey2][k].active_votes[a].voter === voter) {
+                    // Update if it is exists
+                    cacheData[cacheKey][cacheKey2][k].active_votes[a].weight = weight;
+                    f = true;
+                    break;
+                  }
+                }
+
+                // Add if not exists
+                if (!f) {
+                  cacheData[cacheKey][cacheKey2][k].active_votes.push({voter: voter, weight: weight});
+                }
+              }
+            }
+            continue;
+          }
+
+          // For content objects
+          if (typeof cacheData[cacheKey][cacheKey2] === 'object' && cacheData[cacheKey][cacheKey2].id === contentId) {
+            let f = false;
+
+            // Update if exists
+            for (let a in cacheData[cacheKey][cacheKey2].active_votes) {
+              if (cacheData[cacheKey][cacheKey2].active_votes[a].voter === voter) {
+                // Update if it is exists
+                cacheData[cacheKey][cacheKey2].active_votes[a].weight = weight;
+                f = true;
+                break;
+              }
+            }
+
+            // Add if not exists
+            if (!f) {
+              cacheData[cacheKey][cacheKey2].active_votes.push({voter: voter, weight: weight});
+            }
+          }
+        }
+      }
+    });
 
     // Error messages to show user when remote server errors occurred
     $rootScope.errorMessages = [];

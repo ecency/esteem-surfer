@@ -21,9 +21,7 @@ export default () => {
           <div class="comment-footer">
             <div class="comment-voting">
               <div class="comment-up-vote">
-                <a ng-click="upVoteClicked()">
-                  <i class="fa fa-chevron-circle-up"></i>
-                </a>
+                <content-vote content="comment"></content-vote>
               </div>
               <div class="comment-total">
                 <content-payout-info content="comment"></content-payout-info>
