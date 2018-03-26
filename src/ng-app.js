@@ -75,6 +75,7 @@ import {helperService} from './services/helper';
 import storageService from './services/storage';
 import settingsService from './services/settings';
 import userService from './services/user';
+import voteHistoryService from './services/vote-history';
 import steemAuthenticatedService from './services/steem-authenticated';
 
 
@@ -282,6 +283,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .factory('storageService', storageService)
   .factory('settingsService', settingsService)
   .factory('userService', userService)
+  .factory('voteHistoryService', voteHistoryService)
   .factory('helperService', helperService)
   .factory('activeUsername', ($rootScope) => {
     return () => {
@@ -700,6 +702,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
       fetchBookmarks();
     });
 
+    /*
     // VOTING
     // Update active_votes for cached content after voting
     $rootScope.$on('contentVoted', (e, d) => {
@@ -767,6 +770,15 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
         }
       }
     });
+
+    $rootScope.$on('userLoggedIn', () => {
+
+    });
+
+    $rootScope.$on('userLoggedOut', () => {
+
+    });
+    */
 
     // Error messages to show user when remote server errors occurred
     $rootScope.errorMessages = [];
