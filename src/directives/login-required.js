@@ -1,6 +1,7 @@
 export default ($rootScope, $uibModal) => {
   return {
     restrict: 'A',
+    replace: false,
     scope: {
       onLoginSuccess: '=',
       onLoginOpen: '=',

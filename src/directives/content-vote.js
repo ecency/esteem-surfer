@@ -5,23 +5,36 @@ export default () => {
     scope: {
       content: '='
     },
-    template: `<a ng-click="clicked()" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()" ng-class="{'voted': isVoted, 'voting': voting}"><i class="fa fa-chevron-circle-up" ng-show="!voting"></i><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="voting"></i></a>`,
-    controller: ($scope, $rootScope, $timeout, $uibModal, steemService, steemAuthenticatedService, activeUsername) => {
-      $scope.voting = false;
+    template: `<div><a ng-click="" login-required required-keys="'posting'" on-login-success="clicked" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()" ng-class="{'voted': isVoted, 'voting': voting}"><i class="fa fa-chevron-circle-up" ng-show="!voting"></i><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="voting"></i></a></div>`,
+    controller: ($scope, $rootScope, $timeout, $uibModal, steemService, steemAuthenticatedService, voteHistoryService, activeUsername) => {
 
-      $scope.isVoted = false;
-      $scope.lastVoteWeight = null;
+      const reset = () => {
+        $scope.voting = false;
+        $scope.isVoted = false;
+        $scope.lastVoteWeight = null;
+      };
 
-      if (activeUsername()) {
-        const u = activeUsername();
-        for (let vote of $scope.content.active_votes) {
-          if (vote.voter === u) {
+      const detectVote = () => {
+        if (activeUsername()) {
+          const u = activeUsername();
+          for (let vote of $scope.content.active_votes) {
+            if (vote.voter === u) {
+              $scope.isVoted = true;
+              $scope.lastVoteWeight = vote.percent;
+              break;
+            }
+          }
+
+          const v = voteHistoryService.get(u, $scope.content.id);
+          if (v) {
             $scope.isVoted = true;
-            $scope.lastVoteWeight = vote.percent;
-            break;
+            $scope.lastVoteWeight = v;
           }
         }
-      }
+      };
+
+      reset();
+      detectVote();
 
       let timer = null;
 
@@ -61,7 +74,12 @@ export default () => {
           if (typeof res === 'number') {
             $scope.isVoted = res !== 0;
             $scope.lastVoteWeight = res !== 0 ? res : null;
-            $rootScope.$broadcast('contentVoted', {id: $scope.content.id, weight: res, voter: activeUsername()});
+
+            if (res > 0) {
+              voteHistoryService.set(activeUsername(), $scope.content.id, res);
+            } else {
+              voteHistoryService.remove(activeUsername(), $scope.content.id);
+            }
           }
         });
 
@@ -86,7 +104,7 @@ export default () => {
         steemAuthenticatedService.vote($scope.content.author, $scope.content.permlink, 10000).then((resp) => {
           $scope.isVoted = true;
           $scope.lastVoteWeight = 10000;
-          $rootScope.$broadcast('contentVoted', {id: $scope.content.id, weight: 10000, voter: activeUsername()});
+          voteHistoryService.set(activeUsername(), $scope.content.id, 10000);
         }).catch((e) => {
           $rootScope.showError(`Error${e.message ? ': ' + e.message : ''}`);
         }).then(() => {
@@ -99,13 +117,22 @@ export default () => {
         steemAuthenticatedService.vote($scope.content.author, $scope.content.permlink, 0).then((resp) => {
           $scope.isVoted = false;
           $scope.lastVoteWeight = null;
-          $rootScope.$broadcast('contentVoted', {id: $scope.content.id, weight: 0, voter: activeUsername()});
+          voteHistoryService.remove(activeUsername(), $scope.content.id);
         }).catch((e) => {
           $rootScope.showError(`Error${e.message ? ': ' + e.message : ''}`);
         }).then(() => {
           $scope.voting = false;
         })
       };
+
+      $rootScope.$on('userLoggedIn', () => {
+        reset();
+        detectVote();
+      });
+
+      $rootScope.$on('userLoggedOut', () => {
+        reset();
+      });
     }
   };
 };
