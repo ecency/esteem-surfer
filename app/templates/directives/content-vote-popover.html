@@ -3,7 +3,6 @@
     <rzslider rz-slider-model="slider.value" rz-slider-options="slider.options"></rzslider>
   </div>
   <div class="voting-button">
-    <button class="btn btn-sm btn-primary" login-required required-keys="'posting'" on-login-success="loginSuccess" on-login-open="loginDialogOpened">{{ 'VOTE' | translate }}</button>
-    <button class="btn btn-sm btn-default" disabled>Unvote</button>
+    <button class="btn btn-sm btn-primary" ng-click="saveVotePerc()"><i class="fa fa-check"></i></button>
   </div>
 </div>
