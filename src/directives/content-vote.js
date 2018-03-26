@@ -44,8 +44,9 @@ export default () => {
 
       $scope.saveVotePerc = () => {
         let newVal = $scope.slider.value;
-        settingsService.set('votePerc', newVal);
+        settingsService.set('votePerc', parseInt(newVal));
         $scope.popoverIsOpen = false;
+        vote();
       };
 
       $scope.slider = {
