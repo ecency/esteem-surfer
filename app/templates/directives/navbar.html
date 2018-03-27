@@ -35,19 +35,17 @@
             <span class="profile-pic" author-bg-img-style author="{{ $root.user.username }}"></span>
           </a>
           <ul class="dropdown-menu">
-            <li>
-              <a ng-click="profileClicked()">{{ 'PROFILE' | translate }}</a>
-              <a ng-click="bookmarksClicked()">{{ 'BOOKMARKS' | translate }}</a>
+            <li><a ng-click="profileClicked()">{{ 'PROFILE' | translate }}</a></li>
+            <li><a ng-click="bookmarksClicked()">{{ 'BOOKMARKS' | translate }}</a></li>
 
-              <!--
-              <a ng-click="">{{ 'WALLET' | translate }}</a>
-              <a ng-click="">{{ 'DRAFTS' | translate }}</a>
-              <a ng-click="">{{ 'GALLERY' | translate }}</a>
-              <a ng-click="">{{ 'NOTIFICATIONS' | translate }}</a> -->
+            <!--
+            <a ng-click="">{{ 'WALLET' | translate }}</a>
+            <a ng-click="">{{ 'DRAFTS' | translate }}</a>
+            <a ng-click="">{{ 'GALLERY' | translate }}</a>
+            <a ng-click="">{{ 'NOTIFICATIONS' | translate }}</a> -->
 
-              <a ng-click="openLogin()">{{ 'LOGIN_AS' | __ }}</a>
-              <a ng-click="logout()">{{ 'LOGOUT' | translate }}</a>
-            </li>
+            <li><a ng-click="openLogin()">{{ 'LOGIN_AS' | __ }}</a></li>
+            <li data-key="LOGOUT"><a ng-click="logout()">{{ 'LOGOUT' | translate }}</a></li>
           </ul>
         </li>
       </ul>

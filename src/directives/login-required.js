@@ -4,6 +4,7 @@ export default ($rootScope, $uibModal) => {
     replace: false,
     scope: {
       onLoginSuccess: '=',
+      ifLoggedIn: '=',
       onLoginOpen: '=',
       requiredKeys: '='
     },
@@ -82,6 +83,9 @@ export default ($rootScope, $uibModal) => {
       elem.bind('click', function () {
         if (checkLogin()) {
           scope.onLoginSuccess();
+          if (scope.ifLoggedIn) {
+            scope.ifLoggedIn();
+          }
           scope.$applyAsync();
         }
       });
