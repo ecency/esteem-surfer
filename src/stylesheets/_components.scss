@@ -348,6 +348,10 @@
           &.voting {
             pointer-events: none;
           }
+
+          &.fetching {
+            pointer-events: none;
+          }
         }
       }
 
@@ -1542,6 +1546,7 @@
       float: left;
       margin-right: 20px;
       width: 310px;
+      padding-top: 20px;
     }
 
     .voting-button {
@@ -1550,17 +1555,5 @@
       text-align: right;
       width: 30px;
     }
-  }
-
-}
-
-
-.content-vote-modal {
-  .voting-slider {
-    padding: 30px 0;
-  }
-
-  .voting-buttons {
-    text-align: center;
   }
 }

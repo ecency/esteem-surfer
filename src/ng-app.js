@@ -42,7 +42,6 @@ import loginCtrl from './controllers/login'
 import feedCtrl from './controllers/feed';
 import bookmarksCtrl from './controllers/bookmarks';
 import tagsCtrl from './controllers/tags';
-import contentVoteCtrl from './controllers/content-vote.js';
 
 
 import faqCtrl from './controllers/faq';
@@ -75,7 +74,6 @@ import {helperService} from './services/helper';
 import storageService from './services/storage';
 import settingsService from './services/settings';
 import userService from './services/user';
-import voteHistoryService from './services/vote-history';
 import steemAuthenticatedService from './services/steem-authenticated';
 
 
@@ -283,7 +281,6 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .factory('storageService', storageService)
   .factory('settingsService', settingsService)
   .factory('userService', userService)
-  .factory('voteHistoryService', voteHistoryService)
   .factory('helperService', helperService)
   .factory('activeUsername', ($rootScope) => {
     return () => {
@@ -323,7 +320,6 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .controller('feedCtrl', feedCtrl)
   .controller('bookmarksCtrl', bookmarksCtrl)
   .controller('tagsCtrl', tagsCtrl)
-  .controller('contentVoteCtrl', contentVoteCtrl)
 
   .filter('catchPostImage', catchPostImageFilter)
   .filter('sumPostTotal', sumPostTotalFilter)
@@ -406,7 +402,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
     }
   })
 
-  .run(function ($rootScope, $uibModal, $translate, $timeout, $interval, $location, $window, $q, eSteemService, steemService, settingsService, userService, constants) {
+  .run(function ($rootScope, $uibModal, $translate, $timeout, $interval, $location, $window, $q, eSteemService, steemService, settingsService, userService, activeUsername, constants) {
 
 
     // SETTINGS
@@ -481,6 +477,8 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
     // STEEM GLOBAL PROPERTIES
     $rootScope.steemPerMVests = 1;
     $rootScope.base = 1;
+    $rootScope.fundRecentClaims = 1;
+    $rootScope.fundRewardBalance = 1;
 
     const fetchSteemGlobalProperties = () => {
       steemService.getDynamicGlobalProperties()
@@ -493,7 +491,11 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
         .then(r => {
           let base = r.current_median_history.base.split(" ")[0];
           $rootScope.base = base;
-        })
+          return steemService.getRewardFund();
+        }).then(r => {
+        $rootScope.fundRecentClaims = r.recent_claims;
+        $rootScope.fundRewardBalance = r.reward_balance.split(" ")[0];
+      })
     };
 
     fetchSteemGlobalProperties();
@@ -512,6 +514,36 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
     $rootScope.$on('userLoggedOut', () => {
       $rootScope.user = null;
     });
+
+    // USER PROPS. Account data detail for active user.
+    $rootScope.userProps = null;
+    const fetchUserProps = () => {
+      const a = activeUsername();
+      if (!a) {
+        $rootScope.userProps = null;
+        return;
+      }
+      steemService.getAccounts([a]).then(r => {
+        $rootScope.userProps = r[0];
+      });
+    };
+
+    fetchUserProps();
+
+    // Refresh users props in every minute.
+    $interval(() => fetchUserProps(), 60000);
+
+    // Invalidate when user logged in
+    $rootScope.$on('userLoggedIn', () => {
+      $rootScope.userProps = null;
+      fetchUserProps();
+    });
+
+    // or logged out
+    $rootScope.$on('userLoggedOut', () => {
+      $rootScope.userProps = null;
+    });
+
 
     // NAVIGATION CACHE
     // The purpose of navigation caching is show last position and data of the page to user without
@@ -701,84 +733,6 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
     $rootScope.$on('newBookmark', () => {
       fetchBookmarks();
     });
-
-    /*
-    // VOTING
-    // Update active_votes for cached content after voting
-    $rootScope.$on('contentVoted', (e, d) => {
-      const contentId = d.id;
-      const weight = d.weight;
-      const voter = d.voter;
-
-      // Iterate over all cache data
-      for (let cacheKey in cacheData) {
-        let cacheVal = cacheData[cacheKey];
-
-        for (let cacheKey2 in cacheVal) {
-
-          // For content lists
-          if (Array.isArray(cacheData[cacheKey][cacheKey2])) {
-            for (let k in cacheData[cacheKey][cacheKey2]) {
-
-              // Make sure if it is content list
-              if (!(cacheData[cacheKey][cacheKey2][0] && cacheData[cacheKey][cacheKey2][0].active_votes !== undefined)) {
-                continue;
-              }
-
-              // When contentId of voted matched with iterated content
-              if (cacheData[cacheKey][cacheKey2][k].id === contentId) {
-
-                let f = false;
-                // Update if exists
-                for (let a in cacheData[cacheKey][cacheKey2][k].active_votes) {
-                  if (cacheData[cacheKey][cacheKey2][k].active_votes[a].voter === voter) {
-                    // Update if it is exists
-                    cacheData[cacheKey][cacheKey2][k].active_votes[a].weight = weight;
-                    f = true;
-                    break;
-                  }
-                }
-
-                // Add if not exists
-                if (!f) {
-                  cacheData[cacheKey][cacheKey2][k].active_votes.push({voter: voter, weight: weight});
-                }
-              }
-            }
-            continue;
-          }
-
-          // For content objects
-          if (typeof cacheData[cacheKey][cacheKey2] === 'object' && cacheData[cacheKey][cacheKey2].id === contentId) {
-            let f = false;
-
-            // Update if exists
-            for (let a in cacheData[cacheKey][cacheKey2].active_votes) {
-              if (cacheData[cacheKey][cacheKey2].active_votes[a].voter === voter) {
-                // Update if it is exists
-                cacheData[cacheKey][cacheKey2].active_votes[a].weight = weight;
-                f = true;
-                break;
-              }
-            }
-
-            // Add if not exists
-            if (!f) {
-              cacheData[cacheKey][cacheKey2].active_votes.push({voter: voter, weight: weight});
-            }
-          }
-        }
-      }
-    });
-
-    $rootScope.$on('userLoggedIn', () => {
-
-    });
-
-    $rootScope.$on('userLoggedOut', () => {
-
-    });
-    */
 
     // Error messages to show user when remote server errors occurred
     $rootScope.errorMessages = [];

@@ -5,6 +5,12 @@ export const helperService = (storageService) => {
     },
     setPostRead: (postId) => {
       storageService.set(`post-${postId}-flag`, 1);
+    },
+    getVotePerc: (username) => {
+      return storageService.get(`vote-perc-${username}`) || 100;
+    },
+    setVotePerc: (username, val) => {
+      storageService.set(`vote-perc-${username}`, val);
     }
   }
 };
