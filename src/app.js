@@ -11,6 +11,19 @@ import electron from "electron";
 // Disable zooming
 // electron.webFrame.setZoomLevelLimits(1, 1);
 
+
+// Prevent dropped file from opening in window
+document.addEventListener('dragover', function (event) {
+  event.preventDefault();
+  return false;
+}, false);
+
+document.addEventListener('drop', function (event) {
+  event.preventDefault();
+  return false;
+}, false);
+
+
 require('./ng-app.js');
 
 
@@ -19,3 +32,4 @@ window.onload = () => {
     document.body.style.visibility = 'visible';
   }, 300);
 };
+

@@ -35,6 +35,10 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
         $location.path(`/feed/${activeUsername()}`);
       };
 
+      $scope.editorClicked = () => {
+        $location.path(`/editor`);
+      };
+
       $scope.openSettings = () => {
         $uibModal.open({
           templateUrl: 'templates/settings.html',
@@ -82,7 +86,6 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
         userService.setActive(null);
         $rootScope.$broadcast('userLoggedOut');
       };
-
 
       $scope.profileClicked = () => {
         $location.path(`/account/${activeUsername()}`);

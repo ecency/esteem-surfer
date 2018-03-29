@@ -1,0 +1,24 @@
+<nav-bar></nav-bar>
+<div class="app-container">
+  <div class="app-content editor-page">
+    <div class="editor-form">
+      <div class="form-group">
+        <input type="text" class="form-control input-lg content-title" id="content-title" placeholder="Title">
+      </div>
+      <div class="form-group">
+        <content-editor place-holder="Post Content" body="body"></content-editor>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control content-tags" id="content-tags" placeholder="Tags">
+      </div>
+    </div>
+
+
+
+    <div class="editor-preview markdown-view" ng-if="body">
+      <span class="preview-title">Preview</span>
+      <div ng-bind-html="body | markDown2Html"></div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

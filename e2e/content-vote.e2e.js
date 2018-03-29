@@ -52,6 +52,16 @@ describe("content-vote", () => {
 
   }).timeout(apiTimeout);
 
+  it('41- Hover on vote button', async function () {
+    await this.app.client.moveTo(this.element.value.ELEMENT, 0, 0);
+    await testUtils.timeout(3500);
+  }).timeout(5000);
+
+  it('42- Slider popover should not opened', async function () {
+    let e = await this.app.client.isExisting('.content-vote-popover');
+    expect(e).to.deep.equal(false);
+  });
+
   it('50- Login dialog should be opened when vote button clicked', async function () {
     this.app.client.elementIdClick(this.element.value.ELEMENT);
     await testUtils.timeout(400); // // Wait for modal transitions
@@ -75,7 +85,7 @@ describe("content-vote", () => {
         return !res;
       });
     });
-  })
+  });
 
   it('80- Should start to fetch active votes ', async function () {
     await this.app.client.waitUntil(() => {
@@ -392,7 +402,6 @@ describe("content-vote", () => {
     await testUtils.timeout(4000);
   }).timeout(5000);
 
-
   it('600- Vote buttons should be marked as voted', async function () {
     const a = await this.app.client.elementIdAttribute(this.element.value.ELEMENT, 'class');
     expect(a.value.indexOf('voted') !== -1).to.deep.equal(true);
@@ -401,13 +410,63 @@ describe("content-vote", () => {
     expect(b.value.indexOf('voted') !== -1).to.deep.equal(true);
   }).timeout(apiTimeout);
 
-  // TODO: REVIEW AND ADD UNVOTE
+  it('610- Click vote button 1', async function () {
+    await this.app.client.elementIdClick(this.element.value.ELEMENT);
+  });
 
+  it('620- Should start unvoting', async function () {
+    await this.app.client.waitUntil(() => {
+      return this.app.client.elementIdAttribute(this.element.value.ELEMENT, 'class').then(res => {
+        return res.value.indexOf('voting') !== -1;
+      });
+    });
+  });
+
+  it('630- Wait until voting finish', async function () {
+    await this.app.client.waitUntil(() => {
+      return this.app.client.elementIdAttribute(this.element.value.ELEMENT, 'class').then(res => {
+        return res.value.indexOf('voting') === -1;
+      });
+    });
+  }).timeout(apiTimeout);
+
+
+  it('640- Click vote button 2', async function () {
+    await this.app.client.elementIdClick(this.element2.value.ELEMENT);
+  });
+
+  it('650- Should start unvoting', async function () {
+    await this.app.client.waitUntil(() => {
+      return this.app.client.elementIdAttribute(this.element2.value.ELEMENT, 'class').then(res => {
+        return res.value.indexOf('voting') !== -1;
+      });
+    });
+  });
+
+  it('660- Wait until voting finish', async function () {
+    await this.app.client.waitUntil(() => {
+      return this.app.client.elementIdAttribute(this.element2.value.ELEMENT, 'class').then(res => {
+        return res.value.indexOf('voting') === -1;
+      });
+    });
+  }).timeout(apiTimeout);
+
+
+  it('670- Vote buttons should be marked as unvoted', async function () {
+    const a = await this.app.client.elementIdAttribute(this.element.value.ELEMENT, 'class');
+    expect(a.value.indexOf('voted') === -1).to.deep.equal(true);
+
+    const b = await this.app.client.elementIdAttribute(this.element2.value.ELEMENT, 'class');
+    expect(b.value.indexOf('voted') === -1).to.deep.equal(true);
+  }).timeout(apiTimeout);
+
+  /*
   // Enable to see last state of window for a while
   it("Should Wait", function (done) {
     setTimeout(function () {
       done()
     }, 10000)
   }).timeout(11000)
+  */
 
 });
