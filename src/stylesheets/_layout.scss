@@ -40,7 +40,6 @@
   overflow-y: auto;
 
   a {
-    color: $textColor;
     &:hover {
       color: $linkHoverColor !important;
       text-decoration: none;
@@ -381,3 +380,23 @@
   }
 }
 
+.editor-page {
+  .editor-form, .editor-preview {
+    width: 800px;
+    margin: auto;
+  }
+
+  .editor-form {
+    margin-bottom: 30px;
+  }
+
+  .editor-preview {
+
+    .preview-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      display: block;
+    }
+  }
+}

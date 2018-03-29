@@ -1,0 +1,27 @@
+<div class="content-editor">
+  <div class="control-bar">
+    <div class="editor-control">
+      <button class="btn btn-default" ng-click="insertHeader()"><i class="fa fa-header"></i></button>
+    </div>
+    <div class="editor-control">
+      <button class="btn btn-default" ng-click="insertBold()"><i class="fa fa-bold"></i></button>
+    </div>
+    <div class="editor-control">
+      <button class="btn btn-default" ng-click="insertItalic()"><i class="fa fa-italic"></i></button>
+    </div>
+    <div class="editor-control">
+      <button class="btn btn-default" ng-click="insertQuote()"><i class="fa fa-quote-right"></i></button>
+    </div>
+    <div class="editor-control">
+      <button class="btn btn-default" ng-click="insertLink()"><i class="fa fa-link"></i></button>
+    </div>
+    <div class="editor-control">
+      <button class="btn btn-default" ng-click="insertImage()"><i class="fa fa-image"></i></button>
+    </div>
+  </div>
+  <textarea class="form-control" ng-model="body" placeholder="{{ placeHolder }}"></textarea>
+  <div class="image-panel"><i class="fa fa-image"></i> Insert images by dragging & dropping, pasting from the clipboard,
+    or by <a ng-click="openFileInput()">selecting them</a>.
+  </div>
+  <input class="file-input" id="file-input" type="file" accept="image/*">
+</div>

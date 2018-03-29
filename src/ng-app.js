@@ -42,6 +42,7 @@ import loginCtrl from './controllers/login'
 import feedCtrl from './controllers/feed';
 import bookmarksCtrl from './controllers/bookmarks';
 import tagsCtrl from './controllers/tags';
+import editorCtrl from './controllers/editor';
 
 
 import faqCtrl from './controllers/faq';
@@ -66,6 +67,7 @@ import contentListItemChildDir from './directives/content-list-item-child'
 import autoFocusDir from './directives/autofocus';
 import loginRequiredDir from './directives/login-required';
 import contentVoteDir from './directives/content-vote';
+import contentEditorDir from './directives/content-editor';
 
 
 // Services
@@ -75,6 +77,7 @@ import storageService from './services/storage';
 import settingsService from './services/settings';
 import userService from './services/user';
 import steemAuthenticatedService from './services/steem-authenticated';
+import eSteemService from './services/esteem';
 
 
 // Filters
@@ -97,9 +100,6 @@ import constants from './constants';
 
 const app = remote.app;
 
-
-// will be hidden
-const apiUrl = 'http://api.esteem.ws:8080';
 
 angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', 'rzModule'])
 
@@ -231,6 +231,10 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
         templateUrl: 'templates/tags.html',
         controller: 'tagsCtrl'
       })
+      .when('/editor', {
+        templateUrl: 'templates/editor.html',
+        controller: 'editorCtrl'
+      })
       .otherwise({redirectTo: '/'});
 
     // $http
@@ -255,27 +259,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
       }
     }
   })
-  .factory('eSteemService', ($http) => {
-    return {
-      getCurrencyRate: (cur) => {
-        return $http.get(`${apiUrl}/api/currencyRate/${ cur.toUpperCase() }/steem`)
-      },
-      addBookmark: function (username, content) {
-        return $http.post(`${apiUrl}/api/bookmark`, {
-          username: username,
-          author: content.author,
-          permlink: content.permlink,
-          chain: 'steem'
-        });
-      },
-      getBookmarks: function (user) {
-        return $http.get(`${apiUrl}/api/bookmarks/${user}`);
-      },
-      removeBookmark: function (id, user) {
-        return $http.delete(`${apiUrl}/api/bookmarks/${user}/${id}/`);
-      },
-    }
-  })
+  .factory('eSteemService', eSteemService)
   .factory('steemService', steemService)
   .factory('steemAuthenticatedService', steemAuthenticatedService)
   .factory('storageService', storageService)
@@ -306,6 +290,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .directive('autoFocus', autoFocusDir)
   .directive('loginRequired', loginRequiredDir)
   .directive('contentVote', contentVoteDir)
+  .directive('contentEditor', contentEditorDir)
 
   .controller('postsCtrl', postsCtrl)
   .controller('faqCtrl', faqCtrl)
@@ -320,6 +305,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .controller('feedCtrl', feedCtrl)
   .controller('bookmarksCtrl', bookmarksCtrl)
   .controller('tagsCtrl', tagsCtrl)
+  .controller('editorCtrl', editorCtrl)
 
   .filter('catchPostImage', catchPostImageFilter)
   .filter('sumPostTotal', sumPostTotalFilter)

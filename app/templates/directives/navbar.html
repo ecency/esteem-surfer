@@ -30,6 +30,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="settings"><a ng-click="openSettings()" title="{{ 'SETTINGS' | translate }}"><i class="fa fa-cog"></i></a></li>
         <li class="login" ng-if="!$root.user"><a ng-click="openLogin()" title="{{ 'LOGIN' | translate }}"><i class="fa fa-sign-in"></i></a></li>
+        <li class="editor" ng-if="$root.user"><a ng-click="editorClicked()"><i class="fa fa-pencil"></i></a></li>
         <li ng-if="$root.user" class="dropdown user-dropdown">
           <a ng-click="" class="dropdown-toggle" data-toggle="dropdown" role="button">
             <span class="profile-pic" author-bg-img-style author="{{ $root.user.username }}"></span>

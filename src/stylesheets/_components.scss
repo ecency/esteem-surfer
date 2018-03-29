@@ -151,6 +151,7 @@
     margin-top: 10px;
 
     a {
+      color: $textColor;
       font-size: 16px;
       font-weight: 600;
     }
@@ -165,6 +166,7 @@
       margin-bottom: 6px;
 
       a {
+        color: $textColor;
         font-size: 16px;
       }
 
@@ -247,6 +249,9 @@
 
         .post-author {
           font-weight: 600;
+          a {
+            color: $textColor;
+          }
         }
 
         .post-author-reputation {
@@ -298,7 +303,9 @@
 
     .post-body-title, .post-body-summary {
       font-size: 16px;
-
+      a {
+        color: $textColor;
+      }
       a.visited {
         color: $textColorLighter;
       }
@@ -361,6 +368,7 @@
         position: relative;
 
         a {
+          color: $textColor;
           outline: 0;
 
           .cur-prefix {
@@ -382,6 +390,7 @@
       padding-right: 20px;
 
       a {
+        color: $textColor;
         .fa {
           color: $textColorLight;
           margin-right: 7px;
@@ -399,6 +408,8 @@
       float: left;
 
       a {
+        color: $textColor;
+
         .fa {
           color: $textColorLight;
           margin-right: 6px;
@@ -501,6 +512,7 @@
           line-height: 100%;
           position: relative;
           a {
+            color: $textColor;
             outline: 0;
           }
         }
@@ -521,6 +533,7 @@
           margin-right: 2px;
 
           a {
+
             font-weight: bold;
           }
 
@@ -576,6 +589,7 @@
 
       a {
         background: $boxBg;
+        color: $textColor;
         border: 1px solid $seperatorColor;
 
         border-radius: 0.3rem;
@@ -597,6 +611,7 @@
       .post-author {
         font-weight: 600;
         a {
+          color: $textColor;
           outline: 0;
         }
       }
@@ -789,6 +804,7 @@
         font-weight: 600;
         position: relative;
         a {
+          color: $textColor;
           outline: 0;
         }
       }
@@ -1062,6 +1078,9 @@
 
         .content-author {
           font-weight: 600;
+          a {
+            color: $textColor;
+          }
         }
 
         .content-author-reputation {
@@ -1115,6 +1134,9 @@
     .content-body-title, .content-body-summary {
       font-size: 16px;
 
+      a {
+        color: $textColor;
+      }
       a.visited {
         color: $textColorLighter;
       }
@@ -1172,6 +1194,7 @@
         position: relative;
 
         a {
+          color: $textColor;
           outline: 0;
 
           .cur-prefix {
@@ -1193,6 +1216,8 @@
       padding-right: 20px;
 
       a {
+        color: $textColor;
+
         .fa {
           color: $textColorLight;
           margin-right: 7px;
@@ -1210,6 +1235,7 @@
       float: left;
 
       a {
+        color: $textColor;
         .fa {
           color: $textColorLight;
           margin-right: 6px;
@@ -1533,8 +1559,7 @@
   }
 }
 
-
-.content-vote-popover{
+.content-vote-popover {
   width: 400px;
   max-width: 400px;
 
@@ -1555,5 +1580,43 @@
       text-align: right;
       width: 30px;
     }
+  }
+}
+
+.content-editor {
+
+  .control-bar {
+    @include clearfix();
+    height: 32px;
+
+    .editor-control {
+      float: left;
+
+      button {
+        border-radius: 0;
+        border: none;
+        margin: 0;
+        background: transparent
+      }
+    }
+  }
+
+  textarea {
+    min-height: 180px;
+    resize: vertical;
+
+    &.dragover {
+      background: $hoverColor;
+    }
+  }
+
+  .file-input {
+    display: none;
+  };
+
+  .image-panel {
+    color: $textColorLight;
+    padding: 10px 0;
+    font-size: 13px;
   }
 }

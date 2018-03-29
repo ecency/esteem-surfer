@@ -121,13 +121,21 @@
   }
 
   .navbar-right {
-    .settings, .login {
+    .settings, .login, .editor {
       a {
         line-height: 100%;
         padding-bottom: 12px;
         padding-top: 13px;
         .fa {
           font-size: 24px;
+        }
+      }
+    }
+
+    .editor {
+      a {
+        .fa {
+          font-size: 22px;
         }
       }
     }
