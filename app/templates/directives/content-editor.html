@@ -19,9 +19,14 @@
       <button class="btn btn-default" ng-click="insertImage()"><i class="fa fa-image"></i></button>
     </div>
   </div>
-  <textarea class="form-control" ng-model="body" placeholder="{{ placeHolder }}"></textarea>
-  <div class="image-panel"><i class="fa fa-image"></i> Insert images by dragging & dropping, pasting from the clipboard,
+  <textarea ng-disabled="processing" class="form-control" ng-model="body" placeholder="{{ placeHolder }}"></textarea>
+  <div ng-if="!uploadingImage" class="image-panel"><i class="fa fa-image"></i> Insert images by dragging & dropping, pasting from the clipboard,
     or by <a ng-click="openFileInput()">selecting them</a>.
   </div>
-  <input class="file-input" id="file-input" type="file" accept="image/*">
+  <div class="image-upload-panel" ng-if="uploadingImage">
+    <span class="image-file-name">Uploading {{ uploadingImage }}</span>
+    <span class="progress-text" ng-if="uploadingImageProg > 0 && uploadingImageProg < 100">{{ uploadingImageProg }}%</span>
+    <span class="processing-text" ng-if="uploadingImageProg === 100">processing</span>
+  </div>
+  <input class="file-input" id="file-input" type="file" accept="image/*" multiple>
 </div>
