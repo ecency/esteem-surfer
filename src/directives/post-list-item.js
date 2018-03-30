@@ -26,7 +26,7 @@ export default () => {
         </div>
         <div class="post-body">
             <a ng-click="imageClicked()" class="post-image" ng-if="postImage">
-              <img ng-src="{{ postImage }}">
+              <img ng-src="{{ postImage }}" fallback-src="img/noimage.png">
             </a>
             <h2 class="post-body-title"><a ng-click="titleClicked()" ng-class="{'visited': isVisited}">{{ post.title }}</a></h2>
             <div class="post-body-summary">

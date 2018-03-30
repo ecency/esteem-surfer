@@ -24,7 +24,7 @@ export default () => {
         </div>
         <div class="content-body">
             <a ng-click="imageClicked()" class="content-image" ng-if="contentImage">
-              <img ng-src="{{ contentImage }}">  
+              <img ng-src="{{ contentImage }}" fallback-src="img/noimage.png">  
             </a>
             <h2 class="content-body-title"><a ng-click="titleClicked()">RE: {{ content.root_title }}</a></h2>
             <div class="content-body-summary">
