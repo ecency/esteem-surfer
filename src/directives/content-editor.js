@@ -1,3 +1,10 @@
+const checkFile = (filename) => {
+  filename = filename.toLowerCase();
+  return ['jpg', 'jpeg', 'gif', 'png'].some((el) => {
+    return filename.endsWith(el);
+  })
+};
+
 export default () => {
   return {
     restrict: 'E',
@@ -10,6 +17,20 @@ export default () => {
 
       const el = $element[0];
       const txtEl = el.querySelector('textarea');
+
+      $scope.insertSpace = () => {
+        let pos = txtEl.value.length;
+
+        txtEl.selectionStart = pos;
+        txtEl.selectionEnd = pos;
+        txtEl.focus();
+
+        document.execCommand('insertText', false, ' ');
+
+        pos = txtEl.value.length;
+        txtEl.selectionStart = pos;
+        txtEl.selectionEnd = pos;
+      };
 
       $scope.insertText = (before, after = '') => {
         const startPos = txtEl.selectionStart;
@@ -41,46 +62,68 @@ export default () => {
         txtEl.classList.remove('dragover');
       }, false);
 
-
       txtEl.addEventListener('dragover', (e) => {
         e.stopPropagation();
         e.preventDefault();
-        e.dataTransfer.dropEffect = 'copy';
+        e.dataTransfer.dropEffect = txtEl.disabled ? 'none' : 'copy';
       }, false);
-
 
       txtEl.addEventListener('drop', (e) => {
         e.stopPropagation();
         e.preventDefault();
+        if (txtEl.disabled) {
+          return;
+        }
+
         txtEl.classList.remove('dragover');
-        console.log(e.dataTransfer.files);
-      }, false);
-
-      txtEl.addEventListener('paste', (e) => {
-        let f = false;
-        for (let i = 0; i < e.clipboardData.items.length; i++) {
-          let item = e.clipboardData.items[i];
-          console.log("Item: " + item.type);
-
-          if (item.type.indexOf('image') !== -1) {
-            console.log(item.getAsFile());
-            f = true;
+        const files = [];
+        for (const f of  e.dataTransfer.files) {
+          if (checkFile(f.name)) {
+            files.push(f)
           }
         }
 
-        if (f) {
+        $scope.uploadFiles(files);
+      }, false);
+
+      txtEl.addEventListener('paste', (e) => {
+        if (txtEl.disabled) {
+          return;
+        }
+
+        let files = [];
+        for (let i = 0; i < e.clipboardData.items.length; i++) {
+          let item = e.clipboardData.items[i];
+          if (item.type.indexOf('image') !== -1) {
+            const l = item.getAsFile();
+            if (l) {
+              files.push(l);
+            }
+          }
+        }
+
+        if (files.length > 0) {
           e.stopPropagation();
           e.preventDefault();
         }
+
+        $scope.uploadFiles(files);
       });
 
       document.getElementById('file-input').addEventListener('change', function (e) {
-        console.log(e.target.files);
+        let files = [];
+        for (const f of e.target.files) {
+          if (checkFile(f.name)) {
+            files.push(f)
+          }
+        }
+
+        $scope.uploadFiles(files);
       });
 
     },
     templateUrl: 'templates/directives/content-editor.html',
-    controller: ($scope, $rootScope) => {
+    controller: ($scope, $rootScope, $timeout, eSteemService, activeUsername) => {
 
       $scope.insertHeader = () => {
         $scope.insertText('# ', '');
@@ -102,8 +145,57 @@ export default () => {
         $scope.insertText('[', '](url)');
       };
 
-      $scope.insertImage = () => {
-        $scope.insertText('![', '](url)');
+      $scope.insertImage = (name = '', url = 'url') => {
+        $scope.insertText(`![${name}`, `](${url})`);
+      };
+
+
+      $scope.processing = false;
+      $scope.uploadingImage = null;
+      $scope.uploadingImageProg = 0;
+
+      $scope.uploadFiles = async (files) => {
+        // console.log("upload files");
+
+        let uploadedFiles = [];
+        $scope.processing = true;
+
+        for (let f of files) {
+          $scope.uploadingImage = f.name;
+
+          await eSteemService.uploadImage(f, (e) => {
+            if (e.lengthComputable) {
+              let perc = parseInt((e.loaded / e.total) * 100);
+              if (perc > 100) {
+                perc = 100;
+              }
+              $scope.uploadingImageProg = perc;
+            }
+          }).then((resp) => {
+            uploadedFiles.push(resp.data.url);
+          }).catch(() => {
+            $rootScope.showError(`Could not upload image: ${f.name}`);
+          });
+        }
+
+        $scope.uploadingImage = null;
+        $scope.uploadingImageProg = 0;
+        $scope.processing = false;
+        $scope.$applyAsync();
+
+        for (let u of uploadedFiles) {
+          eSteemService.addMyImage(activeUsername(), u).then((resp) => {
+            // console.log(resp)
+          }).catch((e) => {
+            // console.log(e)
+          });
+
+          $timeout(() => {
+            let s = u.split('/');
+            $scope.insertImage(s[s.length - 1], u);
+            $scope.insertSpace();
+          });
+        }
       };
 
       $scope.openFileInput = () => {

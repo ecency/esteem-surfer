@@ -1612,11 +1612,25 @@
 
   .file-input {
     display: none;
-  };
+  }
 
   .image-panel {
     color: $textColorLight;
-    padding: 10px 0;
+    padding: 5px 0;
     font-size: 13px;
+  }
+
+  .image-upload-panel {
+    font-size: 13px;
+    color: $textColorLight;
+    padding: 5px 0;
+
+    .image-file-name {
+      margin-right: 5px;
+    }
+
+    .progress-text, .processing-text {
+
+    }
   }
 }

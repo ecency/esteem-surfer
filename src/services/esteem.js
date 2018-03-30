@@ -21,5 +21,26 @@ export default ($http) => {
     removeBookmark: function (id, user) {
       return $http.delete(`${apiUrl}/api/bookmarks/${user}/${id}/`);
     },
+    uploadImage: function (file, onProgress) {
+      const fData = new FormData();
+      fData.append('postimage', file);
+
+      return $http({
+        url: 'https://img.esteem.ws/backend.php',
+        method: 'POST',
+        data: fData,
+        uploadEventHandlers: {
+          progress: function (e) {
+            if (onProgress) onProgress(e);
+          }
+        },
+        headers: {
+          'Content-Type': undefined
+        }
+      })
+    },
+    addMyImage: function (user, url) {
+      return $http.post(`${apiUrl}/api/image`, {username: user, image_url: url});
+    },
   }
 }
