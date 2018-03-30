@@ -68,6 +68,7 @@ import autoFocusDir from './directives/autofocus';
 import loginRequiredDir from './directives/login-required';
 import contentVoteDir from './directives/content-vote';
 import contentEditorDir from './directives/content-editor';
+import fallbackSrcDir from './directives/fallback-src';
 
 
 // Services
@@ -291,6 +292,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .directive('loginRequired', loginRequiredDir)
   .directive('contentVote', contentVoteDir)
   .directive('contentEditor', contentEditorDir)
+  .directive('fallbackSrc', fallbackSrcDir)
 
   .controller('postsCtrl', postsCtrl)
   .controller('faqCtrl', faqCtrl)
