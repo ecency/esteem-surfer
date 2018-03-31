@@ -1,4 +1,4 @@
-export default ($scope, $rootScope, $routeParams, $filter, $timeout, steemService, constants) => {
+export default ($scope, $rootScope, $routeParams, $filter, $timeout, $location, steemService, constants) => {
 
   $scope.posts = $rootScope.Data['posts'] || [];
 
@@ -81,5 +81,9 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, steemServic
 
     let lastPost = [...$scope.posts].pop();
     loadPosts(lastPost.author, lastPost.permlink)
+  };
+
+  $scope.removeTag = () => {
+    $location.path(`/posts/${$scope.selectedFilter}`);
   };
 };

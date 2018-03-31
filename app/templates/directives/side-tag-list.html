@@ -1,9 +1,18 @@
-<div class="side-tag-list">
+<div class="side-tag-list" ng-class="{'fetching': loadingTags}">
   <header>
-    <h2>{{ 'TAGS' | translate }}</h2><a ng-click="removeTag()" class="btn btn-xs btn-default btn-remove-tag" ng-if="selectedTag" title="{{ ('Remove Tag' | __) + ' \'' + (selectedTag|capWord) + '\''  }}"><i class="fa fa-times"></i></a>
+    <h2>{{ 'TAGS' | translate }}</h2>
+    <i class="fa fa-spin fa-spinner fa-circle-o-notch loading-icon" ng-show="loadingTags"></i>
+    <a ng-click="toggleTagFilter()" class="btn btn-xs btn-default btn-filter-tag" title="{{ 'FILTER_TAGS' | __ }}"><i class="fa fa-search"></i></a>
   </header>
+  <div class="tag-filter" ng-show="$root.sideTagFilter">
+    <div class="input-group input-group-sm">
+      <input type="text" class="form-control" ng-model="$root.sideAfterTag" id="txt-filter-tag" maxlength="40" placeholder="{{ 'FILTER_TAGS' | __ }}">
+      <span class="input-group-btn">
+        <button class="btn btn-default" id="btn-close-filter-tag" ng-click="closeTagFilter()" type="button"><i class="fa fa-times"></i></button>
+      </span>
+    </div>
+  </div>
   <ul class="tag-list" ng-class="{'fetching': loadingTags}">
     <li ng-repeat="t in $root.tags" ng-class="{'active': (selectedTag===t)}" data-key="{{ t }}"><a ng-click="tagClicked(t)">{{ t }}</a></li>
   </ul>
-  <footer><a ng-click="viewAllClicked()">{{ 'View all tags..' | __ }}</a></footer>
 </div>

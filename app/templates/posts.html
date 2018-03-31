@@ -4,7 +4,7 @@
     <side-tag-list selected-filter="filter" selected-tag="tag"></side-tag-list>
     <div class="post-list" ng-class="{'fetching': loadingPosts}">
       <header>
-        <h1>{{ filterKey | translate }}<span ng-if="tag">: {{ tagTitle }}</span> </h1>
+        <h1>{{ filterKey | translate }}<span ng-if="tag">: {{ tagTitle }} <a ng-click="removeTag()" class="btn btn-xs btn-link btn-remove-tag" title="{{ ('Remove Tag' | __) + ' \'' + tagTitle + '\''  }}"><i class="fa fa-times"></i></a></span> </h1>
         <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingPosts" title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
       </header>
       <ul class="feed">

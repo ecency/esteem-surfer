@@ -9,41 +9,63 @@ export default () => {
     templateUrl: 'templates/directives/side-tag-list.html',
     controller: ($scope, $rootScope, $timeout, $location, steemService) => {
 
-      const loadTags = (finallyCb) => {
-        steemService.getTrendingTags().then((resp) => {
+      let timeoutPromise = null;
+
+      $scope.toggleTagFilter = () => {
+        $rootScope.sideTagFilter = !$rootScope.sideTagFilter;
+
+        if ($rootScope.sideTagFilter) {
+          $timeout(() => {
+            document.getElementById('txt-filter-tag').focus();
+          }, 100);
+        } else {
+          $rootScope.sideAfterTag = '';
+        }
+      };
+
+      $scope.closeTagFilter = () => {
+        $rootScope.sideAfterTag = '';
+        $rootScope.sideTagFilter = false;
+        loadTags();
+      };
+
+      $rootScope.$watch('sideAfterTag', function (newVal, oldVal) {
+        if (newVal === oldVal) {
+          return;
+        }
+
+        if ($scope.loadingTags) {
+          return;
+        }
+
+        if (timeoutPromise !== null) {
+          $timeout.cancel(timeoutPromise);
+          timeoutPromise = null;
+        }
+
+        timeoutPromise = $timeout(function () {
+          loadTags();
+        }, 600);
+      });
+
+      const loadTags = () => {
+        $scope.loadingTags = true;
+        steemService.getTrendingTags($rootScope.sideAfterTag).then((resp) => {
           $rootScope.tags = resp.map(a => a.name).filter(a => a.length > 0);
         }).catch(() => {
         }).then(() => {
-          if (finallyCb) {
-            finallyCb();
-          }
+          $scope.loadingTags = false;
         });
       };
 
       // Keep tags in root scope
       if ($rootScope.tags === undefined) {
-        $scope.loadingTags = true;
-        loadTags(() => {
-          $scope.loadingTags = false;
-        });
-      }
-
-      // Refresh tags in root scope for every 2 minutes
-      $timeout(() => {
         loadTags();
-      }, 120000);
+      }
 
       $scope.tagClicked = (t) => {
         $location.path(`/posts/${$scope.selectedFilter}/${t}`);
       };
-
-      $scope.removeTag = () => {
-        $location.path(`/posts/${$scope.selectedFilter}`);
-      };
-
-      $scope.viewAllClicked = () => {
-        // $location.path(`/tags`);
-      }
     }
   };
 };

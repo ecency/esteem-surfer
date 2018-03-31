@@ -122,6 +122,7 @@
   border: 1px solid $listBorderColor;
   box-shadow: 0 0 1px 0 $listBorderColor;
   float: left;
+  overflow: hidden;
   padding: 20px 20px;
   width: 200px;
 
@@ -130,31 +131,25 @@
     @include clearfix();
 
     h2 {
-      float: left;
+      display: inline-block;
       font-size: 18px;
       font-weight: 600;
-      margin: 0;
+      margin: 0 4px 0 0;
     }
 
-    .btn-remove-tag {
+    .loading-icon {
+      color: $loadingColor;
+      font-size: 18px;
+    }
+
+    .btn-filter-tag {
       color: $textColorLight;
       float: right;
-      opacity: 0.6;
-
-      &:hover {
-        opacity: 1;
-      }
     }
   }
 
-  footer {
-    margin-top: 10px;
-
-    a {
-      color: $textColor;
-      font-size: 16px;
-      font-weight: 600;
-    }
+  .tag-filter {
+    margin-bottom: 10px;
   }
 
   ul.tag-list {
@@ -164,6 +159,11 @@
     li {
       list-style: none;
       margin-bottom: 6px;
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
 
       a {
         color: $textColor;
@@ -589,10 +589,10 @@
 
       a {
         background: $boxBg;
-        color: $textColor;
         border: 1px solid $seperatorColor;
-
         border-radius: 0.3rem;
+
+        color: $textColor;
         display: inline-block;
         margin: 0.1rem 0.4rem 0.1rem 0;
         padding: 0.4rem 1rem;
@@ -1560,8 +1560,8 @@
 }
 
 .content-vote-popover {
-  width: 400px;
   max-width: 400px;
+  width: 400px;
 
   .content-vote-popover-content {
     @include clearfix();
@@ -1570,8 +1570,8 @@
     .voting-slider {
       float: left;
       margin-right: 20px;
-      width: 310px;
       padding-top: 20px;
+      width: 310px;
     }
 
     .voting-button {
@@ -1593,10 +1593,10 @@
       float: left;
 
       button {
-        border-radius: 0;
+        background: transparent;
         border: none;
+        border-radius: 0;
         margin: 0;
-        background: transparent
       }
     }
   }
@@ -1616,13 +1616,13 @@
 
   .image-panel {
     color: $textColorLight;
-    padding: 5px 0;
     font-size: 13px;
+    padding: 5px 0;
   }
 
   .image-upload-panel {
-    font-size: 13px;
     color: $textColorLight;
+    font-size: 13px;
     padding: 5px 0;
 
     .image-file-name {

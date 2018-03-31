@@ -30,10 +30,10 @@ export default (steemApi, $q) => {
 
       return defer.promise;
     },
-    getTrendingTags: (limit = 50) => {
+    getTrendingTags: (afterTag = null, limit = 50) => {
       let defer = $q.defer();
 
-      steemApi.getApi().getTrendingTags(null, limit, (err, response) => {
+      steemApi.getApi().getTrendingTags((afterTag.trim().length > 0 ? afterTag.trim() : null), limit, (err, response) => {
         if (err) {
           defer.reject(err);
         } else {
