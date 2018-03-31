@@ -384,6 +384,8 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
           return 'Nothing here...';
         case 'SEARCH_BOOKMARKS':
           return 'Search in bookmarks...';
+        case 'FILTER_TAGS':
+          return 'Filter Tags';
         default:
           return s;
       }
@@ -721,6 +723,10 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
     $rootScope.$on('newBookmark', () => {
       fetchBookmarks();
     });
+
+    // SIDE TAG LIST
+    $rootScope.sideTagFilter = false;
+    $rootScope.sideAfterTag = '';
 
     // Error messages to show user when remote server errors occurred
     $rootScope.errorMessages = [];

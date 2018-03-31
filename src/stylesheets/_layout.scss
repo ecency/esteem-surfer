@@ -78,6 +78,13 @@
         font-size: 18px;
         font-weight: 600;
         margin: 0;
+
+        .btn-remove-tag {
+          opacity: 0.3;
+          &:hover {
+            opacity: 1;
+          }
+        }
       }
 
       .btn-reload {
