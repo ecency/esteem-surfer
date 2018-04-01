@@ -23,8 +23,12 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
         $location.path(u);
       };
 
-      $scope.tokenMarketClicked = () => {
-        $location.path('/token-market');
+      $scope.tokenExchangeClicked = () => {
+        $location.path('/token-exchange');
+      };
+
+      $scope.discoverClicked = () => {
+        $location.path('/discover');
       };
 
       $scope.marketPlaceClicked = () => {

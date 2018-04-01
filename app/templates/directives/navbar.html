@@ -16,7 +16,8 @@
             </li>
           </ul>
         </li>
-        <li ng-class="{'active': selectedSection==='token-market'}"><a ng-click="tokenMarketClicked()">{{ 'TOKEN_MARKET' | __ }}</a></li>
+        <li ng-class="{'active': selectedSection==='discover'}"><a ng-click="discoverClicked()">{{ 'DISCOVER' | __ }}</a></li>
+        <li ng-class="{'active': selectedSection==='token-exchange'}"><a ng-click="tokenExchangeClicked()">{{ 'TOKEN_EXCHANGE' | __ }}</a></li>
         <li ng-class="{'active': selectedSection==='market-place'}"><a ng-click="marketPlaceClicked()">{{ 'MARKETPLACE' | translate }}</a></li>
       </ul>
       <form class="navbar-form navbar-left">

@@ -47,8 +47,9 @@ import editorCtrl from './controllers/editor';
 
 import faqCtrl from './controllers/faq';
 import aboutCtrl from './controllers/about'
-import tokenMarketCtrl from './controllers/token-market';
+import tokenExchangeCtrl from './controllers/token-exchange';
 import marketPlaceCtrl from './controllers/market-place';
+import discoverCtrl from './controllers/discover';
 
 
 // Directives
@@ -216,9 +217,13 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
         templateUrl: 'templates/about.html',
         controller: 'aboutCtrl',
       })
-      .when('/token-market', {
-        templateUrl: 'templates/token-market.html',
-        controller: 'tokenMarketCtrl',
+      .when('/token-exchange', {
+        templateUrl: 'templates/token-exchange.html',
+        controller: 'tokenExchangeCtrl',
+      })
+      .when('/discover', {
+        templateUrl: 'templates/discover.html',
+        controller: 'discoverCtrl',
       })
       .when('/market-place', {
         templateUrl: 'templates/market-place.html',
@@ -302,7 +307,8 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .controller('contentVotersCtrl', contentVotersCtrl)
   .controller('postCtrl', postCtrl)
   .controller('authorCtrl', authorCtrl)
-  .controller('tokenMarketCtrl', tokenMarketCtrl)
+  .controller('tokenExchangeCtrl', tokenExchangeCtrl)
+  .controller('discoverCtrl', discoverCtrl)
   .controller('marketPlaceCtrl', marketPlaceCtrl)
   .controller('feedCtrl', feedCtrl)
   .controller('bookmarksCtrl', bookmarksCtrl)
@@ -348,8 +354,10 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
           return 'No comments yet';
         case 'COMMENTS_PAGE':
           return 'page:';
-        case 'TOKEN_MARKET':
-          return 'Token Market';
+        case 'TOKEN_EXCHANGE':
+          return 'Token Exchange';
+        case 'DISCOVER':
+          return 'Discover';
         case 'VOTING_POWER':
           return 'Voting Power';
         case 'POST_COUNT':
