@@ -404,8 +404,10 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
           return 'Search in bookmarks...';
         case 'FILTER_TAGS':
           return 'Filter Tags';
-        case 'SEARCH_RESULTS_FOUND':
-          return 'results found';
+        case 'SEARCH_RESULTS':
+          return 'Results';
+        case 'SEARCH_RESULTS_USER':
+          return 'Users';
         default:
           return s;
       }

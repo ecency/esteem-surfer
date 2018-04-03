@@ -3,7 +3,7 @@ export default () => {
     restrict: 'AE',
     replace: true,
     scope: {
-      content: '='
+      content: '<'
     },
     link: ($scope, $element) => {
 
@@ -21,19 +21,6 @@ export default () => {
                 </div>
             </div>
         </div>
-        <!--
-        <div class="content-body">
-            <a ng-click="imageClicked()" class="content-image" ng-if="contentImage">
-              <img ng-src="{{ contentImage }}" fallback-src="img/noimage.png">  
-            </a>
-            <h2 class="content-body-title"><a ng-click="titleClicked()">RE: {{ content.root_title }}</a></h2>
-            <div class="content-body-summary">
-                <a ng-click="summaryClicked()" ng-bind-html="content.body | contentSummaryChild"></a>
-            </div>
-        </div>
-        -->
-        
-        
         <div class="content-body">
             <a ng-click="imageClicked()" class="content-image" ng-if="contentImage">
               <img ng-src="{{ contentImage }}" fallback-src="img/noimage.png">  
@@ -43,8 +30,6 @@ export default () => {
                 <a ng-click="summaryClicked()" ng-class="{'visited': isVisited}" ng-bind-html="content.summary | postSummary"></a>
             </div>
         </div>
-        
-        
         <div class="content-footer">
             <div class="content-voters">
                 <content-voters-info content="content"></content-voters-info>
@@ -57,7 +42,9 @@ export default () => {
         </div>
     </div>
     `,
-    controller: ($scope, $rootScope, $location, $sce, $filter, $uibModal, storageService, helperService) => {
+    controller: ($scope, $rootScope, $location, helperService) => {
+
+      $scope.isVisited = helperService.isPostRead($scope.content.author, $scope.content.permlink);
 
       $scope.content.category = $scope.content.meta.tags[0];
       $scope.contentImage = $scope.content.meta.image ? $scope.content.meta.image[0] : null;
