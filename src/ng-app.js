@@ -25,12 +25,14 @@ import path from 'path';
 
 import jq from 'jquery';
 
+
 // Angular and related dependencies
 import angular from 'angular';
 import {angularRoute} from 'angular-route';
 import {angularTranslate} from 'angular-translate';
 import ui from 'angular-ui-bootstrap';
 import {slider} from 'angularjs-slider';
+
 
 // Controllers
 import postsCtrl from './controllers/posts';
@@ -43,6 +45,7 @@ import feedCtrl from './controllers/feed';
 import bookmarksCtrl from './controllers/bookmarks';
 import tagsCtrl from './controllers/tags';
 import editorCtrl from './controllers/editor';
+import searchCtrl from './controllers/search';
 
 
 import faqCtrl from './controllers/faq';
@@ -70,6 +73,7 @@ import loginRequiredDir from './directives/login-required';
 import contentVoteDir from './directives/content-vote';
 import contentEditorDir from './directives/content-editor';
 import fallbackSrcDir from './directives/fallback-src';
+import contentListItemSearchDir from './directives/content-list-item-search';
 
 
 // Services
@@ -241,6 +245,10 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
         templateUrl: 'templates/editor.html',
         controller: 'editorCtrl'
       })
+      .when('/search/:obj', {
+        templateUrl: 'templates/search.html',
+        controller: 'searchCtrl'
+      })
       .otherwise({redirectTo: '/'});
 
     // $http
@@ -298,6 +306,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .directive('contentVote', contentVoteDir)
   .directive('contentEditor', contentEditorDir)
   .directive('fallbackSrc', fallbackSrcDir)
+  .directive('contentListItemSearch', contentListItemSearchDir)
 
   .controller('postsCtrl', postsCtrl)
   .controller('faqCtrl', faqCtrl)
@@ -314,6 +323,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .controller('bookmarksCtrl', bookmarksCtrl)
   .controller('tagsCtrl', tagsCtrl)
   .controller('editorCtrl', editorCtrl)
+  .controller('searchCtrl', searchCtrl)
 
   .filter('catchPostImage', catchPostImageFilter)
   .filter('sumPostTotal', sumPostTotalFilter)
@@ -394,6 +404,8 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
           return 'Search in bookmarks...';
         case 'FILTER_TAGS':
           return 'Filter Tags';
+        case 'SEARCH_RESULTS_FOUND':
+          return 'results found';
         default:
           return s;
       }

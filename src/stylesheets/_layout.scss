@@ -55,7 +55,7 @@
   width: 100%;
 }
 
-.posts-page, .feed-page {
+.posts-page, .feed-page, .search-page {
   .post-list {
     background: $listBgColor;
     border: 1px solid $listBorderColor;
@@ -114,6 +114,20 @@
         font-size: 30px;
       }
     }
+  }
+}
+
+.search-page {
+  header {
+    h1 {
+      .results-found {
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+  }
+  .post-list {
+    width: 100%;
   }
 }
 
