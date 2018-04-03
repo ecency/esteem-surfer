@@ -1,6 +1,6 @@
-export default ($scope, $rootScope, $routeParams, eSteemService) => {
+export default ($scope, $rootScope, $location, $routeParams, steemService, eSteemService) => {
 
-  const searchStr = JSON.parse($routeParams.obj).str;
+  const searchStr = JSON.parse(decodeURIComponent($routeParams.obj)).str;
   $scope.searchStr = searchStr;
 
   $scope.posts = $rootScope.Data['posts'] || [];
@@ -25,11 +25,10 @@ export default ($scope, $rootScope, $routeParams, eSteemService) => {
   let hasMore = true;
   let pageNum = 0;
 
-  const loadPosts = () => {
+  const loadPosts = (cb = null) => {
     $scope.loadingPosts = true;
     eSteemService.search(searchStr, (pageNum + 1)).then((resp) => {
 
-      console.log(resp.data)
       pageNum += 1;
 
       pageNum = resp.data.pages.current;
@@ -44,12 +43,28 @@ export default ($scope, $rootScope, $routeParams, eSteemService) => {
       // TODO: Handle catch
     }).then(() => {
       $scope.loadingPosts = false;
+
+      if (cb) {
+        cb();
+      }
     });
+  };
+
+  $scope.accounts = [];
+
+  const loadAccounts = () => {
+    steemService.lookupAccounts(searchStr, 10).then((resp) => {
+      $scope.accounts = resp;
+    })
   };
 
   if ($scope.posts.length === 0) {
     // if initial data is empty then load posts
-    loadPosts();
+    loadPosts(() => {
+      loadAccounts()
+    });
+  } else {
+    loadAccounts();
   }
 
   $scope.reachedBottom = () => {
@@ -70,4 +85,9 @@ export default ($scope, $rootScope, $routeParams, eSteemService) => {
     pageNum = 0;
     loadPosts();
   };
+
+  $scope.accountClicked = (a) => {
+    let u = `/account/${a}`;
+    $location.path(u);
+  }
 };

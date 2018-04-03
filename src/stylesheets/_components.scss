@@ -435,6 +435,155 @@
   }
 }
 
+.comment-list-item {
+  @include clearfix();
+
+  .comment-list-item-inner {
+    @include clearfix();
+    margin-bottom: 25px;
+
+    .comment-author-pic {
+      background: $profilePicBg;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 50%;
+      float: left;
+      height: 48px;
+      width: 48px;
+    }
+
+    .comment-header, .comment-body, .comment-footer {
+      margin-left: 60px;
+    }
+
+    .comment-header {
+      font-size: 14px;
+
+      .comment-author {
+        font-weight: 600;
+        position: relative;
+        a {
+          color: $textColor;
+          outline: 0;
+        }
+      }
+
+      .comment-author-reputation {
+        color: $textColor;
+        font-size: 13px;
+        &:before {
+          content: '(';
+        }
+        &:after {
+          content: ')';
+        }
+      }
+
+      .comment-date {
+        color: $textColorLight;
+
+        &:before {
+          content: '•';
+
+          margin-left: 6px;
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .comment-body {
+      @include clearfix();
+
+      padding: 0.2em 0;
+    }
+
+    .comment-footer {
+      @include clearfix();
+
+      font-size: 13px;
+
+      .comment-voting {
+        border-right: 1px solid $seperatorColor;
+        float: left;
+        margin-right: 10px;
+        padding-right: 10px;
+
+        .comment-up-vote {
+          float: left;
+          margin-right: 7px;
+
+          a {
+            color: $textColorLight;
+            display: block;
+            font-size: 20px;
+            line-height: 22px;
+            outline: 0;
+            width: 20px;
+
+            &:hover, &.voted {
+              color: $linkHoverColor;
+            }
+
+            &.voting {
+              pointer-events: none;
+            }
+          }
+        }
+
+        .comment-total {
+          float: left;
+          position: relative;
+
+          a {
+            color: $textColorLight;
+            outline: 0;
+
+            .cur-prefix {
+
+            }
+
+            &.payout-declined {
+              color: $textColorLighter;
+              text-decoration: line-through;
+            }
+          }
+        }
+      }
+
+      .comment-voters {
+        border-right: 1px solid $seperatorColor;
+        float: left;
+        margin-right: 10px;
+        padding-right: 10px;
+
+        a {
+          color: $textColorLight;
+        }
+      }
+
+      .comment-reply {
+        a {
+          color: $textColorLight;
+        }
+      }
+    }
+  }
+
+  .comment-list {
+    @include clearfix();
+    margin-left: 10%;
+    width: calc(100% - 10%);
+  }
+
+  &.selected {
+
+    & > .comment-list-item-inner {
+      background: #fff6b4;
+    }
+  }
+}
+
 .content-list-item-search {
 
   /*
@@ -456,11 +605,6 @@ STRUCTURE:
 
 
   .post-footer
-    .post-voting
-      .post-up-vote
-      .post-total
-        a
-          .cur-prefix
     .post-voters
     .post-comment-count
  */
@@ -956,155 +1100,6 @@ STRUCTURE:
   .post-comment-list-empty {
     color: $textColorLight;
     font-style: italic;
-  }
-}
-
-.comment-list-item {
-  @include clearfix();
-
-  .comment-list-item-inner {
-    @include clearfix();
-    margin-bottom: 25px;
-
-    .comment-author-pic {
-      background: $profilePicBg;
-      background-position: 50% 50%;
-      background-repeat: no-repeat;
-      background-size: cover;
-      border-radius: 50%;
-      float: left;
-      height: 48px;
-      width: 48px;
-    }
-
-    .comment-header, .comment-body, .comment-footer {
-      margin-left: 60px;
-    }
-
-    .comment-header {
-      font-size: 14px;
-
-      .comment-author {
-        font-weight: 600;
-        position: relative;
-        a {
-          color: $textColor;
-          outline: 0;
-        }
-      }
-
-      .comment-author-reputation {
-        color: $textColor;
-        font-size: 13px;
-        &:before {
-          content: '(';
-        }
-        &:after {
-          content: ')';
-        }
-      }
-
-      .comment-date {
-        color: $textColorLight;
-
-        &:before {
-          content: '•';
-
-          margin-left: 6px;
-          margin-right: 5px;
-        }
-      }
-    }
-
-    .comment-body {
-      @include clearfix();
-
-      padding: 0.2em 0;
-    }
-
-    .comment-footer {
-      @include clearfix();
-
-      font-size: 13px;
-
-      .comment-voting {
-        border-right: 1px solid $seperatorColor;
-        float: left;
-        margin-right: 10px;
-        padding-right: 10px;
-
-        .comment-up-vote {
-          float: left;
-          margin-right: 7px;
-
-          a {
-            color: $textColorLight;
-            display: block;
-            font-size: 20px;
-            line-height: 22px;
-            outline: 0;
-            width: 20px;
-
-            &:hover, &.voted {
-              color: $linkHoverColor;
-            }
-
-            &.voting {
-              pointer-events: none;
-            }
-          }
-        }
-
-        .comment-total {
-          float: left;
-          position: relative;
-
-          a {
-            color: $textColorLight;
-            outline: 0;
-
-            .cur-prefix {
-
-            }
-
-            &.payout-declined {
-              color: $textColorLighter;
-              text-decoration: line-through;
-            }
-          }
-        }
-      }
-
-      .comment-voters {
-        border-right: 1px solid $seperatorColor;
-        float: left;
-        margin-right: 10px;
-        padding-right: 10px;
-
-        a {
-          color: $textColorLight;
-        }
-      }
-
-      .comment-reply {
-        a {
-          color: $textColorLight;
-        }
-      }
-    }
-  }
-
-  .comment-list {
-    @include clearfix();
-    margin-left: 10%;
-    width: calc(100% - 10%);
-  }
-
-  &.selected {
-
-    & > .comment-list-item-inner {
-      background: #fff6b4;
-    }
   }
 }
 

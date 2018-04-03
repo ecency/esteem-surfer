@@ -22,9 +22,12 @@
       </ul>
       <form class="navbar-form navbar-left">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search for..." ng-model="searchStr" ng-keyup="$event.keyCode == 13 ? searchButtonClicked() : null">
+          <input type="text" class="form-control txt-search" placeholder="Search for..." ng-model="searchStr" ng-keyup="$event.keyCode == 13 ? searchButtonClicked() : null">
           <span class="input-group-btn">
-            <button class="btn btn-default" type="button" ng-disabled="!searchStr" ng-click="searchButtonClicked()"><i class="fa fa-search"></i></button>
+            <button class="btn btn-default btn-search" type="button" ng-disabled="!searchStr || fetchingSearch" ng-click="searchButtonClicked()">
+              <i class="fa fa-search" ng-if="!fetchingSearch"></i>
+                 <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="fetchingSearch"></i>
+            </button>
           </span>
         </div>
       </form>

@@ -1,10 +1,19 @@
 <nav-bar search-str="searchStr"></nav-bar>
-  <div class="app-container keep-pos" scrolled-bottom="reachedBottom()" id="content-main">
+<div class="app-container keep-pos" scrolled-bottom="reachedBottom()" id="content-main">
   <div class="app-content search-page">
+    <div class="account-suggestions" ng-if="accounts.length">
+      <h2 class="title">{{ 'SEARCH_RESULTS_USER' | __ }}</h2>
+      <div class="account-card" ng-repeat="account in accounts" ng-click="accountClicked(account)">
+        <div class="account-pic" author-bg-img-style author="{{ account }}"></div>
+        <div class="account-name">{{ account }}</div>
+      </div>
+    </div>
     <div class="post-list" ng-class="{'fetching': loadingPosts}">
       <header>
-        <h1>{{ 'SEARCH' | translate }} <span class="results-found" ng-if="hits">{{ hits | number }} {{ 'SEARCH_RESULTS_FOUND' | __ }}</span> </h1>
-        <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingPosts" title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
+        <h1>{{ 'SEARCH_RESULTS' | __ }} <span class="results-found" ng-if="hits">{{ hits | number }} </span>
+        </h1>
+        <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingPosts"
+                title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
       </header>
       <ul class="feed">
         <li ng-repeat="post in posts">

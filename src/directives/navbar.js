@@ -8,7 +8,7 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
       searchStr: '=?'
     },
     templateUrl: 'templates/directives/navbar.html',
-    controller: ($scope, $rootScope, $location, $filter, constants) => {
+    controller: ($scope, $rootScope, $location, $filter, constants, steemService) => {
       $scope.filters = constants.filters;
       $scope.selectedFilterName = $scope.filters.find(i => i.name === $rootScope.selectedFilter).key;
 
@@ -108,9 +108,56 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
         });
       };
 
-      $scope.searchButtonClicked = () => {
-        const obj = {"str": $scope.searchStr};
-        $location.path(`/search/${JSON.stringify(obj)}`);
+      $scope.searchButtonClicked = async () => {
+
+        let resp = null;
+        let isContent = false;
+        let isAccount = false;
+
+        const postMatch = $scope.searchStr.match(/^(@[\w\.\d-]+)\/(.*)/);
+        if (postMatch && postMatch.length === 3) {
+          const acccount = postMatch[1].replace('@', '');
+          const permlink = postMatch[2];
+
+          $scope.fetchingSearch = true;
+          $scope.$applyAsync();
+          resp = await steemService.getContent(acccount, permlink);
+          $scope.fetchingSearch = false;
+          $scope.$applyAsync();
+
+          if (resp && resp.id !== 0) {
+            isContent = true;
+          }
+
+        } else if ($scope.searchStr.startsWith('@') && $scope.searchStr.indexOf(' ') === -1) {
+
+          const account = $scope.searchStr.replace('@', '');
+
+          $scope.fetchingSearch = true;
+          $scope.$applyAsync();
+          resp = await steemService.getAccounts([account]);
+          $scope.fetchingSearch = false;
+          $scope.$applyAsync();
+
+          if (resp.length > 0 && resp[0].name === account) {
+            isAccount = true;
+          }
+        }
+
+        if (isContent) {
+          $rootScope.selectedPost = resp;
+          const u = `/post/${resp.category}/${resp.author}/${resp.permlink}`;
+          $location.path(u);
+        } else if (isAccount) {
+          const u = `/account/${$scope.searchStr.replace('@', '')}`;
+          $location.path(u);
+        } else {
+          const obj = {"str": $scope.searchStr};
+          const u = `/search/${encodeURIComponent(JSON.stringify(obj))}`;
+          $location.path(u);
+        }
+
+        $scope.$applyAsync();
       }
     }
   };

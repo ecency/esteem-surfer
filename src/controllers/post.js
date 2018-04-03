@@ -184,7 +184,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $uibModal, $location
     });
 
     // Mark post as read
-    helperService.setPostRead(content.id);
+    helperService.setPostRead(content.author, content.permlink);
 
     // Add to nav history
     $rootScope.setNavVar('post', content);

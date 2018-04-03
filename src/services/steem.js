@@ -165,6 +165,17 @@ export default (steemApi, $q) => {
         }
       });
       return defer.promise;
+    },
+    lookupAccounts: (q, size) => {
+      let defer = $q.defer();
+      steemApi.getApi().lookupAccounts(q, size, (err, response) => {
+        if (err) {
+          defer.reject(err);
+        } else {
+          defer.resolve(response);
+        }
+      });
+      return defer.promise;
     }
   }
 };

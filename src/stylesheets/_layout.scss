@@ -118,16 +118,72 @@
 }
 
 .search-page {
-  header {
-    h1 {
-      .results-found {
-        font-size: 14px;
-        font-weight: 400;
+
+  .account-suggestions {
+
+    margin-bottom: 20px;
+    overflow: auto;
+    white-space: nowrap;
+    padding-bottom: 10px;
+
+    .title{
+      font-size: 18px;
+      line-height: 18px;
+      margin: 0 0 10px 0;
+    }
+
+    .account-card {
+      background: $listBgColor;
+      border: 1px solid $listBorderColor;
+      box-shadow: 0 0 1px 0 $listBorderColor;
+      display: inline-block;
+      padding: 6px;
+      text-align: center;
+      width: 117px;
+      cursor: pointer;
+
+      .account-pic {
+        background: $profilePicBg;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 50%;
+        height: 60px;
+        width: 60px;
+        margin: 0 auto 10px auto;
+      }
+
+      .account-name {
+        &:before {
+          content: '@';
+        }
+        font-size: 13px;
+        font-weight: 600;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+      }
+
+      &:not(:last-child) {
+        margin-right: 10px;
       }
     }
   }
+
   .post-list {
     width: 100%;
+
+    header {
+      h1 {
+        .results-found {
+          font-size: 14px;
+          font-weight: 400;
+        }
+      }
+    }
+
   }
 }
 
@@ -158,13 +214,13 @@
 
   .the-author {
     .author-header {
-      position: relative;
       height: 200px;
+      position: relative;
 
       .control-box {
         position: absolute;
-        top: 20px;
         right: 20px;
+        top: 20px;
       }
 
       .cover-image {
@@ -403,8 +459,8 @@
 
 .editor-page {
   .editor-form, .editor-preview {
-    width: 800px;
     margin: auto;
+    width: 800px;
   }
 
   .editor-form {
@@ -414,10 +470,10 @@
   .editor-preview {
 
     .preview-title {
+      display: block;
       font-size: 16px;
       font-weight: 600;
       margin-bottom: 20px;
-      display: block;
     }
   }
 }
