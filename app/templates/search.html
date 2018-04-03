@@ -1,0 +1,24 @@
+<nav-bar search-str="searchStr"></nav-bar>
+  <div class="app-container keep-pos" scrolled-bottom="reachedBottom()" id="content-main">
+  <div class="app-content search-page">
+    <div class="post-list" ng-class="{'fetching': loadingPosts}">
+      <header>
+        <h1>{{ 'SEARCH' | translate }} <span class="results-found" ng-if="hits">{{ hits | number }} {{ 'SEARCH_RESULTS_FOUND' | __ }}</span> </h1>
+        <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingPosts" title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
+      </header>
+      <ul class="feed">
+        <li ng-repeat="post in posts">
+          <content-list-item-search content="post"></content-list-item-search>
+        </li>
+      </ul>
+      <div class="empty-list" ng-if="posts.length === 0 && !loadingPosts">
+        {{ 'EMPTY_LIST' | __ }}
+      </div>
+      <footer>
+        <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="loadingPosts"></i>
+      </footer>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+

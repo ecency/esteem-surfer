@@ -22,9 +22,9 @@
       </ul>
       <form class="navbar-form navbar-left">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search for...">
+          <input type="text" class="form-control" placeholder="Search for..." ng-model="searchStr" ng-keyup="$event.keyCode == 13 ? searchButtonClicked() : null">
           <span class="input-group-btn">
-            <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+            <button class="btn btn-default" type="button" ng-disabled="!searchStr" ng-click="searchButtonClicked()"><i class="fa fa-search"></i></button>
           </span>
         </div>
       </form>

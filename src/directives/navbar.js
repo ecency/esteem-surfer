@@ -4,7 +4,8 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
     replace: true,
     scope: {
       selectedSection: '=',
-      selectedTag: '='
+      selectedTag: '=',
+      searchStr: '=?'
     },
     templateUrl: 'templates/directives/navbar.html',
     controller: ($scope, $rootScope, $location, $filter, constants) => {
@@ -105,6 +106,11 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
         }, () => {
           // Cancel
         });
+      };
+
+      $scope.searchButtonClicked = () => {
+        const obj = {"str": $scope.searchStr};
+        $location.path(`/search/${JSON.stringify(obj)}`);
       }
     }
   };

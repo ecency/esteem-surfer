@@ -145,7 +145,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $uibModal, $location
 
     if ($scope.post) {
       defer.resolve($scope.post);
-    } else if ($rootScope.selectedPost.permlink === permlink && $rootScope.selectedPost.author === author) {
+    } else if ($rootScope.selectedPost && $rootScope.selectedPost.permlink === permlink && $rootScope.selectedPost.author === author) {
       // The last selected post from list === this post
       defer.resolve($rootScope.selectedPost);
     } else {
