@@ -133,6 +133,34 @@ export default ($rootScope, steemApi, $q) => {
 
   };
 
+  const reply = (wif, opArray) => {
+    let defer = $q.defer();
+
+    steem.broadcast.send({operations: opArray, extensions: []}, {posting: wif}, function (err, response) {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(response);
+      }
+    });
+
+    return defer.promise;
+  };
+
+  const deleteComment = (wif, author, permlink) => {
+    let defer = $q.defer();
+
+    steem.broadcast.deleteComment(wif, author, permlink, function (err, response) {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(response);
+      }
+    });
+
+    return defer.promise;
+  };
+
   const getProperWif = (r) => {
     for (let i of r) {
       if ($rootScope.user.keys[i]) {
@@ -193,7 +221,7 @@ export default ($rootScope, steemApi, $q) => {
     },
     vote: (author, permlink, weight) => {
       // requires Posting key
-      
+
       const voter = $rootScope.user.username;
       switch ($rootScope.user.type) {
         case 's':
@@ -203,6 +231,33 @@ export default ($rootScope, steemApi, $q) => {
         case 'sc':
           const token = getAccessToken();
           return voteSC(token, voter, author, permlink, weight);
+          break;
+      }
+    },
+    reply: (opArray) => {
+      // requires Posting key
+
+      const voter = $rootScope.user.username;
+      switch ($rootScope.user.type) {
+        case 's':
+          const wif = getProperWif(['posting']);
+          return reply(wif, opArray);
+          break;
+        case 'sc':
+          const token = getAccessToken();
+          // return voteSC(token, voter, author, permlink, weight);
+          break;
+      }
+    },
+    deleteComment: (author, permlink) => {
+      switch ($rootScope.user.type) {
+        case 's':
+          const wif = getProperWif(['posting']);
+          return deleteComment(wif, author, permlink);
+          break;
+        case 'sc':
+          const token = getAccessToken();
+          // return voteSC(token, voter, author, permlink, weight);
           break;
       }
     }

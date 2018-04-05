@@ -176,6 +176,17 @@ export default (steemApi, $q) => {
         }
       });
       return defer.promise;
+    },
+    getBlock: (num) => {
+      let defer = $q.defer();
+      steemApi.getApi().getBlock(num, (err, response) => {
+        if (err) {
+          defer.reject(err);
+        } else {
+          defer.resolve(response);
+        }
+      });
+      return defer.promise;
     }
   }
 };

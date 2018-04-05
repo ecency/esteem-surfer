@@ -238,4 +238,11 @@ export default ($scope, $rootScope, $routeParams, $timeout, $uibModal, $location
   };
 
   $scope.commentId = commentId;
+
+  $scope.replyClicked = () => {
+    $rootScope.openReplyWindow($scope.post, (resp) => {
+      $scope.comments.push(resp);
+      $rootScope.closeReplyWindow();
+    })
+  }
 };

@@ -563,6 +563,18 @@
       }
 
       .comment-reply {
+        float: left;
+        a {
+          color: $textColorLight;
+        }
+      }
+
+      .comment-edit, .comment-delete {
+        border-left: 1px solid $seperatorColor;
+        float: left;
+        margin-left: 10px;
+        padding-left: 10px;
+
         a {
           color: $textColorLight;
         }
@@ -581,6 +593,10 @@
     & > .comment-list-item-inner {
       background: #fff6b4;
     }
+  }
+
+  &.deleting {
+    opacity: 0.5;
   }
 }
 
@@ -1061,6 +1077,7 @@ STRUCTURE:
   }
 
   .post-comment-list {
+
     .comment-list-header, .comment-list-footer {
       @include clearfix();
       margin: 10px 0;
@@ -1100,6 +1117,10 @@ STRUCTURE:
   .post-comment-list-empty {
     color: $textColorLight;
     font-style: italic;
+  }
+
+  &.replying {
+    padding-bottom: 240px;
   }
 }
 
@@ -1764,13 +1785,45 @@ STRUCTURE:
 
 .content-editor {
 
+  textarea {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    resize: none;
+  }
+
+  .file-input {
+    display: none;
+  }
+
+  .image-upload-panel {
+    font-weight: 600;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 100%;
+  }
+}
+
+.content-editorXXXX {
+
+  position: relative;
+
   .control-bar {
+
     @include clearfix();
-    height: 32px;
+    /*
+    position: absolute;
+    width: 40px;
+    height: 100%;
+    left: 0;
+    top:0;
+    */
+
+    background: #e6e6e6;
 
     .editor-control {
-      float: left;
-
       button {
         background: transparent;
         border: none;
@@ -1781,8 +1834,17 @@ STRUCTURE:
   }
 
   textarea {
-    min-height: 180px;
+    /*
+    width:calc(100% - 40px);
+    margin-left: 40px;
+    min-height: 230px;
     resize: vertical;
+    */
+
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    resize: none;
 
     &.dragover {
       background: $hoverColor;
@@ -1793,11 +1855,13 @@ STRUCTURE:
     display: none;
   }
 
+  /*
   .image-panel {
     color: $textColorLight;
     font-size: 13px;
     padding: 5px 0;
   }
+*/
 
   .image-upload-panel {
     color: $textColorLight;
@@ -1811,5 +1875,14 @@ STRUCTURE:
     .progress-text, .processing-text {
 
     }
+  }
+}
+
+.editor-tools {
+  button {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    margin: 0;
   }
 }
