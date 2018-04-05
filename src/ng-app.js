@@ -24,16 +24,12 @@ import steem from 'steem';
 import path from 'path';
 
 import jq from 'jquery';
-
-
 // Angular and related dependencies
 import angular from 'angular';
 import {angularRoute} from 'angular-route';
 import {angularTranslate} from 'angular-translate';
 import ui from 'angular-ui-bootstrap';
 import {slider} from 'angularjs-slider';
-
-
 // Controllers
 import postsCtrl from './controllers/posts';
 import postCtrl from './controllers/post';
@@ -53,8 +49,6 @@ import aboutCtrl from './controllers/about'
 import tokenExchangeCtrl from './controllers/token-exchange';
 import marketPlaceCtrl from './controllers/market-place';
 import discoverCtrl from './controllers/discover';
-
-
 // Directives
 import navBarDir from './directives/navbar';
 import footerDir from './directives/footer';
@@ -72,10 +66,9 @@ import autoFocusDir from './directives/autofocus';
 import loginRequiredDir from './directives/login-required';
 import contentVoteDir from './directives/content-vote';
 import contentEditorDir from './directives/content-editor';
+import contentEditorControlsDir from './directives/content-editor-controls';
 import fallbackSrcDir from './directives/fallback-src';
 import contentListItemSearchDir from './directives/content-list-item-search';
-
-
 // Services
 import steemService from './services/steem';
 import {helperService} from './services/helper';
@@ -84,8 +77,6 @@ import settingsService from './services/settings';
 import userService from './services/user';
 import steemAuthenticatedService from './services/steem-authenticated';
 import eSteemService from './services/esteem';
-
-
 // Filters
 import {catchPostImageFilter} from './filters/catch-post-image';
 import sumPostTotalFilter from './filters/sum-post-total';
@@ -102,7 +93,7 @@ import steemDollarFilter from './filters/steem-dollar';
 
 
 import constants from './constants';
-
+import version from './version';
 
 const app = remote.app;
 
@@ -265,6 +256,9 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .factory('constants', () => {
     return constants;
   })
+  .factory('appVersion', () => {
+    return version;
+  })
   .factory('steemApi', (constants, $rootScope) => {
     return {
       getApi: () => {
@@ -305,6 +299,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .directive('loginRequired', loginRequiredDir)
   .directive('contentVote', contentVoteDir)
   .directive('contentEditor', contentEditorDir)
+  .directive('contentEditorControls', contentEditorControlsDir)
   .directive('fallbackSrc', fallbackSrcDir)
   .directive('contentListItemSearch', contentListItemSearchDir)
 
@@ -414,7 +409,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
     }
   })
 
-  .run(function ($rootScope, $uibModal, $translate, $timeout, $interval, $location, $window, $q, eSteemService, steemService, settingsService, userService, activeUsername, constants) {
+  .run(function ($rootScope, $uibModal, $routeParams, $translate, $timeout, $interval, $location, $window, $q, eSteemService, steemService, settingsService, userService, steemAuthenticatedService, activeUsername, constants, appVersion) {
 
 
     // SETTINGS
@@ -749,6 +744,149 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
     // SIDE TAG LIST
     $rootScope.sideTagFilter = false;
     $rootScope.sideAfterTag = '';
+
+
+    // REPLYING/COMMENTING
+
+    const resetReplyingVars = () => {
+      $rootScope.contentReplyFlag = false;
+      $rootScope.contentReplyBody = '';
+      $rootScope.content2Reply = null;
+      $rootScope.contentReplying = false;
+      $rootScope.contentReplyEditMode = false;
+      $rootScope.contentReplyCb = null;
+    };
+
+    resetReplyingVars();
+
+    $rootScope.openReplyWindow = (content, cb = null, editMode = false) => {
+      $rootScope.contentReplyFlag = true;
+      $rootScope.contentReplyBody = '';
+      $rootScope.content2Reply = content;
+      $rootScope.contentReplyEditMode = editMode;
+      $rootScope.contentReplyCb = cb;
+
+      if (editMode) {
+        $rootScope.contentReplyBody = content.body;
+      }
+    };
+
+    $rootScope.closeReplyWindow = () => {
+      resetReplyingVars();
+    };
+
+    $rootScope.$on('$routeChangeStart', function () {
+      $rootScope.closeReplyWindow();
+    });
+
+    $rootScope.$on('userLoggedOut', () => {
+      $rootScope.closeReplyWindow();
+    });
+
+    $rootScope.doReply = () => {
+      const makeReplyPermlink = (toAuthor) => {
+        const t = new Date();
+        const timeFormat = t.getFullYear().toString() + (t.getMonth() + 1).toString() + t.getDate().toString() + "t" + t.getHours().toString() + t.getMinutes().toString() + t.getSeconds().toString() + t.getMilliseconds().toString() + "z";
+
+        return "re-" + toAuthor.replace(/\./g, "") + "-" + timeFormat;
+      };
+
+      const c = $rootScope.content2Reply;
+
+      let opArray = [];
+
+      let replyPermLink = '';
+      let replyAuthor = '';
+
+      const jsonMeta = {
+        tags: c.json_metadata ? JSON.parse(c.json_metadata).tags : ['esteem'],
+        app: 'esteem-surfer/' + appVersion,
+        format: 'markdown+html',
+        community: 'esteem'
+      };
+
+
+      let parentAuthor, parentPermlink, author, permlink, title, body;
+
+      if ($rootScope.contentReplyEditMode) {
+        replyPermLink = c.permlink;
+        replyAuthor = c.author;
+
+        opArray = [
+          ['comment', {
+            parent_author: c.parent_author,
+            parent_permlink: c.parent_permlink,
+            author: replyAuthor,
+            permlink: replyPermLink,
+            title: '',
+            body: $rootScope.contentReplyBody.trim(),
+            json_metadata: JSON.stringify(jsonMeta)
+          }]
+        ];
+
+        let bExist = false;
+
+        for (const b of c.beneficiaries) {
+          if (b && b.account === 'esteemapp') {
+            bExist = true;
+            break;
+          }
+        }
+
+        if (!bExist) {
+          const e = ['comment_options', {
+            allow_curation_rewards: true,
+            allow_votes: true,
+            author: replyAuthor,
+            permlink: replyPermLink,
+            max_accepted_payout: '1000000.000 SBD',
+            percent_steem_dollars: 10000,
+            extensions: [[0, {'beneficiaries': [{'account': 'esteemapp', 'weight': 1000}]}]]
+          }];
+
+          opArray.push(e);
+        }
+
+      } else {
+        replyPermLink = makeReplyPermlink(c.author);
+        replyAuthor = activeUsername();
+
+        opArray = [
+          ['comment', {
+            parent_author: c.author,
+            parent_permlink: c.permlink,
+            author: replyAuthor,
+            permlink: replyPermLink,
+            title: '',
+            body: $rootScope.contentReplyBody.trim(),
+            json_metadata: JSON.stringify(jsonMeta)
+          }],
+          ['comment_options', {
+            allow_curation_rewards: true,
+            allow_votes: true,
+            author: replyAuthor,
+            permlink: replyPermLink,
+            max_accepted_payout: '1000000.000 SBD',
+            percent_steem_dollars: 10000,
+            extensions: [[0, {'beneficiaries': [{'account': 'esteemapp', 'weight': 1000}]}]]
+          }]
+        ];
+      }
+
+      $rootScope.contentReplying = true;
+      steemAuthenticatedService.reply(opArray).then((resp) => {
+        if ($rootScope.contentReplyCb) {
+          steemService.getContent(replyAuthor, replyPermLink).then((resp) => {
+            $rootScope.contentReplyCb(resp);
+          })
+        }
+      }).catch((e) => {
+        $rootScope.showError(e);
+      }).then(() => {
+        $rootScope.contentReplying = false;
+      });
+    };
+
 
     // Error messages to show user when remote server errors occurred
     $rootScope.errorMessages = [];

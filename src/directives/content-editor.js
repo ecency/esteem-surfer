@@ -11,12 +11,16 @@ export default () => {
     replace: true,
     scope: {
       body: '=',
+      elemId: '@',
       placeHolder: '@'
     },
     link: ($scope, $element) => {
 
       const el = $element[0];
       const txtEl = el.querySelector('textarea');
+
+      txtEl.focus();
+
 
       $scope.insertSpace = () => {
         let pos = txtEl.value.length;
@@ -49,6 +53,7 @@ export default () => {
         txtEl.selectionStart = newStartPos;
         txtEl.selectionEnd = newEndPos;
       };
+
 
       txtEl.addEventListener('dragenter', (e) => {
         e.stopPropagation();
@@ -125,25 +130,6 @@ export default () => {
     templateUrl: 'templates/directives/content-editor.html',
     controller: ($scope, $rootScope, $timeout, eSteemService, activeUsername) => {
 
-      $scope.insertHeader = () => {
-        $scope.insertText('# ', '');
-      };
-
-      $scope.insertBold = () => {
-        $scope.insertText('**', '**');
-      };
-
-      $scope.insertItalic = () => {
-        $scope.insertText('*', '*');
-      };
-
-      $scope.insertQuote = () => {
-        $scope.insertText('> ', '');
-      };
-
-      $scope.insertLink = () => {
-        $scope.insertText('[', '](url)');
-      };
 
       $scope.insertImage = (name = '', url = 'url') => {
         $scope.insertText(`![${name}`, `](${url})`);
@@ -200,6 +186,14 @@ export default () => {
 
       $scope.openFileInput = () => {
         document.getElementById('file-input').click();
+      };
+
+      $scope.cancelClicked = () => {
+        $scope.cancelFn();
+      };
+
+      $scope.submitClicked = () => {
+        $scope.submitFn()($scope.body);
       }
     }
   };

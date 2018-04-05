@@ -7,7 +7,9 @@ export default () => {
 
     },
     templateUrl: 'templates/directives/footer.html',
-    controller: ($scope) => {
+    controller: ($scope, appVersion) => {
+
+      $scope.version = appVersion;
 
       $scope.fn = () => {
 

@@ -34,10 +34,10 @@ app.on("ready", () => {
   setApplicationMenu();
 
   const mainWindow = createWindow("main", {
-    width: 1100,
-    height: 768,
-    minWidth: 1100,
-    minHeight: 768
+    width: 1200,
+    height: 700,
+    minWidth: 1200,
+    minHeight: 700
   });
 
   mainWindow.loadURL(
