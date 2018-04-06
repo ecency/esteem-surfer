@@ -58,6 +58,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $uibModal, $location
       $scope.post = content;
 
       $scope.author = pathData.accounts[author];
+
       commentsData = compileComments(content);
 
       $scope.commentsLength = commentsData.length;
@@ -239,10 +240,39 @@ export default ($scope, $rootScope, $routeParams, $timeout, $uibModal, $location
 
   $scope.commentId = commentId;
 
+  /*
   $scope.replyClicked = () => {
     $rootScope.openReplyWindow($scope.post, (resp) => {
       $scope.comments.push(resp);
       $rootScope.closeReplyWindow();
     })
+  }*/
+
+  $scope.commentFlag = false;
+
+  $scope.replyClicked = () => {
+    $rootScope.$broadcast('commentEditorOpening');
+    $timeout(() => {
+      $scope.commentFlag = true;
+    }, 100);
+  };
+
+  $rootScope.$on('commentEditorOpening', () => {
+    $scope.commentFlag = false;
+  });
+
+  $scope.onCommentEditorCanceled = () => {
+    $scope.commentFlag = false;
+  };
+
+  $scope.afterNewComment = (newComment) => {
+    if ($scope.commentsLength === 0) {
+      commentsData = [newComment];
+      $scope.commentsLength = commentsData.length;
+      $scope.commentsTotalPages = Math.ceil(commentsData.length / commentsPerPage);
+      $scope.sliceComments();
+    } else {
+      $scope.comments.push(newComment);
+    }
   }
 };

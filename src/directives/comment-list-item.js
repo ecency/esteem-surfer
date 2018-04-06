@@ -10,16 +10,9 @@ export default () => {
         scope.$destroy();
         element.remove();
       };
-
-      scope.dock2ReplyWindow = () => {
-        return;
-        const el = element[0];
-
-        document.querySelector('#content-main').scrollTop = 600;
-      }
     },
     template: `
-      <div class="comment-list-item" ng-class="{'selected': comment._selected_, 'deleting': deleting}">
+      <div class="comment-list-item" ng-class="{'selected': comment._selected_, 'deleting': deleting, 'deleted': deleted}">
         <div class="comment-list-item-inner">
           <div class="comment-author-pic" author-bg-img-style author="{{ comment.author }}"></div>
           <div class="comment-header">
@@ -47,10 +40,12 @@ export default () => {
             <div class="comment-delete" ng-if="canEdit && comment.comments.length===0"><a ng-click="" login-required required-keys="'posting'" on-login-success="deleteClicked" title="{{ 'REMOVE' | translate }}"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="deleting"></i><i class="fa fa-times" ng-if="!deleting"></i></a></div>
           </div>
         </div>
+        
+        <comment-editor ng-if="commentFlag" content="comment" mode="{{ commentMode }}" on-cancel="onCommentEditorCanceled()" after-success="afterNewComment"></comment-editor>
         <comment-list comments="comment.comments"></comment-list>
       </div>
     `,
-    controller: ($scope, $rootScope, $window, steemAuthenticatedService, activeUsername) => {
+    controller: ($scope, $rootScope, $timeout, $window, steemAuthenticatedService, activeUsername) => {
 
       if (!$scope.comment.comments) {
         $scope.comment.comments = [];
@@ -58,6 +53,7 @@ export default () => {
 
       $scope.canEdit = false;
       $scope.deleting = false;
+      $scope.deleted = false;
 
       const detectCanEdit = () => {
         $scope.canEdit = (activeUsername() === $scope.comment.author);
@@ -73,31 +69,57 @@ export default () => {
         detectCanEdit();
       });
 
-      $scope.replyClicked = () => {
-        $scope.dock2ReplyWindow();
-        $rootScope.openReplyWindow($scope.comment, (resp) => {
-          $scope.comment.comments.push(resp);
-          $rootScope.closeReplyWindow();
-        });
-      };
-
-      $scope.editClicked = () => {
-        $rootScope.openReplyWindow($scope.comment, (resp) => {
-          $scope.comment.body = resp.body;
-          $rootScope.closeReplyWindow();
-        }, true);
-      };
-
       $scope.deleteClicked = () => {
         if ($window.confirm('Are you sure?')) {
           $scope.deleting = true;
+
           steemAuthenticatedService.deleteComment($scope.comment.author, $scope.comment.permlink).then((resp) => {
-            $scope.removeDirective();
+            $scope.deleted = true;
+
+            $timeout(() => {
+              $scope.removeDirective();
+            }, 100);
           }).catch((e) => {
             $rootScope.showError(e);
           }).then(() => {
             $scope.deleting = false;
           });
+        }
+      };
+
+      $scope.commentFlag = false;
+
+      $scope.replyClicked = () => {
+        $rootScope.$broadcast('commentEditorOpening');
+
+        $timeout(() => {
+          $scope.commentMode = 'reply';
+          $scope.commentFlag = true;
+        }, 100);
+      };
+
+      $scope.editClicked = () => {
+        $rootScope.$broadcast('commentEditorOpening');
+
+        $timeout(() => {
+          $scope.commentMode = 'edit';
+          $scope.commentFlag = true;
+        }, 100);
+      };
+
+      $rootScope.$on('commentEditorOpening', () => {
+        $scope.commentFlag = false;
+      });
+
+      $scope.onCommentEditorCanceled = () => {
+        $scope.commentFlag = false;
+      };
+
+      $scope.afterNewComment = (newComment, mode) => {
+        if (mode === 'reply') {
+          $scope.comment.comments.push(newComment);
+        } else if (mode === 'edit') {
+          $scope.comment.body = newComment.body;
         }
       }
     }

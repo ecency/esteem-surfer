@@ -30,6 +30,8 @@ import {angularRoute} from 'angular-route';
 import {angularTranslate} from 'angular-translate';
 import ui from 'angular-ui-bootstrap';
 import {slider} from 'angularjs-slider';
+
+
 // Controllers
 import postsCtrl from './controllers/posts';
 import postCtrl from './controllers/post';
@@ -49,6 +51,8 @@ import aboutCtrl from './controllers/about'
 import tokenExchangeCtrl from './controllers/token-exchange';
 import marketPlaceCtrl from './controllers/market-place';
 import discoverCtrl from './controllers/discover';
+
+
 // Directives
 import navBarDir from './directives/navbar';
 import footerDir from './directives/footer';
@@ -69,6 +73,9 @@ import contentEditorDir from './directives/content-editor';
 import contentEditorControlsDir from './directives/content-editor-controls';
 import fallbackSrcDir from './directives/fallback-src';
 import contentListItemSearchDir from './directives/content-list-item-search';
+import commentEditorDir from './directives/comment-editor';
+
+
 // Services
 import steemService from './services/steem';
 import {helperService} from './services/helper';
@@ -77,6 +84,8 @@ import settingsService from './services/settings';
 import userService from './services/user';
 import steemAuthenticatedService from './services/steem-authenticated';
 import eSteemService from './services/esteem';
+
+
 // Filters
 import {catchPostImageFilter} from './filters/catch-post-image';
 import sumPostTotalFilter from './filters/sum-post-total';
@@ -302,6 +311,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .directive('contentEditorControls', contentEditorControlsDir)
   .directive('fallbackSrc', fallbackSrcDir)
   .directive('contentListItemSearch', contentListItemSearchDir)
+  .directive('commentEditor', commentEditorDir)
 
   .controller('postsCtrl', postsCtrl)
   .controller('faqCtrl', faqCtrl)
@@ -409,7 +419,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
     }
   })
 
-  .run(function ($rootScope, $uibModal, $routeParams, $translate, $timeout, $interval, $location, $window, $q, eSteemService, steemService, settingsService, userService, steemAuthenticatedService, activeUsername, constants, appVersion) {
+  .run(function ($rootScope, $uibModal, $routeParams, $translate, $timeout, $interval, $location, $window, $q, eSteemService, steemService, settingsService, userService, activeUsername, constants) {
 
 
     // SETTINGS
@@ -746,6 +756,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
     $rootScope.sideAfterTag = '';
 
 
+    /*
     // REPLYING/COMMENTING
 
     const resetReplyingVars = () => {
@@ -855,6 +866,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
         $rootScope.contentReplying = false;
       });
     };
+    */
 
 
     // Error messages to show user when remote server errors occurred
