@@ -133,10 +133,56 @@ export default ($rootScope, steemApi, $q) => {
 
   };
 
-  const reply = (wif, opArray) => {
+  const comment = (wif, parentAuthor, parentPermlink, author, permlink, body, jsonMetadata, options) => {
     let defer = $q.defer();
 
+    const opArray = [
+      ['comment', {
+        parent_author: parentAuthor,
+        parent_permlink: parentPermlink,
+        author: author,
+        permlink: permlink,
+        title: '',
+        body: body,
+        json_metadata: JSON.stringify(jsonMetadata)
+      }]
+    ];
+
+    if (options) {
+      const e = ['comment_options', options];
+      opArray.push(e);
+    }
+
     steem.broadcast.send({operations: opArray, extensions: []}, {posting: wif}, function (err, response) {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(response);
+      }
+    });
+
+    return defer.promise;
+  };
+
+  const commentSc = (token, parentAuthor, parentPermlink, author, permlink, body, jsonMetadata, options) => {
+
+    let defer = $q.defer();
+
+    const api = sc2.Initialize({
+      accessToken: token
+    });
+
+    const params = {
+      parent_author: parentAuthor,
+      parent_permlink: parentPermlink,
+      author: author,
+      permlink: permlink,
+      title: '',
+      body: body,
+      json_metadata: JSON.stringify(jsonMetadata)
+    };
+
+    api.broadcast([['comment', params], ['comment_options', options]], function (err, response) {
       if (err) {
         defer.reject(err);
       } else {
@@ -157,6 +203,36 @@ export default ($rootScope, steemApi, $q) => {
         defer.resolve(response);
       }
     });
+
+    return defer.promise;
+  };
+
+  const deleteCommentSc = (token, author, permlink) => {
+
+    let defer = $q.defer();
+
+    defer.reject('Steem connect delete_comment not implemented yet');
+
+    /*
+    It will probably work like this:
+
+    const api = sc2.Initialize({
+      accessToken: token
+    });
+
+    const params = {
+      author: author,
+      permlink: permlink
+    };
+
+    api.broadcast([['delete_comment', params]], function (err, response) {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(response);
+      }
+    });
+    */
 
     return defer.promise;
   };
@@ -234,18 +310,16 @@ export default ($rootScope, steemApi, $q) => {
           break;
       }
     },
-    reply: (opArray) => {
+    comment: (parentAuthor, parentPermlink, author, permlink, body, jsonMetadata, options) => {
       // requires Posting key
-
-      const voter = $rootScope.user.username;
       switch ($rootScope.user.type) {
         case 's':
           const wif = getProperWif(['posting']);
-          return reply(wif, opArray);
+          return comment(wif, parentAuthor, parentPermlink, author, permlink, body, jsonMetadata, options);
           break;
         case 'sc':
           const token = getAccessToken();
-          // return voteSC(token, voter, author, permlink, weight);
+          return commentSc(token, parentAuthor, parentPermlink, author, permlink, body, jsonMetadata, options);
           break;
       }
     },
@@ -257,7 +331,7 @@ export default ($rootScope, steemApi, $q) => {
           break;
         case 'sc':
           const token = getAccessToken();
-          // return voteSC(token, voter, author, permlink, weight);
+          return deleteCommentSc(token, author, permlink);
           break;
       }
     }

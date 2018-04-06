@@ -3,7 +3,7 @@ export default () => {
     restrict: 'AE',
     replace: true,
     scope: {
-      comment: '<'
+      comment: '='
     },
     link: (scope, element, attrs) => {
       scope.removeDirective = function () {
@@ -17,7 +17,6 @@ export default () => {
 
         document.querySelector('#content-main').scrollTop = 600;
       }
-
     },
     template: `
       <div class="comment-list-item" ng-class="{'selected': comment._selected_, 'deleting': deleting}">
@@ -45,13 +44,17 @@ export default () => {
               <a ng-click="" login-required required-keys="'posting'" on-login-success="replyClicked">{{ 'REPLY' | translate }}</a>
             </div>
             <div class="comment-edit" ng-if="canEdit"><a ng-click="" login-required required-keys="'posting'" on-login-success="editClicked" title="{{ 'EDIT' | translate }}"><i class="fa fa-pencil"></i></a></div>
-            <div class="comment-delete" ng-if="canEdit"><a ng-click="" login-required required-keys="'posting'" on-login-success="deleteClicked" title="{{ 'REMOVE' | translate }}"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="deleting"></i><i class="fa fa-times" ng-if="!deleting"></i></a></div>
+            <div class="comment-delete" ng-if="canEdit && comment.comments.length===0"><a ng-click="" login-required required-keys="'posting'" on-login-success="deleteClicked" title="{{ 'REMOVE' | translate }}"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="deleting"></i><i class="fa fa-times" ng-if="!deleting"></i></a></div>
           </div>
         </div>
         <comment-list comments="comment.comments"></comment-list>
       </div>
     `,
     controller: ($scope, $rootScope, $window, steemAuthenticatedService, activeUsername) => {
+
+      if (!$scope.comment.comments) {
+        $scope.comment.comments = [];
+      }
 
       $scope.canEdit = false;
       $scope.deleting = false;
