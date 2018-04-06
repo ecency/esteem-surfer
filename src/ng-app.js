@@ -791,38 +791,35 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
         return "re-" + toAuthor.replace(/\./g, "") + "-" + timeFormat;
       };
 
+      const makeCommentOptions = (author, permlink) => {
+        return {
+          allow_curation_rewards: true,
+          allow_votes: true,
+          author: author,
+          permlink: permlink,
+          max_accepted_payout: '1000000.000 SBD',
+          percent_steem_dollars: 10000,
+          extensions: [[0, {'beneficiaries': [{'account': 'esteemapp', 'weight': 1000}]}]]
+        }
+      };
+
       const c = $rootScope.content2Reply;
 
-      let opArray = [];
-
-      let replyPermLink = '';
-      let replyAuthor = '';
-
-      const jsonMeta = {
+      let parentAuthor, parentPermlink, author, permlink, options = null;
+      const body = $rootScope.contentReplyBody.trim();
+      const jsonMetadata = {
         tags: c.json_metadata ? JSON.parse(c.json_metadata).tags : ['esteem'],
         app: 'esteem-surfer/' + appVersion,
         format: 'markdown+html',
         community: 'esteem'
       };
 
-
-      let parentAuthor, parentPermlink, author, permlink, title, body;
-
       if ($rootScope.contentReplyEditMode) {
-        replyPermLink = c.permlink;
-        replyAuthor = c.author;
-
-        opArray = [
-          ['comment', {
-            parent_author: c.parent_author,
-            parent_permlink: c.parent_permlink,
-            author: replyAuthor,
-            permlink: replyPermLink,
-            title: '',
-            body: $rootScope.contentReplyBody.trim(),
-            json_metadata: JSON.stringify(jsonMeta)
-          }]
-        ];
+        // Editing
+        parentAuthor = c.parent_author;
+        parentPermlink = c.parent_permlink;
+        author = c.author;
+        permlink = c.permlink;
 
         let bExist = false;
 
@@ -834,49 +831,21 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
         }
 
         if (!bExist) {
-          const e = ['comment_options', {
-            allow_curation_rewards: true,
-            allow_votes: true,
-            author: replyAuthor,
-            permlink: replyPermLink,
-            max_accepted_payout: '1000000.000 SBD',
-            percent_steem_dollars: 10000,
-            extensions: [[0, {'beneficiaries': [{'account': 'esteemapp', 'weight': 1000}]}]]
-          }];
-
-          opArray.push(e);
+          options = makeCommentOptions(c.author, c.permlink);
         }
-
       } else {
-        replyPermLink = makeReplyPermlink(c.author);
-        replyAuthor = activeUsername();
-
-        opArray = [
-          ['comment', {
-            parent_author: c.author,
-            parent_permlink: c.permlink,
-            author: replyAuthor,
-            permlink: replyPermLink,
-            title: '',
-            body: $rootScope.contentReplyBody.trim(),
-            json_metadata: JSON.stringify(jsonMeta)
-          }],
-          ['comment_options', {
-            allow_curation_rewards: true,
-            allow_votes: true,
-            author: replyAuthor,
-            permlink: replyPermLink,
-            max_accepted_payout: '1000000.000 SBD',
-            percent_steem_dollars: 10000,
-            extensions: [[0, {'beneficiaries': [{'account': 'esteemapp', 'weight': 1000}]}]]
-          }]
-        ];
+        // New comment
+        parentAuthor = c.author;
+        parentPermlink = c.permlink;
+        author = activeUsername();
+        permlink = makeReplyPermlink(c.author);
+        options = makeCommentOptions(author, permlink);
       }
 
       $rootScope.contentReplying = true;
-      steemAuthenticatedService.reply(opArray).then((resp) => {
+      steemAuthenticatedService.comment(parentAuthor, parentPermlink, author, permlink, body, jsonMetadata, options).then((resp) => {
         if ($rootScope.contentReplyCb) {
-          steemService.getContent(replyAuthor, replyPermLink).then((resp) => {
+          steemService.getContent(author, permlink).then((resp) => {
             $rootScope.contentReplyCb(resp);
           })
         }
