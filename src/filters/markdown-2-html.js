@@ -34,19 +34,20 @@ export const markDown2Html = (input) => {
   const imgRegex = /(https?:\/\/.*\.(?:tiff?|jpe?g|gif|png|svg|ico))(.*)/gim;
   const postRegex = /^https?:\/\/(.*)\/(.*)\/(@[\w\.\d-]+)\/(.*)/i;
   const youTubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([^& \n<]+)(?:[^ \n<]+)?/g;
-  const vimeoRegex = /(https?:\/\/)?(www\.)?(?:vimeo)\.com.*(?:videos|video|channels|)\/([\d]+)/i;
+  const vimeoRegex = /(https?:\/\/)(vimeo\.com\/)([\d]+)/g;
+  const dTubeRegex = /(https?:\/\/d.tube.#!\/v\/)(\w+)\/(\w+)/g;
 
   // Create temporary element to manipulate html
   let tempEl = document.createElement('div');
   tempEl.innerHTML = output;
 
   // Manipulate link (a) elements
-  let links = tempEl.querySelectorAll('a');
+  const links = tempEl.querySelectorAll('a');
   links.forEach((el) => {
     const href = el.getAttribute('href');
 
     // Continue if href has no value
-    if(!href){
+    if (!href) {
       return;
     }
 
@@ -65,7 +66,7 @@ export const markDown2Html = (input) => {
 
     // If a steem post
     if (!f) {
-      let postMatch = href.match(postRegex);
+      const postMatch = href.match(postRegex);
       if (postMatch) {
         el.className = 'markdown-post-link';
         el.removeAttribute('href');
@@ -80,23 +81,57 @@ export const markDown2Html = (input) => {
 
     // If a youtube video
     if (!f) {
-      let match = href.match(youTubeRegex);
+      const match = href.match(youTubeRegex);
       if (match) {
-        let e = youTubeRegex.exec(href);
+        const e = youTubeRegex.exec(href);
         if (e[1]) {
           el.className = 'markdown-video-link markdown-video-link-youtube';
           el.removeAttribute('href');
 
-          let vid = e[1];
-          let embedSrc = 'https://www.youtube.com/embed/' + vid;
+          const vid = e[1];
+          const embedSrc = 'https://www.youtube.com/embed/' + vid;
           el.innerHTML = `<iframe width='600' height='400' frameborder='0' allowfullscreen src='${embedSrc}'></iframe>`;
           f = true;
         }
       }
     }
 
-    // TODO: If vimeo video
+    // If vimeo video
+    if (!f) {
+      const match = href.match(vimeoRegex);
+      if (match && href === el.innerText) {
+        const e = vimeoRegex.exec(href);
+        if (e[3]) {
+          el.className = 'markdown-video-link markdown-video-link-vimeo';
+          el.removeAttribute('href');
 
+          const embedSrc = `https://player.vimeo.com/video/${e[3]}`;
+          el.innerHTML = `<iframe width='600' height='400' frameborder='0' allowfullscreen src='${embedSrc}'></iframe>`;
+          f = true;
+        }
+      }
+    }
+
+    // If a d.tube video
+    if (!f) {
+      const match = href.match(dTubeRegex);
+      if (match) {
+        // Only d.tube links contains an image
+        const imgEls = el.querySelectorAll('img');
+        if (imgEls.length === 1) {
+          const e = dTubeRegex.exec(href);
+          // e[2] = username, e[3] object id
+          if (e[2] && e[3]) {
+            el.className = 'markdown-video-link markdown-video-link-dtube';
+            el.removeAttribute('href');
+
+            const embedSrc = `https://emb.d.tube/#!/${e[2]}/${e[3]}`;
+            el.innerHTML = `<iframe width='600' height='400' frameborder='0' allowfullscreen src='${embedSrc}'></iframe>`;
+            f = true;
+          }
+        }
+      }
+    }
 
     // If nothing matched element as external link so it will be opened in external window
     if (!f) {
@@ -122,14 +157,14 @@ export const markDown2Html = (input) => {
 
   // Try to convert image links that are Remarkable could not converted.
   // Find text nodes not wrapper with a and node value matchs with image regex
-  let pars = tempEl.querySelectorAll('*');
+  const pars = tempEl.querySelectorAll('*');
   pars.forEach((el) => {
     el.childNodes.forEach((n) => {
       if (n.nodeValue && n.nodeValue.trim() && ['P', 'DIV', 'CENTER', 'STRONG'].indexOf(n.parentNode.tagName) !== -1) {
-        let href = n.nodeValue.trim();
+        const href = n.nodeValue.trim();
         if (href.match(imgRegex)) {
 
-          let replace = document.createElement('a');
+          const replace = document.createElement('a');
           replace.setAttribute('data-href', href);
 
           replace.className = 'markdown-img-link';
