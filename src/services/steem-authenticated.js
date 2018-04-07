@@ -182,7 +182,16 @@ export default ($rootScope, steemApi, $q) => {
       json_metadata: JSON.stringify(jsonMetadata)
     };
 
-    api.broadcast([['comment', params], ['comment_options', options]], function (err, response) {
+    const opArray = [
+      ['comment', params]
+    ];
+
+    if (options) {
+      const e = ['comment_options', options];
+      opArray.push(e);
+    }
+
+    api.broadcast(opArray, function (err, response) {
       if (err) {
         defer.reject(err);
       } else {

@@ -1784,7 +1784,6 @@ STRUCTURE:
 }
 
 .content-editor {
-
   position: relative;
   textarea {
     border: 0;
@@ -1804,87 +1803,6 @@ STRUCTURE:
     text-align: center;
     top: 50%;
     width: 100%;
-  }
-}
-
-.content-editorXXXX {
-
-  position: relative;
-
-  .control-bar {
-
-    @include clearfix();
-    /*
-    position: absolute;
-    width: 40px;
-    height: 100%;
-    left: 0;
-    top:0;
-    */
-
-    background: #e6e6e6;
-
-    .editor-control {
-      button {
-        background: transparent;
-        border: none;
-        border-radius: 0;
-        margin: 0;
-      }
-    }
-  }
-
-  textarea {
-    /*
-    width:calc(100% - 40px);
-    margin-left: 40px;
-    min-height: 230px;
-    resize: vertical;
-    */
-
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
-    resize: none;
-
-    &.dragover {
-      background: $hoverColor;
-    }
-  }
-
-  .file-input {
-    display: none;
-  }
-
-  /*
-  .image-panel {
-    color: $textColorLight;
-    font-size: 13px;
-    padding: 5px 0;
-  }
-*/
-
-  .image-upload-panel {
-    color: $textColorLight;
-    font-size: 13px;
-    padding: 5px 0;
-
-    .image-file-name {
-      margin-right: 5px;
-    }
-
-    .progress-text, .processing-text {
-
-    }
-  }
-}
-
-.editor-toolsXXXX {
-  button {
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    margin: 0;
   }
 }
 
