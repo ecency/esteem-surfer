@@ -458,38 +458,48 @@
 }
 
 .editor-page {
-
-  /*
-  .editor-form, .editor-preview {
-    margin: auto;
-    width: 800px;
-  }
-  */
-
   .editor-form {
-    margin-bottom: 30px;
+    @include clearfix();
+
+    margin-bottom: 20px;
+    position: relative;
     width: 100%;
 
-    .editing-part, .preview-part {
-      float: left;
-      width: 50%;
-    }
-
     .editing-part {
-      background: #e6e6e6;
-      padding-left: 40px;
-      position: relative;
+      float: left;
+      padding-left: 36px;
 
-      /*
-      .editor-tools {
-        position: absolute;
-        width: 40px;
+      position: relative;
+      width: 50%;
+
+      .left-bar {
+        background: $contentEditorControlsBg;
         height: 100%;
         left: 0;
-        top: 0;
-        background: #e6e6e6;
+        padding-top: 46px;
+        position: absolute;
+        width: 36px;
+
+        .content-editor-controls {
+          .btn {
+            width: 100%;
+          }
+        }
       }
-      */
+
+      .content-editor {
+        textarea {
+          height: 420px;
+
+          @media (min-height: 800px) {
+            height: 530px;
+          }
+
+          @media (min-height: 1000px) {
+            height: 730px;
+          }
+        }
+      }
 
       .content-title, .content-body, .content-tags {
         margin: 0;
@@ -504,132 +514,45 @@
           }
         }
       }
-
-      /*
-      .content-body {
-        textarea {
-          resize: none;
-          height: 560px;
-          @media (min-height: 1000px) {
-            height: 760px;
-          }
-        }
-      }
-
-      */
     }
 
     .preview-part {
-      background: green;
-    }
-
-  }
-
-  .editor-preview {
-
-    .preview-title {
-      display: block;
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 20px;
-    }
-  }
-}
-
-.comment-reply-window {
-  background: $appBg;
-  border-top: 1px solid darken($appBg, 10%);
-  bottom: $footerHeight;
-  height: 240px;
-  left: 0;
-  position: fixed;
-  width: 100%;
-  z-index: 100;
-
-  .editor-part {
-    border-right: 1px solid #e6e6e6;
-    float: left;
-    height: 100%;
-    position: relative;
-    width: 50%;
-
-    .editor-part-header {
-      background: #f8f8f8;
-      height: 32px;
-
-      .content-editor-controls {
-        float: left;
-        button {
-          background: transparent;
-          border: none;
-          border-radius: 0;
-          margin: 0;
-        }
-      }
-
-      .additional-controls {
-        align-items: center;
-        display: flex;
-        float: right;
-        height: 32px;
-        padding-right: 10px;
-
-        .btn:not(:last-child) {
-          margin-right: 10px;
-        }
-      }
-    }
-
-    .content-editor {
-      height: calc(100% - 32px);
-      textarea {
-        height: 100%;
-      }
-    }
-  }
-
-  .preview-part {
-    float: left;
-    height: 100%;
-    width: 50%;
-
-    .content-preview-title {
-      background: #f8f8f8;
-
-      height: 32px;
-      padding: 4px;
-      @include clearfix();
-
-      h2 {
-        float: left;
-        font-size: 16px;
-        font-weight: 600;
-        margin: 0;
-        padding-top: 3px;
-        width: 140px;
-      }
-
-      .replying-to {
-        display: inline-block;
-        float: right;
-
-        font-size: 12px;
-
-        max-width: calc(100% - 140px);
-        overflow: hidden;
-        padding-right: 3px;
-        padding-top: 3px;
-        text-overflow: ellipsis;
-
-        white-space: nowrap;
-
-      }
-    }
-
-    .content-preview-body {
-      height: calc(100% - 32px);
+      bottom: 0;
+      height: 100%;
       overflow: auto;
-      padding: 10px;
+      padding-left: 10px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: calc(50% - 10px);
+      .preview-part-title {
+        color: $textColorLighter;
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+    }
+
+  }
+
+  .editor-controls {
+    .content-settings {
+      width: 50%;
+      float: left;
+
+      .form-group {
+        margin-right: 20px;
+
+        select {
+          width: 200px;
+          margin-left: 10px;
+        }
+      }
+    }
+
+    .control-buttons {
+      width: 50%;
+      float: left;
     }
   }
 }

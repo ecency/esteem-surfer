@@ -34,7 +34,7 @@ export const markDown2Html = (input) => {
   const imgRegex = /(https?:\/\/.*\.(?:tiff?|jpe?g|gif|png|svg|ico))(.*)/gim;
   const postRegex = /^https?:\/\/(.*)\/(.*)\/(@[\w\.\d-]+)\/(.*)/i;
   const youTubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([^& \n<]+)(?:[^ \n<]+)?/g;
-  const vimeoRegex = /(https?:\/\/)(vimeo\.com\/)([\d]+)/g;
+  const vimeoRegex = /(https?:\/\/)?(www\.)?(?:vimeo)\.com.*(?:videos|video|channels|)\/([\d]+)/i;
   const dTubeRegex = /(https?:\/\/d.tube.#!\/v\/)(\w+)\/(\w+)/g;
 
   // Create temporary element to manipulate html
@@ -90,7 +90,7 @@ export const markDown2Html = (input) => {
 
           const vid = e[1];
           const embedSrc = 'https://www.youtube.com/embed/' + vid;
-          el.innerHTML = `<iframe width='600' height='400' frameborder='0' allowfullscreen src='${embedSrc}'></iframe>`;
+          el.innerHTML = `<iframe frameborder='0' allowfullscreen src='${embedSrc}'></iframe>`;
           f = true;
         }
       }
@@ -106,7 +106,7 @@ export const markDown2Html = (input) => {
           el.removeAttribute('href');
 
           const embedSrc = `https://player.vimeo.com/video/${e[3]}`;
-          el.innerHTML = `<iframe width='600' height='400' frameborder='0' allowfullscreen src='${embedSrc}'></iframe>`;
+          el.innerHTML = `<iframe frameborder='0' allowfullscreen src='${embedSrc}'></iframe>`;
           f = true;
         }
       }
@@ -118,7 +118,7 @@ export const markDown2Html = (input) => {
       if (match) {
         // Only d.tube links contains an image
         const imgEls = el.querySelectorAll('img');
-        if (imgEls.length === 1) {
+        if (el.innerText === href || imgEls.length === 1) {
           const e = dTubeRegex.exec(href);
           // e[2] = username, e[3] object id
           if (e[2] && e[3]) {
@@ -126,7 +126,7 @@ export const markDown2Html = (input) => {
             el.removeAttribute('href');
 
             const embedSrc = `https://emb.d.tube/#!/${e[2]}/${e[3]}`;
-            el.innerHTML = `<iframe width='600' height='400' frameborder='0' allowfullscreen src='${embedSrc}'></iframe>`;
+            el.innerHTML = `<iframe frameborder='0' allowfullscreen src='${embedSrc}'></iframe>`;
             f = true;
           }
         }
@@ -161,10 +161,10 @@ export const markDown2Html = (input) => {
   pars.forEach((el) => {
     el.childNodes.forEach((n) => {
       if (n.nodeValue && n.nodeValue.trim() && ['P', 'DIV', 'CENTER', 'STRONG'].indexOf(n.parentNode.tagName) !== -1) {
-        const href = n.nodeValue.trim();
+        let href = n.nodeValue.trim();
         if (href.match(imgRegex)) {
 
-          const replace = document.createElement('a');
+          let replace = document.createElement('a');
           replace.setAttribute('data-href', href);
 
           replace.className = 'markdown-img-link';

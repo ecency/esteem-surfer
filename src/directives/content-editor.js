@@ -1,3 +1,5 @@
+import {insertText, insertSpace} from '../editor-utils';
+
 const checkFile = (filename) => {
   filename = filename.toLowerCase();
   return ['jpg', 'jpeg', 'gif', 'png'].some((el) => {
@@ -18,42 +20,9 @@ export default () => {
 
       const el = $element[0];
       const txtEl = el.querySelector('textarea');
+      $scope.txtEl = txtEl;
 
       txtEl.focus();
-
-
-      $scope.insertSpace = () => {
-        let pos = txtEl.value.length;
-
-        txtEl.selectionStart = pos;
-        txtEl.selectionEnd = pos;
-        txtEl.focus();
-
-        document.execCommand('insertText', false, ' ');
-
-        pos = txtEl.value.length;
-        txtEl.selectionStart = pos;
-        txtEl.selectionEnd = pos;
-      };
-
-      $scope.insertText = (before, after = '') => {
-        const startPos = txtEl.selectionStart;
-        const endPos = txtEl.selectionEnd;
-        const selText = txtEl.value.substring(startPos, endPos);
-
-        let insertText = `${before}${selText}${after}`;
-
-        const newStartPos = startPos + before.length;
-        const newEndPos = newStartPos + selText.length;
-
-        txtEl.focus();
-
-        document.execCommand('insertText', false, insertText);
-
-        txtEl.selectionStart = newStartPos;
-        txtEl.selectionEnd = newEndPos;
-      };
-
 
       txtEl.addEventListener('dragenter', (e) => {
         e.stopPropagation();
@@ -125,16 +94,21 @@ export default () => {
 
         $scope.uploadFiles(files);
       });
-
     },
-    templateUrl: 'templates/directives/content-editor.html',
+    template: `<div class="content-editor" id="{{ elemId }}">
+      <textarea ng-disabled="processing" class="form-control" ng-model="body" placeholder="{{ placeHolder }}"></textarea>
+      <div class="image-upload-panel" ng-if="uploadingImage">
+        <span class="image-file-name">Uploading {{ uploadingImage }}</span>
+        <span class="progress-text" ng-if="uploadingImageProg > 0 && uploadingImageProg < 100">{{ uploadingImageProg }}%</span>
+        <span class="processing-text" ng-if="uploadingImageProg === 100"><small>processing...</small></span>
+      </div>
+      <input class="file-input" id="file-input" type="file" accept="image/*" multiple>
+    </div>`,
     controller: ($scope, $rootScope, $timeout, eSteemService, activeUsername) => {
 
-
       $scope.insertImage = (name = '', url = 'url') => {
-        $scope.insertText(`![${name}`, `](${url})`);
+        insertText($scope.txtEl, `![${name}`, `](${url})`);
       };
-
 
       $scope.processing = false;
       $scope.uploadingImage = null;
@@ -179,7 +153,7 @@ export default () => {
           $timeout(() => {
             let s = u.split('/');
             $scope.insertImage(s[s.length - 1], u);
-            $scope.insertSpace();
+            insertSpace($scope.txtEl);
           });
         }
       };

@@ -2,74 +2,54 @@
 <div class="app-container">
   <div class="app-content editor-page">
     <div class="editor-form">
-
-
       <div class="editing-part">
-
+        <div class="left-bar">
+          <content-editor-controls target-elem="#reply-editor-1"></content-editor-controls>
+        </div>
         <div class="form-group content-title">
           <input type="text" class="form-control input-lg" placeholder="Title">
         </div>
         <div class="form-group content-body">
-
-          <!--
-          <div class="editor-tools">
-            <div class="editor-control">
-              <button class="btn btn-default" ng-click="insertHeader()"><i class="fa fa-header"></i></button>
-            </div>
-            <div class="editor-control">
-              <button class="btn btn-default" ng-click="insertBold()"><i class="fa fa-bold"></i></button>
-            </div>
-            <div class="editor-control">
-              <button class="btn btn-default" ng-click="insertItalic()"><i class="fa fa-italic"></i></button>
-            </div>
-            <div class="editor-control">
-              <button class="btn btn-default" ng-click="insertQuote()"><i class="fa fa-quote-right"></i></button>
-            </div>
-            <div class="editor-control">
-              <button class="btn btn-default" ng-click="insertLink()"><i class="fa fa-link"></i></button>
-            </div>
-            <div class="editor-control">
-              <button class="btn btn-default" ng-click="insertImage()"><i class="fa fa-image"></i></button>
-            </div>
-          </div>
-          -->
-
-
-          <content-editor place-holder="Post Content" body="body"></content-editor>
+          <content-editor place-holder="Post Content" body="tempBody" elem-id="reply-editor-1"></content-editor>
         </div>
-
         <div class="form-group content-tags">
-          <input type="text" class="form-control " id="content-title"
-                 placeholder="Tags (Max 5), the first tag is you main category">
+          <input type="text" class="form-control" id="content-title"
+                 placeholder="Tags. Max 5. Separate with space. The first tag is your main category.">
         </div>
-
       </div>
-      <div class="preview-part">
-        dd
+      <div class="preview-part" id="editor-preview">
+        <div class="preview-part-title">{{ 'PREVIEW' | translate }}</div>
+        <div class="markdown-view" ng-bind-html="body | markDown2Html"></div>
       </div>
-
-      <!--
-      <div class="form-group">
-        <input type="text" class="form-control input-lg content-title" id="content-title" placeholder="Title">
-      </div>
-      <div class="form-group">
-        <content-editor place-holder="Post Content" body="body"></content-editor>
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control content-tags" id="content-tags" placeholder="Tags">
-      </div>
-      -->
-
     </div>
-
-
-    <!--
-    <div class="editor-preview markdown-view" ng-if="body">
-      <span class="preview-title">Preview</span>
-      <div ng-bind-html="body | markDown2Html"></div>
-    </div>-->
-
-
+    <div class="editor-controls">
+      <div class="content-settings">
+        <div class="form-inline">
+          <div class="form-group">
+            <label for="reward-select">{{ 'REWARDS' | translate }}</label>
+            <select class="form-control" id="reward-select">
+              <option selected value='default'>{{ 'DEFAULT' | translate }}</option>
+              <option value='sp'>{{ 'POWERUP' | translate }}</option>
+              <option value='dp'>{{ 'DECLINE_PAYOUT' | translate }}</option>
+            </select>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> {{'UPVOTE'|translate}}
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="control-buttons">
+        <div class="pull-left">
+          <button class="btn btn-primary">Post</button>
+        </div>
+        <div class="pull-right">
+          <button class="btn btn-primary">Save</button>
+          <button class="btn btn-primary"><i class="fa fa-calendar"></i> Schedule</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <app-footer></app-footer>
