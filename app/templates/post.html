@@ -5,7 +5,7 @@
       <i class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
     </div>
     <div class="the-post" ng-if="!loadingPost"
-         ng-class="{'fetching': loadingPost || loadingRest, 'replying': $root.contentReplyFlag}">
+         ng-class="{'fetching': loadingPost || loadingRest}">
       <div class="post-header">
         <h1 class="post-title">{{ title }}</h1>
         <div class="post-info-bar">
@@ -90,34 +90,6 @@
         {{ 'NO_COMMENTS_YET' | __ }}
       </div>
     </div>
-
-
-    <!--
-    <div class="comment-reply-window" ng-if="$root.contentReplyFlag">
-      <div class="editor-part">
-        <div class="editor-part-header">
-          <content-editor-controls target-elem="#reply-editor"></content-editor-controls>
-          <div class="additional-controls">
-            <button class="btn btn-primary btn-xs" ng-disabled="!$root.contentReplyBody || contentReplying" ng-click="$root.doReply()"> <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="contentReplying"></i> Submit</button>
-            <button class="btn btn-default btn-xs" ng-click="$root.closeReplyWindow()">Cancel</button>
-          </div>
-        </div>
-        <content-editor place-holder="Write your reply" body="$root.contentReplyBody" elem-id="reply-editor"></content-editor>
-      </div>
-      <div class="preview-part">
-        <div class="content-preview-title"><h2>Preview</h2>
-          <span class="replying-to" ng-if="!contentReplyEditMode"> Replying to: @{{ content2Reply.author }}/{{ content2Reply.permlink }}</span>
-          <span class="replying-to" ng-if="contentReplyEditMode"> Editing: @{{ content2Reply.author }}/{{ content2Reply.permlink }}</span>
-        </div>
-        <div class="content-preview-body">
-          <div class="markdown-view mini-markdown" ng-bind-html="$root.contentReplyBody | markDown2Html"></div>
-        </div>
-      </div>
-    </div>
-    -->
-
   </div>
-
-
 </div>
 <app-footer></app-footer>

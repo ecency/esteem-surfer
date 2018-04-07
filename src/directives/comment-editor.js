@@ -24,13 +24,13 @@ export default () => {
         </div>
         <div class="editor-buttons">
           <button class="btn btn-primary btn-sm" ng-disabled="!commentBody || sending" ng-click="send()">
-            <span ng-if="mode=='reply'"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="sending"></i> Reply</span>
-            <span ng-if="mode=='edit'"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="sending"></i> Save</span>
+            <span ng-if="mode=='reply'"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="sending"></i> {{ 'REPLY' | translate }}</span>
+            <span ng-if="mode=='edit'"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="sending"></i> {{ 'SAVE' | translate }}</span>
           </button>
-          <button class="btn btn-default btn-sm" ng-disabled="sending" ng-click="cancel()">Cancel</button>
+          <button class="btn btn-default btn-sm" ng-disabled="sending" ng-click="cancel()">{{ 'CANCEL' | translate }}</button>
         </div>
         <div class="preview-part" ng-if="commentBody">
-          <div class="preview-part-title">Preview</div>
+          <div class="preview-part-title">{{ 'PREVIEW' | translate }}</div>
           <div class="markdown-view mini-markdown" ng-bind-html="commentBody | markDown2Html"></div>
         </div>
      </div>`,
@@ -113,7 +113,7 @@ export default () => {
         }).catch((e) => {
           $rootScope.showError(e);
         }).then(() => {
-          $rootScope.sending = false;
+          $scope.sending = false;
         });
       };
 

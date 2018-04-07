@@ -37,10 +37,9 @@ export default () => {
               <a ng-click="" login-required required-keys="'posting'" on-login-success="replyClicked">{{ 'REPLY' | translate }}</a>
             </div>
             <div class="comment-edit" ng-if="canEdit"><a ng-click="" login-required required-keys="'posting'" on-login-success="editClicked" title="{{ 'EDIT' | translate }}"><i class="fa fa-pencil"></i></a></div>
-            <div class="comment-delete" ng-if="canEdit && comment.comments.length===0"><a ng-click="" login-required required-keys="'posting'" on-login-success="deleteClicked" title="{{ 'REMOVE' | translate }}"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="deleting"></i><i class="fa fa-times" ng-if="!deleting"></i></a></div>
+            <div class="comment-delete" ng-if="canEdit"><a ng-click="" login-required required-keys="'posting'" on-login-success="deleteClicked" title="{{ 'REMOVE' | translate }}"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="deleting"></i><i class="fa fa-times" ng-if="!deleting"></i></a></div>
           </div>
         </div>
-        
         <comment-editor ng-if="commentFlag" content="comment" mode="{{ commentMode }}" on-cancel="onCommentEditorCanceled()" after-success="afterNewComment"></comment-editor>
         <comment-list comments="comment.comments"></comment-list>
       </div>
