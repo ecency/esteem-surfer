@@ -1,4 +1,5 @@
 const Remarkable = require('remarkable');
+import {sanitizeNode} from '../helpers/html-sanitizer';
 
 const md = new Remarkable({html: true, breaks: true, linkify: true});
 
@@ -183,8 +184,9 @@ export const markDown2Html = (input) => {
     });
   });
 
-  output = tempEl.innerHTML;
+  tempEl = sanitizeNode(tempEl);
 
+  output = tempEl.innerHTML;
 
   return output;
 };

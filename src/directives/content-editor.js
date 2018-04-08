@@ -1,4 +1,4 @@
-import {insertText, insertSpace} from '../editor-utils';
+import {insertText, insertSpace} from '../helpers/editor-utils';
 
 const checkFile = (filename) => {
   filename = filename.toLowerCase();
