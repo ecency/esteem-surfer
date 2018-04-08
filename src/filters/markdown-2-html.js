@@ -15,12 +15,13 @@ export const replaceAuthorNames = (input) => {
 };
 
 export const replaceTags = (input) => {
-  return input.replace(/(#[-a-z\d]+)/gi, tag => {
-    if (/#[\d]+$/.test(tag)) return tag;
-    const space = /^\s/.test(tag) ? tag[0] : '';
+  return input.replace(/(^|\s|>)(#[-a-z\d]+)/gi, tag => {
+    if (/#[\d]+$/.test(tag)) return tag; // do not allow only numbers (like #1)
+    const preceding = /^\s|>/.test(tag) ? tag[0] : ''; // space or closing tag (>)
+    tag = tag.replace('>', ''); // remove closing tag
     const tag2 = tag.trim().substring(1);
     const tagLower = tag2.toLowerCase();
-    return space + `<a class="markdown-tag-link" data-tag="${tagLower}">${tag.trim()}</a>`;
+    return preceding + `<a class="markdown-tag-link" data-tag="${tagLower}">${tag.trim()}</a>`;
   });
 };
 
@@ -29,7 +30,13 @@ export const markDown2Html = (input) => {
     return '';
   }
 
-  let output = md.render(input);
+  // Start replacing user names
+  let output = replaceAuthorNames(input);
+
+  // Replace tags
+  output = replaceTags(output);
+
+  output = md.render(output);
 
   const imgRegex = /(https?:\/\/.*\.(?:tiff?|jpe?g|gif|png|svg|ico))(.*)/gim;
   const postRegex = /^https?:\/\/(.*)\/(.*)\/(@[\w\.\d-]+)\/(.*)/i;
@@ -48,6 +55,11 @@ export const markDown2Html = (input) => {
 
     // Continue if href has no value
     if (!href) {
+      return;
+    }
+
+    // Don't touch user and hashtag links
+    if (['markdown-author-link', 'markdown-tag-link'].indexOf(el.className) !== -1) {
       return;
     }
 
@@ -143,12 +155,6 @@ export const markDown2Html = (input) => {
   });
 
   output = tempEl.innerHTML;
-
-  // Replace author names
-  output = replaceAuthorNames(output);
-
-  // Replace tags
-  output = replaceTags(output);
 
   // console.log(output)
 
