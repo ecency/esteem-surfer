@@ -1,4 +1,4 @@
-import {insertText} from '../editor-utils';
+import {insertText} from '../helpers/editor-utils';
 
 export default () => {
   return {
