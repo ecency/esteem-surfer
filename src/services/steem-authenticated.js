@@ -133,7 +133,7 @@ export default ($rootScope, steemApi, $q) => {
 
   };
 
-  const comment = (wif, parentAuthor, parentPermlink, author, permlink, body, jsonMetadata, options) => {
+  const comment = (wif, parentAuthor, parentPermlink, author, permlink, title, body, jsonMetadata, options, voteWeight) => {
     let defer = $q.defer();
 
     const opArray = [
@@ -142,7 +142,7 @@ export default ($rootScope, steemApi, $q) => {
         parent_permlink: parentPermlink,
         author: author,
         permlink: permlink,
-        title: '',
+        title: title,
         body: body,
         json_metadata: JSON.stringify(jsonMetadata)
       }]
@@ -152,6 +152,18 @@ export default ($rootScope, steemApi, $q) => {
       const e = ['comment_options', options];
       opArray.push(e);
     }
+
+    if (voteWeight) {
+      const e = ['vote', {
+        voter: author,
+        author: author,
+        permlink: permlink,
+        weight: voteWeight
+      }];
+      opArray.push(e);
+    }
+
+    console.log(opArray);
 
     steem.broadcast.send({operations: opArray, extensions: []}, {posting: wif}, function (err, response) {
       if (err) {
@@ -164,7 +176,7 @@ export default ($rootScope, steemApi, $q) => {
     return defer.promise;
   };
 
-  const commentSc = (token, parentAuthor, parentPermlink, author, permlink, body, jsonMetadata, options) => {
+  const commentSc = (token, parentAuthor, parentPermlink, author, permlink, title, body, jsonMetadata, options, voteWeight) => {
 
     let defer = $q.defer();
 
@@ -177,7 +189,7 @@ export default ($rootScope, steemApi, $q) => {
       parent_permlink: parentPermlink,
       author: author,
       permlink: permlink,
-      title: '',
+      title: title,
       body: body,
       json_metadata: JSON.stringify(jsonMetadata)
     };
@@ -188,6 +200,16 @@ export default ($rootScope, steemApi, $q) => {
 
     if (options) {
       const e = ['comment_options', options];
+      opArray.push(e);
+    }
+
+    if (voteWeight) {
+      const e = ['vote', {
+        voter: author,
+        author: author,
+        permlink: permlink,
+        weight: voteWeight
+      }];
       opArray.push(e);
     }
 
@@ -319,16 +341,16 @@ export default ($rootScope, steemApi, $q) => {
           break;
       }
     },
-    comment: (parentAuthor, parentPermlink, author, permlink, body, jsonMetadata, options) => {
+    comment: (parentAuthor, parentPermlink, author, permlink, title, body, jsonMetadata, options, voteWeight = null) => {
       // requires Posting key
       switch ($rootScope.user.type) {
         case 's':
           const wif = getProperWif(['posting']);
-          return comment(wif, parentAuthor, parentPermlink, author, permlink, body, jsonMetadata, options);
+          return comment(wif, parentAuthor, parentPermlink, author, permlink, title, body, jsonMetadata, options, voteWeight);
           break;
         case 'sc':
           const token = getAccessToken();
-          return commentSc(token, parentAuthor, parentPermlink, author, permlink, body, jsonMetadata, options);
+          return commentSc(token, parentAuthor, parentPermlink, author, permlink, title, body, jsonMetadata, options, voteWeight);
           break;
       }
     },

@@ -7,14 +7,14 @@
           <content-editor-controls target-elem="#reply-editor-1"></content-editor-controls>
         </div>
         <div class="form-group content-title">
-          <input type="text" class="form-control input-lg" placeholder="Title">
+          <input type="text" class="form-control input-lg" placeholder="Title" id="content-title" ng-model="title">
         </div>
         <div class="form-group content-body">
           <content-editor place-holder="Post Content" body="tempBody" elem-id="reply-editor-1"></content-editor>
         </div>
         <div class="form-group content-tags">
-          <input type="text" class="form-control" id="content-title"
-                 placeholder="Tags. Max 5. Separate with space. The first tag is your main category.">
+          <input type="text" class="form-control" id="content-tags"
+                 placeholder="Tags. Max 5. Separate with space. The first tag is your main category." ng-model="tags">
         </div>
       </div>
       <div class="preview-part" id="editor-preview">
@@ -27,26 +27,26 @@
         <div class="form-inline">
           <div class="form-group">
             <label for="reward-select">{{ 'REWARDS' | translate }}</label>
-            <select class="form-control" id="reward-select">
-              <option selected value='default'>{{ 'DEFAULT' | translate }}</option>
+            <select class="form-control" id="reward-select" ng-model="operationType">
+              <option value='default'>{{ 'DEFAULT' | translate }}</option>
               <option value='sp'>{{ 'POWERUP' | translate }}</option>
               <option value='dp'>{{ 'DECLINE_PAYOUT' | translate }}</option>
             </select>
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox"> {{'UPVOTE'|translate}}
+              <input type="checkbox" ng-model="vote"> {{'UPVOTE'|translate}}
             </label>
           </div>
         </div>
       </div>
       <div class="control-buttons">
         <div class="pull-left">
-          <button class="btn btn-primary">Post</button>
+          <button class="btn btn-primary" ng-disabled="processing" ng-click="" login-required required-keys="'posting'" on-login-success="post">Post</button>
         </div>
         <div class="pull-right">
-          <button class="btn btn-primary">Save</button>
-          <button class="btn btn-primary"><i class="fa fa-calendar"></i> Schedule</button>
+          <button class="btn btn-primary" ng-click="" login-required on-login-success="save" ng-disabled="processing"> <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="saving"></i> Save</button>
+          <button class="btn btn-primary" ng-disabled="processing"><i class="fa fa-calendar"></i> Schedule</button>
         </div>
       </div>
     </div>

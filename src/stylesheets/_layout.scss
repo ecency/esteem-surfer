@@ -1,11 +1,8 @@
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_mixins.scss";
 
-.error-messages {
-  background: rgb(239, 132, 130);
+.error-messages, .success-messages {
   border-radius: 6px;
-  bottom: 60px;
-  color: #571010;
   font-size: 14px;
   max-height: 400px;
   overflow: auto;
@@ -14,12 +11,37 @@
   width: 360px;
   z-index: 999999;
 
-  .error-message {
+  .message {
     padding: 7px;
 
     &:not(:last-child) {
-      border-bottom: 1px dashed rgba(87, 16, 16, 0.3);
       margin-bottom: 7px;
+    }
+  }
+}
+
+.error-messages {
+  background: #f2dede;
+  bottom: 60px;
+  color: #a94442;
+  border: 1px solid #ebcccc;
+
+  .message {
+    &:not(:last-child) {
+      border-bottom: 1px dashed #ebcccc;
+    }
+  }
+}
+
+.success-messages {
+  background: #dff0d8;
+  top: 60px;
+  color: #3c763d;
+  border: 1px solid #d0e9c6;
+
+  .message {
+    &:not(:last-child) {
+      border-bottom: 1px dashed #d0e9c6;
     }
   }
 }
@@ -118,7 +140,6 @@
 }
 
 .search-page {
-
   .account-suggestions {
 
     margin-bottom: 20px;
@@ -183,7 +204,63 @@
         }
       }
     }
+  }
+}
 
+.drafts-page {
+  .item-list {
+    background: $listBgColor;
+    border: 1px solid $listBorderColor;
+    box-shadow: 0 0 1px 0 $listBorderColor;
+    float: right;
+    margin-left: 20px;
+    min-height: 100%;
+    padding: 20px 30px;
+    width: 100%;
+
+    header {
+      border-bottom: 1px solid $seperatorColor;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      @include clearfix();
+
+      h1 {
+        color: $text-color;
+        float: left;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 0;
+
+        .btn-remove-tag {
+          opacity: 0.3;
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+
+    }
+
+    ul.feed {
+      margin: 0;
+      padding: 0;
+
+      > li {
+        border-bottom: 1px solid $seperatorColor;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    footer {
+      text-align: center;
+
+      .fa {
+        color: $loadingColor;
+        font-size: 30px;
+      }
+    }
   }
 }
 
@@ -511,6 +588,10 @@
 
           &::placeholder {
             color: #d2d2d2;
+          }
+
+          &.error {
+            background: #f2dede;
           }
         }
       }

@@ -1,0 +1,22 @@
+<nav-bar></nav-bar>
+<div class="app-container">
+  <div class="app-content drafts-page">
+    <div class="item-list" ng-class="{'fetching': loadingDrafts}">
+      <header>
+        <h1>{{ 'DRAFTS' | translate }}</h1>
+      </header>
+      <ul class="feed">
+        <li ng-repeat="draft in drafts">
+          <draft-list-item draft="draft"></draft-list-item>
+        </li>
+      </ul>
+      <div class="empty-list" ng-if="drafts.length === 0 && !loadingDrafts">
+        {{ 'EMPTY_LIST' | __ }}
+      </div>
+      <footer>
+        <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="loadingDrafts"></i>
+      </footer>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
