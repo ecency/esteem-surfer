@@ -45,6 +45,7 @@
     "moment-timezone": "^0.5.14",
     "remarkable": "^1.7.1",
     "sc2-sdk": "^1.0.2",
+    "speakingurl": "^14.0.1",
     "steem": "^0.7.1"
   },
   "devDependencies": {

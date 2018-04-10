@@ -42,8 +42,24 @@ export default ($http) => {
     addMyImage: function (user, url) {
       return $http.post(`${apiUrl}/api/image`, {username: user, image_url: url});
     },
+    addDraft: function (user, title, body, tags, post_type) {
+      return $http.post(`${apiUrl}/api/draft`, {
+        username: user,
+        title: title,
+        body: body,
+        tags: tags,
+        post_type: post_type
+      });
+    },
+    getDrafts: function(user) {
+      return $http.get(`${apiUrl}/api/drafts/${user}`);
+    },
+    removeDraft: function(id, user) {
+      return $http.delete(`${apiUrl}/api/drafts/${user}/${id}`);
+    },
     search: function (q, page = 1) {
       return $http.get(`https://api.asksteem.com/search?q=${q}&include=meta,body&pg=${page}&sort_by=created&order=desc`);
     },
+
   }
 }

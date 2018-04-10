@@ -108,6 +108,14 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
         });
       };
 
+      $scope.draftsClicked = () => {
+        $location.path(`/drafts`);
+      };
+
+      $scope.schedulesClicked = () => {
+        $location.path(`/schedules`);
+      };
+
       $scope.searchButtonClicked = async () => {
 
         let resp = null;

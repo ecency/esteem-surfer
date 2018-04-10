@@ -80,8 +80,8 @@
     display: block;
 
     height: 360px;
-    width: 100%;
     max-width: 600px;
+    width: 100%;
 
     iframe {
       height: 100%;
@@ -128,8 +128,8 @@
 
     .markdown-video-link {
       height: 300px;
-      width: 400px;
       max-width: 100%;
+      width: 400px;
     }
 
   }
@@ -318,7 +318,12 @@
         height: auto;
         max-width: 100%;
         vertical-align: middle;
+
+        &.fallback-img {
+          opacity: 0.4;
+        }
       }
+
     }
 
     .post-body-title, .post-body-summary {
@@ -719,6 +724,10 @@ STRUCTURE:
         height: auto;
         max-width: 100%;
         vertical-align: middle;
+
+        &.fallback-img {
+          opacity: 0.4;
+        }
       }
     }
 
@@ -1348,6 +1357,10 @@ STRUCTURE:
         height: auto;
         max-width: 100%;
         vertical-align: middle;
+
+        &.fallback-img {
+          opacity: 0.4;
+        }
       }
     }
 
@@ -1864,6 +1877,75 @@ STRUCTURE:
       font-size: 14px;
       font-weight: bold;
       margin-bottom: 4px
+    }
+  }
+}
+
+.draft-list-item {
+  @include clearfix();
+
+  cursor: pointer;
+  padding: 10px 5px;
+  position: relative;
+  width: 100%;
+
+  .btn-delete {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    opacity: 0.5;
+  }
+
+  .draft-body {
+    padding-right: 30px;
+
+    .draft-body-title, .draft-body-summary {
+      font-size: 16px;
+      a {
+        color: $textColor;
+      }
+    }
+
+    .draft-body-title {
+      line-height: 130%;
+      margin: 0 0 8px 0;
+      width: 100%;
+    }
+
+    .draft-body-summary {
+      margin-bottom: 10px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+    }
+  }
+
+  .draft-footer {
+
+    .content-tags {
+      margin-right: 2px;
+      &:after {
+        content: '•';
+        padding-left: 6px;
+      }
+    }
+
+    .draft-tags, .draft-date {
+      color: $textColorLight;
+
+      a {
+        color: $textColorLight;
+      }
+    }
+
+  }
+
+  &:hover {
+    background-color: $altRowColor;
+
+    .btn-delete {
+      opacity: 1;
     }
   }
 }

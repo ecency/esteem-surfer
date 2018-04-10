@@ -44,7 +44,7 @@ export default () => {
         <comment-list comments="comment.comments"></comment-list>
       </div>
     `,
-    controller: ($scope, $rootScope, $timeout, $window, steemAuthenticatedService, activeUsername) => {
+    controller: ($scope, $rootScope, $filter, $timeout, $window, steemAuthenticatedService, activeUsername) => {
 
       if (!$scope.comment.comments) {
         $scope.comment.comments = [];
@@ -69,7 +69,7 @@ export default () => {
       });
 
       $scope.deleteClicked = () => {
-        if ($window.confirm('Are you sure?')) {
+        if ($window.confirm($filter('translate')('ARE_YOU_SURE'))) {
           $scope.deleting = true;
 
           steemAuthenticatedService.deleteComment($scope.comment.author, $scope.comment.permlink).then((resp) => {

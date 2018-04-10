@@ -33,8 +33,8 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li class="settings"><a ng-click="openSettings()" title="{{ 'SETTINGS' | translate }}"><i class="fa fa-cog"></i></a></li>
+        <li class="editor"><a ng-click="editorClicked()"><i class="fa fa-pencil"></i></a></li>
         <li class="login" ng-if="!$root.user"><a ng-click="openLogin()" title="{{ 'LOGIN' | translate }}"><i class="fa fa-sign-in"></i></a></li>
-        <li class="editor" ng-if="$root.user"><a ng-click="editorClicked()"><i class="fa fa-pencil"></i></a></li>
         <li ng-if="$root.user" class="dropdown user-dropdown">
           <a ng-click="" class="dropdown-toggle" data-toggle="dropdown" role="button">
             <span class="profile-pic" author-bg-img-style author="{{ $root.user.username }}"></span>
@@ -42,10 +42,11 @@
           <ul class="dropdown-menu">
             <li><a ng-click="profileClicked()">{{ 'PROFILE' | translate }}</a></li>
             <li><a ng-click="bookmarksClicked()">{{ 'BOOKMARKS' | translate }}</a></li>
-
+            <li><a ng-click="draftsClicked()">{{ 'DRAFTS' | translate }}</a></li>
+            <li><a ng-click="schedulesClicked()">{{ 'SCHEDULES' | translate }}</a></li>
             <!--
             <a ng-click="">{{ 'WALLET' | translate }}</a>
-            <a ng-click="">{{ 'DRAFTS' | translate }}</a>
+
             <a ng-click="">{{ 'GALLERY' | translate }}</a>
             <a ng-click="">{{ 'NOTIFICATIONS' | translate }}</a> -->
 

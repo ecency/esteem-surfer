@@ -102,7 +102,7 @@ export default () => {
         }
 
         $scope.sending = true;
-        steemAuthenticatedService.comment(parentAuthor, parentPermlink, author, permlink, body, jsonMetadata, options).then((resp) => {
+        steemAuthenticatedService.comment(parentAuthor, parentPermlink, author, permlink, '', body, jsonMetadata, options).then((resp) => {
           steemService.getContent(author, permlink).then((resp) => {
             $scope.afterSuccess()(resp, $scope.mode);
           }).catch((e) => {

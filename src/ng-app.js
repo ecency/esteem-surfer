@@ -22,8 +22,8 @@ import env from "env";
 import jetpack from "fs-jetpack";
 import steem from 'steem';
 import path from 'path';
-
 import jq from 'jquery';
+
 // Angular and related dependencies
 import angular from 'angular';
 import {angularRoute} from 'angular-route';
@@ -44,6 +44,7 @@ import bookmarksCtrl from './controllers/bookmarks';
 import tagsCtrl from './controllers/tags';
 import editorCtrl from './controllers/editor';
 import searchCtrl from './controllers/search';
+import draftsCtrl from './controllers/drafts';
 
 
 import faqCtrl from './controllers/faq';
@@ -74,6 +75,7 @@ import contentEditorControlsDir from './directives/content-editor-controls';
 import fallbackSrcDir from './directives/fallback-src';
 import contentListItemSearchDir from './directives/content-list-item-search';
 import commentEditorDir from './directives/comment-editor';
+import draftListItemDir from './directives/draft-list-item';
 
 
 // Services
@@ -84,6 +86,7 @@ import settingsService from './services/settings';
 import userService from './services/user';
 import steemAuthenticatedService from './services/steem-authenticated';
 import eSteemService from './services/esteem';
+import editorService from './services/editor';
 
 
 // Filters
@@ -249,6 +252,10 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
         templateUrl: 'templates/search.html',
         controller: 'searchCtrl'
       })
+      .when('/drafts', {
+        templateUrl: 'templates/drafts.html',
+        controller: 'draftsCtrl'
+      })
       .otherwise({redirectTo: '/'});
 
     // $http
@@ -283,6 +290,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .factory('settingsService', settingsService)
   .factory('userService', userService)
   .factory('helperService', helperService)
+  .factory('editorService', editorService)
   .factory('activeUsername', ($rootScope) => {
     return () => {
       if ($rootScope.user) {
@@ -312,6 +320,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .directive('fallbackSrc', fallbackSrcDir)
   .directive('contentListItemSearch', contentListItemSearchDir)
   .directive('commentEditor', commentEditorDir)
+  .directive('draftListItem', draftListItemDir)
 
   .controller('postsCtrl', postsCtrl)
   .controller('faqCtrl', faqCtrl)
@@ -329,6 +338,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .controller('tagsCtrl', tagsCtrl)
   .controller('editorCtrl', editorCtrl)
   .controller('searchCtrl', searchCtrl)
+  .controller('draftsCtrl', draftsCtrl)
 
   .filter('catchPostImage', catchPostImageFilter)
   .filter('sumPostTotal', sumPostTotalFilter)
@@ -761,6 +771,10 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
     $rootScope.commentEditorCache = {};
 
 
+    // EDITOR
+    $rootScope.editorDraft = null;
+
+
     // Error messages to show user when remote server errors occurred
     $rootScope.errorMessages = [];
     $rootScope.showError = (message) => {
@@ -770,6 +784,18 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
       });
       $timeout(() => {
         $rootScope.errorMessages.shift();
+      }, 5000)
+    };
+
+    // Success messages
+    $rootScope.successMessages = [];
+    $rootScope.showSuccess = (message) => {
+      $rootScope.successMessages.push({
+        id: genRandom(),
+        text: message
+      });
+      $timeout(() => {
+        $rootScope.successMessages.shift();
       }, 5000)
     };
 

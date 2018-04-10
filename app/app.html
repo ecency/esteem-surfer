@@ -9,7 +9,10 @@
 <body  style="visibility: hidden;" ng-class="theme" dir="{{ textDir }}">
 <div id="root" class="root" ng-view></div>
 <div class="error-messages" ng-if="$root.errorMessages.length > 0">
-  <div class="error-message" ng-repeat="m in $root.errorMessages"><i class="fa fa-exclamation-triangle"></i> {{ m.text }}</div>
+  <div class="message" ng-repeat="m in $root.errorMessages"><i class="fa fa-exclamation-triangle"></i> {{ m.text }}</div>
+</div>
+<div class="success-messages" ng-if="$root.successMessages.length > 0">
+  <div class="message" ng-repeat="m in $root.successMessages"><i class="fa fa-check"></i> {{ m.text }}</div>
 </div>
 <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
