@@ -1949,3 +1949,93 @@ STRUCTURE:
     }
   }
 }
+
+.schedule-list-item {
+  @include clearfix();
+
+  padding: 10px 5px;
+  position: relative;
+  width: 100%;
+
+  .item-buttons {
+
+    position: absolute;
+    right: 5px;
+    top: 5px;
+
+    .btn-delete, .btn-move {
+      opacity: 0.5;
+    }
+  }
+
+  .schedule-body {
+    padding-right: 30px;
+
+    .schedule-body-title, .schedule-body-summary {
+      font-size: 16px;
+      a {
+        color: $textColor;
+      }
+    }
+
+    .schedule-body-title {
+      line-height: 130%;
+      margin: 0 0 8px 0;
+      width: 100%;
+    }
+
+    .schedule-body-summary {
+      margin-bottom: 10px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+    }
+  }
+
+  .schedule-footer {
+    .schedule-tags, .schedule-created, .schedule-date {
+      margin-right: 20px;
+      color: $textColorLight;
+
+      a {
+        color: $textColorLight;
+      }
+    }
+  }
+
+  &:hover {
+    background-color: $altRowColor;
+
+    .item-buttons {
+      .btn-delete, .btn-move {
+        opacity: 1;
+      }
+    }
+
+  }
+}
+
+.editor-schedule-modal {
+  .date-picker {
+    width: 310px;
+    margin: auto;
+  }
+
+  .date-picker {
+    margin-bottom: 20px;
+  }
+
+  .time-picker {
+    @include clearfix();
+    margin: auto auto 20px auto;
+    width: 120px;
+
+  }
+
+  .selected-date {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+  }
+}

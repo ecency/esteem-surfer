@@ -1,0 +1,22 @@
+<nav-bar></nav-bar>
+<div class="app-container">
+  <div class="app-content schedules-page">
+    <div class="item-list" ng-class="{'fetching': loadingSchedules}">
+      <header>
+        <h1>{{ 'SCHEDULES' | translate }}</h1>
+      </header>
+      <ul class="feed">
+        <li ng-repeat="schedule in schedules">
+          <schedule-list-item schedule="schedule"></schedule-list-item>
+        </li>
+      </ul>
+      <div class="empty-list" ng-if="schedules.length === 0 && !loadingSchedules">
+        {{ 'EMPTY_LIST' | __ }}
+      </div>
+      <footer>
+        <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="loadingSchedules"></i>
+      </footer>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
