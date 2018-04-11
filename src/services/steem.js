@@ -90,6 +90,7 @@ export default (steemApi, $q) => {
           defer.resolve(response);
         }
       });
+
       return defer.promise;
     },
     getContentReplies: (author, parentPermlink) => {

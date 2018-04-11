@@ -1,6 +1,7 @@
 import steem from 'steem';
 import sc2 from 'sc2-sdk';
 
+
 export default ($rootScope, steemApi, $q) => {
 
   const follow = (wif, follower, following) => {
@@ -268,6 +269,20 @@ export default ($rootScope, steemApi, $q) => {
     return defer.promise;
   };
 
+  const accountUpdate = (wif, account, owner, active, posting, memoKey, jsonMetadata) => {
+    let defer = $q.defer();
+
+    steem.broadcast.accountUpdate(wif, account, owner, active, posting, memoKey, jsonMetadata, function (err, response) {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(response);
+      }
+    });
+
+    return defer.promise;
+  };
+
   const getProperWif = (r) => {
     for (let i of r) {
       if ($rootScope.user.keys[i]) {
@@ -363,6 +378,15 @@ export default ($rootScope, steemApi, $q) => {
         case 'sc':
           const token = getAccessToken();
           return deleteCommentSc(token, author, permlink);
+          break;
+      }
+    },
+    accountUpdate: (account, owner, active, posting, memoKey, jsonMetadata) => {
+      // requires Active key
+      switch ($rootScope.user.type) {
+        case 's':
+          const wif = getProperWif(['active']);
+          return accountUpdate(wif, account, owner, active, posting, memoKey, jsonMetadata);
           break;
       }
     }

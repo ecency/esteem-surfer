@@ -51,11 +51,35 @@ export default ($http) => {
         post_type: post_type
       });
     },
-    getDrafts: function(user) {
+    getDrafts: function (user) {
       return $http.get(`${apiUrl}/api/drafts/${user}`);
     },
-    removeDraft: function(id, user) {
+    removeDraft: function (id, user) {
       return $http.delete(`${apiUrl}/api/drafts/${user}/${id}`);
+    },
+    schedule: function (user, title, permlink, json, tags, body, operationType, upvote, scheduleDate) {
+      return $http.post(`${apiUrl}/api/schedules`, {
+        username: user,
+        category: tags[0],
+        title: title,
+        permlink: permlink,
+        json: JSON.stringify(json),
+        tags: tags,
+        body: body,
+        post_type: operationType,
+        upvote_this: upvote,
+        schedule: scheduleDate,
+        chain: 'steem'
+      });
+    },
+    getSchedules: function (user) {
+      return $http.get(`${apiUrl}/api/schedules/${user}`);
+    },
+    removeSchedule: function (id, user) {
+      return $http.delete(`${apiUrl}/api/schedules/${user}/${id}`);
+    },
+    moveSchedule: function (id, user) {
+      return $http.put(`${apiUrl}/api/schedules/${user}/${id}`);
     },
     search: function (q, page = 1) {
       return $http.get(`https://api.asksteem.com/search?q=${q}&include=meta,body&pg=${page}&sort_by=created&order=desc`);

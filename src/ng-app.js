@@ -45,6 +45,7 @@ import tagsCtrl from './controllers/tags';
 import editorCtrl from './controllers/editor';
 import searchCtrl from './controllers/search';
 import draftsCtrl from './controllers/drafts';
+import schedulesCtrl from './controllers/schedules';
 
 
 import faqCtrl from './controllers/faq';
@@ -76,6 +77,7 @@ import fallbackSrcDir from './directives/fallback-src';
 import contentListItemSearchDir from './directives/content-list-item-search';
 import commentEditorDir from './directives/comment-editor';
 import draftListItemDir from './directives/draft-list-item';
+import scheduleListItemDir from './directives/schedule-list-item';
 
 
 // Services
@@ -256,6 +258,10 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
         templateUrl: 'templates/drafts.html',
         controller: 'draftsCtrl'
       })
+      .when('/schedules', {
+        templateUrl: 'templates/schedules.html',
+        controller: 'schedulesCtrl'
+      })
       .otherwise({redirectTo: '/'});
 
     // $http
@@ -321,6 +327,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .directive('contentListItemSearch', contentListItemSearchDir)
   .directive('commentEditor', commentEditorDir)
   .directive('draftListItem', draftListItemDir)
+  .directive('scheduleListItem', scheduleListItemDir)
 
   .controller('postsCtrl', postsCtrl)
   .controller('faqCtrl', faqCtrl)
@@ -339,6 +346,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .controller('editorCtrl', editorCtrl)
   .controller('searchCtrl', searchCtrl)
   .controller('draftsCtrl', draftsCtrl)
+  .controller('schedulesCtrl', schedulesCtrl)
 
   .filter('catchPostImage', catchPostImageFilter)
   .filter('sumPostTotal', sumPostTotalFilter)
@@ -423,6 +431,8 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
           return 'Results';
         case 'SEARCH_RESULTS_USER':
           return 'Users';
+        case 'SCHEDULE_SUBMITTED':
+          return 'Post scheduled';
         default:
           return s;
       }

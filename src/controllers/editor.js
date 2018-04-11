@@ -1,4 +1,7 @@
 import getSlug from 'speakingurl';
+import moment from 'moment';
+
+require('moment-timezone');
 
 const createPermlink = (title) => {
   const rnd = (Math.random() + 1).toString(16).substring(2);
@@ -14,6 +17,35 @@ const createPermlink = (title) => {
   // only letters numbers and dashes
   perm = perm.toLowerCase().replace(/[^a-z0-9-]+/g, '');
   return perm;
+};
+
+const makeOptions = (author, permlink, operationType) => {
+  const a = {
+    allow_curation_rewards: true,
+    allow_votes: true,
+    author: author,
+    permlink: permlink,
+    max_accepted_payout: '1000000.000 SBD',
+    percent_steem_dollars: 10000,
+    extensions: [[0, {'beneficiaries': [{'account': 'esteemapp', 'weight': 1000}]}]]
+  };
+
+  switch (operationType) {
+    case 'default':
+      a.max_accepted_payout = '1000000.000 SBD';
+      a.percent_steem_dollars = 10000;
+      break;
+    case 'sp':
+      a.max_accepted_payout = '1000000.000 SBD';
+      a.percent_steem_dollars = 0;
+      break;
+    case 'dp':
+      a.max_accepted_payout = '0.000 SBD';
+      a.percent_steem_dollars = 10000;
+      break;
+  }
+
+  return a;
 };
 
 export const extractMetadata = (body) => {
@@ -62,35 +94,19 @@ export const extractMetadata = (body) => {
   return out;
 };
 
-export default ($scope, $rootScope, $routeParams, $filter, $location, $timeout, eSteemService, activeUsername, steemAuthenticatedService, editorService, helperService, appVersion) => {
 
-  const makeOptions = (author, permlink, operationType) => {
-    const a = {
-      allow_curation_rewards: true,
-      allow_votes: true,
-      author: author,
-      permlink: permlink,
-      max_accepted_payout: '1000000.000 SBD',
-      percent_steem_dollars: 10000,
-      extensions: [[0, {'beneficiaries': [{'account': 'esteemapp', 'weight': 1000}]}]]
-    };
+export default ($scope, $rootScope, $routeParams, $filter, $location, $timeout, $uibModal, eSteemService, steemService, activeUsername, steemAuthenticatedService, editorService, helperService, appVersion) => {
 
-    switch (operationType) {
-      case 'default':
-        a.max_accepted_payout = '1000000.000 SBD';
-        a.percent_steem_dollars = 10000;
-        break;
-      case 'sp':
-        a.max_accepted_payout = '1000000.000 SBD';
-        a.percent_steem_dollars = 0;
-        break;
-      case 'dp':
-        a.max_accepted_payout = '0.000 SBD';
-        a.percent_steem_dollars = 10000;
-        break;
-    }
+  const hasPermission = (account) => {
+    let hasPerm = false;
 
-    return a;
+    account.posting.account_auths.forEach(function (auth) {
+      if (auth[0] === 'esteemapp') {
+        hasPerm = true;
+      }
+    });
+
+    return hasPerm;
   };
 
   $scope.title = undefined;
@@ -102,6 +118,8 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $timeout, 
   $scope.saving = false;
   $scope.scheduling = false;
   $scope.posting = false;
+  $scope.updating = false;
+  $scope.fetchingPermission = false;
   $scope.processing = false;
 
   $scope.fromDraft = false;
@@ -211,20 +229,12 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $timeout, 
     });
   };
 
-  $scope.schedule = () => {
-    if (!validate()) {
-      return false;
-    }
-
-  };
-
   $scope.post = () => {
     if (!validate()) {
       return false;
     }
 
-
-    if($scope.editMode){
+    if ($scope.editMode) {
 
     } else {
       const permlink = createPermlink($scope.title);
@@ -259,7 +269,208 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $timeout, 
         $scope.processing = false;
       });
     }
+  };
+
+  const getAccount = () => {
+    return steemService.getAccounts([activeUsername()]).then((resp) => {
+      if (resp.length === 1 && resp[0].name) {
+        return resp[0];
+      } else {
+        throw new Error('User not found');
+      }
+    });
+  };
+
+  const detectPerm = () => {
+    $scope.hasPerm = false;
+    if (!activeUsername()) {
+      return
+    }
+
+    $scope.fetchingPermission = true;
+    getAccount().then((account) => {
+      $scope.hasPerm = hasPermission(account);
+    }).catch((e) => {
+      $rootScope.showError(e);
+    }).then(() => {
+      $scope.fetchingPermission = false;
+    });
+  };
+
+  detectPerm();
+
+  $rootScope.$on('userLoggedOut', () => {
+    $scope.hasPerm = false;
+  });
+
+  $scope.grantPermission = () => {
+    $scope.fetchingPermission = true;
+    getAccount().then((account) => {
+      if (hasPermission(account)) {
+        $scope.hasPerm = true;
+        return;
+      }
+
+      $scope.processing = true;
+      $scope.updating = true;
+
+      const postingAuth = account.posting;
+      postingAuth.account_auths.push(['esteemapp', postingAuth.weight_threshold]);
+
+      steemAuthenticatedService.accountUpdate(activeUsername(), undefined, undefined, postingAuth, account.memo_key, account.json_metadata).then((resp) => {
+        $scope.hasPerm = true;
+        $rootScope.showSuccess('Posting permission granted');
+      }).catch((e) => {
+        $rootScope.showError(e);
+      }).then(() => {
+        $scope.processing = false;
+        $scope.updating = false;
+      });
+    }).catch((e) => {
+      $rootScope.showError(e);
+    }).then(() => {
+      $scope.fetchingPermission = false;
+    });
+  };
+
+  $scope.removePermission = () => {
+    getAccount().then((account) => {
+      if (!hasPermission(account)) {
+        $scope.hasPerm = false;
+        return;
+      }
+
+      $scope.processing = true;
+      $scope.updating = true;
+
+      const postingAuth = account.posting;
+
+      let ind = 0;
+      for (let i = 0; i < postingAuth.account_auths.length; i++) {
+        if (postingAuth.account_auths[i][0] === 'esteemapp') {
+          ind = i;
+          break;
+        }
+      }
+      postingAuth.account_auths.splice(ind, 1);
+
+      steemAuthenticatedService.accountUpdate(activeUsername(), undefined, undefined, postingAuth, account.memo_key, account.json_metadata).then((resp) => {
+        $scope.hasPerm = false;
+        $rootScope.showSuccess('Posting permission removed');
+      }).catch((e) => {
+        $rootScope.showError(e);
+      }).then(() => {
+        $scope.processing = false;
+        $scope.updating = false;
+      });
+    });
+  };
+
+  $scope.scheduleClicked = () => {
+    if (!validate()) {
+      return false;
+    }
+
+    $uibModal.open({
+      template: `<div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'CANCEL' | translate }}" ng-click="close()">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">{{ 'SCHEDULE' | translate }} </h4>
+                 </div>
+                 <div class="modal-body">
+                    <div uib-datepicker ng-model="dt" class="well well-sm date-picker" datepicker-options="options" ng-change="dateChanged()"></div>
+                    <div class="time-picker">
+                          <div uib-timepicker ng-model="dt" hour-step="1" minute-step="1"  show-meridian="false" min="timePickerMin"></div>
+                    </div>
+                    <div class="selected-date">{{ dateFormatted }} UTC</div>
+                 </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-primary" ng-click="send()" ng-disabled="sending"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="sending"></i>  {{ 'SCHEDULE' | translate }}</button>
+                </div>
+              `,
+      controller: scheduleModalController,
+      windowClass: 'editor-schedule-modal',
+      resolve: {
+        title: () => {
+          return $scope.title;
+        },
+        body: () => {
+          return $scope.body;
+        },
+        tags: () => {
+          return $scope.tags.split(' ');
+        },
+        operationType: () => {
+          return $scope.operationType;
+        },
+        vote: () => {
+          return $scope.vote;
+        }
+      }
+    }).result.then((data) => {
+      // Success
+    }, () => {
+      // Cancel
+    });
+  };
 
 
-  }
+  // $scope.openScheduleModal();
+};
+
+
+const scheduleModalController = ($scope, $rootScope, $filter, $location, $uibModalInstance, eSteemService, activeUsername, appVersion, title, body, tags, operationType, vote) => {
+
+  moment.locale($rootScope.language);
+
+  $scope.options = {
+    minDate: new Date()
+  };
+
+  $scope.dt = new Date();
+  $scope.timePickerMin = new Date();
+
+  $scope.dateFormatted = '';
+
+  $scope.$watch('dt', (newVal, oldVal) => {
+    const d = moment.utc(newVal);
+    $scope.dateFormatted = d.format('DD MMMM YYYY HH:mm');
+  });
+
+  $scope.sending = false;
+
+  $scope.send = () => {
+    $scope.sending = true;
+
+    const scheduleDate = new Date($scope.dt).toISOString();
+    const permlink = createPermlink(title);
+    const meta = extractMetadata(body);
+    const jsonMetadata = Object.assign({}, meta, {
+      tags: tags,
+      app: 'esteem-surfer/' + appVersion,
+      format: 'markdown+html',
+      community: 'esteem'
+    });
+
+    eSteemService.schedule(activeUsername(), title, permlink, jsonMetadata, tags, body, operationType, vote, scheduleDate).then((resp) => {
+      if (resp.data.errors) {
+        $rootScope.showError(resp.data.errors);
+      } else {
+        $rootScope.showSuccess($filter('__')('SCHEDULE_SUBMITTED'));
+        $scope.close();
+        $location.path('/schedules');
+      }
+    }).catch((e) => {
+      $rootScope.showError(e);
+    }).then(() => {
+      $scope.sending = false;
+    });
+
+
+  };
+
+  $scope.close = () => {
+    $uibModalInstance.dismiss('cancel');
+  };
 };
