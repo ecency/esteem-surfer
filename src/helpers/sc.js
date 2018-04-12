@@ -10,7 +10,7 @@ export const openSCDialog = (successCb, windowCloseCb) => {
   const serverAddr = `http://${serverIp}:${serverPort}/`;
 
   const scAppName = 'esteem-app';
-  const scScope = 'vote,comment,comment_delete,comment_options,custom_json,claim_reward_balance';
+  const scScope = 'vote,comment,delete_comment,comment_options,custom_json,claim_reward_balance';
 
   const genAuthUrl = () => {
     return `https://v2.steemconnect.com/oauth2/authorize?client_id=${scAppName}&redirect_uri=${ encodeURIComponent(serverAddr)}&scope=${ encodeURIComponent(scScope)}`;

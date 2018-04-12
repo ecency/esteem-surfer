@@ -250,6 +250,10 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
         templateUrl: 'templates/editor.html',
         controller: 'editorCtrl'
       })
+      .when('/editor/:author/:permlink', {
+        templateUrl: 'templates/editor.html',
+        controller: 'editorCtrl'
+      })
       .when('/search/:obj', {
         templateUrl: 'templates/search.html',
         controller: 'searchCtrl'
@@ -433,6 +437,22 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
           return 'Users';
         case 'SCHEDULE_SUBMITTED':
           return 'Post scheduled';
+        case 'EDITOR_MAX_TAGS_ERR':
+          return 'Maximum 5 tags';
+        case 'EDITOR_MAX_TAG_LENGTH_ERR':
+          return 'Maximum tag length is 24 characters';
+        case 'EDITOR_MAX_DASH_ERR':
+          return 'Use only one dash';
+        case 'EDITOR_SEPARATOR_ERR':
+          return 'Use spaces to separate tags';
+        case 'EDITOR_LOWERCASE_ERR':
+          return 'Use only lowercase letters';
+        case 'EDITOR_CHARS_ERR':
+          return 'Use only lowercase letters, digits and one dash';
+        case 'EDITOR_START_CHARS_ERR':
+          return 'Must start with a letter';
+        case 'EDITOR_END_CHARS_ERR':
+          return 'Must end with a letter or number';
         default:
           return s;
       }

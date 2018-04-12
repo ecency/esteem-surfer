@@ -1,6 +1,10 @@
 import getSlug from 'speakingurl';
 import moment from 'moment';
 
+import {diff_match_patch} from 'diff-match-patch';
+import {Buffer} from 'buffer';
+
+
 require('moment-timezone');
 
 const createPermlink = (title) => {
@@ -46,6 +50,14 @@ const makeOptions = (author, permlink, operationType) => {
   }
 
   return a;
+};
+
+const createPatch = (text1, text2) => {
+  const dmp = new diff_match_patch();
+  if (!text1 && text1 === '') return undefined;
+  const patches = dmp.patch_make(text1, text2);
+  const patch = dmp.patch_toText(patches);
+  return patch;
 };
 
 export const extractMetadata = (body) => {
@@ -121,9 +133,12 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $timeout, 
   $scope.updating = false;
   $scope.fetchingPermission = false;
   $scope.processing = false;
+  $scope.fetchingContent = false;
 
   $scope.fromDraft = false;
   $scope.editMode = false;
+
+  let editingContent = null;
 
   if ($rootScope.editorDraft) {
     $scope.title = $rootScope.editorDraft.title;
@@ -133,8 +148,21 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $timeout, 
     $rootScope.editorDraft = null;
 
     $scope.fromDraft = true;
-  } else if ($rootScope.editorPost) {
-    $scope.editMode = true;
+  } else if ($routeParams.author && $routeParams.permlink) {
+
+    $scope.fetchingContent = true;
+    steemService.getContent($routeParams.author, $routeParams.permlink).then((resp) => {
+      $scope.editMode = true;
+      editingContent = resp;
+
+      $scope.title = resp.title;
+      $scope.body = $scope.tempBody = resp.body;
+      $scope.tags = JSON.parse(resp.json_metadata).tags.join(' ');
+    }).catch((e) => {
+
+    }).then(() => {
+      $scope.fetchingContent = false;
+    })
 
   } else {
     $scope.title = editorService.getTitle();
@@ -164,22 +192,108 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $timeout, 
   });
 
   $scope.$watch('title', (newVal, oldVal) => {
+    clearTitleValidation();
+
+    if ($scope.editMode) {
+      return;
+    }
+
     if (newVal !== undefined) {
       editorService.setTitle(newVal);
     }
   });
 
   $scope.$watch('body', (newVal, oldVal) => {
+    clearBodyValidation();
+
+    if ($scope.editMode) {
+      return;
+    }
+
     if (newVal !== undefined) {
       editorService.setBody(newVal);
     }
   });
 
   $scope.$watch('tags', (newVal, oldVal) => {
+    clearTagsValidation();
+    if (newVal) {
+      const r = validateTags(newVal);
+      if (r !== true) {
+        const eTags = document.querySelector('#content-tags');
+        eTags.classList.add('error');
+        $scope.tagErr = r;
+      }
+    }
+
+    if ($scope.editMode) {
+      return;
+    }
+
     if (newVal !== undefined) {
       editorService.setTags(newVal);
     }
   });
+
+  const clearTitleValidation = () => {
+    const eTitle = document.querySelector('#content-title');
+    if (eTitle) {
+      eTitle.classList.remove('error');
+    }
+  };
+
+  const clearBodyValidation = () => {
+    const eBody = document.querySelector('#reply-editor-1 textarea');
+    if (eBody) {
+      eBody.classList.remove('error');
+    }
+  };
+
+  const clearTagsValidation = () => {
+    const eTags = document.querySelector('#content-tags');
+    if (eTags) {
+      eTags.classList.remove('error');
+    }
+    $scope.tagErr = null;
+  };
+
+  const validateTags = (tags) => {
+    const tagList = tags.trim().split(' ');
+
+    if (tagList.length > 5) {
+      return $filter('__')('EDITOR_MAX_TAGS_ERR');
+    }
+
+    if (tagList.find(c => c.length > 24)) {
+      return $filter('__')('EDITOR_MAX_TAG_LENGTH_ERR');
+    }
+
+    if (tagList.find(c => c.split('-').length > 2)) {
+      return $filter('__')('EDITOR_MAX_DASH_ERR');
+    }
+
+    if (tagList.find(c => c.indexOf(',') >= 0)) {
+      return $filter('__')('EDITOR_SEPARATOR_ERR');
+    }
+
+    if (tagList.find(c => /[A-Z]/.test(c))) {
+      return $filter('__')('EDITOR_LOWERCASE_ERR');
+    }
+
+    if (tagList.find(c => !/^[a-z0-9-#]+$/.test(c))) {
+      return $filter('__')('EDITOR_CHARS_ERR');
+    }
+
+    if (tagList.find(c => !/^[a-z-#]/.test(c))) {
+      return $filter('__')('EDITOR_START_CHARS_ERR');
+    }
+
+    if (tagList.find(c => !/[a-z0-9]$/.test(c))) {
+      return $filter('__')('EDITOR_END_CHARS_ERR');
+    }
+
+    return true;
+  };
 
   const validate = () => {
     const eTitle = document.querySelector('#content-title');
@@ -202,10 +316,19 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $timeout, 
       return false;
     }
 
+    $scope.tagErr = null;
     if (!$scope.tags) {
       eTags.classList.add('error');
       eTags.focus();
       return false;
+    } else {
+      const r = validateTags($scope.tags);
+      if (r !== true) {
+        $scope.tagErr = r;
+        eTags.classList.add('error');
+        eTags.focus();
+        return false;
+      }
     }
 
     return true;
@@ -234,41 +357,96 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $timeout, 
       return false;
     }
 
-    if ($scope.editMode) {
 
-    } else {
-      const permlink = createPermlink($scope.title);
-      const meta = extractMetadata($scope.body);
-      const tags = $scope.tags.split(' ');
+    const permlink = createPermlink($scope.title);
+    const meta = extractMetadata($scope.body);
+    const tags = $scope.tags.split(' ');
 
-      const jsonMetadata = Object.assign({}, meta, {
-        tags: tags,
-        app: 'esteem-surfer/' + appVersion,
-        format: 'markdown+html',
-        community: 'esteem'
-      });
+    const jsonMetadata = Object.assign({}, meta, {
+      tags: tags,
+      app: 'esteem-surfer/' + appVersion,
+      format: 'markdown+html',
+      community: 'esteem'
+    });
 
-      const parentPermlink = tags[0];
-      const author = activeUsername();
-      const title = $scope.title;
-      const body = $scope.body.trim();
-      const options = makeOptions(activeUsername(), permlink, $scope.operationType);
-      const voteWeight = $scope.vote ? (helperService.getVotePerc(activeUsername()) * 100) : null;
+    const parentPermlink = tags[0];
+    const author = activeUsername();
+    const title = $scope.title;
+    const body = $scope.body.trim();
+    const options = makeOptions(activeUsername(), permlink, $scope.operationType);
+    const voteWeight = $scope.vote ? (helperService.getVotePerc(activeUsername()) * 100) : null;
 
-      $scope.posting = true;
-      $scope.processing = true;
+    $scope.posting = true;
+    $scope.processing = true;
 
-      steemAuthenticatedService.comment('', parentPermlink, author, permlink, title, body, jsonMetadata, options, voteWeight).then((resp) => {
-        $rootScope.showSuccess($filter('translate')('POST_SUBMITTED'));
-        $rootScope.selectedPost = null;
-        $location.path(`/post/${parentPermlink}/${author}/${permlink}`);
-      }).catch((e) => {
-        $rootScope.showError(e);
-      }).then(() => {
-        $scope.posting = false;
-        $scope.processing = false;
-      });
+    steemAuthenticatedService.comment('', parentPermlink, author, permlink, title, body, jsonMetadata, options, voteWeight).then((resp) => {
+      $rootScope.showSuccess($filter('translate')('POST_SUBMITTED'));
+      $rootScope.selectedPost = null;
+      $location.path(`/post/${parentPermlink}/${author}/${permlink}`);
+    }).catch((e) => {
+      $rootScope.showError(e);
+    }).then(() => {
+      $scope.posting = false;
+      $scope.processing = false;
+    });
+  };
+
+  $scope.update = () => {
+    if (!validate()) {
+      return false;
     }
+
+    let newBody = $scope.body.trim();
+    const patch = createPatch(editingContent.body, newBody);
+    if (patch && patch.length < new Buffer(editingContent.body, 'utf-8').length) {
+      newBody = patch;
+    }
+
+    let bExist = false;
+
+    for (let b of editingContent.beneficiaries) {
+      if (b && b.account === 'esteemapp') {
+        bExist = true;
+        break;
+      }
+    }
+
+    const permlink = editingContent.permlink;
+    const meta = extractMetadata($scope.body);
+    const tags = $scope.tags.split(' ');
+
+    const jsonMetadata = Object.assign({}, meta, {
+      tags: tags,
+      app: 'esteem-surfer/' + appVersion,
+      format: 'markdown+html',
+      community: 'esteem'
+    });
+
+    const parentPermlink = editingContent.parent_permlink;
+    const author = editingContent.author;
+    const title = $scope.title.trim();
+    const body = newBody;
+
+    let options = null;
+
+    if (!bExist) {
+      options = makeOptions(author, permlink, null);
+    }
+
+    $scope.posting = true;
+    $scope.processing = true;
+
+    steemAuthenticatedService.comment('', parentPermlink, author, permlink, title, body, jsonMetadata, options, null).then((resp) => {
+      console.log(resp)
+      //$rootScope.showSuccess($filter('translate')('POST_SUBMITTED'));
+      //$rootScope.selectedPost = null;
+      //$location.path(`/post/${parentPermlink}/${author}/${permlink}`);
+    }).catch((e) => {
+      $rootScope.showError(e);
+    }).then(() => {
+      $scope.posting = false;
+      $scope.processing = false;
+    });
   };
 
   const getAccount = () => {
@@ -299,10 +477,6 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $timeout, 
 
   detectPerm();
 
-  $rootScope.$on('userLoggedOut', () => {
-    $scope.hasPerm = false;
-  });
-
   $scope.grantPermission = () => {
     $scope.fetchingPermission = true;
     getAccount().then((account) => {
@@ -322,7 +496,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $timeout, 
         $rootScope.showSuccess('Posting permission granted');
       }).catch((e) => {
         $rootScope.showError(e);
-      }).then(() => {
+      }).then((m) => {
         $scope.processing = false;
         $scope.updating = false;
       });
@@ -415,6 +589,9 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $timeout, 
     });
   };
 
+  $rootScope.$on('userLoggedOut', () => {
+    $scope.hasPerm = false;
+  });
 
   // $scope.openScheduleModal();
 };

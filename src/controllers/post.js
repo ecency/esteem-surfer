@@ -178,6 +178,8 @@ export default ($scope, $rootScope, $routeParams, $timeout, $uibModal, $location
 
     $scope.loadingPost = false;
 
+    $scope.canEdit = content.author === activeUsername();
+
     loadState().catch((e) => {
       // TODO: Handle catch
     }).then(() => {
@@ -255,6 +257,11 @@ export default ($scope, $rootScope, $routeParams, $timeout, $uibModal, $location
     $timeout(() => {
       $scope.commentFlag = true;
     }, 100);
+  };
+
+  $scope.editClicked = () => {
+    const u = `/editor/${$scope.post.author}/${$scope.post.permlink}`;
+    $location.path(u);
   };
 
   $rootScope.$on('commentEditorOpening', () => {

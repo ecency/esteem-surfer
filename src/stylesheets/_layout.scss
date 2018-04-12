@@ -535,6 +535,16 @@
 }
 
 .editor-page {
+
+  .indicator {
+    text-align: center;
+
+    .fa {
+      color: $loadingColor;
+      font-size: 30px;
+    }
+  }
+
   .editor-form {
     @include clearfix();
 
@@ -595,6 +605,20 @@
           }
         }
       }
+
+      .content-tags {
+        position: relative;
+        .tag-err {
+          background: $editorTagErrBg;
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: -30px;
+          height: 30px;
+          padding: 10px;
+          color: #ff6557;
+        }
+      }
     }
 
     .preview-part {
@@ -633,7 +657,7 @@
 
     .control-buttons {
       width: 50%;
-      float: left;
+      float: right;
     }
   }
 }

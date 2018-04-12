@@ -1015,7 +1015,7 @@ STRUCTURE:
         float: right;
         line-height: 150%;
 
-        .post-resteem, .post-leave-comment, .post-comment-count {
+        .post-resteem, .post-leave-comment, .post-comment-count, .post-edit {
           color: $textColorLight;
           float: left;
         }
@@ -1032,6 +1032,12 @@ STRUCTURE:
 
         .post-leave-comment, .post-comment-count {
           font-size: 14px;
+        }
+
+        .post-edit {
+          border-left: 1px solid $seperatorColor;
+          margin-left: 10px;
+          padding-left: 10px;
         }
       }
     }
@@ -1836,6 +1842,7 @@ STRUCTURE:
     text-align: center;
     top: 50%;
     width: 100%;
+    background: #979797;
   }
 }
 

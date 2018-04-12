@@ -283,6 +283,47 @@ export default ($rootScope, steemApi, $q) => {
     return defer.promise;
   };
 
+  const accountUpdateSc = (token, account, owner, active, posting, memoKey, jsonMetadata) => {
+    let defer = $q.defer();
+
+    defer.reject('Steem connect account_update not implemented yet');
+
+    /*
+    const api = sc2.Initialize({
+      accessToken: token
+    });
+
+    const params = {
+      account: account,
+      owner: owner,
+      active: active,
+      posting: posting,
+      memo_key: memoKey,
+      json_metadata: jsonMetadata
+    };
+
+    const ops = [['account_update', { params }]];
+
+    api.send('broadcast', 'POST', {ops}).then((r) => {
+      console.log(r)
+    }).catch((e) => {
+      console.log(e)
+    });
+
+    api.broadcast([['account_update',  params]], function (err, response) {
+
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(response);
+      }
+    });
+    */
+
+
+    return defer.promise;
+  };
+
   const getProperWif = (r) => {
     for (let i of r) {
       if ($rootScope.user.keys[i]) {
@@ -387,6 +428,10 @@ export default ($rootScope, steemApi, $q) => {
         case 's':
           const wif = getProperWif(['active']);
           return accountUpdate(wif, account, owner, active, posting, memoKey, jsonMetadata);
+          break;
+        case 'sc':
+          const token = getAccessToken();
+          return accountUpdateSc(token, account, owner, active, posting, memoKey, jsonMetadata);
           break;
       }
     }
