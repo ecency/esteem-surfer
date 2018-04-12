@@ -1,7 +1,10 @@
 <nav-bar></nav-bar>
 <div class="app-container">
   <div class="app-content editor-page">
-    <div class="editor-form">
+    <div class="indicator content-indicator" ng-show="fetchingContent">
+      <i class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
+    </div>
+    <div class="editor-form" ng-hide="fetchingContent">
       <div class="editing-part">
         <div class="left-bar">
           <content-editor-controls target-elem="#reply-editor-1"></content-editor-controls>
@@ -13,8 +16,8 @@
           <content-editor place-holder="Post Content" body="tempBody" elem-id="reply-editor-1"></content-editor>
         </div>
         <div class="form-group content-tags">
-          <input type="text" class="form-control" id="content-tags"
-                 placeholder="Tags. Max 5. Separate with space. The first tag is your main category." ng-model="tags">
+          <div class="tag-err" ng-show="tagErr">{{ tagErr }}</div>
+          <input type="text" class="form-control" id="content-tags" placeholder="Tags. Max 5. Separate with space. The first tag is your main category." ng-model="tags">
         </div>
       </div>
       <div class="preview-part" id="editor-preview">
@@ -22,8 +25,8 @@
         <div class="markdown-view" ng-bind-html="body | markDown2Html"></div>
       </div>
     </div>
-    <div class="editor-controls">
-      <div class="content-settings">
+    <div class="editor-controls" ng-if="!fetchingContent">
+      <div class="content-settings" ng-if="!editMode">
         <div class="form-inline">
           <div class="form-group">
             <label for="reward-select">{{ 'REWARDS' | translate }}</label>
@@ -41,7 +44,7 @@
         </div>
       </div>
       <div class="control-buttons">
-        <div class="pull-left">
+        <div class="pull-left" ng-if="!editMode">
           <div class="dropup">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" ng-disabled="processing || fetchingPermission">
               <i class="fa fa-calendar" ng-if="!updating"></i> <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="updating"></i> {{ 'SCHEDULE' | translate }}
@@ -55,9 +58,12 @@
             </ul>
           </div>
         </div>
-        <div class="pull-right">
+        <div class="pull-right" ng-if="!editMode">
           <button class="btn btn-primary" ng-click="" login-required on-login-success="save" ng-disabled="processing"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="saving"></i> Save</button>
           <button class="btn btn-primary" ng-disabled="processing" ng-click="" login-required required-keys="'posting'" on-login-success="post">Post</button>
+        </div>
+        <div class="pull-right" ng-if="editMode">
+          <button class="btn btn-primary" ng-disabled="processing" ng-click="" login-required required-keys="'posting'" on-login-success="update">Update</button>
         </div>
       </div>
     </div>

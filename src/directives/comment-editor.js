@@ -82,7 +82,7 @@ export default () => {
 
           let bExist = false;
 
-          for (const b of c.beneficiaries) {
+          for (let b of c.beneficiaries) {
             if (b && b.account === 'esteemapp') {
               bExist = true;
               break;
