@@ -461,6 +461,18 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
           return 'Must start with a letter';
         case 'EDITOR_END_CHARS_ERR':
           return 'Must end with a letter or number';
+        case 'UPDATE':
+          return 'Update';
+        case 'POST_UPDATED':
+          return 'Post is updated!';
+        case 'EDITOR_TAG_PLACEHOLDER':
+          return 'Tags. Max 5. Separate with space. The first tag is your main category.';
+        case 'EDITOR_BODY_PLACEHOLDER':
+          return 'Post Content';
+        case 'EDITOR_TITLE_PLACEHOLDER':
+          return 'Title';
+        case 'SAVE':
+          return 'Save';
         default:
           return s;
       }

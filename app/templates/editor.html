@@ -10,14 +10,14 @@
           <content-editor-controls target-elem="#reply-editor-1"></content-editor-controls>
         </div>
         <div class="form-group content-title">
-          <input type="text" class="form-control input-lg" placeholder="Title" id="content-title" ng-model="title">
+          <input type="text" class="form-control input-lg" placeholder="{{ 'EDITOR_TITLE_PLACEHOLDER' | __ }}" id="content-title" ng-model="title">
         </div>
         <div class="form-group content-body">
-          <content-editor place-holder="Post Content" body="tempBody" elem-id="reply-editor-1"></content-editor>
+          <content-editor place-holder="{{ 'EDITOR_BODY_PLACEHOLDER' | __ }}" body="tempBody" elem-id="reply-editor-1"></content-editor>
         </div>
         <div class="form-group content-tags">
           <div class="tag-err" ng-show="tagErr">{{ tagErr }}</div>
-          <input type="text" class="form-control" id="content-tags" placeholder="Tags. Max 5. Separate with space. The first tag is your main category." ng-model="tags">
+          <input type="text" class="form-control" id="content-tags" placeholder="{{ 'EDITOR_TAG_PLACEHOLDER' | __ }}" ng-model="tags">
         </div>
       </div>
       <div class="preview-part" id="editor-preview">
@@ -27,7 +27,7 @@
     </div>
     <div class="editor-controls" ng-if="!fetchingContent">
       <div class="content-settings" ng-if="!editMode">
-        <div class="form-inline">
+        <div class="form-inline pull-left">
           <div class="form-group">
             <label for="reward-select">{{ 'REWARDS' | translate }}</label>
             <select class="form-control" id="reward-select" ng-model="operationType">
@@ -38,9 +38,12 @@
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox" ng-model="vote"> {{'UPVOTE'|translate}}
+              <input type="checkbox" ng-model="vote" id="vote-checkbox"> {{'UPVOTE'|translate}}
             </label>
           </div>
+        </div>
+        <div class="pull-right">
+          <button class="btn btn-default" ng-click="clearForm()">Clear form</button>
         </div>
       </div>
       <div class="control-buttons">
@@ -57,13 +60,13 @@
               <li ng-if="!hasPerm"><a ng-click="" login-required required-keys="'active'" on-login-success="grantPermission">Grant Posting Permission</a></li>
             </ul>
           </div>
+          <button class="btn btn-primary" ng-click="" login-required on-login-success="save" ng-disabled="processing"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="saving"></i> {{ 'SAVE' | __ }}</button>
         </div>
         <div class="pull-right" ng-if="!editMode">
-          <button class="btn btn-primary" ng-click="" login-required on-login-success="save" ng-disabled="processing"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="saving"></i> Save</button>
-          <button class="btn btn-primary" ng-disabled="processing" ng-click="" login-required required-keys="'posting'" on-login-success="post">Post</button>
+          <button class="btn btn-primary" ng-disabled="processing" ng-click="" login-required required-keys="'posting'" on-login-success="post"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="posting"></i> {{ 'POST' | translate }}</button>
         </div>
         <div class="pull-right" ng-if="editMode">
-          <button class="btn btn-primary" ng-disabled="processing" ng-click="" login-required required-keys="'posting'" on-login-success="update">Update</button>
+          <button class="btn btn-primary" ng-disabled="processing" ng-click="" login-required required-keys="'posting'" on-login-success="update"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="posting"></i> {{ 'UPDATE' | __ }}</button>
         </div>
       </div>
     </div>

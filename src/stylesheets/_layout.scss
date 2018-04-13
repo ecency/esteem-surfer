@@ -22,9 +22,9 @@
 
 .error-messages {
   background: #f2dede;
+  border: 1px solid #ebcccc;
   bottom: 60px;
   color: #a94442;
-  border: 1px solid #ebcccc;
 
   .message {
     &:not(:last-child) {
@@ -35,9 +35,9 @@
 
 .success-messages {
   background: #dff0d8;
-  top: 60px;
-  color: #3c763d;
   border: 1px solid #d0e9c6;
+  color: #3c763d;
+  top: 60px;
 
   .message {
     &:not(:last-child) {
@@ -563,11 +563,11 @@
   .editor-form {
     @include clearfix();
 
+    border-bottom: 1px solid $seperatorColor;
+    border-top: 1px solid $seperatorColor;
     margin-bottom: 20px;
     position: relative;
     width: 100%;
-    border-bottom: 1px solid $seperatorColor;
-    border-top: 1px solid $seperatorColor;
 
     .editing-part {
       float: left;
@@ -627,13 +627,13 @@
         position: relative;
         .tag-err {
           background: $editorTagErrBg;
-          position: absolute;
+          color: #ff6557;
+          height: 30px;
           left: 0;
+          padding: 10px;
+          position: absolute;
           right: 0;
           top: -30px;
-          height: 30px;
-          padding: 10px;
-          color: #ff6557;
         }
       }
     }
@@ -649,10 +649,10 @@
       width: calc(50% - 10px);
       .preview-part-title {
         color: $textColorLighter;
-        font-weight: bold;
         font-size: 16px;
-        margin-top: 10px;
+        font-weight: bold;
         margin-bottom: 10px;
+        margin-top: 10px;
       }
     }
 
@@ -660,22 +660,28 @@
 
   .editor-controls {
     .content-settings {
-      width: 50%;
       float: left;
+      margin-right: 1%;
+      width: 49%;
 
       .form-group {
         margin-right: 20px;
 
         select {
-          width: 200px;
           margin-left: 10px;
+          width: 200px;
         }
       }
     }
 
     .control-buttons {
-      width: 50%;
       float: right;
+      width: 50%;
+
+      .dropup{
+        float: left;
+        margin-right: 10px;
+      }
     }
   }
 }

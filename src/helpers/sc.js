@@ -13,6 +13,7 @@ export const openSCDialog = (successCb, windowCloseCb) => {
   const scScope = 'vote,comment,delete_comment,comment_options,custom_json,claim_reward_balance';
 
   const genAuthUrl = () => {
+    // return `https://steemconnect.com/authorize/@esteemapp?redirect_uri=${ encodeURIComponent(serverAddr)}`;
     return `https://v2.steemconnect.com/oauth2/authorize?client_id=${scAppName}&redirect_uri=${ encodeURIComponent(serverAddr)}&scope=${ encodeURIComponent(scScope)}`;
   };
 
