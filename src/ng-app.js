@@ -46,6 +46,7 @@ import editorCtrl from './controllers/editor';
 import searchCtrl from './controllers/search';
 import draftsCtrl from './controllers/drafts';
 import schedulesCtrl from './controllers/schedules';
+import galleryCtrl from './controllers/gallery';
 
 
 import faqCtrl from './controllers/faq';
@@ -78,6 +79,7 @@ import contentListItemSearchDir from './directives/content-list-item-search';
 import commentEditorDir from './directives/comment-editor';
 import draftListItemDir from './directives/draft-list-item';
 import scheduleListItemDir from './directives/schedule-list-item';
+import galleryListItemDir from './directives/gallery-list-item';
 
 
 // Services
@@ -266,6 +268,10 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
         templateUrl: 'templates/schedules.html',
         controller: 'schedulesCtrl'
       })
+      .when('/gallery', {
+        templateUrl: 'templates/gallery.html',
+        controller: 'galleryCtrl'
+      })
       .otherwise({redirectTo: '/'});
 
     // $http
@@ -332,6 +338,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .directive('commentEditor', commentEditorDir)
   .directive('draftListItem', draftListItemDir)
   .directive('scheduleListItem', scheduleListItemDir)
+  .directive('galleryListItem', galleryListItemDir)
 
   .controller('postsCtrl', postsCtrl)
   .controller('faqCtrl', faqCtrl)
@@ -351,6 +358,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .controller('searchCtrl', searchCtrl)
   .controller('draftsCtrl', draftsCtrl)
   .controller('schedulesCtrl', schedulesCtrl)
+  .controller('galleryCtrl', galleryCtrl)
 
   .filter('catchPostImage', catchPostImageFilter)
   .filter('sumPostTotal', sumPostTotalFilter)

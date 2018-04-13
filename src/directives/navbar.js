@@ -116,6 +116,10 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
         $location.path(`/schedules`);
       };
 
+      $scope.galleryClicked = () => {
+        $location.path(`/gallery`);
+      };
+
       $scope.searchButtonClicked = async () => {
 
         let resp = null;
