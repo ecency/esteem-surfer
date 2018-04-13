@@ -214,6 +214,8 @@ export default ($rootScope, steemApi, $q) => {
       opArray.push(e);
     }
 
+    console.log(opArray);
+
     api.broadcast(opArray, function (err, response) {
       if (err) {
         defer.reject(err);
@@ -243,11 +245,6 @@ export default ($rootScope, steemApi, $q) => {
 
     let defer = $q.defer();
 
-    defer.reject('Steem connect delete_comment not implemented yet');
-
-    /*
-    It will probably work like this:
-
     const api = sc2.Initialize({
       accessToken: token
     });
@@ -264,7 +261,6 @@ export default ($rootScope, steemApi, $q) => {
         defer.resolve(response);
       }
     });
-    */
 
     return defer.promise;
   };

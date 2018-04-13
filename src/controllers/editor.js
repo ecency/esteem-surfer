@@ -4,7 +4,6 @@ import moment from 'moment';
 import {diff_match_patch} from 'diff-match-patch';
 import {Buffer} from 'buffer';
 
-
 require('moment-timezone');
 
 const createPermlink = (title) => {
@@ -50,6 +49,15 @@ const makeOptions = (author, permlink, operationType) => {
   }
 
   return a;
+};
+
+const makeJsonMetadata = (meta, tags, appVer) => {
+  return Object.assign({}, meta, {
+    tags: tags,
+    app: 'esteem-surfer/' + appVer,
+    format: 'markdown+html',
+    community: 'esteem'
+  });
 };
 
 const createPatch = (text1, text2) => {
@@ -357,29 +365,21 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $timeout, 
       return false;
     }
 
-
-    const permlink = createPermlink($scope.title);
-    const meta = extractMetadata($scope.body);
-    const tags = $scope.tags.split(' ');
-
-    const jsonMetadata = Object.assign({}, meta, {
-      tags: tags,
-      app: 'esteem-surfer/' + appVersion,
-      format: 'markdown+html',
-      community: 'esteem'
-    });
-
-    const parentPermlink = tags[0];
-    const author = activeUsername();
-    const title = $scope.title;
+    const title = $scope.title.trim();
     const body = $scope.body.trim();
+    const tags = $scope.tags.split(' ');
+    const author = activeUsername();
+    const parentPermlink = tags[0];
+    const permlink = createPermlink(title);
+    const meta = extractMetadata(body);
+    const jsonMeta = makeJsonMetadata(meta, tags, appVersion);
     const options = makeOptions(activeUsername(), permlink, $scope.operationType);
     const voteWeight = $scope.vote ? (helperService.getVotePerc(activeUsername()) * 100) : null;
 
     $scope.posting = true;
     $scope.processing = true;
 
-    steemAuthenticatedService.comment('', parentPermlink, author, permlink, title, body, jsonMetadata, options, voteWeight).then((resp) => {
+    steemAuthenticatedService.comment('', parentPermlink, author, permlink, title, body, jsonMeta, options, voteWeight).then((resp) => {
       $rootScope.showSuccess($filter('translate')('POST_SUBMITTED'));
       $rootScope.selectedPost = null;
       $location.path(`/post/${parentPermlink}/${author}/${permlink}`);
@@ -411,36 +411,23 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $timeout, 
       }
     }
 
-    const permlink = editingContent.permlink;
-    const meta = extractMetadata($scope.body);
-    const tags = $scope.tags.split(' ');
-
-    const jsonMetadata = Object.assign({}, meta, {
-      tags: tags,
-      app: 'esteem-surfer/' + appVersion,
-      format: 'markdown+html',
-      community: 'esteem'
-    });
-
-    const parentPermlink = editingContent.parent_permlink;
-    const author = editingContent.author;
     const title = $scope.title.trim();
     const body = newBody;
-
-    let options = null;
-
-    if (!bExist) {
-      options = makeOptions(author, permlink, null);
-    }
+    const tags = $scope.tags.split(' ');
+    const author = editingContent.author;
+    const parentPermlink = editingContent.parent_permlink;
+    const permlink = editingContent.permlink;
+    const meta = extractMetadata($scope.body);
+    const jsonMetadata = makeJsonMetadata(meta, tags, appVersion);
+    const options = bExist ? null : makeOptions(author, permlink, null);
 
     $scope.posting = true;
     $scope.processing = true;
 
     steemAuthenticatedService.comment('', parentPermlink, author, permlink, title, body, jsonMetadata, options, null).then((resp) => {
-      console.log(resp)
-      //$rootScope.showSuccess($filter('translate')('POST_SUBMITTED'));
-      //$rootScope.selectedPost = null;
-      //$location.path(`/post/${parentPermlink}/${author}/${permlink}`);
+      $rootScope.showSuccess($filter('__')('POST_UPDATED'));
+      $rootScope.selectedPost = null;
+      $location.path(`/post/${parentPermlink}/${author}/${permlink}`);
     }).catch((e) => {
       $rootScope.showError(e);
     }).then(() => {
@@ -593,7 +580,16 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $timeout, 
     $scope.hasPerm = false;
   });
 
-  // $scope.openScheduleModal();
+  $scope.clearForm = () => {
+    $scope.title = '';
+    $scope.body = $scope.tempBody = '';
+    $scope.tags = '';
+    $scope.operationType = 'default';
+    $scope.vote = false;
+
+    document.querySelector('#vote-checkbox').checked = false;
+    document.querySelector('#reward-select').value = 'default';
+  }
 };
 
 
@@ -623,12 +619,7 @@ const scheduleModalController = ($scope, $rootScope, $filter, $location, $uibMod
     const scheduleDate = new Date($scope.dt).toISOString();
     const permlink = createPermlink(title);
     const meta = extractMetadata(body);
-    const jsonMetadata = Object.assign({}, meta, {
-      tags: tags,
-      app: 'esteem-surfer/' + appVersion,
-      format: 'markdown+html',
-      community: 'esteem'
-    });
+    const jsonMetadata = makeJsonMetadata(meta, tags, appVersion);
 
     eSteemService.schedule(activeUsername(), title, permlink, jsonMetadata, tags, body, operationType, vote, scheduleDate).then((resp) => {
       if (resp.data.errors) {
@@ -643,7 +634,6 @@ const scheduleModalController = ($scope, $rootScope, $filter, $location, $uibMod
     }).then(() => {
       $scope.sending = false;
     });
-
 
   };
 
