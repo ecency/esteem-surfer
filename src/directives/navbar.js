@@ -96,6 +96,10 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
         $location.path(`/account/${activeUsername()}`);
       };
 
+      $scope.walletClicked = () => {
+        $location.path(`/account/${activeUsername()}/wallet`);
+      };
+
       $scope.bookmarksClicked = () => {
         $uibModal.open({
           templateUrl: 'templates/bookmarks.html',

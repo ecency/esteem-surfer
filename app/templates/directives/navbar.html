@@ -41,16 +41,11 @@
           </a>
           <ul class="dropdown-menu">
             <li><a ng-click="profileClicked()">{{ 'PROFILE' | translate }}</a></li>
+            <li><a ng-click="walletClicked()">{{ 'WALLET' | translate }}</a></li>
             <li><a ng-click="bookmarksClicked()">{{ 'BOOKMARKS' | translate }}</a></li>
             <li><a ng-click="draftsClicked()">{{ 'DRAFTS' | translate }}</a></li>
             <li><a ng-click="schedulesClicked()">{{ 'SCHEDULES' | translate }}</a></li>
             <li><a ng-click="galleryClicked()">{{ 'GALLERY' | translate }}</a></li>
-            <!--
-            <a ng-click="">{{ 'WALLET' | translate }}</a>
-
-            <a ng-click="">{{ 'GALLERY' | translate }}</a>
-            <a ng-click="">{{ 'NOTIFICATIONS' | translate }}</a> -->
-
             <li><a ng-click="openLogin()">{{ 'LOGIN_AS' | __ }}</a></li>
             <li data-key="LOGOUT"><a ng-click="logout()">{{ 'LOGOUT' | translate }}</a></li>
           </ul>
