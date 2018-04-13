@@ -42,6 +42,12 @@ export default ($http) => {
     addMyImage: function (user, url) {
       return $http.post(`${apiUrl}/api/image`, {username: user, image_url: url});
     },
+    getImages: function (user) {
+      return $http.get(`${apiUrl}/api/images/${user}`);
+    },
+    removeImage: function(id, user) {
+      return $http.delete(`${apiUrl}/api/images/${user}/${id}`);
+    },
     addDraft: function (user, title, body, tags, post_type) {
       return $http.post(`${apiUrl}/api/draft`, {
         username: user,

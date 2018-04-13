@@ -1,0 +1,22 @@
+<nav-bar></nav-bar>
+<div class="app-container">
+  <div class="app-content gallery-page">
+    <div class="item-list" ng-class="{'fetching': loadingImages}">
+      <header>
+        <h1>{{ 'GALLERY' | translate }}</h1>
+      </header>
+      <ul class="feed">
+        <li ng-repeat="image in images | orderBy:'-timestamp'">
+          <gallery-list-item image="image"></gallery-list-item>
+        </li>
+      </ul>
+      <div class="empty-list" ng-if="images.length === 0 && !loadingImages">
+        {{ 'EMPTY_LIST' | __ }}
+      </div>
+      <footer>
+        <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="loadingImages"></i>
+      </footer>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

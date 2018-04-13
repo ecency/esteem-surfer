@@ -207,7 +207,7 @@
   }
 }
 
-.drafts-page, .schedules-page {
+.drafts-page, .schedules-page, .gallery-page {
   .item-list {
     background: $listBgColor;
     border: 1px solid $listBorderColor;
@@ -259,6 +259,21 @@
       .fa {
         color: $loadingColor;
         font-size: 30px;
+      }
+    }
+  }
+}
+
+.gallery-page {
+  .item-list {
+    ul.feed {
+      column-count: 4;
+      column-gap: 1em;
+
+      > li {
+        display: inline-block;
+        margin: 0 0 1em;
+        width: 100%;
       }
     }
   }
@@ -551,6 +566,8 @@
     margin-bottom: 20px;
     position: relative;
     width: 100%;
+    border-bottom: 1px solid $seperatorColor;
+    border-top: 1px solid $seperatorColor;
 
     .editing-part {
       float: left;
@@ -634,6 +651,7 @@
         color: $textColorLighter;
         font-weight: bold;
         font-size: 16px;
+        margin-top: 10px;
         margin-bottom: 10px;
       }
     }
