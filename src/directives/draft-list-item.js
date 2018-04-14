@@ -17,7 +17,7 @@ export default () => {
             </div>
         </div>
         <div class="draft-footer">
-             <span class="draft-tags"><i class="fa fa-tags"></i> {{ draft.tags }}</span>
+             <span class="draft-tags"><i class="fa fa-tags"></i> {{ tags }}</span>
              <span class="draft-date">{{draft.timestamp|timeAgo}}</span>
         </div>
     </div>
@@ -25,7 +25,7 @@ export default () => {
     controller: ($scope, $rootScope, $location, $filter, $window, eSteemService, activeUsername) => {
 
       $scope.deleting = false;
-      $scope.draft.tags = $scope.draft.tags.replace(/ /g, ', ');
+      $scope.tags = $scope.draft.tags.replace(/ /g, ', ');
 
       $scope.clicked = (draft) => {
         $rootScope.editorDraft = {
