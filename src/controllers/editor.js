@@ -544,7 +544,6 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $timeout, 
                     <div class="time-picker">
                           <div uib-timepicker ng-model="dt" hour-step="1" minute-step="1"  show-meridian="false" min="timePickerMin"></div>
                     </div>
-                    <div class="selected-date">{{ dateFormatted }} UTC</div>
                  </div>
                   <div class="modal-footer">
                     <button class="btn btn-primary" ng-click="send()" ng-disabled="sending"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="sending"></i>  {{ 'SCHEDULE' | translate }}</button>
@@ -603,13 +602,6 @@ const scheduleModalController = ($scope, $rootScope, $filter, $location, $uibMod
 
   $scope.dt = new Date();
   $scope.timePickerMin = new Date();
-
-  $scope.dateFormatted = '';
-
-  $scope.$watch('dt', (newVal, oldVal) => {
-    const d = moment.utc(newVal);
-    $scope.dateFormatted = d.format('DD MMMM YYYY HH:mm');
-  });
 
   $scope.sending = false;
 

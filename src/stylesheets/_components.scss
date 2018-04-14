@@ -862,6 +862,7 @@ STRUCTURE:
       font-size: 32px;
       line-height: 140%;
       margin: 30px 0 30px 0;
+      font-family: 'Source Serif Pro', serif;
     }
 
     .post-info-bar {
@@ -936,10 +937,10 @@ STRUCTURE:
     .post-tools {
       align-items: center;
       display: flex;
-      float: left;
+      float: right;
       height: 40px;
       margin: 1rem 0 0 0;
-      width: 200px;
+      width: 40px;
 
       .btn-bookmark {
         width: 40px;
@@ -2041,12 +2042,6 @@ STRUCTURE:
     margin: auto auto 20px auto;
     width: 120px;
 
-  }
-
-  .selected-date {
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
   }
 }
 
