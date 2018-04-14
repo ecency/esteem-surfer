@@ -3,6 +3,7 @@
 .markdown-view {
   font-size: 18px;
   word-wrap: break-word;
+  overflow-wrap: break-word;
 
   br {
     font-size: 100%;
@@ -134,7 +135,9 @@
 
   }
 
-  overflow-wrap: break-word;
+  &:not(.mini-markdown) {
+    font-family: 'Source Serif Pro', serif;
+  }
 }
 
 .side-tag-list {
@@ -2052,8 +2055,8 @@ STRUCTURE:
   border: 3px solid $seperatorColor;
   min-height: 30px;
   position: relative;
-  width: 100%;
   text-align: center;
+  width: 100%;
 
   .image-controls {
     left: 5px;

@@ -5,16 +5,48 @@
   <title>eSteem Surfer</title>
   <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <style>
+    /* source-serif-pro-regular - latin-ext_latin */
+    @font-face {
+      font-family: 'Source Serif Pro';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Source Serif Pro'), local('SourceSerifPro-Regular'),
+      url('font/source-serif-pro/source-serif-pro-v5-latin-ext_latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('font/source-serif-pro/source-serif-pro-v5-latin-ext_latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+
+    /* source-serif-pro-600 - latin-ext_latin */
+    @font-face {
+      font-family: 'Source Serif Pro';
+      font-style: normal;
+      font-weight: 600;
+      src: local('Source Serif Pro Semibold'), local('SourceSerifPro-Semibold'),
+      url('font/source-serif-pro/source-serif-pro-v5-latin-ext_latin-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('font/source-serif-pro/source-serif-pro-v5-latin-ext_latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+
+    /* source-serif-pro-700 - latin-ext_latin */
+    @font-face {
+      font-family: 'Source Serif Pro';
+      font-style: normal;
+      font-weight: 700;
+      src: local('Source Serif Pro Bold'), local('SourceSerifPro-Bold'),
+      url('font/source-serif-pro/source-serif-pro-v5-latin-ext_latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('font/source-serif-pro/source-serif-pro-v5-latin-ext_latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+  </style>
 </head>
-<body  style="visibility: hidden;" ng-class="theme" dir="{{ textDir }}">
+<body style="visibility: hidden;" ng-class="theme" dir="{{ textDir }}">
 <div id="root" class="root" ng-view></div>
 <div class="error-messages" ng-if="$root.errorMessages.length > 0">
-  <div class="message" ng-repeat="m in $root.errorMessages"><i class="fa fa-exclamation-triangle"></i> {{ m.text }}</div>
+  <div class="message" ng-repeat="m in $root.errorMessages"><i class="fa fa-exclamation-triangle"></i> {{ m.text }}
+  </div>
 </div>
 <div class="success-messages" ng-if="$root.successMessages.length > 0">
   <div class="message" ng-repeat="m in $root.successMessages"><i class="fa fa-check"></i> {{ m.text }}</div>
 </div>
-<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+<script>if (typeof module === 'object') {
+  window.module = module;
+  module = undefined;
+}</script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script>if (window.module) module = window.module;</script>
