@@ -6,7 +6,7 @@
         <h1>{{ 'DRAFTS' | translate }}</h1>
       </header>
       <ul class="feed">
-        <li ng-repeat="draft in drafts">
+        <li ng-repeat="draft in drafts | orderBy:'-timestamp'">
           <draft-list-item draft="draft"></draft-list-item>
         </li>
       </ul>
