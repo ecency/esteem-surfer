@@ -678,9 +678,45 @@
       float: right;
       width: 50%;
 
-      .dropup{
+      .dropup {
         float: left;
         margin-right: 10px;
+      }
+    }
+  }
+}
+
+.discover-page {
+  .indicator {
+    text-align: center;
+
+    .fa {
+      color: $loadingColor;
+      font-size: 30px;
+    }
+  }
+
+  .author-list {
+    header {
+      margin-bottom: 20px;
+      text-align: center;
+      .btn-reload {
+        color: $loadingColor;
+        font-size: 16px;
+      }
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+
+      li {
+        display: inline-block;
+        list-style: none;
+        margin-bottom: 26px;
+        margin-left: 14px;
+        margin-right: 14px;
+        width: 200px;
       }
     }
   }
