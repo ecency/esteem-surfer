@@ -50,10 +50,10 @@ export default ($scope, $rootScope, $timeout, $location, $uibModalInstance, $q, 
 
       // Public keys of user
       let rUserPublicKeys = {
-        active: rUser['active'].key_auths[0][0],
-        memo: rUser['memo_key'],
-        owner: rUser['owner'].key_auths[0][0],
-        posting: rUser['posting'].key_auths[0][0]
+        active: rUser['active'].key_auths.map(x => x[0]),
+        memo: [rUser['memo_key']],
+        owner: rUser['owner'].key_auths.map(x => x[0]),
+        posting: rUser['posting'].key_auths.map(x => x[0])
       };
 
       let loginFlag = false;
@@ -63,18 +63,18 @@ export default ($scope, $rootScope, $timeout, $location, $uibModalInstance, $q, 
         // With password
 
         // Get all private keys by username and password
-        let username = rUser.name;
-        let userKeys = steem.auth.getPrivateKeys(username, code);
+        const username = rUser.name;
+        const userKeys = steem.auth.getPrivateKeys(username, code);
 
         // Compare remote user keys and generated keys
         for (let k  in rUserPublicKeys) {
-          let k2 = `${k}Pubkey`;
+          const k2 = `${k}Pubkey`;
 
-          let v = rUserPublicKeys[k];
-          let v2 = userKeys[k2];
+          const v = rUserPublicKeys[k];
+          const v2 = userKeys[k2];
 
           // Append matched keys to result dict
-          if (v === v2) {
+          if (v.includes(v2)) {
             loginFlag = true;
             resultKeys[k] = userKeys[k];
           }
@@ -86,7 +86,7 @@ export default ($scope, $rootScope, $timeout, $location, $uibModalInstance, $q, 
 
         for (let k  in rUserPublicKeys) {
           let v = rUserPublicKeys[k];
-          if (v === publicWif) {
+          if (v.includes(publicWif)) {
             loginFlag = true;
             resultKeys[k] = code;
             break;
