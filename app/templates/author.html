@@ -129,6 +129,14 @@
                 </div>
                 <div class="col-sm-6 col-value">
                   {{ authorData.balance | money2Number | number }} {{ 'PLATFORM_L_UNIT' | __ }}
+                  <div class="btn-group" ng-if="isMyPage">
+                    <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+                     <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                      <li><a ng-click="transferClicked('STEEM')">Transfer</a></li>
+                    </ul>
+                  </div>
                 </div>
               </div>
               <div class="row alternate">

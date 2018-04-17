@@ -320,6 +320,24 @@ export default ($rootScope, steemApi, $q) => {
     return defer.promise;
   };
 
+  const transfer = (wif, from, to, amount, memo) => {
+    let defer = $q.defer();
+
+    steem.broadcast.transfer(wif, from, to, amount, memo, function (err, result) {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(result);
+      }
+    });
+
+    return defer.promise;
+  };
+
+  const transferSc = (token, from, to, amount, memo) => {
+
+  };
+
   const getProperWif = (r) => {
     for (let i of r) {
       if ($rootScope.user.keys[i]) {
@@ -428,6 +446,19 @@ export default ($rootScope, steemApi, $q) => {
         case 'sc':
           const token = getAccessToken();
           return accountUpdateSc(token, account, owner, active, posting, memoKey, jsonMetadata);
+          break;
+      }
+    },
+    transfer: (from, to, amount, memo) => {
+      // requires Active key
+      switch ($rootScope.user.type) {
+        case 's':
+          const wif = getProperWif(['active']);
+          return transfer(wif, from, to, amount, memo);
+          break;
+        case 'sc':
+          const token = getAccessToken();
+          return transferSc(token, from, to, amount, memo);
           break;
       }
     }

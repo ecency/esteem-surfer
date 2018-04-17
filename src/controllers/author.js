@@ -1,4 +1,15 @@
-export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $window, $filter, steemService, steemAuthenticatedService, activeUsername, constants) => {
+const countDecimals = (a) => {
+  if (a === null) return a;
+  a = String(a)
+    .match(/[\d\.]+/g)
+    .join(''); // just dots and digits
+  const parts = a.split('.');
+  return parts.length > 2
+    ? undefined
+    : parts.length === 1 ? 0 : parts[1].length;
+};
+
+export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $window, $uibModal, $filter, steemService, steemAuthenticatedService, activeUsername, constants) => {
   let username = $routeParams.username;
   let section = $routeParams.section || 'blog';
 
@@ -6,6 +17,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
   $scope.loadingAuthor = false;
   $scope.visitorData = null;
   $scope.loadingVisitor = false;
+  $scope.isMyPage = username === activeUsername();
 
   $scope.dataList = $rootScope.Data['dataList'] || [];
   $scope.loadingContents = false;
@@ -36,13 +48,13 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     $rootScope.setNavVar('dataList', n);
   });
 
-  const loadAccount = async () => {
+  const loadAccount = async (refresh = false) => {
     $scope.loadingAuthor = true;
     $scope.$applyAsync();
 
     let account = null;
 
-    if ($rootScope.lastAuthorData && $rootScope.lastAuthorData.name === username) {
+    if (!refresh && $rootScope.lastAuthorData && $rootScope.lastAuthorData.name === username) {
       account = $rootScope.lastAuthorData;
     } else {
       account = await steemService.getAccounts([username]).then(resp => {
@@ -426,9 +438,174 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
 
   $rootScope.$on('userLoggedIn', () => {
     loadVisitor(true);
+    $scope.isMyPage = username === activeUsername();
   });
 
   $rootScope.$on('userLoggedOut', () => {
     loadVisitor(true);
+    $scope.isMyPage = false;
   });
+
+  $scope.transferClicked = (asset) => {
+
+    $uibModal.open({
+      templateUrl: `templates/transfer-modal.html`,
+      controller: transferModalController,
+      windowClass: 'wallet-transfer-modal',
+      resolve: {
+        initialAsset: () => {
+          return asset;
+        },
+        afterTransfer: () => {
+          return () => {
+            loadAccount(true).then(() => {
+              loadContents();
+            });
+          }
+        }
+      }
+    }).result.then((data) => {
+      // Success
+    }, () => {
+      // Cancel
+    });
+
+  }
+};
+
+
+const transferModalController = ($scope, $rootScope, $filter, $uibModalInstance, steemService, steemAuthenticatedService, userService, activeUsername, initialAsset, afterTransfer) => {
+
+  const accountList = userService.getAll();
+
+  $scope.accountList = accountList.map(x => x.username);
+  $scope.account = null;
+  $scope.from = activeUsername();
+
+  $scope.to = '';
+  $scope.amount = '0.001';
+  $scope.asset = initialAsset;
+  $scope.memo = '';
+  $scope.keyRequired = false;
+  $scope.balance = '0';
+
+  $scope.toErr = null;
+  $scope.amountErr = null;
+
+  $scope.fromChanged = () => {
+    $scope.keyRequired = false;
+    for (let a of accountList) {
+      if (a.type === 's' && a.username === $scope.from && !a.keys.active) {
+        $scope.keyRequired = true;
+      }
+    }
+    loadAccount();
+  };
+
+  $scope.toChanged = () => {
+    $scope.toErr = null;
+  };
+
+  $scope.amountChanged = () => {
+    $scope.amountErr = null;
+
+    if (!/^\d+(\.\d+)?$/.test($scope.amount)) {
+      $scope.amountErr = 'Wrong amount value';
+      return;
+    }
+
+    const dotParts = $scope.amount.split('.');
+
+    if (dotParts.length > 1) {
+      const precision = dotParts[1];
+      if (precision.length > 3) {
+        $scope.amountErr = 'Use only 3 digits of precison';
+        return;
+      }
+    }
+
+    if (parseFloat($scope.amount) > parseFloat($scope.balance)) {
+      $scope.amountErr = 'Insufficient funds';
+      return;
+    }
+  };
+
+  $scope.assetChanged = (a) => {
+    $scope.asset = a;
+    $scope.balance = getBalance(a);
+    $scope.amountChanged();
+  };
+
+  const loadAccount = () => {
+    $scope.fetching = true;
+
+    steemService.getAccounts([$scope.from]).then((resp) => {
+      return resp[0];
+    }).catch((e) => {
+      $scope.close();
+      $rootScope.showError(e);
+    }).then((resp) => {
+      $scope.fetching = false;
+      $scope.account = resp;
+      $scope.balance = getBalance($scope.asset);
+      $scope.amountChanged();
+    });
+  };
+
+  const getBalance = (asset) => {
+    const k = (asset === 'STEEM' ? 'balance' : 'sbd_balance');
+    return $scope.account[k].split(' ')[0];
+  };
+
+  loadAccount();
+
+  $scope.canSend = () => {
+    return $scope.to && !$scope.toErr && !$scope.amountErr && !$scope.fetching;
+  };
+
+  $scope.send = async () => {
+
+    const to = $scope.to.trim();
+
+    $scope.processing = true;
+
+    const account = await steemService.getAccounts([to]).then((resp) => {
+      return resp[0];
+    }).catch((e) => {
+      $rootScope.showError(e);
+    });
+
+    if (!account) {
+      $scope.toErr = $filter('translate')('NONEXIST_USER');
+      $scope.processing = false;
+      $scope.$applyAsync();
+      return;
+    }
+
+    const m = `${$scope.amount} ${$scope.asset}`;
+
+    // console.log($scope.from);
+    // console.log($scope.to);
+    // console.log(m);
+    // console.log($scope.memo);
+
+    steemAuthenticatedService.transfer($scope.from, $scope.to, m, $scope.memo).then((resp) => {
+      return resp;
+    }).catch((e) => {
+      $rootScope.showError(e);
+    }).then((resp) => {
+      console.log(resp);
+      afterTransfer();
+      $scope.close();
+      $rootScope.showSuccess($filter('translate')('TX_BROADCASTED'));
+      $scope.processing = false;
+    });
+  };
+
+
+
+
+  $scope.close = () => {
+    $uibModalInstance.dismiss('cancel');
+  };
 };
