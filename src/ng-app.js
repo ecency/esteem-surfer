@@ -475,6 +475,8 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
           return 'Save';
         case 'REFRESH':
           return 'Refresh';
+        case 'BALANCE':
+          return 'Balance';
         default:
           return s;
       }
