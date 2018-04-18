@@ -452,5 +452,13 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
         loadContents();
       });
     });
+  };
+
+  $scope.transferClickedSbd = () => {
+    $rootScope.openTransferWindow('SBD', () => {
+      loadAccount(true).then(() => {
+        loadContents();
+      });
+    });
   }
 };

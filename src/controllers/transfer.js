@@ -51,22 +51,21 @@ export const transferCtrl = ($scope, $rootScope, $filter, $uibModalInstance, ste
     $scope.amountErr = null;
 
     if (!amountFormatCheck($scope.amount)) {
-      $scope.amountErr = 'Wrong amount value';
+      $scope.amountErr = $filter('__')('WRONG_AMOUNT_VALUE');
       return;
     }
 
     const dotParts = $scope.amount.split('.');
-
     if (dotParts.length > 1) {
       const precision = dotParts[1];
       if (precision.length > 3) {
-        $scope.amountErr = 'Use only 3 digits of precison';
+        $scope.amountErr = $filter('__')('AMOUNT_PRECISION_ERR');
         return;
       }
     }
 
     if (parseFloat($scope.amount) > parseFloat($scope.balance)) {
-      $scope.amountErr = 'Insufficient funds';
+      $scope.amountErr = $filter('__')('INSUFFICIENT_FUNDS');
       return;
     }
   };
@@ -74,6 +73,11 @@ export const transferCtrl = ($scope, $rootScope, $filter, $uibModalInstance, ste
   $scope.assetChanged = (a) => {
     $scope.asset = a;
     $scope.balance = getBalance(a);
+    $scope.amountChanged();
+  };
+
+  $scope.copyBalance = () => {
+    $scope.amount = $scope.balance;
     $scope.amountChanged();
   };
 
