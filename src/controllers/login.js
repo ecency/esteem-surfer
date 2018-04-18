@@ -1,5 +1,5 @@
 import steem from 'steem';
-import {openSCDialog} from '../helpers/sc';
+import {openLoginDialog} from '../helpers/sc';
 
 export default ($scope, $rootScope, $timeout, $location, $uibModalInstance, $q, $window, $filter, steemService, storageService, userService, activeUsername, loginMessage, afterLogin, onOpen) => {
 
@@ -133,7 +133,7 @@ export default ($scope, $rootScope, $timeout, $location, $uibModalInstance, $q, 
 
     scWindowFlag = false;
 
-    openSCDialog((accessToken, username, expiresIn) => {
+    openLoginDialog((accessToken, username, expiresIn) => {
 
       $scope.loginSuccess = true;
       $scope.$apply();

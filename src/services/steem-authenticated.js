@@ -334,10 +334,6 @@ export default ($rootScope, steemApi, $q) => {
     return defer.promise;
   };
 
-  const transferSc = (token, from, to, amount, memo) => {
-
-  };
-
   const getProperWif = (r) => {
     for (let i of r) {
       if ($rootScope.user.keys[i]) {
@@ -449,18 +445,13 @@ export default ($rootScope, steemApi, $q) => {
           break;
       }
     },
-    transfer: (from, to, amount, memo) => {
-      // requires Active key
-      switch ($rootScope.user.type) {
-        case 's':
-          const wif = getProperWif(['active']);
-          return transfer(wif, from, to, amount, memo);
-          break;
-        case 'sc':
-          const token = getAccessToken();
-          return transferSc(token, from, to, amount, memo);
-          break;
+    transfer: (wif = null, from, to, amount, memo) => {
+
+      if (wif === null) {
+        wif = getProperWif(['active']);
       }
+
+      return transfer(wif, from, to, amount, memo);
     }
   }
 };
