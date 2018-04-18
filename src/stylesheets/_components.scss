@@ -2108,3 +2108,16 @@ STRUCTURE:
   }
 
 }
+
+.transfer-modal {
+  .balance-block {
+    color: $textColorLight;
+    margin: 4px 0;
+    border-bottom: 1px dotted $textColor;
+    display: inline-block;
+
+    .copy-balance {
+      cursor: pointer;
+    }
+  }
+}

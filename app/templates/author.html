@@ -167,6 +167,15 @@
                 </div>
                 <div class="col-sm-6 col-value">
                   {{ authorData.sbd_balance | money2Number | number }} {{ 'PLATFORM_D_UNIT' | __ }}
+
+                  <div class="btn-group" ng-if="isMyPage">
+                    <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                      <li><a ng-click="" login-required required-keys="'active'" on-login-success="transferClickedSbd">{{ 'TRANSFER' | translate }}</a></li>
+                    </ul>
+                  </div>
                 </div>
               </div>
 

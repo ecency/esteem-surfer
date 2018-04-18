@@ -479,6 +479,14 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
           return 'Refresh';
         case 'BALANCE':
           return 'Balance';
+        case 'ACTIVE_KEY_REQUIRED_TRANSFER':
+          return 'Active key could not found for selected account. Please make sure logged in with proper credentials.';
+        case 'WRONG_AMOUNT_VALUE':
+          return 'Wrong amount value';
+        case 'AMOUNT_PRECISION_ERR':
+          return 'Use only 3 digits of precision';
+        case 'INSUFFICIENT_FUNDS':
+          return 'Insufficient funds';
         default:
           return s;
       }
@@ -834,7 +842,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
       $uibModal.open({
         templateUrl: `templates/transfer.html`,
         controller: 'transferCtrl',
-        windowClass: 'wallet-transfer-modal',
+        windowClass: 'transfer-modal',
         resolve: {
           initialAsset: () => {
             return asset;
