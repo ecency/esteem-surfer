@@ -47,6 +47,7 @@ import searchCtrl from './controllers/search';
 import draftsCtrl from './controllers/drafts';
 import schedulesCtrl from './controllers/schedules';
 import galleryCtrl from './controllers/gallery';
+import {transferCtrl} from './controllers/transfer';
 
 
 import faqCtrl from './controllers/faq';
@@ -359,6 +360,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .controller('draftsCtrl', draftsCtrl)
   .controller('schedulesCtrl', schedulesCtrl)
   .controller('galleryCtrl', galleryCtrl)
+  .controller('transferCtrl', transferCtrl)
 
   .filter('catchPostImage', catchPostImageFilter)
   .filter('sumPostTotal', sumPostTotalFilter)
@@ -824,9 +826,29 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
     // This will help to persist user comments between transitions.
     $rootScope.commentEditorCache = {};
 
-
     // EDITOR
     $rootScope.editorDraft = null;
+
+    // TRANSFERS
+    $rootScope.openTransferWindow = (asset, afterTransfer) => {
+      $uibModal.open({
+        templateUrl: `templates/transfer.html`,
+        controller: 'transferCtrl',
+        windowClass: 'wallet-transfer-modal',
+        resolve: {
+          initialAsset: () => {
+            return asset;
+          },
+          afterTransfer: () => {
+            return afterTransfer
+          }
+        }
+      }).result.then((data) => {
+        // Success
+      }, () => {
+        // Cancel
+      });
+    };
 
 
     // Error messages to show user when remote server errors occurred
