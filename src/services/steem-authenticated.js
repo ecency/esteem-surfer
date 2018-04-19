@@ -1,6 +1,7 @@
 import steem from 'steem';
 import sc2 from 'sc2-sdk';
 
+import {scAppAuth, scAppRevoke, scTransfer} from '../helpers/steem-connect-helper';
 
 export default ($rootScope, steemApi, $q) => {
 
@@ -279,43 +280,46 @@ export default ($rootScope, steemApi, $q) => {
     return defer.promise;
   };
 
-  const accountUpdateSc = (token, account, owner, active, posting, memoKey, jsonMetadata) => {
+  const grantPostingPermission = (wif, accountData) => {
+    const postingAuth = accountData.posting;
+    postingAuth.account_auths.push(['esteemapp', postingAuth.weight_threshold]);
+    return accountUpdate(wif, accountData.name, undefined, undefined, postingAuth, accountData.memo_key, accountData.json_metadata);
+  };
+
+  const grantPostingPermissionSc = () => {
+    let defer = $q.defer();
+    scAppAuth(() => {
+      defer.resolve('OK');
+    }, () => {
+      defer.reject(`The window closed before expected.`);
+    });
+
+    return defer.promise;
+  };
+
+  const revokePostingPermission = (wif, accountData) => {
+    const postingAuth = accountData.posting;
+
+    let ind = 0;
+    for (let i = 0; i < postingAuth.account_auths.length; i++) {
+      if (postingAuth.account_auths[i][0] === 'esteemapp') {
+        ind = i;
+        break;
+      }
+    }
+    postingAuth.account_auths.splice(ind, 1);
+
+    return accountUpdate(wif, accountData.name, undefined, undefined, postingAuth, accountData.memo_key, accountData.json_metadata);
+  };
+
+  const revokePostingPermissionSc = () => {
     let defer = $q.defer();
 
-    defer.reject('Steem connect account_update not implemented yet');
-
-    /*
-    const api = sc2.Initialize({
-      accessToken: token
+    scAppRevoke(() => {
+      defer.resolve('OK');
+    }, () => {
+      defer.reject(`The window closed before expected.`);
     });
-
-    const params = {
-      account: account,
-      owner: owner,
-      active: active,
-      posting: posting,
-      memo_key: memoKey,
-      json_metadata: jsonMetadata
-    };
-
-    const ops = [['account_update', { params }]];
-
-    api.send('broadcast', 'POST', {ops}).then((r) => {
-      console.log(r)
-    }).catch((e) => {
-      console.log(e)
-    });
-
-    api.broadcast([['account_update',  params]], function (err, response) {
-
-      if (err) {
-        defer.reject(err);
-      } else {
-        defer.resolve(response);
-      }
-    });
-    */
-
 
     return defer.promise;
   };
@@ -329,6 +333,18 @@ export default ($rootScope, steemApi, $q) => {
       } else {
         defer.resolve(result);
       }
+    });
+
+    return defer.promise;
+  };
+
+  const transferSc = (from, to, amount, memo) => {
+    let defer = $q.defer();
+
+    scTransfer(from, to, amount, memo, () => {
+      defer.resolve('OK');
+    }, () => {
+      defer.reject(`The window closed before expected.`);
     });
 
     return defer.promise;
@@ -432,26 +448,34 @@ export default ($rootScope, steemApi, $q) => {
           break;
       }
     },
-    accountUpdate: (account, owner, active, posting, memoKey, jsonMetadata) => {
-      // requires Active key
+    grantPostingPermission: (accountData) => {
       switch ($rootScope.user.type) {
         case 's':
           const wif = getProperWif(['active']);
-          return accountUpdate(wif, account, owner, active, posting, memoKey, jsonMetadata);
+          return grantPostingPermission(wif, accountData);
           break;
         case 'sc':
-          const token = getAccessToken();
-          return accountUpdateSc(token, account, owner, active, posting, memoKey, jsonMetadata);
+          return grantPostingPermissionSc();
+          break;
+      }
+    },
+    revokePostingPermission: (accountData) => {
+      switch ($rootScope.user.type) {
+        case 's':
+          const wif = getProperWif(['active']);
+          return revokePostingPermission(wif, accountData);
+          break;
+        case 'sc':
+          return revokePostingPermissionSc();
           break;
       }
     },
     transfer: (wif = null, from, to, amount, memo) => {
-
-      if (wif === null) {
-        wif = getProperWif(['active']);
+      if (wif) {
+        return transfer(wif, from, to, amount, memo);
+      } else {
+        return transferSc(from, to, amount, memo);
       }
-
-      return transfer(wif, from, to, amount, memo);
     }
   }
 };
