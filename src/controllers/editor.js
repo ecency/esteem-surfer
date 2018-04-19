@@ -115,7 +115,7 @@ export const extractMetadata = (body) => {
 };
 
 
-export default ($scope, $rootScope, $routeParams, $filter, $location, $timeout, $uibModal, eSteemService, steemService, activeUsername, steemAuthenticatedService, editorService, helperService, appVersion) => {
+export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $timeout, $uibModal, eSteemService, steemService, activeUsername, steemAuthenticatedService, editorService, helperService, appVersion) => {
 
   const hasPermission = (account) => {
     let hasPerm = false;
@@ -475,15 +475,12 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $timeout, 
       $scope.processing = true;
       $scope.updating = true;
 
-      const postingAuth = account.posting;
-      postingAuth.account_auths.push(['esteemapp', postingAuth.weight_threshold]);
-
-      steemAuthenticatedService.accountUpdate(activeUsername(), undefined, undefined, postingAuth, account.memo_key, account.json_metadata).then((resp) => {
-        $scope.hasPerm = true;
+      steemAuthenticatedService.grantPostingPermission(account).then((resp) => {
         $rootScope.showSuccess('Posting permission granted');
+        detectPerm();
       }).catch((e) => {
         $rootScope.showError(e);
-      }).then((m) => {
+      }).then(() => {
         $scope.processing = false;
         $scope.updating = false;
       });
@@ -504,20 +501,9 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $timeout, 
       $scope.processing = true;
       $scope.updating = true;
 
-      const postingAuth = account.posting;
-
-      let ind = 0;
-      for (let i = 0; i < postingAuth.account_auths.length; i++) {
-        if (postingAuth.account_auths[i][0] === 'esteemapp') {
-          ind = i;
-          break;
-        }
-      }
-      postingAuth.account_auths.splice(ind, 1);
-
-      steemAuthenticatedService.accountUpdate(activeUsername(), undefined, undefined, postingAuth, account.memo_key, account.json_metadata).then((resp) => {
-        $scope.hasPerm = false;
+      steemAuthenticatedService.revokePostingPermission(account).then(() => {
         $rootScope.showSuccess('Posting permission removed');
+        detectPerm();
       }).catch((e) => {
         $rootScope.showError(e);
       }).then(() => {

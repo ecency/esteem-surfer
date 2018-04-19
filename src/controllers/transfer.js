@@ -1,4 +1,3 @@
-import {openTransferWindow} from '../helpers/sc';
 
 export const amountFormatCheck = (v) => {
   return /^\d+(\.\d+)?$/.test(v);
@@ -131,33 +130,17 @@ export const transferCtrl = ($scope, $rootScope, $filter, $uibModalInstance, ste
     }
 
     const fromAccount = getAccount(from);
+    const wif = fromAccount.type === 's' ? fromAccount.keys.active : null;
 
-    if (fromAccount.type === 's') {
-      // Traditional steem api
-      steemAuthenticatedService.transfer(fromAccount.keys.active, from, to, amount, memo).then((resp) => {
-        afterTransfer();
-        $scope.close();
-        $rootScope.showSuccess($filter('translate')('TX_BROADCASTED'));
-      }).catch((e) => {
-        $rootScope.showError(e);
-      }).then((resp) => {
-        $scope.processing = false;
-      });
-
-    } else if (fromAccount.type === 'sc') {
-      // Steem connect
-      openTransferWindow(to, amount, memo, () => {
-          afterTransfer();
-          $scope.close();
-          $rootScope.showSuccess($filter('translate')('TX_BROADCASTED'));
-          $scope.processing = false;
-          $scope.$applyAsync();
-        },
-        () => {
-          $scope.processing = false;
-          $scope.$applyAsync();
-        });
-    }
+    steemAuthenticatedService.transfer(wif, from, to, amount, memo).then((resp) => {
+      afterTransfer();
+      $scope.close();
+      $rootScope.showSuccess($filter('translate')('TX_BROADCASTED'));
+    }).catch((e) => {
+      $rootScope.showError(e);
+    }).then((resp) => {
+      $scope.processing = false;
+    });
   };
 
   $scope.close = () => {

@@ -24,6 +24,11 @@ document.addEventListener('drop', function (event) {
 }, false);
 
 
+// A http server for steem connect redirect urls
+import {startHelperServer} from "./helpers/steem-connnect-server-helper";
+startHelperServer();
+
+
 require('./ng-app.js');
 
 
