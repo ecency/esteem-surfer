@@ -126,3 +126,36 @@ export const scTransfer = (from, to, amount, memo, successCb, windowCloseCb) => 
     windowCloseCb();
   });
 };
+
+
+export const scEsrowTransfer = (from, to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta, successCb, windowCloseCb) => {
+
+  const win = new remote.BrowserWindow(windowSettings);
+
+  win.loadURL(`${helperUrl}/escrow-transfer?data=${encodeURIComponent(JSON.stringify({
+    'from': from,
+    'to': to,
+    'agent': agent,
+    'escrowId': escrowId,
+    'sbdAmount': sbdAmount,
+    'steemAmount': steemAmount,
+    'fee': fee,
+    'ratificationDeadline': ratificationDeadline,
+    'escrowExpiration': escrowExpiration,
+    'jsonMeta': jsonMeta
+  }))}`);
+
+  const htmlInt = setInterval(() => {
+    win.webContents.executeJavaScript(`document.body.innerHTML`, true).then((result) => {
+      if (result.includes('<h2><span>Congratulations</span></h2>')) {
+        successCb();
+        win.close();
+      }
+    })
+  }, 1500);
+
+  win.on('closed', () => {
+    clearInterval(htmlInt);
+    windowCloseCb();
+  });
+};

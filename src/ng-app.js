@@ -48,6 +48,7 @@ import draftsCtrl from './controllers/drafts';
 import schedulesCtrl from './controllers/schedules';
 import galleryCtrl from './controllers/gallery';
 import {transferCtrl} from './controllers/transfer';
+import escrowCtrl from './controllers/escrow';
 
 
 import faqCtrl from './controllers/faq';
@@ -81,7 +82,6 @@ import commentEditorDir from './directives/comment-editor';
 import draftListItemDir from './directives/draft-list-item';
 import scheduleListItemDir from './directives/schedule-list-item';
 import galleryListItemDir from './directives/gallery-list-item';
-
 
 // Services
 import steemService from './services/steem';
@@ -361,6 +361,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .controller('schedulesCtrl', schedulesCtrl)
   .controller('galleryCtrl', galleryCtrl)
   .controller('transferCtrl', transferCtrl)
+  .controller('escrowCtrl', escrowCtrl)
 
   .filter('catchPostImage', catchPostImageFilter)
   .filter('sumPostTotal', sumPostTotalFilter)
@@ -837,12 +838,33 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
     // EDITOR
     $rootScope.editorDraft = null;
 
-    // TRANSFERS
+    // TRANSFER
     $rootScope.openTransferWindow = (asset, afterTransfer) => {
       $uibModal.open({
         templateUrl: `templates/transfer.html`,
         controller: 'transferCtrl',
         windowClass: 'transfer-modal',
+        resolve: {
+          initialAsset: () => {
+            return asset;
+          },
+          afterTransfer: () => {
+            return afterTransfer;
+          }
+        }
+      }).result.then((data) => {
+        // Success
+      }, () => {
+        // Cancel
+      });
+    };
+
+    // ESCROW
+    $rootScope.openEscrowWindow = (asset, afterTransfer) => {
+      $uibModal.open({
+        templateUrl: `templates/escrow.html`,
+        controller: 'escrowCtrl',
+        windowClass: 'escrow-modal',
         resolve: {
           initialAsset: () => {
             return asset;

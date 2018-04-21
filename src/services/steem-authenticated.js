@@ -1,7 +1,7 @@
 import steem from 'steem';
 import sc2 from 'sc2-sdk';
 
-import {scAppAuth, scAppRevoke, scTransfer} from '../helpers/steem-connect-helper';
+import {scAppAuth, scAppRevoke, scTransfer, scEsrowTransfer} from '../helpers/steem-connect-helper';
 
 export default ($rootScope, steemApi, $q) => {
 
@@ -350,6 +350,32 @@ export default ($rootScope, steemApi, $q) => {
     return defer.promise;
   };
 
+  const escrowTransfer = (wif, from, to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta) => {
+    let defer = $q.defer();
+
+    steem.broadcast.escrowTransfer(wif, from, to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta, function (err, result) {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(result);
+      }
+    });
+
+    return defer.promise;
+  };
+
+  const escrowTransferSc = (from, to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta) => {
+    let defer = $q.defer();
+
+    scEsrowTransfer(from, to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta, () => {
+      defer.resolve('OK');
+    }, () => {
+      defer.reject(`The window closed before expected.`);
+    });
+
+    return defer.promise;
+  };
+
   const getProperWif = (r) => {
     for (let i of r) {
       if ($rootScope.user.keys[i]) {
@@ -475,6 +501,13 @@ export default ($rootScope, steemApi, $q) => {
         return transfer(wif, from, to, amount, memo);
       } else {
         return transferSc(from, to, amount, memo);
+      }
+    },
+    escrowTransfer: (wif = null, from, to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta) => {
+      if (wif) {
+        return escrowTransfer(wif, from, to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta);
+      } else {
+        return escrowTransferSc(from, to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta);
       }
     }
   }
