@@ -1,13 +1,3 @@
-const countDecimals = (a) => {
-  if (a === null) return a;
-  a = String(a)
-    .match(/[\d\.]+/g)
-    .join(''); // just dots and digits
-  const parts = a.split('.');
-  return parts.length > 2
-    ? undefined
-    : parts.length === 1 ? 0 : parts[1].length;
-};
 
 export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $window, $uibModal, $filter, steemService, steemAuthenticatedService, activeUsername, constants) => {
   let username = $routeParams.username;
@@ -446,8 +436,28 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     $scope.isMyPage = false;
   });
 
+  const openTransferWindow = (asset, afterTransfer) => {
+    $uibModal.open({
+      templateUrl: `templates/transfer.html`,
+      controller: 'transferCtrl',
+      windowClass: 'transfer-modal',
+      resolve: {
+        initialAsset: () => {
+          return asset;
+        },
+        afterTransfer: () => {
+          return afterTransfer;
+        }
+      }
+    }).result.then((data) => {
+      // Success
+    }, () => {
+      // Cancel
+    });
+  };
+
   $scope.transferClickedSteem = () => {
-    $rootScope.openTransferWindow('STEEM', () => {
+    openTransferWindow('STEEM', () => {
       loadAccount(true).then(() => {
         loadContents();
       });
@@ -455,10 +465,35 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
   };
 
   $scope.transferClickedSbd = () => {
-    $rootScope.openTransferWindow('SBD', () => {
+    openTransferWindow('SBD', () => {
       loadAccount(true).then(() => {
         loadContents();
       });
     });
-  }
+  };
+
+  const openEscrowWindow = (asset, afterTransfer) => {
+    $uibModal.open({
+      templateUrl: `templates/escrow.html`,
+      controller: 'escrowCtrl',
+      windowClass: 'escrow-modal',
+      resolve: {
+        initialAsset: () => {
+          return asset;
+        },
+        afterTransfer: () => {
+          return afterTransfer
+        }
+      }
+    }).result.then((data) => {
+      // Success
+    }, () => {
+      // Cancel
+    });
+  };
+
+  $scope.escrowClicked = () => {
+    openEscrowWindow('STEEM', () => {
+    });
+  };
 };

@@ -5,12 +5,16 @@
   <h4 class="modal-title">{{ 'ESCROW' | translate }} </h4>
 </div>
 <div class="modal-body">
-  <div class="form-horizontal">
+  <div ng-show="newEscrowId" class="text-center">
+    <h3>{{ 'TX_BROADCASTED' | translate }}</h3>
+    <p>{{ 'ESCROW' | translate }} {{ 'ID' | translate }}: {{ newEscrowId}}</p>
+  </div>
+  <div class="form-horizontal" ng-show="!newEscrowId">
     <div class="form-group">
       <label for="transfer-from" class="col-sm-3 control-label">{{ 'FROM' | translate }}</label>
       <div class="col-sm-9">
         <select class="form-control" id="transfer-from" ng-model="from" ng-options="x for x in accountList" ng-change="fromChanged()"></select>
-        <div class="alert alert-danger" style="margin-top: 5px" ng-if="keyRequired">{{ 'ACTIVE_KEY_REQUIRED_TRANSFER' | __ }}</div>
+        <div class="alert alert-danger" style="margin-top: 5px" ng-if="keyRequiredErr">{{ 'ACTIVE_KEY_REQUIRED_TRANSFER' | __ }}</div>
       </div>
     </div>
     <div class="form-group" ng-class="{'has-error': toErr, 'has-success': toData}">
@@ -21,7 +25,7 @@
             <span ng-if="!fetchingTo">@</span>
             <i ng-if="fetchingTo" class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
           </span>
-          <input type="text" class="form-control" id="escrow-to" ng-model="to" placeholder="{{ 'TO_DESC' | translate }}" ng-change="toChanged()" ng-blur="toLeaved()" />
+          <input type="text" class="form-control" id="escrow-to" ng-model="to" placeholder="{{ 'TO_DESC' | translate }}" ng-change="toChanged()"  />
         </div>
         <p class="help-block" ng-if="toErr">{{ toErr }}</p>
       </div>
@@ -34,7 +38,7 @@
             <span ng-if="!fetchingAgent">@</span>
             <i ng-if="fetchingAgent" class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
           </span>
-          <input type="text" class="form-control" id="escrow-agent" ng-model="agent" placeholder="{{ 'USERNAME' | translate }}" ng-change="agentChanged()"  ng-blur="agentLeaved()" />
+          <input type="text" class="form-control" id="escrow-agent" ng-model="agent" placeholder="{{ 'USERNAME' | translate }}" ng-change="agentChanged()" />
         </div>
         <p class="help-block" ng-if="agentErr">{{ agentErr }}</p>
         <div ng-if="agentData" style="margin-top: 10px">
@@ -82,6 +86,6 @@
     </div>
   </div>
 </div>
-<div class="modal-footer">
+<div class="modal-footer" ng-show="!newEscrowId">
   <button class="btn btn-primary" ng-click="submit()" ng-disabled="!canSubmit() || processing"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="processing"></i>  {{ 'SEND' | translate }}</button>
 </div>

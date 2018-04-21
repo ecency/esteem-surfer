@@ -35,6 +35,27 @@
                   <a ng-click="changeSection('wallet')">{{ 'WALLET' | translate }}</a>
                 </li>
               </ul>
+              <ul class="nav navbar-nav navbar-right" ng-if="section==='wallet' && isMyPage">
+                <li class="dropdown">
+                  <a ng-click="" class="dropdown-toggle" data-toggle="dropdown" role="button"><strong>{{ 'TRANSFER' | translate }}</strong> <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a ng-click="" login-required required-keys="'active'" on-login-success="transferClickedSteem">{{ 'TRANSFER' | translate }}</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a ng-click="transferToSavingsClicked()">Transfer to Savings</a></li>
+                    <li><a ng-click="withdrawClicked()">Withdraw from Savings</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a ng-click="" login-required required-keys="'active'" on-login-success="escrowClicked">{{ 'ESCROW' | translate }}</a></li>
+                    <li><a ng-click="escrowActionsClicked()">Escrow Actions</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a ng-click="" class="dropdown-toggle" data-toggle="dropdown" role="button"><strong>Vesting</strong> <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a ng-click="powerUpClicked()">Power Up</a></li>
+                    <li><a ng-click="powerDownClicked()">Power Down</a></li>
+                  </ul>
+                </li>
+              </ul>
             </div>
           </div>
         </nav>
@@ -107,15 +128,15 @@
             <div class="author-wallet" ng-if="section==='wallet'">
               <div class="row alternate" ng-if="has_unclaimed_rewards">
                 <div class="col-sm-12">
-                  <strong>{{ 'UNCLAIMED_REWARDS'|translate }}:</strong>
+                  <strong>{{ 'UNCLAIMED_REWARDS'|translate }}: </strong>
                   <span ng-if="authorData.reward_steem_balance.split(' ')[0]>0">
-                    {{ authorData.reward_steem_balance.split(' ')[0]}} {{ 'PLATFORM_L_UNIT' | __ }}
+                    {{ authorData.reward_steem_balance.split(' ')[0]}} STEEM
                   </span>
                   <span ng-if="authorData.reward_sbd_balance.split(' ')[0]>0">
-                    {{ authorData.reward_sbd_balance.split(' ')[0]}} {{ 'PLATFORM_D_UNIT' | __ }}
+                    {{ authorData.reward_sbd_balance.split(' ')[0]}} SBD
                   </span>
                   <span ng-if="authorData.reward_vesting_steem.split(' ')[0]>0">
-                    {{ authorData.reward_vesting_steem.split(' ')[0]}} {{ 'PLATFORM_P_UNIT' | __ }}
+                    {{ authorData.reward_vesting_steem.split(' ')[0]}} SP
                   </span>
                 </div>
               </div>
@@ -128,7 +149,8 @@
                   </p>
                 </div>
                 <div class="col-sm-6 col-value">
-                  {{ authorData.balance | money2Number | number }} {{ 'PLATFORM_L_UNIT' | __ }}
+                  {{ authorData.balance | money2Number | number }} STEEM
+                  <!--
                   <div class="btn-group" ng-if="isMyPage">
                     <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
                      <span class="caret"></span>
@@ -137,6 +159,7 @@
                       <li><a ng-click="" login-required required-keys="'active'" on-login-success="transferClickedSteem">{{ 'TRANSFER' | translate }}</a></li>
                     </ul>
                   </div>
+                  -->
                 </div>
               </div>
               <div class="row alternate">
@@ -148,13 +171,13 @@
                 </div>
                 <div class="col-sm-6 col-value">
                   <span>
-                    {{ authorData.vesting_shares | steemPower | number }} {{ 'PLATFORM_P_UNIT' | __ }}
+                    {{ authorData.vesting_shares | steemPower | number }} SP
                   </span>
                   <span ng-if="authorData.delegated_vesting_shares != '0.000000 VESTS'">
-                    -{{ authorData.delegated_vesting_shares | steemPower | number }} {{ 'PLATFORM_P_UNIT' | __ }}
+                    -{{ authorData.delegated_vesting_shares | steemPower | number }} SP
                   </span>
                   <span ng-if="authorData.received_vesting_shares != '0.000000 VESTS'">
-                    +{{ authorData.received_vesting_shares | steemPower | number }} {{ 'PLATFORM_P_UNIT' | __ }}
+                    +{{ authorData.received_vesting_shares | steemPower | number }} SP
                   </span>
                 </div>
               </div>
@@ -166,8 +189,8 @@
                   </p>
                 </div>
                 <div class="col-sm-6 col-value">
-                  {{ authorData.sbd_balance | money2Number | number }} {{ 'PLATFORM_D_UNIT' | __ }}
-
+                  {{ authorData.sbd_balance | money2Number | number }} SBD
+                  <!--
                   <div class="btn-group" ng-if="isMyPage">
                     <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
                       <span class="caret"></span>
@@ -176,17 +199,29 @@
                       <li><a ng-click="" login-required required-keys="'active'" on-login-success="transferClickedSbd">{{ 'TRANSFER' | translate }}</a></li>
                     </ul>
                   </div>
+                  -->
                 </div>
               </div>
-
               <div class="row alternate">
+                <div class="col-sm-6 col-key">
+                  <span>{{ 'SAVINGS' | __ }}</span>
+                  <p class="help-block">
+                  {{ 'PROFILE_SAVINGS_DESC' | __ }}
+                  </p>
+                </div>
+                <div class="col-sm-6 col-value">
+                  <span>{{ authorData.savings_balance | money2Number  }} STEEM</span>
+                  <span>{{ authorData.savings_sbd_balance | money2Number  }} SBD</span>
+                </div>
+              </div>
+              <div class="row">
                 <div class="col-sm-6 col-key">
                   <span>{{ 'ESTIMATED_VALUE' | translate }}</span>
                   <p class="help-block">
                     {{ 'PROFILE_4' | translate:translationData }}
                   </p>
                 </div>
-                <div class="col-sm-6 col-value">{{ $root.currency|currencySymbol }}
+                <div class="col-sm-6 col-value">{{ $root.currency | currencySymbol }}
                   {{ authorData.vesting_shares | steemDollar:authorData.balance:authorData.sbd_balance | number }}
                 </div>
               </div>

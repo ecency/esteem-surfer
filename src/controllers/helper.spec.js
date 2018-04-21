@@ -1,9 +1,9 @@
-import {amountFormatCheck, formatStrAmount} from './transfer.js';
+import {amountFormatCheck, formatStrAmount} from './helper.js';
 
 import {expect} from "chai";
 
 
-describe('Transfer Controller', () => {
+describe('Controller helper', () => {
   it('amountFormatCheck', () => {
     expect(amountFormatCheck('0.001')).to.deep.equal(true);
     expect(amountFormatCheck('1')).to.deep.equal(true);
