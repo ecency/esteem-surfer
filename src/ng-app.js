@@ -316,6 +316,25 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
       return null;
     };
   })
+  .factory('autoCancelTimeout', ($rootScope, $timeout) => {
+    return (fn, delay) => {
+      if ($rootScope.__timeouts === undefined) {
+        $rootScope.__timeouts = {};
+      }
+
+      const identifier = String(fn).hashCode();
+
+      if ($rootScope.__timeouts[identifier] !== undefined) {
+        $timeout.cancel($rootScope.__timeouts[identifier]);
+        $rootScope.__timeouts[identifier] = undefined;
+      }
+
+      $rootScope.__timeouts[identifier] = $timeout(() => {
+        fn();
+        $rootScope.__timeouts[identifier] = undefined;
+      }, delay);
+    }
+  })
 
   .directive('navBar', navBarDir)
   .directive('appFooter', footerDir)
@@ -488,6 +507,10 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
           return 'Use only 3 digits of precision';
         case 'INSUFFICIENT_FUNDS':
           return 'Insufficient funds';
+        case 'SAVINGS':
+          return 'Savings';
+        case 'PROFILE_SAVINGS_DESC':
+          return 'Balance subject to 3 day withdraw waiting period.';
         default:
           return s;
       }
@@ -837,48 +860,6 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
 
     // EDITOR
     $rootScope.editorDraft = null;
-
-    // TRANSFER
-    $rootScope.openTransferWindow = (asset, afterTransfer) => {
-      $uibModal.open({
-        templateUrl: `templates/transfer.html`,
-        controller: 'transferCtrl',
-        windowClass: 'transfer-modal',
-        resolve: {
-          initialAsset: () => {
-            return asset;
-          },
-          afterTransfer: () => {
-            return afterTransfer;
-          }
-        }
-      }).result.then((data) => {
-        // Success
-      }, () => {
-        // Cancel
-      });
-    };
-
-    // ESCROW
-    $rootScope.openEscrowWindow = (asset, afterTransfer) => {
-      $uibModal.open({
-        templateUrl: `templates/escrow.html`,
-        controller: 'escrowCtrl',
-        windowClass: 'escrow-modal',
-        resolve: {
-          initialAsset: () => {
-            return asset;
-          },
-          afterTransfer: () => {
-            return afterTransfer
-          }
-        }
-      }).result.then((data) => {
-        // Success
-      }, () => {
-        // Cancel
-      });
-    };
 
 
     // Error messages to show user when remote server errors occurred

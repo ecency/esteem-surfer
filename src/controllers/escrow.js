@@ -1,22 +1,8 @@
 import moment from 'moment';
 
+import {amountFormatCheck, formatStrAmount} from './helper';
 
-export const amountFormatCheck = (v) => {
-  return /^\d+(\.\d+)?$/.test(v);
-};
-
-export const formatStrAmount = (strAmount, asset) => {
-  return `${parseFloat(strAmount).toFixed(3)} ${asset}`;
-};
-
-
-export default ($scope, $rootScope, $filter, $uibModalInstance, steemService, userService, steemAuthenticatedService, activeUsername, initialAsset, afterTransfer) => {
-
-  $scope.lookupAccounts = (val) => {
-    return steemService.lookupAccounts(val, 5).then((resp) => {
-      return resp;
-    });
-  };
+export default ($scope, $rootScope, $filter, $uibModalInstance, autoCancelTimeout, steemService, userService, steemAuthenticatedService, activeUsername, initialAsset, afterTransfer) => {
 
   const accountList = userService.getAll();
 
@@ -39,8 +25,6 @@ export default ($scope, $rootScope, $filter, $uibModalInstance, steemService, us
   $scope.memo = '';
   $scope.deadline = moment().add(1, 'hour').startOf('hour').seconds(0).milliseconds(0).toDate();
   $scope.expiration = moment().add(2, 'hour').startOf('hour').seconds(0).milliseconds(0).toDate();
-
-  $scope.keyRequired = false;
   $scope.balance = '0';
 
   $scope.toData = null;
@@ -50,87 +34,78 @@ export default ($scope, $rootScope, $filter, $uibModalInstance, steemService, us
   $scope.agentErr = null;
   $scope.amountErr = null;
 
+  $scope.newEscrowId = null;
+
   $scope.fromChanged = () => {
-    $scope.keyRequired = false;
+    $scope.keyRequiredErr = false;
     const a = getAccount($scope.from);
     if (a.type === 's' && !a.keys.active) {
-      $scope.keyRequired = true;
+      $scope.keyRequiredErr = true;
     }
     loadFromAccount();
   };
 
   $scope.toChanged = () => {
     $scope.toErr = null;
-  };
-
-  $scope.toLeaved = () => {
-    // Empty
-    if (!$scope.to) {
-      $scope.toData = null;
-      return false;
-    }
-
-    // Not empty but did not changed
-    if ($scope.toData && $scope.toData.name === $scope.to) {
-      return;
-    }
-
     $scope.toData = null;
-    $scope.fetchingTo = true;
 
-    steemService.getAccounts([$scope.to]).then((resp) => {
-      if (resp.length === 0) {
-        $scope.toErr = $filter('translate')('NONEXIST_USER');
-        return;
+    autoCancelTimeout(() => {
+      if (!$scope.to) {
+        return false;
       }
 
-      $scope.toData = resp[0];
+      $scope.toData = null;
+      $scope.fetchingTo = true;
 
-    }).catch((e) => {
-      $rootScope.showError(e);
-    }).then((resp) => {
-      $scope.fetchingTo = false;
-    });
+      steemService.getAccounts([$scope.to]).then((resp) => {
+        if (resp.length === 0) {
+          $scope.toErr = $filter('translate')('NONEXIST_USER');
+          return;
+        }
+
+        $scope.toData = resp[0];
+      }).catch((e) => {
+        $rootScope.showError(e);
+      }).then((resp) => {
+        $scope.fetchingTo = false;
+      });
+    }, 700);
   };
 
   $scope.agentChanged = () => {
     $scope.agentErr = null;
-  };
-
-  $scope.agentLeaved = () => {
-    // Empty
-    if (!$scope.agent) {
-      $scope.agentData = null;
-      return false;
-    }
-
-    // Not empty but did not changed
-    if ($scope.agentData && $scope.agentData.name === $scope.agent) {
-      return;
-    }
-
     $scope.agentData = null;
-    $scope.fetchingAgent = true;
 
-    steemService.getAccounts([$scope.agent]).then((resp) => {
-      if (resp.length === 0) {
-        $scope.agentErr = $filter('translate')('NONEXIST_USER');
-        return;
+    autoCancelTimeout(() => {
+      if (!$scope.agent) {
+        return false;
       }
 
-      $scope.agentData = resp[0];
-      let jm = {};
-      try {
-        jm = JSON.parse($scope.agentData.json_metadata);
-      } catch (e) { }
+      $scope.agentData = null;
+      $scope.fetchingAgent = true;
 
-      $scope.agentData.escrowInfo = (jm.escrow || {terms: "-", fees: {'STEEM': 0.001, 'SBD': 0.001}});
+      steemService.getAccounts([$scope.agent]).then((resp) => {
+        if (resp.length === 0) {
+          $scope.agentErr = $filter('translate')('NONEXIST_USER');
+          return;
+        }
 
-    }).catch((e) => {
-      $rootScope.showError(e);
-    }).then((resp) => {
-      $scope.fetchingAgent = false;
-    });
+        $scope.agentData = resp[0];
+        let jm = {};
+        try {
+          jm = JSON.parse($scope.agentData.json_metadata);
+        } catch (e) {
+        }
+
+        $scope.agentData.escrowInfo = (jm.escrow || {terms: "-", fees: {'STEEM': 0.001, 'SBD': 0.001}});
+
+      }).catch((e) => {
+        $rootScope.showError(e);
+      }).then((resp) => {
+        $scope.fetchingAgent = false;
+      });
+
+    }, 700);
   };
 
   $scope.amountChanged = () => {
@@ -191,7 +166,15 @@ export default ($scope, $rootScope, $filter, $uibModalInstance, steemService, us
   loadFromAccount();
 
   $scope.canSubmit = () => {
-    return $scope.toData && $scope.agentData && $scope.deadline && $scope.expiration && !$scope.fetchingTo && !$scope.fetchingAgent && !$scope.fetchingFromAccount && !$scope.amountErr;
+    return $scope.toData &&
+      $scope.agentData &&
+      $scope.deadline &&
+      $scope.expiration &&
+      !$scope.amountErr &&
+      !$scope.keyRequiredErr &&
+      !$scope.fetchingTo &&
+      !$scope.fetchingAgent &&
+      !$scope.fetchingFromAccount;
   };
 
   $scope.submit = () => {
@@ -215,28 +198,13 @@ export default ($scope, $rootScope, $filter, $uibModalInstance, steemService, us
 
     $scope.processing = true;
     steemAuthenticatedService.escrowTransfer(wif, from, to, agent, escrowId, sbd, steem, fee, deadlineDate, expirationDate, JSON.stringify(jsonMeta)).then((resp) => {
-      console.log(resp);
-
-      const m = `${$filter('translate')('TX_BROADCASTED')} ${$filter('translate')('ESCROW')} ${$filter('translate')('ID')} : ${escrowId}`;
-      $rootScope.showSuccess(m);
+      $scope.newEscrowId = escrowId;
       afterTransfer();
-      $scope.close();
     }).catch((e) => {
       $rootScope.showError(e);
     }).then((resp) => {
       $scope.processing = false;
     });
-
-    /*
-    console.log(`escrowId: ${escrowId}`);
-    console.log(`amount: ${amount}`);
-    console.log(`sbd: ${sbd}`);
-    console.log(`steem: ${steem}`);
-    console.log(`fee: ${fee}`);
-    console.log(`deadlineDate: ${deadlineDate}`);
-    console.log(`expirationDate: ${expirationDate}`);
-    console.log(`jm: ${JSON.stringify(jm)}`);
-    */
   };
 
   $scope.close = () => {

@@ -100,16 +100,6 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
         $location.path(`/account/${activeUsername()}/wallet`);
       };
 
-      $scope.transferClicked = () => {
-        $rootScope.openTransferWindow('STEEM', () => {
-        });
-      };
-
-      $scope.escrowClicked = () => {
-        $rootScope.openEscrowWindow('STEEM', () => {
-        });
-      };
-
       $scope.bookmarksClicked = () => {
         $uibModal.open({
           templateUrl: 'templates/bookmarks.html',

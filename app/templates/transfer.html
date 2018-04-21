@@ -10,14 +10,17 @@
       <label for="transfer-from" class="col-sm-2 control-label">{{ 'FROM' | translate }}</label>
       <div class="col-sm-10">
         <select class="form-control" id="transfer-from" ng-model="from" ng-options="x for x in accountList" ng-change="fromChanged()"></select>
-        <div class="alert alert-danger" style="margin-top: 5px" ng-if="keyRequired">{{ 'ACTIVE_KEY_REQUIRED_TRANSFER' | __ }}</div>
+        <div class="alert alert-danger" style="margin-top: 5px" ng-if="keyRequiredErr">{{ 'ACTIVE_KEY_REQUIRED_TRANSFER' | __ }}</div>
       </div>
     </div>
-    <div class="form-group" ng-class="{'has-error': toErr}">
+    <div class="form-group" ng-class="{'has-error': toErr, 'has-success': toData}">
       <label for="transfer-to" class="col-sm-2 control-label">{{ 'TO' | translate }}</label>
       <div class="col-sm-10">
         <div class="input-group">
-          <span class="input-group-addon">@</span>
+          <span class="input-group-addon">
+            <span ng-if="!fetchingTo">@</span>
+            <i ng-if="fetchingTo" class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
+          </span>
           <input type="text" class="form-control" id="transfer-to" auto-focus ng-model="to" placeholder="{{ 'TO_DESC' | translate }}" ng-change="toChanged()">
         </div>
         <p class="help-block" ng-if="toErr">{{ toErr }}</p>
@@ -51,5 +54,5 @@
   </div>
 </div>
 <div class="modal-footer">
-  <button class="btn btn-primary" ng-click="send()" ng-disabled="!canSend() || processing"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="processing"></i>  {{ 'SEND' | translate }}</button>
+  <button class="btn btn-primary" ng-click="submit()" ng-disabled="!canSubmit() || processing"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="processing"></i>  {{ 'SEND' | translate }}</button>
 </div>

@@ -1,13 +1,6 @@
+import {amountFormatCheck, formatStrAmount} from './helper';
 
-export const amountFormatCheck = (v) => {
-  return /^\d+(\.\d+)?$/.test(v);
-};
-
-export const formatStrAmount = (strAmount, asset) => {
-  return `${parseFloat(strAmount).toFixed(3)} ${asset}`;
-};
-
-export const transferCtrl = ($scope, $rootScope, $filter, $uibModalInstance, steemService, steemAuthenticatedService, userService, activeUsername, initialAsset, afterTransfer) => {
+export const transferCtrl = ($scope, $rootScope, $filter, $uibModalInstance, autoCancelTimeout, steemService, steemAuthenticatedService, userService, activeUsername, initialAsset, afterTransfer) => {
 
   const accountList = userService.getAll();
 
@@ -27,23 +20,47 @@ export const transferCtrl = ($scope, $rootScope, $filter, $uibModalInstance, ste
   $scope.amount = '0.001';
   $scope.asset = initialAsset;
   $scope.memo = '';
-  $scope.keyRequired = false;
   $scope.balance = '0';
+  $scope.toData = null;
 
+  $scope.keyRequiredErr = false;
   $scope.toErr = null;
   $scope.amountErr = null;
 
   $scope.fromChanged = () => {
-    $scope.keyRequired = false;
+    $scope.keyRequiredErr = false;
     const a = getAccount($scope.from);
     if (a.type === 's' && !a.keys.active) {
-      $scope.keyRequired = true;
+      $scope.keyRequiredErr = true;
     }
-    loadAccount();
+    loadFromAccount();
   };
 
   $scope.toChanged = () => {
     $scope.toErr = null;
+    $scope.toData = null;
+
+    autoCancelTimeout(() => {
+      if (!$scope.to) {
+        return false;
+      }
+
+      $scope.toData = null;
+      $scope.fetchingTo = true;
+
+      steemService.getAccounts([$scope.to]).then((resp) => {
+        if (resp.length === 0) {
+          $scope.toErr = $filter('translate')('NONEXIST_USER');
+          return;
+        }
+
+        $scope.toData = resp[0];
+      }).catch((e) => {
+        $rootScope.showError(e);
+      }).then((resp) => {
+        $scope.fetchingTo = false;
+      });
+    }, 700);
   };
 
   $scope.amountChanged = () => {
@@ -80,8 +97,8 @@ export const transferCtrl = ($scope, $rootScope, $filter, $uibModalInstance, ste
     $scope.amountChanged();
   };
 
-  const loadAccount = () => {
-    $scope.fetching = true;
+  const loadFromAccount = () => {
+    $scope.fetchingFromAccount = true;
 
     steemService.getAccounts([$scope.from]).then((resp) => {
       return resp[0];
@@ -89,7 +106,7 @@ export const transferCtrl = ($scope, $rootScope, $filter, $uibModalInstance, ste
       $scope.close();
       $rootScope.showError(e);
     }).then((resp) => {
-      $scope.fetching = false;
+      $scope.fetchingFromAccount = false;
       $scope.account = resp;
       $scope.balance = getBalance($scope.asset);
       $scope.amountChanged();
@@ -101,37 +118,27 @@ export const transferCtrl = ($scope, $rootScope, $filter, $uibModalInstance, ste
     return $scope.account[k].split(' ')[0];
   };
 
-  loadAccount();
+  loadFromAccount();
 
-  $scope.canSend = () => {
-    return $scope.to && !$scope.toErr && !$scope.amountErr && !$scope.fetching;
+  $scope.canSubmit = () => {
+    return $scope.toData &&
+      !$scope.amountErr &&
+      !$scope.keyRequiredErr &&
+      !$scope.fetchingTo &&
+      !$scope.fetchingFromAccount;
   };
 
-  $scope.send = async () => {
+  $scope.submit = () => {
 
     const from = $scope.from;
     const to = $scope.to.trim();
     const amount = formatStrAmount($scope.amount, $scope.asset);
     const memo = $scope.memo.trim();
 
-    $scope.processing = true;
-
-    const toAccount = await steemService.getAccounts([to]).then((resp) => {
-      return resp[0];
-    }).catch((e) => {
-      $rootScope.showError(e);
-    });
-
-    if (!toAccount) {
-      $scope.toErr = $filter('translate')('NONEXIST_USER');
-      $scope.processing = false;
-      $scope.$applyAsync();
-      return;
-    }
-
     const fromAccount = getAccount(from);
     const wif = fromAccount.type === 's' ? fromAccount.keys.active : null;
 
+    $scope.processing = true;
     steemAuthenticatedService.transfer(wif, from, to, amount, memo).then((resp) => {
       afterTransfer();
       $scope.close();
