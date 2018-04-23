@@ -9,6 +9,7 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
     },
     templateUrl: 'templates/directives/navbar.html',
     controller: ($scope, $rootScope, $location, $filter, constants, steemService) => {
+
       $scope.filters = constants.filters;
       $scope.selectedFilterName = $scope.filters.find(i => i.name === $rootScope.selectedFilter).key;
 
@@ -180,7 +181,16 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
         }
 
         $scope.$applyAsync();
-      }
+      };
+
+      $scope.username = activeUsername();
+      $rootScope.$on('userLoggedIn', () => {
+        $scope.username = activeUsername();
+      });
+
+      $rootScope.$on('userLoggedOut', () => {
+        $scope.username = null;
+      });
     }
   };
 };

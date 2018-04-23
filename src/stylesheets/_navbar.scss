@@ -168,9 +168,17 @@
         width: 138px;
 
         li {
+
+          &.username {
+            color: $textColorLightest;
+            font-weight: bold;
+            padding: 10px 17px;
+          }
+
           a {
-            padding-bottom: 10px;
-            padding-top: 10px;
+            padding-bottom: 8px;
+            padding-top: 8px;
+            transition:all 0.3s ease;
           }
         }
       }
@@ -201,6 +209,7 @@
         a {
           padding-bottom: 10px;
           padding-top: 10px;
+          transition:all 0.3s ease;
         }
       }
     }
