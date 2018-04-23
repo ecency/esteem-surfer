@@ -24,6 +24,12 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
         $location.path(u);
       };
 
+      $scope.filterDblClicked = () => {
+        if (!($scope.selectedSection === 'filters' || $scope.selectedSection === 'feed')) {
+          $scope.filterClicked($rootScope.selectedFilter);
+        }
+      };
+
       $scope.tokenExchangeClicked = () => {
         $location.path('/token-exchange');
       };

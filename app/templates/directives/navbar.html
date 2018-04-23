@@ -7,7 +7,7 @@
       <div class="navbar-back" ng-class="{'hide-it': $root.navHistory.length===0}"><a ng-click="$root.goBack()" title="{{ 'GO_BACK' | __ }}"><i class="fa fa-chevron-circle-left"></i></a></div>
       <ul class="nav navbar-nav">
         <li class="dropdown filter-dropdown" ng-class="{'active': selectedSection==='filters' || selectedSection==='feed'}">
-          <a ng-click="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+          <a ng-click="" ng-dblclick="filterDblClicked()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
              aria-expanded="false">{{ selectedFilterName|translate }} <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li ng-class="{'active': selectedSection=='feed'}" ng-if="$root.user"><a ng-click="feedClicked()">{{ 'FEED' | translate }}</a></li>

@@ -1,6 +1,7 @@
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss";
 
 .app-navbar {
+  user-select: none;
 
   background-color: $navbarBgColorDefault;
 
