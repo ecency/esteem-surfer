@@ -25,7 +25,7 @@ export default () => {
     controller: ($scope, $rootScope, $location, $filter, $window, eSteemService, activeUsername) => {
 
       $scope.deleting = false;
-      $scope.tags = $scope.draft.tags.replace(/ /g, ', ');
+      $scope.tags = $scope.draft.tags ? $scope.draft.tags.replace(/ /g, ', ') : '';
 
       $scope.clicked = (draft) => {
         $rootScope.editorDraft = {
