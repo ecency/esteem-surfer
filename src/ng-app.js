@@ -519,6 +519,8 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
           return 'Cover image url';
         case 'ACCOUNT_PROFILE_UPDATED':
           return 'Profile updated!';
+        case 'WITHDRAW_FROM_SAVINGS':
+          return 'Withdraw from Savings';
         default:
           return s;
       }
