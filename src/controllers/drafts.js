@@ -5,7 +5,13 @@ export default ($scope, $rootScope, eSteemService, activeUsername) => {
 
   const fetchDrafts = () => {
     eSteemService.getDrafts(activeUsername()).then((resp) => {
-      $scope.drafts = resp.data;
+      const d = [];
+      for (let i of resp.data) {
+        if (i) {
+          d.push(i);
+        }
+      }
+      $scope.drafts = d;
     }).catch((e) => {
       $rootScope.showError(e);
     }).then(() => {
