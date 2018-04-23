@@ -64,8 +64,9 @@
       </div>
       <div class="post-comment-list" ng-if="!loadingRest && commentsLength">
         <div class="comment-list-header">
+
           <div class="list-pagination">
-            <span class="page-label">page:</span>
+            <span class="page-label">{{ 'COMMENTS_PAGE' | __ }}:</span>
             <span class="cur-page">{{ commentsCurPage }}</span><span
             class="total-pages">{{ commentsTotalPages }}</span>
             <a class="btn-prev" ng-class="{'disabled': !commentsHasPrev}" ng-click="commentsGoPrev()"><i
@@ -73,11 +74,16 @@
             <a class="btn-next" ng-class="{'disabled': !commentsHasNext}" ng-click="commentsGoNext()"><i
               class="fa fa-chevron-right"></i></a>
           </div>
+          <div class="list-sorting">
+            {{ 'COMMENT_SORT_ORDER' | __ }}: <select  ng-model="commentSorting.model" ng-change="commentSortFieldChanged()">
+              <option ng-repeat="option in commentSorting.opts" value="{{option.value}}">{{option.name}}</option>
+            </select>
+          </div>
         </div>
         <comment-list comments="comments"></comment-list>
         <div class="comment-list-footer">
           <div class="list-pagination">
-            <span class="page-label">{{ 'COMMENTS_PAGE' | __ }}</span>
+            <span class="page-label">{{ 'COMMENTS_PAGE' | __ }}:</span>
             <span class="cur-page">{{ commentsCurPage }}</span><span
             class="total-pages">{{ commentsTotalPages }}</span>
             <a class="btn-prev" ng-class="{'disabled': !commentsHasPrev}" ng-click="commentsGoPrev()"><i
