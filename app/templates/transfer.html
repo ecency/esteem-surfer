@@ -2,7 +2,9 @@
   <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'CANCEL' | translate }}" ng-click="close()">
     <span aria-hidden="true">&times;</span>
   </button>
-  <h4 class="modal-title">{{ 'TRANSFER' | translate }} </h4>
+  <h4 class="modal-title" ng-if="mode==='normal'">{{ 'TRANSFER' | translate }} </h4>
+  <h4 class="modal-title" ng-if="mode==='to_savings'">{{ 'TRANSFER_TO_SAVINGS' | translate }} </h4>
+  <h4 class="modal-title" ng-if="mode==='from_savings'">{{ 'WITHDRAW_FROM_SAVINGS' | __ }} </h4>
 </div>
 <div class="modal-body">
   <div class="form-horizontal">
@@ -21,7 +23,7 @@
             <span ng-if="!fetchingTo">@</span>
             <i ng-if="fetchingTo" class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
           </span>
-          <input type="text" class="form-control" id="transfer-to" auto-focus ng-model="to" placeholder="{{ 'TO_DESC' | translate }}" ng-change="toChanged()">
+          <input type="text" class="form-control" id="transfer-to" ng-model="to" placeholder="{{ 'TO_DESC' | translate }}" ng-change="toChanged()">
         </div>
         <p class="help-block" ng-if="toErr">{{ toErr }}</p>
       </div>

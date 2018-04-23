@@ -1,6 +1,9 @@
 import {amountFormatCheck, formatStrAmount} from './helper';
 
-export const transferCtrl = ($scope, $rootScope, $filter, $uibModalInstance, autoCancelTimeout, steemService, steemAuthenticatedService, userService, activeUsername, initialAsset, afterTransfer) => {
+export const transferCtrl = ($scope, $rootScope, $timeout, $filter, $uibModalInstance, autoCancelTimeout, steemService, steemAuthenticatedService, userService, activeUsername, initialAsset, mode, afterTransfer) => {
+
+
+  $scope.mode = mode;
 
   const accountList = userService.getAll();
 
@@ -114,6 +117,12 @@ export const transferCtrl = ($scope, $rootScope, $filter, $uibModalInstance, aut
   };
 
   const getBalance = (asset) => {
+
+    if (mode === 'from_savings') {
+      const k = (asset === 'STEEM' ? 'savings_balance' : 'savings_sbd_balance');
+      return $scope.account[k].split(' ')[0];
+    }
+
     const k = (asset === 'STEEM' ? 'balance' : 'sbd_balance');
     return $scope.account[k].split(' ')[0];
   };
@@ -139,7 +148,21 @@ export const transferCtrl = ($scope, $rootScope, $filter, $uibModalInstance, aut
     const wif = fromAccount.type === 's' ? fromAccount.keys.active : null;
 
     $scope.processing = true;
-    steemAuthenticatedService.transfer(wif, from, to, amount, memo).then((resp) => {
+    let prms = '';
+    switch (mode) {
+      case 'normal':
+        prms = steemAuthenticatedService.transfer(wif, from, to, amount, memo);
+        break;
+      case 'to_savings':
+        prms = steemAuthenticatedService.transferToSavings(wif, from, to, amount, memo);
+        break;
+      case 'from_savings':
+        const requestId = (new Date().getTime()) >>> 0;
+        prms = steemAuthenticatedService.transferFromSavings(wif, from, requestId, to, amount, memo);
+        break;
+    }
+
+    prms.then((resp) => {
       afterTransfer();
       $scope.close();
       $rootScope.showSuccess($filter('translate')('TX_BROADCASTED'));
@@ -149,6 +172,19 @@ export const transferCtrl = ($scope, $rootScope, $filter, $uibModalInstance, aut
       $scope.processing = false;
     });
   };
+
+  $timeout(() => {
+    if (mode === 'normal') {
+      document.getElementById('transfer-to').focus();
+    } else {
+      $scope.to = activeUsername();
+      $scope.toChanged();
+
+      document.getElementById('transfer-amount').focus();
+    }
+
+  }, 500);
+
 
   $scope.close = () => {
     $uibModalInstance.dismiss('cancel');

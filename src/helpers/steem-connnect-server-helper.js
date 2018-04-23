@@ -92,6 +92,22 @@ export const startHelperServer = () => {
     }
   );
 
+  expressApp.get('/transfer-to-savings', (req, res) => {
+      const data = JSON.parse(decodeURIComponent(req.query.data));
+      const transferUrl = `https://steemconnect.com/sign/transfer-to-savings?from=${encodeURIComponent(data.from)}&to=${encodeURIComponent(data.to)}&amount=${encodeURIComponent(data.amount)}&memo=${encodeURIComponent(data.memo)}`;
+      const content = makeRedirectingContent(transferUrl);
+      res.send(content);
+    }
+  );
+
+  expressApp.get('/transfer-from-savings', (req, res) => {
+      const data = JSON.parse(decodeURIComponent(req.query.data));
+      const transferUrl = `https://steemconnect.com/sign/transfer-from-savings?from=${encodeURIComponent(data.from)}&request_id=${encodeURIComponent(data.requestId)}&to=${encodeURIComponent(data.to)}&amount=${encodeURIComponent(data.amount)}&memo=${encodeURIComponent(data.memo)}`;
+      const content = makeRedirectingContent(transferUrl);
+      res.send(content);
+    }
+  );
+
   expressApp.get('/escrow-transfer', (req, res) => {
       const data = JSON.parse(decodeURIComponent(req.query.data));
       const transferUrl = `https://steemconnect.com/sign/escrow-transfer?from=${encodeURIComponent(data.from)}&to=${encodeURIComponent(data.to)}&agent=${encodeURIComponent(data.agent)}&escrow_id=${encodeURIComponent(data.escrowId)}&sbd_amount=${encodeURIComponent(data.sbdAmount)}&steem_amount=${encodeURIComponent(data.steemAmount)}&fee=${encodeURIComponent(data.fee)}&ratification_deadline=${encodeURIComponent(data.ratificationDeadline)}&escrow_expiration=${encodeURIComponent(data.escrowExpiration)}&json_meta=${encodeURIComponent(data.jsonMeta)}`;

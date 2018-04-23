@@ -44,8 +44,8 @@
                   <ul class="dropdown-menu">
                     <li><a ng-click="" login-required required-keys="'active'" on-login-success="transferClickedSteem">{{ 'TRANSFER' | translate }}</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a ng-click="transferToSavingsClicked()">Transfer to Savings</a></li>
-                    <li><a ng-click="withdrawClicked()">Withdraw from Savings</a></li>
+                    <li><a ng-click="" login-required required-keys="'active'" on-login-success="transferToSavingsClicked">{{ 'TRANSFER_TO_SAVINGS' | translate }}</a></li>
+                    <li><a ng-click="" login-required required-keys="'active'" on-login-success="transferFromSavingsClicked">{{ 'WITHDRAW_FROM_SAVINGS' | __ }}</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a ng-click="" login-required required-keys="'active'" on-login-success="escrowClicked">{{ 'ESCROW' | translate }}</a></li>
                     <li><a ng-click="escrowActionsClicked()">Escrow Actions</a></li>

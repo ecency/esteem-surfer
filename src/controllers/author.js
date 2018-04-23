@@ -464,7 +464,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     $scope.isMyPage = false;
   });
 
-  const openTransferWindow = (asset, afterTransfer) => {
+  const openTransferWindow = (asset, mode, afterTransfer) => {
     $uibModal.open({
       templateUrl: `templates/transfer.html`,
       controller: 'transferCtrl',
@@ -475,6 +475,9 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
         },
         afterTransfer: () => {
           return afterTransfer;
+        },
+        mode: () => {
+          return mode;
         }
       }
     }).result.then((data) => {
@@ -485,7 +488,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
   };
 
   $scope.transferClickedSteem = () => {
-    openTransferWindow('STEEM', () => {
+    openTransferWindow('STEEM', 'normal', () => {
       loadAccount(true).then(() => {
         loadContents();
       });
@@ -493,7 +496,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
   };
 
   $scope.transferClickedSbd = () => {
-    openTransferWindow('SBD', () => {
+    openTransferWindow('SBD', 'normal', () => {
       loadAccount(true).then(() => {
         loadContents();
       });
@@ -522,6 +525,22 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
 
   $scope.escrowClicked = () => {
     openEscrowWindow('STEEM', () => {
+    });
+  };
+
+  $scope.transferToSavingsClicked = () => {
+    openTransferWindow('STEEM', 'to_savings', () => {
+      loadAccount(true).then(() => {
+        loadContents();
+      });
+    });
+  };
+
+  $scope.transferFromSavingsClicked = () => {
+    openTransferWindow('STEEM', 'from_savings', () => {
+      loadAccount(true).then(() => {
+        loadContents();
+      });
     });
   };
 };

@@ -127,6 +127,58 @@ export const scTransfer = (from, to, amount, memo, successCb, windowCloseCb) => 
   });
 };
 
+export const scTransferToSavings = (from, to, amount, memo, successCb, windowCloseCb) => {
+
+  const win = new remote.BrowserWindow(windowSettings);
+
+  win.loadURL(`${helperUrl}/transfer-to-savings?data=${encodeURIComponent(JSON.stringify({
+    'from': from,
+    'to': to,
+    'amount': amount,
+    'memo': memo
+  }))}`);
+
+  const htmlInt = setInterval(() => {
+    win.webContents.executeJavaScript(`document.body.innerHTML`, true).then((result) => {
+      if (result.includes('<h2><span>Congratulations</span></h2>')) {
+        successCb();
+        win.close();
+      }
+    })
+  }, 1500);
+
+  win.on('closed', () => {
+    clearInterval(htmlInt);
+    windowCloseCb();
+  });
+};
+
+export const scTransferFromSavings = (from, requestId, to, amount, memo, successCb, windowCloseCb) => {
+
+  const win = new remote.BrowserWindow(windowSettings);
+
+  win.loadURL(`${helperUrl}/transfer-from-savings?data=${encodeURIComponent(JSON.stringify({
+    'from': from,
+    'requestId': requestId,
+    'to': to,
+    'amount': amount,
+    'memo': memo
+  }))}`);
+
+  const htmlInt = setInterval(() => {
+    win.webContents.executeJavaScript(`document.body.innerHTML`, true).then((result) => {
+      if (result.includes('<h2><span>Congratulations</span></h2>')) {
+        successCb();
+        win.close();
+      }
+    })
+  }, 1500);
+
+  win.on('closed', () => {
+    clearInterval(htmlInt);
+    windowCloseCb();
+  });
+};
 
 export const scEsrowTransfer = (from, to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta, successCb, windowCloseCb) => {
 
