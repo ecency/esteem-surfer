@@ -422,7 +422,17 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
         case 'NO_COMMENTS_YET':
           return 'No comments yet';
         case 'COMMENTS_PAGE':
-          return 'page:';
+          return 'Page';
+        case 'COMMENT_SORT_ORDER':
+          return 'Sort Order';
+        case 'COMMENT_SORT_ORDER_TRENDING':
+          return 'Trending';
+        case 'COMMENT_SORT_ORDER_AUTHOR_REPUTATION':
+          return 'Reputation';
+        case 'COMMENT_SORT_ORDER_VOTES':
+          return 'Votes';
+        case 'COMMENT_SORT_ORDER_CREATED':
+          return 'Age';
         case 'TOKEN_EXCHANGE':
           return 'Token Exchange';
         case 'DISCOVER':

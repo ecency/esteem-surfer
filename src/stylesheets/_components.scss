@@ -1128,6 +1128,7 @@ STRUCTURE:
       .list-pagination {
         float: right;
 
+
         .page-label, .cur-page, .total-pages {
           color: $textColorLight
         }
@@ -1153,6 +1154,12 @@ STRUCTURE:
           margin-right: 5px;
         }
 
+      }
+
+      .list-sorting{
+        color: $textColorLight;
+        float: right;
+        margin-right: 20px;
       }
     }
   }
@@ -2111,10 +2118,10 @@ STRUCTURE:
 
 .transfer-modal, .escrow-modal {
   .balance-block {
-    color: $textColorLight;
-    margin: 4px 0;
     border-bottom: 1px dotted $textColor;
+    color: $textColorLight;
     display: inline-block;
+    margin: 4px 0;
 
     .copy-balance {
       cursor: pointer;

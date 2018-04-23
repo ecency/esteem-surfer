@@ -1,4 +1,6 @@
-export default ($scope, $rootScope, $routeParams, $timeout, $uibModal, $location, $q, steemService, eSteemService, helperService, activeUsername, constants) => {
+import {authorReputation} from '../filters/author-reputation';
+
+export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, $location, $q, steemService, eSteemService, helperService, activeUsername, constants) => {
 
   let parent = $routeParams.parent;
   let author = $routeParams.author;
@@ -21,7 +23,62 @@ export default ($scope, $rootScope, $routeParams, $timeout, $uibModal, $location
   $scope.commentsTotalPages = 0;
 
 
-  const compileComments = (parent, sortField = 'pending_payout_value') => {
+  $scope.commentSorting = {
+    model: 'trending',
+    opts: [
+      {value: 'trending', name: $filter('__')('COMMENT_SORT_ORDER_TRENDING')},
+      {value: 'author_reputation', name: $filter('__')('COMMENT_SORT_ORDER_AUTHOR_REPUTATION')},
+      {value: 'votes', name: $filter('__')('COMMENT_SORT_ORDER_VOTES')},
+      {value: 'created', name: $filter('__')('COMMENT_SORT_ORDER_CREATED')}
+    ]
+  };
+
+  $scope.commentSortFieldChanged = () => {
+    // Rebuild comment list
+    let content = pathData.content[contentPath];
+    commentsData = compileComments(content);
+    $scope.commentsLength = commentsData.length;
+    $scope.commentsTotalPages = Math.ceil(commentsData.length / commentsPerPage);
+    $scope.sliceComments();
+  };
+
+
+  const compileComments = (parent) => {
+    const sortOrders = {
+      trending: (a, b) => {
+        const keyA = a['pending_payout_value'],
+          keyB = b['pending_payout_value'];
+
+        if (keyA > keyB) return -1;
+        if (keyA < keyB) return 1;
+        return 0;
+      },
+      author_reputation: (a, b) => {
+        const keyA = authorReputation(a['author_reputation']),
+          keyB = authorReputation(b['author_reputation']);
+
+        if (keyA > keyB) return -1;
+        if (keyA < keyB) return 1;
+        return 0;
+      },
+      votes: (a, b) => {
+        const keyA = a['net_votes'],
+          keyB = b['net_votes'];
+
+        if (keyA > keyB) return -1;
+        if (keyA < keyB) return 1;
+        return 0;
+      },
+      created: (a, b) => {
+        const keyA = Date.parse(a['created']),
+          keyB = Date.parse(b['created']);
+
+        if (keyA > keyB) return -1;
+        if (keyA < keyB) return 1;
+        return 0;
+      }
+    };
+
     let comments = [];
     for (let k of parent.replies) {
 
@@ -38,14 +95,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $uibModal, $location
       )
     }
 
-    comments.sort(function (a, b) {
-      let keyA = a[sortField],
-        keyB = b[sortField];
-
-      if (keyA > keyB) return -1;
-      if (keyA < keyB) return 1;
-      return 0;
-    });
+    comments.sort(sortOrders[$scope.commentSorting.model]);
 
     return comments
   };
@@ -60,7 +110,6 @@ export default ($scope, $rootScope, $routeParams, $timeout, $uibModal, $location
       $scope.author = pathData.accounts[author];
 
       commentsData = compileComments(content);
-
       $scope.commentsLength = commentsData.length;
       $scope.commentsTotalPages = Math.ceil(commentsData.length / commentsPerPage);
       $scope.sliceComments();
