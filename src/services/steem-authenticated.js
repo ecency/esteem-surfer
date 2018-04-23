@@ -280,6 +280,16 @@ export default ($rootScope, steemApi, $q) => {
     return defer.promise;
   };
 
+  const profileUpdate = (wif, account, memoKey, newJsonMetadata) => {
+    return accountUpdate(wif, account, undefined, undefined, undefined, memoKey, newJsonMetadata);
+  };
+
+  const profileUpdateSc = (token, account, memoKey, newJsonMetadata) => {
+    let defer = $q.defer();
+    defer.reject('Steem connect profile update not implemented yet.');
+    return defer.promise;
+  };
+
   const grantPostingPermission = (wif, accountData) => {
     const postingAuth = accountData.posting;
     postingAuth.account_auths.push(['esteemapp', postingAuth.weight_threshold]);
@@ -508,6 +518,18 @@ export default ($rootScope, steemApi, $q) => {
         return escrowTransfer(wif, from, to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta);
       } else {
         return escrowTransferSc(from, to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta);
+      }
+    },
+    profileUpdate: (account, memoKey, jsonMetadata) => {
+      switch ($rootScope.user.type) {
+        case 's':
+          const wif = getProperWif(['active']);
+          return profileUpdate(wif, account, memoKey, jsonMetadata);
+          break;
+        case 'sc':
+          const token = getAccessToken();
+          return profileUpdateSc(token, account, memoKey, jsonMetadata);
+          break;
       }
     }
   }

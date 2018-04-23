@@ -1,0 +1,74 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'CANCEL' | translate }}" ng-click="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h4 class="modal-title">{{ 'EDIT' | translate }} </h4>
+</div>
+<div class="modal-body">
+  <form class="form-horizontal">
+    <div class="form-group" ng-class="{'has-error': profileImageErr}">
+      <label class="col-sm-4 control-label" for="txt-profile-picture">{{ 'PROFILE_IMAGE_URL' | __ }}</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="txt-profile-picture" ng-model="formData.profile.profile_image" ng-change="profileImageChanged()">
+        <p class="help-block" ng-if="profileImageErr">{{ profileImageErr }}</p>
+      </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error': coverImageErr}">
+      <label class="col-sm-4 control-label" for="txt-cover-picture">{{ 'COVER_IMAGE_URL' | __ }}</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="txt-cover-picture" ng-model="formData.profile.cover_image" ng-change="coverImageChanged()">
+        <p class="help-block" ng-if="coverImageErr">{{ coverImageErr }}</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-4 control-label" for="txt-display-name">{{ 'DISPLAY_NAME' | translate }}</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="txt-display-name" ng-model="formData.profile.name" maxlength="20">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-4 control-label" for="txt-about">{{ 'ABOUT' | translate }}</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="txt-about" ng-model="formData.profile.about" maxlength="160">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-4 control-label" for="txt-location">{{ 'LOCATION' | translate }}</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="txt-location" ng-model="formData.profile.location" maxlength="30">
+      </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error': websiteErr}">
+      <label class="col-sm-4 control-label" for="txt-website">{{ 'WEBSITE' | translate }}</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="txt-website" ng-model="formData.profile.website" maxlength="100" ng-change="websiteChanged()">
+        <p class="help-block" ng-if="websiteErr">{{ websiteErr }}</p>
+      </div>
+    </div>
+    <hr>
+    <div class="form-group">
+      <label class="col-sm-4 control-label" for="txt-escrow-terms">{{ 'ESCROW_TERMS' | translate }}</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="txt-escrow-terms" ng-model="formData.escrow.terms" maxlength="255">
+      </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error': escrowSteemErr}">
+      <label class="col-sm-4 control-label" for="txt-escrow-fee-steem">{{ 'ESCROW_FEE' | translate }}</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="txt-escrow-fee-steem" ng-model="formData.escrow.fees.steem" placeholder="STEEM" ng-change="feeSteemChanged()">
+        <p class="help-block" ng-if="escrowSteemErr">{{ escrowSteemErr }}</p>
+      </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error': escrowSbdErr}">
+      <label class="col-sm-4 control-label" for="txt-escrow-fee-sbd">{{ 'ESCROW_FEE' | translate }}</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="txt-escrow-fee-sbd" ng-model="formData.escrow.fees.sbd" placeholder="SBD" ng-change="feeSbdChanged()">
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="save()" ng-disabled="!canSave() || processing"><i
+    class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="processing"></i> {{ 'SAVE' | translate }}
+  </button>
+</div>

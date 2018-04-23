@@ -1,4 +1,3 @@
-
 export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $window, $uibModal, $filter, steemService, steemAuthenticatedService, activeUsername, constants) => {
   let username = $routeParams.username;
   let section = $routeParams.section || 'blog';
@@ -102,6 +101,11 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
       canMute: false,
       canUnmute: false
     };
+
+    if ($scope.isMyPage) {
+      $scope.loadingVisitor = false;
+      return;
+    }
 
     $scope.$applyAsync();
 
@@ -423,6 +427,30 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     }).then(() => {
       $scope.vBlockControl = false;
       $scope.vUnmuting = false;
+    });
+  };
+
+  $scope.profileEditClicked = () => {
+    $uibModal.open({
+      templateUrl: `templates/profile-edit.html`,
+      controller: 'profileEditCtrl',
+      windowClass: 'profile-edit-modal',
+      resolve: {
+        accountData: () => {
+          return $scope.authorData;
+        },
+        afterUpdate: () => {
+          return () => {
+            $timeout(() => {
+              $window.location.reload();
+            }, 1000);
+          }
+        }
+      }
+    }).result.then((data) => {
+      // Success
+    }, () => {
+      // Cancel
     });
   };
 
