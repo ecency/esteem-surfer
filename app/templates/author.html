@@ -6,12 +6,15 @@
     </div>
     <div class="the-author" ng-if="!loadingAuthor" ng-class="{'fetching': loadingAuthor}">
       <header class="author-header">
-        <div class="control-box" ng-class="{'fetching': loadingVisitor}">
+        <div class="control-box" ng-class="{'fetching': loadingVisitor}" ng-show="!isMyPage">
           <button class="btn btn-default btn-follow" ng-if="visitorData.canFollow" login-required required-keys="'active,owner'" on-login-success="follow" ng-disabled="loadingVisitor || vBlockControl"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="vFollowing"></i> {{ 'FOLLOW' | translate }}</button>
           <button class="btn btn-default btn-unfollow" ng-if="visitorData.canUnfollow" ng-click="unfollow()"  ng-disabled="loadingVisitor || vBlockControl"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="vUnfollowing"></i> {{ 'UNFOLLOW' | translate }}</button>
           <button class="btn btn-default btn-mute" ng-if="visitorData.canMute" ng-disabled="loadingVisitor || vBlockControl" ng-click="mute()"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="vMuting"></i> {{ 'MUTE' | translate }}</button>
           <button class="btn btn-default btn-unmute" ng-if="visitorData.canUnmute" ng-disabled="loadingVisitor || vBlockControl" ng-click="unMute()"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="vUnmuting"></i> {{ 'UNMUTE' | translate }}</button>
        </div>
+        <div class="control-box" ng-show="isMyPage">
+          <button class="btn btn-default btn-sm btn-profile-edit" ng-click="" login-required required-keys="'active'" on-login-success="profileEditClicked"><i class="fa fa-edit"></i></button>
+        </div>
         <div class="cover-image" style="background-image: url('{{ authorData.profile.cover_image }}')"></div>
         <div class="profile-image-holder">
           <div class="profile-image" author-bg-img-style author="{{ username }}" size="large">

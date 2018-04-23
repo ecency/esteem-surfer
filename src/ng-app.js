@@ -49,6 +49,7 @@ import schedulesCtrl from './controllers/schedules';
 import galleryCtrl from './controllers/gallery';
 import {transferCtrl} from './controllers/transfer';
 import escrowCtrl from './controllers/escrow';
+import profileEditCtrl from './controllers/profile-edit';
 
 
 import faqCtrl from './controllers/faq';
@@ -381,6 +382,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .controller('galleryCtrl', galleryCtrl)
   .controller('transferCtrl', transferCtrl)
   .controller('escrowCtrl', escrowCtrl)
+  .controller('profileEditCtrl', profileEditCtrl)
 
   .filter('catchPostImage', catchPostImageFilter)
   .filter('sumPostTotal', sumPostTotalFilter)
@@ -511,6 +513,12 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
           return 'Savings';
         case 'PROFILE_SAVINGS_DESC':
           return 'Balance subject to 3 day withdraw waiting period.';
+        case 'PROFILE_IMAGE_URL':
+          return 'Profile picture url';
+        case 'COVER_IMAGE_URL':
+          return 'Cover image url';
+        case 'ACCOUNT_PROFILE_UPDATED':
+          return 'Profile updated!';
         default:
           return s;
       }
