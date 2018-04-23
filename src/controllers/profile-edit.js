@@ -70,15 +70,15 @@ export default ($scope, $rootScope, $uibModalInstance, $filter, accountData, ste
   $scope.feeSteemChanged = () => {
     $scope.escrowSteemErr = null;
 
-    if (!$scope.formData.escrow.fees.steem) {
+    if (!$scope.formData.escrow.fees.STEEM) {
       return;
     }
 
-    if (!amountFormatCheck($scope.formData.escrow.fees.steem)) {
+    if (!amountFormatCheck($scope.formData.escrow.fees.STEEM)) {
       $scope.escrowSteemErr = $filter('__')('WRONG_AMOUNT_VALUE');
     }
 
-    if (!amountPrecisionCheck($scope.formData.escrow.fees.steem)) {
+    if (!amountPrecisionCheck($scope.formData.escrow.fees.STEEM)) {
       $scope.escrowSteemErr = $filter('__')('AMOUNT_PRECISION_ERR');
     }
   };
@@ -86,15 +86,15 @@ export default ($scope, $rootScope, $uibModalInstance, $filter, accountData, ste
   $scope.feeSbdChanged = () => {
     $scope.escrowSbdErr = null;
 
-    if (!$scope.formData.escrow.fees.sbd) {
+    if (!$scope.formData.escrow.fees.SBD) {
       return;
     }
 
-    if (!amountFormatCheck($scope.formData.escrow.fees.sbd)) {
+    if (!amountFormatCheck($scope.formData.escrow.fees.SBD)) {
       $scope.escrowSbdErr = $filter('__')('WRONG_AMOUNT_VALUE');
     }
 
-    if (!amountPrecisionCheck($scope.formData.escrow.fees.sbd)) {
+    if (!amountPrecisionCheck($scope.formData.escrow.fees.SBD)) {
       $scope.escrowSbdErr = $filter('__')('AMOUNT_PRECISION_ERR');
     }
   };

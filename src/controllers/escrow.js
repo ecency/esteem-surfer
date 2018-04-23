@@ -91,14 +91,33 @@ export default ($scope, $rootScope, $filter, $uibModalInstance, autoCancelTimeou
         }
 
         $scope.agentData = resp[0];
-        let jm = {};
+        let jsonMeta = {};
         try {
-          jm = JSON.parse($scope.agentData.json_metadata);
+          jsonMeta = JSON.parse($scope.agentData.json_metadata);
         } catch (e) {
         }
 
-        $scope.agentData.escrowInfo = (jm.escrow || {terms: "-", fees: {'STEEM': 0.001, 'SBD': 0.001}});
+        let escrowTerms = '-';
+        let escrowFeeSteem = 0.001;
+        let escrowFeeSbd = 0.001;
 
+        if (jsonMeta.escrow) {
+          if (jsonMeta.escrow.terms) {
+            escrowTerms = jsonMeta.escrow.terms;
+          }
+
+          if (jsonMeta.escrow.fees) {
+            if (jsonMeta.escrow.fees.STEEM) {
+              escrowFeeSteem = jsonMeta.escrow.fees.STEEM
+            }
+
+            if (jsonMeta.escrow.fees.SBD) {
+              escrowFeeSbd = jsonMeta.escrow.fees.SBD
+            }
+          }
+        }
+
+        $scope.agentData.escrowInfo = {terms: escrowTerms, fees: {STEEM: escrowFeeSteem, SBD: escrowFeeSbd}};
       }).catch((e) => {
         $rootScope.showError(e);
       }).then((resp) => {
