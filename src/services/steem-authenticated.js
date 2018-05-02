@@ -434,11 +434,6 @@ export default ($rootScope, steemApi, $q) => {
     return defer.promise;
   };
 
-
-
-
-
-
   const transferToVestingSc = (from, to, amount) => {
     let defer = $q.defer();
 
@@ -451,13 +446,37 @@ export default ($rootScope, steemApi, $q) => {
     return defer.promise;
   };
 
+  const claimRewardBalance = (wif, account, rewardSteem, rewardSbd, rewardVests) => {
+    let defer = $q.defer();
 
+    steem.broadcast.claimRewardBalance(wif, account, rewardSteem, rewardSbd, rewardVests, function (err, result) {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(result);
+      }
+    });
 
+    return defer.promise;
+  };
 
+  const claimRewardBalanceSc = (token, account, rewardSteem, rewardSbd, rewardVests) => {
+    let defer = $q.defer();
 
+    const api = sc2.Initialize({
+      accessToken: token
+    });
 
+    api.claimRewardBalance(account, rewardSteem, rewardSbd, rewardVests, function (err, res) {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(res);
+      }
+    });
 
-
+    return defer.promise;
+  };
 
   const escrowTransfer = (wif, from, to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta) => {
     let defer = $q.defer();
@@ -638,6 +657,20 @@ export default ($rootScope, steemApi, $q) => {
         return transferToVesting(wif, from, to, amount)
       } else {
         return transferToVestingSc(from, to, amount);
+      }
+    },
+    claimRewardBalance: (rewardSteem, rewardSbd, rewardVests) => {
+      const account = $rootScope.user.username;
+
+      switch ($rootScope.user.type) {
+        case 's':
+          const wif = getProperWif(['active']);
+          return claimRewardBalance(wif, account, rewardSteem, rewardSbd, rewardVests);
+          break;
+        case 'sc':
+          const token = getAccessToken();
+          return claimRewardBalanceSc(token, account, rewardSteem, rewardSbd, rewardVests);
+          break;
       }
     },
     profileUpdate: (account, memoKey, jsonMetadata) => {

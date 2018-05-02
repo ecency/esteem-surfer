@@ -271,7 +271,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
 
     if (section === 'wallet') {
 
-      $scope.has_unclaimed_rewards = ($scope.authorData.reward_steem_balance.split(' ')[0] > 0) ||
+      $scope.hasUnclaimedRewards = ($scope.authorData.reward_steem_balance.split(' ')[0] > 0) ||
         ($scope.authorData.reward_sbd_balance.split(' ')[0] > 0) ||
         ($scope.authorData.reward_vesting_steem.split(' ')[0] > 0);
 
@@ -563,10 +563,29 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
   };
 
   $scope.powerUpClicked = () => {
-    openPowerUpWindow( () => {
+    openPowerUpWindow(() => {
       loadAccount(true).then(() => {
         loadContents();
       });
     });
   };
+
+  $scope.claimRewardsClicked = () => {
+    if ($window.confirm($filter('translate')('ARE_YOU_SURE'))) {
+      $scope.claimingRewards = true;
+      const steemBal = $scope.authorData.reward_steem_balance;
+      const sbdBal = $scope.authorData.reward_sbd_balance;
+      const vestingBal = $scope.authorData.reward_vesting_balance;
+
+      steemAuthenticatedService.claimRewardBalance(steemBal, sbdBal, vestingBal).then(resp => {
+        loadAccount(true).then(() => {
+          loadContents();
+        });
+      }).catch((e) => {
+        $rootScope.showError(e);
+      }).then(() => {
+        $scope.claimingRewards = false;
+      });
+    }
+  }
 };

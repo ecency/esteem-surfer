@@ -54,7 +54,7 @@
                 <li class="dropdown">
                   <a ng-click="" class="dropdown-toggle" data-toggle="dropdown" role="button"><strong>Vesting</strong> <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a ng-click="powerUpClicked()">Power Up</a></li>
+                    <li><a ng-click="" login-required required-keys="'active'" on-login-success="powerUpClicked">{{ 'POWER_UP' | translate }}</a></li>
                     <li><a ng-click="powerDownClicked()">Power Down</a></li>
                   </ul>
                 </li>
@@ -129,7 +129,7 @@
               </li>
             </ul>
             <div class="author-wallet" ng-if="section==='wallet'">
-              <div class="row alternate" ng-if="has_unclaimed_rewards">
+              <div class="row alternate" ng-if="hasUnclaimedRewards">
                 <div class="col-sm-12">
                   <strong>{{ 'UNCLAIMED_REWARDS'|translate }}: </strong>
                   <span ng-if="authorData.reward_steem_balance.split(' ')[0]>0">
@@ -141,6 +141,7 @@
                   <span ng-if="authorData.reward_vesting_steem.split(' ')[0]>0">
                     {{ authorData.reward_vesting_steem.split(' ')[0]}} SP
                   </span>
+                  <button class="btn btn-primary" style="margin-left: 20px" ng-if="isMyPage" ng-click="" login-required required-keys="'active'" on-login-success="claimRewardsClicked" ng-disabled="claimingRewards"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="claimingRewards"></i> {{ 'CLAIM_REWARDS' | translate }}</button>
                 </div>
               </div>
               <h3 class="section-header">{{'BALANCES'|translate}}</h3>
@@ -153,16 +154,6 @@
                 </div>
                 <div class="col-sm-6 col-value">
                   {{ authorData.balance | money2Number | number }} STEEM
-                  <!--
-                  <div class="btn-group" ng-if="isMyPage">
-                    <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                     <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                      <li><a ng-click="" login-required required-keys="'active'" on-login-success="transferClickedSteem">{{ 'TRANSFER' | translate }}</a></li>
-                    </ul>
-                  </div>
-                  -->
                 </div>
               </div>
               <div class="row alternate">
@@ -193,16 +184,6 @@
                 </div>
                 <div class="col-sm-6 col-value">
                   {{ authorData.sbd_balance | money2Number | number }} SBD
-                  <!--
-                  <div class="btn-group" ng-if="isMyPage">
-                    <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                      <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                      <li><a ng-click="" login-required required-keys="'active'" on-login-success="transferClickedSbd">{{ 'TRANSFER' | translate }}</a></li>
-                    </ul>
-                  </div>
-                  -->
                 </div>
               </div>
               <div class="row alternate">
@@ -280,7 +261,6 @@
                 </tbody>
               </table>
             </div>
-
             <footer>
               <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="loadingContents"></i>
             </footer>
