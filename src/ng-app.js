@@ -47,8 +47,9 @@ import searchCtrl from './controllers/search';
 import draftsCtrl from './controllers/drafts';
 import schedulesCtrl from './controllers/schedules';
 import galleryCtrl from './controllers/gallery';
-import {transferCtrl} from './controllers/transfer';
+import transferCtrl from './controllers/transfer';
 import escrowCtrl from './controllers/escrow';
+import powerUpCtrl from './controllers/power-up';
 import profileEditCtrl from './controllers/profile-edit';
 
 
@@ -382,6 +383,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .controller('galleryCtrl', galleryCtrl)
   .controller('transferCtrl', transferCtrl)
   .controller('escrowCtrl', escrowCtrl)
+  .controller('powerUpCtrl', powerUpCtrl)
   .controller('profileEditCtrl', profileEditCtrl)
 
   .filter('catchPostImage', catchPostImageFilter)

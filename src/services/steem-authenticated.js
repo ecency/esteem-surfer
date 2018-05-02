@@ -1,7 +1,15 @@
 import steem from 'steem';
 import sc2 from 'sc2-sdk';
 
-import {scAppAuth, scAppRevoke, scTransfer, scTransferToSavings, scTransferFromSavings, scEsrowTransfer} from '../helpers/steem-connect-helper';
+import {
+  scAppAuth,
+  scAppRevoke,
+  scTransfer,
+  scTransferToSavings,
+  scTransferFromSavings,
+  scTransferToVesting,
+  scEsrowTransfer
+} from '../helpers/steem-connect-helper';
 
 export default ($rootScope, steemApi, $q) => {
 
@@ -412,6 +420,45 @@ export default ($rootScope, steemApi, $q) => {
     return defer.promise;
   };
 
+  const transferToVesting = (wif, from, to, amount) => {
+    let defer = $q.defer();
+
+    steem.broadcast.transferToVesting(wif, from, to, amount, function (err, result) {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(result);
+      }
+    });
+
+    return defer.promise;
+  };
+
+
+
+
+
+
+  const transferToVestingSc = (from, to, amount) => {
+    let defer = $q.defer();
+
+    scTransferToVesting(from, to, amount, () => {
+      defer.resolve('OK');
+    }, () => {
+      defer.reject(`The window closed before expected.`);
+    });
+
+    return defer.promise;
+  };
+
+
+
+
+
+
+
+
+
   const escrowTransfer = (wif, from, to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta) => {
     let defer = $q.defer();
 
@@ -572,7 +619,7 @@ export default ($rootScope, steemApi, $q) => {
         return transferToSavingsSc(from, to, amount, memo);
       }
     },
-    transferFromSavings: (wif = null, from, requestId, to, amount, memo)=>{
+    transferFromSavings: (wif = null, from, requestId, to, amount, memo) => {
       if (wif) {
         return transferFromSavings(wif, from, requestId, to, amount, memo);
       } else {
@@ -584,6 +631,13 @@ export default ($rootScope, steemApi, $q) => {
         return escrowTransfer(wif, from, to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta);
       } else {
         return escrowTransferSc(from, to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta);
+      }
+    },
+    transferToVesting: (wif = null, from, to, amount) => {
+      if (wif) {
+        return transferToVesting(wif, from, to, amount)
+      } else {
+        return transferToVestingSc(from, to, amount);
       }
     },
     profileUpdate: (account, memoKey, jsonMetadata) => {
