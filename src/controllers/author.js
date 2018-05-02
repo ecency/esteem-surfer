@@ -543,4 +543,30 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
       });
     });
   };
+
+  const openPowerUpWindow = (afterTransfer) => {
+    $uibModal.open({
+      templateUrl: `templates/power-up.html`,
+      controller: 'powerUpCtrl',
+      windowClass: 'power-up-modal',
+      resolve: {
+
+        afterTransfer: () => {
+          return afterTransfer
+        }
+      }
+    }).result.then((data) => {
+      // Success
+    }, () => {
+      // Cancel
+    });
+  };
+
+  $scope.powerUpClicked = () => {
+    openPowerUpWindow( () => {
+      loadAccount(true).then(() => {
+        loadContents();
+      });
+    });
+  };
 };

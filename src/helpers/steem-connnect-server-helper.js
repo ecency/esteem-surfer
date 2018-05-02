@@ -117,6 +117,13 @@ export const startHelperServer = () => {
     }
   );
 
+  expressApp.get('/transfer-to-vesting', (req, res) => {
+      const data = JSON.parse(decodeURIComponent(req.query.data));
+      const transferUrl = `https://steemconnect.com/sign/transfer-to-vesting?from=${encodeURIComponent(data.from)}&to=${encodeURIComponent(data.to)}&amount=${encodeURIComponent(data.amount)}`;
+      const content = makeRedirectingContent(transferUrl);
+      res.send(content);
+    }
+  );
 
   server.listen(serverPort, serverIp);
 
