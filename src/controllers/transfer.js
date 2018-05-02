@@ -1,6 +1,6 @@
 import {amountFormatCheck, formatStrAmount} from './helper';
 
-export const transferCtrl = ($scope, $rootScope, $timeout, $filter, $uibModalInstance, autoCancelTimeout, steemService, steemAuthenticatedService, userService, activeUsername, initialAsset, mode, afterTransfer) => {
+export default ($scope, $rootScope, $timeout, $filter, $uibModalInstance, autoCancelTimeout, steemService, steemAuthenticatedService, userService, activeUsername, initialAsset, mode, afterTransfer) => {
 
 
   $scope.mode = mode;
