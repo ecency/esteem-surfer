@@ -721,3 +721,71 @@
     }
   }
 }
+
+.transfer-fn-page {
+  .fn-window {
+    background: $listBgColor;
+    border: 1px solid $listBorderColor;
+    box-shadow: 0 0 1px 0 $listBorderColor;
+    padding: 0 0 20px 0;
+    width: 600px;
+    margin: auto;
+
+    .indicator {
+      text-align: center;
+
+      .fa {
+        color: $loadingColor;
+        font-size: 30px;
+      }
+    }
+
+    .fn-navbar {
+      border-left: none;
+      border-radius: 0;
+      border-right: none;
+      border-top: none;
+      margin: 0 0 20px 0;
+      .container-fluid {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    .fn-form {
+
+      padding: 0 20px;
+
+      .form-header {
+        font-size: 22px;
+        margin: 0;
+      }
+
+      .balance-block {
+        border-bottom: 1px dotted $textColor;
+        color: $textColorLight;
+        display: inline-block;
+        margin: 4px 0;
+
+        .copy-balance {
+          cursor: pointer;
+        }
+      }
+
+    }
+  }
+
+  &.fn-power-down {
+
+    .table-routes {
+      th, td {
+        font-size: 13px;
+        vertical-align: middle;
+      }
+
+      td {
+        width: 30px;
+      }
+    }
+  }
+}

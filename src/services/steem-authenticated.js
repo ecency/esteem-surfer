@@ -504,6 +504,26 @@ export default ($rootScope, steemApi, $q) => {
     return defer.promise;
   };
 
+  const setWithdrawVestingRoute = (wif, from, to, percent, autoVest) => {
+    let defer = $q.defer();
+
+    steem.broadcast.setWithdrawVestingRoute(wif, from, to, percent, autoVest, function (err, result) {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(result);
+      }
+    });
+
+    return defer.promise;
+  };
+
+  const setWithdrawVestingRouteSc = (token, from, to, percent, autoVest) => {
+    let defer = $q.defer();
+    defer.reject('Steem connect setWithdrawVestingRoute not implemented yet.');
+    return defer.promise;
+  };
+
   const getProperWif = (r) => {
     for (let i of r) {
       if ($rootScope.user.keys[i]) {
@@ -682,6 +702,20 @@ export default ($rootScope, steemApi, $q) => {
         case 'sc':
           const token = getAccessToken();
           return profileUpdateSc(token, account, memoKey, jsonMetadata);
+          break;
+      }
+    },
+    setWithdrawVestingRoute: (to, percent, autoVest) => {
+      const account = $rootScope.user.username;
+
+      switch ($rootScope.user.type) {
+        case 's':
+          const wif = getProperWif(['active']);
+          return setWithdrawVestingRoute(wif, account, to, percent, autoVest);
+          break;
+        case 'sc':
+          const token = getAccessToken();
+          return setWithdrawVestingRouteSc(token, account, to, percent, autoVest);
           break;
       }
     }

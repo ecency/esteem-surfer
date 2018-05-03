@@ -50,6 +50,8 @@ import galleryCtrl from './controllers/gallery';
 import transferCtrl from './controllers/transfer';
 import escrowCtrl from './controllers/escrow';
 import powerUpCtrl from './controllers/power-up';
+import powerDownCtrl from './controllers/power-down';
+import addWithDrawAccountCtrl from './controllers/add-withdraw-account';
 import profileEditCtrl from './controllers/profile-edit';
 
 
@@ -275,6 +277,10 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
         templateUrl: 'templates/gallery.html',
         controller: 'galleryCtrl'
       })
+      .when('/power-down', {
+        templateUrl: 'templates/power-down.html',
+        controller: 'powerDownCtrl'
+      })
       .otherwise({redirectTo: '/'});
 
     // $http
@@ -384,6 +390,8 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .controller('transferCtrl', transferCtrl)
   .controller('escrowCtrl', escrowCtrl)
   .controller('powerUpCtrl', powerUpCtrl)
+  .controller('powerDownCtrl', powerDownCtrl)
+  .controller('addWithDrawAccountCtrl', addWithDrawAccountCtrl)
   .controller('profileEditCtrl', profileEditCtrl)
 
   .filter('catchPostImage', catchPostImageFilter)
@@ -467,6 +475,8 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
           return 'Logged In';
         case 'ACCOUNTS':
           return 'Accounts';
+        case 'ACCOUNT':
+          return 'Account';
         case 'LOGIN_AS':
           return 'Login As';
         case 'EMPTY_LIST':
@@ -533,6 +543,16 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
           return 'Profile updated!';
         case 'WITHDRAW_FROM_SAVINGS':
           return 'Withdraw from Savings';
+        case 'DESTINATION_ACCOUNTS':
+          return 'Destination Account(s)';
+        case 'ADD_WITHDRAW_ACCOUNT':
+          return 'Add Withdraw Account';
+        case 'PERCENTAGE':
+          return 'Percentage';
+        case 'PERCENTAGE_DESC':
+          return 'Percentage of Power Down to this account.';
+        case 'AUTOMATICALLY_POWER_UP':
+          return 'Automatically power up the target account';
         default:
           return s;
       }

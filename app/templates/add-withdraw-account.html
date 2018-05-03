@@ -1,0 +1,42 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'CANCEL' | translate }}" ng-click="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h4 class="modal-title">{{ 'ADD_WITHDRAW_ACCOUNT' | __ }}</h4>
+</div>
+<div class="modal-body">
+  <div class="form-horizontal">
+    <div class="form-group" ng-class="{'has-error': toErr, 'has-success': toData}">
+      <label for="transfer-to" class="col-sm-3 control-label">{{ 'ACCOUNT' | __ }}</label>
+      <div class="col-sm-9">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <span ng-if="!fetchingTo">@</span>
+            <i ng-if="fetchingTo" class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
+          </span>
+          <input type="text" class="form-control" id="transfer-to" ng-model="to" auto-focus placeholder="{{ 'TO_DESC' | translate }}" ng-change="toChanged()">
+        </div>
+        <p class="help-block" ng-if="toErr">{{ toErr }}</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">{{ 'PERCENTAGE' | __ }}</label>
+      <div class="col-sm-9">
+        <rzslider rz-slider-model="percSlider.value" rz-slider-options="percSlider.options"></rzslider>
+        <p class="help-block">{{ 'PERCENTAGE_DESC' | __ }}</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" ng-model="auto.val"> {{ 'AUTOMATICALLY_POWER_UP' | __ }}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="submit()" ng-disabled="!canSubmit() || processing"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="processing"></i>  {{ 'SAVE' | translate }}</button>
+</div>

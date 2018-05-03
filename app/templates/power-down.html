@@ -1,0 +1,97 @@
+<nav-bar></nav-bar>
+<div class="app-container">
+  <div class="app-content transfer-fn-page fn-power-down">
+   <div class="fn-window">
+     <nav class="navbar navbar-default fn-navbar">
+       <div class="container-fluid">
+         <div class="collapse navbar-collapse">
+           <ul class="nav navbar-nav">
+             <li>
+               <a ng-click="changeSection('wallet')">{{ 'WALLET' | translate }}</a>
+             </li>
+           </ul>
+           <ul class="nav navbar-nav navbar-right">
+             <li class="dropdown">
+               <a ng-click="" class="dropdown-toggle" data-toggle="dropdown" role="button"><strong>{{ 'TRANSFER' | translate }}</strong> <span class="caret"></span></a>
+               <ul class="dropdown-menu">
+                 <li><a ng-click="transferClickedSteem()">{{ 'TRANSFER' | translate }}</a></li>
+                 <li role="separator" class="divider"></li>
+                 <li><a ng-click="transferToSavingsClicked()">{{ 'TRANSFER_TO_SAVINGS' | translate }}</a></li>
+                 <li><a ng-click="transferFromSavingsClicked()">{{ 'WITHDRAW_FROM_SAVINGS' | __ }}</a></li>
+                 <li role="separator" class="divider"></li>
+                 <li><a ng-click="escrowClicked()">{{ 'ESCROW' | translate }}</a></li>
+                 <li><a ng-click="escrowActionsClicked()">Escrow Actions</a></li>
+               </ul>
+             </li>
+             <li class="dropdown">
+               <a ng-click="" class="dropdown-toggle" data-toggle="dropdown" role="button"><strong>Vesting</strong> <span class="caret"></span></a>
+               <ul class="dropdown-menu">
+                 <li><a ng-click="powerUpClicked()">{{ 'POWER_UP' | translate }}</a></li>
+                 <li><a ng-click="powerDownClicked()">{{ 'POWER_DOWN' | translate }}</a></li>
+               </ul>
+             </li>
+           </ul>
+         </div>
+       </div>
+     </nav>
+     <div class="fn-form">
+       <h1 class="form-header">{{ 'POWER_DOWN' | translate }}</h1>
+       <hr>
+       <div class="indicator" ng-if="loading"><i class="fa fa-spin fa-spinner fa-circle-o-notch"></i></div>
+       <div class="form-horizontal" ng-hide="loading">
+         <div class="form-group">
+           <label for="transfer-from" class="col-sm-4 control-label">{{ 'ACCOUNT' | __ }}</label>
+           <div class="col-sm-8">
+             <select class="form-control" id="transfer-from" ng-model="from" ng-options="x for x in accountList" ng-change="fromChanged()"></select>
+             <div class="alert alert-danger" style="margin-top: 5px" ng-if="keyRequiredErr">{{ 'ACTIVE_KEY_REQUIRED_TRANSFER' | __ }}</div>
+           </div>
+         </div>
+         <div class="form-group">
+           <label class="col-sm-4 control-label">{{ 'DESTINATION_ACCOUNTS' | __ }}</label>
+           <div class="col-sm-8">
+             <table class="table table-striped table-bordered table-routes" ng-if="withdrawRoutes.length > 0">
+               <tbody>
+               <tr ng-repeat="w in withdrawRoutes">
+                 <th>{{ w.to_account }}</th>
+                 <td>{{ w.percent/100 }}%</td>
+                 <td><span ng-if="w.auto_vest">VEST</span><span ng-if="!w.auto_vest">STEEM</span></td>
+                 <td><button class="btn btn-danger btn-sm" ng-disabled="deletingWithDrawAccount" ng-click="deleteWithDrawAccount(w.to_account)"><i class="fa fa-trash"></i></button></td>
+               </tr>
+               </tbody>
+             </table>
+             <button class="btn btn-primary btn-sm btn-block" ng-click="addWithDrawAccountClicked()">{{ 'ADD_WITHDRAW_ACCOUNT' | __ }}</button>
+           </div>
+         </div>
+         <div class="form-group" ng-class="{'has-error': amountErr}" ng-if="!isPoweringDown">
+           <label for="transfer-amount" class="col-sm-4 control-label">{{ 'AMOUNT' | translate }}</label>
+           <div class="col-sm-8">
+             <div class="input-group" style="margin-bottom: 10px">
+               <input type="text" class="form-control" id="transfer-amount" ng-model="amount" ng-change="amountChanged()" >
+               <div class="input-group-btn">
+                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                   {{ asset }}
+                   <span class="caret"></span></button>
+                 <ul class="dropdown-menu dropdown-menu-right">
+                   <li><a ng-click="assetChanged('STEEM')">SP</a></li>
+                   <li><a ng-click="assetChanged('SBD')">VESTS</a></li>
+                 </ul>
+               </div>
+             </div>
+             <rzslider rz-slider-model="amountSlider.value" rz-slider-options="amountSlider.options"></rzslider>
+             <p class="help-block" ng-if="amountErr">{{ amountErr }}</p>
+             <p class="balance-block">{{ 'BALANCE' | translate }}: <span class="copy-balance" ng-click="copyBalance()">{{ balance }} SP</span></p>
+           </div>
+         </div>
+         <div class="form-group">
+           <div class="col-sm-offset-4 col-sm-8">
+             <button class="btn btn-success pull-right" ng-if="!isPoweringDown" ng-disabled="!canSubmit()" ng-click="start()">Start</button>
+             <button class="btn btn-danger pull-right" ng-if="isPoweringDown" ng-disabled="!canSubmit()" ng-click="stop()">Stop</button>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+  </div>
+</div>
+<app-footer></app-footer>
+
