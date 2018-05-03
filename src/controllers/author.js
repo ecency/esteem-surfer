@@ -570,6 +570,10 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     });
   };
 
+  $scope.powerDownClicked = () => {
+    $location.path('/power-down');
+  };
+
   $scope.claimRewardsClicked = () => {
     if ($window.confirm($filter('translate')('ARE_YOU_SURE'))) {
       $scope.claimingRewards = true;

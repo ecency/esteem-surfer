@@ -188,6 +188,17 @@ export default (steemApi, $q) => {
         }
       });
       return defer.promise;
+    },
+    getWithdrawRoutes: (account) => {
+      let defer = $q.defer();
+      steemApi.getApi().getWithdrawRoutes(account, 'outgoing', (err, response) => {
+        if (err) {
+          defer.reject(err);
+        } else {
+          defer.resolve(response);
+        }
+      });
+      return defer.promise;
     }
   }
 };
