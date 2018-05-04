@@ -524,6 +524,26 @@ export default ($rootScope, steemApi, $q) => {
     return defer.promise;
   };
 
+  const withdrawVesting = (wif, account, vestingShares) => {
+    let defer = $q.defer();
+
+    steem.broadcast.withdrawVesting(wif, account, vestingShares, function (err, result) {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(result);
+      }
+    });
+
+    return defer.promise;
+  };
+
+  const withdrawVestingSc = (account, vestingShares) => {
+    let defer = $q.defer();
+    defer.reject('Steem connect withdrawVesting not implemented yet.');
+    return defer.promise;
+  };
+
   const getProperWif = (r) => {
     for (let i of r) {
       if ($rootScope.user.keys[i]) {
@@ -684,7 +704,7 @@ export default ($rootScope, steemApi, $q) => {
 
       switch ($rootScope.user.type) {
         case 's':
-          const wif = getProperWif(['active']);
+          const wif = getProperWif(['posting']);
           return claimRewardBalance(wif, account, rewardSteem, rewardSbd, rewardVests);
           break;
         case 'sc':
@@ -717,6 +737,13 @@ export default ($rootScope, steemApi, $q) => {
           const token = getAccessToken();
           return setWithdrawVestingRouteSc(token, account, to, percent, autoVest);
           break;
+      }
+    },
+    withdrawVesting: (wif = null, account, vestingShares) => {
+      if (wif) {
+        return withdrawVesting(wif, account, vestingShares)
+      } else {
+        return withdrawVestingSc(account, vestingShares);
       }
     }
   }

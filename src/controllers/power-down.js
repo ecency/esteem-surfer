@@ -1,6 +1,7 @@
 import {amountFormatCheck, formatStrAmount} from './helper';
 
-export default ($scope, $rootScope, $filter, $uibModal, userService, steemService, steemAuthenticatedService, activeUsername) => {
+export default ($scope, $rootScope, $routeParams, $filter, $location, $uibModal, $timeout, $window, autoCancelTimeout, userService, steemService, steemAuthenticatedService) => {
+  const curAccount = $routeParams.account;
   const accountList = userService.getAll();
 
   const getAccount = (a) => {
@@ -12,68 +13,49 @@ export default ($scope, $rootScope, $filter, $uibModal, userService, steemServic
   };
 
   $scope.accountList = accountList.map(x => x.username);
-  $scope.account = null;
-  $scope.from = activeUsername();
+  $scope.accountName = curAccount;
   $scope.isPoweringDown = false;
 
-  $scope.asset = 'SP';
-  $scope.amount = '0.001';
-  $scope.balance = '0';
-  $scope.routes = [];
+  $scope.amountVest = 0.001;
+  $scope.amountVestFormatted = 0.001;
+  $scope.amountSp = 0.000;
+  $scope.steemPerWeek = 0.000;
+
+  $scope.withdrawRoutes = [];
 
   $scope.keyRequiredErr = false;
-  $scope.toErr = null;
-  $scope.amountErr = null;
+  const a = getAccount(curAccount);
+  if (a.type === 's' && !a.keys.active) {
+    $scope.keyRequiredErr = true;
+  }
 
   $scope.amountSlider = {
     value: 0.001,
     options: {
       floor: 0,
       ceil: 0,
-      step: 0.001,
-      precision: 3,
-      onChange: function(id, v) {
-        //$scope.amount = v;
+      step: 1,
+      precision: 6,
+      onChange: function (id, v) {
+        $scope.amountVest = v;
+        $scope.amountVestFormatted = $filter('number')(parseFloat(v).toFixed(0)).replace(',', '.');
+
+        const sp = vests2sp(v);
+        $scope.amountSp = sp;
+        $scope.steemPerWeek = Math.round(sp / 13 * 1000) / 1000;
+      },
+      translate: function (value, sliderId, label) {
+        if (label === 'model') {
+          return value + `.000000 VESTS`;
+        }
+
+        return value;
       }
     }
   };
 
   $scope.fromChanged = () => {
-    $scope.keyRequiredErr = false;
-    const a = getAccount($scope.from);
-    if (a.type === 's' && !a.keys.active) {
-      $scope.keyRequiredErr = true;
-    }
-    loadFromAccount();
-    loadWithdrawRoutes();
-  };
-
-  $scope.amountChanged = () => {
-    $scope.amountErr = null;
-
-    console.log($scope.amount)
-
-    $scope.amountSlider.value = $scope.amount;
-
-
-    if (!amountFormatCheck($scope.amount)) {
-      $scope.amountErr = $filter('__')('WRONG_AMOUNT_VALUE');
-      return;
-    }
-
-    const dotParts = $scope.amount.toString().split('.');
-    if (dotParts.length > 1) {
-      const precision = dotParts[1];
-      if (precision.length > 3) {
-        $scope.amountErr = $filter('__')('AMOUNT_PRECISION_ERR');
-        return;
-      }
-    }
-
-    if (parseFloat($scope.amount) > parseFloat($scope.balance)) {
-      $scope.amountErr = $filter('__')('INSUFFICIENT_FUNDS');
-      return;
-    }
+    $location.path(`/${ $scope.accountName }/power-down`);
   };
 
   $scope.deleteWithDrawAccount = (a) => {
@@ -106,31 +88,77 @@ export default ($scope, $rootScope, $filter, $uibModal, userService, steemServic
     });
   };
 
-  $scope.canSubmit = () => {
-    return !$scope.fetchingFromAccount && !$scope.fetchingWithdrawRoutes;
+  $scope.canStart = () => {
+    return $scope.amountVest > 0 &&
+      !$scope.fetchingAccount &&
+      !$scope.fetchingWithdrawRoutes &&
+      !$scope.keyRequiredErr;
   };
 
-  const loadFromAccount = () => {
-    $scope.fetchingFromAccount = true;
+  $scope.canStop = () => {
+    return true;
+  };
 
-    return steemService.getAccounts([$scope.from]).then((resp) => {
+  $scope.start = () => {
+    const vestingShares = `${$scope.amountVest}.000000 VESTS`;
+
+    const fromAccount = getAccount(curAccount);
+    const wif = fromAccount.type === 's' ? fromAccount.keys.active : null;
+
+    $scope.processing = true;
+    steemAuthenticatedService.withdrawVesting(wif, curAccount, vestingShares).then((resp) => {
+      console.log(resp)
+    }).catch((e) => {
+      $rootScope.showError(e);
+    }).then(() => {
+      $scope.processing = false;
+
+      loadAccount();
+    });
+  };
+
+  $scope.stop = () => {
+
+    if ($window.confirm($filter('translate')('ARE_YOU_SURE'))) {
+
+      const vestingShares = `0.000000 VESTS`;
+
+      const fromAccount = getAccount(curAccount);
+      const wif = fromAccount.type === 's' ? fromAccount.keys.active : null;
+
+      $scope.processing = true;
+      steemAuthenticatedService.withdrawVesting(wif, curAccount, vestingShares).then((resp) => {
+        console.log(resp)
+      }).catch((e) => {
+        $rootScope.showError(e);
+      }).then(() => {
+        $scope.processing = false;
+
+        loadAccount();
+      });
+    }
+
+  };
+
+  const loadAccount = () => {
+    $scope.fetchingAccount = true;
+
+    return steemService.getAccounts([curAccount]).then((resp) => {
       const account = resp[0];
 
-      $scope.fetchingFromAccount = false;
-      $scope.account = account;
-      $scope.balance = getBalance();
-      $scope.amountSlider.options.ceil = $scope.balance;
-      $scope.amountChanged();
-
+      $scope.amountSlider.options.ceil = account.vesting_shares.split(' ')[0];
       $scope.isPoweringDown = (account.next_vesting_withdrawal !== '1969-12-31T23:59:59')
     }).catch((e) => {
       $rootScope.showError(e);
-    })
+    }).then(() => {
+      $scope.fetchingAccount = false;
+    });
   };
 
   const loadWithdrawRoutes = () => {
     $scope.fetchingWithdrawRoutes = true;
-    return steemService.getWithdrawRoutes($scope.from).then((resp) => {
+
+    return steemService.getWithdrawRoutes(curAccount).then((resp) => {
       resp.sort((a, b) => {
         return a.percent - b.percent
       });
@@ -142,19 +170,15 @@ export default ($scope, $rootScope, $filter, $uibModal, userService, steemServic
     });
   };
 
-  const getBalance = () => {
-    const vests = $scope.account['vesting_shares'].split(' ')[0];
-    return $filter('steemPower')(vests);
+  const vests2sp = (vests) => {
+    return $filter('steemPower')(vests.toString());
   };
 
-  const main = async () => {
-    $scope.loading = true;
-    $scope.$applyAsync();
-    await loadFromAccount();
-    await loadWithdrawRoutes();
-    $scope.loading = false;
-    $scope.$applyAsync();
-  };
+  loadAccount().then(() => {
+    loadWithdrawRoutes();
 
-  main();
+    $timeout(function () {
+      $scope.$broadcast('rzSliderForceRender');
+    }, 200);
+  });
 }
