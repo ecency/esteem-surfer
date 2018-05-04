@@ -571,7 +571,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
   };
 
   $scope.powerDownClicked = () => {
-    $location.path('/power-down');
+    $location.path(`/${ activeUsername() }/power-down`);
   };
 
   $scope.claimRewardsClicked = () => {

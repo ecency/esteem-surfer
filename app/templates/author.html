@@ -141,7 +141,7 @@
                   <span ng-if="authorData.reward_vesting_steem.split(' ')[0]>0">
                     {{ authorData.reward_vesting_steem.split(' ')[0]}} SP
                   </span>
-                  <button class="btn btn-primary" style="margin-left: 20px" ng-if="isMyPage" ng-click="" login-required required-keys="'active'" on-login-success="claimRewardsClicked" ng-disabled="claimingRewards"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="claimingRewards"></i> {{ 'CLAIM_REWARDS' | translate }}</button>
+                  <button class="btn btn-primary" style="margin-left: 20px" ng-if="isMyPage" ng-click="" login-required required-keys="'posting'" on-login-success="claimRewardsClicked" ng-disabled="claimingRewards"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="claimingRewards"></i> {{ 'CLAIM_REWARDS' | translate }}</button>
                 </div>
               </div>
               <h3 class="section-header">{{'BALANCES'|translate}}</h3>

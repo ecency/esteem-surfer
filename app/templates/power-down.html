@@ -37,18 +37,18 @@
      <div class="fn-form">
        <h1 class="form-header">{{ 'POWER_DOWN' | translate }}</h1>
        <hr>
-       <div class="indicator" ng-if="loading"><i class="fa fa-spin fa-spinner fa-circle-o-notch"></i></div>
-       <div class="form-horizontal" ng-hide="loading">
+       <div class="indicator" ng-if="fetchingAccount"><i class="fa fa-spin fa-spinner fa-circle-o-notch"></i></div>
+       <div class="form-horizontal" ng-hide="fetchingAccount">
          <div class="form-group">
-           <label for="transfer-from" class="col-sm-4 control-label">{{ 'ACCOUNT' | __ }}</label>
-           <div class="col-sm-8">
-             <select class="form-control" id="transfer-from" ng-model="from" ng-options="x for x in accountList" ng-change="fromChanged()"></select>
+           <label for="transfer-account" class="col-sm-3 control-label">{{ 'ACCOUNT' | __ }}</label>
+           <div class="col-sm-9">
+             <select class="form-control" id="transfer-account" ng-model="accountName" ng-options="x for x in accountList" ng-change="fromChanged()"></select>
              <div class="alert alert-danger" style="margin-top: 5px" ng-if="keyRequiredErr">{{ 'ACTIVE_KEY_REQUIRED_TRANSFER' | __ }}</div>
            </div>
          </div>
          <div class="form-group">
-           <label class="col-sm-4 control-label">{{ 'DESTINATION_ACCOUNTS' | __ }}</label>
-           <div class="col-sm-8">
+           <label class="col-sm-3 control-label">{{ 'DESTINATION_ACCOUNTS' | __ }}</label>
+           <div class="col-sm-9">
              <table class="table table-striped table-bordered table-routes" ng-if="withdrawRoutes.length > 0">
                <tbody>
                <tr ng-repeat="w in withdrawRoutes">
@@ -59,33 +59,35 @@
                </tr>
                </tbody>
              </table>
-             <button class="btn btn-primary btn-sm btn-block" ng-click="addWithDrawAccountClicked()">{{ 'ADD_WITHDRAW_ACCOUNT' | __ }}</button>
+             <button class="btn btn-info btn-sm pull-left" ng-click="addWithDrawAccountClicked()"><i class="fa fa-plus"></i> {{ 'ADD_WITHDRAW_ACCOUNT' | __ }}</button>
            </div>
          </div>
-         <div class="form-group" ng-class="{'has-error': amountErr}" ng-if="!isPoweringDown">
-           <label for="transfer-amount" class="col-sm-4 control-label">{{ 'AMOUNT' | translate }}</label>
-           <div class="col-sm-8">
-             <div class="input-group" style="margin-bottom: 10px">
-               <input type="text" class="form-control" id="transfer-amount" ng-model="amount" ng-change="amountChanged()" >
-               <div class="input-group-btn">
-                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                   {{ asset }}
-                   <span class="caret"></span></button>
-                 <ul class="dropdown-menu dropdown-menu-right">
-                   <li><a ng-click="assetChanged('STEEM')">SP</a></li>
-                   <li><a ng-click="assetChanged('SBD')">VESTS</a></li>
-                 </ul>
+         <div class="form-group" ng-hide="isPoweringDown">
+           <label class="col-sm-3 control-label">{{ 'AMOUNT' | translate }}</label>
+           <div class="col-sm-9">
+             <rzslider rz-slider-model="amountSlider.value" rz-slider-options="amountSlider.options"></rzslider>
+             <p class="help-block text-center"><small>Drag the slider to adjust the amount.</small></p>
+             <div class="power-down-preview">
+               <div class="before">
+                 <span class="label label-danger">-{{ amountSp }} SP</span>
+                 <span class="label label-default">-{{ amountVestFormatted }} VESTS</span>
+               </div>
+               <div class="arrow">
+                 <i class="fa fa-arrow-down arrow-icon"></i>
+               </div>
+               <div class="after">
+                 <span class="label label-success">+{{ steemPerWeek }} STEEM</span>
+                 <br>
+                 <small>Estimated Weekly</small>
                </div>
              </div>
-             <rzslider rz-slider-model="amountSlider.value" rz-slider-options="amountSlider.options"></rzslider>
-             <p class="help-block" ng-if="amountErr">{{ amountErr }}</p>
-             <p class="balance-block">{{ 'BALANCE' | translate }}: <span class="copy-balance" ng-click="copyBalance()">{{ balance }} SP</span></p>
+             <hr>
            </div>
          </div>
          <div class="form-group">
-           <div class="col-sm-offset-4 col-sm-8">
-             <button class="btn btn-success pull-right" ng-if="!isPoweringDown" ng-disabled="!canSubmit()" ng-click="start()">Start</button>
-             <button class="btn btn-danger pull-right" ng-if="isPoweringDown" ng-disabled="!canSubmit()" ng-click="stop()">Stop</button>
+           <div class="col-sm-offset-3 col-sm-9 text-center">
+             <button class="btn btn-primary" ng-if="!isPoweringDown" ng-disabled="!canStart() || processing" ng-click="start()"><i class="fa fa-play-circle"></i> Begin Power Down</button>
+             <button class="btn btn-danger" ng-if="isPoweringDown" ng-disabled="!canStop() || processing" ng-click="stop()">Stop</button>
            </div>
          </div>
        </div>

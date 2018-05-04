@@ -277,7 +277,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
         templateUrl: 'templates/gallery.html',
         controller: 'galleryCtrl'
       })
-      .when('/power-down', {
+      .when('/:account/power-down', {
         templateUrl: 'templates/power-down.html',
         controller: 'powerDownCtrl'
       })

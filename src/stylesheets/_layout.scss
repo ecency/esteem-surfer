@@ -727,9 +727,9 @@
     background: $listBgColor;
     border: 1px solid $listBorderColor;
     box-shadow: 0 0 1px 0 $listBorderColor;
+    margin: auto;
     padding: 0 0 20px 0;
     width: 600px;
-    margin: auto;
 
     .indicator {
       text-align: center;
@@ -777,14 +777,57 @@
 
   &.fn-power-down {
 
-    .table-routes {
-      th, td {
-        font-size: 13px;
-        vertical-align: middle;
+    .fn-window {
+      width: 800px;
+
+      .table-routes {
+        th, td {
+          font-size: 13px;
+          vertical-align: middle;
+        }
+
+        td {
+          width: 30px;
+        }
       }
 
-      td {
-        width: 30px;
+      .rz-bubble {
+        font-size: 12px;
+      }
+
+      .power-down-preview {
+        margin: 40px 0 30px;
+        text-align: center;
+
+        .before, .arrow {
+          margin-bottom: 20px;
+        }
+
+        .after {
+          small {
+            color: $textColorLight;
+            line-height: 250%;
+          }
+        }
+
+        .label {
+          display: inline-block;
+          font-size: 20px;
+          font-weight: 400;
+          min-width: 230px;
+          padding-bottom: 8px;
+          padding-top: 8px;
+
+        }
+
+        .arrow {
+          .arrow-icon {
+            color: $textColorLight;
+            font-size: 22px;
+            margin-left: 10px;
+            margin-right: 10px;
+          }
+        }
       }
     }
   }
