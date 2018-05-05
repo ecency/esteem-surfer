@@ -1,7 +1,35 @@
 <nav-bar selected-section="'token-exchange'"></nav-bar>
 <div class="app-container">
   <div class="app-content static-page">
-    <h1>Token Exchange</h1>
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+      <div id="tradingview_b3de0" style="height: 550px"></div>
+      <script type="text/javascript">
+        new TradingView.widget(
+          {
+            "autosize": true,
+            "symbol": "BITTREX:STEEMBTC",
+            "interval": "D",
+            "timezone": "Etc/UTC",
+            "theme": "Light",
+            "style": "1",
+            "locale": "en",
+            "toolbar_bg": "#f1f3f6",
+            "enable_publishing": false,
+            "allow_symbol_change": true,
+            "watchlist": [
+              "BITTREX:STEEMBTC",
+              "BINANCE:STEEMBTC",
+              "BITTREX:STEEMUSD",
+              "BITTREX:SBDBTC",
+              "BITTREX:SBDUSD",
+              "BITSTAMP:BTCUSD",
+            ],
+            "container_id": "tradingview_b3de0"
+          }
+        );
+      </script>
+    </div>
   </div>
 </div>
 <app-footer></app-footer>
