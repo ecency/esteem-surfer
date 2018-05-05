@@ -1,5 +1,3 @@
-import {amountFormatCheck, formatStrAmount} from './helper';
-
 export default ($scope, $rootScope, $routeParams, $filter, $location, $uibModal, $timeout, $window, autoCancelTimeout, userService, steemService, steemAuthenticatedService) => {
   const curAccount = $routeParams.account;
   const accountList = userService.getAll();
@@ -23,6 +21,11 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $uibModal,
 
   $scope.withdrawRoutes = [];
 
+  $scope.nextPowerDown = null;
+  $scope.withdrawVesting = null;
+  $scope.withdrawVesting2sp = null;
+
+
   $scope.keyRequiredErr = false;
   const a = getAccount(curAccount);
   if (a.type === 's' && !a.keys.active) {
@@ -38,7 +41,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $uibModal,
       precision: 6,
       onChange: function (id, v) {
         $scope.amountVest = v;
-        $scope.amountVestFormatted = $filter('number')(parseFloat(v).toFixed(0)).replace(',', '.');
+        $scope.amountVestFormatted = formatVests(v);
 
         const sp = vests2sp(v);
         $scope.amountSp = sp;
@@ -107,7 +110,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $uibModal,
 
     $scope.processing = true;
     steemAuthenticatedService.withdrawVesting(wif, curAccount, vestingShares).then((resp) => {
-      console.log(resp)
+
     }).catch((e) => {
       $rootScope.showError(e);
     }).then(() => {
@@ -118,9 +121,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $uibModal,
   };
 
   $scope.stop = () => {
-
     if ($window.confirm($filter('translate')('ARE_YOU_SURE'))) {
-
       const vestingShares = `0.000000 VESTS`;
 
       const fromAccount = getAccount(curAccount);
@@ -128,7 +129,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $uibModal,
 
       $scope.processing = true;
       steemAuthenticatedService.withdrawVesting(wif, curAccount, vestingShares).then((resp) => {
-        console.log(resp)
+
       }).catch((e) => {
         $rootScope.showError(e);
       }).then(() => {
@@ -137,7 +138,6 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $uibModal,
         loadAccount();
       });
     }
-
   };
 
   const loadAccount = () => {
@@ -147,7 +147,14 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $uibModal,
       const account = resp[0];
 
       $scope.amountSlider.options.ceil = account.vesting_shares.split(' ')[0];
-      $scope.isPoweringDown = (account.next_vesting_withdrawal !== '1969-12-31T23:59:59')
+      $scope.isPoweringDown = (account.next_vesting_withdrawal !== '1969-12-31T23:59:59');
+
+      $scope.nextPowerDown = new Date(account.next_vesting_withdrawal);
+      const rate = account.vesting_withdraw_rate;
+      const vests = parseFloat(rate.split(" ")[0]);
+      $scope.withdrawVesting = formatVests(vests);
+      $scope.withdrawVesting2sp = vests2sp(vests);
+
     }).catch((e) => {
       $rootScope.showError(e);
     }).then(() => {
@@ -172,6 +179,10 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $uibModal,
 
   const vests2sp = (vests) => {
     return $filter('steemPower')(vests.toString());
+  };
+
+  const formatVests = (v) => {
+    return $filter('number')(parseFloat(v).toFixed(0)).replace(',', '.');
   };
 
   loadAccount().then(() => {
