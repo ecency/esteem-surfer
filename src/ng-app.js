@@ -86,6 +86,8 @@ import commentEditorDir from './directives/comment-editor';
 import draftListItemDir from './directives/draft-list-item';
 import scheduleListItemDir from './directives/schedule-list-item';
 import galleryListItemDir from './directives/gallery-list-item';
+import transferNavBarDir from './directives/transfer-navbar';
+
 
 // Services
 import steemService from './services/steem';
@@ -277,6 +279,26 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
         templateUrl: 'templates/gallery.html',
         controller: 'galleryCtrl'
       })
+      .when('/:account/transfer', {
+        templateUrl: 'templates/transfer.html',
+        controller: 'transferCtrl'
+      })
+      .when('/:account/transfer/:mode', {
+        templateUrl: 'templates/transfer.html',
+        controller: 'transferCtrl'
+      })
+      .when('/:account/transfer/:mode', {
+        templateUrl: 'templates/transfer.html',
+        controller: 'transferCtrl'
+      })
+      .when('/:account/escrow', {
+        templateUrl: 'templates/escrow.html',
+        controller: 'escrowCtrl'
+      })
+      .when('/:account/power-up', {
+        templateUrl: 'templates/power-up.html',
+        controller: 'powerUpCtrl'
+      })
       .when('/:account/power-down', {
         templateUrl: 'templates/power-down.html',
         controller: 'powerDownCtrl'
@@ -367,6 +389,8 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .directive('draftListItem', draftListItemDir)
   .directive('scheduleListItem', scheduleListItemDir)
   .directive('galleryListItem', galleryListItemDir)
+  .directive('transferNavBar', transferNavBarDir)
+
 
   .controller('postsCtrl', postsCtrl)
   .controller('faqCtrl', faqCtrl)
@@ -393,6 +417,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .controller('powerDownCtrl', powerDownCtrl)
   .controller('addWithDrawAccountCtrl', addWithDrawAccountCtrl)
   .controller('profileEditCtrl', profileEditCtrl)
+
 
   .filter('catchPostImage', catchPostImageFilter)
   .filter('sumPostTotal', sumPostTotalFilter)

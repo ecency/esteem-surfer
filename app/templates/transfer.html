@@ -1,60 +1,74 @@
-<div class="modal-header">
-  <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'CANCEL' | translate }}" ng-click="close()">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  <h4 class="modal-title" ng-if="mode==='normal'">{{ 'TRANSFER' | translate }} </h4>
-  <h4 class="modal-title" ng-if="mode==='to_savings'">{{ 'TRANSFER_TO_SAVINGS' | translate }} </h4>
-  <h4 class="modal-title" ng-if="mode==='from_savings'">{{ 'WITHDRAW_FROM_SAVINGS' | __ }} </h4>
-</div>
-<div class="modal-body">
-  <div class="form-horizontal">
-    <div class="form-group">
-      <label for="transfer-from" class="col-sm-2 control-label">{{ 'FROM' | translate }}</label>
-      <div class="col-sm-10">
-        <select class="form-control" id="transfer-from" ng-model="from" ng-options="x for x in accountList" ng-change="fromChanged()"></select>
-        <div class="alert alert-danger" style="margin-top: 5px" ng-if="keyRequiredErr">{{ 'ACTIVE_KEY_REQUIRED_TRANSFER' | __ }}</div>
-      </div>
-    </div>
-    <div class="form-group" ng-class="{'has-error': toErr, 'has-success': toData}">
-      <label for="transfer-to" class="col-sm-2 control-label">{{ 'TO' | translate }}</label>
-      <div class="col-sm-10">
-        <div class="input-group">
+<nav-bar></nav-bar>
+<div class="app-container">
+  <div class="app-content transfer-fn-page fn-transfer">
+    <div class="fn-window">
+      <nav class="navbar navbar-default fn-navbar">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse">
+            <transfer-nav-bar></transfer-nav-bar>
+          </div>
+        </div>
+      </nav>
+      <div class="fn-form">
+        <h1 class="form-header" ng-if="mode==='normal'">{{ 'TRANSFER' | translate }} </h1>
+        <h1 class="form-header" ng-if="mode==='to_savings'">{{ 'TRANSFER_TO_SAVINGS' | translate }} </h1>
+        <h1 class="form-header" ng-if="mode==='from_savings'">{{ 'WITHDRAW_FROM_SAVINGS' | __ }} </h1>
+        <hr>
+        <div class="indicator" ng-if="fetchingFromAccount"><i class="fa fa-spin fa-spinner fa-circle-o-notch"></i></div>
+        <div class="form-horizontal" ng-hide="fetchingFromAccount">
+          <div class="form-group">
+            <label for="transfer-from" class="col-sm-2 control-label">{{ 'FROM' | translate }}</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="transfer-from" ng-model="from" ng-options="x for x in accountList" ng-change="fromChanged()"></select>
+              <div class="alert alert-danger" style="margin-top: 5px" ng-if="keyRequiredErr">{{ 'ACTIVE_KEY_REQUIRED_TRANSFER' | __ }}</div>
+            </div>
+          </div>
+          <div class="form-group" ng-class="{'has-error': toErr, 'has-success': toData}">
+            <label for="transfer-to" class="col-sm-2 control-label">{{ 'TO' | translate }}</label>
+            <div class="col-sm-10">
+              <div class="input-group">
           <span class="input-group-addon">
             <span ng-if="!fetchingTo">@</span>
             <i ng-if="fetchingTo" class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
           </span>
-          <input type="text" class="form-control" id="transfer-to" ng-model="to" placeholder="{{ 'TO_DESC' | translate }}" ng-change="toChanged()">
-        </div>
-        <p class="help-block" ng-if="toErr">{{ toErr }}</p>
-      </div>
-    </div>
-    <div class="form-group" ng-class="{'has-error': amountErr}">
-      <label for="transfer-amount" class="col-sm-2 control-label">{{ 'AMOUNT' | translate }}</label>
-      <div class="col-sm-10">
-        <div class="input-group">
-          <input type="text" class="form-control" id="transfer-amount" ng-model="amount" ng-change="amountChanged()">
-          <div class="input-group-btn">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-              {{ asset }}
-              <span class="caret"></span></button>
-              <ul class="dropdown-menu dropdown-menu-right">
-                <li><a ng-click="assetChanged('STEEM')">STEEM</a></li>
-                <li><a ng-click="assetChanged('SBD')">SBD</a></li>
-              </ul>
+                <input type="text" class="form-control" id="transfer-to" ng-model="to" placeholder="{{ 'TO_DESC' | translate }}" ng-change="toChanged()">
+              </div>
+              <p class="help-block" ng-if="toErr">{{ toErr }}</p>
+            </div>
+          </div>
+          <div class="form-group" ng-class="{'has-error': amountErr}">
+            <label for="transfer-amount" class="col-sm-2 control-label">{{ 'AMOUNT' | translate }}</label>
+            <div class="col-sm-10">
+              <div class="input-group">
+                <input type="text" class="form-control" id="transfer-amount" ng-model="amount" ng-change="amountChanged()">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    {{ asset }}
+                    <span class="caret"></span></button>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a ng-click="assetChanged('STEEM')">STEEM</a></li>
+                    <li><a ng-click="assetChanged('SBD')">SBD</a></li>
+                  </ul>
+                </div>
+              </div>
+              <p class="help-block" ng-if="amountErr">{{ amountErr }}</p>
+              <p class="balance-block">{{ 'BALANCE' | translate }}: <span class="copy-balance" ng-click="copyBalance()">{{ balance }} {{ asset }}</span></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="transfer-memo" class="col-sm-2 control-label">{{ 'MEMO' | translate }}</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="transfer-memo" ng-model="memo" placeholder="{{ 'PUBLIC_MEMO' | translate }}" maxlength="50">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2 text-center">
+              <button class="btn btn-primary" ng-click="submit()" ng-disabled="!canSubmit() || processing"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="processing"></i>  {{ 'SEND' | translate }}</button>
+            </div>
           </div>
         </div>
-        <p class="help-block" ng-if="amountErr">{{ amountErr }}</p>
-        <p class="balance-block">{{ 'BALANCE' | translate }}: <span class="copy-balance" ng-click="copyBalance()">{{ balance }} {{ asset }}</span></p>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="transfer-memo" class="col-sm-2 control-label">{{ 'MEMO' | translate }}</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="transfer-memo" ng-model="memo" placeholder="{{ 'PUBLIC_MEMO' | translate }}" maxlength="50">
       </div>
     </div>
   </div>
 </div>
-<div class="modal-footer">
-  <button class="btn btn-primary" ng-click="submit()" ng-disabled="!canSubmit() || processing"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="processing"></i>  {{ 'SEND' | translate }}</button>
-</div>
+<app-footer></app-footer>

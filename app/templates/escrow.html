@@ -1,91 +1,105 @@
-<div class="modal-header">
-  <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'CANCEL' | translate }}" ng-click="close()">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  <h4 class="modal-title">{{ 'ESCROW' | translate }} </h4>
-</div>
-<div class="modal-body">
-  <div ng-show="newEscrowId" class="text-center">
-    <h3>{{ 'TX_BROADCASTED' | translate }}</h3>
-    <p>{{ 'ESCROW' | translate }} {{ 'ID' | translate }}: {{ newEscrowId}}</p>
-  </div>
-  <div class="form-horizontal" ng-show="!newEscrowId">
-    <div class="form-group">
-      <label for="transfer-from" class="col-sm-3 control-label">{{ 'FROM' | translate }}</label>
-      <div class="col-sm-9">
-        <select class="form-control" id="transfer-from" ng-model="from" ng-options="x for x in accountList" ng-change="fromChanged()"></select>
-        <div class="alert alert-danger" style="margin-top: 5px" ng-if="keyRequiredErr">{{ 'ACTIVE_KEY_REQUIRED_TRANSFER' | __ }}</div>
-      </div>
-    </div>
-    <div class="form-group" ng-class="{'has-error': toErr, 'has-success': toData}">
-      <label for="escrow-to" class="col-sm-3 control-label">{{ 'TO' | translate }}</label>
-      <div class="col-sm-9">
-        <div class="input-group">
-          <span class="input-group-addon">
-            <span ng-if="!fetchingTo">@</span>
-            <i ng-if="fetchingTo" class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
-          </span>
-          <input type="text" class="form-control" id="escrow-to" ng-model="to" placeholder="{{ 'TO_DESC' | translate }}" ng-change="toChanged()"  />
+<nav-bar></nav-bar>
+<div class="app-container">
+  <div class="app-content transfer-fn-page fn-escrow">
+    <div class="fn-window">
+      <nav class="navbar navbar-default fn-navbar">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse">
+            <transfer-nav-bar></transfer-nav-bar>
+          </div>
         </div>
-        <p class="help-block" ng-if="toErr">{{ toErr }}</p>
-      </div>
-    </div>
-    <div class="form-group" ng-class="{'has-error': agentErr, 'has-success': agentData}">
-      <label for="escrow-agent" class="col-sm-3 control-label">{{ 'ESCROW_AGENT' | translate }}</label>
-      <div class="col-sm-9">
-        <div class="input-group">
+      </nav>
+      <div class="fn-form">
+        <h1 class="form-header">{{ 'ESCROW' | translate }} </h1>
+        <hr>
+        <div class="indicator" ng-if="fetchingFromAccount"><i class="fa fa-spin fa-spinner fa-circle-o-notch"></i></div>
+        <div ng-show="newEscrowId" class="text-center">
+          <h3>{{ 'TX_BROADCASTED' | translate }}</h3>
+          <p>{{ 'ESCROW' | translate }} {{ 'ID' | translate }}: {{ newEscrowId}}</p>
+        </div>
+        <div class="form-horizontal" ng-hide="fetchingFromAccount" ng-show="!newEscrowId">
+          <div class="form-group">
+            <label for="transfer-from" class="col-sm-3 control-label">{{ 'FROM' | translate }}</label>
+            <div class="col-sm-9">
+              <select class="form-control" id="transfer-from" ng-model="from" ng-options="x for x in accountList" ng-change="fromChanged()"></select>
+              <div class="alert alert-danger" style="margin-top: 5px" ng-if="keyRequiredErr">{{ 'ACTIVE_KEY_REQUIRED_TRANSFER' | __ }}</div>
+            </div>
+          </div>
+          <div class="form-group" ng-class="{'has-error': toErr, 'has-success': toData}">
+            <label for="escrow-to" class="col-sm-3 control-label">{{ 'TO' | translate }}</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <span ng-if="!fetchingTo">@</span>
+                  <i ng-if="fetchingTo" class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
+                </span>
+                <input type="text" class="form-control" id="escrow-to" ng-model="to" placeholder="{{ 'TO_DESC' | translate }}" ng-change="toChanged()"  />
+              </div>
+              <p class="help-block" ng-if="toErr">{{ toErr }}</p>
+            </div>
+          </div>
+          <div class="form-group" ng-class="{'has-error': agentErr, 'has-success': agentData}">
+            <label for="escrow-agent" class="col-sm-3 control-label">{{ 'ESCROW_AGENT' | translate }}</label>
+            <div class="col-sm-9">
+              <div class="input-group">
           <span class="input-group-addon">
             <span ng-if="!fetchingAgent">@</span>
             <i ng-if="fetchingAgent" class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
           </span>
-          <input type="text" class="form-control" id="escrow-agent" ng-model="agent" placeholder="{{ 'USERNAME' | translate }}" ng-change="agentChanged()" />
-        </div>
-        <p class="help-block" ng-if="agentErr">{{ agentErr }}</p>
-        <div ng-if="agentData" style="margin-top: 10px">
-          <p>{{ 'ESCROW_TERMS' | translate }}: {{ agentData.escrowInfo.terms }}</p>
-          <p>{{ 'ESCROW_FEE' | translate }}: {{ agentData.escrowInfo.fees.STEEM }} STEEM / {{ agentData.escrowInfo.fees.SBD }} SBD</p>
-        </div>
-      </div>
-    </div>
-    <div class="form-group" ng-class="{'has-error': amountErr}">
-      <label for="transfer-amount" class="col-sm-3 control-label">{{ 'AMOUNT' | translate }}</label>
-      <div class="col-sm-9">
-        <div class="input-group">
-          <input type="text" class="form-control" id="transfer-amount" ng-model="amount" ng-change="amountChanged()">
-          <div class="input-group-btn">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-              {{ asset }}
-              <span class="caret"></span></button>
-            <ul class="dropdown-menu dropdown-menu-right">
-              <li><a ng-click="assetChanged('STEEM')">STEEM</a></li>
-              <li><a ng-click="assetChanged('SBD')">SBD</a></li>
-            </ul>
+                <input type="text" class="form-control" id="escrow-agent" ng-model="agent" placeholder="{{ 'USERNAME' | translate }}" ng-change="agentChanged()" />
+              </div>
+              <p class="help-block" ng-if="agentErr">{{ agentErr }}</p>
+              <div ng-if="agentData" style="margin-top: 10px">
+                <p>{{ 'ESCROW_TERMS' | translate }}: {{ agentData.escrowInfo.terms }}</p>
+                <p>{{ 'ESCROW_FEE' | translate }}: {{ agentData.escrowInfo.fees.STEEM }} STEEM / {{ agentData.escrowInfo.fees.SBD }} SBD</p>
+              </div>
+            </div>
+          </div>
+          <div class="form-group" ng-class="{'has-error': amountErr}">
+            <label for="transfer-amount" class="col-sm-3 control-label">{{ 'AMOUNT' | translate }}</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <input type="text" class="form-control" id="transfer-amount" ng-model="amount" ng-change="amountChanged()">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    {{ asset }}
+                    <span class="caret"></span></button>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a ng-click="assetChanged('STEEM')">STEEM</a></li>
+                    <li><a ng-click="assetChanged('SBD')">SBD</a></li>
+                  </ul>
+                </div>
+              </div>
+              <p class="help-block" ng-if="amountErr">{{ amountErr }}</p>
+              <p class="balance-block">{{ 'BALANCE' | translate }}: <span class="copy-balance" ng-click="copyBalance()">{{ balance }} {{ asset }}</span></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="transfer-memo" class="col-sm-3 control-label">{{ 'MEMO' | translate }}</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="transfer-memo" ng-model="memo" placeholder="{{ 'PUBLIC_MEMO' | translate }}" maxlength="50">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="ratification-deadline" class="col-sm-3 control-label">{{ 'RATIFICATION_DEADLINE' | translate }}</label>
+            <div class="col-sm-9">
+              <input type="datetime-local" class="form-control" id="ratification-deadline" ng-model="deadline" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="escrow-expiration" class="col-sm-3 control-label">{{ 'ESCROW_EXPIRATION' | translate }}</label>
+            <div class="col-sm-9">
+              <input type="datetime-local" class="form-control" id="escrow-expiration" ng-model="expiration" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+              <button class="btn btn-primary" ng-click="submit()" ng-disabled="!canSubmit() || processing"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="processing"></i>  {{ 'SEND' | translate }}</button>
+            </div>
           </div>
         </div>
-        <p class="help-block" ng-if="amountErr">{{ amountErr }}</p>
-        <p class="balance-block">{{ 'BALANCE' | translate }}: <span class="copy-balance" ng-click="copyBalance()">{{ balance }} {{ asset }}</span></p>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="transfer-memo" class="col-sm-3 control-label">{{ 'MEMO' | translate }}</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="transfer-memo" ng-model="memo" placeholder="{{ 'PUBLIC_MEMO' | translate }}" maxlength="50">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="ratification-deadline" class="col-sm-3 control-label">{{ 'RATIFICATION_DEADLINE' | translate }}</label>
-      <div class="col-sm-9">
-        <input type="datetime-local" class="form-control" id="ratification-deadline" ng-model="deadline" required>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="escrow-expiration" class="col-sm-3 control-label">{{ 'ESCROW_EXPIRATION' | translate }}</label>
-      <div class="col-sm-9">
-        <input type="datetime-local" class="form-control" id="escrow-expiration" ng-model="expiration" required>
       </div>
     </div>
   </div>
 </div>
-<div class="modal-footer" ng-show="!newEscrowId">
-  <button class="btn btn-primary" ng-click="submit()" ng-disabled="!canSubmit() || processing"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="processing"></i>  {{ 'SEND' | translate }}</button>
-</div>
+<app-footer></app-footer>

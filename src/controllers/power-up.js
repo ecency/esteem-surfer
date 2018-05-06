@@ -1,7 +1,7 @@
 import {amountFormatCheck, formatStrAmount} from './helper';
 
-export default ($scope, $rootScope, $timeout, $filter, $uibModalInstance, autoCancelTimeout, steemService, steemAuthenticatedService, activeUsername, userService, afterTransfer) => {
-
+export default ($scope, $rootScope, $routeParams, $location, $timeout, $filter, autoCancelTimeout, steemService, steemAuthenticatedService, activeUsername, userService) => {
+  const curAccount = $routeParams.account;
   const accountList = userService.getAll();
 
   const getAccount = (a) => {
@@ -14,7 +14,7 @@ export default ($scope, $rootScope, $timeout, $filter, $uibModalInstance, autoCa
 
   $scope.accountList = accountList.map(x => x.username);
   $scope.account = null;
-  $scope.from = activeUsername();
+  $scope.from = curAccount;
 
   $scope.to = '';
   $scope.amount = '0.001';
@@ -25,13 +25,19 @@ export default ($scope, $rootScope, $timeout, $filter, $uibModalInstance, autoCa
   $scope.toErr = null;
   $scope.amountErr = null;
 
-  $scope.fromChanged = () => {
+  const checkForKey = () => {
     $scope.keyRequiredErr = false;
-    const a = getAccount($scope.from);
+    const a = getAccount(curAccount);
+    console.log(a);
     if (a.type === 's' && !a.keys.active) {
       $scope.keyRequiredErr = true;
     }
-    loadFromAccount();
+  };
+
+  checkForKey();
+
+  $scope.fromChanged = () => {
+    $location.path(`/${ $scope.from }/power-up`);
   };
 
   $scope.toChanged = () => {
@@ -95,7 +101,6 @@ export default ($scope, $rootScope, $timeout, $filter, $uibModalInstance, autoCa
     steemService.getAccounts([$scope.from]).then((resp) => {
       return resp[0];
     }).catch((e) => {
-      $scope.close();
       $rootScope.showError(e);
     }).then((resp) => {
       $scope.fetchingFromAccount = false;
@@ -132,8 +137,6 @@ export default ($scope, $rootScope, $timeout, $filter, $uibModalInstance, autoCa
     $scope.processing = true;
 
     steemAuthenticatedService.transferToVesting(wif, from, to, amount).then((resp) => {
-      afterTransfer();
-      $scope.close();
       $rootScope.showSuccess($filter('translate')('TX_BROADCASTED'));
     }).catch((e) => {
       $rootScope.showError(e);
@@ -143,13 +146,9 @@ export default ($scope, $rootScope, $timeout, $filter, $uibModalInstance, autoCa
   };
 
   $timeout(() => {
+    document.getElementById('transfer-amount').focus();
+
     $scope.to = activeUsername();
     $scope.toChanged();
-    document.getElementById('transfer-amount').focus();
-  }, 500);
-
-
-  $scope.close = () => {
-    $uibModalInstance.dismiss('cancel');
-  };
+  }, 200);
 };
