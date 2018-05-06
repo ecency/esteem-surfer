@@ -3,9 +3,9 @@ export default ($rootScope, $uibModal) => {
     restrict: 'A',
     replace: false,
     scope: {
-      onLoginSuccess: '=',
-      ifLoggedIn: '=',
-      onLoginOpen: '=',
+      onLoginSuccess: '&',
+      ifLoggedIn: '&',
+      onLoginOpen: '&',
       requiredKeys: '='
     },
     link: (scope, elem, attrs) => {

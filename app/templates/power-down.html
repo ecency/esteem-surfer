@@ -55,18 +55,18 @@
                  <th>{{ w.to_account }}</th>
                  <td>{{ w.percent/100 }}%</td>
                  <td><span ng-if="w.auto_vest">VEST</span><span ng-if="!w.auto_vest">STEEM</span></td>
-                 <td><button class="btn btn-danger btn-sm" ng-disabled="deletingWithDrawAccount" ng-click="deleteWithDrawAccount(w.to_account)"><i class="fa fa-trash"></i></button></td>
+                 <td><button class="btn btn-danger btn-sm" ng-disabled="deletingWithDrawAccount" login-required required-keys="'active'" on-login-success="deleteWithDrawAccount(w.to_account)" ng-click=""><i class="fa fa-trash"></i></button></td>
                </tr>
                </tbody>
              </table>
-             <button class="btn btn-info btn-sm pull-left" ng-click="addWithDrawAccountClicked()"><i class="fa fa-plus"></i> {{ 'ADD_WITHDRAW_ACCOUNT' | __ }}</button>
+             <button class="btn btn-info btn-sm pull-left" login-required required-keys="'active'" on-login-success="addWithDrawAccountClicked()" ng-click=""><i class="fa fa-plus"></i> {{ 'ADD_WITHDRAW_ACCOUNT' | __ }}</button>
            </div>
          </div>
          <div class="form-group" ng-hide="isPoweringDown">
            <label class="col-sm-3 control-label">{{ 'AMOUNT' | translate }}</label>
            <div class="col-sm-9">
              <rzslider rz-slider-model="amountSlider.value" rz-slider-options="amountSlider.options"></rzslider>
-             <p class="help-block text-center"><small>Drag the slider to adjust the amount.</small></p>
+             <p class="help-block text-center"><small>{{ 'DRAG_SLIDER' | __ }}</small></p>
              <div class="power-down-preview">
                <div class="before">
                  <span class="label label-danger">-{{ amountSp }} SP</span>
@@ -78,14 +78,14 @@
                <div class="after">
                  <span class="label label-success">+{{ steemPerWeek }} STEEM</span>
                  <br>
-                 <small>Estimated Weekly</small>
+                 <small>{{ 'ESTIMATED_WEEKLY' | __ }}</small>
                </div>
              </div>
              <hr>
            </div>
          </div>
          <div class="form-group" ng-show="isPoweringDown">
-           <label class="col-sm-3 control-label">Incoming Funds </label>
+           <label class="col-sm-3 control-label">{{ 'INCOMING_FUNDS' | __ }}</label>
            <div class="col-sm-9">
              <div class="incoming-funds">
                <span class="text-success steem">+{{ withdrawVesting2sp }} STEEM</span> <br>
@@ -95,8 +95,8 @@
          </div>
          <div class="form-group">
            <div class="col-sm-offset-3 col-sm-9 text-center">
-             <button class="btn btn-primary" ng-if="!isPoweringDown" ng-disabled="!canStart() || processing" ng-click="start()"><i class="fa fa-play-circle"></i> Begin Power Down</button>
-             <button class="btn btn-danger" ng-if="isPoweringDown" ng-disabled="!canStop() || processing" ng-click="stop()"><i class="fa fa-times"></i> Stop</button>
+             <button class="btn btn-primary" ng-if="!isPoweringDown" ng-disabled="!canStart() || processing" login-required required-keys="'active'" on-login-success="start()"><i class="fa fa-play-circle"></i> {{ 'START_POWER_DOWN' | __ }}</button>
+             <button class="btn btn-danger" ng-if="isPoweringDown" ng-disabled="!canStop() || processing" login-required required-keys="'active'" on-login-success="stop()"><i class="fa fa-times"></i> {{ 'STOP_POWER_DOWN' | __ }}</button>
            </div>
          </div>
        </div>
