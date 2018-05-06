@@ -1,10 +1,10 @@
 import {amountFormatCheck, formatStrAmount} from './helper';
 
-export default ($scope, $rootScope, $timeout, $filter, $uibModalInstance, autoCancelTimeout, steemService, steemAuthenticatedService, userService, activeUsername, initialAsset, mode, afterTransfer) => {
-
-
+export default ($scope, $rootScope, $routeParams, $timeout, $location, $filter, autoCancelTimeout, steemService, steemAuthenticatedService, userService, activeUsername) => {
+  const mode = $routeParams.mode ? $routeParams.mode : 'normal';
   $scope.mode = mode;
 
+  const curAccount = $routeParams.account;
   const accountList = userService.getAll();
 
   const getAccount = (a) => {
@@ -17,11 +17,11 @@ export default ($scope, $rootScope, $timeout, $filter, $uibModalInstance, autoCa
 
   $scope.accountList = accountList.map(x => x.username);
   $scope.account = null;
-  $scope.from = activeUsername();
+  $scope.from = curAccount;
 
   $scope.to = '';
   $scope.amount = '0.001';
-  $scope.asset = initialAsset;
+  $scope.asset = 'STEEM';
   $scope.memo = '';
   $scope.balance = '0';
   $scope.toData = null;
@@ -30,13 +30,19 @@ export default ($scope, $rootScope, $timeout, $filter, $uibModalInstance, autoCa
   $scope.toErr = null;
   $scope.amountErr = null;
 
-  $scope.fromChanged = () => {
+  const checkForKey = () => {
     $scope.keyRequiredErr = false;
-    const a = getAccount($scope.from);
+    const a = getAccount(curAccount);
     if (a.type === 's' && !a.keys.active) {
       $scope.keyRequiredErr = true;
     }
-    loadFromAccount();
+  };
+
+  checkForKey();
+
+  $scope.fromChanged = () => {
+    let e = mode === 'mode' ? 'transfer' : `transfer/${mode}`;
+    $location.path(`/${ $scope.from }/${e}`);
   };
 
   $scope.toChanged = () => {
@@ -103,10 +109,9 @@ export default ($scope, $rootScope, $timeout, $filter, $uibModalInstance, autoCa
   const loadFromAccount = () => {
     $scope.fetchingFromAccount = true;
 
-    steemService.getAccounts([$scope.from]).then((resp) => {
+    return steemService.getAccounts([$scope.from]).then((resp) => {
       return resp[0];
     }).catch((e) => {
-      $scope.close();
       $rootScope.showError(e);
     }).then((resp) => {
       $scope.fetchingFromAccount = false;
@@ -126,8 +131,6 @@ export default ($scope, $rootScope, $timeout, $filter, $uibModalInstance, autoCa
     const k = (asset === 'STEEM' ? 'balance' : 'sbd_balance');
     return $scope.account[k].split(' ')[0];
   };
-
-  loadFromAccount();
 
   $scope.canSubmit = () => {
     return $scope.toData &&
@@ -163,8 +166,6 @@ export default ($scope, $rootScope, $timeout, $filter, $uibModalInstance, autoCa
     }
 
     prms.then((resp) => {
-      afterTransfer();
-      $scope.close();
       $rootScope.showSuccess($filter('translate')('TX_BROADCASTED'));
     }).catch((e) => {
       $rootScope.showError(e);
@@ -173,20 +174,16 @@ export default ($scope, $rootScope, $timeout, $filter, $uibModalInstance, autoCa
     });
   };
 
-  $timeout(() => {
-    if (mode === 'normal') {
-      document.getElementById('transfer-to').focus();
-    } else {
-      $scope.to = activeUsername();
-      $scope.toChanged();
+  loadFromAccount().then(() => {
+    $timeout(() => {
+      if (mode === 'normal') {
+        document.getElementById('transfer-to').focus();
+      } else {
+        document.getElementById('transfer-amount').focus();
 
-      document.getElementById('transfer-amount').focus();
-    }
-
-  }, 500);
-
-
-  $scope.close = () => {
-    $uibModalInstance.dismiss('cancel');
-  };
+        $scope.to = activeUsername();
+        $scope.toChanged();
+      }
+    }, 200)
+  });
 };

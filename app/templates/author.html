@@ -38,27 +38,7 @@
                   <a ng-click="changeSection('wallet')">{{ 'WALLET' | translate }}</a>
                 </li>
               </ul>
-              <ul class="nav navbar-nav navbar-right" ng-if="section==='wallet' && isMyPage">
-                <li class="dropdown">
-                  <a ng-click="" class="dropdown-toggle" data-toggle="dropdown" role="button"><strong>{{ 'TRANSFER' | translate }}</strong> <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a ng-click="" login-required required-keys="'active'" on-login-success="transferClickedSteem">{{ 'TRANSFER' | translate }}</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a ng-click="" login-required required-keys="'active'" on-login-success="transferToSavingsClicked">{{ 'TRANSFER_TO_SAVINGS' | translate }}</a></li>
-                    <li><a ng-click="" login-required required-keys="'active'" on-login-success="transferFromSavingsClicked">{{ 'WITHDRAW_FROM_SAVINGS' | __ }}</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a ng-click="" login-required required-keys="'active'" on-login-success="escrowClicked">{{ 'ESCROW' | translate }}</a></li>
-                    <li><a ng-click="escrowActionsClicked()">Escrow Actions</a></li>
-                  </ul>
-                </li>
-                <li class="dropdown">
-                  <a ng-click="" class="dropdown-toggle" data-toggle="dropdown" role="button"><strong>Vesting</strong> <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a ng-click="" login-required required-keys="'active'" on-login-success="powerUpClicked">{{ 'POWER_UP' | translate }}</a></li>
-                    <li><a ng-click="powerDownClicked()">{{ 'POWER_DOWN' | translate }}</a></li>
-                  </ul>
-                </li>
-              </ul>
+              <transfer-nav-bar ng-if="section==='wallet' && isMyPage"></transfer-nav-bar>
             </div>
           </div>
         </nav>

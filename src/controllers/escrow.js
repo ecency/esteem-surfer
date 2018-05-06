@@ -2,8 +2,9 @@ import moment from 'moment';
 
 import {amountFormatCheck, formatStrAmount} from './helper';
 
-export default ($scope, $rootScope, $filter, $uibModalInstance, autoCancelTimeout, steemService, userService, steemAuthenticatedService, activeUsername, initialAsset, afterTransfer) => {
+export default ($scope, $rootScope, $routeParams, $location, $timeout, $filter, autoCancelTimeout, steemService, userService, steemAuthenticatedService, activeUsername) => {
 
+  const curAccount = $routeParams.account;
   const accountList = userService.getAll();
 
   const getAccount = (a) => {
@@ -16,12 +17,12 @@ export default ($scope, $rootScope, $filter, $uibModalInstance, autoCancelTimeou
 
   $scope.accountList = accountList.map(x => x.username);
   $scope.account = null;
-  $scope.from = activeUsername();
+  $scope.from = curAccount;
 
   $scope.to = '';
   $scope.agent = '';
   $scope.amount = '0.001';
-  $scope.asset = initialAsset;
+  $scope.asset = 'STEEM';
   $scope.memo = '';
   $scope.deadline = moment().add(1, 'hour').startOf('hour').seconds(0).milliseconds(0).toDate();
   $scope.expiration = moment().add(2, 'hour').startOf('hour').seconds(0).milliseconds(0).toDate();
@@ -36,13 +37,18 @@ export default ($scope, $rootScope, $filter, $uibModalInstance, autoCancelTimeou
 
   $scope.newEscrowId = null;
 
-  $scope.fromChanged = () => {
+  const checkForKey = () => {
     $scope.keyRequiredErr = false;
-    const a = getAccount($scope.from);
+    const a = getAccount(curAccount);
     if (a.type === 's' && !a.keys.active) {
       $scope.keyRequiredErr = true;
     }
-    loadFromAccount();
+  };
+
+  checkForKey();
+
+  $scope.fromChanged = () => {
+    $location.path(`/${ $scope.from }/escrow`);
   };
 
   $scope.toChanged = () => {
@@ -164,10 +170,9 @@ export default ($scope, $rootScope, $filter, $uibModalInstance, autoCancelTimeou
   const loadFromAccount = () => {
     $scope.fetchingFromAccount = true;
 
-    steemService.getAccounts([$scope.from]).then((resp) => {
+    return steemService.getAccounts([$scope.from]).then((resp) => {
       return resp[0];
     }).catch((e) => {
-      $scope.close();
       $rootScope.showError(e);
     }).then((resp) => {
       $scope.fetchingFromAccount = false;
@@ -182,7 +187,11 @@ export default ($scope, $rootScope, $filter, $uibModalInstance, autoCancelTimeou
     return $scope.account[k].split(' ')[0];
   };
 
-  loadFromAccount();
+  loadFromAccount().then(() => {
+    $timeout(() => {
+      document.getElementById('escrow-to').focus();
+    }, 200)
+  });
 
   $scope.canSubmit = () => {
     return $scope.toData &&
@@ -218,15 +227,10 @@ export default ($scope, $rootScope, $filter, $uibModalInstance, autoCancelTimeou
     $scope.processing = true;
     steemAuthenticatedService.escrowTransfer(wif, from, to, agent, escrowId, sbd, steem, fee, deadlineDate, expirationDate, JSON.stringify(jsonMeta)).then((resp) => {
       $scope.newEscrowId = escrowId;
-      afterTransfer();
     }).catch((e) => {
       $rootScope.showError(e);
     }).then((resp) => {
       $scope.processing = false;
     });
-  };
-
-  $scope.close = () => {
-    $uibModalInstance.dismiss('cancel');
   };
 };

@@ -5,32 +5,7 @@
      <nav class="navbar navbar-default fn-navbar">
        <div class="container-fluid">
          <div class="collapse navbar-collapse">
-           <ul class="nav navbar-nav">
-             <li>
-               <a ng-click="changeSection('wallet')">{{ 'WALLET' | translate }}</a>
-             </li>
-           </ul>
-           <ul class="nav navbar-nav navbar-right">
-             <li class="dropdown">
-               <a ng-click="" class="dropdown-toggle" data-toggle="dropdown" role="button"><strong>{{ 'TRANSFER' | translate }}</strong> <span class="caret"></span></a>
-               <ul class="dropdown-menu">
-                 <li><a ng-click="transferClickedSteem()">{{ 'TRANSFER' | translate }}</a></li>
-                 <li role="separator" class="divider"></li>
-                 <li><a ng-click="transferToSavingsClicked()">{{ 'TRANSFER_TO_SAVINGS' | translate }}</a></li>
-                 <li><a ng-click="transferFromSavingsClicked()">{{ 'WITHDRAW_FROM_SAVINGS' | __ }}</a></li>
-                 <li role="separator" class="divider"></li>
-                 <li><a ng-click="escrowClicked()">{{ 'ESCROW' | translate }}</a></li>
-                 <li><a ng-click="escrowActionsClicked()">Escrow Actions</a></li>
-               </ul>
-             </li>
-             <li class="dropdown">
-               <a ng-click="" class="dropdown-toggle" data-toggle="dropdown" role="button"><strong>Vesting</strong> <span class="caret"></span></a>
-               <ul class="dropdown-menu">
-                 <li><a ng-click="powerUpClicked()">{{ 'POWER_UP' | translate }}</a></li>
-                 <li><a ng-click="powerDownClicked()">{{ 'POWER_DOWN' | translate }}</a></li>
-               </ul>
-             </li>
-           </ul>
+           <transfer-nav-bar></transfer-nav-bar>
          </div>
        </div>
      </nav>
