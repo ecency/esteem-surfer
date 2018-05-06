@@ -31,6 +31,9 @@
           </span>
         </div>
       </form>
+      <ul class="nav navbar-nav" ng-if="$root.user">
+        <li ng-class="{'active': selectedSection==='wallet'}"><a ng-click="walletClicked()">{{ 'WALLET' | translate }}</a></li>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="settings"><a ng-click="openSettings()" title="{{ 'SETTINGS' | translate }}"><i class="fa fa-cog"></i></a></li>
         <li class="editor"><a ng-click="editorClicked()"><i class="fa fa-pencil"></i></a></li>
@@ -42,7 +45,6 @@
           <ul class="dropdown-menu">
             <li class="username">@{{ username }}</li>
             <li><a ng-click="profileClicked()">{{ 'PROFILE' | translate }}</a></li>
-            <li><a ng-click="walletClicked()">{{ 'WALLET' | translate }}</a></li>
             <li><a ng-click="bookmarksClicked()">{{ 'BOOKMARKS' | translate }}</a></li>
             <li><a ng-click="draftsClicked()">{{ 'DRAFTS' | translate }}</a></li>
             <li><a ng-click="schedulesClicked()">{{ 'SCHEDULES' | translate }}</a></li>
