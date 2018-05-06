@@ -291,13 +291,9 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
         templateUrl: 'templates/transfer.html',
         controller: 'transferCtrl'
       })
-      .when('/:account/escrow', {
-        templateUrl: 'templates/escrow.html',
-        controller: 'escrowCtrl'
-      })
-      .when('/:account/power-up', {
-        templateUrl: 'templates/power-up.html',
-        controller: 'powerUpCtrl'
+      .when('/:account/', {
+        templateUrl: 'templates/power-down.html',
+        controller: 'powerDownCtrl'
       })
       .when('/:account/power-down', {
         templateUrl: 'templates/power-down.html',
@@ -322,11 +318,13 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .factory('appVersion', () => {
     return version;
   })
-  .factory('steemApi', (constants, $rootScope) => {
+  .factory('steemApi', () => {
     return {
       getApi: () => {
-        steem.api.setOptions({url: $rootScope.server});
         return steem.api;
+      },
+      setServer: (u) => {
+        steem.api.setOptions({url: u});
       }
     }
   })
@@ -594,7 +592,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
     }
   })
 
-  .run(function ($rootScope, $uibModal, $routeParams, $translate, $timeout, $interval, $location, $window, $q, eSteemService, steemService, settingsService, userService, activeUsername, constants) {
+  .run(function ($rootScope, $uibModal, $routeParams, $translate, $timeout, $interval, $location, $window, $q, eSteemService, steemService, settingsService, userService, activeUsername, steemApi, constants) {
 
 
     // SETTINGS
@@ -640,6 +638,9 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
         $rootScope.textDir = 'ltr';
       }
     });
+
+    // Set steem api server address initially
+    steemApi.setServer($rootScope.server);
 
 
     // CURRENCY
