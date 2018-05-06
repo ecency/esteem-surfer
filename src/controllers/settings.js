@@ -1,7 +1,7 @@
 import steem from 'steem';
 
 
-export default ($scope, $rootScope, $timeout, $uibModalInstance, settingsService, eSteemService, constants) => {
+export default ($scope, $rootScope, $timeout, $uibModalInstance, settingsService, eSteemService, steemApi, constants) => {
 
   // Form selection datas
   $scope.languages = constants.languages;
@@ -105,7 +105,7 @@ export default ($scope, $rootScope, $timeout, $uibModalInstance, settingsService
       serverAddr = $scope.customServerAddr;
     }
 
-    steem.api.setOptions({url: serverAddr});
+    steemApi.setServer(serverAddr);
 
     steem.api.getDynamicGlobalProperties(function (err, resp) {
 
