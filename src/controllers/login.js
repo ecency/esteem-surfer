@@ -112,8 +112,7 @@ export default ($scope, $rootScope, $timeout, $location, $uibModalInstance, $q, 
       }, 800);
 
     }).catch((e) => {
-      console.log(e)
-      // TODO: Handle error
+      $rootScope.showError(e);
     }).then(() => {
       $scope.processing = false;
     });
