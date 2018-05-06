@@ -25,12 +25,16 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $uibModal,
   $scope.withdrawVesting = null;
   $scope.withdrawVesting2sp = null;
 
+  const checkForKey = () => {
+    $scope.keyRequiredErr = false;
+    const a = getAccount(curAccount);
+    console.log(a);
+    if (a.type === 's' && !a.keys.active) {
+      $scope.keyRequiredErr = true;
+    }
+  };
 
-  $scope.keyRequiredErr = false;
-  const a = getAccount(curAccount);
-  if (a.type === 's' && !a.keys.active) {
-    $scope.keyRequiredErr = true;
-  }
+  checkForKey();
 
   $scope.amountSlider = {
     value: 0.001,
@@ -94,8 +98,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $uibModal,
   $scope.canStart = () => {
     return $scope.amountVest > 0 &&
       !$scope.fetchingAccount &&
-      !$scope.fetchingWithdrawRoutes &&
-      !$scope.keyRequiredErr;
+      !$scope.fetchingWithdrawRoutes;
   };
 
   $scope.canStop = () => {

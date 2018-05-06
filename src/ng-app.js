@@ -553,6 +553,16 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
           return 'Percentage of Power Down to this account.';
         case 'AUTOMATICALLY_POWER_UP':
           return 'Automatically power up the target account';
+        case 'DRAG_SLIDER':
+          return 'Drag the slider to adjust the amount';
+        case 'INCOMING_FUNDS':
+          return 'Incoming Funds';
+        case 'START_POWER_DOWN':
+          return 'Begin Power Down';
+        case 'STOP_POWER_DOWN':
+          return 'Stop';
+        case 'ESTIMATED_WEEKLY':
+          return 'Estimated Weekly';
         default:
           return s;
       }
