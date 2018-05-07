@@ -29,7 +29,7 @@
     "e2e": "mocha temp/e2e.js --bail --require source-map-support/register",
     "test": "npm run unit && npm run e2e",
     "start": "node build/start.js",
-    "release": "bower install && npm test && webpack --config=build/webpack.app.config.js --env=production && electron-builder"
+    "release": "bower install && webpack --config=build/webpack.app.config.js --env=production && electron-builder"
   },
   "dependencies": {
     "angular": "^1.6.8",
