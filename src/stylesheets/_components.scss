@@ -2115,16 +2115,3 @@ STRUCTURE:
   }
 
 }
-
-.transfer-modal, .escrow-modal, .power-up-modal {
-  .balance-block {
-    border-bottom: 1px dotted $textColor;
-    color: $textColorLight;
-    display: inline-block;
-    margin: 4px 0;
-
-    .copy-balance {
-      cursor: pointer;
-    }
-  }
-}

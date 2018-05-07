@@ -28,7 +28,6 @@ export default ($scope, $rootScope, $routeParams, $location, $timeout, $filter, 
   const checkForKey = () => {
     $scope.keyRequiredErr = false;
     const a = getAccount(curAccount);
-    console.log(a);
     if (a.type === 's' && !a.keys.active) {
       $scope.keyRequiredErr = true;
     }
@@ -138,6 +137,7 @@ export default ($scope, $rootScope, $routeParams, $location, $timeout, $filter, 
 
     steemAuthenticatedService.transferToVesting(wif, from, to, amount).then((resp) => {
       $rootScope.showSuccess($filter('translate')('TX_BROADCASTED'));
+      $location.path(`/account/${from}/wallet`);
     }).catch((e) => {
       $rootScope.showError(e);
     }).then((resp) => {

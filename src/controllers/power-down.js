@@ -28,7 +28,6 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $uibModal,
   const checkForKey = () => {
     $scope.keyRequiredErr = false;
     const a = getAccount(curAccount);
-    console.log(a);
     if (a.type === 's' && !a.keys.active) {
       $scope.keyRequiredErr = true;
     }
