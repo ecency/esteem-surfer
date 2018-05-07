@@ -219,8 +219,15 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
     $scope.title = content.title;
     $scope.body = content.body;
 
+    let jsonMeta = {};
+    try{
+      jsonMeta = JSON.parse($scope.post.json_metadata);
+    } catch (e){ }
+
+    $scope.app = jsonMeta.app;
+
     // Sometimes tag list comes with duplicate items. Needs to singularize.
-    $scope.tags = [...new Set(JSON.parse($scope.post.json_metadata).tags)];
+    $scope.tags = [...new Set(jsonMeta.tags)];
 
     // Temporary author data while loading original in background
     $scope.author = {name: $scope.post.author};

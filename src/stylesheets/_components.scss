@@ -434,6 +434,7 @@
 
     .post-comment-count {
       float: left;
+      margin-right: 20px;
 
       a {
         color: $textColor;
@@ -449,6 +450,12 @@
           }
         }
       }
+    }
+
+    .post-app{
+      float: left;
+      margin-right: 20px;
+      color: $textColorLighter;
     }
   }
 
@@ -1005,13 +1012,20 @@ STRUCTURE:
       .post-author-reputation {
         color: $textColor;
         font-size: 12px;
-        margin-right: 24px;
 
         &:before {
           content: '(';
         }
         &:after {
           content: ')';
+        }
+      }
+
+      .post-app{
+        color: $textColorLight;
+
+        .via{
+          font-weight: 600;
         }
       }
 
@@ -1043,6 +1057,8 @@ STRUCTURE:
           margin-left: 10px;
           padding-left: 10px;
         }
+
+
       }
     }
 

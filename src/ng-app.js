@@ -595,6 +595,8 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'Escrow not found';
         case 'FAQ':
           return 'FAQ';
+        case 'VIA':
+          return 'via';
         default:
           return s;
       }

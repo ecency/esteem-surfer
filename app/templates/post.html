@@ -39,6 +39,7 @@
           <span class="post-date"><i class="fa fa-clock-o"></i> <span title="{{ post.created|dateFormatted }}"> {{post.created|timeAgo}}</span></span>
           <span class="post-author">{{ 'BY' | translate }} <author-name author-data="author"></author-name></span>
           <span class="post-author-reputation">{{ post.author_reputation|authorReputation|number:0 }}</span>
+          <span class="post-app"><span class="via">{{ 'VIA' | __ }}</span> {{ app }}</span>
           <div class="post-interaction">
             <!-- <a class="post-resteem" ng-click="resteem()"><i class="fa fa-retweet"></i></a> -->
             <a class="post-leave-comment" ng-click="" login-required required-keys="'posting'" on-login-success="replyClicked()">Reply</a>
