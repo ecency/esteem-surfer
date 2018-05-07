@@ -167,6 +167,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $location, $filter, 
 
     prms.then((resp) => {
       $rootScope.showSuccess($filter('translate')('TX_BROADCASTED'));
+      $location.path(`/account/${from}/wallet`);
     }).catch((e) => {
       $rootScope.showError(e);
     }).then((resp) => {
