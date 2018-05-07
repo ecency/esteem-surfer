@@ -56,17 +56,17 @@
             <ul class="dropdown-menu">
               <li ng-if="hasPerm"><a ng-click="scheduleClicked()">Select date</a></li>
               <li ng-if="hasPerm" role="separator" class="divider"></li>
-              <li ng-if="hasPerm"><a ng-click="" login-required required-keys="'active'" on-login-success="removePermission">Remove Posting Permission</a></li>
-              <li ng-if="!hasPerm"><a ng-click="" login-required required-keys="'active'" on-login-success="grantPermission">Grant Posting Permission</a></li>
+              <li ng-if="hasPerm"><a ng-click="" login-required required-keys="'active'" on-login-success="removePermission()">Remove Posting Permission</a></li>
+              <li ng-if="!hasPerm"><a ng-click="" login-required required-keys="'active'" on-login-success="grantPermission()">Grant Posting Permission</a></li>
             </ul>
           </div>
-          <button class="btn btn-primary" ng-click="" login-required on-login-success="save" ng-disabled="processing"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="saving"></i> {{ 'SAVE' | __ }}</button>
+          <button class="btn btn-primary" ng-click="" login-required on-login-success="save()" ng-disabled="processing"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="saving"></i> {{ 'SAVE' | __ }}</button>
         </div>
         <div class="pull-right" ng-if="!editMode">
-          <button class="btn btn-primary" ng-disabled="processing" ng-click="" login-required required-keys="'posting'" on-login-success="post"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="posting"></i> {{ 'POST' | translate }}</button>
+          <button class="btn btn-primary" ng-disabled="processing" ng-click="" login-required required-keys="'posting'" on-login-success="post()"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="posting"></i> {{ 'POST' | translate }}</button>
         </div>
         <div class="pull-right" ng-if="editMode">
-          <button class="btn btn-primary" ng-disabled="processing" ng-click="" login-required required-keys="'posting'" on-login-success="update"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="posting"></i> {{ 'UPDATE' | __ }}</button>
+          <button class="btn btn-primary" ng-disabled="processing" ng-click="" login-required required-keys="'posting'" on-login-success="update()"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="posting"></i> {{ 'UPDATE' | __ }}</button>
         </div>
       </div>
     </div>

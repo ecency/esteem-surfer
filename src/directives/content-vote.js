@@ -5,7 +5,7 @@ export default () => {
     scope: {
       content: '='
     },
-    template: `<div ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()"><a ng-click="" login-required required-keys="'posting'" on-login-success="loginSuccess" if-logged-in="clicked" popover-class="content-vote-popover" uib-popover-template="'templates/directives/content-vote-popover.html'" popover-placement="right" popover-trigger="'none'"  popover-is-open="popoverIsOpen"  ng-class="{'voted': voted, 'voting': voting, 'fetching': fetching}"><i class="fa fa-chevron-circle-up" ng-show="!voting"></i><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="voting"></i></a></div>`,
+    template: `<div ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()"><a ng-click="" login-required required-keys="'posting'" on-login-success="loginSuccess()" if-logged-in="clicked()" popover-class="content-vote-popover" uib-popover-template="'templates/directives/content-vote-popover.html'" popover-placement="right" popover-trigger="'none'"  popover-is-open="popoverIsOpen"  ng-class="{'voted': voted, 'voting': voting, 'fetching': fetching}"><i class="fa fa-chevron-circle-up" ng-show="!voting"></i><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="voting"></i></a></div>`,
     controller: ($scope, $rootScope, $timeout, $filter, $uibModal, steemService, steemAuthenticatedService, helperService, activeUsername) => {
 
       $scope.fetching = false;
