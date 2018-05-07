@@ -49,6 +49,7 @@ import schedulesCtrl from './controllers/schedules';
 import galleryCtrl from './controllers/gallery';
 import transferCtrl from './controllers/transfer';
 import escrowCtrl from './controllers/escrow';
+import escrowActionsCtrl from './controllers/escrow-actions';
 import powerUpCtrl from './controllers/power-up';
 import powerDownCtrl from './controllers/power-down';
 import addWithDrawAccountCtrl from './controllers/add-withdraw-account';
@@ -291,9 +292,17 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
         templateUrl: 'templates/transfer.html',
         controller: 'transferCtrl'
       })
-      .when('/:account/', {
-        templateUrl: 'templates/power-down.html',
-        controller: 'powerDownCtrl'
+      .when('/:account/escrow', {
+        templateUrl: 'templates/escrow.html',
+        controller: 'escrowCtrl'
+      })
+      .when('/:account/escrow-actions', {
+        templateUrl: 'templates/escrow-actions.html',
+        controller: 'escrowActionsCtrl'
+      })
+      .when('/:account/power-up', {
+        templateUrl: 'templates/power-up.html',
+        controller: 'powerUpCtrl'
       })
       .when('/:account/power-down', {
         templateUrl: 'templates/power-down.html',
@@ -411,6 +420,7 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
   .controller('galleryCtrl', galleryCtrl)
   .controller('transferCtrl', transferCtrl)
   .controller('escrowCtrl', escrowCtrl)
+  .controller('escrowActionsCtrl', escrowActionsCtrl)
   .controller('powerUpCtrl', powerUpCtrl)
   .controller('powerDownCtrl', powerDownCtrl)
   .controller('addWithDrawAccountCtrl', addWithDrawAccountCtrl)
@@ -586,6 +596,12 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
           return 'Stop';
         case 'ESTIMATED_WEEKLY':
           return 'Estimated Weekly';
+        case 'ESCROW_ACTIONS':
+          return 'Escrow Actions';
+        case 'ESCROW_ID':
+          return 'Escrow ID';
+        case 'ESCROW_NOT_FOUND':
+          return 'Escrow not found';
         default:
           return s;
       }

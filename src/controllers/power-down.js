@@ -98,11 +98,12 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $uibModal,
   $scope.canStart = () => {
     return $scope.amountVest > 0 &&
       !$scope.fetchingAccount &&
-      !$scope.fetchingWithdrawRoutes;
+      !$scope.fetchingWithdrawRoutes &&
+      !$scope.keyRequiredErr;
   };
 
   $scope.canStop = () => {
-    return true;
+    return !$scope.keyRequiredErr;
   };
 
   $scope.start = () => {
