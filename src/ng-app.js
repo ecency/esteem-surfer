@@ -56,7 +56,6 @@ import addWithDrawAccountCtrl from './controllers/add-withdraw-account';
 import profileEditCtrl from './controllers/profile-edit';
 
 
-import faqCtrl from './controllers/faq';
 import aboutCtrl from './controllers/about'
 import tokenExchangeCtrl from './controllers/token-exchange';
 import marketPlaceCtrl from './controllers/market-place';
@@ -228,10 +227,6 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
         templateUrl: 'templates/author.html',
         controller: 'authorCtrl',
       })
-      .when('/faq', {
-        templateUrl: 'templates/faq.html',
-        controller: 'faqCtrl',
-      })
       .when('/about', {
         templateUrl: 'templates/about.html',
         controller: 'aboutCtrl',
@@ -400,7 +395,6 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
 
 
   .controller('postsCtrl', postsCtrl)
-  .controller('faqCtrl', faqCtrl)
   .controller('aboutCtrl', aboutCtrl)
   .controller('settingsCtrl', settingsCtrl)
   .controller('loginCtrl', loginCtrl)
