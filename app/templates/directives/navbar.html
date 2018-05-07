@@ -17,6 +17,7 @@
           </ul>
         </li>
         <li ng-class="{'active': selectedSection==='discover'}"><a ng-click="discoverClicked()">{{ 'DISCOVER' | __ }}</a></li>
+        <li ng-if="$root.user" ng-class="{'active': selectedSection==='wallet'}"><a ng-click="walletClicked()">{{ 'WALLET' | translate }}</a></li>
         <li ng-class="{'active': selectedSection==='token-exchange'}"><a ng-click="tokenExchangeClicked()">{{ 'TOKEN_EXCHANGE' | __ }}</a></li>
         <!-- <li ng-class="{'active': selectedSection==='market-place'}"><a ng-click="marketPlaceClicked()">{{ 'MARKETPLACE' | translate }}</a></li> -->
       </ul>
@@ -31,9 +32,6 @@
           </span>
         </div>
       </form>
-      <ul class="nav navbar-nav" ng-if="$root.user">
-        <li ng-class="{'active': selectedSection==='wallet'}"><a ng-click="walletClicked()">{{ 'WALLET' | translate }}</a></li>
-      </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="settings"><a ng-click="openSettings()" title="{{ 'SETTINGS' | translate }}"><i class="fa fa-cog"></i></a></li>
         <li class="editor"><a ng-click="editorClicked()"><i class="fa fa-pencil"></i></a></li>
