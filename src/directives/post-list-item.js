@@ -50,12 +50,20 @@ export default () => {
                     <i class="fa fa-comments"></i> {{ post.children }}
                 </a>
             </div>
+            <div class="post-app" ng-show="app" ng-if="app">{{ app }}</div>
         </div>
     </div>
     `,
     controller: ($scope, $rootScope, $location, $sce, $filter, $uibModal, storageService, helperService) => {
       $scope.isVisited = helperService.isPostRead($scope.post.author, $scope.post.permlink);
       $scope.reSteemed = ($scope.asAuthor && $scope.post.author !== $scope.asAuthor);
+
+      let jsonMeta = {};
+      try{
+        jsonMeta = JSON.parse($scope.post.json_metadata);
+      } catch (e){ }
+
+      $scope.app = jsonMeta.app;
 
       const goDetail = () => {
         $rootScope.selectedPost = $scope.post;
