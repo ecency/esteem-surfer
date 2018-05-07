@@ -177,22 +177,26 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     $scope.loadingContents = true;
     $scope.$applyAsync();
 
-    let statePath = null;
+    let prms = null;
     switch (section) {
       case 'blog':
-        statePath = '';
+        prms = steemService.getState(`/@${username}/`);
         break;
       case 'comments':
-        statePath = 'comments';
+        prms = steemService.getState(`/@${username}/comments`);
         break;
       case 'replies':
-        statePath = 'recent-replies';
+        prms = steemService.getState(`/@${username}/recent-replies`);
+        break;
+      case 'feed':
+        prms = steemService.getDiscussionsBy('Feed', username, null, null, constants.postListSize);
         break;
     }
 
-    steemService.getState(`/@${username}/${statePath}`).then(resp => {
-      for (let k in resp.content) {
-        let i = resp.content[k];
+    prms.then(resp => {
+      const contents = section === 'feed' ? resp : resp.content;
+      for (let k in contents) {
+        let i = contents[k];
 
         if (contentIds.indexOf(i.id) === -1) {
           $scope.dataList.push(i);
@@ -200,18 +204,20 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
         contentIds.push(i.id);
       }
 
-      // Sort list items by id
-      $scope.dataList.sort(function (a, b) {
-        let keyA = a.id,
-          keyB = b.id;
+      if (['blog', 'comments', 'replies'].indexOf(section) !== -1) {
+        // Sort list items by id
+        $scope.dataList.sort(function (a, b) {
+          let keyA = a.id,
+            keyB = b.id;
 
-        if (keyA > keyB) return -1;
-        if (keyA < keyB) return 1;
-        return 0;
-      });
+          if (keyA > keyB) return -1;
+          if (keyA < keyB) return 1;
+          return 0;
+        });
+      }
 
     }).catch((e) => {
-      // TODO: Handle catch
+      $rootScope.showError(e);
     }).then(() => {
 
       $scope.loadingContents = false;
@@ -233,6 +239,9 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
         break;
       case 'replies':
         prms = steemService.getRepliesByLastUpdate(startAuthor, startPermalink, constants.postListSize);
+        break;
+      case 'feed':
+        prms = steemService.getDiscussionsBy('Feed', username, startAuthor, startPermalink, constants.postListSize);
         break;
     }
 
@@ -263,7 +272,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
 
   const loadContents = () => {
 
-    if (['blog', 'comments', 'replies'].indexOf(section) !== -1) {
+    if (['blog', 'comments', 'replies', 'feed'].indexOf(section) !== -1) {
       if ($scope.dataList.length === 0) {
         // if initial data is empty then load contents
         loadContentsFirst();

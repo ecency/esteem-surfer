@@ -37,6 +37,9 @@
                 <li ng-class="{'active': section==='wallet'}" data-key="WALLET">
                   <a ng-click="changeSection('wallet')">{{ 'WALLET' | translate }}</a>
                 </li>
+                <li ng-class="{'active': section==='feed'}" data-key="FEED">
+                  <a ng-click="changeSection('feed')">{{ 'FEED' | translate }}</a>
+                </li>
               </ul>
               <transfer-nav-bar ng-if="section==='wallet' && isMyPage"></transfer-nav-bar>
             </div>
@@ -90,6 +93,7 @@
               <h1 ng-if="section==='comments'">{{ 'COMMENTS' | translate }}</h1>
               <h1 ng-if="section==='replies'">{{ 'REPLIES' | translate }}</h1>
               <h1 ng-if="section==='wallet'">{{ 'WALLET' | translate }}</h1>
+              <h1 ng-if="section==='feed'">{{ 'FEED' | translate }}</h1>
               <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingContents"
                       title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
             </header>
@@ -241,6 +245,11 @@
                 </tbody>
               </table>
             </div>
+            <ul class="feed" ng-if="section==='feed'">
+              <li ng-repeat="row in dataList">
+                <post-list-item post="row"></post-list-item>
+              </li>
+            </ul>
             <footer>
               <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="loadingContents"></i>
             </footer>
