@@ -56,7 +56,6 @@ import addWithDrawAccountCtrl from './controllers/add-withdraw-account';
 import profileEditCtrl from './controllers/profile-edit';
 
 
-import aboutCtrl from './controllers/about'
 import tokenExchangeCtrl from './controllers/token-exchange';
 import marketPlaceCtrl from './controllers/market-place';
 import discoverCtrl from './controllers/discover';
@@ -227,10 +226,6 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
         templateUrl: 'templates/author.html',
         controller: 'authorCtrl',
       })
-      .when('/about', {
-        templateUrl: 'templates/about.html',
-        controller: 'aboutCtrl',
-      })
       .when('/token-exchange', {
         templateUrl: 'templates/token-exchange.html',
         controller: 'tokenExchangeCtrl',
@@ -395,7 +390,6 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
 
 
   .controller('postsCtrl', postsCtrl)
-  .controller('aboutCtrl', aboutCtrl)
   .controller('settingsCtrl', settingsCtrl)
   .controller('loginCtrl', loginCtrl)
   .controller('contentVotersCtrl', contentVotersCtrl)
