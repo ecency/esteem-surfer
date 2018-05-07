@@ -504,6 +504,66 @@ export default ($rootScope, steemApi, $q) => {
     return defer.promise;
   };
 
+  const escrowApprove = (wif, from, to, agent, who, escrowId, approve) => {
+    let defer = $q.defer();
+
+    steem.broadcast.escrowApprove(wif, from, to, agent, who, escrowId, approve, function (err, result) {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(result);
+      }
+    });
+
+    return defer.promise;
+  };
+
+  const escrowApproveSc = (from, to, agent, who, escrowId, approve) => {
+    let defer = $q.defer();
+    defer.reject('Steem connect escrowApprove not implemented yet.');
+    return defer.promise;
+  };
+
+  const escrowDispute = (wif, from, to, agent, who, escrowId) => {
+    let defer = $q.defer();
+
+    steem.broadcast.escrowDispute(wif, from, to, agent, who, escrowId, function (err, result) {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(result);
+      }
+    });
+
+    return defer.promise;
+  };
+
+  const escrowDisputeSc = (from, to, agent, who, escrowId) => {
+    let defer = $q.defer();
+    defer.reject('Steem connect escrowDispute not implemented yet.');
+    return defer.promise;
+  };
+
+  const escrowRelease = (wif, from, to, agent, who, receiver, escrowId, sbdAmount, steemAmount) => {
+    let defer = $q.defer();
+
+    steem.broadcast.escrowRelease(wif, from, to, agent, who, receiver, escrowId, sbdAmount, steemAmount, function (err, result) {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(result);
+      }
+    });
+
+    return defer.promise;
+  };
+
+  const escrowReleaseSc = (from, to, agent, who, receiver, escrowId, sbdAmount, steemAmount) => {
+    let defer = $q.defer();
+    defer.reject('Steem connect escrowDispute not implemented yet.');
+    return defer.promise;
+  };
+
   const setWithdrawVestingRoute = (wif, from, to, percent, autoVest) => {
     let defer = $q.defer();
 
@@ -690,6 +750,27 @@ export default ($rootScope, steemApi, $q) => {
         return escrowTransfer(wif, from, to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta);
       } else {
         return escrowTransferSc(from, to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta);
+      }
+    },
+    escrowApprove: (wif = null, from, to, agent, who, escrowId, approve) => {
+      if (wif) {
+        return escrowApprove(wif, from, to, agent, who, escrowId, approve);
+      } else {
+        return escrowApproveSc(from, to, agent, who, escrowId, approve);
+      }
+    },
+    escrowDispute: (wif = null, from, to, agent, who, escrowId) => {
+      if (wif) {
+        return escrowDispute(wif, from, to, agent, who, escrowId);
+      } else {
+        return escrowDisputeSc(from, to, agent, who, escrowId);
+      }
+    },
+    escrowRelease: (wif = null, from, to, agent, who, receiver, escrowId, sbdAmount, steemAmount) => {
+      if (wif) {
+        return escrowRelease(wif, from, to, agent, who, receiver, escrowId, sbdAmount, steemAmount);
+      } else {
+        return escrowReleaseSc(from, to, agent, who, receiver, escrowId, sbdAmount, steemAmount);
       }
     },
     transferToVesting: (wif = null, from, to, amount) => {

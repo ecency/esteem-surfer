@@ -45,7 +45,7 @@ export default ($http) => {
     getImages: function (user) {
       return $http.get(`${apiUrl}/api/images/${user}`);
     },
-    removeImage: function(id, user) {
+    removeImage: function (id, user) {
       return $http.delete(`${apiUrl}/api/images/${user}/${id}`);
     },
     addDraft: function (user, title, body, tags, post_type) {
@@ -90,6 +90,8 @@ export default ($http) => {
     search: function (q, page = 1) {
       return $http.get(`https://api.asksteem.com/search?q=${q}&include=meta,body&pg=${page}&sort_by=created&order=desc`);
     },
-
+    searchEscrow: function (id) {
+      return $http.get(`${apiUrl}/api/escrows/${id}`);
+    },
   }
 }

@@ -1,0 +1,91 @@
+<nav-bar></nav-bar>
+<div class="app-container">
+  <div class="app-content transfer-fn-page fn-escrow-actions">
+    <div class="fn-window">
+      <nav class="navbar navbar-default fn-navbar">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse">
+            <transfer-nav-bar></transfer-nav-bar>
+          </div>
+        </div>
+      </nav>
+      <div class="fn-form">
+        <h1 class="form-header">{{ 'ESCROW_ACTIONS' | __ }} </h1>
+        <hr>
+        <div class="indicator" ng-if="fetchingAccount"><i class="fa fa-spin fa-spinner fa-circle-o-notch"></i></div>
+        <div class="form-horizontal" ng-hide="fetchingAccount">
+          <div class="form-group">
+            <label for="transfer-account" class="col-sm-3 control-label">{{ 'ACCOUNT' | __ }}</label>
+            <div class="col-sm-9">
+              <select class="form-control" id="transfer-account" ng-model="accountName" ng-options="x for x in accountList" ng-change="fromChanged()"></select>
+              <div class="alert alert-danger" style="margin-top: 5px" ng-if="keyRequiredErr">{{ 'ACTIVE_KEY_REQUIRED_TRANSFER' | __ }}</div>
+            </div>
+          </div>
+          <div class="form-group" ng-class="{'has-error': notFound, 'has-success': escrowData}">
+            <label for="escrow-id" class="col-sm-3 control-label">{{ 'ESCROW_ID' | __ }}</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="escrow-id" ng-model="escrowId">
+              <p class="help-block" ng-if="notFound">{{ 'ESCROW_NOT_FOUND' | translate }}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3 text-center">
+              <button class="btn btn-primary" ng-click="search()" ng-disabled="searching"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="searching"></i> {{ 'SEARCH' | translate }}</button>
+            </div>
+          </div>
+          <div class="form-group" ng-if="escrowData">
+            <hr>
+            <div class="col-sm-9 col-sm-offset-3">
+              <table class="table table-striped table-bordered">
+                <tr>
+                  <th style="width: 140px">{{ 'FROM' | translate }}</th>
+                  <td>{{ escrowData.from }}</td>
+                </tr>
+                <tr>
+                  <th>{{ 'TO' | translate }}</th>
+                  <td>{{ escrowData.to }}</td>
+                </tr>
+                <tr>
+                  <th>{{ 'ESCROW_AGENT' | translate }}</th>
+                  <td>{{ escrowData.agent }}</td>
+                </tr>
+                <tr>
+                  <th>STEEM</th>
+                  <td>{{ escrowData.steem_amount }}</td>
+                </tr>
+                <tr>
+                  <th>SBD</th>
+                  <td>{{ escrowData.sbd_amount }}</td>
+                </tr>
+                <tr>
+                  <th>{{ 'ESCROW_FEE' | translate }}</th>
+                  <td>{{ escrowData.fee }}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="form-group" ng-if="escrowData">
+            <div class="col-sm-3 col-sm-offset-3">
+              <button class="btn btn-success btn-block" ng-disabled="processing || !canSubmit()" ng-click="submit('approve')">{{ 'APPROVE' | translate }}</button>
+            </div>
+            <div class="col-sm-3">
+              <button class="btn btn-danger btn-block" ng-disabled="processing || !canSubmit()" ng-click="submit('dispute')">{{ 'DISPUTE' | translate }}</button>
+            </div>
+            <div class="col-sm-3">
+              <div class="btn-group">
+                <button type="button" class="btn btn-info btn-block dropdown-toggle" ng-disabled="processing || !canSubmit()" data-toggle="dropdown">
+                  {{ 'RELEASE' | translate }} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a ng-click="submit('release', escrowData.to)">{{ escrowData.to }}</a></li>
+                  <li><a ng-click="submit('release', escrowData.from)">{{ escrowData.from }}</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

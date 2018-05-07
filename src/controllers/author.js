@@ -85,6 +85,12 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     $scope.authorData = account;
     $scope.loadingAuthor = false;
     $scope.$applyAsync();
+
+    $scope.hasUnclaimedRewards = ($scope.authorData.reward_steem_balance.split(' ')[0] > 0) ||
+      ($scope.authorData.reward_sbd_balance.split(' ')[0] > 0) ||
+      ($scope.authorData.reward_vesting_steem.split(' ')[0] > 0);
+
+    $scope.$applyAsync();
   };
 
   const loadVisitor = async (refresh = false) => {
@@ -270,15 +276,8 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     }
 
     if (section === 'wallet') {
-
-      $scope.hasUnclaimedRewards = ($scope.authorData.reward_steem_balance.split(' ')[0] > 0) ||
-        ($scope.authorData.reward_sbd_balance.split(' ')[0] > 0) ||
-        ($scope.authorData.reward_vesting_steem.split(' ')[0] > 0);
-
-
       loadTransactions();
     }
-
   };
 
   loadAccount().then(() => {
@@ -315,7 +314,9 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
 
     $scope.dataList = [];
     if (section === 'wallet') {
-      loadTransactions();
+      loadAccount(true).then(() => {
+        loadTransactions();
+      });
     } else {
       contentIds = [];
       loadContentsFirst();
