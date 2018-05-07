@@ -7,12 +7,14 @@ export default () => {
 
     },
     templateUrl: 'templates/directives/footer.html',
-    controller: ($scope, appVersion) => {
+    controller: ($scope, $rootScope, $location, appVersion) => {
 
       $scope.version = appVersion;
 
-      $scope.fn = () => {
-
+      $scope.faqClicked = () => {
+        $rootScope.selectedPost = null;
+        let u = `/post/esteem/good-karma/esteem-faq-updated-e2baacf0a8475`;
+        $location.path(u);
       };
     }
   };
