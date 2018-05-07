@@ -17,3 +17,5 @@ package-lock.json
 
 # ignore bower_components in 'app' folder
 /app/bower_components
+
+/src/config.js

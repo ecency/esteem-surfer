@@ -1,14 +1,11 @@
-export default ($http) => {
-
-  // will be hidden
-  const apiUrl = 'http://api.esteem.ws:8080';
+export default ($http, API_END_POINT) => {
 
   return {
     getCurrencyRate: (cur) => {
-      return $http.get(`${apiUrl}/api/currencyRate/${ cur.toUpperCase() }/steem`)
+      return $http.get(`${API_END_POINT}/api/currencyRate/${ cur.toUpperCase() }/steem`)
     },
     addBookmark: function (username, content) {
-      return $http.post(`${apiUrl}/api/bookmark`, {
+      return $http.post(`${API_END_POINT}/api/bookmark`, {
         username: username,
         author: content.author,
         permlink: content.permlink,
@@ -16,10 +13,10 @@ export default ($http) => {
       });
     },
     getBookmarks: function (user) {
-      return $http.get(`${apiUrl}/api/bookmarks/${user}`);
+      return $http.get(`${API_END_POINT}/api/bookmarks/${user}`);
     },
     removeBookmark: function (id, user) {
-      return $http.delete(`${apiUrl}/api/bookmarks/${user}/${id}/`);
+      return $http.delete(`${API_END_POINT}/api/bookmarks/${user}/${id}/`);
     },
     uploadImage: function (file, onProgress) {
       const fData = new FormData();
@@ -40,16 +37,16 @@ export default ($http) => {
       })
     },
     addMyImage: function (user, url) {
-      return $http.post(`${apiUrl}/api/image`, {username: user, image_url: url});
+      return $http.post(`${API_END_POINT}/api/image`, {username: user, image_url: url});
     },
     getImages: function (user) {
-      return $http.get(`${apiUrl}/api/images/${user}`);
+      return $http.get(`${API_END_POINT}/api/images/${user}`);
     },
     removeImage: function (id, user) {
-      return $http.delete(`${apiUrl}/api/images/${user}/${id}`);
+      return $http.delete(`${API_END_POINT}/api/images/${user}/${id}`);
     },
     addDraft: function (user, title, body, tags, post_type) {
-      return $http.post(`${apiUrl}/api/draft`, {
+      return $http.post(`${API_END_POINT}/api/draft`, {
         username: user,
         title: title,
         body: body,
@@ -58,13 +55,13 @@ export default ($http) => {
       });
     },
     getDrafts: function (user) {
-      return $http.get(`${apiUrl}/api/drafts/${user}`);
+      return $http.get(`${API_END_POINT}/api/drafts/${user}`);
     },
     removeDraft: function (id, user) {
-      return $http.delete(`${apiUrl}/api/drafts/${user}/${id}`);
+      return $http.delete(`${API_END_POINT}/api/drafts/${user}/${id}`);
     },
     schedule: function (user, title, permlink, json, tags, body, operationType, upvote, scheduleDate) {
-      return $http.post(`${apiUrl}/api/schedules`, {
+      return $http.post(`${API_END_POINT}/api/schedules`, {
         username: user,
         category: tags[0],
         title: title,
@@ -79,19 +76,19 @@ export default ($http) => {
       });
     },
     getSchedules: function (user) {
-      return $http.get(`${apiUrl}/api/schedules/${user}`);
+      return $http.get(`${API_END_POINT}/api/schedules/${user}`);
     },
     removeSchedule: function (id, user) {
-      return $http.delete(`${apiUrl}/api/schedules/${user}/${id}`);
+      return $http.delete(`${API_END_POINT}/api/schedules/${user}/${id}`);
     },
     moveSchedule: function (id, user) {
-      return $http.put(`${apiUrl}/api/schedules/${user}/${id}`);
+      return $http.put(`${API_END_POINT}/api/schedules/${user}/${id}`);
     },
     search: function (q, page = 1) {
       return $http.get(`https://api.asksteem.com/search?q=${q}&include=meta,body&pg=${page}&sort_by=created&order=desc`);
     },
     searchEscrow: function (id) {
-      return $http.get(`${apiUrl}/api/escrows/${id}`);
+      return $http.get(`${API_END_POINT}/api/escrows/${id}`);
     },
   }
 }
