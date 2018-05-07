@@ -602,6 +602,8 @@ angular.module('eSteem', ['ngRoute', 'ui.bootstrap', 'pascalprecht.translate', '
           return 'Escrow ID';
         case 'ESCROW_NOT_FOUND':
           return 'Escrow not found';
+        case 'FAQ':
+          return 'FAQ';
         default:
           return s;
       }
