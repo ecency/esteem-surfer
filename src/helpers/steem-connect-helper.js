@@ -210,7 +210,6 @@ export const scTransferToVesting = (from, to, amount, successCb, windowCloseCb) 
 export const scEsrowTransfer = (from, to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta, successCb, windowCloseCb) => {
 
   const win = new remote.BrowserWindow(windowSettings);
-
   win.loadURL(`${helperUrl}/escrow-transfer?data=${encodeURIComponent(JSON.stringify({
     'from': from,
     'to': to,
@@ -219,8 +218,8 @@ export const scEsrowTransfer = (from, to, agent, escrowId, sbdAmount, steemAmoun
     'sbdAmount': sbdAmount,
     'steemAmount': steemAmount,
     'fee': fee,
-    'ratificationDeadline': ratificationDeadline,
-    'escrowExpiration': escrowExpiration,
+    'ratificationDeadline': ratificationDeadline.toISOString().split('.')[0],
+    'escrowExpiration': escrowExpiration.toISOString().split('.')[0],
     'jsonMeta': jsonMeta
   }))}`);
 
