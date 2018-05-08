@@ -54,6 +54,7 @@ import powerUpCtrl from './controllers/power-up';
 import powerDownCtrl from './controllers/power-down';
 import addWithDrawAccountCtrl from './controllers/add-withdraw-account';
 import profileEditCtrl from './controllers/profile-edit';
+import welcomeCtrl from './controllers/welcome';
 
 
 import tokenExchangeCtrl from './controllers/token-exchange';
@@ -195,7 +196,12 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
   $routeProvider
     .when('/', {
       template: '',
-      controller: ($rootScope, $location, activeUsername, constants) => {
+      controller: ($rootScope, $location, activeUsername, helperService, constants) => {
+        if (!helperService.getWelcomeFlag()) {
+          $location.path(`/welcome`);
+          return;
+        }
+
         if (activeUsername()) {
           // If user logged in redirect to feed
           $location.path(`/feed/${activeUsername()}`);
@@ -300,6 +306,10 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
     .when('/:account/power-down', {
       templateUrl: 'templates/power-down.html',
       controller: 'powerDownCtrl'
+    })
+    .when('/welcome', {
+      templateUrl: 'templates/welcome.html',
+      controller: 'welcomeCtrl'
     })
     .otherwise({redirectTo: '/'});
 
@@ -416,6 +426,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
   .controller('powerDownCtrl', powerDownCtrl)
   .controller('addWithDrawAccountCtrl', addWithDrawAccountCtrl)
   .controller('profileEditCtrl', profileEditCtrl)
+  .controller('welcomeCtrl', welcomeCtrl)
 
 
   .filter('catchPostImage', catchPostImageFilter)
@@ -597,6 +608,12 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'FAQ';
         case 'VIA':
           return 'via';
+        case 'WELCOME_NEXT':
+          return 'Next';
+        case 'WELCOME_PREV':
+          return 'Prev';
+        case 'WELCOME_START':
+          return 'Start!';
         default:
           return s;
       }

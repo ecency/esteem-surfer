@@ -841,3 +841,92 @@
     }
   }
 }
+
+.welcome-page {
+  background: $appBg;
+  height: 100%;
+  overflow: auto;
+
+  .carousel-container {
+    background: $listBgColor;
+    border: 1px solid $listBorderColor;
+    box-shadow: 0 0 1px 0 $listBorderColor;
+    height: 560px;
+    margin: 50px auto 0 auto;
+    width: 900px;
+
+    .carousel-content {
+      height: 560px;
+      position: relative;
+      width: 900px;
+
+      .carousel-image {
+        left: 0;
+        max-height: 558px;
+        max-width: 700px;
+        position: absolute;
+        z-index: 1;
+
+      }
+
+      .carousel-text-content {
+        padding-top: 100px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 400px;
+        z-index: 2;
+
+        h2 {
+          color: #00647C;
+          font-size: 32px;
+          margin: 0 0 20px 0;
+        }
+
+        p {
+          font-size: 18px;
+          padding: 0 10px;
+        }
+      }
+    }
+
+    .carousel-control {
+      visibility: hidden;
+    }
+
+    .carousel-buttons {
+      bottom: 50px;
+      position: absolute;
+      right: 50px;
+      z-index: 3;
+
+      .btn {
+        width: 90px;
+
+        &.btn-hidden {
+          visibility: hidden;
+        }
+
+        &.btn-none {
+          display: none;
+        }
+      }
+    }
+
+    .carousel-indicators {
+      display: none;
+      li {
+        background: #E0F0F6;
+        height: 20px;
+        width: 20px;
+
+        &.active {
+          background: #00647C;
+        }
+      }
+    }
+  }
+
+  user-select: none;
+
+}

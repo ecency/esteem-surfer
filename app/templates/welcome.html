@@ -1,0 +1,20 @@
+<div class="welcome-page">
+  <div class="carousel-container">
+    <div uib-carousel active="active" interval="myInterval">
+      <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+        <div class="carousel-content">
+          <img class="carousel-image" ng-src="{{ slide.background }}">
+          <div class="carousel-text-content">
+            <h2>{{slide.name}}</h2>
+            <p ng-bind-html="description(slide.description)"></p>
+          </div>
+          <div class="carousel-buttons">
+            <button class="btn btn-lg btn-default" ng-click="prev()" ng-class="{'btn-hidden': !hasPrev()}">{{ 'WELCOME_PREV' | __ }}</button>
+            <button class="btn btn-lg btn-primary" ng-click="next()" ng-class="{'btn-none': !hasNext()}">{{ 'WELCOME_NEXT' | __ }}</button>
+            <button class="btn btn-lg btn-success" ng-click="start()" ng-class="{'btn-none': hasNext()}">{{ 'WELCOME_START' | __ }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

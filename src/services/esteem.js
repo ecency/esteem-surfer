@@ -90,5 +90,8 @@ export default ($http, API_END_POINT) => {
     searchEscrow: function (id) {
       return $http.get(`${API_END_POINT}/api/escrows/${id}`);
     },
+    getWelcome: function(){
+      return $http.get(`${API_END_POINT}/media/welcome.json`);
+    }
   }
 }

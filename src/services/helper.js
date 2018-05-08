@@ -11,6 +11,12 @@ export const helperService = (storageService) => {
     },
     setVotePerc: (username, val) => {
       storageService.set(`vote-perc-${username}`, val);
+    },
+    getWelcomeFlag: () => {
+      return storageService.get(`welcome-flag`);
+    },
+    setWelcomeFlag: (val) => {
+      storageService.set(`welcome-flag`, val);
     }
   }
 };
