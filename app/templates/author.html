@@ -25,6 +25,9 @@
           <div class="container-fluid">
             <div class="collapse navbar-collapse">
               <ul class="nav navbar-nav">
+                <li ng-class="{'active': section==='feed'}" data-key="FEED">
+                  <a ng-click="changeSection('feed')">{{ 'FEED' | translate }}</a>
+                </li>
                 <li ng-class="{'active': section==='blog'}" data-key="BLOG">
                   <a ng-click="changeSection('blog')">{{ 'BLOG' | translate }}</a>
                 </li>
@@ -36,9 +39,6 @@
                 </li>
                 <li ng-class="{'active': section==='wallet'}" data-key="WALLET">
                   <a ng-click="changeSection('wallet')">{{ 'WALLET' | translate }}</a>
-                </li>
-                <li ng-class="{'active': section==='feed'}" data-key="FEED">
-                  <a ng-click="changeSection('feed')">{{ 'FEED' | translate }}</a>
                 </li>
               </ul>
               <transfer-nav-bar ng-if="section==='wallet' && isMyPage"></transfer-nav-bar>
