@@ -3,12 +3,12 @@ export default () => {
     restrict: 'E',
     replace: true,
     scope: {
-      content: '='
+      content: '<'
     },
     template: `<a ng-click="" uib-popover-template="'templates/directives/content-payout-popover.html'" popover-placement="top" popover-trigger="'outsideClick'" tabindex="0" ng-class="{'payout-declined': isPayoutDeclined}">
                <span class="cur-prefix">{{ $root.currency | currencySymbol }}</span> {{ content | sumPostTotal | number }}
                </a>`,
-    controller: ($scope, $rootScope, steemService) => {
+    controller: ($scope, $rootScope) => {
 
       const main = () => {
         $scope.pendingPayout = (Number($scope.content.pending_payout_value.split(' ')[0]) * $rootScope.currencyRate);
