@@ -336,6 +336,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
         return steem.api;
       },
       setServer: (u) => {
+        steem.api.stop();
         steem.api.setOptions({url: u});
       }
     }
@@ -959,13 +960,34 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
     $rootScope.sideTagFilter = false;
     $rootScope.sideAfterTag = '';
 
-
     // REPLYING/COMMENTING
     // This will help to persist user comments between transitions.
     $rootScope.commentEditorCache = {};
 
     // EDITOR
     $rootScope.editorDraft = null;
+
+    // CONTENT UPDATING
+    $rootScope.$on('CONTENT_VOTED', (r, d) => {
+      steemService.getContent(d.author, d.permlink).then(resp => {
+        $rootScope.$broadcast('CONTENT_REFRESH', {content: resp});
+      });
+    });
+
+    // Update contents which are in navigation cache
+    $rootScope.$on('CONTENT_REFRESH', (r, d) => {
+      for (let navKey in cacheData) {
+        for (let i of ['posts', 'dataList']) {
+          if (cacheData[navKey][i] !== undefined) {
+            for (let k in cacheData[navKey][i]) {
+              if (cacheData[navKey][i][k].id === d.content.id) {
+                cacheData[navKey][i][k] = d.content;
+              }
+            }
+          }
+        }
+      }
+    });
 
 
     // Error messages to show user when remote server errors occurred
