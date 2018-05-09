@@ -968,16 +968,21 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
     $rootScope.editorDraft = null;
 
     // CONTENT UPDATING
+
+    $rootScope.refreshContent = (c) => {
+      $rootScope.$broadcast('CONTENT_REFRESH', {content: c});
+    };
+
     $rootScope.$on('CONTENT_VOTED', (r, d) => {
       steemService.getContent(d.author, d.permlink).then(resp => {
-        $rootScope.$broadcast('CONTENT_REFRESH', {content: resp});
+        $rootScope.refreshContent(resp);
       });
     });
 
     // Update contents which are in navigation cache
     $rootScope.$on('CONTENT_REFRESH', (r, d) => {
       for (let navKey in cacheData) {
-        for (let i of ['posts', 'dataList']) {
+        for (let i of ['posts', 'feed', 'dataList']) {
           if (cacheData[navKey][i] !== undefined) {
             for (let k in cacheData[navKey][i]) {
               if (cacheData[navKey][i][k].id === d.content.id) {
