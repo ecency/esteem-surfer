@@ -107,6 +107,8 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
       let content = stateData.content[contentPath];
       $scope.post = content;
 
+      $rootScope.refreshContent(content);
+
       $scope.author = pathData.accounts[author];
 
       commentsData = compileComments(content);
