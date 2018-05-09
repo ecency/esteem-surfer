@@ -15,6 +15,9 @@ export default ($scope, $sce, $location, helperService, eSteemService, appVersio
       $scope.slides.push(i);
       c += 1;
     }
+  }).catch((e) => {
+    // Skip welcome screen if on http error
+    $scope.start();
   });
 
   $scope.next = () => {

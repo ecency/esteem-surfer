@@ -798,7 +798,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
       $rootScope.goBack should not be triggered (go back button should not be clicked)
       Path should not be root (there is a redirect rule for /)
       */
-      if ($rootScope.lastVisitedPath && !$rootScope.isBack && $rootScope.lastVisitedPath !== '/') {
+      if ($rootScope.lastVisitedPath && !$rootScope.isBack && $rootScope.lastVisitedPath !== '/' && $rootScope.lastVisitedPath !== '/welcome') {
         // push last visited path to history
         $rootScope.navHistory.push($rootScope.lastVisitedPath);
       }
