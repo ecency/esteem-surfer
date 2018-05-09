@@ -30,7 +30,7 @@ export default () => {
                 <content-payout-info content="comment"></content-payout-info>
               </div>
             </div>
-            <div class="comment-voters" ng-if="comment.net_votes>0">
+            <div class="comment-voters">
               <content-voters-info content="comment"></content-voters-info>
             </div>
             <div class="comment-reply">
