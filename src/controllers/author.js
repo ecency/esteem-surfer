@@ -1,6 +1,6 @@
 export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $window, $uibModal, $filter, steemService, steemAuthenticatedService, activeUsername, constants) => {
   let username = $routeParams.username;
-  let section = $routeParams.section || 'blog';
+  let section = $routeParams.section || 'feed';
 
   $scope.authorData = null;
   $scope.loadingAuthor = false;
