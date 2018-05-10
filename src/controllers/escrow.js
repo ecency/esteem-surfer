@@ -207,30 +207,36 @@ export default ($scope, $rootScope, $routeParams, $location, $timeout, $filter, 
 
   $scope.submit = () => {
 
-    const from = $scope.from;
-    const to = $scope.to.trim();
-    const agent = $scope.agent.trim();
-    const escrowId = (new Date().getTime()) >>> 0;
-    const sbd = $scope.asset === 'SBD' ? formatStrAmount($scope.amount, 'SBD') : '0.000 SBD';
-    const steem = $scope.asset === 'STEEM' ? formatStrAmount($scope.amount, 'STEEM') : '0.000 STEEM';
-    const fee = `${$scope.agentData.escrowInfo.fees[$scope.asset]} ${$scope.asset}`;
-    const deadlineDate = $scope.deadline;
-    const expirationDate = $scope.expiration;
-    const jsonMeta = {
-      terms: $scope.agentData.escrowInfo.terms,
-      memo: `${$scope.memo} ${escrowId}`
+    const _submit = () => {
+      const from = $scope.from;
+      const to = $scope.to.trim();
+      const agent = $scope.agent.trim();
+      const escrowId = (new Date().getTime()) >>> 0;
+      const sbd = $scope.asset === 'SBD' ? formatStrAmount($scope.amount, 'SBD') : '0.000 SBD';
+      const steem = $scope.asset === 'STEEM' ? formatStrAmount($scope.amount, 'STEEM') : '0.000 STEEM';
+      const fee = `${$scope.agentData.escrowInfo.fees[$scope.asset]} ${$scope.asset}`;
+      const deadlineDate = $scope.deadline;
+      const expirationDate = $scope.expiration;
+      const jsonMeta = {
+        terms: $scope.agentData.escrowInfo.terms,
+        memo: `${$scope.memo} ${escrowId}`
+      };
+
+      const fromAccount = getAccount(from);
+      const wif = fromAccount.type === 's' ? fromAccount.keys.active : null;
+
+      $scope.processing = true;
+      steemAuthenticatedService.escrowTransfer(wif, from, to, agent, escrowId, sbd, steem, fee, deadlineDate, expirationDate, JSON.stringify(jsonMeta)).then((resp) => {
+        $scope.newEscrowId = escrowId;
+      }).catch((e) => {
+        $rootScope.showError(e);
+      }).then((resp) => {
+        $scope.processing = false;
+      });
     };
 
-    const fromAccount = getAccount(from);
-    const wif = fromAccount.type === 's' ? fromAccount.keys.active : null;
-
-    $scope.processing = true;
-    steemAuthenticatedService.escrowTransfer(wif, from, to, agent, escrowId, sbd, steem, fee, deadlineDate, expirationDate, JSON.stringify(jsonMeta)).then((resp) => {
-      $scope.newEscrowId = escrowId;
-    }).catch((e) => {
-      $rootScope.showError(e);
-    }).then((resp) => {
-      $scope.processing = false;
+    $rootScope.pinDialog(true).result.then((p) => {
+      _submit();
     });
   };
 };
