@@ -9,7 +9,8 @@ export default ($rootScope) => {
       return CryptoJS.AES.encrypt(k, $rootScope.getPinCode()).toString();
     },
     decryptKey: (k) => {
-      return CryptoJS.AES.decrypt(k, $rootScope.getPinCode()).toString(CryptoJS.enc.Utf8);
+      const a = CryptoJS.AES.decrypt(k, $rootScope.getPinCode()).toString(CryptoJS.enc.Utf8);
+      return a
     }
   }
 };

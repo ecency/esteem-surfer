@@ -310,8 +310,6 @@ export default ($rootScope, steemApi, $q, cryptoService) => {
   };
 
   const profileUpdate = (wif, account, memoKey, newJsonMetadata) => {
-    wif = cryptoService.decryptKey(wif);
-
     return accountUpdate(wif, account, undefined, undefined, undefined, memoKey, newJsonMetadata);
   };
 
@@ -324,8 +322,6 @@ export default ($rootScope, steemApi, $q, cryptoService) => {
   };
 
   const grantPostingPermission = (wif, accountData) => {
-    wif = cryptoService.decryptKey(wif);
-
     const postingAuth = accountData.posting;
     postingAuth.account_auths.push(['esteemapp', postingAuth.weight_threshold]);
     return accountUpdate(wif, accountData.name, undefined, undefined, postingAuth, accountData.memo_key, accountData.json_metadata);
@@ -343,8 +339,6 @@ export default ($rootScope, steemApi, $q, cryptoService) => {
   };
 
   const revokePostingPermission = (wif, accountData) => {
-    wif = cryptoService.decryptKey(wif);
-
     const postingAuth = accountData.posting;
 
     let ind = 0;
