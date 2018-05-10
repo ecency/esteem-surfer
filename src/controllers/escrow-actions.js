@@ -64,35 +64,41 @@ export default ($scope, $rootScope, $filter, $routeParams, $timeout, $location, 
 
   $scope.submit = (action, releaseTo = null) => {
 
-    const escrowId = parseInt($scope.escrowId.trim());
-    const who = $scope.accountName;
-    const whoAccount = getAccount(who);
-    const wif = whoAccount.type === 's' ? whoAccount.keys.active : null;
+    const _submit = (action, releaseTo) => {
+      const escrowId = parseInt($scope.escrowId.trim());
+      const who = $scope.accountName;
+      const whoAccount = getAccount(who);
+      const wif = whoAccount.type === 's' ? whoAccount.keys.active : null;
 
-    $scope.processing = true;
-    let prms = null;
+      $scope.processing = true;
+      let prms = null;
 
-    switch (action) {
-      case 'approve':
-        prms = steemAuthenticatedService.escrowApprove(wif, $scope.escrowData.from, $scope.escrowData.to, $scope.escrowData.agent, who, escrowId, true);
-        break;
-      case 'dispute':
-        prms = steemAuthenticatedService.escrowDispute(wif, $scope.escrowData.from, $scope.escrowData.to, $scope.escrowData.agent, who, escrowId);
-        break;
-      case 'release':
-        prms = steemAuthenticatedService.escrowRelease(wif, $scope.escrowData.from, $scope.escrowData.to, $scope.escrowData.agent, who, releaseTo, escrowId, $scope.escrowData.sbd_amount, $scope.escrowData.steem_amount);
-        break;
-    }
+      switch (action) {
+        case 'approve':
+          prms = steemAuthenticatedService.escrowApprove(wif, $scope.escrowData.from, $scope.escrowData.to, $scope.escrowData.agent, who, escrowId, true);
+          break;
+        case 'dispute':
+          prms = steemAuthenticatedService.escrowDispute(wif, $scope.escrowData.from, $scope.escrowData.to, $scope.escrowData.agent, who, escrowId);
+          break;
+        case 'release':
+          prms = steemAuthenticatedService.escrowRelease(wif, $scope.escrowData.from, $scope.escrowData.to, $scope.escrowData.agent, who, releaseTo, escrowId, $scope.escrowData.sbd_amount, $scope.escrowData.steem_amount);
+          break;
+      }
 
-    prms.then((resp) => {
-      $rootScope.showSuccess($filter('translate')('TX_BROADCASTED'));
+      prms.then((resp) => {
+        $rootScope.showSuccess($filter('translate')('TX_BROADCASTED'));
 
-      $scope.escrowId = '';
-      $scope.escrowData = null;
-    }).catch((e) => {
-      $rootScope.showError(e);
-    }).then((resp) => {
-      $scope.processing = false;
+        $scope.escrowId = '';
+        $scope.escrowData = null;
+      }).catch((e) => {
+        $rootScope.showError(e);
+      }).then((resp) => {
+        $scope.processing = false;
+      });
+    };
+
+    $rootScope.pinDialog(true).result.then((p) => {
+      _submit(action, releaseTo);
     });
   };
 

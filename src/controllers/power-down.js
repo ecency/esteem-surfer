@@ -65,13 +65,19 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $uibModal,
   };
 
   $scope.deleteWithDrawAccount = (a) => {
-    $scope.deletingWithDrawAccount = true;
-    steemAuthenticatedService.setWithdrawVestingRoute(a, 0, false).then((resp) => {
-      loadWithdrawRoutes();
-    }).catch((e) => {
-      $rootScope.showError(e);
-    }).then((resp) => {
-      $scope.deletingWithDrawAccount = false;
+    const _delete = (a) => {
+      $scope.deletingWithDrawAccount = true;
+      steemAuthenticatedService.setWithdrawVestingRoute(a, 0, false).then((resp) => {
+        loadWithdrawRoutes();
+      }).catch((e) => {
+        $rootScope.showError(e);
+      }).then((resp) => {
+        $scope.deletingWithDrawAccount = false;
+      });
+    };
+
+    $rootScope.pinDialog(true).result.then((p) => {
+      _delete(a);
     });
   };
 
@@ -106,25 +112,32 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $uibModal,
   };
 
   $scope.start = () => {
-    const vestingShares = `${$scope.amountVest}.000000 VESTS`;
 
-    const fromAccount = getAccount(curAccount);
-    const wif = fromAccount.type === 's' ? fromAccount.keys.active : null;
+    const _start = () => {
+      const vestingShares = `${$scope.amountVest}.000000 VESTS`;
 
-    $scope.processing = true;
-    steemAuthenticatedService.withdrawVesting(wif, curAccount, vestingShares).then((resp) => {
+      const fromAccount = getAccount(curAccount);
+      const wif = fromAccount.type === 's' ? fromAccount.keys.active : null;
 
-    }).catch((e) => {
-      $rootScope.showError(e);
-    }).then(() => {
-      $scope.processing = false;
+      $scope.processing = true;
+      steemAuthenticatedService.withdrawVesting(wif, curAccount, vestingShares).then((resp) => {
 
-      loadAccount();
+      }).catch((e) => {
+        $rootScope.showError(e);
+      }).then(() => {
+        $scope.processing = false;
+
+        loadAccount();
+      });
+    };
+
+    $rootScope.pinDialog(true).result.then((p) => {
+      _start();
     });
   };
 
   $scope.stop = () => {
-    if ($window.confirm($filter('translate')('ARE_YOU_SURE'))) {
+    const _stop = () => {
       const vestingShares = `0.000000 VESTS`;
 
       const fromAccount = getAccount(curAccount);
@@ -140,7 +153,11 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $uibModal,
 
         loadAccount();
       });
-    }
+    };
+
+    $rootScope.pinDialog(true).result.then((p) => {
+      _stop();
+    });
   };
 
   const loadAccount = () => {

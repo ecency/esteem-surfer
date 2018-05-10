@@ -142,36 +142,42 @@ export default ($scope, $rootScope, $routeParams, $timeout, $location, $filter, 
 
   $scope.submit = () => {
 
-    const from = $scope.from;
-    const to = $scope.to.trim();
-    const amount = formatStrAmount($scope.amount, $scope.asset);
-    const memo = $scope.memo.trim();
+    const _submit = () => {
+      const from = $scope.from;
+      const to = $scope.to.trim();
+      const amount = formatStrAmount($scope.amount, $scope.asset);
+      const memo = $scope.memo.trim();
 
-    const fromAccount = getAccount(from);
-    const wif = fromAccount.type === 's' ? fromAccount.keys.active : null;
+      const fromAccount = getAccount(from);
+      const wif = fromAccount.type === 's' ? fromAccount.keys.active : null;
 
-    $scope.processing = true;
-    let prms = '';
-    switch (mode) {
-      case 'normal':
-        prms = steemAuthenticatedService.transfer(wif, from, to, amount, memo);
-        break;
-      case 'to_savings':
-        prms = steemAuthenticatedService.transferToSavings(wif, from, to, amount, memo);
-        break;
-      case 'from_savings':
-        const requestId = (new Date().getTime()) >>> 0;
-        prms = steemAuthenticatedService.transferFromSavings(wif, from, requestId, to, amount, memo);
-        break;
-    }
+      $scope.processing = true;
+      let prms = '';
+      switch (mode) {
+        case 'normal':
+          prms = steemAuthenticatedService.transfer(wif, from, to, amount, memo);
+          break;
+        case 'to_savings':
+          prms = steemAuthenticatedService.transferToSavings(wif, from, to, amount, memo);
+          break;
+        case 'from_savings':
+          const requestId = (new Date().getTime()) >>> 0;
+          prms = steemAuthenticatedService.transferFromSavings(wif, from, requestId, to, amount, memo);
+          break;
+      }
 
-    prms.then((resp) => {
-      $rootScope.showSuccess($filter('translate')('TX_BROADCASTED'));
-      $location.path(`/account/${from}/wallet`);
-    }).catch((e) => {
-      $rootScope.showError(e);
-    }).then((resp) => {
-      $scope.processing = false;
+      prms.then((resp) => {
+        $rootScope.showSuccess($filter('translate')('TX_BROADCASTED'));
+        $location.path(`/account/${from}/wallet`);
+      }).catch((e) => {
+        $rootScope.showError(e);
+      }).then((resp) => {
+        $scope.processing = false;
+      });
+    };
+
+    $rootScope.pinDialog(true).result.then((p) => {
+      _submit();
     });
   };
 

@@ -51,18 +51,24 @@ export default ($scope, $rootScope, $timeout, $filter, $uibModalInstance, autoCa
   };
 
   $scope.submit = () => {
-    const to = $scope.to.trim();
-    const perc = parseInt($scope.percSlider.value) * 100;
-    const auto = $scope.auto.val;
+    const _submit = () => {
+      const to = $scope.to.trim();
+      const perc = parseInt($scope.percSlider.value) * 100;
+      const auto = $scope.auto.val;
 
-    $scope.processing = true;
-    steemAuthenticatedService.setWithdrawVestingRoute(to, perc, auto).then((resp) => {
-      afterSuccess();
-      $scope.close();
-    }).catch((e) => {
-      $rootScope.showError(e);
-    }).then((resp) => {
-      $scope.processing = false;
+      $scope.processing = true;
+      steemAuthenticatedService.setWithdrawVestingRoute(to, perc, auto).then((resp) => {
+        afterSuccess();
+        $scope.close();
+      }).catch((e) => {
+        $rootScope.showError(e);
+      }).then((resp) => {
+        $scope.processing = false;
+      });
+    };
+
+    $rootScope.pinDialog(true).result.then((p) => {
+      _submit();
     });
   };
 

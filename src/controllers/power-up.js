@@ -126,22 +126,28 @@ export default ($scope, $rootScope, $routeParams, $location, $timeout, $filter, 
 
   $scope.submit = () => {
 
-    const from = $scope.from;
-    const to = $scope.to.trim();
-    const amount = formatStrAmount($scope.amount, 'STEEM');
+    const _submit = () => {
+      const from = $scope.from;
+      const to = $scope.to.trim();
+      const amount = formatStrAmount($scope.amount, 'STEEM');
 
-    const fromAccount = getAccount(from);
-    const wif = fromAccount.type === 's' ? fromAccount.keys.active : null;
+      const fromAccount = getAccount(from);
+      const wif = fromAccount.type === 's' ? fromAccount.keys.active : null;
 
-    $scope.processing = true;
+      $scope.processing = true;
 
-    steemAuthenticatedService.transferToVesting(wif, from, to, amount).then((resp) => {
-      $rootScope.showSuccess($filter('translate')('TX_BROADCASTED'));
-      $location.path(`/account/${from}/wallet`);
-    }).catch((e) => {
-      $rootScope.showError(e);
-    }).then((resp) => {
-      $scope.processing = false;
+      steemAuthenticatedService.transferToVesting(wif, from, to, amount).then((resp) => {
+        $rootScope.showSuccess($filter('translate')('TX_BROADCASTED'));
+        $location.path(`/account/${from}/wallet`);
+      }).catch((e) => {
+        $rootScope.showError(e);
+      }).then((resp) => {
+        $scope.processing = false;
+      });
+    };
+
+    $rootScope.pinDialog(true).result.then((p) => {
+      _submit();
     });
   };
 

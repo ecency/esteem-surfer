@@ -65,7 +65,6 @@ export default ($scope, $rootScope, $window, $location, $filter, $uibModalInstan
 
     // Logout
     userService.setActive(null);
-    $rootScope.$broadcast('userLoggedOut');
 
     // Remove pin code
     pinService.removePin();
@@ -73,7 +72,7 @@ export default ($scope, $rootScope, $window, $location, $filter, $uibModalInstan
     // Close modal
     $scope.cancel();
 
-    // Redirect to root
-    $location.path('/');
+    // Refersh app
+    $window.location.href = $window.location.href.split('#!')[0];
   };
 }
