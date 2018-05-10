@@ -566,14 +566,16 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
   });
 
   $scope.clearForm = () => {
-    $scope.title = '';
-    $scope.body = $scope.tempBody = '';
-    $scope.tags = '';
-    $scope.operationType = 'default';
-    $scope.vote = false;
+    if ($window.confirm($filter('translate')('ARE_YOU_SURE'))) {
+      $scope.title = '';
+      $scope.body = $scope.tempBody = '';
+      $scope.tags = '';
+      $scope.operationType = 'default';
+      $scope.vote = false;
 
-    document.querySelector('#vote-checkbox').checked = false;
-    document.querySelector('#reward-select').value = 'default';
+      document.querySelector('#vote-checkbox').checked = false;
+      document.querySelector('#reward-select').value = 'default';
+    }
   }
 };
 
