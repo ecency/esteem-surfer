@@ -475,7 +475,8 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
   });
 
   $scope.claimRewardsClicked = () => {
-    if ($window.confirm($filter('translate')('ARE_YOU_SURE'))) {
+
+    const _claim = () => {
       $scope.claimingRewards = true;
       const steemBal = $scope.authorData.reward_steem_balance;
       const sbdBal = $scope.authorData.reward_sbd_balance;
@@ -490,6 +491,10 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
       }).then(() => {
         $scope.claimingRewards = false;
       });
-    }
+    };
+
+    $rootScope.pinDialog(true).result.then((p) => {
+      _claim();
+    });
   }
 };
