@@ -55,6 +55,8 @@ import powerDownCtrl from './controllers/power-down';
 import addWithDrawAccountCtrl from './controllers/add-withdraw-account';
 import profileEditCtrl from './controllers/profile-edit';
 import welcomeCtrl from './controllers/welcome';
+import pinCreateCtrl from './controllers/pin-create';
+import pinDialogCtrl from './controllers/pin-dialog';
 
 
 import tokenExchangeCtrl from './controllers/token-exchange';
@@ -98,7 +100,8 @@ import userService from './services/user';
 import steemAuthenticatedService from './services/steem-authenticated';
 import eSteemService from './services/esteem';
 import editorService from './services/editor';
-
+import cryptoService from './services/crypto';
+import pinService from './services/pin'
 
 // Filters
 import {catchPostImageFilter} from './filters/catch-post-image';
@@ -196,9 +199,14 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
   $routeProvider
     .when('/', {
       template: '',
-      controller: ($rootScope, $location, activeUsername, helperService, constants) => {
+      controller: ($rootScope, $location, activeUsername, helperService, pinService, constants) => {
         if (!helperService.getWelcomeFlag()) {
           $location.path(`/welcome`);
+          return;
+        }
+
+        if (!pinService.getPinHash()) {
+          $location.path(`/pin-create`);
           return;
         }
 
@@ -311,6 +319,10 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
       templateUrl: 'templates/welcome.html',
       controller: 'welcomeCtrl'
     })
+    .when('/pin-create', {
+      templateUrl: 'templates/pin-create.html',
+      controller: 'pinCreateCtrl'
+    })
     .otherwise({redirectTo: '/'});
 
   // $http
@@ -376,6 +388,8 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
       }, delay);
     }
   })
+  .factory('cryptoService', cryptoService)
+  .factory('pinService', pinService)
 
   .directive('navBar', navBarDir)
   .directive('appFooter', footerDir)
@@ -428,6 +442,8 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
   .controller('addWithDrawAccountCtrl', addWithDrawAccountCtrl)
   .controller('profileEditCtrl', profileEditCtrl)
   .controller('welcomeCtrl', welcomeCtrl)
+  .controller('pinCreateCtrl', pinCreateCtrl)
+  .controller('pinDialogCtrl', pinDialogCtrl)
 
 
   .filter('catchPostImage', catchPostImageFilter)
@@ -615,13 +631,29 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'Prev';
         case 'WELCOME_START':
           return 'Start!';
+        case 'PIN_CREATE':
+          return 'Create pin code';
+        case 'PIN_CREATE_TEXT':
+          return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+        case 'PIN_CREATE_DESC':
+          return '4 character pin code';
+        case 'PIN_ENTER':
+          return 'Enter Pin Code';
+        case 'PIN_ENTER_DESC':
+          return 'Enter pin code to continue';
+        case 'PIN_ERROR_LAST_CHANCE':
+          return ' This is your last chance';
+        case 'PIN_INVALIDATE':
+          return 'Invalidate Pin Code';
+        case 'PIN_INVALIDATED':
+          return 'Pin code invalidated';
         default:
           return s;
       }
     }
   })
 
-  .run(function ($rootScope, $uibModal, $routeParams, $translate, $timeout, $interval, $location, $window, $q, eSteemService, steemService, settingsService, userService, activeUsername, steemApi, constants) {
+  .run(function ($rootScope, $uibModal, $routeParams, $translate, $timeout, $interval, $location, $window, $q, eSteemService, steemService, settingsService, userService, activeUsername, steemApi, pinService, constants) {
 
 
     // SETTINGS
@@ -796,9 +828,9 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
       /* Before push a path to navHistory:
       Last visited path should be not empty (at least one path visited)
       $rootScope.goBack should not be triggered (go back button should not be clicked)
-      Path should not be root (there is a redirect rule for /)
+      Path should not be root (there is a redirect rule for /), welcome page and pin creation page
       */
-      if ($rootScope.lastVisitedPath && !$rootScope.isBack && $rootScope.lastVisitedPath !== '/' && $rootScope.lastVisitedPath !== '/welcome') {
+      if ($rootScope.lastVisitedPath && !$rootScope.isBack && ['/', '/welcome', '/pin-create'].indexOf($rootScope.lastVisitedPath) === -1) {
         // push last visited path to history
         $rootScope.navHistory.push($rootScope.lastVisitedPath);
       }
@@ -968,7 +1000,6 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
     $rootScope.editorDraft = null;
 
     // CONTENT UPDATING
-
     $rootScope.refreshContent = (c) => {
       $rootScope.$broadcast('CONTENT_REFRESH', {content: c});
     };
@@ -993,6 +1024,50 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
         }
       }
     });
+
+    // PIN CODE
+    $rootScope.pinCode = null;
+
+    $rootScope.getPinCode = () => {
+      if (!$rootScope.pinCode) {
+        throw 'Pin code not found';
+      }
+      return $rootScope.pinCode;
+    };
+
+    $rootScope.pinDialogOpen = false;
+    $rootScope.pinDialog = (cancelable = false) => {
+      return $uibModal.open({
+        templateUrl: 'templates/pin-dialog.html',
+        controller: 'pinDialogCtrl',
+        windowClass: 'pin-dialog-modal',
+        backdrop: 'static',
+        keyboard: false,
+        resolve: {
+          cancelable: () => {
+            return cancelable;
+          },
+        }
+      });
+    };
+
+    $interval(() => {
+      const loc = $window.location.href.split('#!')[1];
+      if (['/', '/welcome', '/pin-create'].indexOf(loc) !== -1) {
+        return;
+      }
+
+      const h = pinService.getPinHash();
+      if (!h) {
+        $location.path('/');
+      }
+
+      if (!$rootScope.pinCode && !$rootScope.pinDialogOpen) {
+        $rootScope.pinDialog().result.then((pinCode) => {
+          $rootScope.pinCode = pinCode;
+        });
+      }
+    }, 2000);
 
 
     // Error messages to show user when remote server errors occurred

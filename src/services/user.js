@@ -1,4 +1,4 @@
-export default (storageService) => {
+export default (storageService, cryptoService) => {
   return {
     getAll: () => {
 
@@ -34,6 +34,10 @@ export default (storageService) => {
       storageService.set('active_user', username);
     },
     add: (username, keys) => {
+      for (let k in keys) {
+        keys[k] = cryptoService.encryptKey(keys[k]);
+      }
+
       let val = {
         'type': 's',
         'username': username,
@@ -45,6 +49,8 @@ export default (storageService) => {
       storageService.set(`user_${ username }`, val);
     },
     addSc: (username, token, expiresIn) => {
+      token = cryptoService.encryptKey(token);
+
       let val = {
         'type': 'sc',
         'username': username,

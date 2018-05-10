@@ -11,9 +11,11 @@ import {
   scEsrowTransfer
 } from '../helpers/steem-connect-helper';
 
-export default ($rootScope, steemApi, $q) => {
+export default ($rootScope, steemApi, $q, cryptoService) => {
 
   const follow = (wif, follower, following) => {
+    wif = cryptoService.decryptKey(wif);
+
     const json = ['follow', {follower: follower, following: following, what: ['blog']}];
     let defer = $q.defer();
     steem.broadcast.customJson(wif, [], [follower], 'follow', JSON.stringify(json), (err, response) => {
@@ -28,6 +30,8 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const followSC = (token, follower, following) => {
+    token = cryptoService.decryptKey(token);
+
     let defer = $q.defer();
 
     const api = sc2.Initialize({
@@ -46,6 +50,8 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const unfollow = (wif, unfollower, unfollowing) => {
+    wif = cryptoService.decryptKey(wif);
+
     const json = ['follow', {follower: unfollower, following: unfollowing, what: []}];
     let defer = $q.defer();
     steem.broadcast.customJson(wif, [], [unfollower], 'follow', JSON.stringify(json), (err, response) => {
@@ -60,6 +66,8 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const unfollowSC = (token, unfollower, unfollowing) => {
+    token = cryptoService.decryptKey(token);
+
     let defer = $q.defer();
 
     const api = sc2.Initialize({
@@ -78,6 +86,8 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const ignore = (wif, follower, following) => {
+    wif = cryptoService.decryptKey(wif);
+
     const json = ['follow', {follower: follower, following: following, what: ['ignore']}];
     let defer = $q.defer();
     steem.broadcast.customJson(wif, [], [follower], 'follow', JSON.stringify(json), (err, response) => {
@@ -92,6 +102,8 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const ignoreSC = (token, follower, following) => {
+    token = cryptoService.decryptKey(token);
+
     let defer = $q.defer();
 
     const api = sc2.Initialize({
@@ -110,8 +122,9 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const vote = (wif, voter, author, permlink, weight) => {
-    let defer = $q.defer();
+    wif = cryptoService.decryptKey(wif);
 
+    let defer = $q.defer();
     steem.broadcast.vote(wif, voter, author, permlink, weight, function (err, response) {
       if (err) {
         defer.reject(err);
@@ -119,11 +132,11 @@ export default ($rootScope, steemApi, $q) => {
         defer.resolve(response);
       }
     });
-
     return defer.promise;
   };
 
   const voteSC = (token, voter, author, permlink, weight) => {
+    token = cryptoService.decryptKey(token);
 
     let defer = $q.defer();
 
@@ -144,6 +157,8 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const comment = (wif, parentAuthor, parentPermlink, author, permlink, title, body, jsonMetadata, options, voteWeight) => {
+    wif = cryptoService.decryptKey(wif);
+
     let defer = $q.defer();
 
     const opArray = [
@@ -187,6 +202,7 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const commentSc = (token, parentAuthor, parentPermlink, author, permlink, title, body, jsonMetadata, options, voteWeight) => {
+    token = cryptoService.decryptKey(token);
 
     let defer = $q.defer();
 
@@ -237,6 +253,8 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const deleteComment = (wif, author, permlink) => {
+    wif = cryptoService.decryptKey(wif);
+
     let defer = $q.defer();
 
     steem.broadcast.deleteComment(wif, author, permlink, function (err, response) {
@@ -251,6 +269,7 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const deleteCommentSc = (token, author, permlink) => {
+    token = cryptoService.decryptKey(token);
 
     let defer = $q.defer();
 
@@ -275,6 +294,8 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const accountUpdate = (wif, account, owner, active, posting, memoKey, jsonMetadata) => {
+    wif = cryptoService.decryptKey(wif);
+
     let defer = $q.defer();
 
     steem.broadcast.accountUpdate(wif, account, owner, active, posting, memoKey, jsonMetadata, function (err, response) {
@@ -289,16 +310,22 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const profileUpdate = (wif, account, memoKey, newJsonMetadata) => {
+    wif = cryptoService.decryptKey(wif);
+
     return accountUpdate(wif, account, undefined, undefined, undefined, memoKey, newJsonMetadata);
   };
 
   const profileUpdateSc = (token, account, memoKey, newJsonMetadata) => {
+    token = cryptoService.decryptKey(token);
+
     let defer = $q.defer();
     defer.reject('Steem connect profile update not implemented yet.');
     return defer.promise;
   };
 
   const grantPostingPermission = (wif, accountData) => {
+    wif = cryptoService.decryptKey(wif);
+
     const postingAuth = accountData.posting;
     postingAuth.account_auths.push(['esteemapp', postingAuth.weight_threshold]);
     return accountUpdate(wif, accountData.name, undefined, undefined, postingAuth, accountData.memo_key, accountData.json_metadata);
@@ -316,6 +343,8 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const revokePostingPermission = (wif, accountData) => {
+    wif = cryptoService.decryptKey(wif);
+
     const postingAuth = accountData.posting;
 
     let ind = 0;
@@ -343,6 +372,8 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const transfer = (wif, from, to, amount, memo) => {
+    wif = cryptoService.decryptKey(wif);
+
     let defer = $q.defer();
 
     steem.broadcast.transfer(wif, from, to, amount, memo, function (err, result) {
@@ -369,6 +400,8 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const transferToSavings = (wif, from, to, amount, memo) => {
+    wif = cryptoService.decryptKey(wif);
+
     let defer = $q.defer();
 
     steem.broadcast.transferToSavings(wif, from, to, amount, memo, function (err, result) {
@@ -395,6 +428,8 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const transferFromSavings = (wif, from, requestId, to, amount, memo) => {
+    wif = cryptoService.decryptKey(wif);
+
     let defer = $q.defer();
 
     steem.broadcast.transferFromSavings(wif, from, requestId, to, amount, memo, function (err, result) {
@@ -421,6 +456,8 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const transferToVesting = (wif, from, to, amount) => {
+    wif = cryptoService.decryptKey(wif);
+
     let defer = $q.defer();
 
     steem.broadcast.transferToVesting(wif, from, to, amount, function (err, result) {
@@ -447,6 +484,8 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const claimRewardBalance = (wif, account, rewardSteem, rewardSbd, rewardVests) => {
+    wif = cryptoService.decryptKey(wif);
+
     let defer = $q.defer();
 
     steem.broadcast.claimRewardBalance(wif, account, rewardSteem, rewardSbd, rewardVests, function (err, result) {
@@ -461,6 +500,8 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const claimRewardBalanceSc = (token, account, rewardSteem, rewardSbd, rewardVests) => {
+    token = cryptoService.decryptKey(token);
+
     let defer = $q.defer();
 
     const api = sc2.Initialize({
@@ -479,6 +520,8 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const escrowTransfer = (wif, from, to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta) => {
+    wif = cryptoService.decryptKey(wif);
+
     let defer = $q.defer();
 
     steem.broadcast.escrowTransfer(wif, from, to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta, function (err, result) {
@@ -505,6 +548,8 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const escrowApprove = (wif, from, to, agent, who, escrowId, approve) => {
+    wif = cryptoService.decryptKey(wif);
+
     let defer = $q.defer();
 
     steem.broadcast.escrowApprove(wif, from, to, agent, who, escrowId, approve, function (err, result) {
@@ -525,6 +570,8 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const escrowDispute = (wif, from, to, agent, who, escrowId) => {
+    wif = cryptoService.decryptKey(wif);
+
     let defer = $q.defer();
 
     steem.broadcast.escrowDispute(wif, from, to, agent, who, escrowId, function (err, result) {
@@ -545,6 +592,8 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const escrowRelease = (wif, from, to, agent, who, receiver, escrowId, sbdAmount, steemAmount) => {
+    wif = cryptoService.decryptKey(wif);
+
     let defer = $q.defer();
 
     steem.broadcast.escrowRelease(wif, from, to, agent, who, receiver, escrowId, sbdAmount, steemAmount, function (err, result) {
@@ -565,6 +614,8 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const setWithdrawVestingRoute = (wif, from, to, percent, autoVest) => {
+    wif = cryptoService.decryptKey(wif);
+
     let defer = $q.defer();
 
     steem.broadcast.setWithdrawVestingRoute(wif, from, to, percent, autoVest, function (err, result) {
@@ -579,12 +630,16 @@ export default ($rootScope, steemApi, $q) => {
   };
 
   const setWithdrawVestingRouteSc = (token, from, to, percent, autoVest) => {
+    token = cryptoService.decryptKey(token);
+
     let defer = $q.defer();
     defer.reject('Steem connect setWithdrawVestingRoute not implemented yet.');
     return defer.promise;
   };
 
   const withdrawVesting = (wif, account, vestingShares) => {
+    wif = cryptoService.decryptKey(wif);
+
     let defer = $q.defer();
 
     steem.broadcast.withdrawVesting(wif, account, vestingShares, function (err, result) {

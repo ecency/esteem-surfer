@@ -930,3 +930,40 @@
   user-select: none;
 
 }
+
+.pin-create-page {
+  background: $appBg;
+  height: 100%;
+  overflow: auto;
+
+  .pin-form-container {
+    background: $listBgColor;
+    border: 1px solid $listBorderColor;
+    box-shadow: 0 0 1px 0 $listBorderColor;
+    min-height: 300px;
+    margin: 50px auto 0 auto;
+    width: 600px;
+    padding: 20px;
+
+    h1 {
+      font-size: 26px;
+      margin: 6px 0;
+    }
+
+    hr {
+      margin: 16px 0;
+    }
+
+    .help-block {
+      margin: 20px 0;
+    }
+
+    .input-group {
+      width: 280px;
+      margin: auto;
+    }
+  }
+
+  user-select: none;
+
+}

@@ -1,0 +1,20 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ 'PIN_ENTER' | __ }}</h4>
+</div>
+<div class="modal-body">
+  <div class="input-group input-group-lg" ng-class="{'has-error': wrong}">
+    <input type="password" class="form-control" ng-model="code" placeholder="{{ 'PIN_ENTER_DESC' | __ }}"
+           ng-keypress="keyPress($event)" ng-change="wrong=false;" auto-focus maxlength="50">
+    <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" ng-click="check()" ng-disabled="!isValid()"><i
+          class="fa fa-unlock"></i></button>
+      </span>
+  </div>
+  <div class="text-center" ng-if="tryCount>0" style="margin: 10px 0">
+    <p ng-if="remainingTry() === 1" class="text-danger">{{ 'PIN_ERROR_LAST_CHANCE' | __ }}</p>
+    <button class="btn btn-danger" ng-click="invalidatePinClicked()">{{ 'PIN_INVALIDATE' | __ }}</button>
+  </div>
+</div>
+<div class="modal-footer" ng-show="cancelable">
+  <button class="btn btn-warning pull-left" ng-click="cancel()">{{ 'CANCEL' | translate }}</button>
+</div>
