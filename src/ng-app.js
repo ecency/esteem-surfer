@@ -559,6 +559,14 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'Must start with a letter';
         case 'EDITOR_END_CHARS_ERR':
           return 'Must end with a letter or number';
+        case 'EDITOR_CLEAR':
+          return 'Clear';
+        case 'EDITOR_REMOVE_POSTING_PERM':
+          return 'Remove Posting Permission';
+        case 'EDITOR_GRANT_POSTING_PERM':
+          return 'Grant Posting Permission';
+        case 'EDITOR_SELECT_DATE':
+          return 'Select date';
         case 'UPDATE':
           return 'Update';
         case 'POST_UPDATED':

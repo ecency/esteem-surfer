@@ -43,7 +43,7 @@
           </div>
         </div>
         <div class="pull-right">
-          <button class="btn btn-default" ng-click="clearForm()">Clear form</button>
+          <button class="btn btn-default" ng-click="clearForm()">{{ 'EDITOR_CLEAR' | __ }}</button>
         </div>
       </div>
       <div class="control-buttons">
@@ -54,10 +54,10 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-              <li ng-if="hasPerm"><a ng-click="scheduleClicked()">Select date</a></li>
+              <li ng-if="hasPerm"><a ng-click="scheduleClicked()">{{ 'EDITOR_SELECT_DATE' | __ }}</a></li>
               <li ng-if="hasPerm" role="separator" class="divider"></li>
-              <li ng-if="hasPerm"><a ng-click="" login-required required-keys="'active'" on-login-success="removePermission()">Remove Posting Permission</a></li>
-              <li ng-if="!hasPerm"><a ng-click="" login-required required-keys="'active'" on-login-success="grantPermission()">Grant Posting Permission</a></li>
+              <li ng-if="hasPerm"><a ng-click="" login-required required-keys="'active'" on-login-success="removePermission()">{{ 'EDITOR_REMOVE_POSTING_PERM' | __ }}</a></li>
+              <li ng-if="!hasPerm"><a ng-click="" login-required required-keys="'active'" on-login-success="grantPermission()">{{ 'EDITOR_GRANT_POSTING_PERM' | __ }}</a></li>
             </ul>
           </div>
           <button class="btn btn-primary" ng-click="" login-required on-login-success="save()" ng-disabled="processing"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="saving"></i> {{ 'SAVE' | __ }}</button>
