@@ -64,7 +64,7 @@ export default ($scope, $rootScope, $timeout, $uibModalInstance, settingsService
       settingsService.set('currency', newVal);
       $rootScope.readSettings();
       $rootScope.currencyRate = resp.data;
-      $scope.$broadcast('currencyChanged');
+      $rootScope.$broadcast('currencyChanged');
       $scope.formState = 3;
     }); // TODO: Handle catch
   });
