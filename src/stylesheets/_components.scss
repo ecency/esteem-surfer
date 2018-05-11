@@ -1528,6 +1528,25 @@ STRUCTURE:
 }
 
 .settings-modal {
+  .modal-header{
+    .indicator {
+      float: right;
+      display: inline-block;
+      font-size: 18px;
+      height: 34px;
+      padding-top: 5px;
+      text-align: center;
+      vertical-align: middle;
+      width: 30px;
+
+      .loading-icon {
+        color: $loadingColor;
+      }
+      .success-icon {
+        color: $loadingSuccessColor;
+      }
+    }
+  }
   .modal-body {
     .server-control {
 
@@ -1562,22 +1581,7 @@ STRUCTURE:
     }
   }
   .modal-footer {
-    .indicator {
-      display: inline-block;
-      font-size: 18px;
-      height: 34px;
-      padding-top: 5px;
-      text-align: center;
-      vertical-align: middle;
-      width: 30px;
 
-      .loading-icon {
-        color: $loadingColor;
-      }
-      .success-icon {
-        color: $loadingSuccessColor;
-      }
-    }
   }
 }
 

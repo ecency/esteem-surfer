@@ -1,7 +1,8 @@
 <div class="modal-header">
-  <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'CANCEL' | translate }}" ng-click="cancel()">
-    <span aria-hidden="true">&times;</span>
-  </button>
+  <div class="indicator">
+    <i class="fa fa-spin fa-spinner loading-icon" ng-if="formState==2"></i>
+    <i class="fa fa-check success-icon" ng-if="formState==3"></i>
+  </div>
   <h4 class="modal-title">{{ 'SETTINGS' | translate }}</h4>
 </div>
 <div class="modal-body">
@@ -73,15 +74,7 @@
 </div>
 <div class="modal-footer">
   <div class="pull-left">
-    <button class="btn btn-warning" ng-click="defaults()" ng-disabled="formState==2">{{ 'DEFAULT_SETTINGS' | __ }}</button>
+    <button class="btn btn-default" ng-click="defaults()" ng-disabled="formState==2">{{ 'DEFAULT_SETTINGS' | __ }}</button>
   </div>
-  <!--
-  <button class="btn btn-primary" ng-click="save()" ng-disabled="processing"><i
-    class="fa fa-spinner fa-spin" ng-show="processing"></i> {{ 'SAVE' | __ }}
-  </button>
-  -->
-  <div class="indicator">
-    <i class="fa fa-spin fa-spinner loading-icon" ng-if="formState==2"></i>
-    <i class="fa fa-check success-icon" ng-if="formState==3"></i>
-  </div>
+  <button class="btn btn-warning pull-right" ng-click="cancel()" ng-disabled="formState==2"> {{ 'CLOSE' | translate }}</button>
 </div>
