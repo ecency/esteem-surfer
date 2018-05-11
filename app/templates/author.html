@@ -40,7 +40,7 @@
                 <li ng-class="{'active': section==='wallet'}" data-key="WALLET">
                   <a ng-click="changeSection('wallet')">{{ 'WALLET' | translate }}</a>
                 </li>
-                <li ng-class="{'active': section==='activities' && isMyPage }" data-key="ACTIVITIES">
+                <li ng-show="isMyPage" ng-class="{'active': section==='activities'}" data-key="ACTIVITIES">
                   <a ng-click="changeSection('activities')">{{ 'ACTIVITIES' | __ }}</a>
                 </li>
               </ul>
