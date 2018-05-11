@@ -28,6 +28,10 @@ export default () => {
           main();
         }
       });
+
+      $rootScope.$on('currencyChanged', (r, d) => {
+        main();
+      });
     }
   };
 };
