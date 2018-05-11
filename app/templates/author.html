@@ -40,6 +40,9 @@
                 <li ng-class="{'active': section==='wallet'}" data-key="WALLET">
                   <a ng-click="changeSection('wallet')">{{ 'WALLET' | translate }}</a>
                 </li>
+                <li ng-class="{'active': section==='activities' && isMyPage }" data-key="ACTIVITIES">
+                  <a ng-click="changeSection('activities')">{{ 'ACTIVITIES' | __ }}</a>
+                </li>
               </ul>
               <transfer-nav-bar ng-if="section==='wallet' && isMyPage"></transfer-nav-bar>
             </div>
@@ -94,6 +97,7 @@
               <h1 ng-if="section==='replies'">{{ 'REPLIES' | translate }}</h1>
               <h1 ng-if="section==='wallet'">{{ 'WALLET' | translate }}</h1>
               <h1 ng-if="section==='feed'">{{ 'FEED' | translate }}</h1>
+              <h1 ng-if="section==='activities'">{{ 'ACTIVITIES' | __ }}</h1>
               <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingContents"
                       title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
             </header>
@@ -250,6 +254,90 @@
                 <post-list-item post="row"></post-list-item>
               </li>
             </ul>
+            <div class="activities" ng-if="section==='activities'">
+              <div class="activities-type-select">
+                <select ng-model="selectedActivity.id" class="form-control" ng-change="reload()">
+                  <option value="votes">{{ 'ACTIVITIES_VOTES' | __ }}</option>
+                  <option value="replies">{{ 'ACTIVITIES_REPLIES' | __ }}</option>
+                  <option value="mentions">{{ 'ACTIVITIES_MENTIONS' | __ }}</option>
+                  <option value="follows">{{ 'ACTIVITIES_FOLLOWS' | __ }}</option>
+                  <option value="reblogs">{{ 'ACTIVITIES_REBLOGS' | __ }}</option>
+                  <option value="leaderboard">{{ 'ACTIVITIES_LEADEROARD' | __ }}</option>
+                </select>
+              </div>
+              <div class="empty-list" ng-if="!loadingContents && dataList.length === 0">{{ 'EMPTY_LIST' | __ }}</div>
+              <div class="activity-list votes-list" ng-if="selectedActivity.id === 'votes'">
+                <div class="group" ng-repeat="row in dataList">
+                  <div class="group-title">{{ row.key }}</div>
+                  <div class="record" ng-repeat="rec in row['records']">
+                    <div class="record-pic" author-bg-img-style author="{{ rec.voter }}" size="large" ng-click="goToAccount(rec.voter)"></div>
+                    <div class="record-content" ng-click="goToPost(rec.author, rec.permlink)">
+                      <p class="record-line-1"><strong>{{rec.voter}}</strong> <small>{{rec.weight/100}}%</small></p>
+                      <p class="record-line-2">{{rec.permlink}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="activity-list replies-list" ng-if="selectedActivity.id === 'replies'">
+                <div class="group" ng-repeat="row in dataList">
+                  <div class="group-title">{{ row.key }}</div>
+                  <div class="record" ng-repeat="rec in row['records']">
+                    <div class="record-pic" author-bg-img-style author="{{ rec.author }}" size="large" ng-click="goToAccount(rec.author)"></div>
+                    <div class="record-content" ng-click="goToComment(rec.author, rec.permlink)">
+                      <p class="record-line-1"><strong>{{rec.author}}</strong></p>
+                      <div class="markdown-view mini-markdown">{{rec.body | postSummary}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="activity-list mentions-list" ng-if="selectedActivity.id === 'mentions'">
+                <div class="group" ng-repeat="row in dataList">
+                  <div class="group-title">{{ row.key }}</div>
+                  <div class="record" ng-repeat="rec in row['records']">
+                    <div class="record-pic" author-bg-img-style author="{{ rec.author }}" size="large" ng-click="goToAccount(rec.author)"></div>
+                    <div class="record-content" ng-click="goToPost(rec.author, rec.permlink)">
+                      <p class="record-line-1"><strong>{{rec.author}}</strong></p>
+                      <p class="record-line-2">{{rec.permlink}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="activity-list follows-list" ng-if="selectedActivity.id === 'follows'">
+                <div class="group" ng-repeat="row in dataList">
+                  <div class="group-title">{{ row.key }}</div>
+                  <div class="record" ng-repeat="rec in row['records']">
+                    <div class="record-pic" author-bg-img-style author="{{ rec.follower }}" size="large" ng-click="goToAccount(rec.follower)"></div>
+                    <div class="record-content" ng-click="goToAccount(rec.follower)">
+                      <p class="record-line-1"><strong>{{rec.follower}}</strong></p>
+                      <p class="record-line-2"><span ng-if="rec.blog">{{ 'ACTIVITIES_FOLLOWING' | __ }}</span><span ng-if="!rec.blog">{{ 'ACTIVITIES_UNFOLLOWED' | __ }}</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="activity-list reblogs-list" ng-if="selectedActivity.id === 'reblogs'">
+                <div class="group" ng-repeat="row in dataList">
+                  <div class="group-title">{{ row.key }}</div>
+                  <div class="record" ng-repeat="rec in row['records']">
+                    <div class="record-pic" author-bg-img-style author="{{ rec.account }}" size="large" ng-click="goToAccount(rec.account)"></div>
+                    <div class="record-content" ng-click="goToPost(rec.account, rec.permlink)">
+                      <p class="record-line-1"><strong>{{rec.account}}</strong></p>
+                      <p class="record-line-2">{{rec.permlink}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="activity-list leaderboard-list" ng-if="selectedActivity.id === 'leaderboard'">
+                <div class="group">
+                  <div class="record" ng-repeat="rec in dataList">
+                    <div class="record-pic" author-bg-img-style author="{{ rec._id }}" size="large" ng-click="goToAccount(rec._id)"></div>
+                    <div class="record-content" ng-click="goToAccount(rec._id)">
+                      <p class="record-line-1"><strong>{{rec._id}}</strong></p>
+                      <p class="record-line-2">{{rec.count}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <footer>
               <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="loadingContents"></i>
             </footer>

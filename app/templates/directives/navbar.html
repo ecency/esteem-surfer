@@ -33,6 +33,7 @@
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
+        <li class="activities" ng-if="$root.user"><a ng-click="activitiesClicked()" title="{{ 'ACTIVITIES' | __ }}"><i class="fa fa-bell"></i></a></li>
         <li class="settings"><a ng-click="openSettings()" title="{{ 'SETTINGS' | translate }}"><i class="fa fa-cog"></i></a></li>
         <li class="editor"><a ng-click="editorClicked()"><i class="fa fa-pencil"></i></a></li>
         <li class="login" ng-if="!$root.user"><a ng-click="openLogin()" title="{{ 'LOGIN' | translate }}"><i class="fa fa-sign-in"></i></a></li>
