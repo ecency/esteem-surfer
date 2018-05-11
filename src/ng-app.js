@@ -655,6 +655,24 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'Invalidate Pin Code';
         case 'PIN_INVALIDATED':
           return 'Pin code invalidated';
+        case 'ACTIVITIES':
+          return 'Activities';
+        case 'ACTIVITIES_VOTES':
+          return 'Votes';
+        case 'ACTIVITIES_REPLIES':
+          return 'Replies';
+        case 'ACTIVITIES_MENTIONS':
+          return 'Mentions';
+        case 'ACTIVITIES_FOLLOWS':
+          return 'Follows';
+        case 'ACTIVITIES_REBLOGS':
+          return 'Reblogs';
+        case 'ACTIVITIES_LEADEROARD':
+          return 'Leaderboard';
+        case 'ACTIVITIES_FOLLOWING':
+          return 'following';
+        case 'ACTIVITIES_UNFOLLOWED':
+          return 'unfollowed';
         default:
           return s;
       }

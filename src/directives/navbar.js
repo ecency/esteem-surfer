@@ -51,6 +51,10 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
         $location.path(`/editor`);
       };
 
+      $scope.activitiesClicked = () => {
+        $location.path(`/account/${activeUsername()}/activities`);
+      };
+
       $scope.openSettings = () => {
         $uibModal.open({
           templateUrl: 'templates/settings.html',

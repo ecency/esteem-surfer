@@ -90,8 +90,26 @@ export default ($http, API_END_POINT) => {
     searchEscrow: function (id) {
       return $http.get(`${API_END_POINT}/api/escrows/${id}`);
     },
-    getWelcome: function(){
+    getWelcome: function () {
       return $http.get(`${API_END_POINT}/media/welcome.json`);
-    }
+    },
+    getMyVotes: function (user) {
+      return $http.get(`${API_END_POINT}/api/rvotes/${user}`);
+    },
+    getMyReplies: function (user) {
+      return $http.get(`${API_END_POINT}/api/replies/${user}`);
+    },
+    getMyMentions: function(user) {
+      return $http.get(`${API_END_POINT}/api/mentions/${user}`);
+    },
+    getMyFollows: function(user) {
+      return $http.get(`${API_END_POINT}/api/follows/${user}`);
+    },
+    getMyReblogs: function(user) {
+      return $http.get(`${API_END_POINT}/api/reblogs/${user}`);
+    },
+    getLeaderboard: function() {
+      return $http.get(`${API_END_POINT}/api/leaderboard`);
+    },
   }
 }

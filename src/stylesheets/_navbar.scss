@@ -122,7 +122,7 @@
   }
 
   .navbar-right {
-    .settings, .login, .editor {
+    .settings, .login, .editor, .activities {
       a {
         line-height: 100%;
         padding-bottom: 12px;
@@ -137,6 +137,15 @@
       a {
         .fa {
           font-size: 22px;
+        }
+      }
+    }
+
+    .activities {
+      a {
+        padding-top: 15px;
+        .fa {
+          font-size: 21px;
         }
       }
     }
@@ -178,7 +187,7 @@
           a {
             padding-bottom: 8px;
             padding-top: 8px;
-            transition:all 0.3s ease;
+            transition: all 0.3s ease;
           }
         }
       }
@@ -209,7 +218,7 @@
         a {
           padding-bottom: 10px;
           padding-top: 10px;
-          transition:all 0.3s ease;
+          transition: all 0.3s ease;
         }
       }
     }
