@@ -117,7 +117,8 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
       canFollow: true,
       canUnfollow: false,
       canMute: false,
-      canUnmute: false
+      canUnmute: false,
+      favorited: false
     };
 
     if ($scope.isMyPage) {
@@ -178,6 +179,10 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
       }
       $scope.$applyAsync();
     }
+
+    eSteemService.isFavorite(visitorName, username).then((resp) => {
+      $scope.visitorData.favorited = resp.data;
+    });
 
     $scope.loadingVisitor = false;
   };
@@ -526,6 +531,30 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     }).then(() => {
       $scope.vBlockControl = false;
       $scope.vUnmuting = false;
+    });
+  };
+
+  $scope.fav = () => {
+    $scope.vFavoriting = true;
+    eSteemService.addFavorite(activeUsername(), username).then((resp)=>{
+      $scope.visitorData.favorited = true;
+      $rootScope.$broadcast('favoritesChanged');
+    }).catch((e) => {
+      $rootScope.showError(e);
+    }).then(() => {
+      $scope.vFavoriting = false;
+    });
+  };
+
+  $scope.unFav = () => {
+    $scope.vFavoriting = true;
+    eSteemService.removeFavoriteUser(activeUsername(), username).then((resp)=>{
+      $scope.visitorData.favorited = false;
+      $rootScope.$broadcast('favoritesChanged');
+    }).catch((e) => {
+      $rootScope.showError(e);
+    }).then(() => {
+      $scope.vFavoriting = false;
     });
   };
 
