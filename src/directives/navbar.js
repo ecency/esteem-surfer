@@ -123,6 +123,18 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
         });
       };
 
+      $scope.favoritesClicked = () => {
+        $uibModal.open({
+          templateUrl: 'templates/favorites.html',
+          controller: 'favoritesCtrl',
+          windowClass: 'favorites-modal'
+        }).result.then((data) => {
+          // Success
+        }, () => {
+          // Cancel
+        });
+      };
+
       $scope.draftsClicked = () => {
         $location.path(`/drafts`);
       };

@@ -1,0 +1,20 @@
+<div class="modal-body">
+  <div class="favorites-search">
+    <input type="text" class="form-control" placeholder="{{ 'SEARCH_FAVORITES' | __ }}" ng-model="term">
+  </div>
+  <div class="favorites-list" ng-class="{'processing': processing}">
+    <div class="favorites-list-item" ng-repeat="b in favorites | orderBy:'-timestamp'">
+      <div class="profile-image" author-bg-img-style author="{{ b.account }}"></div>
+      <span class="item-content">
+        <a ng-click="accountClicked(b)" class="account-link">{{ b.account }}</a>
+        <small class="timestamp"><i class="fa fa-clock-o"></i> {{ b.timestamp | timeAgo }}</small>
+      </span>
+      <div class="control-box">
+        <button class="btn btn-danger btn-xs btn-remove" title="{{ 'REMOVE' | translate }}" ng-click="removeClicked(b)" ><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <div class="empty-list" ng-if="favorites.length === 0">
+      {{ 'EMPTY_LIST' | __ }}
+    </div>
+  </div>
+</div>

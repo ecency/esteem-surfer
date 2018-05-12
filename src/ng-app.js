@@ -57,6 +57,7 @@ import profileEditCtrl from './controllers/profile-edit';
 import welcomeCtrl from './controllers/welcome';
 import pinCreateCtrl from './controllers/pin-create';
 import pinDialogCtrl from './controllers/pin-dialog';
+import favoritesCtrl from './controllers/favorites';
 
 
 import tokenExchangeCtrl from './controllers/token-exchange';
@@ -444,6 +445,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
   .controller('welcomeCtrl', welcomeCtrl)
   .controller('pinCreateCtrl', pinCreateCtrl)
   .controller('pinDialogCtrl', pinDialogCtrl)
+  .controller('favoritesCtrl', favoritesCtrl)
 
 
   .filter('catchPostImage', catchPostImageFilter)
@@ -673,6 +675,14 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'following';
         case 'ACTIVITIES_UNFOLLOWED':
           return 'unfollowed';
+        case 'FAVORITES':
+          return 'Favorites';
+          case 'FAVORITES_ADD':
+          return 'Add to favorites';
+        case 'FAVORITES_REMOVE':
+          return 'Remove from favorites';
+        case 'SEARCH_FAVORITES':
+          return 'Search in favorites';
         default:
           return s;
       }
@@ -1012,6 +1022,45 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
     // Refresh bookmarks when new bookmark created
     $rootScope.$on('newBookmark', () => {
       fetchBookmarks();
+    });
+
+    // FAVORITES
+    $rootScope.favorites = [];
+    const fetchFavorites = () => {
+      $rootScope.favorites = [];
+      eSteemService.getFavorites($rootScope.user.username).then((resp) => {
+        let temp = [];
+
+        // Create timestamps and search titles for each bookmark item. Timestamps will be used for sorting.
+        for (let i of resp.data) {
+          temp.push(Object.assign(
+            {},
+            i,
+            {searchTitle: `${i.account}`.toLowerCase()}
+          ));
+        }
+
+        $rootScope.favorites = temp;
+      });
+    };
+
+    if ($rootScope.user) {
+      fetchFavorites();
+    }
+
+    // Fetch favorites on login
+    $rootScope.$on('userLoggedIn', () => {
+      fetchFavorites();
+    });
+
+    // Set favorites to empty list when user logged out
+    $rootScope.$on('userLoggedOut', () => {
+      $rootScope.favorites = [];
+    });
+
+    // Refresh favorites when new bookmark created
+    $rootScope.$on('favoritesChanged', () => {
+      fetchFavorites();
     });
 
     // SIDE TAG LIST
