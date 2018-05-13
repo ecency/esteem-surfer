@@ -315,6 +315,18 @@
         top: 20px;
       }
 
+      .control-box2 {
+        position: absolute;
+        right: 20px;
+        bottom: 64px;
+
+        .btn-fav {
+          .fa {
+            color: indianred;
+          }
+        }
+      }
+
       .cover-image {
         background-color: #171F24;
         background-position: 50% 50%;

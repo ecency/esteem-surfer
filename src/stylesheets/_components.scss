@@ -452,7 +452,7 @@
       }
     }
 
-    .post-app{
+    .post-app {
       float: left;
       margin-right: 20px;
       color: $textColorLighter;
@@ -1021,10 +1021,10 @@ STRUCTURE:
         }
       }
 
-      .post-app{
+      .post-app {
         color: $textColorLight;
 
-        .via{
+        .via {
           font-weight: 600;
         }
       }
@@ -1057,7 +1057,6 @@ STRUCTURE:
           margin-left: 10px;
           padding-left: 10px;
         }
-
 
       }
     }
@@ -1144,7 +1143,6 @@ STRUCTURE:
       .list-pagination {
         float: right;
 
-
         .page-label, .cur-page, .total-pages {
           color: $textColorLight
         }
@@ -1172,7 +1170,7 @@ STRUCTURE:
 
       }
 
-      .list-sorting{
+      .list-sorting {
         color: $textColorLight;
         float: right;
         margin-right: 20px;
@@ -1528,7 +1526,7 @@ STRUCTURE:
 }
 
 .settings-modal {
-  .modal-header{
+  .modal-header {
     .indicator {
       float: right;
       display: inline-block;
@@ -1802,6 +1800,90 @@ STRUCTURE:
           text-overflow: ellipsis;
           white-space: nowrap;
           width: 440px;
+        }
+
+        .control-box {
+          opacity: 0.6;
+        }
+
+        &:hover {
+          background-color: $hoverColor;
+          .control-box {
+            opacity: 1;
+          }
+        }
+      }
+
+      &.processing {
+        opacity: 0.6;
+
+        .control-box {
+          .btn {
+            pointer-events: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.favorites-modal {
+  .modal-body {
+    .favorites-search {
+      margin-bottom: 20px;
+    }
+
+    .favorites-loading {
+      text-align: center;
+
+      .fa {
+        color: $loadingColor;
+        font-size: 30px;
+      }
+    }
+
+    .favorites-list {
+      height: 400px;
+      overflow-y: auto;
+
+      .favorites-list-item {
+        align-items: center;
+        border-radius: 6px;
+        display: flex;
+        margin-bottom: 16px;
+        padding: 4px;
+
+        .profile-image {
+          background-color: $profilePicBg;
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          border-radius: 50%;
+          height: 40px;
+          margin-right: 10px;
+          width: 40px;
+        }
+
+        .item-content {
+          display: inline-block;
+          font-size: 16px;
+          margin-right: 30px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: 450px;
+
+          .account-link {
+            display: table;
+
+            &:before {
+              content: '@';
+            }
+          }
+
+          .timestamp {
+            color: $textColorLight;
+          }
         }
 
         .control-box {

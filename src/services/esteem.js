@@ -99,17 +99,32 @@ export default ($http, API_END_POINT) => {
     getMyReplies: function (user) {
       return $http.get(`${API_END_POINT}/api/replies/${user}`);
     },
-    getMyMentions: function(user) {
+    getMyMentions: function (user) {
       return $http.get(`${API_END_POINT}/api/mentions/${user}`);
     },
-    getMyFollows: function(user) {
+    getMyFollows: function (user) {
       return $http.get(`${API_END_POINT}/api/follows/${user}`);
     },
-    getMyReblogs: function(user) {
+    getMyReblogs: function (user) {
       return $http.get(`${API_END_POINT}/api/reblogs/${user}`);
     },
-    getLeaderboard: function() {
+    getLeaderboard: function () {
       return $http.get(`${API_END_POINT}/api/leaderboard`);
+    },
+    getFavorites: function (user) {
+      return $http.get(`${API_END_POINT}/api/favorites/${user}`);
+    },
+    addFavorite: function (user, account) {
+      return $http.post(`${API_END_POINT}/api/favorite`, {username: user, account: account});
+    },
+    removeFavoriteUser: function (user, account) {
+      return $http.delete(`${API_END_POINT}/api/favoriteUser/${user}/${account}`);
+    },
+    removeFavorite: function (user, id) {
+      return $http.delete(`${API_END_POINT}/api/favorite/${user}/${id}`);
+    },
+    isFavorite: function (user, account) {
+      return $http.get(`${API_END_POINT}/api/isfavorite/${user}/${account}`);
     },
   }
 }
