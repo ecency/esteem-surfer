@@ -6,7 +6,7 @@
   "private": true,
   "author": "eSteem <info@esteem.app>",
   "copyright": "© 2018, eSteem",
-  "homepage": "http://esteem.app",
+  "homepage": "https://esteem.app",
   "main": "app/background.js",
   "build": {
     "appId": "app.esteem.surfer",
