@@ -1,6 +1,8 @@
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_mixins.scss";
 
 .markdown-view {
+  @include clearfix();
+
   font-size: 18px;
   word-wrap: break-word;
   br {
