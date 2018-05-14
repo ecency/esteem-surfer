@@ -9,7 +9,12 @@ export default () => {
     controller: ($scope, $rootScope, $uibModal) => {
 
       const main = () => {
-        $scope.voteCount = $scope.content.active_votes.length;
+        if ($scope.content.active_votes) {
+          $scope.voteCount = $scope.content.active_votes.length;
+        } else {
+          // For search results
+          $scope.voteCount = $scope.content.net_votes;
+        }
       };
 
       main();
