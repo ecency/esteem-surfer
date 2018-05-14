@@ -10,8 +10,8 @@
           <a ng-click="" ng-dblclick="filterDblClicked()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
              aria-expanded="false">{{ selectedFilterName|translate }} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li ng-class="{'active': selectedSection=='feed'}" ng-if="$root.user"><a ng-click="feedClicked()">{{ 'FEED' | translate }}</a></li>
-            <li ng-repeat="c in filters" ng-class="{'active': ($root.selectedFilter===c.name && selectedSection!='feed')}" data-key="{{ c.key }}">
+            <!-- <li ng-class="{'active': selectedSection=='feed'}" ng-if="$root.user"><a ng-click="feedClicked()">{{ 'FEED' | translate }}</a></li> -->
+            <li ng-repeat="c in filters" ng-class="{'active': ($root.selectedFilter===c.name)}" data-key="{{ c.key }}">
               <a ng-click="filterClicked(c.name)">{{ c.key|translate }}</a>
             </li>
           </ul>
@@ -19,7 +19,6 @@
         <li ng-class="{'active': selectedSection==='discover'}"><a ng-click="discoverClicked()">{{ 'DISCOVER' | __ }}</a></li>
         <li ng-if="$root.user" ng-class="{'active': selectedSection==='wallet'}"><a ng-click="walletClicked()">{{ 'WALLET' | translate }}</a></li>
         <li ng-class="{'active': selectedSection==='token-exchange'}"><a ng-click="tokenExchangeClicked()">{{ 'TOKEN_EXCHANGE' | __ }}</a></li>
-        <!-- <li ng-class="{'active': selectedSection==='market-place'}"><a ng-click="marketPlaceClicked()">{{ 'MARKETPLACE' | translate }}</a></li> -->
       </ul>
       <form class="navbar-form navbar-left">
         <div class="input-group">

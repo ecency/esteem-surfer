@@ -1,6 +1,10 @@
 export default {
   filters: [
     {
+      key: 'FEED',
+      name: 'feed'
+    },
+    {
       key: 'TRENDING',
       name: 'trending'
     },

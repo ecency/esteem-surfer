@@ -370,6 +370,11 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
       return null;
     };
   })
+  .factory('activePostFilter', ($rootScope) => {
+    return () => {
+      return $rootScope.selectedFilter !== 'feed' ? $rootScope.selectedFilter : constants.defaultFilter;
+    };
+  })
   .factory('autoCancelTimeout', ($rootScope, $timeout) => {
     return (fn, delay) => {
       if ($rootScope.__timeouts === undefined) {
@@ -677,7 +682,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'unfollowed';
         case 'FAVORITES':
           return 'Favorites';
-          case 'FAVORITES_ADD':
+        case 'FAVORITES_ADD':
           return 'Add to favorites';
         case 'FAVORITES_REMOVE':
           return 'Remove from favorites';
@@ -689,7 +694,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
     }
   })
 
-  .run(function ($rootScope, $uibModal, $routeParams, $translate, $timeout, $interval, $location, $window, $q, eSteemService, steemService, settingsService, userService, activeUsername, steemApi, pinService, constants) {
+  .run(function ($rootScope, $uibModal, $routeParams, $translate, $timeout, $interval, $location, $window, $q, eSteemService, steemService, settingsService, userService, activeUsername, activePostFilter, steemApi, pinService, constants) {
 
 
     // SETTINGS
@@ -981,7 +986,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
     jq('body').on('click', '.markdown-view .markdown-tag-link', function (event) {
       event.preventDefault();
       let tag = jq(this).data('tag');
-      let u = `/posts/${$rootScope.selectedFilter}/${tag}`;
+      let u = `/posts/${activePostFilter()}/${tag}`;
       $rootScope.$broadcast('go-to-path', u);
     });
 

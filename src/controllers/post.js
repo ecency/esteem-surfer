@@ -1,6 +1,6 @@
 import {authorReputation} from '../filters/author-reputation';
 
-export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, $location, $q, steemService, eSteemService, helperService, activeUsername, constants) => {
+export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, $location, $q, steemService, eSteemService, helperService, activeUsername, activePostFilter, constants) => {
 
   let parent = $routeParams.parent;
   let author = $routeParams.author;
@@ -267,12 +267,12 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
   });
 
   $scope.parentClicked = () => {
-    let u = `/posts/${$rootScope.selectedFilter}/${$scope.post.parent_permlink}`;
+    let u = `/posts/${activePostFilter()}/${$scope.post.parent_permlink}`;
     $location.path(u);
   };
 
   $scope.tagClicked = (tag) => {
-    let u = `/posts/${$rootScope.selectedFilter}/${tag}`;
+    let u = `/posts/${activePostFilter()}/${tag}`;
     $location.path(u);
   };
 

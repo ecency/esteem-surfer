@@ -42,7 +42,7 @@ export default () => {
         </div>
     </div>
     `,
-    controller: ($scope, $rootScope, $location, helperService) => {
+    controller: ($scope, $rootScope, $location, helperService, activePostFilter) => {
 
       $scope.isVisited = helperService.isPostRead($scope.content.author, $scope.content.permlink);
 
@@ -81,7 +81,7 @@ export default () => {
       };
 
       $scope.parentClicked = () => {
-        let u = `/posts/${$rootScope.selectedFilter}/${$scope.content.category}`;
+        let u = `/posts/${activePostFilter()}/${$scope.content.category}`;
         $location.path(u);
       };
     }
