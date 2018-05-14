@@ -15,6 +15,9 @@ export default ($scope, $rootScope, $routeParams, $location, steemService, activ
 
   $scope.filter = constants.defaultFilter;
 
+  // Change rootscope's selected filter to feed
+  $rootScope.selectedFilter = 'feed';
+
   let ids = [];
   let hasMore = true;
 

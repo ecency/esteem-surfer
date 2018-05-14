@@ -8,16 +8,24 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
       searchStr: '=?'
     },
     templateUrl: 'templates/directives/navbar.html',
-    controller: ($scope, $rootScope, $location, $filter, constants, steemService) => {
+    controller: ($scope, $rootScope, $location, $filter, constants, steemService, activeUsername) => {
 
-      $scope.filters = constants.filters;
-      $scope.selectedFilterName = $scope.filters.find(i => i.name === $rootScope.selectedFilter).key;
-
-      if ($scope.selectedSection === 'feed') {
-        $scope.selectedFilterName = $filter('translate')('FEED');
+      // Hide FEED filter if not user logged in
+      if (activeUsername()) {
+        $scope.filters = constants.filters;
+      } else {
+        $scope.filters = constants.filters.filter(x => x.name !== 'feed');
       }
 
+      // Find selected filter
+      $scope.selectedFilterName = $scope.filters.find(i => i.name === $rootScope.selectedFilter).key;
+
       $scope.filterClicked = (c) => {
+        if (c === 'feed') {
+          $location.path(`/feed/${activeUsername()}`);
+          return;
+        }
+
         let u = `/posts/${c}`;
         if ($scope.selectedTag) {
           u += `/${$scope.selectedTag}`;

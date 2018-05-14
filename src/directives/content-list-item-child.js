@@ -51,7 +51,7 @@ export default () => {
         </div>
     </div>
     `,
-    controller: ($scope, $rootScope, $location, $sce, $filter, $uibModal, storageService, helperService) => {
+    controller: ($scope, $rootScope, $location, $sce, $filter, $uibModal, storageService, helperService, activePostFilter) => {
 
       const goDetail = () => {
         let u = `/post${$scope.content.url.split("#")[0].replace('@', '')}/${$scope.content.id}`;
@@ -84,7 +84,7 @@ export default () => {
       };
 
       $scope.parentClicked = () => {
-        let u = `/posts/${$rootScope.selectedFilter}/${$scope.content.category}`;
+        let u = `/posts/${activePostFilter()}/${$scope.content.category}`;
         $location.path(u);
       };
     }

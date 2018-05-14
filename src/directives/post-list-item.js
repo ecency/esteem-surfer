@@ -54,7 +54,7 @@ export default () => {
         </div>
     </div>
     `,
-    controller: ($scope, $rootScope, $location, $sce, $filter, $uibModal, storageService, helperService) => {
+    controller: ($scope, $rootScope, $location, $sce, $filter, $uibModal, storageService, helperService, activePostFilter) => {
       $scope.isVisited = helperService.isPostRead($scope.post.author, $scope.post.permlink);
       $scope.reSteemed = ($scope.asAuthor && $scope.post.author !== $scope.asAuthor);
 
@@ -97,7 +97,7 @@ export default () => {
       };
 
       $scope.parentClicked = () => {
-        let u = `/posts/${$rootScope.selectedFilter}/${$scope.post.category}`;
+        let u = `/posts/${activePostFilter()}/${$scope.post.category}`;
         $location.path(u);
       };
     }
