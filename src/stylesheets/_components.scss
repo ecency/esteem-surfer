@@ -2315,3 +2315,24 @@ STRUCTURE:
     }
   }
 }
+
+.profile-photo-modal {
+  .modal-dialog {
+    width: 400px;
+    .modal-content {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      text-align: center;
+      width: 400px;
+
+      .profile-image {
+
+        img {
+          border: 5px solid lighten($seperatorColor, 50);
+          max-width: 400px;
+        }
+      }
+    }
+  }
+}

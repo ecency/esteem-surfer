@@ -90,7 +90,8 @@ import draftListItemDir from './directives/draft-list-item';
 import scheduleListItemDir from './directives/schedule-list-item';
 import galleryListItemDir from './directives/gallery-list-item';
 import transferNavBarDir from './directives/transfer-navbar';
-import contentListLoadingItem from './directives/content-list-loading-item';
+import contentListLoadingItemDir from './directives/content-list-loading-item';
+import showBgImageOnModalDir from './directives/show-bg-image-on-modal';
 
 
 // Services
@@ -422,8 +423,8 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
   .directive('scheduleListItem', scheduleListItemDir)
   .directive('galleryListItem', galleryListItemDir)
   .directive('transferNavBar', transferNavBarDir)
-  .directive('contentListLoadingItem', contentListLoadingItem)
-
+  .directive('contentListLoadingItem', contentListLoadingItemDir)
+  .directive('showBgImageOnModal', showBgImageOnModalDir)
 
   .controller('postsCtrl', postsCtrl)
   .controller('settingsCtrl', settingsCtrl)
