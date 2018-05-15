@@ -54,7 +54,7 @@ const makeOptions = (author, permlink, operationType) => {
 const makeJsonMetadata = (meta, tags, appVer) => {
   return Object.assign({}, meta, {
     tags: tags,
-    app: 'esteem-surfer/' + appVer,
+    app: 'esteem/' + appVer + '-surfer',
     format: 'markdown+html',
     community: 'esteem'
   });
