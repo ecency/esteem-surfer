@@ -1,3 +1,5 @@
+import {postUrlParser} from '../helpers/post-url-parser';
+
 export default ($rootScope, $location, $uibModal, userService, activeUsername) => {
   return {
     restrict: 'AE',
@@ -161,14 +163,12 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
         let isContent = false;
         let isAccount = false;
 
-        const postMatch = $scope.searchStr.match(/^(@[\w\.\d-]+)\/(.*)/);
-        if (postMatch && postMatch.length === 3) {
-          const acccount = postMatch[1].replace('@', '');
-          const permlink = postMatch[2];
+        const parsed = postUrlParser($scope.searchStr);
+        if (parsed) {
 
           $scope.fetchingSearch = true;
           $scope.$applyAsync();
-          resp = await steemService.getContent(acccount, permlink);
+          resp = await steemService.getContent(parsed.author, parsed.permlink);
           $scope.fetchingSearch = false;
           $scope.$applyAsync();
 
