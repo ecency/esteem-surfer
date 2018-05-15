@@ -68,7 +68,7 @@ export default () => {
 
         const jsonMetadata = {
           tags: c.json_metadata ? JSON.parse(c.json_metadata).tags : ['esteem'],
-          app: 'esteem-surfer/' + appVersion,
+          app: 'esteem/' + appVersion + '-surfer',
           format: 'markdown+html',
           community: 'esteem'
         };
