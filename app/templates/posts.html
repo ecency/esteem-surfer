@@ -7,6 +7,7 @@
         <h1>{{ filterKey | translate }}<span ng-if="tag">: {{ tagTitle }} <a ng-click="removeTag()" class="btn btn-xs btn-link btn-remove-tag" title="{{ ('Remove Tag' | __) + ' \'' + tagTitle + '\''  }}"><i class="fa fa-times"></i></a></span> </h1>
         <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingPosts" title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
       </header>
+      <content-list-loading-item item-size="5" ng-if="loadingPosts && posts.length === 0"></content-list-loading-item>
       <ul class="feed">
         <li ng-repeat="post in posts">
           <post-list-item post="post"></post-list-item>

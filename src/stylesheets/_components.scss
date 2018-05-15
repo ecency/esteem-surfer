@@ -455,9 +455,9 @@
     }
 
     .post-app {
+      color: $textColorLighter;
       float: left;
       margin-right: 20px;
-      color: $textColorLighter;
     }
   }
 
@@ -1530,8 +1530,8 @@ STRUCTURE:
 .settings-modal {
   .modal-header {
     .indicator {
-      float: right;
       display: inline-block;
+      float: right;
       font-size: 18px;
       height: 34px;
       padding-top: 5px;
@@ -2218,4 +2218,68 @@ STRUCTURE:
     }
   }
 
+}
+
+@keyframes loading-fadein {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.content-list-loading-item {
+  height: 120px;
+  margin-bottom: 20px;
+  animation: loading-fadein 2s infinite;
+
+  .content-header {
+    background: $loadingItemColor;
+    height: 17px;
+    margin-bottom: 12px;
+    width: 300px;
+
+  }
+
+  .content-body {
+    .content-image {
+      background: $loadingItemColor;
+      float: left;
+      height: 76px;
+      margin-right: 10px;
+      width: 130px;
+    }
+
+    .content-body-title, .content-body-summary {
+      background: $loadingItemColor;
+      float: left;
+      margin-bottom: 12px;
+      height: 18px;
+    }
+
+    .content-body-title {
+      width: 300px;
+
+    }
+
+    .content-body-summary {
+      width: calc(100% - 140px);
+    }
+  }
+
+  .content-footer {
+    @include clearfix();
+
+    .content-voting, .content-voters, .content-comment-count, .content-app {
+      background: $loadingItemColor;
+      float: left;
+      height: 16px;
+      margin-right: 12px;
+      width: 100px;
+    }
+  }
 }
