@@ -113,7 +113,7 @@ export default () => {
 
       $scope.saveVotePerc = () => {
         let newVal = $scope.weightSlider.value;
-        setVotePerc(parseInt(newVal));
+        setVotePerc(parseFloat(newVal));
         closePopover();
         vote();
       };
@@ -140,7 +140,10 @@ export default () => {
                 default:
                   return value + '%';
               }
-            }
+            },
+            onChange: function(id, val) {
+              setVotePerc(parseFloat(val));
+            },
           }
         };
       };
