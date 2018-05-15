@@ -353,7 +353,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
       $rootScope.showSuccess($filter('translate')('POST_IS_DRAFT'));
       $location.path('/drafts');
     }).catch((e) => {
-      $rootScope.showError(e);
+      $rootScope.showError('Could not save draft!');
     }).then(() => {
       $scope.saving = false;
       $scope.processing = false;
@@ -610,7 +610,7 @@ const scheduleModalController = ($scope, $rootScope, $filter, $location, $uibMod
         $location.path('/schedules');
       }
     }).catch((e) => {
-      $rootScope.showError(e);
+      $rootScope.showError('Could not create schedule record!');
     }).then(() => {
       $scope.sending = false;
     });

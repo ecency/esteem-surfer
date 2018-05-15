@@ -7,7 +7,7 @@ export default ($scope, $rootScope, eSteemService, activeUsername) => {
     eSteemService.getSchedules(activeUsername()).then((resp) => {
       $scope.schedules = resp.data;
     }).catch((e) => {
-      $rootScope.showError(e);
+      $rootScope.showError('Could not fetch schedules!');
     }).then(() => {
       $scope.loadingSchedules = false;
     });

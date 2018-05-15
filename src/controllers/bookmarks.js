@@ -45,7 +45,7 @@ export default ($scope, $rootScope, $location, $uibModalInstance, $timeout, eSte
       $rootScope.bookmarks = $rootScope.bookmarks.filter(i => i._id !== b._id);
       loadData();
     }).catch((e) => {
-      $rootScope.showError('Could not delete bookmark.');
+      $rootScope.showError('Could not delete bookmark!');
     }).then(() => {
       $scope.processing = false;
     });

@@ -13,7 +13,7 @@ export default ($scope, $rootScope, eSteemService, activeUsername) => {
       }
       $scope.drafts = d;
     }).catch((e) => {
-      $rootScope.showError(e);
+      $rootScope.showError('Could not fetch drafts!');
     }).then(() => {
       $scope.loadingDrafts = false;
     });

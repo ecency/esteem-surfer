@@ -51,7 +51,7 @@ export default ($scope, $rootScope, $filter, $routeParams, $timeout, $location, 
       $scope.escrowData = resp.data[0];
 
     }).catch((e) => {
-      $rootScope.showError(e);
+      $rootScope.showError('Server error!');
     }).then(() => {
       $scope.searching = false;
     });

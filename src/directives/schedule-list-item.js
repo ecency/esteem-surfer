@@ -39,7 +39,7 @@ export default () => {
             $rootScope.$broadcast('SCHEDULE_DELETED');
             $rootScope.showSuccess($filter('translate')('DELETED_SCHEDULE'));
           }).catch((e) => {
-            $rootScope.showError(e);
+            $rootScope.showError('Could not deleted schedule record!');
           }).then(() => {
             $scope.deleting = false;
           });
@@ -54,7 +54,7 @@ export default () => {
           $rootScope.$broadcast('SCHEDULE_MOVED');
           $rootScope.showSuccess($filter('translate')('MOVED_SCHEDULE'));
         }).catch((e) => {
-          $rootScope.showError(e);
+          $rootScope.showError('Could not moved schedule record!');
         }).then(() => {
           $scope.moving = false;
         });
