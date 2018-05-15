@@ -12,6 +12,7 @@ export default () => {
       $scope.votes = [];
       $scope.voted = false;
       $scope.voting = false;
+      $scope.sliderBusy = false;
 
       const fetchVotes = () => {
         const u = activeUsername();
@@ -105,6 +106,10 @@ export default () => {
         $timeout.cancel(mouseEnterTimer);
         mouseEnterTimer = null;
 
+        if ($scope.sliderBusy) {
+          return;
+        }
+
         mouseLeaveTimer = $timeout(() => {
           mouseLeaveTimer = null;
           closePopover();
@@ -141,9 +146,15 @@ export default () => {
                   return value + '%';
               }
             },
-            onChange: function(id, val) {
+            onChange: function (id, val) {
               setVotePerc(parseFloat(val));
             },
+            onStart: function (id) {
+              $scope.sliderBusy = true;
+            },
+            onEnd: function (id) {
+              $scope.sliderBusy = false;
+            }
           }
         };
       };
@@ -159,7 +170,10 @@ export default () => {
         // console.log("voting with " + weight);
         steemAuthenticatedService.vote($scope.content.author, $scope.content.permlink, weight).then((resp) => {
           $scope.voted = true;
-          $rootScope.$broadcast('CONTENT_VOTED', {'author':  $scope.content.author, 'permlink': $scope.content.permlink});
+          $rootScope.$broadcast('CONTENT_VOTED', {
+            'author': $scope.content.author,
+            'permlink': $scope.content.permlink
+          });
         }).catch((e) => {
           $rootScope.showError(`Error${e.message ? ': ' + e.message : ''}`);
         }).then(() => {
