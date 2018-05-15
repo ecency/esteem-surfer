@@ -287,7 +287,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
       $scope.bookmarked = true;
       $rootScope.$broadcast('newBookmark', {id: $scope.post.id});
     }).catch((e) => {
-      $rootScope.showError('Server error. Could not bookmarked.')
+      $rootScope.showError('Could not added to bookmarks!')
     }).then(() => {
       $scope.bookmarking = false;
     });

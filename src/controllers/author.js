@@ -312,7 +312,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
         });
       }
     }).catch((e) => {
-      $rootScope.showError(e);
+      $rootScope.showError('Could not fetch activities!');
     }).then(() => {
       $scope.loadingContents = false;
     });
@@ -540,7 +540,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
       $scope.visitorData.favorited = true;
       $rootScope.$broadcast('favoritesChanged');
     }).catch((e) => {
-      $rootScope.showError(e);
+      $rootScope.showError('Could not added to favorites!');
     }).then(() => {
       $scope.vFavoriting = false;
     });
@@ -552,7 +552,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
       $scope.visitorData.favorited = false;
       $rootScope.$broadcast('favoritesChanged');
     }).catch((e) => {
-      $rootScope.showError(e);
+      $rootScope.showError('Could not remove from favorites!');
     }).then(() => {
       $scope.vFavoriting = false;
     });

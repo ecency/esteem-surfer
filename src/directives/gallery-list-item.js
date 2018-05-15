@@ -44,7 +44,7 @@ export default () => {
           eSteemService.removeImage(image._id, activeUsername()).then((resp) => {
             $scope.removeDirective();
           }).catch((e) => {
-            $rootScope.showError(e);
+            $rootScope.showError('Could not deleted image!');
           }).then(() => {
             $scope.deleting = false;
           });

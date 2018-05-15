@@ -44,7 +44,7 @@ export default () => {
             $rootScope.$broadcast('DRAFT_DELETED');
             $rootScope.showSuccess($filter('translate')('POST_IS_UNDRAFT'));
           }).catch((e) => {
-            $rootScope.showError(e);
+            $rootScope.showError('Could not deleted draft!');
           }).then(() => {
             $scope.deleting = false;
           });

@@ -32,7 +32,7 @@ export default ($scope, $rootScope, $location, $uibModalInstance, autoCancelTime
       $rootScope.favorites = $rootScope.favorites.filter(i => i._id !== b._id);
       loadData();
     }).catch((e) => {
-      $rootScope.showError('Could not delete favorite.');
+      $rootScope.showError('Could not delete favorite!');
     }).then(() => {
       $scope.processing = false;
     });

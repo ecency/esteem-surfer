@@ -40,7 +40,7 @@ export default ($scope, $rootScope, $location, $routeParams, steemService, eStee
         $scope.posts.push(i);
       });
     }).catch(() => {
-      // TODO: Handle catch
+      $rootScope.showError('Server error!');
     }).then(() => {
       $scope.loadingPosts = false;
 
