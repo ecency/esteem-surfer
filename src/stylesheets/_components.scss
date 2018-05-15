@@ -11,20 +11,23 @@
 
   h1 {
     font-size: 28px;
+    font-weight: bold;
     line-height: 1.2 !important;
     margin: 40px 0 0.3rem 0;
   }
 
   h2 {
     font-size: 24px;
+    font-weight: bold;
     line-height: 140%;
-    margin: 4px 0 4px 0;
+    margin: 12px 0 12px 0;
   }
 
   h3 {
     font-size: 20px;
+    font-weight: bold;
     line-height: 140%;
-    margin: 0 0 4px 0;
+    margin: 10px 0 10px 0;
   }
 
   blockquote {
@@ -57,6 +60,33 @@
   hr {
     clear: both;
     margin: 6px auto;
+  }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 1px;
+    margin-bottom: 24px;
+
+    td, th {
+      padding: 8px 10px;
+    }
+
+    thead {
+      td, th {
+        background-color: darken($boxBg, 5);
+      }
+    }
+
+    tbody {
+      td, th {
+        background-color: $boxBg;
+      }
+    }
+  }
+
+  code {
+    background: #d2e2ee;
+    color: $textColor;
   }
 
   .pull-left, .pull-right {
@@ -2233,9 +2263,9 @@ STRUCTURE:
 }
 
 .content-list-loading-item {
+  animation: loading-fadein 2s infinite;
   height: 120px;
   margin-bottom: 20px;
-  animation: loading-fadein 2s infinite;
 
   .content-header {
     background: $loadingItemColor;
@@ -2257,8 +2287,8 @@ STRUCTURE:
     .content-body-title, .content-body-summary {
       background: $loadingItemColor;
       float: left;
-      margin-bottom: 12px;
       height: 18px;
+      margin-bottom: 12px;
     }
 
     .content-body-title {
