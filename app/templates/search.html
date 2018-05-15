@@ -15,6 +15,7 @@
         <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingPosts"
                 title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
       </header>
+      <content-list-loading-item item-size="5" ng-if="loadingPosts && posts.length === 0"></content-list-loading-item>
       <ul class="feed">
         <li ng-repeat="post in posts">
           <content-list-item-search content="post"></content-list-item-search>
