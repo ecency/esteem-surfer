@@ -105,6 +105,12 @@
               <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingContents"
                       title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
             </header>
+            <content-list-loading-item item-size="5" ng-if="['blog', 'comments', 'replies', 'feed'].includes(section) && loadingContents && dataList.length === 0"></content-list-loading-item>
+            <ul class="feed" ng-if="section==='feed'">
+              <li ng-repeat="row in dataList">
+                <post-list-item post="row"></post-list-item>
+              </li>
+            </ul>
             <ul class="feed" ng-if="section==='blog'">
               <li ng-repeat="row in dataList">
                 <post-list-item post="row" as-author="username"></post-list-item>
@@ -120,6 +126,9 @@
                 <content-list-item-child content="row"></content-list-item-child>
               </li>
             </ul>
+            <div class="empty-list" ng-if="['blog', 'comments', 'replies', 'feed'].includes(section) && !loadingContents && dataList.length === 0">
+              {{ 'EMPTY_LIST' | __ }}
+            </div>
             <div class="author-wallet" ng-if="section==='wallet'">
               <div class="row alternate" ng-if="hasUnclaimedRewards">
                 <div class="col-sm-12">
@@ -253,11 +262,6 @@
                 </tbody>
               </table>
             </div>
-            <ul class="feed" ng-if="section==='feed'">
-              <li ng-repeat="row in dataList">
-                <post-list-item post="row"></post-list-item>
-              </li>
-            </ul>
             <div class="activities" ng-if="section==='activities'">
               <div class="activities-type-select">
                 <select ng-model="selectedActivity.id" class="form-control" ng-change="reload()">
