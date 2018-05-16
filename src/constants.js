@@ -147,5 +147,6 @@ export default {
     {id: 'vnd', name: 'VND'},
     {id: 'ngn', name: 'NGN'}
   ],
-  defaultCurrency: 'usd'
+  defaultCurrency: 'usd',
+  versionCheckUrl: 'https://api.github.com/repos/eSteemApp/esteem-surfer/releases/latest'
 }

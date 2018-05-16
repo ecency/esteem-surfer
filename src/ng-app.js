@@ -477,7 +477,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
       return ''
     }
   })
-  .filter('__', () => {
+  .filter('__', ($sce) => {
     // Temporary filter to figure out different language entries from eSteem mobile app's locale files
     return (s) => {
       switch (s) {
@@ -693,13 +693,17 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'Remove from favorites';
         case 'SEARCH_FAVORITES':
           return 'Search in favorites';
+        case 'NEW_VERSION_ALERT_HEADER':
+          return 'Warning';
+        case 'NEW_VERSION_ALERT_TEXT':
+          return $sce.trustAsHtml('There is a new version of eSteem Surfer. Please download the latest version from <a href="https://github.com/eSteemApp/esteem-surfer/releases" target="_external">https://github.com/eSteemApp/esteem-surfer/releases</a>');
         default:
           return s;
       }
     }
   })
 
-  .run(function ($rootScope, $uibModal, $routeParams, $translate, $timeout, $interval, $location, $window, $q, eSteemService, steemService, settingsService, userService, activeUsername, activePostFilter, steemApi, pinService, constants) {
+  .run(function ($rootScope, $uibModal, $routeParams, $translate, $timeout, $interval, $location, $window, $q, $http, eSteemService, steemService, settingsService, userService, activeUsername, activePostFilter, steemApi, pinService, constants, appVersion) {
 
 
     // SETTINGS
@@ -1153,6 +1157,20 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
         });
       }
     }, 2000);
+
+
+    // New version checker
+    $rootScope.newVersion = null;
+    $http.get(constants.versionCheckUrl).then((resp)=>{
+      const newVer = resp.data.tag_name;
+      if(newVer !== appVersion){
+        $rootScope.newVersion = newVer;
+      }
+    });
+
+    $rootScope.dismissNewVersion = () => {
+      $rootScope.newVersion = null;
+    };
 
 
     // Error messages to show user when remote server errors occurred

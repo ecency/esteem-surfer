@@ -43,6 +43,11 @@
 <div class="success-messages" ng-if="$root.successMessages.length > 0">
   <div class="message" ng-repeat="m in $root.successMessages"><i class="fa fa-check"></i> {{ m.text }}</div>
 </div>
+<div class="new-version-alert" ng-if="$root.newVersion">
+  <div class="header-text">{{ 'NEW_VERSION_ALERT_HEADER' | __ }}</div>
+  <p ng-bind-html="'NEW_VERSION_ALERT_TEXT' | __"></p>
+  <button class="btn btn-xs btn-warning btn-dismiss" ng-click="$root.dismissNewVersion()"><i class="fa fa-times"></i></button>
+</div>
 <script>if (typeof module === 'object') {
   window.module = module;
   module = undefined;
