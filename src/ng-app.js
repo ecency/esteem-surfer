@@ -515,6 +515,8 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'Post Count';
         case 'RESTEEMED':
           return 'resteemed';
+        case 'RESTEEMED_BY':
+          return 'resteemed by';
         case 'GO_BACK':
           return 'Back';
         case 'PLATFORM_NAME':
