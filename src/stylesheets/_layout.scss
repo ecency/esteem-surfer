@@ -9,7 +9,7 @@
   position: fixed;
   right: 60px;
   width: 360px;
-  z-index: 999999;
+  z-index: 999998;
 
   .message {
     padding: 7px;
@@ -17,6 +17,36 @@
     &:not(:last-child) {
       margin-bottom: 7px;
     }
+  }
+}
+
+.new-version-alert {
+  background: #F9F6F1;
+  border-top: 3px solid #E1AE4C;
+  bottom: 30px;
+  height: 90px;
+  left: 0;
+  margin: 0 auto;
+  padding: 10px;
+  position: fixed;
+  right: 0;
+  width: 500px;
+
+  .header-text {
+    color: #E1AE4C;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .btn-dismiss {
+    position: absolute;
+    right: 8px;
+    top: 8px;
   }
 }
 
@@ -316,9 +346,9 @@
       }
 
       .control-box2 {
+        bottom: 64px;
         position: absolute;
         right: 20px;
-        bottom: 64px;
 
         .btn-fav {
           .fa {
@@ -349,12 +379,12 @@
           border-radius: 50%;
           bottom: -40px;
 
+          cursor: pointer;
           height: 140px;
           left: 50px;
           position: absolute;
           width: 140px;
           z-index: 10;
-          cursor: pointer;
 
           .author-reputation {
             background-color: lighten($themePrimaryTone, 20);
