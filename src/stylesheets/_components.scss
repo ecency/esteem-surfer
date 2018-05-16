@@ -2330,6 +2330,7 @@ STRUCTURE:
 
         img {
           border: 5px solid lighten($seperatorColor, 50);
+          background: $profilePicBg;
           max-width: 400px;
         }
       }

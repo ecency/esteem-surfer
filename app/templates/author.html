@@ -29,11 +29,11 @@
           <div class="container-fluid">
             <div class="collapse navbar-collapse">
               <ul class="nav navbar-nav">
-                <li ng-class="{'active': section==='feed'}" data-key="FEED">
-                  <a ng-click="changeSection('feed')">{{ 'FEED' | translate }}</a>
-                </li>
                 <li ng-class="{'active': section==='blog'}" data-key="BLOG">
                   <a ng-click="changeSection('blog')">{{ 'BLOG' | translate }}</a>
+                </li>
+                <li ng-class="{'active': section==='feed'}" data-key="FEED">
+                  <a ng-click="changeSection('feed')">{{ 'FEED' | translate }}</a>
                 </li>
                 <li ng-class="{'active': section==='comments'}" data-key="COMMENTS">
                   <a ng-click="changeSection('comments')">{{ 'COMMENTS' | translate }}</a>
