@@ -4,7 +4,7 @@ require('moment-timezone');
 
 export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $window, $uibModal, $filter, steemService, eSteemService, steemAuthenticatedService, activeUsername, constants) => {
   let username = $routeParams.username;
-  let section = $routeParams.section || 'feed';
+  let section = $routeParams.section || 'blog';
 
   $scope.authorData = null;
   $scope.loadingAuthor = false;
