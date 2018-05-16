@@ -236,7 +236,9 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
 
     $scope.loadingPost = false;
 
-    $scope.canEdit = content.author === activeUsername();
+    const archived = content.cashout_time === '1969-12-31T23:59:59';
+
+    $scope.canEdit = content.author === activeUsername() && !archived;
 
     loadState().catch((e) => {
       // TODO: Handle catch
