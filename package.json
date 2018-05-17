@@ -53,7 +53,9 @@
     "test": "npm run unit && npm run e2e",
     "start": "node build/start.js",
     "release": "bower install && webpack --config=build/webpack.app.config.js --env=production && electron-builder -mwl",
-    "package": "build -mwl"
+    "package": "build -mwl",
+    "package-travis": "build -ml",
+    "package-appveyor": "build -w"
   },
   "dependencies": {
     "angular": "^1.6.8",
