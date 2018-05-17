@@ -654,7 +654,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
         case 'PIN_CREATE':
           return 'Create pin code';
         case 'PIN_CREATE_TEXT':
-          return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+          return $sce.trustAsHtml('Set pin code to encrypt your data and enable extra layer of security!<br>You will be promoted to enter pin code for crucial transactions as well as on every launch.');
         case 'PIN_CREATE_DESC':
           return '4 character pin code';
         case 'PIN_ENTER':
