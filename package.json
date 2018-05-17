@@ -10,10 +10,27 @@
   "main": "app/background.js",
   "build": {
     "appId": "app.esteem.surfer",
-    "forceCodeSigning": true,
+    
     "mac": {
-      "category": "public.app-category.social",
+      "category": "public.app-category.finance",
       "type": "distribution"
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "rpm"
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
     },
     "files": [
       "app/**/*",
@@ -36,7 +53,7 @@
     "test": "npm run unit && npm run e2e",
     "start": "node build/start.js",
     "release": "bower install && webpack --config=build/webpack.app.config.js --env=production && electron-builder -mwl",
-    "package": "build" 
+    "package": "build -mwl"
   },
   "dependencies": {
     "angular": "^1.6.8",
