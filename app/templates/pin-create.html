@@ -2,7 +2,7 @@
   <div class="pin-form-container">
     <h1 class="text-center">{{ 'PIN_CREATE' | __ }}</h1>
     <hr>
-    <p class="help-block text-center">{{ 'PIN_CREATE_TEXT' | __ }}</p>
+    <p class="help-block text-center" ng-bind-html="'PIN_CREATE_TEXT' | __"></p>
     <div class="input-group input-group-lg">
       <input type="password" class="form-control" ng-model="pin" placeholder="{{ 'PIN_CREATE_DESC' | __ }}" maxlength="4" auto-focus>
       <span class="input-group-btn">
