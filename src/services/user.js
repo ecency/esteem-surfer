@@ -35,7 +35,9 @@ export default (storageService, cryptoService) => {
     },
     add: (username, keys) => {
       for (let k in keys) {
-        keys[k] = cryptoService.encryptKey(keys[k]);
+        if(keys[k]){
+          keys[k] = cryptoService.encryptKey(keys[k]);
+        }
       }
 
       let val = {

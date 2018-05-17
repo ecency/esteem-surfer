@@ -1239,6 +1239,11 @@ STRUCTURE:
 
     .author-name, .author-username {
       margin-bottom: 6px;
+
+      a {
+        color: $textColor;
+        outline: 0;
+      }
     }
 
     .author-name {
@@ -2227,7 +2232,7 @@ STRUCTURE:
   position: relative;
   text-align: center;
 
-  .author-pic {
+  > .author-pic {
     background-color: $profilePicBg;
     background-position: 50% 50%;
     background-repeat: no-repeat;
@@ -2240,16 +2245,35 @@ STRUCTURE:
     width: 120px;
   }
 
-  .author-name {
+  > .author-name, .author-name-popover {
     color: $textColor;
+    display: block;
     font-size: 16px;
     font-weight: bold;
+    margin-bottom: 4px;
+    outline: 0;
+    text-align: center;
+    text-decoration: underline;
+
     &:before {
       content: '@';
-
     }
   }
 
+  > .author-full-name {
+    color: $textColorLight;
+    font-size: 14px;
+  }
+
+  &.mini-card{
+    margin-top: 40px;
+
+    > .author-pic {
+      height: 70px;
+      margin: -40px auto 10px auto;
+      width: 70px;
+    }
+  }
 }
 
 @keyframes loading-fadein {
@@ -2329,9 +2353,46 @@ STRUCTURE:
       .profile-image {
 
         img {
-          border: 5px solid lighten($seperatorColor, 50);
           background: $profilePicBg;
+          border: 5px solid lighten($seperatorColor, 50);
           max-width: 400px;
+        }
+      }
+    }
+  }
+}
+
+.followers-modal {
+  .modal-body {
+    .account-list {
+      @include clearfix();
+      height: 480px;
+      overflow-y: auto;
+      padding: 0 50px;
+
+      .indicator {
+        text-align: center;
+        margin-bottom: 20px;
+
+        .fa {
+          color: $loadingColor;
+          font-size: 30px;
+        }
+      }
+
+      ul {
+        margin: 0 0 10px 0;
+        padding: 0;
+
+        li {
+          display: inline-block;
+          list-style: none;
+          margin-bottom: 4px;
+          width: 200px;
+
+          &:nth-of-type(2n) {
+            margin-left: 60px;
+          }
         }
       }
     }
