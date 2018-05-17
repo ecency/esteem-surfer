@@ -2,7 +2,7 @@
   "name": "esteem-surfer",
   "productName": "eSteem Surfer",
   "description": "eSteem desktop application reimagined for Windows, Mac, Linux users, start earning cryptocurrency!",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "author": "eSteem <info@esteem.app>",
   "copyright": "© 2018, eSteem",
@@ -10,11 +10,17 @@
   "main": "app/background.js",
   "build": {
     "appId": "app.esteem.surfer",
+    "forceCodeSigning": true,
+    "mac": {
+      "category": "public.app-category.social",
+      "type": "distribution"
+    },
     "files": [
       "app/**/*",
       "node_modules/**/*",
       "package.json",
-      "bower_components/**/*"
+      "bower_components/**/*",
+      "!build_assets${/*}"
     ],
     "directories": {
       "buildResources": "resources"
@@ -29,7 +35,8 @@
     "e2e": "mocha temp/e2e.js --bail --require source-map-support/register",
     "test": "npm run unit && npm run e2e",
     "start": "node build/start.js",
-    "release": "bower install && webpack --config=build/webpack.app.config.js --env=production && electron-builder -mwl"
+    "release": "bower install && webpack --config=build/webpack.app.config.js --env=production && electron-builder -mwl",
+    "package": "build" 
   },
   "dependencies": {
     "angular": "^1.6.8",
