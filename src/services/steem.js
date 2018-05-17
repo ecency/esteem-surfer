@@ -156,6 +156,17 @@ export default (steemApi, $q) => {
       });
       return defer.promise;
     },
+    getFollowers: (following, startFollower, followType = 'blog', limit = 100) => {
+      let defer = $q.defer();
+      steemApi.getApi().getFollowers(following, startFollower, followType, limit, (err, response) => {
+        if (err) {
+          defer.reject(err);
+        } else {
+          defer.resolve(response);
+        }
+      });
+      return defer.promise;
+    },
     getRewardFund: (name = 'post') => {
       let defer = $q.defer();
       steemApi.getApi().getRewardFund(name, (err, response) => {

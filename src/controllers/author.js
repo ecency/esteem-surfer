@@ -632,5 +632,22 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     }).catch((e) => {
       $rootScope.showError(e);
     });
+  };
+
+  $scope.followersClicked = () => {
+    $uibModal.open({
+      templateUrl: `templates/followers.html`,
+      controller: 'followersCtrl',
+      windowClass: 'followers-modal',
+      resolve: {
+        accountData: () => {
+          return $scope.authorData;
+        }
+      }
+    }).result.then((data) => {
+      // Success
+    }, () => {
+      // Cancel
+    });
   }
 };

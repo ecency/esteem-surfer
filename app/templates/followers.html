@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'CANCEL' | translate }}" ng-click="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h4 class="modal-title">{{ 'FOLLOWERS' | translate }} ({{ followerCount | number }})</h4>
+</div>
+<div class="modal-body">
+  <div class="account-list" ng-class="{'fetching': fetching}">
+    <div class="indicator">
+      <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="fetching && followerList.length === 0"></i>
+    </div>
+    <ul>
+      <li ng-repeat="item in followerList">
+        <div class="author-card mini-card">
+          <div ng-click="clicked(item)" class="author-pic" author-bg-img-style author="{{ item.name }}"></div>
+          <author-name author-data="item"></author-name>
+          <span class="author-full-name">&nbsp;{{ item.full_name }}&nbsp;</span>
+        </div>
+      </li>
+    </ul>
+    <button class="btn btn-primary btn-block" ng-disabled="fetching" ng-if="hasMore" ng-click="loadMore()">{{ 'LOAD_MORE' | __ }}</button>
+  </div>
+</div>

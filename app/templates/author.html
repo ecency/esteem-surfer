@@ -80,7 +80,7 @@
           <div class="author-prop author-prop-follower-count" tooltip-placement="top-left"
                uib-tooltip="{{ 'FOLLOWERS' | translate }}">
             <span class="prop-key"><i class="fa fa-users"></i></span>
-            <span class="prop-value">{{ authorData.follower_count  || '...' }}</span>
+            <a ng-click="followersClicked()" class="prop-value">{{ authorData.follower_count  || '...' }}</a>
           </div>
           <div class="author-prop author-prop-following-count" tooltip-placement="top-left"
                uib-tooltip="{{ 'FOLLOWING' | translate }}">

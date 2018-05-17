@@ -58,6 +58,7 @@ import welcomeCtrl from './controllers/welcome';
 import pinCreateCtrl from './controllers/pin-create';
 import pinDialogCtrl from './controllers/pin-dialog';
 import favoritesCtrl from './controllers/favorites';
+import followersCtrl from './controllers/followers';
 
 
 import tokenExchangeCtrl from './controllers/token-exchange';
@@ -454,6 +455,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
   .controller('pinCreateCtrl', pinCreateCtrl)
   .controller('pinDialogCtrl', pinDialogCtrl)
   .controller('favoritesCtrl', favoritesCtrl)
+  .controller('followersCtrl', followersCtrl)
 
 
   .filter('catchPostImage', catchPostImageFilter)
@@ -697,6 +699,8 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'Warning';
         case 'NEW_VERSION_ALERT_TEXT':
           return $sce.trustAsHtml('There is a new version of eSteem Surfer. Please download the latest version from <a href="https://github.com/eSteemApp/esteem-surfer/releases" target="_external">https://github.com/eSteemApp/esteem-surfer/releases</a>');
+        case 'LOAD_MORE':
+          return 'Load more';
         default:
           return s;
       }
