@@ -2362,7 +2362,7 @@ STRUCTURE:
   }
 }
 
-.followers-modal {
+.followers-modal, .following-modal {
   .modal-body {
     .account-list {
       @include clearfix();
