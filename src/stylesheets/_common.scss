@@ -3,7 +3,16 @@ a[ng-click] {
 }
 
 a.disabled-link {
-  pointer-events: none;
-  cursor: default;
   color: $textColorLighter;
+  cursor: default;
+  pointer-events: none;
+}
+
+a[target="_external"]:after, .markdown-external-link:after {
+  content: "\f08e";
+  font-family: FontAwesome;
+  font-size: 11px !important;
+  font-style: normal !important;
+  padding-left: 4px;
+  padding-right: 4px;
 }
