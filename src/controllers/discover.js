@@ -1,28 +1,39 @@
+const prepareAccountData = (data) => {
+  let name = '';
+
+  if (data.json_metadata !== undefined && data.json_metadata !== '') {
+    try {
+      let profile = JSON.parse(data.json_metadata).profile;
+      name = profile.name;
+    } catch (e) {
+    }
+  }
+
+  return Object.assign({}, data, {full_name: name})
+};
+
+
 export default ($scope, $rootScope, $location, steemService) => {
 
-  $scope.authors = $rootScope.Data['discoverAuthors'] || [];
+  $scope.accountList = $rootScope.Data['discoverAccountList'] || [];
 
-
-  $scope.$watchCollection('authors', (n, o) => {
+  $scope.$watchCollection('accountList', (n, o) => {
     if (n === o) {
       return;
     }
 
-    $rootScope.setNavVar('discoverAuthors', n);
+    $rootScope.setNavVar('discoverAccountList', n);
   });
 
-
-  const loadAuthors = () => {
+  const loadAccounts = () => {
 
     const methods = ['Trending', 'Hot', 'Active', 'Votes', 'Children'];
     const method = methods[Math.floor(Math.random() * methods.length)];
 
-    $scope.loadingAuthors = true;
-    steemService.getDiscussionsBy(method, null, null, null, 100).then((resp) => {
-      return resp;
-    }).catch((e) => {
-      $rootScope.showError(e);
-    }).then((contents) => {
+    $scope.loadingAccounts = true;
+    $scope.accountList = [];
+
+    steemService.getDiscussionsBy(method, null, null, null, 100).then((contents) => {
 
       contents.sort(function (a, b) {
         let keyA = parseInt(a.author_reputation),
@@ -33,31 +44,30 @@ export default ($scope, $rootScope, $location, steemService) => {
         return 0;
       });
 
-      const authors = [];
-
+      const accounts = [];
       for (let content of contents) {
-        if (authors.indexOf(content.author) === -1) {
-          authors.push(content.author);
+        if (accounts.indexOf(content.author) === -1) {
+          accounts.push(content.author);
         }
       }
 
-      $scope.authors = authors;
+      return steemService.getAccounts(accounts).then((resp) => resp);
+    }).catch((e) => {
+      $rootScope.showError(e);
+    }).then((accounts) => {
+      if (accounts) {
+        accounts.forEach(e => $scope.accountList.push(prepareAccountData(e)));
+      }
 
-      $scope.loadingAuthors = false;
+      $scope.loadingAccounts = false;
     });
   };
 
-  if ($scope.authors.length === 0) {
-    loadAuthors();
+  if ($scope.accountList.length === 0) {
+    loadAccounts();
   }
 
   $scope.refresh = () => {
-    $scope.authors = null;
-    loadAuthors();
+    loadAccounts();
   };
-
-  $scope.clicked = (author) => {
-    let u = `/account/${author}`;
-    $location.path(u);
-  }
 };
