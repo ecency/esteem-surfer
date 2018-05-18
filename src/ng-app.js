@@ -1202,6 +1202,11 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
       }, 5000)
     };
 
+    $rootScope.curCtrl = null;
+    $rootScope.$on('$routeChangeSuccess', function (e, cur, prev) {
+      $rootScope.curCtrl = cur.$$route.controller;
+    });
+
     // An helper to collect post body samples
     $rootScope.showMarkdownResultHelper = (env.name === 'development');
     $rootScope.saveMarkdownResult = (id, markdown) => {
