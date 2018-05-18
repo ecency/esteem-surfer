@@ -649,5 +649,22 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     }, () => {
       // Cancel
     });
+  };
+
+  $scope.followingClicked = () => {
+    $uibModal.open({
+      templateUrl: `templates/following.html`,
+      controller: 'followingCtrl',
+      windowClass: 'following-modal',
+      resolve: {
+        accountData: () => {
+          return $scope.authorData;
+        }
+      }
+    }).result.then((data) => {
+      // Success
+    }, () => {
+      // Cancel
+    });
   }
 };
