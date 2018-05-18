@@ -28,9 +28,6 @@ export default ($scope, $rootScope, $uibModalInstance, accountData, steemService
 
   $scope.fetching = true;
   steemService.getFollowers(username, null, 'blog', fetchSize).then((resp) => {
-    if (resp.length >= fetchSize) {
-      $scope.hasMore = true;
-    }
 
     const accountNames = resp.map(e => e.follower);
     return steemService.getAccounts(accountNames).then((resp) => resp);
@@ -38,6 +35,10 @@ export default ($scope, $rootScope, $uibModalInstance, accountData, steemService
     $rootScope.showError(e);
   }).then((accounts) => {
     if(accounts){
+      if (accounts.length >= fetchSize) {
+        $scope.hasMore = true;
+      }
+
       accounts.forEach(e => $scope.followerList.push(prepareFollowerData(e)));
     }
     $scope.fetching = false;
@@ -47,9 +48,6 @@ export default ($scope, $rootScope, $uibModalInstance, accountData, steemService
     $scope.fetching = true;
     let lastItem = [...$scope.followerList].pop();
     steemService.getFollowers(username, lastItem.name, 'blog', fetchSize).then((resp) => {
-      if (resp.length < fetchSize) {
-        $scope.hasMore = false;
-      }
 
       const accountNames = resp.map(e => e.follower);
       return steemService.getAccounts(accountNames).then((resp) => resp);
@@ -57,6 +55,10 @@ export default ($scope, $rootScope, $uibModalInstance, accountData, steemService
       $rootScope.showError(e);
     }).then((accounts) => {
       if(accounts){
+        if (accounts.length < fetchSize) {
+          $scope.hasMore = false;
+        }
+
         accounts.forEach(e => $scope.followerList.push(prepareFollowerData(e)));
       }
       $scope.fetching = false;
