@@ -10,12 +10,13 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
       searchStr: '=?'
     },
     templateUrl: 'templates/directives/navbar.html',
-    controller: ($scope, $rootScope, $location, $filter, constants, steemService, activeUsername) => {
+    controller: ($scope, $rootScope, $routeParams, $location, $filter, constants, steemService, activeUsername) => {
 
-      // Hide FEED filter if not user logged in
-      if (activeUsername()) {
+      // Show FEED filter if user logged in or if current route is /feed/...
+      if (activeUsername() || ($rootScope.curCtrl === 'feedCtrl' && $routeParams.username)) {
         $scope.filters = constants.filters;
       } else {
+        // Hide FEED filter if not user logged in
         $scope.filters = constants.filters.filter(x => x.name !== 'feed');
       }
 
@@ -24,8 +25,18 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
 
       $scope.filterClicked = (c) => {
         if (c === 'feed') {
-          $location.path(`/feed/${activeUsername()}`);
-          return;
+          // Redirect current user's feed
+          const a = activeUsername();
+          if (a) {
+            $location.path(`/feed/${activeUsername()}`);
+            return;
+          }
+
+          // If user logged out when /feed/... page opened, redirect same user's feed.
+          if ($rootScope.curCtrl === 'feedCtrl' && $routeParams.username){
+            $location.path(`/feed/${$routeParams.username}`);
+            return;
+          }
         }
 
         let u = `/posts/${c}`;
