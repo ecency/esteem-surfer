@@ -55,7 +55,7 @@
     "package": "build -mwl",
     "sign-mac": "bower install && webpack --config=build/webpack.app.config.js --env=production && electron-builder -m",
     "sign-win": "bower install && webpack --config=build/webpack.app.config.js --env=production && electron-builder -w",
-    "sign-lin": "bower install && webpack --config=build/webpack.app.config.js --env=production && electron-builder -l"
+    "sign-linux": "bower install && webpack --config=build/webpack.app.config.js --env=production && electron-builder -l"
   },
   "dependencies": {
     "angular": "^1.6.8",
