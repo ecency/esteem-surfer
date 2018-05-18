@@ -18,6 +18,8 @@
         </div>
       </li>
     </ul>
-    <button class="btn btn-primary btn-block" ng-disabled="fetching" ng-if="hasMore" ng-click="loadMore()">{{ 'LOAD_MORE' | __ }}</button>
+    <button class="btn btn-primary btn-block" ng-disabled="fetching" ng-if="hasMore" ng-click="loadMore()">
+      <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="fetching"></i> {{ 'LOAD_MORE' | __ }}
+    </button>
   </div>
 </div>
