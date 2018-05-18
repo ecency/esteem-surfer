@@ -13,8 +13,8 @@
           <button class="btn btn-default btn-unmute" ng-if="visitorData.canUnmute" ng-disabled="loadingVisitor || vBlockControl" ng-click="unMute()"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="vUnmuting"></i> {{ 'UNMUTE' | translate }}</button>
        </div>
         <div class="control-box2" ng-class="{'fetching': loadingVisitor}" ng-show="!isMyPage">
-          <button class="btn btn-default btn-fav" ng-if="!visitorData.favorited" ng-disabled="loadingVisitor || vFavoriting" login-required ng-click="fav()" title="{{ 'FAVORITES_ADD' | __ }}"><i class="fa fa-heart-o"></i></button>
-          <button class="btn btn-default btn-fav" ng-if="visitorData.favorited" ng-disabled="loadingVisitor || vFavoriting" login-required ng-click="unFav()" title="{{ 'FAVORITES_REMOVE' | __ }}"><i class="fa fa-heart"></i></button>
+          <button class="btn btn-default btn-fav" ng-if="!visitorData.favorited" ng-disabled="loadingVisitor || vFavoriting" login-required on-login-success="fav()" title="{{ 'FAVORITES_ADD' | __ }}"><i class="fa fa-heart-o"></i></button>
+          <button class="btn btn-default btn-fav" ng-if="visitorData.favorited" ng-disabled="loadingVisitor || vFavoriting" login-required on-login-success="unFav()" title="{{ 'FAVORITES_REMOVE' | __ }}"><i class="fa fa-heart"></i></button>
         </div>
         <div class="control-box" ng-show="isMyPage">
           <button class="btn btn-default btn-sm btn-profile-edit" ng-click="" login-required required-keys="'active'" on-login-success="profileEditClicked()"><i class="fa fa-edit"></i></button>
