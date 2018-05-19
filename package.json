@@ -10,7 +10,6 @@
   "main": "app/background.js",
   "build": {
     "appId": "app.esteem.surfer",
-    
     "mac": {
       "category": "public.app-category.finance",
       "type": "distribution"
@@ -54,8 +53,9 @@
     "start": "node build/start.js",
     "release": "bower install && webpack --config=build/webpack.app.config.js --env=production && electron-builder -mwl",
     "package": "build -mwl",
-    "package-travis": "build -ml",
-    "package-appveyor": "build -w"
+    "sign-mac": "bower install && webpack --config=build/webpack.app.config.js --env=production && electron-builder -m",
+    "sign-win": "bower install && webpack --config=build/webpack.app.config.js --env=production && electron-builder -w",
+    "sign-linux": "bower install && webpack --config=build/webpack.app.config.js --env=production && electron-builder -l"
   },
   "dependencies": {
     "angular": "^1.6.8",
