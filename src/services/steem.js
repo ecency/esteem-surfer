@@ -210,6 +210,17 @@ export default (steemApi, $q) => {
         }
       });
       return defer.promise;
+    },
+    getWitnessesByVote: (from = null, limit = 100) => {
+      let defer = $q.defer();
+      steemApi.getApi().getWitnessesByVote(from, limit, (err, response) => {
+        if (err) {
+          defer.reject(err);
+        } else {
+          defer.resolve(response);
+        }
+      });
+      return defer.promise;
     }
   }
 };

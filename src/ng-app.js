@@ -60,6 +60,8 @@ import pinDialogCtrl from './controllers/pin-dialog';
 import favoritesCtrl from './controllers/favorites';
 import followersCtrl from './controllers/followers';
 import followingCtrl from './controllers/following';
+import witnessesCtrl from './controllers/witnesses';
+
 
 import tokenExchangeCtrl from './controllers/token-exchange';
 import marketPlaceCtrl from './controllers/market-place';
@@ -327,6 +329,10 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
       templateUrl: 'templates/pin-create.html',
       controller: 'pinCreateCtrl'
     })
+    .when('/witnesses', {
+      templateUrl: 'templates/witnesses.html',
+      controller: 'witnessesCtrl'
+    })
     .otherwise({redirectTo: '/'});
 
   // $http
@@ -457,6 +463,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
   .controller('favoritesCtrl', favoritesCtrl)
   .controller('followersCtrl', followersCtrl)
   .controller('followingCtrl', followingCtrl)
+  .controller('witnessesCtrl', witnessesCtrl)
 
 
   .filter('catchPostImage', catchPostImageFilter)
