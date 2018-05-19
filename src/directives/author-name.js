@@ -118,9 +118,17 @@ export default () => {
         $scope.$applyAsync();
 
         let visitorName = activeUsername();
-        if (visitorName) {
-          let visitorName = activeUsername();
 
+        // Do not show if active user opened self popover
+        if (visitorName === $scope.authorData.name) {
+          $scope.visitorData.canFollow = false;
+          $scope.visitorData.canMute = false;
+          $scope.loadingVisitor = false;
+          $scope.$applyAsync();
+          return;
+        }
+
+        if (visitorName) {
           let following = await isFollowing(visitorName, $scope.username);
           let muted = await isMuted(visitorName, $scope.username);
 
