@@ -1126,6 +1126,16 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
       }
     });
 
+    // Delete post from local cache when updated to show latest version
+    $rootScope.$on('CONTENT_UPDATED', (r, d) => {
+      for (let navKey in cacheData) {
+        if (cacheData[navKey]['post'] && cacheData[navKey]['post'].id === d.contentId) {
+          cacheData[navKey] = null;
+          break;
+        }
+      }
+    });
+
     // PIN CODE
     $rootScope.pinCode = null;
 

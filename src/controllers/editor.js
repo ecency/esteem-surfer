@@ -426,6 +426,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
 
     steemAuthenticatedService.comment('', parentPermlink, author, permlink, title, body, jsonMetadata, options, null).then((resp) => {
       $rootScope.showSuccess($filter('__')('POST_UPDATED'));
+      $rootScope.$broadcast('CONTENT_UPDATED', {contentId: editingContent.id});
       $rootScope.selectedPost = null;
       $location.path(`/post/${parentPermlink}/${author}/${permlink}`);
     }).catch((e) => {
