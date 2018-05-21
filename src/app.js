@@ -8,10 +8,6 @@ import "./helpers/external_links.js";
 
 import electron from "electron";
 
-// Disable zooming
-electron.webFrame.setZoomLevelLimits(1, 1);
-
-
 // Prevent dropped file from opening in window
 document.addEventListener('dragover', function (event) {
   event.preventDefault();
