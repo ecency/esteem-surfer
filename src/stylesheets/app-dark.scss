@@ -1,0 +1,57 @@
+@import "~angularjs-slider/dist/rzslider.scss";
+
+body.dark-theme {
+
+  $themePrimaryTone: #2c5393;
+
+  $navbarBgColorDefault: #273445;
+  $navbarBgColorHighlight: #526d91;
+  $navbarColorDefault: #eeeeee;
+  $navbarColorHighlight: #ffffff;
+  $navbarColorizeDropDown: true;
+
+  $footerBgColor: #273445;
+  $footerColor: #ececec;
+  $footerHeight: 30px;
+
+  $appBg: #161D26;
+  $boxBg: #1E2835;
+
+  $profilePicBg: #eeeeee;
+
+  $listBgColor: #1E2835;
+  $listBorderColor: #000;
+
+  $textColor: #cecece;
+  $textColorLight: #788187;
+  $textColorLighter: #8c979e;
+  $textColorLightest: #fff;
+
+  $linkHoverColor: #4879c9;
+
+  $hoverColor: #d2e2ee;
+
+  $seperatorColor: #333;
+
+  $loadingColor: #5892f4;
+  $loadingSuccessColor: #009c00;
+
+  $altRowColor: #fbfbfb;
+
+  $highlightColor: #FFFBCC;
+
+  $contentEditorControlsBg: #1c2430;
+
+  $editorTagErrBg: #344459;
+
+  $loadingItemColor: #000;
+
+  @import "bootstrap-dark";
+
+  @import "overwrites";
+  @import "navbar";
+  @import "footer";
+  @import "common";
+  @import "layout";
+  @import "components";
+}

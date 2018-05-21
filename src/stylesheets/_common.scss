@@ -16,3 +16,7 @@ a[target="_external"]:after, .markdown-external-link:after {
   padding-left: 4px;
   padding-right: 4px;
 }
+
+h1, h2, h3, h4, h5, h6{
+  color: $textColor;
+}

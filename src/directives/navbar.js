@@ -10,7 +10,7 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
       searchStr: '=?'
     },
     templateUrl: 'templates/directives/navbar.html',
-    controller: ($scope, $rootScope, $routeParams, $location, $filter, constants, steemService, activeUsername) => {
+    controller: ($scope, $rootScope, $routeParams, $location, $filter, constants, steemService, activeUsername, settingsService) => {
 
       // Show FEED filter if user logged in or if current route is /feed/...
       if (activeUsername() || ($rootScope.curCtrl === 'feedCtrl' && $routeParams.username)) {
@@ -33,7 +33,7 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
           }
 
           // If user logged out when /feed/... page opened, redirect same user's feed.
-          if ($rootScope.curCtrl === 'feedCtrl' && $routeParams.username){
+          if ($rootScope.curCtrl === 'feedCtrl' && $routeParams.username) {
             $location.path(`/feed/${$routeParams.username}`);
             return;
           }
@@ -226,6 +226,12 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
       $rootScope.$on('userLoggedOut', () => {
         $scope.username = null;
       });
+
+      $scope.toggleNightMode = () => {
+        const cur = settingsService.get('theme');
+        settingsService.set('theme', cur === 'light-theme' ? 'dark-theme' : 'light-theme');
+        $rootScope.readSettings();
+      };
     }
   };
 };
