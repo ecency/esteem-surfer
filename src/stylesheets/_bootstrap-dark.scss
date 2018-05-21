@@ -66,3 +66,13 @@ select.form-control {
 .modal-content {
   background-color: #2a384a;
 }
+
+
+// TABLE
+
+.table-striped {
+  > tbody > tr:nth-of-type(odd) {
+    background-color: $altRowColor;
+  }
+}
+
