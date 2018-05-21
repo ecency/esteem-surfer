@@ -1,0 +1,68 @@
+input[type="text"].form-control, input[type="password"].form-control {
+  background: #202a37;
+  color: #cecece;
+  border-color: #224B65;
+  &::placeholder {
+    color: #2b394a !important;
+  }
+}
+
+textarea.form-control {
+  background: #202a37;
+  color: #cecece;
+  &::placeholder {
+    color: #2b394a !important;
+  }
+}
+
+select.form-control {
+  background: #202a37;
+  color: #cecece;
+  border-color: #224B65;
+}
+
+// BUTTONS
+.btn-default {
+  background: #1E2835;
+  border-color: #224B65;
+  color: #fff;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
+  background: #1E3140;
+  border-color: #224B65;
+}
+
+.btn-default:active, .btn-default.active {
+  background: #007299;
+  box-shadow: none;
+}
+
+.btn-primary {
+  background: #3682B0;
+  border-color: #2a6588;
+  color: #fff;
+}
+
+// POPOVER
+.popover {
+  background-color: #2a384a;
+
+  &.bottom > .arrow {
+    &:after {
+      border-bottom-color: #2a384a;
+    }
+  }
+
+  &.right > .arrow {
+    &:after {
+      border-right-color: #2a384a;
+    }
+  }
+}
+
+// MODAL
+
+.modal-content {
+  background-color: #2a384a;
+}
