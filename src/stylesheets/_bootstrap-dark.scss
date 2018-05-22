@@ -1,7 +1,7 @@
-input[type="text"].form-control, input[type="password"].form-control {
+input[type="text"].form-control, input[type="password"].form-control, input[type="datetime-local"].form-control {
   background: #202a37;
-  color: #cecece;
   border-color: #224B65;
+  color: #cecece;
   &::placeholder {
     color: #2b394a !important;
   }
@@ -17,8 +17,8 @@ textarea.form-control {
 
 select.form-control {
   background: #202a37;
-  color: #cecece;
   border-color: #224B65;
+  color: #cecece;
 }
 
 // BUTTONS
@@ -62,9 +62,9 @@ select.form-control {
 }
 
 // MODAL
-
 .modal-content {
   background-color: #2a384a;
+  color: $textColor;
 }
 
 .modal-header {
@@ -75,12 +75,21 @@ select.form-control {
   color: $textColor;
 }
 
+.modal-footer {
+  border-top-color: $seperatorColor;
+}
 
 // TABLE
-
 .table-striped {
   > tbody > tr:nth-of-type(odd) {
     background-color: $altRowColor;
   }
 }
 
+// INPUT GROUP
+
+.input-group-addon{
+  background: #3d4f68;
+  border-color: #224B65;
+  color: $textColor;
+}
