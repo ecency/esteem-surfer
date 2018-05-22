@@ -11,16 +11,16 @@ export default () => {
 
     },
     template: `<div class="content-editor-controls">
-        <button class="btn btn-default" ng-click="insertBold()"><i class="fa fa-bold"></i></button>
-        <button class="btn btn-default" ng-click="insertItalic()"><i class="fa fa-italic"></i></button>
-        <button class="btn btn-default" ng-click="insertHeader()"><i class="fa fa-header"></i></button>
-        <button class="btn btn-default" ng-click="insertCode()"><i class="fa fa-code"></i></button>
-        <button class="btn btn-default" ng-click="insertQuote()"><i class="fa fa-quote-right"></i></button>
-        <button class="btn btn-default" ng-click="insertOlList()"><i class="fa fa-list-ol"></i></button>
-        <button class="btn btn-default" ng-click="insertUlList()"><i class="fa fa-list-ul"></i></button>
-        <button class="btn btn-default" ng-click="insertHr()"><i class="fa fa-minus"></i></button>
-        <button class="btn btn-default" ng-click="insertImage()"><i class="fa fa-image"></i></button>
-        <button class="btn btn-default" ng-click="insertLink()"><i class="fa fa-link"></i></button>
+        <button class="btn btn-default" ng-click="insertBold()" tooltip-popup-delay="1000" tooltip-placement="right" uib-tooltip="{{ 'EDITOR_CONTROL_BOLD' | __ }}"><i class="fa fa-bold"></i></button>
+        <button class="btn btn-default" ng-click="insertItalic()" tooltip-popup-delay="1000" tooltip-placement="right" uib-tooltip="{{ 'EDITOR_CONTROL_ITALIC' | __ }}"><i class="fa fa-italic"></i></button>
+        <button class="btn btn-default" tooltip-popup-delay="1000" tooltip-placement="top" uib-tooltip="{{ 'EDITOR_CONTROL_HEADER' | __ }}"><i class="fa fa-header"></i><span class="sub-menu"><a class="btn btn-sm btn-default" ng-click="insertHeader(1)">h1</a><a class="btn btn-sm btn-default" ng-click="insertHeader(2)">h2</a><a class="btn btn-sm btn-default" ng-click="insertHeader(3)">h3</a><a class="btn btn-sm btn-default" ng-click="insertHeader(4)">h4</a></span></button>
+        <button class="btn btn-default" ng-click="insertCode()" tooltip-popup-delay="1000" tooltip-placement="right" uib-tooltip="{{ 'EDITOR_CONTROL_CODE' | __ }}"><i class="fa fa-code"></i></button>
+        <button class="btn btn-default" ng-click="insertQuote()" tooltip-popup-delay="1000" tooltip-placement="right" uib-tooltip="{{ 'EDITOR_CONTROL_QUOTE' | __ }}"><i class="fa fa-quote-right"></i></button>
+        <button class="btn btn-default" ng-click="insertOlList()" tooltip-popup-delay="1000" tooltip-placement="right" uib-tooltip="{{ 'EDITOR_CONTROL_OL' | __ }}"><i class="fa fa-list-ol"></i></button>
+        <button class="btn btn-default" ng-click="insertUlList()" tooltip-popup-delay="1000" tooltip-placement="right" uib-tooltip="{{ 'EDITOR_CONTROL_UL' | __ }}"><i class="fa fa-list-ul"></i></button>
+        <button class="btn btn-default" ng-click="insertHr()" tooltip-popup-delay="1000" tooltip-placement="right" uib-tooltip="{{ 'EDITOR_CONTROL_HR' | __ }}"><i class="fa fa-minus"></i></button>
+        <button class="btn btn-default" tooltip-popup-delay="1000" tooltip-placement="top" uib-tooltip="{{ 'EDITOR_CONTROL_IMAGE' | __ }}"><i class="fa fa-image"></i><span class="sub-menu"><a class="btn btn-sm btn-default" ng-click="uploadImage()">{{ 'EDITOR_CONTROL_IMAGE_UPLOAD' | __ }}</a><a class="btn btn-sm btn-default">{{ 'EDITOR_CONTROL_IMAGE_GALLERY' | __ }}</a></span></button>
+        <button class="btn btn-default" ng-click="insertLink()" tooltip-popup-delay="1000" tooltip-placement="right" uib-tooltip="{{ 'EDITOR_CONTROL_LINK' | __ }}"><i class="fa fa-link"></i></button>
         </div>`,
     controller: ($scope, $rootScope, $timeout) => {
 
@@ -42,8 +42,8 @@ export default () => {
         insertText(txtEl, '*', '*');
       };
 
-      $scope.insertHeader = () => {
-        insertText(txtEl, '# ', '');
+      $scope.insertHeader = (n = 1) => {
+        insertText(txtEl, '#'.repeat(n) + ' ', '');
       };
 
       $scope.insertCode = () => {
@@ -73,6 +73,12 @@ export default () => {
       $scope.insertLink = () => {
         insertText(txtEl, '[', '](url)');
       };
+
+      $scope.uploadImage = () => {
+        document.querySelector('.content-editor .file-input').click()
+      };
+
+
     }
   };
 };

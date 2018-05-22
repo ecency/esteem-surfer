@@ -85,7 +85,7 @@
   }
 
   code {
-    background:   rgba(210, 226, 238, 0.3) ;
+    background: rgba(210, 226, 238, 0.3);
     color: $textColor;
   }
 
@@ -2008,6 +2008,26 @@ STRUCTURE:
     border: none;
     border-radius: 0;
     margin: 0;
+    position: relative;
+
+    .sub-menu {
+      display: none;
+      left: 0;
+      position: absolute;
+      top: 31px;
+      width: auto;
+      z-index: 10;
+
+      .btn {
+
+      }
+    }
+
+    &:hover {
+      .sub-menu {
+        display: block;
+      }
+    }
   }
 }
 
@@ -2019,6 +2039,17 @@ STRUCTURE:
 
     .content-editor-controls {
       background: $contentEditorControlsBg;
+      button {
+        .sub-menu {
+          .btn {
+            background: $contentEditorControlsBg;
+            border-radius: 0;
+            &:not(:first-child) {
+              border-left-color: transparent;
+            }
+          }
+        }
+      }
     }
 
     .content-editor {
@@ -2269,7 +2300,7 @@ STRUCTURE:
     font-size: 14px;
   }
 
-  &.mini-card{
+  &.mini-card {
     margin-top: 40px;
 
     > .author-pic {
