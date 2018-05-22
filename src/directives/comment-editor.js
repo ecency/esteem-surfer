@@ -103,13 +103,19 @@ export default () => {
 
         $scope.sending = true;
         steemAuthenticatedService.comment(parentAuthor, parentPermlink, author, permlink, '', body, jsonMetadata, options).then((resp) => {
-          steemService.getContent(author, permlink).then((resp) => {
-            $scope.afterSuccess()(resp, $scope.mode);
+          const routePath = `/${parentPermlink}/@${author}/${permlink}`;
+          const contentPath = `${author}/${permlink}`;
+
+          steemService.getState(routePath).then((resp) => {
+            const content = resp.content[contentPath];
+            content.author_data = resp.accounts[author];
+            $scope.afterSuccess()(content, $scope.mode);
           }).catch((e) => {
             $rootScope.showError(e);
           }).then(() => {
             $scope.removeDirective();
           });
+
         }).catch((e) => {
           $rootScope.showError(e);
         }).then(() => {
