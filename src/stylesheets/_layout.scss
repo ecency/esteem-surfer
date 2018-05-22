@@ -710,8 +710,18 @@
         width: 36px;
 
         .content-editor-controls {
-          .btn {
+          button {
             width: 100%;
+            .sub-menu {
+              left: 36px;
+              top: 2px;
+
+              .btn {
+                background: $contentEditorControlsBg;
+                border-left-color: transparent;
+                border-radius: 0;
+              }
+            }
           }
         }
       }

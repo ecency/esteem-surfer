@@ -599,6 +599,30 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'Post Content';
         case 'EDITOR_TITLE_PLACEHOLDER':
           return 'Title';
+        case 'EDITOR_CONTROL_BOLD':
+          return 'Bold';
+        case 'EDITOR_CONTROL_ITALIC':
+          return 'Italic';
+        case 'EDITOR_CONTROL_HEADER':
+          return 'Header';
+        case 'EDITOR_CONTROL_CODE':
+          return 'Code';
+        case 'EDITOR_CONTROL_QUOTE':
+          return 'Quote';
+        case 'EDITOR_CONTROL_OL':
+          return 'Ordered List';
+        case 'EDITOR_CONTROL_UL':
+          return 'Unordered List';
+        case 'EDITOR_CONTROL_HR':
+          return 'Horizontal Rule';
+        case 'EDITOR_CONTROL_IMAGE':
+          return 'Image';
+        case 'EDITOR_CONTROL_IMAGE_UPLOAD':
+          return 'Upload';
+        case 'EDITOR_CONTROL_IMAGE_GALLERY':
+          return 'Gallery';
+        case 'EDITOR_CONTROL_LINK':
+          return 'Link';
         case 'SAVE':
           return 'Save';
         case 'REFRESH':
