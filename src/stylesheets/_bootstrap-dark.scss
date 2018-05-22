@@ -87,9 +87,83 @@ select.form-control {
 }
 
 // INPUT GROUP
-
-.input-group-addon{
+.input-group-addon {
   background: #3d4f68;
   border-color: #224B65;
   color: $textColor;
+}
+
+// Navbar
+
+.author-navbar, .fn-navbar {
+
+  user-select: none;
+
+  background-color: $navbarBgColorDefault;
+
+  // Coloring created with https://work.smarchal.com/twbscolor/
+  border: 0;
+
+  border-radius: 0;
+  margin-bottom: 0;
+  .container-fluid {
+    padding-right: 2px;
+  }
+
+  .navbar-brand {
+    color: $navbarColorDefault;
+    &:hover, &:focus {
+      color: $navbarColorHighlight;
+    }
+  }
+  .navbar-text {
+    color: $navbarColorDefault;
+  }
+  .navbar-nav {
+    > li {
+      > a {
+        color: $navbarColorDefault;
+        &:hover, &:focus {
+          color: darken($textColor, 5) !important;
+        }
+      }
+
+      > .dropdown-menu {
+        background-color: $navbarBgColorDefault;
+        > li {
+          > a {
+            color: $navbarColorDefault;
+            &:hover, &:focus {
+              color: darken($textColor, 5) !important;
+              background-color: $navbarBgColorHighlight;
+            }
+          }
+          &.divider {
+            background-color: $navbarBgColorHighlight;
+          }
+        }
+      }
+
+    }
+
+    .open .dropdown-menu > .active {
+      > a, > a:hover, > a:focus {
+        color: $navbarColorHighlight;
+        background-color: $navbarBgColorHighlight;
+      }
+    }
+
+    > .active {
+      > a, > a:hover, > a:focus {
+        background-color: $navbarBgColorHighlight;
+        color: $navbarColorHighlight;
+      }
+    }
+    > .open {
+      > a, > a:hover, > a:focus {
+        background-color: $navbarBgColorHighlight;
+        color: $navbarColorHighlight;
+      }
+    }
+  }
 }
