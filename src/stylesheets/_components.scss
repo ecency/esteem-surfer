@@ -238,9 +238,9 @@
 }
 
 .empty-list {
+  color: $textColorLight;
   font-style: italic;
   margin: 10px 0;
-  color: $textColorLight;
 }
 
 .post-list-item {
@@ -1651,7 +1651,7 @@ STRUCTURE:
       width: 320px;
 
       .account-list-title {
-        color: $textColorLighter;
+        color: $textColorLight;
         font-size: 14px;
         text-align: center;
       }
@@ -1688,7 +1688,7 @@ STRUCTURE:
         }
 
         .username {
-          color: $textColorLight;
+          color: $textColor;
           font-size: 16px;
           line-height: 16px;
           margin-right: 4px;
@@ -1764,7 +1764,7 @@ STRUCTURE:
         width: 100%;
       }
       &:after {
-        background-color: #fcfcfa;
+        background-color: $loginWindowOrBg;
         color: black;
         color: $textColorLight;
         content: attr(data-content);
@@ -1787,7 +1787,10 @@ STRUCTURE:
       }
 
       .logo {
-        margin: auto;
+        background: #fcfcfc;
+        border-radius: 5px;
+        margin: 4px auto 0 auto;
+        padding: 3px;
         width: 200px;
       }
     }
@@ -2372,8 +2375,8 @@ STRUCTURE:
       padding: 0 50px;
 
       .indicator {
-        text-align: center;
         margin-bottom: 20px;
+        text-align: center;
 
         .fa {
           color: $loadingColor;
