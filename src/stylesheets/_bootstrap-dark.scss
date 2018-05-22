@@ -67,6 +67,14 @@ select.form-control {
   background-color: #2a384a;
 }
 
+.modal-header {
+  border-bottom-color: $seperatorColor;
+}
+
+.modal-header .close {
+  color: $textColor;
+}
+
 
 // TABLE
 
