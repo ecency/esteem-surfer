@@ -29,7 +29,7 @@ body.dark-theme {
 
   $linkHoverColor: #4879c9;
 
-  $hoverColor: #a9b5bf;
+  $hoverColor: #1e2835;
 
   $seperatorColor: #121820;
 
@@ -45,6 +45,8 @@ body.dark-theme {
   $editorTagErrBg: #344459;
 
   $loadingItemColor: #000;
+
+  $loginWindowOrBg: #2a384a;
 
   @import "overwrites";
   @import "navbar";
