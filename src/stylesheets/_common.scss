@@ -17,6 +17,10 @@ a[target="_external"]:after, .markdown-external-link:after {
   padding-right: 4px;
 }
 
-body, h1, h2, h3, h4, h5, h6, label, span, p{
+h1, h2, h3, h4, h5, h6{
   color: $textColor;
+}
+
+hr {
+  border-top-color: $seperatorColor;
 }
