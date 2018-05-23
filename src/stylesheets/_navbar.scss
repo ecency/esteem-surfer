@@ -1,25 +1,24 @@
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss";
 
 .app-navbar {
-  user-select: none;
-
   background-color: $navbarBgColorDefault;
 
-  // Coloring created with https://work.smarchal.com/twbscolor/
   border: 0;
 
+  // Coloring created with https://work.smarchal.com/twbscolor/
   border-radius: 0;
+
   margin-bottom: 0;
   .container-fluid {
     padding-right: 2px;
   }
-
   .navbar-brand {
     color: $navbarColorDefault;
     &:hover, &:focus {
       color: $navbarColorHighlight;
     }
   }
+
   .navbar-text {
     color: $navbarColorDefault;
   }
@@ -70,8 +69,6 @@
       }
     }
   }
-  // End of navbar coloring.
-
   .navbar-toggle {
     border-color: $navbarBgColorHighlight;
     &:hover, &:focus {
@@ -81,6 +78,8 @@
       background-color: $navbarColorDefault;
     }
   }
+  // End of navbar coloring.
+
   .navbar-collapse,
   .navbar-form {
     border-color: $navbarColorDefault;
@@ -91,7 +90,6 @@
       color: $navbarColorHighlight;
     }
   }
-
   .navbar-back {
     float: left;
     height: $navbar-height;
@@ -122,30 +120,33 @@
   }
 
   .navbar-right {
-    .settings, .login, .editor, .activities {
+    .settings, .login, .editor, .activities, .night-mode {
+      align-items: center;
+      display: flex;
+
       a {
-        line-height: 100%;
-        padding-bottom: 12px;
-        padding-top: 13px;
+        padding: 17px 10px 13px 10px;
         .fa {
-          font-size: 24px;
+          font-size: 19px;
         }
       }
     }
 
     .editor {
+
       a {
         .fa {
-          font-size: 22px;
+
         }
       }
     }
 
     .activities {
+
       a {
-        padding-top: 15px;
+
         .fa {
-          font-size: 21px;
+          font-size: 18px;
         }
       }
     }
@@ -227,4 +228,6 @@
   .navbar-form {
 
   }
+
+  user-select: none;
 }
