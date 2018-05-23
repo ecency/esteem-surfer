@@ -735,6 +735,8 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return $sce.trustAsHtml('There is a new version of eSteem Surfer. Please download the latest version from <a href="https://github.com/eSteemApp/esteem-surfer/releases" target="_external">https://github.com/eSteemApp/esteem-surfer/releases</a>');
         case 'LOAD_MORE':
           return 'Load more';
+        case 'TOGGLE_NIGHT_MODE':
+          return 'Toggle Night Mode';
         default:
           return s;
       }
