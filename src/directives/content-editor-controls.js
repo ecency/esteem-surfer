@@ -19,10 +19,10 @@ export default () => {
         <button class="btn btn-default" ng-click="insertOlList()" tooltip-popup-delay="1000" tooltip-placement="right" uib-tooltip="{{ 'EDITOR_CONTROL_OL' | __ }}"><i class="fa fa-list-ol"></i></button>
         <button class="btn btn-default" ng-click="insertUlList()" tooltip-popup-delay="1000" tooltip-placement="right" uib-tooltip="{{ 'EDITOR_CONTROL_UL' | __ }}"><i class="fa fa-list-ul"></i></button>
         <button class="btn btn-default" ng-click="insertHr()" tooltip-popup-delay="1000" tooltip-placement="right" uib-tooltip="{{ 'EDITOR_CONTROL_HR' | __ }}"><i class="fa fa-minus"></i></button>
-        <button class="btn btn-default" tooltip-popup-delay="1000" tooltip-placement="top" uib-tooltip="{{ 'EDITOR_CONTROL_IMAGE' | __ }}"><i class="fa fa-image"></i><span class="sub-menu"><a class="btn btn-sm btn-default" ng-click="uploadImage()">{{ 'EDITOR_CONTROL_IMAGE_UPLOAD' | __ }}</a><a class="btn btn-sm btn-default">{{ 'EDITOR_CONTROL_IMAGE_GALLERY' | __ }}</a></span></button>
+        <button class="btn btn-default" tooltip-popup-delay="1000" tooltip-placement="top" uib-tooltip="{{ 'EDITOR_CONTROL_IMAGE' | __ }}"><i class="fa fa-image"></i><span class="sub-menu"><a class="btn btn-sm btn-default" ng-click="uploadImage()">{{ 'EDITOR_CONTROL_IMAGE_UPLOAD' | __ }}</a><a class="btn btn-sm btn-default" login-required on-login-success="openGallery()">{{ 'EDITOR_CONTROL_IMAGE_GALLERY' | __ }}</a></span></button>
         <button class="btn btn-default" ng-click="insertLink()" tooltip-popup-delay="1000" tooltip-placement="right" uib-tooltip="{{ 'EDITOR_CONTROL_LINK' | __ }}"><i class="fa fa-link"></i></button>
         </div>`,
-    controller: ($scope, $rootScope, $timeout) => {
+    controller: ($scope, $rootScope, $timeout, $uibModal) => {
 
       let el = null;
       let txtEl = null;
@@ -78,7 +78,25 @@ export default () => {
         document.querySelector('.content-editor .file-input').click()
       };
 
-
+      $scope.openGallery = () => {
+        $uibModal.open({
+          templateUrl: 'templates/gallery-modal.html',
+          controller: 'galleryModalCtrl',
+          windowClass: 'gallery-modal',
+          resolve: {
+            afterClick: function () {
+              return (src) => {
+                const name = src.split('/').pop();
+                $scope.insertImage(name, src);
+              };
+            }
+          }
+        }).result.then((data) => {
+          // Success
+        }, () => {
+          // Cancel
+        });
+      };
     }
   };
 };

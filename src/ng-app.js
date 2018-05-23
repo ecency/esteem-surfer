@@ -61,6 +61,7 @@ import favoritesCtrl from './controllers/favorites';
 import followersCtrl from './controllers/followers';
 import followingCtrl from './controllers/following';
 import witnessesCtrl from './controllers/witnesses';
+import galleryModalCtrl from './controllers/gallery-modal'
 
 
 import tokenExchangeCtrl from './controllers/token-exchange';
@@ -464,6 +465,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
   .controller('followersCtrl', followersCtrl)
   .controller('followingCtrl', followingCtrl)
   .controller('witnessesCtrl', witnessesCtrl)
+  .controller('galleryModalCtrl', galleryModalCtrl)
 
 
   .filter('catchPostImage', catchPostImageFilter)
