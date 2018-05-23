@@ -2433,3 +2433,35 @@ STRUCTURE:
     }
   }
 }
+
+.gallery-modal {
+  .modal-dialog {
+    width: 900px;
+  }
+
+  .modal-body {
+    .gallery-list {
+      height: 500px;
+      overflow-y: auto;
+
+      .gallery-list-item {
+        background: $galleryImgBg;
+        border: 3px solid $seperatorColor;
+        float: left;
+        margin: 0 6px 12px 6px;
+        min-height: 30px;
+        width: 200px;
+        height: 150px;
+        text-align: center;
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+
+        img {
+          max-width: 100%;
+          max-height: 100%;
+        }
+      }
+    }
+  }
+}

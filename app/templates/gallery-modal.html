@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'CANCEL' | translate }}" ng-click="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h4 class="modal-title">{{ 'GALLERY' | translate }}</h4>
+</div>
+<div class="modal-body">
+  <div class="gallery-list">
+    <div class="empty-list" ng-if="images.length === 0 && !loadingImages">
+      {{ 'EMPTY_LIST' | __ }}
+    </div>
+    <div class="gallery-list-item" ng-repeat="image in images | orderBy:'-timestamp'" ng-click="clicked(image)">
+      <img src="{{ image.url }}">
+    </div>
+  </div>
+</div>
