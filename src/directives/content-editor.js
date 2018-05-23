@@ -24,6 +24,18 @@ export default () => {
 
       txtEl.focus();
 
+      txtEl.addEventListener('keydown', function(e) {
+        if (e.keyCode === 66 && (e.ctrlKey || e.metaKey)) {
+          insertText(txtEl, '**', '**');
+          e.preventDefault();
+        }
+
+        if (e.keyCode === 73 && (e.ctrlKey || e.metaKey)) {
+          insertText(txtEl, '*', '*');
+          e.preventDefault();
+        }
+      });
+
       txtEl.addEventListener('dragenter', (e) => {
         e.stopPropagation();
         e.preventDefault();
