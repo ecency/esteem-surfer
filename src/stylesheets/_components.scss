@@ -1068,12 +1068,12 @@ STRUCTURE:
         float: right;
         line-height: 150%;
 
-        .post-resteem, .post-leave-comment, .post-comment-count, .post-edit {
+        .post-resteem, .post-leave-comment, .post-comment-count, .post-reload, .post-edit {
           color: $textColorLight;
           float: left;
         }
 
-        .post-resteem, .post-leave-comment {
+        .post-resteem, .post-leave-comment, .post-comment-count {
           border-right: 1px solid $seperatorColor;
           margin-right: 10px;
           padding-right: 10px;

@@ -42,8 +42,9 @@
           <span class="post-app"><span class="via">{{ 'VIA' | __ }}</span> {{ app }}</span>
           <div class="post-interaction">
             <!-- <a class="post-resteem" ng-click="resteem()"><i class="fa fa-retweet"></i></a> -->
-            <a class="post-leave-comment" ng-click="" login-required required-keys="'posting'" on-login-success="replyClicked()">Reply</a>
+            <a class="post-leave-comment" ng-click="" login-required required-keys="'posting'" on-login-success="replyClicked()">{{ 'POST_REPLY' | __ }}</a>
             <span class="post-comment-count"><i class="fa fa-comments"></i> {{ post.children }}</span>
+            <a class="post-reload" ng-click="refresh()" uib-tooltip="{{ 'POST_RELOAD' | __ }}"><i class="fa fa-refresh"></i></a>
             <a ng-click="editClicked()" ng-if="canEdit" class="post-edit"><i class="fa fa-pencil"></i> </a>
           </div>
         </div>

@@ -22,7 +22,6 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
   $scope.commentsCurPage = 1;
   $scope.commentsTotalPages = 0;
 
-
   $scope.commentSorting = {
     model: 'trending',
     opts: [
@@ -41,7 +40,6 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
     $scope.commentsTotalPages = Math.ceil(commentsData.length / commentsPerPage);
     $scope.sliceComments();
   };
-
 
   const compileComments = (parent) => {
     const sortOrders = {
@@ -211,62 +209,67 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
     return defer.promise;
   };
 
-  $scope.loadingPost = true;
-  $scope.loadingRest = true;
+  const main = () => {
+    $scope.loadingPost = true;
+    $scope.loadingRest = true;
 
-  init().then((content) => {
-    $scope.post = content;
+    init().then((content) => {
+      $scope.post = content;
 
-    // Defined separately because $scope.post will be changed after state loaded.
-    $scope.title = content.title;
-    $scope.body = content.body;
+      // Defined separately because $scope.post will be changed after state loaded.
+      $scope.title = content.title;
+      $scope.body = content.body;
 
-    let jsonMeta = {};
-    try{
-      jsonMeta = JSON.parse($scope.post.json_metadata);
-    } catch (e){ }
-
-    $scope.app = jsonMeta.app;
-
-    // Sometimes tag list comes with duplicate items. Needs to singularize.
-    $scope.tags = [...new Set(jsonMeta.tags)];
-
-    // Temporary author data while loading original in background
-    $scope.author = {name: $scope.post.author};
-
-    $scope.loadingPost = false;
-
-    const archived = content.cashout_time === '1969-12-31T23:59:59';
-
-    $scope.canEdit = content.author === activeUsername() && !archived;
-
-    loadState().catch((e) => {
-      // TODO: Handle catch
-    }).then(() => {
-      $scope.loadingRest = false;
-    });
-
-    // Mark post as read
-    helperService.setPostRead(content.author, content.permlink);
-
-    // Add to nav history
-    $rootScope.setNavVar('post', content);
-
-    // Check if post bookmarked
-    for (let i of $rootScope.bookmarks) {
-      if (i.permlink === $scope.post.permlink) {
-        $scope.bookmarked = true;
-        break;
+      let jsonMeta = {};
+      try {
+        jsonMeta = JSON.parse($scope.post.json_metadata);
+      } catch (e) {
       }
-    }
 
-    if (commentId) {
-      // Scroll page to comments section
-      $timeout(() => {
-        scrollToComments();
-      }, 800)
-    }
-  });
+      $scope.app = jsonMeta.app;
+
+      // Sometimes tag list comes with duplicate items. Needs to singularize.
+      $scope.tags = [...new Set(jsonMeta.tags)];
+
+      // Temporary author data while loading original in background
+      $scope.author = {name: $scope.post.author};
+
+      $scope.loadingPost = false;
+
+      const archived = content.cashout_time === '1969-12-31T23:59:59';
+
+      $scope.canEdit = content.author === activeUsername() && !archived;
+
+      loadState().catch((e) => {
+        // TODO: Handle catch
+      }).then(() => {
+        $scope.loadingRest = false;
+      });
+
+      // Mark post as read
+      helperService.setPostRead(content.author, content.permlink);
+
+      // Add to nav history
+      $rootScope.setNavVar('post', content);
+
+      // Check if post bookmarked
+      for (let i of $rootScope.bookmarks) {
+        if (i.permlink === $scope.post.permlink) {
+          $scope.bookmarked = true;
+          break;
+        }
+      }
+
+      if (commentId) {
+        // Scroll page to comments section
+        $timeout(() => {
+          scrollToComments();
+        }, 800)
+      }
+    });
+  };
+
+  main();
 
   $scope.parentClicked = () => {
     let u = `/posts/${activePostFilter()}/${$scope.post.parent_permlink}`;
@@ -341,5 +344,11 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
     } else {
       $scope.comments.push(newComment);
     }
+  };
+
+  $scope.refresh = () => {
+    $scope.post = null;
+    $rootScope.selectedPost = null;
+    main();
   }
 };
