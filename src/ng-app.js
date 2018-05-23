@@ -737,6 +737,10 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'Load more';
         case 'TOGGLE_NIGHT_MODE':
           return 'Toggle Night Mode';
+        case 'POST_RELOAD':
+          return 'Reload';
+        case 'POST_REPLY':
+          return 'Reply';
         default:
           return s;
       }
