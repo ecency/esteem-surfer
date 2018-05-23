@@ -1,18 +1,20 @@
-export default ($scope, $uibModalInstance, content, steemService) => {
+export default ($scope, $rootScope, $uibModalInstance, $location, content, steemService) => {
   $scope.loading = true;
 
   steemService.getActiveVotesAsync(content.author, content.permlink).then((resp) => {
     $scope.data = resp;
     $scope.dataLen = resp.length;
-  }).catch(() => {
-    // TODO: handle catch
+  }).catch((e) => {
+    $rootScope.showError(e);
   }).then(() => {
     $scope.loading = false;
 
   });
 
   $scope.authorClicked = (author) => {
-    console.log(author);
+    let u = `/account/${author}`;
+    $location.path(u);
+    $scope.close();
   };
 
   $scope.close = () => {
