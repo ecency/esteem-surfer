@@ -15,7 +15,7 @@ textarea.form-control {
   }
 }
 
-select.form-control {
+select {
   background: #202a37;
   border-color: #224B65;
   color: #cecece;
@@ -80,6 +80,13 @@ select.form-control {
 }
 
 // TABLE
+.table {
+  th, td {
+    border-color: $seperatorColor !important;
+  }
+
+}
+
 .table-striped {
   > tbody > tr:nth-of-type(odd) {
     background-color: $altRowColor;
