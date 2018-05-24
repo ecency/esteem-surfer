@@ -2398,6 +2398,11 @@ STRUCTURE:
 }
 
 .followers-modal, .following-modal {
+
+  .modal-dialog {
+    width: 980px;
+  }
+
   .modal-body {
     .account-list {
       @include clearfix();
@@ -2425,8 +2430,8 @@ STRUCTURE:
           margin-bottom: 4px;
           width: 200px;
 
-          &:nth-of-type(2n) {
-            margin-left: 60px;
+          &:not(:nth-of-type(4n)) {
+            margin-right: 14px;
           }
         }
       }
