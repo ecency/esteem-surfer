@@ -1,3 +1,6 @@
+import userList from '../data/discover.json'
+
+
 const prepareAccountData = (data) => {
   let name = '';
 
@@ -26,39 +29,17 @@ export default ($scope, $rootScope, $location, steemService) => {
   });
 
   const loadAccounts = () => {
-
-    const methods = ['Trending', 'Hot', 'Active', 'Votes', 'Children'];
-    const method = methods[Math.floor(Math.random() * methods.length)];
-
     $scope.loadingAccounts = true;
     $scope.accountList = [];
 
-    steemService.getDiscussionsBy(method, null, null, null, 100).then((contents) => {
+    const shuffledList = userList.sort(() => .5 - Math.random());
+    const selectedList = shuffledList.slice(0, 40);
 
-      contents.sort(function (a, b) {
-        let keyA = parseInt(a.author_reputation),
-          keyB = parseInt(b.author_reputation);
-
-        if (keyA > keyB) return -1;
-        if (keyA < keyB) return 1;
-        return 0;
-      });
-
-      const accounts = [];
-      for (let content of contents) {
-        if (accounts.indexOf(content.author) === -1) {
-          accounts.push(content.author);
-        }
-      }
-
-      return steemService.getAccounts(accounts).then((resp) => resp);
+    steemService.getAccounts(selectedList).then((accounts) => {
+      accounts.forEach(e => $scope.accountList.push(prepareAccountData(e)));
     }).catch((e) => {
       $rootScope.showError(e);
-    }).then((accounts) => {
-      if (accounts) {
-        accounts.forEach(e => $scope.accountList.push(prepareAccountData(e)));
-      }
-
+    }).then(() => {
       $scope.loadingAccounts = false;
     });
   };
