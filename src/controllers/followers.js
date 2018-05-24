@@ -17,7 +17,7 @@ const prepareFollowerData = (data) => {
 export default ($scope, $rootScope, $uibModalInstance, accountData, steemService) => {
 
   const username = accountData.name;
-  const fetchSize = 40;
+  const fetchSize = 80;
 
   $scope.username = username;
   $scope.followerCount = accountData.follower_count;
