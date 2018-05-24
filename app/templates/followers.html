@@ -3,12 +3,25 @@
     <span aria-hidden="true">&times;</span>
   </button>
   <h4 class="modal-title">{{ 'FOLLOWERS' | translate }} ({{ followerCount | number }})</h4>
+  <div class="search-form" ng-hide="fetching && !searching">
+    <div class="input-group">
+      <span class="input-group-addon">@</span>
+      <input type="text" class="form-control" ng-model="searchUser" ng-keyup="$event.keyCode == 13 ? search() : null">
+      <div class="input-group-btn" role="group">
+        <button class="btn btn-primary" type="button" ng-click="search()" ng-disabled="!searchUser || searching || followerCount==0">
+          <i class="fa fa-search"></i>
+        </button>
+        <button type="button" class="btn btn-default" ng-click="cancelSearch()" ng-show="searched"><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="modal-body">
   <div class="account-list" ng-class="{'fetching': fetching}">
     <div class="indicator">
       <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="fetching && followerList.length === 0"></i>
     </div>
+    <div class="empty-list" ng-if="!fetching && !searching  && followerList.length === 0">{{ 'EMPTY_LIST' | __ }}</div>
     <ul>
       <li ng-repeat="item in followerList">
         <div class="author-card mini-card">

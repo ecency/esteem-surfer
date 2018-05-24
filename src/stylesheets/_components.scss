@@ -2403,6 +2403,20 @@ STRUCTURE:
     width: 980px;
   }
 
+  .modal-header {
+    position: relative;
+    .modal-title {
+      display: inline-block;
+    }
+
+    .search-form {
+      position: absolute;
+      left: 340px;
+      top: 12px;
+      width: 300px;
+    }
+  }
+
   .modal-body {
     .account-list {
       @include clearfix();

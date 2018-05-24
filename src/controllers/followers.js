@@ -13,7 +13,6 @@ const prepareFollowerData = (data) => {
 };
 
 
-
 export default ($scope, $rootScope, $uibModalInstance, accountData, steemService) => {
 
   const username = accountData.name;
@@ -22,27 +21,67 @@ export default ($scope, $rootScope, $uibModalInstance, accountData, steemService
   $scope.username = username;
   $scope.followerCount = accountData.follower_count;
 
-  $scope.hasMore = false;
+  const main = () => {
+    $scope.followerList = [];
+    $scope.fetching = true;
+    $scope.hasMore = false;
+    $scope.searching = false;
+    $scope.searched = false;
 
-  $scope.followerList = [];
+    steemService.getFollowers(username, null, 'blog', fetchSize).then((resp) => {
 
-  $scope.fetching = true;
-  steemService.getFollowers(username, null, 'blog', fetchSize).then((resp) => {
+      const accountNames = resp.map(e => e.follower);
+      return steemService.getAccounts(accountNames).then((resp) => resp);
+    }).catch((e) => {
+      $rootScope.showError(e);
+    }).then((accounts) => {
+      if (accounts) {
+        if (accounts.length >= fetchSize) {
+          $scope.hasMore = true;
+        }
 
-    const accountNames = resp.map(e => e.follower);
-    return steemService.getAccounts(accountNames).then((resp) => resp);
-  }).catch((e) => {
-    $rootScope.showError(e);
-  }).then((accounts) => {
-    if(accounts){
-      if (accounts.length >= fetchSize) {
-        $scope.hasMore = true;
+        accounts.forEach(e => $scope.followerList.push(prepareFollowerData(e)));
       }
+      $scope.fetching = false;
+    });
+  };
 
-      accounts.forEach(e => $scope.followerList.push(prepareFollowerData(e)));
+  main();
+
+  $scope.search = () => {
+    const searchUser = $scope.searchUser.trim();
+    if (searchUser === '') {
+      return;
     }
-    $scope.fetching = false;
-  });
+
+    if ($scope.searching) {
+      return;
+    }
+
+    $scope.followerList = [];
+    $scope.fetching = true;
+    $scope.hasMore = false;
+    $scope.searching = true;
+
+    steemService.getFollowers(username, searchUser, 'blog', 1).then((resp) => {
+      if (resp[0].follower === searchUser) {
+        return steemService.getAccounts([searchUser]).then((resp) => resp);
+      }
+      $scope.searched = true;
+    }).catch((e) => {
+      $rootScope.showError(e);
+    }).then((accounts) => {
+      if (accounts) {
+        accounts.forEach(e => $scope.followerList.push(prepareFollowerData(e)));
+      }
+      $scope.fetching = false;
+      $scope.searching = false;
+    });
+  };
+
+  $scope.cancelSearch = () => {
+    main();
+  };
 
   $scope.loadMore = () => {
     $scope.fetching = true;
@@ -54,7 +93,7 @@ export default ($scope, $rootScope, $uibModalInstance, accountData, steemService
     }).catch((e) => {
       $rootScope.showError(e);
     }).then((accounts) => {
-      if(accounts){
+      if (accounts) {
         if (accounts.length < fetchSize) {
           $scope.hasMore = false;
         }
