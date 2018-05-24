@@ -64,10 +64,11 @@ export default ($scope, $rootScope, $uibModalInstance, accountData, steemService
     $scope.searching = true;
 
     steemService.getFollowers(username, searchUser, 'blog', 1).then((resp) => {
+      $scope.searched = true;
+
       if (resp[0].follower === searchUser) {
         return steemService.getAccounts([searchUser]).then((resp) => resp);
       }
-      $scope.searched = true;
     }).catch((e) => {
       $rootScope.showError(e);
     }).then((accounts) => {
@@ -80,6 +81,7 @@ export default ($scope, $rootScope, $uibModalInstance, accountData, steemService
   };
 
   $scope.cancelSearch = () => {
+    $scope.searchUser = '';
     main();
   };
 

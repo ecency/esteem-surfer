@@ -20,27 +20,69 @@ export default ($scope, $rootScope, $uibModalInstance, accountData, steemService
   $scope.username = username;
   $scope.following = accountData.following_count;
 
-  $scope.hasMore = false;
+  const main = () => {
+    $scope.followingList = [];
+    $scope.fetching = true;
+    $scope.hasMore = false;
+    $scope.searching = false;
+    $scope.searched = false;
 
-  $scope.followingList = [];
+    steemService.getFollowing(username, null, 'blog', fetchSize).then((resp) => {
 
-  $scope.fetching = true;
-  steemService.getFollowing(username, null, 'blog', fetchSize).then((resp) => {
+      const accountNames = resp.map(e => e.following);
+      return steemService.getAccounts(accountNames).then((resp) => resp);
+    }).catch((e) => {
+      $rootScope.showError(e);
+    }).then((accounts) => {
+      if (accounts) {
+        if (accounts.length >= fetchSize) {
+          $scope.hasMore = true;
+        }
 
-    const accountNames = resp.map(e => e.following);
-    return steemService.getAccounts(accountNames).then((resp) => resp);
-  }).catch((e) => {
-    $rootScope.showError(e);
-  }).then((accounts) => {
-    if (accounts) {
-      if (accounts.length >= fetchSize) {
-        $scope.hasMore = true;
+        accounts.forEach(e => $scope.followingList.push(prepareFollowingData(e)));
       }
+      $scope.fetching = false;
+    });
+  };
 
-      accounts.forEach(e => $scope.followingList.push(prepareFollowingData(e)));
+  main();
+
+  $scope.search = () => {
+    const searchUser = $scope.searchUser.trim();
+    if (searchUser === '') {
+      return;
     }
-    $scope.fetching = false;
-  });
+
+    if ($scope.searching) {
+      return;
+    }
+
+    $scope.followingList = [];
+    $scope.fetching = true;
+    $scope.hasMore = false;
+    $scope.searching = true;
+
+    steemService.getFollowing(username, searchUser, 'blog', 1).then((resp) => {
+      $scope.searched = true;
+
+      if (resp[0].following === searchUser) {
+        return steemService.getAccounts([searchUser]).then((resp) => resp);
+      }
+    }).catch((e) => {
+      $rootScope.showError(e);
+    }).then((accounts) => {
+      if (accounts) {
+        accounts.forEach(e => $scope.followingList.push(prepareFollowingData(e)));
+      }
+      $scope.fetching = false;
+      $scope.searching = false;
+    });
+  };
+
+  $scope.cancelSearch = () => {
+    $scope.searchUser = '';
+    main();
+  };
 
   $scope.loadMore = () => {
     $scope.fetching = true;
