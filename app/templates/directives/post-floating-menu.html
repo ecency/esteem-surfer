@@ -14,7 +14,7 @@
   <a class="box-btn btn-copy" ng-click="copyAddress()" title="Copy address">
     <i class="fa fa-clipboard"></i>
   </a>
-  <a class="box-btn btn-flag" title="Flag" ng-class="{'flagged': flagged, 'flagging': flagging}" ng-click=""
+  <a class="box-btn btn-flag" title="{{ 'FLAG' | translate }}" ng-class="{'flagged': flagged, 'flagging': flagging}" ng-click=""
      login-required required-keys="'posting'" on-login-success="flag()">
     <i ng-if="!flagging" class="fa fa-flag"></i>
     <i ng-if="flagging" class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
