@@ -10,6 +10,21 @@ const makeCopyAddress = (title, cat, author, permlink) => {
   return `[${title}](/${cat}/@${author}/${permlink})`;
 };
 
+const makeShareUrlReddit = (cat, author, permlink, title) => {
+  const u = makeSteemitUrl(cat, author, permlink);
+  return `https://reddit.com/submit?url=${encodeURIComponent(u)}&title=${encodeURIComponent(title)}`;
+};
+
+const makeShareUrlTwitter = (cat, author, permlink, title) => {
+  const u = makeSteemitUrl(cat, author, permlink);
+  return `https://twitter.com/intent/tweet?url=${encodeURIComponent(u)}&text=${encodeURIComponent(title)}`;
+};
+
+const makeShareUrlFacebook = (cat, author, permlink) => {
+  const u = makeSteemitUrl(cat, author, permlink);
+  return `https://www.facebook.com/sharer.php?u=${encodeURIComponent(u)}`;
+};
+
 export default () => {
   return {
     restrict: 'E',
@@ -126,6 +141,21 @@ export default () => {
         const s = makeCopyAddress($scope.content.title, $scope.content.parent_permlink, $scope.content.author, $scope.content.permlink);
         window.writeClipboard(s);
         $rootScope.showSuccess("Copied to clipboard")
+      };
+
+      $scope.shareReddit = () => {
+        const u = makeShareUrlReddit($scope.content.parent_permlink, $scope.content.author, $scope.content.permlink, $scope.content.title);
+        window.openInBrowser(u);
+      };
+
+      $scope.shareTwitter = () => {
+        const u = makeShareUrlTwitter($scope.content.parent_permlink, $scope.content.author, $scope.content.permlink, $scope.content.title);
+        window.openInBrowser(u);
+      };
+
+      $scope.shareFacebook = () => {
+        const u = makeShareUrlFacebook($scope.content.parent_permlink, $scope.content.author, $scope.content.permlink);
+        window.openInBrowser(u);
       }
     }
   };

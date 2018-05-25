@@ -14,6 +14,14 @@
   <a class="box-btn btn-copy" ng-click="copyAddress()" title="Copy address">
     <i class="fa fa-clipboard"></i>
   </a>
+  <div class="box-btn btn-external" ng-click="" title="Share">
+    <i class="fa fa-share-alt"></i>
+    <span class="service-list">
+      <button class="btn  btn-link" ng-click="shareReddit()"><i class="fa fa-reddit"></i></button>
+      <button class="btn  btn-link" ng-click="shareTwitter()"><i class="fa fa-twitter"></i></button>
+      <button class="btn  btn-link" ng-click="shareFacebook()"><i class="fa fa-facebook"></i></button>
+    </span>
+  </div>
   <a class="box-btn btn-flag" title="{{ 'FLAG' | translate }}" ng-class="{'flagged': flagged, 'flagging': flagging}" ng-click=""
      login-required required-keys="'posting'" on-login-success="flag()">
     <i ng-if="!flagging" class="fa fa-flag"></i>
