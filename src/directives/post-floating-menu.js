@@ -40,7 +40,7 @@ export default () => {
       });
     },
     templateUrl: 'templates/directives/post-floating-menu.html',
-    controller: ($scope, $timeout, $rootScope, steemAuthenticatedService, steemService, helperService, activeUsername) => {
+    controller: ($scope, $timeout, $filter, $rootScope, $confirm, steemAuthenticatedService, steemService, helperService, activeUsername) => {
       const activeUser = activeUsername();
 
       const author = $scope.content.author;
@@ -66,14 +66,16 @@ export default () => {
       }
 
       $scope.reblog = () => {
-        $scope.reblogging = true;
-        steemAuthenticatedService.reblog(author, permlink).then(() => {
-          helperService.setPostReblogged(activeUser, author, permlink);
-          $scope.reblogged = true;
-        }).catch((e) => {
-          $rootScope.showError(e)
-        }).then(() => {
-          $scope.reblogging = false;
+        $confirm($filter('translate')('ARE_YOU_SURE'), null, () => {
+          $scope.reblogging = true;
+          steemAuthenticatedService.reblog(author, permlink).then(() => {
+            helperService.setPostReblogged(activeUser, author, permlink);
+            $scope.reblogged = true;
+          }).catch((e) => {
+            $rootScope.showError(e)
+          }).then(() => {
+            $scope.reblogging = false;
+          });
         });
       };
 
@@ -92,27 +94,25 @@ export default () => {
       }
 
       $scope.flag = () => {
-        $scope.flagging = true;
-        steemAuthenticatedService.vote(author, permlink, -1).then((resp) => {
-          $rootScope.$broadcast('CONTENT_VOTED', {
-            author: author,
-            permlink: permlink,
-            weight: -1
+        $confirm($filter('translate')('ARE_YOU_SURE'), $filter('translate')('FLAGGING_TEXT'), () => {
+          $scope.flagging = true;
+          steemAuthenticatedService.vote(author, permlink, -1).then((resp) => {
+            $rootScope.$broadcast('CONTENT_VOTED', {
+              author: author,
+              permlink: permlink,
+              weight: -1
+            });
+          }).catch((e) => {
+            $rootScope.showError(e);
+          }).then(() => {
+            $scope.flagging = false;
           });
-        }).catch((e) => {
-          $rootScope.showError(e);
-        }).then(() => {
-          $scope.flagging = false;
         });
       };
 
       $rootScope.$on('CONTENT_VOTED', (r, d) => {
         if (author === d.author && permlink === d.permlink) {
-          if (d.weight < 0) {
-            $scope.flagged = true;
-          } else {
-            $scope.flagged = false;
-          }
+          $scope.flagged = d.weight < 0;
         }
       });
 

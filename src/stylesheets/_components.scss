@@ -2567,3 +2567,9 @@ STRUCTURE:
     }
   }
 }
+
+.confirm-modal {
+  .modal-header, .modal-footer {
+    text-align: center;
+  }
+}

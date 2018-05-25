@@ -17,7 +17,16 @@ const genRandom = function () {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 };
 
-import {remote, shell} from "electron";
+import {remote, clipboard, shell} from "electron";
+
+window.writeClipboard = (s) => {
+  clipboard.writeText(s);
+};
+
+window.openInBrowser = (href) => {
+  shell.openExternal(href);
+};
+
 import env from "env";
 import jetpack from "fs-jetpack";
 import steem from 'steem';
@@ -407,6 +416,56 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
   })
   .factory('cryptoService', cryptoService)
   .factory('pinService', pinService)
+  .factory('$confirm', ($uibModal, $sce) => {
+    return (title = '?', message = null, OkHandler = null, CancelHandler = null) => {
+      return $uibModal.open({
+        templateUrl: 'templates/confirm.html',
+        controller: ($scope, $uibModalInstance, Title, Message, OkHandler, CancelHandler) => {
+          $scope.title = Title;
+          $scope.message = Message ? $sce.trustAsHtml(Message) : Message;
+
+          $scope.ok = () => {
+            $scope.close();
+            if (OkHandler) {
+              OkHandler();
+            }
+          };
+
+          $scope.cancel = () => {
+            $scope.close();
+            if (CancelHandler) {
+              CancelHandler();
+            }
+          };
+
+          $scope.close = () => {
+            $uibModalInstance.dismiss('cancel');
+          };
+        },
+        windowClass: 'confirm-modal',
+        resolve: {
+          Title: () => {
+            return title;
+          },
+          Message: () => {
+            return message
+          },
+          OkHandler: () => {
+            return OkHandler
+          },
+          CancelHandler: () => {
+            return CancelHandler
+          }
+        }
+      }).result.then((data) => {
+
+      }, () => {
+
+      });
+
+
+    }
+  })
 
   .directive('navBar', navBarDir)
   .directive('appFooter', footerDir)
@@ -743,6 +802,8 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'Reload';
         case 'POST_REPLY':
           return 'Reply';
+        case 'OK':
+          return 'OK';
         default:
           return s;
       }
@@ -1217,9 +1278,9 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
 
     // New version checker
     $rootScope.newVersion = null;
-    $http.get(constants.versionCheckUrl).then((resp)=>{
+    $http.get(constants.versionCheckUrl).then((resp) => {
       const newVer = resp.data.tag_name;
-      if(newVer !== appVersion){
+      if (newVer !== appVersion) {
         $rootScope.newVersion = newVer;
       }
     });
