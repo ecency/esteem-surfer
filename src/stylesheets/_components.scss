@@ -1217,6 +1217,51 @@ STRUCTURE:
     color: $textColorLight;
     font-style: italic;
   }
+
+  .post-floating-menu {
+    height: 120px;
+
+    left: 60px;
+    position: fixed;
+    text-align: center;
+    top: 40%;
+    z-index: 10;
+
+    .box-btn {
+      align-items: center;
+      border: 1px solid #bababa;
+      border-radius: 50%;
+      color: #a7a7a7;
+      display: flex;
+      font-size: 16px;
+      height: 36px;
+      justify-content: center;
+      margin: 0 auto 14px auto;
+      width: 36px;
+
+      &.btn-reblog {
+        font-size: 30px;
+        height: 60px;
+        margin-bottom: 20px;
+        width: 60px;
+
+        &.reblogged {
+          color: $linkHoverColor;
+        }
+
+        &.reblogged, &.reblogging {
+          pointer-events: none;
+        }
+      }
+
+      &.btn-flag {
+        font-size: 12px;
+        height: 26px;
+        width: 26px;
+        margin-top: 10px;
+      }
+    }
+  }
 }
 
 .author-popover-content {
@@ -2410,8 +2455,8 @@ STRUCTURE:
     }
 
     .search-form {
-      position: absolute;
       left: 340px;
+      position: absolute;
       top: 12px;
       width: 300px;
     }
@@ -2464,21 +2509,21 @@ STRUCTURE:
       overflow-y: auto;
 
       .gallery-list-item {
+        align-items: center;
         background: $galleryImgBg;
         border: 3px solid $seperatorColor;
+        cursor: pointer;
+        display: inline-flex;
         float: left;
+        height: 150px;
         margin: 0 6px 12px 6px;
         min-height: 30px;
-        width: 200px;
-        height: 150px;
         text-align: center;
-        display: inline-flex;
-        align-items: center;
-        cursor: pointer;
+        width: 200px;
 
         img {
-          max-width: 100%;
           max-height: 100%;
+          max-width: 100%;
         }
       }
     }

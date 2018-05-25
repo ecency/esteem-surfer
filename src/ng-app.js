@@ -96,6 +96,7 @@ import galleryListItemDir from './directives/gallery-list-item';
 import transferNavBarDir from './directives/transfer-navbar';
 import contentListLoadingItemDir from './directives/content-list-loading-item';
 import showBgImageOnModalDir from './directives/show-bg-image-on-modal';
+import postFloatingMenuDir from './directives/post-floating-menu';
 
 
 // Services
@@ -433,6 +434,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
   .directive('transferNavBar', transferNavBarDir)
   .directive('contentListLoadingItem', contentListLoadingItemDir)
   .directive('showBgImageOnModal', showBgImageOnModalDir)
+  .directive('postFloatingMenu', postFloatingMenuDir)
 
   .controller('postsCtrl', postsCtrl)
   .controller('settingsCtrl', settingsCtrl)

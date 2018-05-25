@@ -17,6 +17,12 @@ export const helperService = (storageService) => {
     },
     setWelcomeFlag: (val) => {
       storageService.set(`welcome-flag`, val);
+    },
+    setPostReblogged: (account, author, permlink) => {
+      storageService.set(`${account}-${author}-${permlink}-reblogged`, 1);
+    },
+    isPostReblogged: (account, author, permlink) => {
+      return storageService.get(`${account}-${author}-${permlink}-reblogged`) === 1;
     }
   }
 };
