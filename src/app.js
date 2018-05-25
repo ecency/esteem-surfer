@@ -22,8 +22,19 @@ document.addEventListener('drop', function (event) {
 
 // A http server for steem connect redirect urls
 import {startHelperServer} from "./helpers/steem-connnect-server-helper";
+
 startHelperServer();
 
+
+import {clipboard, shell} from 'electron';
+
+window.writeClipboard = (s) => {
+  clipboard.writeText(s);
+};
+
+window.openInBrowser = (href) => {
+  shell.openExternal(href);
+};
 
 require('./ng-app.js');
 
