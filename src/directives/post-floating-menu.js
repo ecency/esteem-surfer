@@ -24,10 +24,8 @@ export default () => {
       const checkEl = document.querySelector($scope.linkedElSelector);
 
       const detect = () => {
-
         el.style.display = 'block';
         const bounding = checkEl.getBoundingClientRect();
-        console.log(bounding.top)
         el.style.display = bounding.top < 250 ? 'none' : 'block';
       };
 
@@ -94,7 +92,7 @@ export default () => {
       $scope.flag = () => {
         $confirm($filter('translate')('ARE_YOU_SURE'), $filter('translate')('FLAGGING_TEXT'), () => {
           $scope.flagging = true;
-          steemAuthenticatedService.vote(author, permlink, -1).then((resp) => {
+          steemAuthenticatedService.vote(author, permlink, -10000).then((resp) => {
             $rootScope.$broadcast('CONTENT_VOTED', {
               author: author,
               permlink: permlink,
