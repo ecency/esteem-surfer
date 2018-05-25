@@ -1262,7 +1262,7 @@ STRUCTURE:
       &.btn-flag {
         font-size: 12px;
         height: 26px;
-        margin-top: 10px;
+        margin-top: 30px;
         width: 26px;
 
         &.flagged {
@@ -1274,7 +1274,7 @@ STRUCTURE:
         }
       }
 
-      &.btn-external {
+      &.btn-external, &.btn-share {
         .service-list {
           align-items: center;
           border: 1px solid #bababa;
@@ -1292,7 +1292,12 @@ STRUCTURE:
           .btn {
             padding-left: 4px;
             padding-right: 4px;
+            margin-right: 2px;
             cursor: pointer;
+
+            .fa {
+              font-size: 18px;
+            }
           }
         }
 
