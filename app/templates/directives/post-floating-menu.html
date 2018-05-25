@@ -4,13 +4,19 @@
     <i ng-if="!reblogging" class="fa fa-retweet"></i>
     <i ng-if="reblogging" class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
   </a>
-  <a class="box-btn btn-share" ng-click="" uib-tooltip="Share">
+  <a class="box-btn btn-external" ng-click="" title="Open in browser">
     <i class="fa fa-external-link"></i>
+    <span class="service-list">
+      <button class="btn btn-xs btn-link" ng-click="openSteemit()">steemit</button>
+      <button class="btn btn-xs btn-link" ng-click="openBusy()">busy</button>
+    </span>
   </a>
-  <a class="box-btn btn-copy" ng-click="" uib-tooltip="Copy address">
+  <a class="box-btn btn-copy" ng-click="copyAddress()" title="Copy address">
     <i class="fa fa-clipboard"></i>
   </a>
-  <a class="box-btn btn-flag" ng-click="" uib-tooltip="Flag">
-    <i class="fa fa-flag"></i>
+  <a class="box-btn btn-flag" title="Flag" ng-class="{'flagged': flagged, 'flagging': flagging}" ng-click=""
+     login-required required-keys="'posting'" on-login-success="flag()">
+    <i ng-if="!flagging" class="fa fa-flag"></i>
+    <i ng-if="flagging" class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
   </a>
 </div>

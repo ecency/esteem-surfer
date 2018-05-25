@@ -172,7 +172,8 @@ export default () => {
           $scope.voted = true;
           $rootScope.$broadcast('CONTENT_VOTED', {
             'author': $scope.content.author,
-            'permlink': $scope.content.permlink
+            'permlink': $scope.content.permlink,
+            'weight': weight
           });
         }).catch((e) => {
           $rootScope.showError(`Error${e.message ? ': ' + e.message : ''}`);
