@@ -1224,12 +1224,16 @@ STRUCTURE:
     left: 60px;
     position: fixed;
     text-align: center;
-    top: 40%;
+    top: 200px;
     z-index: 10;
+
+    @media (min-width: 1600px) {
+      left: 200px;
+    }
 
     .box-btn {
       align-items: center;
-      border: 1px solid #bababa;
+      border: 1px solid #cecece;
       border-radius: 50%;
       color: #a7a7a7;
       display: flex;
