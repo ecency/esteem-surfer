@@ -121,6 +121,42 @@ export default ($rootScope, steemApi, $q, cryptoService) => {
     return defer.promise;
   };
 
+  const reblog = (wif, account, author, permlink) => {
+    wif = cryptoService.decryptKey(wif);
+
+    const json = ['reblog', {account: account, author: author, permlink: permlink}];
+    let defer = $q.defer();
+    steem.broadcast.customJson(wif, [], [account], 'follow', JSON.stringify(json), (err, response) => {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(response);
+      }
+    });
+
+    return defer.promise;
+  };
+
+  const reblogSC = (token, account, author, permlink) => {
+    token = cryptoService.decryptKey(token);
+
+    let defer = $q.defer();
+
+    const api = sc2.Initialize({
+      accessToken: token
+    });
+
+    api.reblog(account, author, permlink, function (err, res) {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(res);
+      }
+    });
+
+    return defer.promise;
+  };
+
   const vote = (wif, voter, author, permlink, weight) => {
     wif = cryptoService.decryptKey(wif);
 
@@ -708,6 +744,21 @@ export default ($rootScope, steemApi, $q, cryptoService) => {
         case 'sc':
           const token = getAccessToken();
           return ignoreSC(token, follower, following);
+          break;
+      }
+    },
+    reblog: (author, permlink) => {
+      // requires Posting key
+      const account = $rootScope.user.username;
+
+      switch ($rootScope.user.type) {
+        case 's':
+          const wif = getProperWif(['posting']);
+          return reblog(wif, account, author, permlink);
+          break;
+        case 'sc':
+          const token = getAccessToken();
+          return reblogSC(token, account, author, permlink);
           break;
       }
     },

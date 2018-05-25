@@ -15,6 +15,13 @@ export const catchPostImage = (post) => {
     let bodyMatch = post.body.match(imgReg);
     if (bodyMatch) {
       return bodyMatch[1];
+    } else {
+      // If there is no <img> tag, check from markdown img tag ![](image.png)
+      imgReg = /(?:!\[(.*?)\]\((.*?)\))/;
+      bodyMatch = imgReg.exec(post.body);
+      if (bodyMatch) {
+       return bodyMatch[2];
+      }
     }
   }
   return null;

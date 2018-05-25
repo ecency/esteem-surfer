@@ -27,9 +27,9 @@
           </button>
         </div>
       </div>
-      <button class="btn btn-primary" ng-click="markdownHelperClicked()" ng-if="$root.showMarkdownResultHelper">Save
+      <!--<button class="btn btn-primary" ng-click="markdownHelperClicked()" ng-if="$root.showMarkdownResultHelper">Save
         Markdown Result to Test
-      </button>
+      </button>-->
       <div class="post-body markdown-view selectable" ng-bind-html="body | markDown2Html"></div>
       <div class="post-footer">
         <div class="tag-list">
@@ -98,6 +98,8 @@
       <div class="post-comment-list-empty" ng-if="!loadingRest && !commentsLength">
         {{ 'NO_COMMENTS_YET' | __ }}
       </div>
+
+      <post-floating-menu content="post" linked-el-selector="'.post-footer'"></post-floating-menu>
     </div>
   </div>
 </div>
