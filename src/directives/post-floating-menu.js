@@ -24,13 +24,11 @@ export default () => {
       const checkEl = document.querySelector($scope.linkedElSelector);
 
       const detect = () => {
+
+        el.style.display = 'block';
         const bounding = checkEl.getBoundingClientRect();
-        const shouldHide = bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight);
-        if (shouldHide) {
-          el.style.display = 'none';
-        } else {
-          el.style.display = 'block';
-        }
+        console.log(bounding.top)
+        el.style.display = bounding.top < 250 ? 'none' : 'block';
       };
 
       detect();
