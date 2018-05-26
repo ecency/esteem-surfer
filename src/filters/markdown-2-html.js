@@ -41,6 +41,7 @@ export const markDown2Html = (input) => {
 
   const imgRegex = /(https?:\/\/.*\.(?:tiff?|jpe?g|gif|png|svg|ico))(.*)/gim;
   const postRegex = /^https?:\/\/(.*)\/(.*)\/(@[\w\.\d-]+)\/(.*)/i;
+  const copiedPostRegex = /\/(.*)\/(@[\w\.\d-]+)\/(.*)/i;
   const youTubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([^& \n<]+)(?:[^ \n<]+)?/g;
   const vimeoRegex = /(https?:\/\/)?(www\.)?(?:vimeo)\.com.*(?:videos|video|channels|)\/([\d]+)/i;
   const dTubeRegex = /(https?:\/\/d.tube.#!\/v\/)(\w+)\/(\w+)/g;
@@ -87,6 +88,21 @@ export const markDown2Html = (input) => {
         el.setAttribute('data-tag', postMatch[2]);
         el.setAttribute('data-author', postMatch[3].replace('@', ''));
         el.setAttribute('data-permlink', postMatch[4]);
+
+        f = true;
+      }
+    }
+
+    // If a copied post link
+    if (!f) {
+      const postMatch = href.match(copiedPostRegex);
+      if (postMatch) {
+        el.className = 'markdown-post-link';
+        el.removeAttribute('href');
+
+        el.setAttribute('data-tag', postMatch[1]);
+        el.setAttribute('data-author', postMatch[2].replace('@', ''));
+        el.setAttribute('data-permlink', postMatch[3]);
 
         f = true;
       }
