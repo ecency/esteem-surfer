@@ -12,7 +12,7 @@
       <ul>
         <li ng-repeat="item in accountList">
           <div class="author-card">
-            <div ng-click="clicked(author)" class="author-pic" author-bg-img-style author="{{ item.name }}"></div>
+            <div ng-click="clicked(item)" class="author-pic" author-bg-img-style author="{{ item.name }}"></div>
             <author-name author-data="item"></author-name>
             <span class="author-full-name">&nbsp;{{ item.full_name }}&nbsp;</span>
           </div>
