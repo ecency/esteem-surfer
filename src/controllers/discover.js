@@ -48,6 +48,12 @@ export default ($scope, $rootScope, $location, steemService) => {
     loadAccounts();
   }
 
+  $scope.clicked = (user) => {
+    let u = `/account/${user.name}`;
+    $location.path(u);
+  };
+
+
   $scope.refresh = () => {
     loadAccounts();
   };
