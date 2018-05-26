@@ -65,7 +65,7 @@ export default () => {
         jsonMeta = JSON.parse($scope.post.json_metadata);
       } catch (e){ }
 
-      $scope.app = jsonMeta.app;
+      $scope.app = $filter('appName')(jsonMeta.app);
 
       const goDetail = () => {
         $rootScope.selectedPost = $scope.post;

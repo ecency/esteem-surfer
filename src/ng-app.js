@@ -133,6 +133,7 @@ import dateFormattedDir from './filters/date-formatted.js';
 import {contentSummaryChildFilter} from './filters/content-summary-child';
 import steemPowerFilter from './filters/steem-power';
 import steemDollarFilter from './filters/steem-dollar';
+import {appNameFilter} from './filters/app-name';
 
 
 import constants from './constants';
@@ -541,6 +542,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
   .filter('contentSummaryChild', contentSummaryChildFilter)
   .filter('steemPower', steemPowerFilter)
   .filter('steemDollar', steemDollarFilter)
+  .filter('appName', appNameFilter)
   .filter('money2Number', () => {
     return (input) => {
       if (input) {
