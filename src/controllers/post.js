@@ -226,7 +226,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
       } catch (e) {
       }
 
-      $scope.app = jsonMeta.app;
+      $scope.app = $filter('appName')(jsonMeta.app);
 
       // Sometimes tag list comes with duplicate items. Needs to singularize.
       $scope.tags = [...new Set(jsonMeta.tags)];
