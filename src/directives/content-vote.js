@@ -167,9 +167,7 @@ export default () => {
         $scope.voting = true;
         let perc = getVotePerc();
         let weight = perc * 100;
-        // console.log("voting with " + weight);
         steemAuthenticatedService.vote($scope.content.author, $scope.content.permlink, weight).then((resp) => {
-          $scope.voted = true;
           $rootScope.$broadcast('CONTENT_VOTED', {
             'author': $scope.content.author,
             'permlink': $scope.content.permlink,
@@ -181,6 +179,13 @@ export default () => {
           $scope.voting = false;
         })
       };
+
+      $rootScope.$on('CONTENT_VOTED', (r, d) => {
+        if ($scope.content.author === d.author && $scope.content.permlink === d.permlink) {
+          $scope.voted = d.weight > 0;
+        }
+      });
+
 
       const unvote = () => {
         $scope.voting = true;
