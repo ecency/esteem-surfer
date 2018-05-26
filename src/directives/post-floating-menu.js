@@ -1,3 +1,5 @@
+const strShareSuffix = 'shared via eSteem Surfer';
+
 const makeSteemitUrl = (cat, author, permlink) => {
   return `https://steemit.com/${cat}/@${author}/${permlink}`;
 };
@@ -12,12 +14,14 @@ const makeCopyAddress = (title, cat, author, permlink) => {
 
 const makeShareUrlReddit = (cat, author, permlink, title) => {
   const u = makeSteemitUrl(cat, author, permlink);
-  return `https://reddit.com/submit?url=${encodeURIComponent(u)}&title=${encodeURIComponent(title)}`;
+  const t = `${title} | ${strShareSuffix}`;
+  return `https://reddit.com/submit?url=${encodeURIComponent(u)}&title=${encodeURIComponent(t)}`;
 };
 
 const makeShareUrlTwitter = (cat, author, permlink, title) => {
   const u = makeSteemitUrl(cat, author, permlink);
-  return `https://twitter.com/intent/tweet?url=${encodeURIComponent(u)}&text=${encodeURIComponent(title)}`;
+  const t = `${title} | ${strShareSuffix}`;
+  return `https://twitter.com/intent/tweet?url=${encodeURIComponent(u)}&text=${encodeURIComponent(t)}`;
 };
 
 const makeShareUrlFacebook = (cat, author, permlink) => {
