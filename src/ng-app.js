@@ -804,6 +804,18 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'Reply';
         case 'OK':
           return 'OK';
+        case 'POST_MENU_REBLOG':
+          return 'Reblog';
+        case 'POST_MENU_EXTERNAL':
+          return 'Open in browser';
+        case 'POST_MENU_COPY':
+          return 'Copy address';
+        case 'POST_MENU_COPIED':
+          return 'Copied to clipboard';
+        case 'POST_MENU_SHARE':
+          return 'Share';
+        case 'POST_MENU_FLAG':
+          return 'Flag';
         default:
           return s;
       }

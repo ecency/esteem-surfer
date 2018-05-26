@@ -1,28 +1,28 @@
 <div class="post-floating-menu">
   <a class="box-btn btn-reblog" ng-class="{'reblogged': reblogged, 'reblogging': reblogging}" ng-click=""
-     title="Reblog" login-required required-keys="'posting'" on-login-success="reblog()">
+     title="{{ 'POST_MENU_REBLOG' | __ }}" login-required required-keys="'posting'" on-login-success="reblog()">
     <i ng-if="!reblogging" class="fa fa-retweet"></i>
     <i ng-if="reblogging" class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
   </a>
-  <a class="box-btn btn-external" ng-click="" title="Open in browser">
+  <a class="box-btn btn-external" ng-click="" title="{{ 'POST_MENU_EXTERNAL' | __ }}">
     <i class="fa fa-external-link"></i>
     <span class="service-list">
       <button class="btn btn-xs btn-link" ng-click="openSteemit()">steemit</button>
       <button class="btn btn-xs btn-link" ng-click="openBusy()">busy</button>
     </span>
   </a>
-  <a class="box-btn btn-copy" ng-click="copyAddress()" title="Copy address">
+  <a class="box-btn btn-copy" ng-click="copyAddress()" title="{{ 'POST_MENU_COPY' | __ }}">
     <i class="fa fa-clipboard"></i>
   </a>
-  <div class="box-btn btn-external" ng-click="" title="Share">
+  <div class="box-btn btn-external" ng-click="" title="{{ 'POST_MENU_SHARE' | __ }}">
     <i class="fa fa-share-alt"></i>
     <span class="service-list">
-      <button class="btn  btn-link" ng-click="shareReddit()"><i class="fa fa-reddit"></i></button>
+      <button class="btn  btn-link" ng-click="shareReddit()"><i class="fa fa-reddit-alien"></i></button>
       <button class="btn  btn-link" ng-click="shareTwitter()"><i class="fa fa-twitter"></i></button>
       <button class="btn  btn-link" ng-click="shareFacebook()"><i class="fa fa-facebook"></i></button>
     </span>
   </div>
-  <a class="box-btn btn-flag" title="{{ 'FLAG' | translate }}" ng-class="{'flagged': flagged, 'flagging': flagging}" ng-click=""
+  <a class="box-btn btn-flag" title="{{ 'POST_MENU_FLAG' | __ }}" ng-class="{'flagged': flagged, 'flagging': flagging}" ng-click=""
      login-required required-keys="'posting'" on-login-success="flag()">
     <i ng-if="!flagging" class="fa fa-flag"></i>
     <i ng-if="flagging" class="fa fa-spin fa-spinner fa-circle-o-notch"></i>

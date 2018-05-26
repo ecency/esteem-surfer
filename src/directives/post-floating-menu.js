@@ -144,7 +144,7 @@ export default () => {
       $scope.copyAddress = () => {
         const s = makeCopyAddress($scope.content.title, $scope.content.parent_permlink, $scope.content.author, $scope.content.permlink);
         window.writeClipboard(s);
-        $rootScope.showSuccess("Copied to clipboard")
+        $rootScope.showSuccess($filter('__')('POST_MENU_COPIED'))
       };
 
       $scope.shareReddit = () => {
