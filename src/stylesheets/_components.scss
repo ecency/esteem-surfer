@@ -507,6 +507,7 @@
 
 .comment-list-item {
   @include clearfix();
+  position: relative;
 
   .comment-list-item-inner {
     @include clearfix();
@@ -558,6 +559,30 @@
 
           margin-left: 6px;
           margin-right: 5px;
+        }
+      }
+    }
+
+    .comment-extra-tools {
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      .comment-flagging {
+        float: left;
+
+        a {
+          color: $textColorLight;
+          font-size: 12px;
+          outline: 0;
+
+          &:hover, &.flagged {
+            color: #bd0000 !important;
+          }
+
+          &.flagged, &.flagging {
+            pointer-events: none;
+          }
         }
       }
     }

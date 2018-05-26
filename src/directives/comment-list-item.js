@@ -39,12 +39,22 @@ export default () => {
             <div class="comment-edit" ng-if="canEdit"><a ng-click="" login-required required-keys="'posting'" on-login-success="editClicked()" title="{{ 'EDIT' | translate }}"><i class="fa fa-pencil"></i></a></div>
             <div class="comment-delete" ng-if="canEdit"><a ng-click="" login-required required-keys="'posting'" on-login-success="deleteClicked()" title="{{ 'REMOVE' | translate }}"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="deleting"></i><i class="fa fa-times" ng-if="!deleting"></i></a></div>
           </div>
+          <div class="comment-extra-tools">
+            <div class="comment-flagging">
+              <a ng-class="{'flagged': flagged, 'flagging': flagging}" ng-click="" login-required required-keys="'posting'" on-login-success="flagClicked()">
+                <i ng-if="!flagging" class="fa fa-flag"></i>
+                <i ng-if="flagging" class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
+              </a>
+            </div>
+          </div>
         </div>
         <comment-editor ng-if="commentFlag" content="comment" mode="{{ commentMode }}" on-cancel="onCommentEditorCanceled()" after-success="afterNewComment"></comment-editor>
         <comment-list comments="comment.comments"></comment-list>
       </div>
     `,
-    controller: ($scope, $rootScope, $filter, $timeout, $window, steemAuthenticatedService, activeUsername) => {
+    controller: ($scope, $rootScope, $filter, $timeout, $window, $confirm, steemAuthenticatedService, activeUsername) => {
+
+      const activeUser = activeUsername();
 
       if (!$scope.comment.comments) {
         $scope.comment.comments = [];
@@ -55,7 +65,7 @@ export default () => {
       $scope.deleted = false;
 
       const detectCanEdit = () => {
-        $scope.canEdit = (activeUsername() === $scope.comment.author);
+        $scope.canEdit = (activeUser === $scope.comment.author);
       };
 
       detectCanEdit();
@@ -108,6 +118,49 @@ export default () => {
 
       $rootScope.$on('commentEditorOpening', () => {
         $scope.commentFlag = false;
+      });
+
+
+      $scope.flagged = false;
+      $scope.canFlag = !(activeUser === $scope.comment.author);
+      $scope.flagging = false;
+
+
+      if ($scope.canFlag && activeUser) {
+        for (let vote of $scope.comment.active_votes) {
+          if (vote.voter === activeUser && vote.percent < 0) {
+            $scope.flagged = true;
+          }
+        }
+      }
+
+
+      $scope.flagClicked = () => {
+
+
+        $confirm($filter('translate')('ARE_YOU_SURE'), $filter('translate')('FLAGGING_TEXT'), () => {
+          const author = $scope.comment.author;
+          const permlink = $scope.comment.permlink;
+
+          $scope.flagging = true;
+          steemAuthenticatedService.vote(author, permlink, -10000).then((resp) => {
+            $rootScope.$broadcast('CONTENT_VOTED', {
+              author: author,
+              permlink: permlink,
+              weight: -1
+            });
+          }).catch((e) => {
+            $rootScope.showError(e);
+          }).then(() => {
+            $scope.flagging = false;
+          });
+        });
+      };
+
+      $rootScope.$on('CONTENT_VOTED', (r, d) => {
+        if ($scope.comment.author === d.author && $scope.comment.permlink === d.permlink) {
+          $scope.flagged = d.weight < 0;
+        }
       });
 
       $scope.onCommentEditorCanceled = () => {
