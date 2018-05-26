@@ -27,9 +27,9 @@
           </button>
         </div>
       </div>
-      <!--<button class="btn btn-primary" ng-click="markdownHelperClicked()" ng-if="$root.showMarkdownResultHelper">Save
+      <button class="btn btn-primary" ng-click="markdownHelperClicked()" ng-if="$root.showMarkdownResultHelper">Save
         Markdown Result to Test
-      </button>-->
+      </button>
       <div class="post-body markdown-view selectable" ng-bind-html="body | markDown2Html"></div>
       <div class="post-footer">
         <div class="tag-list">
@@ -41,7 +41,6 @@
           <span class="post-author-reputation">{{ post.author_reputation|authorReputation|number:0 }}</span>
           <span class="post-app"><span class="via">{{ 'VIA' | __ }}</span> {{ app }}</span>
           <div class="post-interaction">
-            <!-- <a class="post-resteem" ng-click="resteem()"><i class="fa fa-retweet"></i></a> -->
             <a class="post-leave-comment" ng-click="" login-required required-keys="'posting'" on-login-success="replyClicked()">{{ 'POST_REPLY' | __ }}</a>
             <span class="post-comment-count"><i class="fa fa-comments"></i> {{ post.children }}</span>
             <a class="post-reload" ng-click="refresh()" uib-tooltip="{{ 'POST_RELOAD' | __ }}"><i class="fa fa-refresh"></i></a>
