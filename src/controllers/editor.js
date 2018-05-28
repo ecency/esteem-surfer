@@ -151,7 +151,9 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
   if ($rootScope.editorDraft) {
     $scope.title = $rootScope.editorDraft.title;
     $scope.body = $scope.tempBody = $rootScope.editorDraft.body;
-    $scope.tags = $rootScope.editorDraft.tags;
+
+    // replace commas with space. replace double spaces with single space.
+    $scope.tags = $rootScope.editorDraft.tags.replace(/,/g, ' ').replace(/  /g, ' ');
 
     $rootScope.editorDraft = null;
 
@@ -527,7 +529,13 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
                     <h4 class="modal-title">{{ 'SCHEDULE' | translate }} </h4>
                  </div>
                  <div class="modal-body">
-                   <input type="datetime-local" class="form-control" ng-model="dt" required>
+                    <input type="datetime-local" class="form-control" id="ratification-deadline" ng-model="dt" required>
+                   <input type="datetime-local" class="form-control" id="ratification-deadline" ng-model="deadline" required>
+                   <!--
+                    <div uib-datepicker ng-model="dt" class="well well-sm date-picker" datepicker-options="options" ng-change="dateChanged()"></div>
+                    <div class="time-picker">
+                          <div uib-timepicker ng-model="dt" hour-step="1" minute-step="1"  show-meridian="false" min="timePickerMin"></div>
+                    </div>-->
                  </div>
                   <div class="modal-footer">
                     <button class="btn btn-primary" ng-click="send()" ng-disabled="sending"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="sending"></i>  {{ 'SCHEDULE' | translate }}</button>
@@ -582,13 +590,23 @@ const scheduleModalController = ($scope, $rootScope, $filter, $location, $uibMod
 
   moment.locale($rootScope.language);
 
-  $scope.dt = moment().add(1, 'hour').seconds(0).milliseconds(0).toDate();
+  $scope.dt = moment().add(1, 'hour').startOf('hour').seconds(0).milliseconds(0).toDate();
+
+  $scope.options = {
+    minDate: new Date()
+  };
+
+  $scope.dt = new Date();
+  $scope.timePickerMin = new Date();
+
   $scope.sending = false;
 
   $scope.send = () => {
     $scope.sending = true;
 
     const scheduleDate = new Date($scope.dt).toISOString();
+    console.log(scheduleDate);
+    return;
     const permlink = createPermlink(title);
     const meta = extractMetadata(body);
     const jsonMetadata = makeJsonMetadata(meta, tags, appVersion);
