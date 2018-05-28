@@ -59,6 +59,12 @@ select {
       border-right-color: #2a384a;
     }
   }
+
+  &.top > .arrow {
+    &:after {
+      border-top-color: #2a384a;
+    }
+  }
 }
 
 // MODAL
