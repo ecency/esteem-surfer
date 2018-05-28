@@ -561,6 +561,13 @@
           margin-right: 5px;
         }
       }
+
+      .comment-reveal {
+        color: $textColorLight;
+        display: none;
+        font-size: 13px;
+        margin-left: 16px;
+      }
     }
 
     .comment-extra-tools {
@@ -696,6 +703,31 @@
 
   &.deleted {
     display: none;
+  }
+
+  &.bad {
+    >.comment-list-item-inner {
+      .comment-header {
+        .comment-reveal {
+          display: inline-block;
+        }
+      }
+      .comment-body, .comment-footer {
+        display: none;
+      }
+
+      >.comment-header, >.comment-extra-tools {
+        opacity: 0.5;
+      }
+    }
+
+    &:hover {
+      >.comment-list-item-inner {
+        > .comment-header, > .comment-extra-tools {
+          opacity: 1;
+        }
+      }
+    }
   }
 }
 
@@ -1315,10 +1347,10 @@ STRUCTURE:
           width: 100px;
 
           .btn {
+            cursor: pointer;
+            margin-right: 2px;
             padding-left: 4px;
             padding-right: 4px;
-            margin-right: 2px;
-            cursor: pointer;
 
             .fa {
               font-size: 18px;
