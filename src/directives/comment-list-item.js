@@ -1,3 +1,5 @@
+import {authorReputation} from '../filters/author-reputation'
+
 export default () => {
   return {
     restrict: 'AE',
@@ -12,13 +14,14 @@ export default () => {
       };
     },
     template: `
-      <div class="comment-list-item" ng-class="{'selected': comment._selected_, 'deleting': deleting, 'deleted': deleted}">
+      <div class="comment-list-item" ng-class="{'selected': comment._selected_, 'deleting': deleting, 'deleted': deleted, 'bad': isBad }">
         <div class="comment-list-item-inner">
           <div class="comment-author-pic" author-bg-img-style author="{{ comment.author }}"></div>
           <div class="comment-header">
            <span class="comment-author"><author-name author-data="comment.author_data"></author-name> </span>
             <span class="comment-author-reputation">{{ comment.author_reputation|authorReputation|number:0 }}</span>
             <span class="comment-date"><span title="{{ comment.created|dateFormatted }}"> {{comment.created|timeAgo}}</span></span>
+            <a ng-click="reveal()" class="comment-reveal">Reveal Comment</a>
           </div>
           <div class="comment-body markdown-view mini-markdown" ng-bind-html="comment.body | markDown2Html"></div>
           <div class="comment-footer">
@@ -173,6 +176,12 @@ export default () => {
         } else if (mode === 'edit') {
           $scope.comment.body = newComment.body;
         }
+      };
+
+      $scope.isBad = $scope.comment.net_rshares < 0 || $scope.comment.author_data.reputation < 0;
+
+      $scope.reveal = () => {
+        $scope.isBad = false;
       }
     }
   };
