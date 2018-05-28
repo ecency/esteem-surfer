@@ -42,13 +42,27 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
   };
 
   const compileComments = (parent) => {
+    const totalPayout = (c) => {
+      return parseFloat(c.pending_payout_value.split(' ')[0]) +
+        parseFloat(c.total_payout_value.split(' ')[0]) +
+        parseFloat(c.curator_payout_value.split(' ')[0]);
+    };
+
     const sortOrders = {
       trending: (a, b) => {
-        const keyA = a['pending_payout_value'],
-          keyB = b['pending_payout_value'];
 
-        if (keyA > keyB) return -1;
-        if (keyA < keyB) return 1;
+        if (a.net_rshares < 0) {
+          return 1;
+        } else if (b.net_rshares) {
+          return -1;
+        }
+
+        const apayout = totalPayout(a);
+        const bpayout = totalPayout(b);
+        if (apayout !== bpayout) {
+          return bpayout - apayout;
+        }
+
         return 0;
       },
       author_reputation: (a, b) => {
@@ -68,11 +82,18 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
         return 0;
       },
       created: (a, b) => {
+        if (a.net_rshares < 0) {
+          return 1;
+        } else if (b.net_rshares) {
+          return -1;
+        }
+
         const keyA = Date.parse(a['created']),
           keyB = Date.parse(b['created']);
 
         if (keyA > keyB) return -1;
         if (keyA < keyB) return 1;
+
         return 0;
       }
     };
