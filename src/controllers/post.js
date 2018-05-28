@@ -71,6 +71,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
 
         if (keyA > keyB) return -1;
         if (keyA < keyB) return 1;
+
         return 0;
       },
       votes: (a, b) => {
@@ -79,6 +80,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
 
         if (keyA > keyB) return -1;
         if (keyA < keyB) return 1;
+
         return 0;
       },
       created: (a, b) => {
