@@ -1,4 +1,4 @@
-import {markDown2Html, replaceAuthorNames, replaceTags} from './markdown-2-html';
+import {markDown2Html, linkify} from './markdown-2-html';
 import {expect} from "chai";
 
 const path = require('path');
@@ -11,27 +11,27 @@ describe('Replace Author Names', () => {
 
     let input = 'lorem ipsum @dolor sit amet';
     let expected = "lorem ipsum <a class=\"markdown-author-link\" data-author=\"dolor\">@dolor</a> sit amet";
-    expect(replaceAuthorNames(input)).to.equal(expected);
+    expect(linkify(input)).to.equal(expected);
 
 
     input = '@lorem ipsum @dolor sit amet';
     expected = "<a class=\"markdown-author-link\" data-author=\"lorem\">@lorem</a> ipsum <a class=\"markdown-author-link\" data-author=\"dolor\">@dolor</a> sit amet";
-    expect(replaceAuthorNames(input)).to.equal(expected);
+    expect(linkify(input)).to.equal(expected);
 
 
     input = '@lorem @ipsum @dolor sit amet';
     expected = "<a class=\"markdown-author-link\" data-author=\"lorem\">@lorem</a> <a class=\"markdown-author-link\" data-author=\"ipsum\">@ipsum</a> <a class=\"markdown-author-link\" data-author=\"dolor\">@dolor</a> sit amet";
-    expect(replaceAuthorNames(input)).to.equal(expected);
+    expect(linkify(input)).to.equal(expected);
 
 
     input = '@lorem @ipsum @dolor \n @sit amet';
     expected = "<a class=\"markdown-author-link\" data-author=\"lorem\">@lorem</a> <a class=\"markdown-author-link\" data-author=\"ipsum\">@ipsum</a> <a class=\"markdown-author-link\" data-author=\"dolor\">@dolor</a> \n <a class=\"markdown-author-link\" data-author=\"sit\">@sit</a> amet";
-    expect(replaceAuthorNames(input)).to.equal(expected);
+    expect(linkify(input)).to.equal(expected);
 
 
     input = '@lorem @ipsum @dolor \n @Sit amet';
     expected = "<a class=\"markdown-author-link\" data-author=\"lorem\">@lorem</a> <a class=\"markdown-author-link\" data-author=\"ipsum\">@ipsum</a> <a class=\"markdown-author-link\" data-author=\"dolor\">@dolor</a> \n <a class=\"markdown-author-link\" data-author=\"sit\">@Sit</a> amet";
-    expect(replaceAuthorNames(input)).to.equal(expected);
+    expect(linkify(input)).to.equal(expected);
   });
 });
 
@@ -41,31 +41,46 @@ describe('Replace Tags', () => {
 
     let input = 'lorem ipsum #dolor sit amet';
     let expected = "lorem ipsum <a class=\"markdown-tag-link\" data-tag=\"dolor\">#dolor</a> sit amet";
-    expect(replaceTags(input)).to.equal(expected);
+    expect(linkify(input)).to.equal(expected);
 
     input = '#lorem ipsum #dolor sit amet';
     expected = "<a class=\"markdown-tag-link\" data-tag=\"lorem\">#lorem</a> ipsum <a class=\"markdown-tag-link\" data-tag=\"dolor\">#dolor</a> sit amet";
-    expect(replaceTags(input)).to.equal(expected);
+    expect(linkify(input)).to.equal(expected);
 
     input = '#lorem #ipsum #dolor sit amet';
     expected = "<a class=\"markdown-tag-link\" data-tag=\"lorem\">#lorem</a> <a class=\"markdown-tag-link\" data-tag=\"ipsum\">#ipsum</a> <a class=\"markdown-tag-link\" data-tag=\"dolor\">#dolor</a> sit amet";
-    expect(replaceTags(input)).to.equal(expected);
+    expect(linkify(input)).to.equal(expected);
 
     input = '#lorem #ipsum #dolor \n #sit amet';
     expected = "<a class=\"markdown-tag-link\" data-tag=\"lorem\">#lorem</a> <a class=\"markdown-tag-link\" data-tag=\"ipsum\">#ipsum</a> <a class=\"markdown-tag-link\" data-tag=\"dolor\">#dolor</a> \n <a class=\"markdown-tag-link\" data-tag=\"sit\">#sit</a> amet";
-    expect(replaceTags(input)).to.equal(expected);
+    expect(linkify(input)).to.equal(expected);
 
     input = '#lorem #ipsum #dolor \n #Sit amet';
     expected = "<a class=\"markdown-tag-link\" data-tag=\"lorem\">#lorem</a> <a class=\"markdown-tag-link\" data-tag=\"ipsum\">#ipsum</a> <a class=\"markdown-tag-link\" data-tag=\"dolor\">#dolor</a> \n <a class=\"markdown-tag-link\" data-tag=\"sit\">#Sit</a> amet";
-    expect(replaceTags(input)).to.equal(expected);
+    expect(linkify(input)).to.equal(expected);
 
     input = 'you are #1';
     expected = "you are #1";
-    expect(replaceTags(input)).to.equal(expected);
+    expect(linkify(input)).to.equal(expected);
 
     input = 'you are #1 #steemit-promo';
     expected = "you are #1 <a class=\"markdown-tag-link\" data-tag=\"steemit-promo\">#steemit-promo</a>";
-    expect(replaceTags(input)).to.equal(expected);
+    expect(linkify(input)).to.equal(expected);
+
+  });
+});
+
+
+describe('Replace Both Mentions and Tags', () => {
+  it('Should replace', () => {
+
+    let input = 'lorem ipsum #dolor sit @amet';
+    let expected = "lorem ipsum <a class=\"markdown-tag-link\" data-tag=\"dolor\">#dolor</a> sit <a class=\"markdown-author-link\" data-author=\"amet\">@amet</a>";
+    expect(linkify(input)).to.equal(expected);
+
+    input = 'lorem ipsum @#dolor sit amet';
+    expected = "lorem ipsum @#dolor sit amet";
+    expect(linkify(input)).to.equal(expected);
 
   });
 });
