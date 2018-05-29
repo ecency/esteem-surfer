@@ -13,6 +13,7 @@ package-lock.json
 /app/app.js
 /app/background.js
 /app/**/*.map
+/app/*.map
 
 
 
