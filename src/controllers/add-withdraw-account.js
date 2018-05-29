@@ -1,3 +1,5 @@
+import badActors from '../data/bad-actors.json';
+
 export default ($scope, $rootScope, $timeout, $filter, $uibModalInstance, autoCancelTimeout, steemService, steemAuthenticatedService, afterSuccess) => {
 
   $scope.to = '';
@@ -26,6 +28,10 @@ export default ($scope, $rootScope, $timeout, $filter, $uibModalInstance, autoCa
     autoCancelTimeout(() => {
       if (!$scope.to) {
         return false;
+      }
+
+      if (badActors.includes($scope.to)) {
+        $scope.toErr = $filter('__')('TRANSFER_BAD_ACTOR_ERR');
       }
 
       $scope.toData = null;

@@ -818,6 +818,8 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'Share';
         case 'POST_MENU_FLAG':
           return 'Flag';
+        case 'TRANSFER_BAD_ACTOR_ERR':
+          return 'Use caution sending to this account. Please double check your spelling for possible phishing.';
         default:
           return s;
       }
