@@ -1,4 +1,5 @@
 import {amountFormatCheck, formatStrAmount} from './helper';
+import badActors from '../data/bad-actors.json';
 
 export default ($scope, $rootScope, $routeParams, $timeout, $location, $filter, autoCancelTimeout, steemService, steemAuthenticatedService, userService, activeUsername) => {
   const mode = $routeParams.mode ? $routeParams.mode : 'normal';
@@ -52,6 +53,10 @@ export default ($scope, $rootScope, $routeParams, $timeout, $location, $filter, 
     autoCancelTimeout(() => {
       if (!$scope.to) {
         return false;
+      }
+
+      if (badActors.includes($scope.to)) {
+        $scope.toErr = $filter('__')('TRANSFER_BAD_ACTOR_ERR');
       }
 
       $scope.toData = null;

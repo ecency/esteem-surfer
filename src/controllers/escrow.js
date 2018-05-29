@@ -1,6 +1,7 @@
 import moment from 'moment';
 
 import {amountFormatCheck, formatStrAmount} from './helper';
+import badActors from '../data/bad-actors.json';
 
 export default ($scope, $rootScope, $routeParams, $location, $timeout, $filter, autoCancelTimeout, steemService, userService, steemAuthenticatedService, activeUsername) => {
 
@@ -60,6 +61,10 @@ export default ($scope, $rootScope, $routeParams, $location, $timeout, $filter, 
         return false;
       }
 
+      if (badActors.includes($scope.to)) {
+        $scope.toErr = $filter('__')('TRANSFER_BAD_ACTOR_ERR');
+      }
+
       $scope.toData = null;
       $scope.fetchingTo = true;
 
@@ -85,6 +90,10 @@ export default ($scope, $rootScope, $routeParams, $location, $timeout, $filter, 
     autoCancelTimeout(() => {
       if (!$scope.agent) {
         return false;
+      }
+
+      if (badActors.includes($scope.agent)) {
+        $scope.toErr = $filter('__')('TRANSFER_BAD_ACTOR_ERR');
       }
 
       $scope.agentData = null;
