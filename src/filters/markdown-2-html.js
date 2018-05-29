@@ -3,8 +3,43 @@ import {sanitizeNode} from '../helpers/html-sanitizer';
 
 const md = new Remarkable({html: true, breaks: true, linkify: true});
 
-export const replaceAuthorNames = (input) => {
-  return input.replace(
+const traverse = (node, depth = 0) => {
+  if (!node || !node.childNodes) return;
+
+  node.childNodes.forEach((child) => {
+    if (child.nodeName === '#text') linkifyNode(child);
+
+    traverse(child, depth + 1);
+  });
+};
+
+const linkifyNode = (node) => {
+
+  if (['A', 'CODE'].includes(node.parentNode.nodeName)) return;
+
+  const linkified = linkify(node.nodeValue);
+  if (linkified !== node.nodeName) {
+    const replaceNode = document.createElement('span');
+    node.parentNode.insertBefore(replaceNode, node);
+    node.parentNode.removeChild(node);
+    replaceNode.outerHTML = linkified;
+  }
+};
+
+export const linkify = (content) => {
+
+  // Tags
+  content = content.replace(/(^|\s|>)(#[-a-z\d]+)/gi, tag => {
+    if (/#[\d]+$/.test(tag)) return tag; // do not allow only numbers (like #1)
+    const preceding = /^\s|>/.test(tag) ? tag[0] : ''; // space or closing tag (>)
+    tag = tag.replace('>', ''); // remove closing tag
+    const tag2 = tag.trim().substring(1);
+    const tagLower = tag2.toLowerCase();
+    return preceding + `<a class="markdown-tag-link" data-tag="${tagLower}">${tag.trim()}</a>`;
+  });
+
+  // User mentions
+  content = content.replace(
     /(^|[^a-zA-Z0-9_!#$%&*@＠\/]|(^|[^a-zA-Z0-9_+~.-\/]))[@＠]([a-z][-\.a-z\d]+[a-z\d])/gi,
     (match, preceeding1, preceeding2, user) => {
       const userLower = user.toLowerCase();
@@ -13,31 +48,17 @@ export const replaceAuthorNames = (input) => {
       return `${preceedings}<a class="markdown-author-link" data-author="${userLower}">@${user}</a>`
     }
   );
+
+  return content;
 };
 
-export const replaceTags = (input) => {
-  return input.replace(/(^|\s|>)(#[-a-z\d]+)/gi, tag => {
-    if (/#[\d]+$/.test(tag)) return tag; // do not allow only numbers (like #1)
-    const preceding = /^\s|>/.test(tag) ? tag[0] : ''; // space or closing tag (>)
-    tag = tag.replace('>', ''); // remove closing tag
-    const tag2 = tag.trim().substring(1);
-    const tagLower = tag2.toLowerCase();
-    return preceding + `<a class="markdown-tag-link" data-tag="${tagLower}">${tag.trim()}</a>`;
-  });
-};
 
 export const markDown2Html = (input) => {
   if (!input) {
     return '';
   }
 
-  // Start replacing user names
-  let output = replaceAuthorNames(input);
-
-  // Replace tags
-  output = replaceTags(output);
-
-  output = md.render(output);
+  let output = md.render(input);
 
   const imgRegex = /(https?:\/\/.*\.(?:tiff?|jpe?g|gif|png|svg|ico))(.*)/gim;
   const postRegex = /^https?:\/\/(.*)\/(.*)\/(@[\w\.\d-]+)\/(.*)/i;
@@ -170,10 +191,7 @@ export const markDown2Html = (input) => {
       el.removeAttribute('href');
     }
   });
-
   output = tempEl.innerHTML;
-
-  // console.log(output)
 
   tempEl = document.createElement('div');
   tempEl.innerHTML = output;
@@ -200,12 +218,20 @@ export const markDown2Html = (input) => {
     });
   });
 
+  // Sanitize
   tempEl = sanitizeNode(tempEl);
-
   output = tempEl.innerHTML;
+
+  //
+  tempEl = document.createElement('div');
+  tempEl.innerHTML = output;
+  traverse(tempEl);
+  output = tempEl.innerHTML;
+
 
   return output;
 };
+
 
 export const markDown2HtmlFilter = ($sce) => {
   return (postBody) => {
