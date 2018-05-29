@@ -42,23 +42,27 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
   };
 
   const compileComments = (parent) => {
-    const totalPayout = (c) => {
+    const allPayout = (c) => {
       return parseFloat(c.pending_payout_value.split(' ')[0]) +
         parseFloat(c.total_payout_value.split(' ')[0]) +
         parseFloat(c.curator_payout_value.split(' ')[0]);
     };
 
+    function absNegative(a) {
+      return a.net_rshares < 0;
+    }
+
     const sortOrders = {
       trending: (a, b) => {
 
-        if (a.net_rshares < 0) {
+        if (absNegative(a)) {
           return 1;
-        } else if (b.net_rshares) {
+        } else if (absNegative(b)) {
           return -1;
         }
 
-        const apayout = totalPayout(a);
-        const bpayout = totalPayout(b);
+        const apayout = allPayout(a);
+        const bpayout = allPayout(b);
         if (apayout !== bpayout) {
           return bpayout - apayout;
         }
@@ -66,8 +70,8 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
         return 0;
       },
       author_reputation: (a, b) => {
-        const keyA = authorReputation(a['author_reputation']),
-          keyB = authorReputation(b['author_reputation']);
+        const keyA = authorReputation(a.author_reputation),
+          keyB = authorReputation(b.author_reputation);
 
         if (keyA > keyB) return -1;
         if (keyA < keyB) return 1;
@@ -75,8 +79,8 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
         return 0;
       },
       votes: (a, b) => {
-        const keyA = a['net_votes'],
-          keyB = b['net_votes'];
+        const keyA = a.net_votes,
+          keyB = b.net_votes;
 
         if (keyA > keyB) return -1;
         if (keyA < keyB) return 1;
@@ -84,14 +88,14 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
         return 0;
       },
       created: (a, b) => {
-        if (a.net_rshares < 0) {
+        if (absNegative(a)) {
           return 1;
-        } else if (b.net_rshares) {
+        } else if (absNegative(b)) {
           return -1;
         }
 
-        const keyA = Date.parse(a['created']),
-          keyB = Date.parse(b['created']);
+        const keyA = Date.parse(a.created),
+          keyB = Date.parse(b.created);
 
         if (keyA > keyB) return -1;
         if (keyA < keyB) return 1;
@@ -202,7 +206,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
   };
 
   $scope.sliceComments = () => {
-    let start = ( $scope.commentsCurPage - 1) * commentsPerPage;
+    let start = ($scope.commentsCurPage - 1) * commentsPerPage;
     let end = start + commentsPerPage;
 
     $scope.comments = commentsData.slice(start, end);
