@@ -62,7 +62,12 @@ export default () => {
       const permlink = $scope.content.permlink;
 
       // Rebblogging
-      $scope.hideReblog = $scope.content.author === activeUser;
+      // Hide reblog button if active user's content or it is a comment
+      $scope.hideReblog = (
+        $scope.content.author === activeUser ||
+        $scope.content.parent_author.trim().length > 0
+      );
+
       $scope.reblogged = helperService.isPostReblogged(activeUser, author, permlink);
       $scope.canReblog = !(activeUser === author);
       $scope.reblogging = false;
