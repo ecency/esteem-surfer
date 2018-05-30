@@ -244,6 +244,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
       $scope.post = content;
 
       $scope.isComment = content.parent_author.trim().length > 0;
+      $scope.hideParentLink = !content.parent_permlink.startsWith('re-');
 
       // Defined separately because $scope.post will be changed after state loaded.
       $scope.title = content.title;
