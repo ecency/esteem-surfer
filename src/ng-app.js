@@ -820,6 +820,12 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'Flag';
         case 'TRANSFER_BAD_ACTOR_ERR':
           return 'Use caution sending to this account. Please double check your spelling for possible phishing.';
+        case 'COMMENT_POST_INFO':
+          return 'You are viewing a single comment\'s thread from:';
+        case 'COMMENT_POST_VIEW_ROOT':
+          return 'View the full context';
+        case 'COMMENT_POST_VIEW_PARENT':
+          return 'View the direct parent';
         default:
           return s;
       }

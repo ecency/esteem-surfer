@@ -560,6 +560,15 @@
           margin-left: 6px;
           margin-right: 5px;
         }
+
+        a{
+          color: $textColorLight;
+
+
+          &.no-child{
+            pointer-events: none;
+          }
+        }
       }
 
       .comment-reveal {
@@ -706,7 +715,7 @@
   }
 
   &.bad {
-    >.comment-list-item-inner {
+    > .comment-list-item-inner {
       .comment-header {
         .comment-reveal {
           display: inline-block;
@@ -716,13 +725,13 @@
         display: none;
       }
 
-      >.comment-header, >.comment-extra-tools {
+      > .comment-header, > .comment-extra-tools {
         opacity: 0.5;
       }
     }
 
     &:hover {
-      >.comment-list-item-inner {
+      > .comment-list-item-inner {
         > .comment-header, > .comment-extra-tools {
           opacity: 1;
         }
@@ -949,6 +958,35 @@ STRUCTURE:
 
   margin: auto;
   width: 800px;
+
+  .comment-post-header {
+    background: $boxBg;
+    border-radius: 6px;
+    font-size: 15px;
+    padding: 10px;
+
+    .comment-post-header-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 14px;
+    }
+
+    .comment-post-header-info {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .comment-post-header-opts {
+      font-weight: bold;
+      margin: 0;
+      padding-left: 14px;
+      li {
+        a {
+          color: $textColorLight;
+        }
+      }
+    }
+  }
 
   .post-header {
     @include clearfix();

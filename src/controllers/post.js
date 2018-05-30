@@ -243,6 +243,8 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
     init().then((content) => {
       $scope.post = content;
 
+      $scope.isComment = content.parent_author.trim().length > 0;
+
       // Defined separately because $scope.post will be changed after state loaded.
       $scope.title = content.title;
       $scope.body = content.body;
@@ -266,6 +268,8 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
       const archived = content.cashout_time === '1969-12-31T23:59:59';
 
       $scope.canEdit = content.author === activeUsername() && !archived;
+
+      $scope.parent_permlink = $scope.isComment ? $scope.tags[0] : content.parent_permlink;
 
       loadState().catch((e) => {
         // TODO: Handle catch
@@ -298,8 +302,8 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
 
   main();
 
-  $scope.parentClicked = () => {
-    let u = `/posts/${activePostFilter()}/${$scope.post.parent_permlink}`;
+  $scope.parentClicked = (parent_permlink) => {
+    let u = `/posts/${activePostFilter()}/${parent_permlink}`;
     $location.path(u);
   };
 
@@ -377,5 +381,28 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
     $scope.post = null;
     $rootScope.selectedPost = null;
     main();
+  };
+
+  $scope.goParent = () => {
+    const tag = $scope.post.url.split('/')[1];
+
+    steemService.getContent($scope.post.parent_author, $scope.post.parent_permlink).then((content) => {
+      $rootScope.selectedPost = content;
+      let u = `/post/${tag}/${content.author}/${content.permlink}`;
+      $location.path(u);
+    })
+  };
+
+  $scope.goRoot = () => {
+    $rootScope.selectedPost = null;
+    const rootUrl = $scope.post.url.split('#')[0];
+    let [foo, tag, rootAuthor, rootPermlink] = rootUrl.split('/');
+    rootAuthor = rootAuthor.replace('@', '');
+
+    steemService.getContent(rootAuthor, rootPermlink).then((content) => {
+      $rootScope.selectedPost = content;
+      let u = `/post/${tag}/${content.author}/${content.permlink}`;
+      $location.path(u);
+    })
   }
 };
