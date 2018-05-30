@@ -12,7 +12,7 @@
         <p> {{ post.root_title }}</p>
         <ul class="comment-post-header-opts">
           <li><a ng-click="goRoot()">{{ 'COMMENT_POST_VIEW_ROOT' | __ }}</a></li>
-          <li ng-hide="post.parent_permlink==post.root_permlink"><a ng-click="goParent()">{{ 'COMMENT_POST_VIEW_PARENT' | __ }}</a></li>
+          <li ng-hide="hideParentLink"><a ng-click="goParent()">{{ 'COMMENT_POST_VIEW_PARENT' | __ }}</a></li>
         </ul>
       </div>
       <div class="post-header">
