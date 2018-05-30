@@ -61,4 +61,4 @@ $ npm run test
 ```
 
 [//]: # (LINKS)
-[esteem_desktop]: https://esteem.ws
+[esteem_desktop]: https://esteem.app
