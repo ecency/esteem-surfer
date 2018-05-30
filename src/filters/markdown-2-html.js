@@ -8,9 +8,15 @@ const traverse = (node, depth = 0) => {
 
   node.childNodes.forEach((child) => {
     if (child.nodeName === '#text') linkifyNode(child);
+    if (child.nodeName === 'IMG') img(child);
 
     traverse(child, depth + 1);
   });
+};
+
+const img = (node) => {
+  node.removeAttribute('width');
+  node.removeAttribute('height');
 };
 
 const linkifyNode = (node) => {
