@@ -36,8 +36,8 @@ app.on("ready", () => {
   const mainWindow = createWindow("main", {
     width: 1200,
     height: 700,
-    minWidth: 1200,
-    minHeight: 700
+    minWidth: 1000,
+    minHeight: 600
   });
 
   mainWindow.loadURL(

@@ -561,11 +561,10 @@
           margin-right: 5px;
         }
 
-        a{
+        a {
           color: $textColorLight;
 
-
-          &.no-child{
+          &.no-child {
             pointer-events: none;
           }
         }
@@ -957,7 +956,11 @@ STRUCTURE:
    */
 
   margin: auto;
-  width: 800px;
+  width: 700px;
+
+  @media (min-width: 1200px) {
+    width: 800px;
+  }
 
   .comment-post-header {
     background: $boxBg;
@@ -1315,12 +1318,15 @@ STRUCTURE:
 
   .post-floating-menu {
     height: 120px;
-
-    left: 60px;
+    left: 15px;
     position: fixed;
     text-align: center;
     top: 200px;
     z-index: 10;
+
+    @media (min-width: 1200px) {
+      left: 60px;
+    }
 
     @media (min-width: 1600px) {
       left: 200px;
@@ -1382,7 +1388,7 @@ STRUCTURE:
           padding-left: 10px;
           position: absolute;
           text-align: left;
-          width: 100px;
+          width: 97px;
 
           .btn {
             cursor: pointer;
