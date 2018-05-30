@@ -1,5 +1,5 @@
 <div class="post-floating-menu">
-  <a class="box-btn btn-reblog" ng-class="{'reblogged': reblogged, 'reblogging': reblogging}" ng-click=""
+  <a class="box-btn btn-reblog" ng-hide="hideReblog" ng-class="{'reblogged': reblogged, 'reblogging': reblogging}" ng-click=""
      title="{{ 'POST_MENU_REBLOG' | __ }}" login-required required-keys="'posting'" on-login-success="reblog()">
     <i ng-if="!reblogging" class="fa fa-retweet"></i>
     <i ng-if="reblogging" class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
