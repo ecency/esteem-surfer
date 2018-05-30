@@ -20,7 +20,7 @@ export default () => {
           <div class="comment-header">
            <span class="comment-author"><author-name author-data="comment.author_data"></author-name> </span>
             <span class="comment-author-reputation">{{ comment.author_reputation|authorReputation|number:0 }}</span>
-            <span class="comment-date"><span title="{{ comment.created|dateFormatted }}"> {{comment.created|timeAgo}}</span></span>
+            <span class="comment-date"><a ng-click="goComment()" ng-class="{'no-child': comment.comments.length==0}" title="{{ comment.created|dateFormatted }}"> {{comment.created|timeAgo}}</a></span>
             <a ng-click="reveal()" class="comment-reveal">Reveal Comment</a>
           </div>
           <div class="comment-body markdown-view mini-markdown" ng-bind-html="comment.body | markDown2Html"></div>
@@ -55,7 +55,7 @@ export default () => {
         <comment-list comments="comment.comments"></comment-list>
       </div>
     `,
-    controller: ($scope, $rootScope, $filter, $timeout, $window, $confirm, steemAuthenticatedService, activeUsername) => {
+    controller: ($scope, $rootScope, $filter, $timeout, $location, $window, $confirm, steemAuthenticatedService, activeUsername) => {
 
       const activeUser = activeUsername();
 
@@ -182,6 +182,13 @@ export default () => {
 
       $scope.reveal = () => {
         $scope.isBad = false;
+      };
+
+      $scope.goComment = () => {
+        const tag = $scope.comment.url.split('/')[1];
+        $rootScope.selectedPost = null;
+        let u = `/post/${tag}/${ $scope.comment.author}/${ $scope.comment.permlink}`;
+        $location.path(u);
       }
     }
   };

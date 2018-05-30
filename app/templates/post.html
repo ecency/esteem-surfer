@@ -6,6 +6,15 @@
     </div>
     <div class="the-post" ng-if="!loadingPost"
          ng-class="{'fetching': loadingPost || loadingRest}">
+      <div class="comment-post-header" ng-if="isComment">
+        <div class="comment-post-header-title"> RE: {{ post.root_title }}</div>
+        <div class="comment-post-header-info">{{ 'COMMENT_POST_INFO' | __ }}</div>
+        <p> {{ post.root_title }}</p>
+        <ul class="comment-post-header-opts">
+          <li><a ng-click="goRoot()">{{ 'COMMENT_POST_VIEW_ROOT' | __ }}</a></li>
+          <li ng-hide="post.parent_permlink==post.root_permlink"><a ng-click="goParent()">{{ 'COMMENT_POST_VIEW_PARENT' | __ }}</a></li>
+        </ul>
+      </div>
       <div class="post-header">
         <h1 class="post-title">{{ title }}</h1>
         <div class="post-info-bar">
@@ -13,7 +22,7 @@
           <div class="post-info-right-side">
             <span class="post-author"><author-name author-data="author"></author-name></span>
             <span class="post-author-reputation">{{ post.author_reputation|authorReputation|number:0 }}</span>
-            <span class="post-cat"><span>{{ 'IN' | translate }}</span> <a ng-click="parentClicked()">{{ post.parent_permlink }}</a></span>
+            <span class="post-cat"><span>{{ 'IN' | translate }}</span> <a ng-click="parentClicked(parent_permlink)">{{ parent_permlink }}</a></span>
             <span class="post-date"><span
               title="{{ post.created|dateFormatted }}"> {{post.created|timeAgo}}</span></span>
           </div>
