@@ -114,7 +114,6 @@ export const extractMetadata = (body) => {
   return out;
 };
 
-
 export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $timeout, $uibModal, eSteemService, steemService, activeUsername, steemAuthenticatedService, editorService, helperService, appVersion) => {
 
   const hasPermission = (account) => {
@@ -133,7 +132,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
   $scope.body = $scope.tempBody = undefined;
   $scope.tags = undefined;
   $scope.operationType = 'default';
-  $scope.vote = false;
+  $scope.vote = { checked: false};
 
   $scope.saving = false;
   $scope.scheduling = false;
@@ -376,7 +375,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
     const meta = extractMetadata(body);
     const jsonMeta = makeJsonMetadata(meta, tags, appVersion);
     const options = makeOptions(activeUsername(), permlink, $scope.operationType);
-    const voteWeight = $scope.vote ? (helperService.getVotePerc(activeUsername()) * 100) : null;
+    const voteWeight = $scope.vote.checked ? (helperService.getVotePerc(activeUsername()) * 100) : null;
 
     $scope.posting = true;
     $scope.processing = true;
@@ -529,13 +528,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
                     <h4 class="modal-title">{{ 'SCHEDULE' | translate }} </h4>
                  </div>
                  <div class="modal-body">
-                    <input type="datetime-local" class="form-control" id="ratification-deadline" ng-model="dt" required>
-                   <input type="datetime-local" class="form-control" id="ratification-deadline" ng-model="deadline" required>
-                   <!--
-                    <div uib-datepicker ng-model="dt" class="well well-sm date-picker" datepicker-options="options" ng-change="dateChanged()"></div>
-                    <div class="time-picker">
-                          <div uib-timepicker ng-model="dt" hour-step="1" minute-step="1"  show-meridian="false" min="timePickerMin"></div>
-                    </div>-->
+                    <input type="datetime-local" class="form-control" ng-model="dt" required>                  
                  </div>
                   <div class="modal-footer">
                     <button class="btn btn-primary" ng-click="send()" ng-disabled="sending"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="sending"></i>  {{ 'SCHEDULE' | translate }}</button>
@@ -557,7 +550,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
           return $scope.operationType;
         },
         vote: () => {
-          return $scope.vote;
+          return $scope.vote.checked;
         }
       }
     }).result.then((data) => {
@@ -577,7 +570,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
       $scope.body = $scope.tempBody = '';
       $scope.tags = '';
       $scope.operationType = 'default';
-      $scope.vote = false;
+      $scope.vote.checked = false;
 
       document.querySelector('#vote-checkbox').checked = false;
       document.querySelector('#reward-select').value = 'default';
@@ -592,21 +585,12 @@ const scheduleModalController = ($scope, $rootScope, $filter, $location, $uibMod
 
   $scope.dt = moment().add(1, 'hour').startOf('hour').seconds(0).milliseconds(0).toDate();
 
-  $scope.options = {
-    minDate: new Date()
-  };
-
-  $scope.dt = new Date();
-  $scope.timePickerMin = new Date();
-
   $scope.sending = false;
 
   $scope.send = () => {
     $scope.sending = true;
 
     const scheduleDate = new Date($scope.dt).toISOString();
-    console.log(scheduleDate);
-    return;
     const permlink = createPermlink(title);
     const meta = extractMetadata(body);
     const jsonMetadata = makeJsonMetadata(meta, tags, appVersion);
