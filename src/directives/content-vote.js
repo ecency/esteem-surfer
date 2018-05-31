@@ -190,7 +190,11 @@ export default () => {
       const unvote = () => {
         $scope.voting = true;
         steemAuthenticatedService.vote($scope.content.author, $scope.content.permlink, 0).then((resp) => {
-          $scope.voted = false;
+          $rootScope.$broadcast('CONTENT_VOTED', {
+            'author': $scope.content.author,
+            'permlink': $scope.content.permlink,
+            'weight': 0
+          });
         }).catch((e) => {
           $rootScope.showError(`Error${e.message ? ': ' + e.message : ''}`);
         }).then(() => {
