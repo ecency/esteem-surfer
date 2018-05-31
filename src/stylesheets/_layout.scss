@@ -1102,3 +1102,33 @@
   user-select: none;
 
 }
+
+.witnesses-page {
+  h1.page-title {
+    font-size: 26px;
+    margin: 0 0 20px 0;
+  }
+
+  .table-witnesses, .table-witnesses-extra {
+    margin: 20px 0 30px 0;
+
+    .btn-vote, .btn-unvote {
+      display: block;
+      font-size: 20px;
+      line-height: 22px;
+      outline: 0;
+    }
+
+    .btn-vote {
+      color: $textColorLight;
+    }
+
+    .btn-unvote {
+      color: $linkHoverColor;
+    }
+
+    .witness-thread {
+      color: $textColor;
+    }
+  }
+}

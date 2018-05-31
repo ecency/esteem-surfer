@@ -1,7 +1,58 @@
 <nav-bar></nav-bar>
 <div class="app-container">
   <div class="app-content witnesses-page">
-    <h1>Witnesses</h1>
+    <h1 class="page-title">Witnesses</h1>
+    <p>You have {{ remaining }} votes remaining. You can vote for a maximum of {{ max }} witnesses.</p>
+    <table class="table table-striped table-bordered table-witnesses">
+      <thead>
+      <tr>
+        <th style="width: 30px"></th>
+        <th style="width: 30px"></th>
+        <th style="width: 300px">Witness</th>
+        <th>Information</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="witness in witnesses">
+        <td>
+          {{ witness.num }}
+        </td>
+        <td>
+          <a class="btn-vote" ng-if="!userWitnessList.includes(witness.owner)" ng-click="" login-required required-keys="'active,owner'" on-login-success="vote(witness.owner)"><i class="fa fa-chevron-circle-up"></i></a>
+          <a class="btn-unvote" ng-if="userWitnessList.includes(witness.owner)" ng-click="" login-required required-keys="'active,owner'" on-login-success="unVote(witness.owner)"><i class="fa fa-chevron-circle-up"></i></a>
+        </td>
+        <td>{{ witness.owner }}</td>
+        <td>
+          <a class="witness-thread" ng-click="goThread(witness.postPath)" ng-if="witness.postPath">witness thread</a>
+          <a class="witness-thread" href="{{ witness.url }}" target="_external" ng-if="!witness.postPath">witness thread</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <p>If you would like to vote for a witness outside of the top 50, enter the account name below to cast a vote.</p>
+
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon">@</span>
+          <input type="text" class="form-control" ng-model="extra">
+          <span class="input-group-btn">
+            <button class="btn btn-primary" type="button" ng-click="voteExtra()">Vote</button>
+          </span>
+        </div>
+        <table class="table table-striped table-bordered table-witnesses-extra" ng-hide="extraVotes().length==0">
+          <tbody>
+          <tr ng-repeat="witness in extraVotes()">
+            <td style="width: 30px">
+              <a class="btn-vote"  ng-click="" login-required required-keys="'active,owner'" on-login-success="unVote(witness)"><i class="fa fa-times-circle"></i></a>
+            </td>
+            <td>{{ witness }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 <app-footer></app-footer>

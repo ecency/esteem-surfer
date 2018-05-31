@@ -8,7 +8,8 @@ import {
   scTransferToSavings,
   scTransferFromSavings,
   scTransferToVesting,
-  scEsrowTransfer
+  scEsrowTransfer,
+  scAccountWitnessVote
 } from '../helpers/steem-connect-helper';
 
 export default ($rootScope, steemApi, $q, cryptoService) => {
@@ -689,6 +690,34 @@ export default ($rootScope, steemApi, $q, cryptoService) => {
     return defer.promise;
   };
 
+  const witnessVote = (wif, account, witness, approve) => {
+    wif = cryptoService.decryptKey(wif);
+
+    let defer = $q.defer();
+
+    steem.broadcast.accountWitnessVote(wif, account, witness, approve, function (err, result) {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(result);
+      }
+    });
+
+    return defer.promise;
+  };
+
+  const witnessVoteSC = (account, witness, approve) => {
+    let defer = $q.defer();
+
+    scAccountWitnessVote(account, witness, approve, () => {
+      defer.resolve('OK');
+    }, () => {
+      defer.reject(`The window closed before expected.`);
+    });
+
+    return defer.promise;
+  };
+
   const getProperWif = (r) => {
     for (let i of r) {
       if ($rootScope.user.keys[i]) {
@@ -925,6 +954,20 @@ export default ($rootScope, steemApi, $q, cryptoService) => {
         return withdrawVesting(wif, account, vestingShares)
       } else {
         return withdrawVestingSc(account, vestingShares);
+      }
+    },
+    witnessVote: (witness, approve) => {
+      // requires Active or Owner key
+      const account = $rootScope.user.username;
+
+      switch ($rootScope.user.type) {
+        case 's':
+          const wif = getProperWif(['active', 'owner']);
+          return witnessVote(wif, account, witness, approve);
+          break;
+        case 'sc':
+          return witnessVoteSC(account, witness, approve);
+          break;
       }
     }
   }

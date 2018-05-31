@@ -125,6 +125,14 @@ export const startHelperServer = () => {
     }
   );
 
+  expressApp.get('/account-witness-vote', (req, res) => {
+      const data = JSON.parse(decodeURIComponent(req.query.data));
+      const transferUrl = `https://steemconnect.com/sign/account-witness-vote?account=${encodeURIComponent(data.account)}&witness=${encodeURIComponent(data.witness)}&approve=${encodeURIComponent(data.approve)}`;
+      const content = makeRedirectingContent(transferUrl);
+      res.send(content);
+    }
+  );
+
   server.listen(serverPort, serverIp);
 
   server.on('listening', function () {

@@ -237,3 +237,28 @@ export const scEsrowTransfer = (from, to, agent, escrowId, sbdAmount, steemAmoun
     windowCloseCb();
   });
 };
+
+
+export const scAccountWitnessVote = (account, witness, approve, successCb, windowCloseCb) => {
+
+  const win = new remote.BrowserWindow(windowSettings);
+  win.loadURL(`${helperUrl}/account-witness-vote?data=${encodeURIComponent(JSON.stringify({
+    'account': account,
+    'witness': witness,
+    'approve': approve
+  }))}`);
+
+  const htmlInt = setInterval(() => {
+    win.webContents.executeJavaScript(`document.body.innerHTML`, true).then((result) => {
+      if (result.includes('<h2><span>Congratulations</span></h2>')) {
+        successCb();
+        win.close();
+      }
+    })
+  }, 1500);
+
+  win.on('closed', () => {
+    clearInterval(htmlInt);
+    windowCloseCb();
+  });
+};
