@@ -133,6 +133,14 @@ export const startHelperServer = () => {
     }
   );
 
+  expressApp.get('/account-witness-proxy', (req, res) => {
+      const data = JSON.parse(decodeURIComponent(req.query.data));
+      const transferUrl = `https://steemconnect.com/sign/account-witness-proxy?account=${encodeURIComponent(data.account)}&proxy=${encodeURIComponent(data.proxy)}`;
+      const content = makeRedirectingContent(transferUrl);
+      res.send(content);
+    }
+  );
+
   server.listen(serverPort, serverIp);
 
   server.on('listening', function () {

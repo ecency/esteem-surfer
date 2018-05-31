@@ -1109,6 +1109,15 @@
     margin: 0 0 20px 0;
   }
 
+  .indicator {
+    text-align: center;
+
+    .fa {
+      color: $loadingColor;
+      font-size: 30px;
+    }
+  }
+
   .table-witnesses, .table-witnesses-extra {
     margin: 20px 0 30px 0;
 
@@ -1130,5 +1139,9 @@
     .witness-thread {
       color: $textColor;
     }
+  }
+
+  .extra-row, .proxy-row {
+    margin-bottom: 50px;
   }
 }

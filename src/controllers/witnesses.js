@@ -9,6 +9,9 @@ export default ($scope, $rootScope, $location, steemService, steemAuthenticatedS
   $scope.userWitnessList = [];
   $scope.witnesses = [];
 
+  $scope.newProxy = '';
+  $scope.proxy = null;
+
   const calcRemaining = () => {
     $scope.remaining = $scope.max - $scope.userWitnessList.length;
   };
@@ -22,6 +25,7 @@ export default ($scope, $rootScope, $location, steemService, steemAuthenticatedS
 
     steemService.getAccounts([activeUsername()]).then((resp) => {
       $scope.userWitnessList = resp[0].witness_votes;
+      $scope.proxy = resp[0].proxy;
 
       return steemService.getWitnessesByVote(null, 50);
     }).then((resp) => {
@@ -77,7 +81,7 @@ export default ($scope, $rootScope, $location, steemService, steemAuthenticatedS
     }).catch((e) => {
       $scope.userWitnessList.push(witness);
       $rootScope.showError(e);
-    })
+    });
   };
 
   $scope.voteExtra = () => {
@@ -85,6 +89,7 @@ export default ($scope, $rootScope, $location, steemService, steemAuthenticatedS
     if (!witness) {
       return;
     }
+
     $scope.vote(witness);
     $scope.extra = '';
   };
@@ -95,4 +100,38 @@ export default ($scope, $rootScope, $location, steemService, steemAuthenticatedS
       $location.path(u);
     });
   };
+
+  $scope.setProxy = () => {
+    const newProxy = $scope.newProxy.trim();
+    if (!newProxy) {
+      return;
+    }
+
+    $scope.settingProxy = true;
+    steemAuthenticatedService.witnessProxy(newProxy).then((resp) => {
+      $scope.proxy = newProxy;
+      $scope.newProxy = '';
+    }).catch((e) => {
+      $rootScope.showError(e);
+    }).then(() => {
+      $scope.settingProxy = false;
+    });
+
+  };
+
+  $scope.clearProxy = () => {
+    $scope.clearingProxy = true;
+    steemAuthenticatedService.witnessProxy('').then((resp) => {
+      $scope.proxy = null;
+      console.log(resp)
+    }).catch((e) => {
+      $rootScope.showError(e);
+    }).then(() => {
+      $scope.clearingProxy = false;
+    });
+  };
+
+  $rootScope.$on('userLoggedOut', () => {
+    $location.path('/');
+  });
 };
