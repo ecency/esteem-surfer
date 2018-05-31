@@ -226,7 +226,12 @@
   }
 
   .navbar-form {
-
+    .txt-search {
+      width: 120px;
+      @media (min-width: 1200px) {
+        width: 160px;
+      }
+    }
   }
 
   user-select: none;
