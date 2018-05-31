@@ -92,6 +92,7 @@
             <span class="prop-key"><i class="fa fa-bolt"></i></span>
             <span class="prop-value">{{ authorData.voting_power / 100 | number:2 }}</span>
           </div>
+          <a ng-click="witnessesClicked()">Witnesses</a>
         </div>
         <div class="author-content-right">
           <div class="content-list" ng-class="{'fetching': loadingContents}">

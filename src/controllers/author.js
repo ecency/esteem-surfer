@@ -666,5 +666,9 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     }, () => {
       // Cancel
     });
+  };
+
+  $scope.witnessesClicked = () => {
+    $location.path('/witnesses');
   }
 };

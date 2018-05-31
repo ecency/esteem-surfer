@@ -87,6 +87,8 @@ select {
 
 // TABLE
 .table {
+  border-color: $seperatorColor !important;
+
   th, td {
     border-color: $seperatorColor !important;
   }
