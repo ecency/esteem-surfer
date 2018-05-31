@@ -387,11 +387,8 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
   $scope.goParent = () => {
     const tag = $scope.post.url.split('/')[1];
 
-    steemService.getContent($scope.post.parent_author, $scope.post.parent_permlink).then((content) => {
-      $rootScope.selectedPost = content;
-      let u = `/post/${tag}/${content.author}/${content.permlink}`;
-      $location.path(u);
-    })
+    let u = `/post/${tag}/${$scope.post.parent_author}/${$scope.post.parent_permlink}`;
+    $location.path(u);
   };
 
   $scope.goRoot = () => {
@@ -400,10 +397,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
     let [foo, tag, rootAuthor, rootPermlink] = rootUrl.split('/');
     rootAuthor = rootAuthor.replace('@', '');
 
-    steemService.getContent(rootAuthor, rootPermlink).then((content) => {
-      $rootScope.selectedPost = content;
-      let u = `/post/${tag}/${content.author}/${content.permlink}`;
-      $location.path(u);
-    })
+    let u = `/post/${tag}/${rootAuthor}/${rootPermlink}`;
+    $location.path(u);
   }
 };
