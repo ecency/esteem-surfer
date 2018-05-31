@@ -262,3 +262,27 @@ export const scAccountWitnessVote = (account, witness, approve, successCb, windo
     windowCloseCb();
   });
 };
+
+
+export const scWitnessProxy = (account, proxy, successCb, windowCloseCb) => {
+
+  const win = new remote.BrowserWindow(windowSettings);
+  win.loadURL(`${helperUrl}/account-witness-proxy?data=${encodeURIComponent(JSON.stringify({
+    'account': account,
+    'proxy': proxy
+  }))}`);
+
+  const htmlInt = setInterval(() => {
+    win.webContents.executeJavaScript(`document.body.innerHTML`, true).then((result) => {
+      if (result.includes('<h2><span>Congratulations</span></h2>')) {
+        successCb();
+        win.close();
+      }
+    })
+  }, 1500);
+
+  win.on('closed', () => {
+    clearInterval(htmlInt);
+    windowCloseCb();
+  });
+};

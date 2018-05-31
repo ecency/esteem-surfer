@@ -9,7 +9,8 @@ import {
   scTransferFromSavings,
   scTransferToVesting,
   scEsrowTransfer,
-  scAccountWitnessVote
+  scAccountWitnessVote,
+  scWitnessProxy
 } from '../helpers/steem-connect-helper';
 
 export default ($rootScope, steemApi, $q, cryptoService) => {
@@ -718,6 +719,34 @@ export default ($rootScope, steemApi, $q, cryptoService) => {
     return defer.promise;
   };
 
+  const witnessProxy = (wif, account, proxy) => {
+    wif = cryptoService.decryptKey(wif);
+
+    let defer = $q.defer();
+
+    steem.broadcast.accountWitnessProxy(wif, account, proxy, function (err, result) {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(result);
+      }
+    });
+
+    return defer.promise;
+  };
+
+  const witnessProxySC = (account, proxy) => {
+    let defer = $q.defer();
+
+    scWitnessProxy(account, proxy, () => {
+      defer.resolve('OK');
+    }, () => {
+      defer.reject(`The window closed before expected.`);
+    });
+
+    return defer.promise;
+  };
+
   const getProperWif = (r) => {
     for (let i of r) {
       if ($rootScope.user.keys[i]) {
@@ -967,6 +996,20 @@ export default ($rootScope, steemApi, $q, cryptoService) => {
           break;
         case 'sc':
           return witnessVoteSC(account, witness, approve);
+          break;
+      }
+    },
+    witnessProxy: (proxy) => {
+      // requires Active or Owner key
+      const account = $rootScope.user.username;
+
+      switch ($rootScope.user.type) {
+        case 's':
+          const wif = getProperWif(['active', 'owner']);
+          return witnessProxy(wif, account, proxy);
+          break;
+        case 'sc':
+          return witnessProxySC(account, proxy);
           break;
       }
     }
