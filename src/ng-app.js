@@ -106,6 +106,7 @@ import transferNavBarDir from './directives/transfer-navbar';
 import contentListLoadingItemDir from './directives/content-list-loading-item';
 import showBgImageOnModalDir from './directives/show-bg-image-on-modal';
 import postFloatingMenuDir from './directives/post-floating-menu';
+import toggleListStyleDir from './directives/toggle-list-style';
 
 
 // Services
@@ -495,6 +496,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
   .directive('contentListLoadingItem', contentListLoadingItemDir)
   .directive('showBgImageOnModal', showBgImageOnModalDir)
   .directive('postFloatingMenu', postFloatingMenuDir)
+  .directive('toggleListStyle', toggleListStyleDir)
 
   .controller('postsCtrl', postsCtrl)
   .controller('settingsCtrl', settingsCtrl)
@@ -854,6 +856,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
       $rootScope.language = settingsService.get('language');
       $rootScope.server = settingsService.get('server');
       $rootScope.currency = settingsService.get('currency');
+      $rootScope.listStyle = settingsService.get('list-style', 1);
     };
 
     // If there is no setting configured (probably first run) create default settings.
