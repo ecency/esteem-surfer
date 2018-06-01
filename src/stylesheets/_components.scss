@@ -505,6 +505,126 @@
   }
 }
 
+.card-view {
+  @include clearfix();
+
+  > li {
+    border-bottom: 0;
+    float: left;
+    margin-right: 2%;
+    width: 48%;
+
+    &:nth-child(2n) {
+      margin-left: 2%;
+      margin-right: 0;
+    }
+  }
+
+  .post-list-item {
+    padding-bottom: 10px;
+    .post-header {
+      font-size: 14px;
+      .post-info-bar {
+        .post-author-pic {
+          height: 34px;
+          width: 34px;
+        }
+        .post-info-right-side {
+          margin-left: 5px;
+          .post-parent {
+            font-size: 13px;
+            &:after {
+              content: ' ';
+            }
+          }
+
+          .post-date {
+            font-size: 13px;
+            &:before {
+              content: ' ';
+              display: block;
+            }
+          }
+        }
+      }
+    }
+
+    .post-body {
+      .post-image {
+        height: 200px;
+        float: none;
+        width: 100%;
+        margin-bottom: 10px;
+        background-color: #f1f1f1;
+        text-align: center;
+
+        img {
+          margin: auto;
+        }
+      }
+
+      .post-body-title, .post-body-summary {
+        font-size: 15px;
+      }
+
+      .post-body-title{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .post-body-summary {
+        display: block;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        white-space: normal;
+        width: auto;
+        overflow: hidden;
+        height: 2.8em;
+        line-height: 1.4em;
+        margin-bottom: 15px;
+      }
+    }
+
+    .post-footer {
+      font-size: 13px;
+      .post-voting {
+        margin-right: 7px;
+        padding-right: 7px;
+        .post-up-vote {
+          margin-right: 5px;
+          a {
+            font-size: 18px;
+            line-height: 20px;
+          }
+        }
+
+        .post-total {
+          font-size: 13px;
+        }
+      }
+
+      .post-voters {
+        margin-right: 7px;
+        padding-right: 7px;
+      }
+
+      .post-comment-count {
+        margin-right: 14px;
+      }
+    }
+
+    .post-body .post-body-title,
+    .post-body .post-body-summary,
+    .post-footer {
+      float: none;
+      width: 100%;
+    }
+  }
+}
+
 .comment-list-item {
   @include clearfix();
   position: relative;
