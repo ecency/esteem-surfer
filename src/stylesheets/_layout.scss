@@ -139,10 +139,13 @@
         }
       }
 
-      .btn-reload {
+      .btn-reload, .btn-toggle-list-style {
         color: $loadingColor;
-        float: right;
         font-size: 16px;
+      }
+
+      .btn-reload {
+        margin-right: 10px;
       }
     }
 

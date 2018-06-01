@@ -522,6 +522,15 @@
 
   .post-list-item {
     padding-bottom: 10px;
+    position: relative;
+
+    .post-resteemed {
+      font-size: 13px;
+      position: absolute;
+      right: 0px;
+      top: 22px;
+    }
+
     .post-header {
       font-size: 14px;
       .post-info-bar {

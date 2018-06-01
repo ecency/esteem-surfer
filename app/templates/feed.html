@@ -5,10 +5,13 @@
     <div class="post-list" ng-class="{'fetching': loadingPosts}">
       <header>
         <h1>{{ 'FEED' | translate }}<span>: @{{ username }}</span> </h1>
-        <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingPosts" title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
+        <div class="pull-right">
+          <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingPosts" title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
+          <toggle-list-style></toggle-list-style>
+        </div>
       </header>
       <content-list-loading-item item-size="5" ng-if="loadingPosts && posts.length === 0"></content-list-loading-item>
-      <ul class="feed">
+      <ul class="feed" ng-class="{'card-view': $root.listStyle == 2}">
         <li ng-repeat="post in posts">
           <post-list-item post="post"></post-list-item>
         </li>

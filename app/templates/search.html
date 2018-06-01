@@ -12,8 +12,10 @@
       <header>
         <h1>{{ 'SEARCH_RESULTS' | __ }} <span class="results-found" ng-if="hits">{{ hits | number }} </span>
         </h1>
-        <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingPosts"
-                title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
+        <div class="pull-right">
+          <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingPosts"
+                  title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
+        </div>
       </header>
       <content-list-loading-item item-size="5" ng-if="loadingPosts && posts.length === 0"></content-list-loading-item>
       <ul class="feed">
