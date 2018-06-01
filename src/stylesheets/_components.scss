@@ -511,12 +511,22 @@
   > li {
     border-bottom: 0;
     float: left;
-    margin-right: 2%;
-    width: 48%;
 
-    &:nth-child(2n) {
-      margin-left: 2%;
-      margin-right: 0;
+    @media (max-width: 1399px) {
+      margin-right: 2%;
+      width: 49%;
+
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+    }
+
+    @media (min-width: 1400px) {
+      margin-right: 1%;
+      width: 32.6%;
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
     }
   }
 
@@ -2700,13 +2710,24 @@ STRUCTURE:
 .content-list-loading-item-card-view{
   animation: loading-fadein 2s infinite;
   float: left;
-  margin-right: 2%;
-  width: 48%;
   margin-bottom: 30px;
 
-  &:nth-child(2n) {
-    margin-left: 2%;
-    margin-right: 0;
+  @media (max-width: 1399px) {
+    margin-right: 2%;
+    width: 49%;
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    margin-right: 1%;
+    width: 32.6%;
+
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
   }
 
   .content-header {
