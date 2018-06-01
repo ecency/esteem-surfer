@@ -7,7 +7,7 @@ export default () => {
     },
     template: `
       <div>
-        <div class="content-list-loading-item" ng-repeat="i in list">
+        <div ng-class="className()" ng-repeat="i in list">
           <div class="content-header"></div>  
           <div class="content-body">
             <div class="content-image"></div>
@@ -21,13 +21,24 @@ export default () => {
             <div class="content-app"></div>
           </div>
         </div>
+        <div class="clearfix"></div>
       </div>`,
-    controller: ($scope) => {
+    controller: ($scope, $rootScope) => {
       const list = [];
       for (let i = 1; i <= $scope.itemSize; i++) {
         list.push(i);
       }
       $scope.list = list;
+
+      console.log( )
+
+      $scope.className = () => {
+        if(['postsCtrl', 'feedCtrl'].includes($rootScope.curCtrl) && $rootScope.listStyle === 2){
+          return 'content-list-loading-item-card-view';
+        }
+
+        return 'content-list-loading-item';
+      }
     }
   }
 }

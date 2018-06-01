@@ -2697,6 +2697,55 @@ STRUCTURE:
   }
 }
 
+.content-list-loading-item-card-view{
+  animation: loading-fadein 2s infinite;
+  float: left;
+  margin-right: 2%;
+  width: 48%;
+  margin-bottom: 30px;
+
+  &:nth-child(2n) {
+    margin-left: 2%;
+    margin-right: 0;
+  }
+
+  .content-header {
+    background: $loadingItemColor;
+    height: 40px;
+    margin-bottom: 18px;
+    width: 40%
+  }
+
+  .content-body {
+    .content-image {
+      background: $loadingItemColor;
+      width: 100%;
+      height: 200px;
+      margin-bottom: 10px;
+    }
+    .content-body-title, .content-body-summary {
+      background: $loadingItemColor;
+      height: 20px;
+      margin-bottom: 10px;
+    }
+    .content-body-summary{
+      height: 30px;
+    }
+  }
+
+  .content-footer {
+    @include clearfix();
+
+    .content-voting, .content-voters, .content-comment-count, .content-app {
+      background: $loadingItemColor;
+      float: left;
+      height: 16px;
+      margin-right: 5px;
+      width: 60px;
+    }
+  }
+}
+
 .profile-photo-modal {
   .modal-dialog {
     width: 400px;
