@@ -828,6 +828,8 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'View the full context';
         case 'COMMENT_POST_VIEW_PARENT':
           return 'View the direct parent';
+        case 'TOGGLE_LIST_STYLE':
+          return 'Toggle Card View';
         default:
           return s;
       }

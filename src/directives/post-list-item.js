@@ -11,7 +11,7 @@ export default () => {
     },
     // Instead of templateUrl, this way angular can render faster
     template: `
-      <div class="post-list-item" ng-init="postImage = (post | catchPostImage)" ng-class="{'with-image': postImage}">
+      <div class="post-list-item with-image" ng-init="postImage = (post | catchPostImage)">
         <div class="post-header">
             <div class="post-resteemed" ng-if="reSteemed"><i class="fa fa-retweet"></i> {{ 'RESTEEMED' | __  }}</div>
             <div class="post-resteemed" ng-if="reSteemedBy"><i class="fa fa-retweet"></i> {{ 'RESTEEMED_BY' | __  }} {{ reSteemedBy }}</div>
