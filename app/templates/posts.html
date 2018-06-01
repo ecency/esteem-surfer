@@ -10,7 +10,7 @@
           <toggle-list-style></toggle-list-style>
         </div>
       </header>
-      <content-list-loading-item item-size="5" ng-if="loadingPosts && posts.length === 0"></content-list-loading-item>
+      <content-list-loading-item item-size="6" ng-if="loadingPosts && posts.length === 0"></content-list-loading-item>
       <ul class="feed" ng-class="{'card-view': $root.listStyle == 2}">
         <li ng-repeat="post in posts">
           <post-list-item post="post"></post-list-item>
