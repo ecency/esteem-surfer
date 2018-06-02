@@ -1142,6 +1142,23 @@
     .witness-thread {
       color: $textColor;
     }
+
+    .witness-owner {
+      display: flex;
+      align-items: center;
+
+      .profile-image {
+        background-color: $profilePicBg;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 50%;
+        display: inline-block;
+        height: 32px;
+        width: 32px;
+        margin-right: 8px;
+      }
+    }
   }
 
   .extra-row, .proxy-row {

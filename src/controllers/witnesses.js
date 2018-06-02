@@ -27,7 +27,7 @@ export default ($scope, $rootScope, $location, steemService, steemAuthenticatedS
       $scope.userWitnessList = resp[0].witness_votes;
       $scope.proxy = resp[0].proxy;
 
-      return steemService.getWitnessesByVote(null, 50);
+      return steemService.getWitnessesByVote(null, 100);
     }).then((resp) => {
       let i = 1;
       for (let row of resp) {
