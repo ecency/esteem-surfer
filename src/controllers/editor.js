@@ -381,6 +381,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
     $scope.processing = true;
 
     steemAuthenticatedService.comment('', parentPermlink, author, permlink, title, body, jsonMeta, options, voteWeight).then((resp) => {
+      clearForm();
       $rootScope.showSuccess($filter('translate')('POST_SUBMITTED'));
       $rootScope.selectedPost = null;
       $location.path(`/post/${parentPermlink}/${author}/${permlink}`);
@@ -564,16 +565,20 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
     $scope.hasPerm = false;
   });
 
+  const clearForm = () => {
+    $scope.title = '';
+    $scope.body = $scope.tempBody = '';
+    $scope.tags = '';
+    $scope.operationType = 'default';
+    $scope.vote.checked = false;
+
+    document.querySelector('#vote-checkbox').checked = false;
+    document.querySelector('#reward-select').value = 'default';
+  };
+
   $scope.clearForm = () => {
     if ($window.confirm($filter('translate')('ARE_YOU_SURE'))) {
-      $scope.title = '';
-      $scope.body = $scope.tempBody = '';
-      $scope.tags = '';
-      $scope.operationType = 'default';
-      $scope.vote.checked = false;
-
-      document.querySelector('#vote-checkbox').checked = false;
-      document.querySelector('#reward-select').value = 'default';
+      clearForm();
     }
   }
 };
