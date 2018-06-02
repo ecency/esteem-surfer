@@ -123,7 +123,6 @@ export default ($scope, $rootScope, $location, steemService, steemAuthenticatedS
     $scope.clearingProxy = true;
     steemAuthenticatedService.witnessProxy('').then((resp) => {
       $scope.proxy = null;
-      console.log(resp)
     }).catch((e) => {
       $rootScope.showError(e);
     }).then(() => {
@@ -134,4 +133,9 @@ export default ($scope, $rootScope, $location, steemService, steemAuthenticatedS
   $rootScope.$on('userLoggedOut', () => {
     $location.path('/');
   });
+
+  $scope.goOwner = (owner) => {
+    let u = `/account/${owner}`;
+    $location.path(u);
+  };
 };

@@ -43,7 +43,7 @@
           <td>
             <div class="witness-owner">
               <div class="profile-image" author-bg-img-style author="{{  witness.owner  }}"></div>
-              {{ witness.owner }}
+              <a class="witness-link" ng-click="goOwner(witness.owner)">{{ witness.owner }}</a>
             </div>
           </td>
           <td>
