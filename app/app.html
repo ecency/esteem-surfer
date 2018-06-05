@@ -35,7 +35,7 @@
   </style>
 </head>
 <body style="visibility: hidden;" ng-class="theme" dir="{{ textDir }}">
-<div id="root" class="root" ng-view></div>
+<div id="root" class="root" ng-class="{'in-read-mode': $root.readMode}" ng-view></div>
 <div class="error-messages" ng-if="$root.errorMessages.length > 0">
   <div class="message" ng-repeat="m in $root.errorMessages"><i class="fa fa-exclamation-triangle"></i> {{ m.text }}
   </div>
