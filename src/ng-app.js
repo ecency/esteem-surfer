@@ -852,6 +852,8 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'View the direct parent';
         case 'TOGGLE_LIST_STYLE':
           return 'Toggle Card View';
+        case 'TOGGLE_READ_MODE':
+          return 'Toggle Read Mode';
         default:
           return s;
       }
