@@ -37,6 +37,10 @@ window.setSizeForReadMode = (height = null) => {
 
   // 100 is useless here. It cannot make window narrow than minWidth.
   win_.setSize(100, height);
+
+  win_.setPosition(0, 0);
+
+  win_.center();
 };
 
 window.getWindowSize = () => {
