@@ -45,6 +45,12 @@ export default () => {
       const detect = () => {
         el.style.display = 'block';
         const bounding = checkEl.getBoundingClientRect();
+
+        // Reading mode activated
+        if (bounding.top === 0) {
+          return;
+        }
+
         el.style.display = bounding.top < 250 ? 'none' : 'block';
       };
 
@@ -55,7 +61,7 @@ export default () => {
       });
     },
     templateUrl: 'templates/directives/post-floating-menu.html',
-    controller: ($scope, $timeout, $filter, $rootScope, $confirm, steemAuthenticatedService, steemService, helperService, activeUsername) => {
+    controller: ($scope, $rootScope, $timeout, $filter, $confirm, steemAuthenticatedService, steemService, helperService, activeUsername) => {
       const activeUser = activeUsername();
 
       const author = $scope.content.author;
@@ -165,6 +171,10 @@ export default () => {
       $scope.shareFacebook = () => {
         const u = makeShareUrlFacebook($scope.content.parent_permlink, $scope.content.author, $scope.content.permlink);
         window.openInBrowser(u);
+      };
+
+      $scope.switchReadMode = () => {
+        $rootScope.readMode = ($rootScope.readMode ? false : true);
       }
     }
   };

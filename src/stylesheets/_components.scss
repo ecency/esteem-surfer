@@ -586,7 +586,7 @@
         font-size: 15px;
       }
 
-      .post-body-title{
+      .post-body-title {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -1547,6 +1547,28 @@ STRUCTURE:
           }
         }
       }
+    }
+  }
+}
+
+.in-read-mode .post-page .the-post {
+
+  .post-header {
+    margin-bottom: 10px;
+
+    h1.post-title {
+      margin: 10px 0 10px 0;
+    }
+  }
+
+  .post-footer, .post-comment-list, .post-comment-list-empty {
+    display: none;
+  }
+
+  .post-floating-menu {
+    left: 8px;
+    .btn-reblog, .btn-external, .btn-copy, .btn-share, .btn-flag{
+      display: none;
     }
   }
 }
@@ -2707,7 +2729,7 @@ STRUCTURE:
   }
 }
 
-.content-list-loading-item-card-view{
+.content-list-loading-item-card-view {
   animation: loading-fadein 2s infinite;
   float: left;
   margin-bottom: 30px;
@@ -2749,7 +2771,7 @@ STRUCTURE:
       height: 20px;
       margin-bottom: 10px;
     }
-    .content-body-summary{
+    .content-body-summary {
       height: 30px;
     }
   }

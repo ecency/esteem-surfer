@@ -323,6 +323,15 @@
   }
 }
 
+.in-read-mode .post-page {
+  background-color: $appBg;
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  top:0;
+  right: 0;
+}
+
 .author-page {
   max-width: 100%;
   padding: 0;

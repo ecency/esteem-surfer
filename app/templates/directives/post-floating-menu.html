@@ -4,6 +4,11 @@
     <i ng-if="!reblogging" class="fa fa-retweet"></i>
     <i ng-if="reblogging" class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
   </a>
+  <a class="box-btn btn-read-mode" ng-click="switchReadMode()"
+     title="{{ 'TOGGLE_READ_MODE' | __ }}" >
+    <i class="fa fa-expand" ng-if="!$root.readMode"></i>
+    <i class="fa fa-compress" ng-if="$root.readMode"></i>
+  </a>
   <a class="box-btn btn-external" ng-click="" title="{{ 'POST_MENU_EXTERNAL' | __ }}">
     <i class="fa fa-external-link"></i>
     <span class="service-list">
@@ -14,7 +19,7 @@
   <a class="box-btn btn-copy" ng-click="copyAddress()" title="{{ 'POST_MENU_COPY' | __ }}">
     <i class="fa fa-clipboard"></i>
   </a>
-  <div class="box-btn btn-external" ng-click="" title="{{ 'POST_MENU_SHARE' | __ }}">
+  <div class="box-btn btn-share" ng-click="" title="{{ 'POST_MENU_SHARE' | __ }}">
     <i class="fa fa-share-alt"></i>
     <span class="service-list">
       <button class="btn  btn-link" ng-click="shareReddit()"><i class="fa fa-reddit-alien"></i></button>
