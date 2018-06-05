@@ -175,6 +175,13 @@ export default () => {
 
       $scope.switchReadMode = () => {
         $rootScope.readMode = ($rootScope.readMode ? false : true);
+
+        if ($rootScope.readMode) {
+          $rootScope.heightBeforeReadMode = window.getWindowSize()[1];
+          window.setSizeForReadMode();
+        } else {
+          window.setSizeForReadMode($rootScope.heightBeforeReadMode);
+        }
       }
     }
   };

@@ -17,7 +17,7 @@ const genRandom = function () {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 };
 
-import {remote, clipboard, shell} from "electron";
+import {remote, screen, clipboard, shell} from "electron";
 
 window.writeClipboard = (s) => {
   clipboard.writeText(s);
@@ -26,6 +26,24 @@ window.writeClipboard = (s) => {
 window.openInBrowser = (href) => {
   shell.openExternal(href);
 };
+
+window.setSizeForReadMode = (height = null) => {
+  const win_ = remote.getCurrentWindow();
+
+  if (height === null) {
+    const screen_ = screen.getPrimaryDisplay();
+    height = screen_.workArea.height
+  }
+
+  // 100 is useless here. It cannot make window narrow than minWidth.
+  win_.setSize(100, height);
+};
+
+window.getWindowSize = () => {
+  const win_ = remote.getCurrentWindow();
+  return win_.getSize();
+};
+
 
 import env from "env";
 import jetpack from "fs-jetpack";
