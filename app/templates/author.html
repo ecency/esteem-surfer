@@ -170,7 +170,7 @@
                     {{ authorData.vesting_shares | steemPower | number }} SP
                   </span>
                   <span ng-if="authorData.delegated_vesting_shares != '0.000000 VESTS'">
-                    -{{ authorData.delegated_vesting_shares | steemPower | number }} SP
+                   <a ng-click="delegatedVestingClicked()" class="btn-delegation">-{{ authorData.delegated_vesting_shares | steemPower | number }} SP</a>
                   </span>
                   <span ng-if="authorData.received_vesting_shares != '0.000000 VESTS'">
                     +{{ authorData.received_vesting_shares | steemPower | number }} SP

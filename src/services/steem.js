@@ -221,6 +221,17 @@ export default (steemApi, $q) => {
         }
       });
       return defer.promise;
+    },
+    getVestingDelegations: (account, from=null, limit=50) => {
+      let defer = $q.defer();
+      steemApi.getApi().getVestingDelegations(account, from, limit, (err, response) => {
+        if (err) {
+          defer.reject(err);
+        } else {
+          defer.resolve(response);
+        }
+      });
+      return defer.promise;
     }
   }
 };
