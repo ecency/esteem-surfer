@@ -93,6 +93,8 @@ import followersCtrl from './controllers/followers';
 import followingCtrl from './controllers/following';
 import witnessesCtrl from './controllers/witnesses';
 import galleryModalCtrl from './controllers/gallery-modal'
+import delegatedVestingCtrl from './controllers/delegated-vesting';
+import delegateCtrl from './controllers/delegate';
 
 
 import tokenExchangeCtrl from './controllers/token-exchange';
@@ -356,6 +358,10 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
       templateUrl: 'templates/power-down.html',
       controller: 'powerDownCtrl'
     })
+    .when('/:account/delegate', {
+      templateUrl: 'templates/delegate.html',
+      controller: 'delegateCtrl'
+    })
     .when('/welcome', {
       templateUrl: 'templates/welcome.html',
       controller: 'welcomeCtrl'
@@ -552,6 +558,8 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
   .controller('followingCtrl', followingCtrl)
   .controller('witnessesCtrl', witnessesCtrl)
   .controller('galleryModalCtrl', galleryModalCtrl)
+  .controller('delegatedVestingCtrl', delegatedVestingCtrl)
+  .controller('delegateCtrl', delegateCtrl)
 
 
   .filter('catchPostImage', catchPostImageFilter)
@@ -854,6 +862,8 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'Toggle Card View';
         case 'TOGGLE_READ_MODE':
           return 'Toggle Read Mode';
+        case 'DELEGATE':
+          return 'Delegate'
         default:
           return s;
       }

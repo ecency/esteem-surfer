@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'CANCEL' | translate }}" ng-click="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h4 class="modal-title">Delegated Vesting Shares</h4>
+</div>
+<div class="modal-body">
+  <div class="indicator">
+    <i class="fa fa-spin fa-spinner fa-circle-o-notch loading-icon" ng-show="loading"></i>
+  </div>
+  <div class="data-list" ng-class="{'fetching': loading}">
+    <table class="table table-striped">
+      <tbody>
+        <tr ng-repeat="v in list">
+          <td style="width: 200px"><a ng-click="authorClicked(v.delegatee)">{{ v.delegatee }}</a></td>
+          <td>{{ v.vesting_shares | steemPower | number }} SP<br><small>{{ v.vesting_shares }}</small></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -328,7 +328,7 @@
   position: absolute;
   z-index: 4;
   left: 0;
-  top:0;
+  top: 0;
   right: 0;
 }
 
@@ -575,6 +575,12 @@
               display: inline-block;
               margin: 20px 0;
               padding: 3px;
+            }
+
+            .btn-delegation {
+              color: $textColor;
+              border-bottom: 1px dotted $textColorLight;
+              text-decoration: none;
             }
           }
 
@@ -984,6 +990,16 @@
           font-size: 16px;
           font-weight: bold;
         }
+      }
+    }
+  }
+
+  &.fn-delegate {
+    .fn-window {
+      width: 800px;
+
+      .rz-bubble {
+        font-size: 12px;
       }
     }
   }

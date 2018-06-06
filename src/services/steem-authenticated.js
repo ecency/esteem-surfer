@@ -691,6 +691,23 @@ export default ($rootScope, steemApi, $q, cryptoService) => {
     return defer.promise;
   };
 
+  const delegateVestingShares = (wif, delegator, delegatee, vestingShares) => {
+    wif = cryptoService.decryptKey(wif);
+
+    let defer = $q.defer();
+
+    console.log(delegator, delegatee, vestingShares)
+    steem.broadcast.delegateVestingShares(wif, delegator, delegatee, vestingShares, function (err, result) {
+      if (err) {
+        defer.reject(err);
+      } else {
+        defer.resolve(result);
+      }
+    });
+
+    return defer.promise;
+  };
+
   const witnessVote = (wif, account, witness, approve) => {
     wif = cryptoService.decryptKey(wif);
 
@@ -983,6 +1000,13 @@ export default ($rootScope, steemApi, $q, cryptoService) => {
         return withdrawVesting(wif, account, vestingShares)
       } else {
         return withdrawVestingSc(account, vestingShares);
+      }
+    },
+    delegateVestingShares: (wif=null, delegator, delegatee, vestingShares) => {
+      if (wif) {
+        return delegateVestingShares(wif, delegator, delegatee, vestingShares)
+      } else {
+        // return withdrawVestingSc(account, vestingShares);
       }
     },
     witnessVote: (witness, approve) => {

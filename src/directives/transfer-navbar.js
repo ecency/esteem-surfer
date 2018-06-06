@@ -33,6 +33,10 @@ export default () => {
       $scope.powerDownClicked = () => {
         $location.path(`/${ activeUsername() }/power-down`);
       };
+
+      $scope.delegateClicked = () => {
+        $location.path(`/${ activeUsername() }/delegate`);
+      };
     }
   }
 }

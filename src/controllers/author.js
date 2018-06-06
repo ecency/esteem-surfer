@@ -670,5 +670,22 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
 
   $scope.witnessesClicked = () => {
     $location.path('/witnesses');
-  }
+  };
+
+  $scope.delegatedVestingClicked = () => {
+    $uibModal.open({
+      templateUrl: `templates/delegated-vesting.html`,
+      controller: 'delegatedVestingCtrl',
+      windowClass: 'delegation-modal',
+      resolve: {
+        account: () => {
+          return username;
+        }
+      }
+    }).result.then((data) => {
+      // Success
+    }, () => {
+      // Cancel
+    });
+  };
 };
