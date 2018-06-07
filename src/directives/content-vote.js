@@ -88,7 +88,7 @@ export default () => {
       let mouseLeaveTimer = null;
 
       $scope.hoverIn = () => {
-        if ($scope.popoverIsOpen || $scope.voting || mouseEnterTimer !== null || !activeUsername()) {
+        if ($scope.voting || mouseEnterTimer !== null || !activeUsername()) {
           return;
         }
 
