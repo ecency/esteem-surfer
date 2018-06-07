@@ -10,7 +10,9 @@ import {
   scTransferToVesting,
   scEsrowTransfer,
   scAccountWitnessVote,
-  scWitnessProxy
+  scWitnessProxy,
+  scDelegateVestingShares,
+  scUndelegateVestingShares
 } from '../helpers/steem-connect-helper';
 
 export default ($rootScope, steemApi, $q, cryptoService) => {
@@ -696,13 +698,36 @@ export default ($rootScope, steemApi, $q, cryptoService) => {
 
     let defer = $q.defer();
 
-    console.log(delegator, delegatee, vestingShares)
     steem.broadcast.delegateVestingShares(wif, delegator, delegatee, vestingShares, function (err, result) {
       if (err) {
         defer.reject(err);
       } else {
         defer.resolve(result);
       }
+    });
+
+    return defer.promise;
+  };
+
+  const delegateVestingSharesSc = (delegator, delegatee, vestingShares) => {
+    let defer = $q.defer();
+
+    scDelegateVestingShares(delegator, delegatee, vestingShares, () => {
+      defer.resolve('OK');
+    }, () => {
+      defer.reject(`The window closed before expected.`);
+    });
+
+    return defer.promise;
+  };
+
+  const unDelegateVestingSharesSc = (delegator, delegatee) => {
+    let defer = $q.defer();
+
+    scUndelegateVestingShares(delegator, delegatee, () => {
+      defer.resolve('OK');
+    }, () => {
+      defer.reject(`The window closed before expected.`);
     });
 
     return defer.promise;
@@ -1002,11 +1027,24 @@ export default ($rootScope, steemApi, $q, cryptoService) => {
         return withdrawVestingSc(account, vestingShares);
       }
     },
-    delegateVestingShares: (wif=null, delegator, delegatee, vestingShares) => {
+    delegateVestingShares: (wif = null, delegator, delegatee, vestingShares) => {
       if (wif) {
         return delegateVestingShares(wif, delegator, delegatee, vestingShares)
       } else {
-        // return withdrawVestingSc(account, vestingShares);
+        return delegateVestingSharesSc(delegator, delegatee, vestingShares);
+      }
+    },
+    unDelegateVestingShares: (delegatee) => {
+      const delegator = $rootScope.user.username;
+
+      switch ($rootScope.user.type) {
+        case 's':
+          const wif = getProperWif(['active']);
+          return delegateVestingShares(wif, delegator, delegatee, '0.000000 VESTS');
+          break;
+        case 'sc':
+          return unDelegateVestingSharesSc(delegator, delegatee);
+          break;
       }
     },
     witnessVote: (witness, approve) => {

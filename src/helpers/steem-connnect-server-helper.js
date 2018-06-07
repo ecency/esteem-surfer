@@ -141,6 +141,22 @@ export const startHelperServer = () => {
     }
   );
 
+  expressApp.get('/delegate-vesting-shares', (req, res) => {
+      const data = JSON.parse(decodeURIComponent(req.query.data));
+      const transferUrl = `https://steemconnect.com/sign/delegate-vesting-shares?delegator=${encodeURIComponent(data.delegator)}&delegatee=${encodeURIComponent(data.delegatee)}&vesting_shares=${encodeURIComponent(data.vesting_shares)}`;
+      const content = makeRedirectingContent(transferUrl);
+      res.send(content);
+    }
+  );
+
+  expressApp.get('/undelegate-vesting-shares', (req, res) => {
+      const data = JSON.parse(decodeURIComponent(req.query.data));
+      const transferUrl = `https://steemconnect.com/sign/undelegate-vesting-shares?delegator=${encodeURIComponent(data.delegator)}&delegatee=${encodeURIComponent(data.delegatee)}`;
+      const content = makeRedirectingContent(transferUrl);
+      res.send(content);
+    }
+  );
+
   server.listen(serverPort, serverIp);
 
   server.on('listening', function () {
