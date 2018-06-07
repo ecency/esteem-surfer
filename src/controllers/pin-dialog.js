@@ -19,6 +19,9 @@ export default ($scope, $rootScope, $window, $location, $filter, $uibModalInstan
     $scope.wrong = true;
     $scope.tryCount += 1;
 
+    // select textbox content if pincode wrong
+    document.querySelector('#txt-pin-input').select();
+
     if ($scope.remainingTry() === 0) {
       $scope.invalidatePin();
       $rootScope.showError($filter('__')('PIN_INVALIDATED'));
