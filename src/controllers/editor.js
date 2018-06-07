@@ -132,7 +132,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
   $scope.body = $scope.tempBody = undefined;
   $scope.tags = undefined;
   $scope.operationType = 'default';
-  $scope.vote = { checked: false};
+  $scope.vote = {checked: false};
 
   $scope.saving = false;
   $scope.scheduling = false;
@@ -142,12 +142,17 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
   $scope.processing = false;
   $scope.fetchingContent = false;
 
+  $scope.draftId = null;
+  $scope.draftUser = null;
   $scope.fromDraft = false;
   $scope.editMode = false;
 
   let editingContent = null;
 
   if ($rootScope.editorDraft) {
+    $scope.draftId = $rootScope.editorDraft.id;
+    $scope.draftUser = activeUsername();
+
     $scope.title = $rootScope.editorDraft.title;
     $scope.body = $scope.tempBody = $rootScope.editorDraft.body;
 
@@ -350,7 +355,15 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
 
     $scope.saving = true;
     $scope.processing = true;
-    eSteemService.addDraft(activeUsername(), $scope.title, $scope.body, $scope.tags).then((resp) => {
+
+    let prms = null;
+    if ($scope.fromDraft) {
+      prms = eSteemService.updateDraft($scope.draftUser, $scope.draftId, $scope.title, $scope.body, $scope.tags);
+    } else {
+      prms = eSteemService.addDraft(activeUsername(), $scope.title, $scope.body, $scope.tags);
+    }
+
+    prms.then((resp) => {
       $rootScope.showSuccess($filter('translate')('POST_IS_DRAFT'));
       $location.path('/drafts');
     }).catch((e) => {
@@ -359,6 +372,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
       $scope.saving = false;
       $scope.processing = false;
     });
+
   };
 
   $scope.post = () => {
@@ -571,6 +585,10 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
     $scope.tags = '';
     $scope.operationType = 'default';
     $scope.vote.checked = false;
+
+    $scope.draftId = null;
+    $scope.draftUser = null;
+    $scope.fromDraft = false;
 
     document.querySelector('#vote-checkbox').checked = false;
     document.querySelector('#reward-select').value = 'default';

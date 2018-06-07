@@ -54,6 +54,13 @@ export default ($http, API_END_POINT) => {
         post_type: post_type
       });
     },
+    updateDraft: function (user, id, title, body, tags) {
+      return $http.put(`${API_END_POINT}/api/drafts/${user}/${id}`, {
+        title: title,
+        body: body,
+        tags: tags
+      });
+    },
     getDrafts: function (user) {
       return $http.get(`${API_END_POINT}/api/drafts/${user}`);
     },
