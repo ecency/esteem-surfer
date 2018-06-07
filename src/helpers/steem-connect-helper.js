@@ -180,7 +180,6 @@ export const scTransferFromSavings = (from, requestId, to, amount, memo, success
   });
 };
 
-
 export const scTransferToVesting = (from, to, amount, successCb, windowCloseCb) => {
 
   const win = new remote.BrowserWindow(windowSettings);
@@ -205,7 +204,6 @@ export const scTransferToVesting = (from, to, amount, successCb, windowCloseCb) 
     windowCloseCb();
   });
 };
-
 
 export const scEsrowTransfer = (from, to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta, successCb, windowCloseCb) => {
 
@@ -238,7 +236,6 @@ export const scEsrowTransfer = (from, to, agent, escrowId, sbdAmount, steemAmoun
   });
 };
 
-
 export const scAccountWitnessVote = (account, witness, approve, successCb, windowCloseCb) => {
 
   const win = new remote.BrowserWindow(windowSettings);
@@ -263,13 +260,59 @@ export const scAccountWitnessVote = (account, witness, approve, successCb, windo
   });
 };
 
-
 export const scWitnessProxy = (account, proxy, successCb, windowCloseCb) => {
 
   const win = new remote.BrowserWindow(windowSettings);
   win.loadURL(`${helperUrl}/account-witness-proxy?data=${encodeURIComponent(JSON.stringify({
     'account': account,
     'proxy': proxy
+  }))}`);
+
+  const htmlInt = setInterval(() => {
+    win.webContents.executeJavaScript(`document.body.innerHTML`, true).then((result) => {
+      if (result.includes('<h2><span>Congratulations</span></h2>')) {
+        successCb();
+        win.close();
+      }
+    })
+  }, 1500);
+
+  win.on('closed', () => {
+    clearInterval(htmlInt);
+    windowCloseCb();
+  });
+};
+
+export const scDelegateVestingShares = (delegator, delegatee, vesting_shares, successCb, windowCloseCb) => {
+
+  const win = new remote.BrowserWindow(windowSettings);
+  win.loadURL(`${helperUrl}/delegate-vesting-shares?data=${encodeURIComponent(JSON.stringify({
+    'delegator': delegator,
+    'delegatee': delegatee,
+    'vesting_shares': vesting_shares
+  }))}`);
+
+  const htmlInt = setInterval(() => {
+    win.webContents.executeJavaScript(`document.body.innerHTML`, true).then((result) => {
+      if (result.includes('<h2><span>Congratulations</span></h2>')) {
+        successCb();
+        win.close();
+      }
+    })
+  }, 1500);
+
+  win.on('closed', () => {
+    clearInterval(htmlInt);
+    windowCloseCb();
+  });
+};
+
+export const scUndelegateVestingShares = (delegator, delegatee, successCb, windowCloseCb) => {
+
+  const win = new remote.BrowserWindow(windowSettings);
+  win.loadURL(`${helperUrl}/undelegate-vesting-shares?data=${encodeURIComponent(JSON.stringify({
+    'delegator': delegator,
+    'delegatee': delegatee
   }))}`);
 
   const htmlInt = setInterval(() => {

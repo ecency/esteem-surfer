@@ -52,6 +52,9 @@ export default ($scope, $rootScope, $routeParams, $timeout, $location, $filter, 
       },
       translate: function (value, sliderId, label) {
         if (label === 'model') {
+          if (String(value).indexOf('.') !== -1) {
+            return value;
+          }
           return value + `.000000 VESTS`;
         }
 
@@ -95,15 +98,24 @@ export default ($scope, $rootScope, $routeParams, $timeout, $location, $filter, 
     }, 700);
   };
 
+  const availableVestingShares = (account) => {
+    if (account.next_vesting_withdrawal !== '1969-12-31T23:59:59') {
+      // powering down
+      return parseFloat(account.vesting_shares.split(' ')[0]) - (account.to_withdraw - account.withdrawn) / 1e6 - parseFloat(account.delegated_vesting_shares.split(' ')[0]);
+    } else {
+      // not powering down
+      return (parseFloat(account.vesting_shares.split(' ')[0]) - parseFloat(account.delegated_vesting_shares.split(' ')[0])).toFixed(6);
+    }
+  };
+
   const loadFromAccount = () => {
     $scope.fetchingFromAccount = true;
 
     return steemService.getAccounts([$scope.from]).then((resp) => {
       const account = resp[0];
 
-      console.log(account)
-
-      $scope.amountSlider.options.ceil = account.vesting_shares.split(' ')[0];
+      const vestingShares = availableVestingShares(account);
+      $scope.amountSlider.options.ceil = vestingShares;
 
       const rate = account.vesting_withdraw_rate;
       const vests = parseFloat(rate.split(" ")[0]);
@@ -131,8 +143,6 @@ export default ($scope, $rootScope, $routeParams, $timeout, $location, $filter, 
       const from = $scope.from;
       const to = $scope.to.trim();
       const vestingShares = `${$scope.amountVest}.000000 VESTS`;
-
-      console.log(vestingShares)
 
       const fromAccount = getAccount(from);
       const wif = fromAccount.type === 's' ? fromAccount.keys.active : null;

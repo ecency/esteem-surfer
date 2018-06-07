@@ -8,12 +8,16 @@
   <div class="indicator">
     <i class="fa fa-spin fa-spinner fa-circle-o-notch loading-icon" ng-show="loading"></i>
   </div>
+  <div class="empty-list" ng-if="list.length === 0 && !loading">
+    {{ 'EMPTY_LIST' | __ }}
+  </div>
   <div class="data-list" ng-class="{'fetching': loading}">
     <table class="table table-striped">
       <tbody>
         <tr ng-repeat="v in list">
           <td style="width: 200px"><a ng-click="authorClicked(v.delegatee)">{{ v.delegatee }}</a></td>
           <td>{{ v.vesting_shares | steemPower | number }} SP<br><small>{{ v.vesting_shares }}</small></td>
+          <td style="width: 40px"><button class="btn btn-sm btn-danger" ng-disabled="undelegating" ng-if="canUndelegate" ng-click="" login-required required-keys="'active'" on-login-success="unDelegate(v.delegatee)"><i class="fa fa-times"></i></button></td>
         </tr>
       </tbody>
     </table>
