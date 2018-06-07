@@ -8,13 +8,25 @@
   <div class="indicator">
     <i class="fa fa-spin fa-spinner fa-circle-o-notch loading-icon" ng-show="loading"></i>
   </div>
-  <div class="data-list" ng-class="{'fetching': loading}">
+  <div class="empty-list" ng-if="data.length === 0 && !loading">
+    {{ 'EMPTY_LIST' | __ }}
+  </div>
+  <div class="data-list" ng-class="{'fetching': loading}" ng-hide="loading || data.length===0">
     <table class="table table-striped">
+      <thead>
+      <tr>
+        <th><a class="sort-header" ng-click="sortData('reputation')" ng-class="{'selected-sort': sort === 'reputation'}">{{ 'VOTERS_INFO_VOTER' | __ }}</a></th>
+        <th><a class="sort-header" ng-click="sortData('reward')" ng-class="{'selected-sort': sort === 'reward'}">{{ 'VOTERS_INFO_REWARD' | __ }}</a></th>
+        <th><a class="sort-header" ng-click="sortData('percent')" ng-class="{'selected-sort': sort === 'percent'}">{{ 'VOTERS_INFO_PERCENT' | __ }}</a></th>
+        <th><a class="sort-header" ng-click="sortData('time')" ng-class="{'selected-sort': sort === 'time'}">{{ 'VOTERS_INFO_TIME' | __ }}</a></th>
+      </tr>
+      </thead>
       <tbody>
-      <tr ng-repeat="v in data | orderBy:'-time'">
-        <td><a ng-click="authorClicked(v.voter)">{{ v.voter }}</a> <span class="badge"> {{ v.reputation | authorReputation }}</span></td>
-        <td style="width: 30px">{{ v.percent / 100 }}%</td>
-        <td style="width: 160px">{{ v.time | timeAgo }}</td>
+      <tr ng-repeat="v in data">
+        <td><a ng-click="authorClicked(v.voter)">{{ v.voter }}</a> <span class="badge"> {{ v.reputation }}</span></td>
+        <td>{{ $root.currency | currencySymbol }} {{ v.reward_fixed }}</td>
+        <td>{{ v.percent / 100 }}%</td>
+        <td>{{ v.time | timeAgo }}</td>
       </tr>
       </tbody>
     </table>

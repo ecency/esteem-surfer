@@ -863,7 +863,15 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
         case 'TOGGLE_READ_MODE':
           return 'Toggle Read Mode';
         case 'DELEGATE':
-          return 'Delegate'
+          return 'Delegate';
+        case 'VOTERS_INFO_VOTER':
+          return 'Voter';
+        case 'VOTERS_INFO_REWARD':
+          return 'Reward';
+        case 'VOTERS_INFO_PERCENT':
+          return 'Percent';
+        case 'VOTERS_INFO_TIME':
+          return 'Time';
         default:
           return s;
       }

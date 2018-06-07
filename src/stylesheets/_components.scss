@@ -1567,7 +1567,7 @@ STRUCTURE:
 
   .post-floating-menu {
     left: 8px;
-    .btn-reblog, .btn-external, .btn-copy, .btn-share, .btn-flag{
+    .btn-reblog, .btn-external, .btn-copy, .btn-share, .btn-flag {
       display: none;
     }
   }
@@ -1667,8 +1667,24 @@ STRUCTURE:
     }
 
     .data-list {
-      max-height: 300px;
+      max-height: 440px;
       overflow-y: auto;
+    }
+  }
+}
+
+.content-voters-modal {
+  .modal-dialog {
+    width: 980px;
+  }
+
+  .data-list {
+    .sort-header {
+      text-decoration: underline;
+    }
+
+    .sort-header:not(.selected-sort) {
+      color: $textColor;
     }
   }
 }
