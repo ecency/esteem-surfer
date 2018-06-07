@@ -29,6 +29,7 @@ export default () => {
 
       $scope.clicked = (draft) => {
         $rootScope.editorDraft = {
+          id: draft._id,
           title: draft.title,
           body: draft.body,
           tags: draft.tags
