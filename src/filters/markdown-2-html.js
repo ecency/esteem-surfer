@@ -1,5 +1,6 @@
 const Remarkable = require('remarkable');
 import {sanitizeNode} from '../helpers/html-sanitizer';
+import {proxifyImageSrc} from '../helpers/proxify-image-src'
 
 const md = new Remarkable({html: true, breaks: true, linkify: true});
 
@@ -17,6 +18,10 @@ const traverse = (node, depth = 0) => {
 const img = (node) => {
   node.removeAttribute('width');
   node.removeAttribute('height');
+
+  const src = node.getAttribute('src');
+
+  node.setAttribute('src', proxifyImageSrc(src));
 };
 
 const linkifyNode = (node) => {
