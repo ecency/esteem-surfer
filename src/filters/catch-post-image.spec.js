@@ -9,7 +9,7 @@ describe('Catch Post Image', () => {
       json_metadata: '{"tags":["auto","vehicle","ai","technology","adsactly"],"users":["adsactly","techblogger","adsactly-witness"],"image":["http://www.autonews.com/apps/pbcsi.dll/storyimage/CA/20180205/MOBILITY/180209919/AR/0/AR-180209919.jpg","http://clipart-library.com/images/pco56kbxi.png","http://psipunk.com/wp-content/uploads/2010/03/phoenix-electric-car-futuristic-concept-01.jpg","https://images.hgmsites.net/med/2011-honda-small-sports-ev-concept_100369472_m.jpg","https://cdn.trendhunterstatic.com/thumbs/electric-car-concept.jpeg","https://s.aolcdn.com/hss/storage/midas/162bec06fe31386c2a36ad6ca4d7f01d/205983934/lg-here-self-driving-car-partnership.jpg","https://steemitimages.com/DQmd5CQG5zLjjm2z8289qcLU6eBHJpC5FmgtR3aC1eXnhsi/Adsactly-Logo-200px.png","https://steemitimages.com/0x0/https://steemitimages.com/DQmWK9ACVoywHPBJQdoTuJpoTSoaubBSKSAdZaJtw1cfLb9/adsactlywitness.gif"],"links":["https://qzprod.files.wordpress.com/2018/02/kelly-sikkema-266805.jpg?quality=80&strip=all&w=3200","http://psipunk.com/wp-content/uploads/2010/03/phoenix-electric-car-futuristic-concept-01.jpg","https://images.hgmsites.net/med/2011-honda-small-sports-ev-concept_100369472_m.jpg","https://cdn.trendhunterstatic.com/thumbs/electric-car-concept.jpeg","https://s.aolcdn.com/hss/storage/midas/162bec06fe31386c2a36ad6ca4d7f01d/205983934/lg-here-self-driving-car-partnership.jpg","https://discord.gg/EwGhEzb","https://steemit.com/witness-category/@adsactly-witness/adsactly-steemit-witness-proposal","https://steemit.com/~witnesses","https://v2.steemconnect.com/sign/account-witness-vote?witness=adsactly-witness&approve=1"],"app":"steemit/0.1","format":"markdown"}',
       body: ''
     };
-    let expected = 'http://www.autonews.com/apps/pbcsi.dll/storyimage/CA/20180205/MOBILITY/180209919/AR/0/AR-180209919.jpg';
+    let expected = 'https://steemitimages.com/0x0/http://www.autonews.com/apps/pbcsi.dll/storyimage/CA/20180205/MOBILITY/180209919/AR/0/AR-180209919.jpg';
     expect(catchPostImage(input)).to.equal(expected);
 
 
@@ -36,7 +36,7 @@ describe('Catch Post Image', () => {
       body: "<center><a href='https://d.tube/#!/v/theaudgirl/2ys21z9c'><img src='https://ipfs.io/ipfs/QmaG5Dpg1XGiY7EyeMCwT8Dqw4GfiAaehq3hZadongniQc'></a></center><hr>"
     };
 
-    let expected = 'https://ipfs.io/ipfs/QmaG5Dpg1XGiY7EyeMCwT8Dqw4GfiAaehq3hZadongniQc';
+    let expected = 'https://steemitimages.com/0x0/https://ipfs.io/ipfs/QmaG5Dpg1XGiY7EyeMCwT8Dqw4GfiAaehq3hZadongniQc';
     expect(catchPostImage(input)).to.equal(expected);
 
 
@@ -45,7 +45,7 @@ describe('Catch Post Image', () => {
       body: "<center><a href='https://d.tube/#!/v/benswann/2snaen3c'><img src='https://ipfs.io/ipfs/QmYFWFseBNkHLhYRYqvi3on7sxNh4RyezMqwUWmDtw5QT5'></a></center><hr>"
     };
 
-    expected = 'https://ipfs.io/ipfs/QmYFWFseBNkHLhYRYqvi3on7sxNh4RyezMqwUWmDtw5QT5';
+    expected = 'https://steemitimages.com/0x0/https://ipfs.io/ipfs/QmYFWFseBNkHLhYRYqvi3on7sxNh4RyezMqwUWmDtw5QT5';
     expect(catchPostImage(input)).to.equal(expected);
   });
 
