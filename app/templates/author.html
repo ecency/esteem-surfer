@@ -236,17 +236,17 @@
                     </div>
                     <div ng-if="tr[1].op[0]=='transfer'">
                       <p>{{ tr[1].op[1].amount}}</p>
-                      <p ng-if="tr[1].op[1].memo"><em>{{ tr[1].op[1].memo }}</em></p>
+                      <p ng-if="tr[1].op[1].memo"><em>{{ tr[1].op[1] | transferMemo }}</em></p>
                       <p>@{{ tr[1].op[1].from }} {{ 'TO'| translate | lowercase }} @{{ tr[1].op[1].to }}</p>
                     </div>
                     <div ng-if="tr[1].op[0]=='interest'">{{ tr[1].op[1].interest }}</div>
                     <div ng-if="tr[1].op[0]=='transfer_to_vesting'">
                       <p>{{ tr[1].op[1].amount }} </p>
-                      <p ng-if="tr[1].op[1].memo"><em>{{ tr[1].op[1].memo }}</em></p>
+                      <p ng-if="tr[1].op[1].memo"><em>{{ tr[1].op[1] | transferMemo }}</em></p>
                       <p>@{{ tr[1].op[1].from }} {{ 'TO' | translate | lowercase }} @{{ tr[1].op[1].to }}</p>
                     </div>
                     <div ng-if="tr[1].op[0]=='withdraw_vesting'">
-                      {{ tr[1].op[1].vesting_shares }} | {{ tr[1].op[1].memo }}
+                      {{ tr[1].op[1].vesting_shares }} | {{ tr[1].op[1] | transferMemo }}
                       <p>{{ tr[1].op[1].account | uppercase }}</p>
                     </div>
                     <div ng-if="tr[1].op[0]=='fill_order'">

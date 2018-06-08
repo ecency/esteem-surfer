@@ -1,7 +1,9 @@
 import {amountFormatCheck, formatStrAmount} from './helper';
 import badActors from '../data/bad-actors.json';
+import steem from 'steem';
 
-export default ($scope, $rootScope, $routeParams, $timeout, $location, $filter, autoCancelTimeout, steemService, steemAuthenticatedService, userService, activeUsername) => {
+
+export default ($scope, $rootScope, $routeParams, $timeout, $location, $filter, autoCancelTimeout, steemService, steemAuthenticatedService, userService, activeUsername, cryptoService) => {
   const mode = $routeParams.mode ? $routeParams.mode : 'normal';
   $scope.mode = mode;
 
@@ -151,7 +153,14 @@ export default ($scope, $rootScope, $routeParams, $timeout, $location, $filter, 
       const from = $scope.from;
       const to = $scope.to.trim();
       const amount = formatStrAmount($scope.amount, $scope.asset);
-      const memo = $scope.memo.trim();
+      let memo = $scope.memo.trim();
+
+      if(memo.startsWith('#')){
+        const senderPrivateKey = cryptoService.decryptKey($rootScope.user.keys['memo']);
+        const receiverPublicKey = $scope.toData.memo_key;
+
+        memo = steem.memo.encode(senderPrivateKey, receiverPublicKey, memo);
+      }
 
       const fromAccount = getAccount(from);
       const wif = fromAccount.type === 's' ? fromAccount.keys.active : null;
