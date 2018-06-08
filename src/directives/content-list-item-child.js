@@ -54,8 +54,18 @@ export default () => {
     controller: ($scope, $rootScope, $location, $sce, $filter, $uibModal, storageService, helperService, activePostFilter) => {
 
       const goDetail = () => {
-        let u = `/post${$scope.content.url.split("#")[0].replace('@', '')}/${$scope.content.id}`;
-        $location.path(u);
+
+        if($scope.content.parent_permlink.startsWith('re-')){
+          // If comment of another comment then go comment dedicated page
+          const tag = $scope.content.url.split('/')[1];
+          $rootScope.selectedPost = null;
+          let u = `/post/${tag}/${ $scope.content.author}/${ $scope.content.permlink}`;
+          $location.path(u);
+        } else {
+          // if comment of post then go to post page
+          let u = `/post${$scope.content.url.split("#")[0].replace('@', '')}/${$scope.content.id}`;
+          $location.path(u);
+        }
       };
 
       $scope.titleClicked = () => {
