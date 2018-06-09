@@ -131,7 +131,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
   $scope.title = undefined;
   $scope.body = $scope.tempBody = undefined;
   $scope.tags = undefined;
-  $scope.operationType = 'default';
+  $scope.operationType = {val: 'default'};
   $scope.vote = {checked: false};
 
   $scope.saving = false;
@@ -388,7 +388,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
     const permlink = createPermlink(title);
     const meta = extractMetadata(body);
     const jsonMeta = makeJsonMetadata(meta, tags, appVersion);
-    const options = makeOptions(activeUsername(), permlink, $scope.operationType);
+    const options = makeOptions(activeUsername(), permlink, $scope.operationType.val);
     const voteWeight = $scope.vote.checked ? (helperService.getVotePerc(activeUsername()) * 100) : null;
 
     $scope.posting = true;
@@ -562,7 +562,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
           return $scope.tags.split(' ');
         },
         operationType: () => {
-          return $scope.operationType;
+          return $scope.operationType.val;
         },
         vote: () => {
           return $scope.vote.checked;
@@ -583,7 +583,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
     $scope.title = '';
     $scope.body = $scope.tempBody = '';
     $scope.tags = '';
-    $scope.operationType = 'default';
+    $scope.operationType.val = 'default';
     $scope.vote.checked = false;
 
     $scope.draftId = null;
