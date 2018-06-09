@@ -3,6 +3,10 @@ import steem from 'steem';
 export default ($rootScope, cryptoService) => {
   const transferMemoFilter = (op) => {
 
+    if(!op.memo){
+      return '';
+    }
+
     if (!op.memo.startsWith('#')) {
       return op.memo;
     }
