@@ -803,12 +803,12 @@ export default ($rootScope, steemApi, $q, cryptoService) => {
 
   return {
     follow: (following) => {
-      // requires Active or Owner key
+      // requires Posting key
       const follower = $rootScope.user.username;
 
       switch ($rootScope.user.type) {
         case 's':
-          const wif = getProperWif(['active', 'owner']);
+          const wif = getProperWif(['posting']);
           return follow(wif, follower, following);
           break;
         case 'sc':
@@ -818,12 +818,12 @@ export default ($rootScope, steemApi, $q, cryptoService) => {
       }
     },
     unfollow: (following) => {
-      // requires Active or Owner key
+      // requires Posting key
       const follower = $rootScope.user.username;
 
       switch ($rootScope.user.type) {
         case 's':
-          const wif = getProperWif(['active', 'owner']);
+          const wif = getProperWif(['posting']);
           return unfollow(wif, follower, following);
           break;
         case 'sc':
@@ -833,12 +833,12 @@ export default ($rootScope, steemApi, $q, cryptoService) => {
       }
     },
     mute: (following) => {
-      // requires Active or Owner key
+      // requires Posting key
       const follower = $rootScope.user.username;
 
       switch ($rootScope.user.type) {
         case 's':
-          const wif = getProperWif(['active', 'owner']);
+          const wif = getProperWif(['posting']);
           return ignore(wif, follower, following);
           break;
         case 'sc':

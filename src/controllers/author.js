@@ -460,8 +460,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     steemAuthenticatedService.follow(username).then((resp) => {
       afterFollow();
     }).catch((e) => {
-      // TODO: handle error
-      console.log(e)
+      $rootScope.showError(e);
     }).then(() => {
       $scope.vBlockControl = false;
       $scope.vFollowing = false;
@@ -483,7 +482,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     steemAuthenticatedService.unfollow(username).then((resp) => {
       afterUnfollow();
     }).catch((e) => {
-      // TODO: handle error
+      $rootScope.showError(e);
     }).then(() => {
       $scope.vBlockControl = false;
       $scope.vUnfollowing = false;
@@ -505,7 +504,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     steemAuthenticatedService.mute(username).then((resp) => {
       afterMute();
     }).catch((e) => {
-      // TODO: handle error
+      $rootScope.showError(e);
     }).then(() => {
       $scope.vBlockControl = false;
       $scope.vMuting = false;
@@ -527,7 +526,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     steemAuthenticatedService.unfollow(username).then((resp) => {
       afterUnmute();
     }).catch((e) => {
-      // TODO: handle error
+      $rootScope.showError(e);
     }).then(() => {
       $scope.vBlockControl = false;
       $scope.vUnmuting = false;
@@ -536,7 +535,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
 
   $scope.fav = () => {
     $scope.vFavoriting = true;
-    eSteemService.addFavorite(activeUsername(), username).then((resp)=>{
+    eSteemService.addFavorite(activeUsername(), username).then((resp) => {
       $scope.visitorData.favorited = true;
       $rootScope.$broadcast('favoritesChanged');
     }).catch((e) => {
@@ -548,7 +547,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
 
   $scope.unFav = () => {
     $scope.vFavoriting = true;
-    eSteemService.removeFavoriteUser(activeUsername(), username).then((resp)=>{
+    eSteemService.removeFavoriteUser(activeUsername(), username).then((resp) => {
       $scope.visitorData.favorited = false;
       $rootScope.$broadcast('favoritesChanged');
     }).catch((e) => {
