@@ -651,6 +651,7 @@
   .comment-list-item-inner {
     @include clearfix();
     margin-bottom: 25px;
+    padding: 3px;
 
     .comment-author-pic {
       background: $profilePicBg;
@@ -719,8 +720,8 @@
 
     .comment-extra-tools {
       position: absolute;
-      right: 0;
-      top: 0;
+      right: 4px;
+      top: 2px;
 
       .comment-flagging {
         float: left;
@@ -840,7 +841,7 @@
   &.selected {
 
     & > .comment-list-item-inner {
-      background: #fff6b4;
+      background: $selectedCommentBg;
     }
   }
 

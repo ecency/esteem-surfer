@@ -50,9 +50,7 @@ body.light-theme {
 
   $galleryImgBg: #f8f8f8;
 
-  body {
-
-  }
+  $selectedCommentBg: #fff6b4;
 
   @import "overwrites";
   @import "navbar";
