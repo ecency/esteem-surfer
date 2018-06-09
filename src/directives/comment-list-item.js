@@ -23,7 +23,7 @@ export default () => {
             <span class="comment-date"><a ng-click="goComment()" ng-class="{'no-child': comment.comments.length==0}" title="{{ comment.created|dateFormatted }}"> {{comment.created|timeAgo}}</a></span>
             <a ng-click="reveal()" class="comment-reveal">Reveal Comment</a>
           </div>
-          <div class="comment-body markdown-view mini-markdown" ng-bind-html="comment.body | markDown2Html"></div>
+          <div class="comment-body markdown-view mini-markdown" ng-bind-html="comment | commentBody | markDown2Html"></div>
           <div class="comment-footer">
             <div class="comment-voting">
               <div class="comment-up-vote">
@@ -175,6 +175,9 @@ export default () => {
           $scope.comment.comments.push(newComment);
         } else if (mode === 'edit') {
           $scope.comment.body = newComment.body;
+
+          // it is required to update json_metadata for encrypted comments
+          $scope.comment.json_metadata = newComment.json_metadata;
         }
       };
 

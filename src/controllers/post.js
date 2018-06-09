@@ -1,5 +1,56 @@
 import {authorReputation} from '../filters/author-reputation';
 
+
+const commentBodyFilter = (comment) => {
+
+  // Encrypted comments starts with #
+  if (!comment.body.startsWith('#')) {
+    return comment.body;
+  }
+
+  const activeUser = $rootScope.user.username;
+  if (!activeUser) {
+    return comment.body;
+  }
+
+  // Requires traditional steem login
+  if ($rootScope.user.type === 'sc') {
+    return comment.body;
+  }
+
+  // Parse json meta to check if its encrypted
+  let jsonMeta = {};
+  try {
+    jsonMeta = JSON.parse(comment.json_metadata);
+  } catch (e) {
+  }
+
+  if (jsonMeta.encrypted !== 1) {
+    return comment.body;
+  }
+
+  // Only comment's owner and parent comment/post's owner can see
+  if (![comment.author, comment.parent_author].includes(activeUser)) {
+    return '*encrypted comment*'
+  }
+
+  // Get user private memo key
+  let privateMemoKey = null;
+  try {
+    privateMemoKey = cryptoService.decryptKey($rootScope.user.keys['memo']);
+  } catch (e) {
+    return '*encrypted comment*'
+  }
+
+  // Decode
+  try {
+    return steem.memo.decode(privateMemoKey, comment.body);
+  } catch (e) {
+    return '*encrypted comment*'
+  }
+};
+
+
 export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, $location, $q, steemService, eSteemService, helperService, activeUsername, activePostFilter, constants) => {
 
   let parent = $routeParams.parent;
@@ -130,6 +181,8 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
       pathData = stateData;
 
       let content = stateData.content[contentPath];
+      content.author_data = pathData.accounts[author];
+
       $scope.post = content;
 
       $rootScope.refreshContent(content);
