@@ -8,11 +8,6 @@ export default ($rootScope, cryptoService) => {
       return comment.body;
     }
 
-    const activeUser = $rootScope.user.username;
-    if (!activeUser) {
-      return comment.body;
-    }
-
     // Parse json meta to check if its encrypted
     let jsonMeta = {};
     try {
@@ -22,6 +17,11 @@ export default ($rootScope, cryptoService) => {
 
     if (jsonMeta.encrypted !== 1) {
       return comment.body;
+    }
+
+    const activeUser = $rootScope.user ? $rootScope.user.username : null;
+    if (!activeUser) {
+      return '*encrypted comment*'
     }
 
     // Only comment's owner and parent comment/post's owner can see
@@ -34,10 +34,15 @@ export default ($rootScope, cryptoService) => {
       return '*encrypted comment. use traditional login to see comment.*'
     }
 
+    // Private posting key required
+    if(!$rootScope.user.keys.posting){
+      return '*encrypted comment. posting private key required to see this comment.*'
+    }
+
     // Get user private memo key
     let privateMemoKey = null;
     try {
-      privateMemoKey = cryptoService.decryptKey($rootScope.user.keys['memo']);
+      privateMemoKey = cryptoService.decryptKey($rootScope.user.keys['posting']);
     } catch (e) {
       return '*encrypted comment*'
     }

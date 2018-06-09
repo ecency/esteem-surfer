@@ -99,8 +99,8 @@ export default () => {
         };
 
         if ($scope.encrypt.val) {
-          const senderPrivateKey = cryptoService.decryptKey($rootScope.user.keys['memo']);
-          const receiverPublicKey = $scope.content.author_data.memo_key;
+          const senderPrivateKey = cryptoService.decryptKey($rootScope.user.keys['posting']);
+          const receiverPublicKey = $scope.content.author_data.posting.key_auths.pop()[0];
 
           body = steem.memo.encode(senderPrivateKey, receiverPublicKey, `#${body}`);
         }
