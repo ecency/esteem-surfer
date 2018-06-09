@@ -1,3 +1,5 @@
+import steem from 'steem';
+
 export default () => {
   return {
     restrict: 'AE',
@@ -23,21 +25,43 @@ export default () => {
           <content-editor place-holder="Write your reply" body="commentBody" elem-id="reply-editor-{{ _id }}"></content-editor>
         </div>
         <div class="editor-buttons">
-          <button class="btn btn-primary btn-sm" ng-disabled="!commentBody || sending" ng-click="send()">
-            <span ng-if="mode=='reply'"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="sending"></i> {{ 'REPLY' | translate }}</span>
-            <span ng-if="mode=='edit'"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="sending"></i> {{ 'SAVE' | translate }}</span>
-          </button>
-          <button class="btn btn-default btn-sm" ng-disabled="sending" ng-click="cancel()">{{ 'CANCEL' | translate }}</button>
+          <div class="pull-left">
+            <label><input type="checkbox" ng-model="encrypt.val" ng-disabled="!canEncrypt"> Encrypt <span class="text-danger" ng-if="!canEncrypt"><em>(cannot encrypt with steem connect login)</em></span></label> 
+          </div>
+          <div class="pull-right">
+            <button class="btn btn-primary btn-sm" ng-disabled="!commentBody || sending" ng-click="send()">
+              <span ng-if="mode=='reply'"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="sending"></i> {{ 'REPLY' | translate }}</span>
+              <span ng-if="mode=='edit'"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="sending"></i> {{ 'SAVE' | translate }}</span>
+            </button>
+            <button class="btn btn-default btn-sm" ng-disabled="sending" ng-click="cancel()">{{ 'CANCEL' | translate }}</button>
+          </div>
         </div>
         <div class="preview-part" ng-if="commentBody">
           <div class="preview-part-title">{{ 'PREVIEW' | translate }}</div>
           <div class="markdown-view mini-markdown" ng-bind-html="commentBody | markDown2Html"></div>
         </div>
      </div>`,
-    controller: ($scope, $rootScope, steemAuthenticatedService, steemService, activeUsername, appVersion) => {
+    controller: ($scope, $rootScope, $filter, steemAuthenticatedService, steemService, activeUsername, cryptoService, appVersion) => {
 
       if ($scope.mode === 'edit') {
-        $scope.commentBody = $scope.content.body;
+        $scope.commentBody = $filter('commentBody')($scope.content);
+      }
+
+      let jsonMeta = {};
+      try {
+        jsonMeta = JSON.parse($scope.content.json_metadata);
+      } catch (e) { }
+
+      $scope.encrypt = {
+        val: jsonMeta.encrypted === 1
+      };
+
+      // Steem connect login cannot encrypt
+      if($rootScope.user && $rootScope.user.type === 's'){
+        $scope.canEncrypt = true;
+      } else {
+        $scope.canEncrypt = false;
+        $scope.encrypt.val = false;
       }
 
       const makeReplyPermlink = (toAuthor) => {
@@ -64,14 +88,22 @@ export default () => {
 
         let parentAuthor, parentPermlink, author, permlink, options = null;
 
-        const body = $scope.commentBody.trim();
+        let body = $scope.commentBody.trim();
 
         const jsonMetadata = {
           tags: c.json_metadata ? JSON.parse(c.json_metadata).tags : ['esteem'],
           app: 'esteem/' + appVersion + '-surfer',
           format: 'markdown+html',
-          community: 'esteem'
+          community: 'esteem',
+          encrypted: $scope.encrypt.val ? 1 : 0
         };
+
+        if ($scope.encrypt.val) {
+          const senderPrivateKey = cryptoService.decryptKey($rootScope.user.keys['memo']);
+          const receiverPublicKey = $scope.content.author_data.memo_key;
+
+          body = steem.memo.encode(senderPrivateKey, receiverPublicKey, `#${body}`);
+        }
 
         if ($scope.mode === 'edit') {
           // Edit

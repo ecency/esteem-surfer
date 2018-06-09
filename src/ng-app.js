@@ -160,6 +160,7 @@ import steemPowerFilter from './filters/steem-power';
 import steemDollarFilter from './filters/steem-dollar';
 import {appNameFilter} from './filters/app-name';
 import transferMemoFilter from './filters/transfer-memo';
+import commentBodyFilter from './filters/comment-body'
 
 
 import constants from './constants';
@@ -586,6 +587,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
     }
   })
   .filter('transferMemo', transferMemoFilter)
+  .filter('commentBody', commentBodyFilter)
   .filter('__', ($sce) => {
     // Temporary filter to figure out different language entries from eSteem mobile app's locale files
     return (s) => {
