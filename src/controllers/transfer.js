@@ -155,7 +155,12 @@ export default ($scope, $rootScope, $routeParams, $timeout, $location, $filter, 
       const amount = formatStrAmount($scope.amount, $scope.asset);
       let memo = $scope.memo.trim();
 
-      if(memo.startsWith('#')){
+      if (memo.startsWith('#')) {
+        if (!$rootScope.user.keys['memo']) {
+          $rootScope.showError('Memo private key required to create encrypted memo');
+          return;
+        }
+
         const senderPrivateKey = cryptoService.decryptKey($rootScope.user.keys['memo']);
         const receiverPublicKey = $scope.toData.memo_key;
 
