@@ -9,14 +9,26 @@ This is the complete source code and the build instructions for the alpha versio
 * Surfing your feed and trending/hot stuff
 * Creating new posts
 * Commenting
-* Voting
-* Reading replies
-* Bookmarks synced with eSteem Mobile
+* Voting with any %
+* Reading replies/comments/mentions
+* Drafts `synced with eSteem Mobile`
+* Post Schedules `synced with eSteem Mobile`
+* Bookmarks `synced with eSteem Mobile`
+* Favorites `synced with eSteem Mobile`
+* Comments/Memo Encryption
+* Night Mode (Dark Theme)
+* Wallet Transfers
+* Image Gallery
+* Interesting Users Discovery
+* Detailed Voters Info
+* Witness Voting
+
+More functions are coming!
 
 ## Supported systems
 
 * Windows XP - Windows 10
-* Mac OS X 10.6 - Mac OS X 10.11
+* Mac OS X 10.6 - Mac OS X 10.13
 * Ubuntu 12.04 - Ubuntu 16.04
 * Fedora 22 - Fedora 24
 
