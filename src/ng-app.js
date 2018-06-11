@@ -877,6 +877,8 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
         case 'VOTERS_INFO_TIME':
           return 'Time';
         default:
+        case 'VOTES_IN_24':
+          return 'Number of votes last 24 hours';
           return s;
       }
     }

@@ -15,6 +15,8 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
   $scope.dataList = $rootScope.Data['dataList'] || [];
   $scope.loadingContents = false;
 
+  $scope.votesIn24 = 0;
+
   $scope.$watchCollection('authorData', (n, o) => {
     // Persist author data
     if (n === o) {
@@ -103,6 +105,10 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
       ($scope.authorData.reward_vesting_steem.split(' ')[0] > 0);
 
     $scope.$applyAsync();
+
+    eSteemService.getActiveVotes(username).then((resp) => {
+      $scope.votesIn24 = resp.data.count;
+    });
   };
 
   const loadVisitor = async (refresh = false) => {
