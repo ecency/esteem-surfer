@@ -693,4 +693,21 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
       // Cancel
     });
   };
+
+  $scope.connect2mobileClicked = () => {
+    $uibModal.open({
+      templateUrl: `templates/connect2mobile.html`,
+      controller: 'connect2mobileCtrl',
+      windowClass: 'connect2mobile-modal',
+      resolve: {
+        account: () => {
+          return username;
+        }
+      }
+    }).result.then((data) => {
+      // Success
+    }, () => {
+      // Cancel
+    });
+  };
 };
