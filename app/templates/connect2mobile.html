@@ -1,0 +1,40 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'CANCEL' | translate }}" ng-click="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h4 class="modal-title">{{ 'CONNECT2MOBILE' | __ }}</h4>
+</div>
+<div class="modal-body">
+  <div class="private-keys">
+    <div class="private-key">
+     <a class="qr-image" login-required required-keys="'posting'" on-login-success="qrClicked('posting')" ng-click=""><img src="img/qr.png"></a> <p><strong>{{ 'CONNECT2MOBILE_POSTING' | __ }}</strong> <br><small>{{ 'CONNECT2MOBILE_POSTING_DESC' | __ }}</small> </p>
+    </div>
+    <div class="private-key">
+      <a class="qr-image" login-required required-keys="'active'" on-login-success="qrClicked('active')" ng-click=""><img src="img/qr.png"></a> <p><strong>{{ 'CONNECT2MOBILE_ACTIVE' | __ }}</strong> <br><small>{{ 'CONNECT2MOBILE_ACTIVE_DESC' | __ }}</small></p>
+    </div>
+    <div class="private-key">
+      <a class="qr-image" login-required required-keys="'owner'" on-login-success="qrClicked('owner')" ng-click=""><img src="img/qr.png"></a> <p><strong>{{ 'CONNECT2MOBILE_OWNER' | __ }}</strong> <br><small>{{ 'CONNECT2MOBILE_OWNER_DESC' | __ }}</small></p>
+    </div>
+    <div class="private-key">
+      <a class="qr-image" login-required required-keys="'memo'" on-login-success="qrClicked('memo')" ng-click=""><img src="img/qr.png"></a> <p><strong>{{ 'CONNECT2MOBILE_MEMO' | __ }}</strong> <br><small>{{ 'CONNECT2MOBILE_MEMO_DESC' | __ }}</small></p>
+    </div>
+  </div>
+  <hr>
+  <div class="text-center">
+    <h3 class="download-title"><i class="fa fa-download"></i> {{ 'CONNECT2MOBILE_DOWNLOAD' | __ }}</h3>
+    <table class="table app-table">
+      <thead>
+        <tr>
+          <th><a class="btn btn-primary" href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1141397898&mt=8" target="_external"><i class="fa fa-apple"></i> IOS</a></th>
+          <th><a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.netsolutions.esteem" target="_external"><i class="fa fa-android"></i> ANDROID</a></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img src="img/download-ios-qr.png" width="160"></td>
+          <td><img src="img/download-android-qr.png" width="160"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

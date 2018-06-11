@@ -100,6 +100,8 @@ import delegateCtrl from './controllers/delegate';
 import tokenExchangeCtrl from './controllers/token-exchange';
 import marketPlaceCtrl from './controllers/market-place';
 import discoverCtrl from './controllers/discover';
+import connect2mobileCtrl from './controllers/connect2mobile';
+import privateKeyQrCtrl from './controllers/private-key-qr'
 
 
 // Directives
@@ -562,6 +564,8 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
   .controller('galleryModalCtrl', galleryModalCtrl)
   .controller('delegatedVestingCtrl', delegatedVestingCtrl)
   .controller('delegateCtrl', delegateCtrl)
+  .controller('connect2mobileCtrl', connect2mobileCtrl)
+  .controller('privateKeyQrCtrl', privateKeyQrCtrl)
 
 
   .filter('catchPostImage', catchPostImageFilter)
@@ -876,9 +880,29 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'Percent';
         case 'VOTERS_INFO_TIME':
           return 'Time';
-        default:
         case 'VOTES_IN_24':
           return 'Number of votes last 24 hours';
+        case 'CONNECT2MOBILE':
+          return 'Connect to Mobile';
+        case 'CONNECT2MOBILE_POSTING':
+          return 'POSTING';
+        case 'CONNECT2MOBILE_POSTING_DESC':
+          return 'The posting key is used for posting and voting. It should be different from the active and owner keys.';
+        case 'CONNECT2MOBILE_ACTIVE':
+          return 'ACTIVE';
+        case 'CONNECT2MOBILE_ACTIVE_DESC':
+          return 'The active key is used to make transfers and place orders in the internal market.';
+        case 'CONNECT2MOBILE_OWNER':
+          return 'OWNER';
+        case 'CONNECT2MOBILE_OWNER_DESC':
+          return 'The owner key is the master key for the account and is required to change the other keys.';
+        case 'CONNECT2MOBILE_MEMO':
+          return 'MEMO';
+        case 'CONNECT2MOBILE_MEMO_DESC':
+          return 'The memo key is used to create and read memos.';
+        case 'CONNECT2MOBILE_DOWNLOAD':
+          return 'Download eSteem Mobile';
+        default:
           return s;
       }
     }

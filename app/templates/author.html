@@ -47,6 +47,9 @@
                 <li ng-show="isMyPage" ng-class="{'active': section==='activities'}" data-key="ACTIVITIES">
                   <a ng-click="changeSection('activities')">{{ 'ACTIVITIES' | __ }}</a>
                 </li>
+                <li ng-show="isMyPage" data-key="CONNECT2MOBILE">
+                  <a ng-click="connect2mobileClicked()">{{ 'CONNECT2MOBILE' | __ }}</a>
+                </li>
               </ul>
               <transfer-nav-bar ng-if="section==='wallet' && isMyPage"></transfer-nav-bar>
             </div>

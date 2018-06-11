@@ -2425,7 +2425,7 @@ STRUCTURE:
   .editor-buttons {
     @include clearfix();
 
-    label{
+    label {
       font-size: 13px;
       font-weight: normal;
     }
@@ -2918,5 +2918,62 @@ STRUCTURE:
 .confirm-modal {
   .modal-header, .modal-footer {
     text-align: center;
+  }
+}
+
+.connect2mobile-modal {
+  .modal-dialog {
+    width: 980px;
+  }
+
+  .modal-body {
+    .private-keys {
+      .private-key {
+        @include clearfix();
+        align-items: center;
+        display: flex;
+        margin-bottom: 20px;
+        height: 60px;
+
+        .qr-image {
+          float: left;
+          height: 50px;
+          margin-right: 10px;
+          width: 50px;
+
+          img {
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .download-title {
+      margin-bottom: 20px;
+    }
+
+    .app-table {
+      margin: auto;
+      width: 500px;
+
+      td, th {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.private-key-qr-modal {
+  .modal-body {
+    text-align: center;
+
+    .qr-image {
+      margin-bottom: 20px;
+    }
+
+    code {
+      font-size: 16px;
+    }
   }
 }
