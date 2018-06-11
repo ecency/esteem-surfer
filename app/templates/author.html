@@ -92,6 +92,11 @@
             <span class="prop-key"><i class="fa fa-bolt"></i></span>
             <span class="prop-value">{{ authorData.voting_power / 100 | number:2 }}</span>
           </div>
+          <div class="author-prop author-prop-votes-in-24" tooltip-placement="top-left"
+               uib-tooltip="{{ 'VOTES_IN_24' | __ }}" ng-if="votesIn24">
+            <span class="prop-key"><i class="fa fa-chevron-circle-up"></i></span>
+            <span class="prop-value">{{ votesIn24 }}</span>
+          </div>
           <a ng-click="witnessesClicked()" ng-show="isMyPage"><small>Witness Voting</small></a>
         </div>
         <div class="author-content-right">
