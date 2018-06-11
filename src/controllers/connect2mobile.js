@@ -27,12 +27,13 @@ export default ($scope, $rootScope, $uibModal, $uibModalInstance, cryptoService)
   };
 
   $scope.qrClicked = (key) => {
-    $rootScope.pinDialog(true).result.then((p) => {
 
-      if ($rootScope.user.type === 'sc') {
-        $rootScope.showError('You cannot see private keys with steem connect login');
-        return;
-      }
+    if ($rootScope.user.type === 'sc') {
+      $rootScope.showError('You cannot see private keys with steem connect login.');
+      return;
+    }
+
+    $rootScope.pinDialog(true).result.then((p) => {
 
       const selectedKey = $rootScope.user.keys[key];
       const code = cryptoService.decryptKey(selectedKey);
