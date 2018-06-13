@@ -47,6 +47,30 @@
   }
 }
 
+#update-logs {
+  right: 0;
+  left: 0;
+  position: absolute;
+  top: -4000px;
+  width: 600px;
+  height: 400px;
+  overflow: auto;
+  background: #415773;
+  margin: 0 auto;
+  z-index: 10;
+
+  .update-log-list {
+    .update-log {
+      margin-bottom: 10px;
+      padding: 4px;
+      border-bottom: 1px solid #ccc;
+      color: #fff;
+      background: #6284b1;
+    }
+  }
+
+}
+
 .error-messages {
   background: #f2dede;
   border: 1px solid #ebcccc;

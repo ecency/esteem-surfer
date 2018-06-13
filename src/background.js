@@ -62,22 +62,59 @@ app.on("ready", () => {
   }
 
   autoUpdater.checkForUpdatesAndNotify();
+
+  setTimeout(() => {
+    autoUpdater.checkForUpdatesAndNotify();
+  }, 60000)
 });
 
 app.on("window-all-closed", () => {
   app.quit();
 });
 
+const logUpdateStatus = (text) => {
+  mainWindow.webContents.send('update-log', text);
+};
+
 const updateReady = () => {
   mainWindow.webContents.send('update-ready');
 };
 
+autoUpdater.on('checking-for-updupdate-logate', () => {
+  logUpdateStatus('Checking for update...');
+});
+
+autoUpdater.on('update-available', (info) => {
+  logUpdateStatus('Update available.');
+});
+
+autoUpdater.on('update-not-available', (info) => {
+  logUpdateStatus('Update not available.');
+});
+
+autoUpdater.on('error', (err) => {
+  logUpdateStatus('Error in auto-updater. ' + err);
+});
+
+autoUpdater.on('download-progress', (progressObj) => {
+  let log_message = "Download speed: " + progressObj.bytesPerSecond;
+  log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
+  log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
+  logUpdateStatus(log_message);
+});
+
 autoUpdater.on('update-downloaded', (info) => {
   updateReady();
 });
+
+setTimeout(() => {
+  logUpdateStatus('Hello');
+}, 4000);
+
 
 import {ipcMain} from "electron";
 
 ipcMain.on('update-restart', () => {
   autoUpdater.quitAndInstall()
 });
+
