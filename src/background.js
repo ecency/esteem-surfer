@@ -63,7 +63,7 @@ app.on("ready", () => {
 
   autoUpdater.checkForUpdatesAndNotify();
 
-  setTimeout(() => {
+  setInterval(() => {
     autoUpdater.checkForUpdatesAndNotify();
   }, 60000)
 });
