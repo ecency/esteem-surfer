@@ -17,7 +17,7 @@ const genRandom = function () {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 };
 
-import {remote, screen, clipboard, shell} from "electron";
+import {remote, screen, clipboard, shell, ipcRenderer} from "electron";
 
 window.writeClipboard = (s) => {
   clipboard.writeText(s);
@@ -48,6 +48,17 @@ window.getWindowSize = () => {
   return win_.getSize();
 };
 
+ipcRenderer.on('update-ready', () => {
+  document.querySelector('#new-version-alert').style.display = 'block';
+});
+
+window.updateRestart = () => {
+  ipcRenderer.send('update-restart');
+};
+
+window.dismissUpdate = () => {
+  document.querySelector('#new-version-alert').style.display = 'hidden';
+};
 
 import env from "env";
 import jetpack from "fs-jetpack";
@@ -147,6 +158,7 @@ import editorService from './services/editor';
 import cryptoService from './services/crypto';
 import pinService from './services/pin'
 
+
 // Filters
 import {catchPostImageFilter} from './filters/catch-post-image';
 import sumPostTotalFilter from './filters/sum-post-total';
@@ -166,7 +178,7 @@ import commentBodyFilter from './filters/comment-body'
 
 
 import constants from './constants';
-import version from './version';
+import {version} from '../package.json'
 
 const app = remote.app;
 
@@ -832,10 +844,10 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'Remove from favorites';
         case 'SEARCH_FAVORITES':
           return 'Search in favorites';
-        case 'NEW_VERSION_ALERT_HEADER':
-          return 'Warning';
         case 'NEW_VERSION_ALERT_TEXT':
-          return $sce.trustAsHtml('There is a new version of eSteem Surfer. Please download the latest version from <a href="https://github.com/eSteemApp/esteem-surfer/releases" target="_external">https://github.com/eSteemApp/esteem-surfer/releases</a>');
+          return 'New version available';
+        case 'NEW_VERSION_UPDATE':
+          return 'Update';
         case 'LOAD_MORE':
           return 'Load more';
         case 'TOGGLE_NIGHT_MODE':
@@ -1376,6 +1388,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
 
 
     // New version checker
+    /*
     $rootScope.newVersion = null;
     $http.get(constants.versionCheckUrl).then((resp) => {
       const newVer = resp.data.tag_name;
@@ -1387,6 +1400,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
     $rootScope.dismissNewVersion = () => {
       $rootScope.newVersion = null;
     };
+    */
 
 
     // Error messages to show user when remote server errors occurred

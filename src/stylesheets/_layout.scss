@@ -20,7 +20,7 @@
   }
 }
 
-.new-version-alert {
+#new-version-alert {
   background: #F9F6F1;
   border-top: 3px solid #E1AE4C;
   bottom: 30px;
@@ -31,16 +31,13 @@
   position: fixed;
   right: 0;
   width: 500px;
-
-  .header-text {
-    color: #E1AE4C;
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 4px;
-  }
+  display: none;
+  text-align: center;
 
   p {
-    margin: 0;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+    font-size: 16px;
   }
 
   .btn-dismiss {

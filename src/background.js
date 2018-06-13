@@ -5,9 +5,9 @@
 
 import path from "path";
 import url from "url";
-import { app, Menu } from "electron";
-import { devMenuTemplate } from "./menu/dev_menu_template";
-import { editMenuTemplate } from "./menu/edit_menu_template";
+import {app, Menu} from "electron";
+import {devMenuTemplate} from "./menu/dev_menu_template";
+import {editMenuTemplate} from "./menu/edit_menu_template";
 import createWindow from "./helpers/window";
 
 // Special module holding environment variables which you declared
@@ -30,10 +30,19 @@ if (env.name !== "production") {
   app.setPath("userData", `${userDataPath} (${env.name})`);
 }
 
+// Github token to checking repository for updates
+import {GH_TOKEN} from "./config";
+
+process.env.GH_TOKEN = GH_TOKEN;
+
+import {autoUpdater} from "electron-updater";
+
+let mainWindow;
+
 app.on("ready", () => {
   setApplicationMenu();
 
-  const mainWindow = createWindow("main", {
+  mainWindow = createWindow("main", {
     width: 1200,
     height: 700,
     minWidth: 1000,
@@ -51,8 +60,24 @@ app.on("ready", () => {
   if (env.name === "development") {
     mainWindow.openDevTools();
   }
+
+  autoUpdater.checkForUpdatesAndNotify();
 });
 
 app.on("window-all-closed", () => {
   app.quit();
+});
+
+const updateReady = () => {
+  mainWindow.webContents.send('update-ready');
+};
+
+autoUpdater.on('update-downloaded', (info) => {
+  updateReady();
+});
+
+import {ipcMain} from "electron";
+
+ipcMain.on('update-restart', () => {
+  autoUpdater.quitAndInstall()
 });
