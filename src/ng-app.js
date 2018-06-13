@@ -60,6 +60,18 @@ window.dismissUpdate = () => {
   document.querySelector('#new-version-alert').style.display = 'hidden';
 };
 
+ipcRenderer.on('update-log', (event, text) => {
+  document.querySelector('#update-logs .update-log-list').innerHTML += '<div class="update-log">' + text + '</div>';
+});
+
+window.closeUpdateLogList = () => {
+  document.querySelector('#update-logs').style.top = '-4000px';
+};
+
+window.clearUpdateLogList = () => {
+  document.querySelector('#update-logs .update-log-list').innerHTML = '';
+};
+
 import env from "env";
 import jetpack from "fs-jetpack";
 import steem from 'steem';

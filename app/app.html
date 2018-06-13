@@ -48,6 +48,7 @@
   <button class="btn btn-primary" onclick="updateRestart()">{{ 'NEW_VERSION_UPDATE' | __ }}</button>
   <button class="btn btn-xs btn-warning btn-dismiss" ng-click="dismissUpdate()"><i class="fa fa-times"></i></button>
 </div>
+<div id="update-logs"><button onclick="closeUpdateLogList()">Close</button><button onclick="clearUpdateLogList()">Clear</button><div class="update-log-list"></div></div>
 <script>if (typeof module === 'object') {
   window.module = module;
   module = undefined;
