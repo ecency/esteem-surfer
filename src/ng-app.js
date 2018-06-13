@@ -61,7 +61,7 @@ window.dismissUpdate = () => {
 };
 
 ipcRenderer.on('update-log', (event, text) => {
-  document.querySelector('#update-logs .update-log-list').innerHTML = '<div class="update-log">' + text + '</div>';
+  document.querySelector('#update-logs .update-log-list').innerHTML += '<div class="update-log">' + text + '</div>';
 });
 
 window.closeUpdateLogList = () => {
