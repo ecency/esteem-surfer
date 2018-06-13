@@ -171,7 +171,7 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
       $scope.searchButtonClicked = async () => {
 
         if($scope.searchStr === 'about:update'){
-          document.querySelector('#update-logs').style.top = '10px';
+          document.querySelector('#update-logs').style.display = 'block';
           return;
         }
 

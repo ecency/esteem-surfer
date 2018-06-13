@@ -63,9 +63,10 @@ app.on("ready", () => {
 
   autoUpdater.checkForUpdatesAndNotify();
 
+  // run auto updater to check if is there a new version
   setInterval(() => {
     autoUpdater.checkForUpdatesAndNotify();
-  }, 60000)
+  }, 36e5);
 });
 
 app.on("window-all-closed", () => {
