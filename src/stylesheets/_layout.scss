@@ -51,13 +51,14 @@
   right: 0;
   left: 0;
   position: absolute;
-  top: -4000px;
+  top: 10px;
   width: 600px;
   height: 400px;
   overflow: auto;
   background: #415773;
   margin: 0 auto;
   z-index: 10;
+  display: none;
 
   .update-log-list {
     .update-log {

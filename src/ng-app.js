@@ -57,15 +57,15 @@ window.updateRestart = () => {
 };
 
 window.dismissUpdate = () => {
-  document.querySelector('#new-version-alert').style.display = 'hidden';
+  document.querySelector('#new-version-alert').style.display = 'none';
 };
 
 ipcRenderer.on('update-log', (event, text) => {
-  document.querySelector('#update-logs .update-log-list').innerHTML += '<div class="update-log">' + text + '</div>';
+  document.querySelector('#update-logs .update-log-list').innerHTML = '<div class="update-log">' + text + '</div>';
 });
 
 window.closeUpdateLogList = () => {
-  document.querySelector('#update-logs').style.top = '-4000px';
+  document.querySelector('#update-logs').style.display = 'none';
 };
 
 window.clearUpdateLogList = () => {
