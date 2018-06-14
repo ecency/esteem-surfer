@@ -60,8 +60,8 @@ ipcRenderer.on('download-started', () => {
   document.querySelector('#new-version-alert .download-progress').style.display = 'inline-block';
 });
 
-ipcRenderer.on('download-progress', (event, ver) => {
-  document.querySelector('#new-version-alert .download-progress').innerText = ver;
+ipcRenderer.on('download-progress', (event, perc) => {
+  document.querySelector('#new-version-alert .download-progress').innerText = parseInt(perc).toString();
 });
 
 ipcRenderer.on('update-downloaded', () => {
