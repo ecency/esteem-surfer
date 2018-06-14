@@ -93,6 +93,7 @@ import {ipcMain} from "electron";
 
 ipcMain.on('download-update', () => {
   autoUpdater.downloadUpdate();
+  mainWindow.webContents.send('download-started');
 });
 
 ipcMain.on('update-restart', () => {
