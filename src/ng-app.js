@@ -48,29 +48,39 @@ window.getWindowSize = () => {
   return win_.getSize();
 };
 
-ipcRenderer.on('update-ready', () => {
+
+ipcRenderer.on('update-available', (event, ver) => {
   document.querySelector('#new-version-alert').style.display = 'block';
+  document.querySelector('#new-version-alert .release-name').innerText = ver;
 });
 
-window.updateRestart = () => {
-  ipcRenderer.send('update-restart');
-};
+ipcRenderer.on('download-started', () => {
+  document.querySelector('#new-version-alert .btn-download').style.display = 'none';
+  document.querySelector('#new-version-alert .btn-dismiss').style.display = 'none';
+  document.querySelector('#new-version-alert .download-progress').style.display = 'inline-block';
+});
+
+ipcRenderer.on('download-progress', (event, ver) => {
+  document.querySelector('#new-version-alert .download-progress').innerText = ver;
+});
+
+ipcRenderer.on('update-downloaded', () => {
+  document.querySelector('#new-version-alert .download-progress').style.display = 'none';
+  document.querySelector('#new-version-alert .btn-restart').style.display = 'inline-block';
+});
 
 window.dismissUpdate = () => {
   document.querySelector('#new-version-alert').style.display = 'none';
 };
 
-ipcRenderer.on('update-log', (event, text) => {
-  document.querySelector('#update-logs .update-log-list').innerHTML += '<div class="update-log">' + text + '</div>';
-});
-
-window.closeUpdateLogList = () => {
-  document.querySelector('#update-logs').style.display = 'none';
+window.downloadUpdate = () => {
+  ipcRenderer.send('download-update');
 };
 
-window.clearUpdateLogList = () => {
-  document.querySelector('#update-logs .update-log-list').innerHTML = '';
+window.updateRestart = () => {
+  ipcRenderer.send('update-restart');
 };
+
 
 import env from "env";
 import jetpack from "fs-jetpack";
@@ -858,8 +868,12 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           return 'Search in favorites';
         case 'NEW_VERSION_ALERT_TEXT':
           return 'New version available';
-        case 'NEW_VERSION_UPDATE':
-          return 'Update';
+        case 'NEW_VERSION_DOWNLOAD':
+          return 'Download';
+        case 'NEW_VERSION_DISMISS':
+          return 'Dismiss';
+        case 'NEW_VERSION_RESTART':
+          return 'Restart';
         case 'LOAD_MORE':
           return 'Load more';
         case 'TOGGLE_NIGHT_MODE':

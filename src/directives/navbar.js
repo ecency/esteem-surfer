@@ -170,11 +170,6 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
 
       $scope.searchButtonClicked = async () => {
 
-        if($scope.searchStr === 'about:update'){
-          document.querySelector('#update-logs').style.display = 'block';
-          return;
-        }
-
         let resp = null;
         let isContent = false;
         let isAccount = false;

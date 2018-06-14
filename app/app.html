@@ -44,11 +44,12 @@
   <div class="message" ng-repeat="m in $root.successMessages"><i class="fa fa-check"></i> {{ m.text }}</div>
 </div>
 <div id="new-version-alert">
-  <p>{{ 'NEW_VERSION_ALERT_TEXT' | __ }}</p>
-  <button class="btn btn-primary" onclick="updateRestart()">{{ 'NEW_VERSION_UPDATE' | __ }}</button>
-  <button class="btn btn-xs btn-warning btn-dismiss" onclick="dismissUpdate()"><i class="fa fa-times"></i></button>
+  <p>{{ 'NEW_VERSION_ALERT_TEXT' | __ }} <span class="release-name"></span></p>
+  <button class="btn btn-primary btn-download" onclick="downloadUpdate()"><i class="fa fa-download"></i> {{ 'NEW_VERSION_DOWNLOAD' | __ }} </button>
+  <button class="btn btn-warning btn-dismiss" onclick="dismissUpdate()"><i class="fa fa-times"></i> {{ 'NEW_VERSION_DISMISS' | __ }} </button>
+  <span class="download-progress">0</span>
+  <button class="btn btn-primary btn-restart" onclick="updateRestart()">{{ 'NEW_VERSION_RESTART' | __ }} </button>
 </div>
-<div id="update-logs"><button onclick="closeUpdateLogList()">Close</button><button onclick="clearUpdateLogList()">Clear</button><div class="update-log-list"></div></div>
 <script>if (typeof module === 'object') {
   window.module = module;
   module = undefined;

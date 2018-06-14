@@ -37,6 +37,8 @@ process.env.GH_TOKEN = GH_TOKEN;
 
 import {autoUpdater} from "electron-updater";
 
+autoUpdater.autoDownload = false;
+
 let mainWindow;
 
 app.on("ready", () => {
@@ -61,61 +63,39 @@ app.on("ready", () => {
     mainWindow.openDevTools();
   }
 
-  autoUpdater.checkForUpdatesAndNotify();
+  if (env.name === "production") {
+    autoUpdater.checkForUpdates();
 
-  // run auto updater to check if is there a new version
-  setInterval(() => {
-    autoUpdater.checkForUpdatesAndNotify();
-  }, 36e5);
+    // run auto updater to check if is there a new version for each 4 hours
+    setInterval(() => {
+      autoUpdater.checkForUpdates();
+    }, (1000 * 60) * 240);
+  }
 });
 
 app.on("window-all-closed", () => {
   app.quit();
 });
 
-const logUpdateStatus = (text) => {
-  mainWindow.webContents.send('update-log', text);
-};
-
-const updateReady = () => {
-  mainWindow.webContents.send('update-ready');
-};
-
-autoUpdater.on('checking-for-updupdate-logate', () => {
-  logUpdateStatus('Checking for update...');
-});
-
 autoUpdater.on('update-available', (info) => {
-  logUpdateStatus('Update available.');
-});
-
-autoUpdater.on('update-not-available', (info) => {
-  logUpdateStatus('Update not available.');
-});
-
-autoUpdater.on('error', (err) => {
-  logUpdateStatus('Error in auto-updater. ' + err);
+  mainWindow.webContents.send('update-available', info.releaseName);
 });
 
 autoUpdater.on('download-progress', (progressObj) => {
-  let log_message = "Download speed: " + progressObj.bytesPerSecond;
-  log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
-  log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
-  logUpdateStatus(log_message);
+  mainWindow.webContents.send('download-progress', progressObj.percent);
 });
 
-autoUpdater.on('update-downloaded', (info) => {
-  updateReady();
+autoUpdater.on('update-downloaded', () => {
+  mainWindow.webContents.send('update-downloaded');
 });
-
-setTimeout(() => {
-  logUpdateStatus('Hello');
-}, 4000);
-
 
 import {ipcMain} from "electron";
 
+ipcMain.on('download-update', () => {
+  autoUpdater.downloadUpdate();
+});
+
 ipcMain.on('update-restart', () => {
-  autoUpdater.quitAndInstall()
+  autoUpdater.quitAndInstall();
 });
 
