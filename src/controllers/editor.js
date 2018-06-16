@@ -6,11 +6,11 @@ import {Buffer} from 'buffer';
 
 require('moment-timezone');
 
-const createPermlink = (title) => {
+export const createPermlink = (title) => {
   const rnd = (Math.random() + 1).toString(16).substring(2);
   let slug = getSlug(title);
 
-  let perm = `${slug.toString()}-${rnd}`;
+  let perm = `${slug.toString()}-${rnd}est`;
 
   // STEEMIT_MAX_PERMLINK_LENGTH
   if (perm.length > 255) {

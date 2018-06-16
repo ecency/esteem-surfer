@@ -1,9 +1,16 @@
-import {extractMetadata} from './editor.js';
+import {extractMetadata, createPermlink} from './editor.js';
 
 import {expect} from "chai";
 
 
 describe('Editor Controller', () => {
+  it('createPermlink', () => {
+    const input = 'Suspendisse augue risus, scelerisque fringilla purus id, lacinia faucibus nibh. Suspendisse in est ligula. Ut vitae nunc velit. Ut ac volutpat magna. Nam ultricies id mi eu auctor. Etiam ligula velit, iaculis ornare hendrerit non, rhoncus non felis. Donec tristique odio sed aliquam ornare.';
+    const res = createPermlink(input);
+    expect(res.endsWith('est')).to.deep.equal(true);
+    expect(res.length).to.deep.equal(255);
+  });
+
   it('extractMetadata 1', () => {
     const body = '';
     const res = extractMetadata(body);
