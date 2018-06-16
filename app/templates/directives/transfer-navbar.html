@@ -7,8 +7,6 @@
       <li><a ng-click="transferToSavingsClicked()">{{ 'TRANSFER_TO_SAVINGS' | translate }}</a></li>
       <li><a ng-click="transferFromSavingsClicked()">{{ 'WITHDRAW_FROM_SAVINGS' | __ }}</a></li>
       <li role="separator" class="divider"></li>
-      <li><a ng-click="delegateClicked()">{{ 'DELEGATE' | __ }}</a></li>
-      <li role="separator" class="divider"></li>
       <li><a ng-click="escrowClicked()">{{ 'ESCROW' | translate }}</a></li>
       <li><a ng-click="escrowActionsClicked()">Escrow Actions</a></li>
     </ul>
@@ -18,6 +16,8 @@
     <ul class="dropdown-menu">
       <li><a ng-click="powerUpClicked()">{{ 'POWER_UP' | translate }}</a></li>
       <li><a ng-click="powerDownClicked()">{{ 'POWER_DOWN' | translate }}</a></li>
+      <li role="separator" class="divider"></li>
+      <li><a ng-click="delegateClicked()">{{ 'DELEGATE' | __ }}</a></li>
     </ul>
   </li>
 </ul>
