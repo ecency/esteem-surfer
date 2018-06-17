@@ -31,9 +31,10 @@ const linkifyNode = (node) => {
   const linkified = linkify(node.nodeValue);
   if (linkified !== node.nodeValue) {
     const replaceNode = document.createElement('span');
+    replaceNode.setAttribute('class', 'will-replaced'); // it will be replaced with its own innerHTML
     node.parentNode.insertBefore(replaceNode, node);
     node.parentNode.removeChild(node);
-    replaceNode.outerHTML = linkified;
+    replaceNode.innerHTML = linkified;
   }
 };
 
@@ -233,12 +234,18 @@ export const markDown2Html = (input) => {
   tempEl = sanitizeNode(tempEl);
   output = tempEl.innerHTML;
 
-  //
+  // traverse over elements and manipulate
   tempEl = document.createElement('div');
   tempEl.innerHTML = output;
   traverse(tempEl);
-  output = tempEl.innerHTML;
 
+  // replace temporary elements with their innerHTML's
+  const replaceElems = tempEl.querySelectorAll('.will-replaced');
+  replaceElems.forEach((child) => {
+    child.outerHTML = child.innerHTML;
+  });
+
+  output = tempEl.innerHTML;
 
   return output;
 };
