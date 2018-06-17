@@ -29,7 +29,7 @@ const linkifyNode = (node) => {
   if (['A', 'CODE'].includes(node.parentNode.nodeName)) return;
 
   const linkified = linkify(node.nodeValue);
-  if (linkified !== node.nodeName) {
+  if (linkified !== node.nodeValue) {
     const replaceNode = document.createElement('span');
     node.parentNode.insertBefore(replaceNode, node);
     node.parentNode.removeChild(node);
