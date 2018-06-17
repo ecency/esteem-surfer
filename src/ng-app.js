@@ -48,6 +48,7 @@ window.getWindowSize = () => {
   return win_.getSize();
 };
 
+// New version/update relative functions
 
 ipcRenderer.on('update-available', (event, ver) => {
   document.querySelector('#new-version-alert').style.display = 'block';
@@ -81,7 +82,7 @@ window.updateRestart = () => {
   ipcRenderer.send('update-restart');
 };
 
-
+// Custom protocol handler
 window.protocolHandler = (url) => {
   const root = document.querySelector('html');
   const rootScope = angular.element(root).scope();
@@ -997,23 +998,6 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
       }
     }, 2000);
 
-
-    // New version checker
-    /*
-    $rootScope.newVersion = null;
-    $http.get(constants.versionCheckUrl).then((resp) => {
-      const newVer = resp.data.tag_name;
-      if (newVer !== appVersion) {
-        $rootScope.newVersion = newVer;
-      }
-    });
-
-    $rootScope.dismissNewVersion = () => {
-      $rootScope.newVersion = null;
-    };
-    */
-
-
     // Error messages to show user when remote server errors occurred
     $rootScope.errorMessages = [];
     $rootScope.showError = (message) => {
@@ -1043,24 +1027,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
       $rootScope.curCtrl = cur.$$route.controller;
     });
 
-    // An helper to collect post body samples
-    $rootScope.showMarkdownResultHelper = (env.name === 'development');
-    $rootScope.saveMarkdownResult = (id, markdown) => {
-
-      let savePath = path.join(app.getAppPath(), 'test-data', 'markdown-2-html', id + '.json');
-      if (jetpack.exists(savePath)) {
-        if (!confirm(savePath + ' exists. Overwrite?')) {
-          return false;
-        }
-      }
-
-      let html = markDown2Html(markdown);
-      let writeData = {'id': id, input: markdown, result: html};
-
-      jetpack.write(savePath, writeData);
-      console.log('Saved to: ' + savePath);
-    };
-
+    // Custom protocol handler
     $rootScope.protocolHandler = (url) => {
       const obj = protocolUrl2Obj(url);
 
@@ -1100,5 +1067,23 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
         });
         return;
       }
-    }
+    };
+
+    // An helper to collect post body samples
+    $rootScope.showMarkdownResultHelper = (env.name === 'development');
+    $rootScope.saveMarkdownResult = (id, markdown) => {
+
+      let savePath = path.join(app.getAppPath(), 'test-data', 'markdown-2-html', id + '.json');
+      if (jetpack.exists(savePath)) {
+        if (!confirm(savePath + ' exists. Overwrite?')) {
+          return false;
+        }
+      }
+
+      let html = markDown2Html(markdown);
+      let writeData = {'id': id, input: markdown, result: html};
+
+      jetpack.write(savePath, writeData);
+      console.log('Saved to: ' + savePath);
+    };
   });
