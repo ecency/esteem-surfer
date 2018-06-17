@@ -82,11 +82,18 @@ window.updateRestart = () => {
 };
 
 
+window.protocolHandler = (url) => {
+  const root = document.querySelector('html');
+  const rootScope = angular.element(root).scope();
+  rootScope.protocolHandler(url);
+};
+
 import env from "env";
 import jetpack from "fs-jetpack";
 import steem from 'steem';
 import path from 'path';
 import jq from 'jquery';
+import {protocolUrl2Obj} from './helpers/protocol';
 
 // Angular and related dependencies
 import angular from 'angular';
@@ -1475,4 +1482,45 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
       jetpack.write(savePath, writeData);
       console.log('Saved to: ' + savePath);
     };
+
+    $rootScope.protocolHandler = (url) => {
+      const obj = protocolUrl2Obj(url);
+
+      if (!obj) {
+        return;
+      }
+
+      if (obj.type === 'filter') {
+        const u = `/posts/${obj.filter}`;
+        $location.path(u);
+        return;
+      }
+
+      if (obj.type === 'filter-tag') {
+        const u = `/posts/${obj.filter}/${obj.tag}`;
+        $location.path(u);
+        return;
+      }
+
+      if (obj.type === 'post') {
+        steemService.getContent(obj.author, obj.permlink).then(resp => {
+          if (resp.id) {
+            $rootScope.selectedPost = null;
+            const u = `/post/${obj.cat}/${obj.author}/${obj.permlink}`;
+            $location.path(u);
+          }
+        });
+        return;
+      }
+
+      if (obj.type === 'account') {
+        steemService.getAccounts([obj.account]).then(resp => {
+          if (resp.length === 1) {
+            const u = `/account/${obj.account}`;
+            $location.path(u);
+          }
+        });
+        return;
+      }
+    }
   });
