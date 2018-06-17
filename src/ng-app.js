@@ -221,63 +221,6 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
 
   // Translations
   $translateProvider.translations('en-US', require('./locales/en-US')); //English
-  $translateProvider.translations('ru-RU', require('./locales/ru-RU')); //Russian
-  $translateProvider.translations('de-DE', require('./locales/de-DE')); //German
-  $translateProvider.translations('fr-FR', require('./locales/fr-FR')); //French
-  $translateProvider.translations('es-ES', require('./locales/es-ES')); //Spanish
-  $translateProvider.translations('el-GR', require('./locales/el-GR')); //Greek
-  $translateProvider.translations('bg-BG', require('./locales/bg-BG')); //Bulgarian
-  $translateProvider.translations('nl-NL', require('./locales/nl-NL')); //Dutch
-  $translateProvider.translations('hu-HU', require('./locales/hu-HU')); //Hungarian
-  $translateProvider.translations('cs-CZ', require('./locales/cs-CZ')); //Czech
-  $translateProvider.translations('he-IL', require('./locales/he-IL')); //Hebrew
-  $translateProvider.translations('pl-PL', require('./locales/pl-PL')); //Polish
-  $translateProvider.translations('pt-PT', require('./locales/pt-PT')); //Portuguese
-  $translateProvider.translations('pt-BR', require('./locales/pt-BR')); //Portuguese Brazil
-  $translateProvider.translations('id-ID', require('./locales/id-ID')); //Indonesian
-  $translateProvider.translations('zh-TW', require('./locales/zh-TW')); //Chinese traditional
-  $translateProvider.translations('zh-CN', require('./locales/zh-CN')); //Chinese simplified
-  $translateProvider.translations('dolan', require('./locales/dolan')); //Dolan
-  $translateProvider.translations('sv-SE', require('./locales/sv-SE')); //Swedish
-  $translateProvider.translations('uk-UA', require('./locales/uk-UA')); //Ukrainian
-  $translateProvider.translations('ms-MY', require('./locales/ms-MY')); //Malay
-  $translateProvider.translations('hr-HR', require('./locales/hr-HR')); //Croatian
-  $translateProvider.translations('fa-IR', require('./locales/fa-IR')); //Persian
-  $translateProvider.translations('it-IT', require('./locales/it-IT')); //Italian
-  $translateProvider.translations('fil-PH', require('./locales/fil-PH')); //Filipino
-  $translateProvider.translations('ar-SA', require('./locales/ar-SA')); //Arabic
-  $translateProvider.translations('lt-LT', require('./locales/lt-LT')); //Lithuanian
-  $translateProvider.translations('lv-LV', require('./locales/lv-LV')); //Latvian
-  $translateProvider.translations('ja-JP', require('./locales/ja-JP')); //Japanese
-  $translateProvider.translations('bs-BA', require('./locales/bs-BA')); //Bosnian
-  $translateProvider.translations('ko-KR', require('./locales/ko-KR')); //Korean
-  $translateProvider.translations('fi-FI', require('./locales/fi-FI')); //Finnish
-  $translateProvider.translations('ur-PK', require('./locales/ur-PK')); //Urdu Pakistani
-  $translateProvider.translations('hi-IN', require('./locales/hi-IN')); //Hindi
-  $translateProvider.translations('th-TH', require('./locales/th-TH')); //Thai
-  $translateProvider.translations('en-GB', require('./locales/en-GB')); //en-GB
-  $translateProvider.translations('en-CA', require('./locales/en-CA')); //en-CA
-  $translateProvider.translations('sq-AL', require('./locales/sq-AL')); //Albanian
-  $translateProvider.translations('bn-BD', require('./locales/bn-BD')); //Bengali
-  $translateProvider.translations('ca-ES', require('./locales/ca-ES')); //Catalan
-  $translateProvider.translations('ne-NP', require('./locales/ne-NP')); //Nepali
-  $translateProvider.translations('no-NO', require('./locales/no-NO')); //Norwegian
-  $translateProvider.translations('sk-SK', require('./locales/sk-SK')); //Slovak
-  $translateProvider.translations('ta-IN', require('./locales/ta-IN')); //Tamil
-  $translateProvider.translations('yo-NG', require('./locales/yo-NG')); //Yoruba
-  $translateProvider.translations('vi-VN', require('./locales/vi-VN')); //Vietnamese
-  $translateProvider.translations('ac-ace', require('./locales/ac-ace')); //Acehnese
-  $translateProvider.translations('sk-SK', require('./locales/sk-SK')); //Slovenian
-  $translateProvider.translations('si-LK', require('./locales/si-LK')); //Sinhala
-  $translateProvider.translations('ka-GE', require('./locales/ka-GE')); //Georgian
-  $translateProvider.translations('en-AU', require('./locales/en-AU')); //English Australia
-  $translateProvider.translations('ro-RO', require('./locales/ro-RO')); //Romanian
-  $translateProvider.translations('pa-IN', require('./locales/pa-IN')); //Punjabi
-  $translateProvider.translations('da-DK', require('./locales/da-DK')); //Danish
-  $translateProvider.translations('ha-HG', require('./locales/ha-HG')); //Hausa
-  $translateProvider.translations('ceb-PH', require('./locales/ceb-PH')); //Cebuana
-  $translateProvider.translations('as-IN', require('./locales/as-IN')); //Assamese
-  $translateProvider.translations('tr-TR', require('./locales/tr-TR')); //Turkish
 
   $translateProvider.useSanitizeValueStrategy(null);
   $translateProvider.preferredLanguage('en-US');
