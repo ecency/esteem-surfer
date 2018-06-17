@@ -41,7 +41,29 @@ autoUpdater.autoDownload = false;
 
 let mainWindow;
 
-app.on("ready", () => {
+let deepUrl;
+
+const singleInstance = app.makeSingleInstance((argv, workingDirectory) => {
+  if (process.platform === 'win32' || process.platform === 'linux') {
+    deepUrl = argv.slice(1)
+  }
+
+  if (mainWindow) {
+    // if window is open focus and send deepurl
+    if (mainWindow.isMinimized()) {
+      mainWindow.restore();
+    }
+    mainWindow.focus();
+
+    sendProtocolUrl2Window(deepUrl);
+  }
+});
+
+if (singleInstance) {
+  app.quit()
+}
+
+const setupWindow = () => {
   setApplicationMenu();
 
   mainWindow = createWindow("main", {
@@ -71,11 +93,54 @@ app.on("ready", () => {
       autoUpdater.checkForUpdates();
     }, (1000 * 60) * 240);
   }
-});
 
-app.on("window-all-closed", () => {
+  // Protocol handler for win32 and linux
+  if (process.platform === 'win32' || process.platform === 'linux') {
+    deepUrl = process.argv.slice(1)
+  }
+
+  if (deepUrl) {
+    setTimeout(() => {
+      sendProtocolUrl2Window(deepUrl);
+    }, 4000)
+  }
+};
+
+app.on('ready', setupWindow);
+
+app.on('window-all-closed', () => {
   app.quit();
 });
+
+app.setAsDefaultProtocolClient('steem');
+app.setAsDefaultProtocolClient('esteem');
+
+
+app.on('activate', function () {
+  if (mainWindow === null) {
+    setupWindow()
+  }
+});
+
+app.on('open-url', function (event, url) {
+  event.preventDefault();
+
+  if (!mainWindow) {
+    deepUrl = url;
+    return;
+  }
+
+  if (mainWindow.isMinimized()) {
+    mainWindow.restore();
+  }
+  mainWindow.focus();
+
+  sendProtocolUrl2Window(url);
+});
+
+const sendProtocolUrl2Window = (u) => {
+  mainWindow.webContents.executeJavaScript(`protocolHandler('${u}')`);
+};
 
 autoUpdater.on('update-available', (info) => {
   mainWindow.webContents.send('update-available', info.releaseName);

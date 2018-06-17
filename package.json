@@ -63,6 +63,16 @@
       "bower_components/**/*",
       "!build_assets${/*}"
     ],
+    "protocols": [
+      {
+        "name": "steem",
+        "role": "Viewer",
+        "schemes": [
+          "steem",
+          "esteem"
+        ]
+      }
+    ],
     "directories": {
       "buildResources": "resources"
     },
