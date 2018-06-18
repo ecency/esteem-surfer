@@ -826,8 +826,14 @@
         margin-bottom: 10px;
         margin-top: 10px;
       }
-    }
 
+      .preview-part-info{
+        color: $textColorLighter;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+      }
+    }
   }
 
   .editor-controls {
