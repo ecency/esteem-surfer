@@ -603,8 +603,14 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
 
   $scope.wordsCount = 0;
 
-  $interval(()=>{
-    const t = document.querySelector('.preview-part .markdown-view').innerText.trim();
+  const wi = $interval(() => {
+    const e = document.querySelector('.preview-part .markdown-view');
+    if (e === null) {
+      $interval.cancel(wi);
+      return;
+    }
+
+    const t = e.innerText.trim();
     const c = wordCounter(t);
 
     $scope.wordsCount = c.words;
