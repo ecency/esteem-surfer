@@ -1,5 +1,6 @@
 import getSlug from 'speakingurl';
 import moment from 'moment';
+import {wordCounter} from "../helpers/word-counter";
 
 import {diff_match_patch} from 'diff-match-patch';
 import {Buffer} from 'buffer';
@@ -114,7 +115,7 @@ export const extractMetadata = (body) => {
   return out;
 };
 
-export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $timeout, $uibModal, eSteemService, steemService, activeUsername, steemAuthenticatedService, editorService, helperService, appVersion) => {
+export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $timeout, $interval, $uibModal, eSteemService, steemService, activeUsername, steemAuthenticatedService, editorService, helperService, appVersion) => {
 
   const hasPermission = (account) => {
     let hasPerm = false;
@@ -598,7 +599,16 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
     if ($window.confirm($filter('translate')('ARE_YOU_SURE'))) {
       clearForm();
     }
-  }
+  };
+
+  $scope.wordsCount = 0;
+
+  $interval(()=>{
+    const t = document.querySelector('.preview-part .markdown-view').innerText.trim();
+    const c = wordCounter(t);
+
+    $scope.wordsCount = c.words;
+  }, 2000)
 };
 
 
