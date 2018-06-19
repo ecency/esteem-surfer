@@ -52,6 +52,8 @@ body.dark-theme {
 
   $selectedCommentBg: #2e3d50;
 
+  $voteBtnColor: #357CE6;
+
   @import "overwrites";
   @import "navbar";
   @import "footer";
