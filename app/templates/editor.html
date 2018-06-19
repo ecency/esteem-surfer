@@ -22,9 +22,9 @@
       </div>
       <div class="preview-part" id="editor-preview">
         <div class="preview-part-title">{{ 'PREVIEW' | translate }}</div>
-        <div class="preview-part-info" ng-show="wordsCount">{{ wordsCount }} {{ 'Words' | __ }}</div>
         <div class="markdown-view" ng-bind-html="body | markDown2Html"></div>
       </div>
+      <div class="preview-part-info" ng-show="wordsCount">{{ wordsCount }} {{ 'Words' | __ }}</div>
     </div>
     <div class="editor-controls" ng-if="!fetchingContent">
       <div class="content-settings" ng-if="!editMode">
