@@ -819,7 +819,7 @@
         }
       }
 
-      .comment-edit, .comment-delete {
+      .comment-edit, .comment-delete, .comment-encrypted {
         border-left: 1px solid $seperatorColor;
         float: left;
         margin-left: 10px;
@@ -827,6 +827,12 @@
 
         a {
           color: $textColorLight;
+        }
+      }
+
+      .comment-encrypted {
+        .fa{
+          color: $textColor;
         }
       }
     }
