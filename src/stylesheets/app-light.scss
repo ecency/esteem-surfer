@@ -52,6 +52,8 @@ body.light-theme {
 
   $selectedCommentBg: #fff6b4;
 
+  $voteBtnColor: #357CE6;
+
   @import "overwrites";
   @import "navbar";
   @import "footer";

@@ -243,6 +243,18 @@
   margin: 10px 0;
 }
 
+@keyframes voting-fadein {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
 .post-list-item {
   /*
   STRUCTURE:
@@ -404,19 +416,27 @@
         margin-right: 10px;
 
         a {
-          color: $textColorLight;
+          color: $voteBtnColor;
           display: block;
-          font-size: 20px;
-          line-height: 22px;
+          font-size: 10px;
           outline: 0;
+          text-align: center;
+          height: 20px;
           width: 20px;
+          border: 1px solid $voteBtnColor;
+          border-radius: 50%;
+          padding-top: 1px;
 
           &:hover, &.voted {
-            color: $linkHoverColor;
+            color: #fff !important;
+            background-color: $voteBtnColor;
           }
 
           &.voting {
             pointer-events: none;
+            color: $voteBtnColor;
+            background-color: lighten($voteBtnColor, 20);
+            animation: loading-fadein 2s infinite;
           }
 
           &.fetching {
@@ -614,10 +634,6 @@
         padding-right: 7px;
         .post-up-vote {
           margin-right: 5px;
-          a {
-            font-size: 18px;
-            line-height: 20px;
-          }
         }
 
         .post-total {
@@ -764,18 +780,29 @@
           margin-right: 7px;
 
           a {
-            color: $textColorLight;
+            color: $voteBtnColor;
             display: block;
-            font-size: 20px;
-            line-height: 22px;
+            font-size: 10px;
             outline: 0;
-            width: 20px;
+            text-align: center;
+            height: 18px;
+            width: 18px;
+            border: 1px solid $voteBtnColor;
+            border-radius: 50%;
 
             &:hover, &.voted {
-              color: $linkHoverColor;
+              color: #fff !important;
+              background-color: $voteBtnColor;
             }
 
             &.voting {
+              pointer-events: none;
+              color: $voteBtnColor;
+              background-color: lighten($voteBtnColor, 20);
+              animation: loading-fadein 2s infinite;
+            }
+
+            &.fetching {
               pointer-events: none;
             }
           }
@@ -831,7 +858,7 @@
       }
 
       .comment-encrypted {
-        .fa{
+        .fa {
           color: $textColor;
         }
       }
@@ -1351,22 +1378,33 @@ STRUCTURE:
         margin-right: 7px;
 
         a {
-          color: $textColorLight;
+          color: $voteBtnColor;
           display: block;
-          font-size: 20px;
-          line-height: 22px;
+          font-size: 10px;
           outline: 0;
+          text-align: center;
+          height: 20px;
           width: 20px;
+          border: 1px solid $voteBtnColor;
+          border-radius: 50%;
+          padding-top: 1px;
 
           &:hover, &.voted {
-            color: $linkHoverColor;
+            color: #fff !important;
+            background-color: $voteBtnColor;
           }
 
           &.voting {
             pointer-events: none;
+            color: $voteBtnColor;
+            background-color: lighten($voteBtnColor, 20);
+            animation: loading-fadein 2s infinite;
+          }
+
+          &.fetching {
+            pointer-events: none;
           }
         }
-
       }
 
       .post-total {
@@ -1853,18 +1891,30 @@ STRUCTURE:
         margin-right: 10px;
 
         a {
-          color: $textColorLight;
+          color: $voteBtnColor;
           display: block;
-          font-size: 20px;
-          line-height: 22px;
+          font-size: 10px;
           outline: 0;
+          text-align: center;
+          height: 20px;
           width: 20px;
+          border: 1px solid $voteBtnColor;
+          border-radius: 50%;
+          padding-top: 1px;
 
           &:hover, &.voted {
-            color: $linkHoverColor;
+            color: #fff !important;
+            background-color: $voteBtnColor;
           }
 
           &.voting {
+            pointer-events: none;
+            color: $voteBtnColor;
+            background-color: lighten($voteBtnColor, 20);
+            animation: loading-fadein 2s infinite;
+          }
+
+          &.fetching {
             pointer-events: none;
           }
         }
