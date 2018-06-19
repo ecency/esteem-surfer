@@ -144,7 +144,7 @@ export const markDown2Html = (input) => {
     // If a youtube video
     if (!f) {
       const match = href.match(youTubeRegex);
-      if (match) {
+      if (match && el.innerText.trim() === href) {
         const e = youTubeRegex.exec(href);
         if (e[1]) {
           el.className = 'markdown-video-link markdown-video-link-youtube';
