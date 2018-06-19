@@ -416,27 +416,27 @@
         margin-right: 10px;
 
         a {
+          border: 1px solid $voteBtnColor;
+          border-radius: 50%;
           color: $voteBtnColor;
           display: block;
           font-size: 10px;
-          outline: 0;
-          text-align: center;
           height: 20px;
-          width: 20px;
-          border: 1px solid $voteBtnColor;
-          border-radius: 50%;
+          outline: 0;
           padding-top: 1px;
+          text-align: center;
+          width: 20px;
 
           &:hover, &.voted {
-            color: #fff !important;
             background-color: $voteBtnColor;
+            color: #fff !important;
           }
 
           &.voting {
-            pointer-events: none;
-            color: $voteBtnColor;
-            background-color: lighten($voteBtnColor, 20);
             animation: loading-fadein 2s infinite;
+            background-color: lighten($voteBtnColor, 20);
+            color: $voteBtnColor;
+            pointer-events: none;
           }
 
           &.fetching {
@@ -590,12 +590,12 @@
 
     .post-body {
       .post-image {
-        height: 200px;
-        float: none;
-        width: 100%;
-        margin-bottom: 10px;
         background-color: #f1f1f1;
+        float: none;
+        height: 200px;
+        margin-bottom: 10px;
         text-align: center;
+        width: 100%;
 
         img {
           margin: auto;
@@ -607,23 +607,23 @@
       }
 
       .post-body-title {
+        margin-bottom: 10px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
         width: 100%;
-        margin-bottom: 10px;
       }
 
       .post-body-summary {
         display: block;
-        text-overflow: ellipsis;
-        word-wrap: break-word;
-        white-space: normal;
-        width: auto;
-        overflow: hidden;
         height: 2.8em;
         line-height: 1.4em;
         margin-bottom: 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+        width: auto;
+        word-wrap: break-word;
       }
     }
 
@@ -780,26 +780,26 @@
           margin-right: 7px;
 
           a {
+            border: 1px solid $voteBtnColor;
+            border-radius: 50%;
             color: $voteBtnColor;
             display: block;
             font-size: 10px;
+            height: 18px;
             outline: 0;
             text-align: center;
-            height: 18px;
             width: 18px;
-            border: 1px solid $voteBtnColor;
-            border-radius: 50%;
 
             &:hover, &.voted {
-              color: #fff !important;
               background-color: $voteBtnColor;
+              color: #fff !important;
             }
 
             &.voting {
-              pointer-events: none;
-              color: $voteBtnColor;
-              background-color: lighten($voteBtnColor, 20);
               animation: loading-fadein 2s infinite;
+              background-color: lighten($voteBtnColor, 20);
+              color: $voteBtnColor;
+              pointer-events: none;
             }
 
             &.fetching {
@@ -1378,27 +1378,27 @@ STRUCTURE:
         margin-right: 7px;
 
         a {
+          border: 1px solid $voteBtnColor;
+          border-radius: 50%;
           color: $voteBtnColor;
           display: block;
           font-size: 10px;
-          outline: 0;
-          text-align: center;
           height: 20px;
-          width: 20px;
-          border: 1px solid $voteBtnColor;
-          border-radius: 50%;
+          outline: 0;
           padding-top: 1px;
+          text-align: center;
+          width: 20px;
 
           &:hover, &.voted {
-            color: #fff !important;
             background-color: $voteBtnColor;
+            color: #fff !important;
           }
 
           &.voting {
-            pointer-events: none;
-            color: $voteBtnColor;
-            background-color: lighten($voteBtnColor, 20);
             animation: loading-fadein 2s infinite;
+            background-color: lighten($voteBtnColor, 20);
+            color: $voteBtnColor;
+            pointer-events: none;
           }
 
           &.fetching {
@@ -1628,10 +1628,10 @@ STRUCTURE:
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 50%;
+    cursor: pointer;
     float: left;
     height: 80px;
     width: 80px;
-    cursor: pointer;
   }
 
   .popover-content-right {
@@ -1891,27 +1891,27 @@ STRUCTURE:
         margin-right: 10px;
 
         a {
+          border: 1px solid $voteBtnColor;
+          border-radius: 50%;
           color: $voteBtnColor;
           display: block;
           font-size: 10px;
-          outline: 0;
-          text-align: center;
           height: 20px;
-          width: 20px;
-          border: 1px solid $voteBtnColor;
-          border-radius: 50%;
+          outline: 0;
           padding-top: 1px;
+          text-align: center;
+          width: 20px;
 
           &:hover, &.voted {
-            color: #fff !important;
             background-color: $voteBtnColor;
+            color: #fff !important;
           }
 
           &.voting {
-            pointer-events: none;
-            color: $voteBtnColor;
-            background-color: lighten($voteBtnColor, 20);
             animation: loading-fadein 2s infinite;
+            background-color: lighten($voteBtnColor, 20);
+            color: $voteBtnColor;
+            pointer-events: none;
           }
 
           &.fetching {
@@ -2481,13 +2481,13 @@ STRUCTURE:
   .editor-buttons {
     @include clearfix();
 
+    margin-top: 4px;
+
+    text-align: right;
     label {
       font-size: 13px;
       font-weight: normal;
     }
-
-    margin-top: 4px;
-    text-align: right;
   }
 
   .preview-part {
@@ -2834,9 +2834,9 @@ STRUCTURE:
   .content-body {
     .content-image {
       background: $loadingItemColor;
-      width: 100%;
       height: 200px;
       margin-bottom: 10px;
+      width: 100%;
     }
     .content-body-title, .content-body-summary {
       background: $loadingItemColor;
@@ -2988,8 +2988,8 @@ STRUCTURE:
         @include clearfix();
         align-items: center;
         display: flex;
-        margin-bottom: 20px;
         height: 60px;
+        margin-bottom: 20px;
 
         .qr-image {
           float: left;

@@ -24,20 +24,20 @@
   background: #F9F6F1;
   border-top: 3px solid #E1AE4C;
   bottom: 30px;
+  display: none;
   height: 90px;
   left: 0;
   margin: 0 auto;
   padding: 10px;
   position: fixed;
   right: 0;
-  width: 500px;
-  display: none;
   text-align: center;
+  width: 500px;
 
   p {
-    margin: 0 0 10px 0;
-    font-weight: bold;
     font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
 
     .release-name {
       font-weight: 400;
@@ -344,11 +344,11 @@
 
 .in-read-mode .post-page {
   background-color: $appBg;
-  position: absolute;
-  z-index: 4;
   left: 0;
-  top: 0;
+  position: absolute;
   right: 0;
+  top: 0;
+  z-index: 4;
 }
 
 .author-page {
@@ -597,8 +597,8 @@
             }
 
             .btn-delegation {
-              color: $textColor;
               border-bottom: 1px dotted $textColorLight;
+              color: $textColor;
               text-decoration: none;
             }
           }
@@ -1196,8 +1196,8 @@
     }
 
     .witness-owner {
-      display: flex;
       align-items: center;
+      display: flex;
 
       .profile-image {
         background-color: $profilePicBg;
@@ -1207,8 +1207,8 @@
         border-radius: 50%;
         display: inline-block;
         height: 32px;
-        width: 32px;
         margin-right: 8px;
+        width: 32px;
       }
     }
   }
