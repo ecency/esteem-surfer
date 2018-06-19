@@ -713,6 +713,8 @@
 
 .editor-page {
 
+  padding-top: 30px;
+
   .indicator {
     text-align: center;
 
@@ -826,13 +828,13 @@
         margin-bottom: 10px;
         margin-top: 10px;
       }
+    }
 
-      .preview-part-info{
-        color: $textColorLighter;
-        position: absolute;
-        right: 10px;
-        top: 10px;
-      }
+    .preview-part-info{
+      color: $textColorLighter;
+      position: absolute;
+      right: 10px;
+      top: -25px;
     }
   }
 
