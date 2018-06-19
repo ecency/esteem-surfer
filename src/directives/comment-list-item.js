@@ -41,6 +41,7 @@ export default () => {
             </div>
             <div class="comment-edit" ng-if="canEdit"><a ng-click="" login-required required-keys="'posting'" on-login-success="editClicked()" title="{{ 'EDIT' | translate }}"><i class="fa fa-pencil"></i></a></div>
             <div class="comment-delete" ng-if="canEdit"><a ng-click="" login-required required-keys="'posting'" on-login-success="deleteClicked()" title="{{ 'REMOVE' | translate }}"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="deleting"></i><i class="fa fa-times" ng-if="!deleting"></i></a></div>
+            <div class="comment-encrypted" ng-if="encrypted"><i class="fa fa-lock" uib-tooltip="{{ 'Encrypted comment' | __ }}"></i></div>
           </div>
           <div class="comment-extra-tools">
             <div class="comment-flagging">
@@ -61,6 +62,16 @@ export default () => {
 
       if (!$scope.comment.comments) {
         $scope.comment.comments = [];
+      }
+
+      $scope.encrypted = false;
+      let jsonMeta = {};
+      try {
+        jsonMeta = JSON.parse($scope.comment.json_metadata);
+      } catch (e) { }
+
+      if (jsonMeta.encrypted === 1) {
+        $scope.encrypted = true;
       }
 
       $scope.canEdit = false;
