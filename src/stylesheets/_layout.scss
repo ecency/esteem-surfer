@@ -445,6 +445,17 @@
           margin: auto;
           max-width: 1300px;
           padding-left: 263px;
+
+          .navbar-nav {
+            li {
+              @media (max-width: 1100px) {
+                a {
+                  padding-left: 9px;
+                  padding-right: 9px;
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -830,7 +841,7 @@
       }
     }
 
-    .preview-part-info{
+    .preview-part-info {
       color: $textColorLighter;
       position: absolute;
       right: 10px;
