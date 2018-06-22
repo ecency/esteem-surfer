@@ -419,15 +419,6 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
       newBody = patch;
     }
 
-    let bExist = false;
-
-    for (let b of editingContent.beneficiaries) {
-      if (b && b.account === 'esteemapp') {
-        bExist = true;
-        break;
-      }
-    }
-
     const title = $scope.title.trim();
     const body = newBody;
     const tags = $scope.tags.split(' ');
@@ -436,12 +427,11 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
     const permlink = editingContent.permlink;
     const meta = extractMetadata($scope.body);
     const jsonMetadata = makeJsonMetadata(meta, tags, appVersion);
-    const options = bExist ? null : makeOptions(author, permlink, null);
 
     $scope.posting = true;
     $scope.processing = true;
 
-    steemAuthenticatedService.comment('', parentPermlink, author, permlink, title, body, jsonMetadata, options, null).then((resp) => {
+    steemAuthenticatedService.comment('', parentPermlink, author, permlink, title, body, jsonMetadata, null, null).then((resp) => {
       $rootScope.showSuccess($filter('__')('POST_UPDATED'));
       $rootScope.$broadcast('CONTENT_UPDATED', {contentId: editingContent.id});
       $rootScope.selectedPost = null;
