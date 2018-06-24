@@ -1,7 +1,7 @@
 // This gives you default context menu (cut, copy, paste)
 // in all input fields and textareas across your app.
 
-import { remote } from "electron";
+import {remote, shell, clipboard} from "electron";
 
 const Menu = remote.Menu;
 const MenuItem = remote.MenuItem;
@@ -31,6 +31,21 @@ const paste = new MenuItem({
   }
 });
 
+let imgUrlToOpen = '';
+const imgOpen = new MenuItem({
+  label: "Open image in browser",
+  click: () => {
+    shell.openExternal(imgUrlToOpen);
+  }
+});
+
+const imgCopyUrl = new MenuItem({
+  label: "Copy image url",
+  click: () => {
+    clipboard.writeText(imgUrlToOpen);
+  }
+});
+
 const normalMenu = new Menu();
 normalMenu.append(copy);
 
@@ -39,10 +54,22 @@ textEditingMenu.append(cut);
 textEditingMenu.append(copy);
 textEditingMenu.append(paste);
 
+const imgMenu = new Menu();
+imgMenu.append(imgOpen);
+imgMenu.append(imgCopyUrl);
+
+
 document.addEventListener(
   "contextmenu",
   event => {
     switch (event.target.nodeName) {
+      case "IMG":
+        imgUrlToOpen = event.target.getAttribute('src');
+        if (imgUrlToOpen.startsWith('https://')) {
+          event.preventDefault();
+          imgMenu.popup(remote.getCurrentWindow());
+        }
+        break;
       case "TEXTAREA":
       case "INPUT":
         event.preventDefault();
