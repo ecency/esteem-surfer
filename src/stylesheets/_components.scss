@@ -30,6 +30,18 @@
     margin: 10px 0 10px 0;
   }
 
+  h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0 10px 0;
+  }
+
+  h5 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0 10px 0;
+  }
+
   blockquote {
     color: $textColorLighter;
     font-size: 18px;
@@ -59,7 +71,7 @@
 
   hr {
     clear: both;
-    margin: 6px auto;
+    margin: 10px auto;
   }
 
   table {
