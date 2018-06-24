@@ -1,7 +1,7 @@
 export const sanitizeNode = (node) => {
 
   const ALLOWED_TAGS = [
-    'A', 'STRONG', 'B', 'I', 'EM', 'CODE', 'BLOCKQUOTE', 'SUP', 'SUB',
+    'A', 'STRONG', 'B', 'I', 'EM', 'CODE', 'PRE', 'BLOCKQUOTE', 'SUP', 'SUB',
     'H2', 'H1', 'H3', 'H4', 'H5', 'H6',
     'DIV', 'P', 'IFRAME', 'CENTER',
     'UL', 'OL', 'LI',
