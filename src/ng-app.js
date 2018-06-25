@@ -209,7 +209,7 @@ import __ from './filters/__';
 
 
 import constants from './constants';
-import {version} from '../package.json'
+import {version, releasePost} from '../package.json'
 
 
 const app = remote.app;
@@ -241,6 +241,14 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
 
         if (!pinService.getPinHash()) {
           $location.path(`/pin-create`);
+          return;
+        }
+
+        if (!helperService.isReleasePostRead(version)) {
+          const [t, a, p] = releasePost.split('/');
+          const u = `/post/${t}/${a.replace('@', '')}/${p}`;
+          $location.path(u);
+          helperService.setReleasePostRead(version);
           return;
         }
 
