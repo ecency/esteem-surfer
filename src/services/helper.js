@@ -23,6 +23,12 @@ export const helperService = (storageService) => {
     },
     isPostReblogged: (account, author, permlink) => {
       return storageService.get(`${account}-${author}-${permlink}-reblogged`) === 1;
+    },
+    isReleasePostRead: (ver) => {
+      return storageService.get(`release-post-${ver}`);
+    },
+    setReleasePostRead: (ver) => {
+      storageService.set(`release-post-${ver}`, 1);
     }
   }
 };
