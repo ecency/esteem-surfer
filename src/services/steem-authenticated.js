@@ -1074,6 +1074,26 @@ export default ($rootScope, steemApi, $q, cryptoService) => {
           return witnessProxySC(account, proxy);
           break;
       }
+    },
+    meSc: () => {
+      let token = getAccessToken();
+      token = cryptoService.decryptKey(token);
+
+      let defer = $q.defer();
+
+      const api = sc2.Initialize({
+        accessToken: token
+      });
+
+      api.me(function (err, res) {
+        if (err) {
+          defer.reject(err);
+        } else {
+          defer.resolve(res);
+        }
+      });
+
+      return defer.promise;
     }
   }
 };

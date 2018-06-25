@@ -532,7 +532,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
   .filter('commentBody', commentBodyFilter)
   .filter('__', __)
 
-  .run(function ($rootScope, $uibModal, $routeParams, $translate, $timeout, $interval, $location, $window, $q, $http, eSteemService, steemService, settingsService, userService, activeUsername, activePostFilter, steemApi, pinService, constants, appVersion) {
+  .run(function ($rootScope, $uibModal, $routeParams, $filter, $translate, $timeout, $interval, $location, $window, $q, $http, eSteemService, steemService, steemAuthenticatedService, settingsService, userService, activeUsername, activePostFilter, steemApi, pinService, constants, appVersion) {
 
 
     // SETTINGS
@@ -1068,6 +1068,26 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
         return;
       }
     };
+
+    // Steem connect token expire control
+    const checkSCToken = () => {
+      const user = userService.getActive();
+      if (user && user.type === 'sc' && $rootScope.pinCode) {
+        steemAuthenticatedService.meSc().then(resp => {
+
+        }).catch((e) => {
+          userService.setActive(null);
+          $rootScope.$broadcast('userLoggedOut');
+          $location.path('/');
+
+          $window.alert($filter('__')('Looks like your steem connect access token expired. Please login again.'));
+        });
+      }
+    };
+
+    $interval(() => {
+      checkSCToken();
+    }, 20000);
 
     // An helper to collect post body samples
     $rootScope.showMarkdownResultHelper = (env.name === 'development');
