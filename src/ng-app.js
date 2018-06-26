@@ -1084,18 +1084,20 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
         steemAuthenticatedService.meSc().then(resp => {
 
         }).catch((e) => {
-          userService.setActive(null);
-          $rootScope.$broadcast('userLoggedOut');
-          $location.path('/');
+          if (e.toString().trim() === 'SDKError: sc2-sdk error') {
+            userService.setActive(null);
+            $rootScope.$broadcast('userLoggedOut');
+            $location.path('/');
 
-          $window.alert($filter('__')('Looks like your steem connect access token expired. Please login again.'));
+            $window.alert($filter('__')('Looks like your steem connect access token expired. Please login again.'));
+          }
         });
       }
     };
 
     $interval(() => {
       checkSCToken();
-    }, 20000);
+    }, 2000);
 
     // An helper to collect post body samples
     $rootScope.showMarkdownResultHelper = (env.name === 'development');
