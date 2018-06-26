@@ -321,7 +321,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
 
       const archived = content.cashout_time === '1969-12-31T23:59:59';
 
-      $scope.canEdit = content.author === activeUsername() && !archived;
+      $scope.canEdit = content.author === activeUsername() && !archived && !$scope.isComment;
 
       $scope.parent_permlink = $scope.isComment ? $scope.tags[0] : content.parent_permlink;
 
