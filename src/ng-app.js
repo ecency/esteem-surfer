@@ -1097,7 +1097,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
 
     $interval(() => {
       checkSCToken();
-    }, 2000);
+    }, 20000);
 
     // An helper to collect post body samples
     $rootScope.showMarkdownResultHelper = (env.name === 'development');
