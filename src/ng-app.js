@@ -684,6 +684,12 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
     // or logged out
     $rootScope.$on('userLoggedOut', () => {
       $rootScope.userProps = null;
+
+      // Redirect root path (/trending) if current page is feed after logout
+      // https://github.com/esteemapp/esteem-surfer/issues/89
+      if ($rootScope.curCtrl === 'feedCtrl') {
+        $location.path('/');
+      }
     });
 
 
