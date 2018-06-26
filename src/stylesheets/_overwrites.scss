@@ -11,6 +11,11 @@
   z-index: 1035 !important
 }
 
+.tooltip-inner {
+  max-width: 300px;
+  width: inherit;
+}
+
 // Angularjs Slider
 
 .rzslider .rz-bubble{
