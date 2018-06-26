@@ -44,12 +44,12 @@ export default () => {
           return 0;
         });
 
-        let toolTip = `<div style="text-align:left">`;
+        let toolTip = `<div class="post-voters-tooltip-list">`;
         let max = 10;
         let more = 0;
         let i = 0;
         for (let v of votesData) {
-          toolTip += `<strong>${v.voter}</strong>: ${v.reward_fixed }${ $filter('currencySymbol')($rootScope.currency) } -  ${v.perc }%  <br>`;
+          toolTip += `<div class="voter-item"><span class="voter-username">${v.voter}</span><span class="vote-perc">${v.perc }</span> <span class="vote-reward">${v.reward_fixed }${ $filter('currencySymbol')($rootScope.currency) }</span></div>`;
           i += 1;
           if (i === max) {
             more = votesData.length - max;
