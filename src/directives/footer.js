@@ -1,3 +1,5 @@
+import {releasePost} from '../../package.json'
+
 export default () => {
   return {
     restrict: 'AE',
@@ -16,6 +18,14 @@ export default () => {
         let u = `/post/esteem/good-karma/esteem-faq-updated-e2baacf0a8475`;
         $location.path(u);
       };
+
+      $scope.verClicked = () => {
+        $rootScope.selectedPost = null;
+
+        const [t, a, p] = releasePost.split('/');
+        const u = `/post/${t}/${a.replace('@', '')}/${p}`;
+        $location.path(u);
+      }
     }
   };
 };
