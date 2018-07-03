@@ -195,6 +195,17 @@ export const markDown2Html = (input) => {
       }
     }
 
+    if (!f) {
+      if (href.indexOf('https://steemit.com/~witnesses') === 0 || href.indexOf('https://steemconnect.com/sign/account-witness-vote?witness=') === 0) {
+        el.className = 'markdown-witnesses-link';
+
+        el.setAttribute('data-href', href);
+        el.removeAttribute('href');
+
+        f = true;
+      }
+    }
+
     // Convert image links using steemitimages proxy
     if (!f) {
       if (href.trim().indexOf('https://steemitimages.com/0x0/') === 0) {
