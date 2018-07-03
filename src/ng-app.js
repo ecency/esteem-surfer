@@ -827,6 +827,16 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
       shell.openExternal(href);
     });
 
+    jq('body').on('click', '.markdown-view .markdown-witnesses-link', function (event) {
+      event.preventDefault();
+      if(activeUsername()){
+        $rootScope.$broadcast('go-to-path', '/witnesses');
+      } else {
+        let href = jq(this).data('href');
+        shell.openExternal(href);
+      }
+    });
+
     jq('body').on('click', '.markdown-view .markdown-post-link', function (event) {
       event.preventDefault();
       let tag = jq(this).data('tag');
