@@ -1,4 +1,4 @@
-.app-footer{
+.app-footer {
   background: $footerBgColor;
   bottom: 0;
   box-sizing: border-box;
@@ -10,9 +10,13 @@
   position: absolute;
   width: 100%;
 
-  .footer-links{
+  .ver-no {
+    color: $footerColor;
+  }
+
+  .footer-links {
     float: right;
-    a{
+    a {
       color: $footerColor;
       display: inline-block;
       margin-right: 10px;
