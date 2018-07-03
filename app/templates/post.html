@@ -69,6 +69,25 @@
         </div>
       </div>
       <comment-editor ng-if="commentFlag" content="post" mode="reply" on-cancel="onCommentEditorCanceled()" after-success="afterNewComment"></comment-editor>
+      <div class="related-contents" ng-if="relatedContents.length === 3">
+        <h2 class="related-contents-title"><i class="fa fa-newspaper-o"></i> {{ 'Recommended posts' | __ }}</h2>
+        <div ng-repeat="cont in relatedContents" class="related-content" ng-init="relatedImage = (cont | catchPostImage)"  ng-click="relatedClickedcont(cont)">
+          <span class="related-content-title">{{ cont.title }}</span>
+          <div class="related-content-image">
+            <a class="post-image" ng-if="relatedImage">
+              <img ng-src="{{ relatedImage }}" fallback-src="img/fallback.png">
+            </a>
+            <a class="post-image" ng-if="!relatedImage">
+              <img ng-src="img/noimage.png">
+            </a>
+          </div>
+          <div class="related-content-footer">
+            <span class="related-content-author">{{ cont.author }}</span>
+            <span class="related-content-date" title="{{ post.created|dateFormatted }}">{{cont.created|timeAgo}}</span>
+            <span class="related-content-comment-count"><i class="fa fa-comments"></i> {{ cont.children }}</span>
+          </div>
+        </div>
+      </div>
       <div class="indicator comments-indicator" ng-if="loadingRest">
         <i class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
       </div>
