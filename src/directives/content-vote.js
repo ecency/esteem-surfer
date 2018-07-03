@@ -5,7 +5,7 @@ export default () => {
     scope: {
       content: '<'
     },
-    template: `<div ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()"><a ng-click="" login-required required-keys="'posting'" on-login-success="loginSuccess()" if-logged-in="clicked()" popover-class="content-vote-popover" popover-enable="!voted" uib-popover-template="'templates/directives/content-vote-popover.html'" popover-placement="right" popover-trigger="'none'"  popover-is-open="popoverIsOpen"  ng-class="{'voted': voted, 'voting': voting, 'fetching': fetching}"><i class="fa fa-chevron-up"></i></a></div>`,
+    template: `<div ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()"><a ng-click="" login-required required-keys="'posting'" on-login-success="loginSuccess()" if-logged-in="clicked()" popover-class="content-vote-popover" popover-enable="!voted" uib-popover-template="'templates/directives/content-vote-popover.html'" popover-placement="right" popover-trigger="'none'"  popover-is-open="popoverIsOpen"  ng-class="{'voted': voted, 'voting': voting, 'fetching': fetching}"><svg viewBox="0 0 1792 1980" xmlns="http://www.w3.org/2000/svg"><path d="M1683 1331l-166 165q-19 19-45 19t-45-19l-531-531-531 531q-19 19-45 19t-45-19l-166-165q-19-19-19-45.5t19-45.5l742-741q19-19 45-19t45 19l742 741q19 19 19 45.5t-19 45.5z"/></svg></a></div>`,
     controller: ($scope, $rootScope, $timeout, $filter, $uibModal, steemService, steemAuthenticatedService, helperService, activeUsername) => {
 
       $scope.fetching = false;
