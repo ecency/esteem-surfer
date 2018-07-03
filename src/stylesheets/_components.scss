@@ -1537,14 +1537,10 @@ STRUCTURE:
       .related-content-image {
         align-items: center;
         display: flex;
-        height: 90px;
+        height: 120px;
         margin: 6px 0;
         overflow: hidden;
         width: 100%;
-
-        @media (min-width: 1400px) {
-          height: 120px;
-        }
 
         img {
           display: inline-block;
