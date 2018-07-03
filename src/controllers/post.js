@@ -351,6 +351,21 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
           scrollToComments();
         }, 800)
       }
+
+      $scope.relatedContents = [];
+      if (!$scope.isComment) {
+        steemService.getDiscussionsBy('Blog', author, null, null, 20).then((resp) => {
+          $scope.relatedContents = resp
+            .filter(r => r.permlink !== permlink && r.author === author)
+            // shuffle
+            .map(a => [Math.random(), a])
+            .sort((a, b) => a[0] - b[0])
+            .map(a => a[1])
+            // first 3 posts
+            .slice(0, 3)
+        });
+      }
+
     });
   };
 
@@ -451,6 +466,12 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
     rootAuthor = rootAuthor.replace('@', '');
 
     let u = `/post/${tag}/${rootAuthor}/${rootPermlink}`;
+    $location.path(u);
+  };
+
+  $scope.relatedClickedcont = (content) => {
+    $rootScope.selectedPost = $scope.post;
+    let u = `/post/${content.category}/${content.author}/${content.permlink}`;
     $location.path(u);
   }
 };
