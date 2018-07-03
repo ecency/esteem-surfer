@@ -48,7 +48,11 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $location, 
         ids.push(i.id);
       });
 
-    }).catch(() => {
+    }).catch((e) => {
+      if (String(e).indexOf('Could not find method') !== -1) {
+        $rootScope.showError("Selected server doesn't allow this method, please change to other server or contact server provider so that they can enable this feature");
+        return
+      }
       // TODO: Handle catch
     }).then(() => {
       $scope.loadingPosts = false;
