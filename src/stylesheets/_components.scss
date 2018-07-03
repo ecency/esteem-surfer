@@ -101,9 +101,9 @@
     color: $textColor;
   }
 
-  div.phishy{
-    display: inline;
+  div.phishy {
     color: red;
+    display: inline;
   }
 
   .pull-left, .pull-right {
@@ -433,21 +433,30 @@
         margin-right: 10px;
 
         a {
+          align-items: center;
           border: 1px solid $voteBtnColor;
           border-radius: 50%;
           color: $voteBtnColor;
-          display: block;
-          font-size: 10px;
+          display: flex;
           height: 20px;
-          line-height: 150%;
+          justify-content: center;
+          line-height: 0 !important;
           outline: 0;
-          padding-top: 1px;
-          text-align: center;
           width: 20px;
+
+          svg {
+            height: 12px;
+            width: 12px;
+            fill: $voteBtnColor;
+          }
 
           &:hover, &.voted {
             background-color: $voteBtnColor;
             color: #fff !important;
+
+            svg {
+              fill: #fff !important;
+            }
           }
 
           &.voting {
@@ -798,21 +807,30 @@
           margin-right: 7px;
 
           a {
+            align-items: center;
             border: 1px solid $voteBtnColor;
             border-radius: 50%;
             color: $voteBtnColor;
-            display: block;
-            font-size: 10px;
+            display: flex;
             height: 18px;
-            line-height: 150%;
+            justify-content: center;
+            line-height: 0 !important;
             outline: 0;
-            padding-left: 1px;
-            text-align: center;
             width: 18px;
+
+            svg {
+              height: 10px;
+              width: 10px;
+              fill: $voteBtnColor;
+            }
 
             &:hover, &.voted {
               background-color: $voteBtnColor;
               color: #fff !important;
+
+              svg {
+                fill: #fff !important;
+              }
             }
 
             &.voting {
@@ -1398,22 +1416,30 @@ STRUCTURE:
         margin-right: 7px;
 
         a {
+          align-items: center;
           border: 1px solid $voteBtnColor;
           border-radius: 50%;
           color: $voteBtnColor;
-          display: block;
-          font-size: 10px;
+          display: flex;
           height: 20px;
-          line-height: 150%;
+          justify-content: center;
+          line-height: 0 !important;
           outline: 0;
-          padding-left: 1px;
-          padding-top: 1px;
-          text-align: center;
           width: 20px;
+
+          svg {
+            height: 12px;
+            width: 12px;
+            fill: $voteBtnColor;
+          }
 
           &:hover, &.voted {
             background-color: $voteBtnColor;
             color: #fff !important;
+
+            svg {
+              fill: #fff !important;
+            }
           }
 
           &.voting {
@@ -1913,21 +1939,30 @@ STRUCTURE:
         margin-right: 10px;
 
         a {
+          align-items: center;
           border: 1px solid $voteBtnColor;
           border-radius: 50%;
           color: $voteBtnColor;
-          display: block;
-          font-size: 10px;
+          display: flex;
           height: 20px;
-          line-height: 150%;
+          justify-content: center;
+          line-height: 0 !important;
           outline: 0;
-          padding-top: 1px;
-          text-align: center;
           width: 20px;
+
+          svg {
+            height: 12px;
+            width: 12px;
+            fill: $voteBtnColor;
+          }
 
           &:hover, &.voted {
             background-color: $voteBtnColor;
             color: #fff !important;
+
+            svg {
+              fill: #fff !important;
+            }
           }
 
           &.voting {
@@ -3081,7 +3116,7 @@ STRUCTURE:
       }
     }
 
-    .vote-reward{
+    .vote-reward {
       float: right;
     }
   }
