@@ -5,7 +5,7 @@
 
 import path from "path";
 import url from "url";
-import {app, Menu} from "electron";
+import {app, shell, Menu} from "electron";
 import {devMenuTemplate} from "./menu/dev_menu_template";
 import {editMenuTemplate} from "./menu/edit_menu_template";
 import createWindow from "./helpers/window";
@@ -104,6 +104,14 @@ const setupWindow = () => {
       sendProtocolUrl2Window(deepUrl);
     }, 4000)
   }
+
+  // Exception for trading view's links
+  mainWindow.webContents.on('new-window', (event, url) => {
+    if (url.indexOf('https://www.tradingview.com') === 0) {
+      shell.openExternal(url);
+      event.preventDefault();
+    }
+  });
 };
 
 app.on('ready', setupWindow);
