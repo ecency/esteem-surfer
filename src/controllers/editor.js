@@ -460,6 +460,12 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
       return
     }
 
+    // exception for esteemapp
+    if (activeUsername() === 'esteemapp') {
+      $scope.hasPerm = true;
+      return
+    }
+
     $scope.fetchingPermission = true;
     getAccount().then((account) => {
       $scope.hasPerm = hasPermission(account);
