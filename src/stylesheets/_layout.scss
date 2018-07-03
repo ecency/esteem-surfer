@@ -1188,18 +1188,43 @@
     margin: 20px 0 30px 0;
 
     .btn-vote, .btn-unvote {
-      display: block;
-      font-size: 20px;
-      line-height: 22px;
+      align-items: center;
+      border: 1px solid $voteBtnColor;
+      border-radius: 50%;
+      color: $voteBtnColor;
+      display: flex;
+      height: 20px;
+      justify-content: center;
+      line-height: 0 !important;
       outline: 0;
+      width: 20px;
     }
 
     .btn-vote {
-      color: $textColorLight;
+      svg {
+        height: 12px;
+        width: 12px;
+        fill: $voteBtnColor;
+      }
+
+      &:hover {
+        background-color: $voteBtnColor;
+        color: #fff !important;
+
+        svg {
+          fill: #fff !important;
+        }
+      }
     }
 
     .btn-unvote {
-      color: $linkHoverColor;
+      background-color: $voteBtnColor;
+
+      svg {
+        height: 12px;
+        width: 12px;
+        fill: #fff !important;
+      }
     }
 
     .witness-thread, .witness-link {
