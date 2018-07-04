@@ -352,23 +352,34 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
         }, 800)
       }
 
+      // Load similar posts
       $scope.relatedContents = [];
-      if (!$scope.isComment) {
-        steemService.getDiscussionsBy('Hot', content.parent_permlink, null, null, 20).then((resp) => {
-          $scope.relatedContents = resp
-            .filter(r => r.permlink !== permlink)
-            // shuffle
-            .map(a => [Math.random(), a])
-            .sort((a, b) => a[0] - b[0])
-            .map(a => a[1])
-            // first 3 posts
-            .slice(0, 3)
-        });
-      }
+      $scope.loadSimilar();
     });
   };
 
   main();
+
+  $scope.loadSimilar = () => {
+    $scope.loadingRelatedContents = true;
+    if (!$scope.isComment) {
+      steemService.getDiscussionsBy('Hot', $scope.post.parent_permlink, null, null, 30).then((resp) => {
+        $scope.relatedContents = resp
+          .filter(r => r.permlink !== permlink)
+          // shuffle
+          .map(a => [Math.random(), a])
+          .sort((a, b) => a[0] - b[0])
+          .map(a => a[1])
+          // first 3 posts
+          .slice(0, 3)
+      }).catch((e) => {
+        $rootScope.showError(e);
+        $scope.relatedContents = [];
+      }).then(() => {
+        $scope.loadingRelatedContents = false;
+      });
+    }
+  };
 
   $scope.parentClicked = (parent_permlink) => {
     let u = `/posts/${activePostFilter()}/${parent_permlink}`;

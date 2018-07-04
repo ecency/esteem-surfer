@@ -1506,11 +1506,27 @@ STRUCTURE:
     margin-bottom: 20px;
     padding-bottom: 20px;
 
-    .related-contents-title {
-      color: $textColor;
-      font-size: 18px;
-      font-weight: 600;
-      margin: 0 0 10px 0;
+    .related-contents-header {
+      @include clearfix();
+
+      margin-bottom: 4px;
+
+      .related-contents-title {
+        color: $textColorLight;
+        float: left;
+        font-size: 18px;
+        font-weight: 400;
+        margin: 0 0 10px 0;
+      }
+
+      .related-contents-reload {
+        float: right;
+
+        &.reloading {
+          color: $textColorLighter;
+          pointer-events: none;
+        }
+      }
     }
 
     .related-content {
@@ -1519,12 +1535,12 @@ STRUCTURE:
       margin-right: 2%;
       width: 32%;
 
-      &:nth-of-type(3) {
+      &:nth-last-child(1) {
         margin-right: 0;
       }
 
       .related-content-title {
-        color: $textColorLight;
+        color: $textColor;
         display: block;
         font-size: 15px;
         font-weight: bold;
@@ -1536,8 +1552,10 @@ STRUCTURE:
 
       .related-content-image {
         align-items: center;
+        background: $boxBg;
         display: flex;
         height: 120px;
+        justify-content: center;
         margin: 6px 0;
         overflow: hidden;
         width: 100%;
@@ -1556,11 +1574,11 @@ STRUCTURE:
 
       .related-content-footer {
         @include clearfix();
-        color: $textColorLighter;
+
         font-size: 13px;
-        font-weight: bold;
 
         .related-content-author {
+          color: $textColor;
           margin-right: 2px;
 
           &:after {
@@ -1569,7 +1587,12 @@ STRUCTURE:
           }
         }
 
+        .related-content-date {
+          color: $textColor;
+        }
+
         .related-content-comment-count {
+          color: $textColorLighter;
           float: right;
         }
       }

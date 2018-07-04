@@ -70,7 +70,10 @@
       </div>
       <comment-editor ng-if="commentFlag" content="post" mode="reply" on-cancel="onCommentEditorCanceled()" after-success="afterNewComment"></comment-editor>
       <div class="related-contents" ng-if="relatedContents.length === 3">
-        <h2 class="related-contents-title"><i class="fa fa-newspaper-o"></i> {{ 'Recommended posts' | __ }}</h2>
+        <div class="related-contents-header">
+          <h2 class="related-contents-title"><i class="fa fa-newspaper-o"></i> {{ 'Similar posts' | __ }}</h2>
+          <a class="related-contents-reload" ng-click="loadSimilar()" ng-class="{'reloading': loadingRelatedContents}"><i class="fa fa-refresh"></i> </a>
+        </div>
         <div ng-repeat="cont in relatedContents" class="related-content" ng-init="relatedImage = (cont | catchPostImage)"  ng-click="relatedClickedcont(cont)">
           <span class="related-content-title">{{ cont.title }}</span>
           <div class="related-content-image">
