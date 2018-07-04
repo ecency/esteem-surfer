@@ -354,9 +354,9 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
 
       $scope.relatedContents = [];
       if (!$scope.isComment) {
-        steemService.getDiscussionsBy('Blog', author, null, null, 20).then((resp) => {
+        steemService.getDiscussionsBy('Hot', content.parent_permlink, null, null, 20).then((resp) => {
           $scope.relatedContents = resp
-            .filter(r => r.permlink !== permlink && r.author === author)
+            .filter(r => r.permlink !== permlink)
             // shuffle
             .map(a => [Math.random(), a])
             .sort((a, b) => a[0] - b[0])
@@ -365,7 +365,6 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
             .slice(0, 3)
         });
       }
-
     });
   };
 
