@@ -46,7 +46,7 @@ export default () => {
           <div class="comment-extra-tools">
             <div class="comment-flagging">
               <a ng-class="{'flagged': flagged, 'flagging': flagging}" ng-click="" login-required required-keys="'posting'" on-login-success="flagClicked()">
-                <i ng-if="!flagging" class="fa fa-flag"></i>
+                <i ng-if="!flagging" class="fa fa-flag-o"></i>
                 <i ng-if="flagging" class="fa fa-spin fa-spinner fa-circle-o-notch"></i>
               </a>
             </div>
