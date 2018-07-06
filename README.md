@@ -2,7 +2,7 @@
 
 This is the complete source code and the build instructions for the alpha version of the [Steem blockchain](https://steem.io/) desktop client **eSteem Surfer** founded by [Feruz M](https://steemit.com/@good-karma) and Lead Surfer [Talha](https://steemit.com/@talhasch), supported by [eSteem team](https://steemit.com/@esteemapp) and wast Steem community contibutors.
 
-![Preview of eSteem Surfer](https://steemitimages.com/DQmdvV5Grh9LJiRk11bCTTH1xCqp7qwGKcQUBJXJVRdSbNs/git_profile_preview.png)
+![Preview of eSteem Surfer](https://cdn.steemitimages.com/DQmeZgTQCrsBVxk7DzCEUpXujzsx142obVPfXw2jW2kkKcW/shot.png)
 
 ## What is already implemented
 
@@ -29,7 +29,7 @@ More functions are coming!
 
 * Windows XP - Windows 10
 * Mac OS X 10.6 - Mac OS X 10.13
-* Ubuntu 12.04 - Ubuntu 16.04
+* Ubuntu 12.04 - Ubuntu 18.04
 * Fedora 22 - Fedora 24
 
 ## Build instructions
