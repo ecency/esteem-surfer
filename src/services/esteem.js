@@ -133,8 +133,11 @@ export default ($http, API_END_POINT) => {
     isFavorite: function (user, account) {
       return $http.get(`${API_END_POINT}/api/isfavorite/${user}/${account}`);
     },
-    getActiveVotes: function(user){
+    getActiveVotes: function (user) {
       return $http.get(`${API_END_POINT}/api/votes/${user}`);
+    },
+    getUnreadActivityCount: function (user) {
+      return $http.get(`${API_END_POINT}/api/unread-activity-count/${user}`);
     }
   }
 }
