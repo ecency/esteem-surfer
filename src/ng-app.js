@@ -1185,8 +1185,12 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
 
     connectNws();
 
-    // Connect to socket when user login
+    // Disconnect for previous user and reconnect to socket for new logged in user
     $rootScope.$on('userLoggedIn', () => {
+      if (nws !== null) {
+        nws.close();
+      }
+
       connectNws();
     });
 
@@ -1195,6 +1199,28 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
       if (nws !== null) {
         nws.close();
       }
+    });
+
+    $rootScope.notifications = 0;
+    const fetchUnreadActivityCount = () => {
+      eSteemService.getUnreadActivityCount(activeUsername()).then((resp) => {
+        $rootScope.notifications = resp.data.count;
+      });
+    };
+
+    if (activeUsername()) {
+      fetchUnreadActivityCount();
+    }
+
+    // Reset notification count to 0 and reload it for new logged in user
+    $rootScope.$on('userLoggedIn', () => {
+      $rootScope.notifications = 0;
+      fetchUnreadActivityCount();
+    });
+
+    // Reset notification count to 0 when user logged out
+    $rootScope.$on('userLoggedOut', () => {
+      $rootScope.notifications = 0;
     });
 
     // An helper to collect post body samples
