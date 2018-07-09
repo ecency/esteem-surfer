@@ -33,7 +33,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li class="night-mode"><a ng-click="toggleNightMode()" title="{{ 'TOGGLE_NIGHT_MODE' | __ }}"><i ng-if="$root.theme == 'light-theme'" class="fa fa-moon-o"></i><i ng-if="$root.theme == 'dark-theme'" class="fa fa-sun-o"></i></a></li>
-        <li class="activities" ng-if="$root.user"><a ng-click="activitiesClicked()" title="{{ 'ACTIVITIES' | __ }}"><i class="fa fa-bell"></i></a></li>
+        <li class="activities" ng-if="$root.user"><span class="has-activity" ng-if="$root.unreadActivities"></span><a ng-click="activitiesClicked()" title="{{ 'ACTIVITIES' | __ }}"><i class="fa fa-bell"></i></a></li>
         <li class="settings"><a ng-click="openSettings()" title="{{ 'SETTINGS' | translate }}"><i class="fa fa-cog"></i></a></li>
         <li class="editor"><a ng-click="editorClicked()"><i class="fa fa-pencil"></i></a></li>
         <li class="login" ng-if="!$root.user"><a ng-click="openLogin()" title="{{ 'LOGIN' | translate }}"><i class="fa fa-sign-in"></i></a></li>
