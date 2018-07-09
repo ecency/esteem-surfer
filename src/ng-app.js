@@ -540,7 +540,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
   .filter('commentBody', commentBodyFilter)
   .filter('__', __)
 
-  .run(function ($rootScope, $uibModal, $routeParams, $filter, $translate, $timeout, $interval, $location, $window, $q, $http, eSteemService, steemService, steemAuthenticatedService, settingsService, userService, activeUsername, activePostFilter, steemApi, pinService, constants, appVersion) {
+  .run(function ($rootScope, $uibModal, $routeParams, $filter, $translate, $timeout, $interval, $location, $window, $q, $http, eSteemService, steemService, steemAuthenticatedService, settingsService, userService, activeUsername, activePostFilter, steemApi, pinService, constants, NWS_ADDRESS) {
 
 
     // SETTINGS
@@ -829,7 +829,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
 
     jq('body').on('click', '.markdown-view .markdown-witnesses-link', function (event) {
       event.preventDefault();
-      if(activeUsername()){
+      if (activeUsername()) {
         $rootScope.$broadcast('go-to-path', '/witnesses');
       } else {
         let href = jq(this).data('href');
@@ -1121,6 +1121,81 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
     $interval(() => {
       checkSCToken();
     }, 20000);
+
+    // Notifications
+    // Web socket connection for push notifications
+    let nws = null;
+
+    const nwsMessageBody = (data) => {
+      switch (data.type) {
+        case 'vote':
+          return `${data.source} voted your post`;
+        case 'mention':
+          return `${data.source} mentioned you in a post`;
+        case 'follow':
+          return `${data.source} followed you`;
+        case 'reply':
+          return `${data.source} replied you`;
+        case 'reblog':
+          return `${data.source} reblogged your post`;
+      }
+    };
+
+    const connectNws = () => {
+      if (!activeUsername()) {
+        return
+      }
+
+      const u = `${NWS_ADDRESS}?user=${activeUsername()}`;
+      nws = new WebSocket(u);
+
+      nws.onopen = function (evt) {
+        // console.log("connected to nws");
+      };
+
+      nws.onmessage = function (evt) {
+        const data = JSON.parse(evt.data);
+        const msg = nwsMessageBody(data);
+
+        if (msg) {
+          let myNotification = new Notification('You have a new notification', {
+            body: msg
+          });
+
+          myNotification.onclick = () => {
+            console.log('Notification clicked')
+          }
+        }
+
+        $rootScope.$broadcast('newNotification')
+      };
+
+      nws.onclose = function (evt) {
+        // console.log("disconnected from nws");
+        nws = null;
+
+        if (!evt.wasClean) {
+          // if disconnected due connection error try to auto connect
+          setTimeout(() => {
+            connectNws();
+          }, 2000);
+        }
+      };
+    };
+
+    connectNws();
+
+    // Connect to socket when user login
+    $rootScope.$on('userLoggedIn', () => {
+      connectNws();
+    });
+
+    // Disconnect from socket when user logout
+    $rootScope.$on('userLoggedOut', () => {
+      if (nws !== null) {
+        nws.close();
+      }
+    });
 
     // An helper to collect post body samples
     $rootScope.showMarkdownResultHelper = (env.name === 'development');
