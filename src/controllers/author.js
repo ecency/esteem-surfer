@@ -263,9 +263,6 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
       case 'replies':
         prms = steemService.getState(`/@${username}/recent-replies`);
         break;
-      case 'feed':
-        prms = steemService.getDiscussionsBy('Feed', username, null, null, constants.postListSize);
-        break;
       case 'activities':
         switch ($scope.selectedActivity.id) {
           case 'votes':
@@ -296,7 +293,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
         return;
       }
 
-      const contents = section === 'feed' ? resp : resp.content;
+      const contents = resp.content;
       for (let k in contents) {
         let i = contents[k];
 
@@ -340,9 +337,6 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
       case 'replies':
         prms = steemService.getRepliesByLastUpdate(startAuthor, startPermalink, constants.postListSize);
         break;
-      case 'feed':
-        prms = steemService.getDiscussionsBy('Feed', username, startAuthor, startPermalink, constants.postListSize);
-        break;
     }
 
     prms.then((resp) => {
@@ -372,7 +366,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
 
   const loadContents = () => {
 
-    if (['blog', 'comments', 'replies', 'feed', 'activities'].indexOf(section) !== -1) {
+    if (['blog', 'comments', 'replies', 'activities'].indexOf(section) !== -1) {
       if ($scope.dataList.length === 0) {
         // if initial data is empty then load contents
         loadContentsFirst();
