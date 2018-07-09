@@ -32,9 +32,6 @@
                 <li ng-class="{'active': section==='blog'}" data-key="BLOG">
                   <a ng-click="changeSection('blog')">{{ 'BLOG' | translate }}</a>
                 </li>
-                <li ng-class="{'active': section==='feed'}" data-key="FEED">
-                  <a ng-click="changeSection('feed')">{{ 'FEED' | translate }}</a>
-                </li>
                 <li ng-class="{'active': section==='comments'}" data-key="COMMENTS">
                   <a ng-click="changeSection('comments')">{{ 'COMMENTS' | translate }}</a>
                 </li>
@@ -109,17 +106,11 @@
               <h1 ng-if="section==='comments'">{{ 'COMMENTS' | translate }}</h1>
               <h1 ng-if="section==='replies'">{{ 'REPLIES' | translate }}</h1>
               <h1 ng-if="section==='wallet'">{{ 'WALLET' | translate }}</h1>
-              <h1 ng-if="section==='feed'">{{ 'FEED' | translate }}</h1>
               <h1 ng-if="section==='activities'">{{ 'ACTIVITIES' | __ }}</h1>
               <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingContents"
                       title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
             </header>
-            <content-list-loading-item item-size="5" ng-if="['blog', 'comments', 'replies', 'feed'].includes(section) && loadingContents && dataList.length === 0"></content-list-loading-item>
-            <ul class="feed" ng-if="section==='feed'">
-              <li ng-repeat="row in dataList">
-                <post-list-item post="row"></post-list-item>
-              </li>
-            </ul>
+            <content-list-loading-item item-size="5" ng-if="['blog', 'comments', 'replies'].includes(section) && loadingContents && dataList.length === 0"></content-list-loading-item>
             <ul class="feed" ng-if="section==='blog'">
               <li ng-repeat="row in dataList">
                 <post-list-item post="row" as-author="username"></post-list-item>
@@ -135,7 +126,7 @@
                 <content-list-item-child content="row"></content-list-item-child>
               </li>
             </ul>
-            <div class="empty-list" ng-if="['blog', 'comments', 'replies', 'feed'].includes(section) && !loadingContents && dataList.length === 0">
+            <div class="empty-list" ng-if="['blog', 'comments', 'replies'].includes(section) && !loadingContents && dataList.length === 0">
               {{ 'EMPTY_LIST' | __ }}
             </div>
             <div class="author-wallet" ng-if="section==='wallet'">
