@@ -1201,10 +1201,10 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
       }
     });
 
-    $rootScope.notifications = 0;
+    $rootScope.unreadActivities = 0;
     const fetchUnreadActivityCount = () => {
       eSteemService.getUnreadActivityCount(activeUsername()).then((resp) => {
-        $rootScope.notifications = resp.data.count;
+        $rootScope.unreadActivities = resp.data.count;
       });
     };
 
@@ -1214,13 +1214,13 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
 
     // Reset notification count to 0 and reload it for new logged in user
     $rootScope.$on('userLoggedIn', () => {
-      $rootScope.notifications = 0;
+      $rootScope.unreadActivities = 0;
       fetchUnreadActivityCount();
     });
 
     // Reset notification count to 0 when user logged out
     $rootScope.$on('userLoggedOut', () => {
-      $rootScope.notifications = 0;
+      $rootScope.unreadActivities = 0;
     });
 
     // An helper to collect post body samples

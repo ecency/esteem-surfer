@@ -142,12 +142,24 @@
     }
 
     .activities {
+      position: relative;
 
       a {
 
         .fa {
           font-size: 18px;
         }
+      }
+
+      .has-activity {
+        background: darkseagreen;
+        border-radius: 50%;
+        height: 10px;
+        position: absolute;
+        right: 10px;
+        top: 12px;
+        width: 10px;
+        z-index: 2;
       }
     }
 
