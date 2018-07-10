@@ -41,9 +41,6 @@
                 <li ng-class="{'active': section==='wallet'}" data-key="WALLET">
                   <a ng-click="changeSection('wallet')">{{ 'WALLET' | translate }}</a>
                 </li>
-                <li ng-show="isMyPage" ng-class="{'active': section==='activities'}" data-key="ACTIVITIES">
-                  <a ng-click="changeSection('activities')">{{ 'ACTIVITIES' | __ }}</a>
-                </li>
                 <li ng-show="isMyPage" data-key="CONNECT2MOBILE">
                   <a ng-click="connect2mobileClicked()">{{ 'CONNECT2MOBILE' | __ }}</a>
                 </li>
