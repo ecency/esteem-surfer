@@ -73,7 +73,7 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
       };
 
       $scope.activitiesClicked = () => {
-        $location.path(`/account/${activeUsername()}/activities`);
+        $location.path(`/${activeUsername()}/activities`);
       };
 
       $scope.openSettings = () => {

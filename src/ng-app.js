@@ -136,6 +136,7 @@ import witnessesCtrl from './controllers/witnesses';
 import galleryModalCtrl from './controllers/gallery-modal'
 import delegatedVestingCtrl from './controllers/delegated-vesting';
 import delegateCtrl from './controllers/delegate';
+import activitiesCtrl from './controllers/activities';
 
 
 import tokenExchangeCtrl from './controllers/token-exchange';
@@ -174,6 +175,7 @@ import contentListLoadingItemDir from './directives/content-list-loading-item';
 import showBgImageOnModalDir from './directives/show-bg-image-on-modal';
 import postFloatingMenuDir from './directives/post-floating-menu';
 import toggleListStyleDir from './directives/toggle-list-style';
+import activityListItemDir from './directives/activity-list-item'
 
 
 // Services
@@ -361,6 +363,14 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
       templateUrl: 'templates/delegate.html',
       controller: 'delegateCtrl'
     })
+    .when('/:account/activities', {
+      templateUrl: 'templates/activities.html',
+      controller: 'activitiesCtrl',
+    })
+    .when('/:account/activities/:type', {
+      templateUrl: 'templates/activities.html',
+      controller: 'activitiesCtrl',
+    })
     .when('/welcome', {
       templateUrl: 'templates/welcome.html',
       controller: 'welcomeCtrl'
@@ -475,6 +485,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
   .directive('showBgImageOnModal', showBgImageOnModalDir)
   .directive('postFloatingMenu', postFloatingMenuDir)
   .directive('toggleListStyle', toggleListStyleDir)
+  .directive('activityListItem', activityListItemDir)
 
   .controller('postsCtrl', postsCtrl)
   .controller('settingsCtrl', settingsCtrl)
@@ -510,6 +521,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
   .controller('galleryModalCtrl', galleryModalCtrl)
   .controller('delegatedVestingCtrl', delegatedVestingCtrl)
   .controller('delegateCtrl', delegateCtrl)
+  .controller('activitiesCtrl', activitiesCtrl)
   .controller('connect2mobileCtrl', connect2mobileCtrl)
   .controller('privateKeyQrCtrl', privateKeyQrCtrl)
 

@@ -1,0 +1,34 @@
+<nav-bar selected-section="'activities'"></nav-bar>
+  <div class="app-container" scrolled-bottom="reachedBottom()" id="content-main">
+  <div class="app-content activities-page">
+    <div class="item-list" ng-class="{'fetching': loading}">
+      <header>
+        <div class="activities-type-select">
+          <select ng-model="activityType" class="form-control" ng-change="typeChanged()">
+            <option value="">{{ 'All Activities' | __ }}</option>
+            <option value="votes">{{ 'ACTIVITIES_VOTES' | __ }}</option>
+            <option value="replies">{{ 'ACTIVITIES_REPLIES' | __ }}</option>
+            <option value="mentions">{{ 'ACTIVITIES_MENTIONS' | __ }}</option>
+            <option value="follows">{{ 'ACTIVITIES_FOLLOWS' | __ }}</option>
+            <option value="reblogs">{{ 'ACTIVITIES_REBLOGS' | __ }}</option>
+          </select>
+        </div>
+        <div class="pull-right">
+          <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loading" title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
+        </div>
+      </header>
+      <ul class="records">
+        <li ng-repeat="activity in activities">
+          <activity-list-item activity="activity"></activity-list-item>
+        </li>
+      </ul>
+      <div class="empty-list" ng-if="activities.length === 0 && !loading">
+        {{ 'EMPTY_LIST' | __ }}
+      </div>
+      <footer>
+        <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="loading"></i>
+      </footer>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
