@@ -164,7 +164,14 @@ export default ($http, API_END_POINT) => {
       return $http.get(u);
     },
     getUnreadActivityCount: function (user) {
-      return $http.get(`${API_END_POINT}/api/unread-activity-count/${user}`);
+      return $http.get(`${API_END_POINT}/api/activities/${user}/unread-count`);
+    },
+    marActivityAsRead: function (user, id = null) {
+      let d = {};
+      if (id) {
+        d['id'] = id
+      }
+      return $http.put(`${API_END_POINT}/api/activities/${user}`, d);
     }
   }
 }

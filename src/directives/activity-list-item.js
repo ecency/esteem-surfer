@@ -11,6 +11,7 @@ export default () => {
     template: `<div>
       <div class="group-title" ng-if="activity.gkf">{{ date2key(activity.gk) }}</div>
       <div class="activity-list-item" ng-click="clicked(draft)" ng-class="{'not-read': activity.read === 0}">
+        <div class="activity-control"><a class="mark-read" ng-click="markAsRead()" uib-tooltip="{{ 'Mark as read' }}" ng-if="activity.read===0"></a></div>
         
         <a ng-click="goAccount(activity.source)" class="source-profile-pic" author-bg-img-style author="{{ activity.source }}"></a> 
         
@@ -89,6 +90,21 @@ export default () => {
           }
         });
       };
+
+      $scope.markAsRead = () => {
+        $scope.activity.read = 1;
+
+        eSteemService.marActivityAsRead(activeUsername(), $scope.activity.id).then((resp) => {
+          $rootScope.unreadActivities = resp.data.unread;
+        }).catch((e) => {
+          $scope.activity.read = 0;
+          $rootScope.showError('Could not marked as read');
+        })
+      };
+
+      $rootScope.$on('activitiesMarked', () => {
+        $scope.activity.read = 1;
+      });
 
       $scope.date2key = function (s) {
         // if not date return self

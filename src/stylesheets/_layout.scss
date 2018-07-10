@@ -1301,10 +1301,26 @@
           @include clearfix();
 
           margin-bottom: 10px;
-
           padding: 10px 0;
+
           &:hover {
             background: $altRowColor;
+          }
+
+          .activity-control {
+            align-items: center;
+            display: flex;
+            float: left;
+            height: 40px;
+            justify-content: center;
+            width: 30px;
+
+            .mark-read{
+              background: darkseagreen;
+              border-radius: 50%;
+              height: 10px;
+              width: 10px;
+            }
           }
 
           .source-profile-pic {
@@ -1321,7 +1337,7 @@
 
           .activity-content {
             float: left;
-            width: calc(100% - 50px);
+            width: calc(100% - 80px);
 
             .post-link {
               color: $textColorLight;
