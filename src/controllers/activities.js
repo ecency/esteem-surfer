@@ -1,13 +1,11 @@
 export default ($scope, $rootScope, $routeParams, $location, eSteemService, activeUsername) => {
-  /*
+
   const account = $routeParams.account;
+  const activityType = $routeParams.type || '';
 
   if (account !== activeUsername()) {
     $location.path('/');
-  }*/
-
-  const account = 'dunsky';
-  const activityType = $routeParams.type || '';
+  }
 
   $scope.account = account;
   $scope.activityType = activityType;
@@ -25,6 +23,7 @@ export default ($scope, $rootScope, $routeParams, $location, eSteemService, acti
   let ids = [];
   let hasMore = true;
 
+  $scope.loading = false;
   const loadActivities = (since = null) => {
     $scope.loading = true;
 
@@ -49,7 +48,6 @@ export default ($scope, $rootScope, $routeParams, $location, eSteemService, acti
       default:
         prms = eSteemService.getActivities(account, since);
     }
-
 
     prms.then((resp) => {
       if (resp.data.length === 0) {
@@ -88,6 +86,8 @@ export default ($scope, $rootScope, $routeParams, $location, eSteemService, acti
     }
     $scope.activities = [];
     ids = [];
+    hasMore = true;
+
     loadActivities();
   };
 
@@ -100,4 +100,19 @@ export default ($scope, $rootScope, $routeParams, $location, eSteemService, acti
 
     $location.path(u);
   };
+
+  $scope.marking = false;
+
+  $scope.markAllRead = () => {
+    $scope.marking = true;
+    eSteemService.marActivityAsRead(activeUsername()).then((resp) => {
+      $rootScope.unreadActivities = resp.data.unread;
+
+      $rootScope.$broadcast('activitiesMarked');
+    }).catch((e) => {
+      $rootScope.showError('Could not marked as read');
+    }).then(() => {
+      $scope.marking = false;
+    });
+  }
 }

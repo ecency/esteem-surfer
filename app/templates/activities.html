@@ -15,6 +15,7 @@
         </div>
         <div class="pull-right">
           <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loading" title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
+          <button class="btn btn-sm btn-default btn-reload" ng-if="$root.unreadActivities" ng-click="markAllRead()" ng-disabled="loading || marking">{{ 'Mark All as Read' | __ }}</button>
         </div>
       </header>
       <ul class="records">
