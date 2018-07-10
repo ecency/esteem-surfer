@@ -1141,15 +1141,19 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
     const nwsMessageBody = (data) => {
       switch (data.type) {
         case 'vote':
-          return `${data.source} voted your post`;
+          return `${data.source} ${$filter('__')('voted your post')}`;
         case 'mention':
-          return `${data.source} mentioned you in a post`;
+          if(data.extra.is_post){
+            return `${data.source} ${$filter('__')('mentioned you in a post')}`;
+          } else {
+            return `${data.source} ${$filter('__')('mentioned you in a comment')}`;
+          }
         case 'follow':
-          return `${data.source} followed you`;
+          return `${data.source} ${$filter('__')('followed you')}`;
         case 'reply':
-          return `${data.source} replied you`;
+          return `${data.source} ${$filter('__')('replied you')}`;
         case 'reblog':
-          return `${data.source} reblogged your post`;
+          return `${data.source} ${$filter('__')('reblogged your post')}`;
       }
     };
 
@@ -1176,7 +1180,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
         const msg = nwsMessageBody(data);
 
         if (msg) {
-          let myNotification = new Notification('You have a new notification', {
+          let myNotification = new Notification($filter('__')('You have a new notification'), {
             body: msg
           });
 
