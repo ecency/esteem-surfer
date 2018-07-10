@@ -9,21 +9,13 @@ export default ($scope, $rootScope, $routeParams, $location, eSteemService, acti
 
   $scope.account = account;
   $scope.activityType = activityType;
-
-  $scope.activities = $rootScope.Data['activities'] || [];
-
-  $scope.$watchCollection('activities', (n, o) => {
-    if (n === o) {
-      return;
-    }
-
-    $rootScope.setNavVar('activities', n);
-  });
+  $scope.activities = [];
 
   let ids = [];
   let hasMore = true;
 
   $scope.loading = false;
+
   const loadActivities = (since = null) => {
     $scope.loading = true;
 
