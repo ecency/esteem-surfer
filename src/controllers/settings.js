@@ -19,6 +19,7 @@ export default ($scope, $rootScope, $timeout, $uibModalInstance, settingsService
     $scope.server = $rootScope.server;
     $scope.nightMode = $rootScope.theme === 'dark-theme';
     $scope.customServerAddr = null;
+    $scope.pushNotify = $rootScope.allowPushNotify === 1;
 
     /*
     Form state codes:
@@ -81,6 +82,23 @@ export default ($scope, $rootScope, $timeout, $uibModalInstance, settingsService
         settingsService.set('theme', 'dark-theme');
       } else {
         settingsService.set('theme', 'light-theme');
+      }
+      $rootScope.readSettings();
+      $scope.formState = 3;
+    }, 300);
+  });
+
+  $scope.$watch('pushNotify', (newVal, oldVal) => {
+    if (newVal === oldVal || $scope.formState === 2) {
+      return false;
+    }
+
+    $scope.formState = 2;
+    $timeout(() => {
+      if (newVal === true) {
+        settingsService.set('push-notify', 1);
+      } else {
+        settingsService.set('push-notify', 0);
       }
       $rootScope.readSettings();
       $scope.formState = 3;
