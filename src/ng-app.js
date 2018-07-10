@@ -1166,6 +1166,12 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
       };
 
       nws.onmessage = function (evt) {
+        $rootScope.$broadcast('newNotification');
+
+        if(!$rootScope.allowPushNotify){
+          return;
+        }
+
         const data = JSON.parse(evt.data);
         const msg = nwsMessageBody(data);
 
@@ -1175,11 +1181,11 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
           });
 
           myNotification.onclick = () => {
-            console.log('Notification clicked')
+            const u = `${activeUsername()}/activities`;
+            $location.path(u);
+            $rootScope.$applyAsync();
           }
         }
-
-        $rootScope.$broadcast('newNotification')
       };
 
       nws.onclose = function (evt) {
@@ -1223,6 +1229,11 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
     if (activeUsername()) {
       fetchUnreadActivityCount();
     }
+
+    // Refetch unread notifications on new message
+    $rootScope.$on('newNotification', () => {
+      fetchUnreadActivityCount();
+    });
 
     // Reset notification count to 0 and reload it for new logged in user
     $rootScope.$on('userLoggedIn', () => {
