@@ -1346,6 +1346,13 @@
 
             .second-line {
               font-size: 14px;
+
+              .reply-body {
+                border-left: 5px solid lighten($textColorLighter, 30);
+                color: $textColorLight;
+                cursor: pointer;
+                padding-left: 10px;
+              }
             }
           }
 
