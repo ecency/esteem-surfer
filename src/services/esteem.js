@@ -100,20 +100,40 @@ export default ($http, API_END_POINT) => {
     getWelcome: function () {
       return $http.get(`${API_END_POINT}/media/welcome.json`);
     },
-    getMyVotes: function (user) {
-      return $http.get(`${API_END_POINT}/api/rvotes/${user}`);
+    getMyVotes: function (user, since = null) {
+      let u = `${API_END_POINT}/api/rvotes/${user}`;
+      if (since) {
+        u += `?since=${since}`;
+      }
+      return $http.get(u);
     },
-    getMyReplies: function (user) {
-      return $http.get(`${API_END_POINT}/api/replies/${user}`);
+    getMyReplies: function (user, since = null) {
+      let u = `${API_END_POINT}/api/replies/${user}`;
+      if (since) {
+        u += `?since=${since}`;
+      }
+      return $http.get(u);
     },
-    getMyMentions: function (user) {
-      return $http.get(`${API_END_POINT}/api/mentions/${user}`);
+    getMyMentions: function (user, since = null) {
+      let u = `${API_END_POINT}/api/mentions/${user}`;
+      if (since) {
+        u += `?since=${since}`;
+      }
+      return $http.get(u);
     },
-    getMyFollows: function (user) {
-      return $http.get(`${API_END_POINT}/api/follows/${user}`);
+    getMyFollows: function (user, since = null) {
+      let u = `${API_END_POINT}/api/follows/${user}`;
+      if (since) {
+        u += `?since=${since}`;
+      }
+      return $http.get(u);
     },
-    getMyReblogs: function (user) {
-      return $http.get(`${API_END_POINT}/api/reblogs/${user}`);
+    getMyReblogs: function (user, since = null) {
+      let u = `${API_END_POINT}/api/reblogs/${user}`;
+      if (since) {
+        u += `?since=${since}`;
+      }
+      return $http.get(u);
     },
     getLeaderboard: function () {
       return $http.get(`${API_END_POINT}/api/leaderboard`);
@@ -135,6 +155,13 @@ export default ($http, API_END_POINT) => {
     },
     getActiveVotes: function (user) {
       return $http.get(`${API_END_POINT}/api/votes/${user}`);
+    },
+    getActivities: function (user, since = null) {
+      let u = `${API_END_POINT}/api/activities/${user}`;
+      if (since) {
+        u += `?since=${since}`;
+      }
+      return $http.get(u);
     },
     getUnreadActivityCount: function (user) {
       return $http.get(`${API_END_POINT}/api/unread-activity-count/${user}`);

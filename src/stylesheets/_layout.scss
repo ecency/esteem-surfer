@@ -1253,3 +1253,117 @@
     margin-bottom: 50px;
   }
 }
+
+.activities-page {
+  .item-list {
+    background: $listBgColor;
+    border: 1px solid $listBorderColor;
+    box-shadow: 0 0 1px 0 $listBorderColor;
+    padding: 20px;
+
+    header {
+
+      border-bottom: 1px solid $seperatorColor;
+
+      padding-bottom: 10px;
+      @include clearfix();
+
+      .activities-type-select {
+        float: left;
+        width: 300px;
+      }
+
+      .btn-reload {
+        color: $loadingColor;
+        font-size: 16px;
+      }
+    }
+
+    ul.records {
+      margin: 0;
+      padding: 0;
+
+      > li {
+
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        .group-title {
+          background: $altRowColor;
+          border-bottom: 1px solid $seperatorColor;
+          font-size: 16px;
+          font-weight: bold;
+          padding: 6px;
+        }
+
+        .activity-list-item {
+          @include clearfix();
+
+          margin-bottom: 10px;
+
+          padding: 10px 0;
+          &:hover {
+            background: $altRowColor;
+          }
+
+          .source-profile-pic {
+            background: $profilePicBg;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 50%;
+            float: left;
+            height: 40px;
+            margin-right: 10px;
+            width: 40px;
+          }
+
+          .activity-content {
+            float: left;
+            width: calc(100% - 50px);
+
+            .post-link {
+              color: $textColorLight;
+            }
+
+            .first-line {
+              align-items: center;
+              display: flex;
+              margin-bottom: 4px;
+
+              .source-name {
+                color: $textColor;
+                font-size: 16px;
+                font-weight: bold;
+                margin-right: 5px;
+              }
+
+              .activity-action {
+                margin-right: 5px;
+              }
+            }
+
+            .second-line {
+              font-size: 14px;
+            }
+          }
+
+          &.not-read {
+
+          }
+        }
+      }
+    }
+
+    footer {
+      padding-top: 10px;
+      text-align: center;
+
+      .fa {
+        color: $loadingColor;
+        font-size: 30px;
+      }
+    }
+  }
+}
