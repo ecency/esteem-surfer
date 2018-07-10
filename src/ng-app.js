@@ -575,6 +575,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
       $rootScope.server = settingsService.get('server');
       $rootScope.currency = settingsService.get('currency');
       $rootScope.listStyle = settingsService.get('list-style', 1);
+      $rootScope.allowPushNotify = settingsService.get('push-notify', 1);
     };
 
     // If there is no setting configured (probably first run) create default settings.
@@ -602,7 +603,6 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
 
     // Set steem api server address initially
     steemApi.setServer($rootScope.server);
-
 
     // CURRENCY
     // Default currency's (USD) rate = 1
