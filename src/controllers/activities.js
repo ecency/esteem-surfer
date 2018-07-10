@@ -1,15 +1,12 @@
-
-
-
 export default ($scope, $rootScope, $routeParams, $location, eSteemService, activeUsername) => {
-
-
+  /*
   const account = $routeParams.account;
 
   if (account !== activeUsername()) {
     $location.path('/');
-  }
+  }*/
 
+  const account = 'dunsky';
   const activityType = $routeParams.type || '';
 
   $scope.account = account;
@@ -94,6 +91,4 @@ export default ($scope, $rootScope, $routeParams, $location, eSteemService, acti
 
     $location.path(u);
   };
-
-
 }
