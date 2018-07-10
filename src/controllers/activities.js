@@ -10,8 +10,17 @@ export default ($scope, $rootScope, $routeParams, $location, eSteemService, acti
   const activityType = $routeParams.type || '';
 
   $scope.account = account;
-  $scope.activities = [];
   $scope.activityType = activityType;
+
+  $scope.activities = $rootScope.Data['activities'] || [];
+
+  $scope.$watchCollection('activities', (n, o) => {
+    if (n === o) {
+      return;
+    }
+
+    $rootScope.setNavVar('activities', n);
+  });
 
   let ids = [];
   let hasMore = true;
