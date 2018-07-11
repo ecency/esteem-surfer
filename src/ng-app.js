@@ -782,14 +782,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
     $rootScope.Data = {};
 
     $rootScope.setNavVar = (varKey, val) => {
-      let w = $window.location.href;
-
-      // https://github.com/esteemapp/esteem-surfer/issues/63
-      if (( $rootScope.curCtrl === 'feedCtrl') || ($rootScope.curCtrl === 'authorCtrl' && $routeParams.section === 'feed')) {
-        w = `feed_${$routeParams.username}`;
-      }
-
-      const key = w.hashCode();
+      const key = $window.location.href.hashCode();
 
       if (!cacheData[key]) {
         cacheData[key] = {};
