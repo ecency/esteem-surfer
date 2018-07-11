@@ -1,7 +1,3 @@
-import moment from 'moment';
-
-require('moment-timezone');
-
 export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $window, $uibModal, $filter, steemService, eSteemService, steemAuthenticatedService, activeUsername, constants) => {
   let username = $routeParams.username;
   let section = $routeParams.section || 'blog';
@@ -41,14 +37,6 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     }
 
     $rootScope.setNavVar('dataList', n);
-  });
-
-  $scope.$watchCollection('selectedActivity', (n, o) => {
-    if (n === o) {
-      return;
-    }
-
-    $rootScope.setNavVar('selectedActivity', n);
   });
 
   const loadAccount = async (refresh = false) => {
@@ -196,58 +184,6 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
   let contentIds = [];
   let hasMoreContent = true;
 
-  const buildActivityList = (rawList) => {
-    moment.locale($rootScope.language);
-
-    const date2key = function (s) {
-      return moment(s).calendar(null, {
-        sameDay: '[Today]',
-        nextDay: '[Tomorrow]',
-        nextWeek: 'dddd',
-        lastDay: '[Yesterday]',
-        lastWeek: '[Last] dddd',
-        sameElse: 'DD/MM/YYYY'
-      });
-    };
-    const maxGroup = 20;
-
-    const build = function (rawData) {
-      const dateList = [];
-
-      for (let i = 0; i < rawData.length; i++) {
-        let k = date2key(rawData[i].timestamp);
-        if (dateList.indexOf(k) === -1) {
-          dateList.push(k);
-        }
-      }
-
-      const data = [];
-      for (let m = 0; m < dateList.length; m++) {
-        const k = dateList[m];
-        const records = [];
-
-        for (let l = 0; l < rawData.length; l++) {
-          if (date2key(rawData[l].timestamp) === k) {
-            records.push(rawData[l]);
-          }
-        }
-
-        data.push({'key': k, 'records': records});
-
-        if (data.length >= maxGroup) {
-          if (m < (dateList.length - 1)) {
-            $scope.hasMore = true;
-          }
-          break;
-        }
-      }
-      return data;
-    };
-
-    return build(rawList);
-  };
-  $scope.selectedActivity = $rootScope.Data['selectedActivity'] || {id: 'votes'};
-
   const loadContentsFirst = () => {
     $scope.loadingContents = true;
     $scope.$applyAsync();
@@ -263,36 +199,9 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
       case 'replies':
         prms = steemService.getState(`/@${username}/recent-replies`);
         break;
-      case 'activities':
-        switch ($scope.selectedActivity.id) {
-          case 'votes':
-            prms = eSteemService.getMyVotes(username);
-            break;
-          case 'replies':
-            prms = eSteemService.getMyReplies(username);
-            break;
-          case 'mentions':
-            prms = eSteemService.getMyMentions(username);
-            break;
-          case 'follows':
-            prms = eSteemService.getMyFollows(username);
-            break;
-          case 'reblogs':
-            prms = eSteemService.getMyReblogs(username);
-            break;
-          case 'leaderboard':
-            prms = eSteemService.getLeaderboard();
-            break;
-        }
-        break;
     }
 
     prms.then(resp => {
-      if (section === 'activities') {
-        $scope.dataList = $scope.selectedActivity.id === 'leaderboard' ? resp.data : buildActivityList(resp.data);
-        return;
-      }
-
       const contents = resp.content;
       for (let k in contents) {
         let i = contents[k];
@@ -315,7 +224,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
         });
       }
     }).catch((e) => {
-      $rootScope.showError('Could not fetch activities!');
+      $rootScope.showError(e);
     }).then(() => {
       $scope.loadingContents = false;
     });
@@ -366,7 +275,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
 
   const loadContents = () => {
 
-    if (['blog', 'comments', 'replies', 'activities'].indexOf(section) !== -1) {
+    if (['blog', 'comments', 'replies'].indexOf(section) !== -1) {
       if ($scope.dataList.length === 0) {
         // if initial data is empty then load contents
         loadContentsFirst();
@@ -427,7 +336,7 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
   };
 
   $scope.reachedBottom = () => {
-    if (['wallet', 'activities'].indexOf(section) !== -1) {
+    if (['wallet'].indexOf(section) !== -1) {
       return false;
     }
 
