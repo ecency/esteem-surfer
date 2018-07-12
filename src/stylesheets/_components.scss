@@ -330,11 +330,11 @@
 
         .post-mark {
           margin-right: 3px;
-          fill: #527AE2;
-
           &.post-mark-read {
             display: none;
           }
+
+          fill: #527AE2;
         }
 
         .post-parent, .post-date {
@@ -983,11 +983,11 @@
 
         .content-mark {
           margin-right: 3px;
-          fill: #527AE2;
-
           &.content-mark-read {
             display: none;
           }
+
+          fill: #527AE2;
         }
 
         .content-parent, .content-date {
@@ -2649,38 +2649,112 @@
   }
 }
 
-.draft-list-item {
+.draft-list-item, .schedule-list-item {
+
   @include clearfix();
 
-  cursor: pointer;
-  padding: 10px 5px;
-  position: relative;
   width: 100%;
 
-  .btn-delete {
-    opacity: 0.5;
-    position: absolute;
-    right: 5px;
-    top: 5px;
+  .item-header {
+    @include clearfix();
+
+    font-size: 14px;
+    margin-bottom: 10px;
+
+    .item-info-bar {
+      align-items: center;
+      display: flex;
+
+      .item-author-pic {
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 50%;
+        float: left;
+        height: 24px;
+        width: 24px;
+      }
+
+      .item-info-right-side {
+        float: left;
+        margin-left: 10px;
+        margin-right: 5px;
+
+        .item-author {
+          font-weight: 600;
+          a {
+            color: $textColor;
+          }
+        }
+
+        .item-author-reputation {
+          &:before {
+            content: '(';
+          }
+          &:after {
+            content: ')';
+          }
+        }
+
+        .item-parent {
+          margin-right: 2px;
+
+          &:after {
+            content: '•';
+            padding-left: 6px;
+          }
+        }
+
+        .item-parent, .item-date {
+          color: $textColorLight;
+
+          a {
+            color: $textColorLight;
+          }
+        }
+      }
+    }
   }
 
-  .draft-body {
-    padding-right: 30px;
+  .item-body {
 
-    .draft-body-title, .draft-body-summary {
+    .item-image {
+      align-items: center;
+      display: flex;
+      float: left;
+      height: 77px;
+      overflow: hidden;
+      padding-top: 2px;
+      width: 130px;
+
+      img {
+        display: inline-block;
+        height: auto;
+        max-width: 100%;
+        vertical-align: middle;
+
+        &.fallback-img {
+          opacity: 0.4;
+        }
+      }
+
+    }
+
+    .item-body-title, .item-body-summary {
       font-size: 16px;
       a {
         color: $textColor;
       }
+
     }
 
-    .draft-body-title {
+    .item-body-title {
       line-height: 130%;
       margin: 0 0 8px 0;
       width: 100%;
     }
 
-    .draft-body-summary {
+    .item-body-summary {
       margin-bottom: 10px;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -2689,98 +2763,29 @@
     }
   }
 
-  .draft-footer {
+  .item-footer {
+    @include clearfix();
 
-    .content-tags {
-      margin-right: 2px;
-      &:after {
-        content: '•';
-        padding-left: 6px;
-      }
-    }
-
-    .draft-tags, .draft-date {
-      color: $textColorLight;
+    .item-edit, .item-delete {
+      border-right: 1px solid $seperatorColor;
+      float: left;
+      text-align: center;
+      width: 40px;
 
       a {
-        color: $textColorLight;
-      }
-    }
-
-  }
-
-  &:hover {
-    background-color: $altRowColor;
-
-    .btn-delete {
-      opacity: 1;
-    }
-  }
-}
-
-.schedule-list-item {
-  @include clearfix();
-
-  padding: 10px 5px;
-  position: relative;
-  width: 100%;
-
-  .item-buttons {
-
-    position: absolute;
-    right: 5px;
-    top: 5px;
-
-    .btn-delete, .btn-move {
-      opacity: 0.5;
-    }
-  }
-
-  .schedule-body {
-    padding-right: 30px;
-
-    .schedule-body-title, .schedule-body-summary {
-      font-size: 16px;
-      a {
-        color: $textColor;
-      }
-    }
-
-    .schedule-body-title {
-      line-height: 130%;
-      margin: 0 0 8px 0;
-      width: 100%;
-    }
-
-    .schedule-body-summary {
-      margin-bottom: 10px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      width: 100%;
-    }
-  }
-
-  .schedule-footer {
-    .schedule-tags, .schedule-created, .schedule-date {
-      color: $textColorLight;
-      margin-right: 20px;
-
-      a {
-        color: $textColorLight;
+        color: $textColorLighter;
       }
     }
   }
 
-  &:hover {
-    background-color: $altRowColor;
-
-    .item-buttons {
-      .btn-delete, .btn-move {
-        opacity: 1;
-      }
+  &.with-image {
+    .item-body .item-body-title,
+    .item-body .item-body-summary,
+    .item-footer {
+      // 130 = image width + 10 margin space
+      float: right;
+      width: calc(100% - 140px);
     }
-
   }
 }
 

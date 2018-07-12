@@ -1,4 +1,4 @@
-export default ($scope, $rootScope, eSteemService, activeUsername) => {
+export default ($scope, $rootScope, $location, eSteemService, activeUsername) => {
 
   $scope.loadingSchedules = true;
   $scope.schedules = [];
@@ -21,5 +21,9 @@ export default ($scope, $rootScope, eSteemService, activeUsername) => {
 
   $rootScope.$on('SCHEDULE_MOVED', () => {
     fetchSchedules();
+  });
+
+  $rootScope.$on('userLoggedOut', () => {
+    $location.path('/');
   });
 };
