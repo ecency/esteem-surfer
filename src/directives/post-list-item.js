@@ -11,7 +11,7 @@ export default () => {
     },
     // Instead of templateUrl, this way angular can render faster
     template: `
-      <div class="post-list-item with-image" ng-init="postImage = (post | catchPostImage)">
+      <div class="post-list-item with-image" ng-init="postImage = (post | catchPostImage)" ng-class="{'visited-post': isVisited}">
         <div class="post-header">
             <div class="post-resteemed" ng-if="reSteemed"><i class="fa fa-retweet"></i> {{ 'RESTEEMED' | __  }}</div>
             <div class="post-resteemed" ng-if="reSteemedBy"><i class="fa fa-retweet"></i> {{ 'RESTEEMED_BY' | __  }} {{ reSteemedBy }}</div>
@@ -21,6 +21,8 @@ export default () => {
                     <span class="post-author"><a ng-click="authorClicked()">{{ post.author }}</a></span>
                     <span class="post-author-reputation">{{ post.author_reputation|authorReputation|number:0 }}</span>
                     <span class="post-parent">{{ 'IN' | translate }} <a ng-click="parentClicked()">{{ post.category }}</a></span>
+                    <span class="post-mark post-mark-unread"><svg width="10" height="10" viewBox="0 0 1660 1660"><path d="M896 256q-130 0-248.5 51t-204 136.5-136.5 204-51 248.5 51 248.5 136.5 204 204 136.5 248.5 51 248.5-51 204-136.5 136.5-204 51-248.5-51-248.5-136.5-204-204-136.5-248.5-51zm768 640q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z" /></svg></span>
+                    <span class="post-mark post-mark-read"><svg width="10" height="10" viewBox="0 0 1660 1660"><path d="M1152 896q0 106-75 181t-181 75-181-75-75-181 75-181 181-75 181 75 75 181zm-256-544q-148 0-273 73t-198 198-73 273 73 273 198 198 273 73 273-73 198-198 73-273-73-273-198-198-273-73zm768 544q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z" /></svg></span>
                     <span class="post-date"><a ng-click="createdClicked()" title="{{ post.created|dateFormatted }}"> {{post.created|timeAgo}}</a></span>
                 </div>
             </div>
@@ -32,9 +34,9 @@ export default () => {
             <a ng-click="imageClicked()" class="post-image" ng-if="!postImage">
               <img ng-src="img/noimage.png">
             </a>
-            <h2 class="post-body-title"><a ng-click="titleClicked()" ng-class="{'visited': isVisited}">{{ post.title }}</a></h2>
+            <h2 class="post-body-title"><a ng-click="titleClicked()" >{{ post.title }}</a></h2>
             <div class="post-body-summary">
-                <a ng-click="summaryClicked()" ng-class="{'visited': isVisited}" ng-bind-html="post.body | postSummary"></a> &nbsp;
+                <a ng-click="summaryClicked()" ng-bind-html="post.body | postSummary"></a> &nbsp;
             </div>
         </div>
         <div class="post-footer">
