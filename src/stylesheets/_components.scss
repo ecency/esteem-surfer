@@ -536,7 +536,7 @@
             display: inline;
           }
 
-          .post-mark-unread{
+          .post-mark-unread {
             display: none;
           }
         }
@@ -941,29 +941,6 @@
 }
 
 .content-list-item-search {
-
-  /*
-STRUCTURE:
-.post-list-item
-  .post-header
-    .post-info-bar
-      .post-author-pic
-      .post-info-right-side
-        .post-author
-        .post-author-reputation
-        .post-cat
-        .post-date
-
-  .post-body
-    .post-image
-    .post-body-title
-    .post-body-summary
-
-
-  .post-footer
-    .post-voters
-    .post-comment-count
- */
   @include clearfix();
 
   width: 100%;
@@ -1002,9 +979,14 @@ STRUCTURE:
 
         .content-parent {
           margin-right: 2px;
-          &:after {
-            content: '•';
-            padding-left: 6px;
+        }
+
+        .content-mark {
+          margin-right: 3px;
+          fill: #527AE2;
+
+          &.content-mark-read {
+            display: none;
           }
         }
 
@@ -1046,9 +1028,6 @@ STRUCTURE:
       font-size: 16px;
       a {
         color: $textColor;
-      }
-      a.visited {
-        color: $textColorLighter;
       }
     }
 
@@ -1121,6 +1100,21 @@ STRUCTURE:
     }
   }
 
+  &.visited-content {
+    .content-header {
+      .content-info-bar {
+        .content-info-right-side {
+          .content-mark-read {
+            display: inline;
+          }
+
+          .content-mark-unread {
+            display: none;
+          }
+        }
+      }
+    }
+  }
 }
 
 .the-post {
