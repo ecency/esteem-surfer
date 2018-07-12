@@ -10,13 +10,15 @@ export default () => {
     },
     // Instead of templateUrl, this way angular can render faster
     template: `
-      <div class="content-list-item-search" ng-class="{'with-image': contentImage}">
+      <div class="content-list-item-search" ng-class="{'with-image': contentImage, 'visited-content': isVisited}"> 
         <div class="content-header">
             <div class="content-info-bar">
                 <div class="content-author-pic" author-bg-img-style author="{{ content.author }}"></div>
                 <div class="content-info-right-side">
                     <span class="content-author"><a ng-click="authorClicked()">{{ content.author }}</a></span>
                     <span class="content-parent">{{ 'IN' | translate }} <a ng-click="parentClicked()">{{ content.category }}</a></span>
+                    <span class="content-mark content-mark-unread"><svg width="10" height="10" viewBox="0 0 1660 1660"><path d="M896 256q-130 0-248.5 51t-204 136.5-136.5 204-51 248.5 51 248.5 136.5 204 204 136.5 248.5 51 248.5-51 204-136.5 136.5-204 51-248.5-51-248.5-136.5-204-204-136.5-248.5-51zm768 640q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z" /></svg></span>
+                    <span class="content-mark content-mark-read"><svg width="10" height="10" viewBox="0 0 1660 1660"><path d="M1152 896q0 106-75 181t-181 75-181-75-75-181 75-181 181-75 181 75 75 181zm-256-544q-148 0-273 73t-198 198-73 273 73 273 198 198 273 73 273-73 198-198 73-273-73-273-198-198-273-73zm768 544q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z" /></svg></span>
                     <span class="content-date"><a ng-click="createdClicked()" title="{{ content.created|dateFormatted }}"> {{content.created|timeAgo}}</a></span>
                 </div>
             </div>
@@ -25,9 +27,9 @@ export default () => {
             <a ng-click="imageClicked()" class="content-image" ng-if="contentImage">
               <img ng-src="{{ contentImage }}" fallback-src="img/noimage.png">  
             </a>
-            <h2 class="content-body-title"><a ng-click="titleClicked()" ng-class="{'visited': isVisited}">{{ content.title }}</a></h2>
+            <h2 class="content-body-title"><a ng-click="titleClicked()">{{ content.title }}</a></h2>
             <div class="content-body-summary">
-                <a ng-click="summaryClicked()" ng-class="{'visited': isVisited}" ng-bind-html="content.summary | postSummary"></a>
+                <a ng-click="summaryClicked()" ng-bind-html="content.summary | postSummary"></a>
             </div>
         </div>
         <div class="content-footer">
