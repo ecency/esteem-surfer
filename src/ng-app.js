@@ -17,7 +17,7 @@ const genRandom = function () {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 };
 
-import {remote, screen, clipboard, shell, ipcRenderer} from "electron";
+import {remote, clipboard, shell, ipcRenderer} from "electron";
 
 window.writeClipboard = (s) => {
   clipboard.writeText(s);
@@ -27,25 +27,9 @@ window.openInBrowser = (href) => {
   shell.openExternal(href);
 };
 
-window.setSizeForReadMode = (height = null) => {
+window.setSizeForReadMode = () => {
   const win_ = remote.getCurrentWindow();
-
-  if (height === null) {
-    const screen_ = screen.getPrimaryDisplay();
-    height = screen_.workArea.height
-  }
-
-  // 100 is useless here. It cannot make window narrow than minWidth.
-  win_.setSize(100, height);
-
-  win_.setPosition(win_.getPosition()[0], 0);
-
-  win_.center();
-};
-
-window.getWindowSize = () => {
-  const win_ = remote.getCurrentWindow();
-  return win_.getSize();
+  win_.maximize();
 };
 
 // New version/update relative functions
