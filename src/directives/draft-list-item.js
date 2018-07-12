@@ -6,19 +6,33 @@ export default () => {
       draft: '<'
     },
     template: `
-      <div class="draft-list-item" ng-click="clicked(draft)">
-        <button class="btn btn-xs btn-danger btn-delete" uib-tooltip="{{ 'REMOVE' | translate }}" ng-click="deleteClicked(draft); $event.stopPropagation();">
-          <i class="fa fa-times" ng-if="!deleting"></i><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="deleting"></i>
-        </button>
-        <div class="draft-body">
-            <h2 class="draft-body-title">{{ draft.title }}</h2>
-            <div class="draft-body-summary">
-                <span ng-bind-html="draft.body | postSummary"></span>
+      <div class="draft-list-item with-image" ng-init="draftImage = (fakePost | catchPostImage)">
+        <div class="item-header">
+          <div class="item-info-bar">
+            <div class="item-author-pic" author-bg-img-style author="{{ fakePost.author }}"></div>
+              <div class="item-info-right-side">
+                <span class="item-author"><a>{{ fakePost.author }}</a></span>
+                <span class="item-author-reputation">{{ fakePost.author_reputation|authorReputation|number:0 }}</span>
+                <span class="item-parent">{{ 'IN' | translate }} <a>{{ fakePost.category }}</a></span>
+                <span class="item-date"><a title="{{ post.created|dateFormatted }}"> {{draft.created|timeAgo}}</a></span>
+              </div>
+          </div>
+        </div>
+        <div class="item-body">
+            <a class="item-image" ng-if="draftImage">
+              <img ng-src="{{ draftImage }}" fallback-src="img/fallback.png">
+            </a>
+            <a class="item-image" ng-if="!draftImage">
+              <img ng-src="img/noimage.png">
+            </a>
+            <h2 class="item-body-title"><a>{{ draft.title }}</a></h2>
+            <div class="item-body-summary">
+                <a ng-bind-html="draft.body | postSummary"></a> &nbsp;
             </div>
         </div>
-        <div class="draft-footer">
-             <span class="draft-tags"><i class="fa fa-tags"></i> {{ tags }}</span>
-             <span class="draft-date">{{draft.timestamp|timeAgo}}</span>
+        <div class="item-footer">
+          <div class="item-edit"><a ng-click="clicked(draft)"><i class="fa fa-pencil"></i></a></div>
+          <div class="item-delete"><a ng-click="deleteClicked(draft)"><i class="fa fa-times"></i></a></div>
         </div>
     </div>
     `,
@@ -26,6 +40,14 @@ export default () => {
 
       $scope.deleting = false;
       $scope.tags = $scope.draft.tags ? $scope.draft.tags.replace(/ /g, ', ') : '';
+
+      $scope.fakePost = {
+        json_metadata: '',
+        body: $scope.draft.body,
+        author: activeUsername(),
+        category: $scope.tags.split(',')[0],
+        author_reputation: $rootScope.userProps ? $rootScope.userProps.reputation : 0
+      };
 
       $scope.clicked = (draft) => {
         $rootScope.editorDraft = {

@@ -316,6 +316,17 @@
   }
 }
 
+.drafts-page, .schedules-page {
+  .item-list {
+    ul.feed {
+      > li {
+        margin-bottom: 10px;
+        padding: 10px 0;
+      }
+    }
+  }
+}
+
 .gallery-page {
   .item-list {
     ul.feed {
@@ -1233,7 +1244,7 @@
             justify-content: center;
             width: 30px;
 
-            .mark-read{
+            .mark-read {
               background: darkseagreen;
               border-radius: 50%;
               height: 10px;

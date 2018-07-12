@@ -1,4 +1,4 @@
-export default ($scope, $rootScope, eSteemService, activeUsername) => {
+export default ($scope, $rootScope, $location, eSteemService, activeUsername) => {
 
   $scope.loadingDrafts = true;
   $scope.drafts = [];
@@ -23,5 +23,9 @@ export default ($scope, $rootScope, eSteemService, activeUsername) => {
 
   $rootScope.$on('DRAFT_DELETED', () => {
     fetchDrafts();
+  });
+
+  $rootScope.$on('userLoggedOut', () => {
+    $location.path('/');
   });
 };
