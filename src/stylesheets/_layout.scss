@@ -118,6 +118,10 @@
   }
 }
 
+.root.in-read-mode .app-container {
+  height: 100%;
+}
+
 .app-content {
   @include clearfix();
   margin: auto;
@@ -355,11 +359,6 @@
 
 .in-read-mode .post-page {
   background-color: $appBg;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 4;
 }
 
 .author-page {
