@@ -46,6 +46,15 @@ const imgCopyUrl = new MenuItem({
   }
 });
 
+
+let urlToCopy = '';
+const urlCopyUrl = new MenuItem({
+  label: "Copy url",
+  click: () => {
+    clipboard.writeText(urlToCopy);
+  }
+});
+
 const normalMenu = new Menu();
 normalMenu.append(copy);
 
@@ -58,10 +67,21 @@ const imgMenu = new Menu();
 imgMenu.append(imgOpen);
 imgMenu.append(imgCopyUrl);
 
+const urlCopyMenu = new Menu();
+urlCopyMenu.append(urlCopyUrl);
+
 
 document.addEventListener(
   "contextmenu",
   event => {
+
+    if (event.target.className.indexOf('url-copy') !== -1) {
+      urlToCopy = event.target.getAttribute('data-href');
+      event.preventDefault();
+      urlCopyMenu.popup(remote.getCurrentWindow());
+      return;
+    }
+
     switch (event.target.nodeName) {
       case "IMG":
         imgUrlToOpen = event.target.getAttribute('src');

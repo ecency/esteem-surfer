@@ -12,8 +12,8 @@
   <a class="box-btn btn-external" ng-click="" title="{{ 'POST_MENU_EXTERNAL' | __ }}">
     <i class="fa fa-external-link"></i>
     <span class="service-list">
-      <button class="btn btn-xs btn-link" ng-click="openSteemit()">steemit</button>
-      <button class="btn btn-xs btn-link" ng-click="openBusy()">busy</button>
+      <button class="btn btn-xs btn-link url-copy" data-href="{{ steemItUrl }}" ng-click="openSteemit()">steemit</button>
+      <button class="btn btn-xs btn-link url-copy" data-href="{{ busyUrl }}" ng-click="openBusy()">busy</button>
     </span>
   </a>
   <a class="box-btn btn-copy" ng-click="copyAddress()" title="{{ 'POST_MENU_COPY' | __ }}">
