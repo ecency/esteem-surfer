@@ -74,7 +74,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
   $scope.commentsTotalPages = 0;
 
   $scope.commentSorting = {
-    model: 'trending',
+    model: 'votes',
     opts: [
       {value: 'trending', name: $filter('__')('COMMENT_SORT_ORDER_TRENDING')},
       {value: 'author_reputation', name: $filter('__')('COMMENT_SORT_ORDER_AUTHOR_REPUTATION')},
