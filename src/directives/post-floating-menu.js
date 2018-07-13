@@ -142,14 +142,14 @@ export default () => {
         }
       });
 
+      $scope.steemItUrl = makeSteemitUrl($scope.content.parent_permlink, $scope.content.author, $scope.content.permlink);
       $scope.openSteemit = () => {
-        const u = makeSteemitUrl($scope.content.parent_permlink, $scope.content.author, $scope.content.permlink);
-        window.openInBrowser(u);
+        window.openInBrowser($scope.steemItUrl);
       };
 
+      $scope.busyUrl = makeBusyUrl($scope.content.author, $scope.content.permlink);
       $scope.openBusy = () => {
-        const u = makeBusyUrl($scope.content.author, $scope.content.permlink);
-        window.openInBrowser(u);
+        window.openInBrowser($scope.busyUrl);
       };
 
       $scope.copyAddress = () => {
