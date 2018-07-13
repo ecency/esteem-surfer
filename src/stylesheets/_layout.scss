@@ -679,6 +679,10 @@
       position: relative;
       width: 50%;
 
+      .content-title .form-control, .content-tags .form-control {
+        font-family: 'Source Serif Pro', serif;
+      }
+
       .left-bar {
         background: $contentEditorControlsBg;
         height: 100%;
@@ -705,15 +709,47 @@
       }
 
       .content-editor {
-        textarea {
-          height: 420px;
+        height: 420px;
+        position: relative;
 
-          @media (min-height: 800px) {
-            height: 530px;
-          }
+        @media (min-height: 800px) {
+          height: 530px;
+        }
 
-          @media (min-height: 1000px) {
-            height: 730px;
+        @media (min-height: 1000px) {
+          height: 730px;
+        }
+
+        #main-text, #bg-text {
+          font-family: 'Source Serif Pro', serif;
+          font-size: 18px;
+          height: 100%;
+          left: 0;
+          line-height: 27px;
+          padding: 10px 16px;
+          position: absolute;
+          top: 0;
+          background: transparent;
+        }
+
+        #main-text {
+          z-index: 2;
+
+        }
+
+        #bg-text {
+          border: 0;
+          color: transparent;
+          display: block;
+          margin: 0;
+          overflow: auto;
+          white-space: pre-wrap;
+          word-break: normal;
+
+          z-index: 1;
+
+          .marked {
+            border-bottom: 1px solid #9c9c9c;
           }
         }
       }
