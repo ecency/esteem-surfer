@@ -134,6 +134,8 @@ export default ($sce) => {
         return 'Gallery';
       case 'EDITOR_CONTROL_LINK':
         return 'Link';
+      case 'EDITOR_CONTROL_TABLE':
+        return 'Table';
       case 'SAVE':
         return 'Save';
       case 'REFRESH':
