@@ -740,7 +740,7 @@
         #bg-text {
           border: 0;
           color: transparent;
-          display: block;
+          display: none; // make it block to enable
           margin: 0;
           overflow: auto;
           white-space: pre-wrap;
