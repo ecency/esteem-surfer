@@ -21,6 +21,7 @@ export default () => {
         <button class="btn btn-default" ng-click="insertHr()" tooltip-popup-delay="1000" tooltip-placement="right" uib-tooltip="{{ 'EDITOR_CONTROL_HR' | __ }}"><i class="fa fa-minus"></i></button>
         <button class="btn btn-default" tooltip-popup-delay="1000" tooltip-placement="top" uib-tooltip="{{ 'EDITOR_CONTROL_IMAGE' | __ }}"><i class="fa fa-image"></i><span class="sub-menu"><a class="btn btn-sm btn-default" ng-click="uploadImage()">{{ 'EDITOR_CONTROL_IMAGE_UPLOAD' | __ }}</a><a class="btn btn-sm btn-default" login-required on-login-success="openGallery()">{{ 'EDITOR_CONTROL_IMAGE_GALLERY' | __ }}</a></span></button>
         <button class="btn btn-default" ng-click="insertLink()" tooltip-popup-delay="1000" tooltip-placement="right" uib-tooltip="{{ 'EDITOR_CONTROL_LINK' | __ }}"><i class="fa fa-link"></i></button>
+        <button class="btn btn-default" ng-click="insertTable()" tooltip-popup-delay="1000" tooltip-placement="right" uib-tooltip="{{ 'EDITOR_CONTROL_TABLE' | __ }}"><i class="fa fa-table"></i></button>
         </div>`,
     controller: ($scope, $rootScope, $timeout, $uibModal) => {
 
@@ -72,6 +73,13 @@ export default () => {
 
       $scope.insertLink = () => {
         insertText(txtEl, '[', '](url)');
+      };
+
+      $scope.insertTable = () => {
+        const t = "\n|\tColumn 1\t|\tColumn 2\t|\tColumn 3\t|\n" +
+          "|\t------------\t|\t------------\t|\t------------\t|\n" +
+          "|\t     Text     \t|\t     Text     \t|\t     Text     \t|\n";
+        insertText(txtEl, t);
       };
 
       $scope.uploadImage = () => {
