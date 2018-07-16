@@ -56,19 +56,21 @@ export default () => {
                     <i class="fa fa-comments"></i> {{ post.children }}
                 </a>
             </div>
+            <div class="post-reblog"><a ng-class="{'reblogged': reblogged}" ng-click="" title="{{ 'POST_MENU_REBLOG' | __ }}" login-required required-keys="'posting'" on-login-success="reblog()"><i class="fa fa-retweet"></i></a></div>
             <div class="post-app" ng-show="app" ng-if="app">{{ app }}</div>
         </div>
     </div>
     `,
-    controller: ($scope, $rootScope, $location, $sce, $filter, $uibModal, storageService, helperService, activePostFilter) => {
+    controller: ($scope, $rootScope, $location, $sce, $filter, $uibModal, storageService, helperService, activePostFilter, activeUsername, steemService, steemAuthenticatedService, $confirm) => {
       $scope.isVisited = helperService.isPostRead($scope.post.author, $scope.post.permlink);
       $scope.reSteemed = ($scope.asAuthor && $scope.post.author !== $scope.asAuthor);
       $scope.reSteemedBy = ($scope.post.reblogged_by && $scope.post.reblogged_by.length > 0 ? $scope.post.reblogged_by[0] : null);
 
       let jsonMeta = {};
-      try{
+      try {
         jsonMeta = JSON.parse($scope.post.json_metadata);
-      } catch (e){ }
+      } catch (e) {
+      }
 
       $scope.app = $filter('appName')(jsonMeta.app);
 
@@ -106,6 +108,40 @@ export default () => {
       $scope.parentClicked = () => {
         let u = `/posts/${activePostFilter()}/${$scope.post.category}`;
         $location.path(u);
+      };
+
+      const activeUser = activeUsername();
+      const author = $scope.post.author;
+      const permlink = $scope.post.permlink;
+
+      $scope.reblogged = helperService.isPostReblogged(activeUser, author, permlink);
+      $scope.canReblog = !(activeUser === author);
+
+      if (!$scope.reblogged &&
+        $scope.canReblog &&
+        activeUser) {
+        steemService.getDiscussionsBy('Blog', activeUser, null, null, 20).then((contents) => {
+          for (let content of contents) {
+            if (content.author === author && content.permlink === permlink) {
+              helperService.setPostReblogged(activeUser, author, permlink);
+              $scope.reblogged = true;
+            }
+          }
+        });
+      }
+
+      $scope.reblog = () => {
+        $confirm($filter('translate')('ARE_YOU_SURE'), null, () => {
+          $scope.reblogged = true;
+          steemAuthenticatedService.reblog(author, permlink).then(() => {
+            helperService.setPostReblogged(activeUser, author, permlink);
+          }).catch((e) => {
+            $scope.reblogged = false;
+            $rootScope.showError(e);
+          }).then(() => {
+            $rootScope.showSuccess($filter('__')('Post reblogged'))
+          });
+        });
       };
     }
   };
