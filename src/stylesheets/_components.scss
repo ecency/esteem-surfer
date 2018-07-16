@@ -401,8 +401,8 @@
     .post-voting {
       border-right: 1px solid $seperatorColor;
       float: left;
-      margin-right: 20px;
-      padding-right: 20px;
+      margin-right: 14px;
+      padding-right: 14px;
       position: relative;
 
       .post-up-vote {
@@ -473,8 +473,8 @@
     .post-voters {
       border-right: 1px solid $seperatorColor;
       float: left;
-      margin-right: 20px;
-      padding-right: 20px;
+      margin-right: 14px;
+      padding-right: 14px;
 
       a {
         color: $textColor;
@@ -492,8 +492,10 @@
     }
 
     .post-comment-count {
+      border-right: 1px solid $seperatorColor;
       float: left;
-      margin-right: 20px;
+      margin-right: 14px;
+      padding-right: 14px;
 
       a {
         color: $textColor;
@@ -511,10 +513,30 @@
       }
     }
 
+    .post-reblog {
+      border-right: 1px solid $seperatorColor;
+      float: left;
+      margin-right: 14px;
+      padding-right: 14px;
+
+      a {
+        color: $textColorLight;
+
+        &.reblogged{
+          color: $textColorLighter;
+          opacity: 0.5;
+        }
+
+        &.reblogged, &.reblogging {
+          pointer-events: none;
+        }
+      }
+    }
+
     .post-app {
       color: $textColorLighter;
       float: left;
-      margin-right: 20px;
+      margin-right: 14px;
     }
   }
 
