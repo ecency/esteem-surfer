@@ -1228,14 +1228,9 @@
     header {
 
       border-bottom: 1px solid $seperatorColor;
-
       padding-bottom: 10px;
-      @include clearfix();
 
-      .activities-type-select {
-        float: left;
-        width: 300px;
-      }
+      @include clearfix();
 
       .btn-reload {
         color: $loadingColor;

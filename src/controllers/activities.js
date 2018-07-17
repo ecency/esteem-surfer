@@ -83,11 +83,11 @@ export default ($scope, $rootScope, $routeParams, $location, eSteemService, acti
     loadActivities();
   };
 
-  $scope.typeChanged = () => {
+  $scope.typeChanged = (type) => {
     let u = `/${account}/activities`;
 
-    if ($scope.activityType !== '') {
-      u = `/${account}/activities/${$scope.activityType}`;
+    if (type !== '') {
+      u = `/${account}/activities/${type}`;
     }
 
     $location.path(u);
