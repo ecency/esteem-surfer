@@ -12,8 +12,8 @@
           <button type="button" ng-click="typeChanged('reblogs')" class="btn" ng-class="{'btn-primary': activityType=='reblogs', 'btn-default': activityType!='reblogs' }">{{ 'ACTIVITIES_REBLOGS' | __ }}</button>
         </div>
         <div class="pull-right">
-          <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loading" title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
-          <button class="btn btn-sm btn-default btn-reload" ng-if="$root.unreadActivities" ng-click="markAllRead()" ng-disabled="loading || marking">{{ 'Mark All as Read' | __ }}</button>
+          <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loading" title="{{ 'Refresh' | __ }}"><i class="fa fa-refresh"></i></button>
+          <button class="btn btn-sm btn-default btn-reload" ng-if="$root.unreadActivities" ng-click="markAllRead()" ng-disabled="loading || marking" title="{{ 'Mark All as Read' | __ }}"><i class="fa fa-check"></i></button>
         </div>
       </header>
       <ul class="records">

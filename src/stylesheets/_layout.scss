@@ -1232,6 +1232,14 @@
 
       @include clearfix();
 
+      .btn {
+        border: none;
+      }
+
+      .btn-default{
+        color: $textColorLight;
+      }
+
       .btn-reload {
         color: $loadingColor;
         font-size: 16px;
