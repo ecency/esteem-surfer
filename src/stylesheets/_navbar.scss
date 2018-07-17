@@ -153,12 +153,15 @@
 
       .has-activity {
         background: darkseagreen;
-        border-radius: 50%;
-        height: 10px;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 11px;
+        line-height: 11px;
+        padding: 2px 4px;
         position: absolute;
-        right: 10px;
-        top: 12px;
-        width: 10px;
+        right: 3px;
+        text-align: center;
+        top: 10px;
         z-index: 2;
       }
     }
