@@ -3,15 +3,13 @@
   <div class="app-content activities-page">
     <div class="item-list" ng-class="{'fetching': loading}">
       <header>
-        <div class="activities-type-select">
-          <select ng-model="activityType" class="form-control" ng-change="typeChanged()">
-            <option value="">{{ 'All Activities' | __ }}</option>
-            <option value="votes">{{ 'ACTIVITIES_VOTES' | __ }}</option>
-            <option value="replies">{{ 'ACTIVITIES_REPLIES' | __ }}</option>
-            <option value="mentions">{{ 'ACTIVITIES_MENTIONS' | __ }}</option>
-            <option value="follows">{{ 'ACTIVITIES_FOLLOWS' | __ }}</option>
-            <option value="reblogs">{{ 'ACTIVITIES_REBLOGS' | __ }}</option>
-          </select>
+        <div class="pull-left">
+          <button type="button" ng-click="typeChanged('')" class="btn" ng-class="{'btn-primary': activityType=='', 'btn-default': activityType!='' }">{{ 'All Activities' | __ }}</button>
+          <button type="button" ng-click="typeChanged('votes')" class="btn" ng-class="{'btn-primary': activityType=='votes', 'btn-default': activityType!='votes' }">{{ 'ACTIVITIES_VOTES' | __ }}</button>
+          <button type="button" ng-click="typeChanged('replies')" class="btn" ng-class="{'btn-primary': activityType=='replies', 'btn-default': activityType!='replies' }">{{ 'ACTIVITIES_REPLIES' | __ }}</button>
+          <button type="button" ng-click="typeChanged('mentions')" class="btn" ng-class="{'btn-primary': activityType=='mentions', 'btn-default': activityType!='mentions' }">{{ 'ACTIVITIES_MENTIONS' | __ }}</button>
+          <button type="button" ng-click="typeChanged('follows')" class="btn" ng-class="{'btn-primary': activityType=='follows', 'btn-default': activityType!='follows' }">{{ 'ACTIVITIES_FOLLOWS' | __ }}</button>
+          <button type="button" ng-click="typeChanged('reblogs')" class="btn" ng-class="{'btn-primary': activityType=='reblogs', 'btn-default': activityType!='reblogs' }">{{ 'ACTIVITIES_REBLOGS' | __ }}</button>
         </div>
         <div class="pull-right">
           <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loading" title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
