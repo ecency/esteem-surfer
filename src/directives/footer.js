@@ -44,11 +44,14 @@ export default () => {
       };
 
       const resetPower = () => {
-        $rootScope.lastVp = 0;
         $scope.vp = null;
         $scope.vpLevel = 0;
         $scope.vpFullIn = '';
         $scope.notifyVp = false;
+
+        if ($rootScope.lastVp === undefined) {
+          $rootScope.lastVp = 0
+        }
       };
 
       resetPower();
@@ -59,22 +62,21 @@ export default () => {
           $scope.vpLevel = powerLevel($scope.vp);
           $scope.vpFullIn = Math.ceil((100 - $scope.vp) * 0.833333); // 100% / 120h = 0.833333h for %1
 
-          if ($rootScope.lastVp && $rootScope.lastVp !== $scope.vp) {
-            $scope.notifyVp = true;
-
-            $timeout(() => {
-              $scope.notifyVp = false;
-            }, 2000);
-          }
-
           $rootScope.lastVp = $scope.vp;
+
         } else {
           resetPower();
         }
       };
 
+      $rootScope.$on('userLoggedIn', () => {
+        resetPower();
+        $rootScope.lastVp = 0;
+      });
+
       $rootScope.$on('userLoggedOut', () => {
         resetPower();
+        $rootScope.lastVp = 0;
       });
 
       $rootScope.$on('userPropsRefreshed', () => {
@@ -82,6 +84,22 @@ export default () => {
       });
 
       votingPower();
+
+      $rootScope.$watch('lastVp', (newVal, oldVal) => {
+        if (!oldVal) {
+          return;
+        }
+
+        if (newVal === oldVal) {
+          return;
+        }
+
+        $scope.notifyVp = true;
+
+        $timeout(() => {
+          $scope.notifyVp = false;
+        }, 2000);
+      })
     }
   };
 };
