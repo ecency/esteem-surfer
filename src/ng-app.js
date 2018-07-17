@@ -663,13 +663,14 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
       }
       steemService.getAccounts([a]).then(r => {
         $rootScope.userProps = r[0];
+        $rootScope.$broadcast('userPropsRefreshed');
       });
     };
 
     fetchUserProps();
 
     // Refresh users props in every minute.
-    $interval(() => fetchUserProps(), 60000);
+    $interval(() => fetchUserProps(), 10000);
 
     // Invalidate when user logged in
     $rootScope.$on('userLoggedIn', () => {

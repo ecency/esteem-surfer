@@ -10,8 +10,17 @@
   position: absolute;
   width: 100%;
 
-  .ver-no {
-    color: $footerColor;
+  .voting-power {
+    cursor: default;
+    float: left;
+
+    .fa {
+      color: $footerColor;
+    }
+
+    &.power-changed{
+      background: $highlightColor;
+    }
   }
 
   .footer-links {

@@ -1,7 +1,10 @@
 <footer class="app-footer">
-  <a class="ver-no" ng-click="verClicked()">{{ version }}</a>
+  <div class="voting-power" ng-class="{'power-changed': notifyVp}" ng-if="vp" uib-tooltip="{{ 'VOTING_POWER' | __ }}" tooltip-placement="right">
+    <i ng-class="'fa fa-battery-' + vpLevel"></i> {{ vp }}%, full in {{ vpFullIn }} hours
+  </div>
   <div class="footer-links">
     <a ng-click="faqClicked()">{{ 'FAQ' | __ }}</a>
     <a href="https://esteem.app" target="_external">{{ 'ABOUT' | translate }}</a>
+    <a class="ver-no" ng-click="verClicked()">{{ version }}</a>
   </div>
 </footer>
