@@ -19,15 +19,15 @@ export default () => {
           </div>
         </div>
         <div class="item-body">
-            <a class="item-image" ng-if="draftImage">
+            <a class="item-image" ng-if="draftImage" ng-click="clicked(draft)">
               <img ng-src="{{ draftImage }}" fallback-src="img/fallback.png">
             </a>
-            <a class="item-image" ng-if="!draftImage">
+            <a class="item-image" ng-if="!draftImage" ng-click="clicked(draft)">
               <img ng-src="img/noimage.png">
             </a>
-            <h2 class="item-body-title"><a>{{ draft.title }}</a></h2>
+            <h2 class="item-body-title"><a  ng-click="clicked(draft)">{{ draft.title }}</a></h2>
             <div class="item-body-summary">
-                <a ng-bind-html="draft.body | postSummary"></a> &nbsp;
+                <a ng-click="clicked(draft)" ng-bind-html="draft.body | postSummary"></a> &nbsp;
             </div>
         </div>
         <div class="item-footer">
