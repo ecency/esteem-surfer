@@ -142,8 +142,7 @@
     width: calc(100% - 220px);
 
     header {
-      border-bottom: 1px solid $seperatorColor;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       padding-bottom: 10px;
       @include clearfix();
 
@@ -169,6 +168,10 @@
 
       .btn-reload {
         margin-right: 10px;
+      }
+
+      .btn {
+        border: 0;
       }
     }
 
@@ -275,8 +278,7 @@
     width: 100%;
 
     header {
-      border-bottom: 1px solid $seperatorColor;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       padding-bottom: 10px;
       @include clearfix();
 
@@ -543,8 +545,7 @@
           position: relative;
 
           header {
-            border-bottom: 1px solid $seperatorColor;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             padding-bottom: 10px;
             @include clearfix();
 
@@ -560,6 +561,10 @@
               color: $loadingColor;
               float: right;
               font-size: 16px;
+            }
+
+            .btn {
+              border: 0;
             }
           }
 
@@ -858,6 +863,11 @@
       .btn-reload {
         color: $loadingColor;
         font-size: 16px;
+      }
+
+      .btn{
+        background: transparent;
+        border: none;
       }
     }
 
@@ -1236,7 +1246,7 @@
         border: none;
       }
 
-      .btn-default{
+      .btn-default {
         color: $textColorLight;
       }
 
