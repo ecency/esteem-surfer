@@ -147,7 +147,14 @@ app.on('open-url', function (event, url) {
 });
 
 const sendProtocolUrl2Window = (u) => {
-  mainWindow.webContents.executeJavaScript(`protocolHandler('${u}')`);
+  const m = u.match(/e?steem:\/\/[-a-zA-Z0-9@:%._\+~#=\/]{2,500}/gi);
+  if (!m) {
+    return false;
+  }
+
+  if (m[0]) {
+    mainWindow.webContents.executeJavaScript(`protocolHandler('${ m[0]}')`);
+  }
 };
 
 autoUpdater.on('update-available', (info) => {
