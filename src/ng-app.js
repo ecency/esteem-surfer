@@ -159,7 +159,8 @@ import contentListLoadingItemDir from './directives/content-list-loading-item';
 import showBgImageOnModalDir from './directives/show-bg-image-on-modal';
 import postFloatingMenuDir from './directives/post-floating-menu';
 import toggleListStyleDir from './directives/toggle-list-style';
-import activityListItemDir from './directives/activity-list-item'
+import activityListItemDir from './directives/activity-list-item';
+import activitiesPopoverDir from './directives/activities-popover';
 
 
 // Services
@@ -470,6 +471,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
   .directive('postFloatingMenu', postFloatingMenuDir)
   .directive('toggleListStyle', toggleListStyleDir)
   .directive('activityListItem', activityListItemDir)
+  .directive('activitiesPopover', activitiesPopoverDir)
 
   .controller('postsCtrl', postsCtrl)
   .controller('settingsCtrl', settingsCtrl)

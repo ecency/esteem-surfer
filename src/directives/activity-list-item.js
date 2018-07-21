@@ -36,7 +36,7 @@ export default () => {
             <a ng-click="goContent(activity.parent_author, activity.permlink_permlink)" class="post-link">{{ activity.parent_permlink }}</a> 
           </div>
           <div class="second-line">
-            <div class="markdown-view mini-markdown reply-body" ng-click="goContent(activity.author, activity.permlink)" >{{activity.body | postSummary}}</div>
+            <div class="markdown-view mini-markdown reply-body" ng-click="goContent(activity.author, activity.permlink)" >{{activity.body | postSummary:100 }}</div>
           </div>
         </div>
         
