@@ -3246,3 +3246,172 @@
     }
   }
 }
+
+.activities-popover {
+  max-width: 285px;
+  padding: 0;
+  right: auto;
+  width: 285px;
+
+  .popover-content {
+    padding: 0;
+  }
+
+  a {
+    padding: 0 !important;
+  }
+
+  .activities-popover-content {
+
+    @include clearfix();
+    width: 100%;
+
+    .header-controls {
+      @include clearfix();
+      margin-bottom: 10px;
+      padding: 10px;
+
+      .action-type-select {
+        float: left;
+      }
+
+      .btn {
+        border: none;
+        color: $loadingColor;
+      }
+    }
+
+    .loading {
+      margin-bottom: 10px;
+      text-align: center;
+
+      .fa {
+        color: $loadingColor;
+        font-size: 18px;
+      }
+    }
+
+    .empty-list {
+      padding: 0 10px;
+    }
+
+    ul.records {
+      margin: 0;
+      padding: 0;
+
+      > li {
+
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        .group-title {
+          background: $altRowColor;
+          border-bottom: 1px solid $seperatorColor;
+          font-size: 13px;
+          font-weight: bold;
+          padding: 6px;
+        }
+
+        .activity-list-item {
+          @include clearfix();
+
+          padding: 8px 0;
+
+          &:hover {
+            background: $altRowColor;
+          }
+
+          .activity-control {
+            align-items: center;
+            display: flex;
+            float: left;
+            height: 20px;
+            justify-content: center;
+            width: 20px;
+
+            .mark-read {
+              background: darkseagreen;
+              border-radius: 50%;
+              height: 10px;
+              width: 10px;
+            }
+          }
+
+          .source-profile-pic {
+            background: $profilePicBg;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 50%;
+            float: left;
+            height: 30px;
+            margin-right: 5px;
+            width: 30px;
+          }
+
+          .activity-content {
+            float: left;
+
+            width: calc(100% - 55px);
+
+            .post-link {
+              color: $textColorLight;
+            }
+
+            .first-line, .second-line {
+              font-size: 13px;
+            }
+
+            .first-line {
+
+              margin-bottom: 4px;
+
+              .source-name {
+                color: $textColor;
+                font-weight: bold;
+                margin-right: 5px;
+              }
+
+              .activity-action {
+                margin-right: 5px;
+              }
+            }
+
+            .post-link {
+              display: block;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              width: 90%;
+            }
+
+            .second-line {
+
+              .reply-body {
+                border-left: 5px solid lighten($textColorLighter, 30);
+                color: $textColorLight;
+                cursor: pointer;
+                font-size: 13px;
+                padding-left: 10px;
+              }
+            }
+
+          }
+
+          &.not-read {
+
+          }
+        }
+      }
+    }
+
+    .btn-more {
+      background-color: $altRowColor;
+      border: 0;
+      border-top: 1px solid $seperatorColor;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+<div class="activities-popover-content">
+
+  <div class="header-controls">
+    <div class="action-type-select">
+      <select ng-model="activityType.selected" class="form-control input-sm" ng-change="typeChanged()">
+        <option value="">{{ 'All Activities' | __ }}</option>
+        <option value="votes">{{ 'ACTIVITIES_VOTES' | __ }}</option>
+        <option value="replies">{{ 'ACTIVITIES_REPLIES' | __ }}</option>
+        <option value="mentions">{{ 'ACTIVITIES_MENTIONS' | __ }}</option>
+        <option value="follows">{{ 'ACTIVITIES_FOLLOWS' | __ }}</option>
+        <option value="reblogs">{{ 'ACTIVITIES_REBLOGS' | __ }}</option>
+      </select>
+    </div>
+
+    <div class="pull-right">
+      <button class="btn btn-sm btn-default btn-reload btn-sm" ng-click="reload()" ng-disabled="loading" title="{{ 'Refresh' | __ }}"><i class="fa fa-refresh"></i></button>
+      <button class="btn btn-sm btn-default btn-sm" ng-if="$root.unreadActivities" ng-click="markAllRead()" ng-disabled="loading || marking" title="{{ 'Mark All as Read' | __ }}"><i class="fa fa-check"></i></button>
+    </div>
+  </div>
+  <div class="loading">
+    <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="loading"></i>
+  </div>
+  <ul class="records">
+    <li ng-repeat="activity in activities">
+      <activity-list-item activity="activity"></activity-list-item>
+    </li>
+  </ul>
+  <div class="empty-list" ng-if="activities.length === 0 && !loading">
+    {{ 'EMPTY_LIST' | __ }}
+  </div>
+  <button class="btn btn-default btn-block btn-more" ng-click="activitiesClicked()">{{ 'View All' | __ }}</button>
+</div>
