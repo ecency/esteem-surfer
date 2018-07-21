@@ -3,7 +3,7 @@ export default () => {
     restrict: 'E',
     replace: true,
     scope: {},
-    template: `<a ng-click="" uib-popover-template="'templates/directives/activities-popover.html'" popover-class="activities-popover" popover-placement="bottom" popover-trigger="'outsideClick'"><span class="has-activity" ng-if="$root.unreadActivities">{{ $root.unreadActivities < 100 ? $root.unreadActivities : '...' }}</span><i class="fa fa-bell"></i></a>`,
+    template: `<a ng-click="" uib-popover-template="'templates/directives/activities-popover.html'" popover-class="activities-popover" popover-placement="bottom" popover-trigger="'outsideClick'"><span class="has-activity" ng-if="$root.unreadActivities">{{ $root.unreadActivities < 100 ? $root.unreadActivities : '&#8226;&#8226;&#8226;' }}</span><i class="fa fa-bell"></i></a>`,
     controller: ($scope, $rootScope, $location, steemService, eSteemService, activeUsername) => {
       const account = activeUsername();
 
