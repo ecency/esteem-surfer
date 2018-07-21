@@ -3248,10 +3248,14 @@
 }
 
 .activities-popover {
-  max-width: 285px;
+  left: -280px !important;
+  max-width: 440px;
   padding: 0;
-  right: auto;
-  width: 285px;
+  width: 440px;
+
+  .arrow {
+    margin-left: 69px;
+  }
 
   .popover-content {
     padding: 0;
@@ -3273,6 +3277,14 @@
 
       .action-type-select {
         float: left;
+
+        select {
+          border: 0px;
+          box-shadow: none;
+          font-size: 14px;
+          font-weight: bold;
+          outline: 0px;
+        }
       }
 
       .btn {
@@ -3316,7 +3328,7 @@
         .activity-list-item {
           @include clearfix();
 
-          padding: 8px 0;
+          padding: 8px;
 
           &:hover {
             background: $altRowColor;
@@ -3326,9 +3338,9 @@
             align-items: center;
             display: flex;
             float: left;
-            height: 20px;
+            height: 12px;
             justify-content: center;
-            width: 20px;
+            width: 12px;
 
             .mark-read {
               background: darkseagreen;
@@ -3353,7 +3365,7 @@
           .activity-content {
             float: left;
 
-            width: calc(100% - 55px);
+            width: calc(100% - 47px);
 
             .post-link {
               color: $textColorLight;
@@ -3383,7 +3395,7 @@
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
-              width: 90%;
+              width: 98%;
             }
 
             .second-line {
