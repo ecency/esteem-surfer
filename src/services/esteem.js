@@ -172,6 +172,9 @@ export default ($http, API_END_POINT) => {
         d['id'] = id
       }
       return $http.put(`${API_END_POINT}/api/activities/${user}`, d);
+    },
+    commentHistory: function (author, permlink) {
+      return $http.get(`${API_END_POINT}/api/comment-history/${author}/${permlink}`);
     }
   }
 }

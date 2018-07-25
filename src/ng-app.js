@@ -121,6 +121,7 @@ import galleryModalCtrl from './controllers/gallery-modal'
 import delegatedVestingCtrl from './controllers/delegated-vesting';
 import delegateCtrl from './controllers/delegate';
 import activitiesCtrl from './controllers/activities';
+import postHistoryCtrl from './controllers/post-history'
 
 
 import tokenExchangeCtrl from './controllers/token-exchange';
@@ -510,6 +511,7 @@ ngApp.config(($translateProvider, $routeProvider, $httpProvider) => {
   .controller('activitiesCtrl', activitiesCtrl)
   .controller('connect2mobileCtrl', connect2mobileCtrl)
   .controller('privateKeyQrCtrl', privateKeyQrCtrl)
+  .controller('postHistoryCtrl', postHistoryCtrl)
 
 
   .filter('catchPostImage', catchPostImageFilter)

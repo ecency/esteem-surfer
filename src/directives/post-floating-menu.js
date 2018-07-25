@@ -61,7 +61,7 @@ export default () => {
       });
     },
     templateUrl: 'templates/directives/post-floating-menu.html',
-    controller: ($scope, $rootScope, $timeout, $filter, $confirm, steemAuthenticatedService, steemService, helperService, activeUsername) => {
+    controller: ($scope, $rootScope, $timeout, $filter, $uibModal, $confirm, steemAuthenticatedService, steemService, eSteemService, helperService, activeUsername) => {
       const activeUser = activeUsername();
 
       const author = $scope.content.author;
@@ -180,6 +180,30 @@ export default () => {
           window.setSizeForReadMode();
           $rootScope.readMode = true;
         }
+      };
+
+      $scope.hasHistory = false;
+      eSteemService.commentHistory($scope.content.author, $scope.content.permlink).then((resp) => {
+        if (resp.data.length > 1) {
+          $scope.hasHistory = true;
+        }
+      });
+
+      $scope.openPostHistory = () => {
+        $uibModal.open({
+          templateUrl: 'templates/post-history.html',
+          controller: 'postHistoryCtrl',
+          windowClass: 'post-history-modal',
+          resolve: {
+            content: () => {
+              return $scope.content;
+            }
+          }
+        }).result.then((data) => {
+          // Success
+        }, () => {
+          // Cancel
+        });
       }
     }
   };
