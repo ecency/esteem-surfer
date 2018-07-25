@@ -29,11 +29,11 @@ export default () => {
             <label><input type="checkbox" ng-model="encrypt.val" ng-disabled="!canEncrypt"> Encrypt <span class="text-danger" ng-if="!canEncrypt"><em>(cannot encrypt with steem connect login)</em></span></label> 
           </div>
           <div class="pull-right">
+            <button class="btn btn-default btn-sm" ng-disabled="sending" ng-click="cancel()">{{ 'CANCEL' | translate }}</button>
             <button class="btn btn-primary btn-sm" ng-disabled="!commentBody || sending" ng-click="send()">
               <span ng-if="mode=='reply'"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="sending"></i> {{ 'REPLY' | translate }}</span>
               <span ng-if="mode=='edit'"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="sending"></i> {{ 'SAVE' | translate }}</span>
             </button>
-            <button class="btn btn-default btn-sm" ng-disabled="sending" ng-click="cancel()">{{ 'CANCEL' | translate }}</button>
           </div>
         </div>
         <div class="preview-part" ng-if="commentBody">
