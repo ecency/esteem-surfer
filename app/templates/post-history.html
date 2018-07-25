@@ -1,0 +1,12 @@
+<div class="modal-body">
+  <div class="ver-list">
+    <div class="ver-item" ng-repeat="item in list" ng-class="{'active': selected == item.v}" ng-click="select(item.v)">
+      <span class="item-title">Version {{ item.v }}</span>
+      <span class="item-date">  {{ item.timestamp|dateFormatted }} </span>
+    </div>
+  </div>
+  <div class="content-body">
+    <h1 class="post-title">{{ title }}</h1>
+    <div class="post-body markdown-view selectable" ng-bind-html="body | markDown2Html"></div>
+  </div>
+</div>
