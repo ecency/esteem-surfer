@@ -1776,7 +1776,7 @@
 
   .post-floating-menu {
     left: 8px;
-    .btn-reblog, .btn-external, .btn-copy, .btn-share, .btn-flag {
+    .btn-reblog, .btn-post-history, .btn-external, .btn-copy, .btn-share, .btn-flag {
       display: none;
     }
   }
@@ -3445,8 +3445,8 @@
     cursor: pointer;
     float: left;
     margin-bottom: 15px;
-    margin-right: 10px;
-    width: 240px;
+    margin-right: 24px;
+    width: 206px;
 
     .ver-list-title {
       font-size: 16px;
@@ -3467,7 +3467,6 @@
       border-bottom: 1px solid $seperatorColor;
       border-right: 3px solid transparent;
       color: $textColorLight;
-
       padding: 8px 12px;
 
       .row-icon {
@@ -3477,17 +3476,16 @@
         font-size: 16px;
         height: 40px;
         justify-content: center;
-        width: 30px;
+        width: 47px;
       }
 
       .item-title {
         display: block;
         font-weight: bold;
-        margin-bottom: 4px;
       }
 
       .item-date {
-        font-size: 12px;
+        font-size: 11px;
       }
 
       &.active {
@@ -3497,10 +3495,14 @@
     }
 
     .show-diff {
+      padding-left: 30px;
       margin-top: 20px;
-      text-align: center;
 
       label {
+        input{
+          margin-right: 12px;
+        }
+
         font-weight: normal;
       }
     }
@@ -3508,7 +3510,8 @@
 
   .content-body {
     float: left;
-    width: 700px;
+    width: 720px;
+    padding-right: 20px;
 
     .post-title {
       font-family: 'Source Serif Pro', serif;

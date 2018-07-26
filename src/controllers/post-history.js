@@ -7,7 +7,7 @@ import {markDown2Html} from '../filters/markdown-2-html';
 const make_diff = (str1, str2) => {
   const d = dmp.diff_main(str1, str2);
   dmp.diff_cleanupSemantic(d);
-  return dmp.diff_prettyHtml(d);
+  return dmp.diff_prettyHtml(d).replace(/&para;/g, '&nbsp;');
 };
 
 
