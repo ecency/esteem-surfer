@@ -32,11 +32,11 @@
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li class="night-mode"><a ng-click="toggleNightMode()" uib-tooltip="{{ 'TOGGLE_NIGHT_MODE' | __ }}" tooltip-placement="left"><i ng-if="$root.theme == 'light-theme'" class="fa fa-moon-o"></i><i ng-if="$root.theme == 'dark-theme'" class="fa fa-sun-o"></i></a></li>
+        <li class="night-mode"><a ng-click="toggleNightMode()" uib-tooltip="{{ 'TOGGLE_NIGHT_MODE' | __ }}" tooltip-popup-delay="1000" tooltip-placement="left"><i ng-if="$root.theme == 'light-theme'" class="fa fa-moon-o"></i><i ng-if="$root.theme == 'dark-theme'" class="fa fa-sun-o"></i></a></li>
         <li class="activities" ng-class="{'active': selectedSection==='activities'}" ng-if="$root.user"><activities-popover></activities-popover></li>
-        <li class="settings"><a ng-click="openSettings()" uib-tooltip="{{ 'SETTINGS' | translate }}" tooltip-placement="left"><i class="fa fa-cog"></i></a></li>
-        <li class="editor" ng-class="{'active': selectedSection==='editor'}" uib-tooltip="{{ 'Create a post' | __ }}" tooltip-placement="left"><a ng-click="editorClicked()"><i class="fa fa-pencil"></i></a></li>
-        <li class="login" ng-if="!$root.user"><a ng-click="openLogin()" uib-tooltip="{{ 'LOGIN' | translate }}" tooltip-placement="left"><i class="fa fa-sign-in"></i></a></li>
+        <li class="settings"><a ng-click="openSettings()" uib-tooltip="{{ 'SETTINGS' | translate }}" tooltip-popup-delay="1000" tooltip-placement="left"><i class="fa fa-cog"></i></a></li>
+        <li class="editor" ng-class="{'active': selectedSection==='editor'}" uib-tooltip="{{ 'Create a post' | __ }}" tooltip-popup-delay="1000" tooltip-placement="left"><a ng-click="editorClicked()"><i class="fa fa-pencil"></i></a></li>
+        <li class="login" ng-if="!$root.user"><a ng-click="openLogin()" uib-tooltip="{{ 'LOGIN' | translate }}" tooltip-popup-delay="1000" tooltip-placement="left"><i class="fa fa-sign-in"></i></a></li>
         <li ng-if="$root.user" class="dropdown user-dropdown">
           <a ng-click="triggerClick()" class="dropdown-toggle" data-toggle="dropdown" role="button">
             <span class="profile-pic" author-bg-img-style author="{{ $root.user.username }}"></span>
