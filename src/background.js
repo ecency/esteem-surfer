@@ -147,6 +147,10 @@ app.on('open-url', function (event, url) {
 });
 
 const sendProtocolUrl2Window = (u) => {
+  if (typeof u !== 'string') {
+    return false;
+  }
+
   const m = u.match(/e?steem:\/\/[-a-zA-Z0-9@:%._\+~#=\/]{2,500}/gi);
   if (!m) {
     return false;
