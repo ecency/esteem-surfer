@@ -3339,8 +3339,8 @@
             display: flex;
             float: left;
             height: 12px;
-            justify-content: center;
-            width: 12px;
+            width: 21px;
+            padding-top: 16px;
 
             .mark-read {
               background: darkseagreen;
@@ -3365,7 +3365,7 @@
           .activity-content {
             float: left;
 
-            width: calc(100% - 47px);
+            width: calc(100% - 56px);
 
             .post-link {
               color: $textColorLight;
