@@ -6,7 +6,7 @@ export const sanitizeNode = (node) => {
     'DIV', 'P', 'IFRAME', 'CENTER',
     'UL', 'OL', 'LI',
     'TABLE', 'THEAD', 'TBODY', 'TR', 'TD', 'TH',
-    'HR', 'BR', 'IMG'
+    'HR', 'BR', 'IMG', 'DEL', 'INS'
   ];
 
   const ALLOWED_ATTRS = [
