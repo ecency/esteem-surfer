@@ -3430,7 +3430,7 @@
 
 .post-history-modal {
   .modal-dialog {
-    width: 900px;
+    width: 960px;
   }
 
   .modal-body {
@@ -3440,14 +3440,21 @@
   }
 
   .ver-list {
-    background-color: $altRowColor;
     border-bottom-left-radius: 6px;
     border-top-left-radius: 6px;
     cursor: pointer;
     float: left;
     margin-bottom: 15px;
     margin-right: 10px;
-    width: 170px;
+    width: 240px;
+
+    .ver-list-title {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 140%;
+      margin: 40px 0 30px 0;
+      text-align: center;
+    }
 
     .btn-diff {
       border-bottom-left-radius: 0;
@@ -3456,45 +3463,63 @@
     }
 
     .ver-item {
+      background-color: $altRowColor;
       border-bottom: 1px solid $seperatorColor;
       border-right: 3px solid transparent;
-      padding: 6px 5px;
+      color: $textColorLight;
+
+      padding: 8px 12px;
+
+      .row-icon {
+        align-items: center;
+        display: flex;
+        float: left;
+        font-size: 16px;
+        height: 40px;
+        justify-content: center;
+        width: 30px;
+      }
 
       .item-title {
-        color: $textColorLight;
         display: block;
         font-weight: bold;
         margin-bottom: 4px;
       }
 
       .item-date {
-        color: $textColorLight;
         font-size: 12px;
       }
 
       &.active {
-        border-right-color: darken($seperatorColor, 20);
-        .item-title, .item-date {
-          color: $textColor;
-        }
+        border-right-color: lighten($themePrimaryTone, 20);
+        color: $textColor;
+      }
+    }
+
+    .show-diff {
+      margin-top: 20px;
+      text-align: center;
+
+      label {
+        font-weight: normal;
       }
     }
   }
 
   .content-body {
     float: left;
-    width: 710px;
+    width: 700px;
 
     .post-title {
       font-family: 'Source Serif Pro', serif;
       font-size: 32px;
       line-height: 140%;
-      margin: 20px 0 20px 0;
+      margin: 30px 0 20px 0;
     }
 
     .post-tags {
-      margin: 20px 0;
       color: $textColorLight;
+      margin: 20px 0;
     }
   }
 
