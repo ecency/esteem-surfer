@@ -38,7 +38,7 @@
         <li class="editor" ng-class="{'active': selectedSection==='editor'}" uib-tooltip="{{ 'Create a post' | __ }}" tooltip-placement="left"><a ng-click="editorClicked()"><i class="fa fa-pencil"></i></a></li>
         <li class="login" ng-if="!$root.user"><a ng-click="openLogin()" uib-tooltip="{{ 'LOGIN' | translate }}" tooltip-placement="left"><i class="fa fa-sign-in"></i></a></li>
         <li ng-if="$root.user" class="dropdown user-dropdown">
-          <a ng-click="" class="dropdown-toggle" data-toggle="dropdown" role="button">
+          <a ng-click="triggerClick()" class="dropdown-toggle" data-toggle="dropdown" role="button">
             <span class="profile-pic" author-bg-img-style author="{{ $root.user.username }}"></span>
           </a>
           <ul class="dropdown-menu">
