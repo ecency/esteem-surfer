@@ -183,8 +183,8 @@ export default () => {
       };
 
       $scope.hasHistory = false;
-      eSteemService.commentHistory($scope.content.author, $scope.content.permlink).then((resp) => {
-        if (resp.data.length > 1) {
+      eSteemService.commentHistory($scope.content.author, $scope.content.permlink, true).then((resp) => {
+        if (resp.data.meta.count > 1) {
           $scope.hasHistory = true;
         }
       });

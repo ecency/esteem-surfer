@@ -173,8 +173,12 @@ export default ($http, API_END_POINT) => {
       }
       return $http.put(`${API_END_POINT}/api/activities/${user}`, d);
     },
-    commentHistory: function (author, permlink) {
-      return $http.get(`${API_END_POINT}/api/comment-history/${author}/${permlink}`);
+    commentHistory: function (author, permlink, only_meta = false) {
+      let u = `${API_END_POINT}/api/comment-history/${author}/${permlink}`;
+      if (only_meta) {
+        u += '?only_meta=1';
+      }
+      return $http.get(u);
     }
   }
 }

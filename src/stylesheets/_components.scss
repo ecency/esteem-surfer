@@ -3447,12 +3447,18 @@
     float: left;
     margin-bottom: 15px;
     margin-right: 10px;
-    padding: 0 5px 0 5px;
     width: 170px;
+
+    .btn-diff {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    }
 
     .ver-item {
       border-bottom: 1px solid $seperatorColor;
-      padding: 4px 0;
+      border-right: 3px solid transparent;
+      padding: 6px 5px;
 
       .item-title {
         color: $textColorLight;
@@ -3467,6 +3473,7 @@
       }
 
       &.active {
+        border-right-color: darken($seperatorColor, 20);
         .item-title, .item-date {
           color: $textColor;
         }
@@ -3483,6 +3490,11 @@
       font-size: 32px;
       line-height: 140%;
       margin: 20px 0 20px 0;
+    }
+
+    .post-tags {
+      margin: 20px 0;
+      color: $textColorLight;
     }
   }
 

@@ -1,12 +1,14 @@
 <div class="modal-body">
   <div class="ver-list">
+    <button class="btn btn-primary btn-block btn-diff" ng-class="{'active': showDiff}" ng-click="toggleDiff()">{{ 'Show Diff' || __ }}</button>
     <div class="ver-item" ng-repeat="item in list" ng-class="{'active': selected == item.v}" ng-click="select(item.v)">
-      <span class="item-title">Version {{ item.v }}</span>
-      <span class="item-date">  {{ item.timestamp|dateFormatted }} </span>
+      <span class="item-title">{{ 'Version' | __ }} {{ item.v }}</span>
+      <span class="item-date">{{ item.timestamp|dateFormatted }}</span>
     </div>
   </div>
   <div class="content-body">
-    <h1 class="post-title">{{ title }}</h1>
-    <div class="post-body markdown-view selectable" ng-bind-html="body | markDown2Html"></div>
+    <h1 class="post-title" ng-bind-html="title">{{ title }}</h1>
+    <div class="post-tags"><i class="fa fa-tags"></i> <span class="tag-list" ng-bind-html="tags"></span> </div>
+    <div class="post-body markdown-view selectable" ng-bind-html="body"></div>
   </div>
 </div>
