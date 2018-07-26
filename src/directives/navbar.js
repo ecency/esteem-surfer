@@ -228,6 +228,10 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
         settingsService.set('theme', cur === 'light-theme' ? 'dark-theme' : 'light-theme');
         $rootScope.readSettings();
       };
+
+      $scope.triggerClick = () => {
+        document.body.click();
+      }
     }
   };
 };
