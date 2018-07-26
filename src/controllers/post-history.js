@@ -14,7 +14,7 @@ const make_diff = (str1, str2) => {
 export default ($scope, $rootScope, $uibModalInstance, $filter, $sce, $timeout, eSteemService, content) => {
 
   $scope.list = [];
-  $scope.showDiff = false;
+  $scope.showDiff = {val: false};
 
   $scope.title = '';
   $scope.tags = '';
@@ -56,10 +56,11 @@ export default ($scope, $rootScope, $uibModalInstance, $filter, $sce, $timeout, 
     $scope.list = t;
   };
 
-
+  $scope.loading = true;
   eSteemService.commentHistory(content.author, content.permlink).then((resp) => {
     buildList(resp.data.list);
     $scope.select(1);
+    $scope.loading = false;
   }).catch((e) => {
     $rootScope.showError('Could not fetch version list');
   });
@@ -67,7 +68,7 @@ export default ($scope, $rootScope, $uibModalInstance, $filter, $sce, $timeout, 
   const loadSelected = () => {
     const i = $scope.selected - 1;
 
-    if ($scope.showDiff) {
+    if ($scope.showDiff.val) {
       $scope.title = $sce.trustAsHtml($scope.list[i].title_diff);
       $scope.body = $sce.trustAsHtml($scope.list[i].body_diff);
       $scope.tags = $sce.trustAsHtml($scope.list[i].tags_diff);
@@ -84,7 +85,6 @@ export default ($scope, $rootScope, $uibModalInstance, $filter, $sce, $timeout, 
   };
 
   $scope.toggleDiff = () => {
-    $scope.showDiff = !$scope.showDiff;
     loadSelected();
   }
 };

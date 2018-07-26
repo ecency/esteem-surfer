@@ -1,14 +1,19 @@
 <div class="modal-body">
-  <div class="ver-list">
-    <button class="btn btn-primary btn-block btn-diff" ng-class="{'active': showDiff}" ng-click="toggleDiff()">{{ 'Show Diff' || __ }}</button>
+  <div class="ver-list" ng-hide="loading">
+    <div class="ver-list-title">{{ 'Edit History' | __ }}</div>
     <div class="ver-item" ng-repeat="item in list" ng-class="{'active': selected == item.v}" ng-click="select(item.v)">
+      <div class="row-icon"><i class="fa fa-history"></i></div>
       <span class="item-title">{{ 'Version' | __ }} {{ item.v }}</span>
       <span class="item-date">{{ item.timestamp|dateFormatted }}</span>
     </div>
+    <div class="show-diff">
+      <label> <input type="checkbox" ng-model="showDiff.val" ng-change="toggleDiff()"> {{ 'Show Difference' | __ }}
+      </label>
+    </div>
   </div>
-  <div class="content-body">
+  <div class="content-body" ng-hide="loading">
     <h1 class="post-title" ng-bind-html="title">{{ title }}</h1>
-    <div class="post-tags"><i class="fa fa-tags"></i> <span class="tag-list" ng-bind-html="tags"></span> </div>
+    <div class="post-tags"><i class="fa fa-tags"></i> <span class="tag-list" ng-bind-html="tags"></span></div>
     <div class="post-body markdown-view selectable" ng-bind-html="body"></div>
   </div>
 </div>
