@@ -136,6 +136,14 @@ export default () => {
           return;
         }
 
+        // when text copied from ms word, it adds screen shot of selected text to clipboard.
+        // check if data in clipboard is long string and skip upload.
+        // (i think no one uses more than 50 chars for a image file)
+        const txtData = e.clipboardData.getData('text/plain');
+        if (txtData.length >= 50) {
+          return
+        }
+
         let files = [];
         for (let i = 0; i < e.clipboardData.items.length; i++) {
           let item = e.clipboardData.items[i];
