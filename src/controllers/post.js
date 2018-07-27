@@ -366,6 +366,8 @@ export default ($scope, $rootScope, $routeParams, $filter, $timeout, $uibModal, 
       steemService.getDiscussionsBy('Hot', $scope.post.parent_permlink, null, null, 30).then((resp) => {
         $scope.relatedContents = resp
           .filter(r => r.permlink !== permlink)
+          // exclude active user's posts
+          .filter(r => r.author !== activeUsername())
           // shuffle
           .map(a => [Math.random(), a])
           .sort((a, b) => a[0] - b[0])
