@@ -11,7 +11,10 @@ export default () => {
 
       const account = activeUsername();
 
-      $scope.activityType = {selected: ''};
+      if ($rootScope.activityType === undefined) {
+        $rootScope.activityType = {selected: ''};
+      }
+
 
       $scope.activities = [];
       $scope.loading = false;
@@ -21,7 +24,7 @@ export default () => {
 
         let prms;
 
-        switch ($scope.activityType.selected) {
+        switch ($rootScope.activityType.selected) {
           case 'votes':
             prms = eSteemService.getMyVotes(account);
             break;
