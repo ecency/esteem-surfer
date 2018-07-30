@@ -166,7 +166,7 @@ export default () => {
       const vote = () => {
         $scope.voting = true;
         let perc = getVotePerc();
-        let weight = perc * 100;
+        let weight = parseInt(perc * 100);
         steemAuthenticatedService.vote($scope.content.author, $scope.content.permlink, weight).then((resp) => {
           $rootScope.$broadcast('CONTENT_VOTED', {
             'author': $scope.content.author,
