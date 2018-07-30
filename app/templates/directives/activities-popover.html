@@ -2,7 +2,7 @@
 
   <div class="header-controls">
     <div class="action-type-select">
-      <select ng-model="activityType.selected" class="form-control input-sm" ng-change="typeChanged()">
+      <select ng-model="$root.activityType.selected" class="form-control input-sm" ng-change="typeChanged()">
         <option value="">{{ 'All Activities' | __ }}</option>
         <option value="votes">{{ 'ACTIVITIES_VOTES' | __ }}</option>
         <option value="replies">{{ 'ACTIVITIES_REPLIES' | __ }}</option>
