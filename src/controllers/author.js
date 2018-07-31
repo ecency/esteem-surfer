@@ -13,6 +13,8 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
 
   $scope.votesIn24 = 0;
 
+  $scope.topPosts = [];
+
   $scope.$watchCollection('authorData', (n, o) => {
     // Persist author data
     if (n === o) {
@@ -292,6 +294,12 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     }
   };
 
+  const loadTopPosts = () => {
+    eSteemService.getTopPosts(username).then((resp) => {
+      $scope.topPosts = resp.data.list.slice(0, 4);
+    })
+  };
+
   loadAccount().then(() => {
     // console.log("account data ok");
     loadVisitor().then(() => {
@@ -299,6 +307,10 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
     });
 
     loadContents();
+
+    if (section === 'blog') {
+      loadTopPosts();
+    }
   });
 
   const loadTransactions = () => {
@@ -613,4 +625,10 @@ export default ($scope, $rootScope, $routeParams, $timeout, $q, $location, $wind
       // Cancel
     });
   };
+
+  $scope.topPostClicked = (content) => {
+    $rootScope.selectedPost = $scope.post;
+    let u = `/post/${content.category}/${content.author}/${content.permlink}`;
+    $location.path(u);
+  }
 };

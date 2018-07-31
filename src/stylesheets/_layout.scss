@@ -96,12 +96,12 @@
 }
 
 .root {
+  color: $textColor;
   height: 100%;
   left: 0;
   position: absolute;
   top: 0;
   width: 100%;
-  color: $textColor;
 }
 
 .app-container {
@@ -538,6 +538,90 @@
         float: right;
         width: calc(100% - 260px);
 
+        .top-posts {
+          @include clearfix();
+          margin-bottom: 20px;
+
+          .top-posts-header {
+            @include clearfix();
+
+            margin-bottom: 4px;
+
+            .top-posts-title {
+              color: $textColorLight;
+              float: left;
+              font-size: 18px;
+              font-weight: 500;
+              margin: 6px 0 3px 0;
+            }
+          }
+
+          .top-post-content {
+            background: $listBgColor;
+            box-shadow: 0 0 1px 0 $listBorderColor;
+            cursor: pointer;
+            float: left;
+            margin-right: 1.2%;
+            width: 24%;
+
+            &:nth-last-child(1) {
+              margin-right: 0;
+            }
+
+            .top-post-image {
+              align-items: center;
+              background: $boxBg;
+              display: flex;
+              height: 110px;
+              justify-content: center;
+              margin: 0 0 6px 0;
+              overflow: hidden;
+              width: 100%;
+
+              img {
+                display: inline-block;
+                height: auto;
+                max-width: 100%;
+                vertical-align: middle;
+
+                &.fallback-img {
+                  opacity: 0.4;
+                }
+              }
+            }
+
+            .top-post-content-footer {
+              padding: 0 6px 4px 6px;
+
+              .top-post-title, .top-post-body {
+                display: block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 100%;
+              }
+
+              .top-post-title {
+                color: $textColor;
+                font-size: 13px;
+                font-weight: 500;
+              }
+
+              .top-post-body {
+                color: $textColorLight;
+                font-size: 12px;
+                font-weight: 400;
+              }
+            }
+
+            &:hover {
+              .top-post-title {
+                color: $linkHoverColor;
+              }
+            }
+          }
+        }
+
         .content-list {
           background: $listBgColor;
           border: 1px solid $listBorderColor;
@@ -727,6 +811,7 @@
         }
 
         #main-text, #bg-text {
+          background: transparent;
           font-family: 'Source Serif Pro', serif;
           font-size: 18px;
           height: 100%;
@@ -735,7 +820,6 @@
           padding: 10px 16px;
           position: absolute;
           top: 0;
-          background: transparent;
         }
 
         #main-text {
@@ -866,7 +950,7 @@
         font-size: 16px;
       }
 
-      .btn{
+      .btn {
         background: transparent;
         border: none;
       }

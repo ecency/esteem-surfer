@@ -97,6 +97,26 @@
           <a ng-click="witnessesClicked()" ng-show="isMyPage"><small>Witness Voting</small></a>
         </div>
         <div class="author-content-right">
+          <div class="top-posts" ng-if="section==='blog' && topPosts.length > 0">
+            <div class="top-posts-header">
+              <div class="top-posts-title">{{ 'Top Posts' | __ }}</div>
+            </div>
+            <div ng-repeat="cont in topPosts" class="top-post-content" ng-init="relatedImage = (cont | catchPostImage)"
+                 ng-click="topPostClicked(cont)">
+              <div class="top-post-image">
+                <a class="post-image" ng-if="relatedImage">
+                  <img ng-src="{{ relatedImage }}" fallback-src="img/fallback.png">
+                </a>
+                <a class="post-image" ng-if="!relatedImage">
+                  <img ng-src="img/noimage.png">
+                </a>
+              </div>
+              <div class="top-post-content-footer">
+                <span class="top-post-title">{{ cont.title }}</span>
+                <span class="top-post-body" ng-bind-html="cont.body | postSummary"></span>
+              </div>
+            </div>
+          </div>
           <div class="content-list" ng-class="{'fetching': loadingContents}">
             <header>
               <h1 ng-if="section==='blog'">{{ 'BLOG' | translate }}</h1>
