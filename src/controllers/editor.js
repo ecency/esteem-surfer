@@ -57,7 +57,7 @@ const makeJsonMetadata = (meta, tags, appVer) => {
     tags: tags,
     app: 'esteem/' + appVer + '-surfer',
     format: 'markdown+html',
-    community: 'esteem'
+    community: 'esteem.app'
   });
 };
 
