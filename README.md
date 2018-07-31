@@ -1,6 +1,6 @@
 ﻿# [eSteem Surfer][esteem_desktop] – Steem Desktop Client
 
-This is the complete source code and the build instructions for the alpha version of the [Steem blockchain](https://steem.io/) desktop client **eSteem Surfer** founded by [Feruz M](https://steemit.com/@good-karma) and Lead Surfer [Talha](https://steemit.com/@talhasch), supported by [eSteem team](https://steemit.com/@esteemapp) and wast Steem community contibutors.
+This is the complete source code and the build instructions for the alpha version of the [Steem blockchain](https://steem.io/) desktop client **eSteem Surfer** founded by [Feruz M](https://steemit.com/@good-karma) and Lead Surfer [Talha](https://steemit.com/@talhasch), supported by [eSteem team](https://steemit.com/@esteemapp) and vast Steem community contibutors.
 
 ![Preview of eSteem Surfer](https://cdn.steemitimages.com/DQmeZgTQCrsBVxk7DzCEUpXujzsx142obVPfXw2jW2kkKcW/shot.png)
 
@@ -66,7 +66,7 @@ $ npm run release
 
 ### Test
 
-(Tests are not implemented yet)
+(Tests are not fully covered/implemented yet)
 
 ```
 $ npm run test
