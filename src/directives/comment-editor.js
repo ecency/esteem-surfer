@@ -94,7 +94,7 @@ export default () => {
           tags: c.json_metadata ? JSON.parse(c.json_metadata).tags : ['esteem'],
           app: 'esteem/' + appVersion + '-surfer',
           format: 'markdown+html',
-          community: 'esteem',
+          community: 'esteem.app',
           encrypted: $scope.encrypt.val ? 1 : 0
         };
 
