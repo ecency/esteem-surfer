@@ -179,6 +179,9 @@ export default ($http, API_END_POINT) => {
         u += '?only_meta=1';
       }
       return $http.get(u);
+    },
+    getTopPosts: function (user) {
+      return $http.get(`${API_END_POINT}/api/top-posts/${user}`);
     }
   }
 }
