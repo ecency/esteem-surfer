@@ -637,8 +637,9 @@
               float: right;
               font-size: 16px;
               position: absolute;
-              right: 0;
-              top: 0;
+              right: 3px;
+              top: 3px;
+              z-index: 2;
             }
 
             .btn {
@@ -659,7 +660,6 @@
           }
 
           .author-wallet {
-            margin-top: 40px;
 
             .row {
               margin: 0 0 10px 0;
