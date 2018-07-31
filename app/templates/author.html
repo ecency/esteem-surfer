@@ -119,10 +119,6 @@
           </div>
           <div class="content-list" ng-class="{'fetching': loadingContents}">
             <header>
-              <h1 ng-if="section==='blog'">{{ 'BLOG' | translate }}</h1>
-              <h1 ng-if="section==='comments'">{{ 'COMMENTS' | translate }}</h1>
-              <h1 ng-if="section==='replies'">{{ 'REPLIES' | translate }}</h1>
-              <h1 ng-if="section==='wallet'">{{ 'WALLET' | translate }}</h1>
               <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingContents"
                       title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>
             </header>
