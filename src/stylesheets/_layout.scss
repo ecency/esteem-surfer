@@ -134,7 +134,6 @@
 .posts-page, .feed-page, .search-page {
   .post-list {
     background: $listBgColor;
-    border: 1px solid $listBorderColor;
     box-shadow: 0 0 1px 0 $listBorderColor;
     float: right;
     margin-left: 20px;
@@ -215,7 +214,6 @@
 
     .account-card {
       background: $listBgColor;
-      border: 1px solid $listBorderColor;
       box-shadow: 0 0 1px 0 $listBorderColor;
       cursor: pointer;
       display: inline-block;
@@ -270,7 +268,6 @@
 .drafts-page, .schedules-page, .gallery-page {
   .item-list {
     background: $listBgColor;
-    border: 1px solid $listBorderColor;
     box-shadow: 0 0 1px 0 $listBorderColor;
     float: right;
     margin-left: 20px;
@@ -624,7 +621,6 @@
 
         .content-list {
           background: $listBgColor;
-          border: 1px solid $listBorderColor;
           box-shadow: 0 0 1px 0 $listBorderColor;
           padding: 12px 25px 15px 25px;
           position: relative;
@@ -970,7 +966,6 @@
 .transfer-fn-page {
   .fn-window {
     background: $listBgColor;
-    border: 1px solid $listBorderColor;
     box-shadow: 0 0 1px 0 $listBorderColor;
     margin: auto;
     padding: 0 0 20px 0;
@@ -1193,7 +1188,6 @@
 
   .pin-form-container {
     background: $listBgColor;
-    border: 1px solid $listBorderColor;
     box-shadow: 0 0 1px 0 $listBorderColor;
     margin: 50px auto 0 auto;
     min-height: 300px;
@@ -1311,7 +1305,6 @@
 .activities-page {
   .item-list {
     background: $listBgColor;
-    border: 1px solid $listBorderColor;
     box-shadow: 0 0 1px 0 $listBorderColor;
     padding: 20px;
 
