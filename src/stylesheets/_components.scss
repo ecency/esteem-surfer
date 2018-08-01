@@ -109,6 +109,16 @@
   .pull-left, .pull-right {
     max-width: 50%;
     padding-left: 10px;
+
+    box-sizing: border-box;
+  }
+
+  .pull-left {
+    margin-right: 10px;
+  }
+
+  .pull-right {
+    margin-left: 10px;
   }
 
   .pull-left {
@@ -3499,7 +3509,7 @@
       margin-top: 20px;
 
       label {
-        input{
+        input {
           margin-right: 12px;
         }
 
