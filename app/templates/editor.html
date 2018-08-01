@@ -44,7 +44,7 @@
           </div>
         </div>
         <div class="pull-right">
-          <button class="btn btn-default" ng-click="clearForm()">{{ 'EDITOR_CLEAR' | __ }}</button>
+          <button class="btn btn-default btn-clear" ng-click="clearForm()">{{ 'Clear All' | __ }}</button>
         </div>
       </div>
       <div class="control-buttons">
@@ -61,9 +61,9 @@
               <li ng-if="!hasPerm"><a ng-click="" login-required required-keys="'active'" on-login-success="grantPermission()">{{ 'EDITOR_GRANT_POSTING_PERM' | __ }}</a></li>
             </ul>
           </div>
-          <button class="btn btn-primary" ng-click="" login-required on-login-success="save()" ng-disabled="processing"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="saving"></i> {{ 'SAVE' | __ }}</button>
         </div>
         <div class="pull-right" ng-if="!editMode">
+          <button class="btn btn-link btn-save-draft" ng-click="" login-required on-login-success="save()" ng-disabled="processing"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="saving"></i> {{ 'Save Draft' | __ }}</button>
           <button class="btn btn-primary" ng-disabled="processing" ng-click="" login-required required-keys="'posting'" on-login-success="post()"><i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-show="posting"></i> {{ 'POST' | translate }}</button>
         </div>
         <div class="pull-right" ng-if="editMode">

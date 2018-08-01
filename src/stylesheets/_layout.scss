@@ -908,6 +908,10 @@
           width: 200px;
         }
       }
+
+      .btn-clear{
+        opacity: 0.5;
+      }
     }
 
     .control-buttons {
@@ -917,6 +921,10 @@
       .dropup {
         float: left;
         margin-right: 10px;
+      }
+
+      .btn-save-draft{
+        color: $textColorLight;
       }
     }
   }

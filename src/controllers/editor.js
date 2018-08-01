@@ -592,7 +592,7 @@ export default ($scope, $rootScope, $routeParams, $filter, $location, $window, $
   };
 
   $scope.clearForm = () => {
-    if ($window.confirm($filter('translate')('ARE_YOU_SURE'))) {
+    if ($window.confirm($filter('__')('This will clear all the text fields in your current window and you will have to start again. Are you sure?'))) {
       clearForm();
     }
   };
