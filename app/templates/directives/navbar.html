@@ -4,33 +4,34 @@
       <a class="navbar-brand" href="#"><img src="img/navbar-brand.png"></a>
     </div>
     <div class="collapse navbar-collapse">
-      <div class="navbar-back" ng-class="{'hide-it': $root.navHistory.length===0}"><a ng-click="$root.goBack()" title="{{ 'GO_BACK' | __ }}"><i class="fa fa-chevron-circle-left"></i></a></div>
+      <div class="navbar-back" ng-class="{'hide-it': $root.navHistory.length===0}"><a ng-click="$root.goBack()" title="{{ 'GO_BACK' | __ }}"><svg width="16" height="16" viewBox="0 0 2000 1660" xmlns="http://www.w3.org/2000/svg"><path d="M1427 301l-531 531 531 531q19 19 19 45t-19 45l-166 166q-19 19-45 19t-45-19l-742-742q-19-19-19-45t19-45l742-742q19-19 45-19t45 19l166 166q19 19 19 45t-19 45z" fill="#fff"/></svg></a></div>
       <ul class="nav navbar-nav">
         <li class="dropdown filter-dropdown" ng-class="{'active': selectedSection==='filters' || selectedSection==='feed'}">
           <a ng-click="" ng-dblclick="filterDblClicked()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
              aria-expanded="false">{{ selectedFilterName|translate }} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <!-- <li ng-class="{'active': selectedSection=='feed'}" ng-if="$root.user"><a ng-click="feedClicked()">{{ 'FEED' | translate }}</a></li> -->
             <li ng-repeat="c in filters" ng-class="{'active': ($root.selectedFilter===c.name)}" data-key="{{ c.key }}">
               <a ng-click="filterClicked(c.name)">{{ c.key|translate }}</a>
             </li>
           </ul>
         </li>
-        <li ng-class="{'active': selectedSection==='discover'}"><a ng-click="discoverClicked()">{{ 'DISCOVER' | __ }}</a></li>
-        <li ng-if="$root.user" ng-class="{'active': selectedSection==='wallet'}"><a ng-click="walletClicked()">{{ 'WALLET' | translate }}</a></li>
-        <li ng-class="{'active': selectedSection==='token-exchange'}"><a ng-click="tokenExchangeClicked()">{{ 'TOKEN_EXCHANGE' | __ }}</a></li>
       </ul>
       <form class="navbar-form navbar-left">
         <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-search"></i></span>
           <input type="text" class="form-control txt-search" placeholder="Search for..." ng-model="searchStr" ng-keyup="$event.keyCode == 13 ? searchButtonClicked() : null">
-          <span class="input-group-btn">
-            <button class="btn btn-default btn-search" type="button" ng-disabled="!searchStr || fetchingSearch" ng-click="searchButtonClicked()">
-              <i class="fa fa-search" ng-if="!fetchingSearch"></i>
-                 <i class="fa fa-spin fa-spinner fa-circle-o-notch" ng-if="fetchingSearch"></i>
-            </button>
-          </span>
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span> </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li><a ng-click="discoverClicked()">{{ 'DISCOVER' | __ }}</a></li>
+            </ul>
+          </div>
         </div>
       </form>
+      <ul class="nav navbar-nav">
+        <li ng-if="$root.user" ng-class="{'active': selectedSection==='wallet'}"><a ng-click="walletClicked()">{{ 'WALLET' | translate }}</a></li>
+        <li ng-class="{'active': selectedSection==='token-exchange'}"><a ng-click="tokenExchangeClicked()">{{ 'Exchange' | __ }}</a></li>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="night-mode"><a ng-click="toggleNightMode()" uib-tooltip="{{ 'TOGGLE_NIGHT_MODE' | __ }}" tooltip-popup-delay="1000" tooltip-placement="left"><i ng-if="$root.theme == 'light-theme'" class="fa fa-moon-o"></i><i ng-if="$root.theme == 'dark-theme'" class="fa fa-sun-o"></i></a></li>
         <li class="activities" ng-class="{'active': selectedSection==='activities'}" ng-if="$root.user"><activities-popover></activities-popover></li>
