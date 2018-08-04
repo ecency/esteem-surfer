@@ -112,25 +112,24 @@ select {
 
 .author-navbar, .fn-navbar {
 
-  user-select: none;
-
   background-color: $navbarBgColorDefault;
 
-  // Coloring created with https://work.smarchal.com/twbscolor/
   border: 0;
 
+  // Coloring created with https://work.smarchal.com/twbscolor/
   border-radius: 0;
+
   margin-bottom: 0;
   .container-fluid {
     padding-right: 2px;
   }
-
   .navbar-brand {
     color: $navbarColorDefault;
     &:hover, &:focus {
       color: $navbarColorHighlight;
     }
   }
+
   .navbar-text {
     color: $navbarColorDefault;
   }
@@ -149,8 +148,8 @@ select {
           > a {
             color: $navbarColorDefault;
             &:hover, &:focus {
-              color: darken($textColor, 5) !important;
               background-color: $navbarBgColorHighlight;
+              color: darken($textColor, 5) !important;
             }
           }
           &.divider {
@@ -163,8 +162,8 @@ select {
 
     .open .dropdown-menu > .active {
       > a, > a:hover, > a:focus {
-        color: $navbarColorHighlight;
         background-color: $navbarBgColorHighlight;
+        color: $navbarColorHighlight;
       }
     }
 
@@ -178,6 +177,38 @@ select {
       > a, > a:hover, > a:focus {
         background-color: $navbarBgColorHighlight;
         color: $navbarColorHighlight;
+      }
+    }
+  }
+  user-select: none;
+}
+
+.app-navbar {
+  .navbar-form {
+    .input-group-addon {
+      background: #202a37;
+    }
+
+    .input-group-btn {
+      button {
+        background: #202a37;
+      }
+
+      .dropdown-menu {
+        background-color: $navbarBgColorDefault;
+
+        > li {
+          > a {
+            color: $navbarColorDefault;
+            &:hover, &:focus {
+              background-color: $navbarBgColorHighlight;
+              color: darken($textColor, 5) !important;
+            }
+          }
+          &.divider {
+            background-color: $navbarBgColorHighlight;
+          }
+        }
       }
     }
   }

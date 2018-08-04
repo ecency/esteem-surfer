@@ -91,18 +91,25 @@
     }
   }
   .navbar-back {
+    align-items: center;
+    display: flex;
     float: left;
     height: $navbar-height;
+    justify-content: center;
 
-    margin: 0 20px 0 6px;
-    padding: 12px 0 10px 0;
-    text-align: center;
+    margin: 0 14px 0 6px;
 
     a {
+      align-items: center;
+      border-radius: 50%;
       color: $navbarColorDefault;
-      font-size: 20px;
+      display: flex;
+      height: 24px;
+      justify-content: center;
+      width: 24px;
+
       &:hover, &:focus {
-        color: $navbarColorHighlight;
+        background: $linkHoverColor;
       }
     }
 
@@ -129,6 +136,11 @@
         .fa {
           font-size: 19px;
         }
+      }
+    }
+    .night-mode {
+      a {
+        opacity: 0.7;
       }
     }
 
@@ -241,10 +253,36 @@
   }
 
   .navbar-form {
+    .input-group-addon {
+      border-color: transparent;
+      box-shadow: none;
+      color: lighten($textColorLighter, 10);
+      padding-right: 8px;
+    }
+
     .txt-search {
-      width: 120px;
+      border-color: transparent;
+      box-shadow: none;
+      color: $textColorLighter;
+      padding-left: 8px;
+
+      width: 270px;
+
+      &::placeholder {
+        color: $textColorLighter !important;
+        opacity: 0.5;
+      }
+
       @media (min-width: 1200px) {
-        width: 160px;
+        width: 370px;
+      }
+    }
+
+    .input-group-btn {
+      button {
+        border-color: transparent;
+        box-shadow: none;
+        color: $textColorLight;
       }
     }
   }
