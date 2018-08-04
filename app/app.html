@@ -33,8 +33,9 @@
       url('font/source-serif-pro/source-serif-pro-v5-latin-ext_latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('font/source-serif-pro/source-serif-pro-v5-latin-ext_latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
     }
   </style>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
 </head>
-<body style="visibility: hidden;" ng-class="theme" dir="{{ textDir }}">
+<body style="visibility: hidden; font-family: 'Roboto', sans-serif;" ng-class="theme" dir="{{ textDir }}">
 <div id="root" class="root" ng-class="{'in-read-mode': $root.readMode}" ng-view></div>
 <div class="error-messages" ng-if="$root.errorMessages.length > 0">
   <div class="message" ng-repeat="m in $root.errorMessages"><i class="fa fa-exclamation-triangle"></i> {{ m.text }}
