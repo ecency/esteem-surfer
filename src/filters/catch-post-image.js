@@ -11,7 +11,10 @@ export const catchPostImage = (post) => {
   }
 
   if (meta && meta.image && meta.image.length > 0) {
-    return proxifyImageSrc(meta.image[0]);
+
+    if (meta.image[0]) {
+      return proxifyImageSrc(meta.image[0]);
+    }
   }
 
   // try to extract images by regex
