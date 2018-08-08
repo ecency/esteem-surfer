@@ -704,8 +704,12 @@
               text-decoration: none;
             }
 
-            .transactions-table{
-              td.trans-desc{
+            .transactions-table {
+              border: none;
+              th, td {
+                border: none;
+              }
+              td.trans-desc {
                 word-break: break-all;
               }
             }
@@ -915,7 +919,7 @@
         }
       }
 
-      .btn-clear{
+      .btn-clear {
         opacity: 0.5;
       }
     }
@@ -929,7 +933,7 @@
         margin-right: 10px;
       }
 
-      .btn-save-draft{
+      .btn-save-draft {
         color: $textColorLight;
       }
     }
