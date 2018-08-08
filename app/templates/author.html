@@ -227,12 +227,12 @@
               </p>
               <h3 class="section-header">{{ 'TRANSACTION_HISTORY' | translate }}</h3>
               <p class="empty-list" ng-if="!loadingContents && dataList.length===0">{{ 'EMPTY_LIST' | __ }}</p>
-              <table class="table table-striped">
+              <table class="table table-striped transactions-table">
                 <tbody>
                 <tr ng-repeat="tr in dataList | orderBy:'-[0]' | limitTo:50 track by $index">
                   <th style="width: 120px">{{ tr[1].timestamp | timeAgo }}</th>
                   <td>{{ tr[1].op[0] }}</td>
-                  <td>
+                  <td class="trans-desc">
                     <div ng-if="tr[1].op[0]=='comment_reward'">
                       {{ tr[1].op[1].sbd_payout }} | {{ tr[1].op[1].vesting_payout }}
                       <p>@{{ tr[1].op[1].author }} / {{ tr[1].op[1].permlink }}</p>
