@@ -94,6 +94,9 @@ describe('Mark Down -> Html', () => {
   let files = fs.readdirSync(dataDir);
 
   for (let file of files) {
+    if (file === '.DS_Store') {
+      continue;
+    }
     const fileContents = fs.readFileSync(path.join(dataDir, file), 'utf8');
     let data = JSON.parse(fileContents);
 
