@@ -703,6 +703,12 @@
               color: $textColor;
               text-decoration: none;
             }
+
+            .transactions-table{
+              td.trans-desc{
+                word-break: break-all;
+              }
+            }
           }
 
           footer {
