@@ -33,7 +33,7 @@ export default () => {
           <div class="first-line">
             <a ng-click="goAccount(activity.source)" class="source-name">{{ activity.source }}</a>  
             <span class="activity-action"><i class="fa fa-comment-o"></i></span>
-            <a ng-click="goContent(activity.parent_author, activity.permlink_permlink)" class="post-link">{{ activity.parent_permlink }}</a> 
+            <a ng-click="goContent(activity.parent_author, activity.parent_permlink)" class="post-link">{{ activity.parent_permlink }}</a> 
           </div>
           <div class="second-line">
             <div class="markdown-view mini-markdown reply-body" ng-click="goContent(activity.author, activity.permlink)" >{{activity.body | postSummary:100 }}</div>
