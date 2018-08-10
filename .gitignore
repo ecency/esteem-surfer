@@ -2,3 +2,12 @@
 /.idea
 node_modules
 .DS_Store
+
+
+
+
+# old branch files
+src/
+app/bower_components
+app/app.js
+app/background.js
