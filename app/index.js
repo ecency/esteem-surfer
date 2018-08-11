@@ -5,7 +5,7 @@ import Root from './containers/Root';
 import { configureStore, history } from './store/configureStore';
 import './app.global.less';
 
-const store = configureStore();
+const store = configureStore({});
 
 render(
   <AppContainer>
