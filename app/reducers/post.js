@@ -12,14 +12,53 @@ export type actionType = {
 */
 
 const defaultState = {
-    payload: [],
-    loading: false
+    posts: {},
+    groups: {}
 };
 
 
 export default function posts(state: {} = defaultState, action: postActionType) {
-    switch (action.type) {
 
+    let newState, groupKey;
+
+    switch (action.type) {
+        case FETCH:
+
+            newState = JSON.parse(JSON.stringify(state));
+            groupKey = action.payload.group;
+
+            if (newState.groups[groupKey] === undefined) {
+                newState.groups[groupKey] = {
+                    ids: [],
+                    loading: true
+                }
+            }
+
+            newState.groups[groupKey].loading = true;
+
+            return newState;
+        case FETCH_COMPLETE:
+
+            newState = JSON.parse(JSON.stringify(state));
+            groupKey = action.payload.group;
+
+            if (newState.groups[groupKey] === undefined) {
+                newState.groups[groupKey] = {
+                    ids: [],
+                    loading: true
+                }
+            }
+
+            const data = action.payload.data;
+
+            newState.groups[groupKey].ids = data.map(i => i.id);
+            newState.groups[groupKey].loading = false;
+
+            for (let r of data) {
+                newState.posts[r.id] = r;
+            }
+
+            return newState;
         default:
             return state;
     }

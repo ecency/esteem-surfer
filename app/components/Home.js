@@ -12,7 +12,8 @@ export default class Home extends Component<Props> {
   render() {
     return (
       <div className={styles.container} data-tid="container">
-        <Link to={routes.COUNTER}>Counter</Link>
+        <Link to={routes.COUNTER}>Counter</Link><br/>
+        <Link to="/a/trending">Trending</Link><br/>
       </div>
     );
   }

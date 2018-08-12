@@ -5,11 +5,13 @@ import routes from './constants/routes.json';
 import App from './containers/App';
 import HomePage from './containers/HomePage';
 import CounterPage from './containers/CounterPage';
+import PostPage from './containers/PostPage'
 
 export default () => (
   <App>
     <Switch>
       <Route path={routes.COUNTER} component={CounterPage} />
+        <Route path="/a/:filter" component={PostPage} />
       <Route path={routes.HOME} component={HomePage} />
     </Switch>
   </App>
