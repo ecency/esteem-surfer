@@ -27,7 +27,7 @@ export default class Counter extends Component<Props> {
       <div>
         <div className={styles.backButton} data-tid="backButton">
           <Link to={routes.HOME}>
-            <i className="fa fa-arrow-left fa-3x" />
+            back
           </Link>
         </div>
         <div className={`counter ${styles.counter}`} data-tid="counter">
