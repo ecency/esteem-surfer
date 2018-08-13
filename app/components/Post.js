@@ -1,34 +1,79 @@
 // @flow
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+import {makeGroupKeyForPosts} from '../utils/misc';
+import styles from './Post.less';
+import ContentListItem from './elements/ContentListItem'
 
 type Props = {
     fetchPosts: () => void,
-    groups: {}
+    posts: {}
 };
 
 export default class Post extends Component<Props> {
     props: Props;
 
-    componentWillMount() {
-        this.props.fetchPosts('trending');
+    constructor(props) {
+        super(props);
+        this.goBack = this.goBack.bind(this);
+    }
+
+    startFetch = () => {
+        const filter = this.props.match.params.filter;
+        this.props.fetchPosts(filter);
+        // console.log(filter)
+    };
+
+    componentDidMount() {
+        this.startFetch()
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.location !== prevProps.location) {
+            this.startFetch()
+        }
+    }
+
+    goBack() {
+        this.props.history.goBack();
     }
 
 
     render() {
 
-        /*
         const {
-            fetchContents,
-            content
+            posts
         } = this.props;
-        */
 
-        // console.log(this.props)
+        const filter = this.props.match.params.filter;
+        const groupKey = makeGroupKeyForPosts(filter);
+
+        const postList = [];
+
+        let loading = true;
+
+        if (posts.groups[groupKey] && !posts.groups[groupKey].loading) {
+            loading = false;
+
+            for (let id of posts.groups[groupKey].ids) {
+                postList.push(posts.posts[id]);
+            }
+        }
+
+
         return (
-            <div> AAA
+            <div className={styles.wrapper}>
+                <div className={styles.menu}>
+                    <a onClick={this.goBack}> &lt; Go Back</a>
 
+                    <Link to="/a/trending">Trending</Link>
+                    <Link to="/a/hot">Hot</Link>
+                    <Link to="/a/created">New</Link>
+                </div>
+
+                {postList.map(function (d, idx) {
+                    return (<ContentListItem key={idx} content={d}></ContentListItem>)
+                })}
             </div>
         );
     }

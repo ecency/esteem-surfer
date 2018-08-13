@@ -11,12 +11,19 @@ export const FETCH_ERROR = 'FETCH_ERROR';
 export const SET_READ = 'SET_CONTENT_READ';
 export const SET_VOTED = 'SET_CONTENT_VOTED';
 
+import {makeGroupKeyForPosts} from '../utils/misc';
+
 
 export function fetchPosts(what, tag = '', startAuthor = '', startPermalink = '', limit = 20) {
     return (dispatch: (action: postActionType) => void,
             getState: () => postStateType) => {
-        const {content} = getState();
-        const groupKey = `${what}-${tag}`;
+        const {post} = getState();
+
+        const groupKey = makeGroupKeyForPosts(what, tag);
+
+        if (post.groups[groupKey] !== undefined) {
+            return
+        }
 
         dispatch({
             type: FETCH,
