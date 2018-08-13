@@ -3,14 +3,14 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {makeGroupKeyForPosts} from '../utils/misc';
 import styles from './Post.less';
-import ContentListItem from './elements/ContentListItem'
+import PostListItem from './elements/PostListItem'
 
 type Props = {
     fetchPosts: () => void,
     posts: {}
 };
 
-export default class Post extends Component<Props> {
+export default class PostIndex extends Component<Props> {
     props: Props;
 
     constructor(props) {
@@ -72,7 +72,7 @@ export default class Post extends Component<Props> {
                 </div>
 
                 {postList.map(function (d, idx) {
-                    return (<ContentListItem key={idx} content={d}></ContentListItem>)
+                    return (<PostListItem key={idx} content={d}></PostListItem>)
                 })}
             </div>
         );

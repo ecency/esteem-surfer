@@ -1,12 +1,12 @@
 // @flow
 import React, {Component} from 'react';
-import styles from './ContentListItem.less';
+import styles from './PostListItem.less';
 
 type Props = {
     content: object
 };
 
-export default class ContentListItem extends Component<Props> {
+export default class PostListItem extends Component<Props> {
     props: Props;
 
     render() {

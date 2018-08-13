@@ -1,6 +1,6 @@
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import Post from '../components/Post';
+import PostIndex from '../components/PostIndex';
 import * as ContentActions from '../actions/post';
 
 function mapStateToProps(state) {
@@ -16,4 +16,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Post);
+)(PostIndex);
