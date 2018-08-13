@@ -33,7 +33,7 @@ export default merge.smart(baseConfig, {
 
   entry: {
     renderer: Object.keys(dependencies || {}).filter(
-      dependency => dependency !== '@fortawesome/fontawesome-free'
+        dependency => !['typeface-roboto', 'material-design-icons'].includes(dependency)
     )
   },
 

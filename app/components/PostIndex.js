@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {makeGroupKeyForPosts} from '../utils/misc';
-import styles from './Post.less';
+import styles from './PostIndex.less';
 import PostListItem from './elements/PostListItem'
 
 type Props = {
