@@ -1,0 +1,38 @@
+.appFooter {
+  align-items: center;
+  background-color: #f5f5f5;
+  display: flex;
+  height: 32px;
+  padding: 0 15px;
+  justify-content: space-between;
+
+  .votingPower {
+    .battery {
+      img {
+        width: 20px;
+        -webkit-transform: rotate(90deg);
+        opacity: 0.6;
+      }
+    }
+  }
+
+  .rightMenu {
+    font-size: 12px;
+
+    a {
+      color: #828282;
+
+      &:not(:last-child) {
+        margin-right: 8px;
+        &::after {
+          padding-left: 8px;
+          content: '|'
+        }
+      }
+
+      &.version {
+        font-weight: 700;
+      }
+    }
+  }
+}

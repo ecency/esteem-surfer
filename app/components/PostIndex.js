@@ -5,6 +5,9 @@ import {makeGroupKeyForPosts} from '../utils/misc';
 import styles from './PostIndex.less';
 import PostListItem from './elements/PostListItem'
 import NavBar from './elements/NavBar'
+import AppFooter from './elements/AppFooter'
+import Mi from './elements/Mi'
+
 
 type Props = {
     fetchPosts: () => void,
@@ -63,8 +66,12 @@ export default class PostIndex extends Component<Props> {
 
 
         return (
-            <div className={styles.wrapper}>
+            <div className="wrapper">
                 <NavBar  {...this.props}></NavBar>
+                <div className="appContainer">
+
+                </div>
+                <AppFooter></AppFooter>
             </div>
         );
     }

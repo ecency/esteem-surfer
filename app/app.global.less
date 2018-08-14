@@ -47,11 +47,19 @@ html {
   width: 100%;
 }
 
-.app-container {
+.wrapper {
+  width: 100%;
+  height: 100%;
 
   // height: calc(100% - #{$navbar-height + $footerHeight});
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
 
+.appContainer{
+  flex-grow: 1;
+  background: lightseagreen;
 }
 
 /*
