@@ -6,8 +6,7 @@ import styles from './PostIndex.less';
 import PostListItem from './elements/PostListItem'
 import NavBar from './elements/NavBar'
 import AppFooter from './elements/AppFooter'
-import Mi from './elements/Mi'
-
+import globalStyles from '../app.global.less'
 
 type Props = {
     fetchPosts: () => void,

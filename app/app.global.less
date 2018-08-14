@@ -1,22 +1,7 @@
-/*
- * @NOTE: Prepend a `~` to css file paths that are in your node_modules
- *        See https://github.com/webpack-contrib/sass-loader#imports
- */
 // @import "~@fortawesome/fontawesome-free/css/all.css";
 @import '~typeface-roboto';
+@import "~material-design-icons/iconfont/material-icons.css";
 @import "~antd/dist/antd.less";
-
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url(~material-design-icons/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
-  src: local('Material Icons'),
-  local('MaterialIcons-Regular'),
-  url(~material-design-icons/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
-  url(~material-design-icons/iconfont/MaterialIcons-Regular.woff) format('woff'),
-  url(~material-design-icons/iconfont/MaterialIcons-Regular.ttf) format('truetype');
-}
 
 @font-family: 'Roboto', sans-serif;
 @line-height-base: 1.2;
@@ -52,14 +37,15 @@ html {
   height: 100%;
 
   // height: calc(100% - #{$navbar-height + $footerHeight});
-  overflow-y: auto;
+
   display: flex;
   flex-direction: column;
 }
 
-.appContainer{
+.appContainer {
   flex-grow: 1;
   background: lightseagreen;
+  overflow-y: auto;
 }
 
 /*

@@ -13,7 +13,6 @@ export default class AppFooter extends Component<Props> {
 
     render() {
 
-
         return (
             <div className={styles.appFooter}>
                 <div className={styles.votingPower}>
