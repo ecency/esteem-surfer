@@ -1,0 +1,132 @@
+@import '../../variables';
+
+.navBar {
+  height: @navBarHeight;
+  padding-top: 16px;
+
+  .navBarInner {
+    height: 50px;
+    display: flex;
+    align-items: center;
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      margin: 0 43px 0 24px;
+      border-radius: 50%;
+      background: url(../../logo.png);
+      background-size: 100%;
+      flex-shrink: 0;
+    }
+
+    .navControls {
+      user-select: none;
+      display: flex;
+      align-items: center;
+      font-size: 22px;
+      margin-right: 26px;
+      height: 44px;
+      flex-shrink: 0;
+
+      .controlBack, .controlForward, .controlReload {
+        height: 22px;
+        width: 22px;
+        color: #788187;
+        cursor: pointer;
+
+        &:not(:last-child) {
+          margin-right: 16px;
+        }
+
+        &.disabled {
+          pointer-events: none;
+          color: #c1c5c7;
+        }
+      }
+    }
+
+    .addressBar {
+      height: 44px;
+      width: 484px;
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+      border-radius: 8px;
+      background-color: #f5f5f5;
+      color: #788187;
+
+      .preAddOn, .postAddOn {
+        width: 47px;
+        height: 100%;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        color: #788187;
+        justify-content: center;
+        user-select: none;
+      }
+
+      .postAddOn {
+        color: #c1c5c7
+      }
+
+      .address {
+        width: calc(~"100% - 47px - 47px");
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        .protocol {
+          font-weight: 500;
+        }
+
+        .url {
+          width: 38px;
+          height: 100%;
+        }
+      }
+
+    }
+
+    .altControls {
+      width: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 44px;
+      user-select: none;
+      flex-shrink: 0;
+
+      .switchTheme {
+        display: flex;
+        align-items: center;
+        height: 18px;
+        font-size: 18px;
+        color: #c1c5c7;
+      }
+    }
+
+    .userMenu {
+      height: 50px;
+      background-image: linear-gradient(to left, #2d5aa0, #357ce6);
+      width: 70px;
+      border-bottom-left-radius: 25px;
+      border-top-left-radius: 25px;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .login{
+        font-size: 32px;
+        display: flex;
+        color: #fff;
+      }
+
+      &.loggedIn {
+        width: 196px;
+      }
+    }
+  }
+}

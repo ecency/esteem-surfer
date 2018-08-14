@@ -6,8 +6,41 @@
 @import '~typeface-roboto';
 @import "~antd/dist/antd.less";
 
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(~material-design-icons/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+  local('MaterialIcons-Regular'),
+  url(~material-design-icons/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+  url(~material-design-icons/iconfont/MaterialIcons-Regular.woff) format('woff'),
+  url(~material-design-icons/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+}
+
 @font-family: 'Roboto', sans-serif;
 @line-height-base: 1.2;
+
+html {
+  /* Adjust font size */
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  /* Font varient */
+  font-variant-ligatures: none;
+  -webkit-font-variant-ligatures: none;
+  /* Smoothing */
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+}
+
+@import 'variables';
+
+#root {
+  min-width: @screen-lg-min;
+}
 
 /*
 .content-list {

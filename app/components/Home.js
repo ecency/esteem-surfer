@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import routes from '../constants/routes.json';
 import styles from './Home.css';
+import NavBar from './elements/NavBar'
 
 type Props = {};
 
@@ -12,8 +13,9 @@ export default class Home extends Component<Props> {
   render() {
     return (
       <div className={styles.container} data-tid="container">
-        <Link to={routes.COUNTER}>Counter</Link><br/>
-        <Link to="/a/trending">Trending</Link><br/>
+
+          <NavBar></NavBar>
+
       </div>
     );
   }
