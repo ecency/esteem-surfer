@@ -5,7 +5,8 @@ import * as ContentActions from '../actions/post';
 
 function mapStateToProps(state) {
     return {
-        posts: state.post
+        posts: state.post,
+        pathname: state.pathname
     };
 }
 

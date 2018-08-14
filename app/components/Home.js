@@ -13,9 +13,7 @@ export default class Home extends Component<Props> {
   render() {
     return (
       <div className={styles.container} data-tid="container">
-
-          <NavBar></NavBar>
-
+        <Link to="/trending">Trending</Link>
       </div>
     );
   }

@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import {makeGroupKeyForPosts} from '../utils/misc';
 import styles from './PostIndex.less';
 import PostListItem from './elements/PostListItem'
+import NavBar from './elements/NavBar'
 
 type Props = {
     fetchPosts: () => void,
@@ -63,17 +64,7 @@ export default class PostIndex extends Component<Props> {
 
         return (
             <div className={styles.wrapper}>
-                <div className={styles.menu}>
-                    <a onClick={this.goBack}> &lt; Go Back</a>
-
-                    <Link to="/a/trending">Trending</Link>
-                    <Link to="/a/hot">Hot</Link>
-                    <Link to="/a/created">New</Link>
-                </div>
-
-                {postList.map(function (d, idx) {
-                    return (<PostListItem key={idx} content={d}></PostListItem>)
-                })}
+                <NavBar  {...this.props}></NavBar>
             </div>
         );
     }
