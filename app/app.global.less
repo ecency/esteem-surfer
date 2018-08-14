@@ -40,6 +40,18 @@ html {
 
 #root {
   min-width: @screen-lg-min;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.app-container {
+
+  // height: calc(100% - #{$navbar-height + $footerHeight});
+  overflow-y: auto;
+
 }
 
 /*

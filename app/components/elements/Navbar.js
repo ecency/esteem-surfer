@@ -30,8 +30,8 @@ export default class NavBar extends Component<Props> {
         // Replace first / of location
         const path = location.pathname.replace('/', '');
 
-        const backClassName = styles.controlBack + (!canGoBack ? ' ' + styles.disabled : '');
-        const forwardClassName = styles.controlForward + ' ' + styles.disabled;
+        const backClassName = styles.back + (!canGoBack ? ' ' + styles.disabled : '');
+        const forwardClassName = styles.forward + ' ' + styles.disabled;
 
         return (
 
@@ -45,7 +45,7 @@ export default class NavBar extends Component<Props> {
                         <a className={forwardClassName}>
                             <Mi icon="arrow_forward"/>
                         </a>
-                        <a className={styles.controlReload}>
+                        <a className={styles.reload}>
                             <Mi icon="refresh"/>
                         </a>
                     </div>
