@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`actions should create 'fetch begin' action 1`] = `
+Object {
+  "type": "TT_FETCH_BEGIN",
+}
+`;
+
+exports[`actions should create 'fetch error' action 1`] = `
+Object {
+  "type": "TT_FETCH_ERROR",
+}
+`;
+
+exports[`actions should create 'fetch ok' action 1`] = `
+Object {
+  "payload": Array [
+    "life",
+    "kr",
+    "steemit",
+    "art",
+  ],
+  "type": "TT_FETCH_OK",
+}
+`;

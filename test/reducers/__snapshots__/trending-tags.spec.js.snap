@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reducers trending-tags should handle initial state 1`] = `
+Object {
+  "error": false,
+  "list": Array [],
+  "loading": false,
+}
+`;
