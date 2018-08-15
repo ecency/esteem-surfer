@@ -19,22 +19,33 @@ export function fetchTags(afterTag = '', limit = 50) {
             return
         }
 
-        dispatch({
-            type: TT_FETCH_BEGIN
-        });
-
+        dispatch(fetchBegin());
 
         client.database.call('get_trending_tags', [afterTag, limit]).then((resp) => {
-            dispatch({
-                type: TT_FETCH_OK,
-                payload: resp
-            });
+            dispatch(fetchOk(resp));
         }).catch((err) => {
-            dispatch({
-                type: TT_FETCH_ERROR
-            });
+            dispatch(fetchError());
         })
     };
 }
 
+
+export const fetchBegin = () => {
+    return {
+        type: TT_FETCH_BEGIN
+    }
+};
+
+export const fetchOk = (payload) => {
+    return {
+        type: TT_FETCH_OK,
+        payload: payload
+    }
+};
+
+export const fetchError = () => {
+    return {
+        type: TT_FETCH_ERROR
+    }
+};
 
