@@ -1,0 +1,83 @@
+.side {
+  width: 208px;
+  flex-shrink: 0;
+  margin-right: 30px;
+  user-select: none;
+
+  .btnPost {
+    align-items: center;
+    color: #357ce6;
+    cursor: pointer;
+    background-color: #eaf2fc;
+    border-bottom-right-radius: 25px;
+    border-top-right-radius: 25px;
+    display: flex;
+    font-size: 16px;
+    font-weight: 500;
+    height: 50px;
+    justify-content: center;
+    padding-left: 6px;
+    transition: .5s;
+
+    .icon {
+      height: 20px;
+      font-size: 20px;
+      margin-right: 32px;
+    }
+
+    &:hover {
+      background: fade(#357ce6, 30);
+    }
+  }
+
+  .tagList {
+    margin-top: 34px;
+    padding-left: 90px;
+
+    .tagListHeader {
+      color: #788187;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 31px;
+    }
+
+    .tagListItem {
+      color: #c1c5c7;
+      background: #ffffff;
+      border-radius: 25px;
+      border: solid 1px #e7e7e7;
+      display: table;
+      margin-bottom: 8px;
+      padding: 4px 12px;
+    }
+  }
+}
+
+.content {
+  flex-grow: 1;
+
+  .postList {
+    .postListHeader {
+      align-items: center;
+      display: flex;
+      border-bottom: 1px solid #e7e7e7;
+      height: 50px;
+
+      .filterSelect {
+        align-items: center;
+        color: #357ce6;
+        cursor: pointer;
+        display: flex;
+        font-size: 16px;
+        font-weight: 500;
+        height: 100%;
+
+        .label {
+          margin-right: 4px;
+        }
+
+
+      }
+    }
+  }
+}
