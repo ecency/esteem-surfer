@@ -10,6 +10,7 @@ import Mi from './elements/Mi'
 import {Menu} from 'antd';
 import DropDown from './elements/DropDown'
 import filters from '../constants/filters.json'
+import {FormattedMessage} from 'react-intl'
 
 
 type Props = {
@@ -22,7 +23,7 @@ const makeFilterMenu = (active) => {
         {
             filters.map((filter, idx) => {
                 return <Menu.Item key={filter}>
-                    <a href="#">{filter}</a>
+                    <a href="#"><FormattedMessage id={`post-index.filter-${filter}`}/></a>
                 </Menu.Item>
             })
         }
@@ -90,12 +91,12 @@ export default class PostIndex extends Component<Props> {
                     <div className={styles.side}>
                         <div className={styles.btnPost}>
                             <span className={styles.icon}><Mi icon="edit"/></span>
-                            Create Post
+                            <FormattedMessage id="g.create-post" />
                         </div>
 
                         <div className={styles.tagList}>
                             <div className={styles.tagListHeader}>
-                                Popular Tags
+                                <FormattedMessage id="post-index.tags"/>
                             </div>
                             <a className={styles.tagListItem}>life</a>
                             <a className={styles.tagListItem}>photography</a>
@@ -113,7 +114,9 @@ export default class PostIndex extends Component<Props> {
                         <div className={styles.postList}>
                             <div className={styles.postListHeader}>
                                 <div className={styles.filterSelect}>
-                                    <span className={styles.label}>Trending</span>
+                                    <span className={styles.label}>
+                                        <FormattedMessage id={`post-index.filter-${filter}`}/>
+                                    </span>
                                     <DropDown menu={filterMenu}/>
                                 </div>
                                 <a className={styles.listSwitch}>

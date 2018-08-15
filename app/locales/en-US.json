@@ -1,0 +1,16 @@
+{
+  "g": {
+    "create-post": "Create Post"
+  },
+  "post-index": {
+    "tags": "Popular Tags",
+    "filter-trending": "Trending",
+    "filter-hot": "Hot",
+    "filter-created": "New",
+    "filter-active": "Active",
+    "filter-promoted": "Promoted",
+    "filter-votes": "Votes",
+    "filter-children": "Comments",
+    "filter-payout": "Payout"
+  }
+}
