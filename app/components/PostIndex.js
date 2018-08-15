@@ -7,13 +7,26 @@ import PostListItem from './elements/PostListItem'
 import NavBar from './elements/NavBar'
 import AppFooter from './elements/AppFooter'
 import Mi from './elements/Mi'
-import {Menu, Icon} from 'antd';
+import {Menu} from 'antd';
 import DropDown from './elements/DropDown'
+import filters from '../constants/filters.json'
 
 
 type Props = {
     fetchPosts: () => void,
     posts: {}
+};
+
+const makeFilterMenu = (active) => {
+    return <Menu selectedKeys={[active]}>
+        {
+            filters.map((filter, idx) => {
+                return <Menu.Item key={filter}>
+                    <a href="#">{filter}</a>
+                </Menu.Item>
+            })
+        }
+    </Menu>
 };
 
 export default class PostIndex extends Component<Props> {
@@ -44,31 +57,8 @@ export default class PostIndex extends Component<Props> {
         this.props.history.goBack();
     }
 
-
-
-
     render() {
 
-        const filterMenu = (
-            <Menu selectedKeys={['1']}>
-                <Menu.Item key="0">
-                    <a href="#">Trending</a>
-                </Menu.Item>
-                <Menu.Item key="1">
-                    <a href="#">Hot</a>
-                </Menu.Item>
-                <Menu.Item key="2">
-                    <a href="#">New</a>
-                </Menu.Item>
-                <Menu.Item key="3">
-                    <a href="#">Active</a>
-                </Menu.Item>
-                <Menu.Item key="4">
-                    <a href="#">Promoted</a>
-                </Menu.Item>
-
-            </Menu>
-        );
 
         const {
             posts
@@ -89,10 +79,13 @@ export default class PostIndex extends Component<Props> {
             }
         }
 
+        const filterMenu = makeFilterMenu(filter);
+
 
         return (
             <div className="wrapper">
                 <NavBar  {...this.props}></NavBar>
+
                 <div className="appContainer">
                     <div className={styles.side}>
                         <div className={styles.btnPost}>
@@ -121,12 +114,20 @@ export default class PostIndex extends Component<Props> {
                             <div className={styles.postListHeader}>
                                 <div className={styles.filterSelect}>
                                     <span className={styles.label}>Trending</span>
-                                    <DropDown menu={filterMenu} />
+                                    <DropDown menu={filterMenu}/>
                                 </div>
+                                <a className={styles.listSwitch}>
+                                    <Mi icon="view_module"/>
+                                </a>
                             </div>
+
+                            {postList.map(function (d, idx) {
+                                // return (<PostListItem key={idx} content={d}></PostListItem>)
+                            })}
                         </div>
                     </div>
                 </div>
+
                 <AppFooter></AppFooter>
             </div>
         );

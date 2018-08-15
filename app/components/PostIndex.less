@@ -1,3 +1,5 @@
+@import '../variables';
+
 .side {
   width: 208px;
   flex-shrink: 0;
@@ -6,9 +8,9 @@
 
   .btnPost {
     align-items: center;
-    color: #357ce6;
+    color: @primary-color;
     cursor: pointer;
-    background-color: #eaf2fc;
+    background-color: @primary-1;
     border-bottom-right-radius: 25px;
     border-top-right-radius: 25px;
     display: flex;
@@ -26,7 +28,7 @@
     }
 
     &:hover {
-      background: fade(#357ce6, 30);
+      background: fade(@primary-color, 30);
     }
   }
 
@@ -56,16 +58,20 @@
 .content {
   flex-grow: 1;
 
+  user-select: none;
+
   .postList {
     .postListHeader {
       align-items: center;
       display: flex;
       border-bottom: 1px solid #e7e7e7;
+      justify-content: space-between;
       height: 50px;
+      padding: 0 15px;
 
       .filterSelect {
         align-items: center;
-        color: #357ce6;
+        color: @primary-color;
         cursor: pointer;
         display: flex;
         font-size: 16px;
@@ -75,7 +81,15 @@
         .label {
           margin-right: 4px;
         }
+      }
 
+      .listSwitch {
+
+        font-size: 22px;
+        align-items: center;
+        display: flex;
+        height: 50px;
+        color: #c2d4f5
 
       }
     }

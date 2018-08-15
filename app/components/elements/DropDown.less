@@ -1,6 +1,9 @@
+@import '../../variables';
+
 .caret {
   align-items: center;
   border-radius: 50%;
+  color: @primary-color;
   display: flex;
   background: transparent;
   width: 32px;
@@ -9,6 +12,6 @@
   transition: .5s;
 
   &:hover, &.hover {
-    background: #eaf2fc;
+    background: @primary-1;
   }
 }
