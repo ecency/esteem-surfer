@@ -8,7 +8,6 @@ import {addLocaleData, IntlProvider} from 'react-intl';
 import {flattenMessages} from '../utils'
 import messages from '../locales';
 
-console.log(messages)
 
 import en from 'react-intl/locale-data/en';
 import tr from 'react-intl/locale-data/tr';

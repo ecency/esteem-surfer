@@ -25,7 +25,7 @@ export default class NavBar extends Component<Props> {
 
         const canGoBack = pathname.previous;
 
-        console.log(pathname.previous)
+        // console.log(pathname.previous)
 
         // Replace first / of location
         const path = location.pathname.replace('/', '');

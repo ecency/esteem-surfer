@@ -6,6 +6,7 @@ import {createLogger} from 'redux-logger';
 import rootReducer from '../reducers';
 import * as counterActions from '../actions/counter';
 import * as postActions from '../actions/post';
+import * as trendingTagsActions from '../actions/trending-tags'
 
 const history = createHashHistory();
 
@@ -36,6 +37,7 @@ const configureStore = (initialState?: {}) => {
     const actionCreators = {
         ...counterActions,
         ...postActions,
+        ...trendingTagsActions,
         ...routerActions
     };
     // If Redux DevTools Extension is installed use it, otherwise use Redux compose

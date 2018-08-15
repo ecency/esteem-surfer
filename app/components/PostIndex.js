@@ -14,7 +14,7 @@ import {FormattedMessage} from 'react-intl'
 
 
 type Props = {
-    fetchPosts: () => void,
+    actions: {},
     posts: {}
 };
 
@@ -33,6 +33,7 @@ const makeFilterMenu = (active) => {
 export default class PostIndex extends Component<Props> {
     props: Props;
 
+
     constructor(props) {
         super(props);
         this.goBack = this.goBack.bind(this);
@@ -40,8 +41,10 @@ export default class PostIndex extends Component<Props> {
 
     startFetch = () => {
         const filter = this.props.match.params.filter;
-        this.props.fetchPosts(filter);
+        this.props.actions.post.fetchPosts(filter);
         // console.log(filter)
+
+        this.props.actions.trendingTags.fetchTags();
     };
 
     componentDidMount() {
@@ -59,10 +62,9 @@ export default class PostIndex extends Component<Props> {
     }
 
     render() {
-
-
         const {
-            posts
+            posts,
+            trendingTags
         } = this.props;
 
         const filter = this.props.match.params.filter;
@@ -91,22 +93,20 @@ export default class PostIndex extends Component<Props> {
                     <div className={styles.side}>
                         <div className={styles.btnPost}>
                             <span className={styles.icon}><Mi icon="edit"/></span>
-                            <FormattedMessage id="g.create-post" />
+                            <FormattedMessage id="g.create-post"/>
                         </div>
 
                         <div className={styles.tagList}>
                             <div className={styles.tagListHeader}>
                                 <FormattedMessage id="post-index.tags"/>
                             </div>
-                            <a className={styles.tagListItem}>life</a>
-                            <a className={styles.tagListItem}>photography</a>
-                            <a className={styles.tagListItem}>kr</a>
-                            <a className={styles.tagListItem}>esteem</a>
-                            <a className={styles.tagListItem}>art</a>
-                            <a className={styles.tagListItem}>bitcoin</a>
-                            <a className={styles.tagListItem}>introduceyourself</a>
-                            <a className={styles.tagListItem}>spanish</a>
-                            <a className={styles.tagListItem}>travel</a>
+
+
+                            {trendingTags.list.map(function (tag, idx) {
+                                return ( <a className={styles.tagListItem} key={idx}>{tag}</a>)
+                            })}
+
+
                         </div>
                     </div>
 
