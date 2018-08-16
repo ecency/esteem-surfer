@@ -63,6 +63,7 @@ export default () => {
       });
 
       txtEl.addEventListener('select', function (e) {
+        /* disabled
         const startPos = txtEl.selectionStart;
         const finishPos = txtEl.selectionEnd;
 
@@ -73,6 +74,7 @@ export default () => {
         }
 
         bgEl.innerHTML = replaceAll(getTxtElVal(), selectedText, '<span class="marked">' + selectedText + '</span>');
+        */
       });
 
       txtEl.addEventListener('scroll', function (e) {
