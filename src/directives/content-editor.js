@@ -20,66 +20,9 @@ export default () => {
 
       const el = $element[0];
       const txtEl = el.querySelector('textarea');
-      const bgEl = el.querySelector('#bg-text');
       $scope.txtEl = txtEl;
 
       txtEl.focus();
-
-      // for highlighting support
-      const shouldMirrorToBg = window.getComputedStyle(bgEl).display !== 'none';
-
-      const getTxtElVal = () => {
-        return txtEl.value + "\n";
-      };
-
-      const replaceAll = (txt, replace, with_this) => {
-        return txt.replace(new RegExp(replace, 'g'), with_this);
-      };
-
-      const syncScroll = () => {
-        bgEl.scrollTop = txtEl.scrollTop;
-      };
-
-      txtEl.addEventListener('keyup', function (e) {
-        if (!shouldMirrorToBg) {
-          return;
-        }
-        bgEl.innerHTML = getTxtElVal();
-        syncScroll();
-      });
-
-      txtEl.addEventListener('click', function (e) {
-        if (!shouldMirrorToBg) {
-          return;
-        }
-        bgEl.innerHTML = getTxtElVal();
-      });
-
-      txtEl.addEventListener('blur', function (e) {
-        if (!shouldMirrorToBg) {
-          return;
-        }
-        bgEl.innerHTML = getTxtElVal();
-      });
-
-      txtEl.addEventListener('select', function (e) {
-        /* disabled
-        const startPos = txtEl.selectionStart;
-        const finishPos = txtEl.selectionEnd;
-
-        const selectedText = txtEl.value.substring(startPos, finishPos);
-
-        if (selectedText.trim().length < 2) {
-          return;
-        }
-
-        bgEl.innerHTML = replaceAll(getTxtElVal(), selectedText, '<span class="marked">' + selectedText + '</span>');
-        */
-      });
-
-      txtEl.addEventListener('scroll', function (e) {
-        syncScroll();
-      });
 
       // Keyboard shortcuts
       txtEl.addEventListener('keydown', function (e) {
@@ -177,7 +120,6 @@ export default () => {
       });
     },
     template: `<div class="content-editor" id="{{ elemId }}">
-      <pre id="bg-text"></pre>
       <textarea id="main-text" ng-disabled="processing" class="form-control" ng-model="body" placeholder="{{ placeHolder }}"></textarea>
       <div class="image-upload-panel" ng-if="uploadingImage">
         <span class="image-file-name">Uploading {{ uploadingImage }}</span>
