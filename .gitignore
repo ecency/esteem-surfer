@@ -59,3 +59,6 @@ src/
 app/bower_components
 app/app.js
 app/background.js
+temp
+
+
