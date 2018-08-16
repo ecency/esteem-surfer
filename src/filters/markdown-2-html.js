@@ -1,6 +1,7 @@
 const Remarkable = require('remarkable');
 import {sanitizeNode} from '../helpers/html-sanitizer';
 import {proxifyImageSrc} from '../helpers/proxify-image-src'
+import {JSDOM} from 'jsdom';
 
 const md = new Remarkable({html: true, breaks: true, linkify: true});
 
@@ -30,7 +31,7 @@ const linkifyNode = (node) => {
 
   const linkified = linkify(node.nodeValue);
   if (linkified !== node.nodeValue) {
-    const replaceNode = document.createElement('span');
+    const replaceNode = node.ownerDocument.createElement('span');
     replaceNode.setAttribute('class', 'will-replaced'); // it will be replaced with its own innerHTML
     node.parentNode.insertBefore(replaceNode, node);
     node.parentNode.removeChild(node);
@@ -79,12 +80,13 @@ export const markDown2Html = (input) => {
   const vimeoRegex = /(https?:\/\/)?(www\.)?(?:vimeo)\.com.*(?:videos|video|channels|)\/([\d]+)/i;
   const dTubeRegex = /(https?:\/\/d.tube.#!\/v\/)(\w+)\/(\w+)/g;
 
-  // Create temporary element to manipulate html
-  let tempEl = document.createElement('div');
-  tempEl.innerHTML = output;
+  // Create temporary document to manipulate html
+  let dom = new JSDOM(output, {
+    ProcessExternalResources: false
+  });
 
   // Manipulate link (a) elements
-  const links = tempEl.querySelectorAll('a');
+  const links = dom.window.document.body.querySelectorAll('a');
   links.forEach((el) => {
     const href = el.getAttribute('href');
 
@@ -99,6 +101,12 @@ export const markDown2Html = (input) => {
     }
 
     let f = false;
+
+    // Do not allow js hrefs
+    if (href.startsWith('javascript')) {
+      el.removeAttribute('href');
+      f = true;
+    }
 
     // if href is an image url and innerHTML same with href then mark it as image
     // & => &amp; can break equality
@@ -144,7 +152,7 @@ export const markDown2Html = (input) => {
     // If a youtube video
     if (!f) {
       const match = href.match(youTubeRegex);
-      if (match && el.innerText.trim() === href) {
+      if (match && el.textContent.trim() === href) {
         const e = youTubeRegex.exec(href);
         if (e[1]) {
           el.className = 'markdown-video-link markdown-video-link-youtube';
@@ -161,9 +169,10 @@ export const markDown2Html = (input) => {
     // If vimeo video
     if (!f) {
       const match = href.match(vimeoRegex);
-      if (match && href === el.innerText) {
+      if (match && href === el.textContent) {
         const e = vimeoRegex.exec(href);
         if (e[3]) {
+
           el.className = 'markdown-video-link markdown-video-link-vimeo';
           el.removeAttribute('href');
 
@@ -180,7 +189,7 @@ export const markDown2Html = (input) => {
       if (match) {
         // Only d.tube links contains an image
         const imgEls = el.querySelectorAll('img');
-        if (el.innerText === href || imgEls.length === 1) {
+        if (el.textContent === href || imgEls.length === 1) {
           const e = dTubeRegex.exec(href);
           // e[2] = username, e[3] object id
           if (e[2] && e[3]) {
@@ -226,21 +235,17 @@ export const markDown2Html = (input) => {
       el.removeAttribute('href');
     }
   });
-  output = tempEl.innerHTML;
-
-  tempEl = document.createElement('div');
-  tempEl.innerHTML = output;
 
   // Try to convert image links that are Remarkable could not converted.
   // Find text nodes not wrapper with a and node value matchs with image regex
-  const pars = tempEl.querySelectorAll('*');
+  const pars = dom.window.document.body.querySelectorAll('*');
   pars.forEach((el) => {
     el.childNodes.forEach((n) => {
       if (n.nodeValue && n.nodeValue.trim() && ['P', 'DIV', 'CENTER', 'STRONG'].indexOf(n.parentNode.tagName) !== -1) {
         let href = n.nodeValue.trim();
         if (href.match(imgRegex)) {
 
-          let replace = document.createElement('a');
+          let replace = dom.window.document.createElement('a');
           replace.setAttribute('data-href', href);
 
           replace.className = 'markdown-img-link';
@@ -254,12 +259,9 @@ export const markDown2Html = (input) => {
   });
 
   // Sanitize
-  tempEl = sanitizeNode(tempEl);
-  output = tempEl.innerHTML;
+  let tempEl = sanitizeNode(dom.window.document.body);
 
   // traverse over elements and manipulate
-  tempEl = document.createElement('div');
-  tempEl.innerHTML = output;
   traverse(tempEl);
 
   // replace temporary elements with their innerHTML's
