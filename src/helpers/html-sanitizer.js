@@ -19,7 +19,7 @@ export const sanitizeNode = (node) => {
   allElems.forEach((el) => {
 
     if (ALLOWED_TAGS.indexOf(el.tagName) === -1) {
-      el.outerHTML = `<span>${el.innerText.replace('>', '&gt;').replace('<', '&lt;')}</span>`;
+      el.outerHTML = `<span>${el.textContent.replace('>', '&gt;').replace('<', '&lt;')}</span>`;
     }
 
     for (let attr of el.attributes) {
