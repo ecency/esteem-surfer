@@ -3,7 +3,7 @@ import React from 'react';
 import {Switch, Route} from 'react-router';
 import routes from './constants/routes.json';
 import App from './containers/App';
-import HomePage from './containers/HomePage';
+import IndexPage from './containers/IndexPage';
 import PostIndexPage from './containers/PostIndexPage'
 
 export default () => (
@@ -11,7 +11,7 @@ export default () => (
         <Switch>
             <Route path="/:filter" component={PostIndexPage}/>
             <Route path="/:filter/:tag" component={PostIndexPage}/>
-            <Route path={routes.HOME} component={HomePage}/>
+            <Route path={routes.HOME} component={IndexPage}/>
         </Switch>
     </App>
 );

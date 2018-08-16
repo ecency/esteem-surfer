@@ -4,15 +4,16 @@ import {Provider} from 'react-redux';
 import {ConnectedRouter} from 'react-router-redux';
 import Routes from '../Routes';
 
+// i18n
 import {addLocaleData, IntlProvider} from 'react-intl';
 import {flattenMessages} from '../utils'
 import messages from '../locales';
-
 
 import en from 'react-intl/locale-data/en';
 import tr from 'react-intl/locale-data/tr';
 
 addLocaleData([...en, ...tr]);
+
 
 type Props = {
     store: {},
