@@ -21,3 +21,12 @@ package-lock.json
 /app/bower_components
 
 /src/config.js
+
+
+# new surfer's ignored files
+.editorconfig
+.eslintcache
+app/dist
+app/main.prod.js
+dll
+flow-typed
