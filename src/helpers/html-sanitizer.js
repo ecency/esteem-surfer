@@ -23,7 +23,7 @@ export const sanitizeNode = (node) => {
     }
 
     for (let attr of el.attributes) {
-      if (ALLOWED_ATTRS.indexOf(attr.name) === -1) {
+      if (ALLOWED_ATTRS.indexOf(attr.name) === -1 || attr.value.indexOf('javascript:') !== -1) {
         el.removeAttribute(attr.name)
       }
     }
