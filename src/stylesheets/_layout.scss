@@ -811,7 +811,7 @@
           height: 730px;
         }
 
-        #main-text, #bg-text {
+        #main-text {
           background: transparent;
           font-family: 'Source Serif Pro', serif;
           font-size: 18px;
@@ -826,22 +826,6 @@
         #main-text {
           z-index: 2;
 
-        }
-
-        #bg-text {
-          border: 0;
-          color: transparent;
-          display: none; // make it block to enable
-          margin: 0;
-          overflow: auto;
-          white-space: pre-wrap;
-          word-break: normal;
-
-          z-index: 1;
-
-          .marked {
-            border-bottom: 1px solid #9c9c9c;
-          }
         }
       }
 
