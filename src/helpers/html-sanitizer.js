@@ -22,7 +22,6 @@ export const sanitizeNode = (node) => {
       el.outerHTML = `<span>${el.textContent.replace('>', '&gt;').replace('<', '&lt;')}</span>`;
     }
 
-    console.l
     for (let attr of el.attributes) {
       if (ALLOWED_ATTRS.indexOf(attr.name) === -1 || attr.value.toLowerCase().indexOf('javascript:') !== -1) {
         el.removeAttribute(attr.name)
