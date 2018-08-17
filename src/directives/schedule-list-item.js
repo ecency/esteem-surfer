@@ -14,7 +14,7 @@ export default () => {
                 <span class="item-author"><a>{{ fakePost.author }}</a></span>
                 <span class="item-author-reputation">{{ fakePost.author_reputation|authorReputation|number:0 }}</span>
                 <span class="item-parent">{{ 'IN' | translate }} <a>{{ fakePost.category }}</a></span>
-                <span class="item-date"><a><i class="fa fa-clock-o"></i> {{draft.schedule|dateFormatted}}</a></span>
+                <span class="item-date"><a><i class="fa fa-clock-o"></i> {{schedule.schedule|dateFormatted}}</a></span>
               </div>
           </div>
         </div>
