@@ -251,16 +251,39 @@
     }
   }
 
+  .search-summary {
+    width: 70%;
+    margin: 0 auto 30px auto;
+    text-align: center;
+
+    .search-result {
+      font-size: 18px;
+      margin-bottom: 20px;
+
+      .search-str {
+        font-weight: 700;
+      }
+    }
+
+    .select-options {
+      font-size: 14px;
+      label {
+        font-weight: 400;
+      }
+
+      select:focus {
+        outline: none;
+      }
+    }
+  }
+
   .post-list {
     width: 100%;
 
     header {
-      h1 {
-        .results-found {
-          font-size: 14px;
-          font-weight: 400;
-        }
-      }
+      margin: 0;
+      padding: 0;
+      height: 1px;
     }
   }
 }

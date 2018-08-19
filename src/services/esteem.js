@@ -1,4 +1,4 @@
-export default ($http, API_END_POINT) => {
+export default ($http, API_END_POINT, SEARCH_API_URL, SEARCH_API_TOKEN) => {
 
   return {
     getCurrencyRate: (cur) => {
@@ -91,8 +91,21 @@ export default ($http, API_END_POINT) => {
     moveSchedule: function (id, user) {
       return $http.put(`${API_END_POINT}/api/schedules/${user}/${id}`);
     },
-    search: function (q, page = 1) {
-      return $http.get(`https://api.asksteem.com/search?q=${q}&include=meta,body&pg=${page}&sort_by=created&order=desc`);
+    search: function (q, sort, scroll_id) {
+      const req = {
+        method: 'POST',
+        url: SEARCH_API_URL,
+        headers: {
+          'Authorization': SEARCH_API_TOKEN
+        },
+        data: {
+          q: q,
+          sort: sort,
+          scroll_id: scroll_id
+        }
+      };
+
+      return $http(req);
     },
     searchEscrow: function (id) {
       return $http.get(`${API_END_POINT}/api/escrows/${id}`);

@@ -7,7 +7,7 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
     scope: {
       selectedSection: '=',
       selectedTag: '=',
-      searchStr: '=?'
+      searchStr: '<?'
     },
     templateUrl: 'templates/directives/navbar.html',
     controller: ($scope, $rootScope, $routeParams, $location, $filter, constants, steemService, activeUsername, settingsService) => {
@@ -207,7 +207,7 @@ export default ($rootScope, $location, $uibModal, userService, activeUsername) =
           $location.path(u);
         } else {
           const obj = {"str": $scope.searchStr};
-          const u = `/search/${encodeURIComponent(JSON.stringify(obj))}`;
+          const u = `/search/${encodeURIComponent(JSON.stringify(obj))}?r=${genRandom()}`;
           $location.path(u);
         }
 
