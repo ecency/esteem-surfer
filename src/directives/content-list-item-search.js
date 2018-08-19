@@ -40,7 +40,7 @@ export default () => {
         <div class="content-footer">
             <div class="content-voting">
                 <a ng-click="goDetail()" class="content-total">
-                    <span class="cur-prefix">$ </span> {{ content.payout | number }}
+                    <span class="cur-prefix">$ </span> {{ content.payout | number : 2 }}
                 </a>
             </div>
             <div class="content-voters">
