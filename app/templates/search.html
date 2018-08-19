@@ -8,10 +8,20 @@
         <div class="account-name">{{ account }}</div>
       </div>
     </div>
+    <div class="search-summary" ng-show="hits">
+      <div class="search-result">
+       <span class="hits"> {{ hits | number }}</span> results for <span class="search-str">{{ searchStr }}</span>
+      </div>
+      <div class="select-options">
+        <label>Sort by  <select ng-model="sortBy" ng-change="sortChanged()">
+          <option value="popularity">Popularity</option>
+          <option value="relevance">Relevance</option>
+          <option value="newest">Date</option>
+        </select></label>
+      </div>
+    </div>
     <div class="post-list" ng-class="{'fetching': loadingPosts}">
       <header>
-        <h1>{{ 'SEARCH_RESULTS' | __ }} <span class="results-found" ng-if="hits">{{ hits | number }} </span>
-        </h1>
         <div class="pull-right">
           <button class="btn btn-sm btn-default btn-reload" ng-click="reload()" ng-disabled="loadingPosts"
                   title="{{ 'Reload' | __ }}"><i class="fa fa-refresh"></i></button>

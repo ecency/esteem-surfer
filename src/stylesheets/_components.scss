@@ -985,6 +985,10 @@
 
   width: 100%;
 
+  mark {
+    padding: 0;
+  }
+
   .content-header {
     @include clearfix();
 
@@ -1089,11 +1093,25 @@
   .content-footer {
     @include clearfix();
 
+    .content-voting {
+      border-right: 1px solid $seperatorColor;
+      float: left;
+      margin-right: 14px;
+      padding-right: 14px;
+
+      .content-total {
+        float: left;
+        font-size: 15px;
+        color: $textColor;
+        outline: 0;
+      }
+    }
+
     .content-voters {
       border-right: 1px solid $seperatorColor;
       float: left;
-      margin-right: 20px;
-      padding-right: 20px;
+      margin-right: 14px;
+      padding-right: 14px;
 
       a {
         color: $textColor;
@@ -1111,7 +1129,10 @@
     }
 
     .content-comment-count {
+      border-right: 1px solid $seperatorColor;
       float: left;
+      margin-right: 14px;
+      padding-right: 14px;
 
       a {
         color: $textColor;
@@ -1127,6 +1148,11 @@
           }
         }
       }
+    }
+
+    .content-app {
+      color: $textColorLighter;
+      float: left;
     }
   }
 

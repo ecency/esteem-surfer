@@ -6,6 +6,9 @@ export default ($scope, $rootScope, $location, $routeParams, steemService, eStee
   $scope.posts = $rootScope.Data['posts'] || [];
   $scope.hits = $rootScope.Data['hits'] || 0;
 
+  $scope.sortBy = $rootScope.Data['sortBy'] || 'popularity';
+  $scope.scrollId = $rootScope.Data['scrollId'] || null;
+
   $scope.$watchCollection('posts', (n, o) => {
     if (n === o) {
       return;
@@ -22,25 +25,46 @@ export default ($scope, $rootScope, $location, $routeParams, steemService, eStee
     $rootScope.setNavVar('hits', n);
   });
 
-  let hasMore = true;
-  let pageNum = 0;
+
+  $scope.$watchCollection('sortBy', (n, o) => {
+    if (n === o) {
+      return;
+    }
+
+    $rootScope.setNavVar('sortBy', n);
+  });
+
+  $scope.$watchCollection('scrollId', (n, o) => {
+    if (n === o) {
+      return;
+    }
+
+    $rootScope.setNavVar('scrollId', n);
+  });
+
+  $scope.sortChanged = (n) => {
+    $scope.posts = [];
+    $scope.scrollId = null;
+
+    loadPosts();
+  };
 
   const loadPosts = (cb = null) => {
     $scope.loadingPosts = true;
-    eSteemService.search(searchStr, (pageNum + 1)).then((resp) => {
-
-      pageNum += 1;
-
-      pageNum = resp.data.pages.current;
-      hasMore = resp.data.pages.has_next;
+    eSteemService.search(searchStr, $scope.sortBy, $scope.scrollId).then((resp) => {
+      $scope.scrollId = resp.data.scroll_id;
 
       $scope.hits = resp.data.hits;
 
       resp.data.results.forEach((i) => {
         $scope.posts.push(i);
       });
-    }).catch(() => {
-      $rootScope.showError('Server error!');
+    }).catch((e) => {
+      if (e.data) {
+        $rootScope.showError(e.data.message);
+      } else {
+        $rootScope.showError('Server error');
+      }
     }).then(() => {
       $scope.loadingPosts = false;
 
@@ -68,7 +92,7 @@ export default ($scope, $rootScope, $location, $routeParams, steemService, eStee
   }
 
   $scope.reachedBottom = () => {
-    if ($scope.loadingPosts || !hasMore) {
+    if ($scope.loadingPosts || !$scope.scrollId) {
       return false;
     }
 
@@ -81,8 +105,7 @@ export default ($scope, $rootScope, $location, $routeParams, steemService, eStee
     }
 
     $scope.posts = [];
-    hasMore = false;
-    pageNum = 0;
+    $scope.scrollId = null;
     loadPosts();
   };
 
