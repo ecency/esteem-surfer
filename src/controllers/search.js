@@ -1,6 +1,7 @@
 export default ($scope, $rootScope, $location, $routeParams, steemService, eSteemService) => {
-
-  const searchStr = JSON.parse(decodeURIComponent($routeParams.obj)).str;
+  
+  const term = decodeURIComponent($routeParams.obj);
+  const searchStr = JSON.parse(term.indexOf('?')>-1?term.split('?')[0]:term).str;
   $scope.searchStr = searchStr;
 
   $scope.posts = $rootScope.Data['posts'] || [];
