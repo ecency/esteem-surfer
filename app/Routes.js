@@ -9,8 +9,8 @@ import PostIndexPage from './containers/PostIndexPage'
 export default () => (
     <App>
         <Switch>
-            <Route path="/:filter" component={PostIndexPage}/>
-            <Route path="/:filter/:tag" component={PostIndexPage}/>
+            <Route exact path="/:filter" component={PostIndexPage}/>
+            <Route exact path="/:filter/:tag" component={PostIndexPage}/>
             <Route path={routes.HOME} component={IndexPage}/>
         </Switch>
     </App>

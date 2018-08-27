@@ -5,12 +5,12 @@ import {Dropdown as RealDropDown} from 'antd';
 import Mi from './Mi'
 
 type Props = {
-    menu: object
+    menu: object,
+    location: object
 };
 
 export default class DropDown extends Component<Props> {
     props: Props;
-
 
     constructor(props) {
         super(props);
@@ -22,6 +22,13 @@ export default class DropDown extends Component<Props> {
 
     visibleChanged(e) {
         this.setState({hover: e});
+    }
+
+    componentDidUpdate(prevProps) {
+        // Set hover false when location changed.
+        if (this.props.location !== prevProps.location) {
+            this.setState({hover: false});
+        }
     }
 
     render() {

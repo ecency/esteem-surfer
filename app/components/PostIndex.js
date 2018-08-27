@@ -12,22 +12,9 @@ import DropDown from './elements/DropDown'
 import filters from '../constants/filters.json'
 import {FormattedMessage} from 'react-intl'
 
-
 type Props = {
     actions: {},
     posts: {}
-};
-
-const makeFilterMenu = (active) => {
-    return <Menu selectedKeys={[active]}>
-        {
-            filters.map((filter, idx) => {
-                return <Menu.Item key={filter}>
-                    <a href="#"><FormattedMessage id={`post-index.filter-${filter}`}/></a>
-                </Menu.Item>
-            })
-        }
-    </Menu>
 };
 
 export default class PostIndex extends Component<Props> {
@@ -53,7 +40,7 @@ export default class PostIndex extends Component<Props> {
 
     componentDidUpdate(prevProps) {
         if (this.props.location !== prevProps.location) {
-            this.startFetch()
+            this.startFetch();
         }
     }
 
@@ -61,14 +48,33 @@ export default class PostIndex extends Component<Props> {
         this.props.history.goBack();
     }
 
+    makeFilterMenu = (active) => {
+        const {tag} = this.props.match.params;
+
+        return <Menu selectedKeys={[active]}>
+            {
+                filters.map((filter, idx) => {
+                    return <Menu.Item key={filter}>
+                        <Link to={tag ? (`/${filter}/${tag}`) : (`/${filter}`)}>
+                            <FormattedMessage id={`post-index.filter-${filter}`}/>
+                        </Link>
+                    </Menu.Item>
+                })
+            }
+        </Menu>
+    };
+
+
     render() {
         const {
             posts,
             trendingTags
         } = this.props;
 
-        const filter = this.props.match.params.filter;
-        const groupKey = makeGroupKeyForPosts(filter);
+        const selectedFilter = this.props.match.params.filter;
+        const selectedTag = this.props.match.params.tag;
+
+        const groupKey = makeGroupKeyForPosts(selectedFilter);
 
         const postList = [];
 
@@ -82,8 +88,7 @@ export default class PostIndex extends Component<Props> {
             }
         }
 
-        const filterMenu = makeFilterMenu(filter);
-
+        const filterMenu = this.makeFilterMenu(selectedFilter);
 
         return (
             <div className="wrapper">
@@ -100,25 +105,25 @@ export default class PostIndex extends Component<Props> {
                             <div className={styles.tagListHeader}>
                                 <FormattedMessage id="post-index.tags"/>
                             </div>
-
-
                             {trendingTags.list.map(function (tag, idx) {
-                                return ( <a className={styles.tagListItem} key={idx}>{tag}</a>)
+                                const cls = styles.tagListItem + (selectedTag === tag ? ' ' + styles.selectedItem : '');
+                                const to = `/${selectedFilter}/${tag}`;
+                                return (<Link to={to} className={cls} key={idx}>{tag}</Link>)
                             })}
-
-
                         </div>
                     </div>
 
                     <div className={styles.content}>
                         <div className={styles.postList}>
                             <div className={styles.postListHeader}>
+
                                 <div className={styles.filterSelect}>
                                     <span className={styles.label}>
-                                        <FormattedMessage id={`post-index.filter-${filter}`}/>
+                                        <FormattedMessage id={`post-index.filter-${selectedFilter}`}/>
                                     </span>
-                                    <DropDown menu={filterMenu}/>
+                                    <DropDown menu={filterMenu} location={this.props.location}/>
                                 </div>
+
                                 <a className={styles.listSwitch}>
                                     <Mi icon="view_module"/>
                                 </a>
