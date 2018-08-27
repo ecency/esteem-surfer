@@ -28,9 +28,7 @@ export function fetchPosts(what, tag = '', startAuthor = '', startPermalink = ''
         });
 
         // make sure tag is not null or undefined. it should be empty string.
-        if (!tag) tag = '';
-
-        const query = {tag, start_author: startAuthor, start_permalink: startPermalink, limit};
+        const query = {tag: (tag || ''), start_author: startAuthor, start_permalink: startPermalink, limit};
 
         client.database.getDiscussions(what, query).then((resp) => {
             dispatch({
