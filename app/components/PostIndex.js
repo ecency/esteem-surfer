@@ -1,20 +1,24 @@
 // @flow
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import {Menu} from 'antd';
+import {FormattedMessage} from 'react-intl'
+
 import {makeGroupKeyForPosts} from '../utils/misc';
 import styles from './PostIndex.less';
-import PostListItem from './elements/PostListItem'
+// import PostListItem from './elements/PostListItem'
 import NavBar from './elements/NavBar'
 import AppFooter from './elements/AppFooter'
 import Mi from './elements/Mi'
-import {Menu} from 'antd';
+
 import DropDown from './elements/DropDown'
 import filters from '../constants/filters.json'
-import {FormattedMessage} from 'react-intl'
+
 
 type Props = {
     actions: {},
-    posts: {}
+    posts: {},
+    location: {}
 };
 
 export default class PostIndex extends Component<Props> {
@@ -26,13 +30,6 @@ export default class PostIndex extends Component<Props> {
         this.goBack = this.goBack.bind(this);
     }
 
-    startFetch = () => {
-        const filter = this.props.match.params.filter;
-        this.props.actions.post.fetchPosts(filter);
-        // console.log(filter)
-
-        this.props.actions.trendingTags.fetchTags();
-    };
 
     componentDidMount() {
         this.startFetch()
@@ -47,22 +44,30 @@ export default class PostIndex extends Component<Props> {
         }
     }
 
+    startFetch = () => {
+        const {selectedFilter} = this.props;
+
+        this.props.actions.post.fetchPosts(selectedFilter);
+        // console.log(filter)
+
+        this.props.actions.trendingTags.fetchTags();
+    };
+
     goBack() {
         this.props.history.goBack();
     }
 
     makeFilterMenu = (active) => {
-        const {tag} = this.props.match.params;
+        const {selectedTag} = this.props;
 
         return <Menu selectedKeys={[active]}>
             {
-                filters.map((filter, idx) => {
-                    return <Menu.Item key={filter}>
-                        <Link to={tag ? (`/${filter}/${tag}`) : (`/${filter}`)}>
+                filters.map((filter) => <Menu.Item key={filter}>
+                        <Link to={selectedTag ? (`/${filter}/${selectedTag}`) : (`/${filter}`)}>
                             <FormattedMessage id={`post-index.filter-${filter}`}/>
                         </Link>
                     </Menu.Item>
-                })
+                )
             }
         </Menu>
     };
@@ -95,7 +100,7 @@ export default class PostIndex extends Component<Props> {
 
         return (
             <div className="wrapper">
-                <NavBar  {...this.props}></NavBar>
+                <NavBar  {...this.props} />
 
                 <div className="appContainer">
                     <div className={styles.side}>
@@ -108,8 +113,8 @@ export default class PostIndex extends Component<Props> {
                             <div className={styles.tagListHeader}>
                                 <FormattedMessage id="post-index.tags"/>
                             </div>
-                            {trendingTags.list.map(function (tag, idx) {
-                                const cls = styles.tagListItem + (selectedTag === tag ? ' ' + styles.selectedItem : '');
+                            {trendingTags.list.map((tag, idx) => {
+                                const cls = `${styles.tagListItem} ${selectedTag === tag ? ` ${styles.selectedItem}` : ''}`;
                                 const to = `/${selectedFilter}/${tag}`;
                                 return (<Link to={to} className={cls} key={idx}>{tag}</Link>)
                             })}
@@ -132,14 +137,16 @@ export default class PostIndex extends Component<Props> {
                                 </a>
                             </div>
 
-                            {postList.map(function (d, idx) {
+                            {/*
+                            postList.map((d, idx) => {
                                 // return (<PostListItem key={idx} content={d}></PostListItem>)
-                            })}
+                            })
+                            */}
                         </div>
                     </div>
                 </div>
 
-                <AppFooter></AppFooter>
+                <AppFooter/>
             </div>
         );
     }
