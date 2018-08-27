@@ -1,8 +1,8 @@
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import PostIndex from '../components/PostIndex';
-import * as ContentActions from '../actions/post';
-import * as TrendingTagsActions from '../actions/trending-tags'
+import {fetchPosts} from '../actions/post';
+import {fetchTrendingTags} from '../actions/trending-tags'
 
 function mapStateToProps(state) {
     return {
@@ -17,8 +17,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         actions: {
-            post: bindActionCreators(ContentActions, dispatch),
-            trendingTags: bindActionCreators(TrendingTagsActions, dispatch)
+            ...bindActionCreators({fetchPosts}, dispatch),
+            ...bindActionCreators({fetchTrendingTags}, dispatch)
         }
     };
 }

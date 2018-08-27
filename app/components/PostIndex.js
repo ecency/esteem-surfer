@@ -16,27 +16,35 @@ import filters from '../constants/filters.json'
 
 
 type Props = {
-    actions: {},
+    actions: {
+        fetchPosts: () => void,
+        fetchTrendingTags: () => void
+    },
     posts: {},
-    location: {}
+    trendingTags: {},
+    location: {},
+    selectedFilter: string,
+    selectedTag: string | null
 };
 
 export default class PostIndex extends Component<Props> {
     props: Props;
 
-
+    /*
     constructor(props) {
         super(props);
-        this.goBack = this.goBack.bind(this);
+        // this.goBack = this.goBack.bind(this);
     }
-
+    */
 
     componentDidMount() {
         this.startFetch()
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.location !== prevProps.location) {
+        const {location} = this.props;
+
+        if (location !== prevProps.location) {
             this.startFetch();
 
             // Scroll main container to top
@@ -45,17 +53,18 @@ export default class PostIndex extends Component<Props> {
     }
 
     startFetch = () => {
-        const {selectedFilter} = this.props;
+        const {selectedFilter, selectedTag} = this.props;
+        const {actions} = this.props;
 
-        this.props.actions.post.fetchPosts(selectedFilter);
-        // console.log(filter)
-
-        this.props.actions.trendingTags.fetchTags();
+        actions.fetchPosts(selectedFilter, selectedTag);
+        actions.fetchTrendingTags();
     };
 
+    /*
     goBack() {
         this.props.history.goBack();
     }
+    */
 
     makeFilterMenu = (active) => {
         const {selectedTag} = this.props;
@@ -72,26 +81,25 @@ export default class PostIndex extends Component<Props> {
         </Menu>
     };
 
-
     render() {
-
         const {
             posts,
             trendingTags,
             selectedFilter,
-            selectedTag
+            selectedTag,
+            location
         } = this.props;
 
-        const groupKey = makeGroupKeyForPosts(selectedFilter);
+        const groupKey = makeGroupKeyForPosts(selectedFilter, selectedTag);
 
         const postList = [];
 
-        let loading = true;
+        // let loading = true;
 
         if (posts.groups[groupKey] && !posts.groups[groupKey].loading) {
-            loading = false;
+            // loading = false;
 
-            for (let id of posts.groups[groupKey].ids) {
+            for (const id of posts.groups[groupKey].ids) {
                 postList.push(posts.posts[id]);
             }
         }
@@ -100,7 +108,7 @@ export default class PostIndex extends Component<Props> {
 
         return (
             <div className="wrapper">
-                <NavBar  {...this.props} />
+                <NavBar {...this.props} />
 
                 <div className="appContainer">
                     <div className={styles.side}>
@@ -113,10 +121,10 @@ export default class PostIndex extends Component<Props> {
                             <div className={styles.tagListHeader}>
                                 <FormattedMessage id="post-index.tags"/>
                             </div>
-                            {trendingTags.list.map((tag, idx) => {
+                            {trendingTags.list.map((tag) => {
                                 const cls = `${styles.tagListItem} ${selectedTag === tag ? ` ${styles.selectedItem}` : ''}`;
                                 const to = `/${selectedFilter}/${tag}`;
-                                return (<Link to={to} className={cls} key={idx}>{tag}</Link>)
+                                return (<Link to={to} className={cls} key={tag}>{tag}</Link>)
                             })}
                         </div>
                     </div>
@@ -129,7 +137,7 @@ export default class PostIndex extends Component<Props> {
                                     <span className={styles.label}>
                                         <FormattedMessage id={`post-index.filter-${selectedFilter}`}/>
                                     </span>
-                                    <DropDown menu={filterMenu} location={this.props.location}/>
+                                    <DropDown menu={filterMenu} location={location}/>
                                 </div>
 
                                 <a className={styles.listSwitch}>

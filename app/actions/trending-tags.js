@@ -10,7 +10,7 @@ export const TT_FETCH_OK = 'TT_FETCH_OK';
 export const TT_FETCH_ERROR = 'TT_FETCH_ERROR';
 
 
-export function fetchTags(afterTag = '', limit = 50) {
+export function fetchTrendingTags(afterTag = '', limit = 50) {
     return (dispatch: (action: TtActionType) => void,
             getState: () => TtStateType) => {
         const {trendingTags} = getState();
