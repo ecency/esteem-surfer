@@ -41,6 +41,9 @@ export default class PostIndex extends Component<Props> {
     componentDidUpdate(prevProps) {
         if (this.props.location !== prevProps.location) {
             this.startFetch();
+
+            // Scroll main container to top
+            document.querySelector('.appContainer').scrollTop = 0;
         }
     }
 
@@ -66,13 +69,13 @@ export default class PostIndex extends Component<Props> {
 
 
     render() {
+
         const {
             posts,
-            trendingTags
+            trendingTags,
+            selectedFilter,
+            selectedTag
         } = this.props;
-
-        const selectedFilter = this.props.match.params.filter;
-        const selectedTag = this.props.match.params.tag;
 
         const groupKey = makeGroupKeyForPosts(selectedFilter);
 

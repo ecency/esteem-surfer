@@ -3,11 +3,12 @@ import React, {Component} from 'react';
 import styles from './Navbar.less';
 import Mi from './Mi'
 import {Tooltip} from 'antd';
-import {LOCATION_CHANGE} from 'react-router-redux'
 
+import {Link} from 'react-router-dom';
 
 type Props = {
-    location: location
+    location: location,
+    selectedFilter: string
 };
 
 export default class NavBar extends Component<Props> {
@@ -20,8 +21,7 @@ export default class NavBar extends Component<Props> {
     };
 
     render() {
-        const {location, history, pathname} = this.props;
-
+        const {location, history, pathname, selectedFilter} = this.props;
 
         const canGoBack = pathname.previous;
 
@@ -37,7 +37,7 @@ export default class NavBar extends Component<Props> {
 
             <div className={styles.navBar}>
                 <div className={styles.navBarInner}>
-                    <a className={styles.logo}/>
+                    <Link to={`/${selectedFilter}`} className={styles.logo}/>
                     <div className={styles.navControls}>
                         <a className={backClassName} onClick={this.handleGoBack.bind(this)}>
                             <Mi icon="arrow_back"/>

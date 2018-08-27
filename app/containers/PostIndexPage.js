@@ -5,8 +5,9 @@ import * as ContentActions from '../actions/post';
 import * as TrendingTagsActions from '../actions/trending-tags'
 
 function mapStateToProps(state) {
-
     return {
+        selectedFilter: state.global.selectedFilter,
+        selectedTag: state.global.selectedTag,
         posts: state.post,
         pathname: state.pathname,
         trendingTags: state.trendingTags
