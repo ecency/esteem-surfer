@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropDown element should match exact snapshot 1`] = `
+<span
+  className="caret ant-dropdown-trigger"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <i
+    className="mi"
+  >
+    arrow_drop_down
+  </i>
+</span>
+`;
