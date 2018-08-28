@@ -1,19 +1,19 @@
 // @flow
-import React, {Component} from 'react';
+import { Component } from 'react';
 
 type Props = {
-    history: {}
+  history: {}
 };
 
 export default class HomePage extends Component<Props> {
-    props: Props;
+  props: Props;
 
-    componentWillMount() {
-        const {history} = this.props;
-        history.push('/trending');
-    }
+  componentWillMount() {
+    const { history } = this.props;
+    history.push('/trending');
+  }
 
-    render() {
-        return '<span />';
-    }
+  render() {
+    return '<span />';
+  }
 }
