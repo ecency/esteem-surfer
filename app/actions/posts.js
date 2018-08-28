@@ -6,6 +6,7 @@ import type { postStateType, postActionType } from '../reducers/types';
 export const POSTS_FETCH_BEGIN = 'POSTS_FETCH_BEGIN';
 export const POSTS_FETCH_OK = 'POSTS_FETCH_OK';
 export const POSTS_FETCH_ERROR = 'POSTS_FETCH_ERROR';
+export const POSTS_INVALIDATE = 'POSTS_INVALIDATE';
 export const POST_SET_READ = 'POST_SET_READ';
 export const POST_SET_VOTED = 'POST_SET_VOTED';
 
@@ -22,11 +23,11 @@ export function fetchPosts(
     dispatch: (action: postActionType) => void,
     getState: () => postStateType
   ) => {
-    const { post } = getState();
+    const { posts } = getState();
 
     const groupKey = makeGroupKeyForPosts(what, tag);
 
-    if (post.groups[groupKey] !== undefined) {
+    if (posts.groups[groupKey] !== undefined) {
       return;
     }
 
@@ -53,10 +54,10 @@ export function fetchPosts(
 
         return resp;
       })
-      .catch(() => {
+      .catch(e => {
         dispatch({
           type: POSTS_FETCH_ERROR,
-          payload: { group: groupKey }
+          payload: { group: groupKey, error: e }
         });
       });
   };

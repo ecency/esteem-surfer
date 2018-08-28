@@ -1,0 +1,312 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`posts reducer (1) should handle initial state 1`] = `
+Object {
+  "groups": Object {},
+}
+`;
+
+exports[`posts reducer (2) start fetching "trending". should handle POSTS_FETCH_BEGIN 1`] = `
+Object {
+  "groups": Object {
+    "trending": Object {
+      "data": Array [],
+      "err": null,
+      "loading": true,
+    },
+  },
+}
+`;
+
+exports[`posts reducer (3) fetching "trending" completed. should handle POSTS_FETCH_OK 1`] = `
+Object {
+  "groups": Object {
+    "trending": Object {
+      "data": Array [
+        Object {
+          "author": "good-karma",
+          "id": 12,
+          "permlink": "welcome to esteem",
+          "votes": 5,
+        },
+        Object {
+          "author": "talhasch",
+          "id": 13,
+          "permlink": "lorem ipsum",
+          "votes": 12,
+        },
+        Object {
+          "author": "chrisbolten",
+          "id": 14,
+          "permlink": "sit amet",
+          "votes": 3,
+        },
+      ],
+      "err": null,
+      "loading": false,
+    },
+  },
+}
+`;
+
+exports[`posts reducer (4) start fetching "active". should handle POSTS_FETCH_BEGIN 1`] = `
+Object {
+  "groups": Object {
+    "active": Object {
+      "data": Array [],
+      "err": null,
+      "loading": true,
+    },
+    "trending": Object {
+      "data": Array [
+        Object {
+          "author": "good-karma",
+          "id": 12,
+          "permlink": "welcome to esteem",
+          "votes": 5,
+        },
+        Object {
+          "author": "talhasch",
+          "id": 13,
+          "permlink": "lorem ipsum",
+          "votes": 12,
+        },
+        Object {
+          "author": "chrisbolten",
+          "id": 14,
+          "permlink": "sit amet",
+          "votes": 3,
+        },
+      ],
+      "err": null,
+      "loading": false,
+    },
+  },
+}
+`;
+
+exports[`posts reducer (5) fetching "active" completed. should handle POSTS_FETCH_OK 1`] = `
+Object {
+  "groups": Object {
+    "active": Object {
+      "data": Array [
+        Object {
+          "author": "foo",
+          "id": 18,
+          "permlink": "lorem ipsum",
+          "votes": 222,
+        },
+        Object {
+          "author": "good-karma",
+          "id": 12,
+          "permlink": "welcome to esteem",
+          "votes": 21,
+        },
+      ],
+      "err": null,
+      "loading": false,
+    },
+    "trending": Object {
+      "data": Array [
+        Object {
+          "author": "good-karma",
+          "id": 12,
+          "permlink": "welcome to esteem",
+          "votes": 5,
+        },
+        Object {
+          "author": "talhasch",
+          "id": 13,
+          "permlink": "lorem ipsum",
+          "votes": 12,
+        },
+        Object {
+          "author": "chrisbolten",
+          "id": 14,
+          "permlink": "sit amet",
+          "votes": 3,
+        },
+      ],
+      "err": null,
+      "loading": false,
+    },
+  },
+}
+`;
+
+exports[`posts reducer (6) start fetching "trending" (more). should handle POSTS_FETCH_BEGIN 1`] = `
+Object {
+  "groups": Object {
+    "active": Object {
+      "data": Array [
+        Object {
+          "author": "foo",
+          "id": 18,
+          "permlink": "lorem ipsum",
+          "votes": 222,
+        },
+        Object {
+          "author": "good-karma",
+          "id": 12,
+          "permlink": "welcome to esteem",
+          "votes": 21,
+        },
+      ],
+      "err": null,
+      "loading": false,
+    },
+    "trending": Object {
+      "data": Array [
+        Object {
+          "author": "good-karma",
+          "id": 12,
+          "permlink": "welcome to esteem",
+          "votes": 5,
+        },
+        Object {
+          "author": "talhasch",
+          "id": 13,
+          "permlink": "lorem ipsum",
+          "votes": 12,
+        },
+        Object {
+          "author": "chrisbolten",
+          "id": 14,
+          "permlink": "sit amet",
+          "votes": 3,
+        },
+      ],
+      "err": null,
+      "loading": true,
+    },
+  },
+}
+`;
+
+exports[`posts reducer (7) error occurred while fetching "trending". should handle POSTS_FETCH_ERROR 1`] = `
+Object {
+  "groups": Object {
+    "active": Object {
+      "data": Array [
+        Object {
+          "author": "foo",
+          "id": 18,
+          "permlink": "lorem ipsum",
+          "votes": 222,
+        },
+        Object {
+          "author": "good-karma",
+          "id": 12,
+          "permlink": "welcome to esteem",
+          "votes": 21,
+        },
+      ],
+      "err": null,
+      "loading": false,
+    },
+    "trending": Object {
+      "data": Array [
+        Object {
+          "author": "good-karma",
+          "id": 12,
+          "permlink": "welcome to esteem",
+          "votes": 5,
+        },
+        Object {
+          "author": "talhasch",
+          "id": 13,
+          "permlink": "lorem ipsum",
+          "votes": 12,
+        },
+        Object {
+          "author": "chrisbolten",
+          "id": 14,
+          "permlink": "sit amet",
+          "votes": 3,
+        },
+      ],
+      "err": "an error has occurred",
+      "loading": false,
+    },
+  },
+}
+`;
+
+exports[`posts reducer (8) start fetching "trending" (more) (again). should handle POSTS_FETCH_BEGIN 1`] = `
+Object {
+  "groups": Object {
+    "active": Object {
+      "data": Array [
+        Object {
+          "author": "foo",
+          "id": 18,
+          "permlink": "lorem ipsum",
+          "votes": 222,
+        },
+        Object {
+          "author": "good-karma",
+          "id": 12,
+          "permlink": "welcome to esteem",
+          "votes": 21,
+        },
+      ],
+      "err": null,
+      "loading": false,
+    },
+    "trending": Object {
+      "data": Array [
+        Object {
+          "author": "good-karma",
+          "id": 12,
+          "permlink": "welcome to esteem",
+          "votes": 5,
+        },
+        Object {
+          "author": "talhasch",
+          "id": 13,
+          "permlink": "lorem ipsum",
+          "votes": 12,
+        },
+        Object {
+          "author": "chrisbolten",
+          "id": 14,
+          "permlink": "sit amet",
+          "votes": 3,
+        },
+      ],
+      "err": null,
+      "loading": true,
+    },
+  },
+}
+`;
+
+exports[`posts reducer (9) refresh clicked for "trending". should handle POSTS_INVALIDATE 1`] = `
+Object {
+  "groups": Object {
+    "active": Object {
+      "data": Array [
+        Object {
+          "author": "foo",
+          "id": 18,
+          "permlink": "lorem ipsum",
+          "votes": 222,
+        },
+        Object {
+          "author": "good-karma",
+          "id": 12,
+          "permlink": "welcome to esteem",
+          "votes": 21,
+        },
+      ],
+      "err": null,
+      "loading": false,
+    },
+    "trending": Object {
+      "data": Array [],
+      "err": null,
+      "loading": true,
+    },
+  },
+}
+`;
