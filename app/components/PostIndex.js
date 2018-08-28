@@ -7,8 +7,8 @@ import {FormattedMessage} from 'react-intl'
 import {makeGroupKeyForPosts} from '../utils/misc';
 import styles from './PostIndex.less';
 // import PostListItem from './elements/PostListItem'
-import NavBar from './elements/NavBar'
-import AppFooter from './elements/AppFooter'
+import NavBar from './modules/NavBar'
+import AppFooter from './modules/AppFooter'
 import Mi from './elements/Mi'
 
 import DropDown from './elements/DropDown'

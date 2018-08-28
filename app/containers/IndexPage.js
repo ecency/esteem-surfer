@@ -1,13 +1,19 @@
 // @flow
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
+import React, {Component} from 'react';
 
-type Props = {};
+type Props = {
+    history: {}
+};
 
 export default class HomePage extends Component<Props> {
-  props: Props;
+    props: Props;
 
-  render() {
-      return <Redirect to='/trending' />;
-  }
+    componentWillMount() {
+        const {history} = this.props;
+        history.push('/trending');
+    }
+
+    render() {
+        return '<span />';
+    }
 }

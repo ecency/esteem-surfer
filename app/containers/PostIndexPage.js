@@ -9,7 +9,7 @@ function mapStateToProps(state) {
         selectedFilter: state.global.selectedFilter,
         selectedTag: state.global.selectedTag,
         posts: state.post,
-        pathname: state.pathname,
+        path: state.path,
         trendingTags: state.trendingTags
     };
 }

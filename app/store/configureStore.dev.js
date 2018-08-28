@@ -1,13 +1,13 @@
 import {createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
-import {createHashHistory} from 'history';
+import createHistory from 'history/createMemoryHistory';
 import {routerMiddleware, routerActions} from 'react-router-redux';
 import {createLogger} from 'redux-logger';
 import rootReducer from '../reducers';
 import * as postActions from '../actions/post';
 import * as trendingTagsActions from '../actions/trending-tags'
 
-const history = createHashHistory();
+const history = createHistory();
 
 const configureStore = (initialState?: {}) => {
     // Redux Configuration

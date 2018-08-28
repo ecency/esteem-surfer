@@ -17,7 +17,7 @@ export default class AppFooter extends Component<Props> {
             <div className={styles.appFooter}>
                 <div className={styles.votingPower}>
                     <div className={styles.battery}>
-                        <img src={batteryLogo}/>
+                        <img src={batteryLogo} alt="Voting Power"/>
                     </div>
                 </div>
                 <div className={styles.rightMenu}>
