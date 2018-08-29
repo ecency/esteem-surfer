@@ -4,6 +4,7 @@ import styles from './PostListItem.less';
 import UserAvatar from './UserAvatar';
 
 import catchPostImage from '../../utils/catch-post-image';
+import authorReputation from '../../utils/author-reputation';
 
 type Props = {
   post: {}
@@ -15,6 +16,7 @@ export default class PostListItem extends Component<Props> {
   render() {
     const { post } = this.props;
     const img = catchPostImage(post);
+    const reputation = authorReputation(post.author_reputation);
 
     return (
       <div className={styles.contentListItem}>
@@ -24,8 +26,10 @@ export default class PostListItem extends Component<Props> {
           </div>
 
           <span className={styles.author}>
-            {post.author} <span className={styles.authorReputation}>72</span>
+            {post.author}{' '}
+            <span className={styles.authorReputation}>{reputation}</span>
           </span>
+
           <span className={styles.contentCategory}>{post.parent_permlink}</span>
           <span className={styles.contentDate}>27 minutes ago</span>
         </div>
