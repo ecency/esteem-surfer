@@ -1,6 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import styles from './PostListItem.less';
+import UserAvatar from './UserAvatar';
 
 import catchPostImage from '../../utils/catch-post-image';
 
@@ -18,13 +19,10 @@ export default class PostListItem extends Component<Props> {
     return (
       <div className={styles.contentListItem}>
         <div className={styles.itemHeader}>
-          <span
-            className={styles.authorAvatar}
-            style={{
-              backgroundImage:
-                "url('https://steemitimages.com/u/good-karma/avatar/small')"
-            }}
-          />
+          <div className={styles.userAvatar}>
+            <UserAvatar user={post.author} size="small" />
+          </div>
+
           <span className={styles.author}>
             {post.author} <span className={styles.authorReputation}>72</span>
           </span>
