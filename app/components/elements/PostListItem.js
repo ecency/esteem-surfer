@@ -1,10 +1,13 @@
 // @flow
 import React, { Component } from 'react';
+import { FormattedRelative } from 'react-intl';
+
 import styles from './PostListItem.less';
 import UserAvatar from './UserAvatar';
 
 import catchPostImage from '../../utils/catch-post-image';
 import authorReputation from '../../utils/author-reputation';
+import { parseSteemDate } from '../../utils/date-utils';
 
 type Props = {
   post: {}
@@ -17,6 +20,7 @@ export default class PostListItem extends Component<Props> {
     const { post } = this.props;
     const img = catchPostImage(post);
     const reputation = authorReputation(post.author_reputation);
+    const created = parseSteemDate(post.created);
 
     return (
       <div className={styles.contentListItem}>
@@ -24,14 +28,14 @@ export default class PostListItem extends Component<Props> {
           <div className={styles.userAvatar}>
             <UserAvatar user={post.author} size="small" />
           </div>
-
           <span className={styles.author}>
             {post.author}{' '}
             <span className={styles.authorReputation}>{reputation}</span>
           </span>
-
           <span className={styles.contentCategory}>{post.parent_permlink}</span>
-          <span className={styles.contentDate}>27 minutes ago</span>
+          <span className={styles.contentDate}>
+            <FormattedRelative value={created} />
+          </span>
         </div>
         <div className={styles.itemBody}>
           <div className={styles.itemImage}>
