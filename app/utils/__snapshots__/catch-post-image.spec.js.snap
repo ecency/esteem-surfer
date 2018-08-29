@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`catch-post-image (1) Should extract post image from json_metadata 1`] = `"https://steemitimages.com/0x0/http://www.autonews.com/apps/pbcsi.dll/storyimage/CA/20180205/MOBILITY/180209919/AR/0/AR-180209919.jpg"`;
+
+exports[`catch-post-image (2) Should extract post image from json_metadata 1`] = `"https://steemitimages.com/0x0/https://i.imgur.com/NUt92kg.jpg"`;
+
+exports[`catch-post-image (3) Should extract nothing from json_metadata because there is no image field  1`] = `null`;
+
+exports[`catch-post-image (4) Should extract post image from image link 1`] = `"https://steemitimages.com/0x0/https://ipfs.io/ipfs/aa.png"`;
+
+exports[`catch-post-image (5) Should extract post image from img tag 1`] = `"https://steemitimages.com/0x0/https://ipfs.io/ipfs/QmaG5Dpg1XGiY7EyeMCwT8Dqw4GfiAaehq3hZadongniQc"`;
+
+exports[`catch-post-image (6) Should extract post image from markdown img tag 1`] = `"https://steemitimages.com/0x0/https://img.esteem.ws/ezrni9y9pw.jpg"`;
+
+exports[`catch-post-image (8) Should extract nothing 1`] = `null`;

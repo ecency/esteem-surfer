@@ -135,7 +135,7 @@ export default class PostIndex extends Component<Props> {
                 </a>
               </div>
               {postList.map(d => (
-                <PostListItem key={d.id} content={d} />
+                <PostListItem key={d.id} post={d} />
               ))}
             </div>
           </div>
