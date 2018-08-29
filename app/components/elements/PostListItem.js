@@ -8,6 +8,7 @@ import UserAvatar from './UserAvatar';
 import catchPostImage from '../../utils/catch-post-image';
 import authorReputation from '../../utils/author-reputation';
 import { parseSteemDate } from '../../utils/date-utils';
+import postSummary from '../../utils/post-summary';
 
 type Props = {
   post: {}
@@ -21,6 +22,7 @@ export default class PostListItem extends Component<Props> {
     const img = catchPostImage(post);
     const reputation = authorReputation(post.author_reputation);
     const created = parseSteemDate(post.created);
+    const summary = postSummary(post.body, 200);
 
     return (
       <div className={styles.contentListItem}>
@@ -43,7 +45,7 @@ export default class PostListItem extends Component<Props> {
           </div>
           <div className={styles.itemSummary}>
             <div className={styles.itemTitle}>{post.title}</div>
-            <div className={styles.itemBody} />
+            <div className={styles.itemBody}>{summary}</div>
           </div>
         </div>
       </div>
