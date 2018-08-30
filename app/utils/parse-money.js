@@ -1,3 +1,1 @@
-export default (strVal) => {
-    return Number(parseFloat(strVal.split(" ")[0]));
-};
+export default strVal => (Number(parseFloat(strVal.split(" ")[0])))

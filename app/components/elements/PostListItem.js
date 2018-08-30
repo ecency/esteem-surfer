@@ -32,10 +32,9 @@ export default class PostListItem extends Component<Props> {
                     <div className={styles.userAvatar}>
                         <UserAvatar user={post.author} size="small"/>
                     </div>
-                    <span className={styles.author}>
-            {post.author}{' '}
+                    <span className={styles.author}>{post.author}{' '}
                         <span className={styles.authorReputation}>{reputation}</span>
-          </span>
+                    </span>
                     <span className={styles.contentCategory}>{post.parent_permlink}</span>
                     <span className={styles.contentDate}>
             <FormattedRelative value={created}/>
