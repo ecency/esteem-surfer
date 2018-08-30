@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parse money (1) should parse 1`] = `18.494`;
+
+exports[`parse money (2) should parse 1`] = `0`;
