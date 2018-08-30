@@ -1,12 +1,9 @@
-.clearfix{
-  zoom:1;
-  &:before, &:after{ content:""; display:table; }
-  &:after{ clear: both; }
-}
+@import '../../mixin';
 
-.contentListItem {
+.postListItem {
   padding-bottom: 16px;
   margin-bottom: 19px;
+  padding-right: 38px;
   border-bottom:1px solid #e7e7e7;
 
   .itemHeader {
@@ -25,7 +22,6 @@
 
       .authorReputation {
         font-weight: 500;
-        font-size: 12px;
         color: #788187;
 
         &::before {
@@ -64,11 +60,11 @@
       height: 77px;
       overflow: hidden;
       margin-right: 17px;
-      border-radius: 4px;
 
       img {
         max-width: 100%;
         height: auto;
+        border-radius: 4px;
       }
     }
 
@@ -82,14 +78,12 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         width: 100%;
-
       }
 
       .itemTitle {
         font-weight: 700;
         color: #3c4449;
         margin-bottom: 9px;
-
       }
 
       .itemBody {

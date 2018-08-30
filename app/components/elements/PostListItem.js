@@ -25,7 +25,7 @@ export default class PostListItem extends Component<Props> {
     const summary = postSummary(post.body, 200);
 
     return (
-      <div className={styles.contentListItem}>
+      <div className={styles.postListItem}>
         <div className={styles.itemHeader}>
           <div className={styles.userAvatar}>
             <UserAvatar user={post.author} size="small" />

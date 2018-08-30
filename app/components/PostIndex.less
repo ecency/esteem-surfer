@@ -2,8 +2,8 @@
 
 .side {
   width: 208px;
-  flex-shrink: 0;
-  margin-right: 30px;
+  float: left;
+  margin-right: 50px;
   user-select: none;
 
   .btnPost {
@@ -62,8 +62,8 @@
 }
 
 .content {
-  flex-grow: 1;
-
+  float: right;
+  width: ~"calc(100% - 258px)";
   user-select: none;
 
   .postList {
@@ -74,6 +74,7 @@
       justify-content: space-between;
       height: 50px;
       padding: 0 15px;
+      margin-bottom: 26px;
 
       .filterSelect {
         align-items: center;
