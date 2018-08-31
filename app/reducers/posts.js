@@ -1,5 +1,7 @@
 // @flow
 
+import { LOCATION_CHANGE } from 'react-router-redux';
+
 import {
   POSTS_FETCH_BEGIN,
   POSTS_FETCH_OK,
@@ -8,6 +10,9 @@ import {
 } from '../actions/posts';
 
 import type { postActionType } from './types';
+
+import filters from '../constants/filters';
+import { makeGroupKeyForPosts } from '../utils/misc';
 
 const defaultState = {
   groups: {}
@@ -24,7 +29,7 @@ export default function posts(
 
       if (newState.groups[groupKey] === undefined) {
         newState.groups[groupKey] = {
-          data: [],
+          entries: [],
           err: null,
           loading: true
         };
@@ -39,7 +44,7 @@ export default function posts(
       const newState = JSON.parse(JSON.stringify(state));
       const groupKey = action.payload.group;
 
-      newState.groups[groupKey].data.push(...action.payload.data);
+      newState.groups[groupKey].entries.push(...action.payload.data);
       newState.groups[groupKey].err = null;
       newState.groups[groupKey].loading = false;
 
@@ -58,11 +63,33 @@ export default function posts(
       const groupKey = action.payload.group;
 
       newState.groups[groupKey] = {
-        data: [],
+        entries: [],
         err: null,
         loading: true
       };
       return newState;
+    }
+    case LOCATION_CHANGE: {
+      const path = action.payload.pathname.split('/');
+      if (path.length > 0 && filters.includes(path[1])) {
+        const newState = JSON.parse(JSON.stringify(state));
+
+        const filter = path[1];
+        const tag = path[2] || null;
+
+        const groupKey = makeGroupKeyForPosts(filter, tag);
+        if (newState.groups[groupKey] === undefined) {
+          newState.groups[groupKey] = {
+            entries: [],
+            err: null,
+            loading: false
+          };
+        }
+
+        return newState;
+      }
+
+      return state;
     }
     default:
       return state;

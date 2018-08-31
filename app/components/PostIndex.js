@@ -14,6 +14,7 @@ import ScrollReplace from './ScrollReplace';
 
 import DropDown from './elements/DropDown';
 import filters from '../constants/filters.json';
+import LinearProgress from './elements/LinearProgress';
 
 type Props = {
   actions: {
@@ -75,16 +76,12 @@ export default class PostIndex extends Component<Props> {
       location
     } = this.props;
 
+    const filterMenu = this.makeFilterMenu(selectedFilter);
     const groupKey = makeGroupKeyForPosts(selectedFilter, selectedTag);
 
-    let postList = [];
-    // let loading = false;
-    if (posts.groups[groupKey]) {
-      postList = [...posts.groups[groupKey].data];
-      // loading = posts.loading;
-    }
-
-    const filterMenu = this.makeFilterMenu(selectedFilter);
+    const data = posts.groups[groupKey];
+    const postList = [...data.entries];
+    const { loading } = data;
 
     return (
       <div className="wrapper">
@@ -136,9 +133,12 @@ export default class PostIndex extends Component<Props> {
                   <Mi icon="view_module" />
                 </a>
               </div>
+
               {postList.map(d => (
                 <PostListItem key={d.id} post={d} />
               ))}
+
+              {loading ? <LinearProgress /> : ''}
             </div>
           </div>
         </div>

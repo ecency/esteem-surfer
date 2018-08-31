@@ -23,13 +23,9 @@ export function fetchPosts(
     dispatch: (action: postActionType) => void,
     getState: () => postStateType
   ) => {
-    const { posts } = getState();
+    const { posts } = getState(); /* eslint-disable-line */
 
     const groupKey = makeGroupKeyForPosts(what, tag);
-
-    if (posts.groups[groupKey] !== undefined) {
-      return;
-    }
 
     dispatch({
       type: POSTS_FETCH_BEGIN,
