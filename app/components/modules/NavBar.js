@@ -1,14 +1,16 @@
 // @flow
+/* eslint-disable jsx-a11y/anchor-has-content */
+
 import React, { Component } from 'react';
 import { Tooltip } from 'antd';
-import { Link } from 'react-router-dom';
 
 import styles from './Navbar.less';
 import Mi from '../elements/Mi';
 
 type Props = {
   selectedFilter: string,
-  history: {}
+  history: {},
+  location: {}
 };
 
 export const checkPathForBack = path => {
@@ -34,8 +36,21 @@ export default class NavBar extends Component<Props> {
     history.goForward();
   };
 
+  logoClicked = () => {
+    const { location, selectedFilter } = this.props;
+    const newLoc = `/${selectedFilter}`;
+
+    if (newLoc === location.pathname) {
+      document.querySelector('#scrollMain').scrollTop = 0;
+      return;
+    }
+
+    const { history } = this.props;
+    history.push(newLoc);
+  };
+
   render() {
-    const { history, selectedFilter } = this.props;
+    const { history } = this.props;
 
     let canGoBack = false;
     if (history.entries[history.index - 1]) {
@@ -53,7 +68,14 @@ export default class NavBar extends Component<Props> {
     return (
       <div className={styles.navBar}>
         <div className={styles.navBarInner}>
-          <Link to={`/${selectedFilter}`} className={styles.logo} />
+          <a
+            onClick={() => {
+              this.logoClicked();
+            }}
+            className={styles.logo}
+            role="none"
+            tabIndex="-1"
+          />
           <div className={styles.navControls}>
             <a
               className={backClassName}

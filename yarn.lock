@@ -9315,6 +9315,10 @@ react-router-redux@^5.0.0-alpha.6:
     prop-types "^15.6.0"
     react-router "^4.2.0"
 
+react-router-scroll-memory@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-router-scroll-memory/-/react-router-scroll-memory-1.0.2.tgz#59817dffe4537fe226945193c8cfa28a6b243d9f"
+
 react-router@^4.2.0, react-router@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.3.1.tgz#aada4aef14c809cb2e686b05cee4742234506c4e"

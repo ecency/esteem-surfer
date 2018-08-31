@@ -10,6 +10,7 @@ import PostListItem from './elements/PostListItem';
 import NavBar from './modules/NavBar';
 import AppFooter from './modules/AppFooter';
 import Mi from './elements/Mi';
+import ScrollReplace from './ScrollReplace';
 
 import DropDown from './elements/DropDown';
 import filters from '../constants/filters.json';
@@ -38,9 +39,6 @@ export default class PostIndex extends Component<Props> {
 
     if (location !== prevProps.location) {
       this.startFetch();
-
-      // Scroll main container to top
-      document.querySelector('.appContainer').scrollTop = 0;
     }
   }
 
@@ -90,9 +88,13 @@ export default class PostIndex extends Component<Props> {
 
     return (
       <div className="wrapper">
+        <ScrollReplace
+          {...Object.assign({}, this.props, { selector: '#scrollMain' })}
+        />
+
         <NavBar {...this.props} />
 
-        <div className="appContainer">
+        <div className="appContainer" id="scrollMain">
           <div className={styles.side}>
             <div className={styles.btnPost}>
               <span className={styles.icon}>
