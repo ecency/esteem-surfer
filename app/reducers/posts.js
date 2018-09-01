@@ -1,25 +1,27 @@
 // @flow
 
+import { Record, Map, OrderedMap } from 'immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
-
 import {
   POSTS_FETCH_BEGIN,
   POSTS_FETCH_OK,
   POSTS_FETCH_ERROR,
   POSTS_INVALIDATE
 } from '../actions/posts';
-
 import type { postActionType } from './types';
-
-import filters from '../constants/filters';
+import filters from '../constants/filters.json';
 import { makeGroupKeyForPosts } from '../utils/misc';
 
-const defaultState = {
-  groups: {}
-};
+export const PostGroupRecord = Record({
+  entries: OrderedMap({}),
+  err: null,
+  loading: false
+});
+
+const defaultState = Map();
 
 export default function posts(
-  state: {} = defaultState,
+  state: Map = defaultState,
   action: postActionType
 ) {
   switch (action.type) {
@@ -27,67 +29,55 @@ export default function posts(
       // Create post group when location changed
       const path = action.payload.pathname.split('/');
       if (path.length > 0 && filters.includes(path[1])) {
-        const newState = JSON.parse(JSON.stringify(state));
-
         const filter = path[1];
         const tag = path[2] || null;
 
         const groupKey = makeGroupKeyForPosts(filter, tag);
-        if (newState.groups[groupKey] === undefined) {
-          newState.groups[groupKey] = {
-            entries: [],
-            err: null,
-            loading: false
-          };
+        if (state.get(groupKey) === undefined) {
+          return state.set(groupKey, new PostGroupRecord());
         }
-
-        return newState;
       }
 
       return state;
     }
     case POSTS_FETCH_BEGIN: {
-      const newState = JSON.parse(JSON.stringify(state));
       const groupKey = action.payload.group;
 
-      newState.groups[groupKey].err = null;
-      newState.groups[groupKey].loading = true;
-
-      return newState;
+      return state
+        .setIn([groupKey, 'err'], null)
+        .setIn([groupKey, 'loading'], true);
     }
     case POSTS_FETCH_OK: {
-      const newState = JSON.parse(JSON.stringify(state));
       const groupKey = action.payload.group;
-      const { entries } = newState.groups[groupKey];
+      const newEntries = action.payload.data;
 
-      const newEntries = action.payload.data.filter(
-        x => entries.filter(y => x.id === y.id).length === 0
-      );
+      let newState = state
+        .setIn([groupKey, 'err'], null)
+        .setIn([groupKey, 'loading'], false);
 
-      newState.groups[groupKey].entries.push(...newEntries);
-      newState.groups[groupKey].err = null;
-      newState.groups[groupKey].loading = false;
+      newEntries.forEach(entry => {
+        if (!newState.hasIn([groupKey, 'entries', `${entry.id}`])) {
+          newState = newState.setIn(
+            [groupKey, 'entries', `${entry.id}`],
+            entry
+          );
+        }
+      });
 
       return newState;
     }
     case POSTS_FETCH_ERROR: {
-      const newState = JSON.parse(JSON.stringify(state));
       const groupKey = action.payload.group;
-
-      newState.groups[groupKey].err = action.payload.error;
-      newState.groups[groupKey].loading = false;
-      return newState;
+      return state
+        .setIn([groupKey, 'err'], action.payload.error)
+        .setIn([groupKey, 'loading'], false);
     }
     case POSTS_INVALIDATE: {
-      const newState = JSON.parse(JSON.stringify(state));
       const groupKey = action.payload.group;
-
-      newState.groups[groupKey] = {
-        entries: [],
-        err: null,
-        loading: true
-      };
-      return newState;
+      return state
+        .setIn([groupKey, 'entries'], OrderedMap({}))
+        .setIn([groupKey, 'err'], null)
+        .setIn([groupKey, 'loading'], false);
     }
     default:
       return state;

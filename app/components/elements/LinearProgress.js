@@ -4,7 +4,7 @@ import styles from './LinearProgress.less';
 
 type Props = {};
 
-export default class Mi extends Component<Props> {
+export default class LinearProgress extends Component<Props> {
   props: Props;
 
   render() {

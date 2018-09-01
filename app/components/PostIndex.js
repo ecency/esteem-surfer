@@ -19,11 +19,13 @@ import LinearProgress from './elements/LinearProgress';
 type Props = {
   actions: {
     fetchPosts: () => void,
-    fetchTrendingTags: () => void
+    fetchTrendingTags: () => void,
+    invalidatePosts: () => void
   },
   posts: {},
   trendingTags: {},
   location: {},
+  history: {},
   selectedFilter: string,
   selectedTag: string | null
 };
@@ -31,8 +33,20 @@ type Props = {
 export default class PostIndex extends Component<Props> {
   props: Props;
 
+  constructor(props: Props) {
+    super(props);
+
+    this.detectScroll = this.detectScroll.bind(this);
+    this.refresh = this.refresh.bind(this);
+  }
+
   componentDidMount() {
     this.startFetch();
+
+    this.scrollEl = document.querySelector('#scrollMain');
+    if (this.scrollEl) {
+      this.scrollEl.addEventListener('scroll', this.detectScroll);
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -67,21 +81,60 @@ export default class PostIndex extends Component<Props> {
     );
   };
 
+  detectScroll() {
+    if (
+      this.scrollEl.scrollTop + this.scrollEl.offsetHeight + 100 >=
+      this.scrollEl.scrollHeight
+    ) {
+      this.bottomReached();
+    }
+  }
+
+  bottomReached() {
+    const { posts, selectedFilter, selectedTag } = this.props;
+
+    const groupKey = makeGroupKeyForPosts(selectedFilter, selectedTag);
+    const data = posts.get(groupKey);
+    const loading = data.get('loading');
+
+    if (!loading) {
+      this.startFetch();
+    }
+  }
+
+  refresh() {
+    const { selectedFilter, selectedTag } = this.props;
+    const { actions } = this.props;
+    actions.invalidatePosts(selectedFilter, selectedTag);
+    actions.fetchPosts(selectedFilter, selectedTag);
+  }
+
   render() {
     const {
       posts,
       trendingTags,
       selectedFilter,
       selectedTag,
-      location
+      location,
+      history
     } = this.props;
 
     const filterMenu = this.makeFilterMenu(selectedFilter);
     const groupKey = makeGroupKeyForPosts(selectedFilter, selectedTag);
 
-    const data = posts.groups[groupKey];
-    const postList = [...data.entries];
-    const { loading } = data;
+    const data = posts.get(groupKey);
+    const postList = data.get('entries');
+    const loading = data.get('loading');
+
+    const navBarProps = {
+      selectedFilter,
+      history,
+      location,
+      reloadFn: this.refresh,
+      reloading: loading
+    };
+
+    const listCls = `${styles.postList} ${loading ? styles.loading : ''}`;
 
     return (
       <div className="wrapper">
@@ -89,7 +142,7 @@ export default class PostIndex extends Component<Props> {
           {...Object.assign({}, this.props, { selector: '#scrollMain' })}
         />
 
-        <NavBar {...this.props} />
+        <NavBar {...navBarProps} />
 
         <div className="appContainer" id="scrollMain">
           <div className={styles.side}>
@@ -119,7 +172,7 @@ export default class PostIndex extends Component<Props> {
           </div>
 
           <div className={styles.content}>
-            <div className={styles.postList}>
+            <div className={listCls}>
               <div className={styles.postListHeader}>
                 <div className={styles.filterSelect}>
                   <span className={styles.label}>
@@ -133,10 +186,11 @@ export default class PostIndex extends Component<Props> {
                   <Mi icon="view_module" />
                 </a>
               </div>
-
-              {postList.map(d => (
-                <PostListItem key={d.id} post={d} />
-              ))}
+              <div className={styles.postListBody}>
+                {postList.valueSeq().map(d => (
+                  <PostListItem key={d.id} post={d} />
+                ))}
+              </div>
 
               {loading ? <LinearProgress /> : ''}
             </div>

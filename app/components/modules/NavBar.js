@@ -10,7 +10,9 @@ import Mi from '../elements/Mi';
 type Props = {
   selectedFilter: string,
   history: {},
-  location: {}
+  location: {},
+  reloadFn: () => *,
+  reloading: boolean
 };
 
 export const checkPathForBack = path => {
@@ -36,6 +38,12 @@ export default class NavBar extends Component<Props> {
     history.goForward();
   };
 
+  refresh = () => {
+    const { reloadFn } = this.props;
+
+    reloadFn();
+  };
+
   logoClicked = () => {
     const { location, selectedFilter } = this.props;
     const newLoc = `/${selectedFilter}`;
@@ -50,7 +58,7 @@ export default class NavBar extends Component<Props> {
   };
 
   render() {
-    const { history } = this.props;
+    const { history, reloading } = this.props;
 
     let canGoBack = false;
     if (history.entries[history.index - 1]) {
@@ -63,6 +71,9 @@ export default class NavBar extends Component<Props> {
     const backClassName = `${styles.back} ${!canGoBack ? styles.disabled : ''}`;
     const forwardClassName = `${styles.forward} ${
       !canGoForward ? styles.disabled : ''
+    }`;
+    const reloadClassName = `${styles.reload} ${
+      reloading ? styles.disabled : ''
     }`;
 
     return (
@@ -91,7 +102,11 @@ export default class NavBar extends Component<Props> {
             >
               <Mi icon="arrow_forward" />
             </a>
-            <a className={styles.reload}>
+            <a
+              className={reloadClassName}
+              onClick={e => this.refresh(e)}
+              role="none"
+            >
               <Mi icon="refresh" />
             </a>
           </div>
