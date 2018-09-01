@@ -23,28 +23,48 @@ export default function posts(
   action: postActionType
 ) {
   switch (action.type) {
+    case LOCATION_CHANGE: {
+      // Create post group when location changed
+      const path = action.payload.pathname.split('/');
+      if (path.length > 0 && filters.includes(path[1])) {
+        const newState = JSON.parse(JSON.stringify(state));
+
+        const filter = path[1];
+        const tag = path[2] || null;
+
+        const groupKey = makeGroupKeyForPosts(filter, tag);
+        if (newState.groups[groupKey] === undefined) {
+          newState.groups[groupKey] = {
+            entries: [],
+            err: null,
+            loading: false
+          };
+        }
+
+        return newState;
+      }
+
+      return state;
+    }
     case POSTS_FETCH_BEGIN: {
       const newState = JSON.parse(JSON.stringify(state));
       const groupKey = action.payload.group;
 
-      if (newState.groups[groupKey] === undefined) {
-        newState.groups[groupKey] = {
-          entries: [],
-          err: null,
-          loading: true
-        };
-      } else {
-        newState.groups[groupKey].err = null;
-        newState.groups[groupKey].loading = true;
-      }
+      newState.groups[groupKey].err = null;
+      newState.groups[groupKey].loading = true;
 
       return newState;
     }
     case POSTS_FETCH_OK: {
       const newState = JSON.parse(JSON.stringify(state));
       const groupKey = action.payload.group;
+      const { entries } = newState.groups[groupKey];
 
-      newState.groups[groupKey].entries.push(...action.payload.data);
+      const newEntries = action.payload.data.filter(
+        x => entries.filter(y => x.id === y.id).length === 0
+      );
+
+      newState.groups[groupKey].entries.push(...newEntries);
       newState.groups[groupKey].err = null;
       newState.groups[groupKey].loading = false;
 
@@ -68,28 +88,6 @@ export default function posts(
         loading: true
       };
       return newState;
-    }
-    case LOCATION_CHANGE: {
-      const path = action.payload.pathname.split('/');
-      if (path.length > 0 && filters.includes(path[1])) {
-        const newState = JSON.parse(JSON.stringify(state));
-
-        const filter = path[1];
-        const tag = path[2] || null;
-
-        const groupKey = makeGroupKeyForPosts(filter, tag);
-        if (newState.groups[groupKey] === undefined) {
-          newState.groups[groupKey] = {
-            entries: [],
-            err: null,
-            loading: false
-          };
-        }
-
-        return newState;
-      }
-
-      return state;
     }
     default:
       return state;
