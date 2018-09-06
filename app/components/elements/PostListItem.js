@@ -7,7 +7,7 @@ import UserAvatar from './UserAvatar';
 
 import catchPostImage from '../../utils/catch-post-image';
 import authorReputation from '../../utils/author-reputation';
-import { parseSteemDate } from '../../utils/date-utils';
+import parseDate from '../../utils/parse-date';
 import postSummary from '../../utils/post-summary';
 import sumTotal from '../../utils/sum-total';
 import appName from '../../utils/app-name';
@@ -23,7 +23,7 @@ export default class PostListItem extends Component<Props> {
     const { post } = this.props;
     const img = catchPostImage(post);
     const reputation = authorReputation(post.author_reputation);
-    const created = parseSteemDate(post.created);
+    const created = parseDate(post.created);
     const summary = postSummary(post.body, 200);
     const postTotal = sumTotal(post).toFixed(2);
     const voteCount = post.active_votes.length;
