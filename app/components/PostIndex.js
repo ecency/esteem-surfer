@@ -57,11 +57,11 @@ export default class PostIndex extends Component<Props> {
     }
   }
 
-  startFetch = () => {
+  startFetch = (more: boolean = false) => {
     const { selectedFilter, selectedTag } = this.props;
     const { actions } = this.props;
 
-    actions.fetchPosts(selectedFilter, selectedTag);
+    actions.fetchPosts(selectedFilter, selectedTag, more);
     actions.fetchTrendingTags();
   };
 
@@ -98,7 +98,7 @@ export default class PostIndex extends Component<Props> {
     const loading = data.get('loading');
 
     if (!loading) {
-      this.startFetch();
+      this.startFetch(true);
     }
   }
 
@@ -107,6 +107,8 @@ export default class PostIndex extends Component<Props> {
     const { actions } = this.props;
     actions.invalidatePosts(selectedFilter, selectedTag);
     actions.fetchPosts(selectedFilter, selectedTag);
+
+    this.scrollEl.scrollTop = 0;
   }
 
   render() {

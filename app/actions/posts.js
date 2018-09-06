@@ -12,7 +12,11 @@ export const POST_SET_VOTED = 'POST_SET_VOTED';
 
 const client = new Client('https://api.steemit.com');
 
-export function fetchPosts(what, tag = '', limit = 20) {
+export function fetchPosts(
+  what: string,
+  tag: string | null = '',
+  more: boolean = false
+) {
   return (
     dispatch: (action: postActionType) => void,
     getState: () => postStateType
@@ -21,35 +25,30 @@ export function fetchPosts(what, tag = '', limit = 20) {
 
     const groupKey = makeGroupKeyForPosts(what, tag);
 
-    let startAuthor = null;
-    let startPermalink = null;
-    let isMore = false;
+    // make sure tag is not null or undefined. it should be empty string.
+    const query = {
+      tag: tag || '',
+      limit: 20
+    };
+
+    if (!more && posts.getIn([groupKey, 'entries']).size) {
+      return;
+    }
 
     const lastEntry = posts
       .getIn([groupKey, 'entries'])
       .valueSeq()
       .last();
+
     if (lastEntry) {
-      startAuthor = lastEntry.author;
-      startPermalink = lastEntry.permlink;
-      isMore = true;
+      query.start_author = lastEntry.author;
+      query.start_permlink = lastEntry.permlink;
     }
 
     dispatch({
       type: POSTS_FETCH_BEGIN,
       payload: { group: groupKey }
     });
-
-    // make sure tag is not null or undefined. it should be empty string.
-    const query = {
-      tag: tag || '',
-      limit
-    };
-
-    if (isMore) {
-      query.start_author = startAuthor;
-      query.start_permlink = startPermalink;
-    }
 
     client.database
       .getDiscussions(what, query)
