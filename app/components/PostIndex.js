@@ -146,13 +146,6 @@ export default class PostIndex extends Component<Props> {
 
         <div className="appContainer" id="scrollMain">
           <div className={styles.side}>
-            <div className={styles.btnPost}>
-              <span className={styles.icon}>
-                <Mi icon="edit" />
-              </span>
-              <FormattedMessage id="g.create-post" />
-            </div>
-
             <div className={styles.tagList}>
               <div className={styles.tagListHeader}>
                 <FormattedMessage id="post-index.tags" />

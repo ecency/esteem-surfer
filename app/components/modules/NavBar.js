@@ -3,6 +3,7 @@
 
 import React, { Component } from 'react';
 import { Tooltip } from 'antd';
+import { FormattedMessage } from 'react-intl';
 
 import styles from './Navbar.less';
 import Mi from '../elements/Mi';
@@ -25,6 +26,40 @@ export const checkPathForBack = path => {
 
 export default class NavBar extends Component<Props> {
   props: Props;
+
+  constructor(props: Props) {
+    super(props);
+
+    this.state = { miniBtnVisible: false };
+    this.detectScroll = this.detectScroll.bind(this);
+  }
+
+  componentDidMount() {
+    this.scrollEl = document.querySelector('#scrollMain');
+    if (this.scrollEl) {
+      this.scrollEl.addEventListener('scroll', this.detectScroll);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { location } = this.props;
+
+    if (location !== prevProps.location) {
+      this.detectScroll();
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.scrollEl) {
+      this.scrollEl.removeEventListener('scroll', this.detectScroll);
+    }
+  }
+
+  detectScroll() {
+    this.setState({
+      miniBtnVisible: this.scrollEl.scrollTop >= 40
+    });
+  }
 
   goBack = () => {
     const { history } = this.props;
@@ -76,8 +111,21 @@ export default class NavBar extends Component<Props> {
       reloading ? styles.disabled : ''
     }`;
 
+    const { miniBtnVisible } = this.state;
+
     return (
       <div className={styles.navBar}>
+        <div
+          className={`${styles.btnPost}  ${
+            !miniBtnVisible ? styles.visible : ''
+          }`}
+        >
+          <span className={styles.icon}>
+            <Mi icon="edit" />
+          </span>
+          <FormattedMessage id="g.create-post" />
+        </div>
+
         <div className={styles.navBarInner}>
           <a
             onClick={() => {
@@ -87,6 +135,15 @@ export default class NavBar extends Component<Props> {
             role="none"
             tabIndex="-1"
           />
+          <div
+            className={`${styles.btnPostMini}  ${
+              miniBtnVisible ? styles.visible : ''
+            }`}
+          >
+            <span className={styles.icon}>
+              <Mi icon="edit" />
+            </span>
+          </div>
           <div className={styles.navControls}>
             <a
               className={backClassName}
