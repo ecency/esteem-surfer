@@ -2,7 +2,7 @@ $primary-color: #357ce6;
 $primary-1: #eaf2fc;
 
 .post-index {
-  .side {
+  .post-index-side {
     width: 208px;
     float: left;
     margin-right: 50px;
@@ -37,7 +37,7 @@ $primary-1: #eaf2fc;
     }
   }
 
-  .content {
+  .post-index-content {
     float: right;
     width: calc(100% - 258px);
     user-select: none;

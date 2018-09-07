@@ -148,7 +148,7 @@ export default class PostIndex extends Component<Props> {
         <NavBar {...navBarProps} />
 
         <div className="app-content post-index" id="app-content">
-          <div className="side">
+          <div className="post-index-side">
             <div className="tag-list">
               <div className="tag-list-header">
                 <FormattedMessage id="post-index.tags" />
@@ -167,7 +167,7 @@ export default class PostIndex extends Component<Props> {
             </div>
           </div>
 
-          <div className="content">
+          <div className="post-index-content">
             <div className={listCls}>
               <div className="post-list-header">
                 <div className="filter-select">
