@@ -11,6 +11,7 @@ type Props = {
   selectedFilter: string,
   history: {},
   location: {},
+  changeThemeFn: () => *,
   reloadFn: () => *,
   reloading: boolean
 };
@@ -76,6 +77,12 @@ export default class NavBar extends Component<Props> {
     const { reloadFn } = this.props;
 
     reloadFn();
+  };
+
+  changeTheme = () => {
+    const { changeThemeFn } = this.props;
+
+    changeThemeFn();
   };
 
   logoClicked = () => {
@@ -167,7 +174,14 @@ export default class NavBar extends Component<Props> {
             </div>
           </div>
           <div className="alt-controls">
-            <a className="switch-theme">
+            <a
+              className="switch-theme"
+              onClick={() => {
+                this.changeTheme();
+              }}
+              role="none"
+              tabIndex="-1"
+            >
               <Mi icon="brightness_medium" />
             </a>
           </div>

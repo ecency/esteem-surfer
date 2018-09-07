@@ -21,7 +21,8 @@ type Props = {
   actions: {
     fetchPosts: () => void,
     fetchTrendingTags: () => void,
-    invalidatePosts: () => void
+    invalidatePosts: () => void,
+    changeTheme: () => void
   },
   posts: {},
   trendingTags: {},
@@ -119,7 +120,8 @@ export default class PostIndex extends Component<Props> {
       selectedFilter,
       selectedTag,
       location,
-      history
+      history,
+      actions
     } = this.props;
 
     const filterMenu = this.makeFilterMenu(selectedFilter);
@@ -133,6 +135,7 @@ export default class PostIndex extends Component<Props> {
       selectedFilter,
       history,
       location,
+      changeThemeFn: actions.changeTheme,
       reloadFn: this.refresh,
       reloading: loading
     };

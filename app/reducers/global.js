@@ -1,7 +1,8 @@
 // @flow
 
 import { LOCATION_CHANGE } from 'react-router-redux';
-
+import { THEME_CHANGED } from '../actions/global';
+import { GlobalActionType } from './types';
 import filters from '../constants/filters.json';
 
 const defaultState = {
@@ -10,7 +11,10 @@ const defaultState = {
   theme: 'day'
 };
 
-export default function global(state: {} = defaultState, action: object) {
+export default function global(
+  state: {} = defaultState,
+  action: GlobalActionType
+) {
   switch (action.type) {
     case LOCATION_CHANGE: {
       const path = action.payload.pathname.split('/');
@@ -25,6 +29,12 @@ export default function global(state: {} = defaultState, action: object) {
       }
 
       return state;
+    }
+    case THEME_CHANGED: {
+      const { newTheme } = action.payload;
+      return Object.assign({}, state, {
+        theme: newTheme
+      });
     }
     default:
       return state;
