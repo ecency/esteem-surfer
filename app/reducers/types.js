@@ -1,12 +1,12 @@
+export type commonActionType = {
+  type: string,
+  payload?: {}
+};
+
 export type postStateType = {
   +list: [],
   +groups: {},
   +loading: boolean
-};
-
-export type postActionType = {
-  type: string,
-  payload?: {}
 };
 
 export type TtStateType = {
@@ -15,14 +15,4 @@ export type TtStateType = {
   +error: boolean
 };
 
-export type TtActionType = {
-  type: string,
-  payload?: {}
-};
-
 export type GlobalStateType = {};
-
-export type GlobalActionType = {
-  type: string,
-  payload?: {}
-};

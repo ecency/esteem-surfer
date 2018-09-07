@@ -1,11 +1,11 @@
 // @flow
-import type { GlobalStateType, GlobalActionType } from '../reducers/types';
+import type { GlobalStateType, commonActionType } from '../reducers/types';
 
 export const THEME_CHANGED = 'THEME_CHANGED';
 
 export function changeTheme() {
   return (
-    dispatch: (action: GlobalActionType) => void,
+    dispatch: (action: commonActionType) => void,
     getState: () => GlobalStateType
   ) => {
     const { global } = getState();

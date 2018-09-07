@@ -1,7 +1,7 @@
 // @flow
 import { Client } from 'dsteem';
 import { makeGroupKeyForPosts } from '../utils/misc';
-import type { postStateType, postActionType } from '../reducers/types';
+import type { postStateType, commonActionType } from '../reducers/types';
 
 export const POSTS_FETCH_BEGIN = 'POSTS_FETCH_BEGIN';
 export const POSTS_FETCH_OK = 'POSTS_FETCH_OK';
@@ -18,7 +18,7 @@ export function fetchPosts(
   more: boolean = false
 ) {
   return (
-    dispatch: (action: postActionType) => void,
+    dispatch: (action: commonActionType) => void,
     getState: () => postStateType
   ) => {
     const { posts } = getState();
@@ -70,7 +70,7 @@ export function fetchPosts(
 }
 
 export function invalidatePosts(what, tag = '') {
-  return (dispatch: (action: postActionType) => void) => {
+  return (dispatch: (action: commonActionType) => void) => {
     const groupKey = makeGroupKeyForPosts(what, tag);
 
     dispatch({

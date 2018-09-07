@@ -2,7 +2,7 @@
 
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { THEME_CHANGED } from '../actions/global';
-import { GlobalActionType } from './types';
+import { commonActionType } from './types';
 import filters from '../constants/filters.json';
 
 const defaultState = {
@@ -13,7 +13,7 @@ const defaultState = {
 
 export default function global(
   state: {} = defaultState,
-  action: GlobalActionType
+  action: commonActionType
 ) {
   switch (action.type) {
     case LOCATION_CHANGE: {

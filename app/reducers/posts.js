@@ -8,7 +8,7 @@ import {
   POSTS_FETCH_ERROR,
   POSTS_INVALIDATE
 } from '../actions/posts';
-import type { postActionType } from './types';
+import type { commonActionType } from './types';
 import filters from '../constants/filters.json';
 import { makeGroupKeyForPosts } from '../utils/misc';
 
@@ -22,7 +22,7 @@ const defaultState = Map();
 
 export default function posts(
   state: Map = defaultState,
-  action: postActionType
+  action: commonActionType
 ) {
   switch (action.type) {
     case LOCATION_CHANGE: {
