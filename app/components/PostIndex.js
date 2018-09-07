@@ -15,6 +15,7 @@ import DropDown from './elements/DropDown';
 import ScrollReplace from './ScrollReplace';
 
 import NavBar from './modules/NavBar';
+import AppFooter from './modules/AppFooter';
 
 type Props = {
   actions: {
@@ -43,7 +44,7 @@ export default class PostIndex extends Component<Props> {
   componentDidMount() {
     this.startFetch();
 
-    this.scrollEl = document.querySelector('#scrollMain');
+    this.scrollEl = document.querySelector('#app-content');
     if (this.scrollEl) {
       this.scrollEl.addEventListener('scroll', this.detectScroll);
     }
@@ -190,6 +191,7 @@ export default class PostIndex extends Component<Props> {
             </div>
           </div>
         </div>
+        <AppFooter />
       </div>
     );
   }

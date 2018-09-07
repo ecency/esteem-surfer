@@ -1,4 +1,4 @@
-.appFooter {
+.app-footer {
   align-items: center;
   background-color: #f5f5f5;
   display: flex;
@@ -8,7 +8,7 @@
   flex-shrink: 0;
   user-select: none;
 
-  .votingPower {
+  .voting-power {
     .battery {
       img {
         width: 20px;
@@ -18,7 +18,7 @@
     }
   }
 
-  .rightMenu {
+  .right-menu {
     font-size: 12px;
 
     a {
@@ -28,7 +28,7 @@
         margin-right: 8px;
         &::after {
           padding-left: 8px;
-          content: '|'
+          content: '|';
         }
       }
 
