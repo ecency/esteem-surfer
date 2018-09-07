@@ -1,4 +1,4 @@
-
+@import '../../node_modules/typeface-roboto/index.css';
 
 html {
   /* Adjust font size */
@@ -12,7 +12,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
-  text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+  text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
 }
 
 #root {
@@ -22,6 +22,7 @@ html {
   position: absolute;
   top: 0;
   width: 100%;
+  background: #fff;
 }
 
 .wrapper {
@@ -29,14 +30,13 @@ html {
   width: 100%;
 }
 
-.appContainer {
-  height: ~"calc(100% - 85px - 32px)";
+.app-content {
+  height: calc(100% - 85px - 32px);
   overflow-y: auto;
 }
 
-
 /* Material Icons */
-@import "~material-design-icons/iconfont/material-icons.css";
+@import '../../node_modules/material-design-icons/iconfont/material-icons.css';
 
 .mi {
   font-family: 'Material Icons';
@@ -74,3 +74,14 @@ html {
     -webkit-transform: rotate(90deg);
   }
 }
+
+@import '../components/elements/DropDown';
+@import '../components/elements/LinearProgress';
+
+@import '../components/modules/Navbar';
+
+@import '../components/PostIndex';
+
+@import '../components/elements/PostListItem';
+
+@import '../components/elements/UserAvatar';

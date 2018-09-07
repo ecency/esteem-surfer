@@ -1,25 +1,23 @@
 // @flow
-import React, {Component} from 'react';
-import styles from './Mi.less';
+import React, { Component } from 'react';
 
 type Props = {
-    icon: string,
-    rotatedRight?: boolean
+  icon: string,
+  rotatedRight?: boolean
 };
 
 export default class Mi extends Component<Props> {
-    props: Props;
+  props: Props;
 
+  static defaultProps = {
+    rotatedRight: false
+  };
 
-    render() {
-        const {rotatedRight} = this.props;
+  render() {
+    const { icon, rotatedRight } = this.props;
 
-        let className = styles.mi;
+    const className = `mi ${rotatedRight ? 'rotated-right' : ''}`;
 
-        if (rotatedRight) className += ' ' + styles.miRotatedRight;
-
-        return (
-            <i className={className}>{this.props.icon}</i>
-        );
-    }
+    return <i className={className}>{icon}</i>;
+  }
 }

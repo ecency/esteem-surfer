@@ -1,0 +1,29 @@
+$primary-color: #357ce6;
+$primary-1: #eaf2fc;
+
+.drop-down-caret {
+  align-items: center;
+  border-radius: 50%;
+  color: $primary-color;
+  display: flex;
+  background: transparent;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  transition: 0.5s;
+
+  &:hover,
+  &.hover {
+    background: $primary-1;
+  }
+}
+
+.day-theme {
+  .drop-down-caret {
+  }
+}
+
+.night-theme {
+  .drop-down-caret {
+  }
+}

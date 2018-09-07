@@ -1,7 +1,9 @@
-@import '../../mixin';
-@import '../../variables';
+@import '../../style/mixin';
 
-.postListItem {
+$primary-color: #357ce6;
+$primary-1: #eaf2fc;
+
+.post-list-item {
   padding-bottom: 16px;
   padding-right: 38px;
   border-bottom: 1px solid #e7e7e7;
@@ -11,15 +13,13 @@
     border-bottom-color: transparent;
   }
 
-
-
-  .itemHeader {
+  .item-header {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-bottom: 10px;
 
-    .userAvatar {
+    .author-avatar {
       margin-right: 12px;
     }
 
@@ -27,7 +27,7 @@
       font-weight: 700;
       margin-right: 10px;
 
-      .authorReputation {
+      .author-reputation {
         font-weight: 500;
         color: #788187;
 
@@ -41,7 +41,7 @@
       }
     }
 
-    .contentCategory {
+    .category {
       color: #fff;
       margin-right: 12px;
       border-radius: 25px;
@@ -50,16 +50,15 @@
       font-size: 12px;
     }
 
-    .contentDate {
+    .date {
       color: #788187;
-
     }
   }
 
-  .itemBody {
-    .clearfix;
+  .item-body {
+    @include clearfix();
 
-    .itemImage {
+    .item-image {
       display: flex;
       float: left;
       align-items: center;
@@ -75,11 +74,12 @@
       }
     }
 
-    .itemSummary {
+    .item-summary {
       width: calc(100% - 147px);
       float: right;
 
-      .itemTitle, .itemBody {
+      .item-title,
+      .item-body {
         font-size: 16px;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -87,19 +87,19 @@
         width: 100%;
       }
 
-      .itemTitle {
+      .item-title {
         font-weight: 700;
         color: #3c4449;
         margin-bottom: 9px;
       }
 
-      .itemBody {
+      .item-body {
         color: #788187;
         margin-bottom: 13px;
       }
     }
 
-    .itemControls {
+    .item-controls {
       width: calc(100% - 147px);
       float: right;
       display: flex;
@@ -108,7 +108,7 @@
       .voting {
         margin-right: 10px;
 
-        .btnVote {
+        .btn-vote {
           display: flex;
           align-items: center;
           justify-content: center;
@@ -116,22 +116,23 @@
           height: 18px;
           font-size: 1.1em;
           border-radius: 50%;
-          border: 1px solid @primary-color;
-          color: @primary-color;
+          border: 1px solid $primary-color;
+          color: $primary-color;
 
           &:hover {
-            background-color: @primary-color;
-            color: #fff
+            background-color: $primary-color;
+            color: #fff;
           }
         }
       }
 
-      .postTotal {
+      .post-total {
         color: #788187;
         margin-right: 25px;
       }
 
-      .voters, .comments {
+      .voters,
+      .comments {
         display: flex;
         align-items: center;
         font-size: 14px;
@@ -149,7 +150,6 @@
         text-align: right;
         color: #c1c5c7;
       }
-
     }
   }
 }

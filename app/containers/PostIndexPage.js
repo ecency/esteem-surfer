@@ -8,6 +8,7 @@ function mapStateToProps(state) {
   return {
     selectedFilter: state.global.selectedFilter,
     selectedTag: state.global.selectedTag,
+    theme: state.global.theme,
     posts: state.posts,
     trendingTags: state.trendingTags
   };

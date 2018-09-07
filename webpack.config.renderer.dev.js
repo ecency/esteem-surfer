@@ -78,39 +78,7 @@ export default merge.smart(baseConfig, {
         }
       },
       {
-        test: /\.global\.css$/,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true
-            }
-          }
-        ]
-      },
-      {
-        test: /^((?!\.global).)*\.css$/,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              sourceMap: true,
-              importLoaders: 1,
-              localIdentName: '[name]__[local]__[hash:base64:5]'
-            }
-          }
-        ]
-      },
-      // SASS support - compile all .global.scss files and pipe it to style.css
-      {
-        test: /\.global\.(scss|sass)$/,
+        test: /app.style\.scss$/,
         use: [
           {
             loader: 'style-loader'
@@ -126,30 +94,8 @@ export default merge.smart(baseConfig, {
           }
         ]
       },
-      // SASS support - compile all other .scss files and pipe it to style.css
       {
-        test: /^((?!\.global).)*\.(scss|sass)$/,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              sourceMap: true,
-              importLoaders: 1,
-              localIdentName: '[name]__[local]__[hash:base64:5]'
-            }
-          },
-          {
-            loader: 'sass-loader'
-          }
-        ]
-      },
-      // LESS support - compile all .global.less files and pipe it to style.css
-      {
-        test: /\.global\.(less)$/,
+        test: /(base|day|night)\.less$/,
         use: [
           {
             loader: 'style-loader'
@@ -161,28 +107,8 @@ export default merge.smart(baseConfig, {
             }
           },
           {
-            loader: 'less-loader', options: { javascriptEnabled: true }
-          }
-        ]
-      },
-      // LESS support - compile all other .less files and pipe it to style.css
-      {
-        test: /^((?!\.global).)*\.(less)$/,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              sourceMap: true,
-              importLoaders: 1,
-              localIdentName: '[name]__[local]__[hash:base64:5]'
-            }
-          },
-          {
-            loader: 'less-loader', options: { javascriptEnabled: true }
+            loader: 'less-loader',
+            options: { javascriptEnabled: true }
           }
         ]
       },

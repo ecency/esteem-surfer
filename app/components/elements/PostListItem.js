@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { FormattedRelative } from 'react-intl';
 
-import styles from './PostListItem.less';
 import UserAvatar from './UserAvatar';
 
 import catchPostImage from '../../utils/catch-post-image';
@@ -39,45 +38,45 @@ export default class PostListItem extends Component<Props> {
     const app = appName(jsonMeta.app);
 
     return (
-      <div className={styles.postListItem}>
-        <div className={styles.itemHeader}>
-          <div className={styles.userAvatar}>
+      <div className="post-list-item">
+        <div className="item-header">
+          <div className="author-avatar">
             <UserAvatar user={post.author} size="small" />
           </div>
-          <span className={styles.author}>
+          <span className="author">
             {post.author}{' '}
-            <span className={styles.authorReputation}>{reputation}</span>
+            <span className="author-reputation">{reputation}</span>
           </span>
-          <span className={styles.contentCategory}>{post.parent_permlink}</span>
-          <span className={styles.contentDate}>
+          <span className="category">{post.parent_permlink}</span>
+          <span className="date">
             <FormattedRelative value={created} />
           </span>
         </div>
-        <div className={styles.itemBody}>
-          <div className={styles.itemImage}>
+        <div className="item-body">
+          <div className="item-image">
             <img src={img} alt="" />
           </div>
-          <div className={styles.itemSummary}>
-            <div className={styles.itemTitle}>{post.title}</div>
-            <div className={styles.itemBody}>{summary}</div>
+          <div className="item-summary">
+            <div className="item-title">{post.title}</div>
+            <div className="item-body">{summary}</div>
           </div>
-          <div className={styles.itemControls}>
-            <div className={styles.voting}>
-              <a className={styles.btnVote} role="button" tabIndex="-1">
+          <div className="item-controls">
+            <div className="voting">
+              <a className="btn-vote" role="button" tabIndex="-1">
                 <i className="mi">keyboard_arrow_up</i>
               </a>
             </div>
 
-            <a className={styles.postTotal}>$ {postTotal}</a>
-            <a className={styles.voters}>
-              <i className={`mi ${styles.mi}`}>people</i>
+            <a className="post-total">$ {postTotal}</a>
+            <a className="voters">
+              <i className="mi">people</i>
               {voteCount}
             </a>
-            <a className={styles.comments}>
-              <i className={`mi ${styles.mi}`}>comment</i>
+            <a className="comments">
+              <i className="mi">comment</i>
               {contentCount}
             </a>
-            <div className={styles.app}>{app}</div>
+            <div className="app">{app}</div>
           </div>
         </div>
       </div>

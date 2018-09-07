@@ -5,16 +5,16 @@ import { Menu } from 'antd';
 import { FormattedMessage } from 'react-intl';
 
 import { makeGroupKeyForPosts } from '../utils/misc';
-import styles from './PostIndex.less';
+// import styles from './PostIndex.less';
+import filters from '../constants/filters.json';
 import PostListItem from './elements/PostListItem';
-import NavBar from './modules/NavBar';
-import AppFooter from './modules/AppFooter';
-import Mi from './elements/Mi';
-import ScrollReplace from './ScrollReplace';
+import LinearProgress from './elements/LinearProgress';
 
 import DropDown from './elements/DropDown';
-import filters from '../constants/filters.json';
-import LinearProgress from './elements/LinearProgress';
+
+import ScrollReplace from './ScrollReplace';
+
+import NavBar from './modules/NavBar';
 
 type Props = {
   actions: {
@@ -136,25 +136,25 @@ export default class PostIndex extends Component<Props> {
       reloading: loading
     };
 
-    const listCls = `${styles.postList} ${loading ? styles.loading : ''}`;
+    const listCls = `post-list ${loading ? 'loading' : ''}`;
 
     return (
       <div className="wrapper">
         <ScrollReplace
-          {...Object.assign({}, this.props, { selector: '#scrollMain' })}
+          {...Object.assign({}, this.props, { selector: '#app-content' })}
         />
 
         <NavBar {...navBarProps} />
 
-        <div className="appContainer" id="scrollMain">
-          <div className={styles.side}>
-            <div className={styles.tagList}>
-              <div className={styles.tagListHeader}>
+        <div className="app-content post-index" id="app-content">
+          <div className="side">
+            <div className="tag-list">
+              <div className="tag-list-header">
                 <FormattedMessage id="post-index.tags" />
               </div>
               {trendingTags.list.map(tag => {
-                const cls = `${styles.tagListItem} ${
-                  selectedTag === tag ? ` ${styles.selectedItem}` : ''
+                const cls = `tag-list-item ${
+                  selectedTag === tag ? 'selected-item' : ''
                 }`;
                 const to = `/${selectedFilter}/${tag}`;
                 return (
@@ -166,33 +166,30 @@ export default class PostIndex extends Component<Props> {
             </div>
           </div>
 
-          <div className={styles.content}>
+          <div className="content">
             <div className={listCls}>
-              <div className={styles.postListHeader}>
-                <div className={styles.filterSelect}>
-                  <span className={styles.label}>
+              <div className="post-list-header">
+                <div className="filter-select">
+                  <span className="label">
                     <FormattedMessage
                       id={`post-index.filter-${selectedFilter}`}
                     />
                   </span>
                   <DropDown menu={filterMenu} location={location} />
                 </div>
-                <a className={styles.listSwitch}>
-                  <Mi icon="view_module" />
+                <a className="list-switch">
+                  <i className="mi">view_module</i>
                 </a>
               </div>
-              <div className={styles.postListBody}>
+              <div className="post-list-body">
                 {postList.valueSeq().map(d => (
                   <PostListItem key={d.id} post={d} />
                 ))}
               </div>
-
               {loading ? <LinearProgress /> : ''}
             </div>
           </div>
         </div>
-
-        <AppFooter />
       </div>
     );
   }

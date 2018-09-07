@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 import { Tooltip } from 'antd';
 import { FormattedMessage } from 'react-intl';
 
-import styles from './Navbar.less';
 import Mi from '../elements/Mi';
 
 type Props = {
@@ -35,7 +34,7 @@ export default class NavBar extends Component<Props> {
   }
 
   componentDidMount() {
-    this.scrollEl = document.querySelector('#scrollMain');
+    this.scrollEl = document.querySelector('#app-content');
     if (this.scrollEl) {
       this.scrollEl.addEventListener('scroll', this.detectScroll);
     }
@@ -84,7 +83,7 @@ export default class NavBar extends Component<Props> {
     const newLoc = `/${selectedFilter}`;
 
     if (newLoc === location.pathname) {
-      document.querySelector('#scrollMain').scrollTop = 0;
+      document.querySelector('#app-content').scrollTop = 0;
       return;
     }
 
@@ -103,48 +102,36 @@ export default class NavBar extends Component<Props> {
     const curPath = history.entries[history.index].pathname;
     const canGoForward = !!history.entries[history.index + 1];
 
-    const backClassName = `${styles.back} ${!canGoBack ? styles.disabled : ''}`;
-    const forwardClassName = `${styles.forward} ${
-      !canGoForward ? styles.disabled : ''
-    }`;
-    const reloadClassName = `${styles.reload} ${
-      reloading ? styles.disabled : ''
-    }`;
+    const backClassName = `back ${!canGoBack ? 'disabled' : ''}`;
+    const forwardClassName = `forward ${!canGoForward ? 'disabled' : ''}`;
+    const reloadClassName = `reload ${reloading ? 'disabled' : ''}`;
 
     const { miniBtnVisible } = this.state;
 
     return (
-      <div className={styles.navBar}>
-        <div
-          className={`${styles.btnPost}  ${
-            !miniBtnVisible ? styles.visible : ''
-          }`}
-        >
-          <span className={styles.icon}>
+      <div className="nav-bar">
+        <div className={`btn-post  ${!miniBtnVisible ? 'visible' : ''}`}>
+          <span className="icon">
             <Mi icon="edit" />
           </span>
           <FormattedMessage id="g.create-post" />
         </div>
 
-        <div className={styles.navBarInner}>
+        <div className="nav-bar-inner">
           <a
             onClick={() => {
               this.logoClicked();
             }}
-            className={styles.logo}
+            className="logo"
             role="none"
             tabIndex="-1"
           />
-          <div
-            className={`${styles.btnPostMini}  ${
-              miniBtnVisible ? styles.visible : ''
-            }`}
-          >
-            <span className={styles.icon}>
+          <div className={`btn-post-mini  ${miniBtnVisible ? 'visible' : ''}`}>
+            <span className="icon">
               <Mi icon="edit" />
             </span>
           </div>
-          <div className={styles.navControls}>
+          <div className="nav-controls">
             <a
               className={backClassName}
               onClick={e => this.goBack(e)}
@@ -167,30 +154,30 @@ export default class NavBar extends Component<Props> {
               <Mi icon="refresh" />
             </a>
           </div>
-          <div className={styles.addressBar}>
-            <div className={styles.preAddOn}>
+          <div className="address-bar">
+            <div className="pre-add-on">
               <Mi icon="search" />
             </div>
-            <div className={styles.address}>
-              <span className={styles.protocol}>esteem://</span>
-              <span className={styles.url}>{curPath.replace('/', '')}</span>
+            <div className="address">
+              <span className="protocol">esteem://</span>
+              <span className="url">{curPath.replace('/', '')}</span>
             </div>
-            <div className={styles.postAddOn}>
+            <div className="post-add-on">
               <Mi icon="star_border" />
             </div>
           </div>
-          <div className={styles.altControls}>
-            <a className={styles.switchTheme}>
+          <div className="alt-controls">
+            <a className="switch-theme">
               <Mi icon="brightness_medium" />
             </a>
           </div>
-          <div className={styles.userMenu}>
+          <div className="user-menu">
             <Tooltip
               title="Login to you account"
               placement="left"
               mouseEnterDelay={2}
             >
-              <a className={styles.login}>
+              <a className="login">
                 <Mi icon="account_circle" />
               </a>
             </Tooltip>

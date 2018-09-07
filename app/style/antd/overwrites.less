@@ -1,0 +1,42 @@
+// ant drop down
+.ant-dropdown-menu {
+  padding-top: 20px;
+}
+
+.ant-dropdown-menu-item {
+  padding-left: 32px;
+  margin-right: 32px;
+  margin-bottom: 10px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+
+  a {
+    display: inline-block;
+    color: @text-color-secondary;
+    font-weight: 500;
+    border-radius: 25px;
+    padding: 6px 20px;
+  }
+}
+
+.ant-dropdown-menu-item-selected {
+  background: none;
+
+  a {
+    background-color: @primary-color;
+    color: #fff;
+    font-weight: 700;
+  }
+}
+
+.ant-dropdown-menu-item-selected:hover {
+  background: none;
+}
+
+.ant-dropdown-menu-item:not(.ant-dropdown-menu-item-selected):hover {
+
+  a {
+    color: @primary-color;
+    font-weight: 700;
+  }
+}

@@ -1,6 +1,5 @@
 // @flow
 import React, { Component } from 'react';
-import styles from './UserAvatar.less';
 
 type Props = {
   user: string,
@@ -13,7 +12,7 @@ export default class UserAvatar extends Component<Props> {
   render() {
     const { user, size } = this.props;
     const imgSize = size === 'xLarge' ? 'large' : 'medium';
-    const cls = `${styles.userAvatar} ${styles[size]}`;
+    const cls = `user-avatar ${size}`;
 
     return (
       <span
