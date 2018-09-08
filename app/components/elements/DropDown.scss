@@ -1,29 +1,32 @@
-$primary-color: #357ce6;
-$primary-1: #eaf2fc;
+@import '../../style/mixins';
+@import '../../style/colors';
 
 .drop-down-caret {
   align-items: center;
-  border-radius: 50%;
-  color: $primary-color;
-  display: flex;
   background: transparent;
-  width: 32px;
+  border-radius: 50%;
+  display: flex;
   height: 32px;
   justify-content: center;
   transition: 0.5s;
+  width: 32px;
+
+  @include themify(day) {
+    color: $dark-sky-blue;
+  }
+
+  @include themify(night) {
+    color: $pastel-blue;
+  }
 
   &:hover,
   &.hover {
-    background: $primary-1;
-  }
-}
+    @include themify(day) {
+      background: $duck-egg-blue;
+    }
 
-.day-theme {
-  .drop-down-caret {
-  }
-}
-
-.night-theme {
-  .drop-down-caret {
+    @include themify(night) {
+      background: $dark-grey-blue;
+    }
   }
 }

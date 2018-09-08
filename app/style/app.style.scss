@@ -36,22 +36,12 @@ h2 {
 
   @include themify(day) {
     background: $white-two;
+    color: $charcoal-grey;
   }
 
   @include themify(night) {
     background: $dark-six;
-  }
-}
-
-.day-theme {
-  #root {
-    background: $white-two;
-  }
-}
-
-.night-theme {
-  #root {
-    background: $dark-six;
+    color: $silver;
   }
 }
 
