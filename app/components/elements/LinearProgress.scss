@@ -2,8 +2,9 @@
 @import '../../style/colors';
 
 .linear-progress {
-  height: 1px;
-  position: relative;
+  height: 3px;
+  position: fixed;
+  width: 100%;
   overflow: hidden;
   animation: start 0.3s ease-in;
 

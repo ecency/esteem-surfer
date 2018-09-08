@@ -16,6 +16,7 @@ import ScrollReplace from './ScrollReplace';
 
 import NavBar from './modules/NavBar';
 import AppFooter from './modules/AppFooter';
+import Mi from './elements/Mi';
 
 type Props = {
   actions: {
@@ -147,32 +148,22 @@ export default class PostIndex extends Component<Props> {
         <ScrollReplace
           {...Object.assign({}, this.props, { selector: '#app-content' })}
         />
-
+        {loading ? <LinearProgress /> : ''}
         <NavBar {...navBarProps} />
 
-        <div className="app-content post-index" id="app-content">
-          <div className="post-index-side">
-            <div className="tag-list">
-              <h2 className="tag-list-header">
-                <FormattedMessage id="post-index.tags" />
-              </h2>
-              {trendingTags.list.map(tag => {
-                const cls = `tag-list-item ${
-                  selectedTag === tag ? 'selected-item' : ''
-                }`;
-                const to = `/${selectedFilter}/${tag}`;
-                return (
-                  <Link to={to} className={cls} key={tag}>
-                    {tag}
-                  </Link>
-                );
-              })}
+        <div className="app-content post-index">
+          <div className="page-header">
+            <div className="left-side">
+              <div className="btn-post">
+                <span className="icon">
+                  <Mi icon="edit" />
+                </span>
+                <FormattedMessage id="g.create-post" />
+              </div>
             </div>
-          </div>
 
-          <div className="post-index-content">
-            <div className={listCls}>
-              <div className="post-list-header">
+            <div className="right-side">
+              <div className="page-tools">
                 <div className="filter-select">
                   <span className="label">
                     <FormattedMessage
@@ -185,15 +176,41 @@ export default class PostIndex extends Component<Props> {
                   <i className="mi">view_module</i>
                 </a>
               </div>
-              <div className="post-list-body grid-view">
-                {postList.valueSeq().map(d => (
-                  <PostListItem key={d.id} post={d} />
-                ))}
+            </div>
+          </div>
+
+          <div className="page-inner" id="app-content">
+            <div className="left-side">
+              <div className="tag-list">
+                <h2 className="tag-list-header">
+                  <FormattedMessage id="post-index.tags" />
+                </h2>
+                {trendingTags.list.map(tag => {
+                  const cls = `tag-list-item ${
+                    selectedTag === tag ? 'selected-item' : ''
+                  }`;
+                  const to = `/${selectedFilter}/${tag}`;
+                  return (
+                    <Link to={to} className={cls} key={tag}>
+                      {tag}
+                    </Link>
+                  );
+                })}
               </div>
-              {loading ? <LinearProgress /> : ''}
+            </div>
+
+            <div className="right-side">
+              <div className={listCls}>
+                <div className="post-list-body">
+                  {postList.valueSeq().map(d => (
+                    <PostListItem key={d.id} post={d} />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
         <AppFooter />
       </div>
     );

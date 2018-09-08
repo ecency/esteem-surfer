@@ -6,55 +6,6 @@
   height: 85px;
   padding-top: 18px;
 
-  .btn-post {
-    align-items: center;
-    border-bottom-right-radius: 25px;
-    border-top-right-radius: 25px;
-    cursor: pointer;
-    display: flex;
-    font-size: 16px;
-    font-weight: 500;
-    height: 50px;
-    justify-content: center;
-    left: -300px;
-    padding-left: 6px;
-    position: fixed;
-    top: 85px;
-    transition: 0.5s;
-    width: 208px;
-    z-index: 1;
-
-    @include themify(day) {
-      background: $duck-egg-blue;
-      color: $dark-sky-blue;
-    }
-
-    @include themify(night) {
-      background: $metallic-blue;
-      color: $powder-blue;
-    }
-
-    .icon {
-      font-size: 20px;
-      height: 20px;
-      margin-right: 32px;
-    }
-
-    &:hover {
-      @include themify(day) {
-        background: lighten($dark-sky-blue, 30);
-      }
-
-      @include themify(night) {
-        background: darken($metallic-blue, 16);
-      }
-    }
-
-    &.visible {
-      left: 0;
-    }
-  }
-
   .nav-bar-inner {
     align-items: center;
     display: flex;

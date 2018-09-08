@@ -3,7 +3,6 @@
 
 import React, { Component } from 'react';
 import { Tooltip } from 'antd';
-import { FormattedMessage } from 'react-intl';
 
 import Mi from '../elements/Mi';
 
@@ -117,13 +116,6 @@ export default class NavBar extends Component<Props> {
 
     return (
       <div className="nav-bar">
-        <div className={`btn-post  ${!miniBtnVisible ? 'visible' : ''}`}>
-          <span className="icon">
-            <Mi icon="edit" />
-          </span>
-          <FormattedMessage id="g.create-post" />
-        </div>
-
         <div className="nav-bar-inner">
           <a
             onClick={() => {

@@ -2,54 +2,64 @@
 @import '../style/colors';
 
 .post-index {
-  .post-index-side {
-    float: left;
-    margin-right: 50px;
-    width: 208px;
-    .tag-list {
-      margin-top: 94px;
-      padding-left: 90px;
+  .page-header {
+    display: flex;
+    flex-wrap: wrap;
+    height: 50px;
 
-      .tag-list-header {
-        font-size: 18px;
-        font-weight: 700;
-        margin: 0 0 31px 0;
-      }
+    .left-side {
+      margin-right: 50px;
+      width: 208px;
 
-      .tag-list-item {
-        border-radius: 25px;
-        color: $silver;
-        display: table;
-        margin-bottom: 8px;
-        padding: 4px 12px;
-        text-decoration: none;
+      .btn-post {
+        align-items: center;
+        border-bottom-right-radius: 25px;
+        border-top-right-radius: 25px;
+        cursor: pointer;
+        display: flex;
+        font-size: 16px;
+        font-weight: 500;
+        height: 50px;
+        justify-content: center;
+        padding-left: 6px;
+        transition: 0.5s;
 
         @include themify(day) {
-          background: $white;
-          border: solid 1px $white-four;
+          background: $duck-egg-blue;
+          color: $dark-sky-blue;
         }
 
         @include themify(night) {
-          background: $dark-grey-blue;
-          border: solid 1px $dark-two;
+          background: $metallic-blue;
+          color: $powder-blue;
         }
 
-        &.selected-item {
-          color: $dark-sky-blue;
-          pointer-events: none;
+        .icon {
+          font-size: 20px;
+          height: 20px;
+          margin-right: 32px;
+        }
+
+        &:hover {
+          @include themify(day) {
+            background: lighten($dark-sky-blue, 30);
+          }
+
+          @include themify(night) {
+            background: darken($metallic-blue, 16);
+          }
+        }
+
+        &.visible {
+          left: 0;
         }
       }
     }
 
-    user-select: none;
-  }
+    .right-side {
+      flex-grow: 1;
 
-  .post-index-content {
-    float: right;
-    width: calc(100% - 258px);
-
-    .post-list {
-      .post-list-header {
+      .page-tools {
         align-items: center;
         display: flex;
         height: 50px;
@@ -103,17 +113,71 @@
         }
       }
 
-      .post-list-body {
-      }
-
       &.loading {
-        .post-list-header {
+        .page-tools {
           border-bottom: 0;
           height: 49px;
         }
       }
     }
+  }
 
-    user-select: none;
+  .page-inner {
+    height: calc(100% - 50px);
+    overflow-y: auto;
+
+    .left-side {
+      float: left;
+      margin-right: 50px;
+      width: 208px;
+      .tag-list {
+        padding-left: 90px;
+        padding-top: 34px;
+
+        .tag-list-header {
+          font-size: 18px;
+          font-weight: 700;
+          margin: 0 0 31px 0;
+        }
+
+        .tag-list-item {
+          border-radius: 25px;
+          color: $silver;
+          display: table;
+          margin-bottom: 8px;
+          padding: 4px 12px;
+          text-decoration: none;
+
+          @include themify(day) {
+            background: $white;
+            border: solid 1px $white-four;
+          }
+
+          @include themify(night) {
+            background: $dark-grey-blue;
+            border: solid 1px $dark-two;
+          }
+
+          &.selected-item {
+            color: $dark-sky-blue;
+            pointer-events: none;
+          }
+        }
+      }
+
+      user-select: none;
+    }
+
+    .right-side {
+      float: right;
+      width: calc(100% - 258px);
+
+      .post-list {
+        .post-list-body {
+        }
+      }
+
+      user-select: none;
+    }
   }
 }
