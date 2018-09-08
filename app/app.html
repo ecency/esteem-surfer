@@ -20,7 +20,9 @@
     <script>
       window.setTheme = function(theme){
         document.querySelector('body').className = theme + '-theme';
-      }
+      };
+
+      window.setTheme(localStorage.getItem('theme'))
     </script>
     <script>
       {
