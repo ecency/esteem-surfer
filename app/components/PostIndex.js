@@ -153,9 +153,9 @@ export default class PostIndex extends Component<Props> {
         <div className="app-content post-index" id="app-content">
           <div className="post-index-side">
             <div className="tag-list">
-              <div className="tag-list-header">
+              <h2 className="tag-list-header">
                 <FormattedMessage id="post-index.tags" />
-              </div>
+              </h2>
               {trendingTags.list.map(tag => {
                 const cls = `tag-list-item ${
                   selectedTag === tag ? 'selected-item' : ''

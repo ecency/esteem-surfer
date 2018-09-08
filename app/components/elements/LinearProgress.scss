@@ -1,18 +1,35 @@
+@import '../../style/mixins';
+@import '../../style/colors';
+
 .linear-progress {
-  background: #e7e7e7;
   height: 1px;
   position: relative;
   overflow: hidden;
   animation: start 0.3s ease-in;
 
+  @include themify(day) {
+    background: $white-four;
+  }
+
+  @include themify(night) {
+    background: $dark-two;
+  }
+
   .bar {
     position: absolute;
-    background: #357ce6;
     transition: transform 0.2s linear;
     left: 0;
     top: 0;
     bottom: 0;
     width: 100%;
+
+    @include themify(day) {
+      background: $dark-sky-blue;
+    }
+
+    @include themify(night) {
+      background: $pastel-blue;
+    }
   }
 
   .bar1 {

@@ -1,65 +1,85 @@
-$primary-color: #357ce6;
-$primary-1: #eaf2fc;
+@import '../style/mixins';
+@import '../style/colors';
 
 .post-index {
   .post-index-side {
-    width: 208px;
     float: left;
     margin-right: 50px;
-    user-select: none;
-
+    width: 208px;
     .tag-list {
       margin-top: 94px;
       padding-left: 90px;
 
       .tag-list-header {
-        color: #788187;
         font-size: 18px;
         font-weight: 700;
-        margin-bottom: 31px;
+        margin: 0 0 31px 0;
       }
 
       .tag-list-item {
-        color: #c1c5c7;
-        background: #ffffff;
         border-radius: 25px;
-        border: solid 1px #e7e7e7;
+        color: $silver;
         display: table;
         margin-bottom: 8px;
         padding: 4px 12px;
         text-decoration: none;
 
+        @include themify(day) {
+          background: $white;
+          border: solid 1px $white-four;
+        }
+
+        @include themify(night) {
+          background: $dark-grey-blue;
+          border: solid 1px $dark-two;
+        }
+
         &.selected-item {
+          color: $dark-sky-blue;
           pointer-events: none;
-          color: $primary-color;
         }
       }
     }
+
+    user-select: none;
   }
 
   .post-index-content {
     float: right;
     width: calc(100% - 258px);
-    user-select: none;
 
     .post-list {
       .post-list-header {
         align-items: center;
         display: flex;
-        border-bottom: 1px solid #e7e7e7;
-        justify-content: space-between;
         height: 50px;
-        padding: 0 15px;
+        justify-content: space-between;
         margin-bottom: 0;
+        padding: 0 15px;
+
+        @include themify(day) {
+          border-bottom: 1px solid $white-four;
+        }
+
+        @include themify(night) {
+          border-bottom: 1px solid $dark-two;
+        }
 
         .filter-select {
           align-items: center;
-          color: $primary-color;
           cursor: pointer;
           display: flex;
           font-size: 16px;
           font-weight: 500;
           height: 100%;
+
+          @include themify(day) {
+            color: $dark-sky-blue;
+          }
+
+          @include themify(night) {
+            color: $pastel-blue;
+          }
 
           .label {
             margin-right: 4px;
@@ -67,11 +87,19 @@ $primary-1: #eaf2fc;
         }
 
         .list-switch {
-          font-size: 22px;
           align-items: center;
+
           display: flex;
+          font-size: 22px;
           height: 50px;
-          color: #c2d4f5;
+
+          @include themify(day) {
+            color: $light-periwinkle;
+          }
+
+          @include themify(night) {
+            color: $metallic-blue;
+          }
         }
       }
 
@@ -80,10 +108,12 @@ $primary-1: #eaf2fc;
 
       &.loading {
         .post-list-header {
-          height: 49px;
           border-bottom: 0;
+          height: 49px;
         }
       }
     }
+
+    user-select: none;
   }
 }
