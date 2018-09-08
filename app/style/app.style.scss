@@ -53,6 +53,7 @@ h2 {
 .app-content {
   height: calc(100% - 85px - 32px);
   overflow-y: auto;
+  position: relative;
 }
 
 /* Material Icons */

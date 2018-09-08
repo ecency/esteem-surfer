@@ -22,6 +22,7 @@
     top: 85px;
     transition: 0.5s;
     width: 208px;
+    z-index: 1;
 
     @include themify(day) {
       background: $duck-egg-blue;
@@ -82,10 +83,10 @@
       cursor: pointer;
       display: flex;
       flex-shrink: 0;
-
       height: 30px;
       justify-content: center;
       margin-right: 10px;
+      transition: 0.5s;
       visibility: hidden;
       width: 30px;
 
