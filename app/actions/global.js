@@ -14,6 +14,7 @@ export function changeTheme() {
     const newTheme = theme === 'day' ? 'night' : 'day';
 
     localStorage.setItem('theme', newTheme);
+    window.setTheme(newTheme);
 
     dispatch(themeChanged(newTheme));
   };

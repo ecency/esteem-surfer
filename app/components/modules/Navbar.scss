@@ -1,38 +1,52 @@
-$primary-color: #357ce6;
-$primary-1: #eaf2fc;
+@import '../../style/mixins';
+@import '../../style/colors';
 
 .nav-bar {
+  flex-shrink: 0;
   height: 85px;
   padding-top: 18px;
-  flex-shrink: 0;
 
   .btn-post {
     align-items: center;
-    color: $primary-color;
-    cursor: pointer;
-    background-color: $primary-1;
     border-bottom-right-radius: 25px;
     border-top-right-radius: 25px;
+    cursor: pointer;
+    display: flex;
     font-size: 16px;
     font-weight: 500;
-    width: 208px;
     height: 50px;
     justify-content: center;
-    padding-left: 6px;
-    transition: 0.5s;
-    position: fixed;
     left: -300px;
+    padding-left: 6px;
+    position: fixed;
     top: 85px;
-    display: flex;
+    transition: 0.5s;
+    width: 208px;
+
+    @include themify(day) {
+      background: $duck-egg-blue;
+      color: $dark-sky-blue;
+    }
+
+    @include themify(night) {
+      background: $metallic-blue;
+      color: $powder-blue;
+    }
 
     .icon {
-      height: 20px;
       font-size: 20px;
+      height: 20px;
       margin-right: 32px;
     }
 
     &:hover {
-      background: lighten($primary-color, 30);
+      @include themify(day) {
+        background: lighten($dark-sky-blue, 30);
+      }
+
+      @include themify(night) {
+        background: darken($metallic-blue, 16);
+      }
     }
 
     &.visible {
@@ -56,18 +70,37 @@ $primary-1: #eaf2fc;
     }
 
     .btn-post-mini {
-      flex-shrink: 0;
-      width: 30px;
-      height: 30px;
-      margin-right: 10px;
+      align-items: center;
       border-radius: 50%;
-      background-color: $primary-1;
-      color: $primary-color;
       cursor: pointer;
       display: flex;
-      align-items: center;
+      flex-shrink: 0;
+
+      height: 30px;
       justify-content: center;
+      margin-right: 10px;
       visibility: hidden;
+      width: 30px;
+
+      @include themify(day) {
+        background: $duck-egg-blue;
+        color: $dark-sky-blue;
+      }
+
+      @include themify(night) {
+        background: $metallic-blue;
+        color: $powder-blue;
+      }
+
+      &:hover {
+        @include themify(day) {
+          background: lighten($dark-sky-blue, 30);
+        }
+
+        @include themify(night) {
+          background: darken($metallic-blue, 16);
+        }
+      }
 
       &.visible {
         visibility: visible;
@@ -77,55 +110,90 @@ $primary-1: #eaf2fc;
     .nav-controls {
       align-items: center;
       display: flex;
-      font-size: 24px;
       flex-shrink: 0;
+      font-size: 24px;
       height: 44px;
-      user-select: none;
       margin-right: 26px;
-
       .back,
       .forward,
       .reload {
-        color: #788187;
         cursor: pointer;
         height: 24px;
         width: 24px;
+
+        @include themify(day) {
+          color: $steel-grey;
+        }
+
+        @include themify(night) {
+          color: $white-five;
+        }
 
         &:not(:last-child) {
           margin-right: 8px;
         }
 
         &.disabled {
-          color: #c1c5c7;
           pointer-events: none;
+
+          @include themify(day) {
+            color: $silver;
+          }
+
+          @include themify(night) {
+            opacity: 0.5;
+          }
         }
       }
+
+      user-select: none;
     }
 
     .address-bar {
       align-items: center;
-      background-color: #f5f5f5;
       border-radius: 8px;
-      color: #788187;
       display: flex;
       flex-grow: 1;
       height: 44px;
       width: 484px;
 
+      @include themify(day) {
+        background-color: $white-three;
+        color: $steel-grey;
+      }
+
+      @include themify(night) {
+        background-color: $dark-grey-blue;
+        color: $white-five;
+      }
+
       .pre-add-on,
       .post-add-on {
         align-items: center;
-        color: #788187;
         display: flex;
         font-size: 18px;
         height: 100%;
         justify-content: center;
         width: 47px;
+        @include themify(day) {
+          color: $steel-grey;
+        }
+
+        @include themify(night) {
+          color: $white-five;
+        }
+
         user-select: none;
       }
 
       .post-add-on {
-        color: #c1c5c7;
+        @include themify(day) {
+          color: $silver;
+        }
+
+        @include themify(night) {
+          color: $white-five;
+        }
       }
 
       .address {
@@ -150,20 +218,29 @@ $primary-1: #eaf2fc;
       height: 44px;
       justify-content: center;
       width: 120px;
-      user-select: none;
 
       .switch-theme {
         align-items: center;
-        color: #c1c5c7;
-        font-size: 18px;
+        cursor: pointer;
         display: flex;
+        font-size: 18px;
         height: 18px;
+
+        @include themify(day) {
+          color: $silver;
+        }
+
+        @include themify(night) {
+          color: $white-five;
+          opacity: 0.5;
+        }
       }
+
+      user-select: none;
     }
 
     .user-menu {
       align-items: center;
-      background-image: linear-gradient(to left, #2d5aa0, #357ce6);
       border-bottom-left-radius: 25px;
       border-top-left-radius: 25px;
       display: flex;
@@ -171,10 +248,16 @@ $primary-1: #eaf2fc;
       height: 50px;
       justify-content: center;
       width: 70px;
-      user-select: none;
+      @include themify(day) {
+        background-image: linear-gradient(to left, $dusk-blue, $dark-sky-blue);
+      }
+
+      @include themify(night) {
+        background-image: linear-gradient(to left, $dark-indigo, $dusky-blue);
+      }
 
       .login {
-        color: #fff;
+        color: $white;
         display: flex;
         font-size: 32px;
       }
@@ -182,6 +265,8 @@ $primary-1: #eaf2fc;
       &.logged-in {
         width: 196px;
       }
+
+      user-select: none;
     }
   }
 }

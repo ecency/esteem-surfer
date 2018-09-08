@@ -1,4 +1,6 @@
 @import '../../node_modules/typeface-roboto/index.css';
+@import './colors';
+@import './mixins';
 
 html {
   /* Adjust font size */
@@ -22,7 +24,26 @@ html {
   position: absolute;
   top: 0;
   width: 100%;
-  background: #fff;
+
+  @include themify(day) {
+    background: $white-two;
+  }
+
+  @include themify(night) {
+    background: $dark-six;
+  }
+}
+
+.day-theme {
+  #root {
+    background: $white-two;
+  }
+}
+
+.night-theme {
+  #root {
+    background: $dark-six;
+  }
 }
 
 .wrapper {

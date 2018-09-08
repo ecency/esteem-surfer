@@ -180,7 +180,6 @@ export default class NavBar extends Component<Props> {
                 this.changeTheme();
               }}
               role="none"
-              tabIndex="-1"
             >
               <Mi icon="brightness_medium" />
             </a>

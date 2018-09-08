@@ -18,6 +18,11 @@
   <body class="day-theme">
     <div id="root"></div>
     <script>
+      window.setTheme = function(theme){
+        document.querySelector('body').className = theme + '-theme';
+      }
+    </script>
+    <script>
       {
         const scripts = [];
 

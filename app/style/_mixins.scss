@@ -8,3 +8,9 @@
     clear: both;
   }
 }
+
+@mixin themify($theme) {
+  .#{$theme}-theme & {
+    @content;
+  }
+}
