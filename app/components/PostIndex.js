@@ -185,7 +185,7 @@ export default class PostIndex extends Component<Props> {
                   <i className="mi">view_module</i>
                 </a>
               </div>
-              <div className="post-list-body">
+              <div className="post-list-body grid-view">
                 {postList.valueSeq().map(d => (
                   <PostListItem key={d.id} post={d} />
                 ))}

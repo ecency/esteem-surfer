@@ -20,7 +20,7 @@ export default class PostListItem extends Component<Props> {
 
   render() {
     const { post } = this.props;
-    const img = catchPostImage(post);
+    const img = catchPostImage(post) || 'img/noimage.png';
     const reputation = authorReputation(post.author_reputation);
     const created = parseDate(post.created);
     const summary = postSummary(post.body, 200);
@@ -54,7 +54,13 @@ export default class PostListItem extends Component<Props> {
         </div>
         <div className="item-body">
           <div className="item-image">
-            <img src={img} alt="" />
+            <img
+              src={img}
+              alt=""
+              onError={e => {
+                e.target.src = 'img/fallback.png';
+              }}
+            />
           </div>
           <div className="item-summary">
             <div className="item-title">{post.title}</div>

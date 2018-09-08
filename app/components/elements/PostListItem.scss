@@ -26,13 +26,17 @@ $primary-1: #eaf2fc;
     align-items: center;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    height: 24px;
     margin-bottom: 10px;
+    overflow: hidden;
 
     .author-avatar {
       margin-right: 12px;
     }
 
     .author {
+      flex-shrink: 0;
       font-weight: 700;
       margin-right: 10px;
 
@@ -60,6 +64,7 @@ $primary-1: #eaf2fc;
 
     .category {
       border-radius: 25px;
+      flex-shrink: 0;
       font-size: 12px;
       margin-right: 12px;
       padding: 2px 8px;
@@ -77,6 +82,7 @@ $primary-1: #eaf2fc;
 
     .date {
       color: $steel-grey;
+      flex-shrink: 0;
     }
   }
 
@@ -85,9 +91,11 @@ $primary-1: #eaf2fc;
 
     .item-image {
       align-items: center;
+      border-radius: 4px;
       display: flex;
       float: left;
       height: 77px;
+      justify-content: center;
       margin-right: 17px;
       overflow: hidden;
       width: 130px;
@@ -194,6 +202,56 @@ $primary-1: #eaf2fc;
         @include themify(night) {
           color: $gunmetal;
         }
+      }
+    }
+  }
+}
+
+.grid-view {
+  align-content: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding-right: 10px;
+
+  .post-list-item {
+    margin-right: 2%;
+    padding-right: 0;
+    width: 49%;
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+
+    @media (min-width: 1600px) {
+      margin-right: 1%;
+      width: 32.6%;
+
+      &:nth-child(2n) {
+        margin-right: 1%;
+      }
+
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+    }
+
+    .item-body {
+      .item-image {
+        float: none;
+        height: 200px;
+        margin: 0 0 10px 0;
+        width: 100%;
+      }
+
+      .item-summary {
+        float: none;
+        width: 100%;
+      }
+
+      .item-controls {
+        float: none;
+        width: 100%;
       }
     }
   }
