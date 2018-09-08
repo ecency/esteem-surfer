@@ -1,0 +1,96 @@
+@import '../../style/mixins';
+@import '../../style/colors';
+
+@keyframes item-loading-fadein-out {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+.post-list-loading-item {
+  @include clearfix();
+  animation: item-loading-fadein-out 2s infinite;
+
+  margin-top: 20px;
+  padding-bottom: 16px;
+  padding-right: 38px;
+
+  @include themify(day) {
+    border-bottom: 1px solid lighten($white-four, 4);
+  }
+
+  @include themify(night) {
+    border-bottom: 1px solid $dark;
+  }
+
+  .item-header,
+  .item-body .item-image,
+  .item-body .item-summary *,
+  .item-body .item-controls * {
+    border-radius: 10px;
+
+    @include themify(day) {
+      background: lighten($white-four, 4);
+    }
+
+    @include themify(night) {
+      background: $dark;
+    }
+  }
+
+  .item-header {
+    height: 17px;
+    margin-bottom: 12px;
+    width: 300px;
+  }
+
+  .item-body {
+    .item-image {
+      float: left;
+      height: 77px;
+      margin-right: 10px;
+      width: 130px;
+    }
+
+    .item-summary {
+      float: right;
+      width: calc(100% - 147px);
+
+      .item-title,
+      .item-body {
+        height: 18px;
+        margin-bottom: 12px;
+      }
+
+      .item-title {
+        width: 300px;
+      }
+    }
+
+    .item-controls {
+      float: right;
+      width: calc(100% - 147px);
+      .voting,
+      .post-total,
+      .voters,
+      .comments,
+      .app {
+        float: left;
+        height: 16px;
+        margin-right: 12px;
+        width: 90px;
+      }
+
+      .app {
+        float: right;
+        margin-right: 0;
+      }
+    }
+  }
+}

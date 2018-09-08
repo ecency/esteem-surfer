@@ -17,6 +17,7 @@ import ScrollReplace from './ScrollReplace';
 import NavBar from './modules/NavBar';
 import AppFooter from './modules/AppFooter';
 import Mi from './elements/Mi';
+import PostListLoadingItem from './elements/PostListLoadingItem';
 
 type Props = {
   actions: {
@@ -200,6 +201,8 @@ export default class PostIndex extends Component<Props> {
             </div>
 
             <div className="right-side">
+              {loading && postList.size === 0 ? <PostListLoadingItem /> : ''}
+
               <div className={listCls}>
                 <div className="post-list-body">
                   {postList.valueSeq().map(d => (
