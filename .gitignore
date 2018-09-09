@@ -60,6 +60,7 @@ app/bower_components
 app/app.js
 app/app.js.map
 app/background.js
+app/background.js.map
 temp
 
 
