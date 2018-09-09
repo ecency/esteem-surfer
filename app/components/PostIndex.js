@@ -182,6 +182,7 @@ export default class PostIndex extends Component<Props> {
                   </span>
                   <DropDown menu={filterMenu} location={location} />
                 </div>
+
                 <ListSwitch {...listSwitchProps} />
               </div>
               {loading && postList.size === 0 ? <LinearProgress /> : ''}

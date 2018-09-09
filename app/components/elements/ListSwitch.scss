@@ -7,6 +7,8 @@
   font-size: 22px;
   justify-content: center;
   width: 30px;
+  user-select: none;
+
   @include themify(day) {
     color: $light-periwinkle;
   }
@@ -25,6 +27,4 @@
       background: darken($metallic-blue, 10);
     }
   }
-
-  user-select: none;
 }
