@@ -18,11 +18,9 @@ export default class AppFooter extends Component<Props> {
           </div>
         </div>
         <div className="right-menu">
-          <a href="">FAQ</a>
-          <a href="">About</a>
-          <a href="" className="version">
-            {version}
-          </a>
+          <a>FAQ</a>
+          <a>About</a>
+          <a className="version">{version}</a>
         </div>
       </div>
     );
