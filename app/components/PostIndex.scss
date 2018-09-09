@@ -129,6 +129,7 @@
           margin-bottom: 8px;
           padding: 4px 12px;
           text-decoration: none;
+          transition: 0.5s;
 
           @include themify(day) {
             background: $white;
@@ -143,6 +144,16 @@
           &.selected-item {
             color: $dark-sky-blue;
             pointer-events: none;
+          }
+
+          &:hover {
+            @include themify(day) {
+              background: darken($white, 4);
+            }
+
+            @include themify(night) {
+              background: darken($dark-grey-blue, 4);
+            }
           }
         }
       }
