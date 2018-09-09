@@ -209,14 +209,17 @@ export default class PostIndex extends Component<Props> {
             </div>
 
             <div className="right-side">
-              {loading && postList.size === 0 ? <PostListLoadingItem /> : ''}
-
               <div className={listCls}>
                 <div
                   className={`post-list-body ${
                     listStyle === 'grid' ? 'grid-view' : ''
                   }`}
                 >
+                  {loading && postList.size === 0 ? (
+                    <PostListLoadingItem />
+                  ) : (
+                    ''
+                  )}
                   {postList.valueSeq().map(d => (
                     <PostListItem key={d.id} post={d} />
                   ))}

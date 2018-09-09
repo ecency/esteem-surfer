@@ -155,7 +155,12 @@
       width: calc(100% - 258px);
 
       .post-list {
-        .post-list-body {
+        .post-list-body.grid-view {
+          align-content: stretch;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          padding-right: 10px;
         }
       }
 
