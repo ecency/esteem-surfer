@@ -77,6 +77,15 @@
       }
     }
 
+    .read-mark {
+      background-color: $dark-sky-blue;
+      border-radius: 50%;
+      flex-shrink: 0;
+      height: 4px;
+      margin-right: 12px;
+      width: 4px;
+    }
+
     .date {
       color: $steel-grey;
       flex-shrink: 0;

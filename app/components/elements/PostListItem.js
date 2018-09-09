@@ -48,6 +48,7 @@ export default class PostListItem extends Component<Props> {
             <span className="author-reputation">{reputation}</span>
           </span>
           <span className="category">{post.parent_permlink}</span>
+          <span className="read-mark" />
           <span className="date">
             <FormattedRelative value={created} />
           </span>
