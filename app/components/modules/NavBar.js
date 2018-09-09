@@ -7,12 +7,17 @@ import { Tooltip } from 'antd';
 import Mi from '../elements/Mi';
 
 type Props = {
-  selectedFilter: string,
   history: {},
   location: {},
-  changeThemeFn: () => *,
-  reloadFn: () => *,
-  reloading: boolean
+  selectedFilter: string,
+  changeThemeFn: () => void,
+  reloadFn: () => void,
+  reloading: boolean,
+  favoriteFn?: () => void,
+  favoriteFlag?: boolean,
+  bookmarkFn?: () => void,
+  bookmarkFlag?: boolean,
+  postBtnActive?: boolean
 };
 
 export const checkPathForBack = path => {
@@ -26,39 +31,15 @@ export const checkPathForBack = path => {
 export default class NavBar extends Component<Props> {
   props: Props;
 
-  constructor(props: Props) {
-    super(props);
+  static defaultProps = {
+    favoriteFn: undefined,
+    favoriteFlag: false,
 
-    this.state = { miniBtnVisible: false };
-    this.detectScroll = this.detectScroll.bind(this);
-  }
+    bookmarkFn: undefined,
+    bookmarkFlag: false,
 
-  componentDidMount() {
-    this.scrollEl = document.querySelector('#app-content');
-    if (this.scrollEl) {
-      this.scrollEl.addEventListener('scroll', this.detectScroll);
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    const { location } = this.props;
-
-    if (location !== prevProps.location) {
-      this.detectScroll();
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.scrollEl) {
-      this.scrollEl.removeEventListener('scroll', this.detectScroll);
-    }
-  }
-
-  detectScroll() {
-    this.setState({
-      miniBtnVisible: this.scrollEl.scrollTop >= 40
-    });
-  }
+    postBtnActive: false
+  };
 
   goBack = () => {
     const { history } = this.props;
@@ -76,6 +57,18 @@ export default class NavBar extends Component<Props> {
     const { reloadFn } = this.props;
 
     reloadFn();
+  };
+
+  favorite = () => {
+    const { favoriteFn } = this.props;
+
+    favoriteFn();
+  };
+
+  bookmark = () => {
+    const { bookmarkFn } = this.props;
+
+    bookmarkFn();
   };
 
   changeTheme = () => {
@@ -98,7 +91,15 @@ export default class NavBar extends Component<Props> {
   };
 
   render() {
-    const { history, reloading } = this.props;
+    const {
+      history,
+      reloading,
+      favoriteFn,
+      favoriteFlag,
+      bookmarkFn,
+      bookmarkFlag,
+      postBtnActive
+    } = this.props;
 
     let canGoBack = false;
     if (history.entries[history.index - 1]) {
@@ -112,8 +113,6 @@ export default class NavBar extends Component<Props> {
     const forwardClassName = `forward ${!canGoForward ? 'disabled' : ''}`;
     const reloadClassName = `reload ${reloading ? 'disabled' : ''}`;
 
-    const { miniBtnVisible } = this.state;
-
     return (
       <div className="nav-bar">
         <div className="nav-bar-inner">
@@ -125,7 +124,7 @@ export default class NavBar extends Component<Props> {
             role="none"
             tabIndex="-1"
           />
-          <div className={`btn-post-mini  ${miniBtnVisible ? 'visible' : ''}`}>
+          <div className={`btn-post-mini  ${postBtnActive ? 'visible' : ''}`}>
             <span className="icon">
               <Mi icon="edit" />
             </span>
@@ -161,9 +160,28 @@ export default class NavBar extends Component<Props> {
               <span className="protocol">esteem://</span>
               <span className="url">{curPath.replace('/', '')}</span>
             </div>
-            <div className="post-add-on">
-              <Mi icon="star_border" />
-            </div>
+            {favoriteFn ? (
+              <a
+                className={`post-add-on ${!favoriteFlag ? 'disabled' : ''}`}
+                onClick={e => this.favorite(e)}
+                role="none"
+              >
+                <Mi icon="star_border" />
+              </a>
+            ) : (
+              ''
+            )}
+            {bookmarkFn ? (
+              <a
+                className={`post-add-on ${!bookmarkFlag ? 'disabled' : ''}`}
+                onClick={e => this.bookmark(e)}
+                role="none"
+              >
+                <Mi icon="bookmark" />
+              </a>
+            ) : (
+              ''
+            )}
           </div>
           <div className="alt-controls">
             <a

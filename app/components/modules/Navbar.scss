@@ -153,6 +153,11 @@
         @include themify(night) {
           color: $white-five;
         }
+
+        &.disabled {
+          pointer-events: none;
+          opacity: 0.4;
+        }
       }
 
       .address {

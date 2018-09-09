@@ -5,20 +5,20 @@ import { Menu } from 'antd';
 import { FormattedMessage } from 'react-intl';
 
 import { makeGroupKeyForPosts } from '../utils/misc';
-// import styles from './PostIndex.less';
 import filters from '../constants/filters.json';
-import PostListItem from './elements/PostListItem';
-import LinearProgress from './elements/LinearProgress';
-
-import DropDown from './elements/DropDown';
-
-import ScrollReplace from './ScrollReplace';
 
 import NavBar from './modules/NavBar';
 import AppFooter from './modules/AppFooter';
-import Mi from './elements/Mi';
+
+import PostListItem from './elements/PostListItem';
 import PostListLoadingItem from './elements/PostListLoadingItem';
+
+import DropDown from './elements/DropDown';
 import ListSwitch from './elements/ListSwitch';
+import LinearProgress from './elements/LinearProgress';
+import Mi from './elements/Mi';
+
+import ScrollReplace from './ScrollReplace';
 
 type Props = {
   actions: {
@@ -182,7 +182,6 @@ export default class PostIndex extends Component<Props> {
                   </span>
                   <DropDown menu={filterMenu} location={location} />
                 </div>
-
                 <ListSwitch {...listSwitchProps} />
               </div>
               {loading && postList.size === 0 ? <LinearProgress /> : ''}
