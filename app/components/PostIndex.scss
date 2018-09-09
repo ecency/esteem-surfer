@@ -111,10 +111,8 @@
             color: $metallic-blue;
           }
         }
-      }
 
-      &.loading {
-        .page-tools {
+        &.loading {
           border-bottom: 0;
           height: 49px;
         }

@@ -149,7 +149,7 @@ export default class PostIndex extends Component<Props> {
         <ScrollReplace
           {...Object.assign({}, this.props, { selector: '#app-content' })}
         />
-        {loading ? <LinearProgress /> : ''}
+
         <NavBar {...navBarProps} />
 
         <div className="app-content post-index">
@@ -164,7 +164,7 @@ export default class PostIndex extends Component<Props> {
             </div>
 
             <div className="right-side">
-              <div className="page-tools">
+              <div className={`page-tools ${loading ? 'loading' : ''}`}>
                 <div className="filter-select">
                   <span className="label">
                     <FormattedMessage
@@ -177,6 +177,7 @@ export default class PostIndex extends Component<Props> {
                   <i className="mi">view_module</i>
                 </a>
               </div>
+              {loading && postList.size === 0 ? <LinearProgress /> : ''}
             </div>
           </div>
 
@@ -210,6 +211,7 @@ export default class PostIndex extends Component<Props> {
                   ))}
                 </div>
               </div>
+              {loading && postList.size > 0 ? <LinearProgress /> : ''}
             </div>
           </div>
         </div>
