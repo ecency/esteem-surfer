@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 
 type Props = {
+  listStyle: string,
   changeStyleFn: () => void
 };
 
@@ -16,9 +17,11 @@ export default class ListSwitch extends Component<Props> {
   };
 
   render() {
+    const { listStyle } = this.props;
+
     return (
       <a
-        className="list-switch"
+        className={`list-switch ${listStyle === 'grid' ? 'active' : ''}`}
         onClick={() => {
           this.changeStyle();
         }}

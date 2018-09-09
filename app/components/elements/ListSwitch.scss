@@ -5,9 +5,8 @@
   align-items: center;
   display: flex;
   font-size: 22px;
-  height: 50px;
-  user-select: none;
-
+  justify-content: center;
+  width: 30px;
   @include themify(day) {
     color: $light-periwinkle;
   }
@@ -15,4 +14,17 @@
   @include themify(night) {
     color: $metallic-blue;
   }
+
+  &.active {
+    border-radius: 5px;
+    @include themify(day) {
+      background: lighten($light-periwinkle, 10);
+    }
+
+    @include themify(night) {
+      background: darken($metallic-blue, 10);
+    }
+  }
+
+  user-select: none;
 }

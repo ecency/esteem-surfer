@@ -146,6 +146,11 @@ export default class PostIndex extends Component<Props> {
       reloading: loading
     };
 
+    const listSwitchProps = {
+      changeStyleFn: actions.changeListStyle,
+      listStyle
+    };
+
     const listCls = `post-list ${loading ? 'loading' : ''}`;
 
     return (
@@ -177,7 +182,7 @@ export default class PostIndex extends Component<Props> {
                   </span>
                   <DropDown menu={filterMenu} location={location} />
                 </div>
-                <ListSwitch changeStyleFn={actions.changeListStyle} />
+                <ListSwitch {...listSwitchProps} />
               </div>
               {loading && postList.size === 0 ? <LinearProgress /> : ''}
             </div>
