@@ -12,11 +12,26 @@ import sumTotal from '../../utils/sum-total';
 import appName from '../../utils/app-name';
 
 type Props = {
-  post: {}
+  post: {},
+  history: {},
+  location: {},
+  selectedFilter: string
 };
 
 export default class PostListItem extends Component<Props> {
   props: Props;
+
+  parentClicked = (parent: string) => {
+    const { selectedFilter, location, history } = this.props;
+    const newLoc = `/${selectedFilter}/${parent}`;
+
+    if (location.pathname === newLoc) {
+      document.querySelector('#app-content').scrollTop = 0;
+      return;
+    }
+
+    history.push(newLoc);
+  };
 
   render() {
     const { post } = this.props;
@@ -47,7 +62,13 @@ export default class PostListItem extends Component<Props> {
             {post.author}{' '}
             <span className="author-reputation">{reputation}</span>
           </span>
-          <span className="category">{post.parent_permlink}</span>
+          <a
+            className="category"
+            role="none"
+            onClick={() => this.parentClicked(post.parent_permlink)}
+          >
+            {post.parent_permlink}
+          </a>
           <span className="read-mark" />
           <span className="date">
             <FormattedRelative value={created} />

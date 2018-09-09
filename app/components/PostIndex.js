@@ -221,7 +221,13 @@ export default class PostIndex extends Component<Props> {
                     ''
                   )}
                   {postList.valueSeq().map(d => (
-                    <PostListItem key={d.id} post={d} />
+                    <PostListItem
+                      key={d.id}
+                      selectedFilter={selectedFilter}
+                      history={history}
+                      location={location}
+                      post={d}
+                    />
                   ))}
                 </div>
               </div>

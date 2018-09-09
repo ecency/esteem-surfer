@@ -65,6 +65,7 @@
       font-size: 12px;
       margin-right: 12px;
       padding: 2px 8px;
+      transition: 0.5s;
 
       @include themify(day) {
         background-color: $silver;
@@ -74,6 +75,16 @@
       @include themify(night) {
         background-color: $dark-grey-blue;
         color: $silver;
+      }
+
+      &:hover {
+        @include themify(day) {
+          background-color: darken($silver, 10);
+        }
+
+        @include themify(night) {
+          background-color: lighten($dark-grey-blue, 10);
+        }
       }
     }
 
