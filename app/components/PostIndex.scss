@@ -96,22 +96,6 @@
           }
         }
 
-        .list-switch {
-          align-items: center;
-
-          display: flex;
-          font-size: 22px;
-          height: 50px;
-
-          @include themify(day) {
-            color: $light-periwinkle;
-          }
-
-          @include themify(night) {
-            color: $metallic-blue;
-          }
-        }
-
         &.loading {
           border-bottom: 0;
           height: 49px;

@@ -7,8 +7,8 @@ export default class PostListLoadingItem extends Component<Props> {
   props: Props;
 
   render() {
-    return [...Array(6).keys()].map(() => (
-      <div className="post-list-loading-item">
+    return [...Array(6).keys()].map(d => (
+      <div className="post-list-loading-item" key={d}>
         <div className="item-header" />
         <div className="item-body">
           <div className="item-image" />

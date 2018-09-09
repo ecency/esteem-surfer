@@ -1,14 +1,15 @@
 // @flow
 
 import { LOCATION_CHANGE } from 'react-router-redux';
-import { THEME_CHANGED } from '../actions/global';
+import { THEME_CHANGED, LIST_STYLE_CHANGED } from '../actions/global';
 import { commonActionType } from './types';
 import filters from '../constants/filters.json';
 
 const defaultState = {
   selectedFilter: 'trending',
   selectedTag: null,
-  theme: 'day'
+  theme: 'day',
+  listStyle: 'row'
 };
 
 export default function global(
@@ -34,6 +35,12 @@ export default function global(
       const { newTheme } = action.payload;
       return Object.assign({}, state, {
         theme: newTheme
+      });
+    }
+    case LIST_STYLE_CHANGED: {
+      const { newStyle } = action.payload;
+      return Object.assign({}, state, {
+        listStyle: newStyle
       });
     }
     default:

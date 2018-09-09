@@ -1,0 +1,18 @@
+@import '../../style/mixins';
+@import '../../style/colors';
+
+.list-switch {
+  align-items: center;
+  display: flex;
+  font-size: 22px;
+  height: 50px;
+  user-select: none;
+
+  @include themify(day) {
+    color: $light-periwinkle;
+  }
+
+  @include themify(night) {
+    color: $metallic-blue;
+  }
+}

@@ -3,15 +3,16 @@ import { connect } from 'react-redux';
 import PostIndex from '../components/PostIndex';
 import { fetchPosts, invalidatePosts } from '../actions/posts';
 import { fetchTrendingTags } from '../actions/trending-tags';
-import { changeTheme } from '../actions/global';
+import { changeTheme, changeListStyle } from '../actions/global';
 
 function mapStateToProps(state) {
   return {
     selectedFilter: state.global.selectedFilter,
     selectedTag: state.global.selectedTag,
-    theme: state.global.theme,
+    trendingTags: state.trendingTags,
     posts: state.posts,
-    trendingTags: state.trendingTags
+    theme: state.global.theme,
+    listStyle: state.global.listStyle
   };
 }
 
@@ -20,7 +21,8 @@ function mapDispatchToProps(dispatch) {
     actions: {
       ...bindActionCreators({ fetchPosts, invalidatePosts }, dispatch),
       ...bindActionCreators({ fetchTrendingTags }, dispatch),
-      ...bindActionCreators({ changeTheme }, dispatch)
+      ...bindActionCreators({ changeTheme }, dispatch),
+      ...bindActionCreators({ changeListStyle }, dispatch)
     }
   };
 }

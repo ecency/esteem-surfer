@@ -18,20 +18,23 @@ import NavBar from './modules/NavBar';
 import AppFooter from './modules/AppFooter';
 import Mi from './elements/Mi';
 import PostListLoadingItem from './elements/PostListLoadingItem';
+import ListSwitch from './elements/ListSwitch';
 
 type Props = {
   actions: {
     fetchPosts: () => void,
     fetchTrendingTags: () => void,
     invalidatePosts: () => void,
-    changeTheme: () => void
+    changeTheme: () => void,
+    changeListStyle: () => void
   },
   posts: {},
   trendingTags: {},
   location: {},
   history: {},
   selectedFilter: string,
-  selectedTag: string | null
+  selectedTag: string | null,
+  listStyle: string
 };
 
 export default class PostIndex extends Component<Props> {
@@ -123,7 +126,8 @@ export default class PostIndex extends Component<Props> {
       selectedTag,
       location,
       history,
-      actions
+      actions,
+      listStyle
     } = this.props;
 
     const filterMenu = this.makeFilterMenu(selectedFilter);
@@ -173,9 +177,7 @@ export default class PostIndex extends Component<Props> {
                   </span>
                   <DropDown menu={filterMenu} location={location} />
                 </div>
-                <a className="list-switch">
-                  <i className="mi">view_module</i>
-                </a>
+                <ListSwitch changeStyleFn={actions.changeListStyle} />
               </div>
               {loading && postList.size === 0 ? <LinearProgress /> : ''}
             </div>
@@ -205,7 +207,11 @@ export default class PostIndex extends Component<Props> {
               {loading && postList.size === 0 ? <PostListLoadingItem /> : ''}
 
               <div className={listCls}>
-                <div className="post-list-body">
+                <div
+                  className={`post-list-body ${
+                    listStyle === 'grid' ? 'grid-view' : ''
+                  }`}
+                >
                   {postList.valueSeq().map(d => (
                     <PostListItem key={d.id} post={d} />
                   ))}
