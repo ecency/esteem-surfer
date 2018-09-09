@@ -58,6 +58,7 @@ npm-debug.log.*
 src/
 app/bower_components
 app/app.js
+app/app.js.map
 app/background.js
 temp
 
