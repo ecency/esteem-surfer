@@ -1,4 +1,5 @@
 import Remarkable from 'remarkable';
+import he from 'he';
 
 const md = new Remarkable({ html: true, breaks: true, linkify: false });
 
@@ -21,6 +22,8 @@ export default (postBody, length) => {
     // Truncate
     text = text.substring(0, length);
   }
+
+  text = he.decode(text); // decode html entities
 
   return text;
 };
