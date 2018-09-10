@@ -1,13 +1,12 @@
 // @flow
-/* eslint-disable react/no-did-update-set-state */
 import React, { Component } from 'react';
 
 import { Dropdown as RealDropDown } from 'antd';
 import Mi from './Mi';
 
 type Props = {
-  menu: object,
-  location: object
+  menu: {},
+  location: {}
 };
 
 export default class DropDown extends Component<Props> {
@@ -25,7 +24,9 @@ export default class DropDown extends Component<Props> {
     // Set hover false when location changed.
     const { location } = this.props;
     if (location !== prevProps.location) {
-      this.setState({ hover: false });
+      setTimeout(() => {
+        this.setState({ hover: false });
+      }, 300);
     }
   }
 
