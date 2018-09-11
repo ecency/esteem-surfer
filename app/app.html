@@ -13,15 +13,18 @@
         link.href = 'style/antd/' + theme + '.css';
         document.getElementsByTagName('head')[0].appendChild(link);
 
-        if(styleEl){
+        if (styleEl) {
           styleEl.parentElement.removeChild(styleEl);
         }
 
         document.querySelector('body').className = theme + '-theme';
       };
 
-      const theme = localStorage.getItem('theme') || 'day';
-      window.setTheme(theme);
+      window.onload = () => {
+        const theme = localStorage.getItem('theme') || 'day';
+        window.setTheme(theme);
+      };
+
     </script>
 
     <script>
