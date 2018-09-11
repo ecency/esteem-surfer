@@ -103,8 +103,9 @@ export default class PostIndex extends Component<Props> {
     const groupKey = makeGroupKeyForPosts(selectedFilter, selectedTag);
     const data = posts.get(groupKey);
     const loading = data.get('loading');
+    const hasMore = data.get('hasMore');
 
-    if (!loading) {
+    if (!loading && hasMore) {
       this.startFetch(true);
     }
   }

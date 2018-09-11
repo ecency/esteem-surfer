@@ -22,13 +22,14 @@ export function fetchPosts(
     getState: () => postStateType
   ) => {
     const { posts } = getState();
+    const pageSize = 20;
 
     const groupKey = makeGroupKeyForPosts(what, tag);
 
     // make sure tag is not null or undefined. it should be empty string.
     const query = {
       tag: tag || '',
-      limit: 20
+      limit: pageSize
     };
 
     if (!more && posts.getIn([groupKey, 'entries']).size) {
@@ -55,7 +56,11 @@ export function fetchPosts(
       .then(resp => {
         dispatch({
           type: POSTS_FETCH_OK,
-          payload: { data: resp, group: groupKey }
+          payload: {
+            data: resp,
+            group: groupKey,
+            hasMore: resp.length >= pageSize
+          }
         });
 
         return resp;

@@ -15,7 +15,8 @@ import { makeGroupKeyForPosts } from '../utils/misc';
 export const PostGroupRecord = Record({
   entries: OrderedMap({}),
   err: null,
-  loading: false
+  loading: false,
+  hasMore: true
 });
 
 const defaultState = Map();
@@ -48,12 +49,12 @@ export default function posts(
         .setIn([groupKey, 'loading'], true);
     }
     case POSTS_FETCH_OK: {
-      const groupKey = action.payload.group;
-      const newEntries = action.payload.data;
+      const { group: groupKey, data: newEntries, hasMore } = action.payload;
 
       let newState = state
         .setIn([groupKey, 'err'], null)
-        .setIn([groupKey, 'loading'], false);
+        .setIn([groupKey, 'loading'], false)
+        .setIn([groupKey, 'hasMore'], hasMore);
 
       newEntries.forEach(entry => {
         if (!newState.hasIn([groupKey, 'entries', `${entry.id}`])) {
