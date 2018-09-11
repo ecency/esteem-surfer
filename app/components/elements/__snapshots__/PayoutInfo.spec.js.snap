@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Payout info component should match exact snapshot 1`] = `
+<a
+  className="post-total"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  $ 430.12
+</a>
+`;

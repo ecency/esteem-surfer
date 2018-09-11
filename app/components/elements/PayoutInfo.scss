@@ -1,0 +1,23 @@
+@import '../../style/mixins';
+@import '../../style/colors';
+
+.payout-popover-content {
+  width: 270px;
+
+  p {
+    margin: 0 0 8px 0;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .label {
+      display: inline-block;
+      font-weight: 700;
+      width: 180px;
+    }
+
+    .value {
+    }
+  }
+}

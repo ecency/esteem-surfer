@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`currency-symbol (1) usd 1`] = `"$"`;
+
+exports[`currency-symbol (2) eur 1`] = `"€"`;
+
+exports[`currency-symbol (3) try 1`] = `"₺"`;

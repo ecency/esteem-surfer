@@ -2,7 +2,7 @@
 
 exports[`UserAvatar (1) Should render small size 1`] = `
 <span
-  className="userAvatar small"
+  className="user-avatar small"
   style={
     Object {
       "backgroundImage": "url('https://steemitimages.com/u/good-karma/avatar/medium')",
@@ -13,7 +13,7 @@ exports[`UserAvatar (1) Should render small size 1`] = `
 
 exports[`UserAvatar (2) Should render normal size 1`] = `
 <span
-  className="userAvatar normal"
+  className="user-avatar normal"
   style={
     Object {
       "backgroundImage": "url('https://steemitimages.com/u/good-karma/avatar/medium')",
@@ -24,7 +24,7 @@ exports[`UserAvatar (2) Should render normal size 1`] = `
 
 exports[`UserAvatar (3) Should render medium size 1`] = `
 <span
-  className="userAvatar medium"
+  className="user-avatar medium"
   style={
     Object {
       "backgroundImage": "url('https://steemitimages.com/u/good-karma/avatar/medium')",
@@ -35,7 +35,7 @@ exports[`UserAvatar (3) Should render medium size 1`] = `
 
 exports[`UserAvatar (4) Should render large size 1`] = `
 <span
-  className="userAvatar large"
+  className="user-avatar large"
   style={
     Object {
       "backgroundImage": "url('https://steemitimages.com/u/good-karma/avatar/medium')",
@@ -46,7 +46,7 @@ exports[`UserAvatar (4) Should render large size 1`] = `
 
 exports[`UserAvatar (5) Should render xlarge size 1`] = `
 <span
-  className="userAvatar xLarge"
+  className="user-avatar xLarge"
   style={
     Object {
       "backgroundImage": "url('https://steemitimages.com/u/good-karma/avatar/large')",

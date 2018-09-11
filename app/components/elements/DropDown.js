@@ -47,7 +47,7 @@ export default class DropDown extends Component<Props> {
     return (
       <RealDropDown
         overlay={menu}
-        onVisibleChange={this.visibleChanged.bind(this)}
+        onVisibleChange={e => this.visibleChanged(e)}
       >
         <span className={caretClassName}>
           <Mi icon="arrow_drop_down" />

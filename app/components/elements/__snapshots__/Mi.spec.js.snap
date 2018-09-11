@@ -3,7 +3,7 @@
 exports[`Material icon component should match exact snapshot 1`] = `
 <div>
   <i
-    className="mi"
+    className="mi "
   >
     code
   </i>

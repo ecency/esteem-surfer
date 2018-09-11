@@ -8,6 +8,7 @@ Immutable.Map {
     "entries": Immutable.OrderedMap {},
     "err": null,
     "loading": false,
+    "hasMore": true,
   },
 }
 `;
@@ -18,11 +19,13 @@ Immutable.Map {
     "entries": Immutable.OrderedMap {},
     "err": null,
     "loading": false,
+    "hasMore": true,
   },
   "trending-art": Immutable.Record {
     "entries": Immutable.OrderedMap {},
     "err": null,
     "loading": false,
+    "hasMore": true,
   },
 }
 `;
@@ -33,11 +36,13 @@ Immutable.Map {
     "entries": Immutable.OrderedMap {},
     "err": null,
     "loading": false,
+    "hasMore": true,
   },
   "trending-art": Immutable.Record {
     "entries": Immutable.OrderedMap {},
     "err": null,
     "loading": false,
+    "hasMore": true,
   },
 }
 `;
@@ -48,11 +53,13 @@ Immutable.Map {
     "entries": Immutable.OrderedMap {},
     "err": null,
     "loading": true,
+    "hasMore": true,
   },
   "trending-art": Immutable.Record {
     "entries": Immutable.OrderedMap {},
     "err": null,
     "loading": false,
+    "hasMore": true,
   },
 }
 `;
@@ -70,11 +77,13 @@ Immutable.Map {
     },
     "err": null,
     "loading": true,
+    "hasMore": true,
   },
   "trending-art": Immutable.Record {
     "entries": Immutable.OrderedMap {},
     "err": null,
     "loading": false,
+    "hasMore": true,
   },
 }
 `;
@@ -104,11 +113,13 @@ Immutable.Map {
     },
     "err": null,
     "loading": false,
+    "hasMore": undefined,
   },
   "trending-art": Immutable.Record {
     "entries": Immutable.OrderedMap {},
     "err": null,
     "loading": false,
+    "hasMore": true,
   },
 }
 `;
@@ -126,6 +137,7 @@ Immutable.Map {
     },
     "err": null,
     "loading": false,
+    "hasMore": undefined,
   },
 }
 `;
@@ -161,11 +173,13 @@ Immutable.Map {
     },
     "err": null,
     "loading": false,
+    "hasMore": undefined,
   },
   "trending-art": Immutable.Record {
     "entries": Immutable.OrderedMap {},
     "err": null,
     "loading": false,
+    "hasMore": true,
   },
 }
 `;
@@ -183,11 +197,13 @@ Immutable.Map {
     },
     "err": "an error has occurred",
     "loading": false,
+    "hasMore": true,
   },
   "trending-art": Immutable.Record {
     "entries": Immutable.OrderedMap {},
     "err": null,
     "loading": false,
+    "hasMore": true,
   },
 }
 `;
@@ -198,11 +214,13 @@ Immutable.Map {
     "entries": Immutable.OrderedMap {},
     "err": null,
     "loading": false,
+    "hasMore": true,
   },
   "trending-art": Immutable.Record {
     "entries": Immutable.OrderedMap {},
     "err": null,
     "loading": false,
+    "hasMore": true,
   },
 }
 `;
@@ -213,6 +231,7 @@ Immutable.Map {
     "entries": Immutable.OrderedMap {},
     "err": null,
     "loading": true,
+    "hasMore": true,
   },
 }
 `;

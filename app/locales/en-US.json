@@ -12,5 +12,12 @@
     "filter-votes": "Votes",
     "filter-children": "Comments",
     "filter-payout": "Payout"
+  },
+  "payout-info": {
+    "potential-payout": "Potential Payout",
+    "promoted": "Promoted",
+    "author-payout": "Author Payout",
+    "curation-payout": "Curation Payout",
+    "payout-date": "Payout"
   }
 }

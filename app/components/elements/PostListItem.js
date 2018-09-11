@@ -1,9 +1,9 @@
 // @flow
 import React, { Component } from 'react';
 import { FormattedRelative } from 'react-intl';
-import { Popover } from 'antd';
 
 import UserAvatar from './UserAvatar';
+import PayoutInfo from './PayoutInfo';
 
 import catchPostImage from '../../utils/catch-post-image';
 import authorReputation from '../../utils/author-reputation';
@@ -11,6 +11,7 @@ import parseDate from '../../utils/parse-date';
 import postSummary from '../../utils/post-summary';
 import sumTotal from '../../utils/sum-total';
 import appName from '../../utils/app-name';
+// import parseMoney from "../../utils/parse-money";
 
 type Props = {
   post: {},
@@ -40,7 +41,7 @@ export default class PostListItem extends Component<Props> {
     const reputation = authorReputation(post.author_reputation);
     const created = parseDate(post.created);
     const summary = postSummary(post.body, 200);
-    const postTotal = sumTotal(post).toFixed(2);
+
     const voteCount = post.active_votes.length;
     const contentCount = post.children;
 
@@ -53,12 +54,8 @@ export default class PostListItem extends Component<Props> {
 
     const app = appName(jsonMeta.app);
 
-    const content = (
-      <div>
-        <p>Content</p>
-        <p>Content</p>
-      </div>
-    );
+    const postTotal = sumTotal(post).toFixed(2);
+    // const isPayoutDeclined = parseMoney(post.max_accepted_payout) === 0;
 
     return (
       <div className="post-list-item">
@@ -102,10 +99,9 @@ export default class PostListItem extends Component<Props> {
                 <i className="mi">keyboard_arrow_up</i>
               </a>
             </div>
-
-            <Popover content={content} placement="top" title="Title">
+            <PayoutInfo content={post}>
               <a className="post-total">$ {postTotal}</a>
-            </Popover>
+            </PayoutInfo>
             <a className="voters">
               <i className="mi">people</i>
               {voteCount}

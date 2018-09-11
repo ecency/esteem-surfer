@@ -4,7 +4,7 @@ import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import DropDown from './DropDown';
-import styles from './DropDown.less';
+
 import { Dropdown as RealDropDown, Menu } from 'antd';
 import renderer from 'react-test-renderer';
 
@@ -36,7 +36,7 @@ function setup() {
 }
 
 describe('DropDown element', () => {
-  it('first element should be ants drop down', () => {
+  it('(1) first element should be ants drop down', () => {
     const { menu } = setup();
     expect(menu.type()).toBe(RealDropDown);
   });
@@ -46,33 +46,36 @@ describe('DropDown element', () => {
     expect(component.state('hover')).toBe(false);
   });
 
-  it('state and caret class should be changed when onVisibleChange(true) triggered by antd drop down', () => {
+  it('(2) state and caret class should be changed when onVisibleChange(true) triggered by antd drop down', () => {
     const { component, menu } = setup();
     menu.prop('onVisibleChange')(true);
     expect(component.state('hover')).toBe(true);
     component.update();
     let caret = component.find('span');
-    expect(caret.hasClass(styles.hover)).toBe(true);
+    expect(caret.hasClass('hover')).toBe(true);
 
     menu.prop('onVisibleChange')(false);
     expect(component.state('hover')).toBe(false);
     component.update();
     caret = component.find('span');
-    expect(caret.hasClass(styles.hover)).toBe(false);
+    expect(caret.hasClass('hover')).toBe(false);
   });
 
-  it('state and caret class should changed when location prop changed', () => {
+  it('(3) state and caret class should changed when location prop changed', () => {
     const { component, menu } = setup();
     menu.prop('onVisibleChange')(true);
     expect(component.state('hover')).toBe(true);
     component.update();
     let caret = component.find('span');
-    expect(caret.hasClass(styles.hover)).toBe(true);
+    expect(caret.hasClass('hover')).toBe(true);
 
     component.setProps({ location: { path: 'foo' } });
-    expect(component.state('hover')).toBe(false);
-    component.update();
-    caret = component.find('span');
-    expect(caret.hasClass(styles.hover)).toBe(false);
+
+    setTimeout(() => {
+      expect(component.state('hover')).toBe(false);
+      component.update();
+      caret = component.find('span');
+      expect(caret.hasClass('hover')).toBe(false);
+    }, 400);
   });
 });
