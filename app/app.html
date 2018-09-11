@@ -1,10 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <title>eSteem Surfer</title>
     <script>
-      (function() {
+      window.setTheme = function (theme) {
+        const styleEl = document.querySelector('#theme-stylesheet');
+
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.id = 'theme-stylesheet';
+        link.href = 'style/antd/' + theme + '.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+
+        if(styleEl){
+          styleEl.parentElement.removeChild(styleEl);
+        }
+
+        document.querySelector('body').className = theme + '-theme';
+      };
+
+      const theme = localStorage.getItem('theme') || 'day';
+      window.setTheme(theme);
+    </script>
+
+    <script>
+      (function () {
         if (!process.env.HOT) {
           const link = document.createElement('link');
           link.rel = 'stylesheet';
@@ -14,40 +35,34 @@
         }
       }());
     </script>
-  </head>
-  <body class="day-theme">
-    <div id="root"></div>
-    <script>
-      window.setTheme = function(theme){
-        document.querySelector('body').className = theme + '-theme';
-      };
 
-      window.setTheme(localStorage.getItem('theme'))
-    </script>
-    <script>
-      {
-        const scripts = [];
+</head>
+<body class="day-theme">
+<div id="root"></div>
+<script>
+  {
+    const scripts = [];
 
-        // Dynamically insert the DLL script in development env in the
-        // renderer process
-        if (process.env.NODE_ENV === 'development') {
-          scripts.push('../dll/renderer.dev.dll.js');
-        }
+    // Dynamically insert the DLL script in development env in the
+    // renderer process
+    if (process.env.NODE_ENV === 'development') {
+      scripts.push('../dll/renderer.dev.dll.js');
+    }
 
-        // Dynamically insert the bundled app script in the renderer process
-        const port = process.env.PORT || 1212;
-        scripts.push(
-          (process.env.HOT)
-            ? 'http://localhost:' + port + '/dist/renderer.dev.js'
-            : './dist/renderer.prod.js'
-        );
+    // Dynamically insert the bundled app script in the renderer process
+    const port = process.env.PORT || 1212;
+    scripts.push(
+      (process.env.HOT)
+        ? 'http://localhost:' + port + '/dist/renderer.dev.js'
+        : './dist/renderer.prod.js'
+    );
 
-        document.write(
-          scripts
-            .map(script => `<script defer src="${script}"><\/script>`)
-            .join('')
-        );
-      }
-    </script>
-  </body>
+    document.write(
+      scripts
+        .map(script => `<script defer src="${script}"><\/script>`)
+        .join('')
+    );
+  }
+</script>
+</body>
 </html>

@@ -31,126 +31,23 @@ export default merge.smart(baseConfig, {
 
   module: {
     rules: [
-      // Extract all .global.css to style.css as is
       {
-        test: /\.global\.css$/,
+        test: /app.style\.scss$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: './'
-            }
+            loader: 'style-loader'
           },
           {
             loader: 'css-loader',
             options: {
               sourceMap: true
             }
+          },
+          {
+            loader: 'sass-loader'
           }
         ]
       },
-      // Pipe other styles through css modules and append to style.css
-      {
-        test: /^((?!\.global).)*\.css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              localIdentName: '[name]__[local]__[hash:base64:5]',
-              sourceMap: true
-            }
-          }
-        ]
-      },
-      // Add SASS support  - compile all .global.scss files and pipe it to style.css
-      {
-        test: /\.global\.(scss|sass)$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-              importLoaders: 1
-            }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true
-            }
-          }
-        ]
-      },
-      // Add SASS support  - compile all other .scss files and pipe it to style.css
-      {
-        test: /^((?!\.global).)*\.(scss|sass)$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              importLoaders: 1,
-              localIdentName: '[name]__[local]__[hash:base64:5]',
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true
-            }
-          }
-        ]
-      },
-        // LESS support - compile all .global.less files and pipe it to style.css
-        {
-            test: /\.global\.(less)$/,
-            use: [
-                {
-                    loader: 'style-loader'
-                },
-                {
-                    loader: 'css-loader',
-                    options: {
-                        sourceMap: true
-                    }
-                },
-                {
-                    loader: 'less-loader', options: { javascriptEnabled: true }
-                }
-            ]
-        },
-        // LESS support - compile all other .less files and pipe it to style.css
-        {
-            test: /^((?!\.global).)*\.(less)$/,
-            use: [
-                {
-                    loader: 'style-loader'
-                },
-                {
-                    loader: 'css-loader',
-                    options: {
-                        modules: true,
-                        sourceMap: true,
-                        importLoaders: 1,
-                        localIdentName: '[name]__[local]__[hash:base64:5]'
-                    }
-                },
-                {
-                    loader: 'less-loader', options: { javascriptEnabled: true }
-                }
-            ]
-        },
       // WOFF Font
       {
         test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,

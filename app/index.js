@@ -4,9 +4,6 @@ import { AppContainer } from 'react-hot-loader';
 import Root from './containers/Root';
 import { configureStore, history } from './store/configureStore';
 
-import './style/antd/base.less';
-import './style/antd/day.less';
-import './style/antd/night.less';
 import './style/app.style.scss';
 
 const store = configureStore({});

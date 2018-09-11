@@ -1,6 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import { FormattedRelative } from 'react-intl';
+import { Popover } from 'antd';
 
 import UserAvatar from './UserAvatar';
 
@@ -52,6 +53,13 @@ export default class PostListItem extends Component<Props> {
 
     const app = appName(jsonMeta.app);
 
+    const content = (
+      <div>
+        <p>Content</p>
+        <p>Content</p>
+      </div>
+    );
+
     return (
       <div className="post-list-item">
         <div className="item-header">
@@ -95,7 +103,9 @@ export default class PostListItem extends Component<Props> {
               </a>
             </div>
 
-            <a className="post-total">$ {postTotal}</a>
+            <Popover content={content} placement="top" title="Title">
+              <a className="post-total">$ {postTotal}</a>
+            </Popover>
             <a className="voters">
               <i className="mi">people</i>
               {voteCount}
