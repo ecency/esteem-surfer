@@ -188,6 +188,11 @@
         @include themify(night) {
           font-weight: 500;
         }
+
+        &.payout-declined {
+          color: lighten($steel-grey, 15);
+          text-decoration: line-through;
+        }
       }
 
       .voters,

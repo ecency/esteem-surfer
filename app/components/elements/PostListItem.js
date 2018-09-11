@@ -11,7 +11,7 @@ import parseDate from '../../utils/parse-date';
 import postSummary from '../../utils/post-summary';
 import sumTotal from '../../utils/sum-total';
 import appName from '../../utils/app-name';
-// import parseMoney from "../../utils/parse-money";
+import parseMoney from '../../utils/parse-money';
 
 type Props = {
   post: {},
@@ -55,7 +55,7 @@ export default class PostListItem extends Component<Props> {
     const app = appName(jsonMeta.app);
 
     const postTotal = sumTotal(post).toFixed(2);
-    // const isPayoutDeclined = parseMoney(post.max_accepted_payout) === 0;
+    const isPayoutDeclined = parseMoney(post.max_accepted_payout) === 0;
 
     return (
       <div className="post-list-item">
@@ -100,7 +100,13 @@ export default class PostListItem extends Component<Props> {
               </a>
             </div>
             <PayoutInfo content={post}>
-              <a className="post-total">$ {postTotal}</a>
+              <a
+                className={`post-total ${
+                  isPayoutDeclined ? 'payout-declined' : ''
+                }`}
+              >
+                $ {postTotal}
+              </a>
             </PayoutInfo>
             <a className="voters">
               <i className="mi">people</i>

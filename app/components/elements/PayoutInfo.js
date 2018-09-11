@@ -26,9 +26,12 @@ export default class PayoutInfo extends Component<Props> {
     const promotedPayout = (
       parseMoney(content.promoted) * currencyRate
     ).toFixed(3);
-    const authorPayout = parseMoney(content.total_payout_value) * currencyRate;
-    const curationPayout =
-      parseMoney(content.curator_payout_value) * currencyRate;
+    const authorPayout = (
+      parseMoney(content.total_payout_value) * currencyRate
+    ).toFixed(3);
+    const curationPayout = (
+      parseMoney(content.curator_payout_value) * currencyRate
+    ).toFixed(3);
     const payoutDate = parseDate(
       content.last_payout === '1970-01-01T00:00:00'
         ? content.cashout_time
