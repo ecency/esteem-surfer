@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Popover } from 'antd';
+import { Popover, Modal } from 'antd';
 
 import parseMoney from '../../utils/parse-money';
 import currencySymbol from '../../utils/currency-symbol';
@@ -12,6 +12,37 @@ type Props = {
 
 export default class VotersInfo extends Component<Props> {
   props: Props;
+
+  constructor(props: Props) {
+    super(props);
+
+    this.state = { modalVisible: false, hidePopover: false };
+  }
+
+  showModal = () => {
+    this.setState({
+      modalVisible: true,
+      hidePopover: true
+    });
+  };
+
+  handleOk = () => {
+    this.setState({
+      modalVisible: false
+    });
+  };
+
+  handleCancel = () => {
+    this.setState({
+      modalVisible: false
+    });
+  };
+
+  afterModalClosed = () => {
+    this.setState({
+      hidePopover: false
+    });
+  };
 
   render() {
     const { content, children } = this.props;
@@ -82,10 +113,28 @@ export default class VotersInfo extends Component<Props> {
       <div className="voters-info-popover-content">{popoverChildren}</div>
     );
 
+    const { hidePopover, modalVisible } = this.state;
+
+    const popoverProps = { content: popoverContent };
+    if (hidePopover) {
+      popoverProps.visible = false;
+    }
+
     if (popoverVisible) {
       return (
-        <Popover content={popoverContent} placement="bottom">
-          {children}
+        <Popover {...popoverProps}>
+          <span role="none" onClick={this.showModal}>
+            {children}
+          </span>
+
+          <Modal
+            visible={modalVisible}
+            onOk={this.handleOk}
+            onCancel={this.handleCancel}
+            afterClose={this.afterModalClosed}
+          >
+            <p>Content</p>
+          </Modal>
         </Popover>
       );
     }
