@@ -1,0 +1,43 @@
+@import '../../style/mixins';
+@import '../../style/colors';
+
+.voters-info-popover-content {
+  width: 320px;
+
+  p {
+    margin: 0 0 12px 0;
+    display: flex;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .voter {
+      font-weight: 700;
+      margin-right: 8px;
+    }
+
+    .percent {
+      @include themify(day) {
+        color: $warm-grey;
+      }
+
+      @include themify(night) {
+        color: $steel-grey;
+      }
+
+      &:before {
+        content: '%';
+      }
+    }
+
+    .reward {
+      flex-grow: 1;
+      text-align: right;
+    }
+  }
+
+  .more {
+    font-weight: 500;
+  }
+}

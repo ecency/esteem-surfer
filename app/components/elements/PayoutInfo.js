@@ -40,7 +40,7 @@ export default class PayoutInfo extends Component<Props> {
     const curSymbol = currencySymbol(currency);
 
     const popoverContent = (
-      <div className="payout-popover-content">
+      <div className="payout-info-popover-content">
         <p>
           <span className="label">
             <FormattedMessage id="payout-info.potential-payout" />

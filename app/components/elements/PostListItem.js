@@ -4,6 +4,7 @@ import { FormattedRelative } from 'react-intl';
 
 import UserAvatar from './UserAvatar';
 import PayoutInfo from './PayoutInfo';
+import VotersInfo from './VotersInfo';
 
 import catchPostImage from '../../utils/catch-post-image';
 import authorReputation from '../../utils/author-reputation';
@@ -108,10 +109,12 @@ export default class PostListItem extends Component<Props> {
                 $ {postTotal}
               </a>
             </PayoutInfo>
-            <a className="voters">
-              <i className="mi">people</i>
-              {voteCount}
-            </a>
+            <VotersInfo content={post}>
+              <a className="voters">
+                <i className="mi">people</i>
+                {voteCount}
+              </a>
+            </VotersInfo>
             <a className="comments">
               <i className="mi">comment</i>
               {contentCount}

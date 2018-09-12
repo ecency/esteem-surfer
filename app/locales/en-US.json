@@ -19,5 +19,8 @@
     "author-payout": "Author Payout",
     "curation-payout": "Curation Payout",
     "payout-date": "Payout"
+  },
+  "voters-info": {
+    "n-more": "{n} more"
   }
 }
