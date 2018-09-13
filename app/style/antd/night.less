@@ -1,14 +1,28 @@
 @import "../../../node_modules/antd/dist/antd";
+@import "colors";
 
 @font-family: 'Roboto', sans-serif;
 @line-height-base: 1.2;
 
-@primary-color: #526d91;
-@primary-1: #c4dcff;
+@primary-color: @metallic-blue;
+@primary-1: @powder-blue;
 
-@text-color:  #c1c5c7;
-@text-color-secondary: #c1c5c7;
-@component-background: lighten(#202834, 5);
-@popover-bg: lighten(#202834, 5);
+@text-color:  @silver;
+@text-color-secondary: @silver;
+@component-background: lighten(@dark-six, 5);
+@popover-bg: lighten(@dark-six, 5);
+
+@pagination-item-size: 24px;
+@pagination-item-size-sm: 20px;
+
+@heading-color: @metallic-blue;
+@table-header-bg: @dark-six;
+@table-header-sort-bg: @dark-two;
+@table-row-hover-bg: @metallic-blue;
+
+@border-color-split: @dark-two;
+@border-color-base: darken(@metallic-blue, 5);
+
+@disabled-color: @gunmetal;
 
 @import "overwrites";
