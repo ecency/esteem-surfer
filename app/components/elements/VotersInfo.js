@@ -8,26 +8,26 @@ import parseDate from '../../utils/parse-date';
 import authorReputation from '../../utils/author-reputation';
 
 type Props = {
-  content: {},
+  entry: {},
   children: React.Node
 };
 
 export const prepareContentVotes = (
-  content: Object,
+  entry: Object,
   currencyRate: number
 ): Array<Object> => {
   const totalPayout =
-    parseMoney(content.pending_payout_value) +
-    parseMoney(content.total_payout_value) +
-    parseMoney(content.curator_payout_value);
+    parseMoney(entry.pending_payout_value) +
+    parseMoney(entry.total_payout_value) +
+    parseMoney(entry.curator_payout_value);
 
-  const voteRshares = content.active_votes.reduce(
+  const voteRshares = entry.active_votes.reduce(
     (a, b) => a + parseFloat(b.rshares),
     0
   );
   const ratio = totalPayout / voteRshares;
 
-  return content.active_votes
+  return entry.active_votes
     .map(a => {
       const rew = a.rshares * ratio * currencyRate;
 
@@ -113,7 +113,7 @@ export default class VotersInfo extends Component<Props> {
   };
 
   render() {
-    const { content, children } = this.props;
+    const { entry, children } = this.props;
     const { hidePopover, modalVisible, popoverVisible } = this.state;
 
     let popoverProps = {};
@@ -124,7 +124,7 @@ export default class VotersInfo extends Component<Props> {
       const currencyRate = 1;
       const curSymbol = currencySymbol(currency);
 
-      votesData = prepareContentVotes(content, currencyRate);
+      votesData = prepareContentVotes(entry, currencyRate);
       const popoverContent = preparePopoverContent(votesData, curSymbol);
 
       popoverProps = { content: popoverContent };
@@ -133,7 +133,7 @@ export default class VotersInfo extends Component<Props> {
       }
     }
 
-    if (content.active_votes.length > 0) {
+    if (entry.active_votes.length > 0) {
       const modalTableColumns = [
         {
           title: <FormattedMessage id="voters-info.author" />,
@@ -213,6 +213,7 @@ export default class VotersInfo extends Component<Props> {
               dataSource={votesData}
               columns={modalTableColumns}
               scroll={{ y: 300 }}
+              rowKey="voter"
             />
           </Modal>
         </Popover>

@@ -7,7 +7,7 @@ import parseDate from '../../utils/parse-date';
 import currencySymbol from '../../utils/currency-symbol';
 
 type Props = {
-  content: {},
+  entry: {},
   children: React.Node
 };
 
@@ -15,27 +15,27 @@ export default class PayoutInfo extends Component<Props> {
   props: Props;
 
   render() {
-    const { content, children } = this.props;
+    const { entry, children } = this.props;
 
     const currency = 'usd';
     const currencyRate = 1;
 
     const pendingPayout = (
-      parseMoney(content.pending_payout_value) * currencyRate
+      parseMoney(entry.pending_payout_value) * currencyRate
     ).toFixed(3);
-    const promotedPayout = (
-      parseMoney(content.promoted) * currencyRate
-    ).toFixed(3);
+    const promotedPayout = (parseMoney(entry.promoted) * currencyRate).toFixed(
+      3
+    );
     const authorPayout = (
-      parseMoney(content.total_payout_value) * currencyRate
+      parseMoney(entry.total_payout_value) * currencyRate
     ).toFixed(3);
     const curationPayout = (
-      parseMoney(content.curator_payout_value) * currencyRate
+      parseMoney(entry.curator_payout_value) * currencyRate
     ).toFixed(3);
     const payoutDate = parseDate(
-      content.last_payout === '1970-01-01T00:00:00'
-        ? content.cashout_time
-        : content.last_payout
+      entry.last_payout === '1970-01-01T00:00:00'
+        ? entry.cashout_time
+        : entry.last_payout
     );
     const curSymbol = currencySymbol(currency);
 

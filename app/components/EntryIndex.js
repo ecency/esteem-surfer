@@ -10,7 +10,7 @@ import filters from '../constants/filters.json';
 import NavBar from './modules/NavBar';
 import AppFooter from './modules/AppFooter';
 
-import PostListItem from './elements/PostListItem';
+import EntryistItem from './elements/EntryistItem';
 import PostListLoadingItem from './elements/PostListLoadingItem';
 
 import DropDown from './elements/DropDown';
@@ -205,9 +205,9 @@ export default class EntryIndex extends Component<Props> {
                     ''
                   )}
                   {entryList.valueSeq().map(d => (
-                    <PostListItem
+                    <EntryistItem
                       key={d.id}
-                      {...Object.assign({}, this.props, { post: d })}
+                      {...Object.assign({}, this.props, { entry: d })}
                     />
                   ))}
                 </div>

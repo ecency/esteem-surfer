@@ -16,12 +16,12 @@ import parseMoney from '../../utils/parse-money';
 
 type Props = {
   global: {},
-  post: {},
+  entry: {},
   history: {},
   location: {}
 };
 
-export default class PostListItem extends Component<Props> {
+export default class EntryListItem extends Component<Props> {
   props: Props;
 
   parentClicked = (parent: string) => {
@@ -38,43 +38,43 @@ export default class PostListItem extends Component<Props> {
   };
 
   render() {
-    const { post } = this.props;
-    const img = catchPostImage(post) || 'img/noimage.png';
-    const reputation = authorReputation(post.author_reputation);
-    const created = parseDate(post.created);
-    const summary = postSummary(post.body, 200);
+    const { entry } = this.props;
+    const img = catchPostImage(entry) || 'img/noimage.png';
+    const reputation = authorReputation(entry.author_reputation);
+    const created = parseDate(entry.created);
+    const summary = postSummary(entry.body, 200);
 
-    const voteCount = post.active_votes.length;
-    const contentCount = post.children;
+    const voteCount = entry.active_votes.length;
+    const contentCount = entry.children;
 
     let jsonMeta;
     try {
-      jsonMeta = JSON.parse(post.json_metadata);
+      jsonMeta = JSON.parse(entry.json_metadata);
     } catch (e) {
       jsonMeta = {};
     }
 
     const app = appName(jsonMeta.app);
 
-    const postTotal = sumTotal(post).toFixed(2);
-    const isPayoutDeclined = parseMoney(post.max_accepted_payout) === 0;
+    const totalPayout = sumTotal(entry).toFixed(2);
+    const isPayoutDeclined = parseMoney(entry.max_accepted_payout) === 0;
 
     return (
-      <div className="post-list-item">
+      <div className="entry-list-item">
         <div className="item-header">
           <div className="author-avatar">
-            <UserAvatar user={post.author} size="small" />
+            <UserAvatar user={entry.author} size="small" />
           </div>
           <span className="author">
-            {post.author}{' '}
+            {entry.author}{' '}
             <span className="author-reputation">{reputation}</span>
           </span>
           <a
             className="category"
             role="none"
-            onClick={() => this.parentClicked(post.parent_permlink)}
+            onClick={() => this.parentClicked(entry.parent_permlink)}
           >
-            {post.parent_permlink}
+            {entry.parent_permlink}
           </a>
           <span className="read-mark" />
           <span className="date">
@@ -92,7 +92,7 @@ export default class PostListItem extends Component<Props> {
             />
           </div>
           <div className="item-summary">
-            <div className="item-title">{post.title}</div>
+            <div className="item-title">{entry.title}</div>
             <div className="item-body">{summary}</div>
           </div>
           <div className="item-controls">
@@ -101,16 +101,16 @@ export default class PostListItem extends Component<Props> {
                 <i className="mi">keyboard_arrow_up</i>
               </a>
             </div>
-            <PayoutInfo content={post}>
+            <PayoutInfo entry={entry}>
               <a
-                className={`post-total ${
+                className={`total-payout ${
                   isPayoutDeclined ? 'payout-declined' : ''
                 }`}
               >
-                $ {postTotal}
+                $ {totalPayout}
               </a>
             </PayoutInfo>
-            <VotersInfo content={post}>
+            <VotersInfo entry={entry}>
               <a className="voters">
                 <i className="mi">people</i>
                 {voteCount}
