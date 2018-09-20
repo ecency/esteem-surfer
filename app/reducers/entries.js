@@ -6,11 +6,11 @@ import {
   FETCH_BEGIN,
   FETCH_OK,
   FETCH_ERROR,
-  INVALIDATE
+  INVALIDATE,
+  makeGroupKeyForEntries
 } from '../actions/entries';
 import type { commonActionType } from './types';
 import filters from '../constants/filters.json';
-import { makeGroupKeyForPosts } from '../utils/misc';
 
 export const PostGroupRecord = Record({
   entries: OrderedMap({}),
@@ -33,7 +33,7 @@ export default function posts(
         const filter = path[1];
         const tag = path[2] || null;
 
-        const groupKey = makeGroupKeyForPosts(filter, tag);
+        const groupKey = makeGroupKeyForEntries(filter, tag);
         if (state.get(groupKey) === undefined) {
           return state.set(groupKey, new PostGroupRecord());
         }

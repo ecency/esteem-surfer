@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Menu } from 'antd';
 import { FormattedMessage } from 'react-intl';
 
-import { makeGroupKeyForPosts } from '../utils/misc';
+import { makeGroupKeyForEntries } from '../actions/entries';
 import filters from '../constants/filters.json';
 
 import NavBar from './modules/NavBar';
@@ -100,7 +100,7 @@ export default class EntryIndex extends Component<Props> {
     const { global, entries } = this.props;
     const { selectedFilter, selectedTag } = global;
 
-    const groupKey = makeGroupKeyForPosts(selectedFilter, selectedTag);
+    const groupKey = makeGroupKeyForEntries(selectedFilter, selectedTag);
     const data = entries.get(groupKey);
     const loading = data.get('loading');
     const hasMore = data.get('hasMore');
@@ -126,7 +126,7 @@ export default class EntryIndex extends Component<Props> {
     const { selectedFilter, selectedTag } = global;
 
     const filterMenu = this.makeFilterMenu(selectedFilter);
-    const groupKey = makeGroupKeyForPosts(selectedFilter, selectedTag);
+    const groupKey = makeGroupKeyForEntries(selectedFilter, selectedTag);
 
     const data = entries.get(groupKey);
     const entryList = data.get('entries');
