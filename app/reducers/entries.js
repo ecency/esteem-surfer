@@ -12,7 +12,7 @@ import {
 import type { commonActionType } from './types';
 import filters from '../constants/filters.json';
 
-export const PostGroupRecord = Record({
+export const EntryGroupRecord = Record({
   entries: OrderedMap({}),
   err: null,
   loading: false,
@@ -21,13 +21,13 @@ export const PostGroupRecord = Record({
 
 const defaultState = Map();
 
-export default function posts(
+export default function entries(
   state: Map = defaultState,
   action: commonActionType
 ) {
   switch (action.type) {
     case LOCATION_CHANGE: {
-      // Create post group when location changed
+      // Create entry group when location changed
       const path = action.payload.pathname.split('/');
       if (path.length > 0 && filters.includes(path[1])) {
         const filter = path[1];
@@ -35,7 +35,7 @@ export default function posts(
 
         const groupKey = makeGroupKeyForEntries(filter, tag);
         if (state.get(groupKey) === undefined) {
-          return state.set(groupKey, new PostGroupRecord());
+          return state.set(groupKey, new EntryGroupRecord());
         }
       }
 

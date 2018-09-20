@@ -1,6 +1,6 @@
 // @flow
 import { Client } from 'dsteem';
-import type { postStateType, commonActionType } from '../reducers/types';
+import type { entryStateType, commonActionType } from '../reducers/types';
 
 export const FETCH_BEGIN = 'entries/FETCH_BEGIN';
 export const FETCH_OK = 'entries/FETCH_OK';
@@ -13,7 +13,7 @@ const client = new Client('https://api.steemit.com');
 
 export const makeGroupKeyForEntries = (
   what: string,
-  tag: string = null
+  tag: string | null = null
 ): string => {
   if (tag) {
     return `${what}-${tag}`;
@@ -28,7 +28,7 @@ export function fetchEntries(
 ) {
   return (
     dispatch: (action: commonActionType) => void,
-    getState: () => postStateType
+    getState: () => entryStateType
   ) => {
     const { entries } = getState();
     const pageSize = 20;

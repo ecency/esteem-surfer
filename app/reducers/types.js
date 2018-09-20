@@ -3,7 +3,7 @@ export type commonActionType = {
   payload?: {}
 };
 
-export type postStateType = {
+export type entryStateType = {
   +list: [],
   +groups: {},
   +loading: boolean
