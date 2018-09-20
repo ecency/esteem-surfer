@@ -1,8 +1,8 @@
 {
   "g": {
-    "create-post": "Create Post"
+    "compose-entry": "Create Post"
   },
-  "post-index": {
+  "entry-index": {
     "tags": "Popular Tags",
     "filter-trending": "Trending",
     "filter-hot": "Hot",

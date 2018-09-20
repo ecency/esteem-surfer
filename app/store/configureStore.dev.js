@@ -4,7 +4,7 @@ import createHistory from 'history/createMemoryHistory';
 import { routerMiddleware, routerActions } from 'react-router-redux';
 import { createLogger } from 'redux-logger';
 import rootReducer from '../reducers';
-import * as postsActions from '../actions/posts';
+import * as entriesActions from '../actions/entries';
 import * as trendingTagsActions from '../actions/trending-tags';
 import * as globalActions from '../actions/global';
 
@@ -35,7 +35,7 @@ const configureStore = (initialState?: {}) => {
 
   // Redux DevTools Configuration
   const actionCreators = {
-    ...postsActions,
+    ...entriesActions,
     ...trendingTagsActions,
     ...globalActions,
     ...routerActions

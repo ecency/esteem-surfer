@@ -1,7 +1,7 @@
 @import '../style/mixins';
 @import '../style/colors';
 
-.post-index {
+.entry-index {
   .page-header {
     display: flex;
     flex-wrap: wrap;
@@ -11,7 +11,7 @@
       margin-right: 50px;
       width: 208px;
 
-      .btn-post {
+      .btn-compose {
         align-items: center;
         border-bottom-right-radius: 25px;
         border-top-right-radius: 25px;
@@ -165,8 +165,8 @@
       float: right;
       width: calc(100% - 258px);
       margin-top: 12px;
-      .post-list {
-        .post-list-body.grid-view {
+      .entry-list {
+        .entry-list-body.grid-view {
           align-content: stretch;
           display: flex;
           flex-wrap: wrap;

@@ -22,20 +22,20 @@ import ScrollReplace from './ScrollReplace';
 
 type Props = {
   actions: {
-    fetchPosts: () => void,
+    fetchEntries: () => void,
+    invalidateEntries: () => void,
     fetchTrendingTags: () => void,
-    invalidatePosts: () => void,
     changeTheme: () => void,
     changeListStyle: () => void
   },
   global: {},
-  posts: {},
+  entries: {},
   trendingTags: {},
   location: {},
   history: {}
 };
 
-export default class PostIndex extends Component<Props> {
+export default class EntryIndex extends Component<Props> {
   props: Props;
 
   constructor(props: Props) {
@@ -66,7 +66,7 @@ export default class PostIndex extends Component<Props> {
     const { global, actions } = this.props;
     const { selectedFilter, selectedTag } = global;
 
-    actions.fetchPosts(selectedFilter, selectedTag, more);
+    actions.fetchEntries(selectedFilter, selectedTag, more);
     actions.fetchTrendingTags();
   };
 
@@ -79,7 +79,7 @@ export default class PostIndex extends Component<Props> {
         {filters.map(filter => (
           <Menu.Item key={filter}>
             <Link to={selectedTag ? `/${filter}/${selectedTag}` : `/${filter}`}>
-              <FormattedMessage id={`post-index.filter-${filter}`} />
+              <FormattedMessage id={`entry-index.filter-${filter}`} />
             </Link>
           </Menu.Item>
         ))}
@@ -97,11 +97,11 @@ export default class PostIndex extends Component<Props> {
   }
 
   bottomReached() {
-    const { global, posts } = this.props;
+    const { global, entries } = this.props;
     const { selectedFilter, selectedTag } = global;
 
     const groupKey = makeGroupKeyForPosts(selectedFilter, selectedTag);
-    const data = posts.get(groupKey);
+    const data = entries.get(groupKey);
     const loading = data.get('loading');
     const hasMore = data.get('hasMore');
 
@@ -114,22 +114,22 @@ export default class PostIndex extends Component<Props> {
     const { global, actions } = this.props;
     const { selectedFilter, selectedTag } = global;
 
-    actions.invalidatePosts(selectedFilter, selectedTag);
-    actions.fetchPosts(selectedFilter, selectedTag);
+    actions.invalidateEntries(selectedFilter, selectedTag);
+    actions.fetchEntries(selectedFilter, selectedTag);
 
     this.scrollEl.scrollTop = 0;
   }
 
   render() {
-    const { posts, trendingTags, location, global } = this.props;
+    const { entries, trendingTags, location, global } = this.props;
 
     const { selectedFilter, selectedTag } = global;
 
     const filterMenu = this.makeFilterMenu(selectedFilter);
     const groupKey = makeGroupKeyForPosts(selectedFilter, selectedTag);
 
-    const data = posts.get(groupKey);
-    const postList = data.get('entries');
+    const data = entries.get(groupKey);
+    const entryList = data.get('entries');
     const loading = data.get('loading');
 
     return (
@@ -145,14 +145,14 @@ export default class PostIndex extends Component<Props> {
           })}
         />
 
-        <div className="app-content post-index">
+        <div className="app-content entry-index">
           <div className="page-header">
             <div className="left-side">
-              <div className="btn-post">
+              <div className="btn-compose">
                 <span className="icon">
                   <Mi icon="edit" />
                 </span>
-                <FormattedMessage id="g.create-post" />
+                <FormattedMessage id="g.compose-entry" />
               </div>
             </div>
 
@@ -161,14 +161,14 @@ export default class PostIndex extends Component<Props> {
                 <div className="filter-select">
                   <span className="label">
                     <FormattedMessage
-                      id={`post-index.filter-${selectedFilter}`}
+                      id={`entry-index.filter-${selectedFilter}`}
                     />
                   </span>
                   <DropDown menu={filterMenu} location={location} />
                 </div>
                 <ListSwitch {...this.props} />
               </div>
-              {loading && postList.size === 0 ? <LinearProgress /> : ''}
+              {loading && entryList.size === 0 ? <LinearProgress /> : ''}
             </div>
           </div>
 
@@ -176,7 +176,7 @@ export default class PostIndex extends Component<Props> {
             <div className="left-side">
               <div className="tag-list">
                 <h2 className="tag-list-header">
-                  <FormattedMessage id="post-index.tags" />
+                  <FormattedMessage id="entry-index.tags" />
                 </h2>
                 {trendingTags.list.map(tag => {
                   const cls = `tag-list-item ${
@@ -193,18 +193,18 @@ export default class PostIndex extends Component<Props> {
             </div>
 
             <div className="right-side">
-              <div className={`post-list ${loading ? 'loading' : ''}`}>
+              <div className={`entry-list ${loading ? 'loading' : ''}`}>
                 <div
-                  className={`post-list-body ${
+                  className={`entry-list-body ${
                     global.listStyle === 'grid' ? 'grid-view' : ''
                   }`}
                 >
-                  {loading && postList.size === 0 ? (
+                  {loading && entryList.size === 0 ? (
                     <PostListLoadingItem />
                   ) : (
                     ''
                   )}
-                  {postList.valueSeq().map(d => (
+                  {entryList.valueSeq().map(d => (
                     <PostListItem
                       key={d.id}
                       {...Object.assign({}, this.props, { post: d })}
@@ -212,7 +212,7 @@ export default class PostIndex extends Component<Props> {
                   ))}
                 </div>
               </div>
-              {loading && postList.size > 0 ? <LinearProgress /> : ''}
+              {loading && entryList.size > 0 ? <LinearProgress /> : ''}
             </div>
           </div>
         </div>

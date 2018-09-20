@@ -1,12 +1,12 @@
 // @flow
 import { combineReducers } from 'redux';
 import { routerReducer as router } from 'react-router-redux';
-import posts from './posts';
+import entries from './entries';
 import trendingTags from './trending-tags';
 import global from './global';
 
 const rootReducer = combineReducers({
-  posts,
+  entries,
   trendingTags,
   global,
   router

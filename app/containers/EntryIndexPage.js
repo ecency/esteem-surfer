@@ -1,14 +1,14 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import PostIndex from '../components/PostIndex';
-import { fetchPosts, invalidatePosts } from '../actions/posts';
+import EntryIndex from '../components/EntryIndex';
+import { fetchEntries, invalidateEntries } from '../actions/entries';
 import { fetchTrendingTags } from '../actions/trending-tags';
 import { changeTheme, changeListStyle } from '../actions/global';
 
 function mapStateToProps(state) {
   return {
     global: state.global,
-    posts: state.posts,
+    entries: state.entries,
     trendingTags: state.trendingTags
   };
 }
@@ -16,7 +16,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      ...bindActionCreators({ fetchPosts, invalidatePosts }, dispatch),
+      ...bindActionCreators({ fetchEntries, invalidateEntries }, dispatch),
       ...bindActionCreators({ fetchTrendingTags }, dispatch),
       ...bindActionCreators({ changeTheme }, dispatch),
       ...bindActionCreators({ changeListStyle }, dispatch)
@@ -27,4 +27,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PostIndex);
+)(EntryIndex);

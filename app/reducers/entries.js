@@ -3,11 +3,11 @@
 import { Record, Map, OrderedMap } from 'immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import {
-  POSTS_FETCH_BEGIN,
-  POSTS_FETCH_OK,
-  POSTS_FETCH_ERROR,
-  POSTS_INVALIDATE
-} from '../actions/posts';
+  FETCH_BEGIN,
+  FETCH_OK,
+  FETCH_ERROR,
+  INVALIDATE
+} from '../actions/entries';
 import type { commonActionType } from './types';
 import filters from '../constants/filters.json';
 import { makeGroupKeyForPosts } from '../utils/misc';
@@ -41,14 +41,14 @@ export default function posts(
 
       return state;
     }
-    case POSTS_FETCH_BEGIN: {
+    case FETCH_BEGIN: {
       const groupKey = action.payload.group;
 
       return state
         .setIn([groupKey, 'err'], null)
         .setIn([groupKey, 'loading'], true);
     }
-    case POSTS_FETCH_OK: {
+    case FETCH_OK: {
       const { group: groupKey, data: newEntries, hasMore } = action.payload;
 
       let newState = state
@@ -67,13 +67,13 @@ export default function posts(
 
       return newState;
     }
-    case POSTS_FETCH_ERROR: {
+    case FETCH_ERROR: {
       const groupKey = action.payload.group;
       return state
         .setIn([groupKey, 'err'], action.payload.error)
         .setIn([groupKey, 'loading'], false);
     }
-    case POSTS_INVALIDATE: {
+    case INVALIDATE: {
       const groupKey = action.payload.group;
       return state
         .setIn([groupKey, 'entries'], OrderedMap({}))
