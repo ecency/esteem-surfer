@@ -7,10 +7,12 @@ import { Tooltip } from 'antd';
 import Mi from '../elements/Mi';
 
 type Props = {
+  actions: {
+    changeTheme: () => void
+  },
+  global: {},
   history: {},
   location: {},
-  selectedFilter: string,
-  changeThemeFn: () => void,
   reloadFn: () => void,
   reloading: boolean,
   favoriteFn?: () => void,
@@ -72,13 +74,16 @@ export default class NavBar extends Component<Props> {
   };
 
   changeTheme = () => {
-    const { changeThemeFn } = this.props;
+    const { actions } = this.props;
+    const { changeTheme } = actions;
 
-    changeThemeFn();
+    changeTheme();
   };
 
   logoClicked = () => {
-    const { location, selectedFilter } = this.props;
+    const { location, global } = this.props;
+    const { selectedFilter } = global;
+
     const newLoc = `/${selectedFilter}`;
 
     if (newLoc === location.pathname) {

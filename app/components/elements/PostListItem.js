@@ -15,17 +15,18 @@ import appName from '../../utils/app-name';
 import parseMoney from '../../utils/parse-money';
 
 type Props = {
+  global: {},
   post: {},
   history: {},
-  location: {},
-  selectedFilter: string
+  location: {}
 };
 
 export default class PostListItem extends Component<Props> {
   props: Props;
 
   parentClicked = (parent: string) => {
-    const { selectedFilter, location, history } = this.props;
+    const { global, location, history } = this.props;
+    const { selectedFilter } = global;
     const newLoc = `/${selectedFilter}/${parent}`;
 
     if (location.pathname === newLoc) {

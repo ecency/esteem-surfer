@@ -121,14 +121,7 @@ export default class PostIndex extends Component<Props> {
   }
 
   render() {
-    const {
-      posts,
-      trendingTags,
-      location,
-      history,
-      actions,
-      global
-    } = this.props;
+    const { posts, trendingTags, location, global } = this.props;
 
     const { selectedFilter, selectedTag } = global;
 
@@ -139,24 +132,18 @@ export default class PostIndex extends Component<Props> {
     const postList = data.get('entries');
     const loading = data.get('loading');
 
-    const navBarProps = {
-      selectedFilter,
-      history,
-      location,
-      changeThemeFn: actions.changeTheme,
-      reloadFn: this.refresh,
-      reloading: loading
-    };
-
-    const listCls = `post-list ${loading ? 'loading' : ''}`;
-
     return (
       <div className="wrapper">
         <ScrollReplace
           {...Object.assign({}, this.props, { selector: '#app-content' })}
         />
 
-        <NavBar {...navBarProps} />
+        <NavBar
+          {...Object.assign({}, this.props, {
+            reloadFn: this.refresh,
+            reloading: loading
+          })}
+        />
 
         <div className="app-content post-index">
           <div className="page-header">
@@ -206,7 +193,7 @@ export default class PostIndex extends Component<Props> {
             </div>
 
             <div className="right-side">
-              <div className={listCls}>
+              <div className={`post-list ${loading ? 'loading' : ''}`}>
                 <div
                   className={`post-list-body ${
                     global.listStyle === 'grid' ? 'grid-view' : ''
@@ -220,10 +207,7 @@ export default class PostIndex extends Component<Props> {
                   {postList.valueSeq().map(d => (
                     <PostListItem
                       key={d.id}
-                      selectedFilter={selectedFilter}
-                      history={history}
-                      location={location}
-                      post={d}
+                      {...Object.assign({}, this.props, { post: d })}
                     />
                   ))}
                 </div>
@@ -233,7 +217,7 @@ export default class PostIndex extends Component<Props> {
           </div>
         </div>
 
-        <AppFooter />
+        <AppFooter {...this.props} />
       </div>
     );
   }
