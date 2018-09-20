@@ -1,6 +1,4 @@
-// @flow
 import { Client } from 'dsteem';
-import type { entryStateType, commonActionType } from '../reducers/types';
 
 export const FETCH_BEGIN = 'entries/FETCH_BEGIN';
 export const FETCH_OK = 'entries/FETCH_OK';
@@ -11,25 +9,15 @@ export const SET_VOTED = 'entries/SET_VOTED';
 
 const client = new Client('https://api.steemit.com');
 
-export const makeGroupKeyForEntries = (
-  what: string,
-  tag: string | null = null
-): string => {
+export const makeGroupKeyForEntries = (what, tag = '') => {
   if (tag) {
     return `${what}-${tag}`;
   }
   return `${what}`;
 };
 
-export function fetchEntries(
-  what: string,
-  tag: string | null = '',
-  more: boolean = false
-) {
-  return (
-    dispatch: (action: commonActionType) => void,
-    getState: () => entryStateType
-  ) => {
+export function fetchEntries(what, tag = '', more = false) {
+  return (dispatch, getState) => {
     const { entries } = getState();
     const pageSize = 20;
 
@@ -38,7 +26,9 @@ export function fetchEntries(
     // make sure tag is not null or undefined. it should be empty string.
     const query = {
       tag: tag || '',
-      limit: pageSize
+      limit: pageSize,
+      start_author: undefined,
+      start_permlink: undefined
     };
 
     if (!more && entries.getIn([groupKey, 'entries']).size) {
@@ -84,7 +74,7 @@ export function fetchEntries(
 }
 
 export function invalidateEntries(what, tag = '') {
-  return (dispatch: (action: commonActionType) => void) => {
+  return dispatch => {
     const groupKey = makeGroupKeyForEntries(what, tag);
 
     dispatch({

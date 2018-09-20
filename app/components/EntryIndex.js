@@ -1,5 +1,7 @@
-// @flow
 import React, { Component } from 'react';
+
+import PropTypes from 'prop-types';
+
 import { Link } from 'react-router-dom';
 import { Menu } from 'antd';
 import { FormattedMessage } from 'react-intl';
@@ -10,7 +12,7 @@ import filters from '../constants/filters.json';
 import NavBar from './modules/NavBar';
 import AppFooter from './modules/AppFooter';
 
-import EntryListItem from './elements/EntryistItem';
+import EntryListItem from './elements/EntryListItem';
 import EntryListLoadingItem from './elements/EntryListLoadingItem';
 
 import DropDown from './elements/DropDown';
@@ -20,37 +22,16 @@ import Mi from './elements/Mi';
 
 import ScrollReplace from './ScrollReplace';
 
-type Props = {
-  actions: {
-    fetchEntries: () => void,
-    invalidateEntries: () => void,
-    fetchTrendingTags: () => void,
-    changeTheme: () => void,
-    changeListStyle: () => void
-  },
-  global: {},
-  entries: {},
-  trendingTags: {},
-  location: {},
-  history: {}
-};
-
-export default class EntryIndex extends Component<Props> {
-  props: Props;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.detectScroll = this.detectScroll.bind(this);
-    this.refresh = this.refresh.bind(this);
-  }
-
+class EntryIndex extends Component {
   componentDidMount() {
     this.startFetch();
 
-    this.scrollEl = document.querySelector('#app-content');
-    if (this.scrollEl) {
-      this.scrollEl.addEventListener('scroll', this.detectScroll);
+    const el = document.querySelector('#app-content');
+    if (el) {
+      this.scrollEl = el;
+      this.scrollEl.addEventListener('scroll', () => {
+        this.detectScroll();
+      });
     }
   }
 
@@ -62,7 +43,9 @@ export default class EntryIndex extends Component<Props> {
     }
   }
 
-  startFetch = (more: boolean = false) => {
+  scrollEl = {};
+
+  startFetch = more => {
     const { global, actions } = this.props;
     const { selectedFilter, selectedTag } = global;
 
@@ -115,7 +98,7 @@ export default class EntryIndex extends Component<Props> {
     const { selectedFilter, selectedTag } = global;
 
     actions.invalidateEntries(selectedFilter, selectedTag);
-    actions.fetchEntries(selectedFilter, selectedTag);
+    actions.fetchEntries(selectedFilter, selectedTag, false);
 
     this.scrollEl.scrollTop = 0;
   }
@@ -140,7 +123,9 @@ export default class EntryIndex extends Component<Props> {
 
         <NavBar
           {...Object.assign({}, this.props, {
-            reloadFn: this.refresh,
+            reloadFn: () => {
+              this.refresh();
+            },
             reloading: loading
           })}
         />
@@ -222,3 +207,26 @@ export default class EntryIndex extends Component<Props> {
     );
   }
 }
+
+EntryIndex.propTypes = {
+  actions: PropTypes.shape({
+    fetchEntries: PropTypes.func.isRequired,
+    invalidateEntries: PropTypes.func.isRequired,
+    fetchTrendingTags: PropTypes.func.isRequired,
+    changeTheme: PropTypes.func.isRequired,
+    changeListStyle: PropTypes.func.isRequired
+  }).isRequired,
+  global: PropTypes.shape({
+    selectedFilter: PropTypes.string.isRequired,
+    selectedTag: PropTypes.string.isRequired,
+    listStyle: PropTypes.string.isRequired
+  }).isRequired,
+  entries: PropTypes.shape({}).isRequired,
+  trendingTags: PropTypes.shape({
+    list: PropTypes.array.isRequired
+  }).isRequired,
+  location: PropTypes.shape({}).isRequired,
+  history: PropTypes.shape({}).isRequired
+};
+
+export default EntryIndex;

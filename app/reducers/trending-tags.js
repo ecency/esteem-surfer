@@ -1,12 +1,8 @@
-// @flow
-
 import {
   TT_FETCH_BEGIN,
   TT_FETCH_OK,
   TT_FETCH_ERROR
 } from '../actions/trending-tags';
-
-import type { commonActionType } from './types';
 
 const defaultState = {
   list: [],
@@ -14,10 +10,7 @@ const defaultState = {
   error: false
 };
 
-export default function trendingTags(
-  state: {} = defaultState,
-  action: commonActionType
-) {
+export default function trendingTags(state = defaultState, action) {
   switch (action.type) {
     case TT_FETCH_BEGIN:
       return {

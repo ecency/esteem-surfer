@@ -1,14 +1,9 @@
-// @flow
 import React, { Component } from 'react';
 import { version } from '../../../package.json';
 
 import batteryLogo from '../../img/ic_battery_60_48px.svg';
 
-type Props = {};
-
-export default class AppFooter extends Component<Props> {
-  props: Props;
-
+export default class AppFooter extends Component {
   render() {
     return (
       <div className="app-footer">

@@ -1,3 +1,4 @@
+/*
 export type commonActionType = {
   type: string,
   payload?: {}
@@ -16,3 +17,4 @@ export type TtStateType = {
 };
 
 export type GlobalStateType = {};
+*/

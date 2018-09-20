@@ -1,14 +1,8 @@
-// @flow
 import React, { Component } from 'react';
 
-type Props = {
-  icon: string,
-  rotatedRight?: boolean
-};
+import PropTypes from 'prop-types';
 
-export default class Mi extends Component<Props> {
-  props: Props;
-
+class Mi extends Component {
   static defaultProps = {
     rotatedRight: false
   };
@@ -21,3 +15,14 @@ export default class Mi extends Component<Props> {
     return <i className={className}>{icon}</i>;
   }
 }
+
+Mi.defaultProps = {
+  rotatedRight: false
+};
+
+Mi.propTypes = {
+  icon: PropTypes.string.isRequired,
+  rotatedRight: PropTypes.bool
+};
+
+export default Mi;

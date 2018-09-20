@@ -1,13 +1,7 @@
-// @flow
-import type { GlobalStateType, commonActionType } from '../reducers/types';
-
 export const THEME_CHANGED = 'THEME_CHANGED';
 export const LIST_STYLE_CHANGED = 'LIST_STYLE_CHANGED';
 
-export const changeTheme = () => (
-  dispatch: (action: commonActionType) => void,
-  getState: () => GlobalStateType
-) => {
+export const changeTheme = () => (dispatch, getState) => {
   const { global } = getState();
 
   const { theme } = global;
@@ -19,10 +13,7 @@ export const changeTheme = () => (
   dispatch(themeChanged(newTheme));
 };
 
-export const changeListStyle = () => (
-  dispatch: (action: commonActionType) => void,
-  getState: () => GlobalStateType
-) => {
+export const changeListStyle = () => (dispatch, getState) => {
   const { global } = getState();
 
   const { listStyle } = global;
@@ -36,12 +27,12 @@ export const changeListStyle = () => (
 
 /* action creators */
 
-export const themeChanged = (newTheme: string) => ({
+export const themeChanged = newTheme => ({
   type: THEME_CHANGED,
   payload: { newTheme }
 });
 
-export const listStyleChanged = (newStyle: string) => ({
+export const listStyleChanged = newStyle => ({
   type: LIST_STYLE_CHANGED,
   payload: { newStyle }
 });

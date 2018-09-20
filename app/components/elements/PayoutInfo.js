@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+
+import PropTypes from 'prop-types';
+
 import { FormattedRelative, FormattedMessage } from 'react-intl';
 import { Popover } from 'antd';
 
@@ -6,14 +9,7 @@ import parseMoney from '../../utils/parse-money';
 import parseDate from '../../utils/parse-date';
 import currencySymbol from '../../utils/currency-symbol';
 
-type Props = {
-  entry: {},
-  children: React.Node
-};
-
-export default class PayoutInfo extends Component<Props> {
-  props: Props;
-
+class PayoutInfo extends Component {
   render() {
     const { entry, children } = this.props;
 
@@ -91,3 +87,17 @@ export default class PayoutInfo extends Component<Props> {
     );
   }
 }
+
+PayoutInfo.propTypes = {
+  entry: PropTypes.shape({
+    pending_payout_value: PropTypes.string.isRequired,
+    promoted: PropTypes.string.isRequired,
+    total_payout_value: PropTypes.string.isRequired,
+    curator_payout_value: PropTypes.string.isRequired,
+    last_payout: PropTypes.string.isRequired,
+    cashout_time: PropTypes.string.isRequired
+  }).isRequired,
+  children: PropTypes.element.isRequired
+};
+
+export default PayoutInfo;

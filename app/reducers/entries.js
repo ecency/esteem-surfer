@@ -1,5 +1,3 @@
-// @flow
-
 import { Record, Map, OrderedMap } from 'immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import {
@@ -9,7 +7,7 @@ import {
   INVALIDATE,
   makeGroupKeyForEntries
 } from '../actions/entries';
-import type { commonActionType } from './types';
+
 import filters from '../constants/filters.json';
 
 export const EntryGroupRecord = Record({
@@ -21,10 +19,7 @@ export const EntryGroupRecord = Record({
 
 const defaultState = Map();
 
-export default function entries(
-  state: Map = defaultState,
-  action: commonActionType
-) {
+export default function entries(state = defaultState, action) {
   switch (action.type) {
     case LOCATION_CHANGE: {
       // Create entry group when location changed

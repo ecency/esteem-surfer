@@ -1,17 +1,11 @@
-// @flow
 import React, { Component } from 'react';
+
+import PropTypes from 'prop-types';
 
 import { Dropdown as RealDropDown } from 'antd';
 import Mi from './Mi';
 
-type Props = {
-  menu: {},
-  location: {}
-};
-
-export default class DropDown extends Component<Props> {
-  props: Props;
-
+class DropDown extends Component {
   constructor(props) {
     super(props);
 
@@ -56,3 +50,10 @@ export default class DropDown extends Component<Props> {
     );
   }
 }
+
+DropDown.propTypes = {
+  menu: PropTypes.shape({}).isRequired,
+  location: PropTypes.shape({}).isRequired
+};
+
+export default DropDown;

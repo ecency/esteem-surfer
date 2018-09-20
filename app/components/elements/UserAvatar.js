@@ -1,14 +1,8 @@
-// @flow
 import React, { Component } from 'react';
 
-type Props = {
-  user: string,
-  size: string
-};
+import PropTypes from 'prop-types';
 
-export default class UserAvatar extends Component<Props> {
-  props: Props;
-
+class UserAvatar extends Component {
   render() {
     const { user, size } = this.props;
     const imgSize = size === 'xLarge' ? 'large' : 'medium';
@@ -24,3 +18,10 @@ export default class UserAvatar extends Component<Props> {
     );
   }
 }
+
+UserAvatar.propTypes = {
+  user: PropTypes.string.isRequired,
+  size: PropTypes.string.isRequired
+};
+
+export default UserAvatar;

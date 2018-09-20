@@ -1,26 +1,12 @@
-// @flow
 /* eslint-disable jsx-a11y/anchor-has-content */
 
 import React, { Component } from 'react';
+
+import PropTypes from 'prop-types';
+
 import { Tooltip } from 'antd';
 
 import Mi from '../elements/Mi';
-
-type Props = {
-  actions: {
-    changeTheme: () => void
-  },
-  global: {},
-  history: {},
-  location: {},
-  reloadFn: () => void,
-  reloading: boolean,
-  favoriteFn?: () => void,
-  favoriteFlag?: boolean,
-  bookmarkFn?: () => void,
-  bookmarkFlag?: boolean,
-  postBtnActive?: boolean
-};
 
 export const checkPathForBack = path => {
   if (!path) {
@@ -30,19 +16,7 @@ export const checkPathForBack = path => {
   return !['/', '/welcome', '/set-pin'].includes(path);
 };
 
-export default class NavBar extends Component<Props> {
-  props: Props;
-
-  static defaultProps = {
-    favoriteFn: undefined,
-    favoriteFlag: false,
-
-    bookmarkFn: undefined,
-    bookmarkFlag: false,
-
-    postBtnActive: false
-  };
-
+class NavBar extends Component {
   goBack = () => {
     const { history } = this.props;
 
@@ -64,13 +38,13 @@ export default class NavBar extends Component<Props> {
   favorite = () => {
     const { favoriteFn } = this.props;
 
-    favoriteFn();
+    if (favoriteFn) favoriteFn();
   };
 
   bookmark = () => {
     const { bookmarkFn } = this.props;
 
-    bookmarkFn();
+    if (bookmarkFn) bookmarkFn();
   };
 
   changeTheme = () => {
@@ -137,21 +111,21 @@ export default class NavBar extends Component<Props> {
           <div className="nav-controls">
             <a
               className={backClassName}
-              onClick={e => this.goBack(e)}
+              onClick={() => this.goBack()}
               role="none"
             >
               <Mi icon="arrow_back" />
             </a>
             <a
               className={forwardClassName}
-              onClick={e => this.goForward(e)}
+              onClick={() => this.goForward()}
               role="none"
             >
               <Mi icon="arrow_forward" />
             </a>
             <a
               className={reloadClassName}
-              onClick={e => this.refresh(e)}
+              onClick={() => this.refresh()}
               role="none"
             >
               <Mi icon="refresh" />
@@ -168,7 +142,7 @@ export default class NavBar extends Component<Props> {
             {favoriteFn ? (
               <a
                 className={`post-add-on ${!favoriteFlag ? 'disabled' : ''}`}
-                onClick={e => this.favorite(e)}
+                onClick={() => this.favorite()}
                 role="none"
               >
                 <Mi icon="star_border" />
@@ -179,7 +153,7 @@ export default class NavBar extends Component<Props> {
             {bookmarkFn ? (
               <a
                 className={`post-add-on ${!bookmarkFlag ? 'disabled' : ''}`}
-                onClick={e => this.bookmark(e)}
+                onClick={() => this.bookmark()}
                 role="none"
               >
                 <Mi icon="bookmark" />
@@ -215,3 +189,42 @@ export default class NavBar extends Component<Props> {
     );
   }
 }
+
+NavBar.defaultProps = {
+  favoriteFn: undefined,
+  favoriteFlag: false,
+
+  bookmarkFn: undefined,
+  bookmarkFlag: false,
+
+  postBtnActive: false
+};
+
+NavBar.propTypes = {
+  actions: PropTypes.shape({
+    changeTheme: PropTypes.func.isRequired
+  }).isRequired,
+  global: PropTypes.shape({
+    selectedFilter: PropTypes.string.isRequired
+  }).isRequired,
+  history: PropTypes.shape({
+    goForward: PropTypes.func.isRequired,
+    goBack: PropTypes.func.isRequired,
+    push: PropTypes.func.isRequired,
+    entries: PropTypes.array.isRequired,
+    index: PropTypes.number.isRequired
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  }).isRequired,
+  reloadFn: PropTypes.func.isRequired,
+  reloading: PropTypes.bool.isRequired,
+
+  favoriteFn: PropTypes.func,
+  favoriteFlag: PropTypes.bool,
+  bookmarkFn: PropTypes.func,
+  bookmarkFlag: PropTypes.bool,
+  postBtnActive: PropTypes.bool
+};
+
+export default NavBar;

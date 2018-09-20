@@ -1,11 +1,6 @@
-// @flow
 import React, { Component } from 'react';
 
-type Props = {};
-
-export default class EntryListLoadingItem extends Component<Props> {
-  props: Props;
-
+export default class EntryListLoadingItem extends Component {
   render() {
     return [...Array(6).keys()].map(d => (
       <div className="entry-list-loading-item" key={d}>

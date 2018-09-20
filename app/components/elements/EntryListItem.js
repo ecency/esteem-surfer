@@ -1,5 +1,7 @@
-// @flow
 import React, { Component } from 'react';
+
+import PropTypes from 'prop-types';
+
 import { FormattedRelative } from 'react-intl';
 
 import UserAvatar from './UserAvatar';
@@ -14,17 +16,8 @@ import sumTotal from '../../utils/sum-total';
 import appName from '../../utils/app-name';
 import parseMoney from '../../utils/parse-money';
 
-type Props = {
-  global: {},
-  entry: {},
-  history: {},
-  location: {}
-};
-
-export default class EntryListItem extends Component<Props> {
-  props: Props;
-
-  parentClicked = (parent: string) => {
+class EntryListItem extends Component {
+  parentClicked = parent => {
     const { global, location, history } = this.props;
     const { selectedFilter } = global;
     const newLoc = `/${selectedFilter}/${parent}`;
@@ -39,6 +32,7 @@ export default class EntryListItem extends Component<Props> {
 
   render() {
     const { entry } = this.props;
+
     const img = catchPostImage(entry) || 'img/noimage.png';
     const reputation = authorReputation(entry.author_reputation);
     const created = parseDate(entry.created);
@@ -127,3 +121,24 @@ export default class EntryListItem extends Component<Props> {
     );
   }
 }
+
+EntryListItem.propTypes = {
+  global: PropTypes.shape({
+    selectedFilter: PropTypes.string.isRequired
+  }).isRequired,
+  entry: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    parent_permlink: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    author_reputation: PropTypes.string.isRequired,
+    max_accepted_payout: PropTypes.string.isRequired,
+    json_metadata: PropTypes.string.isRequired,
+    children: PropTypes.number.isRequired,
+    body: PropTypes.string.isRequired,
+    created: PropTypes.string.isRequired
+  }).isRequired,
+  history: PropTypes.shape({}).isRequired,
+  location: PropTypes.shape({}).isRequired
+};
+
+export default EntryListItem;

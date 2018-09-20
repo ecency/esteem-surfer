@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+
+import PropTypes from 'prop-types';
+
 import { FormattedMessage, FormattedRelative } from 'react-intl';
 import { Popover, Modal, Table, Badge } from 'antd';
 
@@ -7,15 +10,7 @@ import currencySymbol from '../../utils/currency-symbol';
 import parseDate from '../../utils/parse-date';
 import authorReputation from '../../utils/author-reputation';
 
-type Props = {
-  entry: {},
-  children: React.Node
-};
-
-export const prepareContentVotes = (
-  entry: Object,
-  currencyRate: number
-): Array<Object> => {
+export const prepareContentVotes = (entry, currencyRate) => {
   const totalPayout =
     parseMoney(entry.pending_payout_value) +
     parseMoney(entry.total_payout_value) +
@@ -74,10 +69,8 @@ export const preparePopoverContent = (votesData, curSymbol) => {
   return <div className="voters-info-popover-content">{popoverChildren}</div>;
 };
 
-export default class VotersInfo extends Component<Props> {
-  props: Props;
-
-  constructor(props: Props) {
+class VotersInfo extends Component {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -224,3 +217,15 @@ export default class VotersInfo extends Component<Props> {
     return children;
   }
 }
+
+VotersInfo.propTypes = {
+  entry: PropTypes.shape({
+    pending_payout_value: PropTypes.string.isRequired,
+    total_payout_value: PropTypes.string.isRequired,
+    curator_payout_value: PropTypes.string.isRequired,
+    active_votes: PropTypes.array.isRequired
+  }).isRequired,
+  children: PropTypes.element.isRequired
+};
+
+export default VotersInfo;

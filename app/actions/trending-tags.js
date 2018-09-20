@@ -1,6 +1,4 @@
-// @flow
 import { Client } from 'dsteem';
-import type { TtStateType, commonActionType } from '../reducers/types';
 
 export const TT_FETCH_BEGIN = 'TT_FETCH_BEGIN';
 export const TT_FETCH_OK = 'TT_FETCH_OK';
@@ -9,10 +7,7 @@ export const TT_FETCH_ERROR = 'TT_FETCH_ERROR';
 const client = new Client('https://api.steemit.com');
 
 export function fetchTrendingTags(afterTag = '', limit = 50) {
-  return (
-    dispatch: (action: commonActionType) => void,
-    getState: () => TtStateType
-  ) => {
+  return (dispatch, getState) => {
     const { trendingTags } = getState();
 
     if (trendingTags.list.length >= 1) {

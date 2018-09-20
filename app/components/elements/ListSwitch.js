@@ -1,17 +1,7 @@
-// @flow
-
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-type Props = {
-  actions: {
-    changeListStyle: () => void
-  },
-  global: {}
-};
-
-export default class ListSwitch extends Component<Props> {
-  props: Props;
-
+class ListSwitch extends Component {
   changeStyle = () => {
     const { actions } = this.props;
 
@@ -35,3 +25,14 @@ export default class ListSwitch extends Component<Props> {
     );
   }
 }
+
+ListSwitch.propTypes = {
+  actions: PropTypes.shape({
+    changeListStyle: PropTypes.func.isRequired
+  }).isRequired,
+  global: PropTypes.shape({
+    listStyle: PropTypes.string.isRequired
+  }).isRequired
+};
+
+export default ListSwitch;

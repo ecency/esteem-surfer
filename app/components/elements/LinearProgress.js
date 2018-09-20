@@ -1,11 +1,6 @@
-// @flow
 import React, { Component } from 'react';
 
-type Props = {};
-
-export default class LinearProgress extends Component<Props> {
-  props: Props;
-
+export default class LinearProgress extends Component {
   render() {
     return (
       <div className="linear-progress">

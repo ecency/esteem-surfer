@@ -1,13 +1,8 @@
-// @flow
 import React from 'react';
 
-type Props = {
-  history: {},
-  location: {},
-  selector: string
-};
+import PropTypes from 'prop-types';
 
-const setPathPos = (path: string, pos: number): void => {
+const setPathPos = (path, pos) => {
   if (window.scrollDb === undefined) {
     window.scrollDb = {};
   }
@@ -15,7 +10,7 @@ const setPathPos = (path: string, pos: number): void => {
   window.scrollDb[path] = pos;
 };
 
-const getPathPos = (path: string): number | undefined => {
+const getPathPos = path => {
   if (window.scrollDb) {
     return window.scrollDb[path];
   }
@@ -23,15 +18,15 @@ const getPathPos = (path: string): number | undefined => {
   return undefined;
 };
 
-export default class ScrollReplace extends React.Component<Props> {
-  constructor(props: Props) {
+class ScrollReplace extends React.Component {
+  constructor(props) {
     super(props);
 
     this.detectScroll = this.detectScroll.bind(this);
     this.saveTimer = null;
   }
 
-  componentDidMount(): void {
+  componentDidMount() {
     const { selector } = this.props;
     const el = document.querySelector(selector);
     if (el) {
@@ -40,7 +35,7 @@ export default class ScrollReplace extends React.Component<Props> {
     }
   }
 
-  componentWillReceiveProps(nextProps: {}): void {
+  componentWillReceiveProps(nextProps) {
     if (!this.el) {
       return;
     }
@@ -59,13 +54,13 @@ export default class ScrollReplace extends React.Component<Props> {
     }
   }
 
-  componentWillUnmount(): void {
+  componentWillUnmount() {
     if (this.el) {
       this.el.removeEventListener('scroll', this.detectScroll);
     }
   }
 
-  detectScroll(): void {
+  detectScroll() {
     const { location } = this.props;
     const pos = this.el.scrollTop;
 
@@ -81,7 +76,19 @@ export default class ScrollReplace extends React.Component<Props> {
     this.saveTimer = setTimeout(save, 300);
   }
 
-  render(): null {
+  render() {
     return null;
   }
 }
+
+ScrollReplace.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  }).isRequired,
+  history: PropTypes.shape({
+    action: PropTypes.string.isRequired
+  }).isRequired,
+  selector: PropTypes.string.isRequired
+};
+
+export default ScrollReplace;
