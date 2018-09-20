@@ -9,7 +9,10 @@ const defaultState = {
   selectedFilter: 'trending',
   selectedTag: null,
   theme: 'day',
-  listStyle: 'row'
+  listStyle: 'row',
+  currency: 'usd',
+  currencyRate: 1,
+  currencySymbol: '$'
 };
 
 export default function global(

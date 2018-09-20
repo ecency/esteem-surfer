@@ -7,12 +7,9 @@ import { changeTheme, changeListStyle } from '../actions/global';
 
 function mapStateToProps(state) {
   return {
-    selectedFilter: state.global.selectedFilter,
-    selectedTag: state.global.selectedTag,
-    trendingTags: state.trendingTags,
+    global: state.global,
     posts: state.posts,
-    theme: state.global.theme,
-    listStyle: state.global.listStyle
+    trendingTags: state.trendingTags
   };
 }
 

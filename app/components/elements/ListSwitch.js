@@ -3,21 +3,24 @@
 import React, { Component } from 'react';
 
 type Props = {
-  listStyle: string,
-  changeStyleFn: () => void
+  actions: {
+    changeListStyle: () => void
+  },
+  global: {}
 };
 
 export default class ListSwitch extends Component<Props> {
   props: Props;
 
   changeStyle = () => {
-    const { changeStyleFn } = this.props;
+    const { actions } = this.props;
 
-    changeStyleFn();
+    actions.changeListStyle();
   };
 
   render() {
-    const { listStyle } = this.props;
+    const { global } = this.props;
+    const { listStyle } = global;
 
     return (
       <a

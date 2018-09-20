@@ -28,13 +28,11 @@ type Props = {
     changeTheme: () => void,
     changeListStyle: () => void
   },
+  global: {},
   posts: {},
   trendingTags: {},
   location: {},
-  history: {},
-  selectedFilter: string,
-  selectedTag: string | null,
-  listStyle: string
+  history: {}
 };
 
 export default class PostIndex extends Component<Props> {
@@ -65,15 +63,16 @@ export default class PostIndex extends Component<Props> {
   }
 
   startFetch = (more: boolean = false) => {
-    const { selectedFilter, selectedTag } = this.props;
-    const { actions } = this.props;
+    const { global, actions } = this.props;
+    const { selectedFilter, selectedTag } = global;
 
     actions.fetchPosts(selectedFilter, selectedTag, more);
     actions.fetchTrendingTags();
   };
 
   makeFilterMenu = active => {
-    const { selectedTag } = this.props;
+    const { global } = this.props;
+    const { selectedTag } = global;
 
     return (
       <Menu selectedKeys={[active]}>
@@ -98,7 +97,8 @@ export default class PostIndex extends Component<Props> {
   }
 
   bottomReached() {
-    const { posts, selectedFilter, selectedTag } = this.props;
+    const { global, posts } = this.props;
+    const { selectedFilter, selectedTag } = global;
 
     const groupKey = makeGroupKeyForPosts(selectedFilter, selectedTag);
     const data = posts.get(groupKey);
@@ -111,8 +111,9 @@ export default class PostIndex extends Component<Props> {
   }
 
   refresh() {
-    const { selectedFilter, selectedTag } = this.props;
-    const { actions } = this.props;
+    const { global, actions } = this.props;
+    const { selectedFilter, selectedTag } = global;
+
     actions.invalidatePosts(selectedFilter, selectedTag);
     actions.fetchPosts(selectedFilter, selectedTag);
 
@@ -123,13 +124,13 @@ export default class PostIndex extends Component<Props> {
     const {
       posts,
       trendingTags,
-      selectedFilter,
-      selectedTag,
       location,
       history,
       actions,
-      listStyle
+      global
     } = this.props;
+
+    const { selectedFilter, selectedTag } = global;
 
     const filterMenu = this.makeFilterMenu(selectedFilter);
     const groupKey = makeGroupKeyForPosts(selectedFilter, selectedTag);
@@ -145,11 +146,6 @@ export default class PostIndex extends Component<Props> {
       changeThemeFn: actions.changeTheme,
       reloadFn: this.refresh,
       reloading: loading
-    };
-
-    const listSwitchProps = {
-      changeStyleFn: actions.changeListStyle,
-      listStyle
     };
 
     const listCls = `post-list ${loading ? 'loading' : ''}`;
@@ -183,7 +179,7 @@ export default class PostIndex extends Component<Props> {
                   </span>
                   <DropDown menu={filterMenu} location={location} />
                 </div>
-                <ListSwitch {...listSwitchProps} />
+                <ListSwitch {...this.props} />
               </div>
               {loading && postList.size === 0 ? <LinearProgress /> : ''}
             </div>
@@ -213,7 +209,7 @@ export default class PostIndex extends Component<Props> {
               <div className={listCls}>
                 <div
                   className={`post-list-body ${
-                    listStyle === 'grid' ? 'grid-view' : ''
+                    global.listStyle === 'grid' ? 'grid-view' : ''
                   }`}
                 >
                   {loading && postList.size === 0 ? (
