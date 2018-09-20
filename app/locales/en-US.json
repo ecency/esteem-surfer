@@ -21,6 +21,11 @@
     "payout-date": "Payout"
   },
   "voters-info": {
-    "n-more": "{n} more"
+    "n-more": "{n} more",
+    "author": "Author",
+    "reward": "Reward",
+    "percent": "Percent",
+    "time": "Time",
+    "modal-title": "Voters info ({n})"
   }
 }
