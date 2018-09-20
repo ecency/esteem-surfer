@@ -13,7 +13,7 @@
   }
 }
 
-.post-list-loading-item {
+.entry-list-loading-item {
   @include clearfix();
   animation: item-loading-fadein-out 2s infinite;
 
@@ -77,7 +77,7 @@
       float: right;
       width: calc(100% - 147px);
       .voting,
-      .post-total,
+      .total-payout,
       .voters,
       .comments,
       .app {
@@ -96,7 +96,7 @@
 }
 
 .grid-view {
-  .post-list-loading-item {
+  .entry-list-loading-item {
     margin-right: 2%;
     padding-right: 0;
     width: 49%;
@@ -136,7 +136,7 @@
         width: 100%;
 
         .voting,
-        .post-total,
+        .total-payout,
         .voters,
         .comments,
         .app {

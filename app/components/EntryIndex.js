@@ -10,8 +10,8 @@ import filters from '../constants/filters.json';
 import NavBar from './modules/NavBar';
 import AppFooter from './modules/AppFooter';
 
-import EntryistItem from './elements/EntryistItem';
-import PostListLoadingItem from './elements/PostListLoadingItem';
+import EntryListItem from './elements/EntryistItem';
+import EntryListLoadingItem from './elements/EntryListLoadingItem';
 
 import DropDown from './elements/DropDown';
 import ListSwitch from './elements/ListSwitch';
@@ -200,12 +200,12 @@ export default class EntryIndex extends Component<Props> {
                   }`}
                 >
                   {loading && entryList.size === 0 ? (
-                    <PostListLoadingItem />
+                    <EntryListLoadingItem />
                   ) : (
                     ''
                   )}
                   {entryList.valueSeq().map(d => (
-                    <EntryistItem
+                    <EntryListItem
                       key={d.id}
                       {...Object.assign({}, this.props, { entry: d })}
                     />

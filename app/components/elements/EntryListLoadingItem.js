@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 
 type Props = {};
 
-export default class PostListLoadingItem extends Component<Props> {
+export default class EntryListLoadingItem extends Component<Props> {
   props: Props;
 
   render() {
     return [...Array(6).keys()].map(d => (
-      <div className="post-list-loading-item" key={d}>
+      <div className="entry-list-loading-item" key={d}>
         <div className="item-header" />
         <div className="item-body">
           <div className="item-image" />
@@ -18,7 +18,7 @@ export default class PostListLoadingItem extends Component<Props> {
           </div>
           <div className="item-controls">
             <div className="voting" />
-            <div className="post-total" />
+            <div className="total-payout" />
             <div className="voters" />
             <div className="comments" />
             <div className="app" />
