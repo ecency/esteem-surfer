@@ -1,25 +1,25 @@
 /* eslint-disable */
-import catchPostImage from './catch-post-image';
+import catchEntryImage from './catch-entry-image';
 
-describe('catch-post-image', () => {
-  it('(1) Should extract post image from json_metadata', () => {
+describe('catch-entry-image', () => {
+  it('(1) Should extract entry image from json_metadata', () => {
     const input = {
       json_metadata:
         '{"tags":["auto","vehicle","ai","technology","adsactly"],"users":["adsactly","techblogger","adsactly-witness"],"image":["http://www.autonews.com/apps/pbcsi.dll/storyimage/CA/20180205/MOBILITY/180209919/AR/0/AR-180209919.jpg","http://clipart-library.com/images/pco56kbxi.png","http://psipunk.com/wp-content/uploads/2010/03/phoenix-electric-car-futuristic-concept-01.jpg","https://images.hgmsites.net/med/2011-honda-small-sports-ev-concept_100369472_m.jpg","https://cdn.trendhunterstatic.com/thumbs/electric-car-concept.jpeg","https://s.aolcdn.com/hss/storage/midas/162bec06fe31386c2a36ad6ca4d7f01d/205983934/lg-here-self-driving-car-partnership.jpg","https://steemitimages.com/DQmd5CQG5zLjjm2z8289qcLU6eBHJpC5FmgtR3aC1eXnhsi/Adsactly-Logo-200px.png","https://steemitimages.com/0x0/https://steemitimages.com/DQmWK9ACVoywHPBJQdoTuJpoTSoaubBSKSAdZaJtw1cfLb9/adsactlywitness.gif"],"links":["https://qzprod.files.wordpress.com/2018/02/kelly-sikkema-266805.jpg?quality=80&strip=all&w=3200","http://psipunk.com/wp-content/uploads/2010/03/phoenix-electric-car-futuristic-concept-01.jpg","https://images.hgmsites.net/med/2011-honda-small-sports-ev-concept_100369472_m.jpg","https://cdn.trendhunterstatic.com/thumbs/electric-car-concept.jpeg","https://s.aolcdn.com/hss/storage/midas/162bec06fe31386c2a36ad6ca4d7f01d/205983934/lg-here-self-driving-car-partnership.jpg","https://discord.gg/EwGhEzb","https://steemit.com/witness-category/@adsactly-witness/adsactly-steemit-witness-proposal","https://steemit.com/~witnesses","https://v2.steemconnect.com/sign/account-witness-vote?witness=adsactly-witness&approve=1"],"app":"steemit/0.1","format":"markdown"}',
       body: ''
     };
 
-    expect(catchPostImage(input)).toMatchSnapshot();
+    expect(catchEntryImage(input)).toMatchSnapshot();
   });
 
-  it('(2) Should extract post image from json_metadata', () => {
+  it('(2) Should extract entry image from json_metadata', () => {
     const input = {
       json_metadata:
         '{"community":"busy","app":"busy/2.3.0","format":"markdown","users":["gavvet","kingscrown","vcelier","ezzy","meesterboom","thecryptodrive","reggaemuffin","adsactly","adsactly-witness","buildteam","minnowbooster","steemvoter","steemsports"],"links":["https://imgur.com/NUt92kg","/@gavvet","/@kingscrown","/@vcelier","/@ezzy","/@meesterboom","/@thecryptodrive","/@reggaemuffin","/@adsactly","/@adsactly-witness"],"image":["https://steemitimages.com/0x0/https://i.imgur.com/NUt92kg.jpg","https://steemitimages.com/0x0/https://steemitimages.com/DQmXndfFUQmmtMk5Dd6u1nRNmNqr2mdkEGDVkT9SNyCxEeP/bt%20logo.png","https://steemitimages.com/0x0/https://steemitimages.com/DQmd5CQG5zLjjm2z8289qcLU6eBHJpC5FmgtR3aC1eXnhsi/Adsactly-Logo-200px.png"],"tags":["art","photography","adsactly","thoughts","busy"]}',
       body: ''
     };
 
-    expect(catchPostImage(input)).toMatchSnapshot();
+    expect(catchEntryImage(input)).toMatchSnapshot();
   });
 
   it('(3) Should extract nothing from json_metadata because there is no image field ', () => {
@@ -29,36 +29,36 @@ describe('catch-post-image', () => {
       body: ''
     };
 
-    expect(catchPostImage(input)).toMatchSnapshot();
+    expect(catchEntryImage(input)).toMatchSnapshot();
   });
 
-  it('(4) Should extract post image from image link', () => {
+  it('(4) Should extract entry image from image link', () => {
     const input = {
       json_metadata: '{}',
       body: '<center>https://ipfs.io/ipfs/aa.png</center><hr>'
     };
 
-    expect(catchPostImage(input)).toMatchSnapshot();
+    expect(catchEntryImage(input)).toMatchSnapshot();
   });
 
-  it('(5) Should extract post image from img tag', () => {
+  it('(5) Should extract entry image from img tag', () => {
     const input = {
       json_metadata: '{}',
       body:
         "<center><a href='https://d.tube/#!/v/theaudgirl/2ys21z9c'><img src='https://ipfs.io/ipfs/QmaG5Dpg1XGiY7EyeMCwT8Dqw4GfiAaehq3hZadongniQc'></a></center><hr>"
     };
 
-    expect(catchPostImage(input)).toMatchSnapshot();
+    expect(catchEntryImage(input)).toMatchSnapshot();
   });
 
-  it('(6) Should extract post image from markdown img tag', () => {
+  it('(6) Should extract entry image from markdown img tag', () => {
     const input = {
       json_metadata: '{}',
       body:
         '<center>![ezrni9y9pw.jpg](https://img.esteem.ws/ezrni9y9pw.jpg)</center><hr>'
     };
 
-    expect(catchPostImage(input)).toMatchSnapshot();
+    expect(catchEntryImage(input)).toMatchSnapshot();
   });
 
   it('(8) Should extract nothing', () => {
@@ -68,6 +68,6 @@ describe('catch-post-image', () => {
     };
 
     const expected = null;
-    expect(catchPostImage(input)).toMatchSnapshot();
+    expect(catchEntryImage(input)).toMatchSnapshot();
   });
 });

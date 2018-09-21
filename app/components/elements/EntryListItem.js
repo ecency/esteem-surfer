@@ -8,7 +8,7 @@ import UserAvatar from './UserAvatar';
 import PayoutInfo from './PayoutInfo';
 import VotersInfo from './VotersInfo';
 
-import catchPostImage from '../../utils/catch-post-image';
+import catchEntryImage from '../../utils/catch-entry-image';
 import authorReputation from '../../utils/author-reputation';
 import parseDate from '../../utils/parse-date';
 import postSummary from '../../utils/post-summary';
@@ -33,7 +33,7 @@ class EntryListItem extends Component {
   render() {
     const { entry } = this.props;
 
-    const img = catchPostImage(entry) || 'img/noimage.png';
+    const img = catchEntryImage(entry) || 'img/noimage.png';
     const reputation = authorReputation(entry.author_reputation);
     const created = parseDate(entry.created);
     const summary = postSummary(entry.body, 200);
