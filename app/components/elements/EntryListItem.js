@@ -11,7 +11,7 @@ import VotersInfo from './VotersInfo';
 import catchEntryImage from '../../utils/catch-entry-image';
 import authorReputation from '../../utils/author-reputation';
 import parseDate from '../../utils/parse-date';
-import postSummary from '../../utils/post-summary';
+import entryBodySummary from '../../utils/entry-body-summary';
 import sumTotal from '../../utils/sum-total';
 import appName from '../../utils/app-name';
 import parseMoney from '../../utils/parse-money';
@@ -36,7 +36,7 @@ class EntryListItem extends Component {
     const img = catchEntryImage(entry) || 'img/noimage.png';
     const reputation = authorReputation(entry.author_reputation);
     const created = parseDate(entry.created);
-    const summary = postSummary(entry.body, 200);
+    const summary = entryBodySummary(entry.body, 200);
 
     const voteCount = entry.active_votes.length;
     const contentCount = entry.children;

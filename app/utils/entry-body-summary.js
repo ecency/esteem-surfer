@@ -3,13 +3,13 @@ import he from 'he';
 
 const md = new Remarkable({ html: true, breaks: true, linkify: false });
 
-export default (postBody, length) => {
-  if (!postBody) {
+export default (entryBody, length) => {
+  if (!entryBody) {
     return '';
   }
 
   // Convert markdown to html
-  let text = md.render(postBody);
+  let text = md.render(entryBody);
 
   text = text
     .replace(/(<([^>]+)>)/gi, '') // Remove html tags

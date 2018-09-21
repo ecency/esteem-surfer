@@ -1,40 +1,40 @@
 /* eslint-disable */
-import postSummary from './post-summary';
+import entryBodySummary from './entry-body-summary';
 
-describe('Post Summary', () => {
+describe('Entry Body Summary', () => {
   it('(1) Should return empty string', () => {
     let input = '';
-    expect(postSummary(input)).toMatchSnapshot();
+    expect(entryBodySummary(input)).toMatchSnapshot();
   });
 
   it('(2) Should remove html tags', () => {
     let input = '<center>Lorem Ipsum Dolor</center>';
-    expect(postSummary(input)).toMatchSnapshot();
+    expect(entryBodySummary(input)).toMatchSnapshot();
   });
 
   it('(3) Should remove new lines', () => {
     let input = 'Lorem \n Ipsum \n Dolor';
-    expect(postSummary(input)).toMatchSnapshot();
+    expect(entryBodySummary(input)).toMatchSnapshot();
   });
 
   it('(4) Should trim', () => {
     let input = '   Lorem Ipsum Dolor     ';
-    expect(postSummary(input)).toMatchSnapshot();
+    expect(entryBodySummary(input)).toMatchSnapshot();
   });
 
   it('(5) Should remove urls', () => {
     let input = 'Lorem http://lorem.com Ipsum Dolor https://ipsum.com';
-    expect(postSummary(input)).toMatchSnapshot();
+    expect(entryBodySummary(input)).toMatchSnapshot();
   });
 
   it('(6) Should remove white spaces between words', () => {
     let input = '   Lorem       Ipsum      Dolor     ';
-    expect(postSummary(input)).toMatchSnapshot();
+    expect(entryBodySummary(input)).toMatchSnapshot();
   });
 
   it('(7) Should limit to 20', () => {
     let input = 'lorem ipsum dolor sit amet';
-    expect(postSummary(input, 20)).toMatchSnapshot();
+    expect(entryBodySummary(input, 20)).toMatchSnapshot();
   });
 
   it('(8) Test with long markdown', () => {
@@ -42,7 +42,7 @@ describe('Post Summary', () => {
 In this post, we want to bring you up to speed on what is happening inside Steemit, as well as give you our perspective on the successes (and failures) of the past year, let you know what we see as our mission going forward, and provide some insight into what we have planned.
 <h1>Steemit’s Vision and Mission</h1>
 Through our vision of **empowering entrepreneurs to tokenize the internet**, our primary roles in the Steem ecosystem are providing the community with software enhancements to the Steem blockchain, modular framework applications made up of components that can be leveraged by application developers and inspiration through these platforms to entrepreneurial end-users. We believe we must build in ways that create as many opportunities — and catalyze as many amazing Steem-based entrepreneurs and communities — as possible.`;
-    expect(postSummary(input, 200)).toMatchSnapshot();
+    expect(entryBodySummary(input, 200)).toMatchSnapshot();
   });
 
   it('(9) Test with long markdown', () => {
@@ -56,7 +56,7 @@ Through our vision of **empowering entrepreneurs to tokenize the internet**, our
 <p><b>I'm both grateful and proud.</b></p>
 <p>Many people supported me along the way, some tried to tear me down. I'm glad I only stayed with those who pushed me, they have a large stake in my success story.</p></html>`;
 
-    expect(postSummary(input, 200)).toMatchSnapshot();
+    expect(entryBodySummary(input, 200)).toMatchSnapshot();
   });
 
   it('(10) Test with long markdown', () => {
@@ -71,6 +71,6 @@ Through our vision of **empowering entrepreneurs to tokenize the internet**, our
 I'm giving Three DTUBE & STEEMIT BRANDED TEES to three people for free. Yes, for free. *E fit be you ooo!*
 So, how can you qualify to get one?`;
 
-    expect(postSummary(input, 200)).toMatchSnapshot();
+    expect(entryBodySummary(input, 200)).toMatchSnapshot();
   });
 });
