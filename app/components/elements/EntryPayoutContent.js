@@ -3,16 +3,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { FormattedRelative, FormattedMessage } from 'react-intl';
-import { Popover } from 'antd';
 
 import FormattedCurrency from './FormattedCurrency';
 
 import parseToken from '../../utils/parse-token';
 import parseDate from '../../utils/parse-date';
 
-class PayoutInfo extends Component {
+class EntryPayoutContent extends Component {
   render() {
-    const { entry, children } = this.props;
+    const { entry } = this.props;
 
     const pendingPayout = parseToken(entry.pending_payout_value);
     const promotedPayout = parseToken(entry.promoted);
@@ -24,8 +23,8 @@ class PayoutInfo extends Component {
         : entry.last_payout
     );
 
-    const popoverContent = (
-      <div className="payout-info-popover-content">
+    return (
+      <div className="payout-popover-content">
         <p>
           <span className="label">
             <FormattedMessage id="payout-info.potential-payout" />
@@ -80,16 +79,10 @@ class PayoutInfo extends Component {
         </p>
       </div>
     );
-
-    return (
-      <Popover key="payout-popover" content={popoverContent} placement="bottom">
-        {children}
-      </Popover>
-    );
   }
 }
 
-PayoutInfo.propTypes = {
+EntryPayoutContent.propTypes = {
   entry: PropTypes.shape({
     pending_payout_value: PropTypes.string.isRequired,
     promoted: PropTypes.string.isRequired,
@@ -97,8 +90,7 @@ PayoutInfo.propTypes = {
     curator_payout_value: PropTypes.string.isRequired,
     last_payout: PropTypes.string.isRequired,
     cashout_time: PropTypes.string.isRequired
-  }).isRequired,
-  children: PropTypes.element.isRequired
+  }).isRequired
 };
 
-export default PayoutInfo;
+export default EntryPayoutContent;

@@ -4,7 +4,7 @@ import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
-import PayoutInfo from './PayoutInfo';
+import EntryPayout from './EntryPayout';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -26,9 +26,9 @@ describe('Payout info component', () => {
     };
 
     const component = shallow(
-      <PayoutInfo {...props}>
+      <EntryPayout {...props}>
         <a className="post-total">$ 430.12</a>
-      </PayoutInfo>
+      </EntryPayout>
     );
     const tree = renderer.create(component).toJSON();
     expect(tree).toMatchSnapshot();

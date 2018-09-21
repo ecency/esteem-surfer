@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { FormattedRelative } from 'react-intl';
 
 import UserAvatar from './UserAvatar';
-import PayoutInfo from './PayoutInfo';
+import EntryPayout from './EntryPayout';
 import EntryVoters from './EntryVoters';
 import FormattedCurrency from './FormattedCurrency';
 
@@ -96,7 +96,7 @@ class EntryListItem extends Component {
                 <i className="mi">keyboard_arrow_up</i>
               </a>
             </div>
-            <PayoutInfo {...this.props} entry={entry}>
+            <EntryPayout {...this.props} entry={entry}>
               <a
                 className={`total-payout ${
                   isPayoutDeclined ? 'payout-declined' : ''
@@ -104,7 +104,7 @@ class EntryListItem extends Component {
               >
                 <FormattedCurrency {...this.props} value={totalPayout} />
               </a>
-            </PayoutInfo>
+            </EntryPayout>
             <EntryVoters {...this.props} entry={entry}>
               <a className="voters">
                 <i className="mi">people</i>
