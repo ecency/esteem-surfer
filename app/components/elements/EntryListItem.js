@@ -7,6 +7,7 @@ import { FormattedRelative } from 'react-intl';
 import UserAvatar from './UserAvatar';
 import PayoutInfo from './PayoutInfo';
 import VotersInfo from './VotersInfo';
+import FormattedCurrency from './FormattedCurrency';
 
 import catchEntryImage from '../../utils/catch-entry-image';
 import authorReputation from '../../utils/author-reputation';
@@ -50,7 +51,7 @@ class EntryListItem extends Component {
 
     const app = appName(jsonMeta.app);
 
-    const totalPayout = sumTotal(entry).toFixed(2);
+    const totalPayout = sumTotal(entry);
     const isPayoutDeclined = parseToken(entry.max_accepted_payout) === 0;
 
     return (
@@ -101,7 +102,7 @@ class EntryListItem extends Component {
                   isPayoutDeclined ? 'payout-declined' : ''
                 }`}
               >
-                $ {totalPayout}
+                <FormattedCurrency {...this.props} value={totalPayout} />
               </a>
             </PayoutInfo>
             <VotersInfo entry={entry}>

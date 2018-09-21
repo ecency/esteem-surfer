@@ -1,20 +1,18 @@
 import parseToken from './parse-token';
 
-export default (content, rate = 1) => {
+export default entry => {
   if (
-    content.pending_payout_value &&
-    content.last_payout === '1970-01-01T00:00:00'
+    entry.pending_payout_value &&
+    entry.last_payout === '1970-01-01T00:00:00'
   ) {
-    return content.total_payout_value
-      ? (parseToken(content.total_payout_value) +
-          parseToken(content.pending_payout_value)) *
-          rate
+    return entry.total_payout_value
+      ? parseToken(entry.total_payout_value) +
+          parseToken(entry.pending_payout_value)
       : 0;
   }
 
-  return content.total_payout_value
-    ? (parseToken(content.total_payout_value) +
-        parseToken(content.curator_payout_value)) *
-        rate
+  return entry.total_payout_value
+    ? parseToken(entry.total_payout_value) +
+        parseToken(entry.curator_payout_value)
     : 0;
 };
