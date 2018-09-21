@@ -1,0 +1,120 @@
+{
+  "id": 62824478,
+  "author": "fortunejackcom",
+  "permlink": "do-you-actually-know-what-blockchain-is",
+  "category": "blockchain",
+  "parent_author": "",
+  "parent_permlink": "blockchain",
+  "title": "DO YOU ACTUALLY KNOW WHAT BLOCKCHAIN IS?",
+  "body": "**What is blockchain???**\n\n![image (22).png](https://cdn.steemitimages.com/DQmUHgDUEueCBVG7orM4TPk2LHZJfjBTMPuEk65u9bbs16R/image%20(22).png)\n\nYou’ve no doubt heard the term, but perhaps it’s still a fuzzy concept in your head. Well, don’t feel bad. The term itself has been overloaded many times by the sheer amount of activity, projects, applications, currencies, hype and speculation in the market-at-large. It’s hard to draw a clear line around what blockchain is and isn’t, and it often causes a lot of confusion.\n\nBelow we’ll break the technology down into its constituent parts, and try to provide some context for how they come together to drive the powerful trends we are seeing in the wild.\n\n**Humble Beginnings**\n![image (18).png](https://cdn.steemitimages.com/DQmYhLTLRH33au2bpJd3MoWhhW6JDjTe6nRVkEv9UuQWoMm/image%20(18).png)\n \nBlockchain, as we know it today, is tied to the introduction of Bitcoin in 2009, which was based off a late 2008 paper released by Satoshi Nakamoto. While many argue that Bitcoin isn’t a great blockchain for a number of reasons (such as scalability and extensibility), it started a chain reaction within the technology industry that has yet to slow down.\n\nBitcoin is effectively a digital cash system, and while there were previous attempts at digital cash systems, there were none that solved the problem the way Bitcoin did. What Bitcoin did differently was introduce a distributed digital cash system that incentivized participation and elimited the double spend issue. For the first time there was a way to run a digital cash system without a centralized authority, incentivize contributors to behave properly and run the systems required to process transactions, and provide a security layer that ensured a digital asset (cash) could only be spent once (as opposed to being able to simply copy and paste digital cash).\n\nIn the wake of Bitcoin we’ve seen dozens of blockchain platforms appear, such as Ethereum, aiming to solve some of Bitcoin’s problems, and now more than 1,000 different cryptocurrencies that aim at disrupting traditional financial systems.\n\n**Distributed Ledger Technology**\n\n![image (19).png](https://cdn.steemitimages.com/DQmUfxTzZheY2N6NQZFe7eYm9EGgfDPVvyYGg9ywiCdDm1M/image%20(19).png)\n \nWhile ‘blockchain’ is a catch-all term that easily rolls off the tongue, perhaps a more accurate way to describe the technology is Distributed Ledger Technology, or DLT for short. A distributed ledger includes a number of characteristics and mechanisms that come together to make the system work.\n\nHere’s a handy acronym that helps capture DLT’s core characteristics: DISC. This acronym isn’t exhaustive of every feature, but if you can remember this it will get you through most conversations.\n\n* DISC stands for:\nD = Decentralized \nI = Immutable \nS = Smart Contracts\nC = Consensus\n\n*Let’s take a look at these characteristics.*\n\n**Decentralized Ledger**\n\nUnderpinning distributed ledger technology is a database, or ledger, that maintains entries for the transactions that occur in the system. You can liken this to the ledger that accountants keep for monetary transactions within a business, except in this case the ledger is distributed across every single participant who is helping to run the network. This ensures that everyone is looking at the same data, and removes any central point of failure in the system.\n\nIn practice a distributed ledger is made up of software that runs on systems, usually computers but sometimes IoT devices or even video cards, that maintains a local copy of a database and coordinates with other peers in the network, in essence creating a peer-to-peer accounting system. You may be familiar with older peer-to-peer systems that first made their appearance in the music industry, such as Napster. Distributed ledgers borrow this concept to assemble their decentralized peer-to-peer base.\n\nThe goal of decentralized peer-to-peer operation is to ensure there is no single entity or central authority that owns or runs the system. It’s truly a system by the people, for the people.\n\n**Immutable Data**\n![image (20).png](https://cdn.steemitimages.com/DQmTDV3AeKFrnK1PAPPPKzgnek19os148BBAFykmAWoLpoa/image%20(20).png)\n \nTransactions that are stored in the ledger should be protected from modification to ensure that bad or malicious actors cannot alter the transactions to give themself more money, or steal other people’s money.\n\nImmutability simply means transactions cannot be changed, and the way this happens is through a technology call cryptography. This is also where cryptocurrency really gets its name, as it wouldn’t be possible without pre-existing cryptographic principles.\n\nAt the root of this immutability is a process called hashing, which is a mechanism to produce a very unique identifier for any piece of data. What makes hashing special is that whenever you put the same data in, you get the same unique identifier out. This allows you to prove that data has not been tampered with. Additionally, if you use a hash as an input to another hash you can effectively chain a set of data together and prove its history or lineage. This is where the ‘chain’ part of blockchain comes from.\n\nAn example hash of the word ‘cat’, computed with the SHA256 algorithm:\n77AF778B51ABD4A3C51C5DDD97204A9C3AE614EBCCB75A606C3B6865AED6744E\n\nWhile cryptography and hashes may feel a bit foreign, don’t be too concerned. It’s just a bit of math that you ultimately don’t need to know how to use, just that it works and helps blockchain systems prove the integrity of data.\n\n**Smart Contracts**\n\nWhile this may sound complicated, the concept underlying smart contracts is easy to understand. Simply put, it’s a small bit of code that is distributed to all participants who are running a distributed ledger and helps to validate transactions. Rather than a basic validation a smart contract uses custom code to check additional factors before validating the transaction. For example, that the maturity date of a loan has been reached, or the supply of a part in stock is low. In other words it allows developers to customize the logic around transactions.\n\nTechnically anything could be programmed into a smart contract, though they are typically compact and very focused as they need to run extremely quickly and have absolutely no bugs or crashes. Some of the security concerns with distributed ledgers have to do with Smart Contracts and new service offerings are popping up to help companies audit their smart contracts to ensure there are no potential issues.\n\nAt the most esoteric end of the spectrum you can view smart contracts as a way to programmatically deliver real legal contracts, or in other words, codify law.\n\n**Consensus**\n\nWithout consensus, and incentivized consensus at that, we wouldn’t have distributed ledgers as we know them today.\n\nConsensus is required to ensure all participants in a distributed ledger can come to a conclusion regarding what transactions to add to the ledger. The reason that consensys needs to be incentivized is to promote good behavior and thus commit the correct transactions to the ledger. Without incentives bad actors could easily try to manipulate the records in favor of themselves.\n\nWhen participants in a distributed ledger contribute the correct transactions they are rewarded with a small amount of the cryptocurrency which underpins the network. This process is often called mining, and is usually associated with the proof-of-work style of consensus algorithm. There are in fact many consensus mechanisms, though two of the most popular are proof-of-work and proof-of-stake. Bitcoin leverages a proof-of-work consensus algorithm, though many dislike this mechanism due to the amount of energy required.\n\nIncentivized consensus is the glue which holds the whole system together, and what has driven the explosion of blockchain ideas since the inception of Bitcoin.\n\n**Layers of Blockchain**\n ![image (21).png](https://cdn.steemitimages.com/DQmStyoxtzgNgNkNV3Sf3k1LHE1NHAwPJ4vSizuphkRykiS/image%20(21).png)\n\nIf blockchain, or distributed ledgers, are the base, what is actually being built on top of them?\n\n**Cryptocurrencies**\n\nThe first ‘killer app’ of distributed ledger technology has clearly been cryptocurrency. CoinMarketCap is now tracking nearly 2000 different currencies and the aggregate market cap is hovering around $200 Billion (though it spiked to over $800 Billion in early 2018).\n\nThe flavor of cryptocurrencies is quite varied, from the likes of Bitcoin (BTC) that is now mostly viewed as a digital value store due to its inability to scale as a cash system, to currencies that were initially introduced as a joke, such as Dogecoin (DOGE). In the middle are a number of currencies like Ripple (XRP), Bitcoin Cash (BCH), Litecoin (LTC) and Tether (USDT) that aim at being legitimate digital cash systems that can scale to the levels required for real-time worldwide usage.\n\nCryptocurrencies aren’t necessarily limited to being cash wannabe’s, they are also popping up in all manor of ecosystems that have some inherent economy (such as gaming).\n\n**Platforms**\n\nMoving beyond currency as the initial use case for blockchain we’ve seen new distributed ledger platforms appear, such as Ethereum, EOS and Stellar. These platforms aim at providing the basic distributed ledger plumbing for developers to rapidly build applications on, instead of focusing on building their own blockchain.\n\nIn many cases the platforms are addressing specific technical issues with the initial blockchain architecture proposed with Bitcoin, such as the following:\n•\tTransaction speed or scalability (Bitcoin can process less than 10 transactions/second, and it takes minutes for transactions to clear)\n•\tEnergy consumption (Bitcoin uses proof-of-work which burns a lot of electricity)\n•\tLack of extensibility (Bitcoin has very limited smart contract capability)\n•\tAuthentication / Anonymity (Bitcoin is largely permissionless and anonymous)\n\nAs developers, and to a large extent traditional organizations, move down the path of exploring, building and adopting distributed ledger technology they are demanding enterprise or world-class scale and capabilities. The result is blockchain needs to evolve to support the required speeds and scale, be flexible enough to rapidly adapt to the variety of use cases being explored, provide multiple authentication models to support environments where anonymity is undesirable or access control is mandated, and ultimately be deployable with operational costs that make the end solutions viable within the market.\n\n**Applications**\n ![image (17).png](https://cdn.steemitimages.com/DQmT8VK1nCBibScEEBwrtPUKp2uMXZEri9MC6xWFoQfAJcT/image%20(17).png)\n\nThe next layer on top of platforms are distributed applications, also known as dApps. The difference between a traditional app, such as Angry Birds on your iPhone, and a distributed app is that a dApp is designed to run on a distributed ledger with no central authority or back-end technology. While this may seem subtle on the surface, the implications are fairly significant.\n\nWe are used to monopolistic centralized services (such as Facebook or Google) running our applications and greedily storing all of our data, usually for the purposes of reselling it or leveraging AI to optimize ads being delivered to users (again to drive revenue). The introduction of dApps flips this model on its head, and instead there is no central party who owns your data, thus you cannot be taken advantage of. At least that’s the theory that developers are trying to put into practice.\n\nThere is a lot of hype around dApps completely taking over traditional applications, however the hype (at this point) is just that…hype. The reality is the technology is extremely early and has had nowhere near the time needed to mature, and the vast majority of decentralized apps are unable to compete with their centralized counterparts in the marketplace. While there are a slew of blockchain junkies and technophiles that are early adopters, there will need to be some very compelling reasons for your everyday user to move off of centralized apps. This will be a very slow process.\n\n**Initial Coin Offerings**\n\nThis article wouldn’t be complete without at least touching on ICO’s, or Initial Coin Offerings, which also largely falls in the hype category. If you haven’t previously heard the term, an ICO is somewhat like an IPO, or Initial Public Offering, where a companies sells their shares to the public to raise operating capital. In the case of an ICO a company is creating a security or token that is underpinned by a new cryptocurrency, and selling some amount of that new cryptocurrency to the market.\n\nThere’s lot of problems with this model, including blurred and ambiguous legal issues, particularly around securities laws. Unfortunately the model that quickly became adopted was to assemble and publish a technical whitepaper that discussed what developers wanted to build, and based on the merits of that whitepaper retail investors would invest in the ICO to fund the development. This model is unfortunate because for upwards of 90% of ICO’s the end solution was not released, or couldn’t gain product / market fit. It’s akin to raising millions of dollars on simply an idea with doing any work to prove the viability of the idea. Sometimes this does happen in the real world, but the majority of traditional funding requires a bit more due diligence before the money starts flowing.\n\nOn the up side, ICO’s do present a new flavor of crowd-funding that completely circumvents the traditional angel investor and venture capital investment cycle. There’s pros an cons to this, but crowd-funding has proven to be a viable method to bring new ideas to the market directly based off consumer demand, so there’s a good chance ICO’s will find a stable and scalable model for fund raising.\n\n**Driving Disruption**\n\nOne thing can be said for sure; blockchain and distributed ledger technology are driving a wave of disruption across nearly every vertical, including very large and sleepy ones such as banking, insurance and law. While largely unproven, use cases beyond cryptocurrency are being explored at a ferocious pace in broad areas including supply chain, codifying law, data integrity, secure transactions and identity.\n\nIf we put aside underlying technical details for a second, the big innovation is a new fabric or layer that provides decentralized incentive systems, which is a fancy way of saying that there’s a reason for altruistic citizens to help run the infrastructure required to make decentralized systems work. Traditionally we’ve had to go with centralized options because it’s too costly to build everything you need yourself, however blockchain and decentralized ledger technology provide an alternative platform for the creation of 21st century applications and capabilities.\n\nIn the ever more monopolistic environment of the Internet, where trillion dollar giants are successfully centralizing all of our data and services, a decentralized alternative poses both a large risk to incumbents and a refreshing (if immature) solution for our future citizens to retake control.",
+  "json_metadata": "{\"tags\":[\"blockchain\",\"cryptocurrencies\",\"disc\",\"dlt\",\"bitcoin\"],\"image\":[\"https://cdn.steemitimages.com/DQmUHgDUEueCBVG7orM4TPk2LHZJfjBTMPuEk65u9bbs16R/image%20(22).png\",\"https://cdn.steemitimages.com/DQmYhLTLRH33au2bpJd3MoWhhW6JDjTe6nRVkEv9UuQWoMm/image%20(18).png\",\"https://cdn.steemitimages.com/DQmUfxTzZheY2N6NQZFe7eYm9EGgfDPVvyYGg9ywiCdDm1M/image%20(19).png\",\"https://cdn.steemitimages.com/DQmTDV3AeKFrnK1PAPPPKzgnek19os148BBAFykmAWoLpoa/image%20(20).png\",\"https://cdn.steemitimages.com/DQmStyoxtzgNgNkNV3Sf3k1LHE1NHAwPJ4vSizuphkRykiS/image%20(21).png\",\"https://cdn.steemitimages.com/DQmT8VK1nCBibScEEBwrtPUKp2uMXZEri9MC6xWFoQfAJcT/image%20(17).png\"],\"app\":\"steemit/0.1\",\"format\":\"markdown\"}",
+  "last_update": "2018-09-19T15:28:48",
+  "created": "2018-09-19T15:28:48",
+  "active": "2018-09-19T15:29:00",
+  "last_payout": "1970-01-01T00:00:00",
+  "depth": 0,
+  "children": 2,
+  "net_rshares": "4364639362",
+  "abs_rshares": "4364639362",
+  "vote_rshares": "4364639362",
+  "children_abs_rshares": "4364639362",
+  "cashout_time": "2018-09-26T15:28:48",
+  "max_cashout_time": "1969-12-31T23:59:59",
+  "total_vote_weight": 66067,
+  "reward_weight": 10000,
+  "total_payout_value": "0.000 SBD",
+  "curator_payout_value": "0.000 SBD",
+  "author_rewards": 0,
+  "net_votes": 9,
+  "root_author": "fortunejackcom",
+  "root_permlink": "do-you-actually-know-what-blockchain-is",
+  "max_accepted_payout": "1000000.000 SBD",
+  "percent_steem_dollars": 10000,
+  "allow_replies": true,
+  "allow_votes": true,
+  "allow_curation_rewards": true,
+  "beneficiaries": [],
+  "url": "/blockchain/@fortunejackcom/do-you-actually-know-what-blockchain-is",
+  "root_title": "DO YOU ACTUALLY KNOW WHAT BLOCKCHAIN IS?",
+  "pending_payout_value": "0.004 SBD",
+  "total_pending_payout_value": "0.000 STEEM",
+  "active_votes": [
+    {
+      "voter": "cheetah",
+      "weight": 160,
+      "rshares": 2074141544,
+      "percent": 8,
+      "reputation": "346452582555697",
+      "time": "2018-09-19T15:28:54"
+    },
+    {
+      "voter": "sensation",
+      "weight": 1925,
+      "rshares": 252306781,
+      "percent": 10000,
+      "reputation": -8455521351,
+      "time": "2018-09-19T16:56:57"
+    },
+    {
+      "voter": "ashiqhooriya",
+      "weight": 1718,
+      "rshares": 225117741,
+      "percent": 10000,
+      "reputation": 2058199036,
+      "time": "2018-09-21T08:00:03"
+    },
+    {
+      "voter": "miracle101",
+      "weight": 775,
+      "rshares": 101604017,
+      "percent": 10000,
+      "reputation": 0,
+      "time": "2018-09-21T08:26:12"
+    },
+    {
+      "voter": "soopenet",
+      "weight": 75,
+      "rshares": 173548089,
+      "percent": 10000,
+      "reputation": 1046788,
+      "time": "2018-09-19T15:30:27"
+    },
+    {
+      "voter": "ax3",
+      "weight": 5,
+      "rshares": 66994450,
+      "percent": 100,
+      "reputation": 0,
+      "time": "2018-09-19T15:28:57"
+    },
+    {
+      "voter": "glory1",
+      "weight": 4542,
+      "rshares": 595374071,
+      "percent": 10000,
+      "reputation": 2505280124,
+      "time": "2018-09-21T11:17:45"
+    },
+    {
+      "voter": "goastrighter",
+      "weight": 2137,
+      "rshares": 280127169,
+      "percent": 10000,
+      "reputation": "99447228206",
+      "time": "2018-09-21T13:37:51"
+    },
+    {
+      "voter": "criptomir",
+      "weight": 4543,
+      "rshares": 595425500,
+      "percent": 10000,
+      "reputation": 3528338650,
+      "time": "2018-09-21T13:19:57"
+    }
+  ],
+  "replies": [],
+  "author_reputation": 2674762599,
+  "promoted": "300.000 SBD",
+  "body_length": 0,
+  "reblogged_by": []
+}

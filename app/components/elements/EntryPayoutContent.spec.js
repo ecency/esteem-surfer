@@ -10,7 +10,7 @@ import { mountWithIntl } from '../../helpers/intl-test';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('EntryPayoutContent', () => {
-  it('(1) Should render list prepared top 10 votes. Should show more text at bottom.', () => {
+  it('(1) Render not paid out content', () => {
     const testData = getTestData(
       'esteemapp',
       'meet-our-cmo-and-product-lead-fil-dunsky-db1db689675c5est'
@@ -21,7 +21,34 @@ describe('EntryPayoutContent', () => {
       global: { currencyRate: 1, currencySymbol: '$' }
     };
     const wrapper = mountWithIntl(<EntryPayoutContent {...props} />);
-    console.log(wrapper.html());
-    // expect(wrapper.html()).toMatchSnapshot();
+    expect(wrapper.html()).toMatchSnapshot();
+  });
+
+  it('(2) Render paid out content', () => {
+    const testData = getTestData(
+      'good-karma',
+      'esteem-surfer-reimagined-ui-ux-preview-b8fb9bb0872beest'
+    );
+
+    const props = {
+      entry: testData,
+      global: { currencyRate: 1, currencySymbol: '$' }
+    };
+    const wrapper = mountWithIntl(<EntryPayoutContent {...props} />);
+    expect(wrapper.html()).toMatchSnapshot();
+  });
+
+  it('(3) Render promoted content', () => {
+    const testData = getTestData(
+      'fortunejackcom',
+      'do-you-actually-know-what-blockchain-is'
+    );
+
+    const props = {
+      entry: testData,
+      global: { currencyRate: 1, currencySymbol: '$' }
+    };
+    const wrapper = mountWithIntl(<EntryPayoutContent {...props} />);
+    expect(wrapper.html()).toMatchSnapshot();
   });
 });
