@@ -11,6 +11,10 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Payout info component', () => {
   it('should match exact snapshot', () => {
     const props = {
+      global: {
+        currencyRate: 1,
+        currencySymbol: '$'
+      },
       entry: {
         pending_payout_value: '430.124 SBD',
         promoted: '0.000 SBD',

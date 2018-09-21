@@ -10,7 +10,9 @@ class FormattedCurrency extends Component {
     const valInCurrency = value * currencyRate;
 
     return (
-      <Fragment>{`${currencySymbol} ${valInCurrency.toFixed(fixAt)}`}</Fragment>
+      <Fragment key="result-val">{`${currencySymbol} ${valInCurrency.toFixed(
+        fixAt
+      )}`}</Fragment>
     );
   }
 }

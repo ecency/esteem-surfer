@@ -10,6 +10,7 @@ class UserAvatar extends Component {
 
     return (
       <span
+        key="user-avatar-image"
         className={cls}
         style={{
           backgroundImage: `url('https://steemitimages.com/u/${user}/avatar/${imgSize}')`

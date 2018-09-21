@@ -96,7 +96,7 @@ class EntryListItem extends Component {
                 <i className="mi">keyboard_arrow_up</i>
               </a>
             </div>
-            <PayoutInfo entry={entry}>
+            <PayoutInfo {...this.props} entry={entry}>
               <a
                 className={`total-payout ${
                   isPayoutDeclined ? 'payout-declined' : ''
