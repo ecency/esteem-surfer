@@ -5,16 +5,16 @@ import PropTypes from 'prop-types';
 import { FormattedMessage, FormattedRelative } from 'react-intl';
 import { Popover, Modal, Table, Badge } from 'antd';
 
-import parseMoney from '../../utils/parse-money';
+import parseToken from '../../utils/parse-token';
 import currencySymbol from '../../utils/currency-symbol';
 import parseDate from '../../utils/parse-date';
 import authorReputation from '../../utils/author-reputation';
 
 export const prepareContentVotes = (entry, currencyRate) => {
   const totalPayout =
-    parseMoney(entry.pending_payout_value) +
-    parseMoney(entry.total_payout_value) +
-    parseMoney(entry.curator_payout_value);
+    parseToken(entry.pending_payout_value) +
+    parseToken(entry.total_payout_value) +
+    parseToken(entry.curator_payout_value);
 
   const voteRshares = entry.active_votes.reduce(
     (a, b) => a + parseFloat(b.rshares),

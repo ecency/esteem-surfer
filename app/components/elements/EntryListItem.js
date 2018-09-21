@@ -14,7 +14,7 @@ import parseDate from '../../utils/parse-date';
 import entryBodySummary from '../../utils/entry-body-summary';
 import sumTotal from '../../utils/sum-total';
 import appName from '../../utils/app-name';
-import parseMoney from '../../utils/parse-money';
+import parseToken from '../../utils/parse-token';
 
 class EntryListItem extends Component {
   parentClicked = parent => {
@@ -51,7 +51,7 @@ class EntryListItem extends Component {
     const app = appName(jsonMeta.app);
 
     const totalPayout = sumTotal(entry).toFixed(2);
-    const isPayoutDeclined = parseMoney(entry.max_accepted_payout) === 0;
+    const isPayoutDeclined = parseToken(entry.max_accepted_payout) === 0;
 
     return (
       <div className="entry-list-item">

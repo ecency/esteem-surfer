@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { FormattedRelative, FormattedMessage } from 'react-intl';
 import { Popover } from 'antd';
 
-import parseMoney from '../../utils/parse-money';
+import parseToken from '../../utils/parse-token';
 import parseDate from '../../utils/parse-date';
 import currencySymbol from '../../utils/currency-symbol';
 
@@ -17,16 +17,16 @@ class PayoutInfo extends Component {
     const currencyRate = 1;
 
     const pendingPayout = (
-      parseMoney(entry.pending_payout_value) * currencyRate
+      parseToken(entry.pending_payout_value) * currencyRate
     ).toFixed(3);
-    const promotedPayout = (parseMoney(entry.promoted) * currencyRate).toFixed(
+    const promotedPayout = (parseToken(entry.promoted) * currencyRate).toFixed(
       3
     );
     const authorPayout = (
-      parseMoney(entry.total_payout_value) * currencyRate
+      parseToken(entry.total_payout_value) * currencyRate
     ).toFixed(3);
     const curationPayout = (
-      parseMoney(entry.curator_payout_value) * currencyRate
+      parseToken(entry.curator_payout_value) * currencyRate
     ).toFixed(3);
     const payoutDate = parseDate(
       entry.last_payout === '1970-01-01T00:00:00'
