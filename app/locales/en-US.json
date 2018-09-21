@@ -13,19 +13,19 @@
     "filter-children": "Comments",
     "filter-payout": "Payout"
   },
-  "payout-info": {
+  "entry-payout": {
     "potential-payout": "Potential Payout",
     "promoted": "Promoted",
     "author-payout": "Author Payout",
     "curation-payout": "Curation Payout",
     "payout-date": "Payout"
   },
-  "voters-info": {
+  "entry-votes": {
     "n-more": "{n} more",
     "author": "Author",
     "reward": "Reward",
     "percent": "Percent",
     "time": "Time",
-    "modal-title": "Voters info ({n})"
+    "modal-title": "Voters ({n})"
   }
 }

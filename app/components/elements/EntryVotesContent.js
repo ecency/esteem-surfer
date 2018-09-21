@@ -30,7 +30,7 @@ class EntryVotesContent extends Component {
     if (moreCount > 0) {
       popoverChildren.push(
         <p key="more" className="more">
-          <FormattedMessage id="voters-info.n-more" values={{ n: moreCount }} />
+          <FormattedMessage id="entry-votes.n-more" values={{ n: moreCount }} />
         </p>
       );
     }

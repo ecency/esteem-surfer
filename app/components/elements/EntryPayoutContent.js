@@ -27,7 +27,7 @@ class EntryPayoutContent extends Component {
       <div className="payout-popover-content">
         <p>
           <span className="label">
-            <FormattedMessage id="payout-info.potential-payout" />
+            <FormattedMessage id="entry-payout.potential-payout" />
           </span>
           <span className="value">
             <FormattedCurrency
@@ -39,7 +39,7 @@ class EntryPayoutContent extends Component {
         </p>
         <p>
           <span className="label">
-            <FormattedMessage id="payout-info.promoted" />
+            <FormattedMessage id="entry-payout.promoted" />
           </span>
           <span className="value">
             <FormattedCurrency
@@ -51,7 +51,7 @@ class EntryPayoutContent extends Component {
         </p>
         <p>
           <span className="label">
-            <FormattedMessage id="payout-info.author-payout" />
+            <FormattedMessage id="entry-payout.author-payout" />
           </span>
           <span className="value">
             <FormattedCurrency {...this.props} value={authorPayout} fixAt={3} />
@@ -59,7 +59,7 @@ class EntryPayoutContent extends Component {
         </p>
         <p>
           <span className="label">
-            <FormattedMessage id="payout-info.curation-payout" />
+            <FormattedMessage id="entry-payout.curation-payout" />
           </span>
           <span className="value">
             <FormattedCurrency
@@ -71,7 +71,7 @@ class EntryPayoutContent extends Component {
         </p>
         <p>
           <span className="label">
-            <FormattedMessage id="payout-info.payout-date" />
+            <FormattedMessage id="entry-payout.payout-date" />
           </span>
           <span className="value">
             <FormattedRelative value={payoutDate} />

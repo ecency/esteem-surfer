@@ -103,7 +103,7 @@ class EntryVotes extends Component {
     if (entry.active_votes.length > 0) {
       const modalTableColumns = [
         {
-          title: <FormattedMessage id="voters-info.author" />,
+          title: <FormattedMessage id="entry-votes.author" />,
           dataIndex: 'voter',
           key: 'voter',
           width: 220,
@@ -123,7 +123,7 @@ class EntryVotes extends Component {
           )
         },
         {
-          title: <FormattedMessage id="voters-info.reward" />,
+          title: <FormattedMessage id="entry-votes.reward" />,
           dataIndex: 'reward',
           key: 'reward',
           align: 'center',
@@ -133,7 +133,7 @@ class EntryVotes extends Component {
           render: text => <FormattedCurrency {...this.props} value={text} />
         },
         {
-          title: <FormattedMessage id="voters-info.percent" />,
+          title: <FormattedMessage id="entry-votes.percent" />,
           dataIndex: 'percent',
           key: 'percent',
           align: 'center',
@@ -142,7 +142,7 @@ class EntryVotes extends Component {
           render: text => `% ${text.toFixed(1)}`
         },
         {
-          title: <FormattedMessage id="voters-info.time" />,
+          title: <FormattedMessage id="entry-votes.time" />,
           dataIndex: 'time',
           key: 'time',
           align: 'center',
@@ -170,7 +170,7 @@ class EntryVotes extends Component {
             width="80%"
             title={
               <FormattedMessage
-                id="voters-info.modal-title"
+                id="entry-votes.modal-title"
                 values={{ n: votes.length }}
               />
             }
