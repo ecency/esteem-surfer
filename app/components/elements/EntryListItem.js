@@ -131,7 +131,8 @@ EntryListItem.propTypes = {
     title: PropTypes.string.isRequired,
     parent_permlink: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
-    author_reputation: PropTypes.string.isRequired,
+    author_reputation: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      .isRequired,
     max_accepted_payout: PropTypes.string.isRequired,
     json_metadata: PropTypes.string.isRequired,
     children: PropTypes.number.isRequired,
