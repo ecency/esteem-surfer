@@ -4,8 +4,8 @@ import React from 'react';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { getTestData } from '../../../test/data';
-import { prepareVotes } from './EntryVoters';
-import EntryVotersContent from './EntryVotersContent';
+import { prepareVotes } from './EntryVotes';
+import EntryVotesContent from './EntryVotesContent';
 import { mountWithIntl } from '../../helpers/intl-test';
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -22,7 +22,7 @@ describe('EntryVoters', () => {
       votes: votes,
       global: { currencyRate: 1, currencySymbol: '$' }
     };
-    const wrapper = mountWithIntl(<EntryVotersContent {...props} />);
+    const wrapper = mountWithIntl(<EntryVotesContent {...props} />);
     expect(wrapper.html()).toMatchSnapshot();
   });
 
@@ -34,7 +34,7 @@ describe('EntryVoters', () => {
       votes: votes,
       global: { currencyRate: 1, currencySymbol: '$' }
     };
-    const wrapper = mountWithIntl(<EntryVotersContent {...props} />);
+    const wrapper = mountWithIntl(<EntryVotesContent {...props} />);
     expect(wrapper.html()).toMatchSnapshot();
   });
 });

@@ -6,7 +6,7 @@ import { FormattedRelative } from 'react-intl';
 
 import UserAvatar from './UserAvatar';
 import EntryPayout from './EntryPayout';
-import EntryVoters from './EntryVoters';
+import EntryVotes from './EntryVotes';
 import FormattedCurrency from './FormattedCurrency';
 
 import catchEntryImage from '../../utils/catch-entry-image';
@@ -105,12 +105,12 @@ class EntryListItem extends Component {
                 <FormattedCurrency {...this.props} value={totalPayout} />
               </a>
             </EntryPayout>
-            <EntryVoters {...this.props} entry={entry}>
+            <EntryVotes {...this.props} entry={entry}>
               <a className="voters">
                 <i className="mi">people</i>
                 {voteCount}
               </a>
-            </EntryVoters>
+            </EntryVotes>
             <a className="comments">
               <i className="mi">comment</i>
               {contentCount}

@@ -1,9 +1,9 @@
 /* eslint-disable */
 import React from 'react';
 import { getTestData } from '../../../test/data';
-import { prepareVotes } from './EntryVoters';
+import { prepareVotes } from './EntryVotes';
 
-describe('EntryVoters', () => {
+describe('EntryVotes', () => {
   it('(1) Should prepare votes reward descending ordered', () => {
     const testData = getTestData(
       'esteemapp',

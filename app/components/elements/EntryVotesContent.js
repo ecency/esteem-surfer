@@ -6,7 +6,7 @@ import { FormattedMessage } from 'react-intl';
 
 import FormattedCurrency from './FormattedCurrency';
 
-class EntryVotersContent extends Component {
+class EntryVotesContent extends Component {
   render() {
     const { votes } = this.props;
 
@@ -35,12 +35,12 @@ class EntryVotersContent extends Component {
       );
     }
 
-    return <div className="voters-popover-content">{popoverChildren}</div>;
+    return <div className="votes-popover-content">{popoverChildren}</div>;
   }
 }
 
-EntryVotersContent.propTypes = {
+EntryVotesContent.propTypes = {
   votes: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
-export default EntryVotersContent;
+export default EntryVotesContent;

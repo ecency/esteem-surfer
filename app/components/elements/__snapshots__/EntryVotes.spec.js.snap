@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EntryVoters (1) Should prepare votes reward descending ordered 1`] = `
+exports[`EntryVotes (1) Should prepare votes reward descending ordered 1`] = `
 Array [
   Object {
     "percent": 100,
