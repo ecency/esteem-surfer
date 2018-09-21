@@ -1,0 +1,237 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`entries reducer (1) should handle initial state 1`] = `Immutable.Map {}`;
+
+exports[`entries reducer (2) should create group key according to location. action:LOCATION_CHANGE 1`] = `
+Immutable.Map {
+  "trending": Immutable.Record {
+    "entries": Immutable.OrderedMap {},
+    "err": null,
+    "loading": false,
+    "hasMore": true,
+  },
+}
+`;
+
+exports[`entries reducer (3) should create group key according to location. action:LOCATION_CHANGE 1`] = `
+Immutable.Map {
+  "trending": Immutable.Record {
+    "entries": Immutable.OrderedMap {},
+    "err": null,
+    "loading": false,
+    "hasMore": true,
+  },
+  "trending-art": Immutable.Record {
+    "entries": Immutable.OrderedMap {},
+    "err": null,
+    "loading": false,
+    "hasMore": true,
+  },
+}
+`;
+
+exports[`entries reducer (4) should  not create group for non-filter path. action:LOCATION_CHANGE 1`] = `
+Immutable.Map {
+  "trending": Immutable.Record {
+    "entries": Immutable.OrderedMap {},
+    "err": null,
+    "loading": false,
+    "hasMore": true,
+  },
+  "trending-art": Immutable.Record {
+    "entries": Immutable.OrderedMap {},
+    "err": null,
+    "loading": false,
+    "hasMore": true,
+  },
+}
+`;
+
+exports[`entries reducer (5) start fetching "trending". action:FETCH_BEGIN 1`] = `
+Immutable.Map {
+  "trending": Immutable.Record {
+    "entries": Immutable.OrderedMap {},
+    "err": null,
+    "loading": true,
+    "hasMore": true,
+  },
+  "trending-art": Immutable.Record {
+    "entries": Immutable.OrderedMap {},
+    "err": null,
+    "loading": false,
+    "hasMore": true,
+  },
+}
+`;
+
+exports[`entries reducer (6) start fetching "trending". should keep old entries. action:FETCH_BEGIN 1`] = `
+Immutable.Map {
+  "trending": Immutable.Record {
+    "entries": Immutable.OrderedMap {
+      "12": Object {
+        "body": "bar",
+      },
+      "34": Object {
+        "body": "foo",
+      },
+    },
+    "err": null,
+    "loading": true,
+    "hasMore": true,
+  },
+  "trending-art": Immutable.Record {
+    "entries": Immutable.OrderedMap {},
+    "err": null,
+    "loading": false,
+    "hasMore": true,
+  },
+}
+`;
+
+exports[`entries reducer (7) fetching "trending" completed. action:FETCH_OK 1`] = `
+Immutable.Map {
+  "trending": Immutable.Record {
+    "entries": Immutable.OrderedMap {
+      "14": Object {
+        "author": "good-karma",
+        "id": 14,
+        "permlink": "welcome to esteem",
+        "votes": 5,
+      },
+      "12": Object {
+        "author": "talhasch",
+        "id": 12,
+        "permlink": "lorem ipsum",
+        "votes": 12,
+      },
+      "16": Object {
+        "author": "chrisbolten",
+        "id": 16,
+        "permlink": "sit amet",
+        "votes": 3,
+      },
+    },
+    "err": null,
+    "loading": false,
+    "hasMore": undefined,
+  },
+  "trending-art": Immutable.Record {
+    "entries": Immutable.OrderedMap {},
+    "err": null,
+    "loading": false,
+    "hasMore": true,
+  },
+}
+`;
+
+exports[`entries reducer (8) should not add exiting item to entries. action:FETCH_OK 1`] = `
+Immutable.Map {
+  "trending": Immutable.Record {
+    "entries": Immutable.OrderedMap {
+      "12": Object {
+        "author": "good-karma",
+        "id": 12,
+        "permlink": "welcome to esteem",
+        "votes": 5,
+      },
+    },
+    "err": null,
+    "loading": false,
+    "hasMore": undefined,
+  },
+}
+`;
+
+exports[`entries reducer (9) simulate load more. action:FETCH_OK 1`] = `
+Immutable.Map {
+  "trending": Immutable.Record {
+    "entries": Immutable.OrderedMap {
+      "14": Object {
+        "author": "good-karma",
+        "id": 14,
+        "permlink": "welcome to esteem",
+        "votes": 5,
+      },
+      "12": Object {
+        "author": "talhasch",
+        "id": 12,
+        "permlink": "lorem ipsum",
+        "votes": 12,
+      },
+      "16": Object {
+        "author": "chrisbolten",
+        "id": 16,
+        "permlink": "sit amet",
+        "votes": 3,
+      },
+      "3": Object {
+        "author": "dunsky",
+        "id": 3,
+        "permlink": "lorem",
+        "votes": 31,
+      },
+    },
+    "err": null,
+    "loading": false,
+    "hasMore": undefined,
+  },
+  "trending-art": Immutable.Record {
+    "entries": Immutable.OrderedMap {},
+    "err": null,
+    "loading": false,
+    "hasMore": true,
+  },
+}
+`;
+
+exports[`entries reducer (10) error occurred while fetching "trending". action:FETCH_ERROR 1`] = `
+Immutable.Map {
+  "trending": Immutable.Record {
+    "entries": Immutable.OrderedMap {
+      "14": Object {
+        "author": "good-karma",
+        "id": 14,
+        "permlink": "welcome to esteem",
+        "votes": 5,
+      },
+    },
+    "err": "an error has occurred",
+    "loading": false,
+    "hasMore": true,
+  },
+  "trending-art": Immutable.Record {
+    "entries": Immutable.OrderedMap {},
+    "err": null,
+    "loading": false,
+    "hasMore": true,
+  },
+}
+`;
+
+exports[`entries reducer (11) invalidate "trending". action:INVALIDATE 1`] = `
+Immutable.Map {
+  "trending": Immutable.Record {
+    "entries": Immutable.OrderedMap {},
+    "err": null,
+    "loading": false,
+    "hasMore": true,
+  },
+  "trending-art": Immutable.Record {
+    "entries": Immutable.OrderedMap {},
+    "err": null,
+    "loading": false,
+    "hasMore": true,
+  },
+}
+`;
+
+exports[`entries reducer (12) should reset error. action:FETCH_BEGIN 1`] = `
+Immutable.Map {
+  "trending": Immutable.Record {
+    "entries": Immutable.OrderedMap {},
+    "err": null,
+    "loading": true,
+    "hasMore": true,
+  },
+}
+`;

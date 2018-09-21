@@ -11,7 +11,7 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Payout info component', () => {
   it('should match exact snapshot', () => {
     const props = {
-      content: {
+      entry: {
         pending_payout_value: '430.124 SBD',
         promoted: '0.000 SBD',
         total_payout_value: '0.000 SBD',

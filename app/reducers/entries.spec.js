@@ -1,22 +1,22 @@
 /* eslint-disable */
 import { Record, Map, OrderedMap } from 'immutable';
 
-import posts from './posts';
-import { PostGroupRecord } from './posts';
+import entries from './entries';
+import { EntryGroupRecord } from './entries';
 import { LOCATION_CHANGE } from 'react-router-redux';
 
 import {
-  POSTS_FETCH_BEGIN,
-  POSTS_FETCH_OK,
-  POSTS_FETCH_ERROR,
-  POSTS_INVALIDATE
-} from '../actions/posts';
+  FETCH_BEGIN,
+  FETCH_OK,
+  FETCH_ERROR,
+  INVALIDATE
+} from '../actions/entries';
 
 import deepFreeze from 'deep-freeze';
 
-describe('posts reducer', () => {
+describe('entries reducer', () => {
   it('(1) should handle initial state', () => {
-    expect(posts(undefined, {})).toMatchSnapshot();
+    expect(entries(undefined, {})).toMatchSnapshot();
   });
 
   it('(2) should create group key according to location. action:LOCATION_CHANGE', () => {
@@ -29,13 +29,13 @@ describe('posts reducer', () => {
       }
     };
 
-    const res = posts(stateBefore, action);
+    const res = entries(stateBefore, action);
     expect(res).toMatchSnapshot();
   });
 
   it('(3) should create group key according to location. action:LOCATION_CHANGE', () => {
     const stateBefore = Map({
-      trending: new PostGroupRecord({
+      trending: new EntryGroupRecord({
         entries: OrderedMap({}),
         err: null,
         loading: false
@@ -48,18 +48,18 @@ describe('posts reducer', () => {
         pathname: '/trending/art'
       }
     };
-    const res = posts(stateBefore, action);
+    const res = entries(stateBefore, action);
     expect(res).toMatchSnapshot();
   });
 
   it('(4) should  not create group for non-filter path. action:LOCATION_CHANGE', () => {
     const stateBefore = Map({
-      trending: new PostGroupRecord({
+      trending: new EntryGroupRecord({
         entries: OrderedMap({}),
         err: null,
         loading: false
       }),
-      'trending-art': new PostGroupRecord({
+      'trending-art': new EntryGroupRecord({
         entries: OrderedMap({}),
         err: null,
         loading: false
@@ -72,18 +72,18 @@ describe('posts reducer', () => {
         pathname: '/lipsum/art'
       }
     };
-    const res = posts(stateBefore, action);
+    const res = entries(stateBefore, action);
     expect(res).toMatchSnapshot();
   });
 
-  it('(5) start fetching "trending". action:POSTS_FETCH_BEGIN', () => {
+  it('(5) start fetching "trending". action:FETCH_BEGIN', () => {
     const stateBefore = Map({
-      trending: new PostGroupRecord({
+      trending: new EntryGroupRecord({
         entries: OrderedMap({}),
         err: null,
         loading: false
       }),
-      'trending-art': new PostGroupRecord({
+      'trending-art': new EntryGroupRecord({
         entries: OrderedMap({}),
         err: null,
         loading: false
@@ -93,24 +93,24 @@ describe('posts reducer', () => {
     deepFreeze(stateBefore);
 
     const action = {
-      type: POSTS_FETCH_BEGIN,
+      type: FETCH_BEGIN,
       payload: {
         group: 'trending'
       }
     };
 
-    const res = posts(stateBefore, action);
+    const res = entries(stateBefore, action);
     expect(res).toMatchSnapshot();
   });
 
-  it('(6) start fetching "trending". should keep old entries. action:POSTS_FETCH_BEGIN', () => {
+  it('(6) start fetching "trending". should keep old entries. action:FETCH_BEGIN', () => {
     const stateBefore = Map({
-      trending: new PostGroupRecord({
+      trending: new EntryGroupRecord({
         entries: OrderedMap({ 34: { body: 'foo' }, 12: { body: 'bar' } }),
         err: null,
         loading: false
       }),
-      'trending-art': new PostGroupRecord({
+      'trending-art': new EntryGroupRecord({
         entries: OrderedMap({}),
         err: null,
         loading: false
@@ -120,24 +120,24 @@ describe('posts reducer', () => {
     deepFreeze(stateBefore);
 
     const action = {
-      type: POSTS_FETCH_BEGIN,
+      type: FETCH_BEGIN,
       payload: {
         group: 'trending'
       }
     };
 
-    const res = posts(stateBefore, action);
+    const res = entries(stateBefore, action);
     expect(res).toMatchSnapshot();
   });
 
-  it('(7) fetching "trending" completed. action:POSTS_FETCH_OK', () => {
+  it('(7) fetching "trending" completed. action:FETCH_OK', () => {
     const stateBefore = Map({
-      trending: new PostGroupRecord({
+      trending: new EntryGroupRecord({
         entries: OrderedMap({}),
         err: null,
         loading: true
       }),
-      'trending-art': new PostGroupRecord({
+      'trending-art': new EntryGroupRecord({
         entries: OrderedMap({}),
         err: null,
         loading: false
@@ -147,7 +147,7 @@ describe('posts reducer', () => {
     deepFreeze(stateBefore);
 
     const action = {
-      type: POSTS_FETCH_OK,
+      type: FETCH_OK,
       payload: {
         data: [
           {
@@ -163,13 +163,13 @@ describe('posts reducer', () => {
       }
     };
 
-    const res = posts(stateBefore, action);
+    const res = entries(stateBefore, action);
     expect(res).toMatchSnapshot();
   });
 
-  it('(8) should not add exiting item to entries. action:POSTS_FETCH_OK', () => {
+  it('(8) should not add exiting item to entries. action:FETCH_OK', () => {
     const stateBefore = Map({
-      trending: new PostGroupRecord({
+      trending: new EntryGroupRecord({
         entries: OrderedMap({
           '12': {
             id: 12,
@@ -186,7 +186,7 @@ describe('posts reducer', () => {
     deepFreeze(stateBefore);
 
     const action = {
-      type: POSTS_FETCH_OK,
+      type: FETCH_OK,
       payload: {
         data: [
           {
@@ -200,18 +200,18 @@ describe('posts reducer', () => {
       }
     };
 
-    const res = posts(stateBefore, action);
+    const res = entries(stateBefore, action);
     expect(res).toMatchSnapshot();
   });
 
-  it('(9) simulate load more. action:POSTS_FETCH_OK', () => {
+  it('(9) simulate load more. action:FETCH_OK', () => {
     let stateBefore = Map({
-      trending: new PostGroupRecord({
+      trending: new EntryGroupRecord({
         entries: OrderedMap({}),
         err: null,
         loading: true
       }),
-      'trending-art': new PostGroupRecord({
+      'trending-art': new EntryGroupRecord({
         entries: OrderedMap({}),
         err: null,
         loading: false
@@ -234,7 +234,7 @@ describe('posts reducer', () => {
     deepFreeze(stateBefore);
 
     const action = {
-      type: POSTS_FETCH_OK,
+      type: FETCH_OK,
       payload: {
         data: [
           { id: 16, author: 'chrisbolten', permlink: 'sit amet', votes: 3 },
@@ -244,18 +244,18 @@ describe('posts reducer', () => {
       }
     };
 
-    const res = posts(stateBefore, action);
+    const res = entries(stateBefore, action);
     expect(res).toMatchSnapshot();
   });
 
-  it('(10) error occurred while fetching "trending". action:POSTS_FETCH_ERROR', () => {
+  it('(10) error occurred while fetching "trending". action:FETCH_ERROR', () => {
     let stateBefore = Map({
-      trending: new PostGroupRecord({
+      trending: new EntryGroupRecord({
         entries: OrderedMap({}),
         err: null,
         loading: true
       }),
-      'trending-art': new PostGroupRecord({
+      'trending-art': new EntryGroupRecord({
         entries: OrderedMap({}),
         err: null,
         loading: false
@@ -272,25 +272,25 @@ describe('posts reducer', () => {
     deepFreeze(stateBefore);
 
     const action = {
-      type: POSTS_FETCH_ERROR,
+      type: FETCH_ERROR,
       payload: {
         group: 'trending',
         error: 'an error has occurred'
       }
     };
 
-    const res = posts(stateBefore, action);
+    const res = entries(stateBefore, action);
     expect(res).toMatchSnapshot();
   });
 
-  it('(11) invalidate "trending". action:POSTS_INVALIDATE', () => {
+  it('(11) invalidate "trending". action:INVALIDATE', () => {
     let stateBefore = Map({
-      trending: new PostGroupRecord({
+      trending: new EntryGroupRecord({
         entries: OrderedMap({}),
         err: null,
         loading: false
       }),
-      'trending-art': new PostGroupRecord({
+      'trending-art': new EntryGroupRecord({
         entries: OrderedMap({}),
         err: null,
         loading: false
@@ -307,19 +307,19 @@ describe('posts reducer', () => {
     deepFreeze(stateBefore);
 
     const action = {
-      type: POSTS_INVALIDATE,
+      type: INVALIDATE,
       payload: {
         group: 'trending'
       }
     };
 
-    const res = posts(stateBefore, action);
+    const res = entries(stateBefore, action);
     expect(res).toMatchSnapshot();
   });
 
-  it('(12) should reset error. action:POSTS_INVALIDATE', () => {
+  it('(12) should reset error. action:FETCH_BEGIN', () => {
     let stateBefore = Map({
-      trending: new PostGroupRecord({
+      trending: new EntryGroupRecord({
         entries: OrderedMap({}),
         err: 'an error',
         loading: false
@@ -329,13 +329,13 @@ describe('posts reducer', () => {
     deepFreeze(stateBefore);
 
     const action = {
-      type: POSTS_FETCH_BEGIN,
+      type: FETCH_BEGIN,
       payload: {
         group: 'trending'
       }
     };
 
-    const res = posts(stateBefore, action);
+    const res = entries(stateBefore, action);
     expect(res).toMatchSnapshot();
   });
 });
