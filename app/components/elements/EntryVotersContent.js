@@ -6,7 +6,7 @@ import { FormattedMessage } from 'react-intl';
 
 import FormattedCurrency from './FormattedCurrency';
 
-class VotersPopoverContent extends Component {
+class EntryVotersContent extends Component {
   render() {
     const { votes } = this.props;
 
@@ -15,9 +15,13 @@ class VotersPopoverContent extends Component {
 
     const popoverChildren = popoverVotes.map(v => (
       <p key={v.voter}>
-        <span className="voter">{v.voter}</span>
-        <span className="percent">{v.percent.toFixed(1)}</span>
-        <span className="reward">
+        <span key="voter" className="voter">
+          {v.voter}
+        </span>
+        <span key="percent" className="percent">
+          {v.percent.toFixed(1)}
+        </span>
+        <span key="reward" className="reward">
           <FormattedCurrency {...this.props} value={v.reward} />
         </span>
       </p>
@@ -31,12 +35,12 @@ class VotersPopoverContent extends Component {
       );
     }
 
-    return <div className="voters-info-popover-content">{popoverChildren}</div>;
+    return <div className="voters-popover-content">{popoverChildren}</div>;
   }
 }
 
-VotersPopoverContent.propTypes = {
+EntryVotersContent.propTypes = {
   votes: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
-export default VotersPopoverContent;
+export default EntryVotersContent;

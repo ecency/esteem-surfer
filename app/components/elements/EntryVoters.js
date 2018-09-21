@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage, FormattedRelative } from 'react-intl';
 import { Popover, Modal, Table, Badge } from 'antd';
 
-import VotersPopoverContent from './VotersPopoverContent';
+import EntryVotersContent from './EntryVotersContent';
 import FormattedCurrency from './FormattedCurrency';
 
 import parseToken from '../../utils/parse-token';
@@ -45,7 +45,7 @@ export const prepareVotes = entry => {
     });
 };
 
-class VotersInfo extends Component {
+class EntryVoters extends Component {
   constructor(props) {
     super(props);
 
@@ -91,7 +91,7 @@ class VotersInfo extends Component {
     if (popoverVisible) {
       votes = prepareVotes(entry);
       const popoverContent = (
-        <VotersPopoverContent {...this.props} votes={votes} />
+        <EntryVotersContent {...this.props} votes={votes} />
       );
 
       popoverProps = { content: popoverContent };
@@ -192,7 +192,7 @@ class VotersInfo extends Component {
   }
 }
 
-VotersInfo.propTypes = {
+EntryVoters.propTypes = {
   entry: PropTypes.shape({
     pending_payout_value: PropTypes.string.isRequired,
     total_payout_value: PropTypes.string.isRequired,
@@ -202,4 +202,4 @@ VotersInfo.propTypes = {
   children: PropTypes.element.isRequired
 };
 
-export default VotersInfo;
+export default EntryVoters;
