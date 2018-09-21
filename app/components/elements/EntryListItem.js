@@ -105,7 +105,7 @@ class EntryListItem extends Component {
                 <FormattedCurrency {...this.props} value={totalPayout} />
               </a>
             </PayoutInfo>
-            <VotersInfo entry={entry}>
+            <VotersInfo {...this.props} entry={entry}>
               <a className="voters">
                 <i className="mi">people</i>
                 {voteCount}

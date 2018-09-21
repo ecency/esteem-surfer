@@ -5,12 +5,14 @@ import PropTypes from 'prop-types';
 import { FormattedMessage, FormattedRelative } from 'react-intl';
 import { Popover, Modal, Table, Badge } from 'antd';
 
+import VotersPopoverContent from './VotersPopoverContent';
+import FormattedCurrency from './FormattedCurrency';
+
 import parseToken from '../../utils/parse-token';
-import currencySymbol from '../../utils/currency-symbol';
 import parseDate from '../../utils/parse-date';
 import authorReputation from '../../utils/author-reputation';
 
-export const prepareContentVotes = (entry, currencyRate) => {
+export const prepareVotes = entry => {
   const totalPayout =
     parseToken(entry.pending_payout_value) +
     parseToken(entry.total_payout_value) +
@@ -24,7 +26,7 @@ export const prepareContentVotes = (entry, currencyRate) => {
 
   return entry.active_votes
     .map(a => {
-      const rew = a.rshares * ratio * currencyRate;
+      const rew = a.rshares * ratio;
 
       return Object.assign({}, a, {
         reputation: authorReputation(a.reputation),
@@ -41,32 +43,6 @@ export const prepareContentVotes = (entry, currencyRate) => {
       if (keyA < keyB) return 1;
       return 0;
     });
-};
-
-export const preparePopoverContent = (votesData, curSymbol) => {
-  const popoverVotesData = votesData.slice(0, 10);
-  const moreCount = votesData.length - 10;
-
-  const popoverChildren = popoverVotesData.map(v => (
-    <p key={v.voter}>
-      <span className="voter">{v.voter}</span>
-      <span className="percent">{v.percent.toFixed(1)}</span>
-      <span className="reward">
-        {v.reward.toFixed(2)}
-        {curSymbol}
-      </span>
-    </p>
-  ));
-
-  if (moreCount > 0) {
-    popoverChildren.push(
-      <p key="more" className="more">
-        <FormattedMessage id="voters-info.n-more" values={{ n: moreCount }} />
-      </p>
-    );
-  }
-
-  return <div className="voters-info-popover-content">{popoverChildren}</div>;
 };
 
 class VotersInfo extends Component {
@@ -110,15 +86,13 @@ class VotersInfo extends Component {
     const { hidePopover, modalVisible, popoverVisible } = this.state;
 
     let popoverProps = {};
-    let votesData = [];
+    let votes = [];
 
     if (popoverVisible) {
-      const currency = 'usd';
-      const currencyRate = 1;
-      const curSymbol = currencySymbol(currency);
-
-      votesData = prepareContentVotes(entry, currencyRate);
-      const popoverContent = preparePopoverContent(votesData, curSymbol);
+      votes = prepareVotes(entry);
+      const popoverContent = (
+        <VotersPopoverContent {...this.props} votes={votes} />
+      );
 
       popoverProps = { content: popoverContent };
       if (hidePopover) {
@@ -156,7 +130,7 @@ class VotersInfo extends Component {
           width: 150,
           defaultSortOrder: 'descend',
           sorter: (a, b) => a.reward - b.reward,
-          render: text => text.toFixed(2)
+          render: text => <FormattedCurrency {...this.props} value={text} />
         },
         {
           title: <FormattedMessage id="voters-info.percent" />,
@@ -165,7 +139,7 @@ class VotersInfo extends Component {
           align: 'center',
           width: 150,
           sorter: (a, b) => a.percent - b.percent,
-          render: text => text.toFixed(1)
+          render: text => `% ${text.toFixed(1)}`
         },
         {
           title: <FormattedMessage id="voters-info.time" />,
@@ -197,13 +171,13 @@ class VotersInfo extends Component {
             title={
               <FormattedMessage
                 id="voters-info.modal-title"
-                values={{ n: votesData.length }}
+                values={{ n: votes.length }}
               />
             }
             centered
           >
             <Table
-              dataSource={votesData}
+              dataSource={votes}
               columns={modalTableColumns}
               scroll={{ y: 300 }}
               rowKey="voter"

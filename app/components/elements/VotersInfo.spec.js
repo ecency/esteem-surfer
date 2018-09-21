@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { spy } from 'sinon';
 import React from 'react';
-import { prepareContentVotes, preparePopoverContent } from './VotersInfo';
+import { prepareVotes } from './VotersInfo';
 
 const test_data_1 = {
   total_payout_value: '0.000 SBD',
@@ -116,12 +116,14 @@ const test_data_1 = {
 };
 
 describe('VotersInfo', () => {
-  it('(1) prepareContentVotes', () => {
-    expect(prepareContentVotes(test_data_1, 1)).toMatchSnapshot();
+  it('(1) prepareVotes', () => {
+    expect(prepareVotes(test_data_1, 1)).toMatchSnapshot();
   });
 
+  /*
   it('(2) preparePopoverContent', () => {
     const votesData = prepareContentVotes(test_data_1, 1);
     expect(preparePopoverContent(votesData, '$')).toMatchSnapshot();
   });
+  */
 });
