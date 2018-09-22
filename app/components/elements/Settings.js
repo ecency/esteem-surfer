@@ -9,6 +9,7 @@ import currencies from '../../constants/currencies'
 import languages from '../../constants/languages'
 
 import {getCurrencyRate} from '../../backend/esteem-client';
+import {changeLanguage} from "../../actions/global";
 
 class Settings extends Component {
   constructor(props) {
@@ -36,7 +37,9 @@ class Settings extends Component {
   }
 
   languageChanged(e) {
-    this.setState({lang: e})
+    const {actions, intl} = this.props;
+    const {changeLanguage} = actions;
+    changeLanguage(e);
   }
 
   pushChanged(e) {
@@ -95,7 +98,8 @@ class Settings extends Component {
 
 Settings.propTypes = {
   actions: PropTypes.shape({
-    changeCurrency: PropTypes.func.isRequired
+    changeCurrency: PropTypes.func.isRequired,
+    changeLanguage: PropTypes.func.isRequired
   }).isRequired,
   global: PropTypes.shape({
     currency: PropTypes.string.isRequired,

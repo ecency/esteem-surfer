@@ -3,6 +3,7 @@ import getSymbolFromCurrency from 'currency-symbol-map';
 export const THEME_CHANGED = 'global/THEME_CHANGED';
 export const LIST_STYLE_CHANGED = 'global/LIST_STYLE_CHANGED';
 export const CURRENCY_CHANGED = 'global/CURRENCY_CHANGED';
+export const LANGUAGE_CHANGED = 'global/LANGUAGE_CHANGED';
 
 export const changeTheme = () => (dispatch, getState) => {
   const {global} = getState();
@@ -41,6 +42,14 @@ export const changeCurrency = (currency, currencyRate) => (dispatch) => {
 };
 
 
+export const changeLanguage = (language) => (dispatch) => {
+
+  localStorage.setItem('language', language);
+
+  dispatch(languageChanged(language));
+};
+
+
 /* action creators */
 
 export const themeChanged = newTheme => ({
@@ -56,4 +65,9 @@ export const listStyleChanged = newStyle => ({
 export const currencyChanged = (currency, currencyRate, currencySymbol) => ({
   type: CURRENCY_CHANGED,
   payload: {currency, currencyRate, currencySymbol}
+});
+
+export const languageChanged = (language) => ({
+  type: LANGUAGE_CHANGED,
+  payload: {language}
 });
