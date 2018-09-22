@@ -73,7 +73,7 @@ class EntryListItem extends Component {
           </a>
           <span className="read-mark" />
           <span className="date">
-            <FormattedRelative value={created} />
+            <FormattedRelative value={created} initialNow={Date.now()} />
           </span>
         </div>
         <div className="item-body">

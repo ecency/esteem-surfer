@@ -74,7 +74,7 @@ class EntryPayoutContent extends Component {
             <FormattedMessage id="entry-payout.payout-date" />
           </span>
           <span className="value">
-            <FormattedRelative value={payoutDate} />
+            <FormattedRelative value={payoutDate} initialNow={Date.now()} />
           </span>
         </p>
       </div>

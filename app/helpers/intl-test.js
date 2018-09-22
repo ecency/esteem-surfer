@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 /**
  * Components using the react-intl module require access to the intl context.
  * This is not available when mounting single components in Enzyme.
@@ -11,13 +9,18 @@ import React from 'react';
 import { IntlProvider, intlShape } from 'react-intl';
 import { mount, shallow } from 'enzyme';
 import { flattenMessages } from '../utils';
+
 import messages from '../locales';
 
-const locale = 'en-US';
+// Create the IntlProvider to retrieve context for wrapping around.
 const intlProvider = new IntlProvider(
-  { locale: locale, messages: flattenMessages(messages[locale]) },
+  {
+    locale: 'en-US',
+    messages: flattenMessages(messages['en-US'])
+  },
   {}
 );
+
 const { intl } = intlProvider.getChildContext();
 
 /**
@@ -27,15 +30,15 @@ function nodeWithIntlProp(node) {
   return React.cloneElement(node, { intl });
 }
 
-export default {
-  shallowWithIntl(node) {
-    return shallow(nodeWithIntlProp(node), { context: { intl } });
-  },
+export function shallowWithIntl(node) {
+  return shallow(nodeWithIntlProp(node), {
+    context: { intl }
+  });
+}
 
-  mountWithIntl(node) {
-    return mount(nodeWithIntlProp(node), {
-      context: { intl },
-      childContextTypes: { intl: intlShape }
-    });
-  }
-};
+export function mountWithIntl(node) {
+  return mount(nodeWithIntlProp(node), {
+    context: { intl },
+    childContextTypes: { intl: intlShape }
+  });
+}

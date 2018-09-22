@@ -10,6 +10,10 @@ import { mountWithIntl } from '../../helpers/intl-test';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('EntryPayoutContent', () => {
+  jest.spyOn(Date, 'now').mockImplementation(() => {
+    return new Date('2018-09-21T12:00:50.000Z');
+  });
+
   it('(1) Render not paid out content', () => {
     const testData = getTestData(
       'esteemapp',
