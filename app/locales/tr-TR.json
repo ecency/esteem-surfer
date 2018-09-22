@@ -1,0 +1,40 @@
+{
+  "g": {
+    "compose-entry": "Yazı Oluştur"
+  },
+  "entry-index": {
+    "tags": "Popüler Etiketler",
+    "filter-trending": "Popüler",
+    "filter-hot": "Sıcak",
+    "filter-created": "Yeni",
+    "filter-active": "Aktif",
+    "filter-promoted": "Sponsorlu",
+    "filter-votes": "Oylara Göre",
+    "filter-children": "Yorumlar",
+    "filter-payout": "Ödeme"
+  },
+  "entry-payout": {
+    "potential-payout": "Tahmini Ödeme",
+    "promoted": "Sponsor Ödemeleri",
+    "author-payout": "Yazar Ödemeleri",
+    "curation-payout": "Küratör ödemeleri",
+    "payout-date": "Ödeme"
+  },
+  "entry-votes": {
+    "n-more": "{n} tane daha",
+    "author": "Yazar",
+    "reward": "Ödül",
+    "percent": "Yüzde",
+    "time": "Tarih",
+    "modal-title": "Oylar ({n})"
+  },
+  "settings": {
+    "title": "Ayarlar",
+    "currency": "Para birimi",
+    "currency-fetch-error": "{cur} için kur bilgisi alınamadı.",
+    "currency-changed": "Para birimi değiştirildi.",
+    "language": "Dil",
+    "server": "Sunucu",
+    "push-notifications": "Anlık Bildirimler"
+  }
+}

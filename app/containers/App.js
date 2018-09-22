@@ -1,5 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 // i18n
 import { addLocaleData, IntlProvider } from 'react-intl';
@@ -13,14 +14,13 @@ addLocaleData([...en, ...tr]);
 
 class App extends React.Component {
   render() {
-    const { children } = this.props;
-
-    const locale = 'en-US';
+    const { children, global } = this.props;
+    const { language } = global;
 
     return (
       <IntlProvider
-        locale={locale}
-        messages={flattenMessages(messages[locale])}
+        locale={language}
+        messages={flattenMessages(messages[language])}
       >
         <React.Fragment>{children}</React.Fragment>
       </IntlProvider>
@@ -29,7 +29,16 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
+  global: PropTypes.shape({
+    language: PropTypes.string.isRequired
+  }).isRequired
 };
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    global: state.global
+  };
+}
+
+export default connect(mapStateToProps)(App);
