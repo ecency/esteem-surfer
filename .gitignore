@@ -48,7 +48,7 @@ main.js.map
 .idea
 npm-debug.log.*
 
-
+app/config.js
 
 # old branch files
 src/
