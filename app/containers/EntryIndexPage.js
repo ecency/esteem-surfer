@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import EntryIndex from '../components/EntryIndex';
 import { fetchEntries, invalidateEntries } from '../actions/entries';
 import { fetchTrendingTags } from '../actions/trending-tags';
-import { changeTheme, changeListStyle } from '../actions/global';
+import { changeTheme, changeListStyle, changeCurrency } from '../actions/global';
 
 function mapStateToProps(state) {
   return {
@@ -19,7 +19,8 @@ function mapDispatchToProps(dispatch) {
       ...bindActionCreators({ fetchEntries, invalidateEntries }, dispatch),
       ...bindActionCreators({ fetchTrendingTags }, dispatch),
       ...bindActionCreators({ changeTheme }, dispatch),
-      ...bindActionCreators({ changeListStyle }, dispatch)
+      ...bindActionCreators({ changeListStyle }, dispatch),
+      ...bindActionCreators({ changeCurrency }, dispatch)
     }
   };
 }

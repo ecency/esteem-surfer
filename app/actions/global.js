@@ -1,10 +1,11 @@
-export const THEME_CHANGED = 'THEME_CHANGED';
-export const LIST_STYLE_CHANGED = 'LIST_STYLE_CHANGED';
+export const THEME_CHANGED = 'global/THEME_CHANGED';
+export const LIST_STYLE_CHANGED = 'global/LIST_STYLE_CHANGED';
+export const CURRENCY_CHANGED = 'global/CURRENCY_CHANGED';
 
 export const changeTheme = () => (dispatch, getState) => {
-  const { global } = getState();
+  const {global} = getState();
 
-  const { theme } = global;
+  const {theme} = global;
   const newTheme = theme === 'day' ? 'night' : 'day';
 
   localStorage.setItem('theme', newTheme);
@@ -14,9 +15,9 @@ export const changeTheme = () => (dispatch, getState) => {
 };
 
 export const changeListStyle = () => (dispatch, getState) => {
-  const { global } = getState();
+  const {global} = getState();
 
-  const { listStyle } = global;
+  const {listStyle} = global;
 
   const newStyle = listStyle === 'row' ? 'grid' : 'row';
 
@@ -25,14 +26,28 @@ export const changeListStyle = () => (dispatch, getState) => {
   dispatch(listStyleChanged(newStyle));
 };
 
+
+export const changeCurrency = (newCurrency) => (dispatch) => {
+  console.log(newCurrency)
+  // localStorage.setItem('list-style', newCurrency);
+
+  dispatch(listStyleChanged(newCurrency));
+};
+
+
 /* action creators */
 
 export const themeChanged = newTheme => ({
   type: THEME_CHANGED,
-  payload: { newTheme }
+  payload: {newTheme}
 });
 
 export const listStyleChanged = newStyle => ({
   type: LIST_STYLE_CHANGED,
-  payload: { newStyle }
+  payload: {newStyle}
+});
+
+export const currencyChanged = (newCurrency) => ({
+  type: CURRENCY_CHANGED,
+  payload: {newCurrency}
 });

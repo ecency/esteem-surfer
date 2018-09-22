@@ -1,5 +1,5 @@
-import { LOCATION_CHANGE } from 'react-router-redux';
-import { THEME_CHANGED, LIST_STYLE_CHANGED } from '../actions/global';
+import {LOCATION_CHANGE} from 'react-router-redux';
+import {THEME_CHANGED, LIST_STYLE_CHANGED, CURRENCY_CHANGED} from '../actions/global';
 import filters from '../constants/filters.json';
 
 const defaultState = {
@@ -9,7 +9,10 @@ const defaultState = {
   listStyle: 'row',
   currency: 'usd',
   currencyRate: 1,
-  currencySymbol: '$'
+  currencyRateFetching: false,
+  currencySymbol: '$',
+  language: 'en-US',
+  server: 'https://api.steemit.com'
 };
 
 export default function global(state = defaultState, action) {
@@ -29,15 +32,21 @@ export default function global(state = defaultState, action) {
       return state;
     }
     case THEME_CHANGED: {
-      const { newTheme } = action.payload;
+      const {newTheme} = action.payload;
       return Object.assign({}, state, {
         theme: newTheme
       });
     }
     case LIST_STYLE_CHANGED: {
-      const { newStyle } = action.payload;
+      const {newStyle} = action.payload;
       return Object.assign({}, state, {
         listStyle: newStyle
+      });
+    }
+    case CURRENCY_CHANGED: {
+      const {newCurrency} = action.payload;
+      return Object.assign({}, state, {
+        currency: newCurrency
       });
     }
     default:

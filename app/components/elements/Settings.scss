@@ -1,0 +1,13 @@
+.settings-modal-content {
+  padding: 20px;
+
+  .row {
+    margin-bottom: 20px;
+    .label-col {
+      height: 32px;
+      align-items: center;
+      display: flex;
+      font-weight: bold;
+    }
+  }
+}

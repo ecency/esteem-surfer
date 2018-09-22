@@ -27,5 +27,12 @@
     "percent": "Percent",
     "time": "Time",
     "modal-title": "Voters ({n})"
+  },
+  "settings": {
+    "title": "Settings",
+    "currency": "Currency",
+    "server": "Server",
+    "language": "Language",
+    "push-notifications": "Push Notifications"
   }
 }
