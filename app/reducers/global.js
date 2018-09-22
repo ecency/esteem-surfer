@@ -7,10 +7,9 @@ const defaultState = {
   selectedTag: '',
   theme: 'day',
   listStyle: 'row',
-  currency: 'usd',
-  currencyRate: 1,
-  currencyRateFetching: false,
-  currencySymbol: '$',
+  currency: (localStorage.getItem('currency') || 'usd'),
+  currencyRate: Number(localStorage.getItem('currency-rate') || 1),
+  currencySymbol: (localStorage.getItem('currency-symbol') || '$'),
   language: 'en-US',
   server: 'https://api.steemit.com'
 };
@@ -44,9 +43,12 @@ export default function global(state = defaultState, action) {
       });
     }
     case CURRENCY_CHANGED: {
-      const {newCurrency} = action.payload;
+      const {currency, currencyRate, currencySymbol} = action.payload;
+
       return Object.assign({}, state, {
-        currency: newCurrency
+        currency,
+        currencyRate,
+        currencySymbol
       });
     }
     default:

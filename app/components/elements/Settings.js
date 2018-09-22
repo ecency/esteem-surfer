@@ -2,26 +2,37 @@ import React, {Component} from 'react';
 
 import PropTypes from 'prop-types';
 
-import {Row, Col, Select, Switch} from 'antd';
-import {FormattedMessage} from 'react-intl';
+import {Row, Col, Select, Switch, message} from 'antd';
+import {FormattedMessage, injectIntl} from 'react-intl';
 
 import currencies from '../../constants/currencies'
 import languages from '../../constants/languages'
+
+import {getCurrencyRate} from '../../backend/esteem-client';
 
 class Settings extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      saved: false
+      rateFetching: false
     }
   }
 
-  currencyChanged(e) {
-    const {actions} = this.props;
+  async currencyChanged(e) {
+    const {actions, intl} = this.props;
     const {changeCurrency} = actions;
 
-    changeCurrency(e);
+    let r;
+    try {
+      r = await getCurrencyRate(e);
+    } catch (err) {
+      message.error(intl.formatMessage({id: 'settings.currency-fetch-error'}, {cur: e}));
+      return false;
+    }
+
+    changeCurrency(e, r.data);
+    message.success(intl.formatMessage({id: 'settings.currency-changed'}));
   }
 
   languageChanged(e) {
@@ -39,6 +50,7 @@ class Settings extends Component {
 
 
     return (
+
       <div className="settings-modal-content">
         <Row className="row">
           <Col offset={2} span={4} className="label-col"><FormattedMessage id="settings.currency"/></Col>
@@ -91,4 +103,4 @@ Settings.propTypes = {
   }).isRequired
 };
 
-export default Settings;
+export default injectIntl(Settings);

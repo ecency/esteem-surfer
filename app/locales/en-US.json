@@ -31,6 +31,8 @@
   "settings": {
     "title": "Settings",
     "currency": "Currency",
+    "currency-fetch-error": "Could not fetch currency rate for {cur}.",
+    "currency-changed": "Currency Changed",
     "server": "Server",
     "language": "Language",
     "push-notifications": "Push Notifications"

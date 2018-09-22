@@ -1,3 +1,5 @@
+import getSymbolFromCurrency from 'currency-symbol-map';
+
 export const THEME_CHANGED = 'global/THEME_CHANGED';
 export const LIST_STYLE_CHANGED = 'global/LIST_STYLE_CHANGED';
 export const CURRENCY_CHANGED = 'global/CURRENCY_CHANGED';
@@ -27,11 +29,15 @@ export const changeListStyle = () => (dispatch, getState) => {
 };
 
 
-export const changeCurrency = (newCurrency) => (dispatch) => {
-  console.log(newCurrency)
-  // localStorage.setItem('list-style', newCurrency);
+export const changeCurrency = (currency, currencyRate) => (dispatch) => {
 
-  dispatch(listStyleChanged(newCurrency));
+  const symbol = getSymbolFromCurrency(currency);
+
+  localStorage.setItem('currency', currency);
+  localStorage.setItem('currency-rate', currencyRate);
+  localStorage.setItem('currency-symbol', symbol);
+
+  dispatch(currencyChanged(currency, currencyRate, symbol));
 };
 
 
@@ -47,7 +53,7 @@ export const listStyleChanged = newStyle => ({
   payload: {newStyle}
 });
 
-export const currencyChanged = (newCurrency) => ({
+export const currencyChanged = (currency, currencyRate, currencySymbol) => ({
   type: CURRENCY_CHANGED,
-  payload: {newCurrency}
+  payload: {currency, currencyRate, currencySymbol}
 });
