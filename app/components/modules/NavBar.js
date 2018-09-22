@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { Tooltip } from 'antd';
+import { Tooltip, Modal } from 'antd';
 
 import Mi from '../elements/Mi';
 
@@ -17,6 +17,26 @@ export const checkPathForBack = path => {
 };
 
 class NavBar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      settingsModalVisible: false
+    };
+  }
+
+  showSettingsModal = () => {
+    this.setState({
+      settingsModalVisible: true
+    });
+  };
+
+  onSettingsModalCancel = () => {
+    this.setState({
+      settingsModalVisible: false
+    });
+  };
+
   goBack = () => {
     const { history } = this.props;
 
@@ -79,6 +99,8 @@ class NavBar extends Component {
       bookmarkFlag,
       postBtnActive
     } = this.props;
+
+    const { settingsModalVisible } = this.state;
 
     let canGoBack = false;
     if (history.entries[history.index - 1]) {
@@ -172,6 +194,15 @@ class NavBar extends Component {
             >
               <Mi icon="brightness_medium" />
             </a>
+            <a
+              className="settings"
+              onClick={() => {
+                this.showSettingsModal();
+              }}
+              role="none"
+            >
+              <Mi icon="settings" />
+            </a>
           </div>
           <div className="user-menu">
             <Tooltip
@@ -185,6 +216,18 @@ class NavBar extends Component {
             </Tooltip>
           </div>
         </div>
+
+        <Modal
+          visible={settingsModalVisible}
+          onCancel={this.onSettingsModalCancel}
+          footer={false}
+          width="60%"
+          title="Settings"
+          closable={false}
+          centered
+        >
+          Hello
+        </Modal>
       </div>
     );
   }

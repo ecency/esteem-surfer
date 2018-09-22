@@ -183,7 +183,8 @@
       justify-content: center;
       width: 120px;
 
-      .switch-theme {
+      .switch-theme,
+      .settings {
         align-items: center;
         cursor: pointer;
         display: flex;
@@ -198,6 +199,10 @@
           color: $white-five;
           opacity: 0.5;
         }
+      }
+
+      .switch-theme {
+        margin-right: 20px;
       }
 
       user-select: none;
