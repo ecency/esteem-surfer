@@ -31,11 +31,13 @@
   "settings": {
     "title": "Settings",
     "currency": "Currency",
-    "currency-fetch-error": "Could not fetch currency rate for {cur}.",
+    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
     "currency-changed": "Currency Changed",
     "server": "Server",
     "locale": "Language",
     "locale-changed": "Language changed",
-    "push-notifications": "Push Notifications"
+    "push-notifications": "Push Notifications",
+    "push-notify-enabled": "Push notifications enabled",
+    "push-notify-disabled": "Push notifications disabled"
   }
 }

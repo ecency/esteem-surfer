@@ -4,11 +4,12 @@ export const THEME_CHANGED = 'global/THEME_CHANGED';
 export const LIST_STYLE_CHANGED = 'global/LIST_STYLE_CHANGED';
 export const CURRENCY_CHANGED = 'global/CURRENCY_CHANGED';
 export const LOCALE_CHANGED = 'global/LOCALE_CHANGED';
+export const PUSH_NOTIFY_CHANGED = 'global/PUSH_NOTIFY_CHANGED';
 
 export const changeTheme = () => (dispatch, getState) => {
-  const {global} = getState();
+  const { global } = getState();
 
-  const {theme} = global;
+  const { theme } = global;
   const newTheme = theme === 'day' ? 'night' : 'day';
 
   localStorage.setItem('theme', newTheme);
@@ -18,9 +19,9 @@ export const changeTheme = () => (dispatch, getState) => {
 };
 
 export const changeListStyle = () => (dispatch, getState) => {
-  const {global} = getState();
+  const { global } = getState();
 
-  const {listStyle} = global;
+  const { listStyle } = global;
 
   const newStyle = listStyle === 'row' ? 'grid' : 'row';
 
@@ -29,9 +30,7 @@ export const changeListStyle = () => (dispatch, getState) => {
   dispatch(listStyleChanged(newStyle));
 };
 
-
-export const changeCurrency = (currency, currencyRate) => (dispatch) => {
-
+export const changeCurrency = (currency, currencyRate) => dispatch => {
   const symbol = getSymbolFromCurrency(currency);
 
   localStorage.setItem('currency', currency);
@@ -41,33 +40,41 @@ export const changeCurrency = (currency, currencyRate) => (dispatch) => {
   dispatch(currencyChanged(currency, currencyRate, symbol));
 };
 
-
-export const changeLocale = (locale) => (dispatch) => {
-
+export const changeLocale = locale => dispatch => {
   localStorage.setItem('locale', locale);
 
   dispatch(localeChanged(locale));
 };
 
+export const changePushNotify = val => dispatch => {
+  localStorage.setItem('push-notify', val);
+
+  dispatch(pushNotifyChanged(val));
+};
 
 /* action creators */
 
 export const themeChanged = newTheme => ({
   type: THEME_CHANGED,
-  payload: {newTheme}
+  payload: { newTheme }
 });
 
 export const listStyleChanged = newStyle => ({
   type: LIST_STYLE_CHANGED,
-  payload: {newStyle}
+  payload: { newStyle }
 });
 
 export const currencyChanged = (currency, currencyRate, currencySymbol) => ({
   type: CURRENCY_CHANGED,
-  payload: {currency, currencyRate, currencySymbol}
+  payload: { currency, currencyRate, currencySymbol }
 });
 
-export const localeChanged = (locale) => ({
+export const localeChanged = locale => ({
   type: LOCALE_CHANGED,
-  payload: {locale}
+  payload: { locale }
+});
+
+export const pushNotifyChanged = val => ({
+  type: PUSH_NOTIFY_CHANGED,
+  payload: { val }
 });

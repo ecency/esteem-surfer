@@ -31,11 +31,13 @@
   "settings": {
     "title": "Ayarlar",
     "currency": "Para birimi",
-    "currency-fetch-error": "{cur} için kur bilgisi alınamadı",
+    "currency-fetch-error": "'{cur}' için kur bilgisi alınamadı",
     "currency-changed": "Para birimi değiştirildi",
     "server": "Sunucu",
     "locale": "Dil",
     "locale-changed": "Dil değiştirildi",
-    "push-notifications": "Anlık Bildirimler"
+    "push-notifications": "Anlık Bildirimler",
+    "push-notify-enabled": "Anlık bildirimler etkinleştirildi",
+    "push-notify-disabled": "Anlık bildirimler kapatıldı"
   }
 }
