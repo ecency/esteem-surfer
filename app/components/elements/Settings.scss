@@ -39,8 +39,14 @@
 
       .node-list-item {
         padding: 8px 4px;
-        .disabled {
-          pointer-events: none;
+
+        a {
+          text-decoration: underline;
+
+          &.disabled {
+            text-decoration: none;
+            pointer-events: none;
+          }
         }
 
         &:nth-child(odd) {
