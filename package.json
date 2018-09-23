@@ -116,7 +116,7 @@
       "\\.(css|less|sass|scss)$": "identity-obj-proxy"
     },
     "moduleFileExtensions": [
-      "js"
+      "js", "json"
     ],
     "moduleDirectories": [
       "node_modules",

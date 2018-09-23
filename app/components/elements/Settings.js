@@ -198,6 +198,7 @@ class Settings extends Component {
           <Col span={18} className="col">
             <span className="serverAddress">{server}</span>
             <Button
+              id="btn-toggle-servers"
               htmlType="button"
               type="primary"
               size="small"
@@ -243,6 +244,7 @@ class Settings extends Component {
                         type="primary"
                         size="small"
                         disabled={connectingServer}
+                        shape="circle"
                         onClick={() => {
                           this.setCustomServer();
                         }}
