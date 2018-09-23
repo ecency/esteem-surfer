@@ -1,3 +1,6 @@
+@import '../../style/mixins';
+@import '../../style/colors';
+
 .settings-modal-content {
   padding: 20px;
 
@@ -6,10 +9,10 @@
 
     .col,
     .label-col {
-      min-height: 32px;
       align-items: center;
       display: flex;
       flex-wrap: wrap;
+      min-height: 32px;
     }
 
     .label-col {
@@ -27,24 +30,29 @@
 
   .node-list {
     margin-top: 10px;
-
     width: 100%;
 
     .node-list-body {
-      height: 200px;
-      overflow-y: auto;
       margin-bottom: 10px;
+      max-height: 200px;
+      overflow-y: auto;
 
       .node-list-item {
-        margin-bottom: 10px;
-
+        padding: 8px 4px;
         .disabled {
           pointer-events: none;
         }
-      }
-    }
 
-    .node-list-footer {
+        &:nth-child(odd) {
+          @include themify(day) {
+            background: $white-three;
+          }
+
+          @include themify(night) {
+            background: $dark-six;
+          }
+        }
+      }
     }
   }
 }
