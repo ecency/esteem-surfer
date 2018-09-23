@@ -1,4 +1,5 @@
 import { LOCATION_CHANGE } from 'react-router-redux';
+
 import {
   THEME_CHANGED,
   LIST_STYLE_CHANGED,
@@ -9,17 +10,24 @@ import {
 } from '../actions/global';
 import filters from '../constants/filters.json';
 
+import defaults from '../constants/defaults';
+
 const defaultState = {
-  selectedFilter: 'trending',
+  selectedFilter: defaults.filter,
   selectedTag: '',
-  theme: 'day',
-  listStyle: 'row',
-  currency: localStorage.getItem('currency') || 'usd',
-  currencyRate: Number(localStorage.getItem('currency-rate') || 1),
-  currencySymbol: localStorage.getItem('currency-symbol') || '$',
-  locale: localStorage.getItem('locale') || 'en-US',
-  pushNotify: Number(localStorage.getItem('push-notify') || 1),
-  server: 'https://api.steemit.com'
+  theme: defaults.theme,
+  listStyle: defaults.listStyle,
+  currency: localStorage.getItem('currency') || defaults.currency.currency,
+  currencyRate: Number(
+    localStorage.getItem('currency-rate') || defaults.currency.rate
+  ),
+  currencySymbol:
+    localStorage.getItem('currency-symbol') || defaults.currency.symbol,
+  locale: localStorage.getItem('locale') || defaults.locale,
+  pushNotify: Number(
+    localStorage.getItem('push-notify') || defaults.pushNotify
+  ),
+  server: localStorage.getItem('server') || defaults.server
 };
 
 export default function global(state = defaultState, action) {

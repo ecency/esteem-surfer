@@ -1,0 +1,13 @@
+{
+  "filter": "trending",
+  "theme": "day",
+  "listStyle": "row",
+  "currency": {
+    "currency": "usd",
+    "rate": 1,
+    "symbol": "$"
+  },
+  "locale": "en-US",
+  "pushNotify": 1,
+  "server": "https://api.steemit.com"
+}

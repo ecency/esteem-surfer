@@ -51,7 +51,7 @@ class Settings extends Component {
 
     try {
       rate = await getCurrencyRate(e);
-    } catch {
+    } catch (err) {
       message.error(
         intl.formatMessage({ id: 'settings.currency-fetch-error' }, { cur: e })
       );
