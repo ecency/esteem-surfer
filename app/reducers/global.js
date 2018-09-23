@@ -4,7 +4,8 @@ import {
   LIST_STYLE_CHANGED,
   CURRENCY_CHANGED,
   LOCALE_CHANGED,
-  PUSH_NOTIFY_CHANGED
+  PUSH_NOTIFY_CHANGED,
+  SERVER_CHANGED
 } from '../actions/global';
 import filters from '../constants/filters.json';
 
@@ -70,6 +71,13 @@ export default function global(state = defaultState, action) {
 
       return Object.assign({}, state, {
         pushNotify: val
+      });
+    }
+    case SERVER_CHANGED: {
+      const { server } = action.payload;
+
+      return Object.assign({}, state, {
+        server
       });
     }
     default:

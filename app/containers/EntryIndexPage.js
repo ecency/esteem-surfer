@@ -8,7 +8,8 @@ import {
   changeListStyle,
   changeCurrency,
   changeLocale,
-  changePushNotify
+  changePushNotify,
+  changeServer
 } from '../actions/global';
 
 function mapStateToProps(state) {
@@ -28,7 +29,8 @@ function mapDispatchToProps(dispatch) {
       ...bindActionCreators({ changeListStyle }, dispatch),
       ...bindActionCreators({ changeCurrency }, dispatch),
       ...bindActionCreators({ changeLocale }, dispatch),
-      ...bindActionCreators({ changePushNotify }, dispatch)
+      ...bindActionCreators({ changePushNotify }, dispatch),
+      ...bindActionCreators({ changeServer }, dispatch)
     }
   };
 }

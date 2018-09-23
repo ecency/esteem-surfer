@@ -27,10 +27,14 @@
 
   .node-list {
     margin-top: 10px;
-    height: 200px;
-    overflow-y: auto;
+
     width: 100%;
+
     .node-list-body {
+      height: 200px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+
       .node-list-item {
         margin-bottom: 10px;
 
@@ -38,6 +42,9 @@
           pointer-events: none;
         }
       }
+    }
+
+    .node-list-footer {
     }
   }
 }

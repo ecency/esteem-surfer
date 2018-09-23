@@ -5,6 +5,7 @@ export const LIST_STYLE_CHANGED = 'global/LIST_STYLE_CHANGED';
 export const CURRENCY_CHANGED = 'global/CURRENCY_CHANGED';
 export const LOCALE_CHANGED = 'global/LOCALE_CHANGED';
 export const PUSH_NOTIFY_CHANGED = 'global/PUSH_NOTIFY_CHANGED';
+export const SERVER_CHANGED = 'global/SERVER_CHANGED';
 
 export const changeTheme = () => (dispatch, getState) => {
   const { global } = getState();
@@ -52,6 +53,12 @@ export const changePushNotify = val => dispatch => {
   dispatch(pushNotifyChanged(val));
 };
 
+export const changeServer = server => dispatch => {
+  localStorage.setItem('server', server);
+
+  dispatch(serverChanged(server));
+};
+
 /* action creators */
 
 export const themeChanged = newTheme => ({
@@ -77,4 +84,9 @@ export const localeChanged = locale => ({
 export const pushNotifyChanged = val => ({
   type: PUSH_NOTIFY_CHANGED,
   payload: { val }
+});
+
+export const serverChanged = server => ({
+  type: SERVER_CHANGED,
+  payload: { server }
 });

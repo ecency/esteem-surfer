@@ -36,10 +36,13 @@
     "locale": "Dil",
     "locale-changed": "Dil değiştirildi",
     "server": "Sunucu",
+    "server-invalid-address": "Geçersiz sunucu adresi",
     "server-connecting": "'{server}' sunucusuna bağlanılıyor...",
     "server-connect-error": "'{server}' sunucusuna bağlanılamadı",
     "server-timeout-error": "'{server}' sunucusu aktif değil",
     "server-changed": "Sunucu '{server}' olarak değiştirildi",
+    "server-custom-address": "Özel sunucu adresi",
+    "server-list-fetch-error": "Sunucu listesi alınamadı",
     "push-notifications": "Anlık Bildirimler",
     "push-notify-enabled": "Anlık bildirimler etkinleştirildi",
     "push-notify-disabled": "Anlık bildirimler kapatıldı"

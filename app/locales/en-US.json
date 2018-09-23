@@ -36,10 +36,13 @@
     "locale": "Language",
     "locale-changed": "Language changed",
     "server": "Server",
+    "server-invalid-address": "Invalid server address",
     "server-connecting": "Connecting to '{server}'...",
     "server-connect-error": "Could not connected to '{server}'",
     "server-timeout-error": "'{server}' looks like not alive",
     "server-changed": "Server changed to {server}",
+    "server-custom-address": "Custom server address",
+    "server-list-fetch-error": "Could not fetch server list",
     "push-notifications": "Push Notifications",
     "push-notify-enabled": "Push notifications enabled",
     "push-notify-disabled": "Push notifications disabled"
