@@ -4,10 +4,10 @@
 @font-family: 'Roboto', sans-serif;
 @line-height-base: 1.2;
 
-@primary-color: @metallic-blue;
+@primary-color: lighten(@metallic-blue, 15);
 @primary-1: @powder-blue;
 
-@text-color:  @silver;
+@text-color: @silver;
 @text-color-secondary: @silver;
 @component-background: lighten(@dark-six, 5);
 @popover-bg: lighten(@dark-six, 5);
@@ -15,14 +15,20 @@
 @pagination-item-size: 24px;
 @pagination-item-size-sm: 20px;
 
-@heading-color: @metallic-blue;
+@heading-color: lighten(@metallic-blue, 30);
 @table-header-bg: @dark-six;
+@table-row-hover-bg: lighten(@dark-six, 10);
 @table-header-sort-bg: @dark-two;
-@table-row-hover-bg: @metallic-blue;
 
 @border-color-split: @dark-two;
 @border-color-base: darken(@metallic-blue, 5);
 
 @disabled-color: @gunmetal;
+
+@switch-color: @dusk-blue;
+
+@input-bg: @dark;
+@input-hover-border-color: @metallic-blue;
+@input-placeholder-color: lighten(@metallic-blue, 10);
 
 @import "overwrites";
