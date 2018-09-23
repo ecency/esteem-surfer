@@ -15,12 +15,12 @@ addLocaleData([...en, ...tr]);
 class App extends React.Component {
   render() {
     const { children, global } = this.props;
-    const { language } = global;
+    const { locale } = global;
 
     return (
       <IntlProvider
-        locale={language}
-        messages={flattenMessages(messages[language])}
+        locale={locale}
+        messages={flattenMessages(messages[locale])}
       >
         <React.Fragment>{children}</React.Fragment>
       </IntlProvider>
@@ -31,7 +31,7 @@ class App extends React.Component {
 App.propTypes = {
   children: PropTypes.element.isRequired,
   global: PropTypes.shape({
-    language: PropTypes.string.isRequired
+    locale: PropTypes.string.isRequired
   }).isRequired
 };
 

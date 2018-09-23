@@ -6,10 +6,9 @@ import {Row, Col, Select, Switch, message} from 'antd';
 import {FormattedMessage, injectIntl} from 'react-intl';
 
 import currencies from '../../constants/currencies'
-import languages from '../../constants/languages'
+import {locales} from '../../locales';
 
 import {getCurrencyRate} from '../../backend/esteem-client';
-import {changeLanguage} from "../../actions/global";
 
 class Settings extends Component {
   constructor(props) {
@@ -36,10 +35,11 @@ class Settings extends Component {
     message.success(intl.formatMessage({id: 'settings.currency-changed'}));
   }
 
-  languageChanged(e) {
+  localeChanged(e) {
     const {actions, intl} = this.props;
-    const {changeLanguage} = actions;
-    changeLanguage(e);
+    const {changeLocale} = actions;
+    changeLocale(e);
+    message.success(intl.formatMessage({id: 'settings.locale-changed'}));
   }
 
   pushChanged(e) {
@@ -49,8 +49,7 @@ class Settings extends Component {
   render() {
 
     const {global} = this.props;
-    const {currency, language} = global;
-
+    const {currency, locale} = global;
 
     return (
 
@@ -68,12 +67,12 @@ class Settings extends Component {
           </Col>
         </Row>
         <Row className="row">
-          <Col offset={2} span={4} className="label-col"><FormattedMessage id="settings.language"/></Col>
+          <Col offset={2} span={4} className="label-col"><FormattedMessage id="settings.locale"/></Col>
           <Col span={18}>
-            <Select defaultValue={language} showSearch style={{width: '100%'}} onChange={(e) => {
-              this.languageChanged(e)
+            <Select defaultValue={locale} showSearch style={{width: '100%'}} onChange={(e) => {
+              this.localeChanged(e)
             }}>
-              {languages.map(c => (
+              {locales.map(c => (
                 <Select.Option key={c.id} value={c.id}>{c.name}</Select.Option>
               ))}
             </Select>
@@ -99,12 +98,13 @@ class Settings extends Component {
 Settings.propTypes = {
   actions: PropTypes.shape({
     changeCurrency: PropTypes.func.isRequired,
-    changeLanguage: PropTypes.func.isRequired
+    changeLocale: PropTypes.func.isRequired
   }).isRequired,
   global: PropTypes.shape({
     currency: PropTypes.string.isRequired,
-    language: PropTypes.string.isRequired
-  }).isRequired
+    locale: PropTypes.string.isRequired
+  }).isRequired,
+  intl: PropTypes.instanceOf(Object).isRequired
 };
 
 export default injectIntl(Settings);

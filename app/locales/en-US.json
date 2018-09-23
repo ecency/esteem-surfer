@@ -34,7 +34,8 @@
     "currency-fetch-error": "Could not fetch currency rate for {cur}.",
     "currency-changed": "Currency Changed",
     "server": "Server",
-    "language": "Language",
+    "locale": "Language",
+    "locale-changed": "Language changed",
     "push-notifications": "Push Notifications"
   }
 }

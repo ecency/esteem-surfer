@@ -1,5 +1,5 @@
 import {LOCATION_CHANGE} from 'react-router-redux';
-import {THEME_CHANGED, LIST_STYLE_CHANGED, CURRENCY_CHANGED, LANGUAGE_CHANGED} from '../actions/global';
+import {THEME_CHANGED, LIST_STYLE_CHANGED, CURRENCY_CHANGED, LOCALE_CHANGED} from '../actions/global';
 import filters from '../constants/filters.json';
 
 const defaultState = {
@@ -10,7 +10,7 @@ const defaultState = {
   currency: (localStorage.getItem('currency') || 'usd'),
   currencyRate: Number(localStorage.getItem('currency-rate') || 1),
   currencySymbol: (localStorage.getItem('currency-symbol') || '$'),
-  language: (localStorage.getItem('language') || 'en-US'),
+  locale: (localStorage.getItem('locale') || 'en-US'),
   server: 'https://api.steemit.com'
 };
 
@@ -51,11 +51,11 @@ export default function global(state = defaultState, action) {
         currencySymbol
       });
     }
-    case LANGUAGE_CHANGED: {
-      const {language} = action.payload;
+    case LOCALE_CHANGED: {
+      const {locale} = action.payload;
 
       return Object.assign({}, state, {
-        language
+        locale
       });
     }
     default:
