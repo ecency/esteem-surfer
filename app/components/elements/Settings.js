@@ -38,44 +38,38 @@ class Settings extends Component {
       });
   }
 
-  toggleNodeList() {
+  toggleServerList() {
     const { showServerList } = this.state;
     this.setState({ showServerList: !showServerList });
   }
 
-  // setCurrency
-  currencyChanged(e) {
+  async setCurrency(e) {
     const { actions, intl } = this.props;
     const { changeCurrency } = actions;
 
-    getCurrencyRate(e)
-      .then(resp => {
-        changeCurrency(e, resp.data);
-        message.success(
-          intl.formatMessage({ id: 'settings.currency-changed' })
-        );
-        return resp;
-      })
-      .catch(() => {
-        message.error(
-          intl.formatMessage(
-            { id: 'settings.currency-fetch-error' },
-            { cur: e }
-          )
-        );
-      });
+    let rate;
+
+    try {
+      rate = await getCurrencyRate(e);
+    } catch {
+      message.error(
+        intl.formatMessage({ id: 'settings.currency-fetch-error' }, { cur: e })
+      );
+      return;
+    }
+
+    changeCurrency(e, rate);
+    message.success(intl.formatMessage({ id: 'settings.currency-changed' }));
   }
 
-  // setLocale
-  localeChanged(e) {
+  setLocale(e) {
     const { actions, intl } = this.props;
     const { changeLocale } = actions;
     changeLocale(e);
     message.success(intl.formatMessage({ id: 'settings.locale-changed' }));
   }
 
-  // setPushNotify
-  pushNotifyChanged(e) {
+  setPushNotify(e) {
     const { actions, intl } = this.props;
     const { changePushNotify } = actions;
     changePushNotify(Number(e));
@@ -165,7 +159,7 @@ class Settings extends Component {
               showSearch
               style={{ width: '100%' }}
               onChange={e => {
-                this.currencyChanged(e);
+                this.setCurrency(e);
               }}
             >
               {currencies.map(c => (
@@ -186,7 +180,7 @@ class Settings extends Component {
               showSearch
               style={{ width: '100%' }}
               onChange={e => {
-                this.localeChanged(e);
+                this.setLocale(e);
               }}
             >
               {locales.map(c => (
@@ -209,7 +203,7 @@ class Settings extends Component {
               size="small"
               shape="circle"
               onClick={() => {
-                this.toggleNodeList();
+                this.toggleServerList();
               }}
             >
               <i className="mi">edit</i>
@@ -270,7 +264,7 @@ class Settings extends Component {
               defaultChecked={Boolean(pushNotify)}
               className="push-switch"
               onChange={e => {
-                this.pushNotifyChanged(e);
+                this.setPushNotify(e);
               }}
             />
             <FormattedMessage id="settings.push-notifications" />

@@ -44,8 +44,8 @@
           text-decoration: underline;
 
           &.disabled {
-            text-decoration: none;
             pointer-events: none;
+            text-decoration: none;
           }
         }
 
