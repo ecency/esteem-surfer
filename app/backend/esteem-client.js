@@ -6,4 +6,8 @@ export const getCurrencyRate = (cur) => (
   axios.get(`${BACKEND_URL}/api/currencyRate/${ cur.toUpperCase() }/steem`)
 );
 
-export const foo = '';
+export const getNodes = () => {
+  return axios.get(`https://storage.googleapis.com/esteem/public_nodes.json`).then((resp) => {
+    return resp.data.steemd;
+  })
+};

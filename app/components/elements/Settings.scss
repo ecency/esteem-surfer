@@ -2,12 +2,42 @@
   padding: 20px;
 
   .row {
-    margin-bottom: 20px;
+    margin-bottom: 26px;
+
+    .col,
     .label-col {
-      height: 32px;
+      min-height: 32px;
       align-items: center;
       display: flex;
+      flex-wrap: wrap;
+    }
+
+    .label-col {
       font-weight: bold;
+    }
+  }
+
+  .serverAddress {
+    margin-right: 10px;
+  }
+
+  .push-switch {
+    margin-right: 10px;
+  }
+
+  .node-list {
+    margin-top: 10px;
+    height: 200px;
+    overflow-y: auto;
+    width: 100%;
+    .node-list-body {
+      .node-list-item {
+        margin-bottom: 10px;
+
+        .disabled {
+          pointer-events: none;
+        }
+      }
     }
   }
 }
