@@ -46,5 +46,17 @@
     "push-notifications": "Push Notifications",
     "push-notify-enabled": "Push notifications enabled",
     "push-notify-disabled": "Push notifications disabled"
+  },
+  "login": {
+    "traditional-login-desc": "Sign in with your username and password to continue",
+    "username": "Username",
+    "password": "Password or WIF",
+    "login": "Login",
+    "error-fields-required": "Please enter username and password/wif",
+    "error-public-key": "You entered a public key. Password/wif required",
+    "error-user-fetch": "User data could not fetched",
+    "error-user-not-found": "User not exists",
+    "error-authenticate": "Wrong username or password/wif",
+    "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>"
   }
 }

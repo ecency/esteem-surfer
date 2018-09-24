@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>eSteem Surfer</title>
     <script>
+      // Theme switcher
       window.setTheme = function (theme) {
         const styleEl = document.querySelector('#theme-stylesheet');
 
@@ -25,6 +26,19 @@
         window.setTheme(theme);
       };
 
+    </script>
+    <script>
+      // Event handler for external links
+      const shell = require('electron').shell;
+      document.addEventListener('click', function (event) {
+        const el = event.target;
+        if (el.tagName === 'A' && el.getAttribute('target') === '_external') {
+          let href = el.getAttribute('href');
+          shell.openExternal(href);
+          event.preventDefault();
+          return false;
+        }
+      });
     </script>
 
     <script>
