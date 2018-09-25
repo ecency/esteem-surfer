@@ -99,11 +99,11 @@ h2 {
   font-feature-settings: 'liga';
 }
 
-@import '../components/elements/DropDown';
-@import '../components/elements/LinearProgress';
+@import '../components/common/DropDown';
+@import '../components/common/LinearProgress';
 
-@import '../components/modules/Navbar';
-@import '../components/modules/AppFooter';
+@import '../components/layout/Navbar';
+@import '../components/layout/AppFooter';
 
 @import '../components/EntryIndex';
 
@@ -116,6 +116,6 @@ h2 {
 @import '../components/elements/EntryPayoutContent';
 @import '../components/elements/EntryVotesContent';
 
-@import '../components/elements/Settings';
+@import '../components/screens/Settings';
 
-@import '../components/elements/Login';
+@import '../components/screens/Login';

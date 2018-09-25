@@ -7,10 +7,10 @@ import PropTypes from 'prop-types';
 import {Tooltip, Modal} from 'antd';
 import {FormattedMessage} from 'react-intl';
 
-import Mi from '../elements/Mi';
+import Mi from '../common/Mi';
 
-import Settings from '../elements/Settings';
-import Login from '../elements/Login'
+import Settings from '../screens/Settings';
+import Login from '../screens/Login'
 
 export const checkPathForBack = path => {
   if (!path) {

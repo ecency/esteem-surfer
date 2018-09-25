@@ -8,7 +8,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { Client } from 'dsteem';
 
 import currencies from '../../constants/currencies';
-import { locales } from '../../locales';
+import { locales } from '../../locales/index';
 
 import { getCurrencyRate, getNodes } from '../../backend/esteem-client';
 

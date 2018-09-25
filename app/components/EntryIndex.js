@@ -9,16 +9,16 @@ import { FormattedMessage } from 'react-intl';
 import { makeGroupKeyForEntries } from '../actions/entries';
 import filters from '../constants/filters.json';
 
-import NavBar from './modules/NavBar';
-import AppFooter from './modules/AppFooter';
+import NavBar from './layout/NavBar';
+import AppFooter from './layout/AppFooter';
 
 import EntryListItem from './elements/EntryListItem';
 import EntryListLoadingItem from './elements/EntryListLoadingItem';
 
-import DropDown from './elements/DropDown';
+import DropDown from './common/DropDown';
 import ListSwitch from './elements/ListSwitch';
-import LinearProgress from './elements/LinearProgress';
-import Mi from './elements/Mi';
+import LinearProgress from './common/LinearProgress';
+import Mi from './common/Mi';
 
 class EntryIndex extends Component {
   componentDidMount() {
