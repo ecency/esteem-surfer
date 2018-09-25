@@ -26,22 +26,21 @@ class ScrollReplace extends React.Component {
   }
 
   componentDidMount() {
-    const {selector} = this.props;
+    const { selector } = this.props;
 
     this.el = document.querySelector(selector);
-    this.el.addEventListener('scroll', this.handleScroll);
-
-    console.log(this.el)
+    if (this.el) {
+      this.el.addEventListener('scroll', this.handleScroll);
+    }
   }
 
   componentWillReceiveProps(nextProps) {
-
-    const {location: actual} = this.props;
-    const {location: next} = nextProps;
+    const { location: actual } = this.props;
+    const { location: next } = nextProps;
 
     if (next !== actual) {
       // when page changed
-      const {history} = this.props;
+      const { history } = this.props;
       let pos = 0;
       if (history.action === 'POP') {
         // if back or forward button clicked get last scroll position for location
@@ -57,7 +56,7 @@ class ScrollReplace extends React.Component {
   }
 
   handleScroll = () => {
-    const {location} = this.props;
+    const { location } = this.props;
     const pos = this.el.scrollTop;
 
     const save = () => {
