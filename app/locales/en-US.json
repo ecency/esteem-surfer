@@ -59,5 +59,11 @@
     "error-authenticate": "Wrong username or password/wif",
     "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>",
     "login-with-sc": "Login with"
+  },
+  "create-pin-code": {
+    "title": "Create PIN Code",
+    "desc1": "Set pin code to encrypt your data and enable extra layer of security!",
+    "input-placeholder": "Enter pin code",
+    "desc2": "You will be promoted to enter pin code for crucial transactions as well as on every launch."
   }
 }

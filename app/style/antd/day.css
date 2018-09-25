@@ -20098,3 +20098,8 @@ li.ant-select-tree-treenode-disabled
 .ant-modal-body .ant-table-pagination {
   margin-right: 10px;
 }
+.ant-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

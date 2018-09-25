@@ -9,5 +9,6 @@
   },
   "locale": "en-US",
   "pushNotify": 1,
-  "server": "https://api.steemit.com"
+  "server": "https://api.steemit.com",
+  "minPinCode": 4
 }
