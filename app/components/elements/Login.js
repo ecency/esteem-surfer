@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+
 import PropTypes from 'prop-types';
 
 import {auth} from 'steem';
@@ -9,6 +10,10 @@ import {FormattedHTMLMessage, FormattedMessage, injectIntl} from 'react-intl';
 
 import {getAccounts} from '../../backend/steem-client';
 
+
+import {scLogin} from '../../helpers/sc';
+
+
 class Settings extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +21,12 @@ class Settings extends Component {
     this.state = {
       processing: false
     }
+  }
+
+  steemConnectLogin() {
+    scLogin().then((resp) => {
+      console.log(resp)
+    });
   }
 
   async doLogin() {
@@ -133,8 +144,6 @@ class Settings extends Component {
     const {global, intl} = this.props;
     const {processing} = this.state;
 
-    console.log(processing)
-
 
     return (
       <div className="login-modal-content">
@@ -163,6 +172,12 @@ class Settings extends Component {
         </div>
 
         <Divider>OR</Divider>
+
+        <div className="login-sc2">
+          <a onClick={(e) => {
+            this.steemConnectLogin()
+          }}>steem connect</a>
+        </div>
       </div>
     );
   }
