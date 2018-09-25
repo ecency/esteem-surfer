@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import CryptoJS from 'crypto-js';
-
-import { Modal, Input, Col, Button } from 'antd';
+import { Button, Col, Input, Modal } from 'antd';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
+import pinHasher from '../../utils/pin-hasher';
 import { getItem, setItem } from '../../helpers/storage';
 import logo from '../../img/logo-big.png';
 import defaults from '../../constants/defaults';
@@ -53,11 +52,11 @@ class PinCreate extends Component {
     const { actions } = this.props;
     const { value } = this.state;
 
-    const hashed = CryptoJS.MD5(value).toString();
+    const hashed = pinHasher(value);
 
     setItem('pin-code', hashed);
     actions.exposePin(value);
-    this.setState({ dialogVisible: false });
+    this.setState({ dialogVisible: false, value: '' });
   }
 
   render() {
