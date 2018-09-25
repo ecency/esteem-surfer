@@ -47,11 +47,13 @@ class PinCreate extends Component {
   }
 
   submitForm() {
+    const { actions } = this.props;
     const { value } = this.state;
 
     const hashed = CryptoJS.MD5(value).toString();
 
     setItem('pin-code', hashed);
+    actions.exposePin(value);
     this.setState({ dialogVisible: false });
   }
 
@@ -132,6 +134,9 @@ class PinCreate extends Component {
 }
 
 PinCreate.propTypes = {
+  actions: PropTypes.shape({
+    exposePin: PropTypes.func.isRequired
+  }).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };
 

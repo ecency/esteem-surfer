@@ -1,12 +1,15 @@
 import { LOCATION_CHANGE } from 'react-router-redux';
 
+import { getItem } from '../helpers/storage';
+
 import {
   THEME_CHANGED,
   LIST_STYLE_CHANGED,
   CURRENCY_CHANGED,
   LOCALE_CHANGED,
   PUSH_NOTIFY_CHANGED,
-  SERVER_CHANGED
+  SERVER_CHANGED,
+  PIN_EXPOSED
 } from '../actions/global';
 import filters from '../constants/filters.json';
 
@@ -17,17 +20,13 @@ const defaultState = {
   selectedTag: '',
   theme: defaults.theme,
   listStyle: defaults.listStyle,
-  currency: localStorage.getItem('currency') || defaults.currency.currency,
-  currencyRate: Number(
-    localStorage.getItem('currency-rate') || defaults.currency.rate
-  ),
-  currencySymbol:
-    localStorage.getItem('currency-symbol') || defaults.currency.symbol,
-  locale: localStorage.getItem('locale') || defaults.locale,
-  pushNotify: Number(
-    localStorage.getItem('push-notify') || defaults.pushNotify
-  ),
-  server: localStorage.getItem('server') || defaults.server
+  currency: getItem('currency', defaults.currency.currency),
+  currencyRate: Number(getItem('currency-rate', defaults.currency.rate)),
+  currencySymbol: getItem('currency-symbol', defaults.currency.symbol),
+  locale: getItem('locale', defaults.locale),
+  pushNotify: Number(getItem('push-notify', defaults.pushNotify)),
+  server: getItem('server', defaults.server),
+  pin: null
 };
 
 export default function global(state = defaultState, action) {
@@ -86,6 +85,13 @@ export default function global(state = defaultState, action) {
 
       return Object.assign({}, state, {
         server
+      });
+    }
+    case PIN_EXPOSED: {
+      const { pin } = action.payload;
+
+      return Object.assign({}, state, {
+        pin
       });
     }
     default:

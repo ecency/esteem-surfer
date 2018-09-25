@@ -6,6 +6,7 @@ export const CURRENCY_CHANGED = 'global/CURRENCY_CHANGED';
 export const LOCALE_CHANGED = 'global/LOCALE_CHANGED';
 export const PUSH_NOTIFY_CHANGED = 'global/PUSH_NOTIFY_CHANGED';
 export const SERVER_CHANGED = 'global/SERVER_CHANGED';
+export const PIN_EXPOSED = 'global/PIN_EXPOSED';
 
 export const changeTheme = () => (dispatch, getState) => {
   const { global } = getState();
@@ -59,6 +60,10 @@ export const changeServer = server => dispatch => {
   dispatch(serverChanged(server));
 };
 
+export const exposePin = pin => dispatch => {
+  dispatch(pinExposed(pin));
+};
+
 /* action creators */
 
 export const themeChanged = newTheme => ({
@@ -89,4 +94,9 @@ export const pushNotifyChanged = val => ({
 export const serverChanged = server => ({
   type: SERVER_CHANGED,
   payload: { server }
+});
+
+export const pinExposed = pin => ({
+  type: PIN_EXPOSED,
+  payload: { pin }
 });
