@@ -9,7 +9,8 @@ import {
   LOCALE_CHANGED,
   PUSH_NOTIFY_CHANGED,
   SERVER_CHANGED,
-  PIN_EXPOSED
+  PIN_EXPOSED,
+  PIN_WIPED
 } from '../actions/global';
 import filters from '../constants/filters.json';
 
@@ -92,6 +93,11 @@ export default function global(state = defaultState, action) {
 
       return Object.assign({}, state, {
         pin
+      });
+    }
+    case PIN_WIPED: {
+      return Object.assign({}, state, {
+        pin: null
       });
     }
     default:

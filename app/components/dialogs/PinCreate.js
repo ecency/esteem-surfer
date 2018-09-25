@@ -34,6 +34,9 @@ class PinCreate extends Component {
 
       if (!code) {
         this.setState({ dialogVisible: true });
+
+        const { actions } = this.props;
+        actions.wipePin();
       }
     }, 1000);
   }
@@ -135,7 +138,8 @@ class PinCreate extends Component {
 
 PinCreate.propTypes = {
   actions: PropTypes.shape({
-    exposePin: PropTypes.func.isRequired
+    exposePin: PropTypes.func.isRequired,
+    wipePin: PropTypes.func.isRequired
   }).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };

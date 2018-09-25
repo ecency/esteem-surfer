@@ -8,7 +8,7 @@ import { addLocaleData, IntlProvider } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import tr from 'react-intl/locale-data/tr';
 
-import { exposePin } from '../actions/global';
+import { exposePin, wipePin } from '../actions/global';
 
 import PinCreate from '../components/dialogs/PinCreate';
 
@@ -51,7 +51,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      ...bindActionCreators({ exposePin }, dispatch)
+      ...bindActionCreators({ exposePin }, dispatch),
+      ...bindActionCreators({ wipePin }, dispatch)
     }
   };
 }
