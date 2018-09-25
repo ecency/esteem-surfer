@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import { Link } from 'react-router-dom';
-import { Menu } from 'antd';
-import { FormattedMessage } from 'react-intl';
+import {Link} from 'react-router-dom';
+import {Menu} from 'antd';
+import {FormattedMessage} from 'react-intl';
 
-import { makeGroupKeyForEntries } from '../actions/entries';
+import {makeGroupKeyForEntries} from '../actions/entries';
 import filters from '../constants/filters.json';
 
 import NavBar from './modules/NavBar';
@@ -20,10 +20,12 @@ import ListSwitch from './elements/ListSwitch';
 import LinearProgress from './elements/LinearProgress';
 import Mi from './elements/Mi';
 
-import ScrollReplace from './ScrollReplace';
+import Base from './Base'
 
-class EntryIndex extends Component {
+class EntryIndex extends Base {
+
   componentDidMount() {
+    super.componentDidMount();
     this.startFetch();
 
     const el = document.querySelector('#app-content');
@@ -36,7 +38,7 @@ class EntryIndex extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { location } = this.props;
+    const {location} = this.props;
 
     if (location !== prevProps.location) {
       this.startFetch();
@@ -46,23 +48,23 @@ class EntryIndex extends Component {
   scrollEl = {};
 
   startFetch = more => {
-    const { global, actions } = this.props;
-    const { selectedFilter, selectedTag } = global;
+    const {global, actions} = this.props;
+    const {selectedFilter, selectedTag} = global;
 
     actions.fetchEntries(selectedFilter, selectedTag, more);
     actions.fetchTrendingTags();
   };
 
   makeFilterMenu = active => {
-    const { global } = this.props;
-    const { selectedTag } = global;
+    const {global} = this.props;
+    const {selectedTag} = global;
 
     return (
       <Menu selectedKeys={[active]}>
         {filters.map(filter => (
           <Menu.Item key={filter}>
             <Link to={selectedTag ? `/${filter}/${selectedTag}` : `/${filter}`}>
-              <FormattedMessage id={`entry-index.filter-${filter}`} />
+              <FormattedMessage id={`entry-index.filter-${filter}`}/>
             </Link>
           </Menu.Item>
         ))}
@@ -80,8 +82,8 @@ class EntryIndex extends Component {
   }
 
   bottomReached() {
-    const { global, entries } = this.props;
-    const { selectedFilter, selectedTag } = global;
+    const {global, entries} = this.props;
+    const {selectedFilter, selectedTag} = global;
 
     const groupKey = makeGroupKeyForEntries(selectedFilter, selectedTag);
     const data = entries.get(groupKey);
@@ -94,8 +96,8 @@ class EntryIndex extends Component {
   }
 
   refresh() {
-    const { global, actions } = this.props;
-    const { selectedFilter, selectedTag } = global;
+    const {global, actions} = this.props;
+    const {selectedFilter, selectedTag} = global;
 
     actions.invalidateEntries(selectedFilter, selectedTag);
     actions.fetchEntries(selectedFilter, selectedTag, false);
@@ -104,9 +106,9 @@ class EntryIndex extends Component {
   }
 
   render() {
-    const { entries, trendingTags, location, global } = this.props;
+    const {entries, trendingTags, location, global} = this.props;
 
-    const { selectedFilter, selectedTag } = global;
+    const {selectedFilter, selectedTag} = global;
 
     const filterMenu = this.makeFilterMenu(selectedFilter);
     const groupKey = makeGroupKeyForEntries(selectedFilter, selectedTag);
@@ -117,9 +119,7 @@ class EntryIndex extends Component {
 
     return (
       <div className="wrapper">
-        <ScrollReplace
-          {...Object.assign({}, this.props, { selector: '#app-content' })}
-        />
+
 
         <NavBar
           {...Object.assign({}, this.props, {
@@ -135,9 +135,9 @@ class EntryIndex extends Component {
             <div className="left-side">
               <div className="btn-compose">
                 <span className="icon">
-                  <Mi icon="edit" />
+                  <Mi icon="edit"/>
                 </span>
-                <FormattedMessage id="g.compose-entry" />
+                <FormattedMessage id="g.compose-entry"/>
               </div>
             </div>
 
@@ -149,11 +149,11 @@ class EntryIndex extends Component {
                       id={`entry-index.filter-${selectedFilter}`}
                     />
                   </span>
-                  <DropDown menu={filterMenu} location={location} />
+                  <DropDown menu={filterMenu} location={location}/>
                 </div>
                 <ListSwitch {...this.props} />
               </div>
-              {loading && entryList.size === 0 ? <LinearProgress /> : ''}
+              {loading && entryList.size === 0 ? <LinearProgress/> : ''}
             </div>
           </div>
 
@@ -161,12 +161,12 @@ class EntryIndex extends Component {
             <div className="left-side">
               <div className="tag-list">
                 <h2 className="tag-list-header">
-                  <FormattedMessage id="entry-index.tags" />
+                  <FormattedMessage id="entry-index.tags"/>
                 </h2>
                 {trendingTags.list.map(tag => {
                   const cls = `tag-list-item ${
                     selectedTag === tag ? 'selected-item' : ''
-                  }`;
+                    }`;
                   const to = `/${selectedFilter}/${tag}`;
                   return (
                     <Link to={to} className={cls} key={tag}>
@@ -182,22 +182,22 @@ class EntryIndex extends Component {
                 <div
                   className={`entry-list-body ${
                     global.listStyle === 'grid' ? 'grid-view' : ''
-                  }`}
+                    }`}
                 >
                   {loading && entryList.size === 0 ? (
-                    <EntryListLoadingItem />
+                    <EntryListLoadingItem/>
                   ) : (
                     ''
                   )}
                   {entryList.valueSeq().map(d => (
                     <EntryListItem
                       key={d.id}
-                      {...Object.assign({}, this.props, { entry: d })}
+                      {...Object.assign({}, this.props, {entry: d})}
                     />
                   ))}
                 </div>
               </div>
-              {loading && entryList.size > 0 ? <LinearProgress /> : ''}
+              {loading && entryList.size > 0 ? <LinearProgress/> : ''}
             </div>
           </div>
         </div>
