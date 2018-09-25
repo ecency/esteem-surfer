@@ -2,7 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import PinCreate from '../components/screens/PinCreate'
+import PinCreate from '../components/dialogs/PinCreate'
 
 // i18n
 import {addLocaleData, IntlProvider} from 'react-intl';

@@ -18,7 +18,7 @@ const getPathPos = path => {
   return undefined;
 };
 
-class Base extends React.Component {
+class ScrollReplace extends React.Component {
   constructor(props) {
     super(props);
 
@@ -26,8 +26,12 @@ class Base extends React.Component {
   }
 
   componentDidMount() {
-    this.el = document.querySelector('#app-content');
+    const {selector} = this.props;
+
+    this.el = document.querySelector(selector);
     this.el.addEventListener('scroll', this.handleScroll);
+
+    console.log(this.el)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -40,7 +44,7 @@ class Base extends React.Component {
       const {history} = this.props;
       let pos = 0;
       if (history.action === 'POP') {
-        // if back or forward button clicked get scroll position
+        // if back or forward button clicked get last scroll position for location
         pos = getPathPos(next.pathname) || 0;
       }
 
@@ -56,10 +60,9 @@ class Base extends React.Component {
     const {location} = this.props;
     const pos = this.el.scrollTop;
 
-
     const save = () => {
       setPathPos(location.pathname, pos);
-      console.log(`${location.pathname} saved ${pos}`)
+      // console.log(`${location.pathname} saved ${pos}`)
     };
 
     if (this.saveTimer) {
@@ -69,16 +72,19 @@ class Base extends React.Component {
     this.saveTimer = setTimeout(save, 300);
   };
 
-
+  render() {
+    return null;
+  }
 }
 
-Base.propTypes = {
+ScrollReplace.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired
   }).isRequired,
   history: PropTypes.shape({
     action: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  selector: PropTypes.string.isRequired
 };
 
-export default Base;
+export default ScrollReplace;

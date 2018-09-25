@@ -9,8 +9,8 @@ import {FormattedMessage} from 'react-intl';
 
 import Mi from '../common/Mi';
 
-import Settings from '../screens/Settings';
-import Login from '../screens/Login'
+import Settings from '../dialogs/Settings';
+import Login from '../dialogs/Login'
 
 export const checkPathForBack = path => {
   if (!path) {
