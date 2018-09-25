@@ -1,12 +1,28 @@
 .login-modal-content {
+  margin: auto;
   padding: 20px;
   width: 70%;
-  margin: auto;
 
   .login-form {
     p {
       margin-bottom: 14px;
       text-align: center;
+    }
+  }
+
+  .login-sc {
+    cursor: pointer;
+    font-weight: 700;
+    margin: auto;
+    text-align: center;
+    width: 200px;
+
+    .logo {
+      background: $white-two;
+      border-radius: 4px;
+      margin: auto;
+      padding: 3px;
+      width: 190px;
     }
   }
 }

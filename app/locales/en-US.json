@@ -57,6 +57,7 @@
     "error-user-fetch": "User data could not fetched",
     "error-user-not-found": "User not exists",
     "error-authenticate": "Wrong username or password/wif",
-    "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>"
+    "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>",
+    "login-with-sc": "Login with"
   }
 }

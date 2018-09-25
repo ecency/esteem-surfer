@@ -8,6 +8,8 @@ import {auth} from 'steem';
 import {Button, Divider, Input, message} from 'antd';
 import {FormattedHTMLMessage, FormattedMessage, injectIntl} from 'react-intl';
 
+import scLogo from '../../img/steem-connect.svg';
+
 import {getAccounts} from '../../backend/steem-client';
 
 
@@ -170,13 +172,12 @@ class Settings extends Component {
 
           <p><FormattedHTMLMessage id="login.create-account-text"/></p>
         </div>
-
         <Divider>OR</Divider>
-
-        <div className="login-sc2">
-          <a onClick={(e) => {
-            this.steemConnectLogin()
-          }}>steem connect</a>
+        <div className="login-sc" onClick={() => {
+          this.steemConnectLogin()
+        }}>
+          <p><FormattedMessage id="login.login-with-sc"/></p>
+          <div className="logo"><img src={scLogo}/></div>
         </div>
       </div>
     );
