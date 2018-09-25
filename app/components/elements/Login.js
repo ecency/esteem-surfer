@@ -9,6 +9,7 @@ import {Button, Divider, Input, message} from 'antd';
 import {FormattedHTMLMessage, FormattedMessage, injectIntl} from 'react-intl';
 
 import scLogo from '../../img/steem-connect.svg';
+import logo from '../../img/logo-big.png';
 
 import {getAccounts} from '../../backend/steem-client';
 
@@ -27,8 +28,10 @@ class Settings extends Component {
 
   steemConnectLogin() {
     scLogin().then((resp) => {
-      console.log(resp)
-    });
+      return resp
+    }).catch(() => {
+
+    })
   }
 
   async doLogin() {
@@ -136,11 +139,6 @@ class Settings extends Component {
     //afterLoginLocal(username);
   }
 
-  componentDidMount() {
-    const {intl} = this.props;
-
-  }
-
 
   render() {
     const {global, intl} = this.props;
@@ -149,6 +147,13 @@ class Settings extends Component {
 
     return (
       <div className="login-modal-content">
+
+        <div className="login-header">
+          <div className="logo">
+            <img src={logo}/>
+          </div>
+        </div>
+
 
         <div className="login-form">
           <p><FormattedMessage id="login.traditional-login-desc"/></p>

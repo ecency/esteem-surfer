@@ -3,6 +3,16 @@
   padding: 20px;
   width: 70%;
 
+  .login-header {
+    .logo {
+      width: 100px;
+      margin: 0 auto 20px auto;
+      img {
+        width: 100%;
+      }
+    }
+  }
+
   .login-form {
     p {
       margin-bottom: 14px;
