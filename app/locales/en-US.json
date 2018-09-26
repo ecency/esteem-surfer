@@ -1,6 +1,8 @@
 {
   "g": {
-    "compose-entry": "Create Post"
+    "compose-entry": "Create Post",
+    "yes": "Yes",
+    "no": "No"
   },
   "entry-index": {
     "tags": "Popular Tags",
@@ -64,6 +66,15 @@
     "title": "Create PIN Code",
     "desc1": "Set pin code to encrypt your data and enable extra layer of security!",
     "input-placeholder": "Enter pin code",
-    "desc2": "You will be promoted to enter pin code for crucial transactions as well as on every launch."
+    "desc2": "You will be promoted to enter pin code for crucial transactions as well as on every launch.",
+    "created": "Pin code created"
+  },
+  "confirm-pin-code": {
+    "title": "Enter Pin Code",
+    "input-placeholder": "Enter pin code to continue",
+    "last-chance": "This is your last chance",
+    "invalidate": "Oh, I forgot it...",
+    "invalidate-confirm": "Are you really want to invalidate pin code?",
+    "invalidated": "Pin code invalidated"
   }
 }

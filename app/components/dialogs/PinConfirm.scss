@@ -1,0 +1,40 @@
+@import '../../style/mixins';
+@import '../../style/colors';
+
+.pin-confirm-dialog-content {
+  padding: 35px;
+
+  .dialog-form {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+
+    .brand {
+      height: 128px;
+      margin-right: 12px;
+      width: 128px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .form-content {
+      padding-top: 14px;
+      width: calc(100% - 140px);
+    }
+
+    .form-content {
+      .last-change {
+        margin: 1em 0;
+      }
+
+      .invalidate {
+        color: $silver;
+        margin: 1em 0;
+        display: table;
+        text-decoration: underline;
+      }
+    }
+  }
+}

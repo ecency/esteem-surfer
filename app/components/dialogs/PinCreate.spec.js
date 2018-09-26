@@ -12,8 +12,7 @@ describe('PinCreate', () => {
   it('(1) Render', () => {
     const props = {
       actions: {
-        exposePin: () => {},
-        wipePin: () => {}
+        onSuccess: () => {}
       }
     };
 

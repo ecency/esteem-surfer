@@ -6,6 +6,7 @@ export const CURRENCY_CHANGED = 'global/CURRENCY_CHANGED';
 export const LOCALE_CHANGED = 'global/LOCALE_CHANGED';
 export const PUSH_NOTIFY_CHANGED = 'global/PUSH_NOTIFY_CHANGED';
 export const SERVER_CHANGED = 'global/SERVER_CHANGED';
+
 export const PIN_EXPOSED = 'global/PIN_EXPOSED';
 export const PIN_WIPED = 'global/PIN_WIPED';
 

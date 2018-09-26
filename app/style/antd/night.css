@@ -20098,7 +20098,7 @@ li.ant-select-tree-treenode-disabled
   margin-right: 10px;
 }
 .ant-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 }
