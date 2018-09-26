@@ -29,11 +29,11 @@ class PinConfirm extends Component {
   };
 
   submitForm = () => {
-    const { onSuccess, invalidateFn, compareHash } = this.props;
+    const { onSuccess, compareHash } = this.props;
     const { value, trys } = this.state;
 
     if (trys === defaults.maxPinCodeTry) {
-      invalidateFn();
+      this.invalidate();
       return;
     }
 

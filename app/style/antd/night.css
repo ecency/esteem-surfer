@@ -20059,6 +20059,9 @@ li.ant-select-tree-treenode-disabled
     opacity: 0;
   }
 }
+.ant-alert {
+  color: #161d26;
+}
 .ant-dropdown-menu {
   padding-top: 20px;
 }

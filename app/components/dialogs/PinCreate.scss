@@ -25,16 +25,26 @@
     }
 
     .form-content {
-      .form-title {
-      }
-
       .form-desc {
-        color: $steel-grey;
+        @include themify(day) {
+          color: $steel-grey;
+        }
+
+        @include themify(night) {
+          color: $silver;
+        }
       }
 
       .form-desc2 {
-        color: $silver;
         margin: 1em 0 0 0;
+
+        @include themify(day) {
+          color: $silver;
+        }
+
+        @include themify(night) {
+          color: $steel-grey;
+        }
       }
     }
   }
