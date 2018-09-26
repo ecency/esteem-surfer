@@ -3,18 +3,20 @@
 import React from 'react';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import PinCreate from './PinCreate';
+import PinConfirm from './PinConfirm';
 import { mountWithIntl } from '../../helpers/intl-test';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('PinCreate', () => {
+describe('PinConfirm', () => {
   it('(1) Render', () => {
     const props = {
-      onSuccess: () => {}
+      onSuccess: () => {},
+      invalidateFn: () => {},
+      compareHash: 'foo'
     };
 
-    const wrapper = mountWithIntl(<PinCreate {...props} />);
+    const wrapper = mountWithIntl(<PinConfirm {...props} />);
 
     expect(wrapper.html()).toMatchSnapshot();
   });
