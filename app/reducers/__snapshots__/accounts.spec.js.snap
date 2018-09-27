@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`accounts reducer (1) default state 1`] = `
+Object {
+  "active": null,
+  "list": Array [],
+}
+`;
+
+exports[`accounts reducer (2) account "foo" added  1`] = `
+Object {
+  "active": "foo",
+  "list": Array [
+    Object {
+      "username": "foo",
+    },
+  ],
+}
+`;
+
+exports[`accounts reducer (3) account "bar" added  1`] = `
+Object {
+  "active": "bar",
+  "list": Array [
+    Object {
+      "username": "foo",
+    },
+    Object {
+      "username": "bar",
+    },
+  ],
+}
+`;
+
+exports[`accounts reducer (4) account "baz" added 1`] = `
+Object {
+  "active": "baz",
+  "list": Array [
+    Object {
+      "username": "foo",
+    },
+    Object {
+      "username": "bar",
+    },
+    Object {
+      "username": "baz",
+    },
+  ],
+}
+`;
+
+exports[`accounts reducer (5) account "baz" deleted 1`] = `
+Object {
+  "active": null,
+  "list": Array [
+    Object {
+      "username": "foo",
+    },
+    Object {
+      "username": "bar",
+    },
+  ],
+}
+`;
+
+exports[`accounts reducer (6) account "foo" activated 1`] = `
+Object {
+  "active": "foo",
+  "list": Array [
+    Object {
+      "username": "foo",
+    },
+    Object {
+      "username": "bar",
+    },
+  ],
+}
+`;
+
+exports[`accounts reducer (7) account "foo" deleted 1`] = `
+Object {
+  "active": null,
+  "list": Array [
+    Object {
+      "username": "bar",
+    },
+  ],
+}
+`;
