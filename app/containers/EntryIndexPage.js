@@ -11,6 +11,7 @@ import {
   changePushNotify,
   changeServer
 } from '../actions/global';
+import {addAccount} from '../actions/accounts'
 
 function mapStateToProps(state) {
   return {
@@ -30,7 +31,8 @@ function mapDispatchToProps(dispatch) {
       ...bindActionCreators({ changeCurrency }, dispatch),
       ...bindActionCreators({ changeLocale }, dispatch),
       ...bindActionCreators({ changePushNotify }, dispatch),
-      ...bindActionCreators({ changeServer }, dispatch)
+      ...bindActionCreators({ changeServer }, dispatch),
+      ...bindActionCreators({ addAccount }, dispatch)
     }
   };
 }

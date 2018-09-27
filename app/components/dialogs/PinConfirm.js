@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import { Button, Col, Input, Popconfirm, Alert, message } from 'antd';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import {Button, Col, Input, Popconfirm, Alert, message} from 'antd';
+import {FormattedMessage, injectIntl} from 'react-intl';
 
-import pinHasher from '../../utils/pin-hasher';
+import {pinHasher} from '../../utils/crypto';
 import logo from '../../img/logo-big.png';
 import defaults from '../../constants/defaults';
 
@@ -19,18 +19,18 @@ class PinConfirm extends Component {
   }
 
   handleChange = event => {
-    this.setState({ value: event.target.value });
+    this.setState({value: event.target.value});
   };
 
   invalidate = () => {
-    const { invalidateFn, intl } = this.props;
+    const {invalidateFn, intl} = this.props;
     invalidateFn();
-    message.info(intl.formatMessage({ id: 'confirm-pin-code.invalidated' }));
+    message.info(intl.formatMessage({id: 'confirm-pin-code.invalidated'}));
   };
 
   submitForm = () => {
-    const { onSuccess, compareHash } = this.props;
-    const { value, trys } = this.state;
+    const {onSuccess, compareHash} = this.props;
+    const {value, trys} = this.state;
 
     if (trys === defaults.maxPinCodeTry) {
       this.invalidate();
@@ -44,22 +44,22 @@ class PinConfirm extends Component {
       return;
     }
 
-    this.setState({ value: '', trys: trys + 1 });
+    this.setState({value: '', trys: trys + 1});
   };
 
   render() {
-    const { intl } = this.props;
-    const { value, trys } = this.state;
+    const {intl} = this.props;
+    const {value, trys} = this.state;
 
     return (
       <div className="pin-confirm-dialog-content">
         <div className="dialog-form">
           <div className="brand">
-            <img src={logo} alt="" />
+            <img src={logo} alt=""/>
           </div>
           <div className="form-content">
             <h2 className="form-title">
-              <FormattedMessage id="confirm-pin-code.title" />
+              <FormattedMessage id="confirm-pin-code.title"/>
             </h2>
             <Input.Group>
               <Col span={18}>
@@ -109,11 +109,11 @@ class PinConfirm extends Component {
                   id: 'confirm-pin-code.invalidate-confirm'
                 })}
                 onConfirm={this.invalidate}
-                okText={intl.formatMessage({ id: 'g.yes' })}
-                cancelText={intl.formatMessage({ id: 'g.no' })}
+                okText={intl.formatMessage({id: 'g.yes'})}
+                cancelText={intl.formatMessage({id: 'g.no'})}
               >
                 <a className="invalidate">
-                  <FormattedMessage id="confirm-pin-code.invalidate" />
+                  <FormattedMessage id="confirm-pin-code.invalidate"/>
                 </a>
               </Popconfirm>
             )}

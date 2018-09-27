@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Button, Col, Input, message } from 'antd';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
-import pinHasher from '../../utils/pin-hasher';
+import {pinHasher} from '../../utils/crypto';
 import logo from '../../img/logo-big.png';
 import defaults from '../../constants/defaults';
 

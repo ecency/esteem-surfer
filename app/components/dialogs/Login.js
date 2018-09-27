@@ -133,6 +133,9 @@ class Settings extends Component {
       return false;
     }
 
+    const {actions} = this.props;
+    actions.addAccount(username, resultKeys)
+
     //let username = rUser.name;
     //$scope.loginSuccess = true;
     //userService.add(username, resultKeys);
@@ -190,7 +193,9 @@ class Settings extends Component {
 }
 
 Settings.propTypes = {
-  actions: PropTypes.shape({}).isRequired,
+  actions: PropTypes.shape({
+    addAccount: PropTypes.func.isRequired
+  }).isRequired,
   global: PropTypes.shape({}).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };
