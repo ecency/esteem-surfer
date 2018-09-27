@@ -26,13 +26,16 @@ class Settings extends Component {
     }
   }
 
-  steemConnectLogin() {
+  steemConnectLogin = () => {
     scLogin().then((resp) => {
+      const {actions} = this.props;
+      actions.addAccountSc(resp.username, resp.access_token, resp.expires_in);
+
       return resp
     }).catch(() => {
 
     })
-  }
+  };
 
   async doLogin() {
     const {intl} = this.props;
@@ -161,13 +164,13 @@ class Settings extends Component {
         <div className="login-form">
           <p><FormattedMessage id="login.traditional-login-desc"/></p>
           <p>
-            <Input id="txt-username" addonBefore={'@'} placeholder={intl.formatMessage(
+            <Input type="text" autoFocus id="txt-username" addonBefore={'@'} placeholder={intl.formatMessage(
               {id: 'login.username'}
             )}/>
           </p>
           <p>
 
-            <Input id="txt-code" placeholder={intl.formatMessage(
+            <Input type="password" id="txt-code" placeholder={intl.formatMessage(
               {id: 'login.password'}
             )}/>
 
@@ -181,9 +184,7 @@ class Settings extends Component {
           <p><FormattedHTMLMessage id="login.create-account-text"/></p>
         </div>
         <Divider>OR</Divider>
-        <div className="login-sc" onClick={() => {
-          this.steemConnectLogin()
-        }}>
+        <div className="login-sc" onClick={this.steemConnectLogin}>
           <p><FormattedMessage id="login.login-with-sc"/></p>
           <div className="logo"><img src={scLogo}/></div>
         </div>
@@ -194,9 +195,13 @@ class Settings extends Component {
 
 Settings.propTypes = {
   actions: PropTypes.shape({
-    addAccount: PropTypes.func.isRequired
+    addAccount: PropTypes.func.isRequired,
+    addAccountSc: PropTypes.func.isRequired,
+    deleteAccount: PropTypes.func.isRequired,
+    activateAccount: PropTypes.func.isRequired
   }).isRequired,
   global: PropTypes.shape({}).isRequired,
+  accounts: PropTypes.shape({}).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };
 

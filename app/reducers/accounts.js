@@ -1,9 +1,10 @@
-import { getByPrefix, getItem } from '../helpers/storage';
+import {getByPrefix, getItem} from '../helpers/storage';
 
 import {
   ACCOUNT_ADDED,
   ACCOUNT_DELETED,
-  ACCOUNT_ACTIVATED
+  ACCOUNT_ACTIVATED,
+  ACCOUNT_ADDED_SC
 } from '../actions/accounts';
 
 const defaultState = {
@@ -14,6 +15,7 @@ const defaultState = {
 export default function accounts(state = defaultState, action) {
   switch (action.type) {
     case ACCOUNT_ADDED:
+    case ACCOUNT_ADDED_SC:
     case ACCOUNT_DELETED:
     case ACCOUNT_ACTIVATED: {
       return {
