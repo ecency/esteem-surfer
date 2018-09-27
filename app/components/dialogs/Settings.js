@@ -148,7 +148,7 @@ class Settings extends Component {
     const { currency, locale, server, pushNotify } = global;
 
     return (
-      <div className="settings-modal-content">
+      <div className="settings-dialog-content">
         <Row className="row">
           <Col offset={2} span={4} className="label-col">
             <FormattedMessage id="settings.currency" />

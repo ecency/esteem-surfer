@@ -239,7 +239,7 @@ class NavBar extends Component {
           visible={settingsModalVisible}
           onCancel={this.onSettingsModalCancel}
           footer={false}
-          width="60%"
+          width="600px"
           title={<FormattedMessage id="settings.title"/>}
           destroyOnClose
           centered
@@ -251,7 +251,7 @@ class NavBar extends Component {
           visible={loginModalVisible}
           onCancel={this.onLoginModalCancel}
           footer={false}
-          width="60%"
+          width="400px"
           closable={false}
           destroyOnClose
           centered

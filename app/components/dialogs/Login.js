@@ -146,7 +146,7 @@ class Settings extends Component {
 
 
     return (
-      <div className="login-modal-content">
+      <div className="login-dialog-content">
 
         <div className="login-header">
           <div className="logo">
