@@ -1,11 +1,12 @@
 /* eslint-disable */
 import accounts from './accounts';
-import { setItem, removeItem } from '../helpers/storage';
+import {setItem, removeItem} from '../helpers/storage';
 
 import {
   ACCOUNT_ADDED,
   ACCOUNT_DELETED,
-  ACCOUNT_ACTIVATED
+  ACCOUNT_ACTIVATED,
+  ACTIVE_ACCOUNT_DATA_UPDATED
 } from '../actions/accounts';
 
 import deepFreeze from 'deep-freeze';
@@ -24,17 +25,17 @@ describe('accounts reducer', () => {
   it('(2) account "foo" added ', () => {
     const username = 'foo';
 
-    setItem(`account_${username}`, { username });
+    setItem(`account_${username}`, {username});
     setItem(`active_account`, username);
 
     const action = {
       type: ACCOUNT_ADDED,
-      payload: { username }
+      payload: {username}
     };
 
-    state = accounts(state, action);
-
     deepFreeze(state);
+
+    state = accounts(state, action);
 
     expect(state).toMatchSnapshot();
   });
@@ -42,17 +43,17 @@ describe('accounts reducer', () => {
   it('(3) account "bar" added ', () => {
     const username = 'bar';
 
-    setItem(`account_${username}`, { username });
+    setItem(`account_${username}`, {username});
     setItem(`active_account`, username);
 
     const action = {
       type: ACCOUNT_ADDED,
-      payload: { username }
+      payload: {username}
     };
 
-    state = accounts(state, action);
-
     deepFreeze(state);
+
+    state = accounts(state, action);
 
     expect(state).toMatchSnapshot();
   });
@@ -60,17 +61,17 @@ describe('accounts reducer', () => {
   it('(4) account "baz" added', () => {
     const username = 'baz';
 
-    setItem(`account_${username}`, { username });
+    setItem(`account_${username}`, {username});
     setItem(`active_account`, username);
 
     const action = {
       type: ACCOUNT_ADDED,
-      payload: { username }
+      payload: {username}
     };
 
-    state = accounts(state, action);
-
     deepFreeze(state);
+
+    state = accounts(state, action);
 
     expect(state).toMatchSnapshot();
   });
@@ -83,12 +84,12 @@ describe('accounts reducer', () => {
 
     const action = {
       type: ACCOUNT_DELETED,
-      payload: { username }
+      payload: {username}
     };
 
-    state = accounts(state, action);
-
     deepFreeze(state);
+
+    state = accounts(state, action);
 
     expect(state).toMatchSnapshot();
   });
@@ -100,12 +101,12 @@ describe('accounts reducer', () => {
 
     const action = {
       type: ACCOUNT_ACTIVATED,
-      payload: { username }
+      payload: {username}
     };
 
-    state = accounts(state, action);
-
     deepFreeze(state);
+
+    state = accounts(state, action);
 
     expect(state).toMatchSnapshot();
   });
@@ -118,12 +119,60 @@ describe('accounts reducer', () => {
 
     const action = {
       type: ACCOUNT_DELETED,
-      payload: { username }
+      payload: {username}
     };
+
+    deepFreeze(state);
 
     state = accounts(state, action);
 
+    expect(state).toMatchSnapshot();
+  });
+
+  it('(8) account "bar" activated', () => {
+    const username = 'bar';
+
+    setItem(`active_account`, username);
+
+    const action = {
+      type: ACCOUNT_ACTIVATED,
+      payload: {username}
+    };
+
     deepFreeze(state);
+
+    state = accounts(state, action);
+
+    expect(state).toMatchSnapshot();
+  });
+
+  it('(9) active account data updated', () => {
+    const action = {
+      type: ACTIVE_ACCOUNT_DATA_UPDATED,
+      payload: {accountData: {id: 13124, username: "bar"}}
+    };
+
+    deepFreeze(state);
+
+    state = accounts(state, action);
+
+    expect(state).toMatchSnapshot();
+  });
+
+  it('(10) account "bar" added ', () => {
+    const username = 'bar';
+
+    setItem(`account_${username}`, {username});
+    setItem(`active_account`, username);
+
+    const action = {
+      type: ACCOUNT_ADDED,
+      payload: {username}
+    };
+
+    deepFreeze(state);
+
+    state = accounts(state, action);
 
     expect(state).toMatchSnapshot();
   });

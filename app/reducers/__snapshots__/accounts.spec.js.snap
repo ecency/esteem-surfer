@@ -2,14 +2,17 @@
 
 exports[`accounts reducer (1) default state 1`] = `
 Object {
-  "active": null,
+  "activeAccount": null,
   "list": Array [],
 }
 `;
 
 exports[`accounts reducer (2) account "foo" added  1`] = `
 Object {
-  "active": "foo",
+  "activeAccount": Object {
+    "accountData": null,
+    "username": "foo",
+  },
   "list": Array [
     Object {
       "username": "foo",
@@ -20,7 +23,10 @@ Object {
 
 exports[`accounts reducer (3) account "bar" added  1`] = `
 Object {
-  "active": "bar",
+  "activeAccount": Object {
+    "accountData": null,
+    "username": "bar",
+  },
   "list": Array [
     Object {
       "username": "foo",
@@ -34,7 +40,10 @@ Object {
 
 exports[`accounts reducer (4) account "baz" added 1`] = `
 Object {
-  "active": "baz",
+  "activeAccount": Object {
+    "accountData": null,
+    "username": "baz",
+  },
   "list": Array [
     Object {
       "username": "foo",
@@ -51,7 +60,7 @@ Object {
 
 exports[`accounts reducer (5) account "baz" deleted 1`] = `
 Object {
-  "active": null,
+  "activeAccount": null,
   "list": Array [
     Object {
       "username": "foo",
@@ -65,7 +74,10 @@ Object {
 
 exports[`accounts reducer (6) account "foo" activated 1`] = `
 Object {
-  "active": "foo",
+  "activeAccount": Object {
+    "accountData": null,
+    "username": "foo",
+  },
   "list": Array [
     Object {
       "username": "foo",
@@ -79,7 +91,52 @@ Object {
 
 exports[`accounts reducer (7) account "foo" deleted 1`] = `
 Object {
-  "active": null,
+  "activeAccount": null,
+  "list": Array [
+    Object {
+      "username": "bar",
+    },
+  ],
+}
+`;
+
+exports[`accounts reducer (8) account "bar" activated 1`] = `
+Object {
+  "activeAccount": Object {
+    "accountData": null,
+    "username": "bar",
+  },
+  "list": Array [
+    Object {
+      "username": "bar",
+    },
+  ],
+}
+`;
+
+exports[`accounts reducer (9) active account data updated 1`] = `
+Object {
+  "activeAccount": Object {
+    "accountData": Object {
+      "id": 13124,
+      "username": "bar",
+    },
+    "username": "bar",
+  },
+  "list": Array [
+    Object {
+      "username": "bar",
+    },
+  ],
+}
+`;
+
+exports[`accounts reducer (10) account "bar" added  1`] = `
+Object {
+  "activeAccount": Object {
+    "accountData": null,
+    "username": "bar",
+  },
   "list": Array [
     Object {
       "username": "bar",

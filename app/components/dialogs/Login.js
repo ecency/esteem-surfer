@@ -136,13 +136,9 @@ class Settings extends Component {
       return false;
     }
 
-    const {actions} = this.props;
-    actions.addAccount(username, resultKeys)
-
-    //let username = rUser.name;
-    //$scope.loginSuccess = true;
-    //userService.add(username, resultKeys);
-    //afterLoginLocal(username);
+    const {actions, onLogin} = this.props;
+    actions.addAccount(username, resultKeys);
+    onLogin();
   }
 
 
@@ -159,24 +155,21 @@ class Settings extends Component {
             <img src={logo}/>
           </div>
         </div>
-
-
         <div className="login-form">
           <p><FormattedMessage id="login.traditional-login-desc"/></p>
           <p>
-            <Input type="text" autoFocus id="txt-username" addonBefore={'@'} placeholder={intl.formatMessage(
-              {id: 'login.username'}
-            )}/>
+            <Input size="large" type="text" autoFocus id="txt-username" addonBefore={'@'}
+                   placeholder={intl.formatMessage(
+                     {id: 'login.username'}
+                   )}/>
           </p>
           <p>
-
-            <Input type="password" id="txt-code" placeholder={intl.formatMessage(
+            <Input size="large" type="password" id="txt-code" placeholder={intl.formatMessage(
               {id: 'login.password'}
             )}/>
-
           </p>
           <p>
-            <Button htmlType="button" type="primary" block disabled={processing} onClick={() => {
+            <Button size="large" htmlType="button" type="primary" block disabled={processing} onClick={() => {
               this.doLogin()
             }}><FormattedMessage id="login.login"/></Button>
           </p>
@@ -200,6 +193,7 @@ Settings.propTypes = {
     deleteAccount: PropTypes.func.isRequired,
     activateAccount: PropTypes.func.isRequired
   }).isRequired,
+  onLogin: PropTypes.func.isRequired,
   global: PropTypes.shape({}).isRequired,
   accounts: PropTypes.shape({}).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired

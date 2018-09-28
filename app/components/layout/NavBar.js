@@ -54,6 +54,16 @@ class NavBar extends Component {
     });
   };
 
+  onLoginSuccess = () => {
+    this.setState({
+      loginModalVisible: false
+    });
+
+    const {actions, accounts} = this.props;
+    const {activeAccount} = accounts;
+    actions.updateActiveAccountData(activeAccount.username);
+  };
+
   goBack = () => {
     const {history} = this.props;
 
@@ -106,6 +116,7 @@ class NavBar extends Component {
     history.push(newLoc);
   };
 
+
   render() {
     const {
       history,
@@ -114,8 +125,11 @@ class NavBar extends Component {
       favoriteFlag,
       bookmarkFn,
       bookmarkFlag,
-      postBtnActive
+      postBtnActive,
+      accounts
     } = this.props;
+
+    const {active: activeAccount} = accounts;
 
     const {settingsModalVisible, loginModalVisible} = this.state;
 
@@ -222,6 +236,8 @@ class NavBar extends Component {
             </a>
           </div>
           <div className="user-menu">
+
+            {!activeAccount &&
             <Tooltip
               title="Login to you account"
               placement="left"
@@ -233,6 +249,9 @@ class NavBar extends Component {
                 <Mi icon="account_circle"/>
               </a>
             </Tooltip>
+            }
+
+
           </div>
         </div>
         <Modal
@@ -251,12 +270,12 @@ class NavBar extends Component {
           visible={loginModalVisible}
           onCancel={this.onLoginModalCancel}
           footer={false}
-          width="400px"
+          width="500px"
           closable={false}
           destroyOnClose
           centered
         >
-          <Login {...this.props} />
+          <Login {...this.props} onLogin={this.onLoginSuccess}/>
         </Modal>
       </div>
     );
@@ -275,10 +294,14 @@ NavBar.defaultProps = {
 
 NavBar.propTypes = {
   actions: PropTypes.shape({
-    changeTheme: PropTypes.func.isRequired
+    changeTheme: PropTypes.func.isRequired,
+    updateActiveAccountData: PropTypes.func.isRequired
   }).isRequired,
   global: PropTypes.shape({
     selectedFilter: PropTypes.string.isRequired
+  }).isRequired,
+  accounts: PropTypes.shape({
+    activeAccount: PropTypes.instanceOf(Object)
   }).isRequired,
   history: PropTypes.shape({
     goForward: PropTypes.func.isRequired,

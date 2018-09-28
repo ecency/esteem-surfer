@@ -4,11 +4,12 @@ import {
   ACCOUNT_ADDED,
   ACCOUNT_DELETED,
   ACCOUNT_ACTIVATED,
-  ACCOUNT_ADDED_SC
+  ACCOUNT_ADDED_SC,
+  ACTIVE_ACCOUNT_DATA_UPDATED
 } from '../actions/accounts';
 
 const defaultState = {
-  active: getItem('active_account'),
+  activeAccount: getItem('active_account') ? Object.assign({}, {accountData: null}, getByPrefix('account_').filter(i => i.username === getItem('active_account'))[0]) : null,
   list: getByPrefix('account_')
 };
 
@@ -19,7 +20,14 @@ export default function accounts(state = defaultState, action) {
     case ACCOUNT_DELETED:
     case ACCOUNT_ACTIVATED: {
       return {
-        active: getItem('active_account'),
+        activeAccount: getItem('active_account') ? Object.assign({}, {accountData: null}, getByPrefix('account_').filter(i => i.username === getItem('active_account'))[0]) : null,
+        list: getByPrefix('account_')
+      };
+    }
+    case ACTIVE_ACCOUNT_DATA_UPDATED: {
+      const {accountData} = action.payload;
+      return {
+        activeAccount: Object.assign({}, {accountData}, getByPrefix('account_').filter(i => i.username === getItem('active_account'))[0]),
         list: getByPrefix('account_')
       };
     }

@@ -1,10 +1,12 @@
 import {encryptKey} from '../utils/crypto';
 import {setItem, removeItem} from '../helpers/storage';
+import {getAccounts} from '../backend/steem-client';
 
 export const ACCOUNT_ADDED = 'accounts/ACCOUNT_ADDED';
 export const ACCOUNT_ADDED_SC = 'accounts/ACCOUNT_SC_ADDED';
 export const ACCOUNT_DELETED = 'accounts/ACCOUNT_DELETED';
 export const ACCOUNT_ACTIVATED = 'accounts/ACCOUNT_ACTIVATED';
+export const ACTIVE_ACCOUNT_DATA_UPDATED = 'accounts/ACTIVE_ACCOUNT_DATA_UPDATED';
 
 export const addAccount = (username, keys) => (dispatch, getState) => {
   const {global} = getState();
@@ -61,6 +63,29 @@ export const deleteAccount = username => (dispatch, getState) => {
 export const activateAccount = username => dispatch => {
   setItem(`active_account`, username);
   dispatch(accountActivated(username));
+};
+
+export const updateActiveAccountData = (username) => (dispatch, getState) => {
+  const {accounts} = getState();
+  const {activeAccount} = accounts;
+
+  if (!activeAccount.username) {
+    return;
+  }
+
+  if (username !== activeAccount.username) {
+    return;
+  }
+
+  getAccounts([activeAccount.username]).then(resp => resp[0]).then(resp => {
+    dispatch({
+      type: ACTIVE_ACCOUNT_DATA_UPDATED,
+      payload: {accountData: resp}
+    });
+
+    return resp
+  }).catch(() => {
+  })
 };
 
 /* action creators */
