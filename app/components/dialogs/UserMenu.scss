@@ -13,6 +13,7 @@
     padding: 11px;
 
     .display-name {
+      color: $white;
       font-size: 16px;
       font-weight: 500;
       margin-right: 12px;
@@ -20,10 +21,6 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-
-      @include themify(day) {
-        color: $white;
-      }
     }
 
     @include themify(day) {
@@ -47,40 +44,49 @@
       font-weight: 500;
       margin: 0 0 0 16px;
       padding: 16px 0 16px 32px;
+      transition: 0.5s;
 
       @include themify(day) {
         color: $steel-grey;
+      }
+
+      @include themify(night) {
+        color: $white-five;
       }
 
       span {
         display: inline-flex;
       }
 
-      .item-icon {
+      .mi {
+        font-size: 18px;
+        line-height: 18px;
+        margin-right: 20px;
+
         @include themify(day) {
           color: $silver;
-        }
-
-        .mi {
-          font-size: 18px;
-          line-height: 18px;
-          margin-right: 20px;
         }
       }
 
       &:hover {
-        .item-icon {
+        .mi {
           @include themify(day) {
             color: $dark-sky-blue;
+          }
+
+          @include themify(night) {
+            color: $powder-blue;
           }
         }
 
         @include themify(day) {
+          background: $duck-egg-blue;
           color: $dark-sky-blue;
         }
 
-        @include themify(day) {
-          background: $duck-egg-blue;
+        @include themify(night) {
+          background: $metallic-blue;
+          color: $powder-blue;
         }
       }
     }

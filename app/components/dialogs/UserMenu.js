@@ -37,7 +37,6 @@ class UserMenu extends Component {
           <span className="display-name">{displayName}</span>
           <UserAvatar user={username} size="normal" />
         </div>
-
         <div className="user-menu-items">
           <a
             className="menu-item"
@@ -45,9 +44,7 @@ class UserMenu extends Component {
             role="none"
             onClick={this.menuItemClicked}
           >
-            <span className="item-icon">
-              <i className="mi">account_box</i>
-            </span>{' '}
+            <i className="mi">account_box</i>
             <FormattedMessage id="user-menu.profile" />
           </a>
           <a
@@ -56,9 +53,7 @@ class UserMenu extends Component {
             role="none"
             onClick={this.menuItemClicked}
           >
-            <span className="item-icon">
-              <i className="mi">star_border</i>
-            </span>{' '}
+            <i className="mi">star_border</i>
             <FormattedMessage id="user-menu.bookmarks" />
           </a>
           <a
@@ -67,9 +62,7 @@ class UserMenu extends Component {
             role="none"
             onClick={this.menuItemClicked}
           >
-            <span className="item-icon">
-              <i className="mi">favorite_border</i>
-            </span>
+            <i className="mi">favorite_border</i>
             <FormattedMessage id="user-menu.favorites" />
           </a>
           <a
@@ -78,9 +71,7 @@ class UserMenu extends Component {
             role="none"
             onClick={this.menuItemClicked}
           >
-            <span className="item-icon">
-              <i className="mi">insert_drive_file</i>
-            </span>
+            <i className="mi">insert_drive_file</i>
             <FormattedMessage id="user-menu.drafts" />
           </a>
           <a
@@ -89,9 +80,7 @@ class UserMenu extends Component {
             role="none"
             onClick={this.menuItemClicked}
           >
-            <span className="item-icon">
-              <i className="mi">today</i>
-            </span>
+            <i className="mi">today</i>
             <FormattedMessage id="user-menu.schedules" />
           </a>
           <a
@@ -100,9 +89,7 @@ class UserMenu extends Component {
             role="none"
             onClick={this.menuItemClicked}
           >
-            <span className="item-icon">
-              <i className="mi">image</i>
-            </span>
+            <i className="mi">image</i>
             <FormattedMessage id="user-menu.gallery" />
           </a>
           <a
@@ -111,9 +98,7 @@ class UserMenu extends Component {
             role="none"
             onClick={this.menuItemClicked}
           >
-            <span className="item-icon">
-              <i className="mi">supervisor_account</i>
-            </span>
+            <i className="mi">supervisor_account</i>
             <FormattedMessage id="user-menu.login-as" />
           </a>
           <a
@@ -122,9 +107,7 @@ class UserMenu extends Component {
             role="none"
             onClick={this.menuItemClicked}
           >
-            <span className="item-icon">
-              <i className="mi">exit_to_app</i>
-            </span>
+            <i className="mi">exit_to_app</i>
             <FormattedMessage id="user-menu.logout" />
           </a>
         </div>
