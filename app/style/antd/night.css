@@ -20105,3 +20105,6 @@ li.ant-select-tree-treenode-disabled
   align-items: center;
   justify-content: center;
 }
+.ant-drawer-body {
+  padding: 0;
+}

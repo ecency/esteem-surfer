@@ -1,8 +1,8 @@
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import EntryIndex from '../components/EntryIndex';
-import {fetchEntries, invalidateEntries} from '../actions/entries';
-import {fetchTrendingTags} from '../actions/trending-tags';
+import { fetchEntries, invalidateEntries } from '../actions/entries';
+import { fetchTrendingTags } from '../actions/trending-tags';
 import {
   changeTheme,
   changeListStyle,
@@ -11,7 +11,14 @@ import {
   changePushNotify,
   changeServer
 } from '../actions/global';
-import {addAccount, addAccountSc, deleteAccount, activateAccount, updateActiveAccountData} from '../actions/accounts'
+import {
+  addAccount,
+  addAccountSc,
+  deleteAccount,
+  activateAccount,
+  updateActiveAccountData,
+  deactivateAccount
+} from '../actions/accounts';
 
 function mapStateToProps(state) {
   return {
@@ -25,21 +32,25 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      ...bindActionCreators({fetchEntries, invalidateEntries}, dispatch),
-      ...bindActionCreators({fetchTrendingTags}, dispatch),
-      ...bindActionCreators({changeTheme}, dispatch),
-      ...bindActionCreators({changeListStyle}, dispatch),
-      ...bindActionCreators({changeCurrency}, dispatch),
-      ...bindActionCreators({changeLocale}, dispatch),
-      ...bindActionCreators({changePushNotify}, dispatch),
-      ...bindActionCreators({changeServer}, dispatch),
-      ...bindActionCreators({
-        addAccount,
-        addAccountSc,
-        deleteAccount,
-        activateAccount,
-        updateActiveAccountData
-      }, dispatch)
+      ...bindActionCreators({ fetchEntries, invalidateEntries }, dispatch),
+      ...bindActionCreators({ fetchTrendingTags }, dispatch),
+      ...bindActionCreators({ changeTheme }, dispatch),
+      ...bindActionCreators({ changeListStyle }, dispatch),
+      ...bindActionCreators({ changeCurrency }, dispatch),
+      ...bindActionCreators({ changeLocale }, dispatch),
+      ...bindActionCreators({ changePushNotify }, dispatch),
+      ...bindActionCreators({ changeServer }, dispatch),
+      ...bindActionCreators(
+        {
+          addAccount,
+          addAccountSc,
+          deleteAccount,
+          activateAccount,
+          updateActiveAccountData,
+          deactivateAccount
+        },
+        dispatch
+      )
     }
   };
 }

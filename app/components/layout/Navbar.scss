@@ -155,8 +155,8 @@
         }
 
         &.disabled {
-          pointer-events: none;
           opacity: 0.4;
+          pointer-events: none;
         }
       }
 
@@ -229,6 +229,23 @@
         color: $white;
         display: flex;
         font-size: 32px;
+      }
+
+      .user-menu-trigger {
+        align-items: center;
+        border-radius: 50%;
+        display: flex;
+        height: 32px;
+        justify-content: center;
+        width: 32px;
+
+        @include themify(day) {
+          background: $dark-sky-blue;
+        }
+
+        @include themify(night) {
+          background: $dusky-blue;
+        }
       }
 
       &.logged-in {

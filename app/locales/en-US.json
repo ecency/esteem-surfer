@@ -76,5 +76,15 @@
     "invalidate": "Oh, I forgot it...",
     "invalidate-confirm": "Are you really want to invalidate pin code?",
     "invalidated": "Pin code invalidated"
+  },
+  "user-menu": {
+    "profile": "Profile",
+    "bookmarks": "Bookmarks",
+    "favorites": "Favorites",
+    "drafts": "Drafts",
+    "schedules": "Schedules",
+    "gallery": "Gallery",
+    "login-as": "Login As",
+    "logout": "Logout"
   }
 }
