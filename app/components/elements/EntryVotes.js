@@ -51,21 +51,19 @@ class EntryVotes extends Component {
 
     this.state = {
       modalVisible: false,
-      hidePopover: false,
-      popoverVisible: false
+      enabled: false
     };
   }
 
-  popoverVisibleChanged(e) {
+  enable = () => {
     this.setState({
-      popoverVisible: e
+      enabled: true
     });
-  }
+  };
 
   showModal = () => {
     this.setState({
-      modalVisible: true,
-      hidePopover: true
+      modalVisible: true
     });
   };
 
@@ -77,118 +75,116 @@ class EntryVotes extends Component {
 
   afterModalClosed = () => {
     this.setState({
-      hidePopover: false
+      enabled: false
     });
   };
 
   render() {
     const { entry, children } = this.props;
-    const { hidePopover, modalVisible, popoverVisible } = this.state;
+    if (entry.active_votes.length === 0) {
+      // When content has no votes
+      return children;
+    }
+
+    const { modalVisible, enabled } = this.state;
 
     let popoverProps = {};
     let votes = [];
 
-    if (popoverVisible) {
+    if (enabled) {
       votes = prepareVotes(entry);
-      const popoverContent = (
-        <EntryVotesContent {...this.props} votes={votes} />
-      );
 
-      popoverProps = { content: popoverContent };
-      if (hidePopover) {
+      if (!modalVisible) {
+        const popoverContent = (
+          <EntryVotesContent {...this.props} votes={votes} />
+        );
+        popoverProps = { content: popoverContent };
+      } else {
         popoverProps.visible = false;
       }
     }
 
-    if (entry.active_votes.length > 0) {
-      const modalTableColumns = [
-        {
-          title: <FormattedMessage id="entry-votes.author" />,
-          dataIndex: 'voter',
-          key: 'voter',
-          width: 220,
-          sorter: (a, b) => a.reputation - b.reputation,
-          render: (text, record) => (
-            <span>
-              {text}{' '}
-              <Badge
-                count={record.reputation}
-                style={{
-                  backgroundColor: '#fff',
-                  color: '#999',
-                  boxShadow: '0 0 0 1px #d9d9d9 inset'
-                }}
-              />
-            </span>
-          )
-        },
-        {
-          title: <FormattedMessage id="entry-votes.reward" />,
-          dataIndex: 'reward',
-          key: 'reward',
-          align: 'center',
-          width: 150,
-          defaultSortOrder: 'descend',
-          sorter: (a, b) => a.reward - b.reward,
-          render: text => <FormattedCurrency {...this.props} value={text} />
-        },
-        {
-          title: <FormattedMessage id="entry-votes.percent" />,
-          dataIndex: 'percent',
-          key: 'percent',
-          align: 'center',
-          width: 150,
-          sorter: (a, b) => a.percent - b.percent,
-          render: text => `% ${text.toFixed(1)}`
-        },
-        {
-          title: <FormattedMessage id="entry-votes.time" />,
-          dataIndex: 'time',
-          key: 'time',
-          align: 'center',
-          sorter: (a, b) => a.time - b.time,
-          render: text => <FormattedRelative value={text} />
-        }
-      ];
+    const clonedChildren = React.cloneElement(children, {
+      onClick: this.showModal,
+      onMouseEnter: this.enable
+    });
 
-      return (
-        <Popover
-          onVisibleChange={e => {
-            this.popoverVisibleChanged(e);
-          }}
-          {...popoverProps}
-        >
-          <span role="none" onClick={this.showModal}>
-            {children}
-          </span>
-
-          <Modal
-            visible={modalVisible}
-            onCancel={this.handleModalCancel}
-            afterClose={this.afterModalClosed}
-            footer={false}
-            width="80%"
-            title={
-              <FormattedMessage
-                id="entry-votes.modal-title"
-                values={{ n: votes.length }}
-              />
-            }
-            centered
-          >
-            <Table
-              dataSource={votes}
-              columns={modalTableColumns}
-              scroll={{ y: 300 }}
-              rowKey="voter"
+    const modalTableColumns = [
+      {
+        title: <FormattedMessage id="entry-votes.author" />,
+        dataIndex: 'voter',
+        key: 'voter',
+        width: 220,
+        sorter: (a, b) => a.reputation - b.reputation,
+        render: (text, record) => (
+          <span>
+            {text}{' '}
+            <Badge
+              count={record.reputation}
+              style={{
+                backgroundColor: '#fff',
+                color: '#999',
+                boxShadow: '0 0 0 1px #d9d9d9 inset'
+              }}
             />
-          </Modal>
-        </Popover>
-      );
-    }
+          </span>
+        )
+      },
+      {
+        title: <FormattedMessage id="entry-votes.reward" />,
+        dataIndex: 'reward',
+        key: 'reward',
+        align: 'center',
+        width: 150,
+        defaultSortOrder: 'descend',
+        sorter: (a, b) => a.reward - b.reward,
+        render: text => <FormattedCurrency {...this.props} value={text} />
+      },
+      {
+        title: <FormattedMessage id="entry-votes.percent" />,
+        dataIndex: 'percent',
+        key: 'percent',
+        align: 'center',
+        width: 150,
+        sorter: (a, b) => a.percent - b.percent,
+        render: text => `% ${text.toFixed(1)}`
+      },
+      {
+        title: <FormattedMessage id="entry-votes.time" />,
+        dataIndex: 'time',
+        key: 'time',
+        align: 'center',
+        sorter: (a, b) => a.time - b.time,
+        render: text => <FormattedRelative value={text} />
+      }
+    ];
 
-    // When content has no votes
-    return children;
+    return (
+      <Popover {...popoverProps}>
+        {clonedChildren}
+        <Modal
+          visible={modalVisible}
+          onCancel={this.handleModalCancel}
+          afterClose={this.afterModalClosed}
+          footer={false}
+          width="80%"
+          centered
+          title={
+            <FormattedMessage
+              id="entry-votes.modal-title"
+              values={{ n: votes.length }}
+            />
+          }
+        >
+          <Table
+            dataSource={votes}
+            columns={modalTableColumns}
+            scroll={{ y: 300 }}
+            rowKey="voter"
+          />
+        </Modal>
+      </Popover>
+    );
   }
 }
 
