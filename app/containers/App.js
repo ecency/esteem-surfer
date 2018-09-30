@@ -63,9 +63,7 @@ class App extends React.Component {
 
 
     this.refreshActiveAccount();
-    setInterval(() => {
-      this.refreshActiveAccount();
-    }, 60000);
+    setInterval(this.refreshActiveAccount, 60000);
   }
 
   refreshActiveAccount = () => {

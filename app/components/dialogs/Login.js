@@ -15,6 +15,7 @@ import {getAccounts} from '../../backend/steem-client';
 
 
 import {scLogin} from '../../helpers/sc';
+import UserAvatar from "../elements/UserAvatar";
 
 
 class Settings extends Component {
@@ -26,11 +27,17 @@ class Settings extends Component {
     }
   }
 
+  switchToAccount = (username) => {
+    const {actions, onLogin} = this.props;
+    actions.activateAccount(username);
+    onLogin();
+  };
+
   steemConnectLogin = () => {
     scLogin().then((resp) => {
-      const {actions} = this.props;
+      const {actions, onLogin} = this.props;
       actions.addAccountSc(resp.username, resp.access_token, resp.expires_in);
-
+      onLogin();
       return resp
     }).catch(() => {
 
@@ -143,18 +150,41 @@ class Settings extends Component {
 
 
   render() {
-    const {global, intl} = this.props;
+    const {global, accounts, intl} = this.props;
     const {processing} = this.state;
+
+    const {list: accountList} = accounts;
 
 
     return (
       <div className="login-dialog-content">
-
         <div className="login-header">
           <div className="logo">
             <img src={logo}/>
           </div>
+
+          <div className="login-header-text"> Welcome back!</div>
+
         </div>
+
+        {accountList.length > 0 &&
+        <div className="account-list">
+          <div className="account-list-header">Login As</div>
+          <div className="account-list-body">
+            {accountList.map((account) => (
+              <div key={account.username} className="account-list-item" onClick={() => {
+                this.switchToAccount(account.username)
+              }}>
+                <UserAvatar user={account.username} size="normal"/> <span
+                className="username">@{account.username}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        }
+
+        {accountList.length > 0 && <Divider>OR</Divider>}
+
         <div className="login-form">
           <p><FormattedMessage id="login.traditional-login-desc"/></p>
           <p>
@@ -195,7 +225,10 @@ Settings.propTypes = {
   }).isRequired,
   onLogin: PropTypes.func.isRequired,
   global: PropTypes.shape({}).isRequired,
-  accounts: PropTypes.shape({}).isRequired,
+  accounts: PropTypes.shape({
+    activeAccount: PropTypes.instanceOf(Object),
+    list: PropTypes.arrayOf(PropTypes.object).isRequired
+  }).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };
 

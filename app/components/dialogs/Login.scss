@@ -5,10 +5,76 @@
 
   .login-header {
     .logo {
+      margin: 0 auto 10px auto;
       width: 100px;
-      margin: 0 auto 20px auto;
       img {
         width: 100%;
+      }
+    }
+
+    .login-header-text {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  }
+
+  .account-list {
+    .account-list-header {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      text-align: center;
+
+      @include themify(day) {
+        color: $steel-grey;
+      }
+
+      @include themify(night) {
+        color: $metallic-blue;
+      }
+    }
+
+    .account-list-body {
+      .account-list-item {
+        align-items: center;
+        border-radius: 25px;
+        cursor: pointer;
+        display: flex;
+        font-size: 16px;
+        line-height: 16px;
+        margin-bottom: 10px;
+        padding: 10px;
+        transition: 0.5s;
+
+        @include themify(day) {
+          background: $duck-egg-blue;
+          color: $dark-sky-blue;
+        }
+
+        @include themify(night) {
+          background: $metallic-blue;
+          color: $powder-blue;
+        }
+
+        &:hover {
+          @include themify(day) {
+            background: lighten($dark-sky-blue, 30);
+          }
+
+          @include themify(night) {
+            background: darken($metallic-blue, 16);
+          }
+        }
+
+        .user-avatar {
+          margin-right: 10px;
+        }
+
+        .username {
+          font-weight: 500;
+        }
       }
     }
   }
