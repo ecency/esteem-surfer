@@ -21,17 +21,16 @@ class UserMenu extends Component {
   render() {
     const {accounts} = this.props;
     const {activeAccount} = accounts;
-    const {accountData} = activeAccount;
     const {username} = activeAccount;
+    const {accountData} = activeAccount;
 
     let displayName;
     try {
       const jsonMeta = JSON.parse(accountData.json_metadata);
-      displayName = jsonMeta.profile.name || activeAccount.username;
+      displayName = jsonMeta.profile.name || username;
     } catch (e) {
-      displayName = activeAccount.username;
+      displayName = username;
     }
-
 
 
     return (
