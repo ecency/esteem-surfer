@@ -1,23 +1,19 @@
-import React, {Component} from 'react';
-
+import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 
-import {auth} from 'steem';
+import { auth } from 'steem';
 
-import {Button, Divider, Input, message} from 'antd';
-import {FormattedHTMLMessage, FormattedMessage, injectIntl} from 'react-intl';
+import { Button, Divider, Input, message } from 'antd';
+import { FormattedHTMLMessage, FormattedMessage, injectIntl } from 'react-intl';
 
 import scLogo from '../../img/steem-connect.svg';
 import logo from '../../img/logo-big.png';
 
-import {getAccounts} from '../../backend/steem-client';
+import { getAccounts } from '../../backend/steem-client';
 
-
-import {scLogin} from '../../helpers/sc';
-import UserAvatar from "../elements/UserAvatar";
-import {activateAccount, updateActiveAccount} from "../../actions/active-account";
-
+import { scLogin } from '../../helpers/sc';
+import UserAvatar from '../elements/UserAvatar';
 
 class Settings extends Component {
   constructor(props) {
@@ -25,191 +21,215 @@ class Settings extends Component {
 
     this.state = {
       processing: false
-    }
+    };
   }
 
-  switchToAccount = (username) => {
-    const {actions, onSuccess} = this.props;
+  switchToAccount = username => {
+    const { actions, onSuccess } = this.props;
     actions.logIn(username);
     onSuccess();
   };
 
-  steemConnectLogin = () => {
-    scLogin().then((resp) => {
-      const {actions, onSuccess} = this.props;
-      actions.addAccountSc(resp.username, resp.access_token, resp.expires_in);
-      actions.logIn(resp.username);
-      onSuccess();
-      return resp
-    }).catch(() => {
+  doScLogin = async () => {
+    let resp;
+    try {
+      resp = await scLogin();
+      console.log(resp);
+    } catch (e) {
+      return;
+    }
 
-    })
+    const { actions, onSuccess } = this.props;
+    actions.addAccountSc(resp.username, resp.access_token, resp.expires_in);
+    actions.logIn(resp.username);
+    onSuccess();
   };
 
-  async doLogin() {
-    const {intl} = this.props;
+  doLogin = async () => {
+    const { intl } = this.props;
 
     const username = document.querySelector('#txt-username').value.trim();
     const code = document.querySelector('#txt-code').value.trim();
 
+    // Form validation
     if (username === '' || code === '') {
-      message.error(
-        intl.formatMessage({id: 'login.error-fields-required'})
-      );
+      message.error(intl.formatMessage({ id: 'login.error-fields-required' }));
       return false;
     }
 
     // Warn user if entered a public key
     if (auth.isPubkey(code)) {
-      message.error(
-        intl.formatMessage({id: 'login.error-public-key'})
-      );
+      message.error(intl.formatMessage({ id: 'login.error-public-key' }));
       return false;
     }
 
     // True if the code entered is password else false
-    let codeIsPassword = !auth.isWif(code);
+    const codeIsPassword = !auth.isWif(code);
     let accounts;
 
-    this.setState({processing: true});
+    this.setState({ processing: true });
+
     try {
       accounts = await getAccounts([username]);
     } catch (err) {
-      message.error(
-        intl.formatMessage({id: 'login.error-user-fetch'})
-      );
-      return
+      message.error(intl.formatMessage({ id: 'login.error-user-fetch' }));
+      return;
     } finally {
-      this.setState({processing: false});
+      this.setState({ processing: false });
     }
 
     // User not found
     if (accounts && accounts.length === 0) {
-      message.error(
-        intl.formatMessage({id: 'login.error-user-not-found'})
-      );
+      message.error(intl.formatMessage({ id: 'login.error-user-not-found' }));
       return false;
     }
 
-    let rUser = accounts[0];
+    // Account data
+    const account = accounts[0];
 
     // Public keys of user
-    let rUserPublicKeys = {
-      active: rUser['active'].key_auths.map(x => x[0]),
-      memo: [rUser['memo_key']],
-      owner: rUser['owner'].key_auths.map(x => x[0]),
-      posting: rUser['posting'].key_auths.map(x => x[0])
+    const userPublicKeys = {
+      active: account.active.key_auths.map(x => x[0]),
+      memo: [account.memo_key],
+      owner: account.owner.key_auths.map(x => x[0]),
+      posting: account.posting.key_auths.map(x => x[0])
     };
 
     let loginFlag = false;
-    const resultKeys = {active: null, memo: null, owner: null, posting: null};
+    const resultKeys = { active: null, memo: null, owner: null, posting: null };
 
     if (codeIsPassword) {
       // With master password
 
       // Get all private keys by username and password
-      const username = rUser.name;
-      const userKeys = auth.getPrivateKeys(username, code);
+      const userPrivateKeys = auth.getPrivateKeys(account.name, code);
 
-      // Compare remote user keys and generated keys
-      for (let k  in rUserPublicKeys) {
-        const k2 = `${k}Pubkey`;
+      Object.keys(userPublicKeys).map(k => {
+        const v = userPublicKeys[k];
+        const v2 = userPrivateKeys[`${k}Pubkey`];
 
-        const v = rUserPublicKeys[k];
-        const v2 = userKeys[k2];
-
-        // Append matched keys to result dict
         if (v.includes(v2)) {
+          resultKeys[k] = userPrivateKeys[k];
           loginFlag = true;
-          resultKeys[k] = userKeys[k];
         }
-      }
+
+        return null;
+      });
     } else {
       // With wif
-      let publicWif = auth.wifToPublic(code);
+      const publicWif = auth.wifToPublic(code);
 
-      for (let k  in rUserPublicKeys) {
-        let v = rUserPublicKeys[k];
+      Object.keys(userPublicKeys).map(k => {
+        const v = userPublicKeys[k];
         if (v.includes(publicWif)) {
           loginFlag = true;
           resultKeys[k] = code;
-          break;
         }
-      }
+
+        return null;
+      });
     }
 
     if (!loginFlag) {
-      message.error(
-        intl.formatMessage({id: 'login.error-authenticate'})
-      );
+      message.error(intl.formatMessage({ id: 'login.error-authenticate' }));
       return false;
     }
 
-    const {actions, onSuccess} = this.props;
+    const { actions, onSuccess } = this.props;
     actions.addAccount(username, resultKeys);
     actions.logIn(username);
     onSuccess();
-  }
-
+  };
 
   render() {
-    const {global, accounts, intl} = this.props;
-    const {processing} = this.state;
-
+    const { accounts, intl } = this.props;
+    const { processing } = this.state;
 
     return (
       <div className="login-dialog-content">
         <div className="login-header">
           <div className="logo">
-            <img src={logo}/>
+            <img src={logo} alt="logo" />
           </div>
-
           <div className="login-header-text"> Welcome back!</div>
-
         </div>
 
-        {accounts.length > 0 &&
-        <div className="account-list">
-          <div className="account-list-header">Login As</div>
-          <div className="account-list-body">
-            {accounts.map((account) => (
-              <div key={account.username} className="account-list-item" onClick={() => {
-                this.switchToAccount(account.username)
-              }}>
-                <UserAvatar user={account.username} size="normal"/> <span
-                className="username">@{account.username}</span>
-              </div>
-            ))}
+        {accounts.length > 0 && (
+          <div className="account-list">
+            <div className="account-list-header">Login As</div>
+            <div className="account-list-body">
+              {accounts.map(account => (
+                <div
+                  key={account.username}
+                  className="account-list-item"
+                  role="none"
+                  onClick={() => {
+                    this.switchToAccount(account.username);
+                  }}
+                >
+                  <UserAvatar user={account.username} size="normal" />{' '}
+                  <span className="username">@{account.username}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-        }
+        )}
 
-        {accounts.length > 0 && <Divider><FormattedMessage id="login.divider-text"/></Divider>}
+        {accounts.length > 0 && (
+          <Divider>
+            <FormattedMessage id="login.divider-text" />
+          </Divider>
+        )}
 
         <div className="login-form">
-          <p className="form-text"><FormattedMessage id="login.traditional-login-desc"/></p>
-          <p>
-            <Input type="text" autoFocus id="txt-username"
-                   placeholder={intl.formatMessage(
-                     {id: 'login.username-placeholder'}
-                   )}/>
+          <p className="form-text">
+            <FormattedMessage id="login.traditional-login-desc" />
           </p>
           <p>
-            <Input type="password" id="txt-code" placeholder={intl.formatMessage(
-              {id: 'login.password-placeholder'}
-            )}/>
+            <Input
+              type="text"
+              autoFocus
+              id="txt-username"
+              placeholder={intl.formatMessage({
+                id: 'login.username-placeholder'
+              })}
+            />
           </p>
           <p>
-            <Button size="large" htmlType="button" type="primary" block disabled={processing} onClick={() => {
-              this.doLogin()
-            }}><FormattedMessage id="login.login"/></Button>
+            <Input
+              type="password"
+              id="txt-code"
+              placeholder={intl.formatMessage({
+                id: 'login.password-placeholder'
+              })}
+            />
           </p>
-          <p><FormattedHTMLMessage id="login.create-account-text"/></p>
+          <p>
+            <Button
+              size="large"
+              htmlType="button"
+              type="primary"
+              block
+              disabled={processing}
+              onClick={this.doLogin}
+            >
+              <FormattedMessage id="login.login" />
+            </Button>
+          </p>
+          <p>
+            <FormattedHTMLMessage id="login.create-account-text" />
+          </p>
         </div>
-        <Divider><FormattedMessage id="login.divider-text"/></Divider>
-        <div className="login-sc" onClick={this.steemConnectLogin}>
-          <p><FormattedMessage id="login.login-with-sc"/></p>
-          <div className="logo"><img src={scLogo}/></div>
+        <Divider>
+          <FormattedMessage id="login.divider-text" />
+        </Divider>
+        <div className="login-sc" role="none" onClick={this.doScLogin}>
+          <p>
+            <FormattedMessage id="login.login-with-sc" />
+          </p>
+          <div className="logo">
+            <img src={scLogo} alt="Steem Connect" />
+          </div>
         </div>
       </div>
     );
@@ -224,7 +244,6 @@ Settings.propTypes = {
     updateActiveAccount: PropTypes.func.isRequired
   }).isRequired,
   onSuccess: PropTypes.func.isRequired,
-  global: PropTypes.shape({}).isRequired,
   accounts: PropTypes.arrayOf(PropTypes.object).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };
