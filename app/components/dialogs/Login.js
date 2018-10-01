@@ -29,17 +29,17 @@ class Settings extends Component {
   }
 
   switchToAccount = (username) => {
-    const {actions, onLogin} = this.props;
+    const {actions, onSuccess} = this.props;
     actions.logIn(username);
-    onLogin();
+    onSuccess();
   };
 
   steemConnectLogin = () => {
     scLogin().then((resp) => {
-      const {actions, onLogin} = this.props;
+      const {actions, onSuccess} = this.props;
       actions.addAccountSc(resp.username, resp.access_token, resp.expires_in);
       actions.logIn(resp.username);
-      onLogin();
+      onSuccess();
       return resp
     }).catch(() => {
 
@@ -145,10 +145,10 @@ class Settings extends Component {
       return false;
     }
 
-    const {actions, onLogin} = this.props;
+    const {actions, onSuccess} = this.props;
     actions.addAccount(username, resultKeys);
-    actions.updateActiveAccountData(username);
-    onLogin();
+    actions.logIn(username);
+    onSuccess();
   }
 
 
@@ -184,19 +184,19 @@ class Settings extends Component {
         </div>
         }
 
-        {accounts.length > 0 && <Divider>OR</Divider>}
+        {accounts.length > 0 && <Divider><FormattedMessage id="login.divider-text"/></Divider>}
 
         <div className="login-form">
-          <p><FormattedMessage id="login.traditional-login-desc"/></p>
+          <p className="form-text"><FormattedMessage id="login.traditional-login-desc"/></p>
           <p>
-            <Input size="large" type="text" autoFocus id="txt-username" addonBefore={'@'}
+            <Input type="text" autoFocus id="txt-username"
                    placeholder={intl.formatMessage(
-                     {id: 'login.username'}
+                     {id: 'login.username-placeholder'}
                    )}/>
           </p>
           <p>
-            <Input size="large" type="password" id="txt-code" placeholder={intl.formatMessage(
-              {id: 'login.password'}
+            <Input type="password" id="txt-code" placeholder={intl.formatMessage(
+              {id: 'login.password-placeholder'}
             )}/>
           </p>
           <p>
@@ -204,10 +204,9 @@ class Settings extends Component {
               this.doLogin()
             }}><FormattedMessage id="login.login"/></Button>
           </p>
-
           <p><FormattedHTMLMessage id="login.create-account-text"/></p>
         </div>
-        <Divider>OR</Divider>
+        <Divider><FormattedMessage id="login.divider-text"/></Divider>
         <div className="login-sc" onClick={this.steemConnectLogin}>
           <p><FormattedMessage id="login.login-with-sc"/></p>
           <div className="logo"><img src={scLogo}/></div>
@@ -224,7 +223,7 @@ Settings.propTypes = {
     logIn: PropTypes.func.isRequired,
     updateActiveAccount: PropTypes.func.isRequired
   }).isRequired,
-  onLogin: PropTypes.func.isRequired,
+  onSuccess: PropTypes.func.isRequired,
   global: PropTypes.shape({}).isRequired,
   accounts: PropTypes.arrayOf(PropTypes.object).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired

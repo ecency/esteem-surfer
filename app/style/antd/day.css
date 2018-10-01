@@ -20106,3 +20106,6 @@ li.ant-select-tree-treenode-disabled
 .ant-drawer-body {
   padding: 0;
 }
+.ant-divider-inner-text {
+  color: #cecece;
+}

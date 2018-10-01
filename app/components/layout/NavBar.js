@@ -300,7 +300,7 @@ class NavBar extends Component {
           destroyOnClose
           centered
         >
-          <Login {...this.props} onLogin={this.onLoginSuccess}/>
+          <Login {...this.props} onSuccess={this.onLoginSuccess}/>
         </Modal>
       </div>
     );
