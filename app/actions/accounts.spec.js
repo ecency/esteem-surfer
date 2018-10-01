@@ -1,5 +1,4 @@
 /* eslint-disable */
-import { spy } from 'sinon';
 import * as actions from './accounts';
 
 describe('accounts actions', () => {

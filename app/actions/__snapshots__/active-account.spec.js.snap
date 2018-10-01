@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`active account actions (1) loggedIn action creator 1`] = `
+Object {
+  "payload": Object {
+    "username": "foo",
+  },
+  "type": "active-account/LOGGED_IN",
+}
+`;
+
+exports[`active account actions (2) loggedOut action creator 1`] = `
+Object {
+  "payload": Object {},
+  "type": "active-account/LOGGED_OUT",
+}
+`;
+
+exports[`active account actions (3) updated action creator 1`] = `
+Object {
+  "payload": Object {
+    "accountData": Object {
+      "id": 12,
+      "name": "foo",
+    },
+    "username": "foo",
+  },
+  "type": "active-account/UPDATED",
+}
+`;
