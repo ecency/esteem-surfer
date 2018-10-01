@@ -15,7 +15,7 @@ import { getAccounts } from '../../backend/steem-client';
 import { scLogin } from '../../helpers/sc';
 import UserAvatar from '../elements/UserAvatar';
 
-class Settings extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
@@ -236,7 +236,7 @@ class Settings extends Component {
   }
 }
 
-Settings.propTypes = {
+Login.propTypes = {
   actions: PropTypes.shape({
     addAccount: PropTypes.func.isRequired,
     addAccountSc: PropTypes.func.isRequired,
@@ -248,4 +248,4 @@ Settings.propTypes = {
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
-export default injectIntl(Settings);
+export default injectIntl(Login);
