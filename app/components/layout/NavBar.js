@@ -61,13 +61,6 @@ class NavBar extends Component {
     this.setState({
       loginModalVisible: false
     });
-
-    setTimeout(() => {
-      const {actions, accounts} = this.props;
-      const {activeAccount} = accounts;
-
-      actions.updateActiveAccountData(activeAccount.username);
-    }, 100);
   };
 
   toggleMenu = () => {
@@ -136,10 +129,9 @@ class NavBar extends Component {
       bookmarkFn,
       bookmarkFlag,
       postBtnActive,
-      accounts
+      activeAccount
     } = this.props;
 
-    const {activeAccount} = accounts;
 
     const {settingsModalVisible, loginModalVisible, menuVisible} = this.state;
 
@@ -316,6 +308,8 @@ class NavBar extends Component {
 }
 
 NavBar.defaultProps = {
+  activeAccount: null,
+
   favoriteFn: undefined,
   favoriteFlag: false,
 
@@ -328,14 +322,11 @@ NavBar.defaultProps = {
 NavBar.propTypes = {
   actions: PropTypes.shape({
     changeTheme: PropTypes.func.isRequired,
-    updateActiveAccountData: PropTypes.func.isRequired
   }).isRequired,
   global: PropTypes.shape({
     selectedFilter: PropTypes.string.isRequired
   }).isRequired,
-  accounts: PropTypes.shape({
-    activeAccount: PropTypes.instanceOf(Object)
-  }).isRequired,
+  activeAccount: PropTypes.instanceOf(Object),
   history: PropTypes.shape({
     goForward: PropTypes.func.isRequired,
     goBack: PropTypes.func.isRequired,

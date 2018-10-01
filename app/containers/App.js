@@ -11,7 +11,7 @@ import tr from 'react-intl/locale-data/tr';
 import {Modal} from 'antd';
 
 import {exposePin, wipePin} from '../actions/global';
-import {updateActiveAccountData} from '../actions/accounts'
+import {updateActiveAccount} from '../actions/active-account'
 
 import PinCreate from '../components/dialogs/PinCreate';
 import PinConfirm from '../components/dialogs/PinConfirm';
@@ -66,16 +66,17 @@ class App extends React.Component {
     setInterval(this.refreshActiveAccount, 60000);
   }
 
+
   refreshActiveAccount = () => {
-    const {accounts, actions} = this.props;
-    const {activeAccount} = accounts;
+    const {activeAccount, actions} = this.props;
 
     if (!activeAccount) {
       return;
     }
 
-    actions.updateActiveAccountData(activeAccount.username);
+    actions.updateActiveAccount(activeAccount.username);
   };
+
 
   onCreatePinSuccess = (code, hashedCode) => {
     const {actions} = this.props;
@@ -147,15 +148,18 @@ class App extends React.Component {
   }
 }
 
+App.defaultProps = {
+  activeAccount: null
+};
+
+
 App.propTypes = {
   children: PropTypes.element.isRequired,
   global: PropTypes.shape({
     locale: PropTypes.string.isRequired,
     pin: PropTypes.string
   }).isRequired,
-  accounts: PropTypes.shape({
-    activeAccount: PropTypes.instanceOf(Object)
-  }).isRequired,
+  activeAccount: PropTypes.instanceOf(Object),
   actions: PropTypes.shape({
     exposePin: PropTypes.func.isRequired,
     wipePin: PropTypes.func.isRequired
@@ -165,7 +169,7 @@ App.propTypes = {
 function mapStateToProps(state) {
   return {
     global: state.global,
-    accounts: state.accounts
+    activeAccount: state.activeAccount
   };
 }
 
@@ -174,7 +178,7 @@ function mapDispatchToProps(dispatch) {
     actions: {
       ...bindActionCreators({exposePin}, dispatch),
       ...bindActionCreators({wipePin}, dispatch),
-      ...bindActionCreators({updateActiveAccountData}, dispatch)
+      ...bindActionCreators({updateActiveAccount}, dispatch)
     }
   };
 }

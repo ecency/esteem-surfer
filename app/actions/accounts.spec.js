@@ -7,11 +7,11 @@ describe('accounts actions', () => {
     expect(actions.accountAdded('foo')).toMatchSnapshot();
   });
 
-  it('(2) accountDeleted action creator', () => {
-    expect(actions.accountDeleted('foo')).toMatchSnapshot();
+  it('(1) accountAddedSc action creator', () => {
+    expect(actions.accountAddedSc('foo')).toMatchSnapshot();
   });
 
-  it('(3) accountActivated action creator', () => {
-    expect(actions.accountActivated('foo')).toMatchSnapshot();
+  it('(2) accountDeleted action creator', () => {
+    expect(actions.accountDeleted('foo')).toMatchSnapshot();
   });
 });

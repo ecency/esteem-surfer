@@ -8,6 +8,7 @@ import * as entriesActions from '../actions/entries';
 import * as trendingTagsActions from '../actions/trending-tags';
 import * as globalActions from '../actions/global';
 import * as accountsActions from '../actions/accounts'
+import * as activeAccountActions from '../actions/active-account';
 
 const history = createHistory();
 
@@ -40,6 +41,7 @@ const configureStore = (initialState = {}) => {
     ...trendingTagsActions,
     ...globalActions,
     ...accountsActions,
+    ...activeAccountActions,
     ...routerActions
   };
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose

@@ -9,20 +9,20 @@ Object {
 }
 `;
 
+exports[`accounts actions (1) accountAddedSc action creator 1`] = `
+Object {
+  "payload": Object {
+    "username": "foo",
+  },
+  "type": "accounts/ACCOUNT_SC_ADDED",
+}
+`;
+
 exports[`accounts actions (2) accountDeleted action creator 1`] = `
 Object {
   "payload": Object {
     "username": "foo",
   },
   "type": "accounts/ACCOUNT_DELETED",
-}
-`;
-
-exports[`accounts actions (3) accountActivated action creator 1`] = `
-Object {
-  "payload": Object {
-    "username": "foo",
-  },
-  "type": "accounts/ACCOUNT_ACTIVATED",
 }
 `;

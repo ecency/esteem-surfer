@@ -16,6 +16,7 @@ import {getAccounts} from '../../backend/steem-client';
 
 import {scLogin} from '../../helpers/sc';
 import UserAvatar from "../elements/UserAvatar";
+import {activateAccount, updateActiveAccount} from "../../actions/active-account";
 
 
 class Settings extends Component {
@@ -29,7 +30,7 @@ class Settings extends Component {
 
   switchToAccount = (username) => {
     const {actions, onLogin} = this.props;
-    actions.activateAccount(username);
+    actions.logIn(username);
     onLogin();
   };
 
@@ -37,6 +38,7 @@ class Settings extends Component {
     scLogin().then((resp) => {
       const {actions, onLogin} = this.props;
       actions.addAccountSc(resp.username, resp.access_token, resp.expires_in);
+      actions.logIn(resp.username);
       onLogin();
       return resp
     }).catch(() => {
@@ -145,6 +147,7 @@ class Settings extends Component {
 
     const {actions, onLogin} = this.props;
     actions.addAccount(username, resultKeys);
+    actions.updateActiveAccountData(username);
     onLogin();
   }
 
@@ -152,8 +155,6 @@ class Settings extends Component {
   render() {
     const {global, accounts, intl} = this.props;
     const {processing} = this.state;
-
-    const {list: accountList} = accounts;
 
 
     return (
@@ -167,11 +168,11 @@ class Settings extends Component {
 
         </div>
 
-        {accountList.length > 0 &&
+        {accounts.length > 0 &&
         <div className="account-list">
           <div className="account-list-header">Login As</div>
           <div className="account-list-body">
-            {accountList.map((account) => (
+            {accounts.map((account) => (
               <div key={account.username} className="account-list-item" onClick={() => {
                 this.switchToAccount(account.username)
               }}>
@@ -183,7 +184,7 @@ class Settings extends Component {
         </div>
         }
 
-        {accountList.length > 0 && <Divider>OR</Divider>}
+        {accounts.length > 0 && <Divider>OR</Divider>}
 
         <div className="login-form">
           <p><FormattedMessage id="login.traditional-login-desc"/></p>
@@ -220,15 +221,12 @@ Settings.propTypes = {
   actions: PropTypes.shape({
     addAccount: PropTypes.func.isRequired,
     addAccountSc: PropTypes.func.isRequired,
-    deleteAccount: PropTypes.func.isRequired,
-    activateAccount: PropTypes.func.isRequired
+    logIn: PropTypes.func.isRequired,
+    updateActiveAccount: PropTypes.func.isRequired
   }).isRequired,
   onLogin: PropTypes.func.isRequired,
   global: PropTypes.shape({}).isRequired,
-  accounts: PropTypes.shape({
-    activeAccount: PropTypes.instanceOf(Object),
-    list: PropTypes.arrayOf(PropTypes.object).isRequired
-  }).isRequired,
+  accounts: PropTypes.arrayOf(PropTypes.object).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };
 

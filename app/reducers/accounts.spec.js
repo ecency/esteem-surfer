@@ -26,7 +26,6 @@ describe('accounts reducer', () => {
     const username = 'foo';
 
     setItem(`account_${username}`, {username});
-    setItem(`active_account`, username);
 
     const action = {
       type: ACCOUNT_ADDED,
@@ -44,7 +43,6 @@ describe('accounts reducer', () => {
     const username = 'bar';
 
     setItem(`account_${username}`, {username});
-    setItem(`active_account`, username);
 
     const action = {
       type: ACCOUNT_ADDED,
@@ -62,7 +60,6 @@ describe('accounts reducer', () => {
     const username = 'baz';
 
     setItem(`account_${username}`, {username});
-    setItem(`active_account`, username);
 
     const action = {
       type: ACCOUNT_ADDED,
@@ -80,27 +77,9 @@ describe('accounts reducer', () => {
     const username = 'baz';
 
     removeItem(`account_${username}`);
-    setItem(`active_account`, null);
 
     const action = {
       type: ACCOUNT_DELETED,
-      payload: {username}
-    };
-
-    deepFreeze(state);
-
-    state = accounts(state, action);
-
-    expect(state).toMatchSnapshot();
-  });
-
-  it('(6) account "foo" activated', () => {
-    const username = 'foo';
-
-    setItem(`active_account`, username);
-
-    const action = {
-      type: ACCOUNT_ACTIVATED,
       payload: {username}
     };
 
@@ -115,7 +94,6 @@ describe('accounts reducer', () => {
     const username = 'foo';
 
     removeItem(`account_${username}`);
-    setItem(`active_account`, null);
 
     const action = {
       type: ACCOUNT_DELETED,
@@ -129,41 +107,10 @@ describe('accounts reducer', () => {
     expect(state).toMatchSnapshot();
   });
 
-  it('(8) account "bar" activated', () => {
-    const username = 'bar';
-
-    setItem(`active_account`, username);
-
-    const action = {
-      type: ACCOUNT_ACTIVATED,
-      payload: {username}
-    };
-
-    deepFreeze(state);
-
-    state = accounts(state, action);
-
-    expect(state).toMatchSnapshot();
-  });
-
-  it('(9) active account data updated', () => {
-    const action = {
-      type: ACTIVE_ACCOUNT_DATA_UPDATED,
-      payload: {accountData: {id: 13124, username: "bar"}}
-    };
-
-    deepFreeze(state);
-
-    state = accounts(state, action);
-
-    expect(state).toMatchSnapshot();
-  });
-
   it('(10) account "bar" added ', () => {
     const username = 'bar';
 
     setItem(`account_${username}`, {username});
-    setItem(`active_account`, username);
 
     const action = {
       type: ACCOUNT_ADDED,

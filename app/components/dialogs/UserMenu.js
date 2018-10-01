@@ -10,7 +10,7 @@ class UserMenu extends Component {
   logout = () => {
     const {actions, closeFn} = this.props;
 
-    actions.deactivateAccount();
+    actions.logOut();
     closeFn();
   };
 
@@ -19,8 +19,7 @@ class UserMenu extends Component {
   };
 
   render() {
-    const {accounts} = this.props;
-    const {activeAccount} = accounts;
+    const {activeAccount} = this.props;
     const {username} = activeAccount;
     const {accountData} = activeAccount;
 
@@ -120,11 +119,9 @@ class UserMenu extends Component {
 
 UserMenu.propTypes = {
   actions: PropTypes.shape({
-    deactivateAccount: PropTypes.func.isRequired
+    logOut: PropTypes.func.isRequired
   }).isRequired,
-  accounts: PropTypes.shape({
-    activeAccount: PropTypes.instanceOf(Object)
-  }).isRequired,
+  activeAccount: PropTypes.instanceOf(Object).isRequired,
   closeFn: PropTypes.func.isRequired
 };
 
