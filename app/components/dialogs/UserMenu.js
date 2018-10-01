@@ -2,16 +2,49 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import {FormattedMessage} from 'react-intl';
+import {Modal} from "antd";
 
+import Login from './Login';
 import UserAvatar from '../elements/UserAvatar';
 
+
 class UserMenu extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loginModalVisible: false
+    };
+  }
 
   logout = () => {
     const {actions, closeFn} = this.props;
 
     actions.logOut();
     closeFn();
+  };
+
+  loginAs = () => {
+    const {closeFn} = this.props;
+
+    this.setState({
+      loginModalVisible: true
+    });
+
+    closeFn();
+  };
+
+  onLoginModalCancel = () => {
+    this.setState({
+      loginModalVisible: false
+    });
+  };
+
+  onLoginSuccess = () => {
+    this.setState({
+      loginModalVisible: false
+    });
   };
 
   menuItemClicked = e => {
@@ -23,6 +56,8 @@ class UserMenu extends Component {
     const {username} = activeAccount;
     const {accountData} = activeAccount;
 
+    const {loginModalVisible} = this.state;
+
     let displayName;
     try {
       const jsonMeta = JSON.parse(accountData.json_metadata);
@@ -30,7 +65,6 @@ class UserMenu extends Component {
     } catch (e) {
       displayName = username;
     }
-
 
     return (
       <div className="user-menu-content">
@@ -97,7 +131,7 @@ class UserMenu extends Component {
             className="menu-item"
             rel="login-as"
             role="none"
-            onClick={this.menuItemClicked}
+            onClick={this.loginAs}
           >
             <i className="mi">supervisor_account</i>
             <FormattedMessage id="user-menu.login-as"/>
@@ -112,6 +146,18 @@ class UserMenu extends Component {
             <FormattedMessage id="user-menu.logout"/>
           </a>
         </div>
+
+        <Modal
+          visible={loginModalVisible}
+          onCancel={this.onLoginModalCancel}
+          footer={false}
+          width="500px"
+          closable={false}
+          destroyOnClose
+          centered
+        >
+          <Login {...this.props} onSuccess={this.onLoginSuccess}/>
+        </Modal>
       </div>
     );
   }
