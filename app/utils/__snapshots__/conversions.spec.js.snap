@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`conversions.js (1) vestsToSp 1`] = `0.17326914375512842`;
+
+exports[`conversions.js (2) spToVests 1`] = `350.00000000000006`;
+
+exports[`conversions.js (3) vestsToRshares 1`] = `1107033164.754156`;
