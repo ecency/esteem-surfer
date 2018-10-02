@@ -19,7 +19,8 @@ class EntryVoteBtn extends Component {
 
     this.state = {
       sliderVal: 100,
-      estimated: 0
+      estimated: 0,
+      showPopover: true
     };
   }
 
@@ -62,7 +63,7 @@ class EntryVoteBtn extends Component {
 
   render() {
     const { activeAccount } = this.props;
-    const { sliderVal, estimated } = this.state;
+    const { sliderVal, estimated, showPopover } = this.state;
     const requiredKeys = ['posting'];
 
     const btn = (
@@ -89,14 +90,27 @@ class EntryVoteBtn extends Component {
       );
 
       return (
-        <LoginRequired {...this.props} requiredKeys={requiredKeys}>
-          <Popover
-            onVisibleChange={this.popoverVisibleChanged}
-            mouseEnterDelay={2}
-            content={popoverContent}
-          >
-            {btn}
-          </Popover>
+        <LoginRequired
+          {...this.props}
+          requiredKeys={requiredKeys}
+          onDialogOpen={() => {
+            this.setState({ showPopover: false });
+          }}
+          onDialogClose={() => {
+            this.setState({ showPopover: true });
+          }}
+        >
+          {showPopover ? (
+            <Popover
+              onVisibleChange={this.popoverVisibleChanged}
+              mouseEnterDelay={2}
+              content={popoverContent}
+            >
+              {btn}
+            </Popover>
+          ) : (
+            btn
+          )}
         </LoginRequired>
       );
     }

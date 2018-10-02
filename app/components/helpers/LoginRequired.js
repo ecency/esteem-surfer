@@ -19,6 +19,9 @@ class LoginRequired extends Component {
     this.setState({
       loginModalVisible: true
     });
+
+    const { onDialogOpen } = this.props;
+    onDialogOpen();
   };
 
   onLoginModalCancel = () => {
@@ -31,6 +34,11 @@ class LoginRequired extends Component {
     this.setState({
       loginModalVisible: false
     });
+  };
+
+  afterModalClose = () => {
+    const { onDialogClose } = this.props;
+    onDialogClose();
   };
 
   render() {
@@ -86,6 +94,7 @@ class LoginRequired extends Component {
           closable={false}
           destroyOnClose
           centered
+          afterClose={this.afterModalClose}
         >
           <Login
             {...this.props}
@@ -99,13 +108,17 @@ class LoginRequired extends Component {
 }
 
 LoginRequired.defaultProps = {
-  activeAccount: null
+  activeAccount: null,
+  onDialogOpen: () => {},
+  onDialogClose: () => {}
 };
 
 LoginRequired.propTypes = {
   children: PropTypes.element.isRequired,
   activeAccount: PropTypes.instanceOf(Object),
-  requiredKeys: PropTypes.arrayOf(PropTypes.string).isRequired
+  requiredKeys: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onDialogOpen: PropTypes.func,
+  onDialogClose: PropTypes.func
 };
 
 export default LoginRequired;
