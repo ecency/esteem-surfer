@@ -87,5 +87,10 @@
     "gallery": "Gallery",
     "login-as": "Login As",
     "logout": "Logout"
+  },
+  "login-required": {
+    "default": "This action requires login",
+    "key-required": "This action requires {key} key or master password",
+    "keys-required": "This action requires {keys} keys or master password"
   }
 }

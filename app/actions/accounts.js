@@ -1,19 +1,21 @@
-import {encryptKey} from '../utils/crypto';
-import {setItem, removeItem} from '../helpers/storage';
+import { encryptKey } from '../utils/crypto';
+import { setItem, removeItem } from '../helpers/storage';
 
 export const ACCOUNT_ADDED = 'accounts/ACCOUNT_ADDED';
 export const ACCOUNT_ADDED_SC = 'accounts/ACCOUNT_SC_ADDED';
 export const ACCOUNT_DELETED = 'accounts/ACCOUNT_DELETED';
 
 export const addAccount = (username, keys) => (dispatch, getState) => {
-  const {global} = getState();
+  const { global } = getState();
 
-  const {pin} = global;
+  const { pin } = global;
 
   // key encryption
   const eKeys = Object.assign(
     {},
-    ...Object.keys(keys).map(k => ({[k]: encryptKey(keys[k], pin)}))
+    ...Object.keys(keys).map(k => ({
+      [k]: keys[k] ? encryptKey(keys[k], pin) : null
+    }))
   );
 
   const accountData = {
@@ -31,9 +33,9 @@ export const addAccountSc = (username, accessToken, expiresIn) => (
   dispatch,
   getState
 ) => {
-  const {global} = getState();
+  const { global } = getState();
 
-  const {pin} = global;
+  const { pin } = global;
 
   const accountData = {
     type: 'sc',
@@ -49,7 +51,7 @@ export const addAccountSc = (username, accessToken, expiresIn) => (
 export const deleteAccount = username => (dispatch, getState) => {
   removeItem(`account_${username}`);
 
-  const {accounts} = getState();
+  const { accounts } = getState();
 
   if (accounts.active === username) {
     setItem(`active_account`, null);
@@ -62,15 +64,15 @@ export const deleteAccount = username => (dispatch, getState) => {
 
 export const accountAdded = username => ({
   type: ACCOUNT_ADDED,
-  payload: {username}
+  payload: { username }
 });
 
 export const accountAddedSc = username => ({
   type: ACCOUNT_ADDED_SC,
-  payload: {username}
+  payload: { username }
 });
 
 export const accountDeleted = username => ({
   type: ACCOUNT_DELETED,
-  payload: {username}
+  payload: { username }
 });

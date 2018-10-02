@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { auth } from 'steem';
 
-import { Button, Divider, Input, message } from 'antd';
+import { Button, Divider, Input, Alert, message } from 'antd';
 import { FormattedHTMLMessage, FormattedMessage, injectIntl } from 'react-intl';
 
 import scLogo from '../../img/steem-connect.svg';
@@ -142,7 +142,7 @@ class Login extends Component {
   };
 
   render() {
-    const { accounts, intl } = this.props;
+    const { accounts, loginMsg, intl } = this.props;
     const { processing } = this.state;
 
     return (
@@ -153,6 +153,8 @@ class Login extends Component {
           </div>
           <div className="login-header-text"> Welcome back!</div>
         </div>
+
+        {loginMsg && <Alert message={loginMsg} showIcon />}
 
         {accounts.length > 0 && (
           <div className="account-list">
@@ -236,6 +238,10 @@ class Login extends Component {
   }
 }
 
+Login.defaultProps = {
+  loginMsg: null
+};
+
 Login.propTypes = {
   actions: PropTypes.shape({
     addAccount: PropTypes.func.isRequired,
@@ -245,6 +251,7 @@ Login.propTypes = {
   }).isRequired,
   onSuccess: PropTypes.func.isRequired,
   accounts: PropTypes.arrayOf(PropTypes.object).isRequired,
+  loginMsg: PropTypes.element,
   intl: PropTypes.instanceOf(Object).isRequired
 };
 

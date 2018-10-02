@@ -7,6 +7,12 @@ import { setItem, getItem } from '../../helpers/storage';
 
 import LoginRequired from '../helpers/LoginRequired';
 
+const setPercentage = (username, val) => {
+  setItem(`voting_percentage_${username}`, val);
+};
+
+const getPercentage = username => getItem(`voting_percentage_${username}`, 100);
+
 class EntryVoteBtn extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +27,7 @@ class EntryVoteBtn extends Component {
     if (v) {
       const { activeAccount } = this.props;
       const { username } = activeAccount;
-      const sliderVal = getItem(`voting_percentage_${username}`, 100);
+      const sliderVal = getPercentage(username);
 
       const estimated = this.estimate(sliderVal);
 
@@ -48,7 +54,7 @@ class EntryVoteBtn extends Component {
     const { activeAccount } = this.props;
     const { username } = activeAccount;
 
-    setItem(`voting_percentage_${username}`, sliderVal);
+    setPercentage(username, sliderVal);
 
     const estimated = this.estimate(sliderVal);
     this.setState({ sliderVal, estimated });
@@ -70,7 +76,6 @@ class EntryVoteBtn extends Component {
         <div className="vote-slider-content">
           <div className="estimated">{estimated.toFixed(5)} $</div>
           <div className="percentage">{sliderVal} %</div>
-
           <Slider
             value={sliderVal}
             step={0.1}
@@ -88,7 +93,6 @@ class EntryVoteBtn extends Component {
           <Popover
             onVisibleChange={this.popoverVisibleChanged}
             mouseEnterDelay={2}
-            mouseLeaveDelay={2}
             content={popoverContent}
           >
             {btn}

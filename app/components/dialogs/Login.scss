@@ -15,7 +15,7 @@
     .login-header-text {
       font-size: 22px;
       font-weight: 700;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       text-align: center;
     }
   }
@@ -25,6 +25,7 @@
       font-size: 18px;
       font-weight: 500;
       margin-bottom: 10px;
+      margin-top: 10px;
       text-align: center;
 
       @include themify(day) {

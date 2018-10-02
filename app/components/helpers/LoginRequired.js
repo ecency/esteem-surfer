@@ -1,12 +1,12 @@
-import React, {Component, Fragment} from 'react';
-import PropTypes from "prop-types";
-import Login from '../dialogs/Login'
-import {Modal} from "antd";
+import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 
+import { Modal } from 'antd';
+import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+
+import Login from '../dialogs/Login';
 
 class LoginRequired extends Component {
-
-
   constructor(props) {
     super(props);
 
@@ -15,10 +15,7 @@ class LoginRequired extends Component {
     };
   }
 
-
   showLoginModal = () => {
-
-    console.log("aaa")
     this.setState({
       loginModalVisible: true
     });
@@ -37,17 +34,43 @@ class LoginRequired extends Component {
   };
 
   render() {
-    const {children, activeAccount, requiredKeys} = this.props;
-    const {loginModalVisible} = this.state;
+    const { children, activeAccount, requiredKeys } = this.props;
+    const { loginModalVisible } = this.state;
 
-    if (activeAccount) {
-      return children
+    // Steem connect login.
+    if (activeAccount && activeAccount.type === 'sc') {
+      return children;
     }
 
+    // Traditional login. Check all required keys exists in user keys.
+    if (
+      activeAccount &&
+      activeAccount.type === 's' &&
+      requiredKeys.every(e => activeAccount.keys[e])
+    ) {
+      return children;
+    }
+
+    let loginMsg = <FormattedMessage id="login-required.default" />;
+
+    if (activeAccount) {
+      loginMsg =
+        requiredKeys.length > 1 ? (
+          <FormattedHTMLMessage
+            id="login-required.keys-required"
+            values={{ keys: requiredKeys }}
+          />
+        ) : (
+          <FormattedHTMLMessage
+            id="login-required.key-required"
+            values={{ key: requiredKeys }}
+          />
+        );
+    }
 
     const newChild = React.cloneElement(children, {
       onClick: () => {
-        this.showLoginModal()
+        this.showLoginModal();
       }
     });
 
@@ -64,22 +87,25 @@ class LoginRequired extends Component {
           destroyOnClose
           centered
         >
-          <Login {...this.props} onSuccess={this.onLoginSuccess}/>
+          <Login
+            {...this.props}
+            onSuccess={this.onLoginSuccess}
+            loginMsg={loginMsg}
+          />
         </Modal>
       </Fragment>
-    )
+    );
   }
 }
 
 LoginRequired.defaultProps = {
-  activeAccount: null,
+  activeAccount: null
 };
-
 
 LoginRequired.propTypes = {
   children: PropTypes.element.isRequired,
   activeAccount: PropTypes.instanceOf(Object),
-  requiredKeys: PropTypes.array.isRequired
+  requiredKeys: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default LoginRequired;
