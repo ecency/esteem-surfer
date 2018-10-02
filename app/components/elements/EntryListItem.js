@@ -7,6 +7,7 @@ import { FormattedRelative } from 'react-intl';
 import UserAvatar from './UserAvatar';
 import EntryPayout from './EntryPayout';
 import EntryVotes from './EntryVotes';
+import EntryVoteBtn from './EntryVoteBtn'
 import FormattedCurrency from './FormattedCurrency';
 
 import catchEntryImage from '../../utils/catch-entry-image';
@@ -92,9 +93,7 @@ class EntryListItem extends Component {
           </div>
           <div className="item-controls">
             <div className="voting">
-              <a className="btn-vote" role="button" tabIndex="-1">
-                <i className="mi">keyboard_arrow_up</i>
-              </a>
+              <EntryVoteBtn {...this.props} />
             </div>
             <EntryPayout {...this.props} entry={entry}>
               <a

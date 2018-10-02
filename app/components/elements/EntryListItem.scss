@@ -162,22 +162,6 @@
 
       .voting {
         margin-right: 10px;
-
-        .btn-vote {
-          align-items: center;
-          border: 1px solid $dark-sky-blue;
-          border-radius: 50%;
-          color: $dark-sky-blue;
-          display: flex;
-          height: 18px;
-          justify-content: center;
-          width: 18px;
-
-          &:hover {
-            background-color: $dark-sky-blue;
-            color: $white;
-          }
-        }
       }
 
       .total-payout {

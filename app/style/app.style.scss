@@ -109,12 +109,12 @@ h2 {
 
 @import '../components/elements/EntryListItem';
 @import '../components/elements/EntryListLoadingItem';
+@import '../components/elements/EntryPayoutContent';
+@import '../components/elements/EntryVotesContent';
+@import '../components/elements/EntryVoteBtn';
 
 @import '../components/elements/UserAvatar';
 @import '../components/elements/ListSwitch';
-
-@import '../components/elements/EntryPayoutContent';
-@import '../components/elements/EntryVotesContent';
 
 @import '../components/dialogs/Settings';
 @import '../components/dialogs/Login';

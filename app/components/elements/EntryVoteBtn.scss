@@ -1,0 +1,19 @@
+@import '../../style/mixins';
+@import '../../style/colors';
+
+.btn-vote {
+  align-items: center;
+  border: 1px solid $dark-sky-blue;
+  border-radius: 50%;
+  color: $dark-sky-blue;
+  display: flex;
+  height: 18px;
+  justify-content: center;
+  width: 18px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $dark-sky-blue;
+    color: $white;
+  }
+}
