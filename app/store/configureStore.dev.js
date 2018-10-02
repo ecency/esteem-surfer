@@ -1,14 +1,15 @@
-import {createStore, applyMiddleware, compose} from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import createHistory from 'history/createMemoryHistory';
-import {routerMiddleware, routerActions} from 'react-router-redux';
-import {createLogger} from 'redux-logger';
+import { routerMiddleware, routerActions } from 'react-router-redux';
+import { createLogger } from 'redux-logger';
 import rootReducer from '../reducers';
 import * as entriesActions from '../actions/entries';
 import * as trendingTagsActions from '../actions/trending-tags';
 import * as globalActions from '../actions/global';
-import * as accountsActions from '../actions/accounts'
+import * as accountsActions from '../actions/accounts';
 import * as activeAccountActions from '../actions/active-account';
+import * as dynamicPropsActions from '../actions/dynamic-props';
 
 const history = createHistory();
 
@@ -42,15 +43,16 @@ const configureStore = (initialState = {}) => {
     ...globalActions,
     ...accountsActions,
     ...activeAccountActions,
+    ...dynamicPropsActions,
     ...routerActions
   };
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
   /* eslint-disable no-underscore-dangle */
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-      // Options: http://extension.remotedev.io/docs/API/Arguments.html
-      actionCreators
-    })
+        // Options: http://extension.remotedev.io/docs/API/Arguments.html
+        actionCreators
+      })
     : compose;
   /* eslint-enable no-underscore-dangle */
 
@@ -71,4 +73,4 @@ const configureStore = (initialState = {}) => {
   return store;
 };
 
-export default {configureStore, history};
+export default { configureStore, history };

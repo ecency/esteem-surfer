@@ -1,8 +1,8 @@
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import EntryIndex from '../components/EntryIndex';
-import {fetchEntries, invalidateEntries} from '../actions/entries';
-import {fetchTrendingTags} from '../actions/trending-tags';
+import { fetchEntries, invalidateEntries } from '../actions/entries';
+import { fetchTrendingTags } from '../actions/trending-tags';
 import {
   changeTheme,
   changeListStyle,
@@ -12,17 +12,9 @@ import {
   changeServer
 } from '../actions/global';
 
-import {
-  addAccount,
-  addAccountSc,
-  deleteAccount
-} from '../actions/accounts';
+import { addAccount, addAccountSc, deleteAccount } from '../actions/accounts';
 
-import {
-  logIn,
-  logOut,
-  updateActiveAccount
-} from '../actions/active-account';
+import { logIn, logOut, updateActiveAccount } from '../actions/active-account';
 
 function mapStateToProps(state) {
   return {
@@ -30,21 +22,22 @@ function mapStateToProps(state) {
     entries: state.entries,
     trendingTags: state.trendingTags,
     accounts: state.accounts,
-    activeAccount: state.activeAccount
+    activeAccount: state.activeAccount,
+    dynamicProps: state.dynamicProps
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      ...bindActionCreators({fetchEntries, invalidateEntries}, dispatch),
-      ...bindActionCreators({fetchTrendingTags}, dispatch),
-      ...bindActionCreators({changeTheme}, dispatch),
-      ...bindActionCreators({changeListStyle}, dispatch),
-      ...bindActionCreators({changeCurrency}, dispatch),
-      ...bindActionCreators({changeLocale}, dispatch),
-      ...bindActionCreators({changePushNotify}, dispatch),
-      ...bindActionCreators({changeServer}, dispatch),
+      ...bindActionCreators({ fetchEntries, invalidateEntries }, dispatch),
+      ...bindActionCreators({ fetchTrendingTags }, dispatch),
+      ...bindActionCreators({ changeTheme }, dispatch),
+      ...bindActionCreators({ changeListStyle }, dispatch),
+      ...bindActionCreators({ changeCurrency }, dispatch),
+      ...bindActionCreators({ changeLocale }, dispatch),
+      ...bindActionCreators({ changePushNotify }, dispatch),
+      ...bindActionCreators({ changeServer }, dispatch),
       ...bindActionCreators(
         {
           addAccount,
@@ -53,7 +46,7 @@ function mapDispatchToProps(dispatch) {
         },
         dispatch
       ),
-      ...bindActionCreators({logIn, logOut, updateActiveAccount}, dispatch)
+      ...bindActionCreators({ logIn, logOut, updateActiveAccount }, dispatch)
     }
   };
 }

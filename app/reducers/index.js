@@ -5,6 +5,7 @@ import trendingTags from './trending-tags';
 import global from './global';
 import accounts from './accounts';
 import activeAccount from './active-account';
+import dynamicProps from './dynamic-props';
 
 const rootReducer = combineReducers({
   entries,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   global,
   accounts,
   activeAccount,
+  dynamicProps,
   router
 });
 

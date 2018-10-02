@@ -17,3 +17,22 @@
     color: $white;
   }
 }
+
+.vote-slider-content {
+  width: 400px;
+
+  .estimated,
+  .percentage {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .estimated {
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .percentage {
+    font-size: 14px;
+  }
+}
