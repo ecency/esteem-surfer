@@ -35,6 +35,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    // Check for welcome screen and pin code
     setInterval(() => {
       const { dialogVisible } = this.state;
 
@@ -61,10 +62,8 @@ class App extends React.Component {
       }
     }, 500);
 
-    this.refreshActiveAccount();
-    setInterval(this.refreshActiveAccount, 60000);
-
     this.watchGlobalProps();
+    this.watchActiveAccount();
   }
 
   watchGlobalProps = () => {
@@ -72,23 +71,25 @@ class App extends React.Component {
       const { actions } = this.props;
 
       actions.fetchGlobalProps();
+
+      setTimeout(watcher, 60000);
     };
 
     watcher();
-
-    setInterval(() => {
-      watcher();
-    }, 60000);
   };
 
-  refreshActiveAccount = () => {
-    const { activeAccount, actions } = this.props;
+  watchActiveAccount = () => {
+    const watcher = () => {
+      const { activeAccount, actions } = this.props;
 
-    if (!activeAccount) {
-      return;
-    }
+      if (activeAccount) {
+        actions.updateActiveAccount(activeAccount.username);
+      }
 
-    actions.updateActiveAccount(activeAccount.username);
+      setTimeout(watcher, 15000);
+    };
+
+    watcher();
   };
 
   onCreatePinSuccess = (code, hashedCode) => {
