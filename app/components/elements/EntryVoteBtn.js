@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Slider, Popover, message} from 'antd';
+import { Slider, Popover, message } from 'antd';
 import parseToken from '../../utils/parse-token';
-import {vestsToRshares} from '../../utils/conversions';
-import {setItem, getItem} from '../../helpers/storage';
+import { vestsToRshares } from '../../utils/conversions';
+import { setItem, getItem } from '../../helpers/storage';
 
-import {getActiveVotes, vote} from '../../backend/steem-client';
+import { getActiveVotes, vote } from '../../backend/steem-client';
 
 import LoginRequired from '../helpers/LoginRequired';
 
@@ -26,19 +26,18 @@ class EntryVoteBtn extends Component {
       voted: false,
       voting: false
     };
-  };
-
+  }
 
   async componentDidMount() {
-    const {activeAccount} = this.props;
+    const { activeAccount } = this.props;
 
     if (!activeAccount) {
-      return
+      return;
     }
 
-    const {username} = activeAccount;
-    const {entry} = this.props;
-    const {author, permlink} = entry;
+    const { username } = activeAccount;
+    const { entry } = this.props;
+    const { author, permlink } = entry;
 
     let votes;
     try {
@@ -47,29 +46,27 @@ class EntryVoteBtn extends Component {
       return;
     }
 
-    const voted = votes.some(vote => vote.voter === username && vote.percent > 0);
+    const voted = votes.some(v => v.voter === username && v.percent > 0);
 
-    this.setState({voted});
+    this.setState({ voted });
   }
 
-  clicked = async (e) => {
-
+  clicked = async e => {
     // Make sure clicked from right element
-    if (e.target.parentNode.getAttribute('class') !== 'btn-inner') {
+    if (e.target.parentNode.getAttribute('class').indexOf('btn-inner') !== 0) {
       return false;
     }
 
-    const {voted, voting} = this.state;
+    const { voted, voting } = this.state;
 
     if (voting) {
       return false;
     }
 
-    const {global, activeAccount, entry} = this.props;
-    const {pin} = global;
-    const {username} = activeAccount;
-    const {author, permlink} = entry;
-
+    const { global, activeAccount, entry } = this.props;
+    const { pin } = global;
+    const { username } = activeAccount;
+    const { author, permlink } = entry;
 
     let weight = 0;
 
@@ -78,35 +75,35 @@ class EntryVoteBtn extends Component {
       weight = parseInt(perc * 100, 10);
     }
 
-    this.setState({voting: true});
+    this.setState({ voting: true });
 
     try {
       await vote(activeAccount, pin, author, permlink, weight);
-    } catch (e) {
-      message.error(String(e))
+    } catch (err) {
+      message.error(String(err).substring(0, 30));
     } finally {
       const votes = await getActiveVotes(author, permlink);
-      const votedAfter = votes.some(vote => vote.voter === username && vote.percent > 0);
-      this.setState({voting: false, voted: votedAfter});
+      const votedAfter = votes.some(v => v.voter === username && v.percent > 0);
+      this.setState({ voting: false, voted: votedAfter });
     }
   };
 
   popoverVisibleChanged = v => {
     if (v) {
-      const {activeAccount} = this.props;
-      const {username} = activeAccount;
+      const { activeAccount } = this.props;
+      const { username } = activeAccount;
       const sliderVal = getPercentage(username);
 
       const estimated = this.estimate(sliderVal);
 
-      this.setState({sliderVal, estimated});
+      this.setState({ sliderVal, estimated });
     }
   };
 
   estimate = w => {
-    const {activeAccount, dynamicProps} = this.props;
-    const {fundRecentClaims, fundRewardBalance, base} = dynamicProps;
-    const {accountData: account} = activeAccount;
+    const { activeAccount, dynamicProps } = this.props;
+    const { fundRecentClaims, fundRewardBalance, base } = dynamicProps;
+    const { accountData: account } = activeAccount;
 
     const votingPower = account.voting_power;
     const totalVests =
@@ -119,26 +116,27 @@ class EntryVoteBtn extends Component {
   };
 
   sliderChanged = sliderVal => {
-    const {activeAccount} = this.props;
-    const {username} = activeAccount;
+    const { activeAccount } = this.props;
+    const { username } = activeAccount;
 
     setPercentage(username, sliderVal);
 
     const estimated = this.estimate(sliderVal);
-    this.setState({sliderVal, estimated});
+    this.setState({ sliderVal, estimated });
   };
 
   render() {
-    const {activeAccount} = this.props;
-    const {sliderVal, estimated, showPopover, voted, voting} = this.state;
+    const { activeAccount } = this.props;
+    const { sliderVal, estimated, showPopover, voted, voting } = this.state;
     const requiredKeys = ['posting'];
-
 
     if (!activeAccount) {
       return (
         <LoginRequired {...this.props} requiredKeys={requiredKeys}>
           <a className="btn-vote" role="button" tabIndex="-1">
-            <span className="icon"><i className="mi">keyboard_arrow_up</i></span>
+            <span className="icon">
+              <i className="mi">keyboard_arrow_up</i>
+            </span>
           </a>
         </LoginRequired>
       );
@@ -153,39 +151,45 @@ class EntryVoteBtn extends Component {
           step={0.1}
           min={0.1}
           max={100}
-          marks={{0.1: '0%', 25: '25%', 50: '50%', 75: '75%', 100: '100%'}}
+          marks={{ 0.1: '0%', 25: '25%', 50: '50%', 75: '75%', 100: '100%' }}
           tipFormatter={null}
           onChange={this.sliderChanged}
         />
       </div>
     );
 
-    const btnCls = `btn-vote ${voting ? 'in-progress' : ''} ${voted ? 'voted' : ''}`;
+    const btnCls = `btn-vote ${voting ? 'in-progress' : ''} ${
+      voted ? 'voted' : ''
+    }`;
 
     return (
       <LoginRequired
         {...this.props}
         requiredKeys={requiredKeys}
         onDialogOpen={() => {
-          this.setState({showPopover: false});
+          this.setState({ showPopover: false });
         }}
         onDialogClose={() => {
-          this.setState({showPopover: true});
+          this.setState({ showPopover: true });
         }}
       >
         {showPopover ? (
-          <a className={btnCls} role="button" tabIndex="-1" onClick={this.clicked}>
+          <a className={btnCls} role="none" onClick={this.clicked}>
             <Popover
               onVisibleChange={this.popoverVisibleChanged}
               mouseEnterDelay={2}
               content={popoverContent}
             >
-              <span className="btn-inner"><i className="mi">keyboard_arrow_up</i></span>
+              <span className="btn-inner">
+                <i className="mi">keyboard_arrow_up</i>
+              </span>
             </Popover>
           </a>
         ) : (
-          <a className={btnCls} role="button" tabIndex="-1" onClick={this.clicked}>
-            <span className="btn-inner"><i className="mi">keyboard_arrow_up</i></span>
+          <a className={btnCls} role="none" onClick={this.clicked}>
+            <span className="btn-inner">
+              <i className="mi">keyboard_arrow_up</i>
+            </span>
           </a>
         )}
       </LoginRequired>
