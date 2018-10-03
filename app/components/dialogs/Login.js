@@ -154,7 +154,7 @@ class Login extends Component {
           <div className="login-header-text"> Welcome back!</div>
         </div>
 
-        {loginMsg && <Alert message={loginMsg} showIcon />}
+        {loginMsg && <div className="login-msg"><Alert message={loginMsg} showIcon /></div>}
 
         {accounts.length > 0 && (
           <div className="account-list">

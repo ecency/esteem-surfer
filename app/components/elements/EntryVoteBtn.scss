@@ -16,6 +16,10 @@
     background-color: $dark-sky-blue;
     color: $white;
   }
+
+  .icon {
+    display: flex;
+  }
 }
 
 .vote-slider-content {

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import PropTypes from 'prop-types';
 
-import { FormattedRelative } from 'react-intl';
+import {FormattedRelative} from 'react-intl';
 
 import UserAvatar from './UserAvatar';
 import EntryPayout from './EntryPayout';
@@ -20,8 +20,8 @@ import parseToken from '../../utils/parse-token';
 
 class EntryListItem extends Component {
   parentClicked = parent => {
-    const { global, location, history } = this.props;
-    const { selectedFilter } = global;
+    const {global, location, history} = this.props;
+    const {selectedFilter} = global;
     const newLoc = `/${selectedFilter}/${parent}`;
 
     if (location.pathname === newLoc) {
@@ -33,7 +33,7 @@ class EntryListItem extends Component {
   };
 
   render() {
-    const { entry } = this.props;
+    const {entry} = this.props;
 
     const img = catchEntryImage(entry) || 'img/noimage.png';
     const reputation = authorReputation(entry.author_reputation);
@@ -59,7 +59,7 @@ class EntryListItem extends Component {
       <div className="entry-list-item">
         <div className="item-header">
           <div className="author-avatar">
-            <UserAvatar user={entry.author} size="small" />
+            <UserAvatar user={entry.author} size="small"/>
           </div>
           <span className="author">
             {entry.author}{' '}
@@ -72,9 +72,9 @@ class EntryListItem extends Component {
           >
             {entry.parent_permlink}
           </a>
-          <span className="read-mark" />
+          <span className="read-mark"/>
           <span className="date">
-            <FormattedRelative value={created} initialNow={Date.now()} />
+            <FormattedRelative value={created} initialNow={Date.now()}/>
           </span>
         </div>
         <div className="item-body">
@@ -93,15 +93,15 @@ class EntryListItem extends Component {
           </div>
           <div className="item-controls">
             <div className="voting">
-              <EntryVoteBtn {...this.props} />
+              <EntryVoteBtn {...this.props} entry={entry}/>
             </div>
             <EntryPayout {...this.props} entry={entry}>
               <a
                 className={`total-payout ${
                   isPayoutDeclined ? 'payout-declined' : ''
-                }`}
+                  }`}
               >
-                <FormattedCurrency {...this.props} value={totalPayout} />
+                <FormattedCurrency {...this.props} value={totalPayout}/>
               </a>
             </EntryPayout>
             <EntryVotes {...this.props} entry={entry}>
