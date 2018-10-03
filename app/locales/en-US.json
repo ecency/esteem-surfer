@@ -50,6 +50,8 @@
     "push-notify-disabled": "Push notifications disabled"
   },
   "login": {
+    "title": "Welcome back!",
+    "accounts-title": "Login As",
     "traditional-login-desc": "Sign in with your username and password to continue",
     "username-placeholder": "@username",
     "password-placeholder": "password or wif",

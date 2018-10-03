@@ -151,14 +151,22 @@ class Login extends Component {
           <div className="logo">
             <img src={logo} alt="logo" />
           </div>
-          <div className="login-header-text"> Welcome back!</div>
+          <div className="login-header-text">
+            <FormattedMessage id="login.title" />
+          </div>
         </div>
 
-        {loginMsg && <div className="login-msg"><Alert message={loginMsg} showIcon /></div>}
+        {loginMsg && (
+          <div className="login-msg">
+            <Alert message={loginMsg} showIcon />
+          </div>
+        )}
 
         {accounts.length > 0 && (
           <div className="account-list">
-            <div className="account-list-header">Login As</div>
+            <div className="account-list-header">
+              <FormattedMessage id="accounts.title" />
+            </div>
             <div className="account-list-body">
               {accounts.map(account => (
                 <div
