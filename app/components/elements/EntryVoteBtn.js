@@ -75,7 +75,7 @@ class EntryVoteBtn extends Component {
 
     if (!voted) {
       const perc = getPercentage(username);
-      weight = parseInt(perc * 100);
+      weight = parseInt(perc * 100, 10);
     }
 
     this.setState({voting: true});
@@ -194,10 +194,7 @@ class EntryVoteBtn extends Component {
 }
 
 EntryVoteBtn.defaultProps = {
-  activeAccount: null,
-  global: {
-    pin: null
-  }
+  activeAccount: null
 };
 
 EntryVoteBtn.propTypes = {
