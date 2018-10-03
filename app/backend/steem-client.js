@@ -1,13 +1,16 @@
-import {Client, PrivateKey} from 'dsteem';
+import { Client, PrivateKey } from 'dsteem';
 import sc2 from 'sc2-sdk';
 
-import {decryptKey} from '../utils/crypto';
+import { decryptKey } from '../utils/crypto';
 
 let client = new Client('https://api.steemit.com');
 
 export const setAddress = address => {
   client = new Client(address);
 };
+
+export const getDiscussions = (what, query) =>
+  client.database.getDiscussions(what, query);
 
 export const getDynamicGlobalProperties = () =>
   client.database.getDynamicGlobalProperties();
@@ -23,7 +26,6 @@ export const getActiveVotes = (author, permlink) =>
 export const getAccounts = usernames => client.database.getAccounts(usernames);
 
 export const vote = (account, pin, author, permlink, weight) => {
-
   if (account.type === 's') {
     const key = decryptKey(account.keys.posting, pin);
     const privateKey = PrivateKey.fromString(key);

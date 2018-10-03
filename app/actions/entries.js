@@ -1,4 +1,4 @@
-import { Client } from 'dsteem';
+import { getDiscussions } from '../backend/steem-client';
 
 export const FETCH_BEGIN = 'entries/FETCH_BEGIN';
 export const FETCH_OK = 'entries/FETCH_OK';
@@ -6,8 +6,6 @@ export const FETCH_ERROR = 'entries/FETCH_ERROR';
 export const INVALIDATE = 'entries/INVALIDATE';
 export const SET_READ = 'entries/SET_READ';
 export const SET_VOTED = 'entries/SET_VOTED';
-
-const client = new Client('https://api.steemit.com');
 
 export const makeGroupKeyForEntries = (what, tag = '') => {
   if (tag) {
@@ -50,8 +48,7 @@ export function fetchEntries(what, tag = '', more = false) {
       payload: { group: groupKey }
     });
 
-    client.database
-      .getDiscussions(what, query)
+    getDiscussions(what, query)
       .then(resp => {
         dispatch({
           type: FETCH_OK,
