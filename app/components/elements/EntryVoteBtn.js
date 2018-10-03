@@ -173,7 +173,7 @@ class EntryVoteBtn extends Component {
           this.setState({ showPopover: true });
         }}
       >
-        {showPopover ? (
+        {showPopover && !voting ? (
           <a className={btnCls} role="none" onClick={this.clicked}>
             <Popover
               onVisibleChange={this.popoverVisibleChanged}
