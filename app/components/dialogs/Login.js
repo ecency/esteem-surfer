@@ -165,7 +165,7 @@ class Login extends Component {
         {accounts.length > 0 && (
           <div className="account-list">
             <div className="account-list-header">
-              <FormattedMessage id="accounts.title" />
+              <FormattedMessage id="login.accounts-title" />
             </div>
             <div className="account-list-body">
               {accounts.map(account => (

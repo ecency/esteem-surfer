@@ -134,7 +134,7 @@ class EntryVoteBtn extends Component {
       return (
         <LoginRequired {...this.props} requiredKeys={requiredKeys}>
           <a className="btn-vote" role="button" tabIndex="-1">
-            <span className="icon">
+            <span className="btn-inner">
               <i className="mi">keyboard_arrow_up</i>
             </span>
           </a>
