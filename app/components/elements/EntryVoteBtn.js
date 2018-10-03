@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Slider, Popover} from 'antd';
+import {Slider, Popover, message} from 'antd';
 import parseToken from '../../utils/parse-token';
 import {vestsToRshares} from '../../utils/conversions';
 import {setItem, getItem} from '../../helpers/storage';
 
-import {getActiveVotes} from '../../backend/steem-client';
+import {getActiveVotes, vote} from '../../backend/steem-client';
 
 import LoginRequired from '../helpers/LoginRequired';
 
@@ -29,17 +29,66 @@ class EntryVoteBtn extends Component {
   };
 
 
-  componentDidMount() {
+  async componentDidMount() {
+    const {activeAccount} = this.props;
+
+    if (!activeAccount) {
+      return
+    }
+
+    const {username} = activeAccount;
     const {entry} = this.props;
     const {author, permlink} = entry;
 
-    getActiveVotes(author, permlink).then((resp) => {
-      // console.log(resp);
-    })
+    let votes;
+    try {
+      votes = await getActiveVotes(author, permlink);
+    } catch (e) {
+      return;
+    }
+
+    const voted = votes.some(vote => vote.voter === username && vote.percent > 0);
+
+    this.setState({voted});
   }
 
-  clicked = () => {
-    console.log("vote");
+  clicked = async (e) => {
+
+    // Make sure clicked from right element
+    if (e.target.parentNode.getAttribute('class') !== 'btn-inner') {
+      return false;
+    }
+
+    const {voted, voting} = this.state;
+
+    if (voting) {
+      return false;
+    }
+
+    const {global, activeAccount, entry} = this.props;
+    const {pin} = global;
+    const {username} = activeAccount;
+    const {author, permlink} = entry;
+
+
+    let weight = 0;
+
+    if (!voted) {
+      const perc = getPercentage(username);
+      weight = parseInt(perc * 100);
+    }
+
+    this.setState({voting: true});
+
+    try {
+      await vote(activeAccount, pin, author, permlink, weight);
+    } catch (e) {
+      message.error(String(e))
+    } finally {
+      const votes = await getActiveVotes(author, permlink);
+      const votedAfter = votes.some(vote => vote.voter === username && vote.percent > 0);
+      this.setState({voting: false, voted: votedAfter});
+    }
   };
 
   popoverVisibleChanged = v => {
@@ -81,7 +130,7 @@ class EntryVoteBtn extends Component {
 
   render() {
     const {activeAccount} = this.props;
-    const {sliderVal, estimated, showPopover} = this.state;
+    const {sliderVal, estimated, showPopover, voted, voting} = this.state;
     const requiredKeys = ['posting'];
 
 
@@ -111,6 +160,8 @@ class EntryVoteBtn extends Component {
       </div>
     );
 
+    const btnCls = `btn-vote ${voting ? 'in-progress' : ''} ${voted ? 'voted' : ''}`;
+
     return (
       <LoginRequired
         {...this.props}
@@ -123,18 +174,18 @@ class EntryVoteBtn extends Component {
         }}
       >
         {showPopover ? (
-          <a className="btn-vote" role="button" tabIndex="-1" onClick={this.clicked}>
+          <a className={btnCls} role="button" tabIndex="-1" onClick={this.clicked}>
             <Popover
               onVisibleChange={this.popoverVisibleChanged}
               mouseEnterDelay={2}
               content={popoverContent}
             >
-              <span className="icon"><i className="mi">keyboard_arrow_up</i></span>
+              <span className="btn-inner"><i className="mi">keyboard_arrow_up</i></span>
             </Popover>
           </a>
         ) : (
-          <a className="btn-vote" role="button" tabIndex="-1" onClick={this.clicked}>
-            <span className="icon"><i className="mi">keyboard_arrow_up</i></span>
+          <a className={btnCls} role="button" tabIndex="-1" onClick={this.clicked}>
+            <span className="btn-inner"><i className="mi">keyboard_arrow_up</i></span>
           </a>
         )}
       </LoginRequired>
@@ -143,10 +194,16 @@ class EntryVoteBtn extends Component {
 }
 
 EntryVoteBtn.defaultProps = {
-  activeAccount: null
+  activeAccount: null,
+  global: {
+    pin: null
+  }
 };
 
 EntryVoteBtn.propTypes = {
+  global: PropTypes.shape({
+    pin: PropTypes.string
+  }).isRequired,
   dynamicProps: PropTypes.instanceOf(Object).isRequired,
   activeAccount: PropTypes.instanceOf(Object),
   entry: PropTypes.shape({

@@ -1,6 +1,29 @@
 @import '../../style/mixins';
 @import '../../style/colors';
 
+@keyframes voting-color-change {
+  0% {
+    background: $dark-sky-blue;
+    color: $white;
+  }
+  25% {
+    background: transparent;
+    color: $dark-sky-blue;
+  }
+  50% {
+    background: $dark-sky-blue;
+    color: $white;
+  }
+  75% {
+    background: transparent;
+    color: $dark-sky-blue;
+  }
+  100% {
+    background: $dark-sky-blue;
+    color: $white;
+  }
+}
+
 .btn-vote {
   align-items: center;
   border: 1px solid $dark-sky-blue;
@@ -9,15 +32,26 @@
   display: flex;
   height: 18px;
   justify-content: center;
-  width: 18px;
   text-decoration: none;
+  width: 18px;
 
-  &:hover {
+  &:focus {
+    text-decoration: none;
+  }
+
+  &:hover,
+  &.voted {
     background-color: $dark-sky-blue;
     color: $white;
   }
 
-  .icon {
+  &.in-progress {
+    animation: voting-color-change 5s infinite;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .btn-inner {
     display: flex;
   }
 }
@@ -27,13 +61,13 @@
 
   .estimated,
   .percentage {
-    text-align: center;
     margin-bottom: 10px;
+    text-align: center;
   }
 
   .estimated {
-    font-weight: 700;
     font-size: 18px;
+    font-weight: 700;
   }
 
   .percentage {
