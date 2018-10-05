@@ -8,7 +8,7 @@
   top: 0;
   width: 100%;
 
-  .author-profile {
+  .profile-area {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -27,13 +27,13 @@
       border-bottom: 1px solid $dark-two;
     }
 
-    .follow-author {
+    .follow-btn-holder {
       position: absolute;
       right: 20px;
       top: 20px;
     }
 
-    .author-avatar {
+    .profile-avatar {
       height: 100px;
       margin-bottom: 16px;
       position: relative;
@@ -116,7 +116,7 @@
   }
 
   &.loading {
-    .author-profile {
+    .profile-area {
       border-bottom: 1px solid transparent;
     }
   }

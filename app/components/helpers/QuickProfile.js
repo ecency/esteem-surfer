@@ -141,15 +141,15 @@ class QuickProfile extends Component {
                 loadingEntries ? 'loading' : ''
               } `}
             >
-              <div className="author-profile">
-                <div className="follow-author">
+              <div className="profile-area">
+                <div className="follow-btn-holder">
                   <Tooltip placement="left" title={`Follow @${username}`}>
                     <Button type="primary" shape="circle" size="large">
                       <i className="mi">person_add</i>
                     </Button>
                   </Tooltip>
                 </div>
-                <div className="author-avatar">
+                <div className="profile-avatar">
                   <UserAvatar user={username} size="large" />
                   <div className="reputation">
                     {authorReputation(reputation)}
