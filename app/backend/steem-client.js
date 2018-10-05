@@ -1,7 +1,7 @@
-import { Client, PrivateKey } from 'dsteem';
+import {Client, PrivateKey} from 'dsteem';
 import sc2 from 'sc2-sdk';
 
-import { decryptKey } from '../utils/crypto';
+import {decryptKey} from '../utils/crypto';
 
 let client = new Client('https://api.steemit.com');
 
@@ -24,6 +24,8 @@ export const getActiveVotes = (author, permlink) =>
   client.database.call('get_active_votes', [author, permlink]);
 
 export const getAccounts = usernames => client.database.getAccounts(usernames);
+
+export const getFollowCount = username => client.database.call('get_follow_count', [username]);
 
 export const vote = (account, pin, author, permlink, weight) => {
   if (account.type === 's') {

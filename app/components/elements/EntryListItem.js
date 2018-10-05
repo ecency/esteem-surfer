@@ -8,6 +8,7 @@ import UserAvatar from './UserAvatar';
 import EntryPayout from './EntryPayout';
 import EntryVotes from './EntryVotes';
 import EntryVoteBtn from './EntryVoteBtn'
+import QuickProfile from '../helpers/QuickProfile';
 import FormattedCurrency from './FormattedCurrency';
 
 import catchEntryImage from '../../utils/catch-entry-image';
@@ -59,7 +60,9 @@ class EntryListItem extends Component {
       <div className="entry-list-item">
         <div className="item-header">
           <div className="author-avatar">
-            <UserAvatar user={entry.author} size="small"/>
+            <QuickProfile {...this.props} author={entry.author}>
+              <UserAvatar user={entry.author} size="small" onClick={()=>{console.log("aaa")}} />
+            </QuickProfile>
           </div>
           <span className="author">
             {entry.author}{' '}
