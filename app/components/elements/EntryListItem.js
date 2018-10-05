@@ -1,13 +1,17 @@
-import React, {Component} from 'react';
+/*
+eslint-disable import/no-cycle
+*/
+
+import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 
-import {FormattedRelative} from 'react-intl';
+import { FormattedRelative } from 'react-intl';
 
 import UserAvatar from './UserAvatar';
 import EntryPayout from './EntryPayout';
 import EntryVotes from './EntryVotes';
-import EntryVoteBtn from './EntryVoteBtn'
+import EntryVoteBtn from './EntryVoteBtn';
 import QuickProfile from '../helpers/QuickProfile';
 import FormattedCurrency from './FormattedCurrency';
 
@@ -21,8 +25,8 @@ import parseToken from '../../utils/parse-token';
 
 class EntryListItem extends Component {
   parentClicked = parent => {
-    const {global, location, history} = this.props;
-    const {selectedFilter} = global;
+    const { global, location, history } = this.props;
+    const { selectedFilter } = global;
     const newLoc = `/${selectedFilter}/${parent}`;
 
     if (location.pathname === newLoc) {
@@ -34,7 +38,7 @@ class EntryListItem extends Component {
   };
 
   render() {
-    const {entry} = this.props;
+    const { entry, inDrawer } = this.props;
 
     const img = catchEntryImage(entry) || 'img/noimage.png';
     const reputation = authorReputation(entry.author_reputation);
@@ -60,9 +64,16 @@ class EntryListItem extends Component {
       <div className="entry-list-item">
         <div className="item-header">
           <div className="author-avatar">
-            <QuickProfile {...this.props} author={entry.author}>
-              <UserAvatar user={entry.author} size="small" onClick={()=>{console.log("aaa")}} />
-            </QuickProfile>
+            {inDrawer && <UserAvatar user={entry.author} size="small" />}
+            {!inDrawer && (
+              <QuickProfile
+                {...this.props}
+                username={entry.author}
+                reputation={entry.author_reputation}
+              >
+                <UserAvatar user={entry.author} size="small" />
+              </QuickProfile>
+            )}
           </div>
           <span className="author">
             {entry.author}{' '}
@@ -75,9 +86,9 @@ class EntryListItem extends Component {
           >
             {entry.parent_permlink}
           </a>
-          <span className="read-mark"/>
+          <span className="read-mark" />
           <span className="date">
-            <FormattedRelative value={created} initialNow={Date.now()}/>
+            <FormattedRelative value={created} initialNow={Date.now()} />
           </span>
         </div>
         <div className="item-body">
@@ -96,15 +107,15 @@ class EntryListItem extends Component {
           </div>
           <div className="item-controls">
             <div className="voting">
-              <EntryVoteBtn {...this.props} entry={entry}/>
+              <EntryVoteBtn {...this.props} entry={entry} />
             </div>
             <EntryPayout {...this.props} entry={entry}>
               <a
                 className={`total-payout ${
                   isPayoutDeclined ? 'payout-declined' : ''
-                  }`}
+                }`}
               >
-                <FormattedCurrency {...this.props} value={totalPayout}/>
+                <FormattedCurrency {...this.props} value={totalPayout} />
               </a>
             </EntryPayout>
             <EntryVotes {...this.props} entry={entry}>
@@ -125,6 +136,10 @@ class EntryListItem extends Component {
   }
 }
 
+EntryListItem.defaultProps = {
+  inDrawer: false
+};
+
 EntryListItem.propTypes = {
   global: PropTypes.shape({
     selectedFilter: PropTypes.string.isRequired
@@ -142,7 +157,8 @@ EntryListItem.propTypes = {
     created: PropTypes.string.isRequired
   }).isRequired,
   history: PropTypes.shape({}).isRequired,
-  location: PropTypes.shape({}).isRequired
+  location: PropTypes.shape({}).isRequired,
+  inDrawer: PropTypes.bool
 };
 
 export default EntryListItem;

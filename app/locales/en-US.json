@@ -94,5 +94,11 @@
     "default": "This action requires login",
     "key-required": "This action requires {key} key or master password",
     "keys-required": "This action requires {keys} keys or master password"
+  },
+  "quick-profile": {
+    "fetch-error": "Could not fetch profile data",
+    "n-followers": "{n} followers",
+    "n-posts": "{n} posts",
+    "n-following": "{n} following"
   }
 }

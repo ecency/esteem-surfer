@@ -1,18 +1,23 @@
-import React, {Component, Fragment} from 'react';
-import PropTypes from 'prop-types';
-import {Drawer, Button, Tooltip} from 'antd';
-import {FormattedNumber} from 'react-intl';
+/*
+eslint-disable import/no-cycle
+*/
 
-import {getAccounts, getDiscussions, getFollowCount} from "../../backend/steem-client";
-import proxifyImageSrc from '../../utils/proxify-image-src';
+import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { Drawer, Button, Tooltip } from 'antd';
+import { FormattedMessage, FormattedNumber } from 'react-intl';
+
+import {
+  getAccounts,
+  getDiscussions,
+  getFollowCount
+} from '../../backend/steem-client';
 import authorReputation from '../../utils/author-reputation';
 
-
-import UserAvatar from "../elements/UserAvatar";
-// import EntryListItem from '../elements/EntryListItem'
+import UserAvatar from '../elements/UserAvatar';
 import EntryListLoadingItem from '../elements/EntryListLoadingItem';
-
-
+import LinearProgress from '../common/LinearProgress';
+import EntryListItem from '../elements/EntryListItem';
 
 class QuickProfile extends Component {
   constructor(props) {
@@ -21,81 +26,78 @@ class QuickProfile extends Component {
     this.state = {
       visible: false,
       active: false,
-      loading: true,
-      entries: [],
-
-
       profile: {
-        name: null,
-        username: null,
-        about: null,
-        coverImage: null,
-        reputation: null,
+        name: ' ',
+        about: ' ',
+        postCount: 0
+      },
+      follows: {
         followerCount: null,
-        followingCount: null,
-        postCount: null
-      }
+        followingCount: null
+      },
+      loadingEntries: true,
+      entries: []
     };
   }
 
   load = async () => {
-    const {author} = this.props;
+    const { username } = this.props;
 
-    const accounts = await getAccounts([author]);
-    const follow = await getFollowCount(author);
-
-
+    const accounts = await getAccounts([username]);
     const account = accounts[0];
 
-    let accountProfile = {};
+    let accountProfile;
     try {
       accountProfile = JSON.parse(account.json_metadata).profile;
     } catch (err) {
-
+      accountProfile = {};
+      return;
     }
 
     const name = accountProfile.name || null;
-    const username = account.name;
     const about = accountProfile.about || null;
-    const coverImage = accountProfile.cover_image ? proxifyImageSrc(accountProfile.cover_image) : null;
-    const reputation = authorReputation(account.reputation);
-    const followerCount = follow.follower_count;
-    const followingCount = follow.following_count;
     const postCount = account.post_count;
 
-    const profile = {name, username, about, coverImage, reputation, followerCount, followingCount, postCount};
+    this.setState({ profile: { name, about, postCount } });
 
-    this.setState({profile});
+    const follow = await getFollowCount(username);
+    const followerCount = follow.follower_count;
+    const followingCount = follow.following_count;
 
+    this.setState({ follows: { followerCount, followingCount } });
 
     const entries = await getDiscussions('blog', {
-      tag: author,
+      tag: username,
       limit: 7,
       start_author: undefined,
       start_permlink: undefined
     });
 
-    this.setState({entries, loading: false});
+    this.setState({ entries, loadingEntries: false });
   };
 
-
   show = () => {
-    this.setState({active: true, visible: true});
-    this.load()
+    this.setState({ active: true, visible: true });
+    this.load();
   };
 
   hide = () => {
-    this.setState({visible: false});
+    this.setState({ visible: false });
     setTimeout(() => {
-      this.setState({active: false});
-    }, 500)
+      this.setState({ active: false });
+    }, 500);
   };
 
   render() {
-    const {children, author} = this.props;
-
-    const {visible, active, loading, profile, entries} = this.state;
-
+    const { children, username, reputation } = this.props;
+    const {
+      visible,
+      active,
+      profile,
+      follows,
+      entries,
+      loadingEntries
+    } = this.state;
 
     const newChild = React.cloneElement(children, {
       onClick: () => {
@@ -103,75 +105,107 @@ class QuickProfile extends Component {
       }
     });
 
+    const followersMsg =
+      follows.followerCount === null ? (
+        '--'
+      ) : (
+        <FormattedNumber value={follows.followerCount} />
+      );
+    const postCountMsg =
+      profile.postCount === null ? (
+        '--'
+      ) : (
+        <FormattedNumber value={profile.postCount} />
+      );
+    const followingMsg =
+      follows.followingCount === null ? (
+        '--'
+      ) : (
+        <FormattedNumber value={follows.followingCount} />
+      );
 
     return (
       <Fragment>
         {newChild}
 
-        {active &&
-        <Drawer
-          placement="right"
-          closable={false}
-          onClose={this.hide}
-          visible={visible}
-          width="640px">
-          <div className={`quick-profile-content ${loading ? 'loading' : ''}`}>
-
-            {loading &&
-            <Fragment>
-              <div className="author-profile">
-                <div className="follow-author"/>
-                <div className="author-avatar"/>
-                <div className="full-name"/>
-                <div className="username"/>
-                <div className="about"/>
-                <div className="numbers"/>
-              </div>
-              <div className="entries">
-                <EntryListLoadingItem/>
-              </div>
-            </Fragment>
-            }
-
-
-            {!loading &&
-            <Fragment>
+        {active && (
+          <Drawer
+            placement="right"
+            closable={false}
+            onClose={this.hide}
+            visible={visible}
+            width="640px"
+          >
+            <div
+              className={`quick-profile-content ${
+                loadingEntries ? 'loading' : ''
+              } `}
+            >
               <div className="author-profile">
                 <div className="follow-author">
-                  <Tooltip placement="left" title={`Follow @${author}`}>
-
-                    <Button type="primary" shape="circle" size="large"><i className="mi">person_add</i></Button>
+                  <Tooltip placement="left" title={`Follow @${username}`}>
+                    <Button type="primary" shape="circle" size="large">
+                      <i className="mi">person_add</i>
+                    </Button>
                   </Tooltip>
                 </div>
                 <div className="author-avatar">
-                  <UserAvatar user={author} size="large"/>
-                  <div className="reputation">{profile.reputation}</div>
+                  <UserAvatar user={username} size="large" />
+                  <div className="reputation">
+                    {authorReputation(reputation)}
+                  </div>
                 </div>
-
-                {profile.name &&
-                <div className="full-name">{profile.name}</div>
-                }
-
-                <div className="username">{profile.username}</div>
-                {profile.about &&
-                <div className="about">{profile.about}</div>
-                }
+                {profile.name && (
+                  <div className="full-name">{profile.name}</div>
+                )}
+                <div className="username">{username}</div>
+                {profile.about && <div className="about">{profile.about}</div>}
                 <div className="numbers">
-                  <span className="followers"> <FormattedNumber value={profile.followerCount}/> followers</span>
-                  <span className="post-count"> <FormattedNumber value={profile.postCount}/> posts</span>
-                  <span className="following"> <FormattedNumber value={profile.followingCount}/> following</span>
+                  <span className="followers">
+                    <FormattedMessage
+                      id="quick-profile.n-followers"
+                      values={{ n: followersMsg }}
+                    />
+                  </span>
+                  <span className="post-count">
+                    <FormattedMessage
+                      id="quick-profile.n-posts"
+                      values={{ n: postCountMsg }}
+                    />
+                  </span>
+                  <span className="following">
+                    <FormattedMessage
+                      id="quick-profile.n-following"
+                      values={{ n: followingMsg }}
+                    />
+                  </span>
                 </div>
               </div>
 
-              <div className="entries">
+              {loadingEntries && (
+                <Fragment>
+                  <LinearProgress />
+                  <div className="entries">
+                    <EntryListLoadingItem />
+                  </div>
+                </Fragment>
+              )}
 
-              </div>
-            </Fragment>
-            }
-          </div>
-        </Drawer>
-        }
-
+              {!loadingEntries && (
+                <div className="entries">
+                  {entries.map(d => (
+                    <EntryListItem
+                      key={d.id}
+                      {...this.props}
+                      entry={d}
+                      inDrawer
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          </Drawer>
+        )}
       </Fragment>
     );
   }
@@ -181,7 +215,8 @@ QuickProfile.defaultProps = {};
 
 QuickProfile.propTypes = {
   children: PropTypes.element.isRequired,
-  author: PropTypes.string.isRequired
+  username: PropTypes.string.isRequired,
+  reputation: PropTypes.string.isRequired
 };
 
 export default QuickProfile;
