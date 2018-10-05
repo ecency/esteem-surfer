@@ -30,6 +30,9 @@
     "time": "Time",
     "modal-title": "Voters ({n})"
   },
+  "entry-list-item": {
+    "reblogged": "resteemed"
+  },
   "settings": {
     "title": "Settings",
     "currency": "Currency",

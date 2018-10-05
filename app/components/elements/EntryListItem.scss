@@ -102,6 +102,18 @@
       color: $steel-grey;
       flex-shrink: 0;
     }
+
+    .reblogged {
+      align-items: center;
+      color: $steel-grey;
+      display: inline-flex;
+      flex-shrink: 0;
+      margin-left: 24px;
+
+      .mi {
+        margin-right: 4px;
+      }
+    }
   }
 
   .item-body {

@@ -220,6 +220,7 @@ class QuickProfile extends Component {
                       key={d.id}
                       {...this.props}
                       entry={d}
+                      asAuthor={username}
                       inDrawer
                     />
                   ))}

@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { FormattedRelative } from 'react-intl';
+import { FormattedRelative, FormattedMessage } from 'react-intl';
 
 import UserAvatar from './UserAvatar';
 import EntryPayout from './EntryPayout';
@@ -38,7 +38,7 @@ class EntryListItem extends Component {
   };
 
   render() {
-    const { entry, inDrawer } = this.props;
+    const { entry, inDrawer, asAuthor } = this.props;
 
     const img = catchEntryImage(entry) || 'img/noimage.png';
     const reputation = authorReputation(entry.author_reputation);
@@ -90,6 +90,13 @@ class EntryListItem extends Component {
           <span className="date">
             <FormattedRelative value={created} initialNow={Date.now()} />
           </span>
+          {asAuthor &&
+            entry.author !== asAuthor && (
+              <span className="reblogged">
+                <i className="mi">repeat</i>{' '}
+                <FormattedMessage id="entry-list-item.reblogged" />
+              </span>
+            )}
         </div>
         <div className="item-body">
           <div className="item-image">
@@ -137,7 +144,8 @@ class EntryListItem extends Component {
 }
 
 EntryListItem.defaultProps = {
-  inDrawer: false
+  inDrawer: false,
+  asAuthor: null
 };
 
 EntryListItem.propTypes = {
@@ -158,7 +166,8 @@ EntryListItem.propTypes = {
   }).isRequired,
   history: PropTypes.shape({}).isRequired,
   location: PropTypes.shape({}).isRequired,
-  inDrawer: PropTypes.bool
+  inDrawer: PropTypes.bool,
+  asAuthor: PropTypes.string
 };
 
 export default EntryListItem;
