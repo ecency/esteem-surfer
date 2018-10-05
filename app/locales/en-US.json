@@ -96,7 +96,8 @@
     "keys-required": "This action requires {keys} keys or master password"
   },
   "quick-profile": {
-    "fetch-error": "Could not fetch profile data",
+    "fetch-error-profile": "Could not fetch profile data",
+    "fetch-error-content": "Could not fetch posts",
     "n-followers": "{n} followers",
     "n-posts": "{n} posts",
     "n-following": "{n} following"

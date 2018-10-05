@@ -4,8 +4,8 @@ eslint-disable import/no-cycle
 
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Drawer, Button, Tooltip } from 'antd';
-import { FormattedMessage, FormattedNumber } from 'react-intl';
+import { Drawer, Button, Tooltip, message } from 'antd';
+import { FormattedMessage, FormattedNumber, injectIntl } from 'react-intl';
 
 import {
   getAccounts,
@@ -41,7 +41,7 @@ class QuickProfile extends Component {
   }
 
   load = async () => {
-    const { username } = this.props;
+    const { username, intl } = this.props;
 
     const accounts = await getAccounts([username]);
     const account = accounts[0];
@@ -50,30 +50,52 @@ class QuickProfile extends Component {
     try {
       accountProfile = JSON.parse(account.json_metadata).profile;
     } catch (err) {
-      accountProfile = {};
-      return;
+      message.error(
+        intl.formatMessage({ id: 'quick-profile.fetch-error-profile' })
+      );
     }
 
-    const name = accountProfile.name || null;
-    const about = accountProfile.about || null;
-    const postCount = account.post_count;
+    if (accountProfile) {
+      const name = accountProfile.name || null;
+      const about = accountProfile.about || null;
+      const postCount = account.post_count;
 
-    this.setState({ profile: { name, about, postCount } });
+      this.setState({ profile: { name, about, postCount } });
+    }
 
-    const follow = await getFollowCount(username);
-    const followerCount = follow.follower_count;
-    const followingCount = follow.following_count;
+    let follow;
+    try {
+      follow = await getFollowCount(username);
+    } catch (err) {
+      message.error(
+        intl.formatMessage({ id: 'quick-profile.fetch-error-profile' })
+      );
+    }
 
-    this.setState({ follows: { followerCount, followingCount } });
+    if (follow) {
+      const followerCount = follow.follower_count;
+      const followingCount = follow.following_count;
 
-    const entries = await getDiscussions('blog', {
-      tag: username,
-      limit: 7,
-      start_author: undefined,
-      start_permlink: undefined
-    });
+      this.setState({ follows: { followerCount, followingCount } });
+    }
 
-    this.setState({ entries, loadingEntries: false });
+    let entries;
+    try {
+      entries = await getDiscussions('blog', {
+        tag: username,
+        limit: 7,
+        start_author: undefined,
+        start_permlink: undefined
+      });
+    } catch (err) {
+      message.error(
+        intl.formatMessage({ id: 'quick-profile.fetch-error-content' })
+      );
+    }
+
+    if (entries) {
+      this.setState({ entries, loadingEntries: false });
+    }
   };
 
   show = () => {
@@ -219,4 +241,4 @@ QuickProfile.propTypes = {
   reputation: PropTypes.string.isRequired
 };
 
-export default QuickProfile;
+export default injectIntl(QuickProfile);
