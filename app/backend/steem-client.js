@@ -1,7 +1,7 @@
-import {Client, PrivateKey} from 'dsteem';
+import { Client, PrivateKey } from 'dsteem';
 import sc2 from 'sc2-sdk';
 
-import {decryptKey} from '../utils/crypto';
+import { decryptKey } from '../utils/crypto';
 
 let client = new Client('https://api.steemit.com');
 
@@ -25,7 +25,21 @@ export const getActiveVotes = (author, permlink) =>
 
 export const getAccounts = usernames => client.database.getAccounts(usernames);
 
-export const getFollowCount = username => client.database.call('get_follow_count', [username]);
+export const getFollowCount = username =>
+  client.database.call('get_follow_count', [username]);
+
+export const getFollowing = (
+  follower,
+  startFollowing,
+  followType = 'blog',
+  limit = 100
+) =>
+  client.database.call('get_following', [
+    follower,
+    startFollowing,
+    followType,
+    limit
+  ]);
 
 export const vote = (account, pin, author, permlink, weight) => {
   if (account.type === 's') {
@@ -52,5 +66,77 @@ export const vote = (account, pin, author, permlink, weight) => {
     const voter = account.username;
 
     return api.vote(voter, author, permlink, weight);
+  }
+};
+
+export const follow = (account, pin, following) => {
+  if (account.type === 's') {
+    const key = decryptKey(account.keys.posting, pin);
+    const privateKey = PrivateKey.fromString(key);
+    const follower = account.username;
+
+    const json = {
+      id: 'follow',
+      json: JSON.stringify([
+        'follow',
+        {
+          follower,
+          following,
+          what: ['blog']
+        }
+      ]),
+      required_auths: [],
+      required_posting_auths: [follower]
+    };
+
+    return client.broadcast.json(json, privateKey);
+  }
+};
+
+export const unFollow = (account, pin, following) => {
+  if (account.type === 's') {
+    const key = decryptKey(account.keys.posting, pin);
+    const privateKey = PrivateKey.fromString(key);
+    const follower = account.username;
+
+    const json = {
+      id: 'follow',
+      json: JSON.stringify([
+        'follow',
+        {
+          follower,
+          following,
+          what: ['']
+        }
+      ]),
+      required_auths: [],
+      required_posting_auths: [follower]
+    };
+
+    return client.broadcast.json(json, privateKey);
+  }
+};
+
+export const ignore = (account, pin, following) => {
+  if (account.type === 's') {
+    const key = decryptKey(account.keys.posting, pin);
+    const privateKey = PrivateKey.fromString(key);
+    const follower = account.username;
+
+    const json = {
+      id: 'follow',
+      json: JSON.stringify([
+        'follow',
+        {
+          follower,
+          following,
+          what: ['ignore']
+        }
+      ]),
+      required_auths: [],
+      required_posting_auths: [follower]
+    };
+
+    return client.broadcast.json(json, privateKey);
   }
 };

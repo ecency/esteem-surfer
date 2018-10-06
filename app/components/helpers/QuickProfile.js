@@ -4,7 +4,7 @@ eslint-disable import/no-cycle
 
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Drawer, Button, Tooltip, message } from 'antd';
+import { Drawer, message } from 'antd';
 import { FormattedMessage, FormattedNumber, injectIntl } from 'react-intl';
 
 import {
@@ -18,6 +18,7 @@ import UserAvatar from '../elements/UserAvatar';
 import EntryListLoadingItem from '../elements/EntryListLoadingItem';
 import LinearProgress from '../common/LinearProgress';
 import EntryListItem from '../elements/EntryListItem';
+import FollowControls from '../elements/FollowControls';
 
 class QuickProfile extends Component {
   constructor(props) {
@@ -165,11 +166,7 @@ class QuickProfile extends Component {
             >
               <div className="profile-area">
                 <div className="follow-btn-holder">
-                  <Tooltip placement="left" title={`Follow @${username}`}>
-                    <Button type="primary" shape="circle" size="large">
-                      <i className="mi">person_add</i>
-                    </Button>
-                  </Tooltip>
+                  <FollowControls {...this.props} targetUsername={username} />
                 </div>
                 <div className="profile-avatar">
                   <UserAvatar user={username} size="large" />

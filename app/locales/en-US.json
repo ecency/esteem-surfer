@@ -104,5 +104,11 @@
     "n-followers": "{n} followers",
     "n-posts": "{n} posts",
     "n-following": "{n} following"
+  },
+  "follow-controls": {
+    "follow": "Follow",
+    "unFollow": "Unfollow",
+    "mute": "Mute",
+    "unMute": "Unmute"
   }
 }
