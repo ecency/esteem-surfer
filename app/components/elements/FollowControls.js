@@ -13,6 +13,8 @@ import {
   ignore
 } from '../../backend/steem-client';
 
+import formatChainError from '../../utils/format-chain-error';
+
 class FollowControls extends Component {
   constructor(props) {
     super(props);
@@ -101,7 +103,7 @@ class FollowControls extends Component {
     try {
       await follow(activeAccount, pin, targetUsername);
     } catch (err) {
-      message.error('Could not complete process');
+      message.error(formatChainError(err));
     } finally {
       await this.fetchStatus();
       this.setState({ processing: false });
@@ -116,7 +118,7 @@ class FollowControls extends Component {
     try {
       await unFollow(activeAccount, pin, targetUsername);
     } catch (err) {
-      message.error('Could not complete process');
+      message.error(formatChainError(err));
     } finally {
       await this.fetchStatus();
       this.setState({ processing: false });
@@ -131,7 +133,7 @@ class FollowControls extends Component {
     try {
       await ignore(activeAccount, pin, targetUsername);
     } catch (err) {
-      message.error('Could not complete process');
+      message.error(formatChainError(err));
     } finally {
       await this.fetchStatus();
       this.setState({ processing: false });
