@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -192,38 +192,38 @@ class FollowControls extends Component {
 
     if (fetching) {
       return (
-        <Fragment>
+        <div>
           <Button type="primary" disabled style={{ marginRight: '5px' }}>
             {followMsg}
           </Button>
           <Button disabled>{muteMsg}</Button>
-        </Fragment>
+        </div>
       );
     }
 
     if (following) {
       return (
-        <Fragment>
+        <div>
           {btnUnfollow}
           {btnMute}
-        </Fragment>
+        </div>
       );
     }
 
     if (muted) {
       return (
-        <Fragment>
+        <div>
           {btnFollow}
           {btnUnMute}
-        </Fragment>
+        </div>
       );
     }
 
     return (
-      <Fragment>
+      <div>
         {btnFollow}
         {btnMute}
-      </Fragment>
+      </div>
     );
   }
 }

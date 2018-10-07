@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FollowControls (1) Default render. No active user. 1`] = `"<div><button style=\\"margin-right: 5px;\\" type=\\"button\\" class=\\"ant-btn ant-btn-primary\\"><span>Follow</span></button><button type=\\"button\\" class=\\"ant-btn\\"><span>Mute</span></button></div>"`;
+
+exports[`FollowControls (2) Render with active account 1`] = `"<div><button style=\\"margin-right: 5px;\\" type=\\"button\\" class=\\"ant-btn ant-btn-primary\\"><span>Follow</span></button><button type=\\"button\\" class=\\"ant-btn\\"><span>Mute</span></button></div>"`;
+
+exports[`FollowControls (2) Render with active account 2`] = `"<div><button style=\\"margin-right: 5px;\\" type=\\"button\\" class=\\"ant-btn ant-btn-primary\\"><span>Unfollow</span></button><button type=\\"button\\" class=\\"ant-btn\\"><span>Mute</span></button></div>"`;
+
+exports[`FollowControls (2) Render with active account 3`] = `"<div><button style=\\"margin-right: 5px;\\" type=\\"button\\" class=\\"ant-btn ant-btn-primary\\"><span>Follow</span></button><button type=\\"button\\" class=\\"ant-btn\\"><span>Unmute</span></button></div>"`;
