@@ -16,40 +16,41 @@ import { addAccount, addAccountSc, deleteAccount } from '../actions/accounts';
 
 import { logIn, logOut, updateActiveAccount } from '../actions/active-account';
 
-function mapStateToProps(state) {
-  return {
-    global: state.global,
-    entries: state.entries,
-    trendingTags: state.trendingTags,
-    accounts: state.accounts,
-    activeAccount: state.activeAccount,
-    dynamicProps: state.dynamicProps
-  };
-}
+const mapStateToProps = state => ({
+  global: state.global,
+  entries: state.entries,
+  trendingTags: state.trendingTags,
+  accounts: state.accounts,
+  activeAccount: state.activeAccount,
+  dynamicProps: state.dynamicProps
+});
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: {
-      ...bindActionCreators({ fetchEntries, invalidateEntries }, dispatch),
-      ...bindActionCreators({ fetchTrendingTags }, dispatch),
-      ...bindActionCreators({ changeTheme }, dispatch),
-      ...bindActionCreators({ changeListStyle }, dispatch),
-      ...bindActionCreators({ changeCurrency }, dispatch),
-      ...bindActionCreators({ changeLocale }, dispatch),
-      ...bindActionCreators({ changePushNotify }, dispatch),
-      ...bindActionCreators({ changeServer }, dispatch),
-      ...bindActionCreators(
-        {
-          addAccount,
-          addAccountSc,
-          deleteAccount
-        },
-        dispatch
-      ),
-      ...bindActionCreators({ logIn, logOut, updateActiveAccount }, dispatch)
-    }
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  actions: {
+    ...bindActionCreators({ fetchEntries, invalidateEntries }, dispatch),
+    ...bindActionCreators({ fetchTrendingTags }, dispatch),
+    ...bindActionCreators(
+      {
+        changeTheme,
+        changeListStyle,
+        changeCurrency,
+        changeLocale,
+        changePushNotify,
+        changeServer
+      },
+      dispatch
+    ),
+    ...bindActionCreators(
+      {
+        addAccount,
+        addAccountSc,
+        deleteAccount
+      },
+      dispatch
+    ),
+    ...bindActionCreators({ logIn, logOut, updateActiveAccount }, dispatch)
+  }
+});
 
 export default connect(
   mapStateToProps,
