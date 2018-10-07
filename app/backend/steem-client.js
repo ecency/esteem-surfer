@@ -91,6 +91,17 @@ export const follow = (account, pin, following) => {
 
     return client.broadcast.json(json, privateKey);
   }
+
+  if (account.type === 'sc') {
+    const token = decryptKey(account.accessToken, pin);
+    const api = sc2.Initialize({
+      accessToken: token
+    });
+
+    const follower = account.username;
+
+    return api.follow(follower, following);
+  }
 };
 
 export const unFollow = (account, pin, following) => {
@@ -115,6 +126,17 @@ export const unFollow = (account, pin, following) => {
 
     return client.broadcast.json(json, privateKey);
   }
+
+  if (account.type === 'sc') {
+    const token = decryptKey(account.accessToken, pin);
+    const api = sc2.Initialize({
+      accessToken: token
+    });
+
+    const follower = account.username;
+
+    return api.unfollow(follower, following);
+  }
 };
 
 export const ignore = (account, pin, following) => {
@@ -138,5 +160,16 @@ export const ignore = (account, pin, following) => {
     };
 
     return client.broadcast.json(json, privateKey);
+  }
+
+  if (account.type === 'sc') {
+    const token = decryptKey(account.accessToken, pin);
+    const api = sc2.Initialize({
+      accessToken: token
+    });
+
+    const follower = account.username;
+
+    return api.ignore(follower, following);
   }
 };
