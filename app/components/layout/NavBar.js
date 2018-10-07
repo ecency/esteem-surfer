@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 
-import {Tooltip, Modal, Drawer} from 'antd';
-import {FormattedMessage} from 'react-intl';
+import { Tooltip, Modal, Drawer } from 'antd';
+import { FormattedMessage } from 'react-intl';
 
 import Mi from '../common/Mi';
 import UserAvatar from '../elements/UserAvatar';
@@ -19,7 +19,7 @@ export const checkPathForBack = path => {
     return false;
   }
 
-  return !['/', '/welcome', '/set-pin'].includes(path);
+  return !['/'].includes(path);
 };
 
 class NavBar extends Component {
@@ -64,50 +64,50 @@ class NavBar extends Component {
   };
 
   toggleMenu = () => {
-    const {menuVisible} = this.state;
-    this.setState({menuVisible: !menuVisible});
+    const { menuVisible } = this.state;
+    this.setState({ menuVisible: !menuVisible });
   };
 
   goBack = () => {
-    const {history} = this.props;
+    const { history } = this.props;
 
     history.goBack();
   };
 
   goForward = () => {
-    const {history} = this.props;
+    const { history } = this.props;
 
     history.goForward();
   };
 
   refresh = () => {
-    const {reloadFn} = this.props;
+    const { reloadFn } = this.props;
 
     reloadFn();
   };
 
   favorite = () => {
-    const {favoriteFn} = this.props;
+    const { favoriteFn } = this.props;
 
     if (favoriteFn) favoriteFn();
   };
 
   bookmark = () => {
-    const {bookmarkFn} = this.props;
+    const { bookmarkFn } = this.props;
 
     if (bookmarkFn) bookmarkFn();
   };
 
   changeTheme = () => {
-    const {actions} = this.props;
-    const {changeTheme} = actions;
+    const { actions } = this.props;
+    const { changeTheme } = actions;
 
     changeTheme();
   };
 
   logoClicked = () => {
-    const {location, global} = this.props;
-    const {selectedFilter} = global;
+    const { location, global } = this.props;
+    const { selectedFilter } = global;
 
     const newLoc = `/${selectedFilter}`;
 
@@ -116,7 +116,7 @@ class NavBar extends Component {
       return;
     }
 
-    const {history} = this.props;
+    const { history } = this.props;
     history.push(newLoc);
   };
 
@@ -132,8 +132,7 @@ class NavBar extends Component {
       activeAccount
     } = this.props;
 
-
-    const {settingsModalVisible, loginModalVisible, menuVisible} = this.state;
+    const { settingsModalVisible, loginModalVisible, menuVisible } = this.state;
 
     let canGoBack = false;
     if (history.entries[history.index - 1]) {
@@ -160,7 +159,7 @@ class NavBar extends Component {
           />
           <div className={`btn-post-mini  ${postBtnActive ? 'visible' : ''}`}>
             <span className="icon">
-              <Mi icon="edit"/>
+              <Mi icon="edit" />
             </span>
           </div>
           <div className="nav-controls">
@@ -169,26 +168,26 @@ class NavBar extends Component {
               onClick={() => this.goBack()}
               role="none"
             >
-              <Mi icon="arrow_back"/>
+              <Mi icon="arrow_back" />
             </a>
             <a
               className={forwardClassName}
               onClick={() => this.goForward()}
               role="none"
             >
-              <Mi icon="arrow_forward"/>
+              <Mi icon="arrow_forward" />
             </a>
             <a
               className={reloadClassName}
               onClick={() => this.refresh()}
               role="none"
             >
-              <Mi icon="refresh"/>
+              <Mi icon="refresh" />
             </a>
           </div>
           <div className="address-bar">
             <div className="pre-add-on">
-              <Mi icon="search"/>
+              <Mi icon="search" />
             </div>
             <div className="address">
               <span className="protocol">esteem://</span>
@@ -200,7 +199,7 @@ class NavBar extends Component {
                 onClick={() => this.favorite()}
                 role="none"
               >
-                <Mi icon="star_border"/>
+                <Mi icon="star_border" />
               </a>
             ) : (
               ''
@@ -211,7 +210,7 @@ class NavBar extends Component {
                 onClick={() => this.bookmark()}
                 role="none"
               >
-                <Mi icon="bookmark"/>
+                <Mi icon="bookmark" />
               </a>
             ) : (
               ''
@@ -225,7 +224,7 @@ class NavBar extends Component {
               }}
               role="none"
             >
-              <Mi icon="brightness_medium"/>
+              <Mi icon="brightness_medium" />
             </a>
             <a
               className="settings"
@@ -234,7 +233,7 @@ class NavBar extends Component {
               }}
               role="none"
             >
-              <Mi icon="settings"/>
+              <Mi icon="settings" />
             </a>
           </div>
           <div className="user-menu">
@@ -251,7 +250,7 @@ class NavBar extends Component {
                     this.showLoginModal();
                   }}
                 >
-                  <Mi icon="account_circle"/>
+                  <Mi icon="account_circle" />
                 </a>
               </Tooltip>
             )}
@@ -262,7 +261,7 @@ class NavBar extends Component {
                 className="user-menu-trigger"
                 onClick={this.toggleMenu}
               >
-                <UserAvatar user={activeAccount.username} size="normal"/>
+                <UserAvatar user={activeAccount.username} size="normal" />
               </a>
             )}
 
@@ -274,7 +273,7 @@ class NavBar extends Component {
                 visible={menuVisible}
                 width="200px"
               >
-                <UserMenu {...this.props} closeFn={this.toggleMenu}/>
+                <UserMenu {...this.props} closeFn={this.toggleMenu} />
               </Drawer>
             )}
           </div>
@@ -284,7 +283,7 @@ class NavBar extends Component {
           onCancel={this.onSettingsModalCancel}
           footer={false}
           width="600px"
-          title={<FormattedMessage id="settings.title"/>}
+          title={<FormattedMessage id="settings.title" />}
           destroyOnClose
           centered
         >
@@ -300,7 +299,7 @@ class NavBar extends Component {
           destroyOnClose
           centered
         >
-          <Login {...this.props} onSuccess={this.onLoginSuccess}/>
+          <Login {...this.props} onSuccess={this.onLoginSuccess} />
         </Modal>
       </div>
     );
@@ -321,7 +320,7 @@ NavBar.defaultProps = {
 
 NavBar.propTypes = {
   actions: PropTypes.shape({
-    changeTheme: PropTypes.func.isRequired,
+    changeTheme: PropTypes.func.isRequired
   }).isRequired,
   global: PropTypes.shape({
     selectedFilter: PropTypes.string.isRequired
