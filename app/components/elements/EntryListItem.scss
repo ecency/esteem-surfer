@@ -28,34 +28,38 @@
     margin-bottom: 10px;
     overflow: hidden;
 
-    .author-avatar {
+    .author-part {
+      align-items: center;
       cursor: pointer;
-      margin-right: 12px;
-    }
-
-    .author {
-      flex-shrink: 0;
-      font-weight: 700;
+      display: flex;
       margin-right: 10px;
 
-      @include themify(day) {
-        color: $charcoal-grey;
+      .author-avatar {
+        margin-right: 8px;
       }
 
-      @include themify(night) {
-        color: $pinkish-grey;
-      }
+      .author {
+        font-weight: 700;
 
-      .author-reputation {
-        color: $steel-grey;
-        font-weight: 500;
-
-        &::before {
-          content: '(';
+        @include themify(day) {
+          color: $charcoal-grey;
         }
 
-        &::after {
-          content: ')';
+        @include themify(night) {
+          color: $pinkish-grey;
+        }
+
+        .author-reputation {
+          color: $steel-grey;
+          font-weight: 500;
+
+          &::before {
+            content: '(';
+          }
+
+          &::after {
+            content: ')';
+          }
         }
       }
     }

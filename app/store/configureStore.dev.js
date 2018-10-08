@@ -10,6 +10,7 @@ import * as globalActions from '../actions/global';
 import * as accountsActions from '../actions/accounts';
 import * as activeAccountActions from '../actions/active-account';
 import * as dynamicPropsActions from '../actions/dynamic-props';
+import * as visitingProfileActions from '../actions/visiting-profile';
 
 const history = createHistory();
 
@@ -44,6 +45,7 @@ const configureStore = (initialState = {}) => {
     ...accountsActions,
     ...activeAccountActions,
     ...dynamicPropsActions,
+    ...visitingProfileActions,
     ...routerActions
   };
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose

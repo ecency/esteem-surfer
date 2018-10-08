@@ -32,12 +32,21 @@ class ScrollReplace extends React.Component {
     if (this.el) {
       this.el.addEventListener('scroll', this.handleScroll);
     }
+
+    // Initial replace
+    const { history, location } = this.props;
+    let pos = 0;
+    if (history.action === 'POP') {
+      pos = getPathPos(location.pathname) || 0;
+    }
+    this.el.scrollTop = pos;
   }
 
   componentWillReceiveProps(nextProps) {
     const { location: actual } = this.props;
     const { location: next } = nextProps;
 
+    // Replace when location change
     if (next !== actual) {
       // when page changed
       const { history } = this.props;

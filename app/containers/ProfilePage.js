@@ -1,8 +1,8 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import EntryIndex from '../components/EntryIndex';
+import Profile from '../components/Profile';
 import { fetchEntries, invalidateEntries } from '../actions/entries';
-import { fetchTrendingTags } from '../actions/trending-tags';
+
 import {
   changeTheme,
   changeListStyle,
@@ -16,8 +16,6 @@ import { addAccount, addAccountSc, deleteAccount } from '../actions/accounts';
 
 import { logIn, logOut, updateActiveAccount } from '../actions/active-account';
 
-import { setVisitingProfile } from '../actions/visiting-profile';
-
 const mapStateToProps = state => ({
   global: state.global,
   entries: state.entries,
@@ -30,7 +28,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   actions: {
     ...bindActionCreators({ fetchEntries, invalidateEntries }, dispatch),
-    ...bindActionCreators({ fetchTrendingTags }, dispatch),
     ...bindActionCreators(
       {
         changeTheme,
@@ -50,12 +47,11 @@ const mapDispatchToProps = dispatch => ({
       },
       dispatch
     ),
-    ...bindActionCreators({ logIn, logOut, updateActiveAccount }, dispatch),
-    ...bindActionCreators({ setVisitingProfile }, dispatch)
+    ...bindActionCreators({ logIn, logOut, updateActiveAccount }, dispatch)
   }
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(EntryIndex);
+)(Profile);

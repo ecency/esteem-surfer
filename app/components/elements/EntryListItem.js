@@ -14,6 +14,7 @@ import EntryVotes from './EntryVotes';
 import EntryVoteBtn from './EntryVoteBtn';
 import QuickProfile from '../helpers/QuickProfile';
 import FormattedCurrency from './FormattedCurrency';
+import ProfileLink from '../helpers/ProfileLink';
 
 import catchEntryImage from '../../utils/catch-entry-image';
 import authorReputation from '../../utils/author-reputation';
@@ -63,22 +64,38 @@ class EntryListItem extends Component {
     return (
       <div className="entry-list-item">
         <div className="item-header">
-          <div className="author-avatar">
-            {inDrawer && <UserAvatar user={entry.author} size="small" />}
-            {!inDrawer && (
-              <QuickProfile
-                {...this.props}
-                username={entry.author}
-                reputation={entry.author_reputation}
-              >
-                <UserAvatar user={entry.author} size="small" />
-              </QuickProfile>
-            )}
-          </div>
-          <span className="author">
-            {entry.author}{' '}
-            <span className="author-reputation">{reputation}</span>
-          </span>
+          {inDrawer && (
+            <ProfileLink {...this.props} username={entry.author}>
+              <div className="author-part">
+                <div className="author-avatar">
+                  <UserAvatar user={entry.author} size="small" />
+                </div>
+                <div className="author">
+                  {entry.author}{' '}
+                  <span className="author-reputation">{reputation}</span>
+                </div>
+              </div>
+            </ProfileLink>
+          )}
+
+          {!inDrawer && (
+            <QuickProfile
+              {...this.props}
+              username={entry.author}
+              reputation={entry.author_reputation}
+            >
+              <div className="author-part">
+                <div className="author-avatar">
+                  <UserAvatar user={entry.author} size="small" />
+                </div>
+                <div className="author">
+                  {entry.author}{' '}
+                  <span className="author-reputation">{reputation}</span>
+                </div>
+              </div>
+            </QuickProfile>
+          )}
+
           <a
             className="category"
             role="none"

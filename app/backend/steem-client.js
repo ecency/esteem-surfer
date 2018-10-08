@@ -25,6 +25,9 @@ export const getActiveVotes = (author, permlink) =>
 
 export const getAccounts = usernames => client.database.getAccounts(usernames);
 
+export const getAccount = username =>
+  client.database.getAccounts([username]).then(resp => resp[0]);
+
 export const getFollowCount = username =>
   client.database.call('get_follow_count', [username]);
 

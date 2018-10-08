@@ -8,7 +8,7 @@ import { Drawer, message } from 'antd';
 import { FormattedMessage, FormattedNumber, injectIntl } from 'react-intl';
 
 import {
-  getAccounts,
+  getAccount,
   getDiscussions,
   getFollowCount
 } from '../../backend/steem-client';
@@ -19,6 +19,7 @@ import EntryListLoadingItem from '../elements/EntryListLoadingItem';
 import LinearProgress from '../common/LinearProgress';
 import EntryListItem from '../elements/EntryListItem';
 import FollowControls from '../elements/FollowControls';
+import ProfileLink from './ProfileLink';
 
 class QuickProfile extends Component {
   constructor(props) {
@@ -37,15 +38,17 @@ class QuickProfile extends Component {
         followingCount: null
       },
       loadingEntries: true,
-      entries: []
+      entries: [],
+      accountData: null
     };
   }
 
   load = async () => {
     const { username, intl } = this.props;
 
-    const accounts = await getAccounts([username]);
-    const account = accounts[0];
+    const account = await getAccount(username);
+
+    this.setState({ accountData: account });
 
     let accountProfile;
     try {
@@ -119,7 +122,8 @@ class QuickProfile extends Component {
       profile,
       follows,
       entries,
-      loadingEntries
+      loadingEntries,
+      accountData
     } = this.state;
 
     const newChild = React.cloneElement(children, {
@@ -177,7 +181,13 @@ class QuickProfile extends Component {
                 {profile.name && (
                   <div className="full-name">{profile.name}</div>
                 )}
-                <div className="username">{username}</div>
+                <ProfileLink
+                  {...this.props}
+                  username={username}
+                  accountData={accountData}
+                >
+                  <div className="username">{username}</div>
+                </ProfileLink>
                 {profile.about && <div className="about">{profile.about}</div>}
                 <div className="numbers">
                   <span className="followers">
@@ -236,7 +246,8 @@ QuickProfile.defaultProps = {};
 QuickProfile.propTypes = {
   children: PropTypes.element.isRequired,
   username: PropTypes.string.isRequired,
-  reputation: PropTypes.string.isRequired
+  reputation: PropTypes.string.isRequired,
+  history: PropTypes.shape({}).isRequired
 };
 
 export default injectIntl(QuickProfile);
