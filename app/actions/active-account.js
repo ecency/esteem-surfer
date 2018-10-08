@@ -1,5 +1,9 @@
-import {setItem, removeItem} from "../helpers/storage";
-import {getAccounts} from '../backend/steem-client';
+/*
+eslint-disable camelcase
+ */
+
+import { setItem, removeItem } from '../helpers/storage';
+import { getAccounts, getAccountRC } from '../backend/steem-client';
 
 export const LOGGED_IN = 'active-account/LOGGED_IN';
 export const LOGGED_OUT = 'active-account/LOGGED_OUT';
@@ -10,13 +14,25 @@ export const logIn = username => dispatch => {
   dispatch(loggedIn(username));
 
   getAccounts([username])
-    .then(resp => resp[0])
     .then(resp => {
+      const account = resp[0];
+
+      return getAccountRC(username).then(r => {
+        if (r.rc_accounts && r.rc_accounts.length > 0) {
+          const { rc_manabar } = r.rc_accounts[0];
+          return Object.assign({}, account, { rc_manabar });
+        }
+
+        return account;
+      });
+    })
+    .then(resp => {
+      console.log(resp);
+
       dispatch(updated(username, resp));
       return resp;
     })
-    .catch(() => {
-    });
+    .catch(() => {});
 };
 
 export const logOut = () => dispatch => {
@@ -25,22 +41,32 @@ export const logOut = () => dispatch => {
 };
 
 export const updateActiveAccount = () => (dispatch, getState) => {
-  const {activeAccount} = getState();
-  const {username} = activeAccount;
+  const { activeAccount } = getState();
+  const { username } = activeAccount;
 
   getAccounts([username])
-    .then(resp => resp[0])
+    .then(resp => {
+      const account = resp[0];
+
+      return getAccountRC(username).then(r => {
+        if (r.rc_accounts && r.rc_accounts.length > 0) {
+          const { rc_manabar } = r.rc_accounts[0];
+          return Object.assign({}, account, { rc_manabar });
+        }
+
+        return account;
+      });
+    })
     .then(resp => {
       dispatch(updated(username, resp));
       return resp;
     })
-    .catch(() => {
-    });
+    .catch(() => {});
 };
 
 export const loggedIn = username => ({
   type: LOGGED_IN,
-  payload: {username}
+  payload: { username }
 });
 
 export const loggedOut = () => ({
@@ -50,5 +76,5 @@ export const loggedOut = () => ({
 
 export const updated = (username, accountData) => ({
   type: UPDATED,
-  payload: {username, accountData}
+  payload: { username, accountData }
 });

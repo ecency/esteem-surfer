@@ -18,18 +18,65 @@
     background-color: $dark;
   }
 
-  .voting-power {
-    .battery {
-      img {
-        opacity: 0.6;
-        -webkit-transform: rotate(90deg);
-        width: 20px;
+  .left-side {
+    width: 40%;
+    display: flex;
+
+    .voting-power {
+      margin-right: 20px;
+    }
+
+    .voting-power,
+    .resource-credits {
+      opacity: 0.5;
+      display: flex;
+      height: 100%;
+      width: 90px;
+      flex-direction: column;
+      cursor: pointer;
+
+      .first-line {
+        font-size: 12px;
+        margin-bottom: 3px;
+        justify-content: space-between;
+        display: flex;
+
+        .first-line-label {
+          font-weight: 700;
+        }
+      }
+
+      .power-line {
+        display: flex;
+        height: 4px;
+        background: lighten($steel-grey, 20);
+        border-radius: 5px;
+
+        .power-line-inner {
+          height: 100%;
+          background: $dark-sky-blue;
+          border-radius: 5px;
+        }
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .resource-credits {
+      .power-line {
+        .power-line-inner {
+          background: $green1;
+        }
       }
     }
   }
 
-  .right-menu {
+  .right-side {
     font-size: 12px;
+    text-align: right;
+    width: 50%;
 
     a {
       @include themify(day) {

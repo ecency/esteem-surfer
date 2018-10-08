@@ -41,6 +41,9 @@ export const getFollowing = (
     limit
   ]);
 
+export const getAccountRC = username =>
+  client.call('rc_api', 'find_rc_accounts', { accounts: [username] });
+
 export const vote = (account, pin, author, permlink, weight) => {
   if (account.type === 's') {
     const key = decryptKey(account.keys.posting, pin);
