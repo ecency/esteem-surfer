@@ -9,22 +9,43 @@
 
     .left-side {
       height: 50px;
-      margin-right: 50px;
+      margin-right: 32px;
       width: 208px;
     }
 
     .right-side {
       flex-grow: 1;
+
+      .account-tabs {
+        border-bottom: 1px solid $white-four;
+        display: flex;
+        height: 50px;
+
+        .tab-item {
+          align-items: center;
+          color: $steel-grey;
+          display: flex;
+          font-size: 16px;
+          height: 50px;
+          padding: 0 26px;
+
+          &.selected-item {
+            border-bottom: 2px solid $dark-sky-blue;
+            color: $dark-sky-blue;
+            font-weight: 700;
+          }
+        }
+      }
     }
   }
 
   .page-inner {
-    height: calc(100% - 50px);
+    height: calc(100% - 32px);
     overflow-y: auto;
 
     .left-side {
       float: left;
-      margin-right: 50px;
+      margin-right: 32px;
       width: 208px;
 
       .profile-area {
@@ -80,6 +101,7 @@
 
           .vpower-percentage {
             color: $dark-sky-blue;
+            cursor: default;
             flex-shrink: 0;
             font-size: 12px;
             font-weight: 500;
@@ -117,9 +139,9 @@
         .account-prop {
           align-items: start;
           color: $steel-grey;
+          cursor: default;
           display: flex;
           margin-bottom: 12px;
-          cursor: default;
 
           .holder-tooltip {
             display: flex;
@@ -138,8 +160,8 @@
             display: flex;
             height: 16px;
             justify-content: center;
-            width: 16px;
             margin-left: 1px;
+            width: 16px;
 
             @include themify(day) {
               color: $white;
@@ -183,6 +205,22 @@
             background: $dark-two;
           }
         }
+      }
+    }
+
+    .right-side {
+      float: right;
+      margin-top: 12px;
+      width: calc(100% - 240px);
+
+      .cover-image {
+        background-color: #ccc;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 3px;
+        height: 134px;
+        width: calc(100% - 18px);
       }
     }
   }

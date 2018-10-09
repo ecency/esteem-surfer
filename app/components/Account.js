@@ -17,6 +17,7 @@ import { getActiveVotes } from '../backend/esteem-client';
 
 import authorReputation from '../utils/author-reputation';
 import { votingPower } from '../utils/manabar';
+import proxifyImageSrc from '../utils/proxify-image-src';
 
 class Account extends Component {
   constructor(props) {
@@ -40,7 +41,7 @@ class Account extends Component {
 
     let { visitingAccount: account } = this.props;
 
-    if (account && account.name === username) {
+    if (!(account && account.name === username)) {
       account = await getAccount(username);
     }
 
@@ -75,16 +76,12 @@ class Account extends Component {
     let activeVotes;
     try {
       activeVotes = await getActiveVotes(username);
-
-      console.log(activeVotes);
     } catch (err) {
-      activeVotes = null;
+      activeVotes = { count: 0 };
     }
 
-    if (activeVotes) {
-      account = Object.assign({}, account, { activeVotes: activeVotes.count });
-      this.setState({ account });
-    }
+    account = Object.assign({}, account, { activeVotes: activeVotes.count });
+    this.setState({ account });
   };
 
   refresh = () => {};
@@ -101,10 +98,10 @@ class Account extends Component {
     let activeVotes;
     let followerCount;
     let followingCount;
-
     let location;
     let website;
     let created;
+    let coverImage;
 
     const { account } = this.state;
 
@@ -124,11 +121,15 @@ class Account extends Component {
         about = accountProfile.about || null;
         location = accountProfile.location || null;
         website = accountProfile.website || null;
+        coverImage = accountProfile.cover_image || null;
       }
 
       created = new Date(account.created);
-      console.log(created);
     }
+
+    const coverImageStyle = coverImage
+      ? { backgroundImage: `url('${proxifyImageSrc(coverImage)}')` }
+      : {};
 
     const loading = false;
 
@@ -140,12 +141,21 @@ class Account extends Component {
             this.refresh();
           }}
           reloading={loading}
+          favoriteFn={() => {}}
         />
 
         <div className="app-content account-page">
           <div className="page-header">
             <div className="left-side">
               <ComposeBtn {...this.props} />
+            </div>
+            <div className="right-side">
+              <div className="account-tabs">
+                <a className="tab-item selected-item">Blog</a>
+                <a className="tab-item">Comments</a>
+                <a className="tab-item">Replies</a>
+                <a className="tab-item">Wallet</a>
+              </div>
             </div>
           </div>
 
@@ -160,18 +170,20 @@ class Account extends Component {
                 <div className="username-n-vpower-percentage">
                   <div className="username">{username}</div>
                   {vPower && (
-                    <div className="vpower-percentage">{vPower.toFixed(2)}</div>
+                    <div className="vpower-percentage">
+                      <Tooltip title="Voting Power">
+                        {vPower.toFixed(2)}
+                      </Tooltip>
+                    </div>
                   )}
                 </div>
 
                 {vPowerPercentage && (
                   <div className="vpower-line">
-                    <Tooltip title="Voting Power">
-                      <div
-                        className="vpower-line-inner"
-                        style={{ width: vPowerPercentage }}
-                      />
-                    </Tooltip>
+                    <div
+                      className="vpower-line-inner"
+                      style={{ width: vPowerPercentage }}
+                    />
                   </div>
                 )}
 
@@ -182,46 +194,49 @@ class Account extends Component {
                 {(name || about) && <div className="divider" />}
 
                 <div className="account-numbers">
-                  {postCount !== null && (
-                    <div className="account-prop">
-                      <Tooltip title="Post Count" className="holder-tooltip">
-                        <i className="mi">list</i>{' '}
+                  <div className="account-prop">
+                    <Tooltip title="Post Count" className="holder-tooltip">
+                      <i className="mi">list</i>
+                      {typeof postCount === 'number' ? (
                         <FormattedNumber value={postCount} />
-                      </Tooltip>
-                    </div>
-                  )}
-
-                  {activeVotes !== null && (
-                    <div className="account-prop">
-                      <Tooltip
-                        title="Number of votes in last 24 hours"
-                        className="holder-tooltip"
-                      >
-                        <i className="mi active-votes-icon">
-                          keyboard_arrow_up
-                        </i>{' '}
+                      ) : (
+                        <span>--</span>
+                      )}
+                    </Tooltip>
+                  </div>
+                  <div className="account-prop">
+                    <Tooltip
+                      title="Number of votes in last 24 hours"
+                      className="holder-tooltip"
+                    >
+                      <i className="mi active-votes-icon">keyboard_arrow_up</i>
+                      {typeof activeVotes === 'number' ? (
                         <FormattedNumber value={activeVotes} />
-                      </Tooltip>
-                    </div>
-                  )}
-
-                  {followerCount !== null && (
-                    <div className="account-prop">
-                      <Tooltip title="Followers" className="holder-tooltip">
-                        <i className="mi">people</i>{' '}
+                      ) : (
+                        <span>--</span>
+                      )}
+                    </Tooltip>
+                  </div>
+                  <div className="account-prop">
+                    <Tooltip title="Followers" className="holder-tooltip">
+                      <i className="mi">people</i>
+                      {typeof followerCount === 'number' ? (
                         <FormattedNumber value={followerCount} />
-                      </Tooltip>
-                    </div>
-                  )}
-
-                  {followingCount !== null && (
-                    <div className="account-prop">
-                      <Tooltip title="Following" className="holder-tooltip">
-                        <i className="mi">person_add</i>{' '}
+                      ) : (
+                        <span>--</span>
+                      )}
+                    </Tooltip>
+                  </div>
+                  <div className="account-prop">
+                    <Tooltip title="Following" className="holder-tooltip">
+                      <i className="mi">person_add</i>
+                      {typeof followingCount === 'number' ? (
                         <FormattedNumber value={followingCount} />
-                      </Tooltip>
-                    </div>
-                  )}
+                      ) : (
+                        <span>--</span>
+                      )}
+                    </Tooltip>
+                  </div>
                 </div>
 
                 <div className="divider" />
@@ -251,6 +266,10 @@ class Account extends Component {
                   </div>
                 )}
               </div>
+            </div>
+
+            <div className="right-side">
+              <div className="cover-image" style={coverImageStyle} />
             </div>
           </div>
         </div>
