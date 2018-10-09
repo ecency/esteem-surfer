@@ -29,6 +29,8 @@ class EntryVoteBtn extends Component {
   }
 
   async componentDidMount() {
+    this.mounted = true;
+
     const { activeAccount } = this.props;
 
     if (!activeAccount) {
@@ -48,7 +50,13 @@ class EntryVoteBtn extends Component {
 
     const voted = votes.some(v => v.voter === username && v.percent > 0);
 
-    this.setState({ voted });
+    if (this.mounted) {
+      this.setState({ voted });
+    }
+  }
+
+  componentWillUnmount() {
+    this.mounted = true;
   }
 
   clicked = async e => {
