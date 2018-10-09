@@ -16,12 +16,12 @@
     .right-side {
       flex-grow: 1;
 
-      .account-tabs {
+      .account-menu {
         border-bottom: 1px solid $white-four;
         display: flex;
         height: 50px;
 
-        .tab-item {
+        .menu-item {
           align-items: center;
           color: $steel-grey;
           display: flex;

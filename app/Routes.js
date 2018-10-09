@@ -11,6 +11,7 @@ export default () => (
   <App>
     <Switch>
       <Route exact path="/@:username" component={AccountPage} />
+      <Route exact path="/@:username/:section" component={AccountPage} />
       <Route exact path="/:filter" component={EntryIndexPage} />
       <Route exact path="/:filter/:tag" component={EntryIndexPage} />
       <Route path="/" component={IndexPage} />
