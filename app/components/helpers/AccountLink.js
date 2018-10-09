@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getAccount } from '../../backend/steem-client';
 
-class ProfileLink extends Component {
+class AccountLink extends Component {
   goProfile = async () => {
     const { username, history, actions } = this.props;
     let { accountData } = this.props;
-    const { setVisitingProfile } = actions;
+    const { setVisitingAccount } = actions;
 
     if (!accountData) {
       try {
@@ -17,7 +17,7 @@ class ProfileLink extends Component {
     }
 
     if (accountData) {
-      setVisitingProfile(accountData);
+      setVisitingAccount(accountData);
     }
 
     history.push(`/@${username}`);
@@ -32,18 +32,18 @@ class ProfileLink extends Component {
   }
 }
 
-ProfileLink.defaultProps = {
+AccountLink.defaultProps = {
   accountData: null
 };
 
-ProfileLink.propTypes = {
+AccountLink.propTypes = {
   children: PropTypes.element.isRequired,
   username: PropTypes.string.isRequired,
   history: PropTypes.instanceOf(Object).isRequired,
   accountData: PropTypes.instanceOf(Object),
   actions: PropTypes.shape({
-    setVisitingProfile: PropTypes.func.isRequired
+    setVisitingAccount: PropTypes.func.isRequired
   }).isRequired
 };
 
-export default ProfileLink;
+export default AccountLink;

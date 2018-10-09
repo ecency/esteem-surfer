@@ -10,3 +10,6 @@ export const getNodes = () =>
   axios
     .get(`https://storage.googleapis.com/esteem/public_nodes.json`)
     .then(resp => resp.data.steemd);
+
+export const getActiveVotes = user =>
+  axios.get(`${BACKEND_URL}/api/votes/${user}`).then(resp => resp.data);

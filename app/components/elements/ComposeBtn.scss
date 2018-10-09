@@ -1,0 +1,46 @@
+@import '../../style/mixins';
+@import '../../style/colors';
+
+.btn-compose {
+  align-items: center;
+  border-bottom-right-radius: 25px;
+  border-top-right-radius: 25px;
+  cursor: pointer;
+  display: flex;
+  font-size: 16px;
+  font-weight: 500;
+  height: 50px;
+  justify-content: center;
+  padding-left: 6px;
+  transition: 0.5s;
+
+  @include themify(day) {
+    background: $duck-egg-blue;
+    color: $dark-sky-blue;
+  }
+
+  @include themify(night) {
+    background: $metallic-blue;
+    color: $powder-blue;
+  }
+
+  .icon {
+    font-size: 20px;
+    height: 20px;
+    margin-right: 32px;
+  }
+
+  &:hover {
+    @include themify(day) {
+      background: lighten($dark-sky-blue, 30);
+    }
+
+    @include themify(night) {
+      background: darken($metallic-blue, 16);
+    }
+  }
+
+  &.visible {
+    left: 0;
+  }
+}

@@ -6,7 +6,7 @@ import global from './global';
 import accounts from './accounts';
 import activeAccount from './active-account';
 import dynamicProps from './dynamic-props';
-import visitingProfile from './visiting-profile';
+import visitingAccount from './visiting-account';
 
 const rootReducer = combineReducers({
   entries,
@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
   accounts,
   activeAccount,
   dynamicProps,
-  visitingProfile,
+  visitingAccount,
   router
 });
 

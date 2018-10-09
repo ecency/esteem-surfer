@@ -8,52 +8,9 @@
     height: 50px;
 
     .left-side {
+      height: 50px;
       margin-right: 50px;
       width: 208px;
-
-      .btn-compose {
-        align-items: center;
-        border-bottom-right-radius: 25px;
-        border-top-right-radius: 25px;
-        cursor: pointer;
-        display: flex;
-        font-size: 16px;
-        font-weight: 500;
-        height: 50px;
-        justify-content: center;
-        padding-left: 6px;
-        transition: 0.5s;
-
-        @include themify(day) {
-          background: $duck-egg-blue;
-          color: $dark-sky-blue;
-        }
-
-        @include themify(night) {
-          background: $metallic-blue;
-          color: $powder-blue;
-        }
-
-        .icon {
-          font-size: 20px;
-          height: 20px;
-          margin-right: 32px;
-        }
-
-        &:hover {
-          @include themify(day) {
-            background: lighten($dark-sky-blue, 30);
-          }
-
-          @include themify(night) {
-            background: darken($metallic-blue, 16);
-          }
-        }
-
-        &.visible {
-          left: 0;
-        }
-      }
     }
 
     .right-side {
@@ -163,8 +120,8 @@
 
     .right-side {
       float: right;
-      width: calc(100% - 258px);
       margin-top: 12px;
+      width: calc(100% - 258px);
       .entry-list {
         .entry-list-body.grid-view {
           align-content: stretch;

@@ -1,8 +1,8 @@
-import { SET } from '../actions/visiting-profile';
+import { SET } from '../actions/visiting-account';
 
 const defaultState = null;
 
-export default function visitingProfile(state = defaultState, action) {
+export default function visitingAccount(state = defaultState, action) {
   switch (action.type) {
     case SET: {
       const { accountData } = action.payload;

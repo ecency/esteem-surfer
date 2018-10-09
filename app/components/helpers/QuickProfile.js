@@ -19,7 +19,7 @@ import EntryListLoadingItem from '../elements/EntryListLoadingItem';
 import LinearProgress from '../common/LinearProgress';
 import EntryListItem from '../elements/EntryListItem';
 import FollowControls from '../elements/FollowControls';
-import ProfileLink from './ProfileLink';
+import AccountLink from './AccountLink';
 
 class QuickProfile extends Component {
   constructor(props) {
@@ -181,13 +181,13 @@ class QuickProfile extends Component {
                 {profile.name && (
                   <div className="full-name">{profile.name}</div>
                 )}
-                <ProfileLink
+                <AccountLink
                   {...this.props}
                   username={username}
                   accountData={accountData}
                 >
                   <div className="username">{username}</div>
-                </ProfileLink>
+                </AccountLink>
                 {profile.about && <div className="about">{profile.about}</div>}
                 <div className="numbers">
                   <span className="followers">

@@ -10,7 +10,7 @@ import * as globalActions from '../actions/global';
 import * as accountsActions from '../actions/accounts';
 import * as activeAccountActions from '../actions/active-account';
 import * as dynamicPropsActions from '../actions/dynamic-props';
-import * as visitingProfileActions from '../actions/visiting-profile';
+import * as visitingProfileActions from '../actions/visiting-account';
 
 const history = createHistory();
 

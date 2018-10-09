@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Profile from '../components/Profile';
+import Account from '../components/Account';
 import { fetchEntries, invalidateEntries } from '../actions/entries';
 
 import {
@@ -16,13 +16,15 @@ import { addAccount, addAccountSc, deleteAccount } from '../actions/accounts';
 
 import { logIn, logOut, updateActiveAccount } from '../actions/active-account';
 
+import { setVisitingAccount } from '../actions/visiting-account';
+
 const mapStateToProps = state => ({
   global: state.global,
   entries: state.entries,
-  trendingTags: state.trendingTags,
   accounts: state.accounts,
   activeAccount: state.activeAccount,
-  dynamicProps: state.dynamicProps
+  dynamicProps: state.dynamicProps,
+  visitingAccount: state.visitingAccount
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -47,11 +49,12 @@ const mapDispatchToProps = dispatch => ({
       },
       dispatch
     ),
-    ...bindActionCreators({ logIn, logOut, updateActiveAccount }, dispatch)
+    ...bindActionCreators({ logIn, logOut, updateActiveAccount }, dispatch),
+    ...bindActionCreators({ setVisitingAccount }, dispatch)
   }
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Profile);
+)(Account);

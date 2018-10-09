@@ -14,7 +14,7 @@ import EntryVotes from './EntryVotes';
 import EntryVoteBtn from './EntryVoteBtn';
 import QuickProfile from '../helpers/QuickProfile';
 import FormattedCurrency from './FormattedCurrency';
-import ProfileLink from '../helpers/ProfileLink';
+import AccountLink from '../helpers/AccountLink';
 
 import catchEntryImage from '../../utils/catch-entry-image';
 import authorReputation from '../../utils/author-reputation';
@@ -65,7 +65,7 @@ class EntryListItem extends Component {
       <div className="entry-list-item">
         <div className="item-header">
           {inDrawer && (
-            <ProfileLink {...this.props} username={entry.author}>
+            <AccountLink {...this.props} username={entry.author}>
               <div className="author-part">
                 <div className="author-avatar">
                   <UserAvatar user={entry.author} size="small" />
@@ -75,7 +75,7 @@ class EntryListItem extends Component {
                   <span className="author-reputation">{reputation}</span>
                 </div>
               </div>
-            </ProfileLink>
+            </AccountLink>
           )}
 
           {!inDrawer && (

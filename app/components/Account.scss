@@ -1,0 +1,189 @@
+@import '../style/mixins';
+@import '../style/colors';
+
+.account-page {
+  .page-header {
+    display: flex;
+    flex-wrap: wrap;
+    height: 50px;
+
+    .left-side {
+      height: 50px;
+      margin-right: 50px;
+      width: 208px;
+    }
+
+    .right-side {
+      flex-grow: 1;
+    }
+  }
+
+  .page-inner {
+    height: calc(100% - 50px);
+    overflow-y: auto;
+
+    .left-side {
+      float: left;
+      margin-right: 50px;
+      width: 208px;
+
+      .profile-area {
+        padding: 16px 0 0 29px;
+
+        .account-avatar {
+          height: 128px;
+          margin: 0 0 24px 0;
+          position: relative;
+          width: 128px;
+
+          .user-avatar {
+            border: 3px solid $duck-egg-blue;
+            height: 128px;
+            width: 128px;
+          }
+
+          .reputation {
+            background: $dark-sky-blue;
+            border-radius: 25px;
+            bottom: 2px;
+            color: $white;
+            font-weight: 700;
+            left: 0;
+            line-height: 1em;
+            padding: 4px 12px;
+            position: absolute;
+          }
+        }
+
+        .username-n-vpower-percentage {
+          align-items: baseline;
+          display: flex;
+          margin-bottom: 12px;
+
+          .username {
+            flex-grow: 1;
+
+            font-size: 18px;
+
+            font-weight: 700;
+            @include themify(day) {
+              color: $charcoal-grey;
+            }
+            @include themify(night) {
+              color: $pinkish-grey;
+            }
+
+            &:before {
+              content: '@';
+            }
+          }
+
+          .vpower-percentage {
+            color: $dark-sky-blue;
+            flex-shrink: 0;
+            font-size: 12px;
+            font-weight: 500;
+
+            &:after {
+              content: '%';
+            }
+          }
+        }
+
+        .vpower-line {
+          background: $duck-egg-blue;
+          height: 2px;
+          margin-bottom: 24px;
+
+          .vpower-line-inner {
+            background: $dark-sky-blue;
+            height: 2px;
+          }
+        }
+
+        .full-name {
+          color: $dark-sky-blue;
+          font-size: 18px;
+          font-weight: 700;
+          margin-bottom: 12px;
+        }
+
+        .about {
+          color: $dark-sky-blue;
+          margin-bottom: 24px;
+          opacity: 0.5;
+        }
+
+        .account-prop {
+          align-items: start;
+          color: $steel-grey;
+          display: flex;
+          margin-bottom: 12px;
+          cursor: default;
+
+          .holder-tooltip {
+            display: flex;
+          }
+
+          .mi {
+            color: $silver;
+            font-size: 16px;
+            margin-right: 6px;
+          }
+
+          .active-votes-icon {
+            align-items: center;
+            background: $silver;
+            border-radius: 50%;
+            display: flex;
+            height: 16px;
+            justify-content: center;
+            width: 16px;
+            margin-left: 1px;
+
+            @include themify(day) {
+              color: $white;
+            }
+
+            @include themify(night) {
+              color: $charcoal-grey;
+            }
+          }
+        }
+
+        .account-numbers {
+          align-items: flex-start;
+          display: flex;
+          flex-wrap: wrap;
+          margin-bottom: 12px;
+
+          .account-prop {
+            width: 88px;
+          }
+        }
+
+        .website-link {
+          color: $steel-grey;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: 180px;
+        }
+
+        .divider {
+          height: 1px;
+          margin-bottom: 24px;
+          overflow: hidden;
+
+          @include themify(day) {
+            background: $white-four;
+          }
+
+          @include themify(night) {
+            background: $dark-two;
+          }
+        }
+      }
+    }
+  }
+}
