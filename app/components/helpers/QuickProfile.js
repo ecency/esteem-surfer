@@ -246,8 +246,9 @@ QuickProfile.defaultProps = {};
 QuickProfile.propTypes = {
   children: PropTypes.element.isRequired,
   username: PropTypes.string.isRequired,
-  reputation: PropTypes.string.isRequired,
-  history: PropTypes.shape({}).isRequired
+  reputation: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
+  history: PropTypes.instanceOf(Object).isRequired
 };
 
 export default injectIntl(QuickProfile);
