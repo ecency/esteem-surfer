@@ -30,6 +30,8 @@ import EntryListItem from "./elements/EntryListItem";
 import AppFooter from "./layout/AppFooter";
 import ScrollReplace from "./helpers/ScrollReplace";
 import ListSwitch from "./elements/ListSwitch";
+import coverFallbackDay from '../img/cover-fallback-day.png';
+import coverFallbackNight from '../img/cover-fallback-night.png';
 
 
 class Profile extends Component {
@@ -237,7 +239,7 @@ export class AccountCover extends Component {
   render() {
     let coverImage;
 
-    const {account, username} = this.props;
+    const {account, username, global} = this.props;
 
     if (account) {
       const {accountProfile} = account;
@@ -246,9 +248,10 @@ export class AccountCover extends Component {
       }
     }
 
-    const coverImageStyle = coverImage ? {backgroundImage: `url('${proxifyImageSrc(coverImage)}')`} : {};
+    const bgImage = coverImage && proxifyImageSrc(coverImage) || (global.theme === 'day' ? coverFallbackDay : coverFallbackNight);
 
-    return <div className="cover-image" style={coverImageStyle}>
+    return <div className="account-cover">
+      <div className="cover-image" style={{backgroundImage: `url('${bgImage}')`}}/>
       <div className="follow-controls-holder">
         <FollowControls {...this.props} targetUsername={username}/>
       </div>
@@ -262,7 +265,10 @@ AccountCover.defaultProps = {
 
 AccountCover.propTypes = {
   username: PropTypes.string.isRequired,
-  account: PropTypes.instanceOf(Object)
+  account: PropTypes.instanceOf(Object),
+  global: PropTypes.shape({
+    theme: PropTypes.string.isRequired
+  }).isRequired
 };
 
 export class SectionBlog extends Component {
