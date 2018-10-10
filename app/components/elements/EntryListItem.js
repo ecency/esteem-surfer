@@ -61,6 +61,10 @@ class EntryListItem extends Component {
     const totalPayout = sumTotal(entry);
     const isPayoutDeclined = parseToken(entry.max_accepted_payout) === 0;
 
+    const isChild = entry.parent_author !== '';
+
+    const title = isChild ? `RE: ${entry.root_title}` : entry.title;
+
     return (
       <div className="entry-list-item">
         <div className="item-header">
@@ -101,7 +105,7 @@ class EntryListItem extends Component {
             role="none"
             onClick={() => this.parentClicked(entry.parent_permlink)}
           >
-            {entry.parent_permlink}
+            {entry.category}
           </a>
           <span className="read-mark" />
           <span className="date">
@@ -126,7 +130,7 @@ class EntryListItem extends Component {
             />
           </div>
           <div className="item-summary">
-            <div className="item-title">{entry.title}</div>
+            <div className="item-title">{title}</div>
             <div className="item-body">{summary}</div>
           </div>
           <div className="item-controls">

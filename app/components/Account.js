@@ -311,12 +311,14 @@ class Account extends Component {
   componentDidUpdate(prevProps) {
     const {location} = this.props;
 
-
     if (location !== prevProps.location) {
       this.fetchEntries();
 
-      const {username: newUsername} = this.props.match.params;
-      const {username: oldUsername} = prevProps.match.params;
+      const {match: newMatch} = this.props;
+      const {match: oldMatch} = prevProps;
+
+      const {username: newUsername} = newMatch.params;
+      const {username: oldUsername} = oldMatch.params;
 
       if (newUsername !== oldUsername) {
         this.fetchAccount();
@@ -406,9 +408,9 @@ class Account extends Component {
 
   render() {
     const {entries, global, match} = this.props;
-    const {username, section = 'blog'} = match.params;
     const {account} = this.state;
-
+    const {username, section = 'blog'} = match.params;
+    const isWallet = section === 'wallet';
 
     const groupKey = makeGroupKeyForEntries(section, `@${username}`);
 
@@ -444,13 +446,12 @@ class Account extends Component {
             </div>
 
             <div className="right-side">
-              {['blog', 'comments', 'replies'].includes(section) &&
+              {!isWallet &&
               <AccountCover {...this.props} account={account} username={username}/>
               }
 
-              {['blog', 'comments', 'replies'].includes(section) &&
+              {!isWallet &&
               <Fragment>
-                {loading && entryList.size === 0 ? <LinearProgress/> : ''}
                 <div className={`entry-list ${loading ? 'loading' : ''}`}>
                   <div
                     className={`entry-list-body ${
