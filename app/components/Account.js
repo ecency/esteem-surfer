@@ -32,6 +32,7 @@ import ScrollReplace from "./helpers/ScrollReplace";
 import ListSwitch from "./elements/ListSwitch";
 import coverFallbackDay from '../img/cover-fallback-day.png';
 import coverFallbackNight from '../img/cover-fallback-night.png';
+import LinearProgress from "./common/LinearProgress";
 
 
 class Profile extends Component {
@@ -370,10 +371,9 @@ class Account extends Component {
     actions.fetchEntries(section, `@${username}`);
   };
 
-  bottomReached() {
+  bottomReached = () => {
     const {actions, entries, match} = this.props;
-    const {username} = this.state;
-    const {section} = match.params;
+    const {username, section = 'blog'} = match.params;
 
     const groupKey = makeGroupKeyForEntries(section, `@${username}`);
     const data = entries.get(groupKey);
@@ -383,15 +383,17 @@ class Account extends Component {
     if (!loading && hasMore) {
       actions.fetchEntries(section, `@${username}`, true);
     }
-  }
+  };
 
   refresh = () => {
     const {actions, match} = this.props;
     const {username, section = 'blog'} = match.params;
 
+    this.fetchAccount();
     actions.invalidateEntries(section, `@${username}`);
     actions.fetchEntries(section, `@${username}`, false);
-    this.fetchAccount();
+
+    document.querySelector('#app-content').scrollTop = 0;
   };
 
   render() {
@@ -440,6 +442,7 @@ class Account extends Component {
 
               {['blog', 'comments', 'replies'].includes(section) &&
               <Fragment>
+                {loading && entryList.size === 0 ? <LinearProgress /> : ''}
                 <div className={`entry-list ${loading ? 'loading' : ''}`}>
                   <div
                     className={`entry-list-body ${
@@ -456,8 +459,8 @@ class Account extends Component {
                     ))}
                   </div>
                 </div>
-
-                <ScrollReplace {...this.props} selector="#app-content"/>
+                {loading && entryList.size > 0 ? <LinearProgress/> : ''}
+                <ScrollReplace {...this.props} selector="#app-content" onBottom={this.bottomReached}/>
               </Fragment>
               }
             </div>
