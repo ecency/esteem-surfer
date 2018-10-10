@@ -21,19 +21,32 @@
         display: flex;
         height: 50px;
 
-        .menu-item {
-          align-items: center;
-          color: $steel-grey;
+        .account-menu-items {
+          flex-shrink: 0;
           display: flex;
-          font-size: 16px;
-          height: 50px;
-          padding: 0 26px;
 
-          &.selected-item {
-            border-bottom: 2px solid $dark-sky-blue;
-            color: $dark-sky-blue;
-            font-weight: 700;
+          .menu-item {
+            align-items: center;
+            color: $steel-grey;
+            display: flex;
+            font-size: 16px;
+            height: 50px;
+            padding: 0 26px;
+
+            &.selected-item {
+              border-bottom: 2px solid $dark-sky-blue;
+              color: $dark-sky-blue;
+              font-weight: 700;
+            }
           }
+        }
+
+        .page-tools {
+          display: flex;
+          flex-grow: 1;
+          padding-right: 18px;
+          justify-content: flex-end;
+          align-items: center;
         }
       }
     }
@@ -76,50 +89,44 @@
           }
         }
 
-        .username-n-vpower-percentage {
-          align-items: baseline;
-          display: flex;
+        .username {
           margin-bottom: 12px;
+          font-size: 18px;
+          font-weight: 700;
 
-          .username {
-            flex-grow: 1;
-
-            font-size: 18px;
-
-            font-weight: 700;
-            @include themify(day) {
-              color: $charcoal-grey;
-            }
-            @include themify(night) {
-              color: $pinkish-grey;
-            }
-
-            &:before {
-              content: '@';
-            }
+          @include themify(day) {
+            color: $charcoal-grey;
+          }
+          @include themify(night) {
+            color: $pinkish-grey;
           }
 
-          .vpower-percentage {
-            color: $dark-sky-blue;
-            cursor: default;
-            flex-shrink: 0;
-            font-size: 12px;
-            font-weight: 500;
-
-            &:after {
-              content: '%';
-            }
+          &:before {
+            content: '@';
           }
         }
 
         .vpower-line {
           background: $duck-egg-blue;
           height: 2px;
-          margin-bottom: 24px;
+          margin-bottom: 8px;
 
           .vpower-line-inner {
             background: $dark-sky-blue;
             height: 2px;
+          }
+        }
+
+        .vpower-percentage {
+          color: $dark-sky-blue;
+          cursor: default;
+          flex-shrink: 0;
+          font-size: 12px;
+          font-weight: 500;
+          margin-bottom: 22px;
+
+          &:after {
+            content: '%';
           }
         }
 
@@ -215,13 +222,23 @@
       width: calc(100% - 240px);
 
       .cover-image {
-        background-color: #ccc;
+        background-color: $white-three;
         background-position: 50% 50%;
         background-repeat: no-repeat;
         background-size: cover;
         border-radius: 3px;
         height: 134px;
         width: calc(100% - 18px);
+      }
+
+      .entry-list {
+        .entry-list-body.grid-view {
+          align-content: stretch;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          padding-right: 10px;
+        }
       }
     }
   }

@@ -1,7 +1,7 @@
-import { Client, PrivateKey } from 'dsteem';
+import {Client, PrivateKey} from 'dsteem';
 import sc2 from 'sc2-sdk';
 
-import { decryptKey } from '../utils/crypto';
+import {decryptKey} from '../utils/crypto';
 
 let client = new Client('https://api.steemit.com');
 
@@ -11,6 +11,10 @@ export const setAddress = address => {
 
 export const getDiscussions = (what, query) =>
   client.database.getDiscussions(what, query);
+
+export const getRepliesByLastUpdate = (query) =>
+  client.database.call('get_replies_by_last_update', [query.start_author, query.start_permlink, query.limit]);
+
 
 export const getDynamicGlobalProperties = () =>
   client.database.getDynamicGlobalProperties();
@@ -45,7 +49,7 @@ export const getFollowing = (
   ]);
 
 export const getAccountRC = username =>
-  client.call('rc_api', 'find_rc_accounts', { accounts: [username] });
+  client.call('rc_api', 'find_rc_accounts', {accounts: [username]});
 
 export const vote = (account, pin, author, permlink, weight) => {
   if (account.type === 's') {

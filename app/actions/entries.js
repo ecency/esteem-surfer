@@ -1,4 +1,4 @@
-import {getDiscussions} from '../backend/steem-client';
+import {getDiscussions, getRepliesByLastUpdate} from '../backend/steem-client';
 
 export const FETCH_BEGIN = 'entries/FETCH_BEGIN';
 export const FETCH_OK = 'entries/FETCH_OK';
@@ -38,11 +38,22 @@ export function fetchEntries(what, tag = '', more = false) {
       const username = tag.replace('@', '');
       switch (what) {
         case 'comments':
+          fn = getDiscussions;
+          query = {
+            tag: username,
+            limit: pageSize,
+            start_author: username,
+            start_permlink: undefined
+          };
           break;
-
         case 'replies':
+          fn = getRepliesByLastUpdate;
+          query = {
+            start_author: username,
+            start_permlink: undefined,
+            limit: pageSize
+          };
           break;
-
         default:
           fn = getDiscussions;
           query = {
@@ -53,12 +64,8 @@ export function fetchEntries(what, tag = '', more = false) {
           };
           break;
       }
-
-
     } else {
-
       fn = getDiscussions;
-
       // make sure tag is not null or undefined. it should be empty string.
       query = {
         tag: tag || '',
@@ -66,11 +73,11 @@ export function fetchEntries(what, tag = '', more = false) {
         start_author: undefined,
         start_permlink: undefined
       };
+    }
 
-      if (lastEntry) {
-        query.start_author = lastEntry.author;
-        query.start_permlink = lastEntry.permlink;
-      }
+    if (lastEntry) {
+      query.start_author = lastEntry.author;
+      query.start_permlink = lastEntry.permlink;
     }
 
     dispatch({
@@ -78,8 +85,11 @@ export function fetchEntries(what, tag = '', more = false) {
       payload: {group: groupKey}
     });
 
-    fn(what, query)
+    const fnArgs = what === 'replies' ? [query] : [what, query];
+
+    fn(...fnArgs)
       .then(resp => {
+
         dispatch({
           type: FETCH_OK,
           payload: {

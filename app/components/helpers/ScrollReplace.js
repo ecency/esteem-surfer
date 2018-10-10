@@ -26,7 +26,7 @@ class ScrollReplace extends React.Component {
   }
 
   componentDidMount() {
-    const { selector } = this.props;
+    const {selector} = this.props;
 
     this.el = document.querySelector(selector);
     if (this.el) {
@@ -34,7 +34,7 @@ class ScrollReplace extends React.Component {
     }
 
     // Initial replace
-    const { history, location } = this.props;
+    const {history, location} = this.props;
     let pos = 0;
     if (history.action === 'POP') {
       pos = getPathPos(location.pathname) || 0;
@@ -43,13 +43,13 @@ class ScrollReplace extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { location: actual } = this.props;
-    const { location: next } = nextProps;
+    const {location: actual} = this.props;
+    const {location: next} = nextProps;
 
     // Replace when location change
     if (next !== actual) {
       // when page changed
-      const { history } = this.props;
+      const {history} = this.props;
       let pos = 0;
       if (history.action === 'POP') {
         // if back or forward button clicked get last scroll position for location
@@ -65,7 +65,7 @@ class ScrollReplace extends React.Component {
   }
 
   handleScroll = () => {
-    const { location } = this.props;
+    const {location, onBottom} = this.props;
     const pos = this.el.scrollTop;
 
     const save = () => {
@@ -78,12 +78,26 @@ class ScrollReplace extends React.Component {
     }
 
     this.saveTimer = setTimeout(save, 300);
+
+    if (
+      this.el.scrollTop + this.el.offsetHeight + 100 >=
+      this.el.scrollHeight
+    ) {
+      onBottom();
+    }
   };
 
   render() {
     return null;
   }
 }
+
+
+ScrollReplace.defaultProps = {
+  onBottom: () => {
+  }
+};
+
 
 ScrollReplace.propTypes = {
   location: PropTypes.shape({
@@ -92,7 +106,8 @@ ScrollReplace.propTypes = {
   history: PropTypes.shape({
     action: PropTypes.string.isRequired
   }).isRequired,
-  selector: PropTypes.string.isRequired
+  selector: PropTypes.string.isRequired,
+  onBottom: PropTypes.func
 };
 
 export default ScrollReplace;

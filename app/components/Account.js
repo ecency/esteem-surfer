@@ -3,7 +3,7 @@ eslint-disable react/no-multi-comp
 */
 
 
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -27,6 +27,8 @@ import {makeGroupKeyForEntries} from "../actions/entries";
 import EntryListLoadingItem from "./elements/EntryListLoadingItem";
 import EntryListItem from "./elements/EntryListItem";
 import AppFooter from "./layout/AppFooter";
+import ScrollReplace from "./helpers/ScrollReplace";
+import ListSwitch from "./elements/ListSwitch";
 
 
 class Profile extends Component {
@@ -75,16 +77,7 @@ class Profile extends Component {
           {reputation && <div className="reputation">{reputation}</div>}
         </div>
 
-        <div className="username-n-vpower-percentage">
-          <div className="username">{username}</div>
-          {vPower && (
-            <div className="vpower-percentage">
-              <Tooltip title="Voting Power">
-                {vPower.toFixed(2)}
-              </Tooltip>
-            </div>
-          )}
-        </div>
+        <div className="username">{username}</div>
 
         {vPowerPercentage && (
           <div className="vpower-line">
@@ -92,6 +85,14 @@ class Profile extends Component {
               className="vpower-line-inner"
               style={{width: vPowerPercentage}}
             />
+          </div>
+        )}
+
+        {vPower && (
+          <div className="vpower-percentage">
+            <Tooltip title="Voting Power">
+              {vPower.toFixed(2)}
+            </Tooltip>
           </div>
         )}
 
@@ -201,18 +202,25 @@ export class AccountMenu extends Component {
 
     return (
       <div className="account-menu">
-        <a role="none" className={`menu-item ${section === 'blog' && 'selected-item'}`} onClick={() => {
-          this.goSection('blog')
-        }}>Blog</a>
-        <a role="none" className={`menu-item ${section === 'comments' && 'selected-item'}`} onClick={() => {
-          this.goSection('comments')
-        }}>Comments</a>
-        <a role="none" className={`menu-item ${section === 'replies' && 'selected-item'}`} onClick={() => {
-          this.goSection('replies')
-        }}>Replies</a>
-        <a role="none" className={`menu-item ${section === 'wallet' && 'selected-item'}`} onClick={() => {
-          this.goSection('wallet')
-        }}>Wallet</a>
+        <div className="account-menu-items">
+          <a role="none" className={`menu-item ${section === 'blog' && 'selected-item'}`} onClick={() => {
+            this.goSection('blog')
+          }}>Blog</a>
+          <a role="none" className={`menu-item ${section === 'comments' && 'selected-item'}`} onClick={() => {
+            this.goSection('comments')
+          }}>Comments</a>
+          <a role="none" className={`menu-item ${section === 'replies' && 'selected-item'}`} onClick={() => {
+            this.goSection('replies')
+          }}>Replies</a>
+          <a role="none" className={`menu-item ${section === 'wallet' && 'selected-item'}`} onClick={() => {
+            this.goSection('wallet')
+          }}>Wallet</a>
+
+        </div>
+
+        <div className="page-tools">
+          <ListSwitch {...this.props} />
+        </div>
       </div>
     )
   }
@@ -253,6 +261,7 @@ AccountCoverImage.propTypes = {
 
 export class SectionBlog extends Component {
 
+
 }
 
 export class SectionComments extends Component {
@@ -271,46 +280,32 @@ class Account extends Component {
   constructor(props) {
     super(props);
 
-    const {match} = this.props;
-    const {username} = match.params;
-
     this.state = {
-      username,
-      account: null,
-      myAccount: false,
-      section: 'blog'
+      account: null
     };
   }
 
-  init() {
-    const {match, activeAccount} = this.props;
-    const {username, section = 'blog'} = match.params;
-    const myAccount = activeAccount && activeAccount.username === username;
-
-    this.setState({
-      username,
-      myAccount,
-      section
-    });
-  }
-
   componentDidMount() {
-    this.init();
-    this.load();
+    const {match} = this.props;
+    const {username} = match.params;
 
+    // check user here
 
+    this.fetchAccount();
+    this.fetchEntries();
   }
 
   componentDidUpdate(prevProps) {
     const {location} = this.props;
 
     if (location !== prevProps.location) {
-      this.init();
+      this.fetchEntries();
     }
   }
 
-  load = async () => {
-    const {username} = this.state;
+  fetchAccount = async () => {
+    const {match} = this.props;
+    const {username} = match.params;
 
     let {visitingAccount: account} = this.props;
 
@@ -355,19 +350,41 @@ class Account extends Component {
 
     account = Object.assign({}, account, {activeVotes: activeVotes.count});
     this.setState({account});
+  };
 
-
-    const {actions} = this.props;
-    const {section} = this.state;
+  fetchEntries = () => {
+    const {actions, match} = this.props;
+    const {username, section = 'blog'} = match.params;
     actions.fetchEntries(section, `@${username}`);
   };
 
+  bottomReached() {
+    const {actions, entries, match} = this.props;
+    const {username} = this.state;
+    const {section} = match.params;
+
+    const groupKey = makeGroupKeyForEntries(section, `@${username}`);
+    const data = entries.get(groupKey);
+    const loading = data.get('loading');
+    const hasMore = data.get('hasMore');
+
+    if (!loading && hasMore) {
+      actions.fetchEntries(section, `@${username}`, true);
+    }
+  }
+
   refresh = () => {
+    const {actions, match} = this.props;
+    const {username, section = 'blog'} = match.params;
+
+    actions.invalidateEntries(section, `@${username}`);
+    actions.fetchEntries(section, `@${username}`, false);
+    this.fetchAccount();
   };
 
   render() {
-    const {entries, global} = this.props;
-    const {username, section} = this.state;
+    const {entries, global, match} = this.props;
+    const {username, section = 'blog'} = match.params;
     const {account} = this.state;
 
 
@@ -377,7 +394,6 @@ class Account extends Component {
     const entryList = data.get('entries');
     const loading = data.get('loading');
 
-    console.log(loading)
 
     return (
       <div className="wrapper">
@@ -410,29 +426,33 @@ class Account extends Component {
               <AccountCoverImage account={account}/>
               }
 
-
-              <div className={`entry-list ${loading ? 'loading' : ''}`}>
-                <div
-                  className={`entry-list-body ${
-                    global.listStyle === 'grid' ? 'grid-view' : ''
-                    }`}
-                >
-                  {loading && entryList.size === 0 ? (
-                    <EntryListLoadingItem/>
-                  ) : (
-                    ''
-                  )}
-                  {entryList.valueSeq().map(d => (
-                    <EntryListItem key={d.id} {...this.props} entry={d} asAuthor={username}/>
-                  ))}
+              {['blog', 'comments', 'replies'].includes(section) &&
+              <Fragment>
+                <div className={`entry-list ${loading ? 'loading' : ''}`}>
+                  <div
+                    className={`entry-list-body ${
+                      global.listStyle === 'grid' ? 'grid-view' : ''
+                      }`}
+                  >
+                    {loading && entryList.size === 0 ? (
+                      <EntryListLoadingItem/>
+                    ) : (
+                      ''
+                    )}
+                    {entryList.valueSeq().map(d => (
+                      <EntryListItem key={d.id} {...this.props} entry={d} asAuthor={username}/>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-
+                <ScrollReplace {...this.props} selector="#app-content"/>
+              </Fragment>
+              }
             </div>
           </div>
         </div>
         <AppFooter {...this.props} />
+
       </div>
     );
   }

@@ -1,25 +1,25 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 // i18n
-import { addLocaleData, IntlProvider } from 'react-intl';
+import {addLocaleData, IntlProvider} from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import tr from 'react-intl/locale-data/tr';
 
-import { Modal } from 'antd';
+import {Modal} from 'antd';
 
-import { exposePin, wipePin } from '../actions/global';
-import { updateActiveAccount } from '../actions/active-account';
-import { fetchGlobalProps } from '../actions/dynamic-props';
+import {exposePin, wipePin} from '../actions/global';
+import {updateActiveAccount} from '../actions/active-account';
+import {fetchGlobalProps} from '../actions/dynamic-props';
 
 import PinCreate from '../components/dialogs/PinCreate';
 import PinConfirm from '../components/dialogs/PinConfirm';
 
-import { flattenMessages } from '../utils';
+import {flattenMessages} from '../utils';
 import messages from '../locales';
-import { getItem, setItem, removeItem } from '../helpers/storage';
+import {getItem, setItem, removeItem} from '../helpers/storage';
 
 addLocaleData([...en, ...tr]);
 
@@ -36,86 +36,88 @@ class App extends React.Component {
 
   componentDidMount() {
     // Check for welcome screen and pin code
-    setInterval(() => {
-      const { dialogVisible } = this.state;
+    this.dialogInterval = setInterval(this.checkDialogs, 500);
 
-      if (dialogVisible) {
-        return;
-      }
+    // Refresh global props
+    this.refreshGlobalProps();
+    this.globalInterval = setInterval(this.refreshGlobalProps, 60000);
 
-      // Check welcome
-
-      // Check pin code created
-      const pinCode = getItem('pin-code');
-      if (!pinCode) {
-        const { actions } = this.props;
-        actions.wipePin();
-        this.setState({ pinCreateFlag: true, dialogVisible: true });
-        return;
-      }
-
-      // Check pin code entered
-      const { global } = this.props;
-      const { pin } = global;
-      if (!pin) {
-        this.setState({ pinConfirmFlag: true, dialogVisible: true });
-      }
-    }, 500);
-
-    this.watchGlobalProps();
-    this.watchActiveAccount();
+    // Refresh active account data
+    this.refreshActiveAccount();
+    this.activeAccountInterval = setInterval(this.refreshActiveAccount, 15000);
   }
 
-  watchGlobalProps = () => {
-    const watcher = () => {
-      const { actions } = this.props;
+  componentWillUnmount() {
+    clearInterval(this.dialogInterval);
+    clearInterval(this.globalInterval);
+    clearInterval(this.activeAccountInterval);
+  }
 
-      actions.fetchGlobalProps();
+  checkDialogs = () => {
+    const {dialogVisible} = this.state;
 
-      setTimeout(watcher, 60000);
-    };
+    if (dialogVisible) {
+      return;
+    }
 
-    watcher();
+    // Check welcome screen
+
+    // Check pin code created
+    const pinCode = getItem('pin-code');
+    if (!pinCode) {
+      const {actions} = this.props;
+      actions.wipePin();
+      this.setState({pinCreateFlag: true, dialogVisible: true});
+      return;
+    }
+
+    // Check pin code entered
+    const {global} = this.props;
+    const {pin} = global;
+    if (!pin) {
+      this.setState({pinConfirmFlag: true, dialogVisible: true});
+    }
   };
 
-  watchActiveAccount = () => {
-    const watcher = () => {
-      const { activeAccount, actions } = this.props;
+  refreshGlobalProps = () => {
+    const {actions} = this.props;
 
-      if (activeAccount) {
-        actions.updateActiveAccount(activeAccount.username);
-      }
-
-      setTimeout(watcher, 15000);
-    };
-
-    watcher();
+    actions.fetchGlobalProps();
   };
+
+  refreshActiveAccount = () => {
+    const {activeAccount, actions} = this.props;
+
+    if (activeAccount) {
+      actions.updateActiveAccount(activeAccount.username);
+    }
+  };
+
 
   onCreatePinSuccess = (code, hashedCode) => {
-    const { actions } = this.props;
+    const {actions} = this.props;
     setItem('pin-code', hashedCode);
     actions.exposePin(code);
-    this.setState({ pinCreateFlag: false, dialogVisible: false });
+    this.setState({pinCreateFlag: false, dialogVisible: false});
   };
 
   onConfirmPinSuccess = code => {
-    const { actions } = this.props;
+    const {actions} = this.props;
     actions.exposePin(code);
-    this.setState({ pinConfirmFlag: false, dialogVisible: false });
+    this.setState({pinConfirmFlag: false, dialogVisible: false});
   };
 
   pinInvalidate = () => {
-    const { actions } = this.props;
+    const {actions} = this.props;
     actions.wipePin();
     removeItem('pin-code');
-    this.setState({ pinConfirmFlag: false, dialogVisible: false });
+    this.setState({pinConfirmFlag: false, dialogVisible: false});
   };
 
   render() {
-    const { pinCreateFlag, pinConfirmFlag } = this.state;
-    const { children, global } = this.props;
-    const { locale } = global;
+    const {pinCreateFlag, pinConfirmFlag} = this.state;
+    const {children, global} = this.props;
+    const {locale} = global;
 
     return (
       <IntlProvider
@@ -135,7 +137,7 @@ class App extends React.Component {
               centered
               destroyOnClose
             >
-              <PinCreate onSuccess={this.onCreatePinSuccess} />
+              <PinCreate onSuccess={this.onCreatePinSuccess}/>
             </Modal>
           )}
 
@@ -190,10 +192,10 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      ...bindActionCreators({ exposePin }, dispatch),
-      ...bindActionCreators({ wipePin }, dispatch),
-      ...bindActionCreators({ updateActiveAccount }, dispatch),
-      ...bindActionCreators({ fetchGlobalProps }, dispatch)
+      ...bindActionCreators({exposePin}, dispatch),
+      ...bindActionCreators({wipePin}, dispatch),
+      ...bindActionCreators({updateActiveAccount}, dispatch),
+      ...bindActionCreators({fetchGlobalProps}, dispatch)
     }
   };
 }
