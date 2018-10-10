@@ -23,6 +23,10 @@ import {getActiveVotes} from '../backend/esteem-client';
 import authorReputation from '../utils/author-reputation';
 import {votingPower} from '../utils/manabar';
 import proxifyImageSrc from '../utils/proxify-image-src';
+import {makeGroupKeyForEntries} from "../actions/entries";
+import EntryListLoadingItem from "./elements/EntryListLoadingItem";
+import EntryListItem from "./elements/EntryListItem";
+import AppFooter from "./layout/AppFooter";
 
 
 class Profile extends Component {
@@ -293,6 +297,8 @@ class Account extends Component {
   componentDidMount() {
     this.init();
     this.load();
+
+
   }
 
   componentDidUpdate(prevProps) {
@@ -349,15 +355,29 @@ class Account extends Component {
 
     account = Object.assign({}, account, {activeVotes: activeVotes.count});
     this.setState({account});
+
+
+    const {actions} = this.props;
+    const {section} = this.state;
+    actions.fetchEntries(section, `@${username}`);
   };
 
   refresh = () => {
   };
 
   render() {
+    const {entries, global} = this.props;
     const {username, section} = this.state;
     const {account} = this.state;
-    const loading = false;
+
+
+    const groupKey = makeGroupKeyForEntries(section, `@${username}`);
+
+    const data = entries.get(groupKey);
+    const entryList = data.get('entries');
+    const loading = data.get('loading');
+
+    console.log(loading)
 
     return (
       <div className="wrapper">
@@ -389,9 +409,30 @@ class Account extends Component {
               {section === 'blog' &&
               <AccountCoverImage account={account}/>
               }
+
+
+              <div className={`entry-list ${loading ? 'loading' : ''}`}>
+                <div
+                  className={`entry-list-body ${
+                    global.listStyle === 'grid' ? 'grid-view' : ''
+                    }`}
+                >
+                  {loading && entryList.size === 0 ? (
+                    <EntryListLoadingItem/>
+                  ) : (
+                    ''
+                  )}
+                  {entryList.valueSeq().map(d => (
+                    <EntryListItem key={d.id} {...this.props} entry={d} asAuthor={username}/>
+                  ))}
+                </div>
+              </div>
+
+
             </div>
           </div>
         </div>
+        <AppFooter {...this.props} />
       </div>
     );
   }

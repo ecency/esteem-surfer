@@ -1,5 +1,5 @@
-import { Record, Map, OrderedMap } from 'immutable';
-import { LOCATION_CHANGE } from 'react-router-redux';
+import {Record, Map, OrderedMap} from 'immutable';
+import {LOCATION_CHANGE} from 'react-router-redux';
 import {
   FETCH_BEGIN,
   FETCH_OK,
@@ -34,6 +34,16 @@ export default function entries(state = defaultState, action) {
         }
       }
 
+      if (path.length >= 1 && path[1].startsWith('@')) {
+        const filter = path[2] || 'blog';
+        const tag = path[1];
+
+        const groupKey = makeGroupKeyForEntries(filter, tag);
+        if (state.get(groupKey) === undefined) {
+          return state.set(groupKey, new EntryGroupRecord());
+        }
+      }
+
       return state;
     }
     case FETCH_BEGIN: {
@@ -44,7 +54,7 @@ export default function entries(state = defaultState, action) {
         .setIn([groupKey, 'loading'], true);
     }
     case FETCH_OK: {
-      const { group: groupKey, data: newEntries, hasMore } = action.payload;
+      const {group: groupKey, data: newEntries, hasMore} = action.payload;
 
       let newState = state
         .setIn([groupKey, 'err'], null)

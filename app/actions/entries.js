@@ -1,4 +1,4 @@
-import { getDiscussions } from '../backend/steem-client';
+import {getDiscussions} from '../backend/steem-client';
 
 export const FETCH_BEGIN = 'entries/FETCH_BEGIN';
 export const FETCH_OK = 'entries/FETCH_OK';
@@ -16,18 +16,11 @@ export const makeGroupKeyForEntries = (what, tag = '') => {
 
 export function fetchEntries(what, tag = '', more = false) {
   return (dispatch, getState) => {
-    const { entries } = getState();
+    const {entries} = getState();
     const pageSize = 20;
 
     const groupKey = makeGroupKeyForEntries(what, tag);
 
-    // make sure tag is not null or undefined. it should be empty string.
-    const query = {
-      tag: tag || '',
-      limit: pageSize,
-      start_author: undefined,
-      start_permlink: undefined
-    };
 
     if (!more && entries.getIn([groupKey, 'entries']).size) {
       return;
@@ -38,17 +31,54 @@ export function fetchEntries(what, tag = '', more = false) {
       .valueSeq()
       .last();
 
-    if (lastEntry) {
-      query.start_author = lastEntry.author;
-      query.start_permlink = lastEntry.permlink;
+    let fn;
+    let query;
+
+    if (tag.startsWith('@')) {
+      const username = tag.replace('@', '');
+      switch (what) {
+        case 'comments':
+          break;
+
+        case 'replies':
+          break;
+
+        default:
+          fn = getDiscussions;
+          query = {
+            tag: username,
+            limit: pageSize,
+            start_author: undefined,
+            start_permlink: undefined
+          };
+          break;
+      }
+
+
+    } else {
+
+      fn = getDiscussions;
+
+      // make sure tag is not null or undefined. it should be empty string.
+      query = {
+        tag: tag || '',
+        limit: pageSize,
+        start_author: undefined,
+        start_permlink: undefined
+      };
+
+      if (lastEntry) {
+        query.start_author = lastEntry.author;
+        query.start_permlink = lastEntry.permlink;
+      }
     }
 
     dispatch({
       type: FETCH_BEGIN,
-      payload: { group: groupKey }
+      payload: {group: groupKey}
     });
 
-    getDiscussions(what, query)
+    fn(what, query)
       .then(resp => {
         dispatch({
           type: FETCH_OK,
@@ -64,7 +94,7 @@ export function fetchEntries(what, tag = '', more = false) {
       .catch(e => {
         dispatch({
           type: FETCH_ERROR,
-          payload: { group: groupKey, error: e }
+          payload: {group: groupKey, error: e}
         });
       });
   };
@@ -76,7 +106,7 @@ export function invalidateEntries(what, tag = '') {
 
     dispatch({
       type: INVALIDATE,
-      payload: { group: groupKey }
+      payload: {group: groupKey}
     });
   };
 }
