@@ -112,6 +112,7 @@ class EntryListItem extends Component {
             <FormattedRelative value={created} initialNow={Date.now()} />
           </span>
           {asAuthor &&
+            !isChild &&
             entry.author !== asAuthor && (
               <span className="reblogged">
                 <i className="mi">repeat</i>{' '}
