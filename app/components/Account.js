@@ -15,6 +15,7 @@ import NavBar from './layout/NavBar';
 
 import ComposeBtn from './elements/ComposeBtn';
 import UserAvatar from './elements/UserAvatar';
+import FollowControls from './elements/FollowControls';
 
 import {getFollowCount, getAccount} from '../backend/steem-client';
 
@@ -232,11 +233,11 @@ AccountMenu.propTypes = {
   history: PropTypes.instanceOf(Object).isRequired
 };
 
-export class AccountCoverImage extends Component {
+export class AccountCover extends Component {
   render() {
     let coverImage;
 
-    const {account} = this.props;
+    const {account, username} = this.props;
 
     if (account) {
       const {accountProfile} = account;
@@ -247,15 +248,20 @@ export class AccountCoverImage extends Component {
 
     const coverImageStyle = coverImage ? {backgroundImage: `url('${proxifyImageSrc(coverImage)}')`} : {};
 
-    return <div className="cover-image" style={coverImageStyle}/>
+    return <div className="cover-image" style={coverImageStyle}>
+      <div className="follow-controls-holder">
+        <FollowControls {...this.props} targetUsername={username}/>
+      </div>
+    </div>
   }
 }
 
-AccountCoverImage.defaultProps = {
+AccountCover.defaultProps = {
   account: null,
 };
 
-AccountCoverImage.propTypes = {
+AccountCover.propTypes = {
+  username: PropTypes.string.isRequired,
   account: PropTypes.instanceOf(Object)
 };
 
@@ -422,8 +428,8 @@ class Account extends Component {
             </div>
 
             <div className="right-side">
-              {section === 'blog' &&
-              <AccountCoverImage account={account}/>
+              {['blog', 'comments', 'replies'].includes(section) &&
+              <AccountCover {...this.props} account={account} username={username}/>
               }
 
               {['blog', 'comments', 'replies'].includes(section) &&
