@@ -311,8 +311,16 @@ class Account extends Component {
   componentDidUpdate(prevProps) {
     const {location} = this.props;
 
+
     if (location !== prevProps.location) {
       this.fetchEntries();
+
+      const {username: newUsername} = this.props.match.params;
+      const {username: oldUsername} = prevProps.match.params;
+
+      if (newUsername !== oldUsername) {
+        this.fetchAccount();
+      }
     }
   }
 
@@ -442,7 +450,7 @@ class Account extends Component {
 
               {['blog', 'comments', 'replies'].includes(section) &&
               <Fragment>
-                {loading && entryList.size === 0 ? <LinearProgress /> : ''}
+                {loading && entryList.size === 0 ? <LinearProgress/> : ''}
                 <div className={`entry-list ${loading ? 'loading' : ''}`}>
                   <div
                     className={`entry-list-body ${
