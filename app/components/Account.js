@@ -283,6 +283,42 @@ AccountCover.propTypes = {
   }).isRequired
 };
 
+export class AccountTopPosts extends Component {
+  render() {
+    const {posts} = this.props;
+
+    return (
+      <div className="top-posts-list">
+        <h2 className="top-posts-list-header"><FormattedMessage id="account.top-posts"/></h2>
+
+        <div className="top-posts-list-body">
+          {posts.map(p => (
+            <div className="top-posts-list-item" key={p.permlink}>
+              <div className="post-image">
+                <img alt="" src={catchEntryImage(p) || 'img/noimage.png'}/>
+              </div>
+
+              <div className="post-content">
+                <div className="post-title">{p.title}</div>
+                <div className="post-body">{entryBodySummary(p.body, 40)}</div>
+              </div>
+
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+}
+
+AccountTopPosts.defaultProps = {
+  posts: []
+};
+
+AccountTopPosts.propTypes = {
+  posts: PropTypes.arrayOf(Object)
+};
+
 export class SectionBlog extends Component {
 
 
@@ -483,25 +519,7 @@ class Account extends Component {
               }
 
               {section === 'blog' && topPosts &&
-              <div className="top-posts-list">
-                <h2 className="top-posts-list-header"><FormattedMessage id="account.top-posts"/></h2>
-
-                <div className="top-posts-list-body">
-                  {topPosts.map(p => (
-                    <div className="top-posts-list-item" key={p.permlink}>
-                      <div className="post-image">
-                        <img alt="" src={catchEntryImage(p) || 'img/noimage.png'}/>
-                      </div>
-
-                      <div className="post-content">
-                        <div className="post-title">{p.title}</div>
-                        <div className="post-body">{entryBodySummary(p.body, 40)}</div>
-                      </div>
-
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <AccountTopPosts {...this.props} posts={topPosts}/>
               }
 
               {!isWallet &&
