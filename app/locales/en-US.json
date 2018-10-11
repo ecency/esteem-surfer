@@ -110,5 +110,17 @@
     "unFollow": "Unfollow",
     "mute": "Mute",
     "unMute": "Unmute"
+  },
+  "account": {
+    "voting-power": "Voting Power",
+    "post-count": "Post Count",
+    "number-of-votes": "Number of votes in last 24 hours",
+    "followers": "Followers",
+    "following": "Following",
+    "section-blog": "Blog",
+    "section-comments": "Comments",
+    "section-replies": "Replies",
+    "section-wallet": "Wallet",
+    "top-posts": "Top Posts"
   }
 }

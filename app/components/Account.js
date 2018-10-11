@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 
 import {Tooltip} from 'antd';
 
-import {FormattedNumber, FormattedDate} from 'react-intl';
+import {FormattedNumber, FormattedDate, FormattedMessage, injectIntl} from 'react-intl';
 
 import NavBar from './layout/NavBar';
 
@@ -54,7 +54,7 @@ class Profile extends Component {
     let website;
     let created;
 
-    const {username, account} = this.props;
+    const {username, account, intl} = this.props;
 
     if (account) {
       vPower = votingPower(account);
@@ -96,7 +96,9 @@ class Profile extends Component {
 
         {vPower && (
           <div className="vpower-percentage">
-            <Tooltip title="Voting Power">
+            <Tooltip title={intl.formatMessage({
+              id: 'account.voting-power'
+            })}>
               {vPower.toFixed(2)}
             </Tooltip>
           </div>
@@ -110,7 +112,9 @@ class Profile extends Component {
 
         <div className="account-numbers">
           <div className="account-prop">
-            <Tooltip title="Post Count" className="holder-tooltip">
+            <Tooltip title={intl.formatMessage({
+              id: 'account.post-count'
+            })} className="holder-tooltip">
               <i className="mi">list</i>
               {typeof postCount === 'number' ? (
                 <FormattedNumber value={postCount}/>
@@ -121,7 +125,9 @@ class Profile extends Component {
           </div>
           <div className="account-prop">
             <Tooltip
-              title="Number of votes in last 24 hours"
+              title={intl.formatMessage({
+                id: 'account.number-of-votes'
+              })}
               className="holder-tooltip"
             >
               <i className="mi active-votes-icon">keyboard_arrow_up</i>
@@ -133,7 +139,9 @@ class Profile extends Component {
             </Tooltip>
           </div>
           <div className="account-prop">
-            <Tooltip title="Followers" className="holder-tooltip">
+            <Tooltip title={intl.formatMessage({
+              id: 'account.followers'
+            })} className="holder-tooltip">
               <i className="mi">people</i>
               {typeof followerCount === 'number' ? (
                 <FormattedNumber value={followerCount}/>
@@ -143,7 +151,9 @@ class Profile extends Component {
             </Tooltip>
           </div>
           <div className="account-prop">
-            <Tooltip title="Following" className="holder-tooltip">
+            <Tooltip title={intl.formatMessage({
+              id: 'account.following'
+            })} className="holder-tooltip">
               <i className="mi">person_add</i>
               {typeof followingCount === 'number' ? (
                 <FormattedNumber value={followingCount}/>
@@ -165,7 +175,7 @@ class Profile extends Component {
         {website && (
           <div className="account-prop prop-website">
             <i className="mi">public</i>{' '}
-            <a className="website-link">{website}</a>
+            <a target="_external" className="website-link" href={website}>{website}</a>
           </div>
         )}
 
@@ -192,7 +202,8 @@ Profile.defaultProps = {
 
 Profile.propTypes = {
   username: PropTypes.string.isRequired,
-  account: PropTypes.instanceOf(Object)
+  account: PropTypes.instanceOf(Object),
+  intl: PropTypes.instanceOf(Object).isRequired
 };
 
 
@@ -211,19 +222,17 @@ export class AccountMenu extends Component {
         <div className="account-menu-items">
           <a role="none" className={`menu-item ${section === 'blog' && 'selected-item'}`} onClick={() => {
             this.goSection('blog')
-          }}>Blog</a>
+          }}><FormattedMessage id="account.section-blog"/></a>
           <a role="none" className={`menu-item ${section === 'comments' && 'selected-item'}`} onClick={() => {
             this.goSection('comments')
-          }}>Comments</a>
+          }}><FormattedMessage id="account.section-comments"/></a>
           <a role="none" className={`menu-item ${section === 'replies' && 'selected-item'}`} onClick={() => {
             this.goSection('replies')
-          }}>Replies</a>
+          }}><FormattedMessage id="account.section-replies"/></a>
           <a role="none" className={`menu-item ${section === 'wallet' && 'selected-item'}`} onClick={() => {
             this.goSection('wallet')
-          }}>Wallet</a>
-
+          }}><FormattedMessage id="account.section-wallet"/></a>
         </div>
-
         <div className="page-tools">
           <ListSwitch {...this.props} />
         </div>
@@ -475,7 +484,7 @@ class Account extends Component {
 
               {section === 'blog' && topPosts &&
               <div className="top-posts-list">
-                <h2 className="top-posts-list-header">Top Posts</h2>
+                <h2 className="top-posts-list-header"><FormattedMessage id="account.top-posts"/></h2>
 
                 <div className="top-posts-list-body">
                   {topPosts.map(p => (
@@ -550,4 +559,4 @@ Account.propTypes = {
   activeAccount: PropTypes.instanceOf(Object)
 };
 
-export default Account;
+export default injectIntl(Account);
