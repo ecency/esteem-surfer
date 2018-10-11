@@ -17,9 +17,16 @@
       flex-grow: 1;
 
       .account-menu {
-        border-bottom: 1px solid $white-four;
         display: flex;
         height: 50px;
+
+        @include themify(day) {
+          border-bottom: 1px solid $white-four;
+        }
+
+        @include themify(night) {
+          border-bottom: 1px solid $dark-two;
+        }
 
         .account-menu-items {
           display: flex;
@@ -320,92 +327,161 @@
       }
 
       .wallet-section {
-        .unclaimed-rewards {
-          align-items: center;
-          border-bottom: 1px solid $white-four;
-          display: flex;
-          padding: 8px 16px 19px 16px;
+        cursor: default;
 
-          .title {
-            color: $steel-grey;
-            font-size: 18px;
-            font-weight: 700;
-            margin-right: 17px;
+        .first-row {
+          align-items: center;
+          box-sizing: content-box;
+          display: flex;
+          height: 50px;
+          padding: 4px 0 14px 0;
+
+          @include themify(day) {
+            border-bottom: 1px solid $white-four;
           }
 
-          .rewards {
-            background-color: $dark-sky-blue;
-            border-radius: 25px;
-            color: $white;
-            font-weight: 700;
-            padding: 17px 24px;
+          @include themify(night) {
+            border-bottom: 1px solid $dark-two;
+          }
 
-            .reward-type {
-              margin-right: 5px;
+          .unclaimed-rewards {
+            align-items: center;
+            display: flex;
+
+            .title {
+              font-size: 18px;
+              font-weight: 700;
+              margin-right: 17px;
+
+              @include themify(day) {
+                color: $steel-grey;
+              }
+
+              @include themify(night) {
+                color: $metallic-blue;
+              }
             }
+
+            .rewards {
+              background-color: $dark-sky-blue;
+              border-radius: 25px;
+              color: $white;
+              font-weight: 700;
+              padding: 17px 24px;
+
+              .reward-type {
+                margin-right: 5px;
+              }
+            }
+          }
+
+          .estimated-value {
+            color: $dark-sky-blue;
+            flex-grow: 1;
+            font-size: 24px;
+            font-weight: 700;
+            margin-right: 29px;
+            text-align: right;
           }
         }
 
-        .funds {
-          width: 390px;
+        .second-row {
+          padding-bottom: 16px;
 
-          .fund {
-            border-radius: 8px;
-            padding: 16px 16px 0 16px;
+          @include themify(day) {
+            border-bottom: 1px solid $white-four;
+          }
 
-            &.alternative {
-              background: $white-three;
-            }
+          @include themify(night) {
+            border-bottom: 1px solid $dark-two;
+          }
 
-            .fund-line {
-              align-items: center;
-              display: flex;
-              padding-bottom: 16px;
+          .funds {
+            width: 50%;
 
-              .fund-info {
-                width: 30px;
-                &:after {
-                  align-items: center;
-                  border: 2px solid $steel-grey;
-                  border-radius: 50%;
-                  color: $steel-grey;
-                  content: 'i';
-                  display: flex;
-                  font-size: 12px;
-                  height: 16px;
-                  justify-content: center;
-                  opacity: 0.5;
-                  width: 16px;
+            .fund {
+              border-radius: 8px;
+              box-sizing: content-box;
+              padding: 16px 16px 0 16px;
+
+              &.alternative {
+                @include themify(day) {
+                  background: $white-three;
+                }
+
+                @include themify(night) {
+                  background: lighten($dark-six, 4);
                 }
               }
 
-              .fund-title {
-                color: $charcoal-grey;
-                font-size: 16px;
-                font-weight: 500;
-                width: 110px;
-              }
+              .fund-line {
+                align-items: center;
+                display: flex;
+                padding-bottom: 16px;
 
-              .fund-number {
-                color: $dark-sky-blue;
-                flex-grow: 1;
-                font-size: 14px;
-                font-weight: 500;
-                text-align: right;
-                width: 180px;
+                .fund-info {
+                  width: 30px;
 
-                &.delegated-shares,
-                &.received-shares {
-                  color: $steel-grey;
+                  &:after {
+                    align-items: center;
+
+                    border-radius: 50%;
+                    color: $steel-grey;
+                    content: 'i';
+                    display: flex;
+                    font-size: 12px;
+                    height: 16px;
+                    justify-content: center;
+                    opacity: 0.5;
+                    width: 16px;
+
+                    @include themify(day) {
+                      border: 2px solid $steel-grey;
+                      color: $steel-grey;
+                    }
+
+                    @include themify(night) {
+                      border: 2px solid $metallic-blue;
+                      color: $metallic-blue;
+                    }
+                  }
                 }
 
-                &.total-sp {
-                  font-weight: 700;
-                }
-              }
+                .fund-title {
+                  font-size: 16px;
+                  font-weight: 500;
+                  width: 110px;
 
-              .fund-action {
-                width: 40px;
+                  @include themify(day) {
+                    color: $charcoal-grey;
+                  }
+
+                  @include themify(night) {
+                    color: $powder-blue;
+                  }
+                }
+
+                .fund-number {
+                  color: $dark-sky-blue;
+                  flex-grow: 1;
+                  font-size: 14px;
+                  font-weight: 500;
+                  text-align: right;
+                  width: 180px;
+
+                  &.delegated-shares,
+                  &.received-shares {
+                    color: $steel-grey;
+                  }
+
+                  &.total-sp {
+                    font-weight: 700;
+                  }
+                }
+
+                .fund-action {
+                  width: 40px;
+                }
               }
             }
           }

@@ -121,6 +121,21 @@
     "section-comments": "Comments",
     "section-replies": "Replies",
     "section-wallet": "Wallet",
-    "top-posts": "Top Posts"
+    "top-posts": "Top Posts",
+    "unclaimed-rewards": "Unclaimed rewards",
+
+    "estimated-value": "The estimated value is based on a 7 day average value of Steem.",
+
+    "steem": "Steem",
+    "steem-description": "Steem are tradeable tokens that may be transferred at anytime. Steem can be converted to Steem Power in a process called powering up.",
+
+    "steem-power": "Steem Power",
+    "steem-power-description": "Steem Power are influence tokens that earn more power for holding long term and voting on posts. The more Steem Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+
+    "steem-dollars": "Steem Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of Steem.",
+
+    "savings": "Savings",
+    "savings-description": "Balance subject to 3 day withdraw waiting period."
   }
 }

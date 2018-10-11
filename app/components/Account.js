@@ -326,10 +326,11 @@ export class SectionWallet extends Component {
 
   render() {
 
-    const {account, dynamicProps} = this.props;
+    const {account, dynamicProps, global, intl} = this.props;
 
 
-    const {steemPerMVests} = dynamicProps;
+    const {steemPerMVests, base} = dynamicProps;
+    const {currency, currencyRate} = global;
 
 
     let rewardSteemBalance;
@@ -348,6 +349,7 @@ export class SectionWallet extends Component {
 
     let savingBalance;
     let savingBalanceSbd;
+    let estimatedValue;
 
     if (account) {
 
@@ -367,8 +369,12 @@ export class SectionWallet extends Component {
       savingBalance = parseToken(account.savings_balance);
       savingBalanceSbd = parseToken(account.savings_sbd_balance);
 
+      estimatedValue = (
+        (vestsToSp(vestingShares, steemPerMVests) * base) +
+        (balance * base) +
+        sbdBalance
+      ) * currencyRate;
     }
-
 
     if (!account) {
       return <div className="wallet-section"/>
@@ -377,106 +383,132 @@ export class SectionWallet extends Component {
 
     return (
       <div className="wallet-section">
-
-
-        {hasUnclaimedRewards &&
-        <div className="unclaimed-rewards">
-          <div className="title">Unclaimed rewards</div>
-          <div className="rewards">
-            {rewardSteemBalance > 0 &&
-            <span className="reward-type">{`${rewardSteemBalance} STEEM`}</span>
-            }
-            {rewardSbdBalance > 0 &&
-            <span className="reward-type">{`${rewardSbdBalance} SDB`}</span>
-            }
-            {rewardVestingSteem > 0 &&
-            <span className="reward-type">{`${rewardVestingSteem} SP`}</span>
-            }
+        <div className="first-row">
+          {hasUnclaimedRewards &&
+          <div className="unclaimed-rewards">
+            <div className="title"><FormattedMessage id="account.unclaimed-rewards"/></div>
+            <div className="rewards">
+              {rewardSteemBalance > 0 &&
+              <span className="reward-type">{`${rewardSteemBalance} STEEM`}</span>
+              }
+              {rewardSbdBalance > 0 &&
+              <span className="reward-type">{`${rewardSbdBalance} SDB`}</span>
+              }
+              {rewardVestingSteem > 0 &&
+              <span className="reward-type">{`${rewardVestingSteem} SP`}</span>
+              }
+            </div>
+          </div>
+          }
+          <div className="estimated-value">
+            <Tooltip title={intl.formatMessage({
+              id: 'account.estimated-value'
+            })}>
+              <span><FormattedNumber currency={currency} style="currency" currencyDisplay="symbol"
+                                     minimumFractionDigits={3} value={estimatedValue}/></span>
+            </Tooltip>
           </div>
         </div>
-        }
-        <div className="funds">
 
-          <div className="fund fund-steem">
-            <div className="fund-line">
-              <div className="fund-info"/>
-              <div className="fund-title">Steem</div>
-              <div className="fund-number"><FormattedNumber minimumFractionDigits={3} value={balance}/> STEEM</div>
-              <div className="fund-action"/>
+
+        <div className="second-row">
+          <div className="funds">
+            <div className="fund fund-steem">
+              <div className="fund-line">
+                <Tooltip title={intl.formatMessage({
+                  id: 'account.steem-description'
+                })}>
+                  <div className="fund-info"/>
+                </Tooltip>
+                <div className="fund-title"><FormattedMessage id="account.steem"/></div>
+                <div className="fund-number"><FormattedNumber minimumFractionDigits={3} value={balance}/> {'STEEM'}
+                </div>
+                <div className="fund-action"/>
+              </div>
+            </div>
+
+            <div className="fund fund-sp alternative">
+              <div className="fund-line">
+                <Tooltip title={intl.formatMessage({
+                  id: 'account.steem-power-description'
+                })}>
+                  <div className="fund-info"/>
+                </Tooltip>
+                <div className="fund-title"><FormattedMessage id="account.steem-power"/></div>
+                <div className="fund-number">
+                  <FormattedNumber minimumFractionDigits={3} value={vestsToSp(vestingShares, steemPerMVests)}/> {'SP'}
+                </div>
+                <div className="fund-action"/>
+              </div>
+
+              {vestingSharesDelegated > 0 &&
+              <div className="fund-line">
+                <div className="fund-number delegated-shares">
+                  {'-'} <FormattedNumber value={vestsToSp(vestingSharesDelegated, steemPerMVests)}/> {'SP'}
+                </div>
+                <div className="fund-action"/>
+              </div>
+              }
+
+              {vestingSharesReceived > 0 &&
+              <div className="fund-line">
+                <div className="fund-number received-shares">
+                  {'+'} <FormattedNumber value={vestsToSp(vestingSharesReceived, steemPerMVests)}/> {'SP'}
+                </div>
+                <div className="fund-action"/>
+              </div>
+              }
+
+              {(vestingSharesDelegated > 0 || vestingSharesReceived > 0) &&
+              <div className="fund-line">
+                <div className="fund-number total-sp">
+                  {'='} <FormattedNumber value={vestsToSp(vestingSharesTotal, steemPerMVests)}/> {'SP'}
+                </div>
+                <div className="fund-action"/>
+              </div>
+              }
+            </div>
+
+            <div className="fund fund-sbd">
+              <div className="fund-line">
+                <Tooltip title={intl.formatMessage({
+                  id: 'account.steem-dollars-description'
+                })}>
+                  <div className="fund-info"/>
+                </Tooltip>
+                <div className="fund-title"><FormattedMessage id="account.steem-dollars"/></div>
+                <div className="fund-number">
+                  <FormattedNumber currency="USD" style="currency" currencyDisplay="symbol"
+                                   minimumFractionDigits={3} value={sbdBalance}/>
+                </div>
+                <div className="fund-action"/>
+              </div>
+            </div>
+
+            <div className="fund fund-savings alternative">
+              <div className="fund-line">
+                <Tooltip title={intl.formatMessage({
+                  id: 'account.savings-description'
+                })}>
+                  <div className="fund-info"/>
+                </Tooltip>
+                <div className="fund-title"><FormattedMessage id="account.savings"/></div>
+                <div className="fund-number">
+                  <FormattedNumber minimumFractionDigits={3} value={savingBalance}/> {'STEEM'}
+                </div>
+                <div className="fund-action"/>
+              </div>
+
+              <div className="fund-line">
+                <div className="fund-number">
+                  <FormattedNumber currency="USD" style="currency" currencyDisplay="symbol"
+                                   minimumFractionDigits={3} value={savingBalanceSbd}/>
+                </div>
+                <div className="fund-action"/>
+              </div>
             </div>
           </div>
-
-          <div className="fund fund-sp alternative">
-            <div className="fund-line">
-              <div className="fund-info"/>
-              <div className="fund-title">Steem Power</div>
-              <div className="fund-number"><FormattedNumber minimumFractionDigits={3}
-                                                            value={vestsToSp(vestingShares, steemPerMVests)}/> SP
-              </div>
-              <div className="fund-action"/>
-            </div>
-
-            {vestingSharesDelegated > 0 &&
-            <div className="fund-line">
-              <div className="fund-number delegated-shares">- <FormattedNumber
-                value={vestsToSp(vestingSharesDelegated, steemPerMVests)}/> SP
-              </div>
-              <div className="fund-action"/>
-            </div>
-            }
-
-            {vestingSharesReceived > 0 &&
-            <div className="fund-line">
-              <div className="fund-number received-shares">+ <FormattedNumber
-                value={vestsToSp(vestingSharesReceived, steemPerMVests)}/> SP
-              </div>
-              <div className="fund-action"/>
-            </div>
-            }
-
-            {(vestingSharesDelegated > 0 || vestingSharesReceived > 0) &&
-            <div className="fund-line">
-              <div className="fund-number total-sp">= <FormattedNumber
-                value={vestsToSp(vestingSharesTotal, steemPerMVests)}/> SP
-              </div>
-              <div className="fund-action"/>
-            </div>
-            }
-
-
-          </div>
-
-          <div className="fund fund-steem">
-            <div className="fund-line">
-              <div className="fund-info"/>
-              <div className="fund-title">Steem Dollars</div>
-              <div className="fund-number"><FormattedNumber currency="USD" style="currency" currencyDisplay="symbol"
-                                                            minimumFractionDigits={3} value={sbdBalance}/></div>
-              <div className="fund-action"/>
-            </div>
-          </div>
-
-
-          <div className="fund fund-steem alternative">
-            <div className="fund-line">
-              <div className="fund-info"/>
-              <div className="fund-title">Savings</div>
-              <div className="fund-number"><FormattedNumber minimumFractionDigits={3} value={savingBalance}/> STEEM
-              </div>
-              <div className="fund-action"/>
-            </div>
-
-            <div className="fund-line">
-
-              <div className="fund-number"><FormattedNumber currency="USD" style="currency" currencyDisplay="symbol"
-                                                            minimumFractionDigits={3} value={savingBalanceSbd}/></div>
-              <div className="fund-action"/>
-            </div>
-          </div>
-
-
         </div>
-
       </div>
     );
   }
@@ -489,7 +521,9 @@ SectionWallet.defaultProps = {
 SectionWallet.propTypes = {
   username: PropTypes.string.isRequired,
   account: PropTypes.instanceOf(Object),
-  dynamicProps: PropTypes.instanceOf(Object).isRequired
+  dynamicProps: PropTypes.instanceOf(Object).isRequired,
+  global: PropTypes.instanceOf(Object).isRequired,
+  intl: PropTypes.instanceOf(Object).isRequired
 };
 
 class Account extends Component {
