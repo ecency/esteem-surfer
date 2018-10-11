@@ -1,5 +1,5 @@
 /*
-eslint-disable react/no-multi-comp
+eslint-disable react/no-multi-comp,react/style-prop-object
 */
 
 
@@ -25,6 +25,8 @@ import authorReputation from '../utils/author-reputation';
 import {votingPower} from '../utils/manabar';
 import proxifyImageSrc from '../utils/proxify-image-src';
 import {makeGroupKeyForEntries} from "../actions/entries";
+import parseToken from '../utils/parse-token';
+import {vestsToSp} from '../utils/conversions';
 import EntryListLoadingItem from "./elements/EntryListLoadingItem";
 import EntryListItem from "./elements/EntryListItem";
 import AppFooter from "./layout/AppFooter";
@@ -319,22 +321,176 @@ AccountTopPosts.propTypes = {
   posts: PropTypes.arrayOf(Object)
 };
 
-export class SectionBlog extends Component {
-
-
-}
-
-export class SectionComments extends Component {
-
-}
-
-export class SectionReplies extends Component {
-
-}
 
 export class SectionWallet extends Component {
 
+  render() {
+
+    const {account, dynamicProps} = this.props;
+
+
+    const {steemPerMVests} = dynamicProps;
+
+
+    let rewardSteemBalance;
+    let rewardSbdBalance;
+    let rewardVestingSteem;
+    let hasUnclaimedRewards;
+
+    let balance;
+
+    let vestingShares;
+    let vestingSharesDelegated;
+    let vestingSharesReceived;
+    let vestingSharesTotal;
+
+    let sbdBalance;
+
+    let savingBalance;
+    let savingBalanceSbd;
+
+    if (account) {
+
+      rewardSteemBalance = parseToken(account.reward_steem_balance);
+      rewardSbdBalance = parseToken(account.reward_sbd_balance);
+      rewardVestingSteem = parseToken(account.reward_vesting_steem);
+      hasUnclaimedRewards = (rewardSteemBalance > 0 || rewardSbdBalance > 0 || rewardVestingSteem > 0);
+
+      balance = parseToken(account.balance);
+
+      vestingShares = parseToken(account.vesting_shares);
+      vestingSharesDelegated = parseToken(account.delegated_vesting_shares);
+      vestingSharesReceived = parseToken(account.received_vesting_shares);
+      vestingSharesTotal = (vestingShares - vestingSharesDelegated + vestingSharesReceived);
+
+      sbdBalance = parseToken(account.sbd_balance);
+      savingBalance = parseToken(account.savings_balance);
+      savingBalanceSbd = parseToken(account.savings_sbd_balance);
+
+    }
+
+
+    if (!account) {
+      return <div className="wallet-section"/>
+    }
+
+
+    return (
+      <div className="wallet-section">
+
+
+        {hasUnclaimedRewards &&
+        <div className="unclaimed-rewards">
+          <div className="title">Unclaimed rewards</div>
+          <div className="rewards">
+            {rewardSteemBalance > 0 &&
+            <span className="reward-type">{`${rewardSteemBalance} STEEM`}</span>
+            }
+            {rewardSbdBalance > 0 &&
+            <span className="reward-type">{`${rewardSbdBalance} SDB`}</span>
+            }
+            {rewardVestingSteem > 0 &&
+            <span className="reward-type">{`${rewardVestingSteem} SP`}</span>
+            }
+          </div>
+        </div>
+        }
+        <div className="funds">
+
+          <div className="fund fund-steem">
+            <div className="fund-line">
+              <div className="fund-info"/>
+              <div className="fund-title">Steem</div>
+              <div className="fund-number"><FormattedNumber minimumFractionDigits={3} value={balance}/> STEEM</div>
+              <div className="fund-action"/>
+            </div>
+          </div>
+
+          <div className="fund fund-sp alternative">
+            <div className="fund-line">
+              <div className="fund-info"/>
+              <div className="fund-title">Steem Power</div>
+              <div className="fund-number"><FormattedNumber minimumFractionDigits={3}
+                                                            value={vestsToSp(vestingShares, steemPerMVests)}/> SP
+              </div>
+              <div className="fund-action"/>
+            </div>
+
+            {vestingSharesDelegated > 0 &&
+            <div className="fund-line">
+              <div className="fund-number delegated-shares">- <FormattedNumber
+                value={vestsToSp(vestingSharesDelegated, steemPerMVests)}/> SP
+              </div>
+              <div className="fund-action"/>
+            </div>
+            }
+
+            {vestingSharesReceived > 0 &&
+            <div className="fund-line">
+              <div className="fund-number received-shares">+ <FormattedNumber
+                value={vestsToSp(vestingSharesReceived, steemPerMVests)}/> SP
+              </div>
+              <div className="fund-action"/>
+            </div>
+            }
+
+            {(vestingSharesDelegated > 0 || vestingSharesReceived > 0) &&
+            <div className="fund-line">
+              <div className="fund-number total-sp">= <FormattedNumber
+                value={vestsToSp(vestingSharesTotal, steemPerMVests)}/> SP
+              </div>
+              <div className="fund-action"/>
+            </div>
+            }
+
+
+          </div>
+
+          <div className="fund fund-steem">
+            <div className="fund-line">
+              <div className="fund-info"/>
+              <div className="fund-title">Steem Dollars</div>
+              <div className="fund-number"><FormattedNumber currency="USD" style="currency" currencyDisplay="symbol"
+                                                            minimumFractionDigits={3} value={sbdBalance}/></div>
+              <div className="fund-action"/>
+            </div>
+          </div>
+
+
+          <div className="fund fund-steem alternative">
+            <div className="fund-line">
+              <div className="fund-info"/>
+              <div className="fund-title">Savings</div>
+              <div className="fund-number"><FormattedNumber minimumFractionDigits={3} value={savingBalance}/> STEEM
+              </div>
+              <div className="fund-action"/>
+            </div>
+
+            <div className="fund-line">
+
+              <div className="fund-number"><FormattedNumber currency="USD" style="currency" currencyDisplay="symbol"
+                                                            minimumFractionDigits={3} value={savingBalanceSbd}/></div>
+              <div className="fund-action"/>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    );
+  }
 }
+
+SectionWallet.defaultProps = {
+  account: null,
+};
+
+SectionWallet.propTypes = {
+  username: PropTypes.string.isRequired,
+  account: PropTypes.instanceOf(Object),
+  dynamicProps: PropTypes.instanceOf(Object).isRequired
+};
 
 class Account extends Component {
   constructor(props) {
@@ -543,6 +699,10 @@ class Account extends Component {
                 {loading && entryList.size > 0 ? <LinearProgress/> : ''}
                 <ScrollReplace {...this.props} selector="#app-content" onBottom={this.bottomReached}/>
               </Fragment>
+              }
+
+              {isWallet &&
+              <SectionWallet {...this.props} username={username} account={account}/>
               }
             </div>
           </div>
