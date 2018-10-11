@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 
 import {Tooltip} from 'antd';
 
-import {FormattedNumber, FormattedDate, FormattedMessage, injectIntl} from 'react-intl';
+import {FormattedNumber, FormattedDate, FormattedMessage, FormattedRelative, injectIntl} from 'react-intl';
 
 import NavBar from './layout/NavBar';
 
@@ -27,6 +27,8 @@ import proxifyImageSrc from '../utils/proxify-image-src';
 import {makeGroupKeyForEntries} from "../actions/entries";
 import parseToken from '../utils/parse-token';
 import {vestsToSp} from '../utils/conversions';
+import parseDate from '../utils/parse-date.js';
+
 import EntryListLoadingItem from "./elements/EntryListLoadingItem";
 import EntryListItem from "./elements/EntryListItem";
 import AppFooter from "./layout/AppFooter";
@@ -337,19 +339,17 @@ export class SectionWallet extends Component {
     let rewardSbdBalance;
     let rewardVestingSteem;
     let hasUnclaimedRewards;
-
     let balance;
-
     let vestingShares;
     let vestingSharesDelegated;
     let vestingSharesReceived;
     let vestingSharesTotal;
-
     let sbdBalance;
-
     let savingBalance;
     let savingBalanceSbd;
     let estimatedValue;
+    let showPowerDown;
+    let nextVestingWithdrawal;
 
     if (account) {
 
@@ -374,6 +374,11 @@ export class SectionWallet extends Component {
         (balance * base) +
         sbdBalance
       ) * currencyRate;
+
+      showPowerDown = account.next_vesting_withdrawal !== '1969-12-31T23:59:59';
+      nextVestingWithdrawal = parseDate(account.next_vesting_withdrawal);
+
+
     }
 
     if (!account) {
@@ -418,7 +423,7 @@ export class SectionWallet extends Component {
                 <Tooltip title={intl.formatMessage({
                   id: 'account.steem-description'
                 })}>
-                  <div className="fund-info"/>
+                  <div className="fund-info-icon"/>
                 </Tooltip>
                 <div className="fund-title"><FormattedMessage id="account.steem"/></div>
                 <div className="fund-number"><FormattedNumber minimumFractionDigits={3} value={balance}/> {'STEEM'}
@@ -432,7 +437,7 @@ export class SectionWallet extends Component {
                 <Tooltip title={intl.formatMessage({
                   id: 'account.steem-power-description'
                 })}>
-                  <div className="fund-info"/>
+                  <div className="fund-info-icon"/>
                 </Tooltip>
                 <div className="fund-title"><FormattedMessage id="account.steem-power"/></div>
                 <div className="fund-number">
@@ -444,7 +449,11 @@ export class SectionWallet extends Component {
               {vestingSharesDelegated > 0 &&
               <div className="fund-line">
                 <div className="fund-number delegated-shares">
-                  {'-'} <FormattedNumber value={vestsToSp(vestingSharesDelegated, steemPerMVests)}/> {'SP'}
+                  <Tooltip title={intl.formatMessage({
+                    id: 'account.steem-power-delegated'
+                  })}>
+                    {'-'} <FormattedNumber value={vestsToSp(vestingSharesDelegated, steemPerMVests)}/> {'SP'}
+                  </Tooltip>
                 </div>
                 <div className="fund-action"/>
               </div>
@@ -453,7 +462,11 @@ export class SectionWallet extends Component {
               {vestingSharesReceived > 0 &&
               <div className="fund-line">
                 <div className="fund-number received-shares">
-                  {'+'} <FormattedNumber value={vestsToSp(vestingSharesReceived, steemPerMVests)}/> {'SP'}
+                  <Tooltip title={intl.formatMessage({
+                    id: 'account.steem-power-received'
+                  })}>
+                    {'+'} <FormattedNumber value={vestsToSp(vestingSharesReceived, steemPerMVests)}/> {'SP'}
+                  </Tooltip>
                 </div>
                 <div className="fund-action"/>
               </div>
@@ -462,7 +475,11 @@ export class SectionWallet extends Component {
               {(vestingSharesDelegated > 0 || vestingSharesReceived > 0) &&
               <div className="fund-line">
                 <div className="fund-number total-sp">
-                  {'='} <FormattedNumber value={vestsToSp(vestingSharesTotal, steemPerMVests)}/> {'SP'}
+                  <Tooltip title={intl.formatMessage({
+                    id: 'account.steem-power-total'
+                  })}>
+                    {'='} <FormattedNumber value={vestsToSp(vestingSharesTotal, steemPerMVests)}/> {'SP'}
+                  </Tooltip>
                 </div>
                 <div className="fund-action"/>
               </div>
@@ -474,7 +491,7 @@ export class SectionWallet extends Component {
                 <Tooltip title={intl.formatMessage({
                   id: 'account.steem-dollars-description'
                 })}>
-                  <div className="fund-info"/>
+                  <div className="fund-info-icon"/>
                 </Tooltip>
                 <div className="fund-title"><FormattedMessage id="account.steem-dollars"/></div>
                 <div className="fund-number">
@@ -490,7 +507,7 @@ export class SectionWallet extends Component {
                 <Tooltip title={intl.formatMessage({
                   id: 'account.savings-description'
                 })}>
-                  <div className="fund-info"/>
+                  <div className="fund-info-icon"/>
                 </Tooltip>
                 <div className="fund-title"><FormattedMessage id="account.savings"/></div>
                 <div className="fund-number">
@@ -507,6 +524,18 @@ export class SectionWallet extends Component {
                 <div className="fund-action"/>
               </div>
             </div>
+
+
+            {showPowerDown &&
+
+            <div className="next-power-down">
+              <div className="fund-info-icon"/>
+              <FormattedMessage id="account.next-power-down"
+                                values={{time: <FormattedRelative value={nextVestingWithdrawal}/>}}/>
+            </div>
+            }
+
+
           </div>
         </div>
       </div>

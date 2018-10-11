@@ -399,6 +399,34 @@
           .funds {
             width: 50%;
 
+            .fund-info-icon {
+              width: 30px;
+
+              &:after {
+                align-items: center;
+
+                border-radius: 50%;
+                color: $steel-grey;
+                content: 'i';
+                display: flex;
+                font-size: 12px;
+                height: 16px;
+                justify-content: center;
+                opacity: 0.5;
+                width: 16px;
+
+                @include themify(day) {
+                  border: 2px solid $steel-grey;
+                  color: $steel-grey;
+                }
+
+                @include themify(night) {
+                  border: 2px solid $metallic-blue;
+                  color: $metallic-blue;
+                }
+              }
+            }
+
             .fund {
               border-radius: 8px;
               box-sizing: content-box;
@@ -418,34 +446,6 @@
                 align-items: center;
                 display: flex;
                 padding-bottom: 16px;
-
-                .fund-info {
-                  width: 30px;
-
-                  &:after {
-                    align-items: center;
-
-                    border-radius: 50%;
-                    color: $steel-grey;
-                    content: 'i';
-                    display: flex;
-                    font-size: 12px;
-                    height: 16px;
-                    justify-content: center;
-                    opacity: 0.5;
-                    width: 16px;
-
-                    @include themify(day) {
-                      border: 2px solid $steel-grey;
-                      color: $steel-grey;
-                    }
-
-                    @include themify(night) {
-                      border: 2px solid $metallic-blue;
-                      color: $metallic-blue;
-                    }
-                  }
-                }
 
                 .fund-title {
                   font-size: 16px;
@@ -482,6 +482,21 @@
                 .fund-action {
                   width: 40px;
                 }
+              }
+            }
+
+            .next-power-down {
+              align-items: center;
+              box-sizing: content-box;
+              display: flex;
+              padding: 16px 16px 0 16px;
+
+              @include themify(day) {
+                color: $steel-grey;
+              }
+
+              @include themify(night) {
+                color: $metallic-blue;
               }
             }
           }
