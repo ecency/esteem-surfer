@@ -22,8 +22,8 @@
         height: 50px;
 
         .account-menu-items {
-          flex-shrink: 0;
           display: flex;
+          flex-shrink: 0;
 
           .menu-item {
             align-items: center;
@@ -42,11 +42,11 @@
         }
 
         .page-tools {
+          align-items: center;
           display: flex;
           flex-grow: 1;
-          padding-right: 18px;
           justify-content: flex-end;
-          align-items: center;
+          padding-right: 18px;
         }
       }
     }
@@ -90,9 +90,9 @@
         }
 
         .username {
-          margin-bottom: 12px;
           font-size: 18px;
           font-weight: 700;
+          margin-bottom: 12px;
 
           @include themify(day) {
             color: $charcoal-grey;
@@ -223,8 +223,8 @@
 
       .account-cover {
         height: 134px;
-        width: calc(100% - 18px);
         position: relative;
+        width: calc(100% - 18px);
 
         .cover-image {
           background-color: $white-three;
@@ -232,17 +232,79 @@
           background-repeat: no-repeat;
           background-size: cover;
           border-radius: 3px;
-          width: 100%;
           height: 100%;
           position: absolute;
+          width: 100%;
           z-index: 1;
         }
 
         .follow-controls-holder {
           position: absolute;
-          top: 10px;
           right: 10px;
+          top: 10px;
           z-index: 2;
+        }
+      }
+
+      .top-posts-list {
+        margin: 25px 0;
+        width: calc(100% - 18px);
+
+        .top-posts-list-header {
+          font-size: 18px;
+          font-weight: 700;
+          margin: 0 0 16px 0;
+        }
+
+        .top-posts-list-body {
+          display: flex;
+          justify-content: space-between;
+          max-width: 750px;
+          .top-posts-list-item {
+            border: 1px solid $white-four;
+            border-radius: 8px;
+            height: 120px;
+            width: 130px;
+
+            .post-image {
+              border-top-left-radius: 8px;
+              border-top-right-radius: 8px;
+              height: 77px;
+              max-width: 100%;
+              overflow: hidden;
+
+              img {
+                width: 100%;
+              }
+            }
+
+            .post-content {
+              align-items: center;
+              display: flex;
+              flex-direction: column;
+              height: 38px;
+              justify-content: space-evenly;
+              margin-top: 2px;
+
+              .post-title,
+              .post-body {
+                font-size: 11px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 90%;
+              }
+
+              .post-title {
+                color: $charcoal-grey;
+                font-weight: 700;
+              }
+
+              .post-body {
+                color: $steel-grey;
+              }
+            }
+          }
         }
       }
 

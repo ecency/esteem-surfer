@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BACKEND_URL } from '../config';
+import {BACKEND_URL} from '../config';
 
 export const getCurrencyRate = cur =>
   axios
@@ -13,3 +13,7 @@ export const getNodes = () =>
 
 export const getActiveVotes = user =>
   axios.get(`${BACKEND_URL}/api/votes/${user}`).then(resp => resp.data);
+
+
+export const getTopPosts = user => axios.get(`${BACKEND_URL}/api/top-posts/${user}`).then(resp => resp.data);
+

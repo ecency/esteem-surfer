@@ -19,7 +19,7 @@ import FollowControls from './elements/FollowControls';
 
 import {getFollowCount, getAccount} from '../backend/steem-client';
 
-import {getActiveVotes} from '../backend/esteem-client';
+import {getActiveVotes, getTopPosts} from '../backend/esteem-client';
 
 import authorReputation from '../utils/author-reputation';
 import {votingPower} from '../utils/manabar';
@@ -34,6 +34,8 @@ import coverFallbackDay from '../img/cover-fallback-day.png';
 import coverFallbackNight from '../img/cover-fallback-night.png';
 import LinearProgress from "./common/LinearProgress";
 
+import catchEntryImage from '../utils/catch-entry-image';
+import entryBodySummary from "../utils/entry-body-summary";
 
 class Profile extends Component {
 
@@ -294,7 +296,8 @@ class Account extends Component {
     super(props);
 
     this.state = {
-      account: null
+      account: null,
+      topPosts: null
     };
   }
 
@@ -306,6 +309,7 @@ class Account extends Component {
 
     this.fetchAccount();
     this.fetchEntries();
+    this.fetchTopPosts();
   }
 
   componentDidUpdate(prevProps) {
@@ -322,6 +326,7 @@ class Account extends Component {
 
       if (newUsername !== oldUsername) {
         this.fetchAccount();
+        this.fetchTopPosts();
       }
     }
   }
@@ -381,6 +386,21 @@ class Account extends Component {
     actions.fetchEntries(section, `@${username}`);
   };
 
+  fetchTopPosts = async () => {
+    const {match} = this.props;
+    const {username} = match.params;
+
+    let topPosts;
+    try {
+      const resp = await getTopPosts(username);
+      topPosts = resp.list;
+    } catch (err) {
+      topPosts = null;
+    }
+
+    this.setState({topPosts});
+  };
+
   bottomReached = () => {
     const {actions, entries, match} = this.props;
     const {username, section = 'blog'} = match.params;
@@ -400,6 +420,7 @@ class Account extends Component {
     const {username, section = 'blog'} = match.params;
 
     this.fetchAccount();
+    this.fetchTopPosts();
     actions.invalidateEntries(section, `@${username}`);
     actions.fetchEntries(section, `@${username}`, false);
 
@@ -417,6 +438,8 @@ class Account extends Component {
     const data = entries.get(groupKey);
     const entryList = data.get('entries');
     const loading = data.get('loading');
+
+    const {topPosts} = this.state;
 
 
     return (
@@ -448,6 +471,28 @@ class Account extends Component {
             <div className="right-side">
               {!isWallet &&
               <AccountCover {...this.props} account={account} username={username}/>
+              }
+
+              {section === 'blog' && topPosts &&
+              <div className="top-posts-list">
+                <h2 className="top-posts-list-header">Top Posts</h2>
+
+                <div className="top-posts-list-body">
+                  {topPosts.map(p => (
+                    <div className="top-posts-list-item" key={p.permlink}>
+                      <div className="post-image">
+                        <img alt="" src={catchEntryImage(p) || 'img/noimage.png'}/>
+                      </div>
+
+                      <div className="post-content">
+                        <div className="post-title">{p.title}</div>
+                        <div className="post-body">{entryBodySummary(p.body, 40)}</div>
+                      </div>
+
+                    </div>
+                  ))}
+                </div>
+              </div>
               }
 
               {!isWallet &&
