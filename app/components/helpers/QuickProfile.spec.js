@@ -5,6 +5,7 @@ import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import QuickProfile from './QuickProfile';
 import { mountWithIntl } from '../../helpers/intl-test';
+import PropTypes from "prop-types";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -12,7 +13,8 @@ describe('PinCreate', () => {
   it('(1) Render', () => {
     const props = {
       username: 'foo',
-      reputation: '123123123'
+      reputation: '123123123',
+      history: {}
     };
 
     const wrapper = mountWithIntl(

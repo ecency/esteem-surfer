@@ -39,7 +39,10 @@ class ScrollReplace extends React.Component {
     if (history.action === 'POP') {
       pos = getPathPos(location.pathname) || 0;
     }
-    this.el.scrollTop = pos;
+
+    if (this.el) {
+      this.el.scrollTop = pos;
+    }
   }
 
   componentWillReceiveProps(nextProps) {

@@ -13,9 +13,5 @@ Enzyme.configure({adapter: new Adapter()});
 describe('NavBar', () => {
     it('checkPathForBack', () => {
         expect(checkPathForBack('/')).toBe(false);
-        expect(checkPathForBack('/welcome')).toBe(false);
-        expect(checkPathForBack('/set-pin')).toBe(false);
-        expect(checkPathForBack('/trending')).toBe(true);
-        expect(checkPathForBack('/trending/art')).toBe(true);
     });
 });

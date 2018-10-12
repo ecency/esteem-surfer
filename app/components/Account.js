@@ -899,11 +899,14 @@ class Account extends Component {
     const {username, section = 'blog'} = match.params;
 
     this.fetchAccount();
-    this.fetchTopPosts();
-    this.fetchTransactions();
 
-    actions.invalidateEntries(section, `@${username}`);
-    actions.fetchEntries(section, `@${username}`, false);
+    if (section === 'wallet') {
+      this.fetchTransactions();
+    } else {
+      this.fetchTopPosts();
+      actions.invalidateEntries(section, `@${username}`);
+      actions.fetchEntries(section, `@${username}`, false);
+    }
 
     document.querySelector('#app-content').scrollTop = 0;
   };
