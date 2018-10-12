@@ -234,7 +234,9 @@ export class AccountMenu extends Component {
           }}><FormattedMessage id="account.section-wallet"/></a>
         </div>
         <div className="page-tools">
+          {section !== 'wallet' &&
           <ListSwitch {...this.props} />
+          }
         </div>
       </div>
     )
@@ -319,6 +321,189 @@ AccountTopPosts.propTypes = {
   posts: PropTypes.arrayOf(Object)
 };
 
+
+export class TransactionRow extends Component {
+
+  render() {
+
+    const {dynamicProps, transaction: tr} = this.props;
+    const {steemPerMVests} = dynamicProps;
+
+    const {op} = tr[1];
+    const {timestamp} = tr[1];
+    const opName = op[0];
+    const opData = op[1];
+    const transDate = parseDate(timestamp);
+
+    let flag = false;
+    let icon = 'local_activity';
+    let numbers;
+    let details;
+
+    if (opName === 'curation_reward') {
+      flag = true;
+
+      const {reward: vestingPayout} = opData;
+
+      numbers = (
+        <Fragment>
+          <FormattedNumber value={vestsToSp(parseToken(vestingPayout), steemPerMVests)}
+                           minimumFractionDigits={3}/> {'SP'}
+        </Fragment>
+      );
+
+      const {comment_author: commentAuthor, comment_permlink: commentPermlink} = opData;
+      details = `@${commentAuthor}/${commentPermlink}`
+    }
+
+    if (opName === 'author_reward' || opName === 'comment_benefactor_reward') {
+      flag = true;
+
+      let {
+        sbd_payout: sbdPayout,
+        steem_payout: steemPayout,
+        vesting_payout: vestingPayout
+      } = opData;
+
+      sbdPayout = parseToken(sbdPayout);
+      steemPayout = parseToken(steemPayout);
+      vestingPayout = parseToken(vestingPayout);
+
+      numbers = (
+        <Fragment>
+          {sbdPayout > 0 &&
+          <span className="number"><FormattedNumber value={sbdPayout}
+                                                    minimumFractionDigits={3}/> {'SBD'}</span>
+          }
+          {steemPayout > 0 &&
+          <span className="number"><FormattedNumber value={steemPayout}
+                                                    minimumFractionDigits={3}/> {'steemPayout'}</span>
+          }
+          {vestingPayout > 0 &&
+          <span className="number"><FormattedNumber value={vestsToSp(vestingPayout, steemPerMVests)}
+                                                    minimumFractionDigits={3}/> {'SP'}</span>
+          }
+        </Fragment>
+      );
+
+      const {
+        author,
+        permlink
+      } = opData;
+
+      details = `@${author}/${permlink}`
+    }
+
+    if (opName === 'comment_benefactor_reward') {
+      icon = 'comment';
+    }
+
+    if (opName === 'claim_reward_balance') {
+      flag = true;
+
+      let {
+        reward_sbd: rewardSdb,
+        reward_steem: rewardSteem,
+        reward_vests: rewardVests
+      } = opData;
+
+      rewardSdb = parseToken(rewardSdb);
+      rewardSteem = parseToken(rewardSteem);
+      rewardVests = parseToken(rewardVests);
+
+      numbers = (
+        <Fragment>
+          {rewardSdb > 0 &&
+          <span className="number"><FormattedNumber value={rewardSdb}
+                                                    minimumFractionDigits={3}/> {'SBD'}</span>
+          }
+          {rewardSteem > 0 &&
+          <span className="number"><FormattedNumber value={rewardSteem}
+                                                    minimumFractionDigits={3}/> {'STEEM'}</span>
+          }
+          {rewardVests > 0 &&
+          <span className="number"><FormattedNumber value={vestsToSp(rewardVests, steemPerMVests)}
+                                                    minimumFractionDigits={3}/> {'SP'}</span>
+          }
+        </Fragment>
+      );
+    }
+
+    if (opName === 'transfer' || opName === 'transfer_to_vesting') {
+      flag = true;
+      icon = 'compare_arrows';
+
+      const {amount, memo, from, to} = opData;
+      details = <span>{memo} <br/><br/> <strong>@{from}</strong> -&gt; <strong>@{to}</strong></span>;
+
+      numbers = (
+        <span>{amount}</span>
+      );
+    }
+
+    if (opName === 'withdraw_vesting') {
+      flag = true;
+      icon = 'money';
+
+      const {acc} = opData;
+
+      let {
+        vesting_shares: opVestingShares
+      } = opData;
+
+      opVestingShares = parseToken(opVestingShares);
+      numbers = <span className="number"><FormattedNumber value={vestsToSp(opVestingShares, steemPerMVests)}
+                                                          minimumFractionDigits={3}/> {'SP'}</span>;
+
+      details = <span><strong>@{acc}</strong></span>;
+    }
+
+    if (opName === 'fill_order') {
+      flag = true;
+      icon = 'reorder';
+
+      const {
+        current_pays: currentPays,
+        open_pays: openPays
+      } = opData;
+
+      numbers = <span className="number">{currentPays} = {openPays}</span>;
+    }
+
+    if (flag) {
+      return (
+        <div className="transaction-list-item">
+          <div className="transaction-icon">
+            <i className="mi">{icon}</i>
+          </div>
+          <div className="transaction-title">
+            <div className="transaction-name">
+              <FormattedMessage id={`account.transaction-${opName}`}/>
+            </div>
+            <div className="transaction-date">
+              <FormattedRelative value={transDate}/>
+            </div>
+          </div>
+          <div className="transaction-numbers">
+            {numbers}
+          </div>
+          <div className="transaction-details">
+            {details}
+          </div>
+        </div>
+      )
+    }
+
+
+    return null;
+  }
+}
+
+
+TransactionRow.propTypes = {
+  transaction: PropTypes.arrayOf(Object).isRequired,
+  dynamicProps: PropTypes.instanceOf(Object).isRequired
+};
 
 export class SectionWallet extends Component {
 
@@ -530,176 +715,10 @@ export class SectionWallet extends Component {
             <h2><FormattedMessage id="account.transactions"/></h2>
           </div>
           <div className="transaction-list-body">
-            {transactions.map(tr => {
 
-              const {op} = tr[1];
-              const {timestamp} = tr[1];
-              const opName = op[0];
-              const opData = op[1];
-              const transDate = parseDate(timestamp);
-
-              let flag = false;
-              let icon = 'local_activity';
-              let numbers;
-              let details;
-
-              if (opName === 'curation_reward') {
-                flag = true;
-
-                const {reward: vestingPayout} = opData;
-
-                numbers = (
-                  <Fragment>
-                    <FormattedNumber value={vestsToSp(parseToken(vestingPayout), steemPerMVests)}
-                                     minimumFractionDigits={3}/> {'SP'}
-                  </Fragment>
-                );
-
-                const {comment_author: commentAuthor, comment_permlink: commentPermlink} = opData;
-                details = `@${commentAuthor}/${commentPermlink}`
-              }
-
-              if (opName === 'author_reward' || opName === 'comment_benefactor_reward') {
-                flag = true;
-
-                let {
-                  sbd_payout: sbdPayout,
-                  steem_payout: steemPayout,
-                  vesting_payout: vestingPayout
-                } = opData;
-
-                sbdPayout = parseToken(sbdPayout);
-                steemPayout = parseToken(steemPayout);
-                vestingPayout = parseToken(vestingPayout);
-
-                numbers = (
-                  <Fragment>
-                    {sbdPayout > 0 &&
-                    <span className="number"><FormattedNumber value={sbdPayout}
-                                                              minimumFractionDigits={3}/> {'SBD'}</span>
-                    }
-                    {steemPayout > 0 &&
-                    <span className="number"><FormattedNumber value={steemPayout}
-                                                              minimumFractionDigits={3}/> {'steemPayout'}</span>
-                    }
-                    {vestingPayout > 0 &&
-                    <span className="number"><FormattedNumber value={vestsToSp(vestingPayout, steemPerMVests)}
-                                                              minimumFractionDigits={3}/> {'SP'}</span>
-                    }
-                  </Fragment>
-                );
-
-                const {
-                  author,
-                  permlink
-                } = opData;
-
-                details = `@${author}/${permlink}`
-              }
-
-              if (opName === 'comment_benefactor_reward') {
-                icon = 'comment';
-              }
-
-              if (opName === 'claim_reward_balance') {
-                flag = true;
-
-                let {
-                  reward_sbd: rewardSdb,
-                  reward_steem: rewardSteem,
-                  reward_vests: rewardVests
-                } = opData;
-
-                rewardSdb = parseToken(rewardSdb);
-                rewardSteem = parseToken(rewardSteem);
-                rewardVests = parseToken(rewardVests);
-
-                numbers = (
-                  <Fragment>
-                    {rewardSdb > 0 &&
-                    <span className="number"><FormattedNumber value={rewardSdb}
-                                                              minimumFractionDigits={3}/> {'SBD'}</span>
-                    }
-                    {rewardSteem > 0 &&
-                    <span className="number"><FormattedNumber value={rewardSteem}
-                                                              minimumFractionDigits={3}/> {'STEEM'}</span>
-                    }
-                    {rewardVests > 0 &&
-                    <span className="number"><FormattedNumber value={vestsToSp(rewardVests, steemPerMVests)}
-                                                              minimumFractionDigits={3}/> {'SP'}</span>
-                    }
-                  </Fragment>
-                );
-              }
-
-              if (opName === 'transfer' || opName === 'transfer_to_vesting') {
-                flag = true;
-                icon = 'compare_arrows';
-
-                const {amount, memo, from, to} = opData;
-                details = <span>{memo} <br/><br/> <strong>@{from}</strong> -&gt; <strong>@{to}</strong></span>;
-
-                numbers = (
-                  <span>{amount}</span>
-                );
-              }
-
-              if (opName === 'withdraw_vesting') {
-                flag = true;
-                icon = 'money';
-
-                const {acc} = opData;
-
-                let {
-                  vesting_shares: opVestingShares
-                } = opData;
-
-                opVestingShares = parseToken(opVestingShares);
-                numbers = <span className="number"><FormattedNumber value={vestsToSp(opVestingShares, steemPerMVests)}
-                                                                    minimumFractionDigits={3}/> {'SP'}</span>;
-
-                details = <span><strong>@{acc}</strong></span>;
-              }
-
-              if (opName === 'fill_order') {
-                flag = true;
-                icon = 'reorder';
-
-                const {
-                  current_pays: currentPays,
-                  open_pays: openPays
-                } = opData;
-
-                numbers = <span className="number">{currentPays} = {openPays}</span>;
-              }
-
-              if (flag) {
-                return (
-                  <div className="transaction-list-item">
-                    <div className="transaction-icon">
-                      <i className="mi">{icon}</i>
-                    </div>
-                    <div className="transaction-title">
-                      <div className="transaction-name">
-                        <FormattedMessage id={`account.transaction-${opName}`}/>
-                      </div>
-                      <div className="transaction-date">
-                        <FormattedRelative value={transDate}/>
-                      </div>
-                    </div>
-                    <div className="transaction-numbers">
-                      {numbers}
-                    </div>
-                    <div className="transaction-details">
-                      {details}
-                    </div>
-                  </div>
-                )
-              }
-
-
-              return null;
-            })}
+            {transactions.map(tr => (
+              <TransactionRow {...this.props} transaction={tr} key={tr[0]}/>
+            ))}
           </div>
         </div>
       </div>
@@ -843,7 +862,9 @@ class Account extends Component {
     const {match} = this.props;
     const {username, section = 'blog'} = match.params;
 
-    let transactions;
+    let transactions = [];
+
+    this.setState({transactions});
 
     try {
       const state = await getState(`/@${username}/transfers`);
@@ -879,6 +900,8 @@ class Account extends Component {
 
     this.fetchAccount();
     this.fetchTopPosts();
+    this.fetchTransactions();
+
     actions.invalidateEntries(section, `@${username}`);
     actions.fetchEntries(section, `@${username}`, false);
 
