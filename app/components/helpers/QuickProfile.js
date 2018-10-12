@@ -50,13 +50,13 @@ class QuickProfile extends Component {
 
     this.setState({ accountData: account });
 
+    console.log(account.json_metadata);
+
     let accountProfile;
     try {
       accountProfile = JSON.parse(account.json_metadata).profile;
     } catch (err) {
-      message.error(
-        intl.formatMessage({ id: 'quick-profile.fetch-error-profile' })
-      );
+      accountProfile = {};
     }
 
     if (accountProfile) {
