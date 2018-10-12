@@ -504,7 +504,7 @@
         }
 
         .transaction-list {
-          margin-right: 29px;
+          margin: 0 29px 20px 0;
 
           .transaction-list-header {
             h2 {
@@ -521,29 +521,53 @@
 
             .transaction-icon {
               align-items: center;
-              background: $white;
+
               border-radius: 50%;
-              color: $steel-grey;
+
               display: flex;
               font-size: 16px;
               height: 32px;
               justify-content: center;
               margin-right: 10px;
               width: 32px;
+
+              @include themify(day) {
+                background: $white;
+                color: $steel-grey;
+              }
+
+              @include themify(night) {
+                background: $metallic-blue;
+                color: lighten($metallic-blue, 40);
+              }
             }
 
             .transaction-title {
               display: flex;
               flex-direction: column;
-              width: 200px;
+              width: 30%;
+              font-weight: 500;
 
               .transaction-name {
-                color: $steel-grey;
+                @include themify(day) {
+                  color: $steel-grey;
+                }
+
+                @include themify(night) {
+                  color: $metallic-blue;
+                }
               }
 
               .transaction-date {
-                color: $silver;
                 font-size: 12px;
+
+                @include themify(day) {
+                  color: $silver;
+                }
+
+                @include themify(night) {
+                  color: $warm-grey;
+                }
               }
             }
 
@@ -562,17 +586,25 @@
 
             .transaction-details {
               color: $steel-grey;
-              margin-right: 30px;
-              width: 210px;
+              width: 30%;
+              word-break: break-all;
             }
 
             &:nth-child(odd) {
-              background-color: $white-three;
+              @include themify(day) {
+                background: $white-three;
+              }
+
+              @include themify(night) {
+                background: lighten($dark-six, 4);
+              }
             }
 
-            &:nth-child(even) {
-              .transaction-icon {
-                background-color: $white-three;
+            @include themify(day) {
+              &:nth-child(even) {
+                .transaction-icon {
+                  background-color: $white-three;
+                }
               }
             }
           }

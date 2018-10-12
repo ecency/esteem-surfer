@@ -2,42 +2,38 @@
 eslint-disable react/no-multi-comp,react/style-prop-object
 */
 
-
 import React, {Component, Fragment} from 'react';
 
 import PropTypes from 'prop-types';
-
 import {Tooltip} from 'antd';
-
 import {FormattedNumber, FormattedDate, FormattedMessage, FormattedRelative, injectIntl} from 'react-intl';
 
 import NavBar from './layout/NavBar';
+import AppFooter from "./layout/AppFooter";
 
 import ComposeBtn from './elements/ComposeBtn';
 import UserAvatar from './elements/UserAvatar';
 import FollowControls from './elements/FollowControls';
-
-import {getFollowCount, getAccount, getState} from '../backend/steem-client';
-
-import {getActiveVotes, getTopPosts} from '../backend/esteem-client';
-
-import authorReputation from '../utils/author-reputation';
-import {votingPower} from '../utils/manabar';
-import proxifyImageSrc from '../utils/proxify-image-src';
-import {makeGroupKeyForEntries} from "../actions/entries";
-import parseToken from '../utils/parse-token';
-import {vestsToSp} from '../utils/conversions';
-import parseDate from '../utils/parse-date';
-
 import EntryListLoadingItem from "./elements/EntryListLoadingItem";
 import EntryListItem from "./elements/EntryListItem";
-import AppFooter from "./layout/AppFooter";
-import ScrollReplace from "./helpers/ScrollReplace";
-import ListSwitch from "./elements/ListSwitch";
+
+import ScrollReplace from './helpers/ScrollReplace';
+import ListSwitch from './elements/ListSwitch';
 import coverFallbackDay from '../img/cover-fallback-day.png';
 import coverFallbackNight from '../img/cover-fallback-night.png';
 import LinearProgress from "./common/LinearProgress";
 
+import {getFollowCount, getAccount, getState} from '../backend/steem-client';
+import {getActiveVotes, getTopPosts} from '../backend/esteem-client';
+
+import {makeGroupKeyForEntries} from "../actions/entries";
+
+import authorReputation from '../utils/author-reputation';
+import {votingPower} from '../utils/manabar';
+import proxifyImageSrc from '../utils/proxify-image-src';
+import parseToken from '../utils/parse-token';
+import {vestsToSp} from '../utils/conversions';
+import parseDate from '../utils/parse-date';
 import catchEntryImage from '../utils/catch-entry-image';
 import entryBodySummary from "../utils/entry-body-summary";
 
@@ -327,9 +323,7 @@ AccountTopPosts.propTypes = {
 export class SectionWallet extends Component {
 
   render() {
-
     const {account, transactions, dynamicProps, global, intl} = this.props;
-
 
     const {steemPerMVests, base} = dynamicProps;
     const {currency, currencyRate} = global;
@@ -532,13 +526,10 @@ export class SectionWallet extends Component {
         </div>
 
         <div className="transaction-list">
-
           <div className="transaction-list-header">
-            <h2>Transactions</h2>
+            <h2><FormattedMessage id="account.transactions"/></h2>
           </div>
-
           <div className="transaction-list-body">
-
             {transactions.map(tr => {
 
               const {op} = tr[1];
@@ -613,9 +604,6 @@ export class SectionWallet extends Component {
               if (opName === 'claim_reward_balance') {
                 flag = true;
 
-                console.log(opData)
-
-
                 let {
                   reward_sbd: rewardSdb,
                   reward_steem: rewardSteem,
@@ -642,7 +630,47 @@ export class SectionWallet extends Component {
                     }
                   </Fragment>
                 );
+              }
 
+              if (opName === 'transfer' || opName === 'transfer_to_vesting') {
+                flag = true;
+                icon = 'compare_arrows';
+
+                const {amount, memo, from, to} = opData;
+                details = <span>{memo} <br/><br/> <strong>@{from}</strong> -&gt; <strong>@{to}</strong></span>;
+
+                numbers = (
+                  <span>{amount}</span>
+                );
+              }
+
+              if (opName === 'withdraw_vesting') {
+                flag = true;
+                icon = 'money';
+
+                const {acc} = opData;
+
+                let {
+                  vesting_shares: opVestingShares
+                } = opData;
+
+                opVestingShares = parseToken(opVestingShares);
+                numbers = <span className="number"><FormattedNumber value={vestsToSp(opVestingShares, steemPerMVests)}
+                                                                    minimumFractionDigits={3}/> {'SP'}</span>;
+
+                details = <span><strong>@{acc}</strong></span>;
+              }
+
+              if (opName === 'fill_order') {
+                flag = true;
+                icon = 'reorder';
+
+                const {
+                  current_pays: currentPays,
+                  open_pays: openPays
+                } = opData;
+
+                numbers = <span className="number">{currentPays} = {openPays}</span>;
               }
 
               if (flag) {
@@ -653,13 +681,12 @@ export class SectionWallet extends Component {
                     </div>
                     <div className="transaction-title">
                       <div className="transaction-name">
-                        <FormattedMessage id={`account.operation-${opName}`}/>
+                        <FormattedMessage id={`account.transaction-${opName}`}/>
                       </div>
                       <div className="transaction-date">
                         <FormattedRelative value={transDate}/>
                       </div>
                     </div>
-
                     <div className="transaction-numbers">
                       {numbers}
                     </div>
