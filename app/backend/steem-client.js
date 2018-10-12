@@ -32,6 +32,8 @@ export const getAccounts = usernames => client.database.getAccounts(usernames);
 export const getAccount = username =>
   client.database.getAccounts([username]).then(resp => resp[0]);
 
+export const getState = (path) => client.database.getState(path);
+
 export const getFollowCount = username =>
   client.database.call('get_follow_count', [username]);
 

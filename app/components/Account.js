@@ -17,7 +17,7 @@ import ComposeBtn from './elements/ComposeBtn';
 import UserAvatar from './elements/UserAvatar';
 import FollowControls from './elements/FollowControls';
 
-import {getFollowCount, getAccount} from '../backend/steem-client';
+import {getFollowCount, getAccount, getState} from '../backend/steem-client';
 
 import {getActiveVotes, getTopPosts} from '../backend/esteem-client';
 
@@ -27,7 +27,7 @@ import proxifyImageSrc from '../utils/proxify-image-src';
 import {makeGroupKeyForEntries} from "../actions/entries";
 import parseToken from '../utils/parse-token';
 import {vestsToSp} from '../utils/conversions';
-import parseDate from '../utils/parse-date.js';
+import parseDate from '../utils/parse-date';
 
 import EntryListLoadingItem from "./elements/EntryListLoadingItem";
 import EntryListItem from "./elements/EntryListItem";
@@ -328,12 +328,11 @@ export class SectionWallet extends Component {
 
   render() {
 
-    const {account, dynamicProps, global, intl} = this.props;
+    const {account, transactions, dynamicProps, global, intl} = this.props;
 
 
     const {steemPerMVests, base} = dynamicProps;
     const {currency, currencyRate} = global;
-
 
     let rewardSteemBalance;
     let rewardSbdBalance;
@@ -414,8 +413,6 @@ export class SectionWallet extends Component {
             </Tooltip>
           </div>
         </div>
-
-
         <div className="second-row">
           <div className="funds">
             <div className="fund fund-steem">
@@ -524,18 +521,158 @@ export class SectionWallet extends Component {
                 <div className="fund-action"/>
               </div>
             </div>
-
-
             {showPowerDown &&
-
             <div className="next-power-down">
               <div className="fund-info-icon"/>
               <FormattedMessage id="account.next-power-down"
                                 values={{time: <FormattedRelative value={nextVestingWithdrawal}/>}}/>
             </div>
             }
+          </div>
+        </div>
+
+        <div className="transaction-list">
+
+          <div className="transaction-list-header">
+            <h2>Transactions</h2>
+          </div>
+
+          <div className="transaction-list-body">
+
+            {transactions.map(tr => {
+
+              const {op} = tr[1];
+              const {timestamp} = tr[1];
+              const opName = op[0];
+              const opData = op[1];
+              const transDate = parseDate(timestamp);
+
+              let flag = false;
+              let icon = 'local_activity';
+              let numbers;
+              let details;
+
+              if (opName === 'curation_reward') {
+                flag = true;
+
+                const {reward: vestingPayout} = opData;
+
+                numbers = (
+                  <Fragment>
+                    <FormattedNumber value={vestsToSp(parseToken(vestingPayout), steemPerMVests)}
+                                     minimumFractionDigits={3}/> {'SP'}
+                  </Fragment>
+                );
+
+                const {comment_author: commentAuthor, comment_permlink: commentPermlink} = opData;
+                details = `@${commentAuthor}/${commentPermlink}`
+              }
+
+              if (opName === 'author_reward' || opName === 'comment_benefactor_reward') {
+                flag = true;
+
+                let {
+                  sbd_payout: sbdPayout,
+                  steem_payout: steemPayout,
+                  vesting_payout: vestingPayout
+                } = opData;
+
+                sbdPayout = parseToken(sbdPayout);
+                steemPayout = parseToken(steemPayout);
+                vestingPayout = parseToken(vestingPayout);
+
+                numbers = (
+                  <Fragment>
+                    {sbdPayout > 0 &&
+                    <span className="number"><FormattedNumber value={sbdPayout}
+                                                              minimumFractionDigits={3}/> {'SBD'}</span>
+                    }
+                    {steemPayout > 0 &&
+                    <span className="number"><FormattedNumber value={steemPayout}
+                                                              minimumFractionDigits={3}/> {'steemPayout'}</span>
+                    }
+                    {vestingPayout > 0 &&
+                    <span className="number"><FormattedNumber value={vestsToSp(vestingPayout, steemPerMVests)}
+                                                              minimumFractionDigits={3}/> {'SP'}</span>
+                    }
+                  </Fragment>
+                );
+
+                const {
+                  author,
+                  permlink
+                } = opData;
+
+                details = `@${author}/${permlink}`
+              }
+
+              if (opName === 'comment_benefactor_reward') {
+                icon = 'comment';
+              }
+
+              if (opName === 'claim_reward_balance') {
+                flag = true;
+
+                console.log(opData)
 
 
+                let {
+                  reward_sbd: rewardSdb,
+                  reward_steem: rewardSteem,
+                  reward_vests: rewardVests
+                } = opData;
+
+                rewardSdb = parseToken(rewardSdb);
+                rewardSteem = parseToken(rewardSteem);
+                rewardVests = parseToken(rewardVests);
+
+                numbers = (
+                  <Fragment>
+                    {rewardSdb > 0 &&
+                    <span className="number"><FormattedNumber value={rewardSdb}
+                                                              minimumFractionDigits={3}/> {'SBD'}</span>
+                    }
+                    {rewardSteem > 0 &&
+                    <span className="number"><FormattedNumber value={rewardSteem}
+                                                              minimumFractionDigits={3}/> {'STEEM'}</span>
+                    }
+                    {rewardVests > 0 &&
+                    <span className="number"><FormattedNumber value={vestsToSp(rewardVests, steemPerMVests)}
+                                                              minimumFractionDigits={3}/> {'SP'}</span>
+                    }
+                  </Fragment>
+                );
+
+              }
+
+              if (flag) {
+                return (
+                  <div className="transaction-list-item">
+                    <div className="transaction-icon">
+                      <i className="mi">{icon}</i>
+                    </div>
+                    <div className="transaction-title">
+                      <div className="transaction-name">
+                        <FormattedMessage id={`account.operation-${opName}`}/>
+                      </div>
+                      <div className="transaction-date">
+                        <FormattedRelative value={transDate}/>
+                      </div>
+                    </div>
+
+                    <div className="transaction-numbers">
+                      {numbers}
+                    </div>
+                    <div className="transaction-details">
+                      {details}
+                    </div>
+                  </div>
+                )
+              }
+
+
+              return null;
+            })}
           </div>
         </div>
       </div>
@@ -545,11 +682,13 @@ export class SectionWallet extends Component {
 
 SectionWallet.defaultProps = {
   account: null,
+  transactions: []
 };
 
 SectionWallet.propTypes = {
   username: PropTypes.string.isRequired,
   account: PropTypes.instanceOf(Object),
+  transactions: PropTypes.arrayOf(Object),
   dynamicProps: PropTypes.instanceOf(Object).isRequired,
   global: PropTypes.instanceOf(Object).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
@@ -561,7 +700,8 @@ class Account extends Component {
 
     this.state = {
       account: null,
-      topPosts: null
+      topPosts: null,
+      transactions: []
     };
   }
 
@@ -574,6 +714,7 @@ class Account extends Component {
     this.fetchAccount();
     this.fetchEntries();
     this.fetchTopPosts();
+    this.fetchTransactions();
   }
 
   componentDidUpdate(prevProps) {
@@ -591,6 +732,7 @@ class Account extends Component {
       if (newUsername !== oldUsername) {
         this.fetchAccount();
         this.fetchTopPosts();
+        this.fetchTransactions();
       }
     }
   }
@@ -647,6 +789,11 @@ class Account extends Component {
   fetchEntries = () => {
     const {actions, match} = this.props;
     const {username, section = 'blog'} = match.params;
+
+    if (section === 'wallet') {
+      return;
+    }
+
     actions.fetchEntries(section, `@${username}`);
   };
 
@@ -663,6 +810,26 @@ class Account extends Component {
     }
 
     this.setState({topPosts});
+  };
+
+  fetchTransactions = async () => {
+    const {match} = this.props;
+    const {username, section = 'blog'} = match.params;
+
+    let transactions;
+
+    try {
+      const state = await getState(`/@${username}/transfers`);
+      const {accounts} = state;
+      const {transfer_history: transferHistory} = accounts[username];
+      transactions = transferHistory.slice(Math.max(transferHistory.length - 50, 0));
+      transactions.sort((a, b) => b[0] - a[0]);
+
+    } catch (err) {
+      transactions = [];
+    }
+
+    this.setState({transactions});
   };
 
   bottomReached = () => {
@@ -697,14 +864,18 @@ class Account extends Component {
     const {username, section = 'blog'} = match.params;
     const isWallet = section === 'wallet';
 
-    const groupKey = makeGroupKeyForEntries(section, `@${username}`);
+    let entryList;
+    let loading = false;
 
-    const data = entries.get(groupKey);
-    const entryList = data.get('entries');
-    const loading = data.get('loading');
+    if (!isWallet) {
+      const groupKey = makeGroupKeyForEntries(section, `@${username}`);
+      const data = entries.get(groupKey);
+      entryList = data.get('entries');
+      loading = data.get('loading');
+    }
 
     const {topPosts} = this.state;
-
+    const {transactions} = this.state;
 
     return (
       <div className="wrapper">
@@ -765,7 +936,7 @@ class Account extends Component {
               }
 
               {isWallet &&
-              <SectionWallet {...this.props} username={username} account={account}/>
+              <SectionWallet {...this.props} transactions={transactions} username={username} account={account}/>
               }
             </div>
           </div>

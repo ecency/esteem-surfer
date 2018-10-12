@@ -135,6 +135,11 @@
     "steem-dollars-description": "Tokens worth about $1.00 of Steem.",
     "savings": "Savings",
     "savings-description": "Balance subject to 3 day withdraw waiting period.",
-    "next-power-down": "The next power down is {time}"
+    "next-power-down": "The next power down is {time}",
+
+    "operation-curation_reward": "Curation Reward",
+    "operation-author_reward": "Author Reward",
+    "operation-comment_benefactor_reward": "Comment Benefactor Reward",
+    "operation-claim_reward_balance": "Claim rewards"
   }
 }

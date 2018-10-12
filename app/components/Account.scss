@@ -386,6 +386,7 @@
         }
 
         .second-row {
+          margin-bottom: 16px;
           padding-bottom: 16px;
 
           @include themify(day) {
@@ -497,6 +498,81 @@
 
               @include themify(night) {
                 color: $metallic-blue;
+              }
+            }
+          }
+        }
+
+        .transaction-list {
+          margin-right: 29px;
+
+          .transaction-list-header {
+            h2 {
+              font-size: 18px;
+              margin-bottom: 16px;
+            }
+          }
+
+          .transaction-list-item {
+            border-radius: 8px;
+            box-sizing: content-box;
+            display: flex;
+            padding: 16px;
+
+            .transaction-icon {
+              align-items: center;
+              background: $white;
+              border-radius: 50%;
+              color: $steel-grey;
+              display: flex;
+              font-size: 16px;
+              height: 32px;
+              justify-content: center;
+              margin-right: 10px;
+              width: 32px;
+            }
+
+            .transaction-title {
+              display: flex;
+              flex-direction: column;
+              width: 200px;
+
+              .transaction-name {
+                color: $steel-grey;
+              }
+
+              .transaction-date {
+                color: $silver;
+                font-size: 12px;
+              }
+            }
+
+            .transaction-numbers {
+              color: $dark-sky-blue;
+              flex-grow: 1;
+
+              font-weight: 500;
+              margin-right: 30px;
+              text-align: right;
+
+              .number {
+                margin-right: 4px;
+              }
+            }
+
+            .transaction-details {
+              color: $steel-grey;
+              margin-right: 30px;
+              width: 210px;
+            }
+
+            &:nth-child(odd) {
+              background-color: $white-three;
+            }
+
+            &:nth-child(even) {
+              .transaction-icon {
+                background-color: $white-three;
               }
             }
           }

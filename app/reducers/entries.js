@@ -38,6 +38,10 @@ export default function entries(state = defaultState, action) {
         const filter = path[2] || 'blog';
         const tag = path[1];
 
+        if (!['blog', 'comments', 'replies', 'wallet'].includes(filter)) {
+          return state;
+        }
+
         const groupKey = makeGroupKeyForEntries(filter, tag);
         if (state.get(groupKey) === undefined) {
           return state.set(groupKey, new EntryGroupRecord());
