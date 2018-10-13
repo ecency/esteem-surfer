@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -120,6 +120,12 @@ class NavBar extends Component {
     history.push(newLoc);
   };
 
+  walletClicked = () => {
+    const { activeAccount, history } = this.props;
+    const u = `/@${activeAccount.username}/wallet`;
+    history.push(u);
+  };
+
   render() {
     const {
       history,
@@ -236,7 +242,7 @@ class NavBar extends Component {
               <Mi icon="settings" />
             </a>
           </div>
-          <div className="user-menu">
+          <div className={`user-menu ${activeAccount ? 'logged-in' : ''}`}>
             {!activeAccount && (
               <Tooltip
                 title="Login to you account"
@@ -256,13 +262,25 @@ class NavBar extends Component {
             )}
 
             {activeAccount && (
-              <a
-                role="none"
-                className="user-menu-trigger"
-                onClick={this.toggleMenu}
-              >
-                <UserAvatar user={activeAccount.username} size="normal" />
-              </a>
+              <Fragment>
+                <Tooltip
+                  title="My Wallet"
+                  placement="left"
+                  mouseEnterDelay={1}
+                  onClick={this.walletClicked}
+                >
+                  <a role="none" className="wallet">
+                    <i className="mi">credit_card</i>
+                  </a>
+                </Tooltip>
+                <a
+                  role="none"
+                  className="user-menu-trigger"
+                  onClick={this.toggleMenu}
+                >
+                  <UserAvatar user={activeAccount.username} size="normal" />
+                </a>
+              </Fragment>
             )}
 
             {activeAccount && (

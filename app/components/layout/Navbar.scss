@@ -234,8 +234,15 @@
       .user-menu-trigger {
       }
 
+      .wallet {
+        color: $white;
+        display: flex;
+        font-size: 16px;
+        margin: 0 20px;
+      }
+
       &.logged-in {
-        width: 196px;
+        width: 110px;
       }
 
       user-select: none;
