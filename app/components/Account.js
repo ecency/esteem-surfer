@@ -5,7 +5,7 @@ eslint-disable react/no-multi-comp,react/style-prop-object
 import React, {Component, Fragment} from 'react';
 
 import PropTypes from 'prop-types';
-import {Tooltip} from 'antd';
+import {Tooltip, message} from 'antd';
 import {FormattedNumber, FormattedDate, FormattedMessage, FormattedRelative, injectIntl} from 'react-intl';
 
 import NavBar from './layout/NavBar';
@@ -35,7 +35,8 @@ import parseToken from '../utils/parse-token';
 import {vestsToSp} from '../utils/conversions';
 import parseDate from '../utils/parse-date';
 import catchEntryImage from '../utils/catch-entry-image';
-import entryBodySummary from "../utils/entry-body-summary";
+import entryBodySummary from '../utils/entry-body-summary';
+import formatChainError from '../utils/format-chain-error';
 
 class Profile extends Component {
 
@@ -856,7 +857,7 @@ export class SectionWallet extends Component {
           </div>
           <div className="transaction-list-body">
 
-            {transactions.map(tr => (
+            {transactions && transactions.map(tr => (
               <TransactionRow {...this.props} transaction={tr} key={tr[0]}/>
             ))}
           </div>
@@ -877,8 +878,14 @@ SectionWallet.propTypes = {
   account: PropTypes.instanceOf(Object),
   transactions: PropTypes.arrayOf(Object),
   marketData: PropTypes.instanceOf(Object),
-  dynamicProps: PropTypes.instanceOf(Object).isRequired,
-  global: PropTypes.instanceOf(Object).isRequired,
+  dynamicProps: PropTypes.shape({
+    steemPerMVests: PropTypes.number.isRequired,
+    base: PropTypes.number.isRequired
+  }).isRequired,
+  global: PropTypes.shape({
+    currencyRate: PropTypes.number.isRequired,
+    currencySymbol: PropTypes.string.isRequired
+  }).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
@@ -889,28 +896,29 @@ class Account extends Component {
     this.state = {
       account: null,
       topPosts: null,
-      transactions: [],
-      marketData: null
+      transactions: null,
+      transactionsLoading: true,
+      marketData: null,
+      marketDataLoading: true
     };
   }
 
   componentDidMount() {
     const {match} = this.props;
-    const {username} = match.params;
+    const {username, section = 'blog'} = match.params;
 
     // check user here
 
-    this.fetchAccount();
+    this.fetchData();
     this.fetchEntries();
-    this.fetchTopPosts();
-    this.fetchTransactions();
-    this.fetchMarketData();
   }
 
   componentDidUpdate(prevProps) {
     const {location} = this.props;
 
     if (location !== prevProps.location) {
+
+      // fetch entries when location changed.
       this.fetchEntries();
 
       const {match: newMatch} = this.props;
@@ -920,12 +928,78 @@ class Account extends Component {
       const {username: oldUsername} = oldMatch.params;
 
       if (newUsername !== oldUsername) {
-        this.fetchAccount();
-        this.fetchTopPosts();
-        this.fetchTransactions();
+        // refresh data when user changed
+        this.fetchData();
       }
     }
   }
+
+  fetchData = () => {
+    // Reset state
+    this.setState({
+      account: null,
+      topPosts: null,
+      transactions: null,
+      transactionsLoading: true,
+      marketData: null,
+      marketDataLoading: true
+    });
+
+    // Account data
+    this.fetchAccount().then(account => {
+      this.setState({account});
+      return account
+    }).catch(err => {
+      message.error(formatChainError(err));
+    });
+
+    const {match} = this.props;
+    const {username} = match.params;
+
+    // Top posts
+    getTopPosts(username).then(resp => {
+      this.setState({
+        topPosts: resp.list
+      });
+      return resp;
+    }).catch(() => {
+
+    });
+
+    // Exchange data
+    getMarketData().then((resp) => {
+      this.setState({
+        marketData: resp
+      });
+      return resp;
+    }).catch(() => {
+
+    }).finally(() => {
+      this.setState({
+        marketDataLoading: false
+      });
+    });
+
+    // Transactions
+    getState(`/@${username}/transfers`).then(state => {
+      const {accounts} = state;
+      const {transfer_history: transferHistory} = accounts[username];
+      const transactions = transferHistory.slice(Math.max(transferHistory.length - 50, 0));
+      transactions.sort((a, b) => b[0] - a[0]);
+      return transactions;
+    }).then(transactions => {
+      this.setState({
+        transactions
+      });
+      return transactions;
+    }).catch(err => {
+      message.error(formatChainError(err));
+    }).finally(() => {
+      this.setState({
+        transactionsLoading: false
+      });
+    });
+  };
 
   fetchAccount = async () => {
     const {match} = this.props;
@@ -973,68 +1047,24 @@ class Account extends Component {
     }
 
     account = Object.assign({}, account, {activeVotes: activeVotes.count});
-    this.setState({account});
+
+    return account;
   };
 
   fetchEntries = () => {
-    const {actions, match} = this.props;
+    const {match, actions} = this.props;
     const {username, section = 'blog'} = match.params;
-
-    if (section === 'wallet') {
-      return;
+    if (['blog', 'comments', 'replies'].includes(section)) {
+      actions.fetchEntries(section, `@${username}`);
     }
-
-    actions.fetchEntries(section, `@${username}`);
   };
 
-  fetchTopPosts = async () => {
-    const {match} = this.props;
-    const {username} = match.params;
-
-    let topPosts;
-    try {
-      const resp = await getTopPosts(username);
-      topPosts = resp.list;
-    } catch (err) {
-      topPosts = null;
-    }
-
-    this.setState({topPosts});
-  };
-
-  fetchTransactions = async () => {
-    const {match} = this.props;
+  invalidateEntries = () => {
+    const {match, actions} = this.props;
     const {username, section = 'blog'} = match.params;
-
-    let transactions = [];
-
-    this.setState({transactions});
-
-    try {
-      const state = await getState(`/@${username}/transfers`);
-      const {accounts} = state;
-      const {transfer_history: transferHistory} = accounts[username];
-      transactions = transferHistory.slice(Math.max(transferHistory.length - 50, 0));
-      transactions.sort((a, b) => b[0] - a[0]);
-
-    } catch (err) {
-      transactions = [];
+    if (['blog', 'comments', 'replies'].includes(section)) {
+      actions.invalidateEntries(section, `@${username}`);
     }
-
-
-    this.setState({transactions});
-  };
-
-  fetchMarketData = async () => {
-
-    let marketData;
-    try {
-      marketData = await getMarketData();
-    } catch (err) {
-      marketData = null;
-    }
-
-    this.setState({marketData});
   };
 
   bottomReached = () => {
@@ -1052,19 +1082,9 @@ class Account extends Component {
   };
 
   refresh = () => {
-    const {actions, match} = this.props;
-    const {username, section = 'blog'} = match.params;
-
-    this.fetchAccount();
-
-    if (section === 'wallet') {
-      this.fetchTransactions();
-    } else {
-      this.fetchTopPosts();
-      actions.invalidateEntries(section, `@${username}`);
-      actions.fetchEntries(section, `@${username}`, false);
-    }
-
+    this.invalidateEntries();
+    this.fetchEntries();
+    this.fetchData();
     document.querySelector('#app-content').scrollTop = 0;
   };
 
@@ -1082,6 +1102,9 @@ class Account extends Component {
       const data = entries.get(groupKey);
       entryList = data.get('entries');
       loading = data.get('loading');
+    } else {
+      const {transactionsLoading, marketDataLoading} = this.state;
+      loading = transactionsLoading || marketDataLoading;
     }
 
     const {topPosts} = this.state;
