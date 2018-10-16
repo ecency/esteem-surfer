@@ -24,7 +24,7 @@ import coverFallbackNight from '../img/cover-fallback-night.png';
 import LinearProgress from "./common/LinearProgress";
 
 import {getFollowCount, getAccount, getState} from '../backend/steem-client';
-import {getActiveVotes, getTopPosts} from '../backend/esteem-client';
+import {getActiveVotes, getTopPosts, getMarketData} from '../backend/esteem-client';
 
 import {makeGroupKeyForEntries} from "../actions/entries";
 
@@ -505,10 +505,148 @@ TransactionRow.propTypes = {
   dynamicProps: PropTypes.instanceOf(Object).isRequired
 };
 
+
+export class Exchange extends Component {
+
+  render() {
+    const {marketData} = this.props;
+
+    let steemUsdDir;
+    let steemBtcDir;
+    let sbdUsdDir;
+    let sbdBtcDir;
+
+    if (marketData) {
+      const {steem, sbd} = marketData;
+      const {usd: steemUsd, btc: steemBtc} = steem.quotes;
+      const {usd: sbdUsd, btc: sbdBtc} = sbd.quotes;
+
+      steemUsdDir = steemUsd.percent_change === 0 && 'same' || (steemUsd.percent_change > 0 ? 'up' : 'down');
+      steemBtcDir = steemBtc.percent_change === 0 && 'same' || (steemBtc.percent_change > 0 ? 'up' : 'down');
+
+      sbdUsdDir = sbdUsd.percent_change === 0 && 'same' || (sbdUsd.percent_change > 0 ? 'up' : 'down');
+      sbdBtcDir = sbdBtc.percent_change === 0 && 'same' || (sbdBtc.percent_change > 0 ? 'up' : 'down');
+    }
+
+    return (
+      <div className="exchange-data">
+        <div className="exchange-title">
+              <span className="title-icon ">
+                <i className="mi">show_chart</i>
+              </span>
+          <h2><FormattedMessage id="account.exchange"/></h2>
+        </div>
+
+        <div className="market-data">
+          <div className="market-data-title">Steem</div>
+
+          {marketData &&
+          <Fragment>
+            <div className={`price change-${steemUsdDir}`}>
+              <div className="price-usd">
+                <FormattedNumber currency="usd" style="currency" currencyDisplay="symbol" maximumFractionDigits={2}
+                                 value={marketData.steem.quotes.usd.price}/>
+              </div>
+
+              <div className="price-change">
+                (<FormattedNumber maximumFractionDigits={2} value={marketData.steem.quotes.usd.percent_change}/>%)
+              </div>
+              {steemUsdDir === 'same' &&
+              <i className="change-icon">--</i>
+              }
+              {steemUsdDir === 'up' &&
+              <i className="mi change-icon">arrow_drop_up</i>
+              }
+              {steemUsdDir === 'down' &&
+              <i className="mi change-icon">arrow_drop_down</i>
+              }
+            </div>
+
+
+            <div className={`price change-${steemBtcDir}`}>
+              <div className="price-btc">
+                <FormattedNumber currency="usd" style="currency" currencyDisplay="symbol" minimumFractionDigits={8}
+                                 value={marketData.steem.quotes.btc.price}/> BTC
+              </div>
+
+              <div className="price-change">
+                (<FormattedNumber maximumFractionDigits={2} value={marketData.steem.quotes.btc.percent_change}/>%)
+              </div>
+              {steemBtcDir === 'same' &&
+              <i className="change-icon">--</i>
+              }
+              {steemBtcDir === 'up' &&
+              <i className="mi change-icon">arrow_drop_up</i>
+              }
+              {steemBtcDir === 'down' &&
+              <i className="mi change-icon">arrow_drop_down</i>
+              }
+            </div>
+          </Fragment>
+          }
+        </div>
+
+        <div className="market-data">
+          <div className="market-data-title">Steem Dollar</div>
+          {marketData &&
+          <Fragment>
+            <div className={`price change-${sbdUsdDir}`}>
+              <div className="price-usd">
+                <FormattedNumber currency="usd" style="currency" currencyDisplay="symbol" maximumFractionDigits={2}
+                                 value={marketData.sbd.quotes.usd.price}/>
+              </div>
+
+              <div className="price-change">
+                (<FormattedNumber maximumFractionDigits={2} value={marketData.sbd.quotes.usd.percent_change}/>%)
+              </div>
+              {sbdUsdDir === 'same' &&
+              <i className="change-icon">--</i>
+              }
+              {sbdUsdDir === 'up' &&
+              <i className="mi change-icon">arrow_drop_up</i>
+              }
+              {sbdUsdDir === 'down' &&
+              <i className="mi change-icon">arrow_drop_down</i>
+              }
+            </div>
+            <div className={`price change-${sbdBtcDir}`}>
+              <div className="price-btc">
+                <FormattedNumber currency="usd" style="currency" currencyDisplay="symbol" minimumFractionDigits={8}
+                                 value={marketData.sbd.quotes.btc.price}/> BTC
+              </div>
+              <div className="price-change">
+                (<FormattedNumber maximumFractionDigits={2} value={marketData.sbd.quotes.btc.percent_change}/>%)
+              </div>
+              {sbdBtcDir === 'same' &&
+              <i className="change-icon">--</i>
+              }
+              {sbdBtcDir === 'up' &&
+              <i className="mi change-icon">arrow_drop_up</i>
+              }
+              {sbdBtcDir === 'down' &&
+              <i className="mi change-icon">arrow_drop_down</i>
+              }
+            </div>
+          </Fragment>
+          }
+        </div>
+      </div>
+    )
+  }
+}
+
+Exchange.defaultProps = {
+  marketData: null
+};
+
+Exchange.propTypes = {
+  marketData: PropTypes.instanceOf(Object)
+};
+
 export class SectionWallet extends Component {
 
   render() {
-    const {account, transactions, dynamicProps, global, intl} = this.props;
+    const {account, transactions, marketData, dynamicProps, global, intl} = this.props;
 
     const {steemPerMVests, base} = dynamicProps;
     const {currency, currencyRate} = global;
@@ -708,6 +846,8 @@ export class SectionWallet extends Component {
             </div>
             }
           </div>
+
+          <Exchange {...this.props} marketData={marketData}/>
         </div>
 
         <div className="transaction-list">
@@ -728,13 +868,15 @@ export class SectionWallet extends Component {
 
 SectionWallet.defaultProps = {
   account: null,
-  transactions: []
+  transactions: [],
+  marketData: null
 };
 
 SectionWallet.propTypes = {
   username: PropTypes.string.isRequired,
   account: PropTypes.instanceOf(Object),
   transactions: PropTypes.arrayOf(Object),
+  marketData: PropTypes.instanceOf(Object),
   dynamicProps: PropTypes.instanceOf(Object).isRequired,
   global: PropTypes.instanceOf(Object).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
@@ -747,7 +889,8 @@ class Account extends Component {
     this.state = {
       account: null,
       topPosts: null,
-      transactions: []
+      transactions: [],
+      marketData: null
     };
   }
 
@@ -761,6 +904,7 @@ class Account extends Component {
     this.fetchEntries();
     this.fetchTopPosts();
     this.fetchTransactions();
+    this.fetchMarketData();
   }
 
   componentDidUpdate(prevProps) {
@@ -877,7 +1021,20 @@ class Account extends Component {
       transactions = [];
     }
 
+
     this.setState({transactions});
+  };
+
+  fetchMarketData = async () => {
+
+    let marketData;
+    try {
+      marketData = await getMarketData();
+    } catch (err) {
+      marketData = null;
+    }
+
+    this.setState({marketData});
   };
 
   bottomReached = () => {
@@ -929,6 +1086,7 @@ class Account extends Component {
 
     const {topPosts} = this.state;
     const {transactions} = this.state;
+    const {marketData} = this.state;
 
     return (
       <div className="wrapper">
@@ -989,7 +1147,8 @@ class Account extends Component {
               }
 
               {isWallet &&
-              <SectionWallet {...this.props} transactions={transactions} username={username} account={account}/>
+              <SectionWallet {...this.props} transactions={transactions} username={username} account={account}
+                             marketData={marketData}/>
               }
             </div>
           </div>

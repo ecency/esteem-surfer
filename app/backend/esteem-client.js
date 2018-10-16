@@ -17,3 +17,4 @@ export const getActiveVotes = user =>
 
 export const getTopPosts = user => axios.get(`${BACKEND_URL}/api/top-posts/${user}`).then(resp => resp.data);
 
+export const getMarketData = () => axios.get(`${BACKEND_URL}/api/market-data/`).then(resp => resp.data);
