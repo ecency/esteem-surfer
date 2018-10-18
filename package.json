@@ -217,12 +217,15 @@
     "he": "^1.1.1",
     "history": "^4.7.2",
     "immutable": "^3.8.2",
+    "jsdom": "^12.2.0",
     "material-design-icons": "^3.0.1",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
+    "react-codemirror": "^1.0.0",
     "react-dom": "^16.4.1",
     "react-hot-loader": "^4.3.4",
     "react-intl": "^2.4.0",
+    "react-markdown": "^4.0.3",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
@@ -234,7 +237,8 @@
     "sc2-sdk": "^2.0.0",
     "source-map-support": "^0.5.6",
     "steem": "^0.7.1",
-    "typeface-roboto": "0.0.54"
+    "typeface-roboto": "0.0.54",
+    "typeface-roboto-mono": "^0.0.54"
   },
   "devEngines": {
     "node": ">=7.x",

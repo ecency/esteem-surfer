@@ -1,0 +1,155 @@
+@import '../style/mixins';
+@import '../style/colors';
+@import '~typeface-roboto-mono/index.css';
+@import '~codemirror/lib/codemirror.css';
+
+/* CodeMirror */
+.ReactCodeMirror {
+  height: 100%;
+}
+
+.CodeMirror {
+  font-size: 14px;
+  font-family: 'Roboto Mono', sans-serif;
+  height: 100%;
+}
+
+.CodeMirror-lines {
+  padding-bottom: 500px;
+}
+
+/* CodeMirror day theme */
+.cm-s-day.CodeMirror {
+  background: transparent;
+  color: $steel-grey;
+}
+
+.cm-s-day div.CodeMirror-selected {
+  background: lighten($powder-blue, 5);
+}
+
+.cm-s-day span.cm-link {
+  color: $dark-sky-blue;
+}
+
+.cm-s-day span.cm-header {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.cm-s-day span.cm-tag {
+  color: $dark-sky-blue;
+}
+
+.cm-s-day.CodeMirror pre.CodeMirror-placeholder {
+  color: lighten($steel-grey, 40);
+}
+
+.compose-page {
+  .editor-form,
+  .preview-part {
+    width: 50%;
+    height: calc(100% - 50px);
+  }
+
+  .editor-form {
+    float: left;
+
+    .editor-toolbar {
+      background: $white-three;
+      height: 44px;
+      margin-bottom: 34px;
+      border-top-right-radius: 22px;
+      border-bottom-right-radius: 22px;
+      display: flex;
+      align-items: center;
+      user-select: none;
+
+      .editor-tool {
+        width: 42px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $steel-grey;
+        cursor: pointer;
+
+        &:hover {
+          background: darken($white-three, 5);
+        }
+
+        .tool-icon {
+          font-size: 22px;
+        }
+      }
+
+      .tool-separator {
+        width: 1px;
+        height: 24px;
+        margin: 0 6px;
+        background: $white-four;
+      }
+    }
+
+    .title-input,
+    .tags-input,
+    .body-input {
+      margin-left: 22px;
+      margin-right: 10px;
+    }
+
+    .title-input {
+      height: 40px;
+
+      input[type='text'] {
+        border: 0;
+        color: $charcoal-grey;
+        font-family: 'Roboto Mono', sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        background: transparent;
+      }
+    }
+
+    .tags-input {
+      height: 40px;
+      padding-left: 4px;
+
+      .ant-select {
+        width: 100%;
+        font-family: 'Roboto Mono', sans-serif !important;
+
+        .ant-select-selection {
+          border: 0;
+          color: $steel-grey;
+
+          ul {
+            li {
+              font-size: 12px;
+              background: transparent;
+              border: none;
+              padding: 0 5px;
+
+              &:first-child {
+                color: $dark-sky-blue;
+              }
+
+              .ant-select-selection__choice__remove {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .body-input {
+      padding-left: 11px;
+      height: calc(100% - 158px);
+    }
+  }
+
+  .preview-part {
+    float: right;
+  }
+}

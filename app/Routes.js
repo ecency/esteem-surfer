@@ -6,10 +6,12 @@ import App from './containers/App';
 import IndexPage from './containers/IndexPage';
 import EntryIndexPage from './containers/EntryIndexPage';
 import AccountPage from './containers/AccountPage';
+import ComposePage from './containers/ComposePage';
 
 export default () => (
   <App>
     <Switch>
+      <Route new path="/new" component={ComposePage} />
       <Route exact path="/@:username" component={AccountPage} />
       <Route exact path="/@:username/:section" component={AccountPage} />
       <Route exact path="/:filter" component={EntryIndexPage} />

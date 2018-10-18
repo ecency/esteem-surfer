@@ -12,7 +12,7 @@ class ComposeBtn extends Component {
 
   render() {
     return (
-      <div className="btn-compose">
+      <div className="btn-compose" onClick={this.clicked} role="none">
         <span className="icon">
           <i className="mi">edit</i>
         </span>
