@@ -18,3 +18,33 @@ export const getActiveVotes = user =>
 export const getTopPosts = user => axios.get(`${BACKEND_URL}/api/top-posts/${user}`).then(resp => resp.data);
 
 export const getMarketData = () => axios.get(`${BACKEND_URL}/api/market-data/`).then(resp => resp.data);
+
+export const uploadImage = (file) => {
+  const fData = new FormData();
+  fData.append('postimage', file);
+
+
+  return axios.post('https://img.esteem.ws/backend.php', fData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  });
+
+
+  /*
+  return $http({
+    url: 'https://img.esteem.ws/backend.php',
+    method: 'POST',
+    data: fData,
+    uploadEventHandlers: {
+      progress: function (e) {
+        if (onProgress) onProgress(e);
+      }
+    },
+    headers: {
+      'Content-Type': undefined
+    }
+  })
+  */
+
+};

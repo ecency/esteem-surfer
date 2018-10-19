@@ -4,7 +4,7 @@
 @import '~codemirror/lib/codemirror.css';
 
 /* CodeMirror */
-.ReactCodeMirror {
+.react-codemirror2 {
   height: 100%;
 }
 
@@ -12,10 +12,11 @@
   font-size: 14px;
   font-family: 'Roboto Mono', sans-serif;
   height: 100%;
+  line-height: 1.6em;
 }
 
 .CodeMirror-lines {
-  padding-bottom: 500px;
+  // padding-bottom: 100px;
 }
 
 /* CodeMirror day theme */
@@ -45,10 +46,14 @@
   color: lighten($steel-grey, 40);
 }
 
+.cm-s-day.CodeMirror .cm-matchhighlight {
+  background-color: $green2;
+}
+
 .compose-page {
   .editor-form,
   .preview-part {
-    width: 50%;
+    width: calc(50% - 10px);
     height: calc(100% - 50px);
   }
 
@@ -114,6 +119,7 @@
     .tags-input {
       height: 40px;
       padding-left: 4px;
+      margin-bottom: 12px;
 
       .ant-select {
         width: 100%;
@@ -151,5 +157,59 @@
 
   .preview-part {
     float: right;
+
+    .preview-part-title {
+      height: 44px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid $white-four;
+      display: flex;
+      align-items: center;
+
+      h2 {
+        margin: 0 0 0 12px;
+        font-size: 16px;
+        font-weight: 500;
+        color: $dark-sky-blue;
+      }
+    }
+
+    .preview-content {
+      .content-title {
+        font-size: 24px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        color: $charcoal-grey;
+        margin: 0;
+        font-weight: 700;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .content-tags {
+        height: 40px;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+
+        .content-tag {
+          margin-right: 12px;
+          background-color: $silver;
+          color: $white;
+          padding: 2px 8px;
+          line-height: 1em;
+          border-radius: 25px;
+          font-size: 12px;
+
+          &:first-child {
+            background-color: $dark-sky-blue;
+          }
+        }
+      }
+
+      height: calc(100% - 78px);
+      margin: 0 12px 0 12px;
+      overflow: auto;
+    }
   }
 }

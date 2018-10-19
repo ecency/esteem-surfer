@@ -127,3 +127,216 @@ h2 {
 @import '../components/dialogs/UserMenu';
 
 @import '../components/helpers/QuickProfile';
+
+.markdown-view {
+  @include clearfix();
+
+  font-size: 18px;
+  word-wrap: break-word;
+  br {
+    font-size: 100%;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.2 !important;
+    margin: 40px 0 0.3rem 0;
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 140%;
+    margin: 12px 0 12px 0;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 140%;
+    margin: 10px 0 10px 0;
+  }
+
+  h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0 10px 0;
+  }
+
+  h5 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0 10px 0;
+  }
+
+  blockquote {
+    color: $warm-grey;
+    // color: $textColorLighter;
+    font-size: 18px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+  }
+
+  p {
+    line-height: 150%;
+    margin: 0 0 1.5rem 0;
+    text-rendering: optimizeLegibility;
+  }
+
+  ul li,
+  ol li {
+    font-size: 18px;
+    line-height: 150%;
+    margin: 0 0 1rem 0;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  a {
+    color: $dark-sky-blue !important;
+    //  color: $linkHoverColor !important;
+  }
+
+  hr {
+    clear: both;
+    margin: 10px auto;
+  }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 1px;
+    margin-bottom: 24px;
+
+    td,
+    th {
+      padding: 8px 10px;
+    }
+
+    thead {
+      td,
+      th {
+        background-color: darken($white-four, 5);
+        // background-color: darken($boxBg, 5);
+      }
+    }
+
+    tbody {
+      td,
+      th {
+        background-color: $white-four;
+        // background-color: $boxBg;
+      }
+    }
+  }
+
+  code {
+    background: rgba(210, 226, 238, 0.3);
+    color: $charcoal-grey;
+    // color: $textColor;
+  }
+
+  pre {
+    background: rgba(210, 226, 238, 0.3);
+    color: $charcoal-grey;
+    //   color: $textColor;
+  }
+
+  .phishy {
+    display: inline;
+    color: red;
+  }
+
+  .pull-left,
+  .pull-right {
+    max-width: calc(50% - 10px);
+    padding-left: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+
+  .pull-left {
+    margin-right: 10px;
+    padding-right: 10px;
+    float: left;
+  }
+
+  .pull-right {
+    margin-left: 10px;
+    padding-right: 10px;
+    float: right;
+  }
+
+  .markdown-external-link,
+  .markdown-post-link,
+  .markdown-author-link,
+  .markdown-tag-link,
+  .markdown-witnesses-link {
+    cursor: pointer;
+  }
+
+  .markdown-video-link {
+    background: #000;
+    display: block;
+
+    height: 360px;
+    max-width: 600px;
+    width: 100%;
+
+    iframe {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &.mini-markdown {
+    font-size: 14px;
+    word-wrap: break-word;
+
+    blockquote {
+      font-size: 14px;
+    }
+
+    p {
+      margin: 0 0 0.6rem 0;
+      &:last-child {
+        margin-bottom: 0.2rem;
+      }
+    }
+
+    h1 {
+      font-size: 20px;
+      margin: 6px 0;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin: 4px 0 4px 0;
+    }
+
+    h3 {
+      font-size: 16px;
+      margin: 4px 0 4px 0;
+    }
+
+    ul li,
+    ol li {
+      font-size: 14px;
+    }
+
+    img {
+      max-height: 400px;
+      max-width: 400px;
+    }
+
+    .markdown-video-link {
+      height: 300px;
+      max-width: 100%;
+      width: 400px;
+    }
+  }
+
+  overflow-wrap: break-word;
+}
