@@ -67,8 +67,6 @@ export class Editor extends Component {
     const { onChange } = this.props;
     const { title, tags, body } = this.state;
 
-    // console.log(body)
-
     onChange({ title, tags, body });
   };
 
@@ -462,6 +460,45 @@ Editor.propTypes = {
   }).isRequired
 };
 
+export class Preview extends Component {
+  render() {
+    const { title, tags, body } = this.props;
+    return (
+      <div className="preview-part">
+        <div className="preview-part-title">
+          <h2>Preview</h2>
+        </div>
+
+        <div className="preview-content">
+          <div className="preview-content-title">{title}</div>
+          <div className="preview-content-tags">
+            {tags.map(t => (
+              <div key={t} className="content-tag">
+                {t}
+              </div>
+            ))}
+          </div>
+          <div className="preview-content-body" id="preview-content-body">
+            <div className="markdown-view" dangerouslySetInnerHTML={body} />
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+Preview.defaultProps = {
+  title: '',
+  tags: [],
+  body: {}
+};
+
+Preview.propTypes = {
+  title: PropTypes.string,
+  tags: PropTypes.arrayOf(PropTypes.string),
+  body: PropTypes.instanceOf(Object)
+};
+
 class Compose extends Component {
   constructor(props) {
     super(props);
@@ -487,8 +524,6 @@ class Compose extends Component {
     setItem('compose-tags', newValues.tags);
     setItem('compose-body', newValues.body);
 
-    // const html = markDown2Html(newValues.body);
-
     this.setState({
       title: newValues.title,
       tags: newValues.tags,
@@ -505,13 +540,7 @@ class Compose extends Component {
 
     return (
       <div className="wrapper">
-        <NavBar
-          {...this.props}
-          reloadFn={() => {
-            this.refresh();
-          }}
-          reloading={loading}
-        />
+        <NavBar {...this.props} reloadFn={() => {}} reloading={loading} />
         <div className="app-content compose-page">
           <Editor
             {...this.props}
@@ -519,26 +548,12 @@ class Compose extends Component {
             onChange={this.editorChanged}
             syncWith="#preview-content-body"
           />
-          <div className="preview-part">
-            <div className="preview-part-title">
-              <h2>Preview</h2>
-            </div>
-
-            <div className="preview-content">
-              <div className="preview-content-title">{title}</div>
-              <div className="preview-content-tags">
-                {tags.map(t => (
-                  <div className="content-tag">{t}</div>
-                ))}
-              </div>
-              <div className="preview-content-body" id="preview-content-body">
-                <div
-                  className="markdown-view"
-                  dangerouslySetInnerHTML={renderedBody}
-                />
-              </div>
-            </div>
-          </div>
+          <Preview
+            {...this.props}
+            title={title}
+            tags={tags}
+            body={renderedBody}
+          />
         </div>
         <AppFooter {...this.props} />
       </div>
