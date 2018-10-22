@@ -11,7 +11,13 @@ import ComposePage from './containers/ComposePage';
 export default () => (
   <App>
     <Switch>
-      <Route new path="/new" component={ComposePage} />
+      <Route
+        new
+        path="/new"
+        component={props => (
+          <ComposePage timestamp={new Date().toString()} {...props} />
+        )}
+      />
       <Route exact path="/@:username" component={AccountPage} />
       <Route exact path="/@:username/:section" component={AccountPage} />
       <Route exact path="/:filter" component={EntryIndexPage} />

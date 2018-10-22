@@ -18,8 +18,7 @@ import { logIn, logOut, updateActiveAccount } from '../actions/active-account';
 
 const mapStateToProps = state => ({
   global: state.global,
-  entries: state.entries,
-  accounts: state.accounts,
+  trendingTags: state.trendingTags,
   activeAccount: state.activeAccount
 });
 
