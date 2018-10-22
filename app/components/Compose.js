@@ -2,20 +2,20 @@
 eslint-disable react/no-multi-comp
 */
 
-import React, { Component } from 'react';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import React, {Component} from 'react';
+import {FormattedMessage, injectIntl} from 'react-intl';
 import PropTypes from 'prop-types';
 
-import { UnControlled as CodeMirror } from 'react-codemirror2';
-import { Input, Select, Tooltip, message } from 'antd';
+import {UnControlled as CodeMirror} from 'react-codemirror2';
+import {Input, Select, Tooltip, message} from 'antd';
 
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
 
-import { getItem, setItem } from '../helpers/storage';
+import {getItem, setItem} from '../helpers/storage';
 import markDown2Html from '../utils/markdown-2-html';
 
-import { uploadImage } from '../backend/esteem-client';
+import {uploadImage, addMyImage} from '../backend/esteem-client';
 
 require('codemirror/addon/display/placeholder.js');
 require('codemirror/addon/search/searchcursor.js');
@@ -26,7 +26,7 @@ export class Editor extends Component {
   constructor(props) {
     super(props);
 
-    const { defaultValues } = this.props;
+    const {defaultValues} = this.props;
 
     this.state = {
       title: defaultValues.title,
@@ -43,7 +43,7 @@ export class Editor extends Component {
   componentDidMount() {
     this.syncTimer = setInterval(this.syncHeights, 1000);
 
-    const { syncWith } = this.props;
+    const {syncWith} = this.props;
     if (syncWith) {
       document
         .querySelector(syncWith)
@@ -54,7 +54,7 @@ export class Editor extends Component {
   componentWillUnmount() {
     clearInterval(this.syncTimer);
 
-    const { syncWith } = this.props;
+    const {syncWith} = this.props;
     if (syncWith) {
       document
         .querySelector(syncWith)
@@ -63,22 +63,22 @@ export class Editor extends Component {
   }
 
   changed = () => {
-    const { onChange } = this.props;
-    const { title, tags, body } = this.state;
+    const {onChange} = this.props;
+    const {title, tags, body} = this.state;
 
-    onChange({ title, tags, body });
+    onChange({title, tags, body});
   };
 
   titleChanged = e => {
-    this.setState({ title: e.target.value }, () => this.changed());
+    this.setState({title: e.target.value}, () => this.changed());
   };
 
   tagsChanged = e => {
-    this.setState({ tags: e }, () => this.changed());
+    this.setState({tags: e}, () => this.changed());
   };
 
   bodyChanged = (editor, data, value) => {
-    this.setState({ body: value }, () => this.changed());
+    this.setState({body: value}, () => this.changed());
   };
 
   getEditorInstance = () => this.editorInstance;
@@ -89,7 +89,7 @@ export class Editor extends Component {
 
     editor.replaceSelection(`${before}${selection}${after}`);
 
-    const { line, ch } = editor.getCursor();
+    const {line, ch} = editor.getCursor();
     const newCh = ch - after.length;
 
     editor.setCursor(line, newCh);
@@ -118,14 +118,14 @@ export class Editor extends Component {
 
   replaceRange = (search, replace) => {
     const editor = this.getEditorInstance();
-    const searchCursor = editor.getSearchCursor(search, { line: 0, ch: 0 });
+    const searchCursor = editor.getSearchCursor(search, {line: 0, ch: 0});
     searchCursor.findNext();
 
     if (!searchCursor.atOccurrence) {
       return false;
     }
 
-    const { from, to } = searchCursor.pos;
+    const {from, to} = searchCursor.pos;
     editor.replaceRange(replace, from, to);
 
     return true;
@@ -252,7 +252,7 @@ export class Editor extends Component {
   };
 
   onScroll = (editor, data) => {
-    const { syncWith } = this.props;
+    const {syncWith} = this.props;
     if (!syncWith) {
       return;
     }
@@ -287,12 +287,17 @@ export class Editor extends Component {
       return;
     }
 
-    const { url: imageUrl } = uploadResp;
+    const {url: imageUrl} = uploadResp;
     const imageName = imageUrl.split('/').pop();
 
     const imgTag = `![${imageName}](${imageUrl})`;
 
     this.replaceRange(tempImgTag, imgTag);
+
+    const {activeAccount} = this.props;
+    if (activeAccount) {
+      addMyImage(activeAccount.username, imageUrl);
+    }
   };
 
   onSyncElScroll = e => {
@@ -306,7 +311,7 @@ export class Editor extends Component {
   };
 
   syncHeights = () => {
-    const { syncWith } = this.props;
+    const {syncWith} = this.props;
     if (!syncWith) {
       return;
     }
@@ -335,7 +340,7 @@ export class Editor extends Component {
   };
 
   render() {
-    const { defaultValues, trendingTags, intl } = this.props;
+    const {defaultValues, trendingTags, intl} = this.props;
 
     const tagOptions = trendingTags.list.map(tag => (
       <Select.Option key={tag}>{tag}</Select.Option>
@@ -344,7 +349,7 @@ export class Editor extends Component {
     const toolbar = (
       <div className="editor-toolbar">
         <Tooltip
-          title={intl.formatMessage({ id: 'composer.tool-bold' })}
+          title={intl.formatMessage({id: 'composer.tool-bold'})}
           placement="bottom"
           mouseEnterDelay={2}
         >
@@ -353,7 +358,7 @@ export class Editor extends Component {
           </div>
         </Tooltip>
         <Tooltip
-          title={intl.formatMessage({ id: 'composer.tool-italic' })}
+          title={intl.formatMessage({id: 'composer.tool-italic'})}
           placement="bottom"
           mouseEnterDelay={2}
         >
@@ -362,7 +367,7 @@ export class Editor extends Component {
           </div>
         </Tooltip>
         <Tooltip
-          title={intl.formatMessage({ id: 'composer.tool-header' })}
+          title={intl.formatMessage({id: 'composer.tool-header'})}
           placement="bottom"
           mouseEnterDelay={2}
         >
@@ -370,9 +375,9 @@ export class Editor extends Component {
             <i className="mi tool-icon">title</i>
           </div>
         </Tooltip>
-        <div className="tool-separator" />
+        <div className="tool-separator"/>
         <Tooltip
-          title={intl.formatMessage({ id: 'composer.tool-code' })}
+          title={intl.formatMessage({id: 'composer.tool-code'})}
           placement="bottom"
           mouseEnterDelay={2}
         >
@@ -381,7 +386,7 @@ export class Editor extends Component {
           </div>
         </Tooltip>
         <Tooltip
-          title={intl.formatMessage({ id: 'composer.tool-quote' })}
+          title={intl.formatMessage({id: 'composer.tool-quote'})}
           placement="bottom"
           mouseEnterDelay={2}
         >
@@ -389,9 +394,9 @@ export class Editor extends Component {
             <i className="mi tool-icon">format_quote</i>
           </div>
         </Tooltip>
-        <div className="tool-separator" />
+        <div className="tool-separator"/>
         <Tooltip
-          title={intl.formatMessage({ id: 'composer.tool-ol' })}
+          title={intl.formatMessage({id: 'composer.tool-ol'})}
           placement="bottom"
           mouseEnterDelay={2}
         >
@@ -400,7 +405,7 @@ export class Editor extends Component {
           </div>
         </Tooltip>
         <Tooltip
-          title={intl.formatMessage({ id: 'composer.tool-ul' })}
+          title={intl.formatMessage({id: 'composer.tool-ul'})}
           placement="bottom"
           mouseEnterDelay={2}
         >
@@ -408,9 +413,9 @@ export class Editor extends Component {
             <i className="mi tool-icon">format_list_bulleted</i>
           </div>
         </Tooltip>
-        <div className="tool-separator" />
+        <div className="tool-separator"/>
         <Tooltip
-          title={intl.formatMessage({ id: 'composer.tool-link' })}
+          title={intl.formatMessage({id: 'composer.tool-link'})}
           placement="bottom"
           mouseEnterDelay={2}
         >
@@ -419,7 +424,7 @@ export class Editor extends Component {
           </div>
         </Tooltip>
         <Tooltip
-          title={intl.formatMessage({ id: 'composer.tool-image' })}
+          title={intl.formatMessage({id: 'composer.tool-image'})}
           placement="bottom"
           mouseEnterDelay={2}
         >
@@ -434,7 +439,7 @@ export class Editor extends Component {
           </div>
         </Tooltip>
         <Tooltip
-          title={intl.formatMessage({ id: 'composer.tool-table' })}
+          title={intl.formatMessage({id: 'composer.tool-table'})}
           placement="bottom"
           mouseEnterDelay={2}
         >
@@ -451,8 +456,8 @@ export class Editor extends Component {
       lineWrapping: true,
       tabSize: 2,
       dragDrop: true,
-      placeholder: intl.formatMessage({ id: 'composer.body-placeholder' }),
-      highlightSelectionMatches: { wordsOnly: true }
+      placeholder: intl.formatMessage({id: 'composer.body-placeholder'}),
+      highlightSelectionMatches: {wordsOnly: true}
     };
 
     return (
@@ -477,15 +482,15 @@ export class Editor extends Component {
             })}
             maxTagCount={5}
             maxTagPlaceholder={
-              <span style={{ color: 'red' }}>
-                <FormattedMessage id="composer.max-n-tags" values={{ n: 5 }} />
+              <span style={{color: 'red'}}>
+                <FormattedMessage id="composer.max-n-tags" values={{n: 5}}/>
               </span>
             }
             tokenSeparators={[' ', ',']}
             onChange={this.tagsChanged}
             defaultValue={defaultValues.tags}
             dropdownClassName="tag-select-options"
-            dropdownMenuStyle={{ color: 'red' }}
+            dropdownMenuStyle={{color: 'red'}}
           >
             {tagOptions}
           </Select>
@@ -514,6 +519,10 @@ export class Editor extends Component {
   }
 }
 
+Editor.defaultProps = {
+  activeAccount: null
+};
+
 Editor.propTypes = {
   defaultValues: PropTypes.shape({
     title: PropTypes.string.isRequired,
@@ -525,17 +534,18 @@ Editor.propTypes = {
   trendingTags: PropTypes.shape({
     list: PropTypes.array.isRequired
   }).isRequired,
+  activeAccount: PropTypes.instanceOf(Object),
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
 export class Preview extends Component {
   render() {
-    const { title, tags, body } = this.props;
+    const {title, tags, body} = this.props;
     return (
       <div className="preview-part">
         <div className="preview-part-title">
           <h2>
-            <FormattedMessage id="composer.preview" />
+            <FormattedMessage id="composer.preview"/>
           </h2>
         </div>
 
@@ -549,7 +559,7 @@ export class Preview extends Component {
             ))}
           </div>
           <div className="preview-content-body" id="preview-content-body">
-            <div className="markdown-view" dangerouslySetInnerHTML={body} />
+            <div className="markdown-view" dangerouslySetInnerHTML={body}/>
           </div>
         </div>
       </div>
@@ -604,13 +614,14 @@ class Compose extends Component {
   render() {
     const loading = true;
 
-    const { title, tags, body, defaultValues } = this.state;
+    const {title, tags, body, defaultValues} = this.state;
 
-    const renderedBody = { __html: markDown2Html(body) };
+    const renderedBody = {__html: markDown2Html(body)};
 
     return (
       <div className="wrapper">
-        <NavBar {...this.props} reloadFn={() => {}} reloading={loading} />
+        <NavBar {...this.props} reloadFn={() => {
+        }} reloading={loading}/>
         <div className="app-content compose-page">
           <Editor
             {...this.props}

@@ -29,22 +29,10 @@ export const uploadImage = (file) => {
       'Content-Type': 'multipart/form-data'
     }
   });
-
-
-  /*
-  return $http({
-    url: 'https://img.esteem.ws/backend.php',
-    method: 'POST',
-    data: fData,
-    uploadEventHandlers: {
-      progress: function (e) {
-        if (onProgress) onProgress(e);
-      }
-    },
-    headers: {
-      'Content-Type': undefined
-    }
-  })
-  */
-
 };
+
+export const getImages = (user) => axios.get(`${BACKEND_URL}/api/images/${user}`).then(resp => resp.data);
+
+export const addMyImage = (user, url) => axios.post(`${BACKEND_URL}/api/image`, {username: user, image_url: url});
+
+export const removeImage = (id, user) => axios.delete(`${BACKEND_URL}/api/images/${user}/${id}`);

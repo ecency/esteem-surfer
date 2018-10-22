@@ -7,6 +7,7 @@ import {Modal} from "antd";
 import Login from './Login';
 import UserAvatar from '../elements/UserAvatar';
 
+import GalleryModal from '../Gallery'
 
 class UserMenu extends Component {
 
@@ -14,7 +15,8 @@ class UserMenu extends Component {
     super(props);
 
     this.state = {
-      loginModalVisible: false
+      loginModalVisible: false,
+      galleryModalVisible: false
     };
   }
 
@@ -47,8 +49,16 @@ class UserMenu extends Component {
     });
   };
 
-  menuItemClicked = e => {
-    const rel = e.target.getAttribute('rel');
+  galleryClicked = () => {
+    this.setState({
+      galleryModalVisible: true
+    });
+  };
+
+  onGalleryModalCancel = () => {
+    this.setState({
+      galleryModalVisible: false
+    });
   };
 
   render() {
@@ -56,7 +66,7 @@ class UserMenu extends Component {
     const {username} = activeAccount;
     const {accountData} = activeAccount;
 
-    const {loginModalVisible} = this.state;
+    const {loginModalVisible, galleryModalVisible} = this.state;
 
     let displayName;
     try {
@@ -122,7 +132,7 @@ class UserMenu extends Component {
             className="menu-item"
             rel="gallery"
             role="none"
-            onClick={this.menuItemClicked}
+            onClick={this.galleryClicked}
           >
             <i className="mi">image</i>
             <FormattedMessage id="user-menu.gallery"/>
@@ -158,6 +168,8 @@ class UserMenu extends Component {
         >
           <Login {...this.props} onSuccess={this.onLoginSuccess}/>
         </Modal>
+
+        <GalleryModal visible={galleryModalVisible} onCancel={this.onGalleryModalCancel} {...this.props} />
       </div>
     );
   }

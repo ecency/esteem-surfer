@@ -1,8 +1,12 @@
 {
   "g": {
     "compose-entry": "Create Post",
+    "are-you-sure": "Are you sure?",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "ok": "OK"
   },
   "entry-index": {
     "tags": "Popular Tags",
@@ -163,5 +167,8 @@
     "tool-image": "Image",
     "tool-table": "Table",
     "preview": "Preview"
+  },
+  "gallery": {
+    "title": "Gallery"
   }
 }

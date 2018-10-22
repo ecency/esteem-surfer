@@ -1,0 +1,50 @@
+@import '../style/mixins';
+@import '../style/colors';
+
+.gallery-dialog-content {
+  height: 500px;
+  overflow: auto;
+  padding: 20px;
+
+  .gallery-list {
+    .gallery-list-body {
+      display: flex;
+      flex-wrap: wrap;
+
+      .gallery-list-item {
+        align-items: center;
+        background-color: $white-four;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 8px;
+        cursor: pointer;
+        display: flex;
+        height: 150px;
+        margin: 0 6px 12px 6px;
+        min-height: 30px;
+        position: relative;
+        text-align: center;
+        width: 200px;
+
+        .item-controls {
+          position: absolute;
+          right: 5px;
+          top: 5px;
+
+          .btn-delete {
+            align-items: center;
+            background: $red2;
+            border-radius: 8px;
+            color: $white;
+            display: flex;
+            height: 20px;
+
+            justify-content: center;
+            width: 20px;
+          }
+        }
+      }
+    }
+  }
+}
