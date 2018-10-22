@@ -3,7 +3,7 @@ eslint-disable react/no-multi-comp, no-underscore-dangle
 */
 
 import React, {Component} from 'react';
-import {Modal, Popconfirm, Tooltip} from 'antd';
+import {Modal, Popconfirm, Tooltip, message} from 'antd';
 
 import {injectIntl} from 'react-intl';
 
@@ -41,6 +41,18 @@ class Gallery extends Component {
     })
   };
 
+  copy = (item) => {
+    const {intl} = this.props;
+
+    const i = document.createElement('input');
+    i.setAttribute('type', 'text');
+    i.value = item.url;
+    document.body.appendChild(i);
+    i.select();
+    document.execCommand('Copy');
+    document.body.removeChild(i);
+    message.success(intl.formatMessage({id: 'gallery.copied'}))
+  };
 
   delete = (item) => {
     const {activeAccount} = this.props;
@@ -66,6 +78,9 @@ class Gallery extends Component {
           <div className="gallery-list-body">
             {data.map((item) => (
               <div className="gallery-list-item" style={{backgroundImage: `url('${item.url}')`}}>
+                <div className="item-inner" role="none" onClick={() => {
+                  this.copy(item)
+                }}/>
                 <div className="item-controls">
                   <Popconfirm title={intl.formatMessage({id: 'g.are-you-sure'})}
                               okText={intl.formatMessage({id: 'g.ok'})}

@@ -169,6 +169,7 @@
     "preview": "Preview"
   },
   "gallery": {
-    "title": "Gallery"
+    "title": "Gallery",
+    "copied": "Copied to clipboard"
   }
 }

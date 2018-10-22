@@ -27,10 +27,20 @@
         text-align: center;
         width: 200px;
 
+        .item-inner {
+          height: 100%;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 100%;
+          z-index: 1;
+        }
+
         .item-controls {
           position: absolute;
           right: 5px;
           top: 5px;
+          z-index: 1;
 
           .btn-delete {
             align-items: center;
