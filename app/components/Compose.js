@@ -3,11 +3,11 @@ eslint-disable react/no-multi-comp
 */
 
 import React, { Component } from 'react';
-import { injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import { UnControlled as CodeMirror } from 'react-codemirror2';
-import { Input, Select, message } from 'antd';
+import { Input, Select, Tooltip, message } from 'antd';
 
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
@@ -20,7 +20,6 @@ import { uploadImage } from '../backend/esteem-client';
 require('codemirror/addon/display/placeholder.js');
 require('codemirror/addon/search/searchcursor.js');
 require('codemirror/addon/search/match-highlighter.js');
-
 require('codemirror/mode/markdown/markdown');
 
 export class Editor extends Component {
@@ -336,7 +335,7 @@ export class Editor extends Component {
   };
 
   render() {
-    const { defaultValues, trendingTags } = this.props;
+    const { defaultValues, trendingTags, intl } = this.props;
 
     const tagOptions = trendingTags.list.map(tag => (
       <Select.Option key={tag}>{tag}</Select.Option>
@@ -344,45 +343,105 @@ export class Editor extends Component {
 
     const toolbar = (
       <div className="editor-toolbar">
-        <div className="editor-tool" onClick={this.bold} role="none">
-          <i className="mi tool-icon">format_bold</i>
-        </div>
-        <div className="editor-tool" onClick={this.italic} role="none">
-          <i className="mi tool-icon">format_italic</i>
-        </div>
-        <div className="editor-tool" onClick={this.header} role="none">
-          <i className="mi tool-icon">title</i>
-        </div>
-        <div className="tool-separator" />
-        <div className="editor-tool" onClick={this.code} role="none">
-          <i className="mi tool-icon">code</i>
-        </div>
-        <div className="editor-tool" onClick={this.quote} role="none">
-          <i className="mi tool-icon">format_quote</i>
-        </div>
-        <div className="tool-separator" />
-        <div className="editor-tool" onClick={this.olList} role="none">
-          <i className="mi tool-icon">format_list_numbered</i>
-        </div>
-        <div className="editor-tool" onClick={this.ulList} role="none">
-          <i className="mi tool-icon">format_list_bulleted</i>
-        </div>
-        <div className="tool-separator" />
-        <div className="editor-tool" onClick={this.link} role="none">
-          <i className="mi tool-icon">link</i>
-        </div>
-        <div
-          className="editor-tool"
-          onClick={() => {
-            this.image();
-          }}
-          role="none"
+        <Tooltip
+          title={intl.formatMessage({ id: 'composer.tool-bold' })}
+          placement="bottom"
+          mouseEnterDelay={2}
         >
-          <i className="mi tool-icon">image</i>
-        </div>
-        <div className="editor-tool" onClick={this.table} role="none">
-          <i className="mi tool-icon">grid_on</i>
-        </div>
+          <div className="editor-tool" onClick={this.bold} role="none">
+            <i className="mi tool-icon">format_bold</i>
+          </div>
+        </Tooltip>
+        <Tooltip
+          title={intl.formatMessage({ id: 'composer.tool-italic' })}
+          placement="bottom"
+          mouseEnterDelay={2}
+        >
+          <div className="editor-tool" onClick={this.italic} role="none">
+            <i className="mi tool-icon">format_italic</i>
+          </div>
+        </Tooltip>
+        <Tooltip
+          title={intl.formatMessage({ id: 'composer.tool-header' })}
+          placement="bottom"
+          mouseEnterDelay={2}
+        >
+          <div className="editor-tool" onClick={this.header} role="none">
+            <i className="mi tool-icon">title</i>
+          </div>
+        </Tooltip>
+        <div className="tool-separator" />
+        <Tooltip
+          title={intl.formatMessage({ id: 'composer.tool-code' })}
+          placement="bottom"
+          mouseEnterDelay={2}
+        >
+          <div className="editor-tool" onClick={this.code} role="none">
+            <i className="mi tool-icon">code</i>
+          </div>
+        </Tooltip>
+        <Tooltip
+          title={intl.formatMessage({ id: 'composer.tool-quote' })}
+          placement="bottom"
+          mouseEnterDelay={2}
+        >
+          <div className="editor-tool" onClick={this.quote} role="none">
+            <i className="mi tool-icon">format_quote</i>
+          </div>
+        </Tooltip>
+        <div className="tool-separator" />
+        <Tooltip
+          title={intl.formatMessage({ id: 'composer.tool-ol' })}
+          placement="bottom"
+          mouseEnterDelay={2}
+        >
+          <div className="editor-tool" onClick={this.olList} role="none">
+            <i className="mi tool-icon">format_list_numbered</i>
+          </div>
+        </Tooltip>
+        <Tooltip
+          title={intl.formatMessage({ id: 'composer.tool-ul' })}
+          placement="bottom"
+          mouseEnterDelay={2}
+        >
+          <div className="editor-tool" onClick={this.ulList} role="none">
+            <i className="mi tool-icon">format_list_bulleted</i>
+          </div>
+        </Tooltip>
+        <div className="tool-separator" />
+        <Tooltip
+          title={intl.formatMessage({ id: 'composer.tool-link' })}
+          placement="bottom"
+          mouseEnterDelay={2}
+        >
+          <div className="editor-tool" onClick={this.link} role="none">
+            <i className="mi tool-icon">link</i>
+          </div>
+        </Tooltip>
+        <Tooltip
+          title={intl.formatMessage({ id: 'composer.tool-image' })}
+          placement="bottom"
+          mouseEnterDelay={2}
+        >
+          <div
+            className="editor-tool"
+            onClick={() => {
+              this.image();
+            }}
+            role="none"
+          >
+            <i className="mi tool-icon">image</i>
+          </div>
+        </Tooltip>
+        <Tooltip
+          title={intl.formatMessage({ id: 'composer.tool-table' })}
+          placement="bottom"
+          mouseEnterDelay={2}
+        >
+          <div className="editor-tool" onClick={this.table} role="none">
+            <i className="mi tool-icon">grid_on</i>
+          </div>
+        </Tooltip>
       </div>
     );
 
@@ -392,7 +451,7 @@ export class Editor extends Component {
       lineWrapping: true,
       tabSize: 2,
       dragDrop: true,
-      placeholder: 'Post Content',
+      placeholder: intl.formatMessage({ id: 'composer.body-placeholder' }),
       highlightSelectionMatches: { wordsOnly: true }
     };
 
@@ -402,7 +461,9 @@ export class Editor extends Component {
         <div className="title-input">
           <Input
             type="text"
-            placeholder="Title"
+            placeholder={intl.formatMessage({
+              id: 'composer.title-placeholder'
+            })}
             autoFocus
             onChange={this.titleChanged}
             defaultValue={defaultValues.title}
@@ -411,9 +472,15 @@ export class Editor extends Component {
         <div className="tags-input">
           <Select
             mode="tags"
-            placeholder="Tags. First tag is your main category"
+            placeholder={intl.formatMessage({
+              id: 'composer.tags-placeholder'
+            })}
             maxTagCount={5}
-            maxTagPlaceholder={<span style={{ color: 'red' }}>Max 5 tags</span>}
+            maxTagPlaceholder={
+              <span style={{ color: 'red' }}>
+                <FormattedMessage id="composer.max-n-tags" values={{ n: 5 }} />
+              </span>
+            }
             tokenSeparators={[' ', ',']}
             onChange={this.tagsChanged}
             defaultValue={defaultValues.tags}
@@ -457,7 +524,8 @@ Editor.propTypes = {
   syncWith: PropTypes.string.isRequired,
   trendingTags: PropTypes.shape({
     list: PropTypes.array.isRequired
-  }).isRequired
+  }).isRequired,
+  intl: PropTypes.instanceOf(Object).isRequired
 };
 
 export class Preview extends Component {
@@ -466,7 +534,9 @@ export class Preview extends Component {
     return (
       <div className="preview-part">
         <div className="preview-part-title">
-          <h2>Preview</h2>
+          <h2>
+            <FormattedMessage id="composer.preview" />
+          </h2>
         </div>
 
         <div className="preview-content">
