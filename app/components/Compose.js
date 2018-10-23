@@ -11,6 +11,7 @@ import { Input, Select, Tooltip, message } from 'antd';
 
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
+import GalleryModal from './Gallery';
 
 import { getItem, setItem } from '../helpers/storage';
 import markDown2Html from '../utils/markdown-2-html';
@@ -31,7 +32,8 @@ export class Editor extends Component {
     this.state = {
       title: defaultValues.title,
       tags: defaultValues.tags,
-      body: defaultValues.body
+      body: defaultValues.body,
+      galleryModalVisible: false
     };
 
     this.editorInstance = null;
@@ -346,7 +348,8 @@ export class Editor extends Component {
   };
 
   render() {
-    const { defaultValues, trendingTags, intl } = this.props;
+    const { defaultValues, trendingTags, activeAccount, intl } = this.props;
+    const { galleryModalVisible } = this.state;
 
     const tagOptions = trendingTags.list.map(tag => (
       <Select.Option key={tag}>{tag}</Select.Option>
@@ -456,12 +459,21 @@ export class Editor extends Component {
           >
             <i className="mi tool-icon">image</i>
             <div className="sub-tool-menu">
-              <div className="sub-tool-menu-item" rel="none">
+              <div className="sub-tool-menu-item" role="none">
                 <FormattedMessage id="composer.tool-upload" />
               </div>
-              <div className="sub-tool-menu-item" rel="none">
-                <FormattedMessage id="composer.tool-gallery" />
-              </div>
+              {activeAccount && (
+                <div
+                  className="sub-tool-menu-item"
+                  role="none"
+                  onClick={event => {
+                    event.stopPropagation();
+                    this.setState({ galleryModalVisible: true });
+                  }}
+                >
+                  <FormattedMessage id="composer.tool-gallery" />
+                </div>
+              )}
             </div>
           </div>
         </Tooltip>
@@ -540,6 +552,20 @@ export class Editor extends Component {
             value={defaultValues.body}
           />
         </div>
+        <GalleryModal
+          {...this.props}
+          visible={galleryModalVisible}
+          onCancel={() => {
+            this.setState({ galleryModalVisible: false });
+          }}
+          onSelect={imageUrl => {
+            this.setState({ galleryModalVisible: false });
+
+            const imageName = imageUrl.split('/').pop();
+            const imgTag = `![${imageName}](${imageUrl})`;
+            this.insertBlock(imgTag);
+          }}
+        />
       </div>
     );
   }
