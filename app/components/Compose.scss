@@ -9,8 +9,8 @@
 }
 
 .CodeMirror {
-  font-size: 14px;
   font-family: 'Roboto Mono', sans-serif;
+  font-size: 14px;
   height: 100%;
   line-height: 1.6em;
 }
@@ -61,32 +61,31 @@
 .compose-page {
   .editor-form,
   .preview-part {
-    width: calc(50% - 2px);
     height: calc(100% - 50px);
+    width: calc(50% - 2px);
   }
 
   .editor-form {
     float: left;
 
     .editor-toolbar {
+      align-items: center;
       background: $white-three;
+      border-bottom-right-radius: 22px;
+      border-top-right-radius: 22px;
+      display: flex;
       height: 44px;
       margin-bottom: 34px;
-      border-top-right-radius: 22px;
-      border-bottom-right-radius: 22px;
-      display: flex;
-      align-items: center;
-      user-select: none;
       padding-left: 4px;
-
       .editor-tool {
-        width: 42px;
-        height: 100%;
-        display: flex;
         align-items: center;
-        justify-content: center;
         color: $steel-grey;
         cursor: pointer;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        position: relative;
+        width: 42px;
 
         &:hover {
           background: darken($white-three, 5);
@@ -95,14 +94,50 @@
         .tool-icon {
           font-size: 22px;
         }
+
+        .sub-tool-menu {
+          background: $white-three;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          display: none;
+          left: 0;
+          padding: 6px;
+          position: absolute;
+          top: 100%;
+          white-space: nowrap;
+          width: auto;
+          z-index: 1;
+          min-width: 100%;
+
+          .sub-tool-menu-item {
+            padding: 3px;
+
+            &:not(:last-child) {
+              margin-bottom: 8px;
+            }
+            &:first-child {
+            }
+            &:hover {
+              background: darken($white-three, 5);
+            }
+          }
+        }
+
+        &:hover {
+          .sub-tool-menu {
+            display: block;
+          }
+        }
       }
 
       .tool-separator {
-        width: 1px;
+        background: $white-four;
         height: 24px;
         margin: 0 6px;
-        background: $white-four;
+        width: 1px;
       }
+
+      user-select: none;
     }
 
     .title-input,
@@ -116,12 +151,12 @@
       height: 40px;
 
       input[type='text'] {
+        background: transparent;
         border: 0;
         color: $charcoal-grey;
         font-family: 'Roboto Mono', sans-serif;
-        font-weight: 700;
         font-size: 20px;
-        background: transparent;
+        font-weight: 700;
       }
     }
 
@@ -130,8 +165,8 @@
       padding-left: 4px;
 
       .ant-select {
-        width: 100%;
         font-family: 'Roboto Mono', sans-serif !important;
+        width: 100%;
 
         .ant-select-selection {
           border: 0;
@@ -139,9 +174,9 @@
 
           ul {
             li {
-              font-size: 12px;
               background: transparent;
               border: none;
+              font-size: 12px;
               padding: 0 5px;
 
               &:first-child {
@@ -158,8 +193,8 @@
     }
 
     .body-input {
-      padding-left: 11px;
       height: calc(100% - #{44px+ 34px+ 40px+ 52px});
+      padding-left: 11px;
     }
   }
 
@@ -167,51 +202,51 @@
     float: right;
 
     .preview-part-title {
-      height: 44px;
-      margin-bottom: 9px;
+      align-items: center;
       border-bottom: 1px solid $white-four;
       display: flex;
-      align-items: center;
+      height: 44px;
+      margin-bottom: 9px;
 
       h2 {
-        margin: 0 0 0 12px;
+        color: $dark-sky-blue;
         font-size: 16px;
         font-weight: 500;
-        color: $dark-sky-blue;
+        margin: 0 0 0 12px;
       }
     }
 
     .preview-content {
-      margin-right: 12px;
       background: $white;
-      height: calc(100% - 53px);
       border-radius: 8px;
+      height: calc(100% - 53px);
+      margin-right: 12px;
       padding: 26px 12px 4px 12px;
 
       .preview-content-title {
-        font-size: 24px;
-        height: 40px;
         color: $charcoal-grey;
+        font-size: 24px;
         font-weight: 700;
-        white-space: nowrap;
-        overflow: hidden;
+        height: 40px;
         line-height: 1.4em;
+        overflow: hidden;
+        white-space: nowrap;
       }
 
       .preview-content-tags {
-        height: 52px;
-        display: flex;
         align-items: flex-start;
+        display: flex;
+        height: 52px;
         padding-top: 6px;
 
         .content-tag {
           background-color: $silver;
-          color: $white;
-          padding: 2px 8px;
-          line-height: 1em;
           border-radius: 25px;
+          color: $white;
           font-size: 12px;
+          line-height: 1em;
           margin-right: 12px;
+          padding: 2px 8px;
 
           &:first-child {
             background-color: $dark-sky-blue;

@@ -166,6 +166,8 @@
     "tool-link": "Link",
     "tool-image": "Image",
     "tool-table": "Table",
+    "tool-upload": "Upload",
+    "tool-gallery": "Gallery",
     "preview": "Preview"
   },
   "gallery": {
