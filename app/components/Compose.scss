@@ -34,8 +34,37 @@
 }
 
 .cm-s-day span.cm-header {
-  font-size: 18px;
+  font-size: 28px;
   font-weight: 700;
+
+  &.cm-header-2,
+  &.cm-header-3,
+  &.cm-header-4,
+  &.cm-header-5,
+  &.cm-header-6 {
+    font-weight: 700;
+    margin-bottom: 0.7em;
+  }
+
+  &.cm-header-2 {
+    font-size: 24px;
+  }
+
+  &.cm-header-3 {
+    font-size: 20px;
+  }
+
+  &.cm-header-4 {
+    font-size: 18px;
+  }
+
+  &.cm-header-5 {
+    font-size: 16px;
+  }
+
+  &.cm-header-6 {
+    font-size: 14px;
+  }
 }
 
 .cm-s-day span.cm-tag {
