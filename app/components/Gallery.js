@@ -25,7 +25,7 @@ class Gallery extends Component {
   }
 
   loadData = () => {
-    this.setState({ data: [], loading: false });
+    this.setState({ data: [], loading: true });
 
     const { activeAccount } = this.props;
 
