@@ -154,6 +154,15 @@ export class Editor extends Component {
     this.ignoreSyncElScroll = false;
   }
 
+  clear = () => {
+    this.setState({
+      title: '',
+      tags: [],
+      body: ''
+    });
+    this.changed();
+  };
+
   componentDidMount() {
     this.syncTimer = setInterval(this.syncHeights, 1000);
 
@@ -462,7 +471,7 @@ export class Editor extends Component {
 
   render() {
     const {defaultValues, trendingTags, activeAccount, intl} = this.props;
-    const {galleryModalVisible, tags} = this.state;
+    const {galleryModalVisible, tags, title, body} = this.state;
 
     const tagOptions = trendingTags.list.map(tag => (
       <Select.Option key={tag}>{tag}</Select.Option>
@@ -623,6 +632,7 @@ export class Editor extends Component {
             autoFocus
             onChange={this.titleChanged}
             defaultValue={defaultValues.title}
+            value={title}
           />
         </div>
         <div className="tags-input">
@@ -663,7 +673,7 @@ export class Editor extends Component {
             onDragOver={this.onDragOver}
             onDrop={this.onDrop}
             onScroll={this.onScroll}
-            value={defaultValues.body}
+            value={body}
           />
         </div>
         <GalleryModal
@@ -767,6 +777,8 @@ class Compose extends Component {
       posting: false,
       permProcessing: false
     };
+
+    this.editor = React.createRef();
   }
 
   componentDidMount() {
@@ -806,6 +818,7 @@ class Compose extends Component {
       body: newValues.body
     });
   };
+
 
   publish = () => {
     const {activeAccount, global} = this.props;
@@ -880,6 +893,7 @@ class Compose extends Component {
             defaultValues={defaultValues}
             onChange={this.editorChanged}
             syncWith="#preview-content-body"
+            ref={this.editor}
           />
           <Preview
             {...this.props}
@@ -910,7 +924,9 @@ class Compose extends Component {
                 }}>Upvote</Checkbox>
               </div>
               <div className="clear">
-                <Button className="clean-button">Clear All</Button>
+                <Button className="clean-button" onClick={() => {
+                  this.editor.current.clear();
+                }}>Clear All</Button>
               </div>
             </div>
             <div className="right-controls">
