@@ -289,4 +289,65 @@
       }
     }
   }
+
+  .control-part {
+    user-select: none;
+
+    button {
+      font-size: 16px;
+    }
+    .clean-button {
+      border: none;
+      background: transparent;
+
+      color: $steel-grey;
+    }
+
+    .left-controls,
+    .right-controls {
+      width: calc(50% - 24px);
+      height: 50px;
+      display: flex;
+      align-items: center;
+      margin: 0 12px;
+      justify-content: space-between;
+    }
+
+    .left-controls {
+      float: left;
+
+      .reward {
+        width: 280px;
+
+        .reward-label {
+          color: $steel-grey;
+          font-size: 16px;
+          font-weight: 500;
+          margin-right: 10px;
+        }
+      }
+
+      .voting {
+        .ant-checkbox-wrapper {
+          color: $steel-grey;
+          font-size: 16px;
+        }
+      }
+
+      .clear-form {
+      }
+    }
+
+    .right-controls {
+      .schedule {
+        flex-grow: 1;
+      }
+
+      .draft {
+      }
+
+      .publish {
+      }
+    }
+  }
 }

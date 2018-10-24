@@ -11,7 +11,6 @@ import tr from 'react-intl/locale-data/tr';
 import {Modal} from 'antd';
 
 import {exposePin, wipePin} from '../actions/global';
-import {updateActiveAccount} from '../actions/active-account';
 import {fetchGlobalProps} from '../actions/dynamic-props';
 
 import PinCreate from '../components/dialogs/PinCreate';
@@ -20,6 +19,7 @@ import PinConfirm from '../components/dialogs/PinConfirm';
 import {flattenMessages} from '../utils';
 import messages from '../locales';
 import {getItem, setItem, removeItem} from '../helpers/storage';
+import {updateActiveAccount} from "../actions/active-account";
 
 addLocaleData([...en, ...tr]);
 
@@ -178,6 +178,7 @@ App.propTypes = {
   actions: PropTypes.shape({
     exposePin: PropTypes.func.isRequired,
     wipePin: PropTypes.func.isRequired,
+    updateActiveAccount: PropTypes.func.isRequired,
     fetchGlobalProps: PropTypes.func.isRequired
   }).isRequired
 };

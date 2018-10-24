@@ -2,21 +2,133 @@
 eslint-disable react/no-multi-comp
 */
 
-import React, { Component } from 'react';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import React, {Component} from 'react';
+import {FormattedMessage, injectIntl} from 'react-intl';
 import PropTypes from 'prop-types';
 
-import { UnControlled as CodeMirror } from 'react-codemirror2';
-import { Input, Select, Tooltip, message } from 'antd';
+import getSlug from 'speakingurl';
+
+import {UnControlled as CodeMirror} from 'react-codemirror2';
+import {Input, Select, Tooltip, Checkbox, Button, Dropdown, Menu, message} from 'antd';
 
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
 import GalleryModal from './Gallery';
 
-import { getItem, setItem } from '../helpers/storage';
+import {getItem, setItem} from '../helpers/storage';
 import markDown2Html from '../utils/markdown-2-html';
 
-import { uploadImage, addMyImage } from '../backend/esteem-client';
+import {uploadImage, addMyImage} from '../backend/esteem-client';
+import {revokePostingPermission, grantPostingPermission, comment} from '../backend/steem-client';
+
+
+import {version} from '../../package.json';
+
+
+const getPercentage = username => getItem(`voting_percentage_${username}`, 100);
+
+
+export const createPermlink = (title) => {
+  const rnd = (Math.random() + 1).toString(16).substring(2);
+  const slug = getSlug(title);
+
+  let perm = `${slug.toString()}-${rnd}est`;
+
+  // STEEMIT_MAX_PERMLINK_LENGTH
+  if (perm.length > 255) {
+    perm = perm.substring(perm.length - 255, perm.length)
+  }
+
+  // only letters numbers and dashes
+  perm = perm.toLowerCase().replace(/[^a-z0-9-]+/g, '');
+  return perm;
+};
+
+const makeContentOptions = (author, permlink, operationType) => {
+  const a = {
+    allow_curation_rewards: true,
+    allow_votes: true,
+    author,
+    permlink,
+    max_accepted_payout: '1000000.000 SBD',
+    percent_steem_dollars: 10000,
+    extensions: [[0, {'beneficiaries': [{'account': 'esteemapp', 'weight': 1000}]}]]
+  };
+
+  switch (operationType) {
+    case 'sp':
+      a.max_accepted_payout = '1000000.000 SBD';
+      a.percent_steem_dollars = 0;
+      break;
+    case 'dp':
+      a.max_accepted_payout = '0.000 SBD';
+      a.percent_steem_dollars = 10000;
+      break;
+    default:
+      a.max_accepted_payout = '1000000.000 SBD';
+      a.percent_steem_dollars = 10000;
+      break;
+  }
+
+  return a;
+};
+
+const makeJsonMetadata = (meta, tags, appVer) => (
+  Object.assign({}, meta, {
+    tags,
+    app: `esteem/${appVer}-surfer`,
+    format: 'markdown+html',
+    community: 'esteem.app'
+  })
+);
+
+
+export const extractMetadata = (body) => {
+
+  const urlReg = /(\b(https?|ftp):\/\/[A-Z0-9+&@#/%?=~_|!:,.;-]*[-A-Z0-9+&@#/%=~_|])/gim;
+  const userReg = /(^|\s)(@[a-z][-.a-z\d]+[a-z\d])/gim;
+  const imgReg = /(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/gim;
+
+  const out = {};
+
+  const mUrls = body.match(urlReg);
+  const mUsers = body.match(userReg);
+
+  const matchedImages = [];
+  const matchedLinks = [];
+  const matchedUsers = [];
+
+  if (mUrls) {
+    for (let i = 0; i < mUrls.length; i++) {
+      const ind = mUrls[i].match(imgReg);
+      if (ind) {
+        matchedImages.push(mUrls[i]);
+      } else {
+        matchedLinks.push(mUrls[i]);
+      }
+    }
+  }
+
+  if (matchedLinks.length) {
+    out['links'] = matchedLinks;
+  }
+  if (matchedImages.length) {
+    out['image'] = matchedImages;
+  }
+
+  if (mUsers) {
+    for (let i = 0; i < mUsers.length; i++) {
+      matchedUsers.push(mUsers[i].trim().substring(1));
+    }
+  }
+
+  if (matchedUsers.length) {
+    out['users'] = matchedUsers;
+  }
+
+  return out;
+};
+
 
 require('codemirror/addon/display/placeholder.js');
 require('codemirror/addon/search/searchcursor.js');
@@ -27,7 +139,7 @@ export class Editor extends Component {
   constructor(props) {
     super(props);
 
-    const { defaultValues } = this.props;
+    const {defaultValues} = this.props;
 
     this.state = {
       title: defaultValues.title,
@@ -45,7 +157,7 @@ export class Editor extends Component {
   componentDidMount() {
     this.syncTimer = setInterval(this.syncHeights, 1000);
 
-    const { syncWith } = this.props;
+    const {syncWith} = this.props;
     if (syncWith) {
       document
         .querySelector(syncWith)
@@ -56,7 +168,7 @@ export class Editor extends Component {
   componentWillUnmount() {
     clearInterval(this.syncTimer);
 
-    const { syncWith } = this.props;
+    const {syncWith} = this.props;
     if (syncWith) {
       document
         .querySelector(syncWith)
@@ -65,22 +177,23 @@ export class Editor extends Component {
   }
 
   changed = () => {
-    const { onChange } = this.props;
-    const { title, tags, body } = this.state;
+    const {onChange} = this.props;
+    const {title, tags, body} = this.state;
 
-    onChange({ title, tags, body });
+    onChange({title, tags, body});
   };
 
   titleChanged = e => {
-    this.setState({ title: e.target.value }, () => this.changed());
+    this.setState({title: e.target.value}, () => this.changed());
   };
 
   tagsChanged = e => {
-    this.setState({ tags: e }, () => this.changed());
+    const tags = [...e].map(x => x.trim().toLowerCase());
+    this.setState({tags}, () => this.changed());
   };
 
   bodyChanged = (editor, data, value) => {
-    this.setState({ body: value }, () => this.changed());
+    this.setState({body: value}, () => this.changed());
   };
 
   getEditorInstance = () => this.editorInstance;
@@ -91,7 +204,7 @@ export class Editor extends Component {
 
     editor.replaceSelection(`${before}${selection}${after}`);
 
-    const { line, ch } = editor.getCursor();
+    const {line, ch} = editor.getCursor();
     const newCh = ch - after.length;
 
     editor.setCursor(line, newCh);
@@ -120,14 +233,14 @@ export class Editor extends Component {
 
   replaceRange = (search, replace) => {
     const editor = this.getEditorInstance();
-    const searchCursor = editor.getSearchCursor(search, { line: 0, ch: 0 });
+    const searchCursor = editor.getSearchCursor(search, {line: 0, ch: 0});
     searchCursor.findNext();
 
     if (!searchCursor.atOccurrence) {
       return false;
     }
 
-    const { from, to } = searchCursor.pos;
+    const {from, to} = searchCursor.pos;
     editor.replaceRange(replace, from, to);
 
     return true;
@@ -180,7 +293,7 @@ export class Editor extends Component {
   };
 
   imageClicked = () => {
-    const { activeAccount } = this.props;
+    const {activeAccount} = this.props;
     console.log(activeAccount);
   };
 
@@ -260,7 +373,7 @@ export class Editor extends Component {
   };
 
   onScroll = (editor, data) => {
-    const { syncWith } = this.props;
+    const {syncWith} = this.props;
     if (!syncWith) {
       return;
     }
@@ -295,14 +408,14 @@ export class Editor extends Component {
       return;
     }
 
-    const { url: imageUrl } = uploadResp;
+    const {url: imageUrl} = uploadResp;
     const imageName = imageUrl.split('/').pop();
 
     const imgTag = `![${imageName}](${imageUrl})`;
 
     this.replaceRange(tempImgTag, imgTag);
 
-    const { activeAccount } = this.props;
+    const {activeAccount} = this.props;
     if (activeAccount) {
       addMyImage(activeAccount.username, imageUrl);
     }
@@ -319,7 +432,7 @@ export class Editor extends Component {
   };
 
   syncHeights = () => {
-    const { syncWith } = this.props;
+    const {syncWith} = this.props;
     if (!syncWith) {
       return;
     }
@@ -348,8 +461,8 @@ export class Editor extends Component {
   };
 
   render() {
-    const { defaultValues, trendingTags, activeAccount, intl } = this.props;
-    const { galleryModalVisible } = this.state;
+    const {defaultValues, trendingTags, activeAccount, intl} = this.props;
+    const {galleryModalVisible, tags} = this.state;
 
     const tagOptions = trendingTags.list.map(tag => (
       <Select.Option key={tag}>{tag}</Select.Option>
@@ -358,7 +471,7 @@ export class Editor extends Component {
     const toolbar = (
       <div className="editor-toolbar">
         <Tooltip
-          title={intl.formatMessage({ id: 'composer.tool-bold' })}
+          title={intl.formatMessage({id: 'composer.tool-bold'})}
           mouseEnterDelay={2}
         >
           <div className="editor-tool" onClick={this.bold} role="none">
@@ -366,7 +479,7 @@ export class Editor extends Component {
           </div>
         </Tooltip>
         <Tooltip
-          title={intl.formatMessage({ id: 'composer.tool-italic' })}
+          title={intl.formatMessage({id: 'composer.tool-italic'})}
           mouseEnterDelay={2}
         >
           <div className="editor-tool" onClick={this.italic} role="none">
@@ -374,7 +487,7 @@ export class Editor extends Component {
           </div>
         </Tooltip>
         <Tooltip
-          title={intl.formatMessage({ id: 'composer.tool-header' })}
+          title={intl.formatMessage({id: 'composer.tool-header'})}
           mouseEnterDelay={2}
         >
           <div
@@ -403,9 +516,9 @@ export class Editor extends Component {
             </div>
           </div>
         </Tooltip>
-        <div className="tool-separator" />
+        <div className="tool-separator"/>
         <Tooltip
-          title={intl.formatMessage({ id: 'composer.tool-code' })}
+          title={intl.formatMessage({id: 'composer.tool-code'})}
           mouseEnterDelay={2}
         >
           <div className="editor-tool" onClick={this.code} role="none">
@@ -413,16 +526,16 @@ export class Editor extends Component {
           </div>
         </Tooltip>
         <Tooltip
-          title={intl.formatMessage({ id: 'composer.tool-quote' })}
+          title={intl.formatMessage({id: 'composer.tool-quote'})}
           mouseEnterDelay={2}
         >
           <div className="editor-tool" onClick={this.quote} role="none">
             <i className="mi tool-icon">format_quote</i>
           </div>
         </Tooltip>
-        <div className="tool-separator" />
+        <div className="tool-separator"/>
         <Tooltip
-          title={intl.formatMessage({ id: 'composer.tool-ol' })}
+          title={intl.formatMessage({id: 'composer.tool-ol'})}
           mouseEnterDelay={2}
         >
           <div className="editor-tool" onClick={this.olList} role="none">
@@ -430,16 +543,16 @@ export class Editor extends Component {
           </div>
         </Tooltip>
         <Tooltip
-          title={intl.formatMessage({ id: 'composer.tool-ul' })}
+          title={intl.formatMessage({id: 'composer.tool-ul'})}
           mouseEnterDelay={2}
         >
           <div className="editor-tool" onClick={this.ulList} role="none">
             <i className="mi tool-icon">format_list_bulleted</i>
           </div>
         </Tooltip>
-        <div className="tool-separator" />
+        <div className="tool-separator"/>
         <Tooltip
-          title={intl.formatMessage({ id: 'composer.tool-link' })}
+          title={intl.formatMessage({id: 'composer.tool-link'})}
           mouseEnterDelay={2}
         >
           <div className="editor-tool" onClick={this.link} role="none">
@@ -447,7 +560,7 @@ export class Editor extends Component {
           </div>
         </Tooltip>
         <Tooltip
-          title={intl.formatMessage({ id: 'composer.tool-image' })}
+          title={intl.formatMessage({id: 'composer.tool-image'})}
           mouseEnterDelay={2}
         >
           <div
@@ -460,7 +573,7 @@ export class Editor extends Component {
             <i className="mi tool-icon">image</i>
             <div className="sub-tool-menu">
               <div className="sub-tool-menu-item" role="none">
-                <FormattedMessage id="composer.tool-upload" />
+                <FormattedMessage id="composer.tool-upload"/>
               </div>
               {activeAccount && (
                 <div
@@ -468,17 +581,17 @@ export class Editor extends Component {
                   role="none"
                   onClick={event => {
                     event.stopPropagation();
-                    this.setState({ galleryModalVisible: true });
+                    this.setState({galleryModalVisible: true});
                   }}
                 >
-                  <FormattedMessage id="composer.tool-gallery" />
+                  <FormattedMessage id="composer.tool-gallery"/>
                 </div>
               )}
             </div>
           </div>
         </Tooltip>
         <Tooltip
-          title={intl.formatMessage({ id: 'composer.tool-table' })}
+          title={intl.formatMessage({id: 'composer.tool-table'})}
           mouseEnterDelay={2}
         >
           <div className="editor-tool" onClick={this.table} role="none">
@@ -494,8 +607,8 @@ export class Editor extends Component {
       lineWrapping: true,
       tabSize: 2,
       dragDrop: true,
-      placeholder: intl.formatMessage({ id: 'composer.body-placeholder' }),
-      highlightSelectionMatches: { wordsOnly: true }
+      placeholder: intl.formatMessage({id: 'composer.body-placeholder'}),
+      highlightSelectionMatches: {wordsOnly: true}
     };
 
     return (
@@ -520,15 +633,16 @@ export class Editor extends Component {
             })}
             maxTagCount={5}
             maxTagPlaceholder={
-              <span style={{ color: 'red' }}>
-                <FormattedMessage id="composer.max-n-tags" values={{ n: 5 }} />
+              <span style={{color: 'red'}}>
+                <FormattedMessage id="composer.max-n-tags" values={{n: 5}}/>
               </span>
             }
             tokenSeparators={[' ', ',']}
             onChange={this.tagsChanged}
             defaultValue={defaultValues.tags}
+            value={tags}
             dropdownClassName="tag-select-options"
-            dropdownMenuStyle={{ color: 'red' }}
+            dropdownMenuStyle={{color: 'red'}}
           >
             {tagOptions}
           </Select>
@@ -556,10 +670,10 @@ export class Editor extends Component {
           {...this.props}
           visible={galleryModalVisible}
           onCancel={() => {
-            this.setState({ galleryModalVisible: false });
+            this.setState({galleryModalVisible: false});
           }}
           onSelect={imageUrl => {
-            this.setState({ galleryModalVisible: false });
+            this.setState({galleryModalVisible: false});
 
             const imageName = imageUrl.split('/').pop();
             const imgTag = `![${imageName}](${imageUrl})`;
@@ -592,12 +706,12 @@ Editor.propTypes = {
 
 export class Preview extends Component {
   render() {
-    const { title, tags, body } = this.props;
+    const {title, tags, body} = this.props;
     return (
       <div className="preview-part">
         <div className="preview-part-title">
           <h2>
-            <FormattedMessage id="composer.preview" />
+            <FormattedMessage id="composer.preview"/>
           </h2>
         </div>
 
@@ -611,7 +725,7 @@ export class Preview extends Component {
             ))}
           </div>
           <div className="preview-content-body" id="preview-content-body">
-            <div className="markdown-view" dangerouslySetInnerHTML={body} />
+            <div className="markdown-view" dangerouslySetInnerHTML={body}/>
           </div>
         </div>
       </div>
@@ -647,9 +761,39 @@ class Compose extends Component {
         title,
         tags,
         body
-      }
+      },
+      reward: 'default',
+      upvote: true,
+      posting: false,
+      permProcessing: false
     };
   }
+
+  componentDidMount() {
+    // this.detectPostingPerm();
+  }
+
+
+  removePostingPerm = () => {
+    this.setState({permProcessing: true});
+    const {activeAccount, global, actions} = this.props;
+    revokePostingPermission(activeAccount, global.pin).then((resp) => {
+      actions.updateActiveAccount();
+      return resp;
+    }).catch(() => {
+
+    }).finally(() => {
+      this.setState({permProcessing: false});
+    });
+  };
+
+  grantPostingPerm = () => {
+    const {activeAccount, global, actions} = this.props;
+    grantPostingPermission(activeAccount, global.pin).then(resp => {
+      console.log(resp)
+    })
+  };
+
 
   editorChanged = newValues => {
     setItem('compose-title', newValues.title);
@@ -663,16 +807,73 @@ class Compose extends Component {
     });
   };
 
+  publish = () => {
+    const {activeAccount, global} = this.props;
+    const {title, tags, body, reward, upvote} = this.state;
+
+    this.setState({posting: true});
+
+    const parentPermlink = tags[0];
+    const permlink = createPermlink(title);
+    const meta = extractMetadata(body);
+    const jsonMeta = makeJsonMetadata(meta, tags, version);
+    const options = makeContentOptions(activeAccount.username, permlink, reward);
+    const voteWeight = upvote ? (getPercentage(activeAccount.username) * 100) : null;
+
+    comment(activeAccount, global.pin, '', parentPermlink, permlink, title, body, jsonMeta, options, voteWeight).then(resp => {
+      console.log(resp);
+    }).catch((err) => {
+
+    }).finally(() => {
+      this.setState({posting: false});
+    })
+  };
+
   render() {
     const loading = true;
 
-    const { title, tags, body, defaultValues } = this.state;
+    const {title, tags, body, defaultValues, reward, upvote, posting, permProcessing} = this.state;
 
-    const renderedBody = { __html: markDown2Html(body) };
+    const renderedBody = {__html: markDown2Html(body)};
+
+    const {activeAccount} = this.props;
+
+    let hasPerm = false;
+
+    if (activeAccount) {
+      hasPerm = activeAccount.accountData.posting.account_auths.filter(x => x[0] === 'esteemapp').length > 0;
+    }
+
+    const canPublish = title.trim() !== '' && tags.length > 0 && tags.length <= 5 && body.trim() !== '';
+
+
+    let menu;
+    if (hasPerm) {
+      menu = (
+        <Menu onClick={(item) => {
+          switch (item.key) {
+            case 'removePerm':
+              this.removePostingPerm();
+              break;
+          }
+        }}>
+          <Menu.Item key="selectDate">Select Date</Menu.Item>
+          <Menu.Item key="removePerm">Remove Posting Permission</Menu.Item>
+        </Menu>
+      );
+    } else {
+      menu = (<Menu onClick={() => {
+        this.grantPostingPerm();
+      }}>
+        <Menu.Item key="grantPerm">Grant Posting Permission</Menu.Item>
+      </Menu>)
+    }
+
 
     return (
       <div className="wrapper">
-        <NavBar {...this.props} reloadFn={() => {}} reloading={loading} />
+        <NavBar {...this.props} reloadFn={() => {
+        }} reloading={loading}/>
         <div className="app-content compose-page">
           <Editor
             {...this.props}
@@ -686,11 +887,72 @@ class Compose extends Component {
             tags={tags}
             body={renderedBody}
           />
+          <div className="clearfix"/>
+          <div className="control-part">
+            <div className="left-controls">
+              <div className="reward">
+              <span className="reward-label">
+                Reward
+              </span>
+                <Select style={{width: '180px'}} value={reward} onChange={(val) => {
+                  this.setState({reward: val});
+                }}>
+                  <Select.Option key="default">Default 50% / 50%</Select.Option>
+                  <Select.Option key="sp">Power Up 100%</Select.Option>
+                  <Select.Option key="dp">Decline Payout</Select.Option>
+                </Select>
+              </div>
+              <div className="voting">
+                <Checkbox checked={upvote} onChange={(e) => {
+                  this.setState({
+                    upvote: e.target.checked,
+                  });
+                }}>Upvote</Checkbox>
+              </div>
+              <div className="clear">
+                <Button className="clean-button">Clear All</Button>
+              </div>
+            </div>
+            <div className="right-controls">
+              <div className="schedule">
+                <Dropdown overlay={menu} trigger={['click']} disabled={permProcessing}>
+                  <Button className="clean-button">
+                    <i className="mi" style={{marginRight: '5px'}}>timer</i> Schedule
+                  </Button>
+                </Dropdown>
+              </div>
+              <div className="draft">
+                <Button className="clean-button">
+                  <i className="mi" style={{marginRight: '5px'}}>save</i> Save Draft
+                </Button>
+              </div>
+              <div className="publish">
+                <Button type="primary" disabled={!canPublish} onClick={this.publish} loading={posting}>
+                  Publish
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
         <AppFooter {...this.props} />
       </div>
     );
   }
 }
+
+Compose.defaultProps = {
+  activeAccount: null
+};
+
+Compose.propTypes = {
+  activeAccount: PropTypes.instanceOf(Object),
+  intl: PropTypes.instanceOf(Object).isRequired,
+  global: PropTypes.shape({
+    pin: PropTypes.string
+  }).isRequired,
+  actions: PropTypes.shape({
+    updateActiveAccount: PropTypes.func.isRequired
+  }).isRequired
+};
 
 export default injectIntl(Compose);
