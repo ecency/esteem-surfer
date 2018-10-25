@@ -7,7 +7,8 @@ import {Modal} from "antd";
 import Login from './Login';
 import UserAvatar from '../elements/UserAvatar';
 
-import GalleryModal from '../Gallery'
+import GalleryModal from '../Gallery';
+import DraftsModal from '../Drafts';
 
 class UserMenu extends Component {
 
@@ -16,7 +17,8 @@ class UserMenu extends Component {
 
     this.state = {
       loginModalVisible: false,
-      galleryModalVisible: false
+      galleryModalVisible: false,
+      draftsModalVisible: false
     };
   }
 
@@ -61,12 +63,24 @@ class UserMenu extends Component {
     });
   };
 
+  draftsClicked = () => {
+    this.setState({
+      draftsModalVisible: true
+    });
+  };
+
+  onDraftsModalCancel = () => {
+    this.setState({
+      draftsModalVisible: false
+    });
+  };
+
   render() {
     const {activeAccount} = this.props;
     const {username} = activeAccount;
     const {accountData} = activeAccount;
 
-    const {loginModalVisible, galleryModalVisible} = this.state;
+    const {loginModalVisible, galleryModalVisible, draftsModalVisible} = this.state;
 
     let displayName;
     try {
@@ -114,7 +128,7 @@ class UserMenu extends Component {
             className="menu-item"
             rel="favorites"
             role="none"
-            onClick={this.menuItemClicked}
+            onClick={this.draftsClicked}
           >
             <i className="mi">insert_drive_file</i>
             <FormattedMessage id="user-menu.drafts"/>
@@ -170,6 +184,7 @@ class UserMenu extends Component {
         </Modal>
 
         <GalleryModal visible={galleryModalVisible} onCancel={this.onGalleryModalCancel} {...this.props} />
+        <DraftsModal visible={draftsModalVisible} onCancel={this.onDraftsModalCancel} {...this.props} />
       </div>
     );
   }

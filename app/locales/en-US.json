@@ -6,7 +6,8 @@
     "no": "No",
     "delete": "Delete",
     "cancel": "Cancel",
-    "ok": "OK"
+    "ok": "OK",
+    "edit": "Edit"
   },
   "entry-index": {
     "tags": "Popular Tags",
@@ -168,12 +169,20 @@
     "tool-table": "Table",
     "tool-upload": "Upload",
     "tool-gallery": "Gallery",
-    "preview": "Preview"
+    "preview": "Preview",
+
+    "draft-saved": "Draft saved",
+    "draft-save-error": "Draft could not saved due to server error"
   },
   "gallery": {
     "title": "Gallery",
     "copied": "Copied to clipboard",
     "load-error": "Could not load gallery",
+    "empty-list": "Nothing here"
+  },
+  "drafts": {
+    "title": "Drafts",
+    "load-error": "Could not load drafts",
     "empty-list": "Nothing here"
   }
 }

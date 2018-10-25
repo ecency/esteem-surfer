@@ -36,3 +36,21 @@ export const getImages = (user) => axios.get(`${BACKEND_URL}/api/images/${user}`
 export const addMyImage = (user, url) => axios.post(`${BACKEND_URL}/api/image`, {username: user, image_url: url});
 
 export const removeImage = (id, user) => axios.delete(`${BACKEND_URL}/api/images/${user}/${id}`);
+
+export const getDrafts = (user) => axios.get(`${BACKEND_URL}/api/drafts/${user}`).then(resp => resp.data);
+
+export const removeDraft = (id, user) => axios.delete(`${BACKEND_URL}/api/drafts/${user}/${id}`);
+
+export const addDraft = (user, title, body, tags) => axios.post(`${BACKEND_URL}/api/draft`, {
+  username: user,
+  title,
+  body,
+  tags
+});
+
+export const updateDraft = (user, id, title, body, tags) => axios.put(`${BACKEND_URL}/api/drafts/${user}/${id}`, {
+  title,
+  body,
+  tags
+});
+

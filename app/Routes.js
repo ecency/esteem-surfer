@@ -12,8 +12,15 @@ export default () => (
   <App>
     <Switch>
       <Route
-        new
+        exact
         path="/new"
+        component={props => (
+          <ComposePage timestamp={new Date().toString()} {...props} />
+        )}
+      />
+      <Route
+        exact
+        path="/draft/:id"
         component={props => (
           <ComposePage timestamp={new Date().toString()} {...props} />
         )}

@@ -16,7 +16,7 @@ import GalleryModal from './Gallery';
 import {getItem, setItem, getVotingPercentage} from '../helpers/storage';
 import markDown2Html from '../utils/markdown-2-html';
 
-import {uploadImage, addMyImage} from '../backend/esteem-client';
+import {uploadImage, addMyImage, getDrafts, addDraft, updateDraft} from '../backend/esteem-client';
 import {revokePostingPermission, grantPostingPermission, comment} from '../backend/steem-client';
 import {createPermlink, makeOptions, makeJsonMetadata, extractMetadata} from "../utils/posting-helpers";
 
@@ -564,6 +564,7 @@ export class Editor extends Component {
             onDragOver={this.onDragOver}
             onDrop={this.onDrop}
             onScroll={this.onScroll}
+            value={defaultValues.body}
           />
         </div>
         <GalleryModal
@@ -662,6 +663,7 @@ class Compose extends Component {
         tags,
         body
       },
+      draftId: null,
       reward: 'default',
       upvote: true,
       posting: false,
@@ -671,10 +673,58 @@ class Compose extends Component {
     this.editor = React.createRef();
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     // this.detectPostingPerm();
+
+    this.detectDraft();
   }
 
+  detectDraft = async () => {
+    const {match, activeAccount} = this.props;
+    const {path, params} = match;
+    if (activeAccount && path.startsWith('/draft') && params.id) {
+      let drafts;
+
+      try {
+        drafts = await getDrafts(activeAccount.username);
+      } catch (err) {
+        drafts = [];
+      }
+
+      drafts = drafts.filter(x => x._id === params.id);
+      if (drafts.length === 1) {
+        const draft = drafts[0];
+        const {title, body} = draft;
+        let {tags} = draft;
+
+        try {
+          tags = tags.split(' ');
+        } catch (e) {
+          tags = []
+        }
+
+        this.editor.current.setState({title, body, tags});
+        this.editor.current.editorInstance.setValue(body);
+        this.editor.current.changed();
+
+        this.setState({draftId: params.id});
+      }
+    }
+  };
+
+  clear = () => {
+    this.editor.current.clear();
+
+    const {draftId} = this.state;
+
+    if (draftId) {
+      const {history} = this.props;
+      setTimeout(() => {
+        const newLoc = `/new`;
+        history.push(newLoc);
+      }, 200);
+    }
+  };
 
   removePostingPerm = () => {
     this.setState({permProcessing: true});
@@ -709,6 +759,29 @@ class Compose extends Component {
     });
   };
 
+  saveDraft = () => {
+    const {activeAccount, intl} = this.props;
+
+    const {draftId} = this.state;
+    const {title, body} = this.state;
+    let {tags} = this.state;
+
+    tags = tags.join(' ');
+
+    let prms;
+
+    if (draftId) {
+      prms = updateDraft(activeAccount.username, draftId, title, body, tags);
+    } else {
+      prms = addDraft(activeAccount.username, title, body, tags);
+    }
+
+    prms.then(() => {
+      message.success(intl.formatMessage({id: 'composer.draft-saved'}));
+    }).catch(() => {
+      message.error(intl.formatMessage({id: 'composer.draft-save-error'}));
+    })
+  };
 
   publish = () => {
     const {activeAccount, global} = this.props;
@@ -814,9 +887,7 @@ class Compose extends Component {
                 }}>Upvote</Checkbox>
               </div>
               <div className="clear">
-                <Button className="clean-button" onClick={() => {
-                  this.editor.current.clear();
-                }}>Clear All</Button>
+                <Button className="clean-button" onClick={this.clear}>Clear All</Button>
               </div>
             </div>
             <div className="right-controls">
@@ -828,7 +899,7 @@ class Compose extends Component {
                 </Dropdown>
               </div>
               <div className="draft">
-                <Button className="clean-button">
+                <Button className="clean-button" disabled={!canPublish} onClick={this.saveDraft}>
                   <i className="mi" style={{marginRight: '5px'}}>save</i> Save Draft
                 </Button>
               </div>
@@ -858,7 +929,9 @@ Compose.propTypes = {
   }).isRequired,
   actions: PropTypes.shape({
     updateActiveAccount: PropTypes.func.isRequired
-  }).isRequired
+  }).isRequired,
+  match: PropTypes.instanceOf(Object).isRequired,
+  history: PropTypes.instanceOf(Object).isRequired
 };
 
 export default injectIntl(Compose);
