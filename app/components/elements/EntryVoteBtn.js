@@ -3,17 +3,11 @@ import PropTypes from 'prop-types';
 import { Slider, Popover, message } from 'antd';
 import parseToken from '../../utils/parse-token';
 import { vestsToRshares } from '../../utils/conversions';
-import { setItem, getItem } from '../../helpers/storage';
+import { getVotingPercentage, setVotingPercentage } from '../../helpers/storage';
 
 import { getActiveVotes, vote } from '../../backend/steem-client';
 
 import LoginRequired from '../helpers/LoginRequired';
-
-const setPercentage = (username, val) => {
-  setItem(`voting_percentage_${username}`, val);
-};
-
-const getPercentage = username => getItem(`voting_percentage_${username}`, 100);
 
 class EntryVoteBtn extends Component {
   constructor(props) {
@@ -79,7 +73,7 @@ class EntryVoteBtn extends Component {
     let weight = 0;
 
     if (!voted) {
-      const perc = getPercentage(username);
+      const perc = getVotingPercentage(username);
       weight = parseInt(perc * 100, 10);
     }
 
@@ -100,7 +94,7 @@ class EntryVoteBtn extends Component {
     if (v) {
       const { activeAccount } = this.props;
       const { username } = activeAccount;
-      const sliderVal = getPercentage(username);
+      const sliderVal = getVotingPercentage(username);
 
       const estimated = this.estimate(sliderVal);
 
@@ -127,7 +121,7 @@ class EntryVoteBtn extends Component {
     const { activeAccount } = this.props;
     const { username } = activeAccount;
 
-    setPercentage(username, sliderVal);
+    setVotingPercentage(username, sliderVal);
 
     const estimated = this.estimate(sliderVal);
     this.setState({ sliderVal, estimated });

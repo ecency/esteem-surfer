@@ -21,3 +21,10 @@ export const removeItem = k => {
   const key = `${PREFIX}_${k}`;
   localStorage.removeItem(key);
 };
+
+
+export const getVotingPercentage = username => getItem(`voting_percentage_${username}`, 100);
+
+export const setVotingPercentage = (username, val) => {
+  setItem(`voting_percentage_${username}`, val);
+};

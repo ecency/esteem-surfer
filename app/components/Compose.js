@@ -6,8 +6,6 @@ import React, {Component} from 'react';
 import {FormattedMessage, injectIntl} from 'react-intl';
 import PropTypes from 'prop-types';
 
-import getSlug from 'speakingurl';
-
 import {UnControlled as CodeMirror} from 'react-codemirror2';
 import {Input, Select, Tooltip, Checkbox, Button, Dropdown, Menu, message} from 'antd';
 
@@ -15,120 +13,14 @@ import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
 import GalleryModal from './Gallery';
 
-import {getItem, setItem} from '../helpers/storage';
+import {getItem, setItem, getVotingPercentage} from '../helpers/storage';
 import markDown2Html from '../utils/markdown-2-html';
 
 import {uploadImage, addMyImage} from '../backend/esteem-client';
 import {revokePostingPermission, grantPostingPermission, comment} from '../backend/steem-client';
-
+import {createPermlink, makeOptions, makeJsonMetadata, extractMetadata} from "../utils/posting-helpers";
 
 import {version} from '../../package.json';
-
-
-const getPercentage = username => getItem(`voting_percentage_${username}`, 100);
-
-
-export const createPermlink = (title) => {
-  const rnd = (Math.random() + 1).toString(16).substring(2);
-  const slug = getSlug(title);
-
-  let perm = `${slug.toString()}-${rnd}est`;
-
-  // STEEMIT_MAX_PERMLINK_LENGTH
-  if (perm.length > 255) {
-    perm = perm.substring(perm.length - 255, perm.length)
-  }
-
-  // only letters numbers and dashes
-  perm = perm.toLowerCase().replace(/[^a-z0-9-]+/g, '');
-  return perm;
-};
-
-const makeContentOptions = (author, permlink, operationType) => {
-  const a = {
-    allow_curation_rewards: true,
-    allow_votes: true,
-    author,
-    permlink,
-    max_accepted_payout: '1000000.000 SBD',
-    percent_steem_dollars: 10000,
-    extensions: [[0, {'beneficiaries': [{'account': 'esteemapp', 'weight': 1000}]}]]
-  };
-
-  switch (operationType) {
-    case 'sp':
-      a.max_accepted_payout = '1000000.000 SBD';
-      a.percent_steem_dollars = 0;
-      break;
-    case 'dp':
-      a.max_accepted_payout = '0.000 SBD';
-      a.percent_steem_dollars = 10000;
-      break;
-    default:
-      a.max_accepted_payout = '1000000.000 SBD';
-      a.percent_steem_dollars = 10000;
-      break;
-  }
-
-  return a;
-};
-
-const makeJsonMetadata = (meta, tags, appVer) => (
-  Object.assign({}, meta, {
-    tags,
-    app: `esteem/${appVer}-surfer`,
-    format: 'markdown+html',
-    community: 'esteem.app'
-  })
-);
-
-
-export const extractMetadata = (body) => {
-
-  const urlReg = /(\b(https?|ftp):\/\/[A-Z0-9+&@#/%?=~_|!:,.;-]*[-A-Z0-9+&@#/%=~_|])/gim;
-  const userReg = /(^|\s)(@[a-z][-.a-z\d]+[a-z\d])/gim;
-  const imgReg = /(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/gim;
-
-  const out = {};
-
-  const mUrls = body.match(urlReg);
-  const mUsers = body.match(userReg);
-
-  const matchedImages = [];
-  const matchedLinks = [];
-  const matchedUsers = [];
-
-  if (mUrls) {
-    for (let i = 0; i < mUrls.length; i++) {
-      const ind = mUrls[i].match(imgReg);
-      if (ind) {
-        matchedImages.push(mUrls[i]);
-      } else {
-        matchedLinks.push(mUrls[i]);
-      }
-    }
-  }
-
-  if (matchedLinks.length) {
-    out['links'] = matchedLinks;
-  }
-  if (matchedImages.length) {
-    out['image'] = matchedImages;
-  }
-
-  if (mUsers) {
-    for (let i = 0; i < mUsers.length; i++) {
-      matchedUsers.push(mUsers[i].trim().substring(1));
-    }
-  }
-
-  if (matchedUsers.length) {
-    out['users'] = matchedUsers;
-  }
-
-  return out;
-};
-
 
 require('codemirror/addon/display/placeholder.js');
 require('codemirror/addon/search/searchcursor.js');
@@ -154,15 +46,6 @@ export class Editor extends Component {
     this.ignoreSyncElScroll = false;
   }
 
-  clear = () => {
-    this.setState({
-      title: '',
-      tags: [],
-      body: ''
-    });
-    this.changed();
-  };
-
   componentDidMount() {
     this.syncTimer = setInterval(this.syncHeights, 1000);
 
@@ -184,6 +67,19 @@ export class Editor extends Component {
         .removeEventListener('scroll', this.onSyncElScroll);
     }
   }
+
+  clear = () => {
+    this.setState({
+      title: '',
+      tags: [],
+      body: ''
+    }, () => {
+      this.changed()
+    });
+
+    // binding codemirror to state variable is troublesome. manually set code mirror value.
+    this.editorInstance.setValue('');
+  };
 
   changed = () => {
     const {onChange} = this.props;
@@ -299,11 +195,6 @@ export class Editor extends Component {
 
   image = (name = '', url = 'url') => {
     this.insertInline(`![${name}`, `](${url})`);
-  };
-
-  imageClicked = () => {
-    const {activeAccount} = this.props;
-    console.log(activeAccount);
   };
 
   onKeyDown = (editor, event) => {
@@ -673,7 +564,6 @@ export class Editor extends Component {
             onDragOver={this.onDragOver}
             onDrop={this.onDrop}
             onScroll={this.onScroll}
-            value={body}
           />
         </div>
         <GalleryModal
@@ -830,8 +720,8 @@ class Compose extends Component {
     const permlink = createPermlink(title);
     const meta = extractMetadata(body);
     const jsonMeta = makeJsonMetadata(meta, tags, version);
-    const options = makeContentOptions(activeAccount.username, permlink, reward);
-    const voteWeight = upvote ? (getPercentage(activeAccount.username) * 100) : null;
+    const options = makeOptions(activeAccount.username, permlink, reward);
+    const voteWeight = upvote ? (getVotingPercentage(activeAccount.username) * 100) : null;
 
     comment(activeAccount, global.pin, '', parentPermlink, permlink, title, body, jsonMeta, options, voteWeight).then(resp => {
       console.log(resp);

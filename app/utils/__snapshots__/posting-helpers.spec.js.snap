@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createPermlink (1)  1`] = `"lorem-ipsum-dolor-sit-amet-f38c58113ff7eest"`;
+
+exports[`extractMetadata (1)  1`] = `
+Object {
+  "image": Array [
+    "http://www.xx.com/a.png",
+  ],
+  "users": Array [
+    "lorem",
+    "ipsum",
+  ],
+}
+`;
+
+exports[`extractMetadata (2)  1`] = `
+Object {
+  "image": Array [
+    "http://www.xx.com/a.png",
+    "https://img.esteem.ws/h74zrad2fh.jpg",
+  ],
+  "links": Array [
+    "http://www.google.com/foo/bar",
+  ],
+  "users": Array [
+    "lorem",
+    "ipsum",
+  ],
+}
+`;
+
+exports[`makeJsonMetadata (1)  1`] = `
+Object {
+  "app": "esteem/2.0.0-surfer",
+  "community": "esteem.app",
+  "format": "markdown+html",
+  "image": Array [
+    "http://www.xx.com/a.png",
+    "https://img.esteem.ws/h74zrad2fh.jpg",
+  ],
+  "links": Array [
+    "http://www.google.com/foo/bar",
+  ],
+  "tags": Array [
+    "esteem",
+    "art",
+  ],
+  "users": Array [
+    "lorem",
+    "ipsum",
+  ],
+}
+`;
+
+exports[`makeOptions (1) Default 50% / 50% 1`] = `
+Object {
+  "allow_curation_rewards": true,
+  "allow_votes": true,
+  "author": "talhasch",
+  "extensions": Array [
+    Array [
+      0,
+      Object {
+        "beneficiaries": Array [
+          Object {
+            "account": "esteemapp",
+            "weight": 1000,
+          },
+        ],
+      },
+    ],
+  ],
+  "max_accepted_payout": "1000000.000 SBD",
+  "percent_steem_dollars": 10000,
+  "permlink": "lorem-ipsum-1",
+}
+`;
+
+exports[`makeOptions (2) Power Up 100% 1`] = `
+Object {
+  "allow_curation_rewards": true,
+  "allow_votes": true,
+  "author": "talhasch",
+  "extensions": Array [
+    Array [
+      0,
+      Object {
+        "beneficiaries": Array [
+          Object {
+            "account": "esteemapp",
+            "weight": 1000,
+          },
+        ],
+      },
+    ],
+  ],
+  "max_accepted_payout": "1000000.000 SBD",
+  "percent_steem_dollars": 0,
+  "permlink": "lorem-ipsum-1",
+}
+`;
+
+exports[`makeOptions (3) Decline Payout 1`] = `
+Object {
+  "allow_curation_rewards": true,
+  "allow_votes": true,
+  "author": "talhasch",
+  "extensions": Array [
+    Array [
+      0,
+      Object {
+        "beneficiaries": Array [
+          Object {
+            "account": "esteemapp",
+            "weight": 1000,
+          },
+        ],
+      },
+    ],
+  ],
+  "max_accepted_payout": "0.000 SBD",
+  "percent_steem_dollars": 10000,
+  "permlink": "lorem-ipsum-1",
+}
+`;
