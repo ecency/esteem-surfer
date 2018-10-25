@@ -183,6 +183,7 @@
   "drafts": {
     "title": "Drafts",
     "load-error": "Could not load drafts",
-    "empty-list": "Nothing here"
+    "empty-list": "Nothing here",
+    "deleted": "Draft deleted"
   }
 }

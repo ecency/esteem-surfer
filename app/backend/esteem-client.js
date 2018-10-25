@@ -46,7 +46,7 @@ export const addDraft = (user, title, body, tags) => axios.post(`${BACKEND_URL}/
   title,
   body,
   tags
-});
+}).then(resp => resp.data);
 
 export const updateDraft = (user, id, title, body, tags) => axios.put(`${BACKEND_URL}/api/drafts/${user}/${id}`, {
   title,

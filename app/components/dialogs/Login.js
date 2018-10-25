@@ -247,7 +247,8 @@ class Login extends Component {
 }
 
 Login.defaultProps = {
-  loginMsg: null
+  loginMsg: null,
+  accounts: []
 };
 
 Login.propTypes = {
@@ -258,7 +259,7 @@ Login.propTypes = {
     updateActiveAccount: PropTypes.func.isRequired
   }).isRequired,
   onSuccess: PropTypes.func.isRequired,
-  accounts: PropTypes.arrayOf(PropTypes.object).isRequired,
+  accounts: PropTypes.arrayOf(PropTypes.object),
   loginMsg: PropTypes.element,
   intl: PropTypes.instanceOf(Object).isRequired
 };

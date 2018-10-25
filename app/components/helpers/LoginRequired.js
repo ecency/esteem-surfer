@@ -135,13 +135,14 @@ LoginRequired.defaultProps = {
   onDialogOpen: () => {
   },
   onDialogClose: () => {
-  }
+  },
+  requiredKeys: []
 };
 
 LoginRequired.propTypes = {
   children: PropTypes.element.isRequired,
   activeAccount: PropTypes.instanceOf(Object),
-  requiredKeys: PropTypes.arrayOf(PropTypes.string).isRequired,
+  requiredKeys: PropTypes.arrayOf(PropTypes.string),
   onDialogOpen: PropTypes.func,
   onDialogClose: PropTypes.func
 };

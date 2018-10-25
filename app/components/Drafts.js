@@ -20,9 +20,10 @@ import {getDrafts, removeDraft} from '../backend/esteem-client';
 
 class DraftListItem extends Component {
   delete = item => {
-    const {activeAccount, onDelete} = this.props;
+    const {activeAccount, intl, onDelete} = this.props;
     removeDraft(item._id, activeAccount.username)
       .then(resp => {
+        message.info(intl.formatMessage({id: 'drafts.deleted'}));
         onDelete(item);
         return resp;
       })
@@ -117,7 +118,6 @@ DraftListItem.propTypes = {
   author: PropTypes.string.isRequired,
   reputation: PropTypes.number.isRequired,
   item: PropTypes.instanceOf(Object).isRequired,
-  location: PropTypes.instanceOf(Object).isRequired,
   history: PropTypes.instanceOf(Object).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };

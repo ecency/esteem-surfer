@@ -12,6 +12,7 @@ import {Input, Select, Tooltip, Checkbox, Button, Dropdown, Menu, message} from 
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
 import GalleryModal from './Gallery';
+import LoginRequired from './helpers/LoginRequired';
 
 import {getItem, setItem, getVotingPercentage} from '../helpers/storage';
 import markDown2Html from '../utils/markdown-2-html';
@@ -567,6 +568,7 @@ export class Editor extends Component {
             value={defaultValues.body}
           />
         </div>
+        {activeAccount &&
         <GalleryModal
           {...this.props}
           visible={galleryModalVisible}
@@ -580,7 +582,7 @@ export class Editor extends Component {
             const imgTag = `![${imageName}](${imageUrl})`;
             this.insertBlock(imgTag);
           }}
-        />
+        />}
       </div>
     );
   }
@@ -773,7 +775,16 @@ class Compose extends Component {
     if (draftId) {
       prms = updateDraft(activeAccount.username, draftId, title, body, tags);
     } else {
-      prms = addDraft(activeAccount.username, title, body, tags);
+      prms = addDraft(activeAccount.username, title, body, tags).then(resp => {
+        const {drafts} = resp;
+        const draft = drafts.pop();
+
+        setTimeout(() => {
+          const {history} = this.props;
+          const newLoc = `/draft/${draft._id}`;
+          history.push(newLoc);
+        }, 300)
+      })
     }
 
     prms.then(() => {
@@ -812,16 +823,14 @@ class Compose extends Component {
 
     const renderedBody = {__html: markDown2Html(body)};
 
-    const {activeAccount} = this.props;
-
     let hasPerm = false;
 
-    if (activeAccount) {
+    const {activeAccount} = this.props;
+    if (activeAccount && activeAccount.accountData) {
       hasPerm = activeAccount.accountData.posting.account_auths.filter(x => x[0] === 'esteemapp').length > 0;
     }
 
     const canPublish = title.trim() !== '' && tags.length > 0 && tags.length <= 5 && body.trim() !== '';
-
 
     let menu;
     if (hasPerm) {
@@ -899,9 +908,11 @@ class Compose extends Component {
                 </Dropdown>
               </div>
               <div className="draft">
-                <Button className="clean-button" disabled={!canPublish} onClick={this.saveDraft}>
-                  <i className="mi" style={{marginRight: '5px'}}>save</i> Save Draft
-                </Button>
+                <LoginRequired {...this.props}>
+                  <Button className="clean-button" disabled={!canPublish} onClick={this.saveDraft}>
+                    <i className="mi" style={{marginRight: '5px'}}>save</i> Save Draft
+                  </Button>
+                </LoginRequired>
               </div>
               <div className="publish">
                 <Button type="primary" disabled={!canPublish} onClick={this.publish} loading={posting}>
