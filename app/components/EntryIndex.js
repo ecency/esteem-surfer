@@ -58,7 +58,7 @@ class EntryIndex extends Component {
     const { selectedTag } = global;
 
     return (
-      <Menu selectedKeys={[active]}>
+      <Menu selectedKeys={[active]} className="surfer-dropdown-menu">
         {filters.map(filter => (
           <Menu.Item key={filter}>
             <Link to={selectedTag ? `/${filter}/${selectedTag}` : `/${filter}`}>

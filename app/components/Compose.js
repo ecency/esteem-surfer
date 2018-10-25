@@ -362,7 +362,7 @@ export class Editor extends Component {
 
   render() {
     const {defaultValues, trendingTags, activeAccount, intl} = this.props;
-    const {galleryModalVisible, tags, title, body} = this.state;
+    const {galleryModalVisible, tags, title} = this.state;
 
     const tagOptions = trendingTags.list.map(tag => (
       <Select.Option key={tag}>{tag}</Select.Option>

@@ -4,9 +4,9 @@
 .gallery-dialog-content {
   height: 500px;
   overflow: auto;
-  padding: 20px;
 
   .gallery-list {
+    padding: 20px;
     .gallery-list-body {
       display: flex;
       flex-wrap: wrap;

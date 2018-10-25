@@ -172,6 +172,8 @@
   },
   "gallery": {
     "title": "Gallery",
-    "copied": "Copied to clipboard"
+    "copied": "Copied to clipboard",
+    "load-error": "Could not load gallery",
+    "empty-list": "Nothing here"
   }
 }
