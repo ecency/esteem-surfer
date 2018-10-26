@@ -299,8 +299,11 @@
     .clean-button {
       border: none;
       background: transparent;
+      margin-right: 10px;
 
-      color: $steel-grey;
+      &:enabled {
+        color: $steel-grey;
+      }
     }
 
     .left-controls,

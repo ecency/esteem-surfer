@@ -1,5 +1,5 @@
 /*
-eslint-disable react/no-multi-comp
+eslint-disable react/no-multi-comp, no-underscore-dangle
 */
 
 import React, {Component} from 'react';
@@ -854,7 +854,6 @@ class Compose extends Component {
       </Menu>)
     }
 
-
     return (
       <div className="wrapper">
         <NavBar {...this.props} reloadFn={() => {
@@ -915,9 +914,11 @@ class Compose extends Component {
                 </LoginRequired>
               </div>
               <div className="publish">
-                <Button type="primary" disabled={!canPublish} onClick={this.publish} loading={posting}>
-                  Publish
-                </Button>
+                <LoginRequired {...this.props} requiredKeys={['posting']}>
+                  <Button type="primary" disabled={!canPublish} onClick={this.publish} loading={posting}>
+                    Publish
+                  </Button>
+                </LoginRequired>
               </div>
             </div>
           </div>
