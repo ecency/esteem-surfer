@@ -56,6 +56,9 @@ export class Editor extends Component {
         .querySelector(syncWith)
         .addEventListener('scroll', this.onSyncElScroll);
     }
+
+
+    document.getElementById('file-input').addEventListener('change', this.handleFileInput);
   }
 
   componentWillUnmount() {
@@ -67,6 +70,8 @@ export class Editor extends Component {
         .querySelector(syncWith)
         .removeEventListener('scroll', this.onSyncElScroll);
     }
+
+    document.getElementById('file-input').removeEventListener('change', this.handleFileInput);
   }
 
   clear = () => {
@@ -215,23 +220,17 @@ export class Editor extends Component {
   onDragEnter = (editor, event) => {
     event.stopPropagation();
     event.preventDefault();
-
-    console.log('onDragEnter');
   };
 
   onDragLeave = (editor, event) => {
     event.stopPropagation();
     event.preventDefault();
-
-    console.log('onDragLeave');
   };
 
   onDragOver = (editor, event) => {
     event.stopPropagation();
     event.preventDefault();
     event.dataTransfer.dropEffect = 'copy'; // eslint-disable-line no-param-reassign
-
-    console.log('onDragOver');
   };
 
   onDrop = (editor, event) => {
@@ -239,6 +238,19 @@ export class Editor extends Component {
     event.preventDefault();
 
     const files = [...event.dataTransfer.files]
+      .map(item => (this.checkFile(item.name) ? item : null))
+      .filter(i => i);
+
+    if (files.length > 0) {
+      event.stopPropagation();
+      event.preventDefault();
+    }
+
+    files.forEach(file => this.upload(file));
+  };
+
+  handleFileInput = (event) => {
+    const files = [...event.target.files]
       .map(item => (this.checkFile(item.name) ? item : null))
       .filter(i => i);
 
@@ -473,7 +485,10 @@ export class Editor extends Component {
           >
             <i className="mi tool-icon">image</i>
             <div className="sub-tool-menu">
-              <div className="sub-tool-menu-item" role="none">
+              <div className="sub-tool-menu-item" role="none" onClick={(event) => {
+                event.stopPropagation();
+                document.getElementById('file-input').click();
+              }}>
                 <FormattedMessage id="composer.tool-upload"/>
               </div>
               {activeAccount && (
@@ -568,6 +583,8 @@ export class Editor extends Component {
             value={defaultValues.body}
           />
         </div>
+
+        <input className="file-input" id="file-input" type="file" accept="image/*" multiple style={{display: 'none'}}/>
         {activeAccount &&
         <GalleryModal
           {...this.props}
