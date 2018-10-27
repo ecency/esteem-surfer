@@ -7,7 +7,8 @@
     "delete": "Delete",
     "cancel": "Cancel",
     "ok": "OK",
-    "edit": "Edit"
+    "edit": "Edit",
+    "server-error": "Process could not completed due to server error"
   },
   "entry-index": {
     "tags": "Popular Tags",
@@ -172,7 +173,13 @@
     "preview": "Preview",
 
     "draft-saved": "Draft saved",
-    "draft-save-error": "Draft could not saved due to server error"
+    "draft-save-error": "Draft could not saved due to server error",
+
+    "schedule-saved": "Post scheduled",
+    "schedule-save-error": "Post could not scheduled due to server error",
+
+    "posting-perm-granted": "Posting permission granted",
+    "posting-perm-removed": "Posting permission removed"
   },
   "gallery": {
     "title": "Gallery",
@@ -185,5 +192,12 @@
     "load-error": "Could not load drafts",
     "empty-list": "Nothing here",
     "deleted": "Draft deleted"
+  },
+  "schedules": {
+    "title": "Scheduled Posts",
+    "empty-list": "Nothing here",
+    "deleted": "Scheduled post deleted",
+    "move": "Move to drafts",
+    "moved": "Moved to drafts"
   }
 }

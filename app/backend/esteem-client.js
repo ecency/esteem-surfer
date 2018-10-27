@@ -54,3 +54,22 @@ export const updateDraft = (user, id, title, body, tags) => axios.put(`${BACKEND
   tags
 });
 
+export const schedule = (user, title, permlink, json, tags, body, operationType, upvote, scheduleDate) => axios.post(`${BACKEND_URL}/api/schedules`, {
+  username: user,
+  category: tags[0],
+  title,
+  permlink,
+  json: JSON.stringify(json),
+  tags,
+  body,
+  post_type: operationType,
+  upvote_this: upvote,
+  schedule: scheduleDate,
+  chain: 'steem'
+}).then(resp => resp.data);
+
+export const getSchedules = (user) => axios.get(`${BACKEND_URL}/api/schedules/${user}`).then(resp => resp.data);
+
+export const removeSchedule = (id, user) => axios.delete(`${BACKEND_URL}/api/schedules/${user}/${id}`);
+
+export const moveSchedule = (id, user) => axios.put(`${BACKEND_URL}/api/schedules/${user}/${id}`);

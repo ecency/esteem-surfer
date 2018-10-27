@@ -9,6 +9,7 @@ import UserAvatar from '../elements/UserAvatar';
 
 import GalleryModal from '../Gallery';
 import DraftsModal from '../Drafts';
+import SchedulesModal from '../Schedules';
 
 class UserMenu extends Component {
 
@@ -18,7 +19,8 @@ class UserMenu extends Component {
     this.state = {
       loginModalVisible: false,
       galleryModalVisible: false,
-      draftsModalVisible: false
+      draftsModalVisible: false,
+      schedulesModalVisible: false
     };
   }
 
@@ -75,12 +77,25 @@ class UserMenu extends Component {
     });
   };
 
+  schedulesClicked = () => {
+    this.setState({
+      schedulesModalVisible: true
+    });
+  };
+
+  onSchedulesModalCancel = () => {
+    this.setState({
+      schedulesModalVisible: false
+    });
+  };
+
+
   render() {
     const {activeAccount} = this.props;
     const {username} = activeAccount;
     const {accountData} = activeAccount;
 
-    const {loginModalVisible, galleryModalVisible, draftsModalVisible} = this.state;
+    const {loginModalVisible, galleryModalVisible, draftsModalVisible, schedulesModalVisible} = this.state;
 
     let displayName;
     try {
@@ -137,7 +152,7 @@ class UserMenu extends Component {
             className="menu-item"
             rel="schedules"
             role="none"
-            onClick={this.menuItemClicked}
+            onClick={this.schedulesClicked}
           >
             <i className="mi">today</i>
             <FormattedMessage id="user-menu.schedules"/>
@@ -185,6 +200,7 @@ class UserMenu extends Component {
 
         <GalleryModal visible={galleryModalVisible} onCancel={this.onGalleryModalCancel} {...this.props} />
         <DraftsModal visible={draftsModalVisible} onCancel={this.onDraftsModalCancel} {...this.props} />
+        <SchedulesModal visible={schedulesModalVisible} onCancel={this.onSchedulesModalCancel} {...this.props} />
       </div>
     );
   }

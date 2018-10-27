@@ -216,13 +216,17 @@ export const grantPostingPermission = (account, pin) => {
     const privateKey = PrivateKey.fromString(key);
 
     const {accountData} = account;
-    const posting = Object.assign({}, accountData.posting);
 
-    posting.account_auths.push(['esteemapp', posting.weight_threshold]);
+    const newPosting = Object.assign(
+      {},
+      {...accountData.posting},
+      {account_auths: [...accountData.posting.account_auths, ['esteemapp', accountData.posting.weight_threshold]]}
+    );
 
     return client.broadcast.updateAccount({
       account: account.username,
-      posting,
+      posting: newPosting,
+      active: undefined,
       memo_key: accountData.memo_key,
       json_metadata: accountData.json_metadata,
     }, privateKey);

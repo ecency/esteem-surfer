@@ -6,8 +6,10 @@ import React, {Component} from 'react';
 import {FormattedMessage, injectIntl} from 'react-intl';
 import PropTypes from 'prop-types';
 
+import moment from 'moment';
+
 import {UnControlled as CodeMirror} from 'react-codemirror2';
-import {Input, Select, Tooltip, Checkbox, Button, Dropdown, Menu, message} from 'antd';
+import {Input, Select, Tooltip, Checkbox, Button, Dropdown, Menu, Modal, DatePicker, message} from 'antd';
 
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
@@ -16,10 +18,11 @@ import LoginRequired from './helpers/LoginRequired';
 
 import {getItem, setItem, getVotingPercentage} from '../helpers/storage';
 import markDown2Html from '../utils/markdown-2-html';
+import formatChainError from '../utils/format-chain-error';
 
-import {uploadImage, addMyImage, getDrafts, addDraft, updateDraft} from '../backend/esteem-client';
+import {uploadImage, addMyImage, getDrafts, addDraft, updateDraft, schedule} from '../backend/esteem-client';
 import {revokePostingPermission, grantPostingPermission, comment} from '../backend/steem-client';
-import {createPermlink, makeOptions, makeJsonMetadata, extractMetadata} from "../utils/posting-helpers";
+import {createPermlink, makeOptions, makeJsonMetadata, extractMetadata} from '../utils/posting-helpers';
 
 import {version} from '../../package.json';
 
@@ -686,7 +689,8 @@ class Compose extends Component {
       reward: 'default',
       upvote: true,
       posting: false,
-      permProcessing: false
+      permProcessing: false,
+      scheduleModalVisible: false
     };
 
     this.editor = React.createRef();
@@ -747,24 +751,31 @@ class Compose extends Component {
 
   removePostingPerm = () => {
     this.setState({permProcessing: true});
-    const {activeAccount, global, actions} = this.props;
+    const {activeAccount, global, actions, intl} = this.props;
     revokePostingPermission(activeAccount, global.pin).then((resp) => {
+      message.info(intl.formatMessage({id: 'composer.posting-perm-removed'}));
       actions.updateActiveAccount();
       return resp;
-    }).catch(() => {
-
+    }).catch((err) => {
+      message.error(formatChainError(err));
     }).finally(() => {
       this.setState({permProcessing: false});
     });
   };
 
   grantPostingPerm = () => {
-    const {activeAccount, global, actions} = this.props;
+    this.setState({permProcessing: true});
+    const {activeAccount, global, actions, intl} = this.props;
     grantPostingPermission(activeAccount, global.pin).then(resp => {
-      console.log(resp)
-    })
+      message.success(intl.formatMessage({id: 'composer.posting-perm-granted'}));
+      actions.updateActiveAccount();
+      return resp;
+    }).catch((err) => {
+      message.error(formatChainError(err));
+    }).finally(() => {
+      this.setState({permProcessing: false});
+    });
   };
-
 
   editorChanged = newValues => {
     setItem('compose-title', newValues.title);
@@ -811,6 +822,21 @@ class Compose extends Component {
     })
   };
 
+  schedulePost = (date) => {
+    const {activeAccount, intl} = this.props;
+
+    const {title, body, tags, reward, upvote} = this.state;
+    const permlink = createPermlink(title);
+    const meta = extractMetadata(body);
+    const jsonMeta = makeJsonMetadata(meta, tags, version);
+
+    schedule(activeAccount.username, title, permlink, jsonMeta, tags.join(' '), body, reward, upvote, date.toISOString()).then(() => {
+      message.success(intl.formatMessage({id: 'composer.schedule-saved'}));
+    }).catch(() => {
+      message.error(intl.formatMessage({id: 'composer.schedule-save-error'}));
+    })
+  };
+
   publish = () => {
     const {activeAccount, global} = this.props;
     const {title, tags, body, reward, upvote} = this.state;
@@ -836,38 +862,49 @@ class Compose extends Component {
   render() {
     const loading = true;
 
-    const {title, tags, body, defaultValues, reward, upvote, posting, permProcessing} = this.state;
+    const {title, tags, body, defaultValues, reward, upvote, posting, permProcessing, scheduleModalVisible} = this.state;
 
     const renderedBody = {__html: markDown2Html(body)};
 
-    let hasPerm = false;
+    let hasPostingPerm = false;
 
     const {activeAccount} = this.props;
     if (activeAccount && activeAccount.accountData) {
-      hasPerm = activeAccount.accountData.posting.account_auths.filter(x => x[0] === 'esteemapp').length > 0;
+      hasPostingPerm = activeAccount.accountData.posting.account_auths.filter(x => x[0] === 'esteemapp').length > 0;
     }
 
     const canPublish = title.trim() !== '' && tags.length > 0 && tags.length <= 5 && body.trim() !== '';
 
-    let menu;
-    if (hasPerm) {
-      menu = (
-        <Menu onClick={(item) => {
-          switch (item.key) {
-            case 'removePerm':
-              this.removePostingPerm();
-              break;
-          }
-        }}>
-          <Menu.Item key="selectDate">Select Date</Menu.Item>
-          <Menu.Item key="removePerm">Remove Posting Permission</Menu.Item>
+    let scheduleMenu;
+    if (hasPostingPerm) {
+      scheduleMenu = (
+        <Menu>
+          <Menu.Item key="selectDate">
+            <span style={{background: 'red', display: 'block'}} onClick={() => {
+              if (!canPublish) {
+                message.error('Form is not valid. Please fill all fields.');
+                return;
+              }
+
+              this.setState({scheduleModalVisible: true});
+            }}>Select Date</span>
+          </Menu.Item>
+          <Menu.Item key="removePerm">
+            <LoginRequired {...this.props} requiredKeys={['active']}>
+              <span onClick={this.removePostingPerm}>Remove Posting Permission</span>
+            </LoginRequired>
+          </Menu.Item>
         </Menu>
       );
     } else {
-      menu = (<Menu onClick={() => {
-        this.grantPostingPerm();
-      }}>
-        <Menu.Item key="grantPerm">Grant Posting Permission</Menu.Item>
+      scheduleMenu = (<Menu>
+        <Menu.Item key="grantPerm">
+          <LoginRequired {...this.props} requiredKeys={['active']}>
+          <span onClick={this.grantPostingPerm}>
+            Grant Posting Permission
+          </span>
+          </LoginRequired>
+        </Menu.Item>
       </Menu>)
     }
 
@@ -917,11 +954,25 @@ class Compose extends Component {
             </div>
             <div className="right-controls">
               <div className="schedule">
-                <Dropdown overlay={menu} trigger={['click']} disabled={permProcessing}>
+                {!activeAccount &&
+                <LoginRequired {...this.props}>
                   <Button className="clean-button">
-                    <i className="mi" style={{marginRight: '5px'}}>timer</i> Schedule
+                    <i className="mi" style={{marginRight: '5px'}}>timer</i>
+                    Schedule
+                  </Button>
+                </LoginRequired>
+                }
+
+                {activeAccount &&
+                <Dropdown overlay={scheduleMenu} trigger={['click']} disabled={permProcessing}>
+                  <Button className="clean-button" loading={permProcessing}>
+                    {!permProcessing &&
+                    <i className="mi" style={{marginRight: '5px'}}>timer</i>
+                    } Schedule
                   </Button>
                 </Dropdown>
+                }
+
               </div>
               <div className="draft">
                 <LoginRequired {...this.props}>
@@ -939,6 +990,20 @@ class Compose extends Component {
               </div>
             </div>
           </div>
+          <Modal visible={scheduleModalVisible} footer={false} okText="Schedule" width={280}>
+            {scheduleModalVisible &&
+            <DatePicker showTime={{format: "HH:mm"}} open={true} inputReadOnly
+                        format="YYYY-MM-DD HH:mm:ss"
+                        defaultValue={moment().add(2, 'hours').minute(0).second(0)}
+                        disabledDate={(current) => {
+                          return current && current < moment().subtract(1, 'day').endOf('day');
+                        }}
+                        onOk={(date) => {
+                          this.schedulePost(date.toDate());
+                          this.setState({scheduleModalVisible: false});
+                        }}/>
+            }
+          </Modal>
         </div>
         <AppFooter {...this.props} />
       </div>
