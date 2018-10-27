@@ -107,5 +107,31 @@ export const scLogin = () => (
   })
 );
 
+const standardScWindow = (path) => (
+  new Promise((resolve, reject) => {
+    const win = new remote.BrowserWindow(windowSettings);
+    const authUrl = `https://steemconnect.com/${path}`;
 
-export const foo = 'FOO';
+    win.loadURL(createWindowView(authUrl));
+    const windowInt = setInterval(async () => {
+      let result;
+      try {
+        result = await win.webContents.executeJavaScript(`document.body.innerHTML`, true);
+      } catch (e) {
+        clearInterval(windowInt);
+        reject(Error('Window is not reachable'));
+        return;
+      }
+
+      if (result.includes('<h2><span>Congratulations</span></h2>')) {
+        resolve();
+        clearInterval(windowInt);
+        win.close();
+      }
+    }, 200);
+  })
+);
+
+export const scAppAuth = () => standardScWindow('authorize/@esteemapp');
+
+export const scAppRevoke = () => standardScWindow('revoke/@esteemapp');

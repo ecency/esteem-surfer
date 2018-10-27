@@ -882,7 +882,7 @@ class Compose extends Component {
       scheduleMenu = (
         <Menu>
           <Menu.Item key="selectDate">
-            <span style={{background: 'red', display: 'block'}} onClick={() => {
+            <span style={{display: 'block'}} onClick={() => {
               if (!canPublish) {
                 message.error(intl.formatMessage({id: 'composer.form-error-message'}));
                 return;
@@ -892,7 +892,8 @@ class Compose extends Component {
           </Menu.Item>
           <Menu.Item key="removePerm">
             <LoginRequired {...this.props} requiredKeys={['active']}>
-              <span onClick={this.removePostingPerm}>{intl.formatMessage({id: 'composer.remove-posting-perm'})}</span>
+              <span style={{display: 'block'}}
+                    onClick={this.removePostingPerm}>{intl.formatMessage({id: 'composer.remove-posting-perm'})}</span>
             </LoginRequired>
           </Menu.Item>
         </Menu>
@@ -901,7 +902,7 @@ class Compose extends Component {
       scheduleMenu = (<Menu>
         <Menu.Item key="grantPerm">
           <LoginRequired {...this.props} requiredKeys={['active']}>
-          <span onClick={this.grantPostingPerm}>{intl.formatMessage({id: 'composer.grant-posting-perm'})}</span>
+            <span style={{display: 'block'}} onClick={this.grantPostingPerm}>{intl.formatMessage({id: 'composer.grant-posting-perm'})}</span>
           </LoginRequired>
         </Menu.Item>
       </Menu>)
@@ -948,7 +949,7 @@ class Compose extends Component {
                 }}><FormattedMessage id="composer.upvote"/> </Checkbox>
               </div>
               <div className="clear">
-                <Button className="clean-button" onClick={this.clear}><FormattedMessage id="composer.clear" /></Button>
+                <Button className="clean-button" onClick={this.clear}><FormattedMessage id="composer.clear"/></Button>
               </div>
             </div>
             <div className="right-controls">
@@ -957,7 +958,7 @@ class Compose extends Component {
                 <LoginRequired {...this.props}>
                   <Button className="clean-button">
                     <i className="mi" style={{marginRight: '5px'}}>timer</i>
-                    <FormattedMessage id="composer.schedule" />
+                    <FormattedMessage id="composer.schedule"/>
                   </Button>
                 </LoginRequired>
                 }
@@ -966,7 +967,7 @@ class Compose extends Component {
                   <Button className="clean-button" loading={permProcessing}>
                     {!permProcessing &&
                     <i className="mi" style={{marginRight: '5px'}}>timer</i>
-                    } <FormattedMessage id="composer.schedule" />
+                    } <FormattedMessage id="composer.schedule"/>
                   </Button>
                 </Dropdown>
                 }

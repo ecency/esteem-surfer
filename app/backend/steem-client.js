@@ -2,6 +2,8 @@ import {Client, PrivateKey} from 'dsteem';
 
 import sc2 from 'sc2-sdk';
 
+import {scAppAuth, scAppRevoke} from '../helpers/sc';
+
 import {decryptKey} from '../utils/crypto';
 
 let client = new Client('https://api.steemit.com');
@@ -208,6 +210,10 @@ export const revokePostingPermission = (account, pin) => {
       json_metadata: accountData.json_metadata,
     }, privateKey);
   }
+
+  if (account.type === 'sc') {
+    return scAppRevoke()
+  }
 };
 
 export const grantPostingPermission = (account, pin) => {
@@ -230,6 +236,10 @@ export const grantPostingPermission = (account, pin) => {
       memo_key: accountData.memo_key,
       json_metadata: accountData.json_metadata,
     }, privateKey);
+  }
+
+  if (account.type === 'sc') {
+    return scAppAuth()
   }
 };
 
