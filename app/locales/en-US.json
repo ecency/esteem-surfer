@@ -171,15 +171,23 @@
     "tool-upload": "Upload",
     "tool-gallery": "Gallery",
     "preview": "Preview",
-
-    "draft-saved": "Draft saved",
-    "draft-save-error": "Draft could not saved due to server error",
-
+    "reward": "Reward",
+    "reward-default": "Default 50% / 50%",
+    "reward-sp": "Power Up 100%",
+    "reward-dp": "Decline Payout",
+    "upvote": "Upvote",
+    "clear": "Clear All",
+    "form-error-message": "Form is not valid. Please fill all fields",
+    "schedule": "Schedule",
+    "select-schedule-date": "Select Date",
     "schedule-saved": "Post scheduled",
-    "schedule-save-error": "Post could not scheduled due to server error",
-
+    "grant-posting-perm": "Grant Posting Permission",
     "posting-perm-granted": "Posting permission granted",
-    "posting-perm-removed": "Posting permission removed"
+    "remove-posting-perm": "Remove Posting Permission",
+    "posting-perm-removed": "Posting permission removed",
+    "save-draft": "Save Draft",
+    "draft-saved": "Draft saved",
+    "publish": "Publish"
   },
   "gallery": {
     "title": "Gallery",

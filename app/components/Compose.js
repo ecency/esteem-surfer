@@ -86,7 +86,7 @@ export class Editor extends Component {
       this.changed()
     });
 
-    // binding codemirror to state variable is troublesome. manually set code mirror value.
+    // binding code mirror to state variable is troublesome. manually set code mirror value.
     this.editorInstance.setValue('');
   };
 
@@ -818,7 +818,7 @@ class Compose extends Component {
     prms.then(() => {
       message.success(intl.formatMessage({id: 'composer.draft-saved'}));
     }).catch(() => {
-      message.error(intl.formatMessage({id: 'composer.draft-save-error'}));
+      message.error(intl.formatMessage({id: 'g.server-error'}));
     })
   };
 
@@ -833,7 +833,7 @@ class Compose extends Component {
     schedule(activeAccount.username, title, permlink, jsonMeta, tags.join(' '), body, reward, upvote, date.toISOString()).then(() => {
       message.success(intl.formatMessage({id: 'composer.schedule-saved'}));
     }).catch(() => {
-      message.error(intl.formatMessage({id: 'composer.schedule-save-error'}));
+      message.error(intl.formatMessage({id: 'g.server-error'}));
     })
   };
 
@@ -862,6 +862,8 @@ class Compose extends Component {
   render() {
     const loading = true;
 
+    const {intl} = this.props;
+
     const {title, tags, body, defaultValues, reward, upvote, posting, permProcessing, scheduleModalVisible} = this.state;
 
     const renderedBody = {__html: markDown2Html(body)};
@@ -882,16 +884,15 @@ class Compose extends Component {
           <Menu.Item key="selectDate">
             <span style={{background: 'red', display: 'block'}} onClick={() => {
               if (!canPublish) {
-                message.error('Form is not valid. Please fill all fields.');
+                message.error(intl.formatMessage({id: 'composer.form-error-message'}));
                 return;
               }
-
               this.setState({scheduleModalVisible: true});
-            }}>Select Date</span>
+            }}><FormattedMessage id="composer.select-schedule-date"/></span>
           </Menu.Item>
           <Menu.Item key="removePerm">
             <LoginRequired {...this.props} requiredKeys={['active']}>
-              <span onClick={this.removePostingPerm}>Remove Posting Permission</span>
+              <span onClick={this.removePostingPerm}>{intl.formatMessage({id: 'composer.remove-posting-perm'})}</span>
             </LoginRequired>
           </Menu.Item>
         </Menu>
@@ -900,9 +901,7 @@ class Compose extends Component {
       scheduleMenu = (<Menu>
         <Menu.Item key="grantPerm">
           <LoginRequired {...this.props} requiredKeys={['active']}>
-          <span onClick={this.grantPostingPerm}>
-            Grant Posting Permission
-          </span>
+          <span onClick={this.grantPostingPerm}>{intl.formatMessage({id: 'composer.grant-posting-perm'})}</span>
           </LoginRequired>
         </Menu.Item>
       </Menu>)
@@ -931,14 +930,14 @@ class Compose extends Component {
             <div className="left-controls">
               <div className="reward">
               <span className="reward-label">
-                Reward
+                <FormattedMessage id="composer.reward"/>
               </span>
                 <Select style={{width: '180px'}} value={reward} onChange={(val) => {
                   this.setState({reward: val});
                 }}>
-                  <Select.Option key="default">Default 50% / 50%</Select.Option>
-                  <Select.Option key="sp">Power Up 100%</Select.Option>
-                  <Select.Option key="dp">Decline Payout</Select.Option>
+                  <Select.Option key="default">{intl.formatMessage({id: 'composer.reward-default'})}</Select.Option>
+                  <Select.Option key="sp">{intl.formatMessage({id: 'composer.reward-sp'})}</Select.Option>
+                  <Select.Option key="dp">{intl.formatMessage({id: 'composer.reward-dp'})}</Select.Option>
                 </Select>
               </div>
               <div className="voting">
@@ -946,10 +945,10 @@ class Compose extends Component {
                   this.setState({
                     upvote: e.target.checked,
                   });
-                }}>Upvote</Checkbox>
+                }}><FormattedMessage id="composer.upvote"/> </Checkbox>
               </div>
               <div className="clear">
-                <Button className="clean-button" onClick={this.clear}>Clear All</Button>
+                <Button className="clean-button" onClick={this.clear}><FormattedMessage id="composer.clear" /></Button>
               </div>
             </div>
             <div className="right-controls">
@@ -958,17 +957,16 @@ class Compose extends Component {
                 <LoginRequired {...this.props}>
                   <Button className="clean-button">
                     <i className="mi" style={{marginRight: '5px'}}>timer</i>
-                    Schedule
+                    <FormattedMessage id="composer.schedule" />
                   </Button>
                 </LoginRequired>
                 }
-
                 {activeAccount &&
                 <Dropdown overlay={scheduleMenu} trigger={['click']} disabled={permProcessing}>
                   <Button className="clean-button" loading={permProcessing}>
                     {!permProcessing &&
                     <i className="mi" style={{marginRight: '5px'}}>timer</i>
-                    } Schedule
+                    } <FormattedMessage id="composer.schedule" />
                   </Button>
                 </Dropdown>
                 }
@@ -977,14 +975,14 @@ class Compose extends Component {
               <div className="draft">
                 <LoginRequired {...this.props}>
                   <Button className="clean-button" disabled={!canPublish} onClick={this.saveDraft}>
-                    <i className="mi" style={{marginRight: '5px'}}>save</i> Save Draft
+                    <i className="mi" style={{marginRight: '5px'}}>save</i> <FormattedMessage id="composer.save-draft"/>
                   </Button>
                 </LoginRequired>
               </div>
               <div className="publish">
                 <LoginRequired {...this.props} requiredKeys={['posting']}>
                   <Button type="primary" disabled={!canPublish} onClick={this.publish} loading={posting}>
-                    Publish
+                    <FormattedMessage id="composer.publish"/>
                   </Button>
                 </LoginRequired>
               </div>
