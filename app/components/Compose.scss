@@ -22,11 +22,34 @@
 /* CodeMirror day theme */
 .cm-s-day.CodeMirror {
   background: transparent;
-  color: $steel-grey;
+
+  @include themify(day) {
+    color: $steel-grey;
+  }
+
+  @include themify(night) {
+    color: $pinkish-grey;
+  }
+}
+
+.CodeMirror-cursor {
+  @include themify(day) {
+    border-color: $steel-grey;
+  }
+
+  @include themify(night) {
+    border-color: $pinkish-grey;
+  }
 }
 
 .cm-s-day div.CodeMirror-selected {
-  background: lighten($powder-blue, 5);
+  @include themify(day) {
+    background: lighten($powder-blue, 5);
+  }
+
+  @include themify(night) {
+    background: $dark;
+  }
 }
 
 .cm-s-day span.cm-link {
@@ -76,7 +99,14 @@
 }
 
 .cm-s-day.CodeMirror pre.CodeMirror-placeholder {
-  color: lighten($steel-grey, 40);
+  @include themify(day) {
+    color: lighten($steel-grey, 40);
+  }
+
+  @include themify(night) {
+    color: $powder-blue;
+    opacity: 0.5;
+  }
 }
 
 .cm-s-day.CodeMirror .cm-matchhighlight {
@@ -84,7 +114,9 @@
 }
 
 .tag-select-options {
-  font-family: 'Roboto Mono', sans-serif;
+  .ant-select-dropdown-menu-item {
+    font-family: 'Roboto Mono', sans-serif;
+  }
 }
 
 .compose-page {
@@ -99,16 +131,23 @@
 
     .editor-toolbar {
       align-items: center;
-      background: $white-three;
       border-bottom-right-radius: 22px;
       border-top-right-radius: 22px;
       display: flex;
       height: 44px;
       margin-bottom: 34px;
       padding-left: 4px;
+
+      @include themify(day) {
+        background: $white-three;
+      }
+
+      @include themify(night) {
+        background: lighten($dark-six, 4);
+      }
+
       .editor-tool {
         align-items: center;
-        color: $steel-grey;
         cursor: pointer;
         display: flex;
         height: 100%;
@@ -116,8 +155,20 @@
         position: relative;
         width: 42px;
 
-        &:hover {
-          background: darken($white-three, 5);
+        @include themify(day) {
+          color: $steel-grey;
+
+          &:hover {
+            background: darken($white-three, 5);
+          }
+        }
+
+        @include themify(night) {
+          color: $pastel-blue;
+
+          &:hover {
+            background: darken($dark-six, 8);
+          }
         }
 
         .tool-icon {
@@ -125,7 +176,6 @@
         }
 
         .sub-tool-menu {
-          background: $white-three;
           border-bottom-left-radius: 10px;
           border-bottom-right-radius: 10px;
           display: none;
@@ -138,6 +188,14 @@
           z-index: 1;
           min-width: 100%;
 
+          @include themify(day) {
+            background: $white-three;
+          }
+
+          @include themify(night) {
+            background: lighten($dark-six, 4);
+          }
+
           .sub-tool-menu-item {
             padding: 3px;
 
@@ -147,7 +205,13 @@
             &:first-child {
             }
             &:hover {
-              background: darken($white-three, 5);
+              @include themify(day) {
+                background: darken($white-three, 5);
+              }
+
+              @include themify(night) {
+                background: lighten($dark-six, 8);
+              }
             }
           }
         }
@@ -160,10 +224,17 @@
       }
 
       .tool-separator {
-        background: $white-four;
         height: 24px;
         margin: 0 6px;
         width: 1px;
+
+        @include themify(day) {
+          background: $white-four;
+        }
+
+        @include themify(night) {
+          background: $dark-two;
+        }
       }
 
       user-select: none;
@@ -186,6 +257,14 @@
         font-family: 'Roboto Mono', sans-serif;
         font-size: 20px;
         font-weight: 700;
+
+        @include themify(day) {
+          color: $charcoal-grey;
+        }
+
+        @include themify(night) {
+          color: $powder-blue;
+        }
       }
     }
 
@@ -200,6 +279,7 @@
         .ant-select-selection {
           border: 0;
           color: $steel-grey;
+          background-color: transparent;
 
           ul {
             li {
@@ -232,10 +312,17 @@
 
     .preview-part-title {
       align-items: center;
-      border-bottom: 1px solid $white-four;
       display: flex;
       height: 44px;
       margin-bottom: 9px;
+
+      @include themify(day) {
+        border-bottom: 1px solid $white-four;
+      }
+
+      @include themify(night) {
+        border-bottom: 1px solid $dark-two;
+      }
 
       h2 {
         color: $dark-sky-blue;
@@ -246,20 +333,34 @@
     }
 
     .preview-content {
-      background: $white;
       border-radius: 8px;
       height: calc(100% - 53px);
       margin-right: 12px;
       padding: 26px 12px 4px 12px;
 
+      @include themify(day) {
+        background: $white;
+      }
+
+      @include themify(night) {
+        background: $dark-grey-blue;
+      }
+
       .preview-content-title {
-        color: $charcoal-grey;
         font-size: 24px;
         font-weight: 700;
         height: 40px;
         line-height: 1.4em;
         overflow: hidden;
         white-space: nowrap;
+
+        @include themify(day) {
+          color: $charcoal-grey;
+        }
+
+        @include themify(night) {
+          color: $powder-blue;
+        }
       }
 
       .preview-content-tags {

@@ -562,7 +562,6 @@ export class Editor extends Component {
             defaultValue={defaultValues.tags}
             value={tags}
             dropdownClassName="tag-select-options"
-            dropdownMenuStyle={{color: 'red'}}
           >
             {tagOptions}
           </Select>
