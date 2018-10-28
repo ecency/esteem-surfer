@@ -104,13 +104,18 @@
   }
 
   @include themify(night) {
-    color: $powder-blue;
-    opacity: 0.5;
+    color: #6b86ab; // same color with input placeholder
   }
 }
 
 .cm-s-day.CodeMirror .cm-matchhighlight {
-  background-color: $green2;
+  @include themify(day) {
+    background-color: $green2;
+  }
+
+  @include themify(night) {
+    background-color: $green1;
+  }
 }
 
 .tag-select-options {
@@ -164,7 +169,7 @@
         }
 
         @include themify(night) {
-          color: $pastel-blue;
+          color: $pinkish-grey;
 
           &:hover {
             background: darken($dark-six, 8);
@@ -370,13 +375,20 @@
         padding-top: 6px;
 
         .content-tag {
-          background-color: $silver;
           border-radius: 25px;
           color: $white;
           font-size: 12px;
           line-height: 1em;
           margin-right: 12px;
           padding: 2px 8px;
+
+          @include themify(day) {
+            background-color: $silver;
+          }
+
+          @include themify(night) {
+            background-color: $metallic-blue;
+          }
 
           &:first-child {
             background-color: $dark-sky-blue;
@@ -451,6 +463,11 @@
       }
 
       .publish {
+        .btn-publish:disabled {
+          @include themify(night) {
+            background: transparent;
+          }
+        }
       }
     }
   }

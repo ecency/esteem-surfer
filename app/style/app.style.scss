@@ -175,11 +175,24 @@ h2 {
   }
 
   blockquote {
-    color: $warm-grey;
-    // color: $textColorLighter;
     font-size: 18px;
-    padding-bottom: 4px;
-    padding-top: 4px;
+    padding-left: 10px;
+    border-left-width: 4px;
+    border-left-style: solid;
+
+    @include themify(day) {
+      color: $warm-grey;
+      border-left-color: lighten($warm-grey, 25);
+    }
+
+    @include themify(night) {
+      color: $dusky-blue-two;
+      border-left-color: darken($dusky-blue-two, 7);
+    }
+
+    p {
+      margin: 0;
+    }
   }
 
   p {
@@ -201,7 +214,6 @@ h2 {
 
   a {
     color: $dark-sky-blue !important;
-    //  color: $linkHoverColor !important;
   }
 
   hr {
@@ -222,35 +234,49 @@ h2 {
     thead {
       td,
       th {
-        background-color: darken($white-four, 5);
-        // background-color: darken($boxBg, 5);
+        @include themify(day) {
+          background-color: darken($white-four, 5);
+        }
+
+        @include themify(night) {
+          background-color: $metallic-blue;
+        }
       }
     }
 
     tbody {
       td,
       th {
-        background-color: $white-four;
+        @include themify(day) {
+          background-color: $white-four;
+        }
+
+        @include themify(night) {
+          background-color: lighten($metallic-blue, 10);
+        }
+
         // background-color: $boxBg;
       }
     }
   }
 
-  code {
-    background: rgba(210, 226, 238, 0.3);
-    color: $charcoal-grey;
-    // color: $textColor;
-  }
-
+  code,
   pre {
-    background: rgba(210, 226, 238, 0.3);
-    color: $charcoal-grey;
-    //   color: $textColor;
+    padding: 2px;
+    @include themify(day) {
+      background: rgba(210, 226, 238, 0.3);
+      color: $charcoal-grey;
+    }
+
+    @include themify(night) {
+      background: $powder-blue;
+      color: $charcoal-grey;
+    }
   }
 
   .phishy {
     display: inline;
-    color: red;
+    color: $red2;
   }
 
   .pull-left,
@@ -343,8 +369,4 @@ h2 {
   }
 
   overflow-wrap: break-word;
-}
-
-.surfer-drop-down {
-  background: red !important;
 }
