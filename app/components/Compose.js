@@ -835,7 +835,8 @@ class Compose extends Component {
 
   editorChanged = newValues => {
     if (this.changeTimer !== null) {
-      return;
+      this.changeTimer = null;
+      clearTimeout(this.changeTimer);
     }
 
     this.changeTimer = setTimeout(() => {
