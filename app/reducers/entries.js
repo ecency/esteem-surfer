@@ -38,7 +38,7 @@ export default function entries(state = defaultState, action) {
         const filter = path[2] || 'blog';
         const tag = path[1];
 
-        if (!['blog', 'comments', 'replies'].includes(filter)) {
+        if (!['blog', 'comments', 'replies', 'feed'].includes(filter)) {
           return state;
         }
 

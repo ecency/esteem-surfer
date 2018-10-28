@@ -1,6 +1,6 @@
-import { LOCATION_CHANGE } from 'react-router-redux';
+import {LOCATION_CHANGE} from 'react-router-redux';
 
-import { getItem } from '../helpers/storage';
+import {getItem} from '../helpers/storage';
 
 import {
   THEME_CHANGED,
@@ -44,22 +44,29 @@ export default function global(state = defaultState, action) {
         });
       }
 
+      if (path.length > 0 && path[1].startsWith('@') && path[2] === 'feed') {
+        return Object.assign({}, state, {
+          selectedFilter: 'feed',
+          selectedTag: path[1]
+        });
+      }
+
       return state;
     }
     case THEME_CHANGED: {
-      const { newTheme } = action.payload;
+      const {newTheme} = action.payload;
       return Object.assign({}, state, {
         theme: newTheme
       });
     }
     case LIST_STYLE_CHANGED: {
-      const { newStyle } = action.payload;
+      const {newStyle} = action.payload;
       return Object.assign({}, state, {
         listStyle: newStyle
       });
     }
     case CURRENCY_CHANGED: {
-      const { currency, currencyRate, currencySymbol } = action.payload;
+      const {currency, currencyRate, currencySymbol} = action.payload;
 
       return Object.assign({}, state, {
         currency,
@@ -68,28 +75,28 @@ export default function global(state = defaultState, action) {
       });
     }
     case LOCALE_CHANGED: {
-      const { locale } = action.payload;
+      const {locale} = action.payload;
 
       return Object.assign({}, state, {
         locale
       });
     }
     case PUSH_NOTIFY_CHANGED: {
-      const { val } = action.payload;
+      const {val} = action.payload;
 
       return Object.assign({}, state, {
         pushNotify: val
       });
     }
     case SERVER_CHANGED: {
-      const { server } = action.payload;
+      const {server} = action.payload;
 
       return Object.assign({}, state, {
         server
       });
     }
     case PIN_EXPOSED: {
-      const { pin } = action.payload;
+      const {pin} = action.payload;
 
       return Object.assign({}, state, {
         pin

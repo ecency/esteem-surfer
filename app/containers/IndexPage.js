@@ -1,22 +1,37 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import connect from "react-redux/es/connect/connect";
+
 import defaults from '../constants/defaults';
 
 class HomePage extends Component {
   componentWillMount() {
-    const { history } = this.props;
+    const {history} = this.props;
     history.push(`/${defaults.filter}`);
   }
 
   render() {
-    return <span />;
+    return <span/>;
   }
 }
+
+HomePage.defaultProps = {
+  activeAccount: null
+};
 
 HomePage.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
-  }).isRequired
+  }).isRequired,
+  activeAccount: PropTypes.instanceOf(Object)
 };
 
-export default HomePage;
+
+const mapStateToProps = state => ({
+  activeAccount: state.activeAccount
+});
+
+
+export default connect(
+  mapStateToProps
+)(HomePage);

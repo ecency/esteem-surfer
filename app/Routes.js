@@ -25,6 +25,7 @@ export default () => (
           <ComposePage timestamp={new Date().toString()} {...props} />
         )}
       />
+      <Route exact path="/@:username/feed" component={EntryIndexPage} />
       <Route exact path="/@:username" component={AccountPage} />
       <Route exact path="/@:username/:section" component={AccountPage} />
       <Route exact path="/:filter" component={EntryIndexPage} />

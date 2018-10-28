@@ -37,6 +37,15 @@ export function fetchEntries(what, tag = '', more = false) {
     if (tag.startsWith('@')) {
       const username = tag.replace('@', '');
       switch (what) {
+        case 'feed':
+          fn = getDiscussions;
+          query = {
+            tag: username,
+            limit: pageSize,
+            start_author: undefined,
+            start_permlink: undefined
+          };
+          break;
         case 'comments':
           fn = getDiscussions;
           query = {
@@ -102,6 +111,7 @@ export function fetchEntries(what, tag = '', more = false) {
         return resp;
       })
       .catch(e => {
+
         dispatch({
           type: FETCH_ERROR,
           payload: {group: groupKey, error: e}

@@ -19,7 +19,8 @@
     "filter-promoted": "Promoted",
     "filter-votes": "Votes",
     "filter-children": "Comments",
-    "filter-payout": "Payout"
+    "filter-payout": "Payout",
+    "filter-feed": "Feed"
   },
   "entry-payout": {
     "potential-payout": "Potential Payout",
