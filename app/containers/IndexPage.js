@@ -1,17 +1,23 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import connect from "react-redux/es/connect/connect";
+import connect from 'react-redux/es/connect/connect';
 
 import defaults from '../constants/defaults';
 
 class HomePage extends Component {
   componentWillMount() {
-    const {history} = this.props;
+    const { history, activeAccount } = this.props;
+
+    if (activeAccount) {
+      history.push(`/@${activeAccount.username}/feed`);
+      return;
+    }
+
     history.push(`/${defaults.filter}`);
   }
 
   render() {
-    return <span/>;
+    return <span />;
   }
 }
 
@@ -26,12 +32,8 @@ HomePage.propTypes = {
   activeAccount: PropTypes.instanceOf(Object)
 };
 
-
 const mapStateToProps = state => ({
   activeAccount: state.activeAccount
 });
 
-
-export default connect(
-  mapStateToProps
-)(HomePage);
+export default connect(mapStateToProps)(HomePage);
