@@ -1,10 +1,10 @@
-import {Client, PrivateKey} from 'dsteem';
+import { Client, PrivateKey } from 'dsteem';
 
 import sc2 from 'sc2-sdk';
 
-import {scAppAuth, scAppRevoke} from '../helpers/sc';
+import { scAppAuth, scAppRevoke } from '../helpers/sc';
 
-import {decryptKey} from '../utils/crypto';
+import { decryptKey } from '../utils/crypto';
 
 let client = new Client('https://api.steemit.com');
 
@@ -15,9 +15,12 @@ export const setAddress = address => {
 export const getDiscussions = (what, query) =>
   client.database.getDiscussions(what, query);
 
-export const getRepliesByLastUpdate = (query) =>
-  client.database.call('get_replies_by_last_update', [query.start_author, query.start_permlink, query.limit]);
-
+export const getRepliesByLastUpdate = query =>
+  client.database.call('get_replies_by_last_update', [
+    query.start_author,
+    query.start_permlink,
+    query.limit
+  ]);
 
 export const getDynamicGlobalProperties = () =>
   client.database.getDynamicGlobalProperties();
@@ -35,7 +38,7 @@ export const getAccounts = usernames => client.database.getAccounts(usernames);
 export const getAccount = username =>
   client.database.getAccounts([username]).then(resp => resp[0]);
 
-export const getState = (path) => client.database.getState(path);
+export const getState = path => client.database.getState(path);
 
 export const getFollowCount = username =>
   client.database.call('get_follow_count', [username]);
@@ -54,7 +57,7 @@ export const getFollowing = (
   ]);
 
 export const getAccountRC = username =>
-  client.call('rc_api', 'find_rc_accounts', {accounts: [username]});
+  client.call('rc_api', 'find_rc_accounts', { accounts: [username] });
 
 export const vote = (account, pin, author, permlink, weight) => {
   if (account.type === 's') {
@@ -189,30 +192,36 @@ export const ignore = (account, pin, following) => {
   }
 };
 
-
 export const revokePostingPermission = (account, pin) => {
   if (account.type === 's') {
     const key = decryptKey(account.keys.active, pin);
     const privateKey = PrivateKey.fromString(key);
 
-    const {accountData} = account;
+    const { accountData } = account;
 
     const newPosting = Object.assign(
       {},
-      {...accountData.posting},
-      {account_auths: accountData.posting.account_auths.filter(x => x[0] !== 'esteemapp')}
+      { ...accountData.posting },
+      {
+        account_auths: accountData.posting.account_auths.filter(
+          x => x[0] !== 'esteemapp'
+        )
+      }
     );
 
-    return client.broadcast.updateAccount({
-      account: account.username,
-      posting: newPosting,
-      memo_key: accountData.memo_key,
-      json_metadata: accountData.json_metadata,
-    }, privateKey);
+    return client.broadcast.updateAccount(
+      {
+        account: account.username,
+        posting: newPosting,
+        memo_key: accountData.memo_key,
+        json_metadata: accountData.json_metadata
+      },
+      privateKey
+    );
   }
 
   if (account.type === 'sc') {
-    return scAppRevoke()
+    return scAppRevoke();
   }
 };
 
@@ -221,43 +230,64 @@ export const grantPostingPermission = (account, pin) => {
     const key = decryptKey(account.keys.active, pin);
     const privateKey = PrivateKey.fromString(key);
 
-    const {accountData} = account;
+    const { accountData } = account;
 
     const newPosting = Object.assign(
       {},
-      {...accountData.posting},
-      {account_auths: [...accountData.posting.account_auths, ['esteemapp', accountData.posting.weight_threshold]]}
+      { ...accountData.posting },
+      {
+        account_auths: [
+          ...accountData.posting.account_auths,
+          ['esteemapp', accountData.posting.weight_threshold]
+        ]
+      }
     );
 
-    return client.broadcast.updateAccount({
-      account: account.username,
-      posting: newPosting,
-      active: undefined,
-      memo_key: accountData.memo_key,
-      json_metadata: accountData.json_metadata,
-    }, privateKey);
+    return client.broadcast.updateAccount(
+      {
+        account: account.username,
+        posting: newPosting,
+        active: undefined,
+        memo_key: accountData.memo_key,
+        json_metadata: accountData.json_metadata
+      },
+      privateKey
+    );
   }
 
   if (account.type === 'sc') {
-    return scAppAuth()
+    return scAppAuth();
   }
 };
 
-export const comment = (account, pin, parentAuthor, parentPermlink, permlink, title, body, jsonMetadata, options, voteWeight) => {
-
-  const {username: author} = account;
+export const comment = (
+  account,
+  pin,
+  parentAuthor,
+  parentPermlink,
+  permlink,
+  title,
+  body,
+  jsonMetadata,
+  options,
+  voteWeight
+) => {
+  const { username: author } = account;
 
   if (account.type === 's') {
     const opArray = [
-      ['comment', {
-        parent_author: parentAuthor,
-        parent_permlink: parentPermlink,
-        author,
-        permlink,
-        title,
-        body,
-        json_metadata: JSON.stringify(jsonMetadata)
-      }]
+      [
+        'comment',
+        {
+          parent_author: parentAuthor,
+          parent_permlink: parentPermlink,
+          author,
+          permlink,
+          title,
+          body,
+          json_metadata: JSON.stringify(jsonMetadata)
+        }
+      ]
     ];
 
     if (options) {
@@ -266,18 +296,60 @@ export const comment = (account, pin, parentAuthor, parentPermlink, permlink, ti
     }
 
     if (voteWeight) {
-      const e = ['vote', {
-        voter: author,
-        author,
-        permlink,
-        weight: voteWeight
-      }];
+      const e = [
+        'vote',
+        {
+          voter: author,
+          author,
+          permlink,
+          weight: voteWeight
+        }
+      ];
       opArray.push(e);
     }
 
-    const key = decryptKey(account.keys.active, pin);
+    const key = decryptKey(account.keys.posting, pin);
     const privateKey = PrivateKey.fromString(key);
 
     return client.broadcast.sendOperations(opArray, privateKey);
+  }
+
+  if (account.type === 'sc') {
+    const token = decryptKey(account.accessToken, pin);
+    const api = sc2.Initialize({
+      accessToken: token
+    });
+
+    const params = {
+      parent_author: parentAuthor,
+      parent_permlink: parentPermlink,
+      author,
+      permlink,
+      title,
+      body,
+      json_metadata: JSON.stringify(jsonMetadata)
+    };
+
+    const opArray = [['comment', params]];
+
+    if (options) {
+      const e = ['comment_options', options];
+      opArray.push(e);
+    }
+
+    if (voteWeight) {
+      const e = [
+        'vote',
+        {
+          voter: author,
+          author,
+          permlink,
+          weight: voteWeight
+        }
+      ];
+      opArray.push(e);
+    }
+
+    return api.broadcast(opArray);
   }
 };

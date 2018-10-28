@@ -187,7 +187,8 @@
     "posting-perm-removed": "Posting permission removed",
     "save-draft": "Save Draft",
     "draft-saved": "Draft saved",
-    "publish": "Publish"
+    "publish": "Publish",
+    "published": "Post Published"
   },
   "gallery": {
     "title": "Gallery",

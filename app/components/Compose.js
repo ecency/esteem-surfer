@@ -920,7 +920,7 @@ class Compose extends Component {
   };
 
   publish = () => {
-    const { activeAccount, global } = this.props;
+    const { activeAccount, global, intl } = this.props;
     const { title, tags, body, reward, upvote } = this.state;
 
     this.setState({ posting: true });
@@ -947,7 +947,7 @@ class Compose extends Component {
       voteWeight
     )
       .then(resp => {
-        console.log(resp);
+        message.success(intl.formatMessage({ id: 'composer.published' }));
         return resp;
       })
       .catch(err => {
