@@ -1,9 +1,10 @@
 import { encryptKey } from '../utils/crypto';
-import { setItem, removeItem } from '../helpers/storage';
+import { setItem, removeItem, getByPrefix } from '../helpers/storage';
 
 export const ACCOUNT_ADDED = 'accounts/ACCOUNT_ADDED';
 export const ACCOUNT_ADDED_SC = 'accounts/ACCOUNT_SC_ADDED';
 export const ACCOUNT_DELETED = 'accounts/ACCOUNT_DELETED';
+export const ACCOUNTS_DELETED = 'accounts/ACCOUNTS_DELETED';
 
 export const addAccount = (username, keys) => (dispatch, getState) => {
   const { global } = getState();
@@ -57,7 +58,15 @@ export const deleteAccount = username => (dispatch, getState) => {
     setItem(`active_account`, null);
   }
 
-  accountDeleted(username);
+  dispatch(accountDeleted(username));
+};
+
+export const deleteAccounts = () => dispatch => {
+  getByPrefix('account_').forEach(ac => {
+    removeItem(`account_${ac.username}`);
+  });
+
+  dispatch(accountsDeleted());
 };
 
 /* action creators */
@@ -75,4 +84,9 @@ export const accountAddedSc = username => ({
 export const accountDeleted = username => ({
   type: ACCOUNT_DELETED,
   payload: { username }
+});
+
+export const accountsDeleted = () => ({
+  type: ACCOUNTS_DELETED,
+  payload: {}
 });
