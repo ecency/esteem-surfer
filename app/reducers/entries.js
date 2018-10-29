@@ -1,10 +1,11 @@
-import {Record, Map, OrderedMap} from 'immutable';
-import {LOCATION_CHANGE} from 'react-router-redux';
+import { Record, Map, OrderedMap } from 'immutable';
+import { LOCATION_CHANGE } from 'react-router-redux';
 import {
   FETCH_BEGIN,
   FETCH_OK,
   FETCH_ERROR,
   INVALIDATE,
+  UPDATE_ENTRY,
   makeGroupKeyForEntries
 } from '../actions/entries';
 
@@ -58,7 +59,7 @@ export default function entries(state = defaultState, action) {
         .setIn([groupKey, 'loading'], true);
     }
     case FETCH_OK: {
-      const {group: groupKey, data: newEntries, hasMore} = action.payload;
+      const { group: groupKey, data: newEntries, hasMore } = action.payload;
 
       let newState = state
         .setIn([groupKey, 'err'], null)
@@ -88,6 +89,18 @@ export default function entries(state = defaultState, action) {
         .setIn([groupKey, 'entries'], OrderedMap({}))
         .setIn([groupKey, 'err'], null)
         .setIn([groupKey, 'loading'], false);
+    }
+    case UPDATE_ENTRY: {
+      const { id, data } = action.payload;
+      let newState = state.asImmutable();
+
+      newState.keySeq().forEach(groupKey => {
+        if (newState.hasIn([groupKey, 'entries', `${id}`])) {
+          newState = newState.setIn([groupKey, 'entries', `${id}`], data);
+        }
+      });
+
+      return newState;
     }
     default:
       return state;

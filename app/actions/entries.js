@@ -1,4 +1,7 @@
-import {getDiscussions, getRepliesByLastUpdate} from '../backend/steem-client';
+import {
+  getDiscussions,
+  getRepliesByLastUpdate
+} from '../backend/steem-client';
 
 export const FETCH_BEGIN = 'entries/FETCH_BEGIN';
 export const FETCH_OK = 'entries/FETCH_OK';
@@ -6,6 +9,7 @@ export const FETCH_ERROR = 'entries/FETCH_ERROR';
 export const INVALIDATE = 'entries/INVALIDATE';
 export const SET_READ = 'entries/SET_READ';
 export const SET_VOTED = 'entries/SET_VOTED';
+export const UPDATE_ENTRY = 'entries/UPDATE';
 
 export const makeGroupKeyForEntries = (what, tag = '') => {
   if (tag) {
@@ -16,11 +20,10 @@ export const makeGroupKeyForEntries = (what, tag = '') => {
 
 export function fetchEntries(what, tag = '', more = false) {
   return (dispatch, getState) => {
-    const {entries} = getState();
+    const { entries } = getState();
     const pageSize = 20;
 
     const groupKey = makeGroupKeyForEntries(what, tag);
-
 
     if (!more && entries.getIn([groupKey, 'entries']).size) {
       return;
@@ -91,14 +94,13 @@ export function fetchEntries(what, tag = '', more = false) {
 
     dispatch({
       type: FETCH_BEGIN,
-      payload: {group: groupKey}
+      payload: { group: groupKey }
     });
 
     const fnArgs = what === 'replies' ? [query] : [what, query];
 
     fn(...fnArgs)
       .then(resp => {
-
         dispatch({
           type: FETCH_OK,
           payload: {
@@ -111,12 +113,20 @@ export function fetchEntries(what, tag = '', more = false) {
         return resp;
       })
       .catch(e => {
-
         dispatch({
           type: FETCH_ERROR,
-          payload: {group: groupKey, error: e}
+          payload: { group: groupKey, error: e }
         });
       });
+  };
+}
+
+export function updateEntry(entryId, newData) {
+  return dispatch => {
+    dispatch({
+      type: UPDATE_ENTRY,
+      payload: { id: entryId, data: newData }
+    });
   };
 }
 
@@ -126,7 +136,7 @@ export function invalidateEntries(what, tag = '') {
 
     dispatch({
       type: INVALIDATE,
-      payload: {group: groupKey}
+      payload: { group: groupKey }
     });
   };
 }

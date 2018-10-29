@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { Slider, Popover, message } from 'antd';
 import parseToken from '../../utils/parse-token';
 import { vestsToRshares } from '../../utils/conversions';
-import { getVotingPercentage, setVotingPercentage } from '../../helpers/storage';
+import {
+  getVotingPercentage,
+  setVotingPercentage
+} from '../../helpers/storage';
 
 import { getActiveVotes, vote } from '../../backend/steem-client';
 
@@ -59,6 +62,7 @@ class EntryVoteBtn extends Component {
       return false;
     }
 
+    const { actions } = this.props;
     const { voted, voting } = this.state;
 
     if (voting) {
@@ -68,7 +72,7 @@ class EntryVoteBtn extends Component {
     const { global, activeAccount, entry } = this.props;
     const { pin } = global;
     const { username } = activeAccount;
-    const { author, permlink } = entry;
+    const { author, permlink, id } = entry;
 
     let weight = 0;
 
@@ -87,6 +91,11 @@ class EntryVoteBtn extends Component {
       const votes = await getActiveVotes(author, permlink);
       const votedAfter = votes.some(v => v.voter === username && v.percent > 0);
       this.setState({ voting: false, voted: votedAfter });
+
+      actions.updateEntry(
+        id,
+        Object.assign({}, entry, { active_votes: votes })
+      );
     }
   };
 
@@ -210,8 +219,12 @@ EntryVoteBtn.propTypes = {
   dynamicProps: PropTypes.instanceOf(Object).isRequired,
   activeAccount: PropTypes.instanceOf(Object),
   entry: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     author: PropTypes.string.isRequired,
     permlink: PropTypes.string.isRequired
+  }).isRequired,
+  actions: PropTypes.shape({
+    updateEntry: PropTypes.func.isRequired
   }).isRequired
 };
 
