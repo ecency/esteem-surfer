@@ -15,6 +15,7 @@ import EntryVoteBtn from './EntryVoteBtn';
 import QuickProfile from '../helpers/QuickProfile';
 import FormattedCurrency from './FormattedCurrency';
 import AccountLink from '../helpers/AccountLink';
+import EntryLink from '../helpers/EntryLink';
 
 import catchEntryImage from '../../utils/catch-entry-image';
 import authorReputation from '../../utils/author-reputation';
@@ -131,7 +132,7 @@ class EntryListItem extends Component {
             />
           </div>
           <div className="item-summary">
-            <div className="item-title">{title}</div>
+            <EntryLink {...this.props} entry={entry}><div className="item-title">{title}</div></EntryLink>
             <div className="item-body">{summary}</div>
           </div>
           <div className="item-controls">
