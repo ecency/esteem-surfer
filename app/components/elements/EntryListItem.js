@@ -2,11 +2,11 @@
 eslint-disable import/no-cycle
 */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import PropTypes from 'prop-types';
 
-import { FormattedRelative, FormattedMessage } from 'react-intl';
+import {FormattedRelative, FormattedMessage} from 'react-intl';
 
 import UserAvatar from './UserAvatar';
 import EntryPayout from './EntryPayout';
@@ -16,6 +16,7 @@ import QuickProfile from '../helpers/QuickProfile';
 import FormattedCurrency from './FormattedCurrency';
 import AccountLink from '../helpers/AccountLink';
 import EntryLink from '../helpers/EntryLink';
+import EntryTag from './EntryTag';
 
 import catchEntryImage from '../../utils/catch-entry-image';
 import authorReputation from '../../utils/author-reputation';
@@ -26,21 +27,9 @@ import appName from '../../utils/app-name';
 import parseToken from '../../utils/parse-token';
 
 class EntryListItem extends Component {
-  parentClicked = parent => {
-    const { global, location, history } = this.props;
-    const { selectedFilter } = global;
-    const newLoc = `/${selectedFilter}/${parent}`;
-
-    if (location.pathname === newLoc) {
-      document.querySelector('#app-content').scrollTop = 0;
-      return;
-    }
-
-    history.push(newLoc);
-  };
 
   render() {
-    const { entry, inDrawer, asAuthor } = this.props;
+    const {entry, inDrawer, asAuthor} = this.props;
 
     const img = catchEntryImage(entry) || 'img/noimage.png';
     const reputation = authorReputation(entry.author_reputation);
@@ -73,7 +62,7 @@ class EntryListItem extends Component {
             <AccountLink {...this.props} username={entry.author}>
               <div className="author-part">
                 <div className="author-avatar">
-                  <UserAvatar user={entry.author} size="small" />
+                  <UserAvatar user={entry.author} size="small"/>
                 </div>
                 <div className="author">
                   {entry.author}{' '}
@@ -91,7 +80,7 @@ class EntryListItem extends Component {
             >
               <div className="author-part">
                 <div className="author-avatar">
-                  <UserAvatar user={entry.author} size="small" />
+                  <UserAvatar user={entry.author} size="small"/>
                 </div>
                 <div className="author">
                   {entry.author}{' '}
@@ -100,54 +89,58 @@ class EntryListItem extends Component {
               </div>
             </QuickProfile>
           )}
-
-          <a
-            className="category"
-            role="none"
-            onClick={() => this.parentClicked(entry.parent_permlink)}
-          >
-            {entry.category}
-          </a>
-          <span className="read-mark" />
+          <EntryTag {...this.props} tag={entry.category}>
+            <a
+              className="category"
+              role="none"
+            >
+              {entry.category}
+            </a>
+          </EntryTag>
+          <span className="read-mark"/>
           <span className="date">
-            <FormattedRelative value={created} initialNow={Date.now()} />
+            <FormattedRelative value={created} initialNow={Date.now()}/>
           </span>
           {asAuthor &&
-            !isChild &&
-            entry.author !== asAuthor && (
-              <span className="reblogged">
+          !isChild &&
+          entry.author !== asAuthor && (
+            <span className="reblogged">
                 <i className="mi">repeat</i>{' '}
-                <FormattedMessage id="entry-list-item.reblogged" />
+              <FormattedMessage id="entry-list-item.reblogged"/>
               </span>
-            )}
+          )}
         </div>
         <div className="item-body">
           <div className="item-image">
             <EntryLink {...this.props} entry={entry}>
-            <img
-              src={img}
-              alt=""
-              onError={e => {
-                e.target.src = 'img/fallback.png';
-              }}
-            />
+              <img
+                src={img}
+                alt=""
+                onError={e => {
+                  e.target.src = 'img/fallback.png';
+                }}
+              />
             </EntryLink>
           </div>
           <div className="item-summary">
-            <EntryLink {...this.props} entry={entry}><div className="item-title">{title}</div></EntryLink>
-            <EntryLink {...this.props} entry={entry}><div className="item-body">{summary}</div></EntryLink>
+            <EntryLink {...this.props} entry={entry}>
+              <div className="item-title">{title}</div>
+            </EntryLink>
+            <EntryLink {...this.props} entry={entry}>
+              <div className="item-body">{summary}</div>
+            </EntryLink>
           </div>
           <div className="item-controls">
             <div className="voting">
-              <EntryVoteBtn {...this.props} entry={entry} />
+              <EntryVoteBtn {...this.props} entry={entry}/>
             </div>
             <EntryPayout {...this.props} entry={entry}>
               <a
                 className={`total-payout ${
                   isPayoutDeclined ? 'payout-declined' : ''
-                }`}
+                  }`}
               >
-                <FormattedCurrency {...this.props} value={totalPayout} />
+                <FormattedCurrency {...this.props} value={totalPayout}/>
               </a>
             </EntryPayout>
             <EntryVotes {...this.props} entry={entry}>

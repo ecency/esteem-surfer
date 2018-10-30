@@ -16,6 +16,7 @@ import parseDate from "../utils/parse-date";
 import markDown2Html from '../utils/markdown-2-html';
 import QuickProfile from "./helpers/QuickProfile";
 import appName from "../utils/app-name";
+import EntryTag from './elements/EntryTag';
 
 class Entry extends Component {
   constructor(props) {
@@ -130,13 +131,12 @@ class Entry extends Component {
                     </div>
                   </div>
                 </QuickProfile>
-                <a
-                  className="category"
-                  role="none"
-                  onClick={() => this.parentClicked(entry.parent_permlink)}
-                >
-                  {entry.category}
-                </a>
+                <EntryTag {...this.props} tag={entry.category}>
+                  <a
+                    className="category"
+                    role="none"
+                  >{entry.category}</a>
+                </EntryTag>
                 <span className="separator"/>
                 <span className="date">
                   <FormattedRelative value={created} initialNow={Date.now()}/>
@@ -147,9 +147,11 @@ class Entry extends Component {
             <div className="entry-footer">
               <div className="entry-tags">
                 {tags.map(t => (
-                  <div key={t} className="entry-tag">
-                    {t}
-                  </div>
+                  <EntryTag {...this.props} tag={t}>
+                    <div key={t} className="entry-tag">
+                      {t}
+                    </div>
+                  </EntryTag>
                 ))}
               </div>
               <div className="entry-info">
