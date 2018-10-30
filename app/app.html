@@ -28,14 +28,59 @@
 
     </script>
     <script>
-      // Event handler for external links
+      // Custom link handler for external links
       const shell = require('electron').shell;
       document.addEventListener('click', function (event) {
-        const el = event.target;
-        if (el.tagName === 'A' && el.getAttribute('target') === '_external') {
-          let href = el.getAttribute('href');
+
+        // A element can be wrapped with inline element. Look parent element.
+        let el = event.target.tagName === 'A' ? event.target : event.target.parentNode;
+
+        if (el.tagName !== 'A') {
+          return;
+        }
+
+        if (el.getAttribute('target') === '_external') {
+          const href = el.getAttribute('href');
           shell.openExternal(href);
           event.preventDefault();
+          return false;
+        }
+
+        if (el.classList.contains('markdown-external-link')) {
+          const href = el.getAttribute('data-href');
+          shell.openExternal(href);
+          event.preventDefault();
+          return false;
+        }
+
+        if (el.classList.contains('markdown-author-link')) {
+          event.preventDefault();
+
+          const author = el.getAttribute('data-author');
+          const ev = new CustomEvent('md-author-clicked', {detail: {author}});
+          window.dispatchEvent(ev);
+          return false;
+        }
+
+        if (el.classList.contains('markdown-post-link')) {
+          event.preventDefault();
+
+          let category = el.getAttribute('data-tag');
+          let author = el.getAttribute('data-author');
+          let permlink = el.getAttribute('data-permlink');
+          const ev = new CustomEvent('md-post-clicked', {detail: {category, author, permlink}});
+          window.dispatchEvent(ev);
+          return false;
+        }
+
+
+        if (el.classList.contains('markdown-tag-link')) {
+          event.preventDefault();
+
+          let tag = el.getAttribute('data-tag');
+
+          const ev = new CustomEvent('md-tag-clicked', {detail: {tag}});
+          window.dispatchEvent(ev);
           return false;
         }
       });

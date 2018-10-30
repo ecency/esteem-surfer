@@ -123,6 +123,7 @@ class EntryListItem extends Component {
         </div>
         <div className="item-body">
           <div className="item-image">
+            <EntryLink {...this.props} entry={entry}>
             <img
               src={img}
               alt=""
@@ -130,10 +131,11 @@ class EntryListItem extends Component {
                 e.target.src = 'img/fallback.png';
               }}
             />
+            </EntryLink>
           </div>
           <div className="item-summary">
             <EntryLink {...this.props} entry={entry}><div className="item-title">{title}</div></EntryLink>
-            <div className="item-body">{summary}</div>
+            <EntryLink {...this.props} entry={entry}><div className="item-body">{summary}</div></EntryLink>
           </div>
           <div className="item-controls">
             <div className="voting">

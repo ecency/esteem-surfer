@@ -1,0 +1,115 @@
+@import '../style/mixins';
+@import '../style/colors';
+
+.entry-page {
+  overflow-y: auto;
+
+  .the-entry {
+    margin: auto;
+    width: 700px;
+
+    @media (min-width: 1200px) {
+      width: 800px;
+    }
+
+    .entry-header {
+      border-bottom: 1px solid $white-four;
+      margin-bottom: 15px;
+
+      h1.entry-title {
+        font-size: 32px;
+        margin: 16px 0 22px 0;
+
+        @include themify(day) {
+          color: $charcoal-grey;
+        }
+
+        @include themify(night) {
+          color: $pinkish-grey;
+        }
+      }
+
+      .entry-info {
+        margin-bottom: 15px;
+
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        font-size: 18px;
+        line-height: 100%;
+        height: 40px;
+
+        .author-avatar {
+          margin-right: 12px;
+        }
+
+        .author {
+          font-weight: 700;
+          margin-right: 12px;
+
+          @include themify(day) {
+            color: $charcoal-grey;
+          }
+
+          @include themify(night) {
+            color: $pinkish-grey;
+          }
+
+          .author-reputation {
+            color: $steel-grey;
+            font-size: 12px;
+            font-weight: 500;
+
+            &::before {
+              content: '(';
+            }
+
+            &::after {
+              content: ')';
+            }
+          }
+        }
+
+        .category {
+          border-radius: 25px;
+          flex-shrink: 0;
+          margin-right: 12px;
+          padding: 0 8px;
+          transition: 0.5s;
+
+          font-size: 12px;
+
+          @include themify(day) {
+            background-color: $silver;
+            color: $white;
+          }
+
+          @include themify(night) {
+            background-color: $dark-grey-blue;
+            color: $silver;
+          }
+
+          &:hover {
+            @include themify(day) {
+              background-color: darken($silver, 10);
+            }
+
+            @include themify(night) {
+              background-color: lighten($dark-grey-blue, 10);
+            }
+          }
+        }
+
+        .date {
+          color: $steel-grey;
+          flex-shrink: 0;
+        }
+      }
+    }
+
+    .entry-body {
+      padding: 0 0 2rem 0;
+    }
+  }
+}
