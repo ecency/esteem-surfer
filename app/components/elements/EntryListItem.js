@@ -31,7 +31,7 @@ class EntryListItem extends Component {
   render() {
     const {entry, inDrawer, asAuthor} = this.props;
 
-    const img = catchEntryImage(entry) || 'img/noimage.png';
+    const img = catchEntryImage(entry, 130, 80) || 'img/noimage.png';
     const reputation = authorReputation(entry.author_reputation);
     const created = parseDate(entry.created);
     const summary = entryBodySummary(entry.body, 200);

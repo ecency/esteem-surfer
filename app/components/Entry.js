@@ -53,15 +53,25 @@ class Entry extends Component {
   }
 
   mdAuthorClicked = (e) => {
-    console.log(e.detail.author);
+    const {history} = this.props;
+    const {author} = e.detail;
+
+    history.push(`/@${author}`);
   };
 
   mdEntryClicked = (e) => {
+
+
     console.log(e.detail.category, e.detail.author, e.detail.permlink);
   };
 
   mdTagClicked = (e) => {
-    console.log(e.detail.tag);
+
+    const {global} = this.props;
+    const {selectedFilter} = global;
+
+    console.log(selectedFilter)
+    // console.log(e.detail.tag);
   };
 
 
@@ -168,7 +178,6 @@ class Entry extends Component {
                   </EntryTag>
                 ))}
               </div>
-
               <div className="entry-info">
                 <div className="left-side">
                   <div className="date">
@@ -200,9 +209,6 @@ class Entry extends Component {
                   <div className="comments-count"><i className="mi">comment</i>{entry.children}</div>
                 </div>
               </div>
-
-
-
               <div className="entry-controls">
                 <div className="voting">
                   <EntryVoteBtn {...this.props} entry={entry}/>
@@ -222,38 +228,12 @@ class Entry extends Component {
                     {voteCount}
                   </a>
                 </EntryVotes>
-
-
               </div>
-
-
-
-
             </div>
           </div>
           }
         </div>
         <AppFooter {...this.props} />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <ScrollReplace {...this.props} selector="#app-content"/>
       </div>
     )
@@ -268,8 +248,12 @@ Entry.defaultProps = {
 
 Entry.propTypes = {
   match: PropTypes.instanceOf(Object).isRequired,
+  history: PropTypes.instanceOf(Object).isRequired,
   activeAccount: PropTypes.instanceOf(Object),
   visitingEntry: PropTypes.instanceOf(Object),
+  global: PropTypes.shape({
+    selectedFilter: PropTypes.string.isRequired
+  }).isRequired,
 };
 
 export default injectIntl(Entry);
