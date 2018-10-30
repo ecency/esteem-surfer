@@ -13,8 +13,15 @@
     }
 
     .entry-header {
-      border-bottom: 1px solid $white-four;
       margin-bottom: 15px;
+
+      @include themify(day) {
+        border-bottom: 1px solid $white-four;
+      }
+
+      @include themify(night) {
+        border-bottom: 1px solid $dark-two;
+      }
 
       h1.entry-title {
         font-size: 32px;
@@ -30,86 +37,272 @@
       }
 
       .entry-info {
-        margin-bottom: 15px;
-
         align-items: center;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         font-size: 18px;
-        line-height: 100%;
         height: 40px;
+        line-height: 100%;
+        margin-bottom: 15px;
 
-        .author-avatar {
-          margin-right: 12px;
+        @include themify(day) {
+          color: $steel-grey;
         }
 
-        .author {
-          font-weight: 700;
-          margin-right: 12px;
+        @include themify(night) {
+          color: $pinkish-grey;
+        }
 
-          @include themify(day) {
-            color: $charcoal-grey;
+        .author-part {
+          align-items: center;
+          cursor: pointer;
+          display: flex;
+          margin-right: 10px;
+
+          .author-avatar {
+            margin-right: 6px;
           }
 
-          @include themify(night) {
-            color: $pinkish-grey;
-          }
+          .author {
+            align-items: center;
+            display: inline-flex;
 
-          .author-reputation {
-            color: $steel-grey;
-            font-size: 12px;
-            font-weight: 500;
-
-            &::before {
-              content: '(';
+            .author-name {
+              font-weight: 700;
+              margin-right: 2px;
             }
 
-            &::after {
-              content: ')';
+            @include themify(day) {
+              color: $charcoal-grey;
+            }
+
+            @include themify(night) {
+              color: $pinkish-grey;
+            }
+
+            .author-reputation {
+              color: $steel-grey;
+              font-size: 14px;
+              font-weight: 500;
+
+              &::before {
+                content: '(';
+              }
+
+              &::after {
+                content: ')';
+              }
             }
           }
         }
 
         .category {
+          background-color: $dark-sky-blue;
           border-radius: 25px;
+          color: $white;
           flex-shrink: 0;
+          font-size: 14px;
           margin-right: 12px;
-          padding: 0 8px;
+          padding: 2px 8px;
           transition: 0.5s;
-
-          font-size: 12px;
-
-          @include themify(day) {
-            background-color: $silver;
-            color: $white;
-          }
-
-          @include themify(night) {
-            background-color: $dark-grey-blue;
-            color: $silver;
-          }
 
           &:hover {
             @include themify(day) {
-              background-color: darken($silver, 10);
+              background-color: lighten($dark-sky-blue, 10);
             }
 
             @include themify(night) {
-              background-color: lighten($dark-grey-blue, 10);
+              background-color: darken($dark-sky-blue, 10);
             }
           }
         }
 
+        .separator {
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          margin-right: 12px;
+
+          @include themify(day) {
+            background: $steel-grey;
+          }
+
+          @include themify(night) {
+            background: $pinkish-grey;
+          }
+        }
+
         .date {
-          color: $steel-grey;
-          flex-shrink: 0;
         }
       }
     }
 
     .entry-body {
-      padding: 0 0 2rem 0;
+      @include clearfix();
+      padding: 0 0 2em 0;
+    }
+
+    .entry-footer {
+      @include clearfix();
+
+      .entry-tags {
+        align-items: flex-start;
+        display: flex;
+        margin-bottom: 20px;
+
+        .entry-tag {
+          border-radius: 25px;
+          color: $white;
+          font-size: 16px;
+          line-height: 1em;
+          margin-right: 12px;
+          padding: 4px 12px;
+
+          @include themify(day) {
+            background-color: $silver;
+          }
+
+          @include themify(night) {
+            background-color: $metallic-blue;
+          }
+
+          &:first-child {
+            background-color: $dark-sky-blue;
+          }
+        }
+      }
+
+      .entry-info {
+        @include clearfix();
+
+        color: $steel-grey;
+        font-size: 16px;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+
+        @include themify(day) {
+          border-bottom: 1px solid $white-four;
+          color: $steel-grey;
+        }
+
+        @include themify(night) {
+          border-bottom: 1px solid $dark-two;
+          color: $pinkish-grey;
+        }
+
+        .left-side,
+        .right-side {
+          align-items: center;
+          display: flex;
+        }
+
+        .left-side {
+          float: left;
+          width: 70%;
+
+          .separator {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            margin-right: 12px;
+
+            @include themify(day) {
+              background: lighten($steel-grey, 30);
+            }
+
+            @include themify(night) {
+              background: $pinkish-grey;
+            }
+          }
+
+          .date {
+            align-items: center;
+            display: inline-flex;
+            margin-right: 12px;
+            .mi {
+              margin-right: 2px;
+            }
+          }
+
+          .author {
+            align-items: center;
+            display: inline-flex;
+            font-weight: 700;
+            margin-right: 12px;
+            cursor: pointer;
+
+            .author-prefix {
+              margin-right: 2px;
+            }
+
+            .author-name {
+              margin-right: 2px;
+            }
+
+            .author-name,
+            .author-reputation {
+              @include themify(day) {
+                color: $charcoal-grey;
+              }
+
+              @include themify(night) {
+                color: $pinkish-grey;
+              }
+            }
+
+            .author-reputation {
+              font-size: 12px;
+              font-weight: 500;
+
+              &::before {
+                content: '(';
+              }
+
+              &::after {
+                content: ')';
+              }
+            }
+          }
+
+          .app {
+            font-weight: 700;
+            .app-name {
+              font-weight: 400;
+            }
+          }
+        }
+
+        .right-side {
+          float: right;
+          justify-content: flex-end;
+          width: 30%;
+
+          .reply-btn {
+            cursor: pointer;
+            margin-right: 10px;
+            padding-right: 10px;
+
+            @include themify(day) {
+              border-right: 1px solid $white-four;
+            }
+
+            @include themify(night) {
+              border-right: 1px solid $dark-two;
+            }
+          }
+
+          .comments-count {
+            align-items: center;
+            display: flex;
+
+            .mi {
+              margin-right: 4px;
+              opacity: 0.6;
+            }
+          }
+        }
+      }
     }
   }
 }

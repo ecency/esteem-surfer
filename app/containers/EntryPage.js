@@ -14,6 +14,9 @@ import {
 import {addAccount, addAccountSc, deleteAccount} from '../actions/accounts';
 
 import {logIn, logOut, updateActiveAccount} from '../actions/active-account';
+import {updateEntry} from "../actions/entries";
+import {setVisitingAccount} from "../actions/visiting-account";
+import {setVisitingEntry} from "../actions/visiting-entry";
 
 const mapStateToProps = state => ({
   global: state.global,
@@ -25,6 +28,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   actions: {
+    ...bindActionCreators(
+      {updateEntry},
+      dispatch
+    ),
     ...bindActionCreators(
       {
         changeTheme,
@@ -44,7 +51,9 @@ const mapDispatchToProps = dispatch => ({
       },
       dispatch
     ),
-    ...bindActionCreators({logIn, logOut, updateActiveAccount}, dispatch)
+    ...bindActionCreators({logIn, logOut, updateActiveAccount}, dispatch),
+    ...bindActionCreators({setVisitingAccount}, dispatch),
+    ...bindActionCreators({setVisitingEntry}, dispatch)
   }
 });
 

@@ -14,6 +14,8 @@ import authorReputation from "../utils/author-reputation";
 import parseDate from "../utils/parse-date";
 
 import markDown2Html from '../utils/markdown-2-html';
+import QuickProfile from "./helpers/QuickProfile";
+import appName from "../utils/app-name";
 
 class Entry extends Component {
   constructor(props) {
@@ -68,12 +70,27 @@ class Entry extends Component {
     let reputation;
     let created;
     let renderedBody;
+    let tags = [];
+    let app;
 
     if (entry) {
       reputation = authorReputation(entry.author_reputation);
       created = parseDate(entry.created);
 
       renderedBody = {__html: markDown2Html(entry.body)};
+
+      let jsonMeta;
+      try {
+        jsonMeta = JSON.parse(entry.json_metadata);
+      } catch (e) {
+        jsonMeta = {};
+      }
+
+      // Sometimes tag list comes with duplicate items. Needs to singularize
+      tags = [...new Set(jsonMeta.tags)];
+
+
+      app = appName(jsonMeta.app);
     }
 
 
@@ -90,6 +107,7 @@ class Entry extends Component {
           reloading={loading}
           bookmarkFn={() => {
           }}
+          postBtnActive
         />
         <div className="app-content entry-page">
           {entry &&
@@ -97,14 +115,21 @@ class Entry extends Component {
             <div className="entry-header">
               <h1 className="entry-title">{entry.title}</h1>
               <div className="entry-info">
-                <div className="author-avatar">
-                  <UserAvatar user={entry.author} size="medium"/>
-                </div>
-
-                <div className="author">
-                  {entry.author}{' '}
-                  <span className="author-reputation">{reputation}</span>
-                </div>
+                <QuickProfile
+                  {...this.props}
+                  username={entry.author}
+                  reputation={entry.author_reputation}
+                >
+                  <div className="author-part">
+                    <div className="author-avatar">
+                      <UserAvatar user={entry.author} size="medium"/>
+                    </div>
+                    <div className="author">
+                      <span className="author-name">{entry.author}</span>
+                      <span className="author-reputation">{reputation}</span>
+                    </div>
+                  </div>
+                </QuickProfile>
                 <a
                   className="category"
                   role="none"
@@ -112,13 +137,54 @@ class Entry extends Component {
                 >
                   {entry.category}
                 </a>
+                <span className="separator"/>
                 <span className="date">
                   <FormattedRelative value={created} initialNow={Date.now()}/>
                 </span>
               </div>
             </div>
             <div className="entry-body markdown-view" dangerouslySetInnerHTML={renderedBody}/>
+            <div className="entry-footer">
+              <div className="entry-tags">
+                {tags.map(t => (
+                  <div key={t} className="entry-tag">
+                    {t}
+                  </div>
+                ))}
+              </div>
+              <div className="entry-info">
+                <div className="left-side">
+                  <div className="date">
+                    <i className="mi">access_time</i>
+                    <FormattedRelative value={created} initialNow={Date.now()}/>
+                  </div>
 
+                  <span className="separator"/>
+
+                  <QuickProfile
+                    {...this.props}
+                    username={entry.author}
+                    reputation={entry.author_reputation}
+                  >
+                    <div className="author">
+                      <span className="author-prefix">by</span>
+                      <span className="author-name">{entry.author}</span>
+                      <span className="author-reputation">{reputation}</span>
+                    </div>
+                  </QuickProfile>
+
+                  <span className="separator"/>
+
+                  <div className="app">
+                    via <span className="app-name">{app}</span>
+                  </div>
+                </div>
+                <div className="right-side">
+                  <div className="reply-btn">Reply</div>
+                  <div className="comments-count"><i className="mi">comment</i>{entry.children}</div>
+                </div>
+              </div>
+            </div>
           </div>
           }
         </div>

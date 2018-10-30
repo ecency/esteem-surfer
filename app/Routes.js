@@ -31,7 +31,11 @@ export default () => (
       <Route exact path="/@:username/:section" component={AccountPage}/>
       <Route exact path="/:filter" component={EntryIndexPage}/>
       <Route exact path="/:filter/:tag" component={EntryIndexPage}/>
-      <Route exact path="/:category/@:username/:permlink" component={EntryPage}/>
+      <Route exact path="/:category/@:username/:permlink"
+             component={props => (
+               <EntryPage timestamp={new Date().toString()} {...props} />
+             )}
+      />
       <Route path="/" component={IndexPage}/>
     </Switch>
   </App>
