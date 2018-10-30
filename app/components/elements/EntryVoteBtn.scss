@@ -4,23 +4,35 @@
 @keyframes voting-color-change {
   0% {
     background: $dark-sky-blue;
-    color: $white;
+
+    svg {
+      fill: $white;
+    }
   }
   25% {
     background: transparent;
-    color: $dark-sky-blue;
+
+    svg {
+      fill: $dark-sky-blue;
+    }
   }
   50% {
     background: $dark-sky-blue;
-    color: $white;
+    svg {
+      fill: $white;
+    }
   }
   75% {
     background: transparent;
-    color: $dark-sky-blue;
+    svg {
+      fill: $dark-sky-blue;
+    }
   }
   100% {
     background: $dark-sky-blue;
-    color: $white;
+    svg {
+      fill: $white;
+    }
   }
 }
 
@@ -35,6 +47,10 @@
   text-decoration: none;
   width: 18px;
 
+  svg {
+    fill: $dark-sky-blue;
+  }
+
   &:focus {
     text-decoration: none;
   }
@@ -42,7 +58,10 @@
   &:hover,
   &.voted {
     background-color: $dark-sky-blue;
-    color: $white;
+
+    svg {
+      fill: $white;
+    }
   }
 
   &.in-progress {

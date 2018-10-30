@@ -209,5 +209,9 @@
     "deleted": "Scheduled post deleted",
     "move": "Move to drafts",
     "moved": "Moved to drafts"
+  },
+  "entry": {
+    "reply": "Reply",
+    "via-app": "via <span class=\"app-name\">{app}</span>"
   }
 }

@@ -4,7 +4,7 @@ eslint-disable react/no-multi-comp
 
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
-import {FormattedRelative, injectIntl} from "react-intl";
+import {FormattedRelative, FormattedMessage, FormattedHTMLMessage, injectIntl} from "react-intl";
 
 import NavBar from "./layout/NavBar";
 import AppFooter from "./layout/AppFooter";
@@ -17,6 +17,13 @@ import markDown2Html from '../utils/markdown-2-html';
 import QuickProfile from "./helpers/QuickProfile";
 import appName from "../utils/app-name";
 import EntryTag from './elements/EntryTag';
+import ScrollReplace from "./helpers/ScrollReplace";
+import EntryVoteBtn from "./elements/EntryVoteBtn";
+import EntryPayout from "./elements/EntryPayout";
+import FormattedCurrency from "./elements/FormattedCurrency";
+import EntryVotes from "./elements/EntryVotes";
+import parseToken from "../utils/parse-token";
+import sumTotal from "../utils/sum-total";
 
 class Entry extends Component {
   constructor(props) {
@@ -73,6 +80,9 @@ class Entry extends Component {
     let renderedBody;
     let tags = [];
     let app;
+    let isPayoutDeclined;
+    let totalPayout;
+    let voteCount;
 
     if (entry) {
       reputation = authorReputation(entry.author_reputation);
@@ -92,6 +102,10 @@ class Entry extends Component {
 
 
       app = appName(jsonMeta.app);
+
+      totalPayout = sumTotal(entry);
+      isPayoutDeclined = parseToken(entry.max_accepted_payout) === 0;
+      voteCount = entry.active_votes.length;
     }
 
 
@@ -110,7 +124,7 @@ class Entry extends Component {
           }}
           postBtnActive
         />
-        <div className="app-content entry-page">
+        <div className="app-content entry-page" id="app-content">
           {entry &&
           <div className="the-entry">
             <div className="entry-header">
@@ -154,6 +168,7 @@ class Entry extends Component {
                   </EntryTag>
                 ))}
               </div>
+
               <div className="entry-info">
                 <div className="left-side">
                   <div className="date">
@@ -169,7 +184,6 @@ class Entry extends Component {
                     reputation={entry.author_reputation}
                   >
                     <div className="author">
-                      <span className="author-prefix">by</span>
                       <span className="author-name">{entry.author}</span>
                       <span className="author-reputation">{reputation}</span>
                     </div>
@@ -178,19 +192,69 @@ class Entry extends Component {
                   <span className="separator"/>
 
                   <div className="app">
-                    via <span className="app-name">{app}</span>
+                    <FormattedHTMLMessage id="entry.via-app" values={{app}}/>
                   </div>
                 </div>
                 <div className="right-side">
-                  <div className="reply-btn">Reply</div>
+                  <div className="reply-btn"><FormattedMessage id="entry.reply"/></div>
                   <div className="comments-count"><i className="mi">comment</i>{entry.children}</div>
                 </div>
               </div>
+
+
+
+              <div className="entry-controls">
+                <div className="voting">
+                  <EntryVoteBtn {...this.props} entry={entry}/>
+                </div>
+                <EntryPayout {...this.props} entry={entry}>
+                  <a
+                    className={`total-payout ${
+                      isPayoutDeclined ? 'payout-declined' : ''
+                      }`}
+                  >
+                    <FormattedCurrency {...this.props} value={totalPayout}/>
+                  </a>
+                </EntryPayout>
+                <EntryVotes {...this.props} entry={entry}>
+                  <a className="voters">
+                    <i className="mi">people</i>
+                    {voteCount}
+                  </a>
+                </EntryVotes>
+
+
+              </div>
+
+
+
+
             </div>
           </div>
           }
         </div>
         <AppFooter {...this.props} />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <ScrollReplace {...this.props} selector="#app-content"/>
       </div>
     )
   }
