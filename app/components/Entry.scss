@@ -8,7 +8,7 @@
   width: 4px;
 
   @include themify(day) {
-    background: $steel-grey;
+    background: lighten($steel-grey, 40);
   }
 
   @include themify(night) {
@@ -22,7 +22,7 @@
   margin: 0 12px;
 
   @include themify(day) {
-    background: lighten($steel-grey, 30);
+    background: lighten($steel-grey, 40);
   }
 
   @include themify(night) {
@@ -132,7 +132,6 @@
           color: $white;
           flex-shrink: 0;
           font-size: 14px;
-          margin-right: 12px;
           padding: 2px 8px;
           transition: 0.5s;
 
@@ -148,18 +147,7 @@
         }
 
         .separator {
-          border-radius: 50%;
-          height: 4px;
-          margin-right: 12px;
-          width: 4px;
-
-          @include themify(day) {
-            background: $steel-grey;
-          }
-
-          @include themify(night) {
-            background: $pinkish-grey;
-          }
+          @extend .circle-separator;
         }
 
         .date {
@@ -175,15 +163,16 @@
     .entry-footer {
       @include clearfix();
 
-      margin-bottom: 5px;
       padding-bottom: 15px;
 
-      @include themify(day) {
-        border-bottom: 1px solid $white-four;
-      }
+      &:not(.loading) {
+        @include themify(day) {
+          border-bottom: 1px solid $white-four;
+        }
 
-      @include themify(night) {
-        border-bottom: 1px solid $dark-two;
+        @include themify(night) {
+          border-bottom: 1px solid $dark-two;
+        }
       }
 
       .entry-tags {
@@ -240,18 +229,7 @@
           width: 70%;
 
           .separator {
-            border-radius: 50%;
-            height: 4px;
-            margin: 0 12px;
-            width: 4px;
-
-            @include themify(day) {
-              background: lighten($steel-grey, 30);
-            }
-
-            @include themify(night) {
-              background: $pinkish-grey;
-            }
+            @extend .circle-separator;
           }
 
           .date {
@@ -311,26 +289,6 @@
 
           .reply-btn {
             cursor: pointer;
-            margin-right: 10px;
-            padding-right: 10px;
-
-            @include themify(day) {
-              border-right: 1px solid $white-four;
-            }
-
-            @include themify(night) {
-              border-right: 1px solid $dark-two;
-            }
-          }
-
-          .comments-count {
-            align-items: center;
-            display: flex;
-
-            .mi {
-              margin-right: 4px;
-              opacity: 0.5;
-            }
           }
         }
       }
@@ -378,16 +336,30 @@
     }
 
     .entry-comments {
-      .entry-comments-header {
-        margin-bottom: 15px;
+      margin-bottom: 30px;
+      margin-top: 15px;
 
+      .entry-comments-header {
+        color: $steel-grey;
+        margin-bottom: 15px;
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
+        align-items: center;
+
+        .comment-count {
+          align-items: center;
+          display: flex;
+          font-size: 16px;
+
+          .mi {
+            margin-right: 4px;
+            opacity: 0.5;
+          }
+        }
 
         .sort-order {
           .label {
             margin-right: 5px;
-            color: $steel-grey;
           }
         }
       }

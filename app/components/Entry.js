@@ -3,29 +3,33 @@ eslint-disable react/no-multi-comp
 */
 
 import React, {Component, Fragment} from 'react';
-import PropTypes from "prop-types";
-import {FormattedRelative, FormattedMessage, FormattedHTMLMessage, injectIntl} from "react-intl";
 
-import NavBar from "./layout/NavBar";
-import AppFooter from "./layout/AppFooter";
-import {getAccount, getState, getContent} from "../backend/steem-client";
-import UserAvatar from "./elements/UserAvatar";
-import authorReputation from "../utils/author-reputation";
-import parseDate from "../utils/parse-date";
+import PropTypes from 'prop-types';
+
+import {FormattedRelative, FormattedMessage, FormattedHTMLMessage, injectIntl} from 'react-intl';
+
 import {Select, message} from 'antd';
 
-import markDown2Html from '../utils/markdown-2-html';
-import QuickProfile from "./helpers/QuickProfile";
-import appName from "../utils/app-name";
-import EntryTag from './elements/EntryTag';
-import ScrollReplace from "./helpers/ScrollReplace";
-import EntryVoteBtn from "./elements/EntryVoteBtn";
-import EntryPayout from "./elements/EntryPayout";
-import FormattedCurrency from "./elements/FormattedCurrency";
-import EntryVotes from "./elements/EntryVotes";
-import parseToken from "../utils/parse-token";
-import sumTotal from "../utils/sum-total";
+import {getState, getContent} from '../backend/steem-client';
 
+import NavBar from './layout/NavBar';
+import AppFooter from './layout/AppFooter';
+import UserAvatar from './elements/UserAvatar';
+import QuickProfile from './helpers/QuickProfile';
+import EntryTag from './elements/EntryTag';
+import ScrollReplace from './helpers/ScrollReplace';
+import EntryVoteBtn from './elements/EntryVoteBtn';
+import EntryPayout from './elements/EntryPayout';
+import FormattedCurrency from './elements/FormattedCurrency';
+import EntryVotes from './elements/EntryVotes';
+import LinearProgress from './common/LinearProgress';
+
+import parseDate from '../utils/parse-date';
+import parseToken from '../utils/parse-token';
+import sumTotal from '../utils/sum-total';
+import appName from '../utils/app-name';
+import markDown2Html from '../utils/markdown-2-html';
+import authorReputation from '../utils/author-reputation';
 
 class CommentListItem extends Component {
   constructor(props) {
@@ -126,8 +130,7 @@ class CommentList extends Component {
 CommentList.defaultProps = {};
 
 CommentList.propTypes = {
-  comments: PropTypes.array.isRequired
-
+  comments: PropTypes.arrayOf(Object).isRequired
 };
 
 
@@ -138,31 +141,46 @@ class Entry extends Component {
     const {visitingEntry} = this.props;
 
     this.state = {
-      entry: (visitingEntry ? visitingEntry : null),
+      entry: visitingEntry || null,
       comments: [],
       commentsLoading: true,
-      commentSort: 'trending',
-      pathData: null
+      commentSort: 'trending'
     };
+
+    const {match} = this.props;
+    const {category, username, permlink} = match.params;
+
+    this.statePath = `/${category}/@${username}/${permlink}`;
+    this.entryPath = `${username}/${permlink}`;
+    this.stateData = null;
   }
 
+  async componentDidMount() {
+    await this.fetch();
+
+    window.addEventListener('md-author-clicked', this.mdAuthorClicked);
+    window.addEventListener('md-post-clicked', this.mdEntryClicked);
+    window.addEventListener('md-tag-clicked', this.mdTagClicked);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('md-author-clicked', this.mdAuthorClicked);
+    window.removeEventListener('md-post-clicked', this.mdEntryClicked);
+    window.removeEventListener('md-tag-clicked', this.mdTagClicked);
+  }
 
   compileComments = (parent, sortOrder) => {
-
     const {match} = this.props;
     const {commentId} = match.params;
 
-    const {pathData} = this.state;
 
-    const allPayout = (c) => {
-      return parseFloat(c.pending_payout_value.split(' ')[0]) +
-        parseFloat(c.total_payout_value.split(' ')[0]) +
-        parseFloat(c.curator_payout_value.split(' ')[0]);
-    };
+    const allPayout = (c) => (
+      parseFloat(c.pending_payout_value.split(' ')[0]) +
+      parseFloat(c.total_payout_value.split(' ')[0]) +
+      parseFloat(c.curator_payout_value.split(' ')[0])
+    );
 
-    function absNegative(a) {
-      return a.net_rshares < 0;
-    }
+    const absNegative = a => a.net_rshares < 0;
 
     const sortOrders = {
       trending: (a, b) => {
@@ -182,8 +200,8 @@ class Entry extends Component {
         return 0;
       },
       author_reputation: (a, b) => {
-        const keyA = authorReputation(a.author_reputation),
-          keyB = authorReputation(b.author_reputation);
+        const keyA = authorReputation(a.author_reputation);
+        const keyB = authorReputation(b.author_reputation);
 
         if (keyA > keyB) return -1;
         if (keyA < keyB) return 1;
@@ -206,8 +224,8 @@ class Entry extends Component {
           return -1;
         }
 
-        const keyA = Date.parse(a.created),
-          keyB = Date.parse(b.created);
+        const keyA = Date.parse(a.created);
+        const keyB = Date.parse(b.created);
 
         if (keyA > keyB) return -1;
         if (keyA < keyB) return 1;
@@ -216,18 +234,17 @@ class Entry extends Component {
       }
     };
 
-
-    let comments = [];
+    const comments = [];
 
     parent.replies.forEach((k) => {
-      let reply = pathData.content[k];
+      const reply = this.stateData.content[k];
 
       comments.push(
         Object.assign(
           {},
           reply,
           {comments: this.compileComments(reply, sortOrder)},
-          {author_data: pathData.accounts[reply.author]},
+          {author_data: this.stateData.accounts[reply.author]},
           {_selected_: reply.id === commentId}
         )
       )
@@ -240,57 +257,38 @@ class Entry extends Component {
 
 
   fetch = async () => {
+    this.setState({comments: [], commentsLoading: true, commentSort: 'trending'});
+
     const {match, actions} = this.props;
-    const {category, username, permlink} = match.params;
+    const {username, permlink} = match.params;
 
     const entry = await getContent(username, permlink);
 
     actions.setVisitingEntry(entry);
+
     this.setState({entry});
 
-    let contentPath = `${username}/${permlink}`;
+    this.stateData = await getState(this.statePath);
 
-    const pathData = await getState(`/${category}/@${username}/${permlink}`);
+    const theEntry = this.stateData.content[this.entryPath];
 
-    this.setState({pathData});
-
-    let content = pathData.content[contentPath];
-
-    const comments = this.compileComments(content, 'trending');
+    const comments = this.compileComments(theEntry, 'trending');
 
     this.setState({commentsLoading: false, comments})
+  };
+
+  refresh = async () => {
+    await this.fetch();
   };
 
   commentSortOrderChanged = value => {
     this.setState({commentSort: value});
 
-    const {match} = this.props;
-    const {pathData} = this.state;
-    const {username, permlink} = match.params;
-
-
-    let contentPath = `${username}/${permlink}`;
-    let content = pathData.content[contentPath];
-
-    const comments = this.compileComments(content, value);
+    const theEntry = this.stateData.content[this.entryPath];
+    const comments = this.compileComments(theEntry, value);
     this.setState({comments});
   };
 
-  async componentDidMount() {
-
-    await this.fetch();
-
-
-    window.addEventListener('md-author-clicked', this.mdAuthorClicked);
-    window.addEventListener('md-post-clicked', this.mdEntryClicked);
-    window.addEventListener('md-tag-clicked', this.mdTagClicked);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('md-author-clicked', this.mdAuthorClicked);
-    window.removeEventListener('md-post-clicked', this.mdEntryClicked);
-    window.removeEventListener('md-tag-clicked', this.mdTagClicked);
-  }
 
   mdAuthorClicked = (e) => {
     const {history} = this.props;
@@ -315,31 +313,17 @@ class Entry extends Component {
   };
 
 
-  refresh = () => {
-
-  };
-
-
   render() {
+    const {entry, commentsLoading} = this.state;
 
 
-    const {entry} = this.state;
-
-    let reputation;
-    let created;
-    let renderedBody;
-    let tags = [];
-    let app;
-    let isPayoutDeclined;
-    let totalPayout;
-    let voteCount;
-    const {comments, commentSort} = this.state;
-
+    let content = null;
     if (entry) {
-      reputation = authorReputation(entry.author_reputation);
-      created = parseDate(entry.created);
+      const {comments, commentSort} = this.state;
 
-      renderedBody = {__html: markDown2Html(entry.body)};
+      const reputation = authorReputation(entry.author_reputation);
+      const created = parseDate(entry.created);
+      const renderedBody = {__html: markDown2Html(entry.body)};
 
       let jsonMeta;
       try {
@@ -348,149 +332,150 @@ class Entry extends Component {
         jsonMeta = {};
       }
 
-      // Sometimes tag list comes with duplicate items. Needs to singularize
-      tags = [...new Set(jsonMeta.tags)];
+      const tags = [...new Set(jsonMeta.tags)]; // Sometimes tag list comes with duplicate items
+      const app = appName(jsonMeta.app);
+      const totalPayout = sumTotal(entry);
+      const isPayoutDeclined = parseToken(entry.max_accepted_payout) === 0;
+      const voteCount = entry.active_votes.length;
 
-      app = appName(jsonMeta.app);
+      content = (
+        <Fragment>
+          <div className="the-entry">
+            <div className="entry-header">
+              <h1 className="entry-title">{entry.title}</h1>
+              <div className="entry-info">
+                <QuickProfile
+                  {...this.props}
+                  username={entry.author}
+                  reputation={entry.author_reputation}
+                >
+                  <div className="author-part">
+                    <div className="author-avatar">
+                      <UserAvatar user={entry.author} size="medium"/>
+                    </div>
+                    <div className="author">
+                      <span className="author-name">{entry.author}</span>
+                      <span className="author-reputation">{reputation}</span>
+                    </div>
+                  </div>
+                </QuickProfile>
+                <EntryTag {...this.props} tag={entry.category}>
+                  <a
+                    className="category"
+                    role="none"
+                  >{entry.category}</a>
+                </EntryTag>
+                <span className="separator"/>
+                <span className="date">
+                  <FormattedRelative value={created} initialNow={Date.now()}/>
+                </span>
+              </div>
+            </div>
+            <div className="entry-body markdown-view" dangerouslySetInnerHTML={renderedBody}/>
+            <div className={`entry-footer ${commentsLoading ? 'loading' : ''}`}>
+              <div className="entry-tags">
+                {tags.map(t => (
+                  <EntryTag {...this.props} tag={t} key={t}>
+                    <div className="entry-tag">
+                      {t}
+                    </div>
+                  </EntryTag>
+                ))}
+              </div>
+              <div className="entry-info">
+                <div className="left-side">
+                  <div className="date">
+                    <i className="mi">access_time</i>
+                    <FormattedRelative value={created} initialNow={Date.now()}/>
+                  </div>
 
-      totalPayout = sumTotal(entry);
-      isPayoutDeclined = parseToken(entry.max_accepted_payout) === 0;
-      voteCount = entry.active_votes.length;
-    }
+                  <span className="separator"/>
 
-    const loading = false;
-
-    return (
-      <div className="wrapper">
-
-        <NavBar
-          {...this.props}
-          reloadFn={() => {
-            this.refresh();
-          }}
-          reloading={loading}
-          bookmarkFn={() => {
-          }}
-          postBtnActive
-        />
-        <div className="app-content entry-page" id="app-content">
-          {entry &&
-          <Fragment>
-            <div className="the-entry">
-              <div className="entry-header">
-                <h1 className="entry-title">{entry.title}</h1>
-                <div className="entry-info">
                   <QuickProfile
                     {...this.props}
                     username={entry.author}
                     reputation={entry.author_reputation}
                   >
-                    <div className="author-part">
-                      <div className="author-avatar">
-                        <UserAvatar user={entry.author} size="medium"/>
-                      </div>
-                      <div className="author">
-                        <span className="author-name">{entry.author}</span>
-                        <span className="author-reputation">{reputation}</span>
-                      </div>
+                    <div className="author">
+                      <span className="author-name">{entry.author}</span>
+                      <span className="author-reputation">{reputation}</span>
                     </div>
                   </QuickProfile>
-                  <EntryTag {...this.props} tag={entry.category}>
-                    <a
-                      className="category"
-                      role="none"
-                    >{entry.category}</a>
-                  </EntryTag>
+
                   <span className="separator"/>
-                  <span className="date">
-                  <FormattedRelative value={created} initialNow={Date.now()}/>
-                </span>
+
+                  <div className="app">
+                    <FormattedHTMLMessage id="entry.via-app" values={{app}}/>
+                  </div>
+                </div>
+                <div className="right-side">
+                  <div className="reply-btn"><FormattedMessage id="entry.reply"/></div>
                 </div>
               </div>
-              <div className="entry-body markdown-view" dangerouslySetInnerHTML={renderedBody}/>
-              <div className="entry-footer">
-                <div className="entry-tags">
-                  {tags.map(t => (
-                    <EntryTag {...this.props} tag={t} key={t}>
-                      <div className="entry-tag">
-                        {t}
-                      </div>
-                    </EntryTag>
-                  ))}
+              <div className="entry-controls">
+                <div className="voting">
+                  <EntryVoteBtn {...this.props} entry={entry}/>
                 </div>
-                <div className="entry-info">
-                  <div className="left-side">
-                    <div className="date">
-                      <i className="mi">access_time</i>
-                      <FormattedRelative value={created} initialNow={Date.now()}/>
-                    </div>
-
-                    <span className="separator"/>
-
-                    <QuickProfile
-                      {...this.props}
-                      username={entry.author}
-                      reputation={entry.author_reputation}
-                    >
-                      <div className="author">
-                        <span className="author-name">{entry.author}</span>
-                        <span className="author-reputation">{reputation}</span>
-                      </div>
-                    </QuickProfile>
-
-                    <span className="separator"/>
-
-                    <div className="app">
-                      <FormattedHTMLMessage id="entry.via-app" values={{app}}/>
-                    </div>
-                  </div>
-                  <div className="right-side">
-                    <div className="reply-btn"><FormattedMessage id="entry.reply"/></div>
-                    <div className="comments-count"><i className="mi">comment</i>{entry.children}</div>
-                  </div>
-                </div>
-                <div className="entry-controls">
-                  <div className="voting">
-                    <EntryVoteBtn {...this.props} entry={entry}/>
-                  </div>
-                  <EntryPayout {...this.props} entry={entry}>
-                    <a
-                      className={`total-payout ${
-                        isPayoutDeclined ? 'payout-declined' : ''
-                        }`}
-                    >
-                      <FormattedCurrency {...this.props} value={totalPayout}/>
-                    </a>
-                  </EntryPayout>
-                  <EntryVotes {...this.props} entry={entry}>
-                    <a className="voters">
-                      <i className="mi">people</i>
-                      {voteCount}
-                    </a>
-                  </EntryVotes>
-                </div>
-              </div>
-
-              <div className="entry-comments">
-                <div className="entry-comments-header">
-                  <div className="sort-order">
-                    <span className="label">Sort Order</span>
-                    <Select defaultValue="trending" size="small" style={{width: '120px'}} value={commentSort}
-                            onChange={this.commentSortOrderChanged}>
-                      <Select.Option value="trending">Trending</Select.Option>
-                      <Select.Option value="author_reputation">Reputation</Select.Option>
-                      <Select.Option value="votes">Votes</Select.Option>
-                      <Select.Option value="created">Age</Select.Option>
-                    </Select>
-                  </div>
-                </div>
-                <div className="entry-comments-body">
-                  <CommentList {...this.props} comments={comments}/>
-                </div>
+                <EntryPayout {...this.props} entry={entry}>
+                  <a
+                    className={`total-payout ${
+                      isPayoutDeclined ? 'payout-declined' : ''
+                      }`}
+                  >
+                    <FormattedCurrency {...this.props} value={totalPayout}/>
+                  </a>
+                </EntryPayout>
+                <EntryVotes {...this.props} entry={entry}>
+                  <a className="voters">
+                    <i className="mi">people</i>
+                    {voteCount}
+                  </a>
+                </EntryVotes>
               </div>
             </div>
-          </Fragment>
-          }
+            {commentsLoading &&
+            <LinearProgress/>
+            }
+            <div className="entry-comments">
+              <div className="entry-comments-header">
+                <div className="comment-count">
+                  <i className="mi">comment</i>{entry.children} Comments
+                </div>
+                {(comments.length > 0) &&
+                <div className="sort-order">
+                  <span className="label">Sort Order</span>
+                  <Select defaultValue="trending" size="small" style={{width: '120px'}} value={commentSort}
+                          onChange={this.commentSortOrderChanged}>
+                    <Select.Option value="trending">Trending</Select.Option>
+                    <Select.Option value="author_reputation">Reputation</Select.Option>
+                    <Select.Option value="votes">Votes</Select.Option>
+                    <Select.Option value="created">Age</Select.Option>
+                  </Select>
+                </div>
+                }
+              </div>
+              <div className="entry-comments-body">
+                <CommentList {...this.props} comments={comments}/>
+              </div>
+            </div>
+          </div>
+        </Fragment>
+      )
+    }
+
+
+    return (
+      <div className="wrapper">
+        <NavBar
+          {...this.props}
+          reloadFn={this.refresh}
+          reloading={commentsLoading}
+          bookmarkFn={() => {
+          }}
+          postBtnActive
+        />
+        <div className="app-content entry-page" id="app-content">
+          {content}
         </div>
         <AppFooter {...this.props} />
         <ScrollReplace {...this.props} selector="#app-content"/>
