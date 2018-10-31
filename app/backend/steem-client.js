@@ -1,10 +1,10 @@
-import { Client, PrivateKey } from 'dsteem';
+import {Client, PrivateKey} from 'dsteem';
 
 import sc2 from 'sc2-sdk';
 
-import { scAppAuth, scAppRevoke } from '../helpers/sc';
+import {scAppAuth, scAppRevoke} from '../helpers/sc';
 
-import { decryptKey } from '../utils/crypto';
+import {decryptKey} from '../utils/crypto';
 
 let client = new Client('https://api.steemit.com');
 
@@ -21,6 +21,8 @@ export const getRepliesByLastUpdate = query =>
     query.start_permlink,
     query.limit
   ]);
+
+export const getContent = (username, permlink) => client.call('condenser_api', 'get_content', [username, permlink]);
 
 export const getDynamicGlobalProperties = () =>
   client.database.getDynamicGlobalProperties();
@@ -57,7 +59,7 @@ export const getFollowing = (
   ]);
 
 export const getAccountRC = username =>
-  client.call('rc_api', 'find_rc_accounts', { accounts: [username] });
+  client.call('rc_api', 'find_rc_accounts', {accounts: [username]});
 
 export const vote = (account, pin, author, permlink, weight) => {
   if (account.type === 's') {
@@ -197,11 +199,11 @@ export const revokePostingPermission = (account, pin) => {
     const key = decryptKey(account.keys.active, pin);
     const privateKey = PrivateKey.fromString(key);
 
-    const { accountData } = account;
+    const {accountData} = account;
 
     const newPosting = Object.assign(
       {},
-      { ...accountData.posting },
+      {...accountData.posting},
       {
         account_auths: accountData.posting.account_auths.filter(
           x => x[0] !== 'esteemapp'
@@ -230,11 +232,11 @@ export const grantPostingPermission = (account, pin) => {
     const key = decryptKey(account.keys.active, pin);
     const privateKey = PrivateKey.fromString(key);
 
-    const { accountData } = account;
+    const {accountData} = account;
 
     const newPosting = Object.assign(
       {},
-      { ...accountData.posting },
+      {...accountData.posting},
       {
         account_auths: [
           ...accountData.posting.account_auths,
@@ -272,7 +274,7 @@ export const comment = (
   options,
   voteWeight
 ) => {
-  const { username: author } = account;
+  const {username: author} = account;
 
   if (account.type === 's') {
     const opArray = [

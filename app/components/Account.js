@@ -293,20 +293,23 @@ export class AccountTopPosts extends Component {
     return (
       <div className="top-posts-list">
         <h2 className="top-posts-list-header"><FormattedMessage id="account.top-posts"/></h2>
-
         <div className="top-posts-list-body">
           {posts.map(p => (
-            <div className="top-posts-list-item" key={p.permlink}>
-              <div className="post-image">
-                <img alt="" src={catchEntryImage(p) || 'img/noimage.png'}/>
-              </div>
+            <div className="top-posts-list-item" onClick={() => {
+              const {history} = this.props;
+              const {category, author, permlink} = p;
 
+              history.push(`/${category}/@${author}/${permlink}`);
+            }}>
+              <div className="post-image">
+                <img alt="" src={catchEntryImage(p, 130, 80) || 'img/noimage.png'}/>
+              </div>
               <div className="post-content">
                 <div className="post-title">{p.title}</div>
                 <div className="post-body">{entryBodySummary(p.body, 40)}</div>
               </div>
-
             </div>
+
           ))}
         </div>
       </div>
@@ -319,7 +322,8 @@ AccountTopPosts.defaultProps = {
 };
 
 AccountTopPosts.propTypes = {
-  posts: PropTypes.arrayOf(Object)
+  posts: PropTypes.arrayOf(Object),
+  history: PropTypes.instanceOf(Object).isRequired,
 };
 
 
