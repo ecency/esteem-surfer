@@ -220,6 +220,8 @@ h2 {
   hr {
     clear: both;
     margin: 10px auto;
+    border-top-width: 0;
+    border-bottom: 1px solid #ccc;
   }
 
   table {
