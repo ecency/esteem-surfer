@@ -164,7 +164,13 @@ class NavBar extends Component {
             tabIndex="-1"
           />
           <div className={`btn-post-mini  ${postBtnActive ? 'visible' : ''}`}>
-            <span className="icon">
+            <span
+              className="icon"
+              role="none"
+              onClick={() => {
+                history.push('/new');
+              }}
+            >
               <Mi icon="edit" />
             </span>
           </div>
