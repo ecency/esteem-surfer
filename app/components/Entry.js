@@ -34,17 +34,36 @@ import authorReputation from '../utils/author-reputation';
 class CommentListItem extends Component {
   constructor(props) {
     super(props);
+
+    const {comment} = this.props;
+
+    this.state = {
+      comment
+    }
   }
 
+  afterVote = () => {
+    const {comment} = this.state;
+    const {author, permlink} = comment;
+
+    getContent(author, permlink).then(resp => {
+      const newComment = Object.assign({}, comment, {active_votes: resp.active_votes});
+      this.setState({comment: newComment});
+    })
+  };
+
+  afterReply = () => {
+
+  };
+
   render() {
-    const {comment} = this.props;
+    const {comment} = this.state;
     const reputation = authorReputation(comment.author_reputation);
     const created = parseDate(comment.created);
     const renderedBody = {__html: markDown2Html(comment.body)};
     const isPayoutDeclined = parseToken(comment.max_accepted_payout) === 0;
     const totalPayout = sumTotal(comment);
     const voteCount = comment.active_votes.length;
-
 
     return (
       <div className="comment-list-item">
@@ -73,7 +92,7 @@ class CommentListItem extends Component {
           <div className="item-body markdown-view mini-markdown" dangerouslySetInnerHTML={renderedBody}/>
           <div className="item-controls">
             <div className="voting">
-              <EntryVoteBtn {...this.props} entry={comment}/>
+              <EntryVoteBtn {...this.props} entry={comment} afterVote={this.afterVote}/>
             </div>
             <EntryPayout {...this.props} entry={comment}>
               <a

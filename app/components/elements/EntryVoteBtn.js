@@ -70,7 +70,7 @@ class EntryVoteBtn extends Component {
       return false;
     }
 
-    const {global, activeAccount, entry} = this.props;
+    const {global, activeAccount, entry, afterVote} = this.props;
     const {pin} = global;
     const {username} = activeAccount;
     const {author, permlink, id} = entry;
@@ -97,6 +97,8 @@ class EntryVoteBtn extends Component {
         id,
         Object.assign({}, entry, {active_votes: votes})
       );
+
+      afterVote();
     }
   };
 
@@ -214,7 +216,9 @@ class EntryVoteBtn extends Component {
 }
 
 EntryVoteBtn.defaultProps = {
-  activeAccount: null
+  activeAccount: null,
+  afterVote: () => {
+  }
 };
 
 EntryVoteBtn.propTypes = {
@@ -230,7 +234,8 @@ EntryVoteBtn.propTypes = {
   }).isRequired,
   actions: PropTypes.shape({
     updateEntry: PropTypes.func.isRequired
-  }).isRequired
+  }).isRequired,
+  afterVote: PropTypes.func
 };
 
 export default EntryVoteBtn;
