@@ -502,4 +502,39 @@
       }
     }
   }
+
+  .comment-box {
+    padding: 20px 0;
+
+    .editor-form.comment-editor {
+      .editor-toolbar {
+        padding-left: 0;
+        border-radius: 0;
+      }
+
+      .body-input {
+        background: $white;
+        height: 120px;
+        margin-bottom: 6px;
+      }
+    }
+
+    .comment-box-controls {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 6px;
+
+      .btn-cancel {
+        margin-right: 4px;
+      }
+    }
+
+    .comment-box-preview {
+      .preview-label {
+        font-weight: 500;
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+    }
+  }
 }

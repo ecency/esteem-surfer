@@ -8,6 +8,80 @@
     width: calc(50% - 2px);
   }
 
+  .editor-form.post-editor {
+    float: left;
+
+    .editor-toolbar {
+      margin-bottom: 34px;
+    }
+
+    .title-input,
+    .tags-input,
+    .body-input {
+      margin-left: 12px;
+    }
+
+    .title-input {
+      // total height = 40px
+      height: 40px;
+
+      input[type='text'] {
+        background: transparent;
+        border: 0;
+        color: $charcoal-grey;
+        font-family: 'Roboto Mono', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+
+        @include themify(day) {
+          color: $charcoal-grey;
+        }
+
+        @include themify(night) {
+          color: $powder-blue;
+        }
+      }
+    }
+
+    .tags-input {
+      height: 52px;
+      padding-left: 4px;
+
+      .ant-select {
+        font-family: 'Roboto Mono', sans-serif !important;
+        width: 100%;
+
+        .ant-select-selection {
+          border: 0;
+          color: $steel-grey;
+          background-color: transparent;
+
+          ul {
+            li {
+              background: transparent;
+              border: none;
+              font-size: 12px;
+              padding: 0 5px;
+
+              &:first-child {
+                color: $dark-sky-blue;
+              }
+
+              .ant-select-selection__choice__remove {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .body-input {
+      height: calc(100% - #{44px+ 34px+ 40px+ 52px});
+      padding-left: 11px;
+    }
+  }
+
   .preview-part {
     float: right;
 

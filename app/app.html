@@ -56,6 +56,10 @@
         if (el.classList.contains('markdown-author-link')) {
           event.preventDefault();
 
+          if (event.path.filter(x => x.classList && x.classList.contains('no-click-event')).length > 0) {
+            return false;
+          }
+
           const author = el.getAttribute('data-author');
           const ev = new CustomEvent('md-author-clicked', {detail: {author}});
           window.dispatchEvent(ev);
@@ -64,6 +68,10 @@
 
         if (el.classList.contains('markdown-post-link')) {
           event.preventDefault();
+
+          if (event.path.filter(x => x.classList && x.classList.contains('no-click-event')).length > 0) {
+            return false;
+          }
 
           let category = el.getAttribute('data-tag');
           let author = el.getAttribute('data-author');
@@ -76,6 +84,10 @@
 
         if (el.classList.contains('markdown-tag-link')) {
           event.preventDefault();
+
+          if (event.path.filter(x => x.classList && x.classList.contains('no-click-event')).length > 0) {
+            return false;
+          }
 
           let tag = el.getAttribute('data-tag');
 

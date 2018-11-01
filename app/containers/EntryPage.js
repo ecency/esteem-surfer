@@ -23,7 +23,8 @@ const mapStateToProps = state => ({
   accounts: state.accounts,
   activeAccount: state.activeAccount,
   dynamicProps: state.dynamicProps,
-  visitingEntry: state.visitingEntry
+  visitingEntry: state.visitingEntry,
+  trendingTags: state.trendingTags
 });
 
 const mapDispatchToProps = dispatch => ({

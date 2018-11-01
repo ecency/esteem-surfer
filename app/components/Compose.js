@@ -433,6 +433,7 @@ class Compose extends Component {
             defaultValues={defaultValues}
             onChange={this.editorChanged}
             syncWith="#preview-content-body"
+            mode="post"
             ref={this.editor}
           />
           <Preview

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 import {FormattedRelative, FormattedMessage, FormattedHTMLMessage, injectIntl} from 'react-intl';
 
-import {Select, message} from 'antd';
+import {Select, Button, message} from 'antd';
 
 import {getState, getContent} from '../backend/steem-client';
 
@@ -23,6 +23,7 @@ import EntryPayout from './elements/EntryPayout';
 import FormattedCurrency from './elements/FormattedCurrency';
 import EntryVotes from './elements/EntryVotes';
 import LinearProgress from './common/LinearProgress';
+import Editor from './elements/Editor';
 
 import parseDate from '../utils/parse-date';
 import parseToken from '../utils/parse-token';
@@ -30,6 +31,7 @@ import sumTotal from '../utils/sum-total';
 import appName from '../utils/app-name';
 import markDown2Html from '../utils/markdown-2-html';
 import authorReputation from '../utils/author-reputation';
+import {setItem} from "../helpers/storage";
 
 class CommentListItem extends Component {
   constructor(props) {
@@ -163,7 +165,9 @@ class Entry extends Component {
       entry: visitingEntry || null,
       comments: [],
       commentsLoading: true,
-      commentSort: 'trending'
+      commentSort: 'trending',
+      editorVisible: false,
+      newCommentBody: '',
     };
 
     const {match} = this.props;
@@ -172,6 +176,8 @@ class Entry extends Component {
     this.statePath = `/${category}/@${username}/${permlink}`;
     this.entryPath = `${username}/${permlink}`;
     this.stateData = null;
+
+    this.changeTimer = null;
   }
 
   async componentDidMount() {
@@ -331,14 +337,35 @@ class Entry extends Component {
     // console.log(e.detail.tag);
   };
 
+  replyClicked = () => {
+    const {editorVisible} = this.state;
+    this.setState({editorVisible: !editorVisible, newCommentBody: ''});
+  };
+
+  editorChanged = newValues => {
+    if (this.changeTimer !== null) {
+      this.changeTimer = null;
+      clearTimeout(this.changeTimer);
+    }
+
+    this.changeTimer = setTimeout(() => {
+
+      this.setState({
+        newCommentBody: newValues.body
+      });
+
+      this.changeTimer = null;
+    }, 300);
+  };
+
 
   render() {
-    const {entry, commentsLoading} = this.state;
+    const {entry, commentsLoading, editorVisible} = this.state;
 
 
     let content = null;
     if (entry) {
-      const {comments, commentSort} = this.state;
+      const {comments, commentSort, newCommentBody} = this.state;
 
       const reputation = authorReputation(entry.author_reputation);
       const created = parseDate(entry.created);
@@ -351,7 +378,7 @@ class Entry extends Component {
         jsonMeta = {};
       }
 
-      const tags = [...new Set(jsonMeta.tags)]; // Sometimes tag list comes with duplicate items
+      const tags = [...new Set(jsonMeta.tags)].slice(0, 5); // Sometimes tag list comes with duplicate items
       const app = appName(jsonMeta.app);
       const totalPayout = sumTotal(entry);
       const isPayoutDeclined = parseToken(entry.max_accepted_payout) === 0;
@@ -428,7 +455,7 @@ class Entry extends Component {
                   </div>
                 </div>
                 <div className="right-side">
-                  <div className="reply-btn"><FormattedMessage id="entry.reply"/></div>
+                  <span className="reply-btn" onClick={this.replyClicked}><FormattedMessage id="entry.reply"/></span>
                 </div>
               </div>
               <div className="entry-controls">
@@ -455,6 +482,38 @@ class Entry extends Component {
             {commentsLoading &&
             <LinearProgress/>
             }
+
+            {editorVisible &&
+
+            <div className="comment-box">
+              <Editor
+                {...this.props}
+                defaultValues={{
+                  title: '',
+                  tags: [],
+                  body: ''
+                }}
+                onChange={this.editorChanged}
+                syncWith={null}
+                mode="comment"
+                autoFocus2Body
+              />
+              <div className="comment-box-controls">
+                <Button size="small" className="btn-cancel">Cancel</Button>
+                <Button size="small" className="btn-reply" type="primary">Reply</Button>
+              </div>
+
+              {newCommentBody &&
+              <div className="comment-box-preview">
+                <div className="preview-label">Preview</div>
+                <div className="markdown-view mini-markdown no-click-event"
+                     dangerouslySetInnerHTML={{__html: markDown2Html(newCommentBody)}}/>
+              </div>
+              }
+            </div>
+            }
+
+            <div className="clearfix"/>
             <div className="entry-comments">
               <div className="entry-comments-header">
                 <div className="comment-count">
@@ -473,6 +532,7 @@ class Entry extends Component {
                 </div>
                 }
               </div>
+
               <div className="entry-comments-body">
                 <CommentList {...this.props} comments={comments}/>
               </div>
