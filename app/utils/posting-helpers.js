@@ -20,6 +20,15 @@ export const createPermlink = (title) => {
   return perm;
 };
 
+
+export const createReplyPermlink = (toAuthor) => {
+  const t = new Date(Date.now());
+
+  const timeFormat = `${t.getFullYear().toString()}${(t.getMonth() + 1).toString() }${t.getDate().toString()}t${t.getHours().toString()}${ t.getMinutes().toString()}${t.getSeconds().toString()}${t.getMilliseconds().toString()}z`;
+
+  return `re-${toAuthor.replace(/\./g, "")}-${timeFormat}`
+};
+
 export const makeOptions = (author, permlink, operationType) => {
   const a = {
     allow_curation_rewards: true,
@@ -56,6 +65,15 @@ export const makeJsonMetadata = (meta, tags, appVer) => (
     format: 'markdown+html',
     community: 'esteem.app'
   })
+);
+
+export const makeJsonMetadataReply = (tags, appVer) => (
+  {
+    tags,
+    app: `esteem/${appVer}-surfer`,
+    format: 'markdown+html',
+    community: 'esteem.app'
+  }
 );
 
 export const extractMetadata = body => {

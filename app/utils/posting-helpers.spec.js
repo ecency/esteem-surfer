@@ -1,5 +1,5 @@
 /* eslint-disable */
-import {createPermlink, makeOptions, extractMetadata, makeJsonMetadata} from './posting-helpers';
+import {createPermlink, makeOptions, extractMetadata, makeJsonMetadata, createReplyPermlink} from './posting-helpers';
 import {Select} from "antd/lib/select";
 import React from "react";
 
@@ -62,5 +62,23 @@ describe('makeJsonMetadata', () => {
     const tags = ["esteem", "art"];
 
     expect(makeJsonMetadata(meta, tags, '2.0.0')).toMatchSnapshot();
+  });
+});
+
+
+
+
+
+
+describe('createReplyPermlink', () => {
+
+
+  jest.spyOn(Date, 'now').mockImplementation(() => {
+    return new Date('2018-09-21T12:00:50.000Z');
+  });
+
+
+  it('(1) ', () => {
+    expect(createReplyPermlink('good-karma')).toMatchSnapshot();
   });
 });

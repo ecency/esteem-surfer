@@ -10,7 +10,7 @@ import {FormattedRelative, FormattedMessage, FormattedHTMLMessage, injectIntl} f
 
 import {Select, Button, message} from 'antd';
 
-import {getState, getContent} from '../backend/steem-client';
+import {getState, getContent, comment} from '../backend/steem-client';
 
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
@@ -31,7 +31,133 @@ import sumTotal from '../utils/sum-total';
 import appName from '../utils/app-name';
 import markDown2Html from '../utils/markdown-2-html';
 import authorReputation from '../utils/author-reputation';
-import {setItem} from "../helpers/storage";
+import formatChainError from '../utils/format-chain-error';
+
+
+import {
+  createReplyPermlink,
+  makeOptions,
+  makeJsonMetadataReply
+} from '../utils/posting-helpers';
+import {version} from "../../package";
+
+class CommentEditor extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      commentText: '',
+      processing: false
+    }
+  }
+
+  editorChanged = newValues => {
+    if (this.changeTimer !== null) {
+      this.changeTimer = null;
+      clearTimeout(this.changeTimer);
+    }
+
+    this.changeTimer = setTimeout(() => {
+
+      this.setState({
+        commentText: newValues.body.trim()
+      });
+
+      this.changeTimer = null;
+    }, 300);
+  };
+
+  cancel = () => {
+    const {onCancel} = this.props;
+    onCancel();
+  };
+
+  submit = async () => {
+
+    this.setState({processing: true});
+
+    const {parent, onSuccess, activeAccount, global} = this.props;
+    const {commentText} = this.state;
+
+    let parentJsonMeta;
+    try {
+      parentJsonMeta = JSON.parse(parent.json_metadata);
+    } catch (e) {
+      parentJsonMeta = {};
+    }
+
+    const jsonMeta = makeJsonMetadataReply(parentJsonMeta.tags || ['esteem'], version);
+    const author = activeAccount.username;
+    const permlink = createReplyPermlink(parent.author);
+    const options = makeOptions(author, permlink);
+    let newComment;
+
+    try {
+      await comment(
+        activeAccount,
+        global.pin,
+        parent.author,
+        parent.permlink,
+        permlink,
+        '',
+        commentText,
+        jsonMeta,
+        options,
+        0
+      );
+
+      newComment = await getContent(author, permlink);
+
+    } catch (err) {
+      message.error(formatChainError(err));
+      return;
+    }
+
+    this.setState({processing: false});
+    onSuccess(newComment);
+  };
+
+  render() {
+    const {commentText, processing} = this.state;
+
+    return (
+      <div className="comment-box">
+        <Editor
+          {...this.props}
+          defaultValues={{
+            title: '',
+            tags: [],
+            body: ''
+          }}
+          onChange={this.editorChanged}
+          syncWith={null}
+          mode="comment"
+          autoFocus2Body
+        />
+        <div className="comment-box-controls">
+          <Button size="small" className="btn-cancel" onClick={this.cancel} disabled={processing}>Cancel</Button>
+          <Button size="small" className="btn-reply" type="primary" onClick={this.submit}
+                  disabled={!commentText} loading={processing}>Reply</Button>
+        </div>
+
+        {commentText &&
+        <div className="comment-box-preview">
+          <div className="preview-label">Preview</div>
+          <div className="markdown-view mini-markdown no-click-event"
+               dangerouslySetInnerHTML={{__html: markDown2Html(commentText)}}/>
+        </div>
+        }
+      </div>
+    )
+  }
+}
+
+CommentEditor.propTypes = {
+  parent: PropTypes.instanceOf(Object).isRequired,
+  onSuccess: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+};
+
 
 class CommentListItem extends Component {
   constructor(props) {
@@ -40,7 +166,8 @@ class CommentListItem extends Component {
     const {comment} = this.props;
 
     this.state = {
-      comment
+      comment,
+      editorVisible: false,
     }
   }
 
@@ -54,12 +181,22 @@ class CommentListItem extends Component {
     })
   };
 
-  afterReply = () => {
-
+  onNewComment = (newReply) => {
+    let {comment} = this.state;
+    let {comments} = comment;
+    comments = [newReply, ...comments];
+    comment = Object.assign({}, comment, {comments});
+    this.setState({comment});
   };
 
+  toggleCommentForm = () => {
+    const {editorVisible} = this.state;
+    this.setState({editorVisible: !editorVisible});
+  };
+
+
   render() {
-    const {comment} = this.state;
+    const {comment, editorVisible} = this.state;
     const reputation = authorReputation(comment.author_reputation);
     const created = parseDate(comment.created);
     const renderedBody = {__html: markDown2Html(comment.body)};
@@ -113,12 +250,26 @@ class CommentListItem extends Component {
               </a>
             </EntryVotes>
             <span className="separator"/>
-            <span className="reply-btn">Reply</span>
+            <span className="reply-btn" onClick={this.toggleCommentForm}>Reply</span>
           </div>
         </div>
-        {comment.comments.length > 0 &&
+
+        {editorVisible &&
+        <CommentEditor
+          {...this.props}
+          parent={comment}
+          onCancel={this.toggleCommentForm}
+          onSuccess={(comment) => {
+            this.toggleCommentForm();
+            this.onNewComment(comment);
+          }}
+        />
+        }
+
+        {comment.comments && comment.comments.length > 0 &&
         <CommentList {...this.props} comments={comment.comments}/>
         }
+
       </div>
     )
   }
@@ -166,8 +317,7 @@ class Entry extends Component {
       comments: [],
       commentsLoading: true,
       commentSort: 'trending',
-      editorVisible: false,
-      newCommentBody: '',
+      editorVisible: false
     };
 
     const {match} = this.props;
@@ -176,8 +326,6 @@ class Entry extends Component {
     this.statePath = `/${category}/@${username}/${permlink}`;
     this.entryPath = `${username}/${permlink}`;
     this.stateData = null;
-
-    this.changeTimer = null;
   }
 
   async componentDidMount() {
@@ -337,35 +485,23 @@ class Entry extends Component {
     // console.log(e.detail.tag);
   };
 
-  replyClicked = () => {
+  toggleCommentForm = () => {
     const {editorVisible} = this.state;
-    this.setState({editorVisible: !editorVisible, newCommentBody: ''});
+    this.setState({editorVisible: !editorVisible});
   };
 
-  editorChanged = newValues => {
-    if (this.changeTimer !== null) {
-      this.changeTimer = null;
-      clearTimeout(this.changeTimer);
-    }
-
-    this.changeTimer = setTimeout(() => {
-
-      this.setState({
-        newCommentBody: newValues.body
-      });
-
-      this.changeTimer = null;
-    }, 300);
+  onNewComment = (comment) => {
+    const {comments} = this.state;
+    const newComments = [comment, ...comments];
+    this.setState({comments: newComments});
   };
-
 
   render() {
     const {entry, commentsLoading, editorVisible} = this.state;
 
-
     let content = null;
     if (entry) {
-      const {comments, commentSort, newCommentBody} = this.state;
+      const {comments, commentSort} = this.state;
 
       const reputation = authorReputation(entry.author_reputation);
       const created = parseDate(entry.created);
@@ -434,9 +570,7 @@ class Entry extends Component {
                     <i className="mi">access_time</i>
                     <FormattedRelative value={created} initialNow={Date.now()}/>
                   </div>
-
                   <span className="separator"/>
-
                   <QuickProfile
                     {...this.props}
                     username={entry.author}
@@ -455,7 +589,8 @@ class Entry extends Component {
                   </div>
                 </div>
                 <div className="right-side">
-                  <span className="reply-btn" onClick={this.replyClicked}><FormattedMessage id="entry.reply"/></span>
+                  <span className="reply-btn" onClick={this.toggleCommentForm}><FormattedMessage
+                    id="entry.reply"/></span>
                 </div>
               </div>
               <div className="entry-controls">
@@ -484,40 +619,21 @@ class Entry extends Component {
             }
 
             {editorVisible &&
-
-            <div className="comment-box">
-              <Editor
-                {...this.props}
-                defaultValues={{
-                  title: '',
-                  tags: [],
-                  body: ''
-                }}
-                onChange={this.editorChanged}
-                syncWith={null}
-                mode="comment"
-                autoFocus2Body
-              />
-              <div className="comment-box-controls">
-                <Button size="small" className="btn-cancel">Cancel</Button>
-                <Button size="small" className="btn-reply" type="primary">Reply</Button>
-              </div>
-
-              {newCommentBody &&
-              <div className="comment-box-preview">
-                <div className="preview-label">Preview</div>
-                <div className="markdown-view mini-markdown no-click-event"
-                     dangerouslySetInnerHTML={{__html: markDown2Html(newCommentBody)}}/>
-              </div>
-              }
-            </div>
+            <CommentEditor
+              {...this.props}
+              parent={entry}
+              onCancel={this.toggleCommentForm}
+              onSuccess={(comment) => {
+                this.toggleCommentForm();
+                this.onNewComment(comment);
+              }}
+            />
             }
-
             <div className="clearfix"/>
             <div className="entry-comments">
               <div className="entry-comments-header">
                 <div className="comment-count">
-                  <i className="mi">comment</i>{entry.children} Comments
+                  <i className="mi">comment</i>{comments.length} Comments
                 </div>
                 {(comments.length > 0) &&
                 <div className="sort-order">
@@ -541,7 +657,6 @@ class Entry extends Component {
         </Fragment>
       )
     }
-
 
     return (
       <div className="wrapper">

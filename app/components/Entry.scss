@@ -17,9 +17,9 @@
 }
 
 .vertical-separator {
-  width: 1px;
   height: 14px;
   margin: 0 12px;
+  width: 1px;
 
   @include themify(day) {
     background: lighten($steel-grey, 40);
@@ -340,11 +340,11 @@
       margin-top: 15px;
 
       .entry-comments-header {
+        align-items: center;
         color: $steel-grey;
-        margin-bottom: 15px;
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        margin-bottom: 15px;
 
         .comment-count {
           align-items: center;
@@ -371,7 +371,7 @@
 
             .item-inner {
               @include clearfix();
-              margin-bottom: 25px;
+              margin-bottom: 15px;
               padding: 3px;
 
               .item-header,
@@ -385,25 +385,25 @@
               }
 
               .item-header {
+                align-items: center;
+                display: flex;
                 font-size: 14px;
                 margin-bottom: 3px;
-                display: flex;
-                align-items: center;
 
                 .author-part {
-                  position: relative;
                   align-items: center;
                   cursor: pointer;
                   display: flex;
+                  position: relative;
 
                   .author-avatar {
-                    margin-right: 6px;
-                    width: 40px;
                     border-radius: 50%;
                     float: left;
-                    position: absolute;
                     left: 0;
+                    margin-right: 6px;
+                    position: absolute;
                     top: 0;
+                    width: 40px;
                   }
 
                   .author {
@@ -490,6 +490,10 @@
                     opacity: 0.5;
                   }
                 }
+
+                .reply-btn {
+                  cursor: pointer;
+                }
               }
             }
 
@@ -504,18 +508,25 @@
   }
 
   .comment-box {
-    padding: 20px 0;
+    padding: 0 0 20px 0;
 
     .editor-form.comment-editor {
       .editor-toolbar {
-        padding-left: 0;
         border-radius: 0;
+        height: 30px;
+        padding-left: 0;
+
+        .editor-tool {
+          .tool-icon {
+            font-size: 18px;
+          }
+        }
       }
 
       .body-input {
         background: $white;
-        height: 120px;
         margin-bottom: 6px;
+        min-height: 80px;
       }
     }
 
@@ -531,8 +542,8 @@
 
     .comment-box-preview {
       .preview-label {
-        font-weight: 500;
         font-size: 16px;
+        font-weight: 500;
         margin-bottom: 5px;
       }
     }
