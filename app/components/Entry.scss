@@ -335,18 +335,18 @@
       }
     }
 
-    .entry-comments {
+    .entry-replies {
       margin-bottom: 30px;
       margin-top: 15px;
 
-      .entry-comments-header {
+      .entry-replies-header {
         align-items: center;
         color: $steel-grey;
         display: flex;
         justify-content: space-between;
         margin-bottom: 15px;
 
-        .comment-count {
+        .reply-count {
           align-items: center;
           display: flex;
           font-size: 16px;
@@ -364,9 +364,9 @@
         }
       }
 
-      .entry-comments-body {
-        .comment-list {
-          .comment-list-item {
+      .entry-replies-body {
+        .entry-reply-list {
+          .reply-list-item {
             @include clearfix();
 
             .item-inner {
@@ -400,10 +400,10 @@
                     border-radius: 50%;
                     float: left;
                     left: 0;
-                    margin-right: 6px;
                     position: absolute;
                     top: 0;
                     width: 40px;
+                    z-index: 2;
                   }
 
                   .author {
@@ -497,7 +497,7 @@
               }
             }
 
-            .comment-list {
+            .entry-reply-list {
               @include clearfix();
               margin-left: 50px;
             }
@@ -506,46 +506,46 @@
       }
     }
   }
+}
 
-  .comment-box {
-    padding: 0 0 20px 0;
+.reply-editor {
+  padding: 0 0 20px 0;
 
-    .editor-form.comment-editor {
-      .editor-toolbar {
-        border-radius: 0;
-        height: 30px;
-        padding-left: 0;
+  .editor-form.comment-editor {
+    .editor-toolbar {
+      border-radius: 0;
+      height: 30px;
+      padding-left: 0;
 
-        .editor-tool {
-          .tool-icon {
-            font-size: 18px;
-          }
+      .editor-tool {
+        .tool-icon {
+          font-size: 18px;
         }
       }
-
-      .body-input {
-        background: $white;
-        margin-bottom: 6px;
-        min-height: 80px;
-      }
     }
 
-    .comment-box-controls {
-      display: flex;
-      justify-content: flex-end;
+    .body-input {
+      background: $white;
       margin-bottom: 6px;
-
-      .btn-cancel {
-        margin-right: 4px;
-      }
+      min-height: 80px;
     }
+  }
 
-    .comment-box-preview {
-      .preview-label {
-        font-size: 16px;
-        font-weight: 500;
-        margin-bottom: 5px;
-      }
+  .reply-editor-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 6px;
+
+    .btn-cancel {
+      margin-right: 4px;
+    }
+  }
+
+  .reply-editor-preview {
+    .preview-label {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 5px;
     }
   }
 }

@@ -41,12 +41,12 @@ import {
 } from '../utils/posting-helpers';
 import {version} from "../../package";
 
-class CommentEditor extends Component {
+class ReplyEditor extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      commentText: '',
+      replyText: '',
       processing: false
     }
   }
@@ -60,7 +60,7 @@ class CommentEditor extends Component {
     this.changeTimer = setTimeout(() => {
 
       this.setState({
-        commentText: newValues.body.trim()
+        replyText: newValues.body.trim()
       });
 
       this.changeTimer = null;
@@ -77,7 +77,7 @@ class CommentEditor extends Component {
     this.setState({processing: true});
 
     const {parent, onSuccess, activeAccount, global} = this.props;
-    const {commentText} = this.state;
+    const {replyText} = this.state;
 
     let parentJsonMeta;
     try {
@@ -90,7 +90,7 @@ class CommentEditor extends Component {
     const author = activeAccount.username;
     const permlink = createReplyPermlink(parent.author);
     const options = makeOptions(author, permlink);
-    let newComment;
+    let newContent;
 
     try {
       await comment(
@@ -100,13 +100,13 @@ class CommentEditor extends Component {
         parent.permlink,
         permlink,
         '',
-        commentText,
+        replyText,
         jsonMeta,
         options,
         0
       );
 
-      newComment = await getContent(author, permlink);
+      newContent = await getContent(author, permlink);
 
     } catch (err) {
       message.error(formatChainError(err));
@@ -114,14 +114,14 @@ class CommentEditor extends Component {
     }
 
     this.setState({processing: false});
-    onSuccess(newComment);
+    onSuccess(newContent);
   };
 
   render() {
-    const {commentText, processing} = this.state;
+    const {replyText, processing} = this.state;
 
     return (
-      <div className="comment-box">
+      <div className="reply-editor">
         <Editor
           {...this.props}
           defaultValues={{
@@ -134,17 +134,17 @@ class CommentEditor extends Component {
           mode="comment"
           autoFocus2Body
         />
-        <div className="comment-box-controls">
+        <div className="reply-editor-controls">
           <Button size="small" className="btn-cancel" onClick={this.cancel} disabled={processing}>Cancel</Button>
           <Button size="small" className="btn-reply" type="primary" onClick={this.submit}
-                  disabled={!commentText} loading={processing}>Reply</Button>
+                  disabled={!replyText} loading={processing}>Reply</Button>
         </div>
 
-        {commentText &&
-        <div className="comment-box-preview">
+        {replyText &&
+        <div className="reply-editor-preview">
           <div className="preview-label">Preview</div>
           <div className="markdown-view mini-markdown no-click-event"
-               dangerouslySetInnerHTML={{__html: markDown2Html(commentText)}}/>
+               dangerouslySetInnerHTML={{__html: markDown2Html(replyText)}}/>
         </div>
         }
       </div>
@@ -152,73 +152,74 @@ class CommentEditor extends Component {
   }
 }
 
-CommentEditor.propTypes = {
+ReplyEditor.propTypes = {
   parent: PropTypes.instanceOf(Object).isRequired,
   onSuccess: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
 };
 
 
-class CommentListItem extends Component {
+class ReplyListItem extends Component {
   constructor(props) {
     super(props);
 
-    const {comment} = this.props;
+    const {reply} = this.props;
 
     this.state = {
-      comment,
+      reply,
       editorVisible: false,
     }
   }
 
   afterVote = () => {
-    const {comment} = this.state;
-    const {author, permlink} = comment;
+    const {reply} = this.state;
+    const {author, permlink} = reply;
 
     getContent(author, permlink).then(resp => {
-      const newComment = Object.assign({}, comment, {active_votes: resp.active_votes});
-      this.setState({comment: newComment});
+      const newReply = Object.assign({}, reply, {active_votes: resp.active_votes});
+      this.setState({reply: newReply});
     })
   };
 
-  onNewComment = (newReply) => {
-    let {comment} = this.state;
-    let {comments} = comment;
-    comments = [newReply, ...comments];
-    comment = Object.assign({}, comment, {comments});
-    this.setState({comment});
+  onNewReply = (newObj) => {
+    const {reply} = this.state;
+    const {replies} = reply;
+
+    const newReplies = [newObj, ...replies];
+    const newReply = Object.assign({}, reply, {replies: newReplies});
+    this.setState({reply: newReply});
   };
 
-  toggleCommentForm = () => {
+  toggleReplyForm = () => {
     const {editorVisible} = this.state;
     this.setState({editorVisible: !editorVisible});
   };
 
 
   render() {
-    const {comment, editorVisible} = this.state;
-    const reputation = authorReputation(comment.author_reputation);
-    const created = parseDate(comment.created);
-    const renderedBody = {__html: markDown2Html(comment.body)};
-    const isPayoutDeclined = parseToken(comment.max_accepted_payout) === 0;
-    const totalPayout = sumTotal(comment);
-    const voteCount = comment.active_votes.length;
+    const {reply, editorVisible} = this.state;
+    const reputation = authorReputation(reply.author_reputation);
+    const created = parseDate(reply.created);
+    const renderedBody = {__html: markDown2Html(reply.body)};
+    const isPayoutDeclined = parseToken(reply.max_accepted_payout) === 0;
+    const totalPayout = sumTotal(reply);
+    const voteCount = reply.active_votes.length;
 
     return (
-      <div className="comment-list-item">
+      <div className="reply-list-item">
         <div className="item-inner">
           <div className="item-header">
             <QuickProfile
               {...this.props}
-              username={comment.author}
+              username={reply.author}
               reputation={reputation}
             >
               <div className="author-part">
                 <div className="author-avatar">
-                  <UserAvatar user={comment.author} size="medium"/>
+                  <UserAvatar user={reply.author} size="medium"/>
                 </div>
                 <div className="author">
-                  <span className="author-name">{comment.author}</span>
+                  <span className="author-name">{reply.author}</span>
                   <span className="author-reputation">{reputation}</span>
                 </div>
               </div>
@@ -231,9 +232,9 @@ class CommentListItem extends Component {
           <div className="item-body markdown-view mini-markdown" dangerouslySetInnerHTML={renderedBody}/>
           <div className="item-controls">
             <div className="voting">
-              <EntryVoteBtn {...this.props} entry={comment} afterVote={this.afterVote}/>
+              <EntryVoteBtn {...this.props} entry={reply} afterVote={this.afterVote}/>
             </div>
-            <EntryPayout {...this.props} entry={comment}>
+            <EntryPayout {...this.props} entry={reply}>
               <a
                 className={`total-payout ${
                   isPayoutDeclined ? 'payout-declined' : ''
@@ -243,66 +244,63 @@ class CommentListItem extends Component {
               </a>
             </EntryPayout>
             <span className="separator"/>
-            <EntryVotes {...this.props} entry={comment}>
+            <EntryVotes {...this.props} entry={reply}>
               <a className="voters">
                 <i className="mi">people</i>
                 {voteCount}
               </a>
             </EntryVotes>
             <span className="separator"/>
-            <span className="reply-btn" onClick={this.toggleCommentForm}>Reply</span>
+            <span className="reply-btn" onClick={this.toggleReplyForm}>Reply</span>
           </div>
         </div>
 
         {editorVisible &&
-        <CommentEditor
+        <ReplyEditor
           {...this.props}
-          parent={comment}
-          onCancel={this.toggleCommentForm}
-          onSuccess={(comment) => {
-            this.toggleCommentForm();
-            this.onNewComment(comment);
+          parent={reply}
+          onCancel={this.toggleReplyForm}
+          onSuccess={(newObj) => {
+            this.toggleReplyForm();
+            this.onNewReply(newObj);
           }}
         />
         }
-
-        {comment.comments && comment.comments.length > 0 &&
-        <CommentList {...this.props} comments={comment.comments}/>
+        {reply.replies && reply.replies.length > 0 &&
+        <ReplyList {...this.props} replies={reply.replies}/>
         }
-
       </div>
     )
   }
 }
 
-CommentListItem.defaultProps = {};
+ReplyListItem.defaultProps = {};
 
-CommentListItem.propTypes = {
-  comment: PropTypes.instanceOf(Object).isRequired,
+ReplyListItem.propTypes = {
+  reply: PropTypes.instanceOf(Object).isRequired,
 };
 
-class CommentList extends Component {
+class ReplyList extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const {comments} = this.props;
+    const {replies} = this.props;
     return (
-      <div className="comment-list">
-        {comments.map(comment => {
-          return <CommentListItem {...this.props} comment={comment} key={comment.id}/>
+      <div className="entry-reply-list">
+        {replies.map(reply => {
+          return <ReplyListItem {...this.props} reply={reply} key={reply.id}/>
         })}
       </div>
     )
   }
 }
 
+ReplyList.defaultProps = {};
 
-CommentList.defaultProps = {};
-
-CommentList.propTypes = {
-  comments: PropTypes.arrayOf(Object).isRequired
+ReplyList.propTypes = {
+  replies: PropTypes.arrayOf(Object).isRequired
 };
 
 
@@ -314,9 +312,9 @@ class Entry extends Component {
 
     this.state = {
       entry: visitingEntry || null,
-      comments: [],
-      commentsLoading: true,
-      commentSort: 'trending',
+      replies: [],
+      repliesLoading: true,
+      replySort: 'trending',
       editorVisible: false
     };
 
@@ -342,7 +340,7 @@ class Entry extends Component {
     window.removeEventListener('md-tag-clicked', this.mdTagClicked);
   }
 
-  compileComments = (parent, sortOrder) => {
+  compileReplies = (parent, sortOrder) => {
     const {match} = this.props;
     const {commentId} = match.params;
 
@@ -407,30 +405,30 @@ class Entry extends Component {
       }
     };
 
-    const comments = [];
+    const replies = [];
 
     parent.replies.forEach((k) => {
       const reply = this.stateData.content[k];
 
-      comments.push(
+      replies.push(
         Object.assign(
           {},
           reply,
-          {comments: this.compileComments(reply, sortOrder)},
+          {replies: this.compileReplies(reply, sortOrder)},
           {author_data: this.stateData.accounts[reply.author]},
           {_selected_: reply.id === commentId}
         )
       )
     });
 
-    comments.sort(sortOrders[sortOrder]);
+    replies.sort(sortOrders[sortOrder]);
 
-    return comments
+    return replies
   };
 
 
   fetch = async () => {
-    this.setState({comments: [], commentsLoading: true, commentSort: 'trending'});
+    this.setState({replies: [], repliesLoading: true, replySort: 'trending'});
 
     const {match, actions} = this.props;
     const {username, permlink} = match.params;
@@ -445,21 +443,21 @@ class Entry extends Component {
 
     const theEntry = this.stateData.content[this.entryPath];
 
-    const comments = this.compileComments(theEntry, 'trending');
+    const replies = this.compileReplies(theEntry, 'trending');
 
-    this.setState({commentsLoading: false, comments})
+    this.setState({repliesLoading: false, replies})
   };
 
   refresh = async () => {
     await this.fetch();
   };
 
-  commentSortOrderChanged = value => {
-    this.setState({commentSort: value});
+  replySortOrderChanged = value => {
+    this.setState({replySort: value});
 
     const theEntry = this.stateData.content[this.entryPath];
-    const comments = this.compileComments(theEntry, value);
-    this.setState({comments});
+    const replies = this.compileReplies(theEntry, value);
+    this.setState({replies});
   };
 
 
@@ -485,23 +483,27 @@ class Entry extends Component {
     // console.log(e.detail.tag);
   };
 
-  toggleCommentForm = () => {
+  toggleReplyForm = () => {
     const {editorVisible} = this.state;
     this.setState({editorVisible: !editorVisible});
   };
 
-  onNewComment = (comment) => {
-    const {comments} = this.state;
-    const newComments = [comment, ...comments];
-    this.setState({comments: newComments});
+  onNewReply = (newReply) => {
+    const {replies} = this.state;
+    const newReplies = [newReply, ...replies];
+    this.setState({replies: newReplies});
   };
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state !== nextState;
+  }
+
   render() {
-    const {entry, commentsLoading, editorVisible} = this.state;
+    const {entry, repliesLoading, editorVisible} = this.state;
 
     let content = null;
     if (entry) {
-      const {comments, commentSort} = this.state;
+      const {replies, replySort} = this.state;
 
       const reputation = authorReputation(entry.author_reputation);
       const created = parseDate(entry.created);
@@ -519,6 +521,7 @@ class Entry extends Component {
       const totalPayout = sumTotal(entry);
       const isPayoutDeclined = parseToken(entry.max_accepted_payout) === 0;
       const voteCount = entry.active_votes.length;
+
 
       content = (
         <Fragment>
@@ -554,7 +557,7 @@ class Entry extends Component {
               </div>
             </div>
             <div className="entry-body markdown-view" dangerouslySetInnerHTML={renderedBody}/>
-            <div className={`entry-footer ${commentsLoading ? 'loading' : ''}`}>
+            <div className={`entry-footer ${repliesLoading ? 'loading' : ''}`}>
               <div className="entry-tags">
                 {tags.map(t => (
                   <EntryTag {...this.props} tag={t} key={t}>
@@ -589,7 +592,7 @@ class Entry extends Component {
                   </div>
                 </div>
                 <div className="right-side">
-                  <span className="reply-btn" onClick={this.toggleCommentForm}><FormattedMessage
+                  <span className="reply-btn" onClick={this.toggleReplyForm}><FormattedMessage
                     id="entry.reply"/></span>
                 </div>
               </div>
@@ -614,32 +617,32 @@ class Entry extends Component {
                 </EntryVotes>
               </div>
             </div>
-            {commentsLoading &&
+            {repliesLoading &&
             <LinearProgress/>
             }
 
             {editorVisible &&
-            <CommentEditor
+            <ReplyEditor
               {...this.props}
               parent={entry}
-              onCancel={this.toggleCommentForm}
-              onSuccess={(comment) => {
-                this.toggleCommentForm();
-                this.onNewComment(comment);
+              onCancel={this.toggleReplyForm}
+              onSuccess={(newReply) => {
+                this.toggleReplyForm();
+                this.onNewReply(newReply);
               }}
             />
             }
             <div className="clearfix"/>
-            <div className="entry-comments">
-              <div className="entry-comments-header">
-                <div className="comment-count">
-                  <i className="mi">comment</i>{comments.length} Comments
+            <div className="entry-replies">
+              <div className="entry-replies-header">
+                <div className="reply-count">
+                  <i className="mi">comment</i>{replies.length} Replies
                 </div>
-                {(comments.length > 0) &&
+                {(replies.length > 0) &&
                 <div className="sort-order">
                   <span className="label">Sort Order</span>
-                  <Select defaultValue="trending" size="small" style={{width: '120px'}} value={commentSort}
-                          onChange={this.commentSortOrderChanged}>
+                  <Select defaultValue="trending" size="small" style={{width: '120px'}} value={replySort}
+                          onChange={this.replySortOrderChanged}>
                     <Select.Option value="trending">Trending</Select.Option>
                     <Select.Option value="author_reputation">Reputation</Select.Option>
                     <Select.Option value="votes">Votes</Select.Option>
@@ -649,8 +652,8 @@ class Entry extends Component {
                 }
               </div>
 
-              <div className="entry-comments-body">
-                <CommentList {...this.props} comments={comments}/>
+              <div className="entry-replies-body">
+                <ReplyList {...this.props} replies={replies}/>
               </div>
             </div>
           </div>
@@ -663,7 +666,7 @@ class Entry extends Component {
         <NavBar
           {...this.props}
           reloadFn={this.refresh}
-          reloading={commentsLoading}
+          reloading={repliesLoading}
           bookmarkFn={() => {
           }}
           postBtnActive
