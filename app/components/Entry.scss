@@ -491,7 +491,11 @@
                   }
                 }
 
-                .reply-btn {
+                .reply-btn,
+                .edit-btn {
+                  align-items: center;
+                  color: lighten($steel-grey, 10);
+                  display: flex;
                   cursor: pointer;
                 }
               }

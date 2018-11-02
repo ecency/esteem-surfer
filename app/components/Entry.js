@@ -42,6 +42,7 @@ import {
 import {version} from "../../package";
 
 class ReplyEditor extends Component {
+
   constructor(props) {
     super(props);
 
@@ -76,28 +77,51 @@ class ReplyEditor extends Component {
 
     this.setState({processing: true});
 
-    const {parent, onSuccess, activeAccount, global} = this.props;
+    const {content, onSuccess, activeAccount, global, mode} = this.props;
     const {replyText} = this.state;
+
 
     let parentJsonMeta;
     try {
-      parentJsonMeta = JSON.parse(parent.json_metadata);
+      parentJsonMeta = JSON.parse(content.json_metadata);
     } catch (e) {
       parentJsonMeta = {};
     }
 
+    let parentAuthor = null;
+    let parentPermlink = null;
+    let author = null;
+    let permlink = null;
+    let options = null;
+
     const jsonMeta = makeJsonMetadataReply(parentJsonMeta.tags || ['esteem'], version);
-    const author = activeAccount.username;
-    const permlink = createReplyPermlink(parent.author);
-    const options = makeOptions(author, permlink);
+
+    if (mode === 'edit') {
+      parentAuthor = content.parent_author;
+      parentPermlink = content.parent_permlink;
+      ({author} = content);
+      ({permlink} = content);
+
+      const bExist = content.beneficiaries.some(x => x && x.account === 'esteemapp');
+      if (!bExist) {
+        options = makeOptions(author, permlink);
+      }
+    } else if (mode === 'reply') {
+      parentAuthor = content.author;
+      parentPermlink = content.permlink;
+      author = activeAccount.username;
+      permlink = createReplyPermlink(content.author);
+      options = makeOptions(author, permlink);
+    }
+
     let newContent;
 
     try {
       await comment(
         activeAccount,
         global.pin,
-        parent.author,
-        parent.permlink,
+        parentAuthor,
+        parentPermlink,
         permlink,
         '',
         replyText,
@@ -117,9 +141,12 @@ class ReplyEditor extends Component {
     onSuccess(newContent);
   };
 
+
   render() {
-    const {intl} = this.props;
+    const {intl, mode, content} = this.props;
     const {replyText, processing} = this.state;
+    const defaultBody = (mode === 'edit' ? content.body : '');
+    const btnLabel = (mode === 'reply' ? 'Reply' : 'Save');
 
     return (
       <div className="reply-editor">
@@ -128,7 +155,7 @@ class ReplyEditor extends Component {
           defaultValues={{
             title: '',
             tags: [],
-            body: ''
+            body: defaultBody
           }}
           onChange={this.editorChanged}
           syncWith={null}
@@ -139,9 +166,8 @@ class ReplyEditor extends Component {
         <div className="reply-editor-controls">
           <Button size="small" className="btn-cancel" onClick={this.cancel} disabled={processing}>Cancel</Button>
           <Button size="small" className="btn-reply" type="primary" onClick={this.submit}
-                  disabled={!replyText} loading={processing}>Reply</Button>
+                  disabled={!replyText} loading={processing}>{btnLabel}</Button>
         </div>
-
         {replyText &&
         <div className="reply-editor-preview">
           <div className="preview-label">Preview</div>
@@ -154,19 +180,25 @@ class ReplyEditor extends Component {
   }
 }
 
+ReplyEditor.defaultProps = {
+  activeAccount: null
+};
+
+
 ReplyEditor.propTypes = {
-  parent: PropTypes.instanceOf(Object).isRequired,
+  content: PropTypes.instanceOf(Object).isRequired,
   onSuccess: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
   activeAccount: PropTypes.instanceOf(Object),
   global: PropTypes.shape({
     pin: PropTypes.string.isRequired
   }).isRequired,
-  intl: PropTypes.instanceOf(Object).isRequired
+  intl: PropTypes.instanceOf(Object).isRequired,
+  mode: PropTypes.string.isRequired
 };
 
-
 class ReplyListItem extends Component {
+
   constructor(props) {
     super(props);
 
@@ -174,6 +206,7 @@ class ReplyListItem extends Component {
 
     this.state = {
       reply,
+      editorMode: null,
       editorVisible: false,
     }
   }
@@ -182,35 +215,57 @@ class ReplyListItem extends Component {
     const {reply} = this.state;
     const {author, permlink} = reply;
 
-    getContent(author, permlink).then(resp => {
+    return getContent(author, permlink).then(resp => {
       const newReply = Object.assign({}, reply, {active_votes: resp.active_votes});
       this.setState({reply: newReply});
+      return resp
     })
   };
 
-  onNewReply = (newObj) => {
-    const {reply} = this.state;
-    const {replies} = reply;
+  onReplySuccess = (newObj) => {
+    const {reply, editorMode} = this.state;
 
-    const newReplies = [newObj, ...replies];
-    const newReply = Object.assign({}, reply, {replies: newReplies});
-    this.setState({reply: newReply});
+    let newReply;
+
+    if (editorMode === 'reply') {
+      const {replies} = reply;
+
+      const newReplies = [newObj, ...replies];
+      newReply = Object.assign({}, reply, {replies: newReplies});
+
+    } else if (editorMode === 'edit') {
+      newReply = Object.assign({}, reply, {body: newObj.body});
+    }
+
+    this.setState({reply: newReply, editorVisible: false, editorMode: null});
   };
 
-  toggleReplyForm = () => {
-    const {editorVisible} = this.state;
-    this.setState({editorVisible: !editorVisible});
+  onCancel = () => {
+    this.setState({editorVisible: false, editorMode: null});
   };
 
+  openEditor = (mode) => {
+    const {editorVisible, editorMode} = this.state;
+    if (editorVisible && editorMode === mode) return;
+
+    this.setState({editorVisible: false});
+
+    setTimeout(() => {
+      this.setState({editorVisible: true, editorMode: mode});
+    }, 50);
+  };
 
   render() {
-    const {reply, editorVisible} = this.state;
+    const {activeAccount} = this.props;
+    const {reply, editorVisible, editorMode} = this.state;
+
     const reputation = authorReputation(reply.author_reputation);
     const created = parseDate(reply.created);
     const renderedBody = {__html: markDown2Html(reply.body)};
     const isPayoutDeclined = parseToken(reply.max_accepted_payout) === 0;
     const totalPayout = sumTotal(reply);
     const voteCount = reply.active_votes.length;
+    const canEdit = activeAccount && activeAccount.username === reply.author;
 
     return (
       <div className="reply-list-item">
@@ -258,19 +313,27 @@ class ReplyListItem extends Component {
               </a>
             </EntryVotes>
             <span className="separator"/>
-            <span className="reply-btn" onClick={this.toggleReplyForm}>Reply</span>
+            <span className="reply-btn" role="none" onClick={() => {
+              this.openEditor('reply')
+            }}>Reply</span>
+            {canEdit &&
+            <Fragment>
+              <span className="separator"/>
+              <span className="edit-btn" role="none" onClick={() => {
+                this.openEditor('edit')
+              }}><i className="mi">edit</i> </span>
+            </Fragment>
+            }
           </div>
         </div>
 
         {editorVisible &&
         <ReplyEditor
           {...this.props}
-          parent={reply}
-          onCancel={this.toggleReplyForm}
-          onSuccess={(newObj) => {
-            this.toggleReplyForm();
-            this.onNewReply(newObj);
-          }}
+          content={reply}
+          onCancel={this.onCancel}
+          onSuccess={this.onReplySuccess}
+          mode={editorMode}
         />
         }
         {reply.replies && reply.replies.length > 0 &&
@@ -281,24 +344,21 @@ class ReplyListItem extends Component {
   }
 }
 
-ReplyListItem.defaultProps = {};
+ReplyListItem.defaultProps = {
+  activeAccount: null
+};
 
 ReplyListItem.propTypes = {
   reply: PropTypes.instanceOf(Object).isRequired,
+  activeAccount: PropTypes.instanceOf(Object)
 };
 
 class ReplyList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {replies} = this.props;
     return (
       <div className="entry-reply-list">
-        {replies.map(reply => {
-          return <ReplyListItem {...this.props} reply={reply} key={reply.id}/>
-        })}
+        {replies.map(reply => <ReplyListItem {...this.props} reply={reply} key={reply.id}/>)}
       </div>
     )
   }
@@ -310,8 +370,8 @@ ReplyList.propTypes = {
   replies: PropTypes.arrayOf(Object).isRequired
 };
 
-
 class Entry extends Component {
+
   constructor(props) {
     super(props);
 
@@ -341,6 +401,11 @@ class Entry extends Component {
     window.addEventListener('md-tag-clicked', this.mdTagClicked);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    // TODO: Improve performance
+    return true;
+  }
+
   componentWillUnmount() {
     window.removeEventListener('md-author-clicked', this.mdAuthorClicked);
     window.removeEventListener('md-post-clicked', this.mdEntryClicked);
@@ -349,7 +414,7 @@ class Entry extends Component {
 
   compileReplies = (parent, sortOrder) => {
     const {match} = this.props;
-    const {commentId} = match.params;
+    const {replyId} = match.params;
 
 
     const allPayout = (c) => (
@@ -387,8 +452,8 @@ class Entry extends Component {
         return 0;
       },
       votes: (a, b) => {
-        const keyA = a.net_votes,
-          keyB = b.net_votes;
+        const keyA = a.net_votes;
+        const keyB = b.net_votes;
 
         if (keyA > keyB) return -1;
         if (keyA < keyB) return 1;
@@ -423,7 +488,7 @@ class Entry extends Component {
           reply,
           {replies: this.compileReplies(reply, sortOrder)},
           {author_data: this.stateData.accounts[reply.author]},
-          {_selected_: reply.id === commentId}
+          {_selected_: reply.id === replyId}
         )
       )
     });
@@ -432,7 +497,6 @@ class Entry extends Component {
 
     return replies
   };
-
 
   fetch = async () => {
     this.setState({replies: [], repliesLoading: true, replySort: 'trending'});
@@ -467,7 +531,6 @@ class Entry extends Component {
     this.setState({replies});
   };
 
-
   mdAuthorClicked = (e) => {
     const {history} = this.props;
     const {author} = e.detail;
@@ -476,8 +539,6 @@ class Entry extends Component {
   };
 
   mdEntryClicked = (e) => {
-
-
     console.log(e.detail.category, e.detail.author, e.detail.permlink);
   };
 
@@ -500,10 +561,6 @@ class Entry extends Component {
     const newReplies = [newReply, ...replies];
     this.setState({replies: newReplies});
   };
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.state !== nextState;
-  }
 
   render() {
     const {entry, repliesLoading, editorVisible} = this.state;
@@ -591,15 +648,13 @@ class Entry extends Component {
                       <span className="author-reputation">{reputation}</span>
                     </div>
                   </QuickProfile>
-
                   <span className="separator"/>
-
                   <div className="app">
                     <FormattedHTMLMessage id="entry.via-app" values={{app}}/>
                   </div>
                 </div>
                 <div className="right-side">
-                  <span className="reply-btn" onClick={this.toggleReplyForm}><FormattedMessage
+                  <span className="reply-btn" role="none" onClick={this.toggleReplyForm}><FormattedMessage
                     id="entry.reply"/></span>
                 </div>
               </div>
@@ -631,12 +686,13 @@ class Entry extends Component {
             {editorVisible &&
             <ReplyEditor
               {...this.props}
-              parent={entry}
+              content={entry}
               onCancel={this.toggleReplyForm}
               onSuccess={(newReply) => {
                 this.toggleReplyForm();
                 this.onNewReply(newReply);
               }}
+              mode="reply"
             />
             }
             <div className="clearfix"/>
@@ -687,7 +743,6 @@ class Entry extends Component {
     )
   }
 }
-
 
 Entry.defaultProps = {
   activeAccount: null,
