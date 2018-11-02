@@ -1,14 +1,19 @@
 /* eslint-disable */
-import {createPermlink, makeOptions, extractMetadata, makeJsonMetadata, createReplyPermlink} from './posting-helpers';
-import {Select} from "antd/lib/select";
-import React from "react";
+import {
+  createPermlink,
+  makeOptions,
+  extractMetadata,
+  makeJsonMetadata,
+  createReplyPermlink,
+  makeJsonMetadataReply
+} from './posting-helpers';
+import { Select } from 'antd/lib/select';
+import React from 'react';
 
 describe('createPermlink', () => {
-
   jest.spyOn(Math, 'random').mockImplementation(() => {
-    return 1.95136022969379
+    return 1.95136022969379;
   });
-
 
   it('(1) ', () => {
     const input = 'lorem ipsum dolor sit amet';
@@ -16,10 +21,11 @@ describe('createPermlink', () => {
   });
 });
 
-
 describe('makeOptions', () => {
   it('(1) Default 50% / 50%', () => {
-    expect(makeOptions('talhasch', 'lorem-ipsum-1', 'default')).toMatchSnapshot();
+    expect(
+      makeOptions('talhasch', 'lorem-ipsum-1', 'default')
+    ).toMatchSnapshot();
   });
 
   it('(2) Power Up 100%', () => {
@@ -31,7 +37,6 @@ describe('makeOptions', () => {
   });
 });
 
-
 describe('extractMetadata', () => {
   it('(1) ', () => {
     const input = '<img src="http://www.xx.com/a.png"> @lorem @ipsum';
@@ -39,7 +44,8 @@ describe('extractMetadata', () => {
   });
 
   it('(2) ', () => {
-    const input = '@lorem <img src="http://www.xx.com/a.png"> ![h74zrad2fh.jpg](https://img.esteem.ws/h74zrad2fh.jpg) http://www.google.com/foo/bar  @ipsum';
+    const input =
+      '@lorem <img src="http://www.xx.com/a.png"> ![h74zrad2fh.jpg](https://img.esteem.ws/h74zrad2fh.jpg) http://www.google.com/foo/bar  @ipsum';
     expect(extractMetadata(input)).toMatchSnapshot();
   });
 });
@@ -47,36 +53,29 @@ describe('extractMetadata', () => {
 describe('makeJsonMetadata', () => {
   it('(1) ', () => {
     const meta = {
-      "image": [
-        "http://www.xx.com/a.png",
-        "https://img.esteem.ws/h74zrad2fh.jpg",
+      image: [
+        'http://www.xx.com/a.png',
+        'https://img.esteem.ws/h74zrad2fh.jpg'
       ],
-      "links": [
-        "http://www.google.com/foo/bar",
-      ],
-      "users": [
-        "lorem",
-        "ipsum",
-      ]
+      links: ['http://www.google.com/foo/bar'],
+      users: ['lorem', 'ipsum']
     };
-    const tags = ["esteem", "art"];
+    const tags = ['esteem', 'art'];
 
     expect(makeJsonMetadata(meta, tags, '2.0.0')).toMatchSnapshot();
   });
 });
 
-
-
-
-
+describe('makeJsonMetadataReply', () => {
+  it('(1)', () => {
+    expect(makeJsonMetadataReply(['foo', 'bar'])).toMatchSnapshot();
+  });
+});
 
 describe('createReplyPermlink', () => {
-
-
   jest.spyOn(Date, 'now').mockImplementation(() => {
     return new Date('2018-09-21T12:00:50.000Z');
   });
-
 
   it('(1) ', () => {
     expect(createReplyPermlink('good-karma')).toMatchSnapshot();

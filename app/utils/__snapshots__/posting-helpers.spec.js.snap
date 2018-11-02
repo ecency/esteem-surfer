@@ -55,6 +55,18 @@ Object {
 }
 `;
 
+exports[`makeJsonMetadataReply (1) 1`] = `
+Object {
+  "app": "esteem/undefined-surfer",
+  "community": "esteem.app",
+  "format": "markdown+html",
+  "tags": Array [
+    "foo",
+    "bar",
+  ],
+}
+`;
+
 exports[`makeOptions (1) Default 50% / 50% 1`] = `
 Object {
   "allow_curation_rewards": true,
