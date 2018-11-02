@@ -171,7 +171,7 @@ class NavBar extends Component {
                 history.push('/new');
               }}
             >
-              <Mi icon="edit" />
+              <i className="mi">edit</i>
             </span>
           </div>
           <div className="nav-controls">

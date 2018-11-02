@@ -29,17 +29,22 @@
     }
 
     .btn-post-mini {
-      align-items: center;
       border-radius: 50%;
       cursor: pointer;
-      display: flex;
       flex-shrink: 0;
       height: 30px;
-      justify-content: center;
       margin-right: 10px;
       transition: 0.5s;
       visibility: hidden;
       width: 30px;
+
+      .icon {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        width: 100%;
+      }
 
       @include themify(day) {
         background: $duck-egg-blue;
