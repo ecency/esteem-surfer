@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import {FormattedMessage} from 'react-intl';
-import {Modal} from "antd";
+import { FormattedMessage } from 'react-intl';
+import { Modal } from 'antd';
 
 import Login from './Login';
 import UserAvatar from '../elements/UserAvatar';
@@ -12,7 +12,6 @@ import DraftsModal from '../Drafts';
 import SchedulesModal from '../Schedules';
 
 class UserMenu extends Component {
-
   constructor(props) {
     super(props);
 
@@ -25,14 +24,14 @@ class UserMenu extends Component {
   }
 
   logout = () => {
-    const {actions, closeFn} = this.props;
+    const { actions, closeFn } = this.props;
 
     actions.logOut();
     closeFn();
   };
 
   loginAs = () => {
-    const {closeFn} = this.props;
+    const { closeFn } = this.props;
 
     this.setState({
       loginModalVisible: true
@@ -65,6 +64,12 @@ class UserMenu extends Component {
     });
   };
 
+  profileClicked = () => {
+    const { activeAccount, history } = this.props;
+    const u = `/@${activeAccount.username}`;
+    history.push(u);
+  };
+
   draftsClicked = () => {
     this.setState({
       draftsModalVisible: true
@@ -89,13 +94,17 @@ class UserMenu extends Component {
     });
   };
 
-
   render() {
-    const {activeAccount} = this.props;
-    const {username} = activeAccount;
-    const {accountData} = activeAccount;
+    const { activeAccount } = this.props;
+    const { username } = activeAccount;
+    const { accountData } = activeAccount;
 
-    const {loginModalVisible, galleryModalVisible, draftsModalVisible, schedulesModalVisible} = this.state;
+    const {
+      loginModalVisible,
+      galleryModalVisible,
+      draftsModalVisible,
+      schedulesModalVisible
+    } = this.state;
 
     let displayName;
     try {
@@ -109,17 +118,17 @@ class UserMenu extends Component {
       <div className="user-menu-content">
         <div className="menu-header">
           <span className="display-name">{displayName}</span>
-          <UserAvatar user={username} size="normal"/>
+          <UserAvatar user={username} size="normal" />
         </div>
         <div className="user-menu-items">
           <a
             className="menu-item"
             rel="profile"
             role="none"
-            onClick={this.menuItemClicked}
+            onClick={this.profileClicked}
           >
             <i className="mi">account_box</i>
-            <FormattedMessage id="user-menu.profile"/>
+            <FormattedMessage id="user-menu.profile" />
           </a>
           <a
             className="menu-item"
@@ -128,7 +137,7 @@ class UserMenu extends Component {
             onClick={this.menuItemClicked}
           >
             <i className="mi">star_border</i>
-            <FormattedMessage id="user-menu.bookmarks"/>
+            <FormattedMessage id="user-menu.bookmarks" />
           </a>
           <a
             className="menu-item"
@@ -137,7 +146,7 @@ class UserMenu extends Component {
             onClick={this.menuItemClicked}
           >
             <i className="mi">favorite_border</i>
-            <FormattedMessage id="user-menu.favorites"/>
+            <FormattedMessage id="user-menu.favorites" />
           </a>
           <a
             className="menu-item"
@@ -146,7 +155,7 @@ class UserMenu extends Component {
             onClick={this.draftsClicked}
           >
             <i className="mi">insert_drive_file</i>
-            <FormattedMessage id="user-menu.drafts"/>
+            <FormattedMessage id="user-menu.drafts" />
           </a>
           <a
             className="menu-item"
@@ -155,7 +164,7 @@ class UserMenu extends Component {
             onClick={this.schedulesClicked}
           >
             <i className="mi">today</i>
-            <FormattedMessage id="user-menu.schedules"/>
+            <FormattedMessage id="user-menu.schedules" />
           </a>
           <a
             className="menu-item"
@@ -164,7 +173,7 @@ class UserMenu extends Component {
             onClick={this.galleryClicked}
           >
             <i className="mi">image</i>
-            <FormattedMessage id="user-menu.gallery"/>
+            <FormattedMessage id="user-menu.gallery" />
           </a>
           <a
             className="menu-item"
@@ -173,7 +182,7 @@ class UserMenu extends Component {
             onClick={this.loginAs}
           >
             <i className="mi">supervisor_account</i>
-            <FormattedMessage id="user-menu.login-as"/>
+            <FormattedMessage id="user-menu.login-as" />
           </a>
           <a
             className="menu-item"
@@ -182,7 +191,7 @@ class UserMenu extends Component {
             onClick={this.logout}
           >
             <i className="mi">exit_to_app</i>
-            <FormattedMessage id="user-menu.logout"/>
+            <FormattedMessage id="user-menu.logout" />
           </a>
         </div>
 
@@ -195,12 +204,24 @@ class UserMenu extends Component {
           destroyOnClose
           centered
         >
-          <Login {...this.props} onSuccess={this.onLoginSuccess}/>
+          <Login {...this.props} onSuccess={this.onLoginSuccess} />
         </Modal>
 
-        <GalleryModal visible={galleryModalVisible} onCancel={this.onGalleryModalCancel} {...this.props} />
-        <DraftsModal visible={draftsModalVisible} onCancel={this.onDraftsModalCancel} {...this.props} />
-        <SchedulesModal visible={schedulesModalVisible} onCancel={this.onSchedulesModalCancel} {...this.props} />
+        <GalleryModal
+          visible={galleryModalVisible}
+          onCancel={this.onGalleryModalCancel}
+          {...this.props}
+        />
+        <DraftsModal
+          visible={draftsModalVisible}
+          onCancel={this.onDraftsModalCancel}
+          {...this.props}
+        />
+        <SchedulesModal
+          visible={schedulesModalVisible}
+          onCancel={this.onSchedulesModalCancel}
+          {...this.props}
+        />
       </div>
     );
   }
@@ -210,6 +231,7 @@ UserMenu.propTypes = {
   actions: PropTypes.shape({
     logOut: PropTypes.func.isRequired
   }).isRequired,
+  history: PropTypes.instanceOf(Object).isRequired,
   activeAccount: PropTypes.instanceOf(Object).isRequired,
   closeFn: PropTypes.func.isRequired
 };
