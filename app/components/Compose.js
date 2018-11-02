@@ -435,6 +435,7 @@ class Compose extends Component {
             syncWith="#preview-content-body"
             mode="post"
             ref={this.editor}
+            bodyPlaceHolder={intl.formatMessage({id: 'composer.body-placeholder'})}
           />
           <Preview
             {...this.props}

@@ -212,6 +212,7 @@
   },
   "entry": {
     "reply": "Reply",
-    "via-app": "via <span class=\"app-name\">{app}</span>"
+    "via-app": "via <span class=\"app-name\">{app}</span>",
+    "reply-body-placeholder": "Write your reply here"
   }
 }

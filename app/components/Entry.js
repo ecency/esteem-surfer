@@ -118,6 +118,7 @@ class ReplyEditor extends Component {
   };
 
   render() {
+    const {intl} = this.props;
     const {replyText, processing} = this.state;
 
     return (
@@ -131,8 +132,9 @@ class ReplyEditor extends Component {
           }}
           onChange={this.editorChanged}
           syncWith={null}
-          mode="comment"
+          mode="reply"
           autoFocus2Body
+          bodyPlaceHolder={intl.formatMessage({id: 'entry.reply-body-placeholder'})}
         />
         <div className="reply-editor-controls">
           <Button size="small" className="btn-cancel" onClick={this.cancel} disabled={processing}>Cancel</Button>
@@ -156,6 +158,11 @@ ReplyEditor.propTypes = {
   parent: PropTypes.instanceOf(Object).isRequired,
   onSuccess: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
+  activeAccount: PropTypes.instanceOf(Object),
+  global: PropTypes.shape({
+    pin: PropTypes.string.isRequired
+  }).isRequired,
+  intl: PropTypes.instanceOf(Object).isRequired
 };
 
 

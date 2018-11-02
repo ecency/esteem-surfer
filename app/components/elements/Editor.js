@@ -370,7 +370,7 @@ class Editor extends Component {
   };
 
   render() {
-    const {defaultValues, trendingTags, activeAccount, mode, intl} = this.props;
+    const {defaultValues, trendingTags, activeAccount, mode, bodyPlaceHolder, intl} = this.props;
     const {galleryModalVisible, tags, title} = this.state;
 
     const tagOptions = trendingTags.list.map(tag => (
@@ -523,7 +523,7 @@ class Editor extends Component {
       lineWrapping: true,
       tabSize: 2,
       dragDrop: true,
-      placeholder: intl.formatMessage({id: 'composer.body-placeholder'}),
+      placeholder: bodyPlaceHolder,
       highlightSelectionMatches: {wordsOnly: true}
     };
 
@@ -625,7 +625,8 @@ Editor.defaultProps = {
   activeAccount: null,
   syncWith: null,
   autoFocus2Body: false,
-  mode: 'post'
+  mode: 'post',
+  bodyPlaceHolder: ''
 };
 
 Editor.propTypes = {
@@ -642,6 +643,7 @@ Editor.propTypes = {
   activeAccount: PropTypes.instanceOf(Object),
   mode: PropTypes.string,
   autoFocus2Body: PropTypes.bool,
+  bodyPlaceHolder: PropTypes.string,
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
