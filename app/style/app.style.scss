@@ -17,6 +17,11 @@ html {
 
 body {
   font-family: 'Roboto', sans-serif;
+  user-select: none;
+}
+
+.user-selectable {
+  user-select: auto;
 }
 
 h1,

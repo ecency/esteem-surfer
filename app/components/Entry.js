@@ -171,7 +171,7 @@ class ReplyEditor extends Component {
         {replyText &&
         <div className="reply-editor-preview">
           <div className="preview-label">Preview</div>
-          <div className="markdown-view mini-markdown no-click-event"
+          <div className="markdown-view mini-markdown user-selectable no-click-event"
                dangerouslySetInnerHTML={{__html: markDown2Html(replyText)}}/>
         </div>
         }
@@ -291,7 +291,7 @@ class ReplyListItem extends Component {
               <FormattedRelative value={created} initialNow={Date.now()}/>
             </span>
           </div>
-          <div className="item-body markdown-view mini-markdown" dangerouslySetInnerHTML={renderedBody}/>
+          <div className="item-body markdown-view mini-markdown user-selectable" dangerouslySetInnerHTML={renderedBody}/>
           <div className="item-controls">
             <div className="voting">
               <EntryVoteBtn {...this.props} entry={reply} afterVote={this.afterVote}/>
@@ -591,7 +591,7 @@ class Entry extends Component {
         <Fragment>
           <div className="the-entry">
             <div className="entry-header">
-              <h1 className="entry-title">{entry.title}</h1>
+              <h1 className="entry-title user-selectable">{entry.title}</h1>
               <div className="entry-info">
                 <QuickProfile
                   {...this.props}
@@ -620,7 +620,7 @@ class Entry extends Component {
                 </span>
               </div>
             </div>
-            <div className="entry-body markdown-view" dangerouslySetInnerHTML={renderedBody}/>
+            <div className="entry-body markdown-view user-selectable" dangerouslySetInnerHTML={renderedBody}/>
             <div className={`entry-footer ${repliesLoading ? 'loading' : ''}`}>
               <div className="entry-tags">
                 {tags.map(t => (

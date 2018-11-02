@@ -104,8 +104,6 @@
           }
         }
       }
-
-      user-select: none;
     }
 
     .address-bar {
@@ -141,8 +139,6 @@
         @include themify(night) {
           color: $white-five;
         }
-
-        user-select: none;
       }
 
       .post-add-on {
@@ -204,8 +200,6 @@
       .switch-theme {
         margin-right: 20px;
       }
-
-      user-select: none;
     }
 
     .user-menu {
@@ -244,8 +238,6 @@
       &.logged-in {
         width: 110px;
       }
-
-      user-select: none;
     }
   }
 }
