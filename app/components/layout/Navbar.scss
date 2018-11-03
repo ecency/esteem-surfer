@@ -155,9 +155,8 @@
           color: $white-five;
         }
 
-        &.disabled {
-          opacity: 0.4;
-          pointer-events: none;
+        &.checked {
+          color: $dark-sky-blue;
         }
       }
 

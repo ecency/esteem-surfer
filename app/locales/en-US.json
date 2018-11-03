@@ -213,6 +213,13 @@
   "entry": {
     "reply": "Reply",
     "via-app": "via <span class=\"app-name\">{app}</span>",
-    "reply-body-placeholder": "Write your reply here"
+    "reply-body-placeholder": "Write your reply here",
+
+    "bookmarked": "Added to bookmarks",
+    "bookmarkedRemoved": "Removed from bookmarks"
+  },
+  "navbar": {
+    "bookmark": "Add to bookmarks",
+    "bookmarkRemove": "Remove from bookmarks"
   }
 }

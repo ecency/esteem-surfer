@@ -73,3 +73,22 @@ export const getSchedules = (user) => axios.get(`${BACKEND_URL}/api/schedules/${
 export const removeSchedule = (id, user) => axios.delete(`${BACKEND_URL}/api/schedules/${user}/${id}`);
 
 export const moveSchedule = (id, user) => axios.put(`${BACKEND_URL}/api/schedules/${user}/${id}`);
+
+export const addBookmark = (user, author, permlink) => axios.post(`${BACKEND_URL}/api/bookmark`, {
+  username: user,
+  author,
+  permlink,
+  chain: 'steem'
+}).then(resp => resp.data);
+
+export const getBookmarks = (user) => axios.get(`${BACKEND_URL}/api/bookmarks/${user}`).then(resp => resp.data);
+
+export const removeBookmark = (id, user) => axios.delete(`${BACKEND_URL}/api/bookmarks/${user}/${id}`);
+
+
+
+
+
+
+
+

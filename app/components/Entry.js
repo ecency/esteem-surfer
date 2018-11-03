@@ -1,5 +1,5 @@
 /*
-eslint-disable react/no-multi-comp
+eslint-disable react/no-multi-comp, no-underscore-dangle
 */
 
 import React, {Component, PureComponent, Fragment} from 'react';
@@ -11,6 +11,8 @@ import {FormattedRelative, FormattedMessage, FormattedHTMLMessage, injectIntl} f
 import {Select, Button, message} from 'antd';
 
 import {getState, getContent, comment} from '../backend/steem-client';
+
+import {addBookmark, getBookmarks, removeBookmark} from '../backend/esteem-client';
 
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
@@ -388,7 +390,8 @@ class Entry extends PureComponent {
       replies: [],
       repliesLoading: true,
       replySort: 'trending',
-      editorVisible: false
+      editorVisible: false,
+      bookmarkId: null
     };
 
     const {match} = this.props;
@@ -502,8 +505,18 @@ class Entry extends PureComponent {
   fetch = async () => {
     this.setState({replies: [], repliesLoading: true, replySort: 'trending'});
 
-    const {match, actions} = this.props;
+    const {match, actions, activeAccount} = this.props;
     const {username, permlink} = match.params;
+
+    if (activeAccount) {
+      getBookmarks(activeAccount.username).then(bookmarks => {
+        const b = bookmarks.filter(x => x.author === username && x.permlink === permlink);
+
+        this.setState({bookmarkId: b.length ? b[0]._id : null});
+        return bookmarks;
+      }).catch(() => {
+      });
+    }
 
     const entry = await getContent(username, permlink);
 
@@ -517,7 +530,7 @@ class Entry extends PureComponent {
 
     const replies = this.compileReplies(theEntry, 'trending');
 
-    this.setState({repliesLoading: false, replies})
+    this.setState({repliesLoading: false, replies});
   };
 
   refresh = async () => {
@@ -563,8 +576,30 @@ class Entry extends PureComponent {
     this.setState({replies: newReplies});
   };
 
+  bookmarkFn = () => {
+    const {bookmarkId} = this.state;
+    const {activeAccount, match, intl} = this.props;
+    const {username, permlink} = match.params;
+
+    if (bookmarkId) {
+      return removeBookmark(bookmarkId, activeAccount.username).then(resp => {
+        this.setState({bookmarkId: null});
+        message.success(intl.formatMessage({id: 'entry.bookmarked'}));
+        return resp;
+      });
+    }
+
+    return addBookmark(activeAccount.username, username, permlink).then(resp => {
+      const {bookmarks} = resp;
+      const b = bookmarks.filter(x => x.author === username && x.permlink === permlink);
+      this.setState({bookmarkId: b.length ? b[0]._id : null});
+      message.info(intl.formatMessage({id: 'entry.bookmarkedRemoved'}));
+      return resp;
+    });
+  };
+
   render() {
-    const {entry, repliesLoading, editorVisible} = this.state;
+    const {entry, repliesLoading, editorVisible, bookmarkId} = this.state;
 
     let content = null;
     if (entry) {
@@ -586,7 +621,6 @@ class Entry extends PureComponent {
       const totalPayout = sumTotal(entry);
       const isPayoutDeclined = parseToken(entry.max_accepted_payout) === 0;
       const voteCount = entry.active_votes.length;
-
 
       content = (
         <Fragment>
@@ -731,8 +765,8 @@ class Entry extends PureComponent {
           {...this.props}
           reloadFn={this.refresh}
           reloading={repliesLoading}
-          bookmarkFn={() => {
-          }}
+          bookmarkFn={this.bookmarkFn}
+          bookmarkFlag={!!bookmarkId}
           postBtnActive
         />
         <div className="app-content entry-page" id="app-content">
@@ -760,7 +794,8 @@ Entry.propTypes = {
   }).isRequired,
   actions: PropTypes.shape({
     setVisitingEntry: PropTypes.func.isRequired
-  }).isRequired
+  }).isRequired,
+  intl: PropTypes.instanceOf(Object).isRequired
 };
 
 export default injectIntl(Entry);
