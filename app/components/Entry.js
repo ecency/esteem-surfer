@@ -2,7 +2,7 @@
 eslint-disable react/no-multi-comp
 */
 
-import React, {Component, Fragment} from 'react';
+import React, {Component, PureComponent, Fragment} from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -358,9 +358,10 @@ ReplyListItem.propTypes = {
   activeAccount: PropTypes.instanceOf(Object)
 };
 
-class ReplyList extends Component {
+class ReplyList extends PureComponent {
   render() {
     const {replies} = this.props;
+
     return (
       <div className="entry-reply-list">
         {replies.map(reply => <ReplyListItem {...this.props} reply={reply} key={reply.id}/>)}
@@ -375,7 +376,7 @@ ReplyList.propTypes = {
   replies: PropTypes.arrayOf(Object).isRequired
 };
 
-class Entry extends Component {
+class Entry extends PureComponent {
 
   constructor(props) {
     super(props);
@@ -404,11 +405,6 @@ class Entry extends Component {
     window.addEventListener('md-author-clicked', this.mdAuthorClicked);
     window.addEventListener('md-post-clicked', this.mdEntryClicked);
     window.addEventListener('md-tag-clicked', this.mdTagClicked);
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    // TODO: Improve performance
-    return true;
   }
 
   componentWillUnmount() {
