@@ -1,0 +1,59 @@
+@import '../style/mixins';
+@import '../style/colors';
+
+.favorites-dialog-content {
+  height: 500px;
+  overflow: auto;
+
+  .favorites-filter {
+    padding: 10px 20px 16px 20px;
+  }
+
+  .favorites-list {
+    padding: 0 20px;
+    .favorites-list-body {
+      .favorites-list-item {
+        align-items: center;
+        border-radius: 8px;
+        cursor: pointer;
+        display: flex;
+        margin-bottom: 10px;
+        padding: 3px;
+
+        @include themify(day) {
+          color: $dark-sky-blue;
+        }
+
+        @include themify(night) {
+          color: $powder-blue;
+        }
+
+        &:hover {
+          @include themify(day) {
+            background: $duck-egg-blue;
+          }
+
+          @include themify(night) {
+            background: $metallic-blue;
+          }
+        }
+
+        .user-avatar {
+          flex-shrink: 0;
+          height: 40px;
+          margin-right: 10px;
+          width: 40px;
+        }
+
+        .account {
+          font-weight: 700;
+          font-size: 18px;
+
+          &:before {
+            content: '@';
+          }
+        }
+      }
+    }
+  }
+}

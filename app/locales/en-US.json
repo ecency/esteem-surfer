@@ -216,6 +216,12 @@
     "empty-list": "Nothing here",
     "deleted": "Bookmark removed"
   },
+  "favorites": {
+    "title": "Favorites",
+    "load-error": "Could not load favorites",
+    "empty-list": "Nothing here",
+    "search": "Search in favorites"
+  },
   "entry": {
     "reply": "Reply",
     "via-app": "via <span class=\"app-name\">{app}</span>",

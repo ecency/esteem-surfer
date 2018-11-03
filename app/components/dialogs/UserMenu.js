@@ -11,6 +11,7 @@ import GalleryModal from '../Gallery';
 import DraftsModal from '../Drafts';
 import SchedulesModal from '../Schedules';
 import BookmarksModal from '../Bookmarks';
+import FavoritesModal from '../Favorites';
 
 class UserMenu extends Component {
   constructor(props) {
@@ -21,7 +22,8 @@ class UserMenu extends Component {
       galleryModalVisible: false,
       draftsModalVisible: false,
       schedulesModalVisible: false,
-      bookmarksModalVisible: false
+      bookmarksModalVisible: false,
+      favoritesModalVisible: false
     };
   }
 
@@ -108,6 +110,18 @@ class UserMenu extends Component {
     });
   };
 
+  favoritesClicked = () => {
+    this.setState({
+      favoritesModalVisible: true
+    });
+  };
+
+  onFavoritesModalCancel = () => {
+    this.setState({
+      favoritesModalVisible: false
+    });
+  };
+
   render() {
     const { activeAccount } = this.props;
     const { username } = activeAccount;
@@ -118,7 +132,8 @@ class UserMenu extends Component {
       galleryModalVisible,
       draftsModalVisible,
       schedulesModalVisible,
-      bookmarksModalVisible
+      bookmarksModalVisible,
+      favoritesModalVisible
     } = this.state;
 
     let displayName;
@@ -158,7 +173,7 @@ class UserMenu extends Component {
             className="menu-item"
             rel="favorites"
             role="none"
-            onClick={this.menuItemClicked}
+            onClick={this.favoritesClicked}
           >
             <i className="mi">favorite_border</i>
             <FormattedMessage id="user-menu.favorites" />
@@ -240,6 +255,11 @@ class UserMenu extends Component {
         <BookmarksModal
           visible={bookmarksModalVisible}
           onCancel={this.onBookmarksModalCancel}
+          {...this.props}
+        />
+        <FavoritesModal
+          visible={favoritesModalVisible}
+          onCancel={this.onFavoritesModalCancel}
           {...this.props}
         />
       </div>
