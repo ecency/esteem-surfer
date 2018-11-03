@@ -10,6 +10,7 @@ import UserAvatar from '../elements/UserAvatar';
 import GalleryModal from '../Gallery';
 import DraftsModal from '../Drafts';
 import SchedulesModal from '../Schedules';
+import BookmarksModal from '../Bookmarks';
 
 class UserMenu extends Component {
   constructor(props) {
@@ -19,7 +20,8 @@ class UserMenu extends Component {
       loginModalVisible: false,
       galleryModalVisible: false,
       draftsModalVisible: false,
-      schedulesModalVisible: false
+      schedulesModalVisible: false,
+      bookmarksModalVisible: false
     };
   }
 
@@ -94,6 +96,18 @@ class UserMenu extends Component {
     });
   };
 
+  bookmarksClicked = () => {
+    this.setState({
+      bookmarksModalVisible: true
+    });
+  };
+
+  onBookmarksModalCancel = () => {
+    this.setState({
+      bookmarksModalVisible: false
+    });
+  };
+
   render() {
     const { activeAccount } = this.props;
     const { username } = activeAccount;
@@ -103,7 +117,8 @@ class UserMenu extends Component {
       loginModalVisible,
       galleryModalVisible,
       draftsModalVisible,
-      schedulesModalVisible
+      schedulesModalVisible,
+      bookmarksModalVisible
     } = this.state;
 
     let displayName;
@@ -134,7 +149,7 @@ class UserMenu extends Component {
             className="menu-item"
             rel="bookmarks"
             role="none"
-            onClick={this.menuItemClicked}
+            onClick={this.bookmarksClicked}
           >
             <i className="mi">star_border</i>
             <FormattedMessage id="user-menu.bookmarks" />
@@ -220,6 +235,11 @@ class UserMenu extends Component {
         <SchedulesModal
           visible={schedulesModalVisible}
           onCancel={this.onSchedulesModalCancel}
+          {...this.props}
+        />
+        <BookmarksModal
+          visible={bookmarksModalVisible}
+          onCancel={this.onBookmarksModalCancel}
           {...this.props}
         />
       </div>

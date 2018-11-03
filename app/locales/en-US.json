@@ -210,11 +210,16 @@
     "move": "Move to drafts",
     "moved": "Moved to drafts"
   },
+  "bookmarks": {
+    "title": "Bookmarks",
+    "load-error": "Could not load bookmarks",
+    "empty-list": "Nothing here",
+    "deleted": "Bookmark removed"
+  },
   "entry": {
     "reply": "Reply",
     "via-app": "via <span class=\"app-name\">{app}</span>",
     "reply-body-placeholder": "Write your reply here",
-
     "bookmarked": "Added to bookmarks",
     "bookmarkedRemoved": "Removed from bookmarks"
   },
