@@ -60,7 +60,7 @@ class Bookmarks extends Component {
       return;
     }
 
-    const data = realData.filter(x => x.author.includes(val));
+    const data = realData.filter(x => x.searchText.includes(val));
 
     this.setState({ data });
   };
@@ -78,6 +78,7 @@ class Bookmarks extends Component {
   };
 
   render() {
+    const { intl } = this.props;
     const { data, loading, realData } = this.state;
 
     return (
@@ -86,7 +87,7 @@ class Bookmarks extends Component {
         {realData.length > 0 && (
           <div className="bookmark-filter">
             <Input
-              placeHolder="Search in bookmarks"
+              placeHolder={intl.formatMessage({ id: 'bookmarks.search' })}
               onChange={this.onSearchChange}
             />
           </div>
@@ -138,7 +139,7 @@ class BookmarksModal extends Component {
       <Modal
         visible={visible}
         footer={false}
-        width="890px"
+        width="600px"
         onCancel={onCancel}
         destroyOnClose
         centered

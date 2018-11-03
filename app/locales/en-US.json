@@ -214,7 +214,8 @@
     "title": "Bookmarks",
     "load-error": "Could not load bookmarks",
     "empty-list": "Nothing here",
-    "deleted": "Bookmark removed"
+    "deleted": "Bookmark removed",
+    "search": "Search in bookmarks"
   },
   "favorites": {
     "title": "Favorites",
