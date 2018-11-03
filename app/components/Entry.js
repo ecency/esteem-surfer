@@ -24,6 +24,8 @@ import FormattedCurrency from './elements/FormattedCurrency';
 import EntryVotes from './elements/EntryVotes';
 import LinearProgress from './common/LinearProgress';
 import Editor from './elements/Editor';
+import LoginRequired from './helpers/LoginRequired';
+
 
 import parseDate from '../utils/parse-date';
 import parseToken from '../utils/parse-token';
@@ -165,8 +167,10 @@ class ReplyEditor extends Component {
         />
         <div className="reply-editor-controls">
           <Button size="small" className="btn-cancel" onClick={this.cancel} disabled={processing}>Cancel</Button>
-          <Button size="small" className="btn-reply" type="primary" onClick={this.submit}
-                  disabled={!replyText} loading={processing}>{btnLabel}</Button>
+          <LoginRequired requiredKeys={['posting']}>
+            <Button size="small" className="btn-reply" type="primary" onClick={this.submit}
+                    disabled={!replyText} loading={processing}>{btnLabel}</Button>
+          </LoginRequired>
         </div>
         {replyText &&
         <div className="reply-editor-preview">
@@ -291,7 +295,8 @@ class ReplyListItem extends Component {
               <FormattedRelative value={created} initialNow={Date.now()}/>
             </span>
           </div>
-          <div className="item-body markdown-view mini-markdown user-selectable" dangerouslySetInnerHTML={renderedBody}/>
+          <div className="item-body markdown-view mini-markdown user-selectable"
+               dangerouslySetInnerHTML={renderedBody}/>
           <div className="item-controls">
             <div className="voting">
               <EntryVoteBtn {...this.props} entry={reply} afterVote={this.afterVote}/>
