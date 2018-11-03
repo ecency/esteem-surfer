@@ -24,7 +24,14 @@ import coverFallbackNight from '../img/cover-fallback-night.png';
 import LinearProgress from "./common/LinearProgress";
 
 import {getFollowCount, getAccount, getState} from '../backend/steem-client';
-import {getActiveVotes, getTopPosts, getMarketData} from '../backend/esteem-client';
+import {
+  getActiveVotes,
+  getTopPosts,
+  getMarketData,
+  isFavorite,
+  addFavorite,
+  removeFavoriteUser
+} from '../backend/esteem-client';
 
 import {makeGroupKeyForEntries} from "../actions/entries";
 
@@ -907,7 +914,8 @@ class Account extends Component {
       transactions: null,
       transactionsLoading: true,
       marketData: null,
-      marketDataLoading: true
+      marketDataLoading: true,
+      favorite: false
     };
   }
 
@@ -1009,6 +1017,16 @@ class Account extends Component {
         transactionsLoading: false
       });
     });
+
+    // is favorite
+    const {activeAccount} = this.props;
+    if (activeAccount) {
+      isFavorite(activeAccount.username, username).then(favorite => {
+        this.setState({favorite});
+        return favorite
+      }).catch(() => {
+      });
+    }
   };
 
   fetchAccount = async () => {
@@ -1098,9 +1116,34 @@ class Account extends Component {
     document.querySelector('#app-content').scrollTop = 0;
   };
 
+  favoriteFn = () => {
+    const {favorite} = this.state;
+    const {activeAccount, match, intl} = this.props;
+    const {username} = match.params;
+
+    if (favorite) {
+      removeFavoriteUser(activeAccount.username, username).then(resp => {
+        this.setState({favorite: false});
+        message.info(intl.formatMessage({id: 'entry.favoriteRemoved'}));
+        return resp;
+      }).catch(()=>{
+
+      });
+      return;
+    }
+
+    addFavorite(activeAccount.username, username).then(resp => {
+      this.setState({favorite: true});
+      message.info(intl.formatMessage({id: 'entry.favorited'}));
+      return resp;
+    }).catch(()=>{
+
+    });
+  };
+
   render() {
     const {entries, global, match} = this.props;
-    const {account} = this.state;
+    const {account, favorite} = this.state;
     const {username, section = 'blog'} = match.params;
     const isWallet = section === 'wallet';
 
@@ -1129,8 +1172,8 @@ class Account extends Component {
             this.refresh();
           }}
           reloading={loading}
-          favoriteFn={() => {
-          }}
+          favoriteFn={this.favoriteFn}
+          favoriteFlag={favorite}
         />
 
         <div className="app-content account-page">
@@ -1213,7 +1256,8 @@ Account.propTypes = {
   history: PropTypes.instanceOf(Object).isRequired,
   match: PropTypes.instanceOf(Object).isRequired,
   visitingAccount: PropTypes.instanceOf(Object),
-  activeAccount: PropTypes.instanceOf(Object)
+  activeAccount: PropTypes.instanceOf(Object),
+  intl: PropTypes.instanceOf(Object).isRequired
 };
 
 export default injectIntl(Account);

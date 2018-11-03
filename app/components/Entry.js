@@ -584,7 +584,7 @@ class Entry extends PureComponent {
     if (bookmarkId) {
       return removeBookmark(bookmarkId, activeAccount.username).then(resp => {
         this.setState({bookmarkId: null});
-        message.info(intl.formatMessage({id: 'entry.bookmarkedRemoved'}));
+        message.info(intl.formatMessage({id: 'entry.bookmarkRemoved'}));
         return resp;
       });
     }

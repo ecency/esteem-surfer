@@ -85,10 +85,25 @@ export const getBookmarks = (user) => axios.get(`${BACKEND_URL}/api/bookmarks/${
 
 export const removeBookmark = (id, user) => axios.delete(`${BACKEND_URL}/api/bookmarks/${user}/${id}`);
 
+export const getFavorites = (user) => axios.get(`${BACKEND_URL}/api/favorites/${user}`).then(resp => resp.data);
 
+export const isFavorite = (user, account) => axios.get(`${BACKEND_URL}/api/isfavorite/${user}/${account}`).then(resp => resp.data);
 
+export const addFavorite = (user, account) => axios.post(`${BACKEND_URL}/api/favorite`, {
+  username: user,
+  account
+}).then(resp => resp.data);
 
+export const removeFavoriteUser = (user, account) => axios.delete(`${BACKEND_URL}/api/favoriteUser/${user}/${account}`);
+/*
 
-
-
-
+    getFavorites: function (user) {
+      return $http.get(`${API_END_POINT}/api/favorites/${user}`);
+    },
+    addFavorite: function (user, account) {
+      return $http.post(`${API_END_POINT}/api/favorite`, {username: user, account: account});
+    },
+    removeFavoriteUser: function (user, account) {
+      return $http.delete(`${API_END_POINT}/api/favoriteUser/${user}/${account}`);
+    },
+ */

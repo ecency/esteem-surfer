@@ -211,11 +211,15 @@ class NavBar extends Component {
             {favoriteFn ? (
               <LoginRequired {...this.props}>
                 <a
-                  className={`post-add-on ${!favoriteFlag ? 'checked' : ''}`}
+                  className={`post-add-on ${favoriteFlag ? 'checked' : ''}`}
                   onClick={() => this.favorite()}
                   role="none"
                 >
-                  <i className="star_border">bookmark</i>
+                  <Tooltip
+                    title={favoriteFlag ? intl.formatMessage({id: 'navbar.favoriteRemove'}) : intl.formatMessage({id: 'navbar.favorite'})}
+                    mouseEnterDelay={2}>
+                    <i className="mi">star</i>
+                  </Tooltip>
                 </a>
               </LoginRequired>
             ) : (
@@ -223,7 +227,7 @@ class NavBar extends Component {
             )}
             {bookmarkFn ? (
 
-              <LoginRequired  {...this.props}>
+              <LoginRequired {...this.props}>
                 <a
                   className={`post-add-on ${bookmarkFlag ? 'checked' : ''}`}
                   onClick={() => this.bookmark()}
