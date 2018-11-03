@@ -2,16 +2,16 @@
 eslint-disable react/no-multi-comp, no-underscore-dangle
 */
 
-import React, {Component} from 'react';
-import {Modal, Popconfirm, Tooltip, message} from 'antd';
+import React, { Component } from 'react';
+import { Modal, Popconfirm, Tooltip, message } from 'antd';
 
-import {FormattedMessage, injectIntl} from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import PropTypes from 'prop-types';
 
-import LinearProgress from './common/LinearProgress'
+import LinearProgress from './common/LinearProgress';
 
-import {getImages, removeImage} from '../backend/esteem-client';
+import { getImages, removeImage } from '../backend/esteem-client';
 
 class Gallery extends Component {
   constructor(props) {
@@ -28,25 +28,25 @@ class Gallery extends Component {
   }
 
   loadData = () => {
-    this.setState({data: [], loading: true});
+    this.setState({ data: [], loading: true });
 
-    const {activeAccount, intl} = this.props;
+    const { activeAccount, intl } = this.props;
 
     return getImages(activeAccount.username)
       .then(data => {
-        this.setState({data});
+        this.setState({ data });
         return data;
       })
       .catch(() => {
-        message.error(intl.formatMessage({id: 'gallery.load-error'}));
+        message.error(intl.formatMessage({ id: 'gallery.load-error' }));
       })
       .finally(() => {
-        this.setState({loading: false});
+        this.setState({ loading: false });
       });
   };
 
   itemClicked = item => {
-    const {intl, onSelect} = this.props;
+    const { intl, onSelect } = this.props;
 
     if (onSelect) {
       onSelect(item.url);
@@ -60,36 +60,36 @@ class Gallery extends Component {
     i.select();
     document.execCommand('Copy');
     document.body.removeChild(i);
-    message.success(intl.formatMessage({id: 'gallery.copied'}));
+    message.success(intl.formatMessage({ id: 'gallery.copied' }));
   };
 
   delete = item => {
-    const {activeAccount} = this.props;
+    const { activeAccount } = this.props;
     removeImage(item._id, activeAccount.username)
       .then(resp => {
-        const {data} = this.state;
+        const { data } = this.state;
         const newData = [...data].filter(x => x._id !== item._id);
-        this.setState({data: newData});
+        this.setState({ data: newData });
         return resp;
       })
-      .catch(() => {
-      });
+      .catch(() => {});
   };
 
   render() {
-    const {intl} = this.props;
-    const {data, loading} = this.state;
+    const { intl } = this.props;
+    const { data, loading } = this.state;
 
     return (
       <div className="gallery-dialog-content">
-        {loading && <LinearProgress/>}
+        {loading && <LinearProgress />}
         {data.length > 0 && (
           <div className="gallery-list">
             <div className="gallery-list-body">
               {data.map(item => (
                 <div
                   className="gallery-list-item"
-                  style={{backgroundImage: `url('${item.url}')`}}
+                  style={{ backgroundImage: `url('${item.url}')` }}
+                  key={item._id}
                 >
                   <div
                     className="item-inner"
@@ -100,15 +100,15 @@ class Gallery extends Component {
                   />
                   <div className="item-controls">
                     <Popconfirm
-                      title={intl.formatMessage({id: 'g.are-you-sure'})}
-                      okText={intl.formatMessage({id: 'g.ok'})}
-                      cancelText={intl.formatMessage({id: 'g.cancel'})}
+                      title={intl.formatMessage({ id: 'g.are-you-sure' })}
+                      okText={intl.formatMessage({ id: 'g.ok' })}
+                      cancelText={intl.formatMessage({ id: 'g.cancel' })}
                       onConfirm={() => {
                         this.delete(item);
                       }}
                     >
                       <Tooltip
-                        title={intl.formatMessage({id: 'g.delete'})}
+                        title={intl.formatMessage({ id: 'g.delete' })}
                         mouseEnterDelay={2}
                       >
                         <span className="btn-delete">
@@ -123,7 +123,12 @@ class Gallery extends Component {
           </div>
         )}
 
-        {!loading && data.length < 1 && <div className="gallery-list"><FormattedMessage id="gallery.empty-list"/></div>}
+        {!loading &&
+          data.length < 1 && (
+            <div className="gallery-list">
+              <FormattedMessage id="gallery.empty-list" />
+            </div>
+          )}
       </div>
     );
   }
@@ -141,7 +146,7 @@ Gallery.propTypes = {
 
 class GalleryModal extends Component {
   render() {
-    const {visible, onCancel, intl} = this.props;
+    const { visible, onCancel, intl } = this.props;
 
     return (
       <Modal
@@ -151,7 +156,7 @@ class GalleryModal extends Component {
         onCancel={onCancel}
         destroyOnClose
         centered
-        title={intl.formatMessage({id: 'gallery.title'})}
+        title={intl.formatMessage({ id: 'gallery.title' })}
       >
         <Gallery {...this.props} />
       </Modal>
