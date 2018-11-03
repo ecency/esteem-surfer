@@ -254,7 +254,8 @@ export class AccountCover extends Component {
   render() {
     let coverImage;
 
-    const {account, username, global} = this.props;
+    const {account, username, global, activeAccount} = this.props;
+    const showFollowControls = activeAccount && activeAccount.username !== username;
 
     if (account) {
       const {accountProfile} = account;
@@ -267,15 +268,18 @@ export class AccountCover extends Component {
 
     return <div className="account-cover">
       <div className="cover-image" style={{backgroundImage: `url('${bgImage}')`}}/>
+      {showFollowControls &&
       <div className="follow-controls-holder">
         <FollowControls {...this.props} targetUsername={username}/>
       </div>
+      }
     </div>
   }
 }
 
 AccountCover.defaultProps = {
   account: null,
+  activeAccount: null
 };
 
 AccountCover.propTypes = {
@@ -283,7 +287,8 @@ AccountCover.propTypes = {
   account: PropTypes.instanceOf(Object),
   global: PropTypes.shape({
     theme: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  activeAccount: PropTypes.instanceOf(Object)
 };
 
 export class AccountTopPosts extends Component {
@@ -295,7 +300,7 @@ export class AccountTopPosts extends Component {
         <h2 className="top-posts-list-header"><FormattedMessage id="account.top-posts"/></h2>
         <div className="top-posts-list-body">
           {posts.map(p => (
-            <div className="top-posts-list-item" onClick={() => {
+            <div className="top-posts-list-item" role="none" onClick={() => {
               const {history} = this.props;
               const {category, author, permlink} = p;
 
@@ -309,7 +314,6 @@ export class AccountTopPosts extends Component {
                 <div className="post-body">{entryBodySummary(p.body, 40)}</div>
               </div>
             </div>
-
           ))}
         </div>
       </div>
@@ -908,10 +912,12 @@ class Account extends Component {
   }
 
   componentDidMount() {
+    /*
+    Check user here
+
     const {match} = this.props;
     const {username, section = 'blog'} = match.params;
-
-    // check user here
+    */
 
     this.fetchData();
     this.fetchEntries();
