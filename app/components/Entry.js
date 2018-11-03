@@ -584,7 +584,7 @@ class Entry extends PureComponent {
     if (bookmarkId) {
       return removeBookmark(bookmarkId, activeAccount.username).then(resp => {
         this.setState({bookmarkId: null});
-        message.success(intl.formatMessage({id: 'entry.bookmarked'}));
+        message.info(intl.formatMessage({id: 'entry.bookmarkedRemoved'}));
         return resp;
       });
     }
@@ -593,7 +593,7 @@ class Entry extends PureComponent {
       const {bookmarks} = resp;
       const b = bookmarks.filter(x => x.author === username && x.permlink === permlink);
       this.setState({bookmarkId: b.length ? b[0]._id : null});
-      message.info(intl.formatMessage({id: 'entry.bookmarkedRemoved'}));
+      message.success(intl.formatMessage({id: 'entry.bookmarked'}));
       return resp;
     });
   };
