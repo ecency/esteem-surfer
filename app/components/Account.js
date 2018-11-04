@@ -22,6 +22,8 @@ import ListSwitch from './elements/ListSwitch';
 import coverFallbackDay from '../img/cover-fallback-day.png';
 import coverFallbackNight from '../img/cover-fallback-night.png';
 import LinearProgress from "./common/LinearProgress";
+import EntryLink from './helpers/EntryLink';
+
 
 import {getFollowCount, getAccount, getState} from '../backend/steem-client';
 import {
@@ -307,20 +309,17 @@ export class AccountTopPosts extends Component {
         <h2 className="top-posts-list-header"><FormattedMessage id="account.top-posts"/></h2>
         <div className="top-posts-list-body">
           {posts.map(p => (
-            <div className="top-posts-list-item" key={p.permlink} role="none" onClick={() => {
-              const {history} = this.props;
-              const {category, author, permlink} = p;
-
-              history.push(`/${category}/@${author}/${permlink}`);
-            }}>
-              <div className="post-image">
-                <img alt="" src={catchEntryImage(p, 130, 80) || 'img/noimage.png'}/>
+            <EntryLink {...this.props} author={p.author} permlink={p.permlink}>
+              <div className="top-posts-list-item" key={p.permlink} role="none">
+                <div className="post-image">
+                  <img alt="" src={catchEntryImage(p, 130, 80) || 'img/noimage.png'}/>
+                </div>
+                <div className="post-content">
+                  <div className="post-title">{p.title}</div>
+                  <div className="post-body">{entryBodySummary(p.body, 40)}</div>
+                </div>
               </div>
-              <div className="post-content">
-                <div className="post-title">{p.title}</div>
-                <div className="post-body">{entryBodySummary(p.body, 40)}</div>
-              </div>
-            </div>
+            </EntryLink>
           ))}
         </div>
       </div>
@@ -1126,7 +1125,7 @@ class Account extends Component {
         this.setState({favorite: false});
         message.info(intl.formatMessage({id: 'entry.favoriteRemoved'}));
         return resp;
-      }).catch(()=>{
+      }).catch(() => {
 
       });
       return;
@@ -1136,7 +1135,7 @@ class Account extends Component {
       this.setState({favorite: true});
       message.info(intl.formatMessage({id: 'entry.favorited'}));
       return resp;
-    }).catch(()=>{
+    }).catch(() => {
 
     });
   };
