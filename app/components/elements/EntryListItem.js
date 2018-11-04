@@ -25,6 +25,7 @@ import entryBodySummary from '../../utils/entry-body-summary';
 import sumTotal from '../../utils/sum-total';
 import appName from '../../utils/app-name';
 import parseToken from '../../utils/parse-token';
+import {isEntryRead} from '../../helpers/storage';
 
 class EntryListItem extends Component {
 
@@ -54,6 +55,8 @@ class EntryListItem extends Component {
     const isChild = entry.parent_author !== '';
 
     const title = isChild ? `RE: ${entry.root_title}` : entry.title;
+
+    const isVisited = isEntryRead(entry.author, entry.permlink);
 
     return (
       <div className="entry-list-item">
@@ -97,7 +100,9 @@ class EntryListItem extends Component {
               {entry.category}
             </a>
           </EntryTag>
+          {!isVisited &&
           <span className="read-mark"/>
+          }
           <span className="date">
             <FormattedRelative value={created} initialNow={Date.now()}/>
           </span>

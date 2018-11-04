@@ -36,6 +36,7 @@ import appName from '../utils/app-name';
 import markDown2Html from '../utils/markdown-2-html';
 import authorReputation from '../utils/author-reputation';
 import formatChainError from '../utils/format-chain-error';
+import {setEntryRead} from '../helpers/storage';
 
 
 import {
@@ -404,6 +405,10 @@ class Entry extends PureComponent {
 
   async componentDidMount() {
     await this.fetch();
+
+    const {match} = this.props;
+    const {username, permlink} = match.params;
+    setEntryRead(username, permlink);
 
     window.addEventListener('md-author-clicked', this.mdAuthorClicked);
     window.addEventListener('md-post-clicked', this.mdEntryClicked);
