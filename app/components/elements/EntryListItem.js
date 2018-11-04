@@ -2,11 +2,11 @@
 eslint-disable import/no-cycle
 */
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 
-import {FormattedRelative, FormattedMessage} from 'react-intl';
+import { FormattedRelative, FormattedMessage } from 'react-intl';
 
 import UserAvatar from './UserAvatar';
 import EntryPayout from './EntryPayout';
@@ -25,14 +25,17 @@ import entryBodySummary from '../../utils/entry-body-summary';
 import sumTotal from '../../utils/sum-total';
 import appName from '../../utils/app-name';
 import parseToken from '../../utils/parse-token';
-import {isEntryRead} from '../../helpers/storage';
+import { isEntryRead } from '../../helpers/storage';
 
 class EntryListItem extends Component {
-
   render() {
-    const {entry, inDrawer, asAuthor} = this.props;
+    const { entry, inDrawer, asAuthor, global } = this.props;
 
-    const img = catchEntryImage(entry, 130, 80) || 'img/noimage.png';
+    const img =
+      (global.listStyle === 'grid'
+        ? catchEntryImage(entry, 600, 500)
+        : catchEntryImage(entry, 130, 80)) || 'img/noimage.png';
+
     const reputation = authorReputation(entry.author_reputation);
     const created = parseDate(entry.created);
     const summary = entryBodySummary(entry.body, 200);
@@ -65,7 +68,7 @@ class EntryListItem extends Component {
             <AccountLink {...this.props} username={entry.author}>
               <div className="author-part">
                 <div className="author-avatar">
-                  <UserAvatar user={entry.author} size="small"/>
+                  <UserAvatar user={entry.author} size="small" />
                 </div>
                 <div className="author">
                   {entry.author}{' '}
@@ -83,7 +86,7 @@ class EntryListItem extends Component {
             >
               <div className="author-part">
                 <div className="author-avatar">
-                  <UserAvatar user={entry.author} size="small"/>
+                  <UserAvatar user={entry.author} size="small" />
                 </div>
                 <div className="author">
                   {entry.author}{' '}
@@ -93,27 +96,22 @@ class EntryListItem extends Component {
             </QuickProfile>
           )}
           <EntryTag {...this.props} tag={entry.category}>
-            <a
-              className="category"
-              role="none"
-            >
+            <a className="category" role="none">
               {entry.category}
             </a>
           </EntryTag>
-          {!isVisited &&
-          <span className="read-mark"/>
-          }
+          {!isVisited && <span className="read-mark" />}
           <span className="date">
-            <FormattedRelative value={created} initialNow={Date.now()}/>
+            <FormattedRelative value={created} initialNow={Date.now()} />
           </span>
           {asAuthor &&
-          !isChild &&
-          entry.author !== asAuthor && (
-            <span className="reblogged">
+            !isChild &&
+            entry.author !== asAuthor && (
+              <span className="reblogged">
                 <i className="mi">repeat</i>{' '}
-              <FormattedMessage id="entry-list-item.reblogged"/>
+                <FormattedMessage id="entry-list-item.reblogged" />
               </span>
-          )}
+            )}
         </div>
         <div className="item-body">
           <div className="item-image">
@@ -137,15 +135,15 @@ class EntryListItem extends Component {
           </div>
           <div className="item-controls">
             <div className="voting">
-              <EntryVoteBtn {...this.props} entry={entry}/>
+              <EntryVoteBtn {...this.props} entry={entry} />
             </div>
             <EntryPayout {...this.props} entry={entry}>
               <a
                 className={`total-payout ${
                   isPayoutDeclined ? 'payout-declined' : ''
-                  }`}
+                }`}
               >
-                <FormattedCurrency {...this.props} value={totalPayout}/>
+                <FormattedCurrency {...this.props} value={totalPayout} />
               </a>
             </EntryPayout>
             <EntryVotes {...this.props} entry={entry}>
