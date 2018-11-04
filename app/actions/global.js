@@ -1,4 +1,5 @@
 import getSymbolFromCurrency from 'currency-symbol-map';
+import { setItem } from '../helpers/storage';
 
 export const THEME_CHANGED = 'global/THEME_CHANGED';
 export const LIST_STYLE_CHANGED = 'global/LIST_STYLE_CHANGED';
@@ -16,7 +17,7 @@ export const changeTheme = () => (dispatch, getState) => {
   const { theme } = global;
   const newTheme = theme === 'day' ? 'night' : 'day';
 
-  localStorage.setItem('theme', newTheme);
+  setItem('theme', newTheme);
   window.setTheme(newTheme);
 
   dispatch(themeChanged(newTheme));
@@ -29,7 +30,7 @@ export const changeListStyle = () => (dispatch, getState) => {
 
   const newStyle = listStyle === 'row' ? 'grid' : 'row';
 
-  localStorage.setItem('list-style', newStyle);
+  setItem('list-style', newStyle);
 
   dispatch(listStyleChanged(newStyle));
 };
@@ -37,27 +38,27 @@ export const changeListStyle = () => (dispatch, getState) => {
 export const changeCurrency = (currency, currencyRate) => dispatch => {
   const symbol = getSymbolFromCurrency(currency);
 
-  localStorage.setItem('currency', currency);
-  localStorage.setItem('currency-rate', currencyRate);
-  localStorage.setItem('currency-symbol', symbol);
+  setItem('currency', currency);
+  setItem('currency-rate', currencyRate);
+  setItem('currency-symbol', symbol);
 
   dispatch(currencyChanged(currency, currencyRate, symbol));
 };
 
 export const changeLocale = locale => dispatch => {
-  localStorage.setItem('locale', locale);
+  setItem('locale', locale);
 
   dispatch(localeChanged(locale));
 };
 
 export const changePushNotify = val => dispatch => {
-  localStorage.setItem('push-notify', val);
+  setItem('push-notify', val);
 
   dispatch(pushNotifyChanged(val));
 };
 
 export const changeServer = server => dispatch => {
-  localStorage.setItem('server', server);
+  setItem('server', server);
 
   dispatch(serverChanged(server));
 };
