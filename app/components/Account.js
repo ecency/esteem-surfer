@@ -262,7 +262,7 @@ export class AccountCover extends Component {
     let coverImage;
 
     const {account, username, global, activeAccount} = this.props;
-    const showFollowControls = activeAccount && activeAccount.username !== username;
+    const hideFollowControls = activeAccount && activeAccount.username === username;
 
     if (account) {
       const {accountProfile} = account;
@@ -275,7 +275,7 @@ export class AccountCover extends Component {
 
     return <div className="account-cover">
       <div className="cover-image" style={{backgroundImage: `url('${bgImage}')`}}/>
-      {showFollowControls &&
+      {!hideFollowControls &&
       <div className="follow-controls-holder">
         <FollowControls {...this.props} targetUsername={username}/>
       </div>
