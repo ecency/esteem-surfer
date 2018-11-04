@@ -115,7 +115,12 @@ class EntryListItem extends Component {
         </div>
         <div className="item-body">
           <div className="item-image">
-            <EntryLink {...this.props} entry={entry}>
+            <EntryLink
+              {...this.props}
+              entry={entry}
+              author={entry.author}
+              permlink={entry.permlink}
+            >
               <img
                 src={img}
                 alt=""
@@ -126,10 +131,20 @@ class EntryListItem extends Component {
             </EntryLink>
           </div>
           <div className="item-summary">
-            <EntryLink {...this.props} entry={entry}>
+            <EntryLink
+              {...this.props}
+              entry={entry}
+              author={entry.author}
+              permlink={entry.permlink}
+            >
               <div className="item-title">{title}</div>
             </EntryLink>
-            <EntryLink {...this.props} entry={entry}>
+            <EntryLink
+              {...this.props}
+              entry={entry}
+              author={entry.author}
+              permlink={entry.permlink}
+            >
               <div className="item-body">{summary}</div>
             </EntryLink>
           </div>

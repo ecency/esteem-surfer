@@ -1,19 +1,27 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { getContent } from '../../backend/steem-client';
+
 class EntryLink extends Component {
-  goEntry = () => {
-    const {entry, history, actions} = this.props;
+  goEntry = async () => {
+    let { entry } = this.props;
+    const { history, actions } = this.props;
 
-    const {category, author, permlink} = entry;
+    if (!entry) {
+      const { author, permlink } = this.props;
+      entry = await getContent(author, permlink);
+    }
 
-    actions.setVisitingEntry(entry);
-
-    history.push(`/${category}/@${author}/${permlink}`);
+    if (entry) {
+      const { category, author, permlink } = entry;
+      actions.setVisitingEntry(entry);
+      history.push(`/${category}/@${author}/${permlink}`);
+    }
   };
 
   render() {
-    const {children} = this.props;
+    const { children } = this.props;
 
     return React.cloneElement(children, {
       onClick: this.goEntry
@@ -21,7 +29,9 @@ class EntryLink extends Component {
   }
 }
 
-EntryLink.defaultProps = {};
+EntryLink.defaultProps = {
+  entry: null
+};
 
 EntryLink.propTypes = {
   children: PropTypes.element.isRequired,
@@ -30,7 +40,9 @@ EntryLink.propTypes = {
     category: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     permlink: PropTypes.string.isRequired
-  }).isRequired,
+  }),
+  author: PropTypes.string.isRequired,
+  permlink: PropTypes.string.isRequired,
   actions: PropTypes.shape({
     setVisitingEntry: PropTypes.func.isRequired
   }).isRequired

@@ -75,8 +75,8 @@
 
   .right-side {
     font-size: 12px;
-    text-align: right;
     width: 50%;
+    text-align: right;
 
     a {
       @include themify(day) {
@@ -87,11 +87,14 @@
         color: $white-five;
       }
 
-      &:not(:last-child) {
+      &.faq,
+      &.about {
         margin-right: 8px;
-        &::after {
-          content: '|';
-          padding-left: 8px;
+      }
+
+      &.about {
+        &:after {
+          vertical-align: -10%;
         }
       }
 

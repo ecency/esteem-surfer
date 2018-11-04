@@ -105,6 +105,19 @@ h2 {
   font-feature-settings: 'liga';
 }
 
+a[target='_external'],
+.markdown-external-link {
+  cursor: pointer;
+  &::after {
+    font-family: 'Material Icons';
+    content: 'open_in_new';
+    padding-left: 4px;
+    color: $dark-sky-blue;
+    font-size: 12px;
+    vertical-align: -5%;
+  }
+}
+
 @import '../components/common/DropDown';
 @import '../components/common/LinearProgress';
 

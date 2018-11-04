@@ -10,6 +10,10 @@
     "edit": "Edit",
     "server-error": "Process could not completed due to server error"
   },
+  "footer": {
+    "faq": "FAQ",
+    "about": "About"
+  },
   "entry-index": {
     "tags": "Popular Tags",
     "filter-trending": "Trending",

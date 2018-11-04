@@ -3,9 +3,13 @@ import PropTypes from 'prop-types';
 
 import { Tooltip } from 'antd';
 
+import { FormattedMessage } from 'react-intl';
+
 import { version } from '../../../package.json';
 
 import { votingPower, rcPower } from '../../utils/manabar';
+
+import EntryLink from '../helpers/EntryLink';
 
 export const powerCssPercentage = p => {
   if (p >= 100) {
@@ -70,8 +74,18 @@ class AppFooter extends Component {
         </div>
 
         <div className="right-side">
-          <a>FAQ</a>
-          <a>About</a>
+          <EntryLink
+            {...this.props}
+            author="good-karma"
+            permlink="esteem-faq-updated-e2baacf0a8475"
+          >
+            <a className="faq">
+              <FormattedMessage id="footer.faq" />
+            </a>
+          </EntryLink>
+          <a className="about" href="https://esteem.app" target="_external">
+            <FormattedMessage id="footer.about" />
+          </a>
           <a className="version">{version}</a>
         </div>
       </div>
