@@ -1,6 +1,6 @@
 @import '../../style/mixins';
 @import '../../style/colors';
-@import '~typeface-roboto-mono/index.css';
+
 @import '~codemirror/lib/codemirror.css';
 
 .editor-form {
@@ -10,7 +10,7 @@
   }
 
   .CodeMirror {
-    font-family: 'Roboto Mono', sans-serif;
+    font-family: 'Lucida Console', Monaco, monospace;
     font-size: 14px;
     height: 100%;
     line-height: 1.6em;
@@ -121,7 +121,7 @@
 
   .tag-select-options {
     .ant-select-dropdown-menu-item {
-      font-family: 'Roboto Mono', sans-serif;
+      font-family: 'Lucida Console', Monaco, monospace;
     }
   }
 }

@@ -29,7 +29,7 @@
         background: transparent;
         border: 0;
         color: $charcoal-grey;
-        font-family: 'Roboto Mono', sans-serif;
+        font-family: 'Lucida Console', Monaco, monospace;
         font-size: 20px;
         font-weight: 700;
 
@@ -48,7 +48,7 @@
       padding-left: 4px;
 
       .ant-select {
-        font-family: 'Roboto Mono', sans-serif !important;
+        font-family: 'Lucida Console', Monaco, monospace;
         width: 100%;
 
         .ant-select-selection {
