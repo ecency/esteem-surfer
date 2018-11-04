@@ -77,6 +77,7 @@ export default merge.smart(baseConfig, {
           }
         }
       },
+      // SCSS
       {
         test: /app.style\.scss$/,
         use: [
@@ -93,6 +94,11 @@ export default merge.smart(baseConfig, {
             loader: 'sass-loader'
           }
         ]
+      },
+      // CSS
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       },
       // WOFF Font
       {
