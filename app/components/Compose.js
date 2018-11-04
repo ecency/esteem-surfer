@@ -63,7 +63,7 @@ export class Preview extends Component {
         <div className="preview-content">
           <div className="preview-content-title">{title}</div>
           <div className="preview-content-tags">
-            {tags.map(t => (
+            {tags.slice(0, 5).map(t => (
               <div key={t} className="content-tag">
                 {t}
               </div>
@@ -435,7 +435,9 @@ class Compose extends Component {
             syncWith="#preview-content-body"
             mode="post"
             ref={this.editor}
-            bodyPlaceHolder={intl.formatMessage({id: 'composer.body-placeholder'})}
+            bodyPlaceHolder={intl.formatMessage({
+              id: 'composer.body-placeholder'
+            })}
           />
           <Preview
             {...this.props}
