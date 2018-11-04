@@ -16,6 +16,8 @@ import { addAccount, addAccountSc, deleteAccount } from '../actions/accounts';
 
 import { logIn, logOut, updateActiveAccount } from '../actions/active-account';
 
+import { setVisitingEntry } from '../actions/visiting-entry';
+
 const mapStateToProps = state => ({
   global: state.global,
   trendingTags: state.trendingTags,
@@ -44,7 +46,8 @@ const mapDispatchToProps = dispatch => ({
       },
       dispatch
     ),
-    ...bindActionCreators({ logIn, logOut, updateActiveAccount }, dispatch)
+    ...bindActionCreators({ logIn, logOut, updateActiveAccount }, dispatch),
+    ...bindActionCreators({ setVisitingEntry }, dispatch)
   }
 });
 
