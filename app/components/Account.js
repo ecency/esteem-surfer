@@ -307,7 +307,7 @@ export class AccountTopPosts extends Component {
         <h2 className="top-posts-list-header"><FormattedMessage id="account.top-posts"/></h2>
         <div className="top-posts-list-body">
           {posts.map(p => (
-            <div className="top-posts-list-item" role="none" onClick={() => {
+            <div className="top-posts-list-item" key={p.permlink} role="none" onClick={() => {
               const {history} = this.props;
               const {category, author, permlink} = p;
 

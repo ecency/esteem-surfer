@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Account from '../components/Account';
-import { fetchEntries, invalidateEntries } from '../actions/entries';
+import { fetchEntries, invalidateEntries, updateEntry } from '../actions/entries';
 
 import {
   changeTheme,
@@ -31,7 +31,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   actions: {
-    ...bindActionCreators({ fetchEntries, invalidateEntries }, dispatch),
+    ...bindActionCreators({ fetchEntries, invalidateEntries, updateEntry }, dispatch),
     ...bindActionCreators(
       {
         changeTheme,
