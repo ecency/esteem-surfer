@@ -1,8 +1,12 @@
 {
-  "name": "electron-react-boilerplate",
-  "productName": "ElectronReact",
+  "name": "esteem-surfer",
+  "productName": "eSteem Surfer",
   "version": "2.0.0",
-  "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
+  "description": "eSteem desktop application reimagined for Windows, Mac, Linux users, start earning cryptocurrency!",
+  "private": true,
+  "author": "eSteem <info@esteem.app>",
+  "copyright": "© 2018, eSteem",
+  "homepage": "https://esteem.app",
   "scripts": {
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
     "build-dll": "cross-env NODE_ENV=development node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.renderer.dev.dll.js --colors",
@@ -44,8 +48,8 @@
     ]
   },
   "build": {
-    "productName": "ElectronReact",
-    "appId": "org.develar.ElectronReact",
+    "productName": "eSteem Surfer",
+    "appId": "app.esteem.surfer",
     "files": [
       "dist/",
       "node_modules/",
@@ -54,17 +58,31 @@
       "main.prod.js.map",
       "package.json"
     ],
+    "mac": {
+      "category": "public.app-category.finance",
+      "type": "distribution",
+      "target": [
+        "zip",
+        "dmg"
+      ]
+    },
     "dmg": {
+      "background": "resources/dmg-bg.png",
+      "window": {
+        "width": 600,
+        "height": 578
+      },
       "contents": [
         {
-          "x": 130,
-          "y": 220
-        },
-        {
-          "x": 410,
-          "y": 220,
+          "x": 490,
+          "y": 255,
           "type": "link",
           "path": "/Applications"
+        },
+        {
+          "x": 215,
+          "y": 255,
+          "type": "file"
         }
       ]
     },
@@ -85,30 +103,6 @@
       "output": "release"
     }
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chentsulin/electron-react-boilerplate.git"
-  },
-  "author": {
-    "name": "C. T. Lin",
-    "email": "chentsulin@gmail.com",
-    "url": "https://github.com/chentsulin"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/chentsulin/electron-react-boilerplate/issues"
-  },
-  "keywords": [
-    "electron",
-    "boilerplate",
-    "react",
-    "redux",
-    "sass",
-    "webpack",
-    "hot",
-    "reload"
-  ],
-  "homepage": "https://github.com/chentsulin/electron-react-boilerplate#readme",
   "jest": {
     "testURL": "http://localhost/",
     "moduleNameMapper": {

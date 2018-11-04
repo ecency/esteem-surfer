@@ -5,7 +5,7 @@ import { Tooltip } from 'antd';
 
 import { FormattedMessage } from 'react-intl';
 
-import { version } from '../../../package.json';
+import { version } from '../../package.json';
 
 import { votingPower, rcPower } from '../../utils/manabar';
 

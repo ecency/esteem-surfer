@@ -47,7 +47,7 @@ import {
   extractMetadata
 } from '../utils/posting-helpers';
 
-import { version } from '../../package.json';
+import { version } from '../package.json';
 
 export class Preview extends Component {
   render() {

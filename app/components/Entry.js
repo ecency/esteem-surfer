@@ -44,7 +44,7 @@ import {
   makeOptions,
   makeJsonMetadataReply
 } from '../utils/posting-helpers';
-import {version} from "../../package";
+import {version} from "../package";
 
 class ReplyEditor extends Component {
 
