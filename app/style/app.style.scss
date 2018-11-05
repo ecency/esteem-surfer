@@ -153,6 +153,7 @@ a[target='_external'],
 @import '../components/dialogs/UserMenu';
 
 @import '../components/helpers/QuickProfile';
+@import '../components/helpers/Updater';
 
 .markdown-view {
   @include clearfix();

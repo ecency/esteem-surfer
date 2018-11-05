@@ -1,0 +1,59 @@
+@import '../../style/mixins';
+@import '../../style/colors';
+
+.updater-alert {
+  border-top: 3px solid $dark-sky-blue;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  bottom: 32px;
+  height: 90px;
+  left: 0;
+  margin: 0 auto;
+  padding: 10px;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  width: 500px;
+
+  @include themify(day) {
+    background-color: $light-periwinkle;
+  }
+
+  @include themify(night) {
+    background-color: lighten($dark-six, 10);
+  }
+
+  .btn-update {
+    margin-right: 10px;
+  }
+
+  .info-text {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+
+    .release-name {
+      font-weight: 400;
+
+      &:before {
+        content: '(';
+      }
+
+      &:after {
+        content: ')';
+      }
+    }
+  }
+
+  .progress {
+    margin: auto;
+    width: 300px;
+  }
+
+  .btn-download {
+  }
+
+  .btn-restart {
+    display: none;
+  }
+}

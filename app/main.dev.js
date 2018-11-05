@@ -9,7 +9,9 @@
  * `./app/main.prod.js` using webpack. This gives us some performance wins.
  *
  */
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
+import { autoUpdater } from 'electron-updater';
+
 import MenuBuilder from './menu';
 
 let mainWindow = null;
@@ -80,4 +82,39 @@ app.on('ready', async () => {
 
   const menuBuilder = new MenuBuilder(mainWindow);
   menuBuilder.buildMenu();
+
+  // Auto updater checks
+  if (process.env.NODE_ENV === 'production') {
+    autoUpdater.autoDownload = false;
+
+    autoUpdater.checkForUpdates();
+
+    // run auto updater to check if is there a new version for each 4 hours
+    setInterval(() => {
+      autoUpdater.checkForUpdates();
+    }, 1000 * 60 * 240);
+  }
+});
+
+// Event handlers for auto updater
+autoUpdater.on('update-available', info => {
+  mainWindow.webContents.send('update-available', info.releaseName);
+});
+
+autoUpdater.on('download-progress', progressObj => {
+  mainWindow.webContents.send('download-progress', progressObj.percent);
+});
+
+autoUpdater.on('update-downloaded', () => {
+  mainWindow.webContents.send('update-downloaded');
+});
+
+ipcMain.on('download-update', () => {
+  autoUpdater.downloadUpdate();
+  mainWindow.webContents.send('download-started');
+});
+
+ipcMain.on('update-restart', () => {
+  autoUpdater.quitAndInstall();
+  console.log('RESTART');
 });

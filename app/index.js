@@ -6,6 +6,7 @@ import { configureStore, history } from './store/configureStore';
 
 import './style/app.style.scss';
 
+// Themes
 window.dayTheme = require('./style/antd/day.tcss');
 window.nightTheme = require('./style/antd/night.tcss');
 

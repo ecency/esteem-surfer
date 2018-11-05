@@ -17,6 +17,7 @@ import { logOut, updateActiveAccount } from '../actions/active-account';
 
 import PinCreate from '../components/dialogs/PinCreate';
 import PinConfirm from '../components/dialogs/PinConfirm';
+import Updater from '../components/helpers/Updater';
 
 import { flattenMessages } from '../utils';
 import messages from '../locales';
@@ -163,6 +164,8 @@ class App extends React.Component {
               />
             </Modal>
           )}
+
+          <Updater {...this.props} />
         </React.Fragment>
       </IntlProvider>
     );
