@@ -10,7 +10,7 @@ import {FormattedRelative, FormattedMessage, FormattedHTMLMessage, injectIntl} f
 
 import {Select, Button, message} from 'antd';
 
-import {getState, getContent, comment} from '../backend/steem-client';
+import {getState, getContent, getAccount, comment} from '../backend/steem-client';
 
 import {addBookmark, getBookmarks, removeBookmark} from '../backend/esteem-client';
 
@@ -44,7 +44,10 @@ import {
   makeOptions,
   makeJsonMetadataReply
 } from '../utils/posting-helpers';
-import {version} from "../package";
+
+import {version} from '../package';
+
+import defaults from '../constants/defaults';
 
 class ReplyEditor extends Component {
 
@@ -392,7 +395,8 @@ class Entry extends PureComponent {
       repliesLoading: true,
       replySort: 'trending',
       editorVisible: false,
-      bookmarkId: null
+      bookmarkId: null,
+      clickedAuthor: null
     };
 
     const {match} = this.props;
@@ -550,24 +554,35 @@ class Entry extends PureComponent {
     this.setState({replies});
   };
 
-  mdAuthorClicked = (e) => {
-    const {history} = this.props;
+  mdAuthorClicked = async (e) => {
     const {author} = e.detail;
 
-    history.push(`/@${author}`);
+    const data = await getAccount(author);
+
+    this.setState({clickedAuthor: data}, () => {
+      setTimeout(() => {
+        document.querySelector('#clicked-author').click();
+      }, 10);
+    })
   };
 
   mdEntryClicked = (e) => {
-    console.log(e.detail.category, e.detail.author, e.detail.permlink);
+    const {history} = this.props;
+    const {category, author, permlink} = e.detail;
+    history.push(`/${category}/@${author}/${permlink}`);
+
   };
 
   mdTagClicked = (e) => {
+    const {history, global} = this.props;
+    const {tag} = e.detail;
 
-    const {global} = this.props;
-    const {selectedFilter} = global;
-
-    console.log(selectedFilter)
-    // console.log(e.detail.tag);
+    let {selectedFilter} = global;
+    if (selectedFilter === 'feed') {
+      selectedFilter = defaults.filter
+    }
+    const newLoc = `/${selectedFilter}/${tag}`;
+    history.push(newLoc);
   };
 
   toggleReplyForm = () => {
@@ -614,7 +629,7 @@ class Entry extends PureComponent {
 
     let content = null;
     if (entry) {
-      const {replies, replySort} = this.state;
+      const {replies, replySort, clickedAuthor} = this.state;
 
       const reputation = authorReputation(entry.author_reputation);
       const created = parseDate(entry.created);
@@ -766,6 +781,17 @@ class Entry extends PureComponent {
               </div>
             </div>
           </div>
+
+          {clickedAuthor &&
+          <div style={{display: 'none'}}>
+            <QuickProfile
+              {...this.props}
+              username={clickedAuthor.name}
+              reputation={clickedAuthor.reputation}>
+              <a id="clicked-author">{clickedAuthor.name}</a>
+            </QuickProfile>
+          </div>
+          }
         </Fragment>
       )
     }
