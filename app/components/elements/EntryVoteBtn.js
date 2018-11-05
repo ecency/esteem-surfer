@@ -98,7 +98,7 @@ class EntryVoteBtn extends Component {
         Object.assign({}, entry, {active_votes: votes})
       );
 
-      afterVote();
+      afterVote(votes);
     }
   };
 

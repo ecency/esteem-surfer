@@ -581,6 +581,12 @@ class Entry extends PureComponent {
     this.setState({replies: newReplies});
   };
 
+  afterVote = (votes) => {
+    const {entry} = this.state;
+    const newEntry = Object.assign({}, entry, {active_votes: votes});
+    this.setState({entry: newEntry});
+  };
+
   bookmarkFn = () => {
     const {bookmarkId} = this.state;
     const {activeAccount, match, intl} = this.props;
@@ -700,7 +706,7 @@ class Entry extends PureComponent {
               </div>
               <div className="entry-controls">
                 <div className="voting">
-                  <EntryVoteBtn {...this.props} entry={entry}/>
+                  <EntryVoteBtn {...this.props} entry={entry} afterVote={this.afterVote}/>
                 </div>
                 <EntryPayout {...this.props} entry={entry}>
                   <a
