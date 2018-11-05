@@ -100,6 +100,11 @@ export default merge.smart(baseConfig, {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
       },
+      // Theme CSS files
+      {
+        test: /\.tcss/,
+        use: 'url-loader'
+      },
       // WOFF Font
       {
         test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,

@@ -6,16 +6,18 @@
     <script>
       // Theme switcher
       window.setTheme = function (theme) {
-        const styleEl = document.querySelector('#theme-stylesheet');
 
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.id = 'theme-stylesheet';
-        link.href = 'style/antd/' + theme + '.css';
-        document.getElementsByTagName('head')[0].appendChild(link);
+        const css = window.atob(window[theme + 'Theme'].split('data:;base64,')[1]);
 
-        if (styleEl) {
-          styleEl.parentElement.removeChild(styleEl);
+        const oldStyleEl = document.querySelector('#theme-stylesheet');
+
+        const styleEl = document.createElement('style');
+        styleEl.id = 'theme-stylesheet';
+        styleEl.appendChild(document.createTextNode(css));
+        document.getElementsByTagName('head')[0].appendChild(styleEl);
+
+        if (oldStyleEl) {
+          oldStyleEl.parentElement.removeChild(oldStyleEl);
         }
 
         document.querySelector('body').className = theme + '-theme';
