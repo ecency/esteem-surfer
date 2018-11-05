@@ -2,17 +2,31 @@
 eslint-disable react/no-multi-comp, no-underscore-dangle
 */
 
-import React, {Component, PureComponent, Fragment} from 'react';
+import React, { Component, PureComponent, Fragment } from 'react';
 
 import PropTypes from 'prop-types';
 
-import {FormattedRelative, FormattedMessage, FormattedHTMLMessage, injectIntl} from 'react-intl';
+import {
+  FormattedRelative,
+  FormattedMessage,
+  FormattedHTMLMessage,
+  injectIntl
+} from 'react-intl';
 
-import {Select, Button, message} from 'antd';
+import { Select, Button, message } from 'antd';
 
-import {getState, getContent, getAccount, comment} from '../backend/steem-client';
+import {
+  getState,
+  getContent,
+  getAccount,
+  comment
+} from '../backend/steem-client';
 
-import {addBookmark, getBookmarks, removeBookmark} from '../backend/esteem-client';
+import {
+  addBookmark,
+  getBookmarks,
+  removeBookmark
+} from '../backend/esteem-client';
 
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
@@ -28,7 +42,6 @@ import LinearProgress from './common/LinearProgress';
 import Editor from './elements/Editor';
 import LoginRequired from './helpers/LoginRequired';
 
-
 import parseDate from '../utils/parse-date';
 import parseToken from '../utils/parse-token';
 import sumTotal from '../utils/sum-total';
@@ -36,8 +49,7 @@ import appName from '../utils/app-name';
 import markDown2Html from '../utils/markdown-2-html';
 import authorReputation from '../utils/author-reputation';
 import formatChainError from '../utils/format-chain-error';
-import {setEntryRead} from '../helpers/storage';
-
+import { setEntryRead } from '../helpers/storage';
 
 import {
   createReplyPermlink,
@@ -45,19 +57,18 @@ import {
   makeJsonMetadataReply
 } from '../utils/posting-helpers';
 
-import {version} from '../package';
+import { version } from '../package';
 
 import defaults from '../constants/defaults';
 
 class ReplyEditor extends Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
       replyText: '',
       processing: false
-    }
+    };
   }
 
   editorChanged = newValues => {
@@ -67,7 +78,6 @@ class ReplyEditor extends Component {
     }
 
     this.changeTimer = setTimeout(() => {
-
       this.setState({
         replyText: newValues.body.trim()
       });
@@ -77,17 +87,15 @@ class ReplyEditor extends Component {
   };
 
   cancel = () => {
-    const {onCancel} = this.props;
+    const { onCancel } = this.props;
     onCancel();
   };
 
   submit = async () => {
+    this.setState({ processing: true });
 
-    this.setState({processing: true});
-
-    const {content, onSuccess, activeAccount, global, mode} = this.props;
-    const {replyText} = this.state;
-
+    const { content, onSuccess, activeAccount, global, mode } = this.props;
+    const { replyText } = this.state;
 
     let parentJsonMeta;
     try {
@@ -102,15 +110,20 @@ class ReplyEditor extends Component {
     let permlink = null;
     let options = null;
 
-    const jsonMeta = makeJsonMetadataReply(parentJsonMeta.tags || ['esteem'], version);
+    const jsonMeta = makeJsonMetadataReply(
+      parentJsonMeta.tags || ['esteem'],
+      version
+    );
 
     if (mode === 'edit') {
       parentAuthor = content.parent_author;
       parentPermlink = content.parent_permlink;
-      ({author} = content);
-      ({permlink} = content);
+      ({ author } = content);
+      ({ permlink } = content);
 
-      const bExist = content.beneficiaries.some(x => x && x.account === 'esteemapp');
+      const bExist = content.beneficiaries.some(
+        x => x && x.account === 'esteemapp'
+      );
       if (!bExist) {
         options = makeOptions(author, permlink);
       }
@@ -139,22 +152,23 @@ class ReplyEditor extends Component {
       );
 
       newContent = await getContent(author, permlink);
-
     } catch (err) {
       message.error(formatChainError(err));
       return;
     }
 
-    this.setState({processing: false});
+    this.setState({ processing: false });
     onSuccess(newContent);
   };
 
-
   render() {
-    const {intl, mode, content} = this.props;
-    const {replyText, processing} = this.state;
-    const defaultBody = (mode === 'edit' ? content.body : '');
-    const btnLabel = (mode === 'reply' ? 'Reply' : 'Save');
+    const { intl, mode, content } = this.props;
+    const { replyText, processing } = this.state;
+    const defaultBody = mode === 'edit' ? content.body : '';
+    const btnLabel =
+      mode === 'reply'
+        ? intl.formatMessage({ id: 'entry.reply' })
+        : intl.formatMessage({ id: 'g.save' });
 
     return (
       <div className="reply-editor">
@@ -169,31 +183,51 @@ class ReplyEditor extends Component {
           syncWith={null}
           mode="reply"
           autoFocus2Body
-          bodyPlaceHolder={intl.formatMessage({id: 'entry.reply-body-placeholder'})}
+          bodyPlaceHolder={intl.formatMessage({
+            id: 'entry.reply-body-placeholder'
+          })}
         />
         <div className="reply-editor-controls">
-          <Button size="small" className="btn-cancel" onClick={this.cancel} disabled={processing}>Cancel</Button>
+          <Button
+            size="small"
+            className="btn-cancel"
+            onClick={this.cancel}
+            disabled={processing}
+          >
+            Cancel
+          </Button>
           <LoginRequired {...this.props} requiredKeys={['posting']}>
-            <Button size="small" className="btn-reply" type="primary" onClick={this.submit}
-                    disabled={!replyText} loading={processing}>{btnLabel}</Button>
+            <Button
+              size="small"
+              className="btn-reply"
+              type="primary"
+              onClick={this.submit}
+              disabled={!replyText}
+              loading={processing}
+            >
+              {btnLabel}
+            </Button>
           </LoginRequired>
         </div>
-        {replyText &&
-        <div className="reply-editor-preview">
-          <div className="preview-label">Preview</div>
-          <div className="markdown-view mini-markdown user-selectable no-click-event"
-               dangerouslySetInnerHTML={{__html: markDown2Html(replyText)}}/>
-        </div>
-        }
+        {replyText && (
+          <div className="reply-editor-preview">
+            <div className="preview-label">
+              <FormattedMessage id="entry.reply-preview" />
+            </div>
+            <div
+              className="markdown-view mini-markdown user-selectable no-click-event"
+              dangerouslySetInnerHTML={{ __html: markDown2Html(replyText) }}
+            />
+          </div>
+        )}
       </div>
-    )
+    );
   }
 }
 
 ReplyEditor.defaultProps = {
   activeAccount: null
 };
-
 
 ReplyEditor.propTypes = {
   content: PropTypes.instanceOf(Object).isRequired,
@@ -207,71 +241,71 @@ ReplyEditor.propTypes = {
   mode: PropTypes.string.isRequired
 };
 
-class ReplyListItem extends Component {
-
+class ReplyListItem extends PureComponent {
   constructor(props) {
     super(props);
 
-    const {reply} = this.props;
+    const { reply } = this.props;
 
     this.state = {
       reply,
       editorMode: null,
-      editorVisible: false,
-    }
+      editorVisible: false
+    };
   }
 
   afterVote = () => {
-    const {reply} = this.state;
-    const {author, permlink} = reply;
+    const { reply } = this.state;
+    const { author, permlink } = reply;
 
     return getContent(author, permlink).then(resp => {
-      const newReply = Object.assign({}, reply, {active_votes: resp.active_votes});
-      this.setState({reply: newReply});
-      return resp
-    })
+      const newReply = Object.assign({}, reply, {
+        active_votes: resp.active_votes
+      });
+      this.setState({ reply: newReply });
+      return resp;
+    });
   };
 
-  onReplySuccess = (newObj) => {
-    const {reply, editorMode} = this.state;
+  onReplySuccess = newObj => {
+    const { reply, editorMode } = this.state;
 
     let newReply;
 
     if (editorMode === 'reply') {
-      const {replies} = reply;
+      const { replies } = reply;
 
       const newReplies = [newObj, ...replies];
-      newReply = Object.assign({}, reply, {replies: newReplies});
-
+      newReply = Object.assign({}, reply, { replies: newReplies });
     } else if (editorMode === 'edit') {
-      newReply = Object.assign({}, reply, {body: newObj.body});
+      newReply = Object.assign({}, reply, { body: newObj.body });
     }
 
-    this.setState({reply: newReply, editorVisible: false, editorMode: null});
+    this.setState({ reply: newReply, editorVisible: false, editorMode: null });
   };
 
   onCancel = () => {
-    this.setState({editorVisible: false, editorMode: null});
+    this.setState({ editorVisible: false, editorMode: null });
   };
 
-  openEditor = (mode) => {
-    const {editorVisible, editorMode} = this.state;
+  openEditor = mode => {
+    const { editorVisible, editorMode } = this.state;
     if (editorVisible && editorMode === mode) return;
 
-    this.setState({editorVisible: false});
+    this.setState({ editorVisible: false });
 
     setTimeout(() => {
-      this.setState({editorVisible: true, editorMode: mode});
+      this.setState({ editorVisible: true, editorMode: mode });
     }, 50);
   };
 
   render() {
-    const {activeAccount} = this.props;
-    const {reply, editorVisible, editorMode} = this.state;
+    const { activeAccount } = this.props;
+    const { reply, editorVisible, editorMode } = this.state;
 
     const reputation = authorReputation(reply.author_reputation);
     const created = parseDate(reply.created);
-    const renderedBody = {__html: markDown2Html(reply.body)};
+    const renderedBody = { __html: markDown2Html(reply.body) };
     const isPayoutDeclined = parseToken(reply.max_accepted_payout) === 0;
     const totalPayout = sumTotal(reply);
     const voteCount = reply.active_votes.length;
@@ -288,7 +322,7 @@ class ReplyListItem extends Component {
             >
               <div className="author-part">
                 <div className="author-avatar">
-                  <UserAvatar user={reply.author} size="medium"/>
+                  <UserAvatar user={reply.author} size="medium" />
                 </div>
                 <div className="author">
                   <span className="author-name">{reply.author}</span>
@@ -296,62 +330,81 @@ class ReplyListItem extends Component {
                 </div>
               </div>
             </QuickProfile>
-            <span className="separator"/>
+            <span className="separator" />
             <span className="date">
-              <FormattedRelative value={created} initialNow={Date.now()}/>
+              <FormattedRelative value={created} initialNow={Date.now()} />
             </span>
           </div>
-          <div className="item-body markdown-view mini-markdown user-selectable"
-               dangerouslySetInnerHTML={renderedBody}/>
+          <div
+            className="item-body markdown-view mini-markdown user-selectable"
+            dangerouslySetInnerHTML={renderedBody}
+          />
           <div className="item-controls">
             <div className="voting">
-              <EntryVoteBtn {...this.props} entry={reply} afterVote={this.afterVote}/>
+              <EntryVoteBtn
+                {...this.props}
+                entry={reply}
+                afterVote={this.afterVote}
+              />
             </div>
             <EntryPayout {...this.props} entry={reply}>
               <a
                 className={`total-payout ${
                   isPayoutDeclined ? 'payout-declined' : ''
-                  }`}
+                }`}
               >
-                <FormattedCurrency {...this.props} value={totalPayout}/>
+                <FormattedCurrency {...this.props} value={totalPayout} />
               </a>
             </EntryPayout>
-            <span className="separator"/>
+            <span className="separator" />
             <EntryVotes {...this.props} entry={reply}>
               <a className="voters">
                 <i className="mi">people</i>
                 {voteCount}
               </a>
             </EntryVotes>
-            <span className="separator"/>
-            <span className="reply-btn" role="none" onClick={() => {
-              this.openEditor('reply')
-            }}>Reply</span>
-            {canEdit &&
-            <Fragment>
-              <span className="separator"/>
-              <span className="edit-btn" role="none" onClick={() => {
-                this.openEditor('edit')
-              }}><i className="mi">edit</i> </span>
-            </Fragment>
-            }
+            <span className="separator" />
+            <span
+              className="reply-btn"
+              role="none"
+              onClick={() => {
+                this.openEditor('reply');
+              }}
+            >
+              <FormattedMessage id="entry.reply" />
+            </span>
+            {canEdit && (
+              <Fragment>
+                <span className="separator" />
+                <span
+                  className="edit-btn"
+                  role="none"
+                  onClick={() => {
+                    this.openEditor('edit');
+                  }}
+                >
+                  <i className="mi">edit</i>{' '}
+                </span>
+              </Fragment>
+            )}
           </div>
         </div>
 
-        {editorVisible &&
-        <ReplyEditor
-          {...this.props}
-          content={reply}
-          onCancel={this.onCancel}
-          onSuccess={this.onReplySuccess}
-          mode={editorMode}
-        />
-        }
-        {reply.replies && reply.replies.length > 0 &&
-        <ReplyList {...this.props} replies={reply.replies}/>
-        }
+        {editorVisible && (
+          <ReplyEditor
+            {...this.props}
+            content={reply}
+            onCancel={this.onCancel}
+            onSuccess={this.onReplySuccess}
+            mode={editorMode}
+          />
+        )}
+        {reply.replies &&
+          reply.replies.length > 0 && (
+            <ReplyList {...this.props} replies={reply.replies} />
+          )}
       </div>
-    )
+    );
   }
 }
 
@@ -366,13 +419,15 @@ ReplyListItem.propTypes = {
 
 class ReplyList extends PureComponent {
   render() {
-    const {replies} = this.props;
+    const { replies } = this.props;
 
     return (
       <div className="entry-reply-list">
-        {replies.map(reply => <ReplyListItem {...this.props} reply={reply} key={reply.id}/>)}
+        {replies.map(reply => (
+          <ReplyListItem {...this.props} reply={reply} key={reply.id} />
+        ))}
       </div>
-    )
+    );
   }
 }
 
@@ -383,11 +438,10 @@ ReplyList.propTypes = {
 };
 
 class Entry extends PureComponent {
-
   constructor(props) {
     super(props);
 
-    const {visitingEntry} = this.props;
+    const { visitingEntry } = this.props;
 
     this.state = {
       entry: visitingEntry || null,
@@ -399,8 +453,8 @@ class Entry extends PureComponent {
       clickedAuthor: null
     };
 
-    const {match} = this.props;
-    const {category, username, permlink} = match.params;
+    const { match } = this.props;
+    const { category, username, permlink } = match.params;
 
     this.statePath = `/${category}/@${username}/${permlink}`;
     this.entryPath = `${username}/${permlink}`;
@@ -410,8 +464,8 @@ class Entry extends PureComponent {
   async componentDidMount() {
     await this.fetch();
 
-    const {match} = this.props;
-    const {username, permlink} = match.params;
+    const { match } = this.props;
+    const { username, permlink } = match.params;
     setEntryRead(username, permlink);
 
     window.addEventListener('md-author-clicked', this.mdAuthorClicked);
@@ -426,24 +480,23 @@ class Entry extends PureComponent {
   }
 
   compileReplies = (parent, sortOrder) => {
-    const {match} = this.props;
-    const {replyId} = match.params;
+    const { match } = this.props;
+    const { replyId } = match.params;
 
-
-    const allPayout = (c) => (
+    const allPayout = c =>
       parseFloat(c.pending_payout_value.split(' ')[0]) +
       parseFloat(c.total_payout_value.split(' ')[0]) +
-      parseFloat(c.curator_payout_value.split(' ')[0])
-    );
+      parseFloat(c.curator_payout_value.split(' ')[0]);
 
     const absNegative = a => a.net_rshares < 0;
 
     const sortOrders = {
       trending: (a, b) => {
-
         if (absNegative(a)) {
           return 1;
-        } else if (absNegative(b)) {
+        }
+
+        if (absNegative(b)) {
           return -1;
         }
 
@@ -476,7 +529,9 @@ class Entry extends PureComponent {
       created: (a, b) => {
         if (absNegative(a)) {
           return 1;
-        } else if (absNegative(b)) {
+        }
+
+        if (absNegative(b)) {
           return -1;
         }
 
@@ -492,46 +547,49 @@ class Entry extends PureComponent {
 
     const replies = [];
 
-    parent.replies.forEach((k) => {
+    parent.replies.forEach(k => {
       const reply = this.stateData.content[k];
 
       replies.push(
         Object.assign(
           {},
           reply,
-          {replies: this.compileReplies(reply, sortOrder)},
-          {author_data: this.stateData.accounts[reply.author]},
-          {_selected_: reply.id === replyId}
+          { replies: this.compileReplies(reply, sortOrder) },
+          { author_data: this.stateData.accounts[reply.author] },
+          { _selected_: reply.id === replyId }
         )
-      )
+      );
     });
 
     replies.sort(sortOrders[sortOrder]);
 
-    return replies
+    return replies;
   };
 
   fetch = async () => {
-    this.setState({replies: [], repliesLoading: true, replySort: 'trending'});
+    this.setState({ replies: [], repliesLoading: true, replySort: 'trending' });
 
-    const {match, actions, activeAccount} = this.props;
-    const {username, permlink} = match.params;
+    const { match, actions, activeAccount } = this.props;
+    const { username, permlink } = match.params;
 
     if (activeAccount) {
-      getBookmarks(activeAccount.username).then(bookmarks => {
-        const b = bookmarks.filter(x => x.author === username && x.permlink === permlink);
+      getBookmarks(activeAccount.username)
+        .then(bookmarks => {
+          const b = bookmarks.filter(
+            x => x.author === username && x.permlink === permlink
+          );
 
-        this.setState({bookmarkId: b.length ? b[0]._id : null});
-        return bookmarks;
-      }).catch(() => {
-      });
+          this.setState({ bookmarkId: b.length ? b[0]._id : null });
+          return bookmarks;
+        })
+        .catch(() => {});
     }
 
     const entry = await getContent(username, permlink);
 
     actions.setVisitingEntry(entry);
 
-    this.setState({entry});
+    this.setState({ entry });
 
     this.stateData = await getState(this.statePath);
 
@@ -539,7 +597,7 @@ class Entry extends PureComponent {
 
     const replies = this.compileReplies(theEntry, 'trending');
 
-    this.setState({repliesLoading: false, replies});
+    this.setState({ repliesLoading: false, replies });
   };
 
   refresh = async () => {
@@ -547,93 +605,96 @@ class Entry extends PureComponent {
   };
 
   replySortOrderChanged = value => {
-    this.setState({replySort: value});
+    this.setState({ replySort: value });
 
     const theEntry = this.stateData.content[this.entryPath];
     const replies = this.compileReplies(theEntry, value);
-    this.setState({replies});
+    this.setState({ replies });
   };
 
-  mdAuthorClicked = async (e) => {
-    const {author} = e.detail;
+  mdAuthorClicked = async e => {
+    const { author } = e.detail;
 
     const data = await getAccount(author);
 
-    this.setState({clickedAuthor: data}, () => {
+    this.setState({ clickedAuthor: data }, () => {
       setTimeout(() => {
         document.querySelector('#clicked-author').click();
       }, 10);
-    })
+    });
   };
 
-  mdEntryClicked = (e) => {
-    const {history} = this.props;
-    const {category, author, permlink} = e.detail;
+  mdEntryClicked = e => {
+    const { history } = this.props;
+    const { category, author, permlink } = e.detail;
     history.push(`/${category}/@${author}/${permlink}`);
-
   };
 
-  mdTagClicked = (e) => {
-    const {history, global} = this.props;
-    const {tag} = e.detail;
+  mdTagClicked = e => {
+    const { history, global } = this.props;
+    const { tag } = e.detail;
 
-    let {selectedFilter} = global;
+    let { selectedFilter } = global;
     if (selectedFilter === 'feed') {
-      selectedFilter = defaults.filter
+      selectedFilter = defaults.filter;
     }
     const newLoc = `/${selectedFilter}/${tag}`;
     history.push(newLoc);
   };
 
   toggleReplyForm = () => {
-    const {editorVisible} = this.state;
-    this.setState({editorVisible: !editorVisible});
+    const { editorVisible } = this.state;
+    this.setState({ editorVisible: !editorVisible });
   };
 
-  onNewReply = (newReply) => {
-    const {replies} = this.state;
+  onNewReply = newReply => {
+    const { replies } = this.state;
     const newReplies = [newReply, ...replies];
-    this.setState({replies: newReplies});
+    this.setState({ replies: newReplies });
   };
 
-  afterVote = (votes) => {
-    const {entry} = this.state;
-    const newEntry = Object.assign({}, entry, {active_votes: votes});
-    this.setState({entry: newEntry});
+  afterVote = votes => {
+    const { entry } = this.state;
+    const newEntry = Object.assign({}, entry, { active_votes: votes });
+    this.setState({ entry: newEntry });
   };
 
   bookmarkFn = () => {
-    const {bookmarkId} = this.state;
-    const {activeAccount, match, intl} = this.props;
-    const {username, permlink} = match.params;
+    const { bookmarkId } = this.state;
+    const { activeAccount, match, intl } = this.props;
+    const { username, permlink } = match.params;
 
     if (bookmarkId) {
       return removeBookmark(bookmarkId, activeAccount.username).then(resp => {
-        this.setState({bookmarkId: null});
-        message.info(intl.formatMessage({id: 'entry.bookmarkRemoved'}));
+        this.setState({ bookmarkId: null });
+        message.info(intl.formatMessage({ id: 'entry.bookmarkRemoved' }));
         return resp;
       });
     }
 
-    return addBookmark(activeAccount.username, username, permlink).then(resp => {
-      const {bookmarks} = resp;
-      const b = bookmarks.filter(x => x.author === username && x.permlink === permlink);
-      this.setState({bookmarkId: b.length ? b[0]._id : null});
-      message.success(intl.formatMessage({id: 'entry.bookmarked'}));
-      return resp;
-    });
+    return addBookmark(activeAccount.username, username, permlink).then(
+      resp => {
+        const { bookmarks } = resp;
+        const b = bookmarks.filter(
+          x => x.author === username && x.permlink === permlink
+        );
+        this.setState({ bookmarkId: b.length ? b[0]._id : null });
+        message.success(intl.formatMessage({ id: 'entry.bookmarked' }));
+        return resp;
+      }
+    );
   };
 
   render() {
-    const {entry, repliesLoading, editorVisible, bookmarkId} = this.state;
+    const { entry, repliesLoading, editorVisible, bookmarkId } = this.state;
 
     let content = null;
     if (entry) {
-      const {replies, replySort, clickedAuthor} = this.state;
+      const { replies, replySort, clickedAuthor } = this.state;
 
       const reputation = authorReputation(entry.author_reputation);
       const created = parseDate(entry.created);
-      const renderedBody = {__html: markDown2Html(entry.body)};
+      const renderedBody = { __html: markDown2Html(entry.body) };
 
       let jsonMeta;
       try {
@@ -661,7 +722,7 @@ class Entry extends PureComponent {
                 >
                   <div className="author-part">
                     <div className="author-avatar">
-                      <UserAvatar user={entry.author} size="medium"/>
+                      <UserAvatar user={entry.author} size="medium" />
                     </div>
                     <div className="author">
                       <span className="author-name">{entry.author}</span>
@@ -670,25 +731,25 @@ class Entry extends PureComponent {
                   </div>
                 </QuickProfile>
                 <EntryTag {...this.props} tag={entry.category}>
-                  <a
-                    className="category"
-                    role="none"
-                  >{entry.category}</a>
+                  <a className="category" role="none">
+                    {entry.category}
+                  </a>
                 </EntryTag>
-                <span className="separator"/>
+                <span className="separator" />
                 <span className="date">
-                  <FormattedRelative value={created} initialNow={Date.now()}/>
+                  <FormattedRelative value={created} initialNow={Date.now()} />
                 </span>
               </div>
             </div>
-            <div className="entry-body markdown-view user-selectable" dangerouslySetInnerHTML={renderedBody}/>
+            <div
+              className="entry-body markdown-view user-selectable"
+              dangerouslySetInnerHTML={renderedBody}
+            />
             <div className={`entry-footer ${repliesLoading ? 'loading' : ''}`}>
               <div className="entry-tags">
                 {tags.map(t => (
                   <EntryTag {...this.props} tag={t} key={t}>
-                    <div className="entry-tag">
-                      {t}
-                    </div>
+                    <div className="entry-tag">{t}</div>
                   </EntryTag>
                 ))}
               </div>
@@ -696,9 +757,12 @@ class Entry extends PureComponent {
                 <div className="left-side">
                   <div className="date">
                     <i className="mi">access_time</i>
-                    <FormattedRelative value={created} initialNow={Date.now()}/>
+                    <FormattedRelative
+                      value={created}
+                      initialNow={Date.now()}
+                    />
                   </div>
-                  <span className="separator"/>
+                  <span className="separator" />
                   <QuickProfile
                     {...this.props}
                     username={entry.author}
@@ -709,27 +773,43 @@ class Entry extends PureComponent {
                       <span className="author-reputation">{reputation}</span>
                     </div>
                   </QuickProfile>
-                  <span className="separator"/>
-                  <div className="app">
-                    <FormattedHTMLMessage id="entry.via-app" values={{app}}/>
-                  </div>
+                  {app && (
+                    <Fragment>
+                      <span className="separator" />
+                      <div className="app">
+                        <FormattedHTMLMessage
+                          id="entry.via-app"
+                          values={{ app }}
+                        />
+                      </div>
+                    </Fragment>
+                  )}
                 </div>
                 <div className="right-side">
-                  <span className="reply-btn" role="none" onClick={this.toggleReplyForm}><FormattedMessage
-                    id="entry.reply"/></span>
+                  <span
+                    className="reply-btn"
+                    role="none"
+                    onClick={this.toggleReplyForm}
+                  >
+                    <FormattedMessage id="entry.reply" />
+                  </span>
                 </div>
               </div>
               <div className="entry-controls">
                 <div className="voting">
-                  <EntryVoteBtn {...this.props} entry={entry} afterVote={this.afterVote}/>
+                  <EntryVoteBtn
+                    {...this.props}
+                    entry={entry}
+                    afterVote={this.afterVote}
+                  />
                 </div>
                 <EntryPayout {...this.props} entry={entry}>
                   <a
                     className={`total-payout ${
                       isPayoutDeclined ? 'payout-declined' : ''
-                      }`}
+                    }`}
                   >
-                    <FormattedCurrency {...this.props} value={totalPayout}/>
+                    <FormattedCurrency {...this.props} value={totalPayout} />
                   </a>
                 </EntryPayout>
                 <EntryVotes {...this.props} entry={entry}>
@@ -740,60 +820,78 @@ class Entry extends PureComponent {
                 </EntryVotes>
               </div>
             </div>
-            {repliesLoading &&
-            <LinearProgress/>
-            }
+            {repliesLoading && <LinearProgress />}
 
-            {editorVisible &&
-            <ReplyEditor
-              {...this.props}
-              content={entry}
-              onCancel={this.toggleReplyForm}
-              onSuccess={(newReply) => {
-                this.toggleReplyForm();
-                this.onNewReply(newReply);
-              }}
-              mode="reply"
-            />
-            }
-            <div className="clearfix"/>
+            {editorVisible && (
+              <ReplyEditor
+                {...this.props}
+                content={entry}
+                onCancel={this.toggleReplyForm}
+                onSuccess={newReply => {
+                  this.toggleReplyForm();
+                  this.onNewReply(newReply);
+                }}
+                mode="reply"
+              />
+            )}
+            <div className="clearfix" />
             <div className="entry-replies">
               <div className="entry-replies-header">
                 <div className="reply-count">
-                  <i className="mi">comment</i>{replies.length} Replies
+                  <i className="mi">comment</i>
+                  <FormattedMessage
+                    id="entry.n-replies"
+                    values={{ n: replies.length }}
+                  />
                 </div>
-                {(replies.length > 0) &&
-                <div className="sort-order">
-                  <span className="label">Sort Order</span>
-                  <Select defaultValue="trending" size="small" style={{width: '120px'}} value={replySort}
-                          onChange={this.replySortOrderChanged}>
-                    <Select.Option value="trending">Trending</Select.Option>
-                    <Select.Option value="author_reputation">Reputation</Select.Option>
-                    <Select.Option value="votes">Votes</Select.Option>
-                    <Select.Option value="created">Age</Select.Option>
-                  </Select>
-                </div>
-                }
+                {replies.length > 0 && (
+                  <div className="sort-order">
+                    <span className="label">
+                      <FormattedMessage id="entry.reply-sort-order" />
+                    </span>
+                    <Select
+                      defaultValue="trending"
+                      size="small"
+                      style={{ width: '120px' }}
+                      value={replySort}
+                      onChange={this.replySortOrderChanged}
+                    >
+                      <Select.Option value="trending">
+                        <FormattedMessage id="entry.reply-sort-order-trending" />
+                      </Select.Option>
+                      <Select.Option value="author_reputation">
+                        <FormattedMessage id="entry.reply-sort-order-reputation" />
+                      </Select.Option>
+                      <Select.Option value="votes">
+                        <FormattedMessage id="entry.reply-sort-order-votes" />
+                      </Select.Option>
+                      <Select.Option value="created">
+                        <FormattedMessage id="entry.reply-sort-order-created" />
+                      </Select.Option>
+                    </Select>
+                  </div>
+                )}
               </div>
 
               <div className="entry-replies-body">
-                <ReplyList {...this.props} replies={replies}/>
+                <ReplyList {...this.props} replies={replies} />
               </div>
             </div>
           </div>
 
-          {clickedAuthor &&
-          <div style={{display: 'none'}}>
-            <QuickProfile
-              {...this.props}
-              username={clickedAuthor.name}
-              reputation={clickedAuthor.reputation}>
-              <a id="clicked-author">{clickedAuthor.name}</a>
-            </QuickProfile>
-          </div>
-          }
+          {clickedAuthor && (
+            <div style={{ display: 'none' }}>
+              <QuickProfile
+                {...this.props}
+                username={clickedAuthor.name}
+                reputation={clickedAuthor.reputation}
+              >
+                <a id="clicked-author">{clickedAuthor.name}</a>
+              </QuickProfile>
+            </div>
+          )}
         </Fragment>
-      )
+      );
     }
 
     return (
@@ -810,9 +908,9 @@ class Entry extends PureComponent {
           {content}
         </div>
         <AppFooter {...this.props} />
-        <ScrollReplace {...this.props} selector="#app-content"/>
+        <ScrollReplace {...this.props} selector="#app-content" />
       </div>
-    )
+    );
   }
 }
 

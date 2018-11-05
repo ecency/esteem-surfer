@@ -8,7 +8,8 @@
     "cancel": "Cancel",
     "ok": "OK",
     "edit": "Edit",
-    "server-error": "Process could not completed due to server error"
+    "server-error": "Process could not completed due to server error",
+    "save": "Save"
   },
   "footer": {
     "faq": "FAQ",
@@ -229,7 +230,14 @@
   },
   "entry": {
     "reply": "Reply",
+    "reply-preview": "Preview",
     "via-app": "via <span class=\"app-name\">{app}</span>",
+    "n-replies": "{n} Replies",
+    "reply-sort-order": "Sort Order",
+    "reply-sort-order-trending": "Trending",
+    "reply-sort-order-reputation": "Reputation",
+    "reply-sort-order-votes": "Votes",
+    "reply-sort-order-created": "Age",
     "reply-body-placeholder": "Write your reply here",
     "bookmarked": "Added to bookmarks",
     "bookmarkRemoved": "Removed from bookmarks",
