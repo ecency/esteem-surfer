@@ -42,17 +42,17 @@ export default class MenuBuilder {
 
   buildDarwinTemplate() {
     const subMenuAbout = {
-      label: 'Electron',
+      label: 'eSteem Surfer',
       submenu: [
         {
-          label: 'About ElectronReact',
-          selector: 'orderFrontStandardAboutPanel:'
+          label: 'About eSteem Surfer',
+          click() {
+            shell.openExternal('https://esteem.app');
+          }
         },
         { type: 'separator' },
-        { label: 'Services', submenu: [] },
-        { type: 'separator' },
         {
-          label: 'Hide ElectronReact',
+          label: 'Hide eSteem Surfer',
           accelerator: 'Command+H',
           selector: 'hide:'
         },
@@ -143,29 +143,9 @@ export default class MenuBuilder {
       label: 'Help',
       submenu: [
         {
-          label: 'Learn More',
+          label: 'Source Code',
           click() {
-            shell.openExternal('http://electron.atom.io');
-          }
-        },
-        {
-          label: 'Documentation',
-          click() {
-            shell.openExternal(
-              'https://github.com/atom/electron/tree/master/docs#readme'
-            );
-          }
-        },
-        {
-          label: 'Community Discussions',
-          click() {
-            shell.openExternal('https://discuss.atom.io/c/electron');
-          }
-        },
-        {
-          label: 'Search Issues',
-          click() {
-            shell.openExternal('https://github.com/atom/electron/issues');
+            shell.openExternal('https://github.com/esteemapp/esteem-surfer');
           }
         }
       ]
@@ -179,22 +159,6 @@ export default class MenuBuilder {
 
   buildDefaultTemplate() {
     const templateDefault = [
-      {
-        label: '&File',
-        submenu: [
-          {
-            label: '&Open',
-            accelerator: 'Ctrl+O'
-          },
-          {
-            label: '&Close',
-            accelerator: 'Ctrl+W',
-            click: () => {
-              this.mainWindow.close();
-            }
-          }
-        ]
-      },
       {
         label: '&View',
         submenu:
@@ -240,29 +204,9 @@ export default class MenuBuilder {
         label: 'Help',
         submenu: [
           {
-            label: 'Learn More',
+            label: 'Source Code',
             click() {
-              shell.openExternal('http://electron.atom.io');
-            }
-          },
-          {
-            label: 'Documentation',
-            click() {
-              shell.openExternal(
-                'https://github.com/atom/electron/tree/master/docs#readme'
-              );
-            }
-          },
-          {
-            label: 'Community Discussions',
-            click() {
-              shell.openExternal('https://discuss.atom.io/c/electron');
-            }
-          },
-          {
-            label: 'Search Issues',
-            click() {
-              shell.openExternal('https://github.com/atom/electron/issues');
+              shell.openExternal('https://github.com/esteemapp/esteem-surfer');
             }
           }
         ]
