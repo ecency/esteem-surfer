@@ -524,7 +524,8 @@ class Editor extends Component {
       tabSize: 2,
       dragDrop: true,
       placeholder: bodyPlaceHolder,
-      highlightSelectionMatches: {wordsOnly: true}
+      highlightSelectionMatches: {wordsOnly: true},
+      cursorScrollMargin: 400
     };
 
     return (

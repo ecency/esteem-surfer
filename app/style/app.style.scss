@@ -346,6 +346,10 @@ a[target='_external'],
     }
   }
 
+  iframe {
+    max-width: 100% !important;
+  }
+
   &.mini-markdown {
     font-size: 14px;
     word-wrap: break-word;
@@ -440,9 +444,5 @@ a[target='_external'],
       max-width: 100%;
       width: 400px;
     }
-  }
-
-  * {
-    max-width: 100% !important;
   }
 }

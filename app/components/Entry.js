@@ -170,7 +170,7 @@ class ReplyEditor extends Component {
         />
         <div className="reply-editor-controls">
           <Button size="small" className="btn-cancel" onClick={this.cancel} disabled={processing}>Cancel</Button>
-          <LoginRequired requiredKeys={['posting']}>
+          <LoginRequired {...this.props} requiredKeys={['posting']}>
             <Button size="small" className="btn-reply" type="primary" onClick={this.submit}
                     disabled={!replyText} loading={processing}>{btnLabel}</Button>
           </LoginRequired>
