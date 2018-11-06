@@ -245,10 +245,14 @@
     "favoriteRemoved": "Removed from favorites"
   },
   "navbar": {
+    "settings": "Settings",
+    "change-theme": "Change Theme",
+    "login": "Login to you account",
     "bookmark": "Add to bookmarks",
     "bookmarkRemove": "Remove from bookmarks",
     "favorite": "Add to favorites",
-    "favoriteRemove": "Removed from favorites"
+    "favoriteRemove": "Removed from favorites",
+    "wallet": "My Wallet"
   },
   "updater": {
     "new-version-available": "New version available",
