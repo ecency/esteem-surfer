@@ -1,0 +1,261 @@
+{
+  "g": {
+    "compose-entry": "Создать пост",
+    "are-you-sure": "Вы уверены?",
+    "yes": "Да",
+    "no": "Нет",
+    "delete": "Удалить",
+    "cancel": "Отмена",
+    "ok": "OK",
+    "edit": "Редактировать",
+    "server-error": "Невозможно завершить процесс из-за ошибки сервера",
+    "save": "Сохранить"
+  },
+  "footer": {
+    "faq": "ЧАВО",
+    "about": "О программе"
+  },
+  "entry-index": {
+    "tags": "Популярные теги",
+    "filter-trending": "Trending",
+    "filter-hot": "Hot",
+    "filter-created": "New",
+    "filter-active": "Active",
+    "filter-promoted": "Promoted",
+    "filter-votes": "Votes",
+    "filter-children": "Comments",
+    "filter-payout": "Payout",
+    "filter-feed": "Лента"
+  },
+  "entry-payout": {
+    "potential-payout": "Potential Payout",
+    "promoted": "Promoted",
+    "author-payout": "Author Payout",
+    "curation-payout": "Curation Payout",
+    "payout-date": "Payout"
+  },
+  "entry-votes": {
+    "n-more": "{n} more",
+    "author": "Author",
+    "reward": "Reward",
+    "percent": "Percent",
+    "time": "Time",
+    "modal-title": "Voters ({n})"
+  },
+  "entry-list-item": {
+    "reblogged": "resteemed"
+  },
+  "settings": {
+    "title": "Настройки",
+    "currency": "Валюта",
+    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
+    "currency-changed": "Currency Changed",
+    "locale": "Язык",
+    "locale-changed": "Language changed",
+    "server": "Сервер",
+    "server-invalid-address": "Invalid server address",
+    "server-connecting": "Connecting to '{server}'...",
+    "server-connect-error": "Could not connected to '{server}'",
+    "server-timeout-error": "'{server}' looks like not alive",
+    "server-changed": "Server changed to {server}",
+    "server-custom-address": "Custom server address",
+    "server-list-fetch-error": "Could not fetch server list",
+    "push-notifications": "Уведомления",
+    "push-notify-enabled": "Push notifications enabled",
+    "push-notify-disabled": "Push notifications disabled"
+  },
+  "login": {
+    "title": "Welcome back!",
+    "accounts-title": "Login As",
+    "traditional-login-desc": "Sign in with your username and password to continue",
+    "username-placeholder": "@username",
+    "password-placeholder": "password or wif",
+    "login": "Login",
+    "error-fields-required": "Please enter username and password/wif",
+    "error-public-key": "You entered a public key. Password/wif required",
+    "error-user-fetch": "User data could not fetched",
+    "error-user-not-found": "User not exists",
+    "error-authenticate": "Wrong username or password/wif",
+    "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>",
+    "login-with-sc": "Login with",
+    "divider-text": "OR"
+  },
+  "create-pin-code": {
+    "title": "Create PIN Code",
+    "desc1": "Set pin code to encrypt your data and enable extra layer of security!",
+    "input-placeholder": "Enter pin code",
+    "desc2": "You will be promoted to enter pin code for crucial transactions as well as on every launch.",
+    "created": "Pin code created"
+  },
+  "confirm-pin-code": {
+    "title": "Enter Pin Code",
+    "input-placeholder": "Enter pin code to continue",
+    "last-chance": "This is your last chance",
+    "invalidate": "Oh, I forgot it...",
+    "invalidate-confirm": "Are you really want to invalidate pin code?",
+    "invalidated": "Pin code invalidated"
+  },
+  "user-menu": {
+    "profile": "Профиль",
+    "bookmarks": "Закладки",
+    "favorites": "Избранное",
+    "drafts": "Черновики",
+    "schedules": "Отложенные",
+    "gallery": "Галерея",
+    "login-as": "Войти как",
+    "logout": "Выйти"
+  },
+  "login-required": {
+    "default": "This action requires login",
+    "key-required": "This action requires {key} key or master password",
+    "keys-required": "This action requires {keys} keys or master password"
+  },
+  "quick-profile": {
+    "fetch-error-profile": "Could not fetch profile data",
+    "fetch-error-content": "Could not fetch posts",
+    "n-followers": "{n} followers",
+    "n-posts": "{n} posts",
+    "n-following": "{n} following"
+  },
+  "follow-controls": {
+    "follow": "Follow",
+    "unFollow": "Unfollow",
+    "mute": "Mute",
+    "unMute": "Unmute"
+  },
+  "account": {
+    "voting-power": "Voting Power",
+    "post-count": "Post Count",
+    "number-of-votes": "Number of votes in last 24 hours",
+    "followers": "Followers",
+    "following": "Following",
+    "section-blog": "Блог",
+    "section-comments": "Комментарии",
+    "section-replies": "Ответы",
+    "section-wallet": "Кошелёк",
+    "top-posts": "Лучшее",
+    "unclaimed-rewards": "Забрать награды",
+    "estimated-value": "The estimated value is based on a 7 day average value of Steem.",
+    "steem": "Steem",
+    "steem-description": "Steem are tradeable tokens that may be transferred at anytime. Steem can be converted to Steem Power in a process called powering up.",
+    "steem-power": "Steem Power",
+    "steem-power-description": "Steem Power are influence tokens that earn more power for holding long term and voting on posts. The more Steem Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated steem power",
+    "steem-power-received": "Received steem power",
+    "steem-power-total": "Total steem power",
+    "steem-dollars": "Steem Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of Steem.",
+    "savings": "Сбережения",
+    "savings-description": "Balance subject to 3 day withdraw waiting period.",
+    "next-power-down": "The next power down is {time}",
+    "exchange": "Курс",
+    "transactions": "Транзакции",
+    "transaction-curation_reward": "Curation Reward",
+    "transaction-author_reward": "Author Reward",
+    "transaction-comment_benefactor_reward": "Comment Benefactor Reward",
+    "transaction-claim_reward_balance": "Claim rewards",
+    "transaction-transfer": "Transfer",
+    "transaction-transfer_to_vesting": "Transfer to vesting",
+    "transaction-withdraw_vesting": "Withdraw vesting",
+    "transaction-fill_order": "Fill order"
+  },
+  "composer": {
+    "title-placeholder": "Title",
+    "tags-placeholder": "Tags. First tag is your main category",
+    "max-n-tags": "Max {n} tags",
+    "body-placeholder": "Post Content",
+    "tool-bold": "Bold",
+    "tool-italic": "Italic",
+    "tool-header": "Heading",
+    "tool-code": "Code",
+    "tool-quote": "Quote",
+    "tool-ul": "Unordered List",
+    "tool-ol": "Ordered List",
+    "tool-link": "Link",
+    "tool-image": "Image",
+    "tool-table": "Table",
+    "tool-upload": "Upload",
+    "tool-gallery": "Gallery",
+    "preview": "Preview",
+    "reward": "Reward",
+    "reward-default": "Default 50% / 50%",
+    "reward-sp": "Power Up 100%",
+    "reward-dp": "Decline Payout",
+    "upvote": "Upvote",
+    "clear": "Clear All",
+    "form-error-message": "Form is not valid. Please fill all fields",
+    "schedule": "Schedule",
+    "select-schedule-date": "Select Date",
+    "schedule-saved": "Post scheduled",
+    "grant-posting-perm": "Grant Posting Permission",
+    "posting-perm-granted": "Posting permission granted",
+    "remove-posting-perm": "Remove Posting Permission",
+    "posting-perm-removed": "Posting permission removed",
+    "save-draft": "Save Draft",
+    "draft-saved": "Draft saved",
+    "publish": "Publish",
+    "published": "Post Published"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "copied": "Copied to clipboard",
+    "load-error": "Could not load gallery",
+    "empty-list": "Nothing here"
+  },
+  "drafts": {
+    "title": "Drafts",
+    "load-error": "Could not load drafts",
+    "empty-list": "Nothing here",
+    "deleted": "Draft deleted"
+  },
+  "schedules": {
+    "title": "Scheduled Posts",
+    "empty-list": "Nothing here",
+    "deleted": "Scheduled post deleted",
+    "move": "Move to drafts",
+    "moved": "Moved to drafts"
+  },
+  "bookmarks": {
+    "title": "Bookmarks",
+    "load-error": "Could not load bookmarks",
+    "empty-list": "Nothing here",
+    "deleted": "Bookmark removed",
+    "search": "Search in bookmarks"
+  },
+  "favorites": {
+    "title": "Favorites",
+    "load-error": "Could not load favorites",
+    "empty-list": "Nothing here",
+    "search": "Search in favorites"
+  },
+  "entry": {
+    "reply": "Reply",
+    "reply-preview": "Preview",
+    "via-app": "via <span class=\"app-name\">{app}</span>",
+    "n-replies": "{n} Replies",
+    "reply-sort-order": "Sort Order",
+    "reply-sort-order-trending": "Trending",
+    "reply-sort-order-reputation": "Reputation",
+    "reply-sort-order-votes": "Votes",
+    "reply-sort-order-created": "Age",
+    "reply-body-placeholder": "Write your reply here",
+    "bookmarked": "Added to bookmarks",
+    "bookmarkRemoved": "Removed from bookmarks",
+    "favorited": "Added to favorites",
+    "favoriteRemoved": "Removed from favorites"
+  },
+  "navbar": {
+    "bookmark": "Add to bookmarks",
+    "bookmarkRemove": "Remove from bookmarks",
+    "favorite": "Add to favorites",
+    "favoriteRemove": "Removed from favorites"
+  },
+  "updater": {
+    "new-version-available": "New version available",
+    "update": "Update",
+    "dismiss": "Dismiss",
+    "downloading": "Downloading new version...",
+    "download-completed": "Download completed",
+    "restart": "Restart"
+  }
+}
