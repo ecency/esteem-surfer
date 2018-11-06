@@ -310,8 +310,8 @@ export class AccountTopPosts extends Component {
         <h2 className="top-posts-list-header"><FormattedMessage id="account.top-posts"/></h2>
         <div className="top-posts-list-body">
           {posts.map(p => (
-            <EntryLink {...this.props} author={p.author} permlink={p.permlink}>
-              <div className="top-posts-list-item" key={p.permlink} role="none">
+            <EntryLink {...this.props} author={p.author} permlink={p.permlink} key={p.permlink}>
+              <div className="top-posts-list-item" role="none">
                 <div className="post-image">
                   <img alt="" src={catchEntryImage(p, 130, 80) || 'img/noimage.png'}/>
                 </div>

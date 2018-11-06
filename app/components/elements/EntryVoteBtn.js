@@ -53,7 +53,7 @@ class EntryVoteBtn extends Component {
   }
 
   componentWillUnmount() {
-    this.mounted = true;
+    this.mounted = false;
   }
 
   clicked = async e => {
