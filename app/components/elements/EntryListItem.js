@@ -16,7 +16,7 @@ import QuickProfile from '../helpers/QuickProfile';
 import FormattedCurrency from './FormattedCurrency';
 import AccountLink from '../helpers/AccountLink';
 import EntryLink from '../helpers/EntryLink';
-import EntryTag from './EntryTag';
+import TagLink from '../helpers/TagLink';
 
 import catchEntryImage from '../../utils/catch-entry-image';
 import authorReputation from '../../utils/author-reputation';
@@ -95,11 +95,11 @@ class EntryListItem extends Component {
               </div>
             </QuickProfile>
           )}
-          <EntryTag {...this.props} tag={entry.category}>
+          <TagLink {...this.props} tag={entry.category}>
             <a className="category" role="none">
               {entry.category}
             </a>
-          </EntryTag>
+          </TagLink>
           {!isVisited && <span className="read-mark" />}
           <span className="date">
             <FormattedRelative value={created} initialNow={Date.now()} />

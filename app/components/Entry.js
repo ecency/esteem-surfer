@@ -32,7 +32,7 @@ import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
 import UserAvatar from './elements/UserAvatar';
 import QuickProfile from './helpers/QuickProfile';
-import EntryTag from './elements/EntryTag';
+import TagLink, { makePath as makePathTag } from './helpers/TagLink';
 import ScrollReplace from './helpers/ScrollReplace';
 import EntryVoteBtn from './elements/EntryVoteBtn';
 import EntryPayout from './elements/EntryPayout';
@@ -51,6 +51,8 @@ import authorReputation from '../utils/author-reputation';
 import formatChainError from '../utils/format-chain-error';
 import { setEntryRead } from '../helpers/storage';
 
+import { makePath as makePathEntry } from './helpers/EntryLink';
+
 import {
   createReplyPermlink,
   makeOptions,
@@ -58,8 +60,6 @@ import {
 } from '../utils/posting-helpers';
 
 import { version } from '../package';
-
-import defaults from '../constants/defaults';
 
 class ReplyEditor extends Component {
   constructor(props) {
@@ -627,18 +627,19 @@ class Entry extends PureComponent {
   mdEntryClicked = e => {
     const { history } = this.props;
     const { category, author, permlink } = e.detail;
-    history.push(`/${category}/@${author}/${permlink}`);
+
+    const newLoc = makePathEntry(category, author, permlink);
+
+    history.push(newLoc);
   };
 
   mdTagClicked = e => {
     const { history, global } = this.props;
     const { tag } = e.detail;
+    const { selectedFilter } = global;
 
-    let { selectedFilter } = global;
-    if (selectedFilter === 'feed') {
-      selectedFilter = defaults.filter;
-    }
-    const newLoc = `/${selectedFilter}/${tag}`;
+    const newLoc = makePathTag(selectedFilter, tag);
+
     history.push(newLoc);
   };
 
@@ -730,11 +731,11 @@ class Entry extends PureComponent {
                     </div>
                   </div>
                 </QuickProfile>
-                <EntryTag {...this.props} tag={entry.category}>
+                <TagLink {...this.props} tag={entry.category}>
                   <a className="category" role="none">
                     {entry.category}
                   </a>
-                </EntryTag>
+                </TagLink>
                 <span className="separator" />
                 <span className="date">
                   <FormattedRelative value={created} initialNow={Date.now()} />
@@ -748,9 +749,9 @@ class Entry extends PureComponent {
             <div className={`entry-footer ${repliesLoading ? 'loading' : ''}`}>
               <div className="entry-tags">
                 {tags.map(t => (
-                  <EntryTag {...this.props} tag={t} key={t}>
+                  <TagLink {...this.props} tag={t} key={t}>
                     <div className="entry-tag">{t}</div>
-                  </EntryTag>
+                  </TagLink>
                 ))}
               </div>
               <div className="entry-info">

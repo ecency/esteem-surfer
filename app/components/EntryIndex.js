@@ -17,7 +17,7 @@ import ScrollReplace from './helpers/ScrollReplace';
 import EntryListItem from './elements/EntryListItem';
 import EntryListLoadingItem from './elements/EntryListLoadingItem';
 import ComposeBtn from './elements/ComposeBtn';
-import EntryTag from './elements/EntryTag';
+import TagLink from './helpers/TagLink';
 
 import DropDown from './common/DropDown';
 import ListSwitch from './elements/ListSwitch';
@@ -185,9 +185,9 @@ class EntryIndex extends PureComponent {
                   }`;
 
                   return (
-                    <EntryTag {...this.props} tag={t} key={t}>
+                    <TagLink {...this.props} tag={t} key={t}>
                       <a className={cls}>{t}</a>
-                    </EntryTag>
+                    </TagLink>
                   );
                 })}
               </div>

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getAccount } from '../../backend/steem-client';
 
+export const makePath = username => `/@${username}`;
+
 class AccountLink extends Component {
   goProfile = async () => {
     const { username, history, actions } = this.props;
@@ -20,7 +22,7 @@ class AccountLink extends Component {
       setVisitingAccount(accountData);
     }
 
-    history.push(`/@${username}`);
+    history.push(makePath(username));
   };
 
   render() {

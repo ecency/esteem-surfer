@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 
 import { getContent } from '../../backend/steem-client';
 
+export const makePath = (category, author, permlink) =>
+  `/${category}/@${author}/${permlink}`;
+
 class EntryLink extends Component {
   goEntry = async () => {
     let { entry } = this.props;
@@ -16,7 +19,7 @@ class EntryLink extends Component {
     if (entry) {
       const { category, author, permlink } = entry;
       actions.setVisitingEntry(entry);
-      history.push(`/${category}/@${author}/${permlink}`);
+      history.push(makePath(category, author, permlink));
     }
   };
 
