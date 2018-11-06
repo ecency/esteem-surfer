@@ -98,6 +98,11 @@
           return false;
         }
       });
+
+      window.protocolHandler = function (url) {
+        const ev = new CustomEvent('deep-link', {detail: {url}});
+        window.dispatchEvent(ev);
+      }
     </script>
 
     <script>

@@ -9,8 +9,8 @@
  * `./app/main.prod.js` using webpack. This gives us some performance wins.
  *
  */
-import { app, BrowserWindow, ipcMain } from 'electron';
-import { autoUpdater } from 'electron-updater';
+import {app, BrowserWindow, ipcMain} from 'electron';
+import {autoUpdater} from 'electron-updater';
 
 import MenuBuilder from './menu';
 
@@ -45,11 +45,46 @@ const installExtensions = async () => {
  * Add event listeners...
  */
 
-app.on('window-all-closed', () => {
-  app.quit();
+
+const sendProtocolUrl2Window = (u) => {
+  if (typeof u !== 'string') {
+    return false;
+  }
+
+  const m = u.match(/e?steem:\/\/[-a-zA-Z0-9@:%._+~#=/]{2,500}/gi);
+  if (!m) {
+    return false;
+  }
+
+  if (m[0]) {
+    mainWindow.webContents.executeJavaScript(`protocolHandler('${ m[0]}')`);
+  }
+};
+
+let deepUrl;
+
+const singleInstance = app.makeSingleInstance((argv) => {
+  if (process.platform === 'win32' || process.platform === 'linux') {
+    deepUrl = argv.slice(1)
+  }
+
+  if (mainWindow) {
+    // if window is open focus and send deepurl
+    if (mainWindow.isMinimized()) {
+      mainWindow.restore();
+    }
+    mainWindow.focus();
+
+    sendProtocolUrl2Window(deepUrl);
+  }
 });
 
-app.on('ready', async () => {
+if (singleInstance) {
+  app.quit()
+}
+
+
+const setupWindow = async () => {
   if (
     process.env.NODE_ENV === 'development' ||
     process.env.DEBUG_PROD === 'true'
@@ -61,7 +96,8 @@ app.on('ready', async () => {
     show: false,
     width: 1024,
     height: 728,
-    minWidth: 992
+    minWidth: 992,
+    minHeight: 600
   });
 
   mainWindow.loadURL(`file://${__dirname}/app.html`);
@@ -94,7 +130,53 @@ app.on('ready', async () => {
       autoUpdater.checkForUpdates();
     }, 1000 * 60 * 240);
   }
+
+
+  // Protocol handler for win32 and linux
+  if (process.platform === 'win32' || process.platform === 'linux') {
+    deepUrl = process.argv.slice(1)
+  }
+
+  if (deepUrl) {
+    setTimeout(() => {
+      sendProtocolUrl2Window(deepUrl);
+    }, 4000)
+  }
+
+};
+
+app.on('ready', setupWindow);
+
+app.on('window-all-closed', () => {
+  app.quit();
 });
+
+app.setAsDefaultProtocolClient('steem');
+app.setAsDefaultProtocolClient('esteem');
+
+
+app.on('activate', () => {
+  if (mainWindow === null) {
+    setupWindow()
+  }
+});
+
+app.on('open-url', (event, url) => {
+  event.preventDefault();
+
+  if (!mainWindow) {
+    deepUrl = url;
+    return;
+  }
+
+  if (mainWindow.isMinimized()) {
+    mainWindow.restore();
+  }
+  mainWindow.focus();
+
+  sendProtocolUrl2Window(url);
+});
+
 
 // Event handlers for auto updater
 autoUpdater.on('update-available', info => {

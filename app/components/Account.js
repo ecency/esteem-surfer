@@ -46,6 +46,7 @@ import parseDate from '../utils/parse-date';
 import catchEntryImage from '../utils/catch-entry-image';
 import entryBodySummary from '../utils/entry-body-summary';
 import formatChainError from '../utils/format-chain-error';
+import DeepLinkHandler from "./helpers/DeepLinkHandler";
 
 class Profile extends Component {
 
@@ -1229,7 +1230,7 @@ class Account extends Component {
           </div>
         </div>
         <AppFooter {...this.props} />
-
+        <DeepLinkHandler {...this.props} />
       </div>
     );
   }

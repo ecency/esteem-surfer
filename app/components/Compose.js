@@ -25,6 +25,8 @@ import AppFooter from './layout/AppFooter';
 import LoginRequired from './helpers/LoginRequired';
 import Editor from './elements/Editor';
 
+import DeepLinkHandler from './helpers/DeepLinkHandler';
+
 import { getItem, setItem, getVotingPercentage } from '../helpers/storage';
 import markDown2Html from '../utils/markdown-2-html';
 import formatChainError from '../utils/format-chain-error';
@@ -48,6 +50,7 @@ import {
 } from '../utils/posting-helpers';
 
 import { version } from '../package.json';
+
 
 export class Preview extends Component {
   render() {
@@ -580,6 +583,7 @@ class Compose extends Component {
           </Modal>
         </div>
         <AppFooter {...this.props} />
+        <DeepLinkHandler {...this.props} />
       </div>
     );
   }

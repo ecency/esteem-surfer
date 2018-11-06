@@ -22,6 +22,7 @@ import TagLink from './helpers/TagLink';
 import DropDown from './common/DropDown';
 import ListSwitch from './elements/ListSwitch';
 import LinearProgress from './common/LinearProgress';
+import DeepLinkHandler from './helpers/DeepLinkHandler';
 
 import formatChainError from '../utils/format-chain-error';
 
@@ -219,6 +220,7 @@ class EntryIndex extends PureComponent {
         </div>
         <AppFooter {...this.props} />
         <ScrollReplace {...this.props} selector="#app-content" />
+        <DeepLinkHandler {...this.props} />
       </div>
     );
   }

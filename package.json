@@ -98,6 +98,16 @@
       ],
       "category": "Development"
     },
+    "protocols": [
+      {
+        "name": "steem",
+        "role": "Viewer",
+        "schemes": [
+          "steem",
+          "esteem"
+        ]
+      }
+    ],
     "directories": {
       "buildResources": "resources",
       "output": "release"
