@@ -228,7 +228,7 @@
     "crypto-js": "^3.1.9-1",
     "currency-symbol-map": "^4.0.4",
     "devtron": "^1.4.0",
-    "dsteem": "^0.9.0",
+    "dsteem": "^0.10.1",
     "electron-debug": "^2.0.0",
     "electron-updater": "^3.1.6",
     "eslint-plugin-flowtype": "^2.50.1",

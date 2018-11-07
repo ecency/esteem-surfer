@@ -1,5 +1,6 @@
 import getSymbolFromCurrency from 'currency-symbol-map';
 import { setItem } from '../helpers/storage';
+import { setAddress } from '../backend/steem-client';
 
 export const THEME_CHANGED = 'global/THEME_CHANGED';
 export const LIST_STYLE_CHANGED = 'global/LIST_STYLE_CHANGED';
@@ -59,6 +60,8 @@ export const changePushNotify = val => dispatch => {
 
 export const changeServer = server => dispatch => {
   setItem('server', server);
+
+  setAddress(server);
 
   dispatch(serverChanged(server));
 };
