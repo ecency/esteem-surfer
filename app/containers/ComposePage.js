@@ -21,7 +21,8 @@ import { setVisitingEntry } from '../actions/visiting-entry';
 const mapStateToProps = state => ({
   global: state.global,
   trendingTags: state.trendingTags,
-  activeAccount: state.activeAccount
+  activeAccount: state.activeAccount,
+  accounts: state.accounts
 });
 
 const mapDispatchToProps = dispatch => ({
