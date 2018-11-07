@@ -32,11 +32,15 @@ export const setVotingPercentage = (username, val) => {
   setItem(`voting_percentage_${username}`, val);
 };
 
-export const isEntryRead = (author, permlink) => (
-  getItem(`read_flag_${author}_${permlink}`, false)
-);
-
+export const isEntryRead = (author, permlink) =>
+  getItem(`read_flag_${author}_${permlink}`, false);
 
 export const setEntryRead = (author, permlink) => {
   setItem(`read_flag_${author}_${permlink}`, true);
+};
+
+export const isReleasePostRead = ver => getItem(`release-post-${ver}`, false);
+
+export const setReleasePostRead = ver => {
+  setItem(`release-post-${ver}`, 1);
 };

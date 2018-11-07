@@ -2,6 +2,7 @@
   "name": "esteem-surfer",
   "productName": "eSteem Surfer",
   "version": "2.0.0",
+  "releasePost": "esteem/@good-karma/esteem-surfer-reimagined-ui-ux-preview-b8fb9bb0872beest",
   "description": "eSteem desktop application reimagined for Windows, Mac, Linux users, start earning cryptocurrency!",
   "private": true,
   "author": "eSteem <info@esteem.app>",

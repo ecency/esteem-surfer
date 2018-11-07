@@ -5,7 +5,7 @@ import { Tooltip } from 'antd';
 
 import { FormattedMessage } from 'react-intl';
 
-import { version } from '../../package.json';
+import { releasePost, version } from '../../../package.json';
 
 import { votingPower, rcPower } from '../../utils/manabar';
 
@@ -35,6 +35,8 @@ class AppFooter extends Component {
         rc = rcPower(accountData).toFixed(1);
       }
     }
+
+    const [, verAuthor, verPermlink] = releasePost.split('/');
 
     return (
       <div className="app-footer">
@@ -86,7 +88,13 @@ class AppFooter extends Component {
           <a className="about" href="https://esteem.app" target="_external">
             <FormattedMessage id="footer.about" />
           </a>
-          <a className="version">{version}</a>
+          <EntryLink
+            {...this.props}
+            author={verAuthor.replace('@', '')}
+            permlink={verPermlink}
+          >
+            <a className="version">{version}</a>
+          </EntryLink>
         </div>
       </div>
     );
