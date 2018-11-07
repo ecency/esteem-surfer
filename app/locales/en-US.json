@@ -68,7 +68,7 @@
     "title": "Welcome back!",
     "accounts-title": "Login As",
     "traditional-login-desc": "Sign in with your username and password to continue",
-    "username-placeholder": "@username",
+    "username-placeholder": "username",
     "password-placeholder": "password or wif",
     "login": "Login",
     "error-fields-required": "Please enter username and password/wif",
