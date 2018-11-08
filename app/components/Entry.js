@@ -681,6 +681,8 @@ class Entry extends PureComponent {
 
     let content = null;
     if (entry) {
+      const { children } = entry;
+
       const { replies, replySort, clickedAuthor } = this.state;
 
       const reputation = authorReputation(entry.author_reputation);
@@ -832,7 +834,7 @@ class Entry extends PureComponent {
                   <i className="mi">comment</i>
                   <FormattedMessage
                     id="entry.n-replies"
-                    values={{ n: replies.length }}
+                    values={{ n: children }}
                   />
                 </div>
                 {replies.length > 0 && (
