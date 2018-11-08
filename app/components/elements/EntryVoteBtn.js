@@ -8,7 +8,7 @@ import {
   setVotingPercentage
 } from '../../helpers/storage';
 
-import { getActiveVotes, getContent, vote } from '../../backend/steem-client';
+import { getContent, vote } from '../../backend/steem-client';
 
 import LoginRequired from '../helpers/LoginRequired';
 
@@ -16,34 +16,38 @@ class EntryVoteBtn extends Component {
   constructor(props) {
     super(props);
 
+    const { entry } = this.props;
+
     this.state = {
       sliderVal: 100,
       estimated: 0,
       showPopover: true,
       voting: false,
-      activeVotes: []
+      activeVotes: entry.active_votes
     };
   }
 
   componentDidMount() {
     this.mounted = true;
-
-    const { entry } = this.props;
-    const { author, permlink } = entry;
-
-    getActiveVotes(author, permlink)
-      .then(activeVotes => {
-        if (this.mounted) {
-          this.setState({ activeVotes });
-        }
-        return activeVotes;
-      })
-      .catch(() => {});
   }
 
   componentWillUnmount() {
     this.mounted = false;
   }
+
+  isVoted = () => {
+    const { activeAccount } = this.props;
+
+    if (!activeAccount) {
+      return false;
+    }
+
+    const { activeVotes } = this.state;
+
+    return activeVotes.some(
+      v => v.voter === activeAccount.username && v.percent > 0
+    );
+  };
 
   clicked = async e => {
     // Prevent trigger vote when clicked on popover slider. Make sure clicked from right element
@@ -55,25 +59,21 @@ class EntryVoteBtn extends Component {
       return false;
     }
 
-    const { actions, activeAccount } = this.props;
-    const { activeVotes, voting } = this.state;
-
-    const voted = activeVotes.some(
-      v => v.voter === activeAccount.username && v.percent > 0
-    );
+    const { actions, activeAccount, entry } = this.props;
+    const { voting } = this.state;
 
     if (voting) {
       return false;
     }
 
-    const { global, entry, afterVote } = this.props;
+    const { global, afterVote } = this.props;
     const { pin } = global;
     const { username } = activeAccount;
     const { author, permlink, id } = entry;
 
     let weight = 0;
 
-    if (!voted) {
+    if (!this.isVoted()) {
       const perc = getVotingPercentage(username);
       weight = parseInt(perc * 100, 10);
     }
@@ -139,13 +139,7 @@ class EntryVoteBtn extends Component {
     const { sliderVal, estimated, showPopover, voting } = this.state;
     const requiredKeys = ['posting'];
 
-    let voted = false;
-    if (activeAccount) {
-      const { activeVotes } = this.state;
-      voted = activeVotes.some(
-        v => v.voter === activeAccount.username && v.percent > 0
-      );
-    }
+    const voted = this.isVoted();
 
     const icon = (
       <svg
@@ -233,7 +227,8 @@ EntryVoteBtn.propTypes = {
   entry: PropTypes.shape({
     id: PropTypes.number.isRequired,
     author: PropTypes.string.isRequired,
-    permlink: PropTypes.string.isRequired
+    permlink: PropTypes.string.isRequired,
+    active_votes: PropTypes.arrayOf(Object)
   }).isRequired,
   actions: PropTypes.shape({
     updateEntry: PropTypes.func.isRequired
