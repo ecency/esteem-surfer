@@ -20,7 +20,9 @@ export const votingPower = account => {
 
   if (currentMana > maxMana) currentMana = maxMana;
 
-  return (currentMana * 100) / maxMana;
+  const r = (currentMana * 100) / maxMana;
+
+  return r > 100 ? 100 : r;
 };
 
 export const rcPower = account => {
@@ -40,5 +42,7 @@ export const rcPower = account => {
 
   if (currentMana > maxMana) currentMana = maxMana;
 
-  return (currentMana * 100) / maxMana;
+  const r = (currentMana * 100) / maxMana;
+
+  return r > 100 ? 100 : r;
 };
