@@ -24,7 +24,7 @@
       };
 
       window.onload = () => {
-        const theme = localStorage.getItem('theme') || 'day';
+        const theme = localStorage.getItem('surfer2_theme') ? JSON.parse(localStorage.getItem('surfer2_theme')) : 'day';
         window.setTheme(theme);
       };
 
