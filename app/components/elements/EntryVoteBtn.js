@@ -20,36 +20,25 @@ class EntryVoteBtn extends Component {
       sliderVal: 100,
       estimated: 0,
       showPopover: true,
-      voted: false,
-      voting: false
+      voting: false,
+      activeVotes: []
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     this.mounted = true;
 
-    const { activeAccount } = this.props;
-
-    if (!activeAccount) {
-      return;
-    }
-
-    const { username } = activeAccount;
     const { entry } = this.props;
     const { author, permlink } = entry;
 
-    let votes;
-    try {
-      votes = await getActiveVotes(author, permlink);
-    } catch (e) {
-      return;
-    }
-
-    const voted = votes.some(v => v.voter === username && v.percent > 0);
-
-    if (this.mounted) {
-      this.setState({ voted });
-    }
+    getActiveVotes(author, permlink)
+      .then(activeVotes => {
+        if (this.mounted) {
+          this.setState({ activeVotes });
+        }
+        return activeVotes;
+      })
+      .catch(() => {});
   }
 
   componentWillUnmount() {
@@ -66,14 +55,18 @@ class EntryVoteBtn extends Component {
       return false;
     }
 
-    const { actions } = this.props;
-    const { voted, voting } = this.state;
+    const { actions, activeAccount } = this.props;
+    const { activeVotes, voting } = this.state;
+
+    const voted = activeVotes.some(
+      v => v.voter === activeAccount.username && v.percent > 0
+    );
 
     if (voting) {
       return false;
     }
 
-    const { global, activeAccount, entry, afterVote } = this.props;
+    const { global, entry, afterVote } = this.props;
     const { pin } = global;
     const { username } = activeAccount;
     const { author, permlink, id } = entry;
@@ -95,12 +88,11 @@ class EntryVoteBtn extends Component {
       const newEntry = await getContent(author, permlink);
       const { active_votes: votes } = newEntry;
 
-      const isVoted = votes.some(v => v.voter === username && v.percent > 0);
-
-      this.setState({ voting: false, voted: isVoted });
+      if (this.mounted) {
+        this.setState({ voting: false, activeVotes: votes });
+      }
 
       actions.updateEntry(id, newEntry);
-
       afterVote(votes);
     }
   };
@@ -144,8 +136,16 @@ class EntryVoteBtn extends Component {
 
   render() {
     const { activeAccount } = this.props;
-    const { sliderVal, estimated, showPopover, voted, voting } = this.state;
+    const { sliderVal, estimated, showPopover, voting } = this.state;
     const requiredKeys = ['posting'];
+
+    let voted = false;
+    if (activeAccount) {
+      const { activeVotes } = this.state;
+      voted = activeVotes.some(
+        v => v.voter === activeAccount.username && v.percent > 0
+      );
+    }
 
     const icon = (
       <svg
