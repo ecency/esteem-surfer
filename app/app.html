@@ -26,6 +26,8 @@
       window.onload = () => {
         const theme = localStorage.getItem('surfer2_theme') ? JSON.parse(localStorage.getItem('surfer2_theme')) : 'day';
         window.setTheme(theme);
+
+        document.querySelector('body').style.visibility = 'visible';
       };
 
     </script>
@@ -118,7 +120,7 @@
     </script>
 
 </head>
-<body class="day-theme">
+<body class="day-theme" style="visibility: hidden">
 <div id="root"></div>
 <script>
   {
