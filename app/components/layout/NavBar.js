@@ -58,10 +58,16 @@ class NavBar extends Component {
     });
   };
 
-  onLoginSuccess = () => {
+  onLoginSuccess = username => {
     this.setState({
       loginModalVisible: false
     });
+
+    const { location, history } = this.props;
+    if (location.pathname.endsWith('/feed')) {
+      const loc = `/@${username}/feed`;
+      history.push(loc);
+    }
   };
 
   toggleMenu = () => {

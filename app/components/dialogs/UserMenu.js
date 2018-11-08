@@ -50,10 +50,16 @@ class UserMenu extends Component {
     });
   };
 
-  onLoginSuccess = () => {
+  onLoginSuccess = username => {
     this.setState({
       loginModalVisible: false
     });
+
+    const { location, history } = this.props;
+    if (location.pathname.endsWith('/feed')) {
+      const loc = `/@${username}/feed`;
+      history.push(loc);
+    }
   };
 
   galleryClicked = () => {
@@ -273,6 +279,9 @@ UserMenu.propTypes = {
   }).isRequired,
   history: PropTypes.instanceOf(Object).isRequired,
   activeAccount: PropTypes.instanceOf(Object).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  }).isRequired,
   closeFn: PropTypes.func.isRequired
 };
 

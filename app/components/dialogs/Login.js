@@ -27,7 +27,7 @@ class Login extends Component {
   switchToAccount = username => {
     const { actions, onSuccess } = this.props;
     actions.logIn(username);
-    onSuccess();
+    onSuccess(username);
   };
 
   doScLogin = async () => {
@@ -41,7 +41,7 @@ class Login extends Component {
     const { actions, onSuccess } = this.props;
     actions.addAccountSc(resp.username, resp.access_token, resp.expires_in);
     actions.logIn(resp.username);
-    onSuccess();
+    onSuccess(resp.username);
   };
 
   doLogin = async () => {
@@ -137,7 +137,7 @@ class Login extends Component {
     const { actions, onSuccess } = this.props;
     actions.addAccount(username, resultKeys);
     actions.logIn(username);
-    onSuccess();
+    onSuccess(username);
   };
 
   render() {
