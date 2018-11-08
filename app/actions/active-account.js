@@ -27,8 +27,6 @@ export const logIn = username => dispatch => {
       });
     })
     .then(resp => {
-      console.log(resp);
-
       dispatch(updated(username, resp));
       return resp;
     })

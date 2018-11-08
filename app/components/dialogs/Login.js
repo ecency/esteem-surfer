@@ -34,7 +34,6 @@ class Login extends Component {
     let resp;
     try {
       resp = await scLogin();
-      console.log(resp);
     } catch (e) {
       return;
     }
