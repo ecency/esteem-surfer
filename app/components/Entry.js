@@ -255,17 +255,8 @@ class ReplyListItem extends PureComponent {
     };
   }
 
-  afterVote = () => {
-    const { reply } = this.state;
-    const { author, permlink } = reply;
-
-    return getContent(author, permlink).then(resp => {
-      const newReply = Object.assign({}, reply, {
-        active_votes: resp.active_votes
-      });
-      this.setState({ reply: newReply });
-      return resp;
-    });
+  afterVote = entry => {
+    this.setState({ reply: entry });
   };
 
   onReplySuccess = newObj => {
@@ -655,10 +646,8 @@ class Entry extends PureComponent {
     this.setState({ replies: newReplies });
   };
 
-  afterVote = votes => {
-    const { entry } = this.state;
-    const newEntry = Object.assign({}, entry, { active_votes: votes });
-    this.setState({ entry: newEntry });
+  afterVote = entry => {
+    this.setState({ entry });
   };
 
   bookmarkFn = () => {

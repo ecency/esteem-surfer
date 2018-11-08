@@ -93,7 +93,7 @@ class EntryVoteBtn extends Component {
       }
 
       actions.updateEntry(id, newEntry);
-      afterVote(votes);
+      afterVote(newEntry);
     }
   };
 
