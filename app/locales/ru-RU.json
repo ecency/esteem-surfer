@@ -152,7 +152,7 @@
     "transactions": "Транзакции",
     "transaction-curation_reward": "Кураторская награда",
     "transaction-author_reward": "Авторская награда",
-    "transaction-comment_benefactor_reward": "Награда бенефициара комментария",
+    "transaction-comment_benefactor_reward": "Награда бенефициару",
     "transaction-claim_reward_balance": "Получена награда",
     "transaction-transfer": "Перевод",
     "transaction-transfer_to_vesting": "Перевод в Силу",
