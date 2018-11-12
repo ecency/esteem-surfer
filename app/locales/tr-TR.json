@@ -10,8 +10,7 @@
     "filter-active": "Aktif",
     "filter-promoted": "Sponsorlu",
     "filter-votes": "Oylara Göre",
-    "filter-children": "Yorumlar",
-    "filter-payout": "Ödeme"
+    "filter-children": "Yorumlar"
   },
   "entry-payout": {
     "potential-payout": "Tahmini Ödeme",
