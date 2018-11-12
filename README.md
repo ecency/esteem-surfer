@@ -41,7 +41,6 @@ More functions are coming!
 ```
 $ git clone https://github.com/eSteemApp/esteem-surfer
 $ cd esteem-surfer
-$ git checkout surfer2
 ```
 
 ### Install dependencies
