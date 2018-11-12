@@ -43,7 +43,7 @@
     "modal-title": "Voters ({n})"
   },
   "entry-list-item": {
-    "reblogged": "resteemed"
+    "reblogged": "resteemed by {n}"
   },
   "settings": {
     "title": "Settings",

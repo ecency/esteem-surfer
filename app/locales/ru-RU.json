@@ -43,7 +43,7 @@
     "modal-title": "Всего голосов {n}"
   },
   "entry-list-item": {
-    "reblogged": "репост"
+    "reblogged": "репост by {n}"
   },
   "settings": {
     "title": "Настройки",

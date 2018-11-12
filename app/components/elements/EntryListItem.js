@@ -61,6 +61,15 @@ class EntryListItem extends Component {
 
     const isVisited = isEntryRead(entry.author, entry.permlink);
 
+    let reBlogged;
+    if (asAuthor && asAuthor !== entry.author && !isChild) {
+      reBlogged = asAuthor;
+    }
+
+    if (entry.reblogged_by && entry.reblogged_by.length > 0) {
+      [reBlogged] = entry.reblogged_by;
+    }
+
     return (
       <div className="entry-list-item">
         <div className="item-header">
@@ -104,14 +113,15 @@ class EntryListItem extends Component {
           <span className="date">
             <FormattedRelative value={created} initialNow={Date.now()} />
           </span>
-          {asAuthor &&
-            !isChild &&
-            entry.author !== asAuthor && (
-              <span className="reblogged">
-                <i className="mi">repeat</i>{' '}
-                <FormattedMessage id="entry-list-item.reblogged" />
-              </span>
-            )}
+          {reBlogged && (
+            <span className="reblogged">
+              <i className="mi">repeat</i>{' '}
+              <FormattedMessage
+                id="entry-list-item.reblogged"
+                values={{ n: reBlogged }}
+              />
+            </span>
+          )}
         </div>
         <div className="item-body">
           <div className="item-image">
