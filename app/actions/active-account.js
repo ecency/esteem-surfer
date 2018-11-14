@@ -3,7 +3,11 @@ eslint-disable camelcase
  */
 
 import { setItem, removeItem } from '../helpers/storage';
-import { getAccounts, getAccountRC } from '../backend/steem-client';
+import {
+  getAccounts,
+  getAccountRC,
+  getDiscussions
+} from '../backend/steem-client';
 
 export const LOGGED_IN = 'active-account/LOGGED_IN';
 export const LOGGED_OUT = 'active-account/LOGGED_OUT';
@@ -26,6 +30,14 @@ export const logIn = username => dispatch => {
         return account;
       });
     })
+    .then(account =>
+      getDiscussions('blog', {
+        tag: username,
+        limit: 40,
+        start_author: undefined,
+        start_permlink: undefined
+      }).then(blog => Object.assign({}, account, { blog }))
+    )
     .then(resp => {
       dispatch(updated(username, resp));
       return resp;
@@ -55,6 +67,14 @@ export const updateActiveAccount = () => (dispatch, getState) => {
         return account;
       });
     })
+    .then(account =>
+      getDiscussions('blog', {
+        tag: username,
+        limit: 40,
+        start_author: undefined,
+        start_permlink: undefined
+      }).then(blog => Object.assign({}, account, { blog }))
+    )
     .then(resp => {
       dispatch(updated(username, resp));
       return resp;

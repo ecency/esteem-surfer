@@ -358,3 +358,38 @@ export const comment = (
     return api.broadcast(opArray);
   }
 };
+
+export const reblog = (account, pin, author, permlink) => {
+  if (account.type === 's') {
+    const key = decryptKey(account.keys.posting, pin);
+    const privateKey = PrivateKey.fromString(key);
+    const follower = account.username;
+
+    const json = {
+      id: 'follow',
+      json: JSON.stringify([
+        'reblog',
+        {
+          account: follower,
+          author,
+          permlink
+        }
+      ]),
+      required_auths: [],
+      required_posting_auths: [follower]
+    };
+
+    return client.broadcast.json(json, privateKey);
+  }
+
+  if (account.type === 'sc') {
+    const token = decryptKey(account.accessToken, pin);
+    const api = sc2.Initialize({
+      accessToken: token
+    });
+
+    const follower = account.username;
+
+    return api.reblog(follower, author, permlink);
+  }
+};

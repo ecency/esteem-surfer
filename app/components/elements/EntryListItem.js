@@ -12,6 +12,7 @@ import UserAvatar from './UserAvatar';
 import EntryPayout from './EntryPayout';
 import EntryVotes from './EntryVotes';
 import EntryVoteBtn from './EntryVoteBtn';
+import EntryReblogBtn from './EntryReblogBtn';
 import QuickProfile from '../helpers/QuickProfile';
 import FormattedCurrency from './FormattedCurrency';
 import AccountLink from '../helpers/AccountLink';
@@ -181,6 +182,7 @@ class EntryListItem extends Component {
               <i className="mi">comment</i>
               {contentCount}
             </a>
+            <EntryReblogBtn {...this.props} entry={entry} />
             <div className="app">{app}</div>
           </div>
         </div>

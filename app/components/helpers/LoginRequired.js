@@ -1,10 +1,28 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import {Modal} from 'antd';
-import {FormattedMessage, FormattedHTMLMessage} from 'react-intl';
+import { Modal } from 'antd';
+import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 
 import Login from '../dialogs/Login';
+
+export const checkLogin = (activeAccount, requiredKeys) => {
+  // Steem connect login.
+  if (activeAccount && activeAccount.type === 'sc') {
+    return true;
+  }
+
+  // Traditional login. Check all required keys exists in user keys.
+  if (
+    activeAccount &&
+    activeAccount.type === 's' &&
+    requiredKeys.every(e => activeAccount.keys[e])
+  ) {
+    return true;
+  }
+
+  return false;
+};
 
 class LoginRequired extends Component {
   constructor(props) {
@@ -21,9 +39,9 @@ class LoginRequired extends Component {
     });
 
     setTimeout(() => {
-      const {onDialogOpen} = this.props;
+      const { onDialogOpen } = this.props;
       onDialogOpen();
-    }, 200)
+    }, 200);
   };
 
   onLoginModalCancel = () => {
@@ -45,42 +63,28 @@ class LoginRequired extends Component {
   };
 
   afterModalClose = () => {
-    const {onDialogClose} = this.props;
+    const { onDialogClose } = this.props;
     onDialogClose();
   };
 
   check = () => {
-    const {activeAccount, requiredKeys} = this.props;
+    const { activeAccount, requiredKeys } = this.props;
 
-    // Steem connect login.
-    if (activeAccount && activeAccount.type === 'sc') {
-      return true;
-    }
-
-    // Traditional login. Check all required keys exists in user keys.
-    if (
-      activeAccount &&
-      activeAccount.type === 's' &&
-      requiredKeys.every(e => activeAccount.keys[e])
-    ) {
-      return true;
-    }
-
-    return false;
+    return checkLogin(activeAccount, requiredKeys);
   };
 
   render() {
-    const {children} = this.props;
+    const { children } = this.props;
 
     if (this.check()) {
       return children;
     }
 
-    const {activeAccount, requiredKeys} = this.props;
-    const {loginModalVisible} = this.state;
+    const { activeAccount, requiredKeys } = this.props;
+    const { loginModalVisible } = this.state;
 
     // Default message
-    let loginMsg = <FormattedMessage id="login-required.default"/>;
+    let loginMsg = <FormattedMessage id="login-required.default" />;
 
     if (activeAccount) {
       // More specific, key based message
@@ -88,12 +92,12 @@ class LoginRequired extends Component {
         requiredKeys.length > 1 ? (
           <FormattedHTMLMessage
             id="login-required.keys-required"
-            values={{keys: requiredKeys}}
+            values={{ keys: requiredKeys }}
           />
         ) : (
           <FormattedHTMLMessage
             id="login-required.key-required"
-            values={{key: requiredKeys}}
+            values={{ key: requiredKeys }}
           />
         );
     }
@@ -132,10 +136,8 @@ class LoginRequired extends Component {
 
 LoginRequired.defaultProps = {
   activeAccount: null,
-  onDialogOpen: () => {
-  },
-  onDialogClose: () => {
-  },
+  onDialogOpen: () => {},
+  onDialogClose: () => {},
   requiredKeys: []
 };
 
