@@ -44,6 +44,10 @@
   "entry-list-item": {
     "reblogged": "репост {n}"
   },
+  "entry-reblog": {
+    "reblog": "Reblog",
+    "reblogged": "Reblogged"
+  },
   "settings": {
     "title": "Настройки",
     "currency": "Валюта",
