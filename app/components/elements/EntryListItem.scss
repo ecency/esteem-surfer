@@ -199,7 +199,7 @@
 
       .voters,
       .comments,
-      .reblog {
+      .reblog-btn {
         align-items: center;
         color: $steel-grey;
         display: flex;
@@ -222,7 +222,7 @@
         }
       }
 
-      .reblog {
+      .reblog-btn {
         &:hover {
           color: $green2;
         }

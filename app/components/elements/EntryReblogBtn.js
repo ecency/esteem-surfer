@@ -11,6 +11,14 @@ import { getItem, setItem } from '../../helpers/storage';
 import { reblog } from '../../backend/steem-client';
 
 class EntryReblogBtn extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      processing: false
+    };
+  }
+
   markAsReblogged = () => {
     const { activeAccount, entry } = this.props;
     const { author, permlink } = entry;
@@ -45,6 +53,8 @@ class EntryReblogBtn extends Component {
   doReblog = () => {
     const { activeAccount, global, entry, intl } = this.props;
 
+    this.setState({ processing: true });
+
     return reblog(activeAccount, global.pin, entry.author, entry.permlink)
       .then(resp => {
         message.success(intl.formatMessage({ id: 'entry-reblog.reblogged' }));
@@ -62,7 +72,7 @@ class EntryReblogBtn extends Component {
         }
       })
       .finally(() => {
-        this.forceUpdate();
+        this.setState({ processing: false });
       });
   };
 
@@ -73,7 +83,7 @@ class EntryReblogBtn extends Component {
       return (
         <Fragment>
           <LoginRequired {...this.props} requiredKeys={['posting']}>
-            <a className="reblog">
+            <a className="reblog-btn">
               <Tooltip
                 title={intl.formatMessage({ id: 'entry-reblog.reblog' })}
                 mouseEnterDelay={2}
@@ -92,9 +102,13 @@ class EntryReblogBtn extends Component {
       return null;
     }
 
+    const { processing } = this.state;
+
     const reblogged = this.isReblogged();
     const isLoginOk = checkLogin(activeAccount, ['posting']);
-    const btnCls = `reblog ${reblogged ? 'reblogged' : ''}`;
+    const btnCls = `reblog-btn${reblogged ? ' reblogged' : ''}${
+      processing ? ' processing' : ''
+    }`;
 
     if (!isLoginOk) {
       return (
