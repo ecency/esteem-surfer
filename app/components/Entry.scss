@@ -243,8 +243,8 @@
 
           .author {
             align-items: center;
-            display: inline-flex;
             cursor: pointer;
+            display: inline-flex;
 
             .author-name {
               font-weight: 700;
@@ -496,8 +496,8 @@
                 .edit-btn {
                   align-items: center;
                   color: lighten($steel-grey, 10);
-                  display: flex;
                   cursor: pointer;
+                  display: flex;
                 }
               }
             }
@@ -513,10 +513,10 @@
   }
 
   .entry-floating-menu {
-    position: fixed;
-    z-index: 10;
-    top: 200px;
     left: 25px;
+    position: fixed;
+    top: 200px;
+    z-index: 10;
 
     @media (min-width: 1200px) {
       left: 60px;
@@ -527,23 +527,50 @@
     }
 
     .reblog-btn {
-      color: $steel-grey;
+      align-items: center;
+      border-radius: 50%;
+      display: flex;
+      height: 50px;
+      justify-content: center;
+      transition: 0.5s;
+      width: 50px;
 
       .mi {
-        font-size: 30px;
+        font-size: 36px;
+        font-weight: 700;
       }
 
-      &:hover {
-        color: $dark-sky-blue;
-      }
-
+      &:hover,
       &.reblogged {
-        color: $dark-sky-blue;
-        pointer-events: none;
-
-        .mi {
-          opacity: 1;
+        @include themify(day) {
+          background: $duck-egg-blue;
         }
+
+        @include themify(night) {
+          background: $metallic-blue;
+        }
+      }
+    }
+  }
+
+  &.read-mode {
+    background: #fff;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+
+    .entry-footer {
+      display: none;
+    }
+
+    .the-entry {
+      .entry-replies {
+        display: none;
       }
     }
   }
