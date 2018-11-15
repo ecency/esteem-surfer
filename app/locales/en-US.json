@@ -42,7 +42,7 @@
     "modal-title": "Voters ({n})"
   },
   "entry-list-item": {
-    "reblogged": "resteemed by {n}"
+    "reblogged": "reblogged by {n}"
   },
   "entry-reblog": {
     "reblog": "Reblog",
