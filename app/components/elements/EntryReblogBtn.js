@@ -132,6 +132,7 @@ class EntryReblogBtn extends Component {
         <a className={btnCls}>
           <Popconfirm
             title={intl.formatMessage({ id: 'g.are-you-sure' })}
+            placement="right"
             onConfirm={() => {
               this.doReblog();
             }}
@@ -139,7 +140,6 @@ class EntryReblogBtn extends Component {
             <Tooltip
               title={intl.formatMessage({ id: 'entry-reblog.reblog' })}
               mouseEnterDelay={2}
-              visible={false}
             >
               <i className="mi">repeat</i>
             </Tooltip>

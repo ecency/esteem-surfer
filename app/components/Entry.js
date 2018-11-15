@@ -42,6 +42,7 @@ import LinearProgress from './common/LinearProgress';
 import Editor from './elements/Editor';
 import LoginRequired from './helpers/LoginRequired';
 import DeepLinkHandler from './helpers/DeepLinkHandler';
+import EntryReblogBtn from './elements/EntryReblogBtn';
 
 import parseDate from '../utils/parse-date';
 import parseToken from '../utils/parse-token';
@@ -899,6 +900,10 @@ class Entry extends PureComponent {
         />
         <div className="app-content entry-page" id="app-content">
           {content}
+
+          <div className="entry-floating-menu">
+            <EntryReblogBtn {...this.props} entry={entry} />
+          </div>
         </div>
         <AppFooter {...this.props} />
         <ScrollReplace {...this.props} selector="#app-content" />

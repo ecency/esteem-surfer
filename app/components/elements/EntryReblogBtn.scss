@@ -3,23 +3,38 @@
 
 @keyframes reblogging-color-change {
   0% {
-    color: $green2;
+    color: $dark-sky-blue;
   }
   25% {
     color: transparent;
   }
   50% {
-    color: $green2;
+    color: $dark-sky-blue;
   }
   75% {
     color: transparent;
   }
   100% {
-    color: $green2;
+    color: $dark-sky-blue;
   }
 }
 
 .reblog-btn {
+  color: $steel-grey;
+
+  &:hover {
+    color: $dark-sky-blue;
+  }
+
+  &.reblogged {
+    color: $dark-sky-blue !important;
+    pointer-events: none;
+
+    .mi {
+      opacity: 1 !important;
+    }
+  }
+
   &.processing {
     animation: reblogging-color-change 5s infinite;
     pointer-events: none;

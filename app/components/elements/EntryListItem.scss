@@ -222,21 +222,6 @@
         }
       }
 
-      .reblog-btn {
-        &:hover {
-          color: $green2;
-        }
-
-        &.reblogged {
-          color: $green2;
-          pointer-events: none;
-
-          .mi {
-            opacity: 1;
-          }
-        }
-      }
-
       .app {
         flex-grow: 1;
         text-align: right;

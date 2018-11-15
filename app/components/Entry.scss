@@ -511,6 +511,42 @@
       }
     }
   }
+
+  .entry-floating-menu {
+    position: fixed;
+    z-index: 10;
+    top: 200px;
+    left: 25px;
+
+    @media (min-width: 1200px) {
+      left: 60px;
+    }
+
+    @media (min-width: 1600px) {
+      left: 200px;
+    }
+
+    .reblog-btn {
+      color: $steel-grey;
+
+      .mi {
+        font-size: 30px;
+      }
+
+      &:hover {
+        color: $dark-sky-blue;
+      }
+
+      &.reblogged {
+        color: $dark-sky-blue;
+        pointer-events: none;
+
+        .mi {
+          opacity: 1;
+        }
+      }
+    }
+  }
 }
 
 .reply-editor {
