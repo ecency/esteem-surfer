@@ -2,16 +2,16 @@
 eslint-disable react/no-multi-comp, no-underscore-dangle
 */
 
-import React, {Component, Fragment} from 'react';
-import {FormattedMessage, injectIntl} from 'react-intl';
+import React, { Component, Fragment } from 'react';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
-import {UnControlled as CodeMirror} from 'react-codemirror2';
-import {Input, Select, Tooltip, message} from 'antd';
+import { UnControlled as CodeMirror } from 'react-codemirror2';
+import { Input, Select, Tooltip, message } from 'antd';
 
 import GalleryModal from '../Gallery';
 
-import {uploadImage, addMyImage} from '../../backend/esteem-client';
+import { uploadImage, addMyImage } from '../../backend/esteem-client';
 
 require('codemirror/addon/display/placeholder.js');
 require('codemirror/addon/search/searchcursor.js');
@@ -22,7 +22,7 @@ class Editor extends Component {
   constructor(props) {
     super(props);
 
-    const {defaultValues} = this.props;
+    const { defaultValues } = this.props;
 
     this.state = {
       title: defaultValues.title,
@@ -40,7 +40,7 @@ class Editor extends Component {
   componentDidMount() {
     this.syncTimer = setInterval(this.syncHeights, 1000);
 
-    const {syncWith} = this.props;
+    const { syncWith } = this.props;
     if (syncWith) {
       document
         .querySelector(syncWith)
@@ -55,7 +55,7 @@ class Editor extends Component {
   componentWillUnmount() {
     clearInterval(this.syncTimer);
 
-    const {syncWith} = this.props;
+    const { syncWith } = this.props;
     if (syncWith) {
       document
         .querySelector(syncWith)
@@ -67,7 +67,7 @@ class Editor extends Component {
       .removeEventListener('change', this.handleFileInput);
   }
 
-  clear = () => {
+  clear = (cb = null) => {
     this.setState(
       {
         title: '',
@@ -76,6 +76,7 @@ class Editor extends Component {
       },
       () => {
         this.changed();
+        if (cb) cb();
       }
     );
 
@@ -84,23 +85,23 @@ class Editor extends Component {
   };
 
   changed = () => {
-    const {onChange} = this.props;
-    const {title, tags, body} = this.state;
+    const { onChange } = this.props;
+    const { title, tags, body } = this.state;
 
-    onChange({title, tags, body});
+    onChange({ title, tags, body });
   };
 
   titleChanged = e => {
-    this.setState({title: e.target.value}, () => this.changed());
+    this.setState({ title: e.target.value }, () => this.changed());
   };
 
   tagsChanged = e => {
     const tags = [...e].map(x => x.trim().toLowerCase());
-    this.setState({tags}, () => this.changed());
+    this.setState({ tags }, () => this.changed());
   };
 
   bodyChanged = (editor, data, value) => {
-    this.setState({body: value}, () => this.changed());
+    this.setState({ body: value }, () => this.changed());
   };
 
   getEditorInstance = () => this.editorInstance;
@@ -111,7 +112,7 @@ class Editor extends Component {
 
     editor.replaceSelection(`${before}${selection}${after}`);
 
-    const {line, ch} = editor.getCursor();
+    const { line, ch } = editor.getCursor();
     const newCh = ch - after.length;
 
     editor.setCursor(line, newCh);
@@ -140,14 +141,14 @@ class Editor extends Component {
 
   replaceRange = (search, replace) => {
     const editor = this.getEditorInstance();
-    const searchCursor = editor.getSearchCursor(search, {line: 0, ch: 0});
+    const searchCursor = editor.getSearchCursor(search, { line: 0, ch: 0 });
     searchCursor.findNext();
 
     if (!searchCursor.atOccurrence) {
       return false;
     }
 
-    const {from, to} = searchCursor.pos;
+    const { from, to } = searchCursor.pos;
     editor.replaceRange(replace, from, to);
 
     return true;
@@ -282,7 +283,7 @@ class Editor extends Component {
   };
 
   onScroll = (editor, data) => {
-    const {syncWith} = this.props;
+    const { syncWith } = this.props;
     if (!syncWith) {
       return;
     }
@@ -317,14 +318,14 @@ class Editor extends Component {
       return;
     }
 
-    const {url: imageUrl} = uploadResp;
+    const { url: imageUrl } = uploadResp;
     const imageName = imageUrl.split('/').pop();
 
     const imgTag = `![${imageName}](${imageUrl})`;
 
     this.replaceRange(tempImgTag, imgTag);
 
-    const {activeAccount} = this.props;
+    const { activeAccount } = this.props;
     if (activeAccount) {
       addMyImage(activeAccount.username, imageUrl);
     }
@@ -341,7 +342,7 @@ class Editor extends Component {
   };
 
   syncHeights = () => {
-    const {syncWith} = this.props;
+    const { syncWith } = this.props;
     if (!syncWith) {
       return;
     }
@@ -370,8 +371,15 @@ class Editor extends Component {
   };
 
   render() {
-    const {defaultValues, trendingTags, activeAccount, mode, bodyPlaceHolder, intl} = this.props;
-    const {galleryModalVisible, tags, title} = this.state;
+    const {
+      defaultValues,
+      trendingTags,
+      activeAccount,
+      mode,
+      bodyPlaceHolder,
+      intl
+    } = this.props;
+    const { galleryModalVisible, tags, title } = this.state;
 
     const tagOptions = trendingTags.list.map(tag => (
       <Select.Option key={tag}>{tag}</Select.Option>
@@ -380,7 +388,7 @@ class Editor extends Component {
     const toolbar = (
       <div className="editor-toolbar">
         <Tooltip
-          title={intl.formatMessage({id: 'composer.tool-bold'})}
+          title={intl.formatMessage({ id: 'composer.tool-bold' })}
           mouseEnterDelay={2}
         >
           <div className="editor-tool" onClick={this.bold} role="none">
@@ -388,7 +396,7 @@ class Editor extends Component {
           </div>
         </Tooltip>
         <Tooltip
-          title={intl.formatMessage({id: 'composer.tool-italic'})}
+          title={intl.formatMessage({ id: 'composer.tool-italic' })}
           mouseEnterDelay={2}
         >
           <div className="editor-tool" onClick={this.italic} role="none">
@@ -396,7 +404,7 @@ class Editor extends Component {
           </div>
         </Tooltip>
         <Tooltip
-          title={intl.formatMessage({id: 'composer.tool-header'})}
+          title={intl.formatMessage({ id: 'composer.tool-header' })}
           mouseEnterDelay={2}
         >
           <div
@@ -425,9 +433,9 @@ class Editor extends Component {
             </div>
           </div>
         </Tooltip>
-        <div className="tool-separator"/>
+        <div className="tool-separator" />
         <Tooltip
-          title={intl.formatMessage({id: 'composer.tool-code'})}
+          title={intl.formatMessage({ id: 'composer.tool-code' })}
           mouseEnterDelay={2}
         >
           <div className="editor-tool" onClick={this.code} role="none">
@@ -435,16 +443,16 @@ class Editor extends Component {
           </div>
         </Tooltip>
         <Tooltip
-          title={intl.formatMessage({id: 'composer.tool-quote'})}
+          title={intl.formatMessage({ id: 'composer.tool-quote' })}
           mouseEnterDelay={2}
         >
           <div className="editor-tool" onClick={this.quote} role="none">
             <i className="mi tool-icon">format_quote</i>
           </div>
         </Tooltip>
-        <div className="tool-separator"/>
+        <div className="tool-separator" />
         <Tooltip
-          title={intl.formatMessage({id: 'composer.tool-ol'})}
+          title={intl.formatMessage({ id: 'composer.tool-ol' })}
           mouseEnterDelay={2}
         >
           <div className="editor-tool" onClick={this.olList} role="none">
@@ -452,16 +460,16 @@ class Editor extends Component {
           </div>
         </Tooltip>
         <Tooltip
-          title={intl.formatMessage({id: 'composer.tool-ul'})}
+          title={intl.formatMessage({ id: 'composer.tool-ul' })}
           mouseEnterDelay={2}
         >
           <div className="editor-tool" onClick={this.ulList} role="none">
             <i className="mi tool-icon">format_list_bulleted</i>
           </div>
         </Tooltip>
-        <div className="tool-separator"/>
+        <div className="tool-separator" />
         <Tooltip
-          title={intl.formatMessage({id: 'composer.tool-link'})}
+          title={intl.formatMessage({ id: 'composer.tool-link' })}
           mouseEnterDelay={2}
         >
           <div className="editor-tool" onClick={this.link} role="none">
@@ -469,7 +477,7 @@ class Editor extends Component {
           </div>
         </Tooltip>
         <Tooltip
-          title={intl.formatMessage({id: 'composer.tool-image'})}
+          title={intl.formatMessage({ id: 'composer.tool-image' })}
           mouseEnterDelay={2}
         >
           <div
@@ -489,7 +497,7 @@ class Editor extends Component {
                   document.getElementById('file-input').click();
                 }}
               >
-                <FormattedMessage id="composer.tool-upload"/>
+                <FormattedMessage id="composer.tool-upload" />
               </div>
               {activeAccount && (
                 <div
@@ -497,17 +505,17 @@ class Editor extends Component {
                   role="none"
                   onClick={event => {
                     event.stopPropagation();
-                    this.setState({galleryModalVisible: true});
+                    this.setState({ galleryModalVisible: true });
                   }}
                 >
-                  <FormattedMessage id="composer.tool-gallery"/>
+                  <FormattedMessage id="composer.tool-gallery" />
                 </div>
               )}
             </div>
           </div>
         </Tooltip>
         <Tooltip
-          title={intl.formatMessage({id: 'composer.tool-table'})}
+          title={intl.formatMessage({ id: 'composer.tool-table' })}
           mouseEnterDelay={2}
         >
           <div className="editor-tool" onClick={this.table} role="none">
@@ -524,50 +532,53 @@ class Editor extends Component {
       tabSize: 2,
       dragDrop: true,
       placeholder: bodyPlaceHolder,
-      highlightSelectionMatches: {wordsOnly: true},
+      highlightSelectionMatches: { wordsOnly: true },
       cursorScrollMargin: 400
     };
 
     return (
       <div className={`editor-form ${mode}-editor`}>
         {toolbar}
-        {mode === 'post' &&
-        <Fragment>
-          <div className="title-input">
-            <Input
-              type="text"
-              placeholder={intl.formatMessage({
-                id: 'composer.title-placeholder'
-              })}
-              autoFocus
-              onChange={this.titleChanged}
-              defaultValue={defaultValues.title}
-              value={title}
-            />
-          </div>
-          <div className="tags-input">
-            <Select
-              mode="tags"
-              placeholder={intl.formatMessage({
-                id: 'composer.tags-placeholder'
-              })}
-              maxTagCount={5}
-              maxTagPlaceholder={
-                <span style={{color: 'red'}}>
-                <FormattedMessage id="composer.max-n-tags" values={{n: 5}}/>
-              </span>
-              }
-              tokenSeparators={[' ', ',']}
-              onChange={this.tagsChanged}
-              defaultValue={defaultValues.tags}
-              value={tags}
-              dropdownClassName="tag-select-options"
-            >
-              {tagOptions}
-            </Select>
-          </div>
-        </Fragment>
-        }
+        {mode === 'post' && (
+          <Fragment>
+            <div className="title-input">
+              <Input
+                type="text"
+                placeholder={intl.formatMessage({
+                  id: 'composer.title-placeholder'
+                })}
+                autoFocus
+                onChange={this.titleChanged}
+                defaultValue={defaultValues.title}
+                value={title}
+              />
+            </div>
+            <div className="tags-input">
+              <Select
+                mode="tags"
+                placeholder={intl.formatMessage({
+                  id: 'composer.tags-placeholder'
+                })}
+                maxTagCount={5}
+                maxTagPlaceholder={
+                  <span style={{ color: 'red' }}>
+                    <FormattedMessage
+                      id="composer.max-n-tags"
+                      values={{ n: 5 }}
+                    />
+                  </span>
+                }
+                tokenSeparators={[' ', ',']}
+                onChange={this.tagsChanged}
+                defaultValue={defaultValues.tags}
+                value={tags}
+                dropdownClassName="tag-select-options"
+              >
+                {tagOptions}
+              </Select>
+            </div>
+          </Fragment>
+        )}
         <div className="body-input">
           <CodeMirror
             mode="spell-checker"
@@ -577,7 +588,7 @@ class Editor extends Component {
             editorDidMount={editor => {
               this.editorInstance = editor;
 
-              const {autoFocus2Body} = this.props;
+              const { autoFocus2Body } = this.props;
               if (autoFocus2Body) {
                 editor.focus();
               }
@@ -599,17 +610,17 @@ class Editor extends Component {
           type="file"
           accept="image/*"
           multiple
-          style={{display: 'none'}}
+          style={{ display: 'none' }}
         />
         {activeAccount && (
           <GalleryModal
             {...this.props}
             visible={galleryModalVisible}
             onCancel={() => {
-              this.setState({galleryModalVisible: false});
+              this.setState({ galleryModalVisible: false });
             }}
             onSelect={imageUrl => {
-              this.setState({galleryModalVisible: false});
+              this.setState({ galleryModalVisible: false });
 
               const imageName = imageUrl.split('/').pop();
               const imgTag = `![${imageName}](${imageUrl})`;
@@ -648,4 +659,4 @@ Editor.propTypes = {
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
-export default injectIntl(Editor);
+export default injectIntl(Editor, { withRef: true });

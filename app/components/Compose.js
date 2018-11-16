@@ -151,9 +151,11 @@ class Compose extends Component {
           tags = [];
         }
 
-        this.editor.current.setState({ title, body, tags });
-        this.editor.current.editorInstance.setValue(body);
-        this.editor.current.changed();
+        const editor = this.editor.current.getWrappedInstance();
+
+        editor.setState({ title, body, tags });
+        editor.editorInstance.setValue(body);
+        editor.changed();
 
         this.setState({ draftId: params.id });
       }
@@ -161,17 +163,18 @@ class Compose extends Component {
   };
 
   clear = () => {
-    this.editor.current.clear();
+    const editor = this.editor.current.getWrappedInstance();
+    editor.clear(() => {
+      const { draftId } = this.state;
 
-    const { draftId } = this.state;
-
-    if (draftId) {
-      const { history } = this.props;
-      setTimeout(() => {
-        const newLoc = `/new`;
-        history.push(newLoc);
-      }, 200);
-    }
+      if (draftId) {
+        const { history } = this.props;
+        setTimeout(() => {
+          const newLoc = `/new`;
+          history.push(newLoc);
+        }, 500);
+      }
+    });
   };
 
   removePostingPerm = () => {
