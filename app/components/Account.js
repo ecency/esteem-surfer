@@ -2,30 +2,30 @@
 eslint-disable react/no-multi-comp,react/style-prop-object
 */
 
-import React, {Component, Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 
 import PropTypes from 'prop-types';
-import {Tooltip, message} from 'antd';
-import {FormattedNumber, FormattedDate, FormattedMessage, FormattedRelative, injectIntl} from 'react-intl';
+import { Tooltip, message } from 'antd';
+import { FormattedNumber, FormattedDate, FormattedMessage, FormattedRelative, injectIntl } from 'react-intl';
 
 import NavBar from './layout/NavBar';
-import AppFooter from "./layout/AppFooter";
+import AppFooter from './layout/AppFooter';
 
 import ComposeBtn from './elements/ComposeBtn';
 import UserAvatar from './elements/UserAvatar';
 import FollowControls from './elements/FollowControls';
-import EntryListLoadingItem from "./elements/EntryListLoadingItem";
-import EntryListItem from "./elements/EntryListItem";
+import EntryListLoadingItem from './elements/EntryListLoadingItem';
+import EntryListItem from './elements/EntryListItem';
 
 import ScrollReplace from './helpers/ScrollReplace';
 import ListSwitch from './elements/ListSwitch';
 import coverFallbackDay from '../img/cover-fallback-day.png';
 import coverFallbackNight from '../img/cover-fallback-night.png';
-import LinearProgress from "./common/LinearProgress";
+import LinearProgress from './common/LinearProgress';
 import EntryLink from './helpers/EntryLink';
 
 
-import {getFollowCount, getAccount, getState} from '../backend/steem-client';
+import { getFollowCount, getAccount, getState, claimRewardBalance } from '../backend/steem-client';
 import {
   getActiveVotes,
   getTopPosts,
@@ -35,18 +35,18 @@ import {
   removeFavoriteUser
 } from '../backend/esteem-client';
 
-import {makeGroupKeyForEntries} from "../actions/entries";
+import { makeGroupKeyForEntries } from '../actions/entries';
 
 import authorReputation from '../utils/author-reputation';
-import {votingPower} from '../utils/manabar';
+import { votingPower } from '../utils/manabar';
 import proxifyImageSrc from '../utils/proxify-image-src';
 import parseToken from '../utils/parse-token';
-import {vestsToSp} from '../utils/conversions';
+import { vestsToSp } from '../utils/conversions';
 import parseDate from '../utils/parse-date';
 import catchEntryImage from '../utils/catch-entry-image';
 import entryBodySummary from '../utils/entry-body-summary';
 import formatChainError from '../utils/format-chain-error';
-import DeepLinkHandler from "./helpers/DeepLinkHandler";
+import DeepLinkHandler from './helpers/DeepLinkHandler';
 
 class Profile extends Component {
 
@@ -65,18 +65,18 @@ class Profile extends Component {
     let website;
     let created;
 
-    const {username, account, intl} = this.props;
+    const { username, account, intl } = this.props;
 
     if (account) {
       vPower = votingPower(account);
       vPowerPercentage = `${parseInt(vPower, 10)}%`;
       reputation = authorReputation(account.reputation);
       postCount = account.post_count;
-      ({activeVotes} = account);
-      ({followerCount} = account);
-      ({followingCount} = account);
+      ({ activeVotes } = account);
+      ({ followerCount } = account);
+      ({ followingCount } = account);
 
-      const {accountProfile} = account;
+      const { accountProfile } = account;
       if (accountProfile) {
         name = accountProfile.name || null;
         about = accountProfile.about || null;
@@ -100,7 +100,7 @@ class Profile extends Component {
           <div className="vpower-line">
             <div
               className="vpower-line-inner"
-              style={{width: vPowerPercentage}}
+              style={{ width: vPowerPercentage }}
             />
           </div>
         )}
@@ -202,13 +202,13 @@ class Profile extends Component {
           </div>
         )}
       </div>
-    )
+    );
   }
 }
 
 
 Profile.defaultProps = {
-  account: null,
+  account: null
 };
 
 Profile.propTypes = {
@@ -220,28 +220,28 @@ Profile.propTypes = {
 
 export class AccountMenu extends Component {
   goSection = (section) => {
-    const {history, username} = this.props;
+    const { history, username } = this.props;
     const u = section ? `/@${username}/${section}` : `/@${username}`;
     history.push(u);
   };
 
   render() {
-    const {section} = this.props;
+    const { section } = this.props;
 
     return (
       <div className="account-menu">
         <div className="account-menu-items">
           <a role="none" className={`menu-item ${section === 'blog' && 'selected-item'}`} onClick={() => {
-            this.goSection('blog')
+            this.goSection('blog');
           }}><FormattedMessage id="account.section-blog"/></a>
           <a role="none" className={`menu-item ${section === 'comments' && 'selected-item'}`} onClick={() => {
-            this.goSection('comments')
+            this.goSection('comments');
           }}><FormattedMessage id="account.section-comments"/></a>
           <a role="none" className={`menu-item ${section === 'replies' && 'selected-item'}`} onClick={() => {
-            this.goSection('replies')
+            this.goSection('replies');
           }}><FormattedMessage id="account.section-replies"/></a>
           <a role="none" className={`menu-item ${section === 'wallet' && 'selected-item'}`} onClick={() => {
-            this.goSection('wallet')
+            this.goSection('wallet');
           }}><FormattedMessage id="account.section-wallet"/></a>
         </div>
         <div className="page-tools">
@@ -250,7 +250,7 @@ export class AccountMenu extends Component {
           }
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -264,11 +264,11 @@ export class AccountCover extends Component {
   render() {
     let coverImage;
 
-    const {account, username, global, activeAccount} = this.props;
+    const { account, username, global, activeAccount } = this.props;
     const hideFollowControls = activeAccount && activeAccount.username === username;
 
     if (account) {
-      const {accountProfile} = account;
+      const { accountProfile } = account;
       if (accountProfile) {
         coverImage = accountProfile.cover_image || null;
       }
@@ -277,13 +277,13 @@ export class AccountCover extends Component {
     const bgImage = coverImage && proxifyImageSrc(coverImage) || (global.theme === 'day' ? coverFallbackDay : coverFallbackNight);
 
     return <div className="account-cover">
-      <div className="cover-image" style={{backgroundImage: `url('${bgImage}')`}}/>
+      <div className="cover-image" style={{ backgroundImage: `url('${bgImage}')` }}/>
       {!hideFollowControls &&
       <div className="follow-controls-holder">
         <FollowControls {...this.props} targetUsername={username}/>
       </div>
       }
-    </div>
+    </div>;
   }
 }
 
@@ -303,7 +303,7 @@ AccountCover.propTypes = {
 
 export class AccountTopPosts extends Component {
   render() {
-    const {posts} = this.props;
+    const { posts } = this.props;
 
     return (
       <div className="top-posts-list">
@@ -324,7 +324,7 @@ export class AccountTopPosts extends Component {
           ))}
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -334,7 +334,7 @@ AccountTopPosts.defaultProps = {
 
 AccountTopPosts.propTypes = {
   posts: PropTypes.arrayOf(Object),
-  history: PropTypes.instanceOf(Object).isRequired,
+  history: PropTypes.instanceOf(Object).isRequired
 };
 
 
@@ -342,11 +342,11 @@ export class TransactionRow extends Component {
 
   render() {
 
-    const {dynamicProps, transaction: tr} = this.props;
-    const {steemPerMVests} = dynamicProps;
+    const { dynamicProps, transaction: tr } = this.props;
+    const { steemPerMVests } = dynamicProps;
 
-    const {op} = tr[1];
-    const {timestamp} = tr[1];
+    const { op } = tr[1];
+    const { timestamp } = tr[1];
     const opName = op[0];
     const opData = op[1];
     const transDate = parseDate(timestamp);
@@ -359,7 +359,7 @@ export class TransactionRow extends Component {
     if (opName === 'curation_reward') {
       flag = true;
 
-      const {reward: vestingPayout} = opData;
+      const { reward: vestingPayout } = opData;
 
       numbers = (
         <Fragment>
@@ -368,8 +368,8 @@ export class TransactionRow extends Component {
         </Fragment>
       );
 
-      const {comment_author: commentAuthor, comment_permlink: commentPermlink} = opData;
-      details = `@${commentAuthor}/${commentPermlink}`
+      const { comment_author: commentAuthor, comment_permlink: commentPermlink } = opData;
+      details = `@${commentAuthor}/${commentPermlink}`;
     }
 
     if (opName === 'author_reward' || opName === 'comment_benefactor_reward') {
@@ -407,7 +407,7 @@ export class TransactionRow extends Component {
         permlink
       } = opData;
 
-      details = `@${author}/${permlink}`
+      details = `@${author}/${permlink}`;
     }
 
     if (opName === 'comment_benefactor_reward') {
@@ -449,7 +449,7 @@ export class TransactionRow extends Component {
       flag = true;
       icon = 'compare_arrows';
 
-      const {amount, memo, from, to} = opData;
+      const { amount, memo, from, to } = opData;
       details = <span>{memo} <br/><br/> <strong>@{from}</strong> -&gt; <strong>@{to}</strong></span>;
 
       numbers = (
@@ -461,7 +461,7 @@ export class TransactionRow extends Component {
       flag = true;
       icon = 'money';
 
-      const {acc} = opData;
+      const { acc } = opData;
 
       let {
         vesting_shares: opVestingShares
@@ -507,7 +507,7 @@ export class TransactionRow extends Component {
             {details}
           </div>
         </div>
-      )
+      );
     }
 
 
@@ -525,7 +525,7 @@ TransactionRow.propTypes = {
 export class Exchange extends Component {
 
   render() {
-    const {marketData} = this.props;
+    const { marketData } = this.props;
 
     let steemUsdDir;
     let steemBtcDir;
@@ -533,9 +533,9 @@ export class Exchange extends Component {
     let sbdBtcDir;
 
     if (marketData) {
-      const {steem, sbd} = marketData;
-      const {usd: steemUsd, btc: steemBtc} = steem.quotes;
-      const {usd: sbdUsd, btc: sbdBtc} = sbd.quotes;
+      const { steem, sbd } = marketData;
+      const { usd: steemUsd, btc: steemBtc } = steem.quotes;
+      const { usd: sbdUsd, btc: sbdBtc } = sbd.quotes;
 
       steemUsdDir = steemUsd.percent_change === 0 && 'same' || (steemUsd.percent_change > 0 ? 'up' : 'down');
       steemBtcDir = steemBtc.percent_change === 0 && 'same' || (steemBtc.percent_change > 0 ? 'up' : 'down');
@@ -647,7 +647,7 @@ export class Exchange extends Component {
           }
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -661,231 +661,273 @@ Exchange.propTypes = {
 
 export class SectionWallet extends Component {
 
+  constructor(props) {
+    super(props);
+
+    const { account } = this.props;
+
+    this.state = {
+      account,
+      claiming: false
+    };
+  }
+
+  claimRewardBalance = () => {
+    const { activeAccount, global, intl } = this.props;
+    const { claiming } = this.state;
+
+    if (claiming) {
+      return;
+    }
+
+    this.setState({ claiming: true });
+
+    return getAccount(activeAccount.username).then(account => {
+      const {
+        reward_steem_balance: steemBal,
+        reward_sbd_balance: sbdBal,
+        reward_vesting_balance: vestingBal
+      } = account;
+
+      return claimRewardBalance(activeAccount, global.pin, steemBal, sbdBal, vestingBal);
+    })
+      .then(() => getAccount(activeAccount.username))
+      .then(account => {
+        message.success(intl.formatMessage({
+          id: 'account.claim-reward-balance-ok'
+        }));
+        this.setState({ account });
+        return account;
+      }).then(account => {
+        this.setState({ account });
+        return account;
+      }).catch(err => {
+        message.error(formatChainError(err));
+      }).finally(() => {
+        this.setState({ claiming: false });
+      });
+  };
+
   render() {
-    const {account, transactions, marketData, dynamicProps, global, intl} = this.props;
+    const { transactions, marketData, dynamicProps, global, intl, activeAccount, username } = this.props;
+    const { account, claiming } = this.state;
 
-    const {steemPerMVests, base} = dynamicProps;
-    const {currency, currencyRate} = global;
-
-    let rewardSteemBalance;
-    let rewardSbdBalance;
-    let rewardVestingSteem;
-    let hasUnclaimedRewards;
-    let balance;
-    let vestingShares;
-    let vestingSharesDelegated;
-    let vestingSharesReceived;
-    let vestingSharesTotal;
-    let sbdBalance;
-    let savingBalance;
-    let savingBalanceSbd;
-    let estimatedValue;
-    let showPowerDown;
-    let nextVestingWithdrawal;
 
     if (account) {
 
-      rewardSteemBalance = parseToken(account.reward_steem_balance);
-      rewardSbdBalance = parseToken(account.reward_sbd_balance);
-      rewardVestingSteem = parseToken(account.reward_vesting_steem);
-      hasUnclaimedRewards = (rewardSteemBalance > 0 || rewardSbdBalance > 0 || rewardVestingSteem > 0);
+      const { steemPerMVests, base } = dynamicProps;
+      const { currency, currencyRate } = global;
 
-      balance = parseToken(account.balance);
+      const rewardSteemBalance = parseToken(account.reward_steem_balance);
+      const rewardSbdBalance = parseToken(account.reward_sbd_balance);
+      const rewardVestingSteem = parseToken(account.reward_vesting_steem);
+      const hasUnclaimedRewards = (rewardSteemBalance > 0 || rewardSbdBalance > 0 || rewardVestingSteem > 0);
 
-      vestingShares = parseToken(account.vesting_shares);
-      vestingSharesDelegated = parseToken(account.delegated_vesting_shares);
-      vestingSharesReceived = parseToken(account.received_vesting_shares);
-      vestingSharesTotal = (vestingShares - vestingSharesDelegated + vestingSharesReceived);
+      const balance = parseToken(account.balance);
 
-      sbdBalance = parseToken(account.sbd_balance);
-      savingBalance = parseToken(account.savings_balance);
-      savingBalanceSbd = parseToken(account.savings_sbd_balance);
+      const vestingShares = parseToken(account.vesting_shares);
+      const vestingSharesDelegated = parseToken(account.delegated_vesting_shares);
+      const vestingSharesReceived = parseToken(account.received_vesting_shares);
+      const vestingSharesTotal = (vestingShares - vestingSharesDelegated + vestingSharesReceived);
 
-      estimatedValue = (
+      const sbdBalance = parseToken(account.sbd_balance);
+      const savingBalance = parseToken(account.savings_balance);
+      const savingBalanceSbd = parseToken(account.savings_sbd_balance);
+
+      const estimatedValue = (
         (vestsToSp(vestingShares, steemPerMVests) * base) +
         (balance * base) +
         sbdBalance
       ) * currencyRate;
 
-      showPowerDown = account.next_vesting_withdrawal !== '1969-12-31T23:59:59';
-      nextVestingWithdrawal = parseDate(account.next_vesting_withdrawal);
+      const showPowerDown = account.next_vesting_withdrawal !== '1969-12-31T23:59:59';
+      const nextVestingWithdrawal = parseDate(account.next_vesting_withdrawal);
 
+      const isMyPage = activeAccount && activeAccount.username === username;
 
-    }
-
-    if (!account) {
-      return <div className="wallet-section"/>
-    }
-
-
-    return (
-      <div className="wallet-section">
-        <div className="first-row">
-          {hasUnclaimedRewards &&
-          <div className="unclaimed-rewards">
-            <div className="title"><FormattedMessage id="account.unclaimed-rewards"/></div>
-            <div className="rewards">
-              {rewardSteemBalance > 0 &&
-              <span className="reward-type">{`${rewardSteemBalance} STEEM`}</span>
-              }
-              {rewardSbdBalance > 0 &&
-              <span className="reward-type">{`${rewardSbdBalance} SDB`}</span>
-              }
-              {rewardVestingSteem > 0 &&
-              <span className="reward-type">{`${rewardVestingSteem} SP`}</span>
-              }
-            </div>
-          </div>
-          }
-          <div className="estimated-value">
-            <Tooltip title={intl.formatMessage({
-              id: 'account.estimated-value'
-            })}>
-              <span><FormattedNumber currency={currency} style="currency" currencyDisplay="symbol"
-                                     minimumFractionDigits={3} value={estimatedValue}/></span>
-            </Tooltip>
-          </div>
-        </div>
-        <div className="second-row">
-          <div className="funds">
-            <div className="fund fund-steem">
-              <div className="fund-line">
+      return (
+        <div className="wallet-section">
+          <div className="first-row">
+            {hasUnclaimedRewards &&
+            <div className="unclaimed-rewards">
+              <div className="title"><FormattedMessage id="account.unclaimed-rewards"/></div>
+              <div className="rewards">
+                {rewardSteemBalance > 0 &&
+                <span className="reward-type">{`${rewardSteemBalance} STEEM`}</span>
+                }
+                {rewardSbdBalance > 0 &&
+                <span className="reward-type">{`${rewardSbdBalance} SDB`}</span>
+                }
+                {rewardVestingSteem > 0 &&
+                <span className="reward-type">{`${rewardVestingSteem} SP`}</span>
+                }
+                {isMyPage &&
                 <Tooltip title={intl.formatMessage({
-                  id: 'account.steem-description'
-                })}>
-                  <div className="fund-info-icon"/>
+                  id: 'account.claim-reward-balance'
+                })} mouseEnterDelay={2}>
+                  <a className={`claim-btn ${claiming ? 'in-progress' : ''}`} onClick={() => {
+                    this.claimRewardBalance();
+                  }} role="none">
+                    <i className="mi">add_circle</i>
+                  </a>
                 </Tooltip>
-                <div className="fund-title"><FormattedMessage id="account.steem"/></div>
-                <div className="fund-number"><FormattedNumber minimumFractionDigits={3} value={balance}/> {'STEEM'}
-                </div>
-                <div className="fund-action"/>
+                }
               </div>
-            </div>
-
-            <div className="fund fund-sp alternative">
-              <div className="fund-line">
-                <Tooltip title={intl.formatMessage({
-                  id: 'account.steem-power-description'
-                })}>
-                  <div className="fund-info-icon"/>
-                </Tooltip>
-                <div className="fund-title"><FormattedMessage id="account.steem-power"/></div>
-                <div className="fund-number">
-                  <FormattedNumber minimumFractionDigits={3} value={vestsToSp(vestingShares, steemPerMVests)}/> {'SP'}
-                </div>
-                <div className="fund-action"/>
-              </div>
-
-              {vestingSharesDelegated > 0 &&
-              <div className="fund-line">
-                <div className="fund-number delegated-shares">
-                  <Tooltip title={intl.formatMessage({
-                    id: 'account.steem-power-delegated'
-                  })}>
-                    {'-'} <FormattedNumber value={vestsToSp(vestingSharesDelegated, steemPerMVests)}/> {'SP'}
-                  </Tooltip>
-                </div>
-                <div className="fund-action"/>
-              </div>
-              }
-
-              {vestingSharesReceived > 0 &&
-              <div className="fund-line">
-                <div className="fund-number received-shares">
-                  <Tooltip title={intl.formatMessage({
-                    id: 'account.steem-power-received'
-                  })}>
-                    {'+'} <FormattedNumber value={vestsToSp(vestingSharesReceived, steemPerMVests)}/> {'SP'}
-                  </Tooltip>
-                </div>
-                <div className="fund-action"/>
-              </div>
-              }
-
-              {(vestingSharesDelegated > 0 || vestingSharesReceived > 0) &&
-              <div className="fund-line">
-                <div className="fund-number total-sp">
-                  <Tooltip title={intl.formatMessage({
-                    id: 'account.steem-power-total'
-                  })}>
-                    {'='} <FormattedNumber value={vestsToSp(vestingSharesTotal, steemPerMVests)}/> {'SP'}
-                  </Tooltip>
-                </div>
-                <div className="fund-action"/>
-              </div>
-              }
-            </div>
-
-            <div className="fund fund-sbd">
-              <div className="fund-line">
-                <Tooltip title={intl.formatMessage({
-                  id: 'account.steem-dollars-description'
-                })}>
-                  <div className="fund-info-icon"/>
-                </Tooltip>
-                <div className="fund-title"><FormattedMessage id="account.steem-dollars"/></div>
-                <div className="fund-number">
-                  <FormattedNumber currency="USD" style="currency" currencyDisplay="symbol"
-                                   minimumFractionDigits={3} value={sbdBalance}/>
-                </div>
-                <div className="fund-action"/>
-              </div>
-            </div>
-
-            <div className="fund fund-savings alternative">
-              <div className="fund-line">
-                <Tooltip title={intl.formatMessage({
-                  id: 'account.savings-description'
-                })}>
-                  <div className="fund-info-icon"/>
-                </Tooltip>
-                <div className="fund-title"><FormattedMessage id="account.savings"/></div>
-                <div className="fund-number">
-                  <FormattedNumber minimumFractionDigits={3} value={savingBalance}/> {'STEEM'}
-                </div>
-                <div className="fund-action"/>
-              </div>
-
-              <div className="fund-line">
-                <div className="fund-number">
-                  <FormattedNumber currency="USD" style="currency" currencyDisplay="symbol"
-                                   minimumFractionDigits={3} value={savingBalanceSbd}/>
-                </div>
-                <div className="fund-action"/>
-              </div>
-            </div>
-            {showPowerDown &&
-            <div className="next-power-down">
-              <div className="fund-info-icon"/>
-              <FormattedMessage id="account.next-power-down"
-                                values={{time: <FormattedRelative value={nextVestingWithdrawal}/>}}/>
             </div>
             }
+            <div className="estimated-value">
+              <Tooltip title={intl.formatMessage({
+                id: 'account.estimated-value'
+              })}>
+              <span><FormattedNumber currency={currency} style="currency" currencyDisplay="symbol"
+                                     minimumFractionDigits={3} value={estimatedValue}/></span>
+              </Tooltip>
+            </div>
+          </div>
+          <div className="second-row">
+            <div className="funds">
+              <div className="fund fund-steem">
+                <div className="fund-line">
+                  <Tooltip title={intl.formatMessage({
+                    id: 'account.steem-description'
+                  })}>
+                    <div className="fund-info-icon"/>
+                  </Tooltip>
+                  <div className="fund-title"><FormattedMessage id="account.steem"/></div>
+                  <div className="fund-number"><FormattedNumber minimumFractionDigits={3} value={balance}/> {'STEEM'}
+                  </div>
+                  <div className="fund-action"/>
+                </div>
+              </div>
+
+              <div className="fund fund-sp alternative">
+                <div className="fund-line">
+                  <Tooltip title={intl.formatMessage({
+                    id: 'account.steem-power-description'
+                  })}>
+                    <div className="fund-info-icon"/>
+                  </Tooltip>
+                  <div className="fund-title"><FormattedMessage id="account.steem-power"/></div>
+                  <div className="fund-number">
+                    <FormattedNumber minimumFractionDigits={3} value={vestsToSp(vestingShares, steemPerMVests)}/> {'SP'}
+                  </div>
+                  <div className="fund-action"/>
+                </div>
+
+                {vestingSharesDelegated > 0 &&
+                <div className="fund-line">
+                  <div className="fund-number delegated-shares">
+                    <Tooltip title={intl.formatMessage({
+                      id: 'account.steem-power-delegated'
+                    })}>
+                      {'-'} <FormattedNumber value={vestsToSp(vestingSharesDelegated, steemPerMVests)}/> {'SP'}
+                    </Tooltip>
+                  </div>
+                  <div className="fund-action"/>
+                </div>
+                }
+
+                {vestingSharesReceived > 0 &&
+                <div className="fund-line">
+                  <div className="fund-number received-shares">
+                    <Tooltip title={intl.formatMessage({
+                      id: 'account.steem-power-received'
+                    })}>
+                      {'+'} <FormattedNumber value={vestsToSp(vestingSharesReceived, steemPerMVests)}/> {'SP'}
+                    </Tooltip>
+                  </div>
+                  <div className="fund-action"/>
+                </div>
+                }
+
+                {(vestingSharesDelegated > 0 || vestingSharesReceived > 0) &&
+                <div className="fund-line">
+                  <div className="fund-number total-sp">
+                    <Tooltip title={intl.formatMessage({
+                      id: 'account.steem-power-total'
+                    })}>
+                      {'='} <FormattedNumber value={vestsToSp(vestingSharesTotal, steemPerMVests)}/> {'SP'}
+                    </Tooltip>
+                  </div>
+                  <div className="fund-action"/>
+                </div>
+                }
+              </div>
+
+              <div className="fund fund-sbd">
+                <div className="fund-line">
+                  <Tooltip title={intl.formatMessage({
+                    id: 'account.steem-dollars-description'
+                  })}>
+                    <div className="fund-info-icon"/>
+                  </Tooltip>
+                  <div className="fund-title"><FormattedMessage id="account.steem-dollars"/></div>
+                  <div className="fund-number">
+                    <FormattedNumber currency="USD" style="currency" currencyDisplay="symbol"
+                                     minimumFractionDigits={3} value={sbdBalance}/>
+                  </div>
+                  <div className="fund-action"/>
+                </div>
+              </div>
+
+              <div className="fund fund-savings alternative">
+                <div className="fund-line">
+                  <Tooltip title={intl.formatMessage({
+                    id: 'account.savings-description'
+                  })}>
+                    <div className="fund-info-icon"/>
+                  </Tooltip>
+                  <div className="fund-title"><FormattedMessage id="account.savings"/></div>
+                  <div className="fund-number">
+                    <FormattedNumber minimumFractionDigits={3} value={savingBalance}/> {'STEEM'}
+                  </div>
+                  <div className="fund-action"/>
+                </div>
+
+                <div className="fund-line">
+                  <div className="fund-number">
+                    <FormattedNumber currency="USD" style="currency" currencyDisplay="symbol"
+                                     minimumFractionDigits={3} value={savingBalanceSbd}/>
+                  </div>
+                  <div className="fund-action"/>
+                </div>
+              </div>
+              {showPowerDown &&
+              <div className="next-power-down">
+                <div className="fund-info-icon"/>
+                <FormattedMessage id="account.next-power-down"
+                                  values={{ time: <FormattedRelative value={nextVestingWithdrawal}/> }}/>
+              </div>
+              }
+            </div>
+
+            <Exchange {...this.props} marketData={marketData}/>
           </div>
 
-          <Exchange {...this.props} marketData={marketData}/>
+          <div className="transaction-list">
+            <div className="transaction-list-header">
+              <h2><FormattedMessage id="account.transactions"/></h2>
+            </div>
+            <div className="transaction-list-body">
+
+              {transactions && transactions.map(tr => (
+                <TransactionRow {...this.props} transaction={tr} key={tr[0]}/>
+              ))}
+            </div>
+          </div>
         </div>
+      );
+    }
 
-        <div className="transaction-list">
-          <div className="transaction-list-header">
-            <h2><FormattedMessage id="account.transactions"/></h2>
-          </div>
-          <div className="transaction-list-body">
-
-            {transactions && transactions.map(tr => (
-              <TransactionRow {...this.props} transaction={tr} key={tr[0]}/>
-            ))}
-          </div>
-        </div>
-      </div>
-    );
+    return <div className="wallet-section"/>;
   }
 }
 
 SectionWallet.defaultProps = {
   account: null,
   transactions: [],
-  marketData: null
+  marketData: null,
+  activeAccount: null
 };
 
 SectionWallet.propTypes = {
@@ -899,10 +941,13 @@ SectionWallet.propTypes = {
   }).isRequired,
   global: PropTypes.shape({
     currencyRate: PropTypes.number.isRequired,
-    currencySymbol: PropTypes.string.isRequired
+    currencySymbol: PropTypes.string.isRequired,
+    pin: PropTypes.string.isRequired
   }).isRequired,
-  intl: PropTypes.instanceOf(Object).isRequired
+  intl: PropTypes.instanceOf(Object).isRequired,
+  activeAccount: PropTypes.instanceOf(Object)
 };
+
 
 class Account extends Component {
   constructor(props) {
@@ -932,18 +977,18 @@ class Account extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const {location} = this.props;
+    const { location } = this.props;
 
     if (location !== prevProps.location) {
 
       // fetch entries when location changed.
       this.fetchEntries();
 
-      const {match: newMatch} = this.props;
-      const {match: oldMatch} = prevProps;
+      const { match: newMatch } = this.props;
+      const { match: oldMatch } = prevProps;
 
-      const {username: newUsername} = newMatch.params;
-      const {username: oldUsername} = oldMatch.params;
+      const { username: newUsername } = newMatch.params;
+      const { username: oldUsername } = oldMatch.params;
 
       if (newUsername !== oldUsername) {
         // refresh data when user changed
@@ -965,14 +1010,14 @@ class Account extends Component {
 
     // Account data
     this.fetchAccount().then(account => {
-      this.setState({account});
-      return account
+      this.setState({ account });
+      return account;
     }).catch(err => {
       message.error(formatChainError(err));
     });
 
-    const {match} = this.props;
-    const {username} = match.params;
+    const { match } = this.props;
+    const { username } = match.params;
 
     // Top posts
     getTopPosts(username).then(resp => {
@@ -1000,8 +1045,8 @@ class Account extends Component {
 
     // Transactions
     getState(`/@${username}/transfers`).then(state => {
-      const {accounts} = state;
-      const {transfer_history: transferHistory} = accounts[username];
+      const { accounts } = state;
+      const { transfer_history: transferHistory } = accounts[username];
       const transactions = transferHistory.slice(Math.max(transferHistory.length - 50, 0));
       transactions.sort((a, b) => b[0] - a[0]);
       return transactions;
@@ -1019,21 +1064,21 @@ class Account extends Component {
     });
 
     // is favorite
-    const {activeAccount} = this.props;
+    const { activeAccount } = this.props;
     if (activeAccount) {
       isFavorite(activeAccount.username, username).then(favorite => {
-        this.setState({favorite});
-        return favorite
+        this.setState({ favorite });
+        return favorite;
       }).catch(() => {
       });
     }
   };
 
   fetchAccount = async () => {
-    const {match} = this.props;
-    const {username} = match.params;
+    const { match } = this.props;
+    const { username } = match.params;
 
-    let {visitingAccount: account} = this.props;
+    let { visitingAccount: account } = this.props;
 
     if (!(account && account.name === username)) {
       account = await getAccount(username);
@@ -1047,8 +1092,8 @@ class Account extends Component {
       accountProfile = null;
     }
 
-    account = Object.assign({}, account, {accountProfile});
-    this.setState({account});
+    account = Object.assign({}, account, { accountProfile });
+    this.setState({ account });
 
     // Follow counts
     let follow;
@@ -1062,8 +1107,8 @@ class Account extends Component {
       const followerCount = follow.follower_count;
       const followingCount = follow.following_count;
 
-      account = Object.assign({}, account, {followerCount, followingCount});
-      this.setState({account});
+      account = Object.assign({}, account, { followerCount, followingCount });
+      this.setState({ account });
     }
 
     // Active votes
@@ -1071,33 +1116,33 @@ class Account extends Component {
     try {
       activeVotes = await getActiveVotes(username);
     } catch (err) {
-      activeVotes = {count: 0};
+      activeVotes = { count: 0 };
     }
 
-    account = Object.assign({}, account, {activeVotes: activeVotes.count});
+    account = Object.assign({}, account, { activeVotes: activeVotes.count });
 
     return account;
   };
 
   fetchEntries = () => {
-    const {match, actions} = this.props;
-    const {username, section = 'blog'} = match.params;
+    const { match, actions } = this.props;
+    const { username, section = 'blog' } = match.params;
     if (['blog', 'comments', 'replies'].includes(section)) {
       actions.fetchEntries(section, `@${username}`);
     }
   };
 
   invalidateEntries = () => {
-    const {match, actions} = this.props;
-    const {username, section = 'blog'} = match.params;
+    const { match, actions } = this.props;
+    const { username, section = 'blog' } = match.params;
     if (['blog', 'comments', 'replies'].includes(section)) {
       actions.invalidateEntries(section, `@${username}`);
     }
   };
 
   bottomReached = () => {
-    const {actions, entries, match} = this.props;
-    const {username, section = 'blog'} = match.params;
+    const { actions, entries, match } = this.props;
+    const { username, section = 'blog' } = match.params;
 
     const groupKey = makeGroupKeyForEntries(section, `@${username}`);
     const data = entries.get(groupKey);
@@ -1117,14 +1162,14 @@ class Account extends Component {
   };
 
   favoriteFn = () => {
-    const {favorite} = this.state;
-    const {activeAccount, match, intl} = this.props;
-    const {username} = match.params;
+    const { favorite } = this.state;
+    const { activeAccount, match, intl } = this.props;
+    const { username } = match.params;
 
     if (favorite) {
       removeFavoriteUser(activeAccount.username, username).then(resp => {
-        this.setState({favorite: false});
-        message.info(intl.formatMessage({id: 'entry.favoriteRemoved'}));
+        this.setState({ favorite: false });
+        message.info(intl.formatMessage({ id: 'entry.favoriteRemoved' }));
         return resp;
       }).catch(() => {
 
@@ -1133,8 +1178,8 @@ class Account extends Component {
     }
 
     addFavorite(activeAccount.username, username).then(resp => {
-      this.setState({favorite: true});
-      message.info(intl.formatMessage({id: 'entry.favorited'}));
+      this.setState({ favorite: true });
+      message.info(intl.formatMessage({ id: 'entry.favorited' }));
       return resp;
     }).catch(() => {
 
@@ -1142,9 +1187,9 @@ class Account extends Component {
   };
 
   render() {
-    const {entries, global, match} = this.props;
-    const {account, favorite} = this.state;
-    const {username, section = 'blog'} = match.params;
+    const { entries, global, match } = this.props;
+    const { account, favorite } = this.state;
+    const { username, section = 'blog' } = match.params;
     const isWallet = section === 'wallet';
 
     let entryList;
@@ -1156,13 +1201,13 @@ class Account extends Component {
       entryList = data.get('entries');
       loading = data.get('loading');
     } else {
-      const {transactionsLoading, marketDataLoading} = this.state;
+      const { transactionsLoading, marketDataLoading } = this.state;
       loading = transactionsLoading || marketDataLoading;
     }
 
-    const {topPosts} = this.state;
-    const {transactions} = this.state;
-    const {marketData} = this.state;
+    const { topPosts } = this.state;
+    const { transactions } = this.state;
+    const { marketData } = this.state;
 
     return (
       <div className="wrapper">
@@ -1222,7 +1267,7 @@ class Account extends Component {
               </Fragment>
               }
 
-              {isWallet &&
+              {isWallet && account &&
               <SectionWallet {...this.props} transactions={transactions} username={username} account={account}
                              marketData={marketData}/>
               }
@@ -1249,7 +1294,8 @@ Account.propTypes = {
     changeListStyle: PropTypes.func.isRequired
   }).isRequired,
   global: PropTypes.shape({
-    listStyle: PropTypes.string.isRequired
+    listStyle: PropTypes.string.isRequired,
+    pin: PropTypes.string.isRequired
   }).isRequired,
   entries: PropTypes.instanceOf(Object).isRequired,
   location: PropTypes.instanceOf(Object).isRequired,

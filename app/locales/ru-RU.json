@@ -160,7 +160,9 @@
     "transaction-transfer": "Перевод",
     "transaction-transfer_to_vesting": "Перевод в Силу",
     "transaction-withdraw_vesting": "Снятие Силы",
-    "transaction-fill_order": "Заказ исполнен"
+    "transaction-fill_order": "Заказ исполнен",
+    "claim-reward-balance": "Claim reward balance",
+    "claim-reward-balance-ok": "Reward balance claimed"
   },
   "composer": {
     "title-placeholder": "Заголовок",

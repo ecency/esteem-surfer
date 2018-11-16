@@ -160,7 +160,9 @@
     "transaction-transfer": "Transfer",
     "transaction-transfer_to_vesting": "Transfer to vesting",
     "transaction-withdraw_vesting": "Withdraw vesting",
-    "transaction-fill_order": "Fill order"
+    "transaction-fill_order": "Fill order",
+    "claim-reward-balance": "Claim reward balance",
+    "claim-reward-balance-ok": "Reward balance claimed"
   },
   "composer": {
     "title-placeholder": "Title",

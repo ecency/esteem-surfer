@@ -393,3 +393,35 @@ export const reblog = (account, pin, author, permlink) => {
     return api.reblog(follower, author, permlink);
   }
 };
+
+
+export const claimRewardBalance = (account, pin, rewardSteem, rewardSbd, rewardVests) => {
+  if (account.type === 's') {
+    const key = decryptKey(account.keys.posting, pin);
+    const privateKey = PrivateKey.fromString(key);
+
+    const opArray = [
+      [
+        'claim_reward_balance',
+        {
+          account: account.username,
+          reward_steem: rewardSteem,
+          reward_sbd: rewardSbd,
+          reward_vests: rewardVests
+        }
+      ]
+    ];
+
+    return client.broadcast.sendOperations(opArray, privateKey);
+  }
+
+
+  if (account.type === 'sc') {
+    const token = decryptKey(account.accessToken, pin);
+    const api = sc2.Initialize({
+      accessToken: token
+    });
+
+    return api.claimRewardBalance(account.username, rewardSteem, rewardSbd, rewardVests);
+  }
+};

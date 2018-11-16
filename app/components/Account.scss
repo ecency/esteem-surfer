@@ -1,6 +1,24 @@
 @import '../style/mixins';
 @import '../style/colors';
 
+@keyframes claiming-color-change {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .account-page {
   .page-header {
     display: flex;
@@ -272,9 +290,9 @@
           .top-posts-list-item {
             border: 1px solid $white-four;
             border-radius: 8px;
+            cursor: pointer;
             height: 120px;
             width: 130px;
-            cursor: pointer;
 
             .post-image {
               border-top-left-radius: 8px;
@@ -365,14 +383,38 @@
             }
 
             .rewards {
+              align-items: center;
               background-color: $dark-sky-blue;
               border-radius: 25px;
               color: $white;
+              display: flex;
               font-weight: 700;
-              padding: 17px 24px;
+              height: 51px;
+              padding: 0 12px 0 24px;
 
               .reward-type {
                 margin-right: 5px;
+
+                &:last-of-type {
+                  margin-right: 12px;
+                }
+              }
+
+              .claim-btn {
+                color: $white;
+
+                .mi {
+                  font-size: 30px;
+                }
+
+                &:hover {
+                  color: lighten($dark-sky-blue, 30);
+                }
+
+                &.in-progress {
+                  animation: claiming-color-change 5s infinite;
+                  pointer-events: none;
+                }
               }
             }
           }
