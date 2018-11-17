@@ -207,7 +207,7 @@
         @include clearfix();
 
         color: $steel-grey;
-        font-size: 16px;
+        font-size: 15px;
         margin-bottom: 20px;
 
         @include themify(day) {
@@ -288,7 +288,12 @@
           justify-content: flex-end;
           width: 30%;
 
-          .reply-btn {
+          .separator {
+            @extend .circle-separator;
+          }
+
+          .reply-btn,
+          .edit-btn {
             cursor: pointer;
           }
         }

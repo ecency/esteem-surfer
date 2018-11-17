@@ -1,10 +1,11 @@
 /*
-eslint-disable no-plusplus
+eslint-disable no-plusplus, camelcase, new-cap
 */
 
-import getSlug from "speakingurl";
+import getSlug from 'speakingurl';
+import { diff_match_patch } from 'diff-match-patch';
 
-export const createPermlink = (title) => {
+export const createPermlink = title => {
   const rnd = (Math.random() + 1).toString(16).substring(2);
   const slug = getSlug(title);
 
@@ -12,7 +13,7 @@ export const createPermlink = (title) => {
 
   // STEEMIT_MAX_PERMLINK_LENGTH
   if (perm.length > 255) {
-    perm = perm.substring(perm.length - 255, perm.length)
+    perm = perm.substring(perm.length - 255, perm.length);
   }
 
   // only letters numbers and dashes
@@ -20,13 +21,20 @@ export const createPermlink = (title) => {
   return perm;
 };
 
-
-export const createReplyPermlink = (toAuthor) => {
+export const createReplyPermlink = toAuthor => {
   const t = new Date(Date.now());
 
-  const timeFormat = `${t.getFullYear().toString()}${(t.getMonth() + 1).toString() }${t.getDate().toString()}t${t.getHours().toString()}${ t.getMinutes().toString()}${t.getSeconds().toString()}${t.getMilliseconds().toString()}z`;
+  const timeFormat = `${t.getFullYear().toString()}${(
+    t.getMonth() + 1
+  ).toString()}${t
+    .getDate()
+    .toString()}t${t
+    .getHours()
+    .toString()}${t
+    .getMinutes()
+    .toString()}${t.getSeconds().toString()}${t.getMilliseconds().toString()}z`;
 
-  return `re-${toAuthor.replace(/\./g, "")}-${timeFormat}`
+  return `re-${toAuthor.replace(/\./g, '')}-${timeFormat}`;
 };
 
 export const makeOptions = (author, permlink, operationType) => {
@@ -37,7 +45,9 @@ export const makeOptions = (author, permlink, operationType) => {
     permlink,
     max_accepted_payout: '1000000.000 SBD',
     percent_steem_dollars: 10000,
-    extensions: [[0, {'beneficiaries': [{'account': 'esteemapp', 'weight': 1000}]}]]
+    extensions: [
+      [0, { beneficiaries: [{ account: 'esteemapp', weight: 1000 }] }]
+    ]
   };
 
   switch (operationType) {
@@ -58,26 +68,22 @@ export const makeOptions = (author, permlink, operationType) => {
   return a;
 };
 
-export const makeJsonMetadata = (meta, tags, appVer) => (
+export const makeJsonMetadata = (meta, tags, appVer) =>
   Object.assign({}, meta, {
     tags,
     app: `esteem/${appVer}-surfer`,
     format: 'markdown+html',
     community: 'esteem.app'
-  })
-);
+  });
 
-export const makeJsonMetadataReply = (tags, appVer) => (
-  {
-    tags,
-    app: `esteem/${appVer}-surfer`,
-    format: 'markdown+html',
-    community: 'esteem.app'
-  }
-);
+export const makeJsonMetadataReply = (tags, appVer) => ({
+  tags,
+  app: `esteem/${appVer}-surfer`,
+  format: 'markdown+html',
+  community: 'esteem.app'
+});
 
 export const extractMetadata = body => {
-
   const urlReg = /(\b(https?|ftp):\/\/[A-Z0-9+&@#/%?=~_|!:,.;-]*[-A-Z0-9+&@#/%=~_|])/gim;
   const userReg = /(^|\s)(@[a-z][-.a-z\d]+[a-z\d])/gim;
   const imgReg = /(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/gim;
@@ -120,4 +126,12 @@ export const extractMetadata = body => {
   }
 
   return out;
+};
+
+export const createPatch = (text1, text2) => {
+  const dmp = new diff_match_patch();
+  if (!text1 && text1 === '') return undefined;
+  const patches = dmp.patch_make(text1, text2);
+  const patch = dmp.patch_toText(patches);
+  return patch;
 };

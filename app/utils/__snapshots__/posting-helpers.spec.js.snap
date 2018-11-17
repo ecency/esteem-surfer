@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`createPatch (1)  1`] = `
+"@@ -6,16 +6,17 @@
+  ipsum d
++o
+ lor sit 
+"
+`;
+
 exports[`createPermlink (1)  1`] = `"lorem-ipsum-dolor-sit-amet-f38c58113ff7eest"`;
 
 exports[`createReplyPermlink (1)  1`] = `"re-good-karma-2018921t130500z"`;

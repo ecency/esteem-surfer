@@ -199,7 +199,9 @@
     "save-draft": "Сохранить",
     "draft-saved": "Черновик сохранён",
     "publish": "Опубликовать",
-    "published": "Пост опубликован"
+    "published": "Пост опубликован",
+    "update": "Update",
+    "updated": "Post Updated"
   },
   "gallery": {
     "title": "Галерея",

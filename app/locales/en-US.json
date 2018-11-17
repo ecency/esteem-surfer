@@ -199,7 +199,9 @@
     "save-draft": "Save Draft",
     "draft-saved": "Draft saved",
     "publish": "Publish",
-    "published": "Post Published"
+    "published": "Post Published",
+    "update": "Update",
+    "updated": "Post Updated"
   },
   "gallery": {
     "title": "Gallery",

@@ -30,6 +30,7 @@ import DeepLinkHandler from './helpers/DeepLinkHandler';
 import { getItem, setItem, getVotingPercentage } from '../helpers/storage';
 import markDown2Html from '../utils/markdown-2-html';
 import formatChainError from '../utils/format-chain-error';
+import { makePath as makePathEntry } from './helpers/EntryLink';
 
 import {
   getDrafts,
@@ -40,13 +41,15 @@ import {
 import {
   revokePostingPermission,
   grantPostingPermission,
-  comment
+  comment,
+  getContent
 } from '../backend/steem-client';
 import {
   createPermlink,
   makeOptions,
   makeJsonMetadata,
-  extractMetadata
+  extractMetadata,
+  createPatch
 } from '../utils/posting-helpers';
 
 import { version } from '../../package.json';
@@ -114,7 +117,9 @@ class Compose extends Component {
       upvote: true,
       posting: false,
       permProcessing: false,
-      scheduleModalVisible: false
+      scheduleModalVisible: false,
+      editMode: false,
+      editingEntry: null
     };
 
     this.editor = React.createRef();
@@ -125,6 +130,7 @@ class Compose extends Component {
     // this.detectPostingPerm();
 
     this.detectDraft();
+    this.detectEntry();
   }
 
   detectDraft = async () => {
@@ -159,6 +165,44 @@ class Compose extends Component {
 
         this.setState({ draftId: params.id });
       }
+    }
+  };
+
+  detectEntry = async () => {
+    const { match, activeAccount } = this.props;
+    const { path, params } = match;
+
+    if (
+      activeAccount &&
+      path.startsWith('/edit') &&
+      params.username &&
+      params.permlink
+    ) {
+      let entry;
+      try {
+        entry = await getContent(params.username, params.permlink);
+      } catch (err) {
+        message.error(formatChainError(err));
+        return;
+      }
+
+      const { title, body } = entry;
+
+      let jsonMeta;
+      try {
+        jsonMeta = JSON.parse(entry.json_metadata);
+      } catch (e) {
+        jsonMeta = {};
+      }
+
+      const tags = [...new Set(jsonMeta.tags)];
+
+      const editor = this.editor.current.getWrappedInstance();
+      editor.setState({ title, body, tags });
+      editor.editorInstance.setValue(body);
+      editor.changed();
+
+      this.setState({ editMode: true, editingEntry: entry });
     }
   };
 
@@ -223,9 +267,13 @@ class Compose extends Component {
     }
 
     this.changeTimer = setTimeout(() => {
-      setItem('compose-title', newValues.title);
-      setItem('compose-tags', newValues.tags);
-      setItem('compose-body', newValues.body);
+      const { editMode } = this.state;
+
+      if (!editMode) {
+        setItem('compose-title', newValues.title);
+        setItem('compose-tags', newValues.tags);
+        setItem('compose-body', newValues.body);
+      }
 
       this.setState({
         title: newValues.title,
@@ -342,6 +390,60 @@ class Compose extends Component {
       });
   };
 
+  update = () => {
+    const { activeAccount, global, intl } = this.props;
+    const { title, tags, body, editingEntry } = this.state;
+
+    const {
+      body: oldBody,
+      author,
+      parent_permlink: parentPermlink,
+      permlink
+    } = editingEntry;
+
+    let newBody = body;
+    const patch = createPatch(oldBody, newBody.trim());
+    if (
+      patch &&
+      patch.length < Buffer.from(editingEntry.body, 'utf-8').length
+    ) {
+      newBody = patch;
+    }
+
+    this.setState({ posting: true });
+
+    const meta = extractMetadata(body);
+    const jsonMeta = makeJsonMetadata(meta, tags, version);
+
+    return comment(
+      activeAccount,
+      global.pin,
+      '',
+      parentPermlink,
+      permlink,
+      title,
+      newBody,
+      jsonMeta
+    )
+      .then(resp => {
+        message.success(intl.formatMessage({ id: 'composer.updated' }));
+
+        setTimeout(() => {
+          const { history } = this.props;
+          const newLoc = makePathEntry(parentPermlink, author, permlink);
+          history.push(newLoc);
+        }, 500);
+
+        return resp;
+      })
+      .catch(err => {
+        message.error(formatChainError(err));
+      })
+      .finally(() => {
+        this.setState({ posting: false });
+      });
+  };
+
   render() {
     const loading = true;
 
@@ -356,7 +458,8 @@ class Compose extends Component {
       upvote,
       posting,
       permProcessing,
-      scheduleModalVisible
+      scheduleModalVisible,
+      editMode
     } = this.state;
 
     const renderedBody = { __html: markDown2Html(body) };
@@ -451,106 +554,128 @@ class Compose extends Component {
             body={renderedBody}
           />
           <div className="clearfix" />
-          <div className="control-part">
-            <div className="left-controls">
-              <div className="reward">
-                <span className="reward-label">
-                  <FormattedMessage id="composer.reward" />
-                </span>
-                <Select
-                  style={{ width: '180px' }}
-                  value={reward}
-                  onChange={val => {
-                    this.setState({ reward: val });
-                  }}
-                >
-                  <Select.Option key="default">
-                    {intl.formatMessage({ id: 'composer.reward-default' })}
-                  </Select.Option>
-                  <Select.Option key="sp">
-                    {intl.formatMessage({ id: 'composer.reward-sp' })}
-                  </Select.Option>
-                  <Select.Option key="dp">
-                    {intl.formatMessage({ id: 'composer.reward-dp' })}
-                  </Select.Option>
-                </Select>
-              </div>
-              <div className="voting">
-                <Checkbox
-                  checked={upvote}
-                  onChange={e => {
-                    this.setState({
-                      upvote: e.target.checked
-                    });
-                  }}
-                >
-                  <FormattedMessage id="composer.upvote" />{' '}
-                </Checkbox>
-              </div>
-              <div className="clear">
-                <Button className="clean-button" onClick={this.clear}>
-                  <FormattedMessage id="composer.clear" />
-                </Button>
-              </div>
-            </div>
-            <div className="right-controls">
-              <div className="schedule">
-                {!activeAccount && (
-                  <LoginRequired {...this.props}>
-                    <Button className="clean-button">
-                      <i className="mi" style={{ marginRight: '5px' }}>
-                        timer
-                      </i>
-                      <FormattedMessage id="composer.schedule" />
+
+          {editMode && (
+            <div className="control-part edit-mode">
+              <div className="right-controls">
+                <div className="publish">
+                  <LoginRequired {...this.props} requiredKeys={['posting']}>
+                    <Button
+                      className="btn-publish"
+                      type="primary"
+                      disabled={!canPublish}
+                      onClick={this.update}
+                      loading={posting}
+                    >
+                      <FormattedMessage id="composer.update" />
                     </Button>
                   </LoginRequired>
-                )}
-                {activeAccount && (
-                  <Dropdown
-                    overlay={scheduleMenu}
-                    trigger={['click']}
-                    disabled={permProcessing}
+                </div>
+              </div>
+            </div>
+          )}
+          {!editMode && (
+            <div className="control-part">
+              <div className="left-controls">
+                <div className="reward">
+                  <span className="reward-label">
+                    <FormattedMessage id="composer.reward" />
+                  </span>
+                  <Select
+                    style={{ width: '180px' }}
+                    value={reward}
+                    onChange={val => {
+                      this.setState({ reward: val });
+                    }}
                   >
-                    <Button className="clean-button" loading={permProcessing}>
-                      {!permProcessing && (
+                    <Select.Option key="default">
+                      {intl.formatMessage({ id: 'composer.reward-default' })}
+                    </Select.Option>
+                    <Select.Option key="sp">
+                      {intl.formatMessage({ id: 'composer.reward-sp' })}
+                    </Select.Option>
+                    <Select.Option key="dp">
+                      {intl.formatMessage({ id: 'composer.reward-dp' })}
+                    </Select.Option>
+                  </Select>
+                </div>
+                <div className="voting">
+                  <Checkbox
+                    checked={upvote}
+                    onChange={e => {
+                      this.setState({
+                        upvote: e.target.checked
+                      });
+                    }}
+                  >
+                    <FormattedMessage id="composer.upvote" />{' '}
+                  </Checkbox>
+                </div>
+                <div className="clear">
+                  <Button className="clean-button" onClick={this.clear}>
+                    <FormattedMessage id="composer.clear" />
+                  </Button>
+                </div>
+              </div>
+              <div className="right-controls">
+                <div className="schedule">
+                  {!activeAccount && (
+                    <LoginRequired {...this.props}>
+                      <Button className="clean-button">
                         <i className="mi" style={{ marginRight: '5px' }}>
                           timer
                         </i>
-                      )}{' '}
-                      <FormattedMessage id="composer.schedule" />
+                        <FormattedMessage id="composer.schedule" />
+                      </Button>
+                    </LoginRequired>
+                  )}
+                  {activeAccount && (
+                    <Dropdown
+                      overlay={scheduleMenu}
+                      trigger={['click']}
+                      disabled={permProcessing}
+                    >
+                      <Button className="clean-button" loading={permProcessing}>
+                        {!permProcessing && (
+                          <i className="mi" style={{ marginRight: '5px' }}>
+                            timer
+                          </i>
+                        )}{' '}
+                        <FormattedMessage id="composer.schedule" />
+                      </Button>
+                    </Dropdown>
+                  )}
+                </div>
+                <div className="draft">
+                  <LoginRequired {...this.props}>
+                    <Button
+                      className="clean-button"
+                      disabled={!canPublish}
+                      onClick={this.saveDraft}
+                    >
+                      <i className="mi" style={{ marginRight: '5px' }}>
+                        save
+                      </i>{' '}
+                      <FormattedMessage id="composer.save-draft" />
                     </Button>
-                  </Dropdown>
-                )}
-              </div>
-              <div className="draft">
-                <LoginRequired {...this.props}>
-                  <Button
-                    className="clean-button"
-                    disabled={!canPublish}
-                    onClick={this.saveDraft}
-                  >
-                    <i className="mi" style={{ marginRight: '5px' }}>
-                      save
-                    </i>{' '}
-                    <FormattedMessage id="composer.save-draft" />
-                  </Button>
-                </LoginRequired>
-              </div>
-              <div className="publish">
-                <LoginRequired {...this.props} requiredKeys={['posting']}>
-                  <Button
-                    className="btn-publish"
-                    type="primary"
-                    disabled={!canPublish}
-                    onClick={this.publish}
-                    loading={posting}
-                  >
-                    <FormattedMessage id="composer.publish" />
-                  </Button>
-                </LoginRequired>
+                  </LoginRequired>
+                </div>
+                <div className="publish">
+                  <LoginRequired {...this.props} requiredKeys={['posting']}>
+                    <Button
+                      className="btn-publish"
+                      type="primary"
+                      disabled={!canPublish}
+                      onClick={this.publish}
+                      loading={posting}
+                    >
+                      <FormattedMessage id="composer.publish" />
+                    </Button>
+                  </LoginRequired>
+                </div>
               </div>
             </div>
-          </div>
+          )}
           <Modal
             visible={scheduleModalVisible}
             footer={false}

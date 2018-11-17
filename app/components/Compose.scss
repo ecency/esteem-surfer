@@ -238,5 +238,12 @@
         }
       }
     }
+
+    &.edit-mode {
+      .right-controls {
+        width: auto;
+        justify-content: flex-end;
+      }
+    }
   }
 }

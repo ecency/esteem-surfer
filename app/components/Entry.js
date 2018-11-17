@@ -641,6 +641,15 @@ class Entry extends PureComponent {
     this.setState({ editorVisible: !editorVisible });
   };
 
+  edit = () => {
+    const { entry } = this.state;
+    const { history } = this.props;
+
+    const { author, permlink } = entry;
+
+    history.push(`/edit/@${author}/${permlink}`);
+  };
+
   onNewReply = newReply => {
     const { replies } = this.state;
     const newReplies = [newReply, ...replies];
@@ -702,6 +711,10 @@ class Entry extends PureComponent {
       const totalPayout = sumTotal(entry);
       const isPayoutDeclined = parseToken(entry.max_accepted_payout) === 0;
       const voteCount = entry.active_votes.length;
+
+      const { activeAccount } = this.props;
+
+      const editable = activeAccount && activeAccount.username === entry.author;
 
       content = (
         <Fragment>
@@ -787,6 +800,19 @@ class Entry extends PureComponent {
                   >
                     <FormattedMessage id="entry.reply" />
                   </span>
+
+                  {editable && (
+                    <Fragment>
+                      <span className="separator" />
+                      <span
+                        className="edit-btn"
+                        role="none"
+                        onClick={this.edit}
+                      >
+                        <FormattedMessage id="g.edit" />
+                      </span>
+                    </Fragment>
+                  )}
                 </div>
               </div>
               <div className="entry-controls">

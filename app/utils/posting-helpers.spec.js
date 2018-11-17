@@ -5,7 +5,8 @@ import {
   extractMetadata,
   makeJsonMetadata,
   createReplyPermlink,
-  makeJsonMetadataReply
+  makeJsonMetadataReply,
+  createPatch
 } from './posting-helpers';
 import { Select } from 'antd/lib/select';
 import React from 'react';
@@ -79,5 +80,13 @@ describe('createReplyPermlink', () => {
 
   it('(1) ', () => {
     expect(createReplyPermlink('good-karma')).toMatchSnapshot();
+  });
+});
+
+describe('createPatch', () => {
+  it('(1) ', () => {
+    expect(
+      createPatch('lorem ipsum dlor sit amet', 'lorem ipsum dolor sit amet')
+    ).toMatchSnapshot();
   });
 });

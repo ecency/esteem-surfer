@@ -274,8 +274,8 @@ export const comment = (
   title,
   body,
   jsonMetadata,
-  options,
-  voteWeight
+  options = null,
+  voteWeight = null
 ) => {
   const { username: author } = account;
 
@@ -394,8 +394,13 @@ export const reblog = (account, pin, author, permlink) => {
   }
 };
 
-
-export const claimRewardBalance = (account, pin, rewardSteem, rewardSbd, rewardVests) => {
+export const claimRewardBalance = (
+  account,
+  pin,
+  rewardSteem,
+  rewardSbd,
+  rewardVests
+) => {
   if (account.type === 's') {
     const key = decryptKey(account.keys.posting, pin);
     const privateKey = PrivateKey.fromString(key);
@@ -415,13 +420,17 @@ export const claimRewardBalance = (account, pin, rewardSteem, rewardSbd, rewardV
     return client.broadcast.sendOperations(opArray, privateKey);
   }
 
-
   if (account.type === 'sc') {
     const token = decryptKey(account.accessToken, pin);
     const api = sc2.Initialize({
       accessToken: token
     });
 
-    return api.claimRewardBalance(account.username, rewardSteem, rewardSbd, rewardVests);
+    return api.claimRewardBalance(
+      account.username,
+      rewardSteem,
+      rewardSbd,
+      rewardVests
+    );
   }
 };
