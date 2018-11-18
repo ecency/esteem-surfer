@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Address parser author + section 1`] = `
+Object {
+  "author": "good-karma",
+  "filter": "blog",
+  "path": "/@good-karma/blog",
+  "type": "author",
+}
+`;
+
+exports[`Address parser author + section 2`] = `
+Object {
+  "author": "good-karma",
+  "filter": "comments",
+  "path": "/@good-karma/comments",
+  "type": "author",
+}
+`;
+
+exports[`Address parser author + section 3`] = `
+Object {
+  "author": "good-karma",
+  "filter": "replies",
+  "path": "/@good-karma/replies",
+  "type": "author",
+}
+`;
+
+exports[`Address parser author + section 4`] = `
+Object {
+  "author": "good-karma",
+  "filter": "wallet",
+  "path": "/@good-karma/wallet",
+  "type": "author",
+}
+`;
+
+exports[`Address parser author + section 5`] = `
+Object {
+  "author": "good-karma",
+  "filter": "feed",
+  "path": "/@good-karma/feed",
+  "type": "author",
+}
+`;
+
+exports[`Address parser author 1`] = `
+Object {
+  "author": "good-karma",
+  "filter": undefined,
+  "path": "/@good-karma",
+  "type": "author",
+}
+`;
+
+exports[`Address parser filter + tag 1`] = `
+Object {
+  "filter": "trending",
+  "path": "/trending/esteem",
+  "tag": "esteem",
+  "type": "filter",
+}
+`;
+
+exports[`Address parser filter 1`] = `
+Object {
+  "filter": "trending",
+  "path": "/trending",
+  "tag": undefined,
+  "type": "filter",
+}
+`;
+
+exports[`Address parser post 1`] = `
+Object {
+  "author": "good-karma",
+  "permlink": "esteem-search-is-now-opensource-hivemind-plugin-58f8a8bad0598est",
+  "type": "post",
+}
+`;
+
+exports[`Address parser post 2`] = `
+Object {
+  "author": "good-karma",
+  "permlink": "esteem-search-is-now-opensource-hivemind-plugin-58f8a8bad0598est",
+  "type": "post",
+}
+`;

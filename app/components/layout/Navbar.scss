@@ -165,12 +165,23 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        display: flex;
+        align-items: center;
 
         .protocol {
           font-weight: 500;
+          flex-grow: 0;
         }
 
         .url {
+          flex-grow: 1;
+          border: 0;
+          margin-right: 10px;
+          background: transparent;
+          outline: none;
+          &:focus {
+            outline: none;
+          }
         }
       }
     }

@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
+/* eslint-disable jsx-a11y/anchor-has-content,react/no-multi-comp */
 
 import React, { Component, Fragment } from 'react';
 
@@ -15,12 +15,124 @@ import Login from '../dialogs/Login';
 import UserMenu from '../dialogs/UserMenu';
 import LoginRequired from '../helpers/LoginRequired';
 
+import addressParser from '../../utils/address-parser';
+import { getContent, getAccount } from '../../backend/steem-client';
+
 export const checkPathForBack = path => {
   if (!path) {
     return false;
   }
 
   return !['/'].includes(path);
+};
+
+class Address extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      address: '',
+      realAddress: '',
+      changed: false
+    };
+  }
+
+  componentDidMount() {
+    this.fixAddress();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { location } = this.props;
+
+    if (location !== prevProps.location) {
+      this.fixAddress();
+    }
+  }
+
+  fixAddress = () => {
+    const { history } = this.props;
+    const curPath = history.entries[history.index].pathname;
+    const address = curPath.replace('/', '');
+
+    this.setState({ address, realAddress: address });
+  };
+
+  addressChanged = e => {
+    this.setState({
+      address: e.target.value.trim(),
+      changed: true
+    });
+  };
+
+  addressKeyup = async e => {
+    if (e.keyCode === 13) {
+      const { address, changed } = this.state;
+      const { history } = this.props;
+
+      if (!changed) return;
+
+      const a = addressParser(address);
+
+      if (a.type === 'filter') {
+        const { path } = a;
+        history.push(path);
+        return;
+      }
+
+      if (a.type === 'post') {
+        const { author, permlink, path } = a;
+        const content = await getContent(author, permlink);
+
+        if (content.id) {
+          history.push(path);
+          return;
+        }
+      }
+
+      if (a.type === 'author') {
+        const { author, path } = a;
+        const account = await getAccount(author);
+
+        if (account) {
+          history.push(path);
+          return;
+        }
+      }
+    }
+
+    if (e.keyCode === 27) {
+      const { realAddress } = this.state;
+
+      this.setState({ address: realAddress });
+    }
+  };
+
+  render() {
+    const { address } = this.state;
+
+    return (
+      <div className="address">
+        <span className="protocol">esteem://</span>
+        <input
+          className="url"
+          value={address}
+          onChange={this.addressChanged}
+          onKeyUp={this.addressKeyup}
+        />
+      </div>
+    );
+  }
+}
+
+Address.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+    entries: PropTypes.array.isRequired,
+    index: PropTypes.number.isRequired
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  }).isRequired
 };
 
 class NavBar extends Component {
@@ -153,7 +265,6 @@ class NavBar extends Component {
       canGoBack = checkPathForBack(history.entries[history.index - 1].pathname);
     }
 
-    const curPath = history.entries[history.index].pathname;
     const canGoForward = !!history.entries[history.index + 1];
 
     const backClassName = `back ${!canGoBack ? 'disabled' : ''}`;
@@ -215,10 +326,7 @@ class NavBar extends Component {
             <div className="pre-add-on">
               <Mi icon="search" />
             </div>
-            <div className="address">
-              <span className="protocol">esteem://</span>
-              <span className="url">{curPath.replace('/', '')}</span>
-            </div>
+            <Address {...this.props} />
             {favoriteFn ? (
               <LoginRequired {...this.props}>
                 <a
