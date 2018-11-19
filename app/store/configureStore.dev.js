@@ -1,8 +1,8 @@
-import {createStore, applyMiddleware, compose} from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import createHistory from 'history/createMemoryHistory';
-import {routerMiddleware, routerActions} from 'react-router-redux';
-import {createLogger} from 'redux-logger';
+import { routerMiddleware, routerActions } from 'react-router-redux';
+import { createLogger } from 'redux-logger';
 import rootReducer from '../reducers';
 import * as entriesActions from '../actions/entries';
 import * as trendingTagsActions from '../actions/trending-tags';
@@ -12,6 +12,7 @@ import * as activeAccountActions from '../actions/active-account';
 import * as dynamicPropsActions from '../actions/dynamic-props';
 import * as visitingProfileActions from '../actions/visiting-account';
 import * as visitingEntryActions from '../actions/visiting-entry';
+import * as searchResultsActions from '../actions/search-results';
 
 const history = createHistory();
 
@@ -48,6 +49,7 @@ const configureStore = (initialState = {}) => {
     ...dynamicPropsActions,
     ...visitingProfileActions,
     ...visitingEntryActions,
+    ...searchResultsActions,
     ...routerActions
   };
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
@@ -77,4 +79,4 @@ const configureStore = (initialState = {}) => {
   return store;
 };
 
-export default {configureStore, history};
+export default { configureStore, history };

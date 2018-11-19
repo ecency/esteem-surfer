@@ -23,9 +23,9 @@ import TagLink from './helpers/TagLink';
 import EntryLink from './helpers/EntryLink';
 import LinearProgress from './common/LinearProgress';
 
-import { search } from '../backend/esteem-client';
 import entryBodySummary from '../utils/entry-body-summary';
 import catchEntryImage from '../utils/catch-entry-image';
+
 
 class SearchListItem extends PureComponent {
   render() {
@@ -43,7 +43,7 @@ class SearchListItem extends PureComponent {
           >
             <div className="author-part">
               <div className="author-avatar">
-                <UserAvatar user={entry.author} size="small" />
+                <UserAvatar user={entry.author} size="small"/>
               </div>
               <div className="author">
                 {entry.author}{' '}
@@ -102,7 +102,7 @@ class SearchListItem extends PureComponent {
 
           <div className="item-controls">
             <a className="total-payout">
-              {'$ '} <FormattedNumber value={entry.payout.toFixed(2)} />
+              {'$ '} <FormattedNumber value={entry.payout.toFixed(2)}/>
             </a>
             <a className="voters">
               <i className="mi">people</i>
@@ -140,18 +140,13 @@ class Search extends PureComponent {
     const { q } = match.params;
 
     this.state = {
-      loading: false,
       q,
-      sort: 'popularity',
-      hits: 0,
-      scrollId: null,
-      hasMore: true,
-      results: []
+      sort: 'popularity'
     };
   }
 
   componentDidMount() {
-    this.fetch();
+    // this.fetch();
 
     const el = document.querySelector('#app-content');
     if (el) {
@@ -162,35 +157,18 @@ class Search extends PureComponent {
     }
   }
 
-  fetch = () => {
-    const { q, sort, scrollId, results } = this.state;
+  fetch = (q, sort, more = false) => {
+    const { q, sort } = this.state;
 
-    this.setState({ loading: true });
+    const { actions } = this.props;
 
-    return search(q, sort, scrollId)
-      .then(resp => {
-        const { data: respData } = resp;
-        const { scroll_id: newScrollId, results: newResults, hits } = respData;
-
-        this.setState({
-          scrollId: newScrollId,
-          results: [...results, ...newResults],
-          hits,
-          hasMore: newResults.length >= 20
-        });
-        return resp;
-      })
-      .catch(() => {
-        message.error('A server error has occurred');
-      })
-      .finally(() => {
-        this.setState({ loading: false });
-      });
+    actions.fetchSearchResults(q, sort, more);
   };
 
   detectScroll() {
-    const { hasMore } = this.state;
-    if (!hasMore) {
+    const { searchResults } = this.props;
+    const { hasMore, loading } = searchResults;
+    if (!hasMore || loading) {
       return;
     }
     if (
@@ -202,22 +180,29 @@ class Search extends PureComponent {
   }
 
   bottomReached() {
-    this.fetch();
+    this.fetch(true);
   }
 
   refresh = () => {
-    this.setState({ results: [], scrollId: null, hits: 0 }, () => {
-      this.fetch();
-    });
+    const { actions } = this.props;
+    actions.invalidateSearchResults();
+
+    this.fetch();
   };
 
   sortChanged = sort => {
-    this.setState({ sort });
-    this.refresh();
+    this.setState({ sort }, () => {
+      this.refresh();
+    });
+
+
   };
 
   render() {
-    const { results, sort, loading, hits, q } = this.state;
+
+    const { searchResults } = this.props;
+    const { results, sort, loading, hits, q } = searchResults;
+
 
     return (
       <div className="wrapper">
@@ -235,11 +220,11 @@ class Search extends PureComponent {
               <div className="result-count">
                 <FormattedMessage
                   id="search.n-results-for-q"
-                  values={{ n: <FormattedNumber value={hits} />, q }}
+                  values={{ n: <FormattedNumber value={hits}/>, q }}
                 />
               </div>
               <div className="search-options">
-                <FormattedMessage id="search.sort-by" />{' '}
+                <FormattedMessage id="search.sort-by"/>{' '}
                 <Select
                   value={sort}
                   disabled={loading}
@@ -247,13 +232,13 @@ class Search extends PureComponent {
                   onChange={this.sortChanged}
                 >
                   <Select.Option value="popularity">
-                    <FormattedMessage id="search.sort-popularity" />
+                    <FormattedMessage id="search.sort-popularity"/>
                   </Select.Option>
                   <Select.Option value="relevance">
-                    <FormattedMessage id="search.sort-relevance" />
+                    <FormattedMessage id="search.sort-relevance"/>
                   </Select.Option>
                   <Select.Option value="newest">
-                    <FormattedMessage id="search.sort-newest" />
+                    <FormattedMessage id="search.sort-newest"/>
                   </Select.Option>
                 </Select>
               </div>
@@ -261,10 +246,10 @@ class Search extends PureComponent {
           )}
 
           {results.map(d => (
-            <SearchListItem {...this.props} key={d.id} result={d} />
+            <SearchListItem {...this.props} key={d.id} result={d}/>
           ))}
 
-          {loading && <LinearProgress />}
+          {loading && <LinearProgress/>}
         </div>
         <AppFooter {...this.props} />
         <DeepLinkHandler {...this.props} />
@@ -276,9 +261,14 @@ class Search extends PureComponent {
 Search.defaultProps = {};
 
 Search.propTypes = {
+  actions: PropTypes.shape({
+    fetchSearchResults: PropTypes.func.isRequired,
+    invalidateSearchResults: PropTypes.func.isRequired
+  }).isRequired,
   match: PropTypes.instanceOf(Object).isRequired,
   history: PropTypes.instanceOf(Object).isRequired,
-  location: PropTypes.instanceOf(Object).isRequired
+  location: PropTypes.instanceOf(Object).isRequired,
+  searchResults: PropTypes.instanceOf(Object).isRequired
 };
 
 export default Search;
