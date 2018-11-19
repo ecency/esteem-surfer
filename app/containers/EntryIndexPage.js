@@ -24,6 +24,8 @@ import { setVisitingAccount } from '../actions/visiting-account';
 
 import {setVisitingEntry} from '../actions/visiting-entry';
 
+import { fetchSearchResults, invalidateSearchResults } from '../actions/search-results';
+
 const mapStateToProps = state => ({
   global: state.global,
   entries: state.entries,
@@ -61,7 +63,8 @@ const mapDispatchToProps = dispatch => ({
     ),
     ...bindActionCreators({ logIn, logOut, updateActiveAccount }, dispatch),
     ...bindActionCreators({ setVisitingAccount }, dispatch),
-    ...bindActionCreators({ setVisitingEntry }, dispatch)
+    ...bindActionCreators({ setVisitingEntry }, dispatch),
+    ...bindActionCreators({ fetchSearchResults, invalidateSearchResults }, dispatch)
   }
 });
 

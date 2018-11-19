@@ -18,6 +18,8 @@ import { logIn, logOut, updateActiveAccount } from '../actions/active-account';
 
 import { setVisitingEntry } from '../actions/visiting-entry';
 
+import { fetchSearchResults, invalidateSearchResults } from '../actions/search-results';
+
 const mapStateToProps = state => ({
   global: state.global,
   trendingTags: state.trendingTags,
@@ -48,7 +50,8 @@ const mapDispatchToProps = dispatch => ({
       dispatch
     ),
     ...bindActionCreators({ logIn, logOut, updateActiveAccount }, dispatch),
-    ...bindActionCreators({ setVisitingEntry }, dispatch)
+    ...bindActionCreators({ setVisitingEntry }, dispatch),
+    ...bindActionCreators({ fetchSearchResults, invalidateSearchResults }, dispatch)
   }
 });
 

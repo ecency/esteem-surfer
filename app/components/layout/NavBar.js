@@ -17,6 +17,7 @@ import LoginRequired from '../helpers/LoginRequired';
 
 import addressParser from '../../utils/address-parser';
 import { getContent, getAccount } from '../../backend/steem-client';
+import { fetchSearchResults } from '../../actions/search-results';
 
 export const checkPathForBack = path => {
   if (!path) {
@@ -99,7 +100,11 @@ class Address extends Component {
         }
       }
 
-      history.push(`/search/${address.replace(/\//g, ' ')}`);
+      const q = address.replace(/\//g, ' ');
+      const { actions } = this.props;
+      actions.invalidateSearchResults();
+      actions.fetchSearchResults(q, 'popularity');
+      history.push(`/search/${q}`);
     }
 
     if (e.keyCode === 27) {
@@ -308,26 +313,26 @@ class NavBar extends Component {
               onClick={() => this.goBack()}
               role="none"
             >
-              <Mi icon="arrow_back" />
+              <Mi icon="arrow_back"/>
             </a>
             <a
               className={forwardClassName}
               onClick={() => this.goForward()}
               role="none"
             >
-              <Mi icon="arrow_forward" />
+              <Mi icon="arrow_forward"/>
             </a>
             <a
               className={reloadClassName}
               onClick={() => this.refresh()}
               role="none"
             >
-              <Mi icon="refresh" />
+              <Mi icon="refresh"/>
             </a>
           </div>
           <div className="address-bar">
             <div className="pre-add-on">
-              <Mi icon="search" />
+              <Mi icon="search"/>
             </div>
             <Address {...this.props} />
             {favoriteFn ? (
@@ -388,7 +393,7 @@ class NavBar extends Component {
                 }}
                 role="none"
               >
-                <Mi icon="brightness_medium" />
+                <Mi icon="brightness_medium"/>
               </a>
             </Tooltip>
             <Tooltip
@@ -403,7 +408,7 @@ class NavBar extends Component {
                 }}
                 role="none"
               >
-                <Mi icon="settings" />
+                <Mi icon="settings"/>
               </a>
             </Tooltip>
           </div>
@@ -421,7 +426,7 @@ class NavBar extends Component {
                     this.showLoginModal();
                   }}
                 >
-                  <Mi icon="account_circle" />
+                  <Mi icon="account_circle"/>
                 </a>
               </Tooltip>
             )}
@@ -443,7 +448,7 @@ class NavBar extends Component {
                   className="user-menu-trigger"
                   onClick={this.toggleMenu}
                 >
-                  <UserAvatar user={activeAccount.username} size="normal" />
+                  <UserAvatar user={activeAccount.username} size="normal"/>
                 </a>
               </Fragment>
             )}
@@ -456,7 +461,7 @@ class NavBar extends Component {
                 visible={menuVisible}
                 width="200px"
               >
-                <UserMenu {...this.props} closeFn={this.toggleMenu} />
+                <UserMenu {...this.props} closeFn={this.toggleMenu}/>
               </Drawer>
             )}
           </div>
@@ -466,7 +471,7 @@ class NavBar extends Component {
           onCancel={this.onSettingsModalCancel}
           footer={false}
           width="600px"
-          title={<FormattedMessage id="settings.title" />}
+          title={<FormattedMessage id="settings.title"/>}
           destroyOnClose
           centered
         >
@@ -482,7 +487,7 @@ class NavBar extends Component {
           destroyOnClose
           centered
         >
-          <Login {...this.props} onSuccess={this.onLoginSuccess} />
+          <Login {...this.props} onSuccess={this.onLoginSuccess}/>
         </Modal>
       </div>
     );
@@ -503,7 +508,8 @@ NavBar.defaultProps = {
 
 NavBar.propTypes = {
   actions: PropTypes.shape({
-    changeTheme: PropTypes.func.isRequired
+    changeTheme: PropTypes.func.isRequired,
+    fetchSearchResults: PropTypes.func.isRequired
   }).isRequired,
   global: PropTypes.shape({
     selectedFilter: PropTypes.string.isRequired

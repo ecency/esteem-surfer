@@ -146,7 +146,7 @@ class Search extends PureComponent {
   }
 
   componentDidMount() {
-    // this.fetch();
+
 
     const el = document.querySelector('#app-content');
     if (el) {
@@ -157,12 +157,11 @@ class Search extends PureComponent {
     }
   }
 
-  fetch = (q, sort, more = false) => {
-    const { q, sort } = this.state;
+  fetch = (newSort = null, more = false) => {
+    const { actions, searchResults } = this.props;
+    const { q, sort } = searchResults;
 
-    const { actions } = this.props;
-
-    actions.fetchSearchResults(q, sort, more);
+    actions.fetchSearchResults(q, (newSort || sort), more);
   };
 
   detectScroll() {
@@ -180,7 +179,7 @@ class Search extends PureComponent {
   }
 
   bottomReached() {
-    this.fetch(true);
+    this.fetch(null, true);
   }
 
   refresh = () => {
@@ -191,11 +190,9 @@ class Search extends PureComponent {
   };
 
   sortChanged = sort => {
-    this.setState({ sort }, () => {
-      this.refresh();
-    });
-
-
+    const { actions } = this.props;
+    actions.invalidateSearchResults();
+    this.fetch(sort);
   };
 
   render() {
