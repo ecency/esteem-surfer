@@ -261,6 +261,13 @@
     "favoriteRemove": "Removed from favorites",
     "wallet": "My Wallet"
   },
+  "search": {
+    "n-results-for-q": "{n} results for {q}",
+    "sort-by": "Sort by",
+    "sort-popularity": "Popularity",
+    "sort-relevance": "Relevance",
+    "sort-newest": "Date"
+  },
   "updater": {
     "new-version-available": "New version available",
     "update": "Update",

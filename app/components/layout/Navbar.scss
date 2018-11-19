@@ -182,6 +182,11 @@
           &:focus {
             outline: none;
           }
+
+          &::placeholder {
+            color: $silver;
+            padding-left: 10px;
+          }
         }
       }
     }

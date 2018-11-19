@@ -59,7 +59,7 @@ class Address extends Component {
 
   addressChanged = e => {
     this.setState({
-      address: e.target.value.trim(),
+      address: e.target.value,
       changed: true
     });
   };
@@ -98,6 +98,8 @@ class Address extends Component {
           return;
         }
       }
+
+      history.push(`/search/${address.replace(/\//g, ' ')}`);
     }
 
     if (e.keyCode === 27) {
@@ -118,6 +120,7 @@ class Address extends Component {
           value={address}
           onChange={this.addressChanged}
           onKeyUp={this.addressKeyup}
+          placeholder="Enter url or search query"
         />
       </div>
     );

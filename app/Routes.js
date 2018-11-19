@@ -8,10 +8,18 @@ import EntryIndexPage from './containers/EntryIndexPage';
 import AccountPage from './containers/AccountPage';
 import ComposePage from './containers/ComposePage';
 import EntryPage from './containers/EntryPage';
+import SearchPage from './containers/SearchPage';
 
 export default () => (
   <App>
     <Switch>
+      <Route
+        exact
+        path="/search/:q"
+        component={props => (
+          <SearchPage timestamp={new Date().toString()} {...props} />
+        )}
+      />
       <Route
         exact
         path="/new"

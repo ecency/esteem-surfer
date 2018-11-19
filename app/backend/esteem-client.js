@@ -1,5 +1,20 @@
 import axios from 'axios';
-import { BACKEND_URL } from '../config';
+import { BACKEND_URL, SEARCH_API_URL, SEARCH_API_TOKEN } from '../config';
+
+export const search = (q, sort, scrollId) =>
+  axios.post(
+    SEARCH_API_URL,
+    {
+      q,
+      sort,
+      scroll_id: scrollId
+    },
+    {
+      headers: {
+        Authorization: SEARCH_API_TOKEN
+      }
+    }
+  );
 
 export const getCurrencyRate = cur =>
   axios
