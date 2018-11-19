@@ -145,6 +145,7 @@ class Search extends PureComponent {
       sort: 'popularity',
       hits: 0,
       scrollId: null,
+      hasMore: true,
       results: []
     };
   }
@@ -174,7 +175,8 @@ class Search extends PureComponent {
         this.setState({
           scrollId: newScrollId,
           results: [...results, ...newResults],
-          hits
+          hits,
+          hasMore: newResults.length >= 20
         });
         return resp;
       })
@@ -187,6 +189,10 @@ class Search extends PureComponent {
   };
 
   detectScroll() {
+    const { hasMore } = this.state;
+    if (!hasMore) {
+      return;
+    }
     if (
       this.scrollEl.scrollTop + this.scrollEl.offsetHeight + 100 >=
       this.scrollEl.scrollHeight
