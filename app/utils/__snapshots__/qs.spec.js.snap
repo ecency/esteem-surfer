@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Query string parser (1) should parse 1`] = `
+Object {
+  "m": "ipsum dolor sit",
+  "q": "lorem",
+}
+`;
+
+exports[`Query string parser (2) should parse 1`] = `
+Object {
+  "created": "2018",
+  "q": "türkçe karakterler ve boşluk",
+}
+`;

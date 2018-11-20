@@ -1,44 +1,93 @@
+import { Record, Map, OrderedMap } from 'immutable';
+import { LOCATION_CHANGE } from 'react-router-redux';
 import {
   FETCH_BEGIN,
   FETCH_OK,
   FETCH_ERROR,
-  INVALIDATE
+  RESET_ERROR,
+  INVALIDATE,
+  makeGroupKeyForResults
 } from '../actions/search-results';
 
-const defaultState = {
+import qsParse from '../utils/qs';
+
+export const ResultGroupRecord = Record({
+  results: OrderedMap({}),
+  err: null,
   loading: false,
-  q: '*',
-  sort: 'popularity',
-  hits: 0,
-  scrollId: null,
   hasMore: true,
-  results: []
-};
+  hits: 0,
+  scrollId: null
+});
+
+const defaultState = Map();
 
 export default function searchResults(state = defaultState, action) {
   switch (action.type) {
+    case LOCATION_CHANGE: {
+      const { pathname: path } = action.payload;
+      const { search } = action.payload;
+
+      const qs = qsParse(search);
+      const { q, sort = 'popularity' } = qs;
+      const groupKey = makeGroupKeyForResults(q, sort);
+
+      if (path.startsWith('/search') && q) {
+        if (state.get(groupKey) === undefined) {
+          return state.set(groupKey, new ResultGroupRecord());
+        }
+      }
+
+      return state;
+    }
     case FETCH_BEGIN: {
-      const { q, sort } = action.payload;
-      return Object.assign({}, state, { loading: true, q, sort });
+      const groupKey = action.payload.group;
+
+      return state
+        .setIn([groupKey, 'err'], null)
+        .setIn([groupKey, 'loading'], true);
     }
     case FETCH_OK: {
-      const { data, q, sort } = action.payload;
-      const { scroll_id: newScrollId, results: newResults, hits } = data;
-
-      return Object.assign({}, state, {
-        scrollId: newScrollId,
-        results: [...state.results, ...newResults],
+      const {
+        group: groupKey,
+        data: newEntries,
         hits,
-        hasMore: newResults.length >= 20,
-        loading:false,
-        q,
-        sort
+        hasMore,
+        scrollId
+      } = action.payload;
+
+      let newState = state
+        .setIn([groupKey, 'err'], null)
+        .setIn([groupKey, 'loading'], false)
+        .setIn([groupKey, 'hits'], hits)
+        .setIn([groupKey, 'hasMore'], hasMore)
+        .setIn([groupKey, 'scrollId'], scrollId);
+
+      newEntries.forEach(entry => {
+        if (!newState.hasIn([groupKey, 'results', `${entry.id}`])) {
+          newState = newState.setIn(
+            [groupKey, 'results', `${entry.id}`],
+            entry
+          );
+        }
       });
+
+      return newState;
     }
-    case FETCH_ERROR:
-      break;
-    case INVALIDATE:
-      return Object.assign({}, state, { results: [], scrollId: null, hits: 0 });
+    case FETCH_ERROR: {
+      const groupKey = action.payload.group;
+      return state
+        .setIn([groupKey, 'err'], action.payload.error)
+        .setIn([groupKey, 'loading'], false);
+    }
+    case RESET_ERROR: {
+      const groupKey = action.payload.group;
+      return state.setIn([groupKey, 'err'], null);
+    }
+    case INVALIDATE: {
+      const groupKey = action.payload.group;
+      return state.set(groupKey, new ResultGroupRecord());
+    }
     default:
       return state;
   }

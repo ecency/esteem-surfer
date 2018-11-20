@@ -18,6 +18,8 @@ import LoginRequired from '../helpers/LoginRequired';
 import addressParser from '../../utils/address-parser';
 import { getContent, getAccount } from '../../backend/steem-client';
 
+import qsParse from '../../utils/qs';
+
 export const checkPathForBack = path => {
   if (!path) {
     return false;
@@ -106,10 +108,7 @@ class Address extends Component {
 
       const q = address.replace(/\//g, ' ');
 
-      const { actions } = this.props;
-      actions.invalidateSearchResults();
-      actions.fetchSearchResults(q, 'popularity');
-      history.push(`/search`);
+      history.push(`/search?q=${encodeURIComponent(q)}&sort=popularity`);
     }
 
     if (e.keyCode === 27) {
@@ -128,10 +127,9 @@ class Address extends Component {
       return;
     }
 
-    const { actions, history } = this.props;
-    actions.invalidateSearchResults();
-    actions.fetchSearchResults(q, 'popularity');
-    history.push(`/search`);
+    const { history } = this.props;
+
+    history.push(`/search?q=${encodeURIComponent(q)}&sort=popularity`);
   };
 
   toggle = () => {
@@ -153,12 +151,17 @@ class Address extends Component {
   };
 
   render() {
-    const { match, location, intl } = this.props;
+    const { location, intl } = this.props;
 
     const { address, addressType, inSearchPage } = this.state;
     const styles = !inSearchPage ? { cursor: 'pointer' } : {};
 
-    const q = location.pathname.startsWith('/search') ? match.params.q : null;
+    let q = '';
+    if (location.pathname.startsWith('/search')) {
+      const { search } = location;
+      const qs = qsParse(search);
+      ({ q } = qs);
+    }
 
     return (
       <Fragment>
@@ -214,11 +217,6 @@ Address.propTypes = {
   }).isRequired,
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired
-  }).isRequired,
-  match: PropTypes.instanceOf(Object).isRequired,
-  actions: PropTypes.shape({
-    fetchSearchResults: PropTypes.func.isRequired,
-    invalidateSearchResults: PropTypes.func.isRequired
   }).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };
@@ -585,8 +583,7 @@ NavBar.defaultProps = {
 
 NavBar.propTypes = {
   actions: PropTypes.shape({
-    changeTheme: PropTypes.func.isRequired,
-    fetchSearchResults: PropTypes.func.isRequired
+    changeTheme: PropTypes.func.isRequired
   }).isRequired,
   global: PropTypes.shape({
     selectedFilter: PropTypes.string.isRequired

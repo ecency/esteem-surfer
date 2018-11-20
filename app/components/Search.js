@@ -27,6 +27,9 @@ import entryBodySummary from '../utils/entry-body-summary';
 import catchEntryImage from '../utils/catch-entry-image';
 import ScrollReplace from './helpers/ScrollReplace';
 
+import qsParse from '../utils/qs';
+
+import { makeGroupKeyForResults } from '../actions/search-results';
 
 class SearchListItem extends PureComponent {
   render() {
@@ -44,7 +47,7 @@ class SearchListItem extends PureComponent {
           >
             <div className="author-part">
               <div className="author-avatar">
-                <UserAvatar user={entry.author} size="small"/>
+                <UserAvatar user={entry.author} size="small" />
               </div>
               <div className="author">
                 {entry.author}{' '}
@@ -103,7 +106,7 @@ class SearchListItem extends PureComponent {
 
           <div className="item-controls">
             <a className="total-payout">
-              {'$ '} <FormattedNumber value={entry.payout.toFixed(2)}/>
+              {'$ '} <FormattedNumber value={entry.payout.toFixed(2)} />
             </a>
             <a className="voters">
               <i className="mi">people</i>
@@ -134,8 +137,19 @@ SearchListItem.propTypes = {
 };
 
 class Search extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    const { location } = this.props;
+    const { search } = location;
+    const qs = qsParse(search);
+    const { q, sort = 'popularity' } = qs;
+
+    this.state = { q, sort };
+  }
 
   componentDidMount() {
+    this.fetch();
 
     const el = document.querySelector('#app-content');
     if (el) {
@@ -146,19 +160,48 @@ class Search extends PureComponent {
     }
   }
 
-  fetch = (newSort = null, more = false) => {
-    const { actions, searchResults } = this.props;
-    const { q, sort } = searchResults;
+  componentDidUpdate() {
+    const data = this.getData();
+    const err = data.get('err');
+    if (err) {
+      message.error('A server error occurred');
+      const { actions } = this.props;
+      const { q, sort } = this.state;
+      actions.resetSearchError(q, sort);
+    }
+  }
 
-    actions.fetchSearchResults(q, (newSort || sort), more);
+  getData = () => {
+    const { q, sort } = this.state;
+    const groupKey = makeGroupKeyForResults(q, sort);
+
+    const { searchResults } = this.props;
+    return searchResults.get(groupKey);
+  };
+
+  fetch = (more = false) => {
+    const data = this.getData();
+    const loading = data.get('loading');
+
+    if (loading) {
+      return;
+    }
+
+    const { q, sort } = this.state;
+    const { actions } = this.props;
+
+    actions.fetchSearchResults(q, sort, more);
   };
 
   detectScroll() {
-    const { searchResults } = this.props;
-    const { hasMore, loading } = searchResults;
+    const data = this.getData();
+    const loading = data.get('loading');
+    const hasMore = data.get('hasMore');
+
     if (!hasMore || loading) {
       return;
     }
+
     if (
       this.scrollEl.scrollTop + this.scrollEl.offsetHeight + 100 >=
       this.scrollEl.scrollHeight
@@ -168,27 +211,31 @@ class Search extends PureComponent {
   }
 
   bottomReached() {
-    this.fetch(null, true);
+    this.fetch(true);
   }
 
   refresh = () => {
     const { actions } = this.props;
-    actions.invalidateSearchResults();
+    const { q, sort } = this.state;
 
-    this.fetch();
+    actions.invalidateSearchResults(q, sort);
+    actions.fetchSearchResults(q, sort);
   };
 
   sortChanged = sort => {
-    const { actions } = this.props;
-    actions.invalidateSearchResults();
-    this.fetch(sort);
+    const { history } = this.props;
+    const { q } = this.state;
+
+    history.push(`/search?q=${encodeURIComponent(q)}&sort=${sort}`);
   };
 
   render() {
+    const { q, sort } = this.state;
 
-    const { searchResults } = this.props;
-    const { results, sort, loading, hits, q } = searchResults;
-
+    const data = this.getData();
+    const results = data.get('results');
+    const loading = data.get('loading');
+    const hits = data.get('hits');
 
     return (
       <div className="wrapper">
@@ -206,11 +253,11 @@ class Search extends PureComponent {
               <div className="result-count">
                 <FormattedMessage
                   id="search.n-results-for-q"
-                  values={{ n: <FormattedNumber value={hits}/>, q }}
+                  values={{ n: <FormattedNumber value={hits} />, q }}
                 />
               </div>
               <div className="search-options">
-                <FormattedMessage id="search.sort-by"/>{' '}
+                <FormattedMessage id="search.sort-by" />{' '}
                 <Select
                   value={sort}
                   disabled={loading}
@@ -218,24 +265,24 @@ class Search extends PureComponent {
                   onChange={this.sortChanged}
                 >
                   <Select.Option value="popularity">
-                    <FormattedMessage id="search.sort-popularity"/>
+                    <FormattedMessage id="search.sort-popularity" />
                   </Select.Option>
                   <Select.Option value="relevance">
-                    <FormattedMessage id="search.sort-relevance"/>
+                    <FormattedMessage id="search.sort-relevance" />
                   </Select.Option>
                   <Select.Option value="newest">
-                    <FormattedMessage id="search.sort-newest"/>
+                    <FormattedMessage id="search.sort-newest" />
                   </Select.Option>
                 </Select>
               </div>
             </div>
           )}
 
-          {results.map(d => (
-            <SearchListItem {...this.props} key={d.id} result={d}/>
+          {results.valueSeq().map(d => (
+            <SearchListItem {...this.props} key={d.id} result={d} />
           ))}
 
-          {loading && <LinearProgress/>}
+          {loading && <LinearProgress />}
         </div>
         <AppFooter {...this.props} />
         <ScrollReplace {...this.props} selector="#app-content" />
@@ -250,7 +297,8 @@ Search.defaultProps = {};
 Search.propTypes = {
   actions: PropTypes.shape({
     fetchSearchResults: PropTypes.func.isRequired,
-    invalidateSearchResults: PropTypes.func.isRequired
+    invalidateSearchResults: PropTypes.func.isRequired,
+    resetSearchError: PropTypes.func.isRequired
   }).isRequired,
   match: PropTypes.instanceOf(Object).isRequired,
   history: PropTypes.instanceOf(Object).isRequired,

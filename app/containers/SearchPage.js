@@ -2,9 +2,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Search from '../components/Search';
 
-import {
-  updateEntry
-} from '../actions/entries';
+import { updateEntry } from '../actions/entries';
 
 import {
   changeTheme,
@@ -23,7 +21,11 @@ import { setVisitingAccount } from '../actions/visiting-account';
 
 import { setVisitingEntry } from '../actions/visiting-entry';
 
-import { fetchSearchResults, invalidateSearchResults } from '../actions/search-results';
+import {
+  fetchSearchResults,
+  invalidateSearchResults,
+  resetSearchError
+} from '../actions/search-results';
 
 const mapStateToProps = state => ({
   global: state.global,
@@ -35,10 +37,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   actions: {
-    ...bindActionCreators(
-      { updateEntry },
-      dispatch
-    ),
+    ...bindActionCreators({ updateEntry }, dispatch),
     ...bindActionCreators(
       {
         changeTheme,
@@ -61,7 +60,10 @@ const mapDispatchToProps = dispatch => ({
     ...bindActionCreators({ logIn, logOut, updateActiveAccount }, dispatch),
     ...bindActionCreators({ setVisitingEntry }, dispatch),
     ...bindActionCreators({ setVisitingAccount }, dispatch),
-    ...bindActionCreators({ fetchSearchResults, invalidateSearchResults }, dispatch)
+    ...bindActionCreators(
+      { fetchSearchResults, invalidateSearchResults, resetSearchError },
+      dispatch
+    )
   }
 });
 
