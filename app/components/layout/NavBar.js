@@ -16,7 +16,10 @@ import UserMenu from '../dialogs/UserMenu';
 import LoginRequired from '../helpers/LoginRequired';
 
 import addressParser from '../../utils/address-parser';
+
 import { getContent, getAccount } from '../../backend/steem-client';
+
+import { searchSort } from '../../constants/defaults';
 
 import qsParse from '../../utils/qs';
 
@@ -108,7 +111,7 @@ class Address extends Component {
 
       const q = address.replace(/\//g, ' ');
 
-      history.push(`/search?q=${encodeURIComponent(q)}&sort=popularity`);
+      history.push(`/search?q=${encodeURIComponent(q)}&sort=${searchSort}`);
     }
 
     if (e.keyCode === 27) {
@@ -129,7 +132,7 @@ class Address extends Component {
 
     const { history } = this.props;
 
-    history.push(`/search?q=${encodeURIComponent(q)}&sort=popularity`);
+    history.push(`/search?q=${encodeURIComponent(q)}&sort=${searchSort}`);
   };
 
   toggle = () => {

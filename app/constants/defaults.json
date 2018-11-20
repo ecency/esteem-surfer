@@ -11,5 +11,6 @@
   "pushNotify": 1,
   "server": "https://api.steemit.com",
   "minPinCode": 4,
-  "maxPinCodeTry": 5
+  "maxPinCodeTry": 5,
+  "searchSort": "popularity"
 }

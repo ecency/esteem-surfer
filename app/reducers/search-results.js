@@ -9,6 +9,8 @@ import {
   makeGroupKeyForResults
 } from '../actions/search-results';
 
+import { searchSort } from '../constants/defaults';
+
 import qsParse from '../utils/qs';
 
 export const ResultGroupRecord = Record({
@@ -29,7 +31,7 @@ export default function searchResults(state = defaultState, action) {
       const { search } = action.payload;
 
       const qs = qsParse(search);
-      const { q, sort = 'popularity' } = qs;
+      const { q, sort = searchSort } = qs;
       const groupKey = makeGroupKeyForResults(q, sort);
 
       if (path.startsWith('/search') && q) {

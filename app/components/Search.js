@@ -31,6 +31,8 @@ import qsParse from '../utils/qs';
 
 import { makeGroupKeyForResults } from '../actions/search-results';
 
+import { searchSort } from '../constants/defaults';
+
 class SearchListItem extends PureComponent {
   render() {
     const { result: entry } = this.props;
@@ -143,7 +145,7 @@ class Search extends PureComponent {
     const { location } = this.props;
     const { search } = location;
     const qs = qsParse(search);
-    const { q, sort = 'popularity' } = qs;
+    const { q, sort = searchSort } = qs;
 
     this.state = { q, sort };
   }
