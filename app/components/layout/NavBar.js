@@ -17,7 +17,6 @@ import LoginRequired from '../helpers/LoginRequired';
 
 import addressParser from '../../utils/address-parser';
 import { getContent, getAccount } from '../../backend/steem-client';
-import { fetchSearchResults } from '../../actions/search-results';
 
 export const checkPathForBack = path => {
   if (!path) {
@@ -31,10 +30,15 @@ class Address extends Component {
   constructor(props) {
     super(props);
 
+    const { location } = this.props;
+    const inSearchPage = location.pathname.startsWith('/search');
+
     this.state = {
       address: '',
+      addressType: inSearchPage ? 'search' : 'url',
       realAddress: '',
-      changed: false
+      changed: false,
+      inSearchPage
     };
   }
 
@@ -101,6 +105,7 @@ class Address extends Component {
       }
 
       const q = address.replace(/\//g, ' ');
+
       const { actions } = this.props;
       actions.invalidateSearchResults();
       actions.fetchSearchResults(q, 'popularity');
@@ -114,20 +119,85 @@ class Address extends Component {
     }
   };
 
+  searchKeyup = e => {
+    if (e.keyCode !== 13) return;
+
+    const q = document.querySelector('#txt-search').value.trim();
+    if (!q) {
+      document.querySelector('#txt-search').focus();
+      return;
+    }
+
+    const { actions, history } = this.props;
+    actions.invalidateSearchResults();
+    actions.fetchSearchResults(q, 'popularity');
+    history.push(`/search/${q}`);
+  };
+
+  toggle = () => {
+    const { addressType, inSearchPage } = this.state;
+
+    if (inSearchPage) {
+      return;
+    }
+
+    if (addressType === 'url') {
+      this.setState({ addressType: 'search' }, () => {
+        document.querySelector('#txt-search').focus();
+      });
+    }
+
+    if (addressType === 'search') {
+      this.setState({ addressType: 'url' });
+    }
+  };
+
   render() {
-    const { address } = this.state;
+    const { match, location } = this.props;
+
+    const { address, addressType, inSearchPage } = this.state;
+    const styles = !inSearchPage ? { cursor: 'pointer' } : {};
+
+    const q = location.pathname.startsWith('/search') ? match.params.q : null;
 
     return (
-      <div className="address">
-        <span className="protocol">esteem://</span>
-        <input
-          className="url"
-          value={address}
-          onChange={this.addressChanged}
-          onKeyUp={this.addressKeyup}
-          placeholder="Enter url or search query"
-        />
-      </div>
+      <Fragment>
+        <div className="address">
+          <div
+            className="pre-add-on"
+            style={styles}
+            onClick={this.toggle}
+            role="none"
+          >
+            <i className="mi">search</i>
+          </div>
+          {addressType === 'url' && (
+            <Fragment>
+              <span className="protocol">esteem://</span>
+              <input
+                className="url"
+                value={address}
+                onChange={this.addressChanged}
+                onKeyUp={this.addressKeyup}
+                placeholder="Enter url or search query"
+              />
+            </Fragment>
+          )}
+
+          {addressType === 'search' && (
+            <Fragment>
+              <span className="protocol">search://</span>
+              <input
+                className="url"
+                defaultValue={q}
+                id="txt-search"
+                onKeyUp={this.searchKeyup}
+                placeholder="Enter search query"
+              />
+            </Fragment>
+          )}
+        </div>
+      </Fragment>
     );
   }
 }
@@ -140,6 +210,11 @@ Address.propTypes = {
   }).isRequired,
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired
+  }).isRequired,
+  match: PropTypes.instanceOf(Object).isRequired,
+  actions: PropTypes.shape({
+    fetchSearchResults: PropTypes.func.isRequired,
+    invalidateSearchResults: PropTypes.func.isRequired
   }).isRequired
 };
 
@@ -313,27 +388,24 @@ class NavBar extends Component {
               onClick={() => this.goBack()}
               role="none"
             >
-              <Mi icon="arrow_back"/>
+              <Mi icon="arrow_back" />
             </a>
             <a
               className={forwardClassName}
               onClick={() => this.goForward()}
               role="none"
             >
-              <Mi icon="arrow_forward"/>
+              <Mi icon="arrow_forward" />
             </a>
             <a
               className={reloadClassName}
               onClick={() => this.refresh()}
               role="none"
             >
-              <Mi icon="refresh"/>
+              <Mi icon="refresh" />
             </a>
           </div>
           <div className="address-bar">
-            <div className="pre-add-on">
-              <Mi icon="search"/>
-            </div>
             <Address {...this.props} />
             {favoriteFn ? (
               <LoginRequired {...this.props}>
@@ -393,7 +465,7 @@ class NavBar extends Component {
                 }}
                 role="none"
               >
-                <Mi icon="brightness_medium"/>
+                <Mi icon="brightness_medium" />
               </a>
             </Tooltip>
             <Tooltip
@@ -408,7 +480,7 @@ class NavBar extends Component {
                 }}
                 role="none"
               >
-                <Mi icon="settings"/>
+                <Mi icon="settings" />
               </a>
             </Tooltip>
           </div>
@@ -426,7 +498,7 @@ class NavBar extends Component {
                     this.showLoginModal();
                   }}
                 >
-                  <Mi icon="account_circle"/>
+                  <Mi icon="account_circle" />
                 </a>
               </Tooltip>
             )}
@@ -448,7 +520,7 @@ class NavBar extends Component {
                   className="user-menu-trigger"
                   onClick={this.toggleMenu}
                 >
-                  <UserAvatar user={activeAccount.username} size="normal"/>
+                  <UserAvatar user={activeAccount.username} size="normal" />
                 </a>
               </Fragment>
             )}
@@ -461,7 +533,7 @@ class NavBar extends Component {
                 visible={menuVisible}
                 width="200px"
               >
-                <UserMenu {...this.props} closeFn={this.toggleMenu}/>
+                <UserMenu {...this.props} closeFn={this.toggleMenu} />
               </Drawer>
             )}
           </div>
@@ -471,7 +543,7 @@ class NavBar extends Component {
           onCancel={this.onSettingsModalCancel}
           footer={false}
           width="600px"
-          title={<FormattedMessage id="settings.title"/>}
+          title={<FormattedMessage id="settings.title" />}
           destroyOnClose
           centered
         >
@@ -487,7 +559,7 @@ class NavBar extends Component {
           destroyOnClose
           centered
         >
-          <Login {...this.props} onSuccess={this.onLoginSuccess}/>
+          <Login {...this.props} onSuccess={this.onLoginSuccess} />
         </Modal>
       </div>
     );
