@@ -259,7 +259,9 @@
     "bookmarkRemove": "Убрать из закладок",
     "favorite": "Добавить в избранное",
     "favoriteRemove": "Убрать из избранного",
-    "wallet": "Мой кошелёк"
+    "wallet": "Мой кошелёк",
+    "address-enter-url": "Enter url",
+    "address-enter-query": "Enter search query"
   },
   "search": {
     "n-results-for-q": "{n} results for {q}",

@@ -153,7 +153,7 @@ class Address extends Component {
   };
 
   render() {
-    const { match, location } = this.props;
+    const { match, location, intl } = this.props;
 
     const { address, addressType, inSearchPage } = this.state;
     const styles = !inSearchPage ? { cursor: 'pointer' } : {};
@@ -179,7 +179,9 @@ class Address extends Component {
                 value={address}
                 onChange={this.addressChanged}
                 onKeyUp={this.addressKeyup}
-                placeholder="Enter url or search query"
+                placeholder={intl.formatMessage({
+                  id: 'navbar.address-enter-url'
+                })}
               />
             </Fragment>
           )}
@@ -192,7 +194,9 @@ class Address extends Component {
                 defaultValue={q}
                 id="txt-search"
                 onKeyUp={this.searchKeyup}
-                placeholder="Enter search query"
+                placeholder={intl.formatMessage({
+                  id: 'navbar.address-enter-query'
+                })}
               />
             </Fragment>
           )}
@@ -215,7 +219,8 @@ Address.propTypes = {
   actions: PropTypes.shape({
     fetchSearchResults: PropTypes.func.isRequired,
     invalidateSearchResults: PropTypes.func.isRequired
-  }).isRequired
+  }).isRequired,
+  intl: PropTypes.instanceOf(Object).isRequired
 };
 
 class NavBar extends Component {
