@@ -25,6 +25,7 @@ import LinearProgress from './common/LinearProgress';
 
 import entryBodySummary from '../utils/entry-body-summary';
 import catchEntryImage from '../utils/catch-entry-image';
+import ScrollReplace from './helpers/ScrollReplace';
 
 
 class SearchListItem extends PureComponent {
@@ -237,6 +238,7 @@ class Search extends PureComponent {
           {loading && <LinearProgress/>}
         </div>
         <AppFooter {...this.props} />
+        <ScrollReplace {...this.props} selector="#app-content" />
         <DeepLinkHandler {...this.props} />
       </div>
     );
