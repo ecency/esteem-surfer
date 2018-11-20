@@ -45,8 +45,8 @@
     "reblogged": "репост {n}"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "Репост",
+    "reblogged": "Репостнуто"
   },
   "settings": {
     "title": "Настройки",
@@ -161,8 +161,8 @@
     "transaction-transfer_to_vesting": "Перевод в Силу",
     "transaction-withdraw_vesting": "Снятие Силы",
     "transaction-fill_order": "Заказ исполнен",
-    "claim-reward-balance": "Claim reward balance",
-    "claim-reward-balance-ok": "Reward balance claimed"
+    "claim-reward-balance": "Зачислить награду на баланс",
+    "claim-reward-balance-ok": "Награда зачислена на баланс"
   },
   "composer": {
     "title-placeholder": "Заголовок",
@@ -200,8 +200,8 @@
     "draft-saved": "Черновик сохранён",
     "publish": "Опубликовать",
     "published": "Пост опубликован",
-    "update": "Update",
-    "updated": "Post Updated"
+    "update": "Обновить",
+    "updated": "Пост обновлён"
   },
   "gallery": {
     "title": "Галерея",
@@ -260,15 +260,15 @@
     "favorite": "Добавить в избранное",
     "favoriteRemove": "Убрать из избранного",
     "wallet": "Мой кошелёк",
-    "address-enter-url": "Enter url",
-    "address-enter-query": "Enter search query"
+    "address-enter-url": "Введите url",
+    "address-enter-query": "Введите поисковой запрос"
   },
   "search": {
-    "n-results-for-q": "{n} results for {q}",
-    "sort-by": "Sort by",
-    "sort-popularity": "Popularity",
-    "sort-relevance": "Relevance",
-    "sort-newest": "Date"
+    "n-results-for-q": "{n} результатов для {q}",
+    "sort-by": "Сортировать по",
+    "sort-popularity": "Популярности",
+    "sort-relevance": "Релевантности",
+    "sort-newest": "Дате"
   },
   "updater": {
     "new-version-available": "Доступна новая версия",
