@@ -15,7 +15,7 @@ export default () => (
     <Switch>
       <Route
         exact
-        path="/search/:q"
+        path="/search"
         component={props => (
           <SearchPage timestamp={new Date().toString()} {...props} />
         )}

@@ -109,7 +109,7 @@ class Address extends Component {
       const { actions } = this.props;
       actions.invalidateSearchResults();
       actions.fetchSearchResults(q, 'popularity');
-      history.push(`/search/${q}`);
+      history.push(`/search`);
     }
 
     if (e.keyCode === 27) {
@@ -131,7 +131,7 @@ class Address extends Component {
     const { actions, history } = this.props;
     actions.invalidateSearchResults();
     actions.fetchSearchResults(q, 'popularity');
-    history.push(`/search/${q}`);
+    history.push(`/search`);
   };
 
   toggle = () => {

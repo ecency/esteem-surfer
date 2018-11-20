@@ -133,21 +133,8 @@ SearchListItem.propTypes = {
 };
 
 class Search extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    const { match } = this.props;
-    const { q } = match.params;
-
-    this.state = {
-      q,
-      sort: 'popularity'
-    };
-  }
 
   componentDidMount() {
-
-
     const el = document.querySelector('#app-content');
     if (el) {
       this.scrollEl = el;
