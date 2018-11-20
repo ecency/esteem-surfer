@@ -135,6 +135,7 @@ SearchListItem.propTypes = {
 class Search extends PureComponent {
 
   componentDidMount() {
+
     const el = document.querySelector('#app-content');
     if (el) {
       this.scrollEl = el;

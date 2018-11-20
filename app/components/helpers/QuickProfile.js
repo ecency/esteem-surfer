@@ -113,7 +113,8 @@ class QuickProfile extends Component {
   };
 
   render() {
-    const { children, username, reputation } = this.props;
+    const { children, username } = this.props;
+    let { reputation } = this.props;
     const {
       visible,
       active,
@@ -123,6 +124,8 @@ class QuickProfile extends Component {
       loadingEntries,
       accountData
     } = this.state;
+
+    if (accountData) ({ reputation } = accountData);
 
     const newChild = React.cloneElement(children, {
       onClick: () => {
@@ -134,19 +137,19 @@ class QuickProfile extends Component {
       follows.followerCount === null ? (
         '--'
       ) : (
-        <FormattedNumber value={follows.followerCount} />
+        <FormattedNumber value={follows.followerCount}/>
       );
     const postCountMsg =
       profile.postCount === null ? (
         '--'
       ) : (
-        <FormattedNumber value={profile.postCount} />
+        <FormattedNumber value={profile.postCount}/>
       );
     const followingMsg =
       follows.followingCount === null ? (
         '--'
       ) : (
-        <FormattedNumber value={follows.followingCount} />
+        <FormattedNumber value={follows.followingCount}/>
       );
 
     return (
@@ -164,14 +167,14 @@ class QuickProfile extends Component {
             <div
               className={`quick-profile-content ${
                 loadingEntries ? 'loading' : ''
-              } `}
+                } `}
             >
               <div className="profile-area">
                 <div className="follow-btn-holder">
-                  <FollowControls {...this.props} targetUsername={username} />
+                  <FollowControls {...this.props} targetUsername={username}/>
                 </div>
                 <div className="profile-avatar">
-                  <UserAvatar user={username} size="large" />
+                  <UserAvatar user={username} size="large"/>
                   <div className="reputation">
                     {authorReputation(reputation)}
                   </div>
@@ -211,9 +214,9 @@ class QuickProfile extends Component {
 
               {loadingEntries && (
                 <Fragment>
-                  <LinearProgress />
+                  <LinearProgress/>
                   <div className="entries">
-                    <EntryListLoadingItem />
+                    <EntryListLoadingItem/>
                   </div>
                 </Fragment>
               )}

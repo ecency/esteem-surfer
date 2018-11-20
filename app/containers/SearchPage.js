@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import Search from '../components/Search';
 
 import {
+  updateEntry
+} from '../actions/entries';
+
+import {
   changeTheme,
   changeListStyle,
   changeCurrency,
@@ -14,6 +18,8 @@ import {
 import { addAccount, addAccountSc, deleteAccount } from '../actions/accounts';
 
 import { logIn, logOut, updateActiveAccount } from '../actions/active-account';
+
+import { setVisitingAccount } from '../actions/visiting-account';
 
 import { setVisitingEntry } from '../actions/visiting-entry';
 
@@ -29,6 +35,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   actions: {
+    ...bindActionCreators(
+      { updateEntry },
+      dispatch
+    ),
     ...bindActionCreators(
       {
         changeTheme,
@@ -50,6 +60,7 @@ const mapDispatchToProps = dispatch => ({
     ),
     ...bindActionCreators({ logIn, logOut, updateActiveAccount }, dispatch),
     ...bindActionCreators({ setVisitingEntry }, dispatch),
+    ...bindActionCreators({ setVisitingAccount }, dispatch),
     ...bindActionCreators({ fetchSearchResults, invalidateSearchResults }, dispatch)
   }
 });
