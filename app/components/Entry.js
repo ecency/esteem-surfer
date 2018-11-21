@@ -61,6 +61,13 @@ import {
   makeJsonMetadataReply
 } from '../utils/posting-helpers';
 
+import writeClipboard from '../helpers/clipboard';
+import {
+  makeSteemitUrl,
+  makeBusyUrl,
+  makeCopyAddress
+} from '../utils/url-share';
+
 import { version } from '../../package';
 
 class ReplyEditor extends Component {
@@ -431,13 +438,26 @@ ReplyList.propTypes = {
 };
 
 class EntryFloatingMenu extends PureComponent {
+  copyClipboard = () => {
+    const { entry } = this.props;
+    const s = makeCopyAddress(
+      entry.title,
+      entry.category,
+      entry.author,
+      entry.permlink
+    );
+    writeClipboard(s);
+  };
+
   render() {
     const { entry } = this.props;
 
-    const steemitUrl = `https://steemit.com/${entry.category}/@${
-      entry.author
-    }/${entry.permlink}`;
-    const busyUrl = `https://busy.org/@${entry.author}/${entry.permlink}`;
+    const steemitUrl = makeSteemitUrl(
+      entry.category,
+      entry.author,
+      entry.permlink
+    );
+    const busyUrl = makeBusyUrl(entry.author, entry.permlink);
 
     return (
       <div className="entry-floating-menu">
@@ -452,6 +472,21 @@ class EntryFloatingMenu extends PureComponent {
               busy
             </a>
           </div>
+        </a>
+        <a
+          className="menu-item copy-btn"
+          onClick={this.copyClipboard}
+          role="none"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+          >
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4l6 6v10c0 1.1-.9 2-2 2H7.99C6.89 23 6 22.1 6 21l.01-14c0-1.1.89-2 1.99-2h7zm-1 7h5.5L14 6.5V12z" />
+          </svg>
         </a>
       </div>
     );

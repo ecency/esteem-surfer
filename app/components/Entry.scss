@@ -538,7 +538,6 @@
       height: 50px;
       justify-content: center;
       margin-bottom: 20px;
-      transition: 0.5s;
       width: 50px;
 
       .mi {
@@ -567,9 +566,13 @@
       font-size: 18px;
       height: 36px;
       justify-content: center;
-      margin: auto;
+      margin: 0 auto 10px auto;
       position: relative;
       width: 36px;
+
+      svg {
+        fill: lighten($steel-grey, 10);
+      }
 
       &.with-sub-menu {
         &:hover {
@@ -580,6 +583,10 @@
 
       &:hover {
         color: $dark-sky-blue;
+
+        svg {
+          fill: $dark-sky-blue;
+        }
 
         @include themify(day) {
           background: $duck-egg-blue;
