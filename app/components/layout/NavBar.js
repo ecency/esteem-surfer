@@ -4,7 +4,7 @@ import React, { Component, Fragment } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { Tooltip, Modal, Drawer } from 'antd';
+import { Tooltip, Modal, Drawer, Icon } from 'antd';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Mi from '../common/Mi';
@@ -43,7 +43,8 @@ class Address extends Component {
       addressType: inSearchPage ? 'search' : 'url',
       realAddress: '',
       changed: false,
-      inSearchPage
+      inSearchPage,
+      inProgress: false
     };
   }
 
@@ -90,10 +91,16 @@ class Address extends Component {
       }
 
       if (a.type === 'post') {
-        const { author, permlink, path } = a;
+        const { author, permlink } = a;
+
+        this.setState({ inProgress: true });
         const content = await getContent(author, permlink);
+        this.setState({ inProgress: false });
 
         if (content.id) {
+          const path = `/${content.category}/@${content.author}/${
+            content.permlink
+          }`;
           history.push(path);
           return;
         }
@@ -101,7 +108,10 @@ class Address extends Component {
 
       if (a.type === 'author') {
         const { author, path } = a;
+
+        this.setState({ inProgress: true });
         const account = await getAccount(author);
+        this.setState({ inProgress: false });
 
         if (account) {
           history.push(path);
@@ -156,7 +166,7 @@ class Address extends Component {
   render() {
     const { location, intl } = this.props;
 
-    const { address, addressType, inSearchPage } = this.state;
+    const { address, addressType, inSearchPage, inProgress } = this.state;
     const styles = !inSearchPage ? { cursor: 'pointer' } : {};
 
     let q = '';
@@ -188,7 +198,13 @@ class Address extends Component {
                 placeholder={intl.formatMessage({
                   id: 'navbar.address-enter-url'
                 })}
+                disabled={inProgress}
               />
+              {inProgress && (
+                <div className="in-progress">
+                  <Icon type="loading" style={{ fontSize: 12 }} spin />
+                </div>
+              )}
             </Fragment>
           )}
 
