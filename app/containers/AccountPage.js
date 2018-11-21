@@ -1,7 +1,11 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Account from '../components/Account';
-import { fetchEntries, invalidateEntries, updateEntry } from '../actions/entries';
+import {
+  fetchEntries,
+  invalidateEntries,
+  updateEntry
+} from '../actions/entries';
 
 import {
   changeTheme,
@@ -18,9 +22,7 @@ import { logIn, logOut, updateActiveAccount } from '../actions/active-account';
 
 import { setVisitingAccount } from '../actions/visiting-account';
 
-import {setVisitingEntry} from '../actions/visiting-entry';
-
-import { fetchSearchResults, invalidateSearchResults } from '../actions/search-results';
+import { setVisitingEntry } from '../actions/visiting-entry';
 
 const mapStateToProps = state => ({
   global: state.global,
@@ -33,7 +35,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   actions: {
-    ...bindActionCreators({ fetchEntries, invalidateEntries, updateEntry }, dispatch),
+    ...bindActionCreators(
+      { fetchEntries, invalidateEntries, updateEntry },
+      dispatch
+    ),
     ...bindActionCreators(
       {
         changeTheme,
@@ -55,8 +60,7 @@ const mapDispatchToProps = dispatch => ({
     ),
     ...bindActionCreators({ logIn, logOut, updateActiveAccount }, dispatch),
     ...bindActionCreators({ setVisitingAccount }, dispatch),
-    ...bindActionCreators({ setVisitingEntry }, dispatch),
-    ...bindActionCreators({ fetchSearchResults, invalidateSearchResults }, dispatch)
+    ...bindActionCreators({ setVisitingEntry }, dispatch)
   }
 });
 
