@@ -430,6 +430,38 @@ ReplyList.propTypes = {
   replies: PropTypes.arrayOf(Object).isRequired
 };
 
+class EntryFloatingMenu extends PureComponent {
+  render() {
+    const { entry } = this.props;
+
+    const steemitUrl = `https://steemit.com/${entry.category}/@${
+      entry.author
+    }/${entry.permlink}`;
+    const busyUrl = `https://busy.org/@${entry.author}/${entry.permlink}`;
+
+    return (
+      <div className="entry-floating-menu">
+        <EntryReblogBtn {...this.props} entry={entry} />
+        <a className="menu-item share-btn">
+          <i className="mi">open_in_new</i>
+          <div className="sub-menu">
+            <a className="sub-menu-item" target="_external" href={steemitUrl}>
+              steemit
+            </a>
+            <a className="sub-menu-item" target="_external" href={busyUrl}>
+              busy
+            </a>
+          </div>
+        </a>
+      </div>
+    );
+  }
+}
+
+EntryFloatingMenu.propTypes = {
+  entry: PropTypes.instanceOf(Object).isRequired
+};
+
 class Entry extends PureComponent {
   constructor(props) {
     super(props);
@@ -910,6 +942,8 @@ class Entry extends PureComponent {
               </QuickProfile>
             </div>
           )}
+
+          <EntryFloatingMenu {...this.props} entry={entry} />
         </Fragment>
       );
     }
@@ -926,10 +960,6 @@ class Entry extends PureComponent {
         />
         <div className="app-content entry-page" id="app-content">
           {content}
-
-          <div className="entry-floating-menu">
-            <EntryReblogBtn {...this.props} entry={entry} />
-          </div>
         </div>
         <AppFooter {...this.props} />
         <ScrollReplace {...this.props} selector="#app-content" />
