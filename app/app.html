@@ -34,6 +34,11 @@
     <script>
       // Custom link handler for external links
       const shell = require('electron').shell;
+
+      window.openInBrowser = (href) => {
+        shell.openExternal(href);
+      };
+
       document.addEventListener('click', function (event) {
 
         // A element can be wrapped with inline element. Look parent element.

@@ -569,6 +569,7 @@
       margin: 0 auto 10px auto;
       position: relative;
       width: 36px;
+      cursor: pointer;
 
       svg {
         fill: lighten($steel-grey, 10);
@@ -582,10 +583,10 @@
       }
 
       &:hover {
-        color: $dark-sky-blue;
+        color: lighten($dark-sky-blue, 4);
 
         svg {
-          fill: $dark-sky-blue;
+          fill: lighten($dark-sky-blue, 4);
         }
 
         @include themify(day) {
@@ -611,6 +612,7 @@
         padding-right: 10px;
         position: absolute;
         z-index: 2;
+        cursor: default;
 
         @include themify(day) {
           background: $duck-egg-blue;
@@ -621,6 +623,10 @@
         }
 
         .sub-menu-item {
+          display: flex;
+          height: 100%;
+          cursor: pointer;
+          align-items: center;
           &:not(:last-child) {
             margin-right: 16px;
           }

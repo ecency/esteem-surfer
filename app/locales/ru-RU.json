@@ -249,7 +249,9 @@
     "bookmarked": "Добавлено в закладки",
     "bookmarkRemoved": "Удалено из закладок",
     "favorited": "Добавлен в избранное",
-    "favoriteRemoved": "Удалён из избранного"
+    "favoriteRemoved": "Удалён из избранного",
+    "copy-clipboard": "Copy top clipboard",
+    "copied-clipboard": "Copied"
   },
   "navbar": {
     "settings": "Настройки",

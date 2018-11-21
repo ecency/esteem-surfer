@@ -249,7 +249,9 @@
     "bookmarked": "Added to bookmarks",
     "bookmarkRemoved": "Removed from bookmarks",
     "favorited": "Added to favorites",
-    "favoriteRemoved": "Removed from favorites"
+    "favoriteRemoved": "Removed from favorites",
+    "copy-clipboard": "Copy top clipboard",
+    "copied-clipboard": "Copied"
   },
   "navbar": {
     "settings": "Settings",
