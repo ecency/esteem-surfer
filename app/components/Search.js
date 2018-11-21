@@ -263,7 +263,7 @@ class Search extends PureComponent {
                 <Select
                   value={sort}
                   disabled={loading}
-                  style={{ width: 120 }}
+                  style={{ width: 160 }}
                   onChange={this.sortChanged}
                 >
                   <Select.Option value="popularity">
