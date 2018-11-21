@@ -442,7 +442,7 @@ class EntryFloatingMenu extends PureComponent {
     return (
       <div className="entry-floating-menu">
         <EntryReblogBtn {...this.props} entry={entry} />
-        <a className="menu-item share-btn">
+        <a className="menu-item with-sub-menu share-btn">
           <i className="mi">open_in_new</i>
           <div className="sub-menu">
             <a className="sub-menu-item" target="_external" href={steemitUrl}>

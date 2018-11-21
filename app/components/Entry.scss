@@ -553,7 +553,8 @@
         }
 
         @include themify(night) {
-          background: $metallic-blue;
+          background: darken($metallic-blue, 16);
+          color: $powder-blue;
         }
       }
     }
@@ -561,7 +562,7 @@
     .menu-item {
       align-items: center;
       border-radius: 50%;
-      color: $steel-grey;
+      color: lighten($steel-grey, 10);
       display: flex;
       font-size: 18px;
       height: 36px;
@@ -570,24 +571,31 @@
       position: relative;
       width: 36px;
 
+      &.with-sub-menu {
+        &:hover {
+          border-bottom-right-radius: 0;
+          border-top-right-radius: 0;
+        }
+      }
+
       &:hover {
-        border-bottom-right-radius: 0;
-        border-top-right-radius: 0;
         color: $dark-sky-blue;
 
         @include themify(day) {
           background: $duck-egg-blue;
+          color: $dark-sky-blue;
         }
 
         @include themify(night) {
-          background: $metallic-blue;
+          background: darken($metallic-blue, 16);
+          color: $powder-blue;
         }
       }
 
       .sub-menu {
         align-items: center;
-        border-bottom-right-radius: 10px;
-        border-top-right-radius: 10px;
+        border-bottom-right-radius: 25px;
+        border-top-right-radius: 25px;
         display: none;
         font-size: 90%;
         height: 100%;
@@ -602,7 +610,7 @@
         }
 
         @include themify(night) {
-          background: $dark-six;
+          background: darken($metallic-blue, 16);
         }
 
         .sub-menu-item {
