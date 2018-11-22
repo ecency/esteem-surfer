@@ -6,6 +6,7 @@ Object {
     "base": 0.86,
     "fundRecentClaims": "497885072157522967",
     "fundRewardBalance": 834665.854,
+    "quote": 1,
     "steemPerMVests": 495.05469644322403,
   },
   "type": "dynamic-props/FETCHED",

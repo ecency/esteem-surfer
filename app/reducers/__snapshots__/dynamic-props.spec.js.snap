@@ -5,15 +5,17 @@ Object {
   "base": 1,
   "fundRecentClaims": 1,
   "fundRewardBalance": 1,
+  "quote": 1,
   "steemPerMVests": 1,
 }
 `;
 
-exports[`dynamic props reducer should handle TT_FETCH_BEGIN 1`] = `
+exports[`dynamic props reducer should handle FETCHED 1`] = `
 Object {
   "base": 0.86,
   "fundRecentClaims": "497885072157522967",
   "fundRewardBalance": 834665.854,
+  "quote": 1,
   "steemPerMVests": 495.05469644322403,
 }
 `;

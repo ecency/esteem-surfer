@@ -4,8 +4,6 @@ import dynamicProps from './dynamic-props';
 import { FETCHED } from '../actions/dynamic-props';
 
 import deepFreeze from 'deep-freeze';
-import { TT_FETCH_BEGIN } from '../actions/trending-tags';
-import trendingTags from './trending-tags';
 
 describe('dynamic props reducer', () => {
   let state = undefined;
@@ -16,9 +14,10 @@ describe('dynamic props reducer', () => {
     expect(state).toMatchSnapshot();
   });
 
-  it('should handle TT_FETCH_BEGIN', () => {
+  it('should handle FETCHED', () => {
     const stateBefore = {
       base: 1,
+      quote: 1,
       fundRecentClaims: 1,
       fundRewardBalance: 1,
       steemPerMVests: 1
@@ -30,6 +29,7 @@ describe('dynamic props reducer', () => {
       type: FETCHED,
       payload: {
         base: 0.86,
+        quote: 1,
         fundRecentClaims: '497885072157522967',
         fundRewardBalance: 834665.854,
         steemPerMVests: 495.05469644322403
