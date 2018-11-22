@@ -2,11 +2,11 @@
 eslint-disable react/no-multi-comp, no-underscore-dangle
 */
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import {message, Modal, Popconfirm, Tooltip} from 'antd';
-import {FormattedMessage, injectIntl, FormattedDate} from 'react-intl';
+import { message, Modal, Popconfirm, Tooltip } from 'antd';
+import { FormattedMessage, injectIntl, FormattedDate } from 'react-intl';
 
 import LinearProgress from './common/LinearProgress';
 import UserAvatar from './elements/UserAvatar';
@@ -15,40 +15,41 @@ import authorReputation from '../utils/author-reputation';
 import catchEntryImage from '../utils/catch-entry-image';
 import entryBodySummary from '../utils/entry-body-summary';
 
-import {getSchedules, removeSchedule, moveSchedule} from '../backend/esteem-client';
-
+import {
+  getSchedules,
+  removeSchedule,
+  moveSchedule
+} from '../backend/esteem-client';
 
 class ScheduleListItem extends Component {
-
   delete = item => {
-    const {activeAccount, onDelete, intl} = this.props;
+    const { activeAccount, onDelete, intl } = this.props;
     removeSchedule(item._id, activeAccount.username)
       .then(resp => {
-        message.info(intl.formatMessage({id: 'schedules.deleted'}));
+        message.info(intl.formatMessage({ id: 'schedules.deleted' }));
         onDelete(item);
         return resp;
       })
       .catch(() => {
-        message.error(intl.formatMessage({id: 'g.server-error'}));
+        message.error(intl.formatMessage({ id: 'g.server-error' }));
       });
   };
 
   move = item => {
-    const {activeAccount, onDelete, intl} = this.props;
+    const { activeAccount, onDelete, intl } = this.props;
     moveSchedule(item._id, activeAccount.username)
       .then(resp => {
-        message.info(intl.formatMessage({id: 'schedules.moved'}));
+        message.info(intl.formatMessage({ id: 'schedules.moved' }));
         onDelete(item);
         return resp;
       })
       .catch(() => {
-        message.error(intl.formatMessage({id: 'g.server-error'}));
+        message.error(intl.formatMessage({ id: 'g.server-error' }));
       });
   };
 
   render() {
-
-    const {author, reputation, item, intl} = this.props;
+    const { author, reputation, item, intl } = this.props;
     const tags = item.tags ? item.tags.split(' ') : [];
     const tag = tags[0] || '';
     const img = catchEntryImage(item) || 'img/noimage.png';
@@ -59,19 +60,22 @@ class ScheduleListItem extends Component {
         <div className="item-header">
           <div className="author-part">
             <div className="author-avatar">
-              <UserAvatar user={author} size="small"/>
+              <UserAvatar user={author} size="small" />
             </div>
             <div className="author">
-              {author}{' '}
-              <span className="author-reputation">{reputation}</span>
+              {author} <span className="author-reputation">{reputation}</span>
             </div>
           </div>
-          <a className="category">
-            {tag}
-          </a>
+          <a className="category">{tag}</a>
           <span className="date">
-            <FormattedDate value={item.schedule} year="numeric" month="numeric" day="numeric" hour="numeric"
-                           minute="numeric"/>
+            <FormattedDate
+              value={item.schedule}
+              year="numeric"
+              month="numeric"
+              day="numeric"
+              hour="numeric"
+              minute="numeric"
+            />
           </span>
         </div>
         <div className="item-body">
@@ -90,15 +94,15 @@ class ScheduleListItem extends Component {
           </div>
           <div className="item-controls">
             <Popconfirm
-              title={intl.formatMessage({id: 'g.are-you-sure'})}
-              okText={intl.formatMessage({id: 'g.ok'})}
-              cancelText={intl.formatMessage({id: 'g.cancel'})}
+              title={intl.formatMessage({ id: 'g.are-you-sure' })}
+              okText={intl.formatMessage({ id: 'g.ok' })}
+              cancelText={intl.formatMessage({ id: 'g.cancel' })}
               onConfirm={() => {
                 this.delete(item);
               }}
             >
               <Tooltip
-                title={intl.formatMessage({id: 'g.delete'})}
+                title={intl.formatMessage({ id: 'g.delete' })}
                 mouseEnterDelay={2}
               >
                 <span className="btn-delete">
@@ -107,18 +111,23 @@ class ScheduleListItem extends Component {
               </Tooltip>
             </Popconfirm>
             <Tooltip
-              title={intl.formatMessage({id: 'schedules.move'})}
-              mouseEnterDelay={2}>
-              <span className="btn-edit" role="none" onClick={() => {
-                this.move(item)
-              }}>
+              title={intl.formatMessage({ id: 'schedules.move' })}
+              mouseEnterDelay={2}
+            >
+              <span
+                className="btn-edit"
+                role="none"
+                onClick={() => {
+                  this.move(item);
+                }}
+              >
                 <i className="mi">insert_drive_file</i>
               </span>
             </Tooltip>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -146,68 +155,82 @@ class Schedules extends Component {
   }
 
   loadData = () => {
-    this.setState({data: [], loading: true});
+    this.setState({ data: [], loading: true });
 
-    const {activeAccount, intl} = this.props;
+    const { activeAccount, intl } = this.props;
 
     return getSchedules(activeAccount.username)
       .then(data => {
-        this.setState({data});
+        this.setState({ data: this.sortData(data) });
         return data;
       })
       .catch(() => {
-        message.error(intl.formatMessage({id: 'g.server-error'}));
+        message.error(intl.formatMessage({ id: 'g.server-error' }));
       })
       .finally(() => {
-        this.setState({loading: false});
+        this.setState({ loading: false });
       });
   };
 
+  sortData = data =>
+    data.sort((a, b) => {
+      const dateA = new Date(a.schedule).getTime();
+      const dateB = new Date(b.schedule).getTime();
 
-  onDelete = (item) => {
-    const {data} = this.state;
+      return dateB > dateA ? 1 : -1;
+    });
+
+  onDelete = item => {
+    const { data } = this.state;
     const newData = [...data].filter(x => x._id !== item._id);
-    this.setState({data: newData});
+    this.setState({ data: newData });
   };
 
   render() {
-    const {activeAccount} = this.props;
-    const {data, loading} = this.state;
+    const { activeAccount } = this.props;
+    const { data, loading } = this.state;
 
-    const {username: author} = activeAccount;
-    const {accountData} = activeAccount;
+    const { username: author } = activeAccount;
+    const { accountData } = activeAccount;
     const reputation = authorReputation(accountData.reputation);
 
     return (
       <div className="schedules-dialog-content">
-        {loading && <LinearProgress/>}
+        {loading && <LinearProgress />}
         {data.length > 0 && (
           <div className="schedules-list">
             <div className="schedules-list-body">
               {data.map(item => (
-                <ScheduleListItem {...this.props} onDelete={this.onDelete} author={author} reputation={reputation}
-                                  item={item}/>
+                <ScheduleListItem
+                  {...this.props}
+                  onDelete={this.onDelete}
+                  author={author}
+                  reputation={reputation}
+                  item={item}
+                />
               ))}
             </div>
           </div>
         )}
-        {!loading && data.length < 1 &&
-        <div className="schedules-list"><FormattedMessage id="schedules.empty-list"/></div>}
+        {!loading &&
+          data.length < 1 && (
+            <div className="schedules-list">
+              <FormattedMessage id="schedules.empty-list" />
+            </div>
+          )}
       </div>
-    )
+    );
   }
 }
-
 
 Schedules.propTypes = {
   activeAccount: PropTypes.instanceOf(Object).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
-
 class SchedulesModal extends Component {
   render() {
-    const {visible, onCancel, intl} = this.props;
+    const { visible, onCancel, intl } = this.props;
 
     return (
       <Modal
@@ -217,7 +240,7 @@ class SchedulesModal extends Component {
         onCancel={onCancel}
         destroyOnClose
         centered
-        title={intl.formatMessage({id: 'schedules.title'})}
+        title={intl.formatMessage({ id: 'schedules.title' })}
       >
         <Schedules {...this.props} />
       </Modal>
@@ -232,4 +255,3 @@ SchedulesModal.propTypes = {
 };
 
 export default injectIntl(SchedulesModal);
-
