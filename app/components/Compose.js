@@ -114,7 +114,7 @@ class Compose extends Component {
       },
       draftId: null,
       reward: 'default',
-      upvote: true,
+      upvote: getItem('compose-upvote', true),
       posting: false,
       permProcessing: false,
       scheduleModalVisible: false,
@@ -603,8 +603,11 @@ class Compose extends Component {
                   <Checkbox
                     checked={upvote}
                     onChange={e => {
+                      const { checked } = e.target;
+                      setItem('compose-upvote', checked);
+
                       this.setState({
-                        upvote: e.target.checked
+                        upvote: checked
                       });
                     }}
                   >
