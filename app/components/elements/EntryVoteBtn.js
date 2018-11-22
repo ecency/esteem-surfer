@@ -111,7 +111,7 @@ class EntryVoteBtn extends Component {
 
   estimate = w => {
     const { activeAccount, dynamicProps } = this.props;
-    const { fundRecentClaims, fundRewardBalance, base } = dynamicProps;
+    const { fundRecentClaims, fundRewardBalance, base, quote } = dynamicProps;
     const { accountData: account } = activeAccount;
 
     const votingPower = account.voting_power;
@@ -121,7 +121,7 @@ class EntryVoteBtn extends Component {
     const votePct = w * 100;
 
     const rShares = vestsToRshares(totalVests, votingPower, votePct);
-    return (rShares / fundRecentClaims) * fundRewardBalance * base;
+    return (rShares / fundRecentClaims) * fundRewardBalance * (base / quote);
   };
 
   sliderChanged = sliderVal => {
