@@ -499,7 +499,7 @@ class EntryFloatingMenu extends PureComponent {
       <div className="entry-floating-menu">
         <EntryReblogBtn {...this.props} entry={entry} />
 
-        <a className="menu-item with-sub-menu share-btn">
+        <div className="menu-item with-sub-menu share-btn">
           <i className="mi">open_in_new</i>
           <div className="sub-menu">
             <a className="sub-menu-item" target="_external" href={steemitUrl}>
@@ -509,7 +509,7 @@ class EntryFloatingMenu extends PureComponent {
               busy
             </a>
           </div>
-        </a>
+        </div>
         <Tooltip
           title={intl.formatMessage({ id: 'entry.copy-clipboard' })}
           mouseEnterDelay={1}
