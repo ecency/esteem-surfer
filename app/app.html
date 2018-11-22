@@ -4,10 +4,15 @@
     <meta charset="utf-8">
     <title>eSteem Surfer</title>
     <script>
-      // Theme switcher
-      window.setTheme = function (theme) {
 
-        const css = window.atob(window[theme + 'Theme'].split('data:;base64,')[1]);
+      const b64ToUtf8 = (str) => {
+        str = str.replace(/\s/g, '');
+        return decodeURIComponent(escape(window.atob(str)));
+      };
+
+      // Theme switcher
+      window.setTheme = function(theme) {
+        const css = b64ToUtf8(window[theme + 'Theme'].split('data:;base64,')[1]);
 
         const oldStyleEl = document.querySelector('#theme-stylesheet');
 
@@ -39,7 +44,7 @@
         shell.openExternal(href);
       };
 
-      document.addEventListener('click', function (event) {
+      document.addEventListener('click', function(event) {
 
         // A element can be wrapped with inline element. Look parent element.
         let el = event.target.tagName === 'A' ? event.target : event.target.parentNode;
@@ -70,7 +75,7 @@
           }
 
           const author = el.getAttribute('data-author');
-          const ev = new CustomEvent('md-author-clicked', {detail: {author}});
+          const ev = new CustomEvent('md-author-clicked', { detail: { author } });
           window.dispatchEvent(ev);
           return false;
         }
@@ -85,7 +90,7 @@
           let category = el.getAttribute('data-tag');
           let author = el.getAttribute('data-author');
           let permlink = el.getAttribute('data-permlink');
-          const ev = new CustomEvent('md-post-clicked', {detail: {category, author, permlink}});
+          const ev = new CustomEvent('md-post-clicked', { detail: { category, author, permlink } });
           window.dispatchEvent(ev);
           return false;
         }
@@ -100,20 +105,20 @@
 
           let tag = el.getAttribute('data-tag');
 
-          const ev = new CustomEvent('md-tag-clicked', {detail: {tag}});
+          const ev = new CustomEvent('md-tag-clicked', { detail: { tag } });
           window.dispatchEvent(ev);
           return false;
         }
       });
 
-      window.protocolHandler = function (url) {
-        const ev = new CustomEvent('deep-link', {detail: {url}});
+      window.protocolHandler = function(url) {
+        const ev = new CustomEvent('deep-link', { detail: { url } });
         window.dispatchEvent(ev);
-      }
+      };
     </script>
 
     <script>
-      (function () {
+      (function() {
         if (!process.env.HOT) {
           const link = document.createElement('link');
           link.rel = 'stylesheet';
