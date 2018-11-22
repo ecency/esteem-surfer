@@ -34,7 +34,7 @@ class Gallery extends Component {
 
     return getImages(activeAccount.username)
       .then(data => {
-        this.setState({ data });
+        this.setState({ data: this.sortData(data) });
         return data;
       })
       .catch(() => {
@@ -44,6 +44,14 @@ class Gallery extends Component {
         this.setState({ loading: false });
       });
   };
+
+  sortData = data =>
+    data.sort((a, b) => {
+      const dateA = new Date(a.created).getTime();
+      const dateB = new Date(b.created).getTime();
+
+      return dateB > dateA ? 1 : -1;
+    });
 
   itemClicked = item => {
     const { intl, onSelect } = this.props;
@@ -69,7 +77,7 @@ class Gallery extends Component {
       .then(resp => {
         const { data } = this.state;
         const newData = [...data].filter(x => x._id !== item._id);
-        this.setState({ data: newData });
+        this.setState({ data: this.sortData(newData) });
         return resp;
       })
       .catch(() => {});
