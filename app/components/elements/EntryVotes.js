@@ -147,7 +147,7 @@ class EntryVotes extends Component {
         align: 'center',
         width: 150,
         sorter: (a, b) => a.percent - b.percent,
-        render: text => `% ${text.toFixed(1)}`
+        render: text => `${text.toFixed(1)}%`
       },
       {
         title: <FormattedMessage id="entry-votes.time" />,

@@ -20,6 +20,7 @@ class EntryVotesContent extends Component {
         </span>
         <span key="percent" className="percent">
           {v.percent.toFixed(1)}
+          {'%'}
         </span>
         <span key="reward" className="reward">
           <FormattedCurrency {...this.props} value={v.reward} />

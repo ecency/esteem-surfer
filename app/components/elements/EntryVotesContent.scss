@@ -25,10 +25,6 @@
       @include themify(night) {
         color: $steel-grey;
       }
-
-      &:before {
-        content: '%';
-      }
     }
 
     .reward {
