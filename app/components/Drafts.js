@@ -142,7 +142,7 @@ class Drafts extends Component {
 
     return getDrafts(activeAccount.username)
       .then(data => {
-        this.setState({ data });
+        this.setState({ data: this.sortData(data) });
         return data;
       })
       .catch(() => {
@@ -153,10 +153,18 @@ class Drafts extends Component {
       });
   };
 
+  sortData = data =>
+    data.sort((a, b) => {
+      const dateA = new Date(a.created).getTime();
+      const dateB = new Date(b.created).getTime();
+
+      return dateB > dateA ? 1 : -1;
+    });
+
   onDelete = item => {
     const { data } = this.state;
     const newData = [...data].filter(x => x._id !== item._id);
-    this.setState({ data: newData });
+    this.setState({ data: this.sortData(newData) });
   };
 
   render() {
