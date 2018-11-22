@@ -715,7 +715,7 @@ export class SectionWallet extends Component {
 
     if (account) {
 
-      const { steemPerMVests, base } = dynamicProps;
+      const { steemPerMVests, base, quote } = dynamicProps;
       const { currency, currencyRate } = global;
 
       const rewardSteemBalance = parseToken(account.reward_steem_balance);
@@ -735,8 +735,8 @@ export class SectionWallet extends Component {
       const savingBalanceSbd = parseToken(account.savings_sbd_balance);
 
       const estimatedValue = (
-        (vestsToSp(vestingShares, steemPerMVests) * base) +
-        (balance * base) +
+        (vestsToSp(vestingShares, steemPerMVests) * (base / quote)) +
+        (balance * (base / quote)) +
         sbdBalance
       ) * currencyRate;
 

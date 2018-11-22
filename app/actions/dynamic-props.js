@@ -25,10 +25,11 @@ export const fetchGlobalProps = () => async dispatch => {
       parseToken(globalDynamic.total_vesting_shares)) *
     1e6;
   const base = parseToken(feedHistory.current_median_history.base);
+  const quote = parseToken(feedHistory.current_median_history.quote);
   const fundRecentClaims = rewardFund.recent_claims;
   const fundRewardBalance = parseToken(rewardFund.reward_balance);
 
-  dispatch(fetched(steemPerMVests, base, fundRecentClaims, fundRewardBalance));
+  dispatch(fetched(steemPerMVests, base, quote, fundRecentClaims, fundRewardBalance));
 };
 
 /* action creators */
@@ -36,9 +37,10 @@ export const fetchGlobalProps = () => async dispatch => {
 export const fetched = (
   steemPerMVests,
   base,
+  quote,
   fundRecentClaims,
   fundRewardBalance
 ) => ({
   type: FETCHED,
-  payload: { steemPerMVests, base, fundRecentClaims, fundRewardBalance }
+  payload: { steemPerMVests, base, quote, fundRecentClaims, fundRewardBalance }
 });
