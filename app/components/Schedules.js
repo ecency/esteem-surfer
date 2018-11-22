@@ -183,7 +183,7 @@ class Schedules extends Component {
   onDelete = item => {
     const { data } = this.state;
     const newData = [...data].filter(x => x._id !== item._id);
-    this.setState({ data: newData });
+    this.setState({ data: this.sortData(newData) });
   };
 
   render() {
