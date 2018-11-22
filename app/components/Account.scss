@@ -288,11 +288,18 @@
           justify-content: space-between;
           max-width: 750px;
           .top-posts-list-item {
-            border: 1px solid $white-four;
             border-radius: 8px;
             cursor: pointer;
             height: 120px;
             width: 130px;
+
+            @include themify(day) {
+              border: 1px solid $white-four;
+            }
+
+            @include themify(night) {
+              border: solid 1px $dark-two;
+            }
 
             .post-image {
               border-top-left-radius: 8px;
