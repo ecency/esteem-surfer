@@ -35,7 +35,7 @@ class EntryListItem extends Component {
     const img =
       (global.listStyle === 'grid'
         ? catchEntryImage(entry, 600, 500)
-        : catchEntryImage(entry, 130, 80)) || 'img/noimage.png';
+        : catchEntryImage(entry, 200, 120)) || 'img/noimage.png';
 
     const reputation = authorReputation(entry.author_reputation);
     const created = parseDate(entry.created);
