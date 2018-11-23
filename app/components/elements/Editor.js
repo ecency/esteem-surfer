@@ -52,7 +52,7 @@ class Editor extends Component {
 
   componentDidMount() {
     // this.syncTimer = setInterval(this.syncHeights, 1000);
-    this.widgetTimer = setInterval(this.setWidgets, 2000);
+    // this.widgetTimer = setInterval(this.setWidgets, 2000);
 
     const { syncWith } = this.props;
     if (syncWith) {
@@ -119,18 +119,11 @@ class Editor extends Component {
     this.setState({ body: value }, () => this.changed());
 
 
-    /*
-    this.editorWidgets.forEach((w) => {
-      editor.removeLineWidget(w);
-    });
+    if (this.widgetTimer) {
+      clearTimeout(this.widgetTimer);
+    }
 
-    this.editorWidgets = [];
-
-    const msg = document.createElement("div");
-    msg.style.height = '300px';
-    msg.innerHTML = 'aaaaa';
-    this.editorWidgets.push(editor.addLineWidget(0, msg, {coverGutter: false, noHScroll: true}));
-    */
+    this.widgetTimer = setTimeout(this.setWidgets, 500);
   };
 
   getEditorInstance = () => this.editorInstance;
@@ -371,14 +364,21 @@ class Editor extends Component {
   };
 
   setWidgets = () => {
+    console.log('wiw');
     const editor = this.getEditorInstance();
 
     if (!editor) {
       return;
     }
 
+    /*
     const matches = editor.getValue().match(/<img[^>]+>(<\/img>)?|<iframe.+?<\/iframe>|!\[.*\)|(https?:(.*))/g);
     if (!matches) {
+
+      this.editorWidgets.forEach((w) => {
+        editor.removeLineWidget(w);
+      });
+
       return;
     }
 
@@ -388,6 +388,9 @@ class Editor extends Component {
     }
 
     this.strWidgetCache = c;
+
+    */
+
 
     const widgetMap = [];
 
