@@ -1,9 +1,45 @@
 @import '../../style/mixins';
 @import '../../style/colors';
-
 @import '~codemirror/lib/codemirror.css';
 
+.compare-helper {
+  position: absolute;
+  left: -9000px;
+  top: 0;
+
+  img,
+  iframe {
+    max-width: 100%;
+  }
+}
+
 .editor-form {
+  .editor-widget {
+    margin: auto;
+    width: 99%;
+    background-color: #ebebeb;
+    overflow: hidden;
+    opacity: 0.2;
+    border-radius: 8px;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .iframe-embed {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+
+      .mi {
+        font-size: 60px;
+      }
+    }
+  }
+
   /* CodeMirror */
   .react-codemirror2 {
     height: 100%;
@@ -11,13 +47,13 @@
 
   .CodeMirror {
     font-family: 'Lucida Console', Monaco, monospace;
-    font-size: 14px;
+    font-size: 15px;
     height: 100%;
-    line-height: 1.6em;
+    line-height: 1.5em;
   }
 
   .CodeMirror-lines {
-    // padding-bottom: 100px;
+    padding-bottom: 700px;
   }
 
   /* CodeMirror day theme */

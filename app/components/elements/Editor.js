@@ -13,10 +13,20 @@ import GalleryModal from '../Gallery';
 
 import { uploadImage, addMyImage } from '../../backend/esteem-client';
 
+import markDown2Html from '../../utils/markdown-2-html';
+
 require('codemirror/addon/display/placeholder.js');
 require('codemirror/addon/search/searchcursor.js');
 require('codemirror/addon/search/match-highlighter.js');
 require('codemirror/mode/markdown/markdown');
+
+
+function calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
+
+  const ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
+
+  return { width: srcWidth * ratio, height: srcHeight * ratio };
+}
 
 class Editor extends Component {
   constructor(props) {
@@ -35,10 +45,14 @@ class Editor extends Component {
 
     this.ignoreEditorScroll = false;
     this.ignoreSyncElScroll = false;
+
+    this.editorWidgets = [];
+    this.strWidgetCache = '';
   }
 
   componentDidMount() {
-    this.syncTimer = setInterval(this.syncHeights, 1000);
+    // this.syncTimer = setInterval(this.syncHeights, 1000);
+    this.widgetTimer = setInterval(this.setWidgets, 2000);
 
     const { syncWith } = this.props;
     if (syncWith) {
@@ -53,7 +67,8 @@ class Editor extends Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.syncTimer);
+    // clearInterval(this.syncTimer);
+    clearInterval(this.widgetTimer);
 
     const { syncWith } = this.props;
     if (syncWith) {
@@ -102,6 +117,20 @@ class Editor extends Component {
 
   bodyChanged = (editor, data, value) => {
     this.setState({ body: value }, () => this.changed());
+
+
+    /*
+    this.editorWidgets.forEach((w) => {
+      editor.removeLineWidget(w);
+    });
+
+    this.editorWidgets = [];
+
+    const msg = document.createElement("div");
+    msg.style.height = '300px';
+    msg.innerHTML = 'aaaaa';
+    this.editorWidgets.push(editor.addLineWidget(0, msg, {coverGutter: false, noHScroll: true}));
+    */
   };
 
   getEditorInstance = () => this.editorInstance;
@@ -341,6 +370,145 @@ class Editor extends Component {
     this.editorInstance.scrollTo(0, e.target.scrollTop);
   };
 
+  setWidgets = () => {
+    const editor = this.getEditorInstance();
+
+    if (!editor) {
+      return;
+    }
+
+    const matches = editor.getValue().match(/<img[^>]+>(<\/img>)?|<iframe.+?<\/iframe>|!\[.*\)|(https?:(.*))/g);
+    if (!matches) {
+      return;
+    }
+
+    const c = matches.map(i => i).join('-');
+    if (this.strWidgetCache === c) {
+      return;
+    }
+
+    this.strWidgetCache = c;
+
+    const widgetMap = [];
+
+    const info = editor.getScrollInfo();
+    const editorWidth = info.width;
+
+    this.editorWidgets.forEach((w) => {
+      editor.removeLineWidget(w);
+    });
+
+    this.editorWidgets = [];
+
+    const lines = [...Array(editor.lineCount()).keys()];
+
+    lines.forEach((line) => {
+
+      // console.log(editor.getLineHandle(line))
+
+      const lineVal = editor.getLine(line);
+      const lineValLow = lineVal.toLowerCase();
+
+      // If line doesnt contains img or iframe dont waste time
+      if (!lineValLow.match(/<img[^>]+>(<\/img>)?|<iframe.+?<\/iframe>|!\[.*\)|(https?:(.*))/g)) {
+        return;
+      }
+
+      const lineHtml = markDown2Html(lineVal);
+
+      // Real wrapper
+      const wrapper = document.createElement('div');
+      wrapper.classList.add('compare-helper');
+
+
+      wrapper.innerHTML = `<div class="markdown-view">${lineHtml}</div>`;
+      wrapper.style.width = `${editorWidth}px`;
+      document.body.appendChild(wrapper);
+
+      // Plain wrapper for comparing after deleted img and iframes
+      const plainWrapper = document.createElement('div');
+      plainWrapper.classList.add('compare-helper');
+
+      plainWrapper.innerHTML = `<div class="markdown-view">${lineHtml}</div>`;
+      plainWrapper.style.width = `${editorWidth}px`;
+
+      plainWrapper.querySelectorAll('img,iframe,.markdown-video-link').forEach(el => {
+        el.parentNode.removeChild(el);
+      });
+
+      document.body.appendChild(plainWrapper);
+
+      const diff = wrapper.clientHeight - plainWrapper.clientHeight;
+
+
+      document.body.removeChild(plainWrapper);
+
+      if (diff === 0) {
+        document.body.removeChild(wrapper);
+        return;
+      }
+
+      const elMap = [];
+
+      wrapper.querySelectorAll('img,iframe').forEach(el => {
+        const src = el.getAttribute('src');
+
+
+        const style = window.getComputedStyle(el);
+        const width = parseInt(style.getPropertyValue('width'), 10);
+        const height = parseInt(style.getPropertyValue('height'), 10);
+
+        console.log(src);
+        console.log(`${width} x ${height} `);
+        console.log('--------------');
+
+
+        if (width && height) {
+          elMap.push({
+            type: el.tagName.toLowerCase(),
+            width,
+            height,
+            src
+          });
+        }
+      });
+
+      widgetMap.push({
+        line,
+        diff,
+        elements: elMap
+      });
+    });
+
+
+    widgetMap.forEach((item) => {
+      const { line, diff: height, elements } = item;
+
+      const lineHeight = editor.getLineHandle(line.height);
+
+
+      const wElem = document.createElement('div');
+      wElem.classList.add('editor-widget');
+      wElem.style.height = `${height}px`;
+
+      const inner = elements.map((el) => {
+        if (el.type === 'img') {
+          return `<img src="${el.src}" />`;
+        }
+
+        if (el.type === 'iframe') {
+          return '<div class="iframe-embed"><i class="mi">play_circle_outline</i></div>';
+        }
+        return '';
+      }).join(' ');
+
+      wElem.innerHTML = inner;
+
+      this.editorWidgets.push(editor.addLineWidget(line, wElem, {}));
+
+    });
+  };
+
   syncHeights = () => {
     const { syncWith } = this.props;
     if (!syncWith) {
@@ -433,7 +601,7 @@ class Editor extends Component {
             </div>
           </div>
         </Tooltip>
-        <div className="tool-separator" />
+        <div className="tool-separator"/>
         <Tooltip
           title={intl.formatMessage({ id: 'composer.tool-code' })}
           mouseEnterDelay={2}
@@ -450,7 +618,7 @@ class Editor extends Component {
             <i className="mi tool-icon">format_quote</i>
           </div>
         </Tooltip>
-        <div className="tool-separator" />
+        <div className="tool-separator"/>
         <Tooltip
           title={intl.formatMessage({ id: 'composer.tool-ol' })}
           mouseEnterDelay={2}
@@ -467,7 +635,7 @@ class Editor extends Component {
             <i className="mi tool-icon">format_list_bulleted</i>
           </div>
         </Tooltip>
-        <div className="tool-separator" />
+        <div className="tool-separator"/>
         <Tooltip
           title={intl.formatMessage({ id: 'composer.tool-link' })}
           mouseEnterDelay={2}
@@ -497,7 +665,7 @@ class Editor extends Component {
                   document.getElementById('file-input').click();
                 }}
               >
-                <FormattedMessage id="composer.tool-upload" />
+                <FormattedMessage id="composer.tool-upload"/>
               </div>
               {activeAccount && (
                 <div
@@ -508,7 +676,7 @@ class Editor extends Component {
                     this.setState({ galleryModalVisible: true });
                   }}
                 >
-                  <FormattedMessage id="composer.tool-gallery" />
+                  <FormattedMessage id="composer.tool-gallery"/>
                 </div>
               )}
             </div>
@@ -532,8 +700,8 @@ class Editor extends Component {
       tabSize: 2,
       dragDrop: true,
       placeholder: bodyPlaceHolder,
-      highlightSelectionMatches: { wordsOnly: true },
-      cursorScrollMargin: 400
+      highlightSelectionMatches: { wordsOnly: true }
+      // cursorScrollMargin: 400
     };
 
     return (
