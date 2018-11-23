@@ -261,8 +261,7 @@ class Compose extends Component {
   };
 
   editorChanged = newValues => {
-    if (this.changeTimer !== null) {
-      this.changeTimer = null;
+    if (this.changeTimer) {
       clearTimeout(this.changeTimer);
     }
 
@@ -280,8 +279,6 @@ class Compose extends Component {
         tags: newValues.tags,
         body: newValues.body
       });
-
-      this.changeTimer = null;
     }, 300);
   };
 
