@@ -43,7 +43,6 @@ class EntryReblogBtn extends Component {
     const { blog } = activeAccount.accountData;
 
     if (blog.some(e => e.author === author && e.permlink === permlink)) {
-      this.markAsReblogged();
       return true;
     }
 
