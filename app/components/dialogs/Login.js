@@ -183,7 +183,7 @@ class Login extends Component {
                   <UserAvatar user={account.username} size="normal" />{' '}
                   <span className="username">@{account.username}</span>
                   {activeUsername === account.username && (
-                    <i className="mi">check_circle_outline</i>
+                    <div className="check-mark" />
                   )}
                 </div>
               ))}

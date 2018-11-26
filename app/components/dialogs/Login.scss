@@ -51,6 +51,7 @@
         line-height: 16px;
         margin-bottom: 10px;
         padding: 10px;
+        position: relative;
         transition: 0.5s;
 
         @include themify(day) {
@@ -63,7 +64,6 @@
           color: $powder-blue;
         }
 
-        &.active,
         &:hover {
           @include themify(day) {
             background: lighten($dark-sky-blue, 30);
@@ -80,6 +80,16 @@
 
         .username {
           font-weight: 500;
+        }
+
+        .check-mark {
+          background: $dark-sky-blue;
+          border-radius: 50%;
+          height: 5px;
+          left: -14px;
+          position: absolute;
+          top: calc(50% - 2.5px);
+          width: 5px;
         }
       }
     }
