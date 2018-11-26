@@ -53,7 +53,7 @@ import authorReputation from '../utils/author-reputation';
 import formatChainError from '../utils/format-chain-error';
 import { setEntryRead } from '../helpers/storage';
 
-import { makePath as makePathEntry } from './helpers/EntryLink';
+import EntryLink, { makePath as makePathEntry } from './helpers/EntryLink';
 
 import {
   createReplyPermlink,
@@ -870,10 +870,57 @@ class Entry extends PureComponent {
 
       const editable = activeAccount && activeAccount.username === entry.author;
 
+      const isComment = entry.parent_author.trim().length > 0;
+      const hideParentLink = !entry.parent_permlink.startsWith('re-');
+
+      const rootUrl = entry.url.split('#')[0];
+      const [, , rootAuthor, rootPermlink] = rootUrl.split('/');
+
       content = (
         <Fragment>
           <div className="the-entry">
             <div className="entry-header">
+              {isComment && (
+                <div className="comment-entry-header">
+                  <div className="comment-entry-header-title">
+                    {' '}
+                    RE: {entry.root_title}
+                  </div>
+                  <div className="comment-entry-header-info">
+                    <FormattedMessage id="entry.comment-entry-title" />
+                  </div>
+                  <p className="comment-entry-root-title">
+                    {' '}
+                    {entry.root_title}
+                  </p>
+                  <ul className="comment-entry-opts">
+                    <li>
+                      <EntryLink
+                        {...this.props}
+                        author={rootAuthor.replace('@', '')}
+                        permlink={rootPermlink}
+                      >
+                        <a>
+                          <FormattedMessage id="entry.comment-entry-go-root" />
+                        </a>
+                      </EntryLink>
+                    </li>
+                    {!hideParentLink && (
+                      <li>
+                        <EntryLink
+                          {...this.props}
+                          author={entry.parent_author}
+                          permlink={entry.parent_permlink}
+                        >
+                          <a>
+                            <FormattedMessage id="entry.comment-entry-go-parent" />
+                          </a>
+                        </EntryLink>
+                      </li>
+                    )}
+                  </ul>
+                </div>
+              )}
               <h1 className="entry-title user-selectable">{entry.title}</h1>
               <div className="entry-info">
                 <QuickProfile

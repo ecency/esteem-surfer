@@ -41,6 +41,49 @@
       width: 800px;
     }
 
+    .comment-entry-header {
+      border-radius: 10px;
+      padding: 20px;
+
+      @include themify(day) {
+        background-color: $white-three;
+        color: $charcoal-grey;
+      }
+
+      @include themify(night) {
+        background-color: $dark-grey-blue;
+        color: $white-five;
+      }
+
+      .comment-entry-header-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .comment-entry-header-info {
+        font-size: 18px;
+        margin-bottom: 6px;
+      }
+
+      .comment-entry-root-title {
+        font-size: 16px;
+        margin-bottom: 6px;
+      }
+
+      .comment-entry-opts {
+        margin: 10px 0 0 14px;
+        padding: 0;
+        li {
+          margin-bottom: 6px;
+          a {
+            font-size: 16px;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+
     .entry-header {
       margin-bottom: 15px;
 
@@ -562,6 +605,7 @@
       align-items: center;
       border-radius: 50%;
       color: lighten($steel-grey, 10);
+      cursor: pointer;
       display: flex;
       font-size: 18px;
       height: 36px;
@@ -569,7 +613,6 @@
       margin: 0 auto 10px auto;
       position: relative;
       width: 36px;
-      cursor: pointer;
 
       svg {
         fill: lighten($steel-grey, 10);
@@ -604,6 +647,7 @@
         align-items: center;
         border-bottom-right-radius: 25px;
         border-top-right-radius: 25px;
+        cursor: default;
         display: none;
         font-size: 90%;
         height: 100%;
@@ -612,7 +656,6 @@
         padding-right: 10px;
         position: absolute;
         z-index: 2;
-        cursor: default;
 
         @include themify(day) {
           background: $duck-egg-blue;
@@ -623,10 +666,10 @@
         }
 
         .sub-menu-item {
+          align-items: center;
+          cursor: pointer;
           display: flex;
           height: 100%;
-          cursor: pointer;
-          align-items: center;
           &:not(:last-child) {
             margin-right: 16px;
           }
