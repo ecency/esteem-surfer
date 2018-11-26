@@ -111,6 +111,7 @@ class Compose extends Component {
     const title = getItem('compose-title') || '';
     const tags = getItem('compose-tags') || [];
     const body = getItem('compose-body') || '';
+    const upvote = getItem('compose-upvote', false);
 
     this.state = {
       title,
@@ -123,7 +124,7 @@ class Compose extends Component {
       },
       draftId: null,
       reward: 'default',
-      upvote: getItem('compose-upvote', true),
+      upvote,
       posting: false,
       permProcessing: false,
       scheduleModalVisible: false,
@@ -217,6 +218,10 @@ class Compose extends Component {
 
   clear = (preventDraftRedir = false) => {
     const editor = this.editor.current.getWrappedInstance();
+
+    setItem('compose-upvote', false);
+    this.setState({ upvote: false });
+
     editor.clear(() => {
       if (preventDraftRedir) return;
 
