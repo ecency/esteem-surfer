@@ -215,9 +215,11 @@ class Compose extends Component {
     }
   };
 
-  clear = () => {
+  clear = (preventDraftRedir = false) => {
     const editor = this.editor.current.getWrappedInstance();
     editor.clear(() => {
+      if (preventDraftRedir) return;
+
       const { draftId } = this.state;
 
       if (draftId) {
@@ -386,6 +388,16 @@ class Compose extends Component {
     )
       .then(resp => {
         message.success(intl.formatMessage({ id: 'composer.published' }));
+
+        this.clear(true);
+
+        setTimeout(() => {
+          const { history } = this.props;
+          const { username } = activeAccount;
+          const newLoc = makePathEntry(parentPermlink, username, permlink);
+          history.push(newLoc);
+        }, 500);
+
         return resp;
       })
       .catch(err => {
