@@ -13,6 +13,8 @@ import GalleryModal from '../Gallery';
 
 import { uploadImage, addMyImage } from '../../backend/esteem-client';
 
+import { getItem } from '../../helpers/storage';
+
 import markDown2Html from '../../utils/markdown-2-html';
 
 require('codemirror/addon/display/placeholder.js');
@@ -42,8 +44,8 @@ class Editor extends Component {
   }
 
   componentDidMount() {
-    // this.syncTimer = setInterval(this.syncHeights, 1000);
-    // this.widgetTimer = setInterval(this.setWidgets, 2000);
+    this.syncTimer = setInterval(this.syncHeights, 1000);
+    this.widgetTimer = setInterval(this.setWidgets, 1000);
 
     const { syncWith } = this.props;
     if (syncWith) {
@@ -110,15 +112,6 @@ class Editor extends Component {
 
   bodyChanged = (editor, data, value) => {
     this.setState({ body: value }, () => this.changed());
-
-    const { syncWith } = this.props;
-    if (syncWith) {
-      if (this.widgetTimer) {
-        clearTimeout(this.widgetTimer);
-      }
-
-      this.widgetTimer = setTimeout(this.setWidgets, 500);
-    }
   };
 
   getEditorInstance = () => this.editorInstance;
@@ -300,10 +293,11 @@ class Editor extends Component {
   };
 
   onScroll = (editor, data) => {
-    const { syncWith } = this.props;
-    if (!syncWith) {
+    if (!this.syncScrollEnabled()) {
       return;
     }
+
+    const { syncWith } = this.props;
 
     if (this.ignoreSyncElScroll) {
       this.ignoreSyncElScroll = false;
@@ -349,6 +343,10 @@ class Editor extends Component {
   };
 
   onSyncElScroll = e => {
+    if (!this.syncScrollEnabled()) {
+      return;
+    }
+
     if (this.ignoreEditorScroll) {
       this.ignoreEditorScroll = false;
       return;
@@ -362,6 +360,20 @@ class Editor extends Component {
     const editor = this.getEditorInstance();
 
     if (!editor) {
+      return;
+    }
+
+    if (!this.syncScrollEnabled()) {
+      const lines = [...Array(editor.lineCount()).keys()];
+
+      lines.forEach(line => {
+        const lineH = editor.getLineHandle(line);
+
+        // delete
+        if (lineH.widgets) {
+          editor.removeLineWidget(lineH.widgets[0]);
+        }
+      });
       return;
     }
 
@@ -532,6 +544,15 @@ class Editor extends Component {
     editorEl.style.paddingBottom = `${newPad}px`;
 
     this.editorInstance.setSize('100%', '100%');
+  };
+
+  syncScrollEnabled = () => {
+    const { syncWith } = this.props;
+    if (!syncWith) {
+      return;
+    }
+
+    return getItem('compose-sync', false);
   };
 
   render() {
