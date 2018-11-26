@@ -62,7 +62,7 @@ class Editor extends Component {
   }
 
   componentWillUnmount() {
-    // clearInterval(this.syncTimer);
+    clearInterval(this.syncTimer);
     clearInterval(this.widgetTimer);
 
     const { syncWith } = this.props;
@@ -112,6 +112,21 @@ class Editor extends Component {
 
   bodyChanged = (editor, data, value) => {
     this.setState({ body: value }, () => this.changed());
+
+    // If last line editing, scroll snyc element to bottom
+    const { syncWith } = this.props;
+    if (!syncWith) return;
+
+    const lineCount = editor.lineCount();
+    const lineNo = editor.getCursor();
+
+    if (lineCount === lineNo.line + 1) {
+      setTimeout(() => {
+        const s = document.querySelector(syncWith);
+        this.ignoreEditorScroll = true;
+        s.scrollTop = s.scrollHeight;
+      }, 300);
+    }
   };
 
   getEditorInstance = () => this.editorInstance;
@@ -292,23 +307,6 @@ class Editor extends Component {
     files.forEach(file => this.upload(file));
   };
 
-  onScroll = (editor, data) => {
-    if (!this.syncScrollEnabled()) {
-      return;
-    }
-
-    const { syncWith } = this.props;
-
-    if (this.ignoreSyncElScroll) {
-      this.ignoreSyncElScroll = false;
-      return;
-    }
-
-    this.ignoreEditorScroll = true;
-
-    document.querySelector(syncWith).scrollTop = data.top;
-  };
-
   checkFile = filename => {
     const filenameLow = filename.toLowerCase();
     return ['jpg', 'jpeg', 'gif', 'png'].some(el => filenameLow.endsWith(el));
@@ -340,6 +338,23 @@ class Editor extends Component {
     if (activeAccount) {
       addMyImage(activeAccount.username, imageUrl);
     }
+  };
+
+  onScroll = (editor, data) => {
+    if (!this.syncScrollEnabled()) {
+      return;
+    }
+
+    const { syncWith } = this.props;
+
+    if (this.ignoreSyncElScroll) {
+      this.ignoreSyncElScroll = false;
+      return;
+    }
+
+    this.ignoreEditorScroll = true;
+
+    document.querySelector(syncWith).scrollTop = data.top;
   };
 
   onSyncElScroll = e => {
@@ -518,6 +533,10 @@ class Editor extends Component {
   };
 
   syncHeights = () => {
+    if (!this.syncScrollEnabled()) {
+      return;
+    }
+
     const { syncWith } = this.props;
     if (!syncWith) {
       return;
