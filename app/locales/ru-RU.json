@@ -252,7 +252,10 @@
     "favorited": "Добавлен в избранное",
     "favoriteRemoved": "Удалён из избранного",
     "copy-clipboard": "Copy top clipboard",
-    "copied-clipboard": "Copied"
+    "copied-clipboard": "Copied",
+    "comment-entry-title": "You are viewing a single comment's thread from: ",
+    "comment-entry-go-root": "View the full context",
+    "comment-entry-go-parent": "View the direct parent"
   },
   "navbar": {
     "settings": "Настройки",

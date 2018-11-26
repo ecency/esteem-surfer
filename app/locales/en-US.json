@@ -251,7 +251,7 @@
     "bookmarkRemoved": "Removed from bookmarks",
     "favorited": "Added to favorites",
     "favoriteRemoved": "Removed from favorites",
-    "copy-clipboard": "Copy top clipboard",
+    "copy-clipboard": "Copy internal link to clipboard",
     "copied-clipboard": "Copied",
     "comment-entry-title": "You are viewing a single comment's thread from: ",
     "comment-entry-go-root": "View the full context",
