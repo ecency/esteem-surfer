@@ -201,7 +201,8 @@
     "publish": "Опубликовать",
     "published": "Пост опубликован",
     "update": "Обновить",
-    "updated": "Пост обновлён"
+    "updated": "Пост обновлён",
+    "sync-scroll": "Sync"
   },
   "gallery": {
     "title": "Галерея",

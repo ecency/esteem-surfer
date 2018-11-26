@@ -201,7 +201,8 @@
     "publish": "Publish",
     "published": "Post Published",
     "update": "Update",
-    "updated": "Post Updated"
+    "updated": "Post Updated",
+    "sync-scroll": "Sync"
   },
   "gallery": {
     "title": "Gallery",

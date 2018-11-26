@@ -90,6 +90,7 @@
       display: flex;
       height: 44px;
       margin-bottom: 9px;
+      justify-content: space-between;
 
       @include themify(day) {
         border-bottom: 1px solid $white-four;
@@ -104,6 +105,13 @@
         font-size: 16px;
         font-weight: 500;
         margin: 0 0 0 12px;
+      }
+
+      .sync {
+        margin-right: 10px;
+
+        color: $steel-grey;
+        font-size: 16px;
       }
     }
 
@@ -212,6 +220,13 @@
       }
 
       .voting {
+        .ant-checkbox-wrapper {
+          color: $steel-grey;
+          font-size: 16px;
+        }
+      }
+
+      .sync {
         .ant-checkbox-wrapper {
           color: $steel-grey;
           font-size: 16px;

@@ -16,6 +16,7 @@ import {
   Menu,
   Modal,
   DatePicker,
+  Switch,
   message
 } from 'antd';
 
@@ -63,8 +64,16 @@ export class Preview extends Component {
           <h2>
             <FormattedMessage id="composer.preview" />
           </h2>
+          <div className="sync">
+            <Switch
+              defaultChecked={getItem('compose-sync', false)}
+              onChange={checked => {
+                setItem('compose-sync', checked);
+              }}
+            />{' '}
+            <FormattedMessage id="composer.sync-scroll" />
+          </div>
         </div>
-
         <div className="preview-content">
           <div className="preview-content-title">{title}</div>
           <div className="preview-content-tags">
