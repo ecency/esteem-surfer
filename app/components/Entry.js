@@ -847,6 +847,9 @@ class Entry extends PureComponent {
     if (entry) {
       const { children } = entry;
 
+      console.log(entry.body);
+      console.log('-----------------------------');
+
       const { replies, replySort, clickedAuthor } = this.state;
 
       const reputation = authorReputation(entry.author_reputation);

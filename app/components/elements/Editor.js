@@ -20,14 +20,6 @@ require('codemirror/addon/search/searchcursor.js');
 require('codemirror/addon/search/match-highlighter.js');
 require('codemirror/mode/markdown/markdown');
 
-
-function calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
-
-  const ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
-
-  return { width: srcWidth * ratio, height: srcHeight * ratio };
-}
-
 class Editor extends Component {
   constructor(props) {
     super(props);
@@ -46,7 +38,6 @@ class Editor extends Component {
     this.ignoreEditorScroll = false;
     this.ignoreSyncElScroll = false;
 
-    this.editorWidgets = [];
     this.strWidgetCache = '';
   }
 
@@ -59,6 +50,8 @@ class Editor extends Component {
       document
         .querySelector(syncWith)
         .addEventListener('scroll', this.onSyncElScroll);
+
+      setTimeout(this.setWidgets, 500);
     }
 
     document
@@ -118,12 +111,14 @@ class Editor extends Component {
   bodyChanged = (editor, data, value) => {
     this.setState({ body: value }, () => this.changed());
 
+    const { syncWith } = this.props;
+    if (syncWith) {
+      if (this.widgetTimer) {
+        clearTimeout(this.widgetTimer);
+      }
 
-    if (this.widgetTimer) {
-      clearTimeout(this.widgetTimer);
+      this.widgetTimer = setTimeout(this.setWidgets, 500);
     }
-
-    this.widgetTimer = setTimeout(this.setWidgets, 500);
   };
 
   getEditorInstance = () => this.editorInstance;
@@ -364,56 +359,31 @@ class Editor extends Component {
   };
 
   setWidgets = () => {
-    console.log('wiw');
     const editor = this.getEditorInstance();
 
     if (!editor) {
       return;
     }
 
-    /*
-    const matches = editor.getValue().match(/<img[^>]+>(<\/img>)?|<iframe.+?<\/iframe>|!\[.*\)|(https?:(.*))/g);
-    if (!matches) {
-
-      this.editorWidgets.forEach((w) => {
-        editor.removeLineWidget(w);
-      });
-
-      return;
-    }
-
-    const c = matches.map(i => i).join('-');
-    if (this.strWidgetCache === c) {
-      return;
-    }
-
-    this.strWidgetCache = c;
-
-    */
-
-
     const widgetMap = [];
 
     const info = editor.getScrollInfo();
     const editorWidth = info.width;
 
-    this.editorWidgets.forEach((w) => {
-      editor.removeLineWidget(w);
-    });
-
-    this.editorWidgets = [];
-
     const lines = [...Array(editor.lineCount()).keys()];
 
-    lines.forEach((line) => {
-
+    lines.forEach(line => {
       // console.log(editor.getLineHandle(line))
 
       const lineVal = editor.getLine(line);
       const lineValLow = lineVal.toLowerCase();
 
-      // If line doesnt contains img or iframe dont waste time
-      if (!lineValLow.match(/<img[^>]+>(<\/img>)?|<iframe.+?<\/iframe>|!\[.*\)|(https?:(.*))/g)) {
+      // If line doesnt contains img, iframe, or link dont waste time
+      if (
+        !lineValLow.match(
+          /<img[^>]+>(<\/img>)?|<iframe.+?<\/iframe>|!\[.*\)|(https?:(.*))/g
+        )
+      ) {
         return;
       }
 
@@ -422,7 +392,6 @@ class Editor extends Component {
       // Real wrapper
       const wrapper = document.createElement('div');
       wrapper.classList.add('compare-helper');
-
 
       wrapper.innerHTML = `<div class="markdown-view">${lineHtml}</div>`;
       wrapper.style.width = `${editorWidth}px`;
@@ -435,14 +404,15 @@ class Editor extends Component {
       plainWrapper.innerHTML = `<div class="markdown-view">${lineHtml}</div>`;
       plainWrapper.style.width = `${editorWidth}px`;
 
-      plainWrapper.querySelectorAll('img,iframe,.markdown-video-link').forEach(el => {
-        el.parentNode.removeChild(el);
-      });
+      plainWrapper
+        .querySelectorAll('img,iframe,.markdown-video-link')
+        .forEach(el => {
+          el.parentNode.removeChild(el);
+        });
 
       document.body.appendChild(plainWrapper);
 
       const diff = wrapper.clientHeight - plainWrapper.clientHeight;
-
 
       document.body.removeChild(plainWrapper);
 
@@ -452,21 +422,21 @@ class Editor extends Component {
       }
 
       const elMap = [];
+      let elKey = ' ';
 
       wrapper.querySelectorAll('img,iframe').forEach(el => {
         const src = el.getAttribute('src');
-
-
         const style = window.getComputedStyle(el);
         const width = parseInt(style.getPropertyValue('width'), 10);
         const height = parseInt(style.getPropertyValue('height'), 10);
 
-        console.log(src);
-        console.log(`${width} x ${height} `);
-        console.log('--------------');
-
+        // console.log(src);
+        // console.log(`${width} x ${height} `);
+        // console.log('--------------');
 
         if (width && height) {
+          elKey += encodeURIComponent(src);
+
           elMap.push({
             type: el.tagName.toLowerCase(),
             width,
@@ -476,39 +446,62 @@ class Editor extends Component {
         }
       });
 
-      widgetMap.push({
-        line,
-        diff,
-        elements: elMap
-      });
+      if (elMap.length) {
+        widgetMap.push({
+          line,
+          diff,
+          elements: elMap,
+          key: elKey
+        });
+      }
     });
 
+    // delete widgets
+    const wLines = widgetMap.map(w => w.line);
 
-    widgetMap.forEach((item) => {
-      const { line, diff: height, elements } = item;
+    lines.forEach(line => {
+      const lineH = editor.getLineHandle(line);
 
-      const lineHeight = editor.getLineHandle(line.height);
+      // delete
+      if (lineH.widgets && !wLines.includes(line)) {
+        editor.removeLineWidget(lineH.widgets[0]);
+      }
+    });
 
+    widgetMap.forEach(item => {
+      const { line, diff: height, elements, key } = item;
+
+      const lineH = editor.getLineHandle(line);
+
+      if (lineH.widgets) {
+        const curKey = lineH.widgets[0].node.querySelector('.key').value;
+        if (curKey === key) {
+          return;
+        }
+
+        editor.removeLineWidget(lineH.widgets[0]);
+      }
 
       const wElem = document.createElement('div');
       wElem.classList.add('editor-widget');
       wElem.style.height = `${height}px`;
 
-      const inner = elements.map((el) => {
-        if (el.type === 'img') {
-          return `<img src="${el.src}" />`;
-        }
+      const inner = elements
+        .map(el => {
+          if (el.type === 'img') {
+            return `<img src="${el.src}" />`;
+          }
 
-        if (el.type === 'iframe') {
-          return '<div class="iframe-embed"><i class="mi">play_circle_outline</i></div>';
-        }
-        return '';
-      }).join(' ');
+          if (el.type === 'iframe') {
+            return '<div class="iframe-embed"><i class="mi">play_circle_outline</i></div>';
+          }
+          return '';
+        })
+        .join(' ');
 
-      wElem.innerHTML = inner;
+      wElem.innerHTML = `<input type="hidden" class="key" value="${key}" /> ${inner}`;
 
-      this.editorWidgets.push(editor.addLineWidget(line, wElem, {}));
-
+      editor.addLineWidget(line, wElem, {});
     });
   };
 
@@ -604,7 +597,7 @@ class Editor extends Component {
             </div>
           </div>
         </Tooltip>
-        <div className="tool-separator"/>
+        <div className="tool-separator" />
         <Tooltip
           title={intl.formatMessage({ id: 'composer.tool-code' })}
           mouseEnterDelay={2}
@@ -621,7 +614,7 @@ class Editor extends Component {
             <i className="mi tool-icon">format_quote</i>
           </div>
         </Tooltip>
-        <div className="tool-separator"/>
+        <div className="tool-separator" />
         <Tooltip
           title={intl.formatMessage({ id: 'composer.tool-ol' })}
           mouseEnterDelay={2}
@@ -638,7 +631,7 @@ class Editor extends Component {
             <i className="mi tool-icon">format_list_bulleted</i>
           </div>
         </Tooltip>
-        <div className="tool-separator"/>
+        <div className="tool-separator" />
         <Tooltip
           title={intl.formatMessage({ id: 'composer.tool-link' })}
           mouseEnterDelay={2}
@@ -668,7 +661,7 @@ class Editor extends Component {
                   document.getElementById('file-input').click();
                 }}
               >
-                <FormattedMessage id="composer.tool-upload"/>
+                <FormattedMessage id="composer.tool-upload" />
               </div>
               {activeAccount && (
                 <div
@@ -679,7 +672,7 @@ class Editor extends Component {
                     this.setState({ galleryModalVisible: true });
                   }}
                 >
-                  <FormattedMessage id="composer.tool-gallery"/>
+                  <FormattedMessage id="composer.tool-gallery" />
                 </div>
               )}
             </div>
