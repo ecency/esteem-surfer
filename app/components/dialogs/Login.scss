@@ -63,6 +63,7 @@
           color: $powder-blue;
         }
 
+        &.active,
         &:hover {
           @include themify(day) {
             background: lighten($dark-sky-blue, 30);

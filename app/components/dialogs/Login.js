@@ -141,8 +141,10 @@ class Login extends Component {
   };
 
   render() {
-    const { accounts, loginMsg, intl } = this.props;
+    const { accounts, loginMsg, intl, activeAccount } = this.props;
     const { processing } = this.state;
+
+    const activeUsername = activeAccount ? activeAccount.username : null;
 
     return (
       <div className="login-dialog-content">
@@ -170,7 +172,9 @@ class Login extends Component {
               {accounts.map(account => (
                 <div
                   key={account.username}
-                  className="account-list-item"
+                  className={`account-list-item ${
+                    activeUsername === account.username ? 'active' : ''
+                  }`}
                   role="none"
                   onClick={() => {
                     this.switchToAccount(account.username);
@@ -178,6 +182,9 @@ class Login extends Component {
                 >
                   <UserAvatar user={account.username} size="normal" />{' '}
                   <span className="username">@{account.username}</span>
+                  {activeUsername === account.username && (
+                    <i className="mi">check_circle_outline</i>
+                  )}
                 </div>
               ))}
             </div>
@@ -247,7 +254,8 @@ class Login extends Component {
 
 Login.defaultProps = {
   loginMsg: null,
-  accounts: []
+  accounts: [],
+  activeAccount: null
 };
 
 Login.propTypes = {
@@ -260,6 +268,7 @@ Login.propTypes = {
   onSuccess: PropTypes.func.isRequired,
   accounts: PropTypes.arrayOf(PropTypes.object),
   loginMsg: PropTypes.element,
+  activeAccount: PropTypes.instanceOf(Object),
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
