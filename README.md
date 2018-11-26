@@ -1,6 +1,6 @@
 # [eSteem Surfer 2][esteem_desktop] – Steem Desktop Client
 
-🎉 This is the complete source code and the build instructions for the alpha version of the [Steem blockchain](https://steem.io/) desktop client **eSteem Surfer** version 2 founded by [Feruz M](https://steemit.com/@good-karma) and Lead Surfer [Talha](https://steemit.com/@talhasch), supported by [eSteem team](https://steemit.com/@esteemapp) and vast Steem community contibutors.
+🎉 This is the complete source code and the build instructions of the [Steem blockchain](https://steem.io/) desktop client **eSteem Surfer 2** founded by [Feruz M](https://steemit.com/@good-karma) and Lead Surfer [Talha](https://steemit.com/@talhasch), supported by [eSteem team](https://steemit.com/@esteemapp) and vast Steem community contibutors.
 
 ![Preview of eSteem Surfer](https://user-images.githubusercontent.com/1177676/48030022-b4614000-e147-11e8-8204-f7c4355a6ac7.png)
 
@@ -25,7 +25,7 @@ More functions are coming!
 ## Supported systems
 
 - Windows XP - Windows 10
-- Mac OS X 10.6 - Mac OS X 10.13
+- Mac OS X 10.6 - Mac OS X 10.14
 - Ubuntu 12.04 - Ubuntu 18.04
 - Fedora 22 - Fedora 24
 
