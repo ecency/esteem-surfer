@@ -89,7 +89,6 @@
       align-items: center;
       display: flex;
       height: 44px;
-      justify-content: space-between;
       margin-bottom: 9px;
 
       @include themify(day) {
@@ -102,9 +101,15 @@
 
       h2 {
         color: $dark-sky-blue;
+        flex-grow: 1;
         font-size: 16px;
         font-weight: 500;
         margin: 0 0 0 12px;
+      }
+
+      .words-count {
+        color: lighten($steel-grey, 10);
+        margin-right: 20px;
       }
 
       .sync {

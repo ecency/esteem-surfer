@@ -33,6 +33,8 @@ import markDown2Html from '../utils/markdown-2-html';
 import formatChainError from '../utils/format-chain-error';
 import { makePath as makePathEntry } from './helpers/EntryLink';
 
+import wordCounter from '../utils/word-counter';
+
 import {
   getDrafts,
   addDraft,
@@ -56,6 +58,32 @@ import {
 import { version } from '../../package.json';
 
 export class Preview extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      wordsCount: 0
+    };
+  }
+
+  componentDidMount() {
+    this.countTimer = setInterval(this.countWords, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.countTimer);
+  }
+
+  countWords = () => {
+    const el = document.querySelector('#preview-content-body .markdown-view');
+    if (!el) {
+      return;
+    }
+    const val = el.innerText.trim();
+    const { words } = wordCounter(val);
+    this.setState({ wordsCount: words });
+  };
+
   setSync = () => {
     const s = getItem('compose-sync', false);
     setItem('compose-sync', !s);
@@ -64,6 +92,8 @@ export class Preview extends Component {
 
   render() {
     const { title, tags, body, intl } = this.props;
+    const { wordsCount } = this.state;
+
     const syncActive = getItem('compose-sync', false);
     return (
       <div className="preview-part">
@@ -71,6 +101,11 @@ export class Preview extends Component {
           <h2>
             <FormattedMessage id="composer.preview" />
           </h2>
+
+          {wordsCount > 0 && (
+            <div className="words-count">{wordsCount} words</div>
+          )}
+
           <Tooltip
             mouseEnterDelay={2}
             placement="right"
