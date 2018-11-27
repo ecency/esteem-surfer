@@ -16,7 +16,7 @@ import {
   Menu,
   Modal,
   DatePicker,
-  Switch,
+  Tooltip,
   message
 } from 'antd';
 
@@ -56,23 +56,34 @@ import {
 import { version } from '../../package.json';
 
 export class Preview extends Component {
+  setSync = () => {
+    const s = getItem('compose-sync', false);
+    setItem('compose-sync', !s);
+    this.forceUpdate();
+  };
+
   render() {
-    const { title, tags, body } = this.props;
+    const { title, tags, body, intl } = this.props;
+    const syncActive = getItem('compose-sync', false);
     return (
       <div className="preview-part">
         <div className="preview-part-title">
           <h2>
             <FormattedMessage id="composer.preview" />
           </h2>
-          <div className="sync">
-            <Switch
-              defaultChecked={getItem('compose-sync', false)}
-              onChange={checked => {
-                setItem('compose-sync', checked);
-              }}
-            />{' '}
-            <FormattedMessage id="composer.sync-scroll" />
-          </div>
+          <Tooltip
+            mouseEnterDelay={2}
+            placement="right"
+            title={intl.formatMessage({ id: 'composer.sync-scroll' })}
+          >
+            <div
+              className={`sync${syncActive ? ' active' : ''}`}
+              role="none"
+              onClick={this.setSync}
+            >
+              <i className="mi">swap_vert</i>
+            </div>
+          </Tooltip>
         </div>
         <div className="preview-content">
           <div className="preview-content-title">{title}</div>
@@ -101,7 +112,8 @@ Preview.defaultProps = {
 Preview.propTypes = {
   title: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
-  body: PropTypes.instanceOf(Object)
+  body: PropTypes.instanceOf(Object),
+  intl: PropTypes.instanceOf(Object).isRequired
 };
 
 class Compose extends Component {
