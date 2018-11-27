@@ -19,14 +19,6 @@
     text-align: center;
     width: 100%;
 
-    @include themify(day) {
-      border-bottom: 1px solid lighten($powder-blue, 5);
-    }
-
-    @include themify(night) {
-      border-bottom: 1px solid $dark-two;
-    }
-
     .account-cover {
       align-items: center;
       background-color: $white-three;
@@ -145,11 +137,5 @@
     max-height: calc(100% - 240px);
     overflow: auto;
     padding: 0 10px;
-  }
-
-  &.loading {
-    .profile-area {
-      border-bottom: 1px solid transparent;
-    }
   }
 }
