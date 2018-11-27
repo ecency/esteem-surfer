@@ -4,8 +4,8 @@ eslint-disable import/no-cycle
 
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Drawer, message } from 'antd';
-import { FormattedMessage, FormattedNumber, injectIntl } from 'react-intl';
+import { Drawer, Tooltip, message } from 'antd';
+import { FormattedNumber, injectIntl } from 'react-intl';
 
 import {
   getAccount,
@@ -20,6 +20,9 @@ import LinearProgress from '../common/LinearProgress';
 import EntryListItem from '../elements/EntryListItem';
 import FollowControls from '../elements/FollowControls';
 import AccountLink from './AccountLink';
+import proxifyImageSrc from '../../utils/proxify-image-src';
+import coverFallbackDay from '../../img/cover-fallback-day.png';
+import coverFallbackNight from '../../img/cover-fallback-night.png';
 
 class QuickProfile extends Component {
   constructor(props) {
@@ -31,6 +34,7 @@ class QuickProfile extends Component {
       profile: {
         name: ' ',
         about: ' ',
+        coverImage: null,
         postCount: 0
       },
       follows: {
@@ -61,8 +65,9 @@ class QuickProfile extends Component {
       const name = accountProfile.name || null;
       const about = accountProfile.about || null;
       const postCount = account.post_count;
+      const coverImage = accountProfile.cover_image || null;
 
-      this.setState({ profile: { name, about, postCount } });
+      this.setState({ profile: { name, about, coverImage, postCount } });
     }
 
     let follow;
@@ -113,7 +118,7 @@ class QuickProfile extends Component {
   };
 
   render() {
-    const { children, username } = this.props;
+    const { children, username, global, intl } = this.props;
     let { reputation } = this.props;
     const {
       visible,
@@ -137,20 +142,24 @@ class QuickProfile extends Component {
       follows.followerCount === null ? (
         '--'
       ) : (
-        <FormattedNumber value={follows.followerCount}/>
+        <FormattedNumber value={follows.followerCount} />
       );
     const postCountMsg =
       profile.postCount === null ? (
         '--'
       ) : (
-        <FormattedNumber value={profile.postCount}/>
+        <FormattedNumber value={profile.postCount} />
       );
     const followingMsg =
       follows.followingCount === null ? (
         '--'
       ) : (
-        <FormattedNumber value={follows.followingCount}/>
+        <FormattedNumber value={follows.followingCount} />
       );
+
+    const bgImage =
+      (profile.coverImage && proxifyImageSrc(profile.coverImage)) ||
+      (global.theme === 'day' ? coverFallbackDay : coverFallbackNight);
 
     return (
       <Fragment>
@@ -167,21 +176,23 @@ class QuickProfile extends Component {
             <div
               className={`quick-profile-content ${
                 loadingEntries ? 'loading' : ''
-                } `}
+              } `}
             >
               <div className="profile-area">
-                <div className="follow-btn-holder">
-                  <FollowControls {...this.props} targetUsername={username}/>
-                </div>
-                <div className="profile-avatar">
-                  <UserAvatar user={username} size="large"/>
-                  <div className="reputation">
-                    {authorReputation(reputation)}
+                <div
+                  className="account-cover"
+                  style={{ backgroundImage: `url('${bgImage}')` }}
+                >
+                  <div className="profile-avatar">
+                    <UserAvatar user={username} size="large" />
+                    <div className="reputation">
+                      {authorReputation(reputation)}
+                    </div>
+                  </div>
+                  <div className="follow-btn-holder">
+                    <FollowControls {...this.props} targetUsername={username} />
                   </div>
                 </div>
-                {profile.name && (
-                  <div className="full-name">{profile.name}</div>
-                )}
                 <AccountLink
                   {...this.props}
                   username={username}
@@ -189,34 +200,46 @@ class QuickProfile extends Component {
                 >
                   <div className="username">{username}</div>
                 </AccountLink>
-                {profile.about && <div className="about">{profile.about}</div>}
+                <div className="about">{profile.about}</div>
                 <div className="numbers">
-                  <span className="followers">
-                    <FormattedMessage
-                      id="quick-profile.n-followers"
-                      values={{ n: followersMsg }}
-                    />
-                  </span>
-                  <span className="post-count">
-                    <FormattedMessage
-                      id="quick-profile.n-posts"
-                      values={{ n: postCountMsg }}
-                    />
-                  </span>
-                  <span className="following">
-                    <FormattedMessage
-                      id="quick-profile.n-following"
-                      values={{ n: followingMsg }}
-                    />
-                  </span>
+                  <Tooltip
+                    title={intl.formatMessage({
+                      id: 'quick-profile.post-count'
+                    })}
+                  >
+                    <span className="post-count">
+                      <i className="mi">list</i>
+                      {postCountMsg}
+                    </span>
+                  </Tooltip>
+                  <Tooltip
+                    title={intl.formatMessage({
+                      id: 'quick-profile.followers'
+                    })}
+                  >
+                    <span className="followers">
+                      <i className="mi">people</i>
+                      {followersMsg}
+                    </span>
+                  </Tooltip>
+                  <Tooltip
+                    title={intl.formatMessage({
+                      id: 'quick-profile.following'
+                    })}
+                  >
+                    <span className="following">
+                      <i className="mi">person_add</i>
+                      {followingMsg}
+                    </span>
+                  </Tooltip>
                 </div>
               </div>
 
               {loadingEntries && (
                 <Fragment>
-                  <LinearProgress/>
+                  <LinearProgress />
                   <div className="entries">
-                    <EntryListLoadingItem/>
+                    <EntryListLoadingItem />
                   </div>
                 </Fragment>
               )}
@@ -249,7 +272,11 @@ QuickProfile.propTypes = {
   username: PropTypes.string.isRequired,
   reputation: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     .isRequired,
-  history: PropTypes.instanceOf(Object).isRequired
+  history: PropTypes.instanceOf(Object).isRequired,
+  global: PropTypes.shape({
+    theme: PropTypes.string.isRequired
+  }).isRequired,
+  intl: PropTypes.instanceOf(Object).isRequired
 };
 
 export default injectIntl(QuickProfile);

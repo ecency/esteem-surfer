@@ -10,6 +10,7 @@
 
   .profile-area {
     align-items: center;
+    cursor: default;
     display: flex;
     flex-direction: column;
     height: 240px;
@@ -19,50 +20,57 @@
     width: 100%;
 
     @include themify(day) {
-      background-color: lighten($powder-blue, 10);
       border-bottom: 1px solid lighten($powder-blue, 5);
     }
+
     @include themify(night) {
-      background-color: lighten($dark-six, 1);
       border-bottom: 1px solid $dark-two;
     }
 
-    .follow-btn-holder {
-      position: absolute;
-      right: 20px;
-      top: 20px;
-    }
-
-    .profile-avatar {
-      height: 100px;
+    .account-cover {
+      align-items: center;
+      background-color: $white-three;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 10px;
+      display: flex;
+      height: 134px;
+      justify-content: center;
       margin-bottom: 16px;
       position: relative;
-      width: 100px;
+      width: calc(100% - 18px);
 
-      .user-avatar {
-        border: 3px solid $powder-blue;
+      .profile-avatar {
         height: 100px;
+        position: relative;
         width: 100px;
+
+        .user-avatar {
+          border: 3px solid $powder-blue;
+          height: 100px;
+          width: 100px;
+        }
+
+        .reputation {
+          background: $dark-sky-blue;
+          border-radius: 25px;
+          bottom: 0;
+          color: $white;
+          font-weight: 700;
+          left: 0;
+          line-height: 1em;
+          padding: 4px 12px;
+          position: absolute;
+        }
       }
 
-      .reputation {
-        background: $dark-sky-blue;
-        border-radius: 25px;
-        bottom: 0;
-        color: $white;
-        font-weight: 700;
-        left: 0;
-        line-height: 1em;
-        padding: 4px 12px;
+      .follow-btn-holder {
         position: absolute;
+        right: 20px;
+        top: 20px;
+        z-index: 1;
       }
-    }
-
-    .full-name {
-      color: $charcoal-grey;
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 6px;
     }
 
     .username {
@@ -70,7 +78,7 @@
       cursor: pointer;
       font-size: 14px;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
 
       &:before {
         content: '@';
@@ -83,27 +91,51 @@
 
     .about {
       color: $dark-sky-blue;
+      height: 16px;
       margin-bottom: 10px;
-      max-height: 3.6em;
       max-width: 90%;
-      opacity: 0.6;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+
+      @include themify(day) {
+        opacity: 0.6;
+      }
+
+      @include themify(night) {
+        opacity: 0.8;
+      }
     }
 
     .numbers {
+      align-items: center;
       color: $steel-grey;
       display: flex;
       font-size: 13px;
+      height: 20px;
+
+      .mi {
+        color: $silver;
+        font-size: 16px;
+        margin-right: 8px;
+      }
+
+      .followers,
+      .post-count,
+      .following {
+        align-items: center;
+        display: flex;
+        height: 100%;
+      }
 
       .followers,
       .post-count {
-        margin-right: 6px;
+        margin-right: 24px;
+      }
 
-        &:after {
-          content: '|';
-          padding-left: 6px;
+      .post-count {
+        .mi {
+          font-size: 18px;
         }
       }
     }

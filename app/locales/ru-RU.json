@@ -116,9 +116,9 @@
   "quick-profile": {
     "fetch-error-profile": "Невозможно загрузить данные профиля",
     "fetch-error-content": "Невозможно загрузить посты",
-    "n-followers": "{n} подписчиков",
-    "n-posts": "{n} постов",
-    "n-following": "подписан на {n}"
+    "post-count": "Количество постов/комментариев",
+    "followers": "Подписчики",
+    "following": "Подписан на"
   },
   "follow-controls": {
     "follow": "Подписаться",
