@@ -6,10 +6,9 @@ import getSlug from 'speakingurl';
 import { diff_match_patch } from 'diff-match-patch';
 
 export const createPermlink = title => {
-  const rnd = (Math.random() + 1).toString(16).substring(2);
   const slug = getSlug(title);
 
-  let perm = `${slug.toString()}-${rnd}est`;
+  let perm = slug.toString();
 
   // STEEMIT_MAX_PERMLINK_LENGTH
   if (perm.length > 255) {
