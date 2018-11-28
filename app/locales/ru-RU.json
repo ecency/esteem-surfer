@@ -283,5 +283,12 @@
     "downloading": "Загрузка новой версии...",
     "download-completed": "Загрузка завершена",
     "restart": "Перезапуск"
+  },
+  "context-menu": {
+    "cut": "Cut",
+    "copy": "Copy",
+    "paste": "Paste",
+    "open-image-browser": "Open image in browser",
+    "copy-image-url": "Copy image url"
   }
 }
