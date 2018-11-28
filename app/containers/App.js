@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { NWS_ADDRESS } from '../config';
+
 // i18n
 import { addLocaleData, IntlProvider } from 'react-intl';
 import en from 'react-intl/locale-data/en';
@@ -34,6 +36,8 @@ class App extends React.Component {
       pinCreateFlag: false,
       pinConfirmFlag: false
     };
+
+    this.nws = null;
   }
 
   componentDidMount() {
@@ -47,12 +51,19 @@ class App extends React.Component {
     // Refresh active account data
     this.refreshActiveAccount();
     this.activeAccountInterval = setInterval(this.refreshActiveAccount, 15000);
+
+
+    window.addEventListener('user-login', this.onUserLogin);
+    window.addEventListener('user-logout', this.onUserLogout);
   }
 
   componentWillUnmount() {
     clearInterval(this.dialogInterval);
     clearInterval(this.globalInterval);
     clearInterval(this.activeAccountInterval);
+
+    window.removeEventListener('user-login', this.onUserLogin);
+    window.removeEventListener('user-logout', this.onUserLogout);
   }
 
   checkDialogs = () => {
@@ -120,6 +131,33 @@ class App extends React.Component {
     this.setState({ pinConfirmFlag: false, dialogVisible: false });
   };
 
+  onUserLogin = (event) => {
+    if (this.nws !== null) {
+      this.nws.close();
+
+    }
+
+    const { username } = event.detail;
+    // this.connectNws(username);
+  };
+
+  onUserLogout = () => {
+    console.log('user-logout');
+  };
+
+  connectNws = (username) => {
+    const u = `${NWS_ADDRESS}?user=${username}`;
+    this.nws = new WebSocket(u);
+
+    this.nws.onopen = function(evt) {
+      console.log(evt);
+    };
+  };
+
+  disconnectNws = () => {
+
+  };
+
   render() {
     const { pinCreateFlag, pinConfirmFlag } = this.state;
     const { children, global } = this.props;
@@ -143,7 +181,7 @@ class App extends React.Component {
               centered
               destroyOnClose
             >
-              <PinCreate onSuccess={this.onCreatePinSuccess} />
+              <PinCreate onSuccess={this.onCreatePinSuccess}/>
             </Modal>
           )}
 

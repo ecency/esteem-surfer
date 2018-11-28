@@ -31,6 +31,10 @@ class UserMenu extends Component {
     const { actions, closeFn } = this.props;
 
     actions.logOut();
+
+    const ev = new CustomEvent('user-logout', {  });
+    window.dispatchEvent(ev);
+
     closeFn();
   };
 

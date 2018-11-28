@@ -24,10 +24,16 @@ class Login extends Component {
     };
   }
 
+  afterLogin = (username) => {
+    const ev = new CustomEvent('user-login', { detail: { username } });
+    window.dispatchEvent(ev);
+  };
+
   switchToAccount = username => {
     const { actions, onSuccess } = this.props;
     actions.logIn(username);
     onSuccess(username);
+    this.afterLogin(username);
   };
 
   doScLogin = async () => {
@@ -42,6 +48,7 @@ class Login extends Component {
     actions.addAccountSc(resp.username, resp.access_token, resp.expires_in);
     actions.logIn(resp.username);
     onSuccess(resp.username);
+    this.afterLogin(resp.username);
   };
 
   doLogin = async () => {
@@ -138,6 +145,7 @@ class Login extends Component {
     actions.addAccount(username, resultKeys);
     actions.logIn(username);
     onSuccess(username);
+    this.afterLogin(username);
   };
 
   render() {
