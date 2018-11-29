@@ -251,11 +251,11 @@
     "bookmarkRemoved": "Удалено из закладок",
     "favorited": "Добавлен в избранное",
     "favoriteRemoved": "Удалён из избранного",
-    "copy-clipboard": "Copy top clipboard",
-    "copied-clipboard": "Copied",
-    "comment-entry-title": "You are viewing a single comment's thread from: ",
-    "comment-entry-go-root": "View the full context",
-    "comment-entry-go-parent": "View the direct parent"
+    "copy-clipboard": "Скопировать внутреннюю ссылку в буфер обмена",
+    "copied-clipboard": "Скопировано",
+    "comment-entry-title": "Вы просматриваете один комментарий ветки: ",
+    "comment-entry-go-root": "Полный контекст",
+    "comment-entry-go-parent": "Прямой родительский комментарий"
   },
   "navbar": {
     "settings": "Настройки",
@@ -285,10 +285,10 @@
     "restart": "Перезапуск"
   },
   "context-menu": {
-    "cut": "Cut",
-    "copy": "Copy",
-    "paste": "Paste",
-    "open-image-browser": "Open image in browser",
-    "copy-image-url": "Copy image url"
+    "cut": "Вырезать",
+    "copy": "Скопировать",
+    "paste": "Вставить",
+    "open-image-browser": "Открыть в браузере",
+    "copy-image-url": "Скопировать url"
   }
 }
