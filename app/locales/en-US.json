@@ -290,5 +290,13 @@
     "paste": "Paste",
     "open-image-browser": "Open image in browser",
     "copy-image-url": "Copy image url"
+  },
+  "notification": {
+    "voted": "{source} voted your post",
+    "mention-post": "{source} mentioned you in a post",
+    "mention-comment": "{source} mentioned you in a comment",
+    "followed": "{source} followed you",
+    "replied": "{source} replied you",
+    "reblogged": "{source} reblogged your post"
   }
 }

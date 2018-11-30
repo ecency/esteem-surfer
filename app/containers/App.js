@@ -5,6 +5,9 @@ import { bindActionCreators } from 'redux';
 
 import { NWS_ADDRESS } from '../config';
 
+import formatMessage from '../utils/format-message';
+
+
 // i18n
 import { addLocaleData, IntlProvider } from 'react-intl';
 import en from 'react-intl/locale-data/en';
@@ -30,6 +33,7 @@ addLocaleData([...en, ...tr]);
 class App extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props.children.props.children[0].props);
 
     this.state = {
       dialogVisible: false,
@@ -55,6 +59,11 @@ class App extends React.Component {
 
     window.addEventListener('user-login', this.onUserLogin);
     window.addEventListener('user-logout', this.onUserLogout);
+
+    const { activeAccount } = this.props;
+    if (activeAccount) {
+      this.connectNws(activeAccount.username);
+    }
   }
 
   componentWillUnmount() {
@@ -64,6 +73,7 @@ class App extends React.Component {
 
     window.removeEventListener('user-login', this.onUserLogin);
     window.removeEventListener('user-logout', this.onUserLogout);
+    this.disconnectNws();
   }
 
   checkDialogs = () => {
@@ -131,31 +141,67 @@ class App extends React.Component {
     this.setState({ pinConfirmFlag: false, dialogVisible: false });
   };
 
-  onUserLogin = (event) => {
+  onUserLogin = () => {
     if (this.nws !== null) {
       this.nws.close();
-
     }
 
-    const { username } = event.detail;
-    // this.connectNws(username);
+    // Wait component refresh active user
+    setTimeout(this.connectNws, 1000);
   };
 
   onUserLogout = () => {
-    console.log('user-logout');
+    // console.log('user-logout');
+
+    this.disconnectNws();
   };
 
-  connectNws = (username) => {
-    const u = `${NWS_ADDRESS}?user=${username}`;
+  connectNws = () => {
+    const { activeAccount } = this.props;
+    console.log(activeAccount);
+    if (!activeAccount) {
+      return;
+    }
+
+    const u = `${NWS_ADDRESS}?user=${activeAccount.username}`;
     this.nws = new WebSocket(u);
 
-    this.nws.onopen = function(evt) {
-      console.log(evt);
+    this.nws.onopen = () => {
+
+    };
+
+
+    this.nws.onmessage = (evt) => {
+      const { global } = this.props;
+      const { pushNotify } = global;
+
+      if (!pushNotify) {
+        return;
+      }
+
+      console.log(evt.data);
+    };
+
+    this.nws.onclose = (evt) => {
+      // console.log("disconnected from nws");
+      this.nws = null;
+
+      console.log('on close');
+
+      if (!evt.wasClean) {
+        console.log('trying');
+        // if disconnected due connection error try to auto connect
+        setTimeout(() => {
+          this.connectNws();
+        }, 2000);
+      }
     };
   };
 
   disconnectNws = () => {
-
+    if (this.nws !== null) {
+      this.nws.close();
+    }
   };
 
   render() {
@@ -218,6 +264,7 @@ App.propTypes = {
   children: PropTypes.element.isRequired,
   global: PropTypes.shape({
     locale: PropTypes.string.isRequired,
+    pushNotify: PropTypes.number.isRequired,
     pin: PropTypes.string
   }).isRequired,
   activeAccount: PropTypes.instanceOf(Object),

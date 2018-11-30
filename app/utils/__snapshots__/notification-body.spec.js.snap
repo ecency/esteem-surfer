@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notification Body (1) Vote 1`] = `"foo voted your post"`;
+
+exports[`Notification Body (2) Mention - post 1`] = `"bar mentioned you in a post"`;
+
+exports[`Notification Body (3) Mention - comment 1`] = `"bar mentioned you in a comment"`;
+
+exports[`Notification Body (4) Follow 1`] = `"bar followed you"`;
+
+exports[`Notification Body (5) Reply 1`] = `"bar replied you"`;
+
+exports[`Notification Body (6) Reblog 1`] = `"bar reblogged your post"`;

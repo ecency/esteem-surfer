@@ -8,7 +8,7 @@ exports[`createPatch (1)  1`] = `
 "
 `;
 
-exports[`createPermlink (1)  1`] = `"lorem-ipsum-dolor-sit-amet-f38c58113ff7eest"`;
+exports[`createPermlink (1)  1`] = `"lorem-ipsum-dolor-sit-amet"`;
 
 exports[`createReplyPermlink (1)  1`] = `"re-good-karma-2018921t130500z"`;
 

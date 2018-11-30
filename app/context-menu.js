@@ -1,34 +1,15 @@
-// This gives you default context menu (cut, copy, paste)
-// in all input fields and textareas across your app.
-
 import { remote, shell, clipboard } from 'electron';
 
-import localeList from './locales';
-import { getItem } from './helpers/storage';
+import formatMessage from './utils/format-message';
 
 const { Menu, MenuItem } = remote;
 
-let locale = 'en-US';
-
-const watchLocale = () => {
-  locale = getItem('locale', 'en-US');
-};
-
-setInterval(watchLocale, 3000);
-
 const isAnyTextSelected = () => window.getSelection().toString() !== '';
 
-const getLocaleEntry = (parent, child) => {
-  try {
-    return localeList[locale][parent][child];
-  } catch (e) {
-    return '';
-  }
-};
 
 const itemCut = () =>
   new MenuItem({
-    label: getLocaleEntry('context-menu', 'cut'),
+    label: formatMessage('context-menu.cut'),
     click: () => {
       document.execCommand('cut');
     }
@@ -36,7 +17,7 @@ const itemCut = () =>
 
 const itemCopy = () =>
   new MenuItem({
-    label: getLocaleEntry('context-menu', 'copy'),
+    label: formatMessage('context-menu.copy'),
     click: () => {
       document.execCommand('copy');
     }
@@ -44,7 +25,7 @@ const itemCopy = () =>
 
 const itemPaste = () =>
   new MenuItem({
-    label: getLocaleEntry('context-menu', 'paste'),
+    label: formatMessage('context-menu.paste'),
     click: () => {
       document.execCommand('paste');
     }
@@ -53,7 +34,7 @@ const itemPaste = () =>
 let imgUrlToOpen = '';
 const itemImgOpen = () =>
   new MenuItem({
-    label: getLocaleEntry('context-menu', 'open-image-browser'),
+    label: formatMessage('context-menu.open-image-browser'),
     click: () => {
       shell.openExternal(imgUrlToOpen);
     }
@@ -61,7 +42,7 @@ const itemImgOpen = () =>
 
 const itemImgCopyUrl = () =>
   new MenuItem({
-    label: getLocaleEntry('context-menu', 'copy-image-url'),
+    label: formatMessage('context-menu.copy-image-url'),
     click: () => {
       clipboard.writeText(imgUrlToOpen);
     }

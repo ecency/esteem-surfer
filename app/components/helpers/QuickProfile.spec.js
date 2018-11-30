@@ -14,7 +14,10 @@ describe('PinCreate', () => {
     const props = {
       username: 'foo',
       reputation: '123123123',
-      history: {}
+      history: {},
+      global: {
+        theme: 'day'
+      }
     };
 
     const wrapper = mountWithIntl(
