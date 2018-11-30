@@ -290,5 +290,14 @@
     "paste": "Вставить",
     "open-image-browser": "Открыть в браузере",
     "copy-image-url": "Скопировать url"
+  },
+  "notification": {
+    "popup-title": "You have a new notification",
+    "voted": "{source} voted your post",
+    "mention-post": "{source} mentioned you in a post",
+    "mention-comment": "{source} mentioned you in a comment",
+    "followed": "{source} followed you",
+    "replied": "{source} replied you",
+    "reblogged": "{source} reblogged your post"
   }
 }
