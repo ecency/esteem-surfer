@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import createHistory from 'history/createMemoryHistory';
 import { routerMiddleware, routerActions } from 'react-router-redux';
 import { createLogger } from 'redux-logger';
 import rootReducer from '../reducers';
@@ -13,8 +12,7 @@ import * as dynamicPropsActions from '../actions/dynamic-props';
 import * as visitingProfileActions from '../actions/visiting-account';
 import * as visitingEntryActions from '../actions/visiting-entry';
 import * as searchResultsActions from '../actions/search-results';
-
-const history = createHistory();
+import history from './history';
 
 const configureStore = (initialState = {}) => {
   // Redux Configuration
@@ -56,9 +54,9 @@ const configureStore = (initialState = {}) => {
   /* eslint-disable no-underscore-dangle */
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-      // Options: http://extension.remotedev.io/docs/API/Arguments.html
-      actionCreators
-    })
+        // Options: http://extension.remotedev.io/docs/API/Arguments.html
+        actionCreators
+      })
     : compose;
   /* eslint-enable no-underscore-dangle */
 

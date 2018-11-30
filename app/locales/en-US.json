@@ -292,6 +292,7 @@
     "copy-image-url": "Copy image url"
   },
   "notification": {
+    "popup-title": "You have a new notification",
     "voted": "{source} voted your post",
     "mention-post": "{source} mentioned you in a post",
     "mention-comment": "{source} mentioned you in a comment",

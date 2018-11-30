@@ -1,10 +1,9 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import createHistory from 'history/createMemoryHistory';
 import { routerMiddleware } from 'react-router-redux';
 import rootReducer from '../reducers';
+import history from './history';
 
-const history = createHistory();
 const router = routerMiddleware(history);
 const enhancer = applyMiddleware(thunk, router);
 

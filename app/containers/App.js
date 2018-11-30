@@ -3,17 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { NWS_ADDRESS } from '../config';
-
-import formatMessage from '../utils/format-message';
-
-
 // i18n
 import { addLocaleData, IntlProvider } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import tr from 'react-intl/locale-data/tr';
 
 import { Modal } from 'antd';
+
+import history from '../store/history';
 
 import { exposePin, wipePin } from '../actions/global';
 import { fetchGlobalProps } from '../actions/dynamic-props';
@@ -24,16 +21,21 @@ import PinCreate from '../components/dialogs/PinCreate';
 import PinConfirm from '../components/dialogs/PinConfirm';
 import Updater from '../components/helpers/Updater';
 
+import formatMessage from '../utils/format-message';
+import notificationBody from '../utils/notification-body';
 import { flattenMessages } from '../utils';
+
 import messages from '../locales';
+
 import { getItem, setItem, removeItem } from '../helpers/storage';
+
+import { NWS_ADDRESS } from '../config';
 
 addLocaleData([...en, ...tr]);
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props.children.props.children[0].props);
 
     this.state = {
       dialogVisible: false,
@@ -55,7 +57,6 @@ class App extends React.Component {
     // Refresh active account data
     this.refreshActiveAccount();
     this.activeAccountInterval = setInterval(this.refreshActiveAccount, 15000);
-
 
     window.addEventListener('user-login', this.onUserLogin);
     window.addEventListener('user-logout', this.onUserLogout);
@@ -151,8 +152,6 @@ class App extends React.Component {
   };
 
   onUserLogout = () => {
-    // console.log('user-logout');
-
     this.disconnectNws();
   };
 
@@ -167,11 +166,10 @@ class App extends React.Component {
     this.nws = new WebSocket(u);
 
     this.nws.onopen = () => {
-
+      console.log('nws connected');
     };
 
-
-    this.nws.onmessage = (evt) => {
+    this.nws.onmessage = evt => {
       const { global } = this.props;
       const { pushNotify } = global;
 
@@ -179,14 +177,23 @@ class App extends React.Component {
         return;
       }
 
-      console.log(evt.data);
+      const data = JSON.parse(evt.data);
+      const msg = notificationBody(data);
+
+      if (msg) {
+        new Notification(formatMessage('notification.popup-title'), {
+          body: msg
+        }).onclick = () => {
+          const newLoc = `${activeAccount.username}/activities`;
+          history.push(newLoc);
+        };
+      }
     };
 
-    this.nws.onclose = (evt) => {
-      // console.log("disconnected from nws");
-      this.nws = null;
+    this.nws.onclose = evt => {
+      console.log('nws disconnected');
 
-      console.log('on close');
+      this.nws = null;
 
       if (!evt.wasClean) {
         console.log('trying');
@@ -227,7 +234,7 @@ class App extends React.Component {
               centered
               destroyOnClose
             >
-              <PinCreate onSuccess={this.onCreatePinSuccess}/>
+              <PinCreate onSuccess={this.onCreatePinSuccess} />
             </Modal>
           )}
 
