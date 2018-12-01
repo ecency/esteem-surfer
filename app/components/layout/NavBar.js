@@ -247,7 +247,8 @@ class NavBar extends Component {
     this.state = {
       settingsModalVisible: false,
       loginModalVisible: false,
-      menuVisible: false
+      menuVisible: false,
+      activitiesVisible: false
     };
   }
 
@@ -350,6 +351,17 @@ class NavBar extends Component {
     history.push(u);
   };
 
+  activitiesClicked = () => {
+    this.setState({
+      activitiesVisible: true
+    });
+  };
+
+  toggleActivities = () => {
+    const { activitiesVisible } = this.state;
+    this.setState({ activitiesVisible: !activitiesVisible });
+  };
+
   render() {
     const {
       history,
@@ -360,10 +372,16 @@ class NavBar extends Component {
       bookmarkFlag,
       postBtnActive,
       activeAccount,
+      activities,
       intl
     } = this.props;
 
-    const { settingsModalVisible, loginModalVisible, menuVisible } = this.state;
+    const {
+      settingsModalVisible,
+      loginModalVisible,
+      menuVisible,
+      activitiesVisible
+    } = this.state;
 
     let canGoBack = false;
     if (history.entries[history.index - 1]) {
@@ -375,6 +393,8 @@ class NavBar extends Component {
     const backClassName = `back ${!canGoBack ? 'disabled' : ''}`;
     const forwardClassName = `forward ${!canGoForward ? 'disabled' : ''}`;
     const reloadClassName = `reload ${reloading ? 'disabled' : ''}`;
+
+    const { unread: unreadActivity } = activities;
 
     return (
       <div className="nav-bar">
@@ -537,6 +557,25 @@ class NavBar extends Component {
                     <i className="mi">credit_card</i>
                   </a>
                 </Tooltip>
+
+                <Tooltip
+                  title={intl.formatMessage({ id: 'navbar.activities' })}
+                  placement="left"
+                  mouseEnterDelay={1}
+                  onClick={this.activitiesClicked}
+                >
+                  <a role="none" className="activities">
+                    <i className="mi">notifications</i>
+                    {unreadActivity > 0 && (
+                      <span className="activity-badge">
+                        {unreadActivity.toString().length < 3
+                          ? unreadActivity
+                          : '...'}
+                      </span>
+                    )}
+                  </a>
+                </Tooltip>
+
                 <a
                   role="none"
                   className="user-menu-trigger"
@@ -545,6 +584,18 @@ class NavBar extends Component {
                   <UserAvatar user={activeAccount.username} size="normal" />
                 </a>
               </Fragment>
+            )}
+
+            {activeAccount && (
+              <Drawer
+                placement="right"
+                closable={false}
+                onClose={this.toggleActivities}
+                visible={activitiesVisible}
+                width="480px"
+              >
+                Activities
+              </Drawer>
             )}
 
             {activeAccount && (
@@ -608,6 +659,7 @@ NavBar.propTypes = {
     selectedFilter: PropTypes.string.isRequired
   }).isRequired,
   activeAccount: PropTypes.instanceOf(Object),
+  activities: PropTypes.instanceOf(Object).isRequired,
   history: PropTypes.shape({
     goForward: PropTypes.func.isRequired,
     goBack: PropTypes.func.isRequired,

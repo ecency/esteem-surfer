@@ -148,3 +148,17 @@ export const addFavorite = (user, account) =>
 
 export const removeFavoriteUser = (user, account) =>
   axios.delete(`${BACKEND_URL}/api/favoriteUser/${user}/${account}`);
+
+export const getActivities = (user, since = null) => {
+  let u = `${BACKEND_URL}/api/activities/${user}`;
+  if (since) {
+    u += `?since=${since}`;
+  }
+
+  return axios.get(u).then(resp => resp.data);
+};
+
+export const getUnreadActivityCount = user =>
+  axios
+    .get(`${BACKEND_URL}/api/activities/${user}/unread-count`)
+    .then(resp => resp.data.count);

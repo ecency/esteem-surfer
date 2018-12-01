@@ -161,23 +161,23 @@
       }
 
       .address {
+        align-items: center;
+        display: flex;
         flex-grow: 1;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        display: flex;
-        align-items: center;
 
         .protocol {
-          font-weight: 500;
           flex-grow: 0;
+          font-weight: 500;
         }
 
         .url {
-          flex-grow: 1;
-          border: 0;
-          margin-right: 10px;
           background: transparent;
+          border: 0;
+          flex-grow: 1;
+          margin-right: 10px;
           outline: none;
           &:focus {
             outline: none;
@@ -252,15 +252,42 @@
       .user-menu-trigger {
       }
 
-      .wallet {
+      .wallet,
+      .activities {
         color: $white;
         display: flex;
-        font-size: 16px;
-        margin: 0 20px;
+        font-size: 18px;
+      }
+
+      .wallet {
+      }
+
+      .activities {
+        position: relative;
+
+        .activity-badge {
+          background: #ec3323;
+          border-radius: 50%;
+          color: $white;
+          font-size: 10px;
+          height: 14px;
+          position: absolute;
+          right: -5px;
+          text-align: center;
+          top: -3px;
+          width: 14px;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+        }
       }
 
       &.logged-in {
-        width: 110px;
+        justify-content: space-between;
+        padding: 0 12px 0 20px;
+        width: 140px;
       }
     }
   }

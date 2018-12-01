@@ -9,6 +9,7 @@ import dynamicProps from './dynamic-props';
 import visitingAccount from './visiting-account';
 import visitingEntry from './visiting-entry';
 import searchResults from './search-results';
+import activities from './activities';
 
 const rootReducer = combineReducers({
   entries,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   visitingAccount,
   visitingEntry,
   searchResults,
+  activities,
   router
 });
 

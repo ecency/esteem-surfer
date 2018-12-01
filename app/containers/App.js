@@ -16,6 +16,7 @@ import { exposePin, wipePin } from '../actions/global';
 import { fetchGlobalProps } from '../actions/dynamic-props';
 import { deleteAccounts } from '../actions/accounts';
 import { logOut, updateActiveAccount } from '../actions/active-account';
+import { fetchActivities } from '../actions/activities';
 
 import PinCreate from '../components/dialogs/PinCreate';
 import PinConfirm from '../components/dialogs/PinConfirm';
@@ -64,6 +65,9 @@ class App extends React.Component {
     const { activeAccount } = this.props;
     if (activeAccount) {
       this.connectNws(activeAccount.username);
+
+      const { actions } = this.props;
+      actions.fetchActivities(activeAccount.username);
     }
   }
 
@@ -157,7 +161,7 @@ class App extends React.Component {
 
   connectNws = () => {
     const { activeAccount } = this.props;
-    console.log(activeAccount);
+
     if (!activeAccount) {
       return;
     }
@@ -300,7 +304,8 @@ function mapDispatchToProps(dispatch) {
       ...bindActionCreators({ updateActiveAccount }, dispatch),
       ...bindActionCreators({ logOut }, dispatch),
       ...bindActionCreators({ fetchGlobalProps }, dispatch),
-      ...bindActionCreators({ deleteAccounts }, dispatch)
+      ...bindActionCreators({ deleteAccounts }, dispatch),
+      ...bindActionCreators({ fetchActivities }, dispatch)
     }
   };
 }

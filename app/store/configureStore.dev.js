@@ -12,6 +12,8 @@ import * as dynamicPropsActions from '../actions/dynamic-props';
 import * as visitingProfileActions from '../actions/visiting-account';
 import * as visitingEntryActions from '../actions/visiting-entry';
 import * as searchResultsActions from '../actions/search-results';
+import * as activitiesActions from '../actions/activities';
+
 import history from './history';
 
 const configureStore = (initialState = {}) => {
@@ -48,6 +50,7 @@ const configureStore = (initialState = {}) => {
     ...visitingProfileActions,
     ...visitingEntryActions,
     ...searchResultsActions,
+    ...activitiesActions,
     ...routerActions
   };
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
