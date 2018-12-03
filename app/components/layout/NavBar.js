@@ -13,6 +13,7 @@ import UserAvatar from '../elements/UserAvatar';
 import Settings from '../dialogs/Settings';
 import Login from '../dialogs/Login';
 import UserMenu from '../dialogs/UserMenu';
+import Activities from '../dialogs/Activities';
 import LoginRequired from '../helpers/LoginRequired';
 
 import addressParser from '../../utils/address-parser';
@@ -100,7 +101,7 @@ class Address extends Component {
         if (content.id) {
           const path = `/${content.category}/@${content.author}/${
             content.permlink
-          }`;
+            }`;
           history.push(path);
           return;
         }
@@ -202,7 +203,7 @@ class Address extends Component {
               />
               {inProgress && (
                 <div className="in-progress">
-                  <Icon type="loading" style={{ fontSize: 12 }} spin />
+                  <Icon type="loading" style={{ fontSize: 12 }} spin/>
                 </div>
               )}
             </Fragment>
@@ -430,21 +431,21 @@ class NavBar extends Component {
               onClick={() => this.goBack()}
               role="none"
             >
-              <Mi icon="arrow_back" />
+              <Mi icon="arrow_back"/>
             </a>
             <a
               className={forwardClassName}
               onClick={() => this.goForward()}
               role="none"
             >
-              <Mi icon="arrow_forward" />
+              <Mi icon="arrow_forward"/>
             </a>
             <a
               className={reloadClassName}
               onClick={() => this.refresh()}
               role="none"
             >
-              <Mi icon="refresh" />
+              <Mi icon="refresh"/>
             </a>
           </div>
           <div className="address-bar">
@@ -507,7 +508,7 @@ class NavBar extends Component {
                 }}
                 role="none"
               >
-                <Mi icon="brightness_medium" />
+                <Mi icon="brightness_medium"/>
               </a>
             </Tooltip>
             <Tooltip
@@ -522,7 +523,7 @@ class NavBar extends Component {
                 }}
                 role="none"
               >
-                <Mi icon="settings" />
+                <Mi icon="settings"/>
               </a>
             </Tooltip>
           </div>
@@ -540,7 +541,7 @@ class NavBar extends Component {
                     this.showLoginModal();
                   }}
                 >
-                  <Mi icon="account_circle" />
+                  <Mi icon="account_circle"/>
                 </a>
               </Tooltip>
             )}
@@ -581,7 +582,7 @@ class NavBar extends Component {
                   className="user-menu-trigger"
                   onClick={this.toggleMenu}
                 >
-                  <UserAvatar user={activeAccount.username} size="normal" />
+                  <UserAvatar user={activeAccount.username} size="normal"/>
                 </a>
               </Fragment>
             )}
@@ -594,7 +595,7 @@ class NavBar extends Component {
                 visible={activitiesVisible}
                 width="480px"
               >
-                Activities
+                <Activities {...this.props}/>
               </Drawer>
             )}
 
@@ -606,7 +607,7 @@ class NavBar extends Component {
                 visible={menuVisible}
                 width="200px"
               >
-                <UserMenu {...this.props} closeFn={this.toggleMenu} />
+                <UserMenu {...this.props} closeFn={this.toggleMenu}/>
               </Drawer>
             )}
           </div>
@@ -616,7 +617,7 @@ class NavBar extends Component {
           onCancel={this.onSettingsModalCancel}
           footer={false}
           width="600px"
-          title={<FormattedMessage id="settings.title" />}
+          title={<FormattedMessage id="settings.title"/>}
           destroyOnClose
           centered
         >
@@ -632,7 +633,7 @@ class NavBar extends Component {
           destroyOnClose
           centered
         >
-          <Login {...this.props} onSuccess={this.onLoginSuccess} />
+          <Login {...this.props} onSuccess={this.onLoginSuccess}/>
         </Modal>
       </div>
     );

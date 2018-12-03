@@ -162,3 +162,52 @@ export const getUnreadActivityCount = user =>
   axios
     .get(`${BACKEND_URL}/api/activities/${user}/unread-count`)
     .then(resp => resp.data.count);
+
+
+export const getMyVotes = (user, since = null) => {
+  let u = `${BACKEND_URL}/api/rvotes/${user}`;
+  if (since) {
+    u += `?since=${since}`;
+  }
+
+  return axios.get(u).then(resp => resp.data);
+};
+
+
+export const getMyReplies = (user, since = null) => {
+  let u = `${BACKEND_URL}/api/replies/${user}`;
+  if (since) {
+    u += `?since=${since}`;
+  }
+
+  return axios.get(u).then(resp => resp.data);
+};
+
+
+export const getMyMentions = (user, since = null) => {
+  let u = `${BACKEND_URL}/api/mentions/${user}`;
+  if (since) {
+    u += `?since=${since}`;
+  }
+
+  return axios.get(u).then(resp => resp.data);
+};
+
+
+export const getMyFollows = (user, since = null) => {
+  let u = `${BACKEND_URL}/api/follows/${user}`;
+  if (since) {
+    u += `?since=${since}`;
+  }
+
+  return axios.get(u).then(resp => resp.data);
+};
+
+export const getMyReblogs = (user, since = null) => {
+  let u = `${BACKEND_URL}/api/reblogs/${user}`;
+  if (since) {
+    u += `?since=${since}`;
+  }
+
+  return axios.get(u).then(resp => resp.data);
+};

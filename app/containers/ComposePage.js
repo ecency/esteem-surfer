@@ -13,16 +13,16 @@ import {
 } from '../actions/global';
 
 import { addAccount, addAccountSc, deleteAccount } from '../actions/accounts';
-
 import { logIn, logOut, updateActiveAccount } from '../actions/active-account';
-
 import { setVisitingEntry } from '../actions/visiting-entry';
+import { fetchActivities, resetActivities } from '../actions/activities';
 
 const mapStateToProps = state => ({
   global: state.global,
   trendingTags: state.trendingTags,
   activeAccount: state.activeAccount,
-  accounts: state.accounts
+  accounts: state.accounts,
+  activities: state.activities
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -48,7 +48,8 @@ const mapDispatchToProps = dispatch => ({
       dispatch
     ),
     ...bindActionCreators({ logIn, logOut, updateActiveAccount }, dispatch),
-    ...bindActionCreators({ setVisitingEntry }, dispatch)
+    ...bindActionCreators({ setVisitingEntry }, dispatch),
+    ...bindActionCreators({ fetchActivities, resetActivities }, dispatch)
   }
 });
 

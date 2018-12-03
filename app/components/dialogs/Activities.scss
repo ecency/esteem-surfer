@@ -1,0 +1,185 @@
+@import '../../style/mixins';
+@import '../../style/colors';
+
+.activities-dialog-content {
+  .dialog-header {
+    align-items: center;
+    display: flex;
+    height: 90px;
+    justify-content: space-between;
+    padding: 0 32px;
+
+    .type-selection {
+      align-items: center;
+      color: $dark-sky-blue;
+      display: flex;
+      flex-grow: 1;
+      font-size: 16px;
+      font-weight: 500;
+
+      .type-label {
+        margin-right: 10px;
+      }
+
+      .drop-down-caret {
+        cursor: pointer;
+      }
+    }
+
+    .controls {
+      flex-shrink: 0;
+      width: 100px;
+    }
+  }
+
+  .activity-list {
+    .group-title {
+      font-size: 16px;
+      font-weight: 500;
+      padding: 16px;
+
+      @include themify(day) {
+        background: $duck-egg-blue;
+        border-bottom: 1px solid $white-four;
+        border-top: 1px solid $white-four;
+        color: $charcoal-grey;
+      }
+
+      @include themify(night) {
+        background: darken($metallic-blue, 16);
+        border-bottom: 1px solid $metallic-blue;
+        border-top: 1px solid $metallic-blue;
+        color: $powder-blue;
+      }
+    }
+
+    .activity-list-item {
+      @include clearfix();
+      cursor: default;
+      padding: 14px 8px;
+
+      &:hover {
+        @include themify(day) {
+          background: $duck-egg-blue;
+        }
+
+        @include themify(night) {
+          background: darken($metallic-blue, 16);
+        }
+      }
+
+      .activity-control {
+        align-items: center;
+        display: flex;
+        float: left;
+        height: 100%;
+        padding-top: 18px;
+        width: 21px;
+
+        .mark-read {
+          background: $dark-sky-blue;
+          border-radius: 50%;
+          cursor: pointer;
+          height: 6px;
+          margin-left: 5px;
+          width: 6px;
+        }
+      }
+
+      .source {
+        cursor: pointer;
+        float: left;
+        margin-right: 10px;
+        width: 40px;
+      }
+
+      .activity-content {
+        float: left;
+        width: calc(100% - 74px);
+
+        @include themify(day) {
+          color: $charcoal-grey;
+
+          a {
+            color: $charcoal-grey;
+          }
+        }
+
+        @include themify(night) {
+          color: $pinkish-grey;
+
+          a {
+            color: $pinkish-grey;
+          }
+        }
+
+        .first-line,
+        .second-line {
+        }
+
+        .first-line {
+          margin-bottom: 4px;
+
+          .source-name {
+            cursor: pointer;
+            font-weight: 500;
+            margin-right: 4px;
+          }
+
+          .activity-action {
+            margin-right: 10px;
+            opacity: 0.8;
+          }
+        }
+
+        .vert-separator {
+          height: 4px;
+        }
+
+        .post-link {
+          display: inline-block;
+          font-weight: 500;
+          max-width: 98%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .second-line {
+          .reply-body {
+            border-left: 5px solid lighten($steel-grey, 30);
+            color: $steel-grey;
+            cursor: pointer;
+            font-size: 13px;
+            padding-left: 10px;
+          }
+
+          .follow-label,
+          .unfollow-label,
+          .ignore-label {
+            border-radius: 6px;
+            color: $white;
+            display: inline-block;
+            font-size: 12px;
+            padding: 3px;
+          }
+
+          .follow-label {
+            background: lighten($dark-sky-blue, 5);
+            border: 1px solid $dark-sky-blue;
+          }
+
+          .unfollow-label {
+            background: lighten($warm-grey, 5);
+            border: 1px solid $warm-grey;
+          }
+
+          .ignore-label {
+            background: lighten($red2, 5);
+            border: 1px solid $red2;
+          }
+        }
+      }
+    }
+  }
+}

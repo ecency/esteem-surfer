@@ -300,5 +300,20 @@
     "followed": "{source} followed you",
     "replied": "{source} replied you",
     "reblogged": "{source} reblogged your post"
+  },
+  "activities": {
+    "type-all": "All Activities",
+    "type-votes": "Votes",
+    "type-replies": "Replies",
+    "type-mentions": "Mentions",
+    "type-follows": "Follows",
+    "type-reblogs": "Reblogs",
+    "vote-str": "{p}% likes your post:",
+    "reply-str": "replied your post:",
+    "mention-str": "mentioned you in:",
+    "followed-str": "followed",
+    "unfollowed-str": "unfollowed",
+    "ignored-str": "ignored",
+    "reblog-str": "reblogged your post:"
   }
 }
