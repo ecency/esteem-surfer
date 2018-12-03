@@ -1,5 +1,4 @@
 @import '~typeface-roboto/index.css';
-
 @import './colors';
 @import './mixins';
 
@@ -115,6 +114,16 @@ a[target='_external'],
     color: $dark-sky-blue;
     font-size: 12px;
     vertical-align: -5%;
+  }
+}
+
+.empty-text {
+  @include themify(day) {
+    color: $warm-grey;
+  }
+
+  @include themify(night) {
+    color: $steel-grey;
   }
 }
 

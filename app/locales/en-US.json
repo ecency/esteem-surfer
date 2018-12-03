@@ -314,6 +314,7 @@
     "followed-str": "followed",
     "unfollowed-str": "unfollowed",
     "ignored-str": "ignored",
-    "reblog-str": "reblogged your post:"
+    "reblog-str": "reblogged your post:",
+    "empty-list": "Nothing here"
   }
 }

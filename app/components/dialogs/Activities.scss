@@ -33,6 +33,18 @@
   }
 
   .activity-list {
+    &.empty-list {
+      padding: 10px;
+
+      @include themify(day) {
+        border-top: 1px solid $white-four;
+      }
+
+      @include themify(night) {
+        border-top: 1px solid $dusky-blue-two;
+      }
+    }
+
     .group-title {
       font-size: 16px;
       font-weight: 500;

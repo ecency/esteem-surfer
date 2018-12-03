@@ -8,6 +8,7 @@ import { Menu, message } from 'antd';
 
 import AccountLink from '../helpers/AccountLink';
 import EntryLink from '../helpers/EntryLink';
+import LinearProgress from '../common/LinearProgress';
 
 import entryBodySummary from '../../utils/entry-body-summary';
 
@@ -200,7 +201,6 @@ class Activities extends Component {
     const { activeAccount } = this.props;
     const { username } = activeAccount;
 
-    this.setState({ loading: true });
 
     let prms;
 
@@ -224,6 +224,8 @@ class Activities extends Component {
         prms = getActivities(username, since);
     }
 
+    this.setState({ loading: true });
+
     return prms.then((resp) => {
       if (resp.length === 0) {
         this.setState({ hasMore: false });
@@ -237,13 +239,12 @@ class Activities extends Component {
       return resp;
     }).catch((e) => {
 
-    }).then(() => {
-
+    }).finally(() => {
+      this.setState({ loading: false });
     });
   };
 
   render() {
-    const { activeAccount } = this.props;
     const { activityType, activities, loading } = this.state;
 
     const filterMenu = <Menu selectedKeys={[activityType]} className="surfer-dropdown-menu" onClick={this.typeChanged}>
@@ -276,11 +277,23 @@ class Activities extends Component {
           </div>
         </div>
 
+        {loading &&
+        <LinearProgress/>
+        }
+
+        {(!loading && activities.length === 0) &&
+        <div className="activity-list empty-list">
+          <span className="empty-text"><FormattedMessage id="activities.empty-list"/></span>
+        </div>
+        }
+
+        {activities.length > 0 &&
         <div className="activity-list">
           {activities.map(ac => (
             <ActivityListItem key={ac.id} {...this.props} activity={ac}/>
           ))}
         </div>
+        }
       </div>
     );
   }
