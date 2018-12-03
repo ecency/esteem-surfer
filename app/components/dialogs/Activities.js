@@ -27,8 +27,7 @@ import {
 import UserAvatar from '../elements/UserAvatar';
 
 class ActivityListItem extends Component {
-
-  date2key = (s) => {
+  date2key = s => {
     // if not date return self
     if (s.split('-').length !== 3) {
       return s;
@@ -38,132 +37,162 @@ class ActivityListItem extends Component {
   };
 
   render() {
-
     const { activity } = this.props;
     return (
       <Fragment>
-        {activity.gkf &&
-        <div className="group-title">
-          <FormattedRelative value={this.date2key(activity.gk)}/>
-        </div>
-        }
+        {activity.gkf && (
+          <div className="group-title">
+            <FormattedRelative value={this.date2key(activity.gk)} />
+          </div>
+        )}
 
-        <div className={`activity-list-item${activity.read === 0 ? ' not-read' : ''}`}>
+        <div
+          className={`activity-list-item${
+            activity.read === 0 ? ' not-read' : ''
+          }`}
+        >
           <div className="activity-control">
-            {activity.read === 0 &&
-            <span className="mark-read"/>
-            }
+            {activity.read === 0 && <span className="mark-read" />}
           </div>
 
           <div className="source">
             <AccountLink {...this.props} username={activity.source}>
-              <UserAvatar user={activity.source} size="medium"/>
+              <UserAvatar user={activity.source} size="medium" />
             </AccountLink>
           </div>
 
           {/* Votes */}
-          {['vote', 'unvote'].includes(activity.type) &&
-          <div className="activity-content">
-            <div className="first-line">
-              <AccountLink {...this.props} username={activity.source}>
-                <a className="source-name"> {activity.source}</a>
-              </AccountLink>
-              <span className="activity-action">
-                <FormattedMessage id="activities.vote-str" values={{ p: (activity.weight / 100) }}/>
-              </span>
+          {['vote', 'unvote'].includes(activity.type) && (
+            <div className="activity-content">
+              <div className="first-line">
+                <AccountLink {...this.props} username={activity.source}>
+                  <a className="source-name"> {activity.source}</a>
+                </AccountLink>
+                <span className="activity-action">
+                  <FormattedMessage
+                    id="activities.vote-str"
+                    values={{ p: activity.weight / 100 }}
+                  />
+                </span>
+              </div>
+              <div className="second-line">
+                <EntryLink
+                  {...this.props}
+                  author={activity.author}
+                  permlink={activity.permlink}
+                >
+                  <a className="post-link">{activity.permlink}</a>
+                </EntryLink>
+              </div>
             </div>
-            <div className="second-line">
-              <EntryLink {...this.props} author={activity.author} permlink={activity.permlink}>
-                <a className="post-link">{activity.permlink}</a>
-              </EntryLink>
-            </div>
-          </div>
-          }
+          )}
 
           {/* Replies */}
-          {activity.type === 'reply' &&
-          <div className="activity-content ">
-            <div className="first-line">
-              <AccountLink {...this.props} username={activity.source}>
-                <a className="source-name"> {activity.source}</a>
-              </AccountLink>
-              <span className="activity-action">
-                <FormattedMessage id="activities.reply-str"/>
-              </span>
-              <div className="vert-separator"/>
-              <EntryLink {...this.props} author={activity.parent_author} permlink={activity.parent_permlink}>
-                <a className="post-link">{activity.parent_permlink}</a>
-              </EntryLink>
+          {activity.type === 'reply' && (
+            <div className="activity-content ">
+              <div className="first-line">
+                <AccountLink {...this.props} username={activity.source}>
+                  <a className="source-name"> {activity.source}</a>
+                </AccountLink>
+                <span className="activity-action">
+                  <FormattedMessage id="activities.reply-str" />
+                </span>
+                <div className="vert-separator" />
+                <EntryLink
+                  {...this.props}
+                  author={activity.parent_author}
+                  permlink={activity.parent_permlink}
+                >
+                  <a className="post-link">{activity.parent_permlink}</a>
+                </EntryLink>
+              </div>
+              <div className="second-line">
+                <EntryLink
+                  {...this.props}
+                  author={activity.author}
+                  permlink={activity.permlink}
+                >
+                  <div className="markdown-view mini-markdown reply-body">
+                    {entryBodySummary(activity.body, 100)}
+                  </div>
+                </EntryLink>
+              </div>
             </div>
-            <div className="second-line">
-              <EntryLink {...this.props} author={activity.author} permlink={activity.permlink}>
-                <div className="markdown-view mini-markdown reply-body">{entryBodySummary(activity.body, 100)}</div>
-              </EntryLink>
-            </div>
-          </div>
-          }
+          )}
 
           {/* Mentions */}
-          {activity.type === 'mention' &&
-          <div className="activity-content">
-            <div className="first-line">
-              <AccountLink {...this.props} username={activity.source}>
-                <a className="source-name"> {activity.source}</a>
-              </AccountLink>
-              <span className="activity-action">
-                   <FormattedMessage id="activities.mention-str"/>
-              </span>
+          {activity.type === 'mention' && (
+            <div className="activity-content">
+              <div className="first-line">
+                <AccountLink {...this.props} username={activity.source}>
+                  <a className="source-name"> {activity.source}</a>
+                </AccountLink>
+                <span className="activity-action">
+                  <FormattedMessage id="activities.mention-str" />
+                </span>
+              </div>
+              <div className="second-line">
+                <EntryLink
+                  {...this.props}
+                  author={activity.author}
+                  permlink={activity.permlink}
+                >
+                  <a className="post-link">{activity.permlink}</a>
+                </EntryLink>
+              </div>
             </div>
-            <div className="second-line">
-              <EntryLink {...this.props} author={activity.author} permlink={activity.permlink}>
-                <a className="post-link">{activity.permlink}</a>
-              </EntryLink>
-            </div>
-          </div>
-          }
+          )}
 
           {/* Follows */}
-          {['follow', 'unfollow', 'ignore'].includes(activity.type) &&
-          <div className="activity-content">
-            <div className="first-line">
-              <AccountLink {...this.props} username={activity.source}>
-                <a className="source-name"> {activity.source}</a>
-              </AccountLink>
+          {['follow', 'unfollow', 'ignore'].includes(activity.type) && (
+            <div className="activity-content">
+              <div className="first-line">
+                <AccountLink {...this.props} username={activity.source}>
+                  <a className="source-name"> {activity.source}</a>
+                </AccountLink>
+              </div>
+              <div className="second-line">
+                {activity.type === 'follow' && (
+                  <span className="follow-label">
+                    <FormattedMessage id="activities.followed-str" />
+                  </span>
+                )}
+                {activity.type === 'unfollow' && (
+                  <span className="unfollow-label">
+                    <FormattedMessage id="activities.unfollowed-str" />
+                  </span>
+                )}
+                {activity.type === 'ignore' && (
+                  <span className="ignore-label">
+                    <FormattedMessage id="activities.ignored-str" />
+                  </span>
+                )}
+              </div>
             </div>
-            <div className="second-line">
-              {activity.type === 'follow' &&
-              <span className="follow-label"><FormattedMessage id="activities.followed-str"/></span>
-              }
-              {activity.type === 'unfollow' &&
-              <span className="unfollow-label"><FormattedMessage id="activities.unfollowed-str"/></span>
-              }
-              {activity.type === 'ignore' &&
-              <span className="ignore-label"><FormattedMessage id="activities.ignored-str"/></span>
-              }
-            </div>
-          </div>
-          }
-
+          )}
 
           {/* Reblogs */}
-          {activity.type === 'reblog' &&
-
-          <div className="activity-content">
-            <div className="first-line">
-              <AccountLink {...this.props} username={activity.source}>
-                <a className="source-name"> {activity.source}</a>
-              </AccountLink>
-              <span className="activity-action">
-               <FormattedMessage id="activities.reblog-str"/>
-              </span>
+          {activity.type === 'reblog' && (
+            <div className="activity-content">
+              <div className="first-line">
+                <AccountLink {...this.props} username={activity.source}>
+                  <a className="source-name"> {activity.source}</a>
+                </AccountLink>
+                <span className="activity-action">
+                  <FormattedMessage id="activities.reblog-str" />
+                </span>
+              </div>
+              <div className="second-line">
+                <EntryLink
+                  {...this.props}
+                  author={activity.author}
+                  permlink={activity.permlink}
+                >
+                  <a className="post-link">{activity.permlink}</a>
+                </EntryLink>
+              </div>
             </div>
-            <div className="second-line">
-              <EntryLink {...this.props} author={activity.author} permlink={activity.permlink}>
-                <a className="post-link">{activity.permlink}</a>
-              </EntryLink>
-            </div>
-          </div>
-          }
+          )}
         </div>
       </Fragment>
     );
@@ -215,16 +244,19 @@ class Activities extends Component {
     this.loadActivities();
   };
 
-  typeChanged = (item) => {
-    this.setState({ activityType: item.key, activities: [], hasMore: true }, () => {
-      this.loadActivities();
-    });
+  typeChanged = item => {
+    this.setState(
+      { activityType: item.key, activities: [], hasMore: true },
+      () => {
+        this.loadActivities();
+      }
+    );
   };
 
   loadActivities = () => {
+    const { activeAccount, intl } = this.props;
     const { activityType, activities } = this.state;
 
-    const { activeAccount } = this.props;
     const { username } = activeAccount;
 
     let since = null;
@@ -258,85 +290,107 @@ class Activities extends Component {
 
     this.setState({ loading: true });
 
-    return prms.then((resp) => {
-      if (resp.length === 0) {
-        this.setState({ hasMore: false });
-        return;
-      }
+    return prms
+      .then(resp => {
+        if (resp.length === 0) {
+          this.setState({ hasMore: false });
+          return;
+        }
 
-      const newActivities = [...activities, ...resp];
-      this.setState({ activities: newActivities });
+        const newActivities = [...activities, ...resp];
+        this.setState({ activities: newActivities });
 
-      return resp;
-    }).catch((e) => {
-      message.error('aa');
-    }).finally(() => {
-      this.setState({ loading: false });
-    });
+        return resp;
+      })
+      .catch(() => {
+        message.error(intl.formatMessage({ id: 'g.server-error' }));
+      })
+      .finally(() => {
+        this.setState({ loading: false });
+      });
   };
 
   render() {
     const { activityType, activities, loading } = this.state;
 
-    const filterMenu = <Menu selectedKeys={[activityType]} className="surfer-dropdown-menu" onClick={this.typeChanged}>
-      <Menu.Item key="all">
-        <a><FormattedMessage id="activities.type-all"/></a>
-      </Menu.Item>
-      <Menu.Item key="votes">
-        <a><FormattedMessage id="activities.type-votes"/></a>
-      </Menu.Item>
-      <Menu.Item key="replies">
-        <a><FormattedMessage id="activities.type-replies"/></a>
-      </Menu.Item>
-      <Menu.Item key="mentions">
-        <a><FormattedMessage id="activities.type-mentions"/></a>
-      </Menu.Item>
-      <Menu.Item key="follows">
-        <a><FormattedMessage id="activities.type-follows"/></a>
-      </Menu.Item>
-      <Menu.Item key="reblogs">
-        <a><FormattedMessage id="activities.type-reblogs"/></a>
-      </Menu.Item>
-    </Menu>;
+    const filterMenu = (
+      <Menu
+        selectedKeys={[activityType]}
+        className="surfer-dropdown-menu"
+        onClick={this.typeChanged}
+      >
+        <Menu.Item key="all">
+          <a>
+            <FormattedMessage id="activities.type-all" />
+          </a>
+        </Menu.Item>
+        <Menu.Item key="votes">
+          <a>
+            <FormattedMessage id="activities.type-votes" />
+          </a>
+        </Menu.Item>
+        <Menu.Item key="replies">
+          <a>
+            <FormattedMessage id="activities.type-replies" />
+          </a>
+        </Menu.Item>
+        <Menu.Item key="mentions">
+          <a>
+            <FormattedMessage id="activities.type-mentions" />
+          </a>
+        </Menu.Item>
+        <Menu.Item key="follows">
+          <a>
+            <FormattedMessage id="activities.type-follows" />
+          </a>
+        </Menu.Item>
+        <Menu.Item key="reblogs">
+          <a>
+            <FormattedMessage id="activities.type-reblogs" />
+          </a>
+        </Menu.Item>
+      </Menu>
+    );
 
     return (
       <div className="activities-dialog-content" id="activities-content">
         <div className="dialog-header">
           <div className="type-selection">
-            <span className="type-label"><FormattedMessage id={`activities.type-${activityType}`}/></span>
-            <DropDown menu={filterMenu} location=""/>
+            <span className="type-label">
+              <FormattedMessage id={`activities.type-${activityType}`} />
+            </span>
+            <DropDown menu={filterMenu} location="" />
           </div>
         </div>
 
-        {loading &&
-        <LinearProgress/>
-        }
+        {loading && <LinearProgress />}
 
-        {(!loading && activities.length === 0) &&
-        <div className="activity-list empty-list">
-          <span className="empty-text"><FormattedMessage id="activities.empty-list"/></span>
-        </div>
-        }
+        {!loading &&
+          activities.length === 0 && (
+            <div className="activity-list empty-list">
+              <span className="empty-text">
+                <FormattedMessage id="activities.empty-list" />
+              </span>
+            </div>
+          )}
 
-        {activities.length > 0 &&
-        <div className="activity-list">
-          {activities.map(ac => (
-            <ActivityListItem key={ac.id} {...this.props} activity={ac}/>
-          ))}
-        </div>
-        }
+        {activities.length > 0 && (
+          <div className="activity-list">
+            {activities.map(ac => (
+              <ActivityListItem key={ac.id} {...this.props} activity={ac} />
+            ))}
+          </div>
+        )}
 
-        {(loading && activities.length > 0) &&
-        <LinearProgress/>
-        }
-
+        {loading && activities.length > 0 && <LinearProgress />}
       </div>
     );
   }
 }
 
 Activities.propTypes = {
-  activeAccount: PropTypes.instanceOf(Object).isRequired
+  activeAccount: PropTypes.instanceOf(Object).isRequired,
+  intl: PropTypes.instanceOf(Object).isRequired
 };
 
 export default injectIntl(Activities);
