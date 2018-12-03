@@ -2,6 +2,9 @@
 @import '../../style/colors';
 
 .activities-dialog-content {
+  height: 100%;
+  overflow: auto;
+
   .dialog-header {
     align-items: center;
     display: flex;

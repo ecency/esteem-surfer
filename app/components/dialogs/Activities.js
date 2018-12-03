@@ -1,11 +1,15 @@
+/* eslint-disable react/no-multi-comp */
+
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+
 import moment from 'moment';
 
-import { FormattedMessage, FormattedRelative } from 'react-intl';
-import DropDown from '../common/DropDown';
 import { Menu, message } from 'antd';
 
+import { FormattedMessage, FormattedRelative, injectIntl } from 'react-intl';
+
+import DropDown from '../common/DropDown';
 import AccountLink from '../helpers/AccountLink';
 import EntryLink from '../helpers/EntryLink';
 import LinearProgress from '../common/LinearProgress';
@@ -170,7 +174,6 @@ ActivityListItem.propTypes = {
   activity: PropTypes.instanceOf(Object).isRequired
 };
 
-
 class Activities extends Component {
   constructor(props) {
     super(props);
@@ -178,7 +181,6 @@ class Activities extends Component {
     this.state = {
       activityType: 'all',
       activities: [],
-      since: null,
       hasMore: true,
       loading: false
     };
@@ -186,21 +188,51 @@ class Activities extends Component {
 
   componentDidMount() {
     this.loadActivities();
+
+    this.scrollEl = document.querySelector('#activities-content');
+    this.scrollEl.addEventListener('scroll', this.detectScroll);
   }
 
+  componentWillUnmount() {
+    this.scrollEl.removeEventListener('scroll', this.detectScroll);
+  }
+
+  detectScroll = () => {
+    if (
+      this.scrollEl.scrollTop + this.scrollEl.offsetHeight + 100 >=
+      this.scrollEl.scrollHeight
+    ) {
+      this.bottomReached();
+    }
+  };
+
+  bottomReached = () => {
+    const { loading, hasMore } = this.state;
+    if (loading || !hasMore) {
+      return;
+    }
+
+    this.loadActivities();
+  };
+
   typeChanged = (item) => {
-    this.setState({ activityType: item.key, activities: [], since: null, hasMore: true }, () => {
+    this.setState({ activityType: item.key, activities: [], hasMore: true }, () => {
       this.loadActivities();
     });
-
   };
 
   loadActivities = () => {
-    const { activityType, since } = this.state;
+    const { activityType, activities } = this.state;
 
     const { activeAccount } = this.props;
     const { username } = activeAccount;
 
+    let since = null;
+
+    if (activities.length > 0) {
+      const lastAc = [...activities].pop();
+      since = lastAc.id;
+    }
 
     let prms;
 
@@ -232,13 +264,12 @@ class Activities extends Component {
         return;
       }
 
-      const { activities } = this.state;
       const newActivities = [...activities, ...resp];
       this.setState({ activities: newActivities });
 
       return resp;
     }).catch((e) => {
-
+      message.error('aa');
     }).finally(() => {
       this.setState({ loading: false });
     });
@@ -269,7 +300,7 @@ class Activities extends Component {
     </Menu>;
 
     return (
-      <div className="activities-dialog-content">
+      <div className="activities-dialog-content" id="activities-content">
         <div className="dialog-header">
           <div className="type-selection">
             <span className="type-label"><FormattedMessage id={`activities.type-${activityType}`}/></span>
@@ -294,6 +325,11 @@ class Activities extends Component {
           ))}
         </div>
         }
+
+        {(loading && activities.length > 0) &&
+        <LinearProgress/>
+        }
+
       </div>
     );
   }
@@ -303,4 +339,4 @@ Activities.propTypes = {
   activeAccount: PropTypes.instanceOf(Object).isRequired
 };
 
-export default Activities;
+export default injectIntl(Activities);

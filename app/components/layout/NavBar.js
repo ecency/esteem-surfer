@@ -593,7 +593,7 @@ class NavBar extends Component {
                 closable={false}
                 onClose={this.toggleActivities}
                 visible={activitiesVisible}
-                width="480px"
+                width="480px" style={{height: '100%'}}
               >
                 <Activities {...this.props}/>
               </Drawer>
