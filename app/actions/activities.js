@@ -1,7 +1,4 @@
-import {
-  getActivities,
-  getUnreadActivityCount
-} from '../backend/esteem-client';
+import { getUnreadActivityCount } from '../backend/esteem-client';
 
 export const FETCHED = 'activities/FETCHED';
 export const RESET = 'activities/RESET';
@@ -13,9 +10,8 @@ export const fetchActivities = username => async (dispatch, getState) => {
   }
 
   const unread = await getUnreadActivityCount(username);
-  const list = await getActivities(username);
 
-  dispatch(fetched(unread, list));
+  dispatch(fetched(unread));
 };
 
 export const resetActivities = () => dispatch => {
@@ -24,9 +20,9 @@ export const resetActivities = () => dispatch => {
 
 /* action creators */
 
-export const fetched = (unread, list) => ({
+export const fetched = unread => ({
   type: FETCHED,
-  payload: { unread, list }
+  payload: { unread }
 });
 
 export const reset = () => ({
