@@ -30,8 +30,21 @@
     }
 
     .controls {
+      display: flex;
+      flex-grow: 0;
       flex-shrink: 0;
-      width: 100px;
+      justify-content: space-around;
+      width: 79px;
+
+      .control-button {
+        color: $dark-sky-blue;
+        font-size: 22px;
+
+        &.disabled {
+          color: lighten($dark-sky-blue, 10);
+          pointer-events: none;
+        }
+      }
     }
   }
 
@@ -73,6 +86,7 @@
       cursor: default;
       padding: 14px 8px;
 
+      &.not-read,
       &:hover {
         @include themify(day) {
           background: $duck-egg-blue;

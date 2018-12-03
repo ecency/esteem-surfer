@@ -285,7 +285,8 @@ App.propTypes = {
     updateActiveAccount: PropTypes.func.isRequired,
     logOut: PropTypes.func.isRequired,
     fetchGlobalProps: PropTypes.func.isRequired,
-    deleteAccounts: PropTypes.func.isRequired
+    deleteAccounts: PropTypes.func.isRequired,
+    fetchActivities: PropTypes.func.isRequired
   }).isRequired
 };
 

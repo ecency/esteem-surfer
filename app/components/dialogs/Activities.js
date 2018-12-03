@@ -22,11 +22,22 @@ import {
   getMyMentions,
   getMyFollows,
   getMyReblogs,
-  getActivities
+  getActivities,
+  marActivityAsRead
 } from '../../backend/esteem-client';
 import UserAvatar from '../elements/UserAvatar';
 
 class ActivityListItem extends Component {
+  constructor(props) {
+    super(props);
+
+    const { activity } = this.props;
+
+    this.state = {
+      activity
+    };
+  }
+
   date2key = s => {
     // if not date return self
     if (s.split('-').length !== 3) {
@@ -36,8 +47,27 @@ class ActivityListItem extends Component {
     return moment.utc(s).toDate();
   };
 
+  markAsRead = () => {
+    const { activeAccount, actions, intl } = this.props;
+    const { activity } = this.state;
+
+    const { username } = activeAccount;
+
+    return marActivityAsRead(username, activity.id)
+      .then(resp => {
+        actions.fetchActivities(username);
+
+        this.setState({ activity: Object.assign({}, activity, { read: 1 }) });
+
+        return resp;
+      })
+      .catch(() => {
+        message.error(intl.formatMessage({ id: 'g.server-error' }));
+      });
+  };
+
   render() {
-    const { activity } = this.props;
+    const { activity } = this.state;
     return (
       <Fragment>
         {activity.gkf && (
@@ -52,7 +82,13 @@ class ActivityListItem extends Component {
           }`}
         >
           <div className="activity-control">
-            {activity.read === 0 && <span className="mark-read" />}
+            {activity.read === 0 && (
+              <span
+                role="none"
+                onClick={this.markAsRead}
+                className="mark-read"
+              />
+            )}
           </div>
 
           <div className="source">
@@ -200,7 +236,12 @@ class ActivityListItem extends Component {
 }
 
 ActivityListItem.propTypes = {
-  activity: PropTypes.instanceOf(Object).isRequired
+  activeAccount: PropTypes.instanceOf(Object).isRequired,
+  activity: PropTypes.instanceOf(Object).isRequired,
+  actions: PropTypes.shape({
+    fetchActivities: PropTypes.func.isRequired
+  }).isRequired,
+  intl: PropTypes.instanceOf(Object).isRequired
 };
 
 class Activities extends Component {
@@ -251,6 +292,12 @@ class Activities extends Component {
         this.loadActivities();
       }
     );
+  };
+
+  reload = () => {
+    this.setState({ activities: [], hasMore: true }, () => {
+      this.loadActivities();
+    });
   };
 
   loadActivities = () => {
@@ -360,6 +407,18 @@ class Activities extends Component {
               <FormattedMessage id={`activities.type-${activityType}`} />
             </span>
             <DropDown menu={filterMenu} location="" />
+          </div>
+          <div className="controls">
+            <a
+              role="none"
+              className={`control-button refresh ${loading ? 'disabled' : ''}`}
+              onClick={this.reload}
+            >
+              <i className="mi">refresh</i>
+            </a>
+            <a className="control-button done">
+              <i className="mi">done</i>
+            </a>
           </div>
         </div>
 
