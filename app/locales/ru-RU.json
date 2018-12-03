@@ -293,12 +293,12 @@
     "copy-image-url": "Скопировать url"
   },
   "notification": {
-    "popup-title": "You have a new notification",
-    "voted": "{source} voted your post",
-    "mention-post": "{source} mentioned you in a post",
-    "mention-comment": "{source} mentioned you in a comment",
-    "followed": "{source} followed you",
-    "replied": "{source} replied you",
-    "reblogged": "{source} reblogged your post"
+    "popup-title": "У вас есть новое уведомление",
+    "voted": "{source} проголосовал за ваш пост",
+    "mention-post": "{source} упомянул вас в посте",
+    "mention-comment": "{source} упомянул вас в комментарии",
+    "followed": "{source} подписался на вас",
+    "replied": "{source} ответил вам",
+    "reblogged": "{source} сделал репост вашего поста"
   }
 }
