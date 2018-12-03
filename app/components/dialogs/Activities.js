@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import moment from 'moment';
 
-import { Menu, message } from 'antd';
+import { Menu, Tooltip, message } from 'antd';
 
 import { FormattedMessage, FormattedRelative, injectIntl } from 'react-intl';
 
@@ -36,6 +36,17 @@ class ActivityListItem extends Component {
     this.state = {
       activity
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { activity } = this.state;
+    if (activity.read === 1) {
+      return;
+    }
+
+    if (nextProps.activity.read !== activity.read) {
+      this.setState({ activity: nextProps.activity });
+    }
   }
 
   date2key = s => {
@@ -252,7 +263,8 @@ class Activities extends Component {
       activityType: 'all',
       activities: [],
       hasMore: true,
-      loading: false
+      loading: false,
+      marking: false
     };
   }
 
@@ -297,7 +309,40 @@ class Activities extends Component {
   reload = () => {
     this.setState({ activities: [], hasMore: true }, () => {
       this.loadActivities();
+
+      const { activeAccount, actions } = this.props;
+      const { username } = activeAccount;
+      actions.fetchActivities(username);
     });
+  };
+
+  markAll = () => {
+    const { activeAccount, actions, intl } = this.props;
+
+    const { username } = activeAccount;
+
+    this.setState({ marking: true });
+
+    return marActivityAsRead(username)
+      .then(resp => {
+        actions.fetchActivities(username);
+
+        const { activities } = this.state;
+        const newActivities = activities.map(a =>
+          Object.assign({}, a, { read: 1 })
+        );
+
+        this.setState({ activities: newActivities });
+
+        message.success(intl.formatMessage({ id: 'g.done' }));
+        return resp;
+      })
+      .catch(() => {
+        message.error(intl.formatMessage({ id: 'g.server-error' }));
+      })
+      .finally(() => {
+        this.setState({ marking: false });
+      });
   };
 
   loadActivities = () => {
@@ -358,7 +403,8 @@ class Activities extends Component {
   };
 
   render() {
-    const { activityType, activities, loading } = this.state;
+    const { activityType, activities, loading, marking } = this.state;
+    const { intl } = this.props;
 
     const filterMenu = (
       <Menu
@@ -414,10 +460,26 @@ class Activities extends Component {
               className={`control-button refresh ${loading ? 'disabled' : ''}`}
               onClick={this.reload}
             >
-              <i className="mi">refresh</i>
+              <Tooltip
+                title={intl.formatMessage({ id: 'activities.refresh' })}
+                placement="left"
+                mouseEnterDelay={2}
+              >
+                <i className="mi">refresh</i>
+              </Tooltip>
             </a>
-            <a className="control-button done">
-              <i className="mi">done</i>
+            <a
+              role="none"
+              className={`control-button refresh ${marking ? 'disabled' : ''}`}
+              onClick={this.markAll}
+            >
+              <Tooltip
+                title={intl.formatMessage({ id: 'activities.mark-all-read' })}
+                placement="left"
+                mouseEnterDelay={2}
+              >
+                <i className="mi">done</i>
+              </Tooltip>
             </a>
           </div>
         </div>
@@ -449,6 +511,9 @@ class Activities extends Component {
 
 Activities.propTypes = {
   activeAccount: PropTypes.instanceOf(Object).isRequired,
+  actions: PropTypes.shape({
+    fetchActivities: PropTypes.func.isRequired
+  }).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };
 

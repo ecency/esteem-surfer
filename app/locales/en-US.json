@@ -9,7 +9,8 @@
     "ok": "OK",
     "edit": "Edit",
     "server-error": "Process could not completed due to server error",
-    "save": "Save"
+    "save": "Save",
+    "done": "Done"
   },
   "footer": {
     "faq": "FAQ",
@@ -315,6 +316,8 @@
     "unfollowed-str": "unfollowed",
     "ignored-str": "ignored",
     "reblog-str": "reblogged your post:",
-    "empty-list": "Nothing here"
+    "empty-list": "Nothing here",
+    "refresh": "Refresh",
+    "mark-all-read": "Mark All as Read"
   }
 }
