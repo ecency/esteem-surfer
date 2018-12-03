@@ -9,7 +9,8 @@
     "ok": "OK",
     "edit": "Редактировать",
     "server-error": "Невозможно завершить процесс из-за ошибки сервера",
-    "save": "Сохранить"
+    "save": "Сохранить",
+    "done": "Done"
   },
   "footer": {
     "faq": "ЧАВО",
@@ -300,5 +301,23 @@
     "followed": "{source} подписался на вас",
     "replied": "{source} ответил вам",
     "reblogged": "{source} сделал репост вашего поста"
+  },
+  "activities": {
+    "type-all": "All Activities",
+    "type-votes": "Votes",
+    "type-replies": "Replies",
+    "type-mentions": "Mentions",
+    "type-follows": "Follows",
+    "type-reblogs": "Reblogs",
+    "vote-str": "{p}% likes your post:",
+    "reply-str": "replied your post:",
+    "mention-str": "mentioned you in:",
+    "followed-str": "followed",
+    "unfollowed-str": "unfollowed",
+    "ignored-str": "ignored",
+    "reblog-str": "reblogged your post:",
+    "empty-list": "Nothing here",
+    "refresh": "Refresh",
+    "mark-all-read": "Mark All as Read"
   }
 }
