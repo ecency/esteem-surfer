@@ -170,7 +170,7 @@ class App extends React.Component {
     this.nws = new WebSocket(u);
 
     this.nws.onopen = () => {
-      console.log('nws connected');
+      // console.log('nws connected');
     };
 
     this.nws.onmessage = evt => {
@@ -190,17 +190,19 @@ class App extends React.Component {
         }).onclick = () => {
           const newLoc = `${activeAccount.username}/activities`;
           history.push(newLoc);
+
+          window.dispatchEvent(new CustomEvent('notification-clicked', {}));
         };
       }
     };
 
     this.nws.onclose = evt => {
-      console.log('nws disconnected');
+      // console.log('nws disconnected');
 
       this.nws = null;
 
       if (!evt.wasClean) {
-        console.log('trying');
+        // console.log('trying');
         // if disconnected due connection error try to auto connect
         setTimeout(() => {
           this.connectNws();

@@ -273,11 +273,30 @@ class Activities extends Component {
 
     this.scrollEl = document.querySelector('#activities-content');
     this.scrollEl.addEventListener('scroll', this.detectScroll);
+
+    window.addEventListener(
+      'notification-clicked',
+      this.externalNotificationClicked
+    );
   }
 
   componentWillUnmount() {
     this.scrollEl.removeEventListener('scroll', this.detectScroll);
+
+    window.removeEventListener(
+      'notification-clicked',
+      this.externalNotificationClicked
+    );
   }
+
+  externalNotificationClicked = () => {
+    this.setState(
+      { activityType: 'all', activities: [], hasMore: true },
+      () => {
+        this.loadActivities();
+      }
+    );
+  };
 
   detectScroll = () => {
     if (
