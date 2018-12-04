@@ -615,7 +615,8 @@
       width: 36px;
 
       svg {
-        fill: lighten($steel-grey, 10);
+        width: 18px;
+        height: 18px;
       }
 
       &.with-sub-menu {
@@ -627,10 +628,6 @@
 
       &:hover {
         color: lighten($dark-sky-blue, 4);
-
-        svg {
-          fill: lighten($dark-sky-blue, 4);
-        }
 
         @include themify(day) {
           background: $duck-egg-blue;
