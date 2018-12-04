@@ -50,15 +50,25 @@ class ActivityListItem extends Component {
   }
 
   date2key = s => {
-    // if not date return self
-    if (s.split('-').length !== 3) {
-      return s;
-    }
-
-    const d = moment.utc(s).toDate();
     const { intl } = this.props;
 
-    return intl.formatRelative(d);
+    if (s === 'Yesterday') {
+      const mom = moment().subtract(1, 'days');
+      return intl.formatRelative(mom);
+    }
+
+    if (s.indexOf('hours') > -1) {
+      const h = parseInt(s, 10);
+      const mom = moment().subtract(h, 'hours');
+      return intl.formatRelative(mom);
+    }
+
+    if (s.split('-').length === 3) {
+      const mom = moment.utc(s).toDate();
+      return intl.formatRelative(mom);
+    }
+
+    return s;
   };
 
   markAsRead = () => {
