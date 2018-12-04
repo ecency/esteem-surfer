@@ -7,7 +7,7 @@ import moment from 'moment';
 
 import { Menu, Tooltip, message } from 'antd';
 
-import { FormattedMessage, FormattedRelative, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import DropDown from '../common/DropDown';
 import AccountLink from '../helpers/AccountLink';
@@ -55,7 +55,10 @@ class ActivityListItem extends Component {
       return s;
     }
 
-    return moment.utc(s).toDate();
+    const d = moment.utc(s).toDate();
+    const { intl } = this.props;
+
+    return intl.formatRelative(d);
   };
 
   markAsRead = () => {
@@ -82,11 +85,8 @@ class ActivityListItem extends Component {
     return (
       <Fragment>
         {activity.gkf && (
-          <div className="group-title">
-            <FormattedRelative value={this.date2key(activity.gk)} />
-          </div>
+          <div className="group-title">{this.date2key(activity.gk)}</div>
         )}
-
         <div
           className={`activity-list-item${
             activity.read === 0 ? ' not-read' : ''
