@@ -10,7 +10,7 @@
     "edit": "Редактировать",
     "server-error": "Невозможно завершить процесс из-за ошибки сервера",
     "save": "Сохранить",
-    "done": "Done"
+    "done": "Готово"
   },
   "footer": {
     "faq": "ЧАВО",
@@ -303,21 +303,21 @@
     "reblogged": "{source} сделал репост вашего поста"
   },
   "activities": {
-    "type-all": "All Activities",
-    "type-votes": "Votes",
-    "type-replies": "Replies",
-    "type-mentions": "Mentions",
-    "type-follows": "Follows",
-    "type-reblogs": "Reblogs",
-    "vote-str": "{p}% likes your post:",
-    "reply-str": "replied your post:",
-    "mention-str": "mentioned you in:",
-    "followed-str": "followed",
-    "unfollowed-str": "unfollowed",
-    "ignored-str": "ignored",
-    "reblog-str": "reblogged your post:",
-    "empty-list": "Nothing here",
-    "refresh": "Refresh",
-    "mark-all-read": "Mark All as Read"
+    "type-all": "Все активности",
+    "type-votes": "Голоса",
+    "type-replies": "Ответы",
+    "type-mentions": "Упомянания",
+    "type-follows": "Подписки",
+    "type-reblogs": "Репосты",
+    "vote-str": "{p}% нравится ваш пост:",
+    "reply-str": "ответил на ваш пост:",
+    "mention-str": "упомянул вас в:",
+    "followed-str": "подписался",
+    "unfollowed-str": "отписался",
+    "ignored-str": "игнорирует",
+    "reblog-str": "сделал репост вашего поста:",
+    "empty-list": "Здесь пусто",
+    "refresh": "Обновить",
+    "mark-all-read": "Пометить всё как прочитанное"
   }
 }
