@@ -48,7 +48,8 @@
   width: 18px;
 
   svg {
-    fill: $dark-sky-blue;
+    width: 14px;
+    height: 14px;
   }
 
   &:focus {
@@ -58,10 +59,7 @@
   &:hover,
   &.voted {
     background-color: $dark-sky-blue;
-
-    svg {
-      fill: $white;
-    }
+    color: $white;
   }
 
   &.in-progress {

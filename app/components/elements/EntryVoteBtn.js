@@ -12,6 +12,8 @@ import { getContent, vote } from '../../backend/steem-client';
 
 import LoginRequired from '../helpers/LoginRequired';
 
+import { chevronUp } from '../../svg';
+
 class EntryVoteBtn extends Component {
   constructor(props) {
     super(props);
@@ -141,22 +143,11 @@ class EntryVoteBtn extends Component {
 
     const voted = this.isVoted();
 
-    const icon = (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="14"
-        height="14"
-        viewBox="0 0 24 24"
-      >
-        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
-      </svg>
-    );
-
     if (!activeAccount) {
       return (
         <LoginRequired {...this.props} requiredKeys={requiredKeys}>
           <a className="btn-vote" role="button" tabIndex="-1">
-            <span className="btn-inner">{icon}</span>
+            <span className="btn-inner">{chevronUp}</span>
           </a>
         </LoginRequired>
       );
@@ -200,12 +191,12 @@ class EntryVoteBtn extends Component {
               mouseEnterDelay={2}
               content={popoverContent}
             >
-              <span className="btn-inner">{icon}</span>
+              <span className="btn-inner">{chevronUp}</span>
             </Popover>
           </a>
         ) : (
           <a className={btnCls} role="none" onClick={this.clicked}>
-            <span className="btn-inner">{icon}</span>
+            <span className="btn-inner">{chevronUp}</span>
           </a>
         )}
       </LoginRequired>
