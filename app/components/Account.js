@@ -24,6 +24,8 @@ import coverFallbackNight from '../img/cover-fallback-night.png';
 import LinearProgress from './common/LinearProgress';
 import EntryLink from './helpers/EntryLink';
 
+import {btc as btcIcon, usd as usdIcon} from '../svg';
+
 
 import { getFollowCount, getAccount, getState, claimRewardBalance } from '../backend/steem-client';
 import {
@@ -560,8 +562,7 @@ export class Exchange extends Component {
           <Fragment>
             <div className={`price change-${steemUsdDir}`}>
               <div className="price-usd">
-                <FormattedNumber currency="usd" style="currency" currencyDisplay="symbol" maximumFractionDigits={2}
-                                 value={marketData.steem.quotes.usd.price}/>
+                {usdIcon} <FormattedNumber maximumFractionDigits={2} value={marketData.steem.quotes.usd.price}/>
               </div>
 
               <div className="price-change">
@@ -581,8 +582,7 @@ export class Exchange extends Component {
 
             <div className={`price change-${steemBtcDir}`}>
               <div className="price-btc">
-                <FormattedNumber currency="usd" style="currency" currencyDisplay="symbol" minimumFractionDigits={8}
-                                 value={marketData.steem.quotes.btc.price}/> BTC
+                {btcIcon} <FormattedNumber minimumFractionDigits={8} value={marketData.steem.quotes.btc.price}/>
               </div>
 
               <div className="price-change">
@@ -608,8 +608,7 @@ export class Exchange extends Component {
           <Fragment>
             <div className={`price change-${sbdUsdDir}`}>
               <div className="price-usd">
-                <FormattedNumber currency="usd" style="currency" currencyDisplay="symbol" maximumFractionDigits={2}
-                                 value={marketData.sbd.quotes.usd.price}/>
+                {usdIcon} <FormattedNumber maximumFractionDigits={2} value={marketData.sbd.quotes.usd.price}/>
               </div>
 
               <div className="price-change">
@@ -627,8 +626,7 @@ export class Exchange extends Component {
             </div>
             <div className={`price change-${sbdBtcDir}`}>
               <div className="price-btc">
-                <FormattedNumber currency="usd" style="currency" currencyDisplay="symbol" minimumFractionDigits={8}
-                                 value={marketData.sbd.quotes.btc.price}/> BTC
+                {btcIcon} <FormattedNumber minimumFractionDigits={8} value={marketData.sbd.quotes.btc.price}/>
               </div>
               <div className="price-change">
                 (<FormattedNumber maximumFractionDigits={2} value={marketData.sbd.quotes.btc.percent_change}/>%)

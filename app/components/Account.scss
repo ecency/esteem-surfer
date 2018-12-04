@@ -634,6 +634,16 @@
                   font-weight: 500;
                 }
 
+                .price-usd,
+                .price-btc {
+                  display: flex;
+                  align-items: center;
+                  svg {
+                    width: 16px;
+                    height: 16px;
+                  }
+                }
+
                 .price-change {
                   font-size: 14px;
                   font-weight: 500;
