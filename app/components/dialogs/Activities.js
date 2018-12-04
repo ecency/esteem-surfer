@@ -452,7 +452,7 @@ class Activities extends Component {
             <span className="type-label">
               <FormattedMessage id={`activities.type-${activityType}`} />
             </span>
-            <DropDown menu={filterMenu} location="" />
+            <DropDown menu={filterMenu} {...this.props} />
           </div>
           <div className="controls">
             <a
