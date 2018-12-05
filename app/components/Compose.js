@@ -15,7 +15,6 @@ import {
   Dropdown,
   Menu,
   Modal,
-  DatePicker,
   Tooltip,
   message
 } from 'antd';
@@ -160,6 +159,12 @@ class Compose extends Component {
     const body = getItem('compose-body') || '';
     const upvote = getItem('compose-upvote', false);
 
+    const scheduleDate = moment()
+      .add(2, 'hours')
+      .minute(0)
+      .second(0)
+      .format('YYYY-MM-DDTHH:mm');
+
     this.state = {
       title,
       tags,
@@ -175,6 +180,7 @@ class Compose extends Component {
       posting: false,
       permProcessing: false,
       scheduleModalVisible: false,
+      scheduleDate,
       editMode: false,
       editingEntry: null
     };
@@ -383,13 +389,14 @@ class Compose extends Component {
       });
   };
 
-  schedulePost = date => {
+  schedulePost = () => {
     const { activeAccount, intl } = this.props;
 
-    const { title, body, tags, reward, upvote } = this.state;
+    const { title, body, tags, reward, upvote, scheduleDate } = this.state;
     const permlink = createPermlink(title);
     const meta = extractMetadata(body);
     const jsonMeta = makeJsonMetadata(meta, tags, version);
+    const isoDate = new Date(scheduleDate).toISOString();
 
     schedule(
       activeAccount.username,
@@ -400,7 +407,7 @@ class Compose extends Component {
       body,
       reward,
       upvote,
-      date.toISOString()
+      isoDate
     )
       .then(resp => {
         message.success(intl.formatMessage({ id: 'composer.schedule-saved' }));
@@ -529,6 +536,7 @@ class Compose extends Component {
       posting,
       permProcessing,
       scheduleModalVisible,
+      scheduleDate,
       editMode
     } = this.state;
 
@@ -752,34 +760,34 @@ class Compose extends Component {
           <Modal
             visible={scheduleModalVisible}
             footer={false}
-            width={280}
+            width={320}
             title={intl.formatMessage({ id: 'composer.select-schedule-date' })}
             onCancel={() => {
               this.setState({ scheduleModalVisible: false });
             }}
           >
-            {scheduleModalVisible && (
-              <DatePicker
-                showTime={{ format: 'HH:mm' }}
-                open
-                format="YYYY-MM-DD HH:mm:ss"
-                defaultValue={moment()
-                  .add(2, 'hours')
-                  .minute(0)
-                  .second(0)}
-                disabledDate={current =>
-                  current &&
-                  current <
-                    moment()
-                      .subtract(1, 'day')
-                      .endOf('day')
-                }
-                onOk={date => {
-                  this.schedulePost(date.toDate());
-                  this.setState({ scheduleModalVisible: false });
+            <div style={{ padding: '10px' }}>
+              <input
+                type="datetime-local"
+                value={scheduleDate}
+                className="ant-input"
+                onChange={e => {
+                  this.setState({ scheduleDate: e.target.value });
                 }}
               />
-            )}
+            </div>
+
+            <div style={{ padding: '10px', textAlign: 'right' }}>
+              <Button
+                type="primary"
+                onClick={() => {
+                  this.schedulePost();
+                  this.setState({ scheduleModalVisible: false });
+                }}
+              >
+                <FormattedMessage id="g.select" />
+              </Button>
+            </div>
           </Modal>
         </div>
         <AppFooter {...this.props} />

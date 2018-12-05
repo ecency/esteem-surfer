@@ -10,7 +10,8 @@
     "edit": "Edit",
     "server-error": "Process could not completed due to server error",
     "save": "Save",
-    "done": "Done"
+    "done": "Done",
+    "select": "Select"
   },
   "footer": {
     "faq": "FAQ",
