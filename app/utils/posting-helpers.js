@@ -5,10 +5,14 @@ eslint-disable no-plusplus, camelcase, new-cap
 import getSlug from 'speakingurl';
 import { diff_match_patch } from 'diff-match-patch';
 
-export const createPermlink = title => {
+export const createPermlink = (title, random = false) => {
   const slug = getSlug(title);
-
   let perm = slug.toString();
+
+  if (random) {
+    const rnd = (Math.random() + 1).toString(16).substring(2);
+    perm = `${slug.toString()}-${rnd}est`;
+  }
 
   // STEEMIT_MAX_PERMLINK_LENGTH
   if (perm.length > 255) {

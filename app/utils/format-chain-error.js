@@ -1,1 +1,1 @@
-export default err => String(err).substring(0, 60);
+export default err => String(err).substring(0, 100);

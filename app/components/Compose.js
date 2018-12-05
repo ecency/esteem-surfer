@@ -418,14 +418,27 @@ class Compose extends Component {
       });
   };
 
-  publish = () => {
+  publish = async () => {
     const { activeAccount, global, intl } = this.props;
     const { title, tags, body, reward, upvote } = this.state;
 
     this.setState({ posting: true });
 
     const parentPermlink = tags[0];
-    const permlink = createPermlink(title);
+    let permlink = createPermlink(title);
+
+    // If permlink has already used create it again with random suffix
+    let c;
+    try {
+      c = await getContent(activeAccount.username, permlink);
+    } catch (e) {
+      c = null;
+    }
+
+    if (c && c.id) {
+      permlink = createPermlink(title, true);
+    }
+
     const meta = extractMetadata(body);
     const jsonMeta = makeJsonMetadata(meta, tags, version);
     const options = makeOptions(activeAccount.username, permlink, reward);
