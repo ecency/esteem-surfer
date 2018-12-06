@@ -288,6 +288,7 @@ class Activities extends Component {
       'notification-clicked',
       this.externalNotificationClicked
     );
+    window.addEventListener('user-login', this.externalNotificationClicked);
   }
 
   componentWillUnmount() {
@@ -297,6 +298,7 @@ class Activities extends Component {
       'notification-clicked',
       this.externalNotificationClicked
     );
+    window.removeEventListener('user-login', this.externalNotificationClicked);
   }
 
   externalNotificationClicked = () => {

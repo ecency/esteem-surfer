@@ -65,9 +65,7 @@ class App extends React.Component {
     const { activeAccount } = this.props;
     if (activeAccount) {
       this.connectNws(activeAccount.username);
-
-      const { actions } = this.props;
-      actions.fetchActivities(activeAccount.username);
+      this.fetchActivities();
     }
   }
 
@@ -153,6 +151,7 @@ class App extends React.Component {
 
     // Wait component refresh active user
     setTimeout(this.connectNws, 1000);
+    setTimeout(this.fetchActivities, 1000);
   };
 
   onUserLogout = () => {
@@ -215,6 +214,11 @@ class App extends React.Component {
     if (this.nws !== null) {
       this.nws.close();
     }
+  };
+
+  fetchActivities = () => {
+    const { activeAccount, actions } = this.props;
+    actions.fetchActivities(activeAccount.username);
   };
 
   render() {
