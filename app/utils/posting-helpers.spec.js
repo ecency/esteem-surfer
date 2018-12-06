@@ -12,13 +12,20 @@ import { Select } from 'antd/lib/select';
 import React from 'react';
 
 describe('createPermlink', () => {
+  it('(1) ', () => {
+    const input = 'lorem ipsum dolor sit amet';
+    expect(createPermlink(input)).toMatchSnapshot();
+  });
+});
+
+describe('createPermlink random', () => {
   jest.spyOn(Math, 'random').mockImplementation(() => {
     return 1.95136022969379;
   });
 
   it('(1) ', () => {
     const input = 'lorem ipsum dolor sit amet';
-    expect(createPermlink(input)).toMatchSnapshot();
+    expect(createPermlink(input, true)).toMatchSnapshot();
   });
 });
 
