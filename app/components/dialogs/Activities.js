@@ -496,7 +496,7 @@ class Activities extends Component {
                 placement="left"
                 mouseEnterDelay={2}
               >
-                <i className="mi">refresh</i>
+                <i className="mi">sync</i>
               </Tooltip>
             </a>
             <a

@@ -34,11 +34,11 @@
       flex-grow: 0;
       flex-shrink: 0;
       justify-content: space-around;
-      width: 79px;
+      width: 80px;
 
       .control-button {
         color: $dark-sky-blue;
-        font-size: 22px;
+        font-size: 20px;
 
         &.disabled {
           color: lighten($dark-sky-blue, 10);
@@ -66,15 +66,17 @@
       font-weight: 500;
       padding: 16px;
 
+      &:first-letter {
+        text-transform: capitalize;
+      }
+
       @include themify(day) {
-        background: $duck-egg-blue;
         border-bottom: 1px solid $white-four;
         border-top: 1px solid $white-four;
-        color: $charcoal-grey;
+        color: $steel-grey;
       }
 
       @include themify(night) {
-        background: darken($metallic-blue, 16);
         border-bottom: 1px solid $metallic-blue;
         border-top: 1px solid $metallic-blue;
         color: $powder-blue;
