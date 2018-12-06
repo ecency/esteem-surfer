@@ -846,9 +846,11 @@ class Entry extends PureComponent {
 
       const { activeAccount } = this.props;
 
-      const editable = activeAccount && activeAccount.username === entry.author;
-
       const isComment = entry.parent_author.trim().length > 0;
+
+      const editable =
+        activeAccount && !isComment && activeAccount.username === entry.author;
+
       const hideParentLink = !entry.parent_permlink.startsWith('re-');
 
       const rootUrl = entry.url.split('#')[0];
