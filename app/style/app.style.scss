@@ -298,6 +298,17 @@ a[target='_external'],
     }
   }
 
+  @include themify(night) {
+    table {
+      td,
+      th {
+        a {
+          color: darken($metallic-blue, 20) !important;
+        }
+      }
+    }
+  }
+
   code,
   pre {
     padding: 2px;
