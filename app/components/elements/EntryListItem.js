@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { FormattedRelative, FormattedMessage } from 'react-intl';
+import { FormattedRelative, FormattedMessage, injectIntl } from 'react-intl';
 
 import UserAvatar from './UserAvatar';
 import EntryPayout from './EntryPayout';
@@ -30,7 +30,7 @@ import { isEntryRead } from '../../helpers/storage';
 
 class EntryListItem extends Component {
   render() {
-    const { entry, inDrawer, asAuthor, global } = this.props;
+    const { entry, inDrawer, asAuthor, global, intl } = this.props;
 
     const img =
       (global.listStyle === 'grid'
@@ -70,6 +70,15 @@ class EntryListItem extends Component {
     if (entry.reblogged_by && entry.reblogged_by.length > 0) {
       [reBlogged] = entry.reblogged_by;
     }
+
+    const toolTipDate = intl.formatDate(parseDate(entry.created), {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
 
     return (
       <div className="entry-list-item">
@@ -111,8 +120,12 @@ class EntryListItem extends Component {
             </a>
           </TagLink>
           {!isVisited && <span className="read-mark" />}
-          <span className="date">
-            <FormattedRelative value={created} initialNow={Date.now()} />
+          <span className="date" title={toolTipDate}>
+            <FormattedRelative
+              updateInterval={false}
+              value={created}
+              initialNow={Date.now()}
+            />
           </span>
           {reBlogged && (
             <span className="reblogged">
@@ -215,7 +228,8 @@ EntryListItem.propTypes = {
   history: PropTypes.shape({}).isRequired,
   location: PropTypes.shape({}).isRequired,
   inDrawer: PropTypes.bool,
-  asAuthor: PropTypes.string
+  asAuthor: PropTypes.string,
+  intl: PropTypes.instanceOf(Object).isRequired
 };
 
-export default EntryListItem;
+export default injectIntl(EntryListItem);

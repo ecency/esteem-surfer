@@ -310,7 +310,7 @@ class ReplyListItem extends PureComponent {
   };
 
   render() {
-    const { activeAccount } = this.props;
+    const { activeAccount, intl } = this.props;
     const { reply, editorVisible, editorMode } = this.state;
 
     const reputation = authorReputation(reply.author_reputation);
@@ -320,6 +320,15 @@ class ReplyListItem extends PureComponent {
     const totalPayout = sumTotal(reply);
     const voteCount = reply.active_votes.length;
     const canEdit = activeAccount && activeAccount.username === reply.author;
+
+    const toolTipDate = intl.formatDate(parseDate(reply.created), {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
 
     return (
       <div className="reply-list-item">
@@ -341,8 +350,12 @@ class ReplyListItem extends PureComponent {
               </div>
             </QuickProfile>
             <span className="separator" />
-            <span className="date">
-              <FormattedRelative value={created} initialNow={Date.now()} />
+            <span className="date" title={toolTipDate}>
+              <FormattedRelative
+                updateInterval={false}
+                value={created}
+                initialNow={Date.now()}
+              />
             </span>
           </div>
           <div
@@ -424,7 +437,8 @@ ReplyListItem.defaultProps = {
 
 ReplyListItem.propTypes = {
   reply: PropTypes.instanceOf(Object).isRequired,
-  activeAccount: PropTypes.instanceOf(Object)
+  activeAccount: PropTypes.instanceOf(Object),
+  intl: PropTypes.instanceOf(Object).isRequired
 };
 
 class ReplyList extends PureComponent {
@@ -844,7 +858,7 @@ class Entry extends PureComponent {
       const isPayoutDeclined = parseToken(entry.max_accepted_payout) === 0;
       const voteCount = entry.active_votes.length;
 
-      const { activeAccount } = this.props;
+      const { activeAccount, intl } = this.props;
 
       const isComment = entry.parent_author.trim().length > 0;
 
@@ -855,6 +869,15 @@ class Entry extends PureComponent {
 
       const rootUrl = entry.url.split('#')[0];
       const [, , rootAuthor, rootPermlink] = rootUrl.split('/');
+
+      const toolTipDate = intl.formatDate(parseDate(entry.created), {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      });
 
       content = (
         <Fragment>
@@ -924,8 +947,12 @@ class Entry extends PureComponent {
                   </a>
                 </TagLink>
                 <span className="separator" />
-                <span className="date">
-                  <FormattedRelative value={created} initialNow={Date.now()} />
+                <span className="date" title={toolTipDate}>
+                  <FormattedRelative
+                    updateInterval={false}
+                    value={created}
+                    initialNow={Date.now()}
+                  />
                 </span>
               </div>
             </div>
@@ -943,9 +970,10 @@ class Entry extends PureComponent {
               </div>
               <div className="entry-info">
                 <div className="left-side">
-                  <div className="date">
+                  <div className="date" title={toolTipDate}>
                     <i className="mi">access_time</i>
                     <FormattedRelative
+                      updateInterval={false}
                       value={created}
                       initialNow={Date.now()}
                     />
