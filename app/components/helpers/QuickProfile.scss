@@ -180,9 +180,9 @@
   }
 
   .entries {
-    max-height: calc(100% - 240px);
+    max-height: calc(100% - 240px - 44px);
     overflow: auto;
-    margin: 0 6px;
+    margin: 0 0 0 6px;
   }
 
   &.loading {
