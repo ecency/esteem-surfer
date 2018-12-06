@@ -65,6 +65,7 @@
       font-size: 16px;
       font-weight: 500;
       padding: 16px;
+      margin-top: 1px;
 
       &:first-letter {
         text-transform: capitalize;
@@ -86,10 +87,9 @@
     .activity-list-item {
       @include clearfix();
       cursor: default;
-      padding: 14px 8px;
+      margin-top: 1px;
 
-      &.not-read,
-      &:hover {
+      &.not-read {
         @include themify(day) {
           background: $duck-egg-blue;
         }
@@ -99,115 +99,131 @@
         }
       }
 
-      .activity-control {
-        align-items: center;
-        display: flex;
-        float: left;
-        height: 100%;
-        padding-top: 18px;
-        width: 21px;
+      .activity-inner {
+        @include clearfix();
+        padding: 14px 40px 15px 30px;
+        margin-right: 40px;
+        border-top-right-radius: 40px;
+        border-bottom-right-radius: 40px;
 
-        .mark-read {
-          background: $dark-sky-blue;
-          border-radius: 50%;
+        .activity-control {
+          align-items: center;
+          display: flex;
+          float: left;
+          height: 100%;
+          padding-top: 18px;
+          width: 41px;
+
+          .mark-read {
+            background: $dark-sky-blue;
+            border-radius: 50%;
+            cursor: pointer;
+            height: 9px;
+            margin-left: 5px;
+            width: 9px;
+          }
+        }
+
+        .source {
           cursor: pointer;
-          height: 6px;
-          margin-left: 5px;
-          width: 6px;
+          float: left;
+          margin-right: 10px;
+          width: 40px;
         }
-      }
 
-      .source {
-        cursor: pointer;
-        float: left;
-        margin-right: 10px;
-        width: 40px;
-      }
+        .activity-content {
+          float: left;
+          width: calc(100% - 94px);
 
-      .activity-content {
-        float: left;
-        width: calc(100% - 74px);
-
-        @include themify(day) {
-          color: $charcoal-grey;
-
-          a {
+          @include themify(day) {
             color: $charcoal-grey;
+
+            a {
+              color: $charcoal-grey;
+            }
           }
-        }
 
-        @include themify(night) {
-          color: $pinkish-grey;
-
-          a {
+          @include themify(night) {
             color: $pinkish-grey;
-          }
-        }
 
-        .first-line,
-        .second-line {
-        }
-
-        .first-line {
-          margin-bottom: 4px;
-
-          .source-name {
-            cursor: pointer;
-            font-weight: 500;
-            margin-right: 4px;
+            a {
+              color: $pinkish-grey;
+            }
           }
 
-          .activity-action {
-            margin-right: 10px;
-            opacity: 0.8;
-          }
-        }
-
-        .vert-separator {
-          height: 4px;
-        }
-
-        .post-link {
-          display: inline-block;
-          font-weight: 500;
-          max-width: 98%;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-
-        .second-line {
-          .reply-body {
-            border-left: 5px solid lighten($steel-grey, 30);
-            color: $steel-grey;
-            cursor: pointer;
-            font-size: 13px;
-            padding-left: 10px;
+          .first-line,
+          .second-line {
           }
 
-          .follow-label,
-          .unfollow-label,
-          .ignore-label {
-            border-radius: 6px;
-            color: $white;
+          .first-line {
+            margin-bottom: 4px;
+
+            .source-name {
+              cursor: pointer;
+              font-weight: 500;
+              margin-right: 4px;
+            }
+
+            .activity-action {
+              margin-right: 10px;
+              opacity: 0.8;
+            }
+          }
+
+          .vert-separator {
+            height: 4px;
+          }
+
+          .post-link {
             display: inline-block;
-            font-size: 12px;
-            padding: 3px;
+            font-weight: 500;
+            max-width: 98%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           }
 
-          .follow-label {
-            background: lighten($dark-sky-blue, 5);
-            border: 1px solid $dark-sky-blue;
-          }
+          .second-line {
+            .reply-body {
+              border-left: 5px solid lighten($steel-grey, 30);
+              color: $steel-grey;
+              cursor: pointer;
+              font-size: 13px;
+              padding-left: 10px;
+            }
 
-          .unfollow-label {
-            background: lighten($warm-grey, 5);
-            border: 1px solid $warm-grey;
-          }
+            .follow-label,
+            .unfollow-label,
+            .ignore-label {
+              border-radius: 6px;
+              color: $white;
+              display: inline-block;
+              font-size: 12px;
+              padding: 3px;
+            }
 
-          .ignore-label {
-            background: lighten($red2, 5);
-            border: 1px solid $red2;
+            .follow-label {
+              background: lighten($dark-sky-blue, 5);
+              border: 1px solid $dark-sky-blue;
+            }
+
+            .unfollow-label {
+              background: lighten($warm-grey, 5);
+              border: 1px solid $warm-grey;
+            }
+
+            .ignore-label {
+              background: lighten($red2, 5);
+              border: 1px solid $red2;
+            }
+          }
+        }
+      }
+
+      &:not(.not-read) {
+        .activity-inner {
+          &:hover {
+            background: $white-three;
           }
         }
       }

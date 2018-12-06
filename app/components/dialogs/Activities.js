@@ -102,154 +102,156 @@ class ActivityListItem extends Component {
             activity.read === 0 ? ' not-read' : ''
           }`}
         >
-          <div className="activity-control">
-            {activity.read === 0 && (
-              <span
-                role="none"
-                onClick={this.markAsRead}
-                className="mark-read"
-              />
+          <div className="activity-inner">
+            <div className="activity-control">
+              {activity.read === 0 && (
+                <span
+                  role="none"
+                  onClick={this.markAsRead}
+                  className="mark-read"
+                />
+              )}
+            </div>
+
+            <div className="source">
+              <AccountLink {...this.props} username={activity.source}>
+                <UserAvatar user={activity.source} size="medium" />
+              </AccountLink>
+            </div>
+
+            {/* Votes */}
+            {['vote', 'unvote'].includes(activity.type) && (
+              <div className="activity-content">
+                <div className="first-line">
+                  <AccountLink {...this.props} username={activity.source}>
+                    <a className="source-name"> {activity.source}</a>
+                  </AccountLink>
+                  <span className="activity-action">
+                    <FormattedMessage
+                      id="activities.vote-str"
+                      values={{ p: activity.weight / 100 }}
+                    />
+                  </span>
+                </div>
+                <div className="second-line">
+                  <EntryLink
+                    {...this.props}
+                    author={activity.author}
+                    permlink={activity.permlink}
+                  >
+                    <a className="post-link">{activity.permlink}</a>
+                  </EntryLink>
+                </div>
+              </div>
+            )}
+
+            {/* Replies */}
+            {activity.type === 'reply' && (
+              <div className="activity-content ">
+                <div className="first-line">
+                  <AccountLink {...this.props} username={activity.source}>
+                    <a className="source-name"> {activity.source}</a>
+                  </AccountLink>
+                  <span className="activity-action">
+                    <FormattedMessage id="activities.reply-str" />
+                  </span>
+                  <div className="vert-separator" />
+                  <EntryLink
+                    {...this.props}
+                    author={activity.parent_author}
+                    permlink={activity.parent_permlink}
+                  >
+                    <a className="post-link">{activity.parent_permlink}</a>
+                  </EntryLink>
+                </div>
+                <div className="second-line">
+                  <EntryLink
+                    {...this.props}
+                    author={activity.author}
+                    permlink={activity.permlink}
+                  >
+                    <div className="markdown-view mini-markdown reply-body">
+                      {entryBodySummary(activity.body, 100)}
+                    </div>
+                  </EntryLink>
+                </div>
+              </div>
+            )}
+
+            {/* Mentions */}
+            {activity.type === 'mention' && (
+              <div className="activity-content">
+                <div className="first-line">
+                  <AccountLink {...this.props} username={activity.source}>
+                    <a className="source-name"> {activity.source}</a>
+                  </AccountLink>
+                  <span className="activity-action">
+                    <FormattedMessage id="activities.mention-str" />
+                  </span>
+                </div>
+                <div className="second-line">
+                  <EntryLink
+                    {...this.props}
+                    author={activity.author}
+                    permlink={activity.permlink}
+                  >
+                    <a className="post-link">{activity.permlink}</a>
+                  </EntryLink>
+                </div>
+              </div>
+            )}
+
+            {/* Follows */}
+            {['follow', 'unfollow', 'ignore'].includes(activity.type) && (
+              <div className="activity-content">
+                <div className="first-line">
+                  <AccountLink {...this.props} username={activity.source}>
+                    <a className="source-name"> {activity.source}</a>
+                  </AccountLink>
+                </div>
+                <div className="second-line">
+                  {activity.type === 'follow' && (
+                    <span className="follow-label">
+                      <FormattedMessage id="activities.followed-str" />
+                    </span>
+                  )}
+                  {activity.type === 'unfollow' && (
+                    <span className="unfollow-label">
+                      <FormattedMessage id="activities.unfollowed-str" />
+                    </span>
+                  )}
+                  {activity.type === 'ignore' && (
+                    <span className="ignore-label">
+                      <FormattedMessage id="activities.ignored-str" />
+                    </span>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Reblogs */}
+            {activity.type === 'reblog' && (
+              <div className="activity-content">
+                <div className="first-line">
+                  <AccountLink {...this.props} username={activity.source}>
+                    <a className="source-name"> {activity.source}</a>
+                  </AccountLink>
+                  <span className="activity-action">
+                    <FormattedMessage id="activities.reblog-str" />
+                  </span>
+                </div>
+                <div className="second-line">
+                  <EntryLink
+                    {...this.props}
+                    author={activity.author}
+                    permlink={activity.permlink}
+                  >
+                    <a className="post-link">{activity.permlink}</a>
+                  </EntryLink>
+                </div>
+              </div>
             )}
           </div>
-
-          <div className="source">
-            <AccountLink {...this.props} username={activity.source}>
-              <UserAvatar user={activity.source} size="medium" />
-            </AccountLink>
-          </div>
-
-          {/* Votes */}
-          {['vote', 'unvote'].includes(activity.type) && (
-            <div className="activity-content">
-              <div className="first-line">
-                <AccountLink {...this.props} username={activity.source}>
-                  <a className="source-name"> {activity.source}</a>
-                </AccountLink>
-                <span className="activity-action">
-                  <FormattedMessage
-                    id="activities.vote-str"
-                    values={{ p: activity.weight / 100 }}
-                  />
-                </span>
-              </div>
-              <div className="second-line">
-                <EntryLink
-                  {...this.props}
-                  author={activity.author}
-                  permlink={activity.permlink}
-                >
-                  <a className="post-link">{activity.permlink}</a>
-                </EntryLink>
-              </div>
-            </div>
-          )}
-
-          {/* Replies */}
-          {activity.type === 'reply' && (
-            <div className="activity-content ">
-              <div className="first-line">
-                <AccountLink {...this.props} username={activity.source}>
-                  <a className="source-name"> {activity.source}</a>
-                </AccountLink>
-                <span className="activity-action">
-                  <FormattedMessage id="activities.reply-str" />
-                </span>
-                <div className="vert-separator" />
-                <EntryLink
-                  {...this.props}
-                  author={activity.parent_author}
-                  permlink={activity.parent_permlink}
-                >
-                  <a className="post-link">{activity.parent_permlink}</a>
-                </EntryLink>
-              </div>
-              <div className="second-line">
-                <EntryLink
-                  {...this.props}
-                  author={activity.author}
-                  permlink={activity.permlink}
-                >
-                  <div className="markdown-view mini-markdown reply-body">
-                    {entryBodySummary(activity.body, 100)}
-                  </div>
-                </EntryLink>
-              </div>
-            </div>
-          )}
-
-          {/* Mentions */}
-          {activity.type === 'mention' && (
-            <div className="activity-content">
-              <div className="first-line">
-                <AccountLink {...this.props} username={activity.source}>
-                  <a className="source-name"> {activity.source}</a>
-                </AccountLink>
-                <span className="activity-action">
-                  <FormattedMessage id="activities.mention-str" />
-                </span>
-              </div>
-              <div className="second-line">
-                <EntryLink
-                  {...this.props}
-                  author={activity.author}
-                  permlink={activity.permlink}
-                >
-                  <a className="post-link">{activity.permlink}</a>
-                </EntryLink>
-              </div>
-            </div>
-          )}
-
-          {/* Follows */}
-          {['follow', 'unfollow', 'ignore'].includes(activity.type) && (
-            <div className="activity-content">
-              <div className="first-line">
-                <AccountLink {...this.props} username={activity.source}>
-                  <a className="source-name"> {activity.source}</a>
-                </AccountLink>
-              </div>
-              <div className="second-line">
-                {activity.type === 'follow' && (
-                  <span className="follow-label">
-                    <FormattedMessage id="activities.followed-str" />
-                  </span>
-                )}
-                {activity.type === 'unfollow' && (
-                  <span className="unfollow-label">
-                    <FormattedMessage id="activities.unfollowed-str" />
-                  </span>
-                )}
-                {activity.type === 'ignore' && (
-                  <span className="ignore-label">
-                    <FormattedMessage id="activities.ignored-str" />
-                  </span>
-                )}
-              </div>
-            </div>
-          )}
-
-          {/* Reblogs */}
-          {activity.type === 'reblog' && (
-            <div className="activity-content">
-              <div className="first-line">
-                <AccountLink {...this.props} username={activity.source}>
-                  <a className="source-name"> {activity.source}</a>
-                </AccountLink>
-                <span className="activity-action">
-                  <FormattedMessage id="activities.reblog-str" />
-                </span>
-              </div>
-              <div className="second-line">
-                <EntryLink
-                  {...this.props}
-                  author={activity.author}
-                  permlink={activity.permlink}
-                >
-                  <a className="post-link">{activity.permlink}</a>
-                </EntryLink>
-              </div>
-            </div>
-          )}
         </div>
       </Fragment>
     );
