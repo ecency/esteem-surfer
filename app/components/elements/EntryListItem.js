@@ -178,10 +178,10 @@ class EntryListItem extends Component {
                 {voteCount}
               </a>
             </EntryVotes>
-            <a className="comments">
+            <div className="comments">
               <i className="mi">comment</i>
               {contentCount}
-            </a>
+            </div>
             <EntryReblogBtn {...this.props} entry={entry} />
             <div className="app">{app}</div>
           </div>
