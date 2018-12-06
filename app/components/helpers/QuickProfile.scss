@@ -4,7 +4,7 @@
 .quick-profile-content {
   height: 100%;
   left: 0;
-  padding: 8px;
+  padding: 8px 16px;
   position: absolute;
   top: 0;
   width: 100%;
@@ -32,7 +32,7 @@
       justify-content: center;
       margin-bottom: 16px;
       position: relative;
-      width: calc(100% - 18px);
+      width: 100%;
 
       .profile-avatar {
         height: 100px;
@@ -134,9 +134,66 @@
     }
   }
 
+  .account-menu {
+    display: flex;
+    height: 44px;
+    margin: 0 6px;
+
+    @include themify(day) {
+      border-bottom: 1px solid $white-four;
+    }
+
+    @include themify(night) {
+      border-bottom: 1px solid $dark-two;
+    }
+
+    .account-menu-items {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+
+      .menu-item {
+        align-items: center;
+        color: $steel-grey;
+        display: flex;
+        font-size: 14px;
+        height: 44px;
+        padding: 0 16px;
+
+        &:not(:last-child) {
+          margin-right: 30px;
+        }
+
+        &.selected-item {
+          border-bottom: 2px solid $dark-sky-blue;
+          color: $dark-sky-blue;
+          font-weight: 700;
+        }
+      }
+
+      .separator-item {
+        display: flex;
+        flex-grow: 1;
+        height: 20px;
+      }
+    }
+  }
+
   .entries {
     max-height: calc(100% - 240px);
     overflow: auto;
-    padding: 0 10px;
+    margin: 0 6px;
+  }
+
+  &.loading {
+    .account-menu {
+      border-bottom-color: transparent;
+      .account-menu-items {
+        .menu-item {
+          pointer-events: none;
+          border-bottom-color: transparent;
+        }
+      }
+    }
   }
 }

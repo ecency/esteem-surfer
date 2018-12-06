@@ -120,7 +120,11 @@
     "fetch-error-content": "Невозможно загрузить посты",
     "post-count": "Количество постов/комментариев",
     "followers": "Подписчики",
-    "following": "Подписан на"
+    "following": "Подписан на",
+    "section-blog": "Блог",
+    "section-comments": "Комментарии",
+    "section-replies": "Ответы",
+    "section-wallet": "Кошелёк"
   },
   "follow-controls": {
     "follow": "Подписаться",

@@ -5,7 +5,7 @@ eslint-disable import/no-cycle
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Drawer, Tooltip, message } from 'antd';
-import { FormattedNumber, injectIntl } from 'react-intl';
+import { FormattedMessage, FormattedNumber, injectIntl } from 'react-intl';
 
 import {
   getAccount,
@@ -115,6 +115,12 @@ class QuickProfile extends Component {
     setTimeout(() => {
       this.setState({ active: false });
     }, 500);
+  };
+
+  goSection = section => {
+    const { history, username } = this.props;
+    const u = `/@${username}/${section}`;
+    history.push(u);
   };
 
   render() {
@@ -232,6 +238,48 @@ class QuickProfile extends Component {
                       {followingMsg}
                     </span>
                   </Tooltip>
+                </div>
+              </div>
+
+              <div className="account-menu">
+                <div className="account-menu-items">
+                  <a
+                    role="none"
+                    className="menu-item selected-item"
+                    onClick={() => {
+                      this.goSection('blog');
+                    }}
+                  >
+                    <FormattedMessage id="quick-profile.section-blog" />
+                  </a>
+                  <a
+                    role="none"
+                    className="menu-item"
+                    onClick={() => {
+                      this.goSection('comments');
+                    }}
+                  >
+                    <FormattedMessage id="quick-profile.section-comments" />
+                  </a>
+                  <a
+                    role="none"
+                    className="menu-item"
+                    onClick={() => {
+                      this.goSection('replies');
+                    }}
+                  >
+                    <FormattedMessage id="quick-profile.section-replies" />
+                  </a>
+                  <span className="separator-item" />
+                  <a
+                    role="none"
+                    className="menu-item"
+                    onClick={() => {
+                      this.goSection('wallet');
+                    }}
+                  >
+                    <FormattedMessage id="quick-profile.section-wallet" />
+                  </a>
                 </div>
               </div>
 

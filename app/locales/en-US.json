@@ -120,7 +120,11 @@
     "fetch-error-content": "Could not fetch posts",
     "post-count": "Post Count",
     "followers": "Followers",
-    "following": "Following"
+    "following": "Following",
+    "section-blog": "Blog",
+    "section-comments": "Comments",
+    "section-replies": "Replies",
+    "section-wallet": "Wallet"
   },
   "follow-controls": {
     "follow": "Follow",
