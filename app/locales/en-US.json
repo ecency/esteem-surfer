@@ -323,6 +323,8 @@
     "reblog-str": "reblogged your post:",
     "empty-list": "Nothing here",
     "refresh": "Refresh",
-    "mark-all-read": "Mark All as Read"
+    "mark-all-read": "Mark All as Read",
+    "leaderboard": "Leaderboard",
+    "leaderboard-title": "Daily Top users"
   }
 }

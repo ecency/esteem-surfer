@@ -3,38 +3,319 @@
 
 .activities-dialog-content {
   height: 100%;
-  overflow: auto;
 
   .dialog-header {
-    align-items: center;
-    display: flex;
-    height: 90px;
-    justify-content: space-between;
-    padding: 0 32px;
+    height: 75px;
+    padding: 0 60px;
 
-    .type-selection {
-      align-items: center;
-      color: $dark-sky-blue;
-      display: flex;
-      flex-grow: 1;
-      font-size: 16px;
-      font-weight: 500;
+    .header-menu {
+      height: 100%;
 
-      .type-label {
-        margin-right: 10px;
+      .header-menu-items {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        justify-content: space-around;
+        width: 100%;
+
+        .menu-item {
+          align-items: center;
+          color: $steel-grey;
+          cursor: pointer;
+          display: flex;
+          font-size: 16px;
+          font-weight: 500;
+          height: 100%;
+          justify-content: center;
+          position: relative;
+          width: 50%;
+
+          &.selected-item {
+            border-bottom: 2px solid $dark-sky-blue;
+            color: $dark-sky-blue;
+            font-weight: 700;
+          }
+
+          .type-selection {
+            align-items: center;
+            display: flex;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .dialog-content {
+    height: calc(100% - 75px);
+    overflow: auto;
+    position: relative;
+
+    &:not(.loading) {
+      @include themify(day) {
+        border-top: 1px solid $white-four;
       }
 
-      .drop-down-caret {
-        cursor: pointer;
+      @include themify(night) {
+        border-top: 1px solid $metallic-blue;
       }
     }
 
-    .controls {
+    .notification-list {
+      padding: 10px 36px;
+
+      .list-title {
+        font-size: 16px;
+        font-weight: 700;
+
+        padding: 10px;
+
+        @include themify(day) {
+          color: $steel-grey;
+        }
+
+        @include themify(night) {
+          color: $powder-blue;
+        }
+      }
+
+      .list-item {
+        align-items: center;
+        display: flex;
+        padding: 25px 16px;
+        width: 100%;
+
+        @include themify(day) {
+          color: $charcoal-grey;
+        }
+
+        @include themify(night) {
+          color: $pinkish-grey;
+        }
+
+        .item-index {
+          font-weight: 500;
+          width: 30px;
+        }
+
+        .avatar {
+          width: 60px;
+        }
+
+        .username,
+        .score {
+          font-weight: 700;
+        }
+
+        .score {
+          flex-grow: 1;
+          text-align: right;
+        }
+
+        &:nth-child(odd) {
+          border-radius: 25px;
+          @include themify(day) {
+            background: $white-three;
+          }
+
+          @include themify(night) {
+            background: lighten($dark-six, 2);
+          }
+        }
+      }
+    }
+
+    .activity-list {
+      &.empty-list {
+        padding: 10px;
+
+        @include themify(day) {
+          border-top: 1px solid $white-four;
+        }
+
+        @include themify(night) {
+          border-top: 1px solid $dusky-blue-two;
+        }
+      }
+
+      .group-title {
+        font-size: 16px;
+        font-weight: 500;
+        padding: 16px;
+
+        &:first-letter {
+          text-transform: capitalize;
+        }
+
+        @include themify(day) {
+          border-bottom: 1px solid $white-four;
+          border-top: 1px solid $white-four;
+          color: $steel-grey;
+        }
+
+        @include themify(night) {
+          border-bottom: 1px solid $metallic-blue;
+          border-top: 1px solid $metallic-blue;
+          color: $powder-blue;
+        }
+
+        &:first-child {
+          border-top: 0;
+        }
+      }
+
+      .activity-list-item {
+        @include clearfix();
+        cursor: default;
+
+        &.not-read {
+          @include themify(day) {
+            background: $duck-egg-blue;
+          }
+
+          @include themify(night) {
+            background: darken($metallic-blue, 16);
+          }
+        }
+
+        .activity-inner {
+          @include clearfix();
+          border-bottom-right-radius: 40px;
+          border-top-right-radius: 40px;
+          margin-right: 40px;
+          padding: 14px 40px 15px 30px;
+
+          .activity-control {
+            align-items: center;
+            display: flex;
+            float: left;
+            height: 100%;
+            padding-top: 18px;
+            width: 41px;
+
+            .mark-read {
+              background: $dark-sky-blue;
+              border-radius: 50%;
+              cursor: pointer;
+              height: 9px;
+              margin-left: 5px;
+              width: 9px;
+            }
+          }
+
+          .source {
+            cursor: pointer;
+            float: left;
+            margin-right: 10px;
+            width: 40px;
+          }
+
+          .activity-content {
+            float: left;
+            width: calc(100% - 94px);
+
+            @include themify(day) {
+              color: $charcoal-grey;
+
+              a {
+                color: $charcoal-grey;
+              }
+            }
+
+            @include themify(night) {
+              color: $pinkish-grey;
+
+              a {
+                color: $pinkish-grey;
+              }
+            }
+
+            .first-line,
+            .second-line {
+            }
+
+            .first-line {
+              margin-bottom: 4px;
+
+              .source-name {
+                cursor: pointer;
+                font-weight: 700;
+                margin-right: 4px;
+              }
+
+              .activity-action {
+                margin-right: 10px;
+                opacity: 0.8;
+              }
+            }
+
+            .vert-separator {
+              height: 4px;
+            }
+
+            .post-link {
+              display: inline-block;
+              font-weight: 500;
+              max-width: 98%;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+
+            .second-line {
+              .reply-body {
+                border-left: 5px solid lighten($steel-grey, 30);
+                color: $steel-grey;
+                cursor: pointer;
+                font-size: 13px;
+                padding-left: 10px;
+              }
+
+              .follow-label,
+              .unfollow-label,
+              .ignore-label {
+                border-radius: 25px;
+                color: $white;
+                display: inline-block;
+                font-size: 12px;
+                padding: 2px 6px;
+              }
+
+              .follow-label {
+                background: $dark-sky-blue;
+              }
+
+              .unfollow-label {
+                background: $silver;
+              }
+
+              .ignore-label {
+                background: $red3;
+              }
+            }
+          }
+        }
+
+        &:not(.not-read) {
+          .activity-inner {
+            &:hover {
+              background: $white-three;
+            }
+          }
+        }
+      }
+    }
+
+    .content-controls {
       display: flex;
-      flex-grow: 0;
-      flex-shrink: 0;
-      justify-content: space-around;
-      width: 80px;
+      justify-content: space-between;
+      position: absolute;
+      right: 30px;
+      top: 16px;
+      width: 60px;
 
       .control-button {
         color: $dark-sky-blue;
@@ -46,183 +327,10 @@
         }
       }
     }
-  }
 
-  .activity-list {
-    &.empty-list {
-      padding: 10px;
-
-      @include themify(day) {
-        border-top: 1px solid $white-four;
-      }
-
-      @include themify(night) {
-        border-top: 1px solid $dusky-blue-two;
-      }
-    }
-
-    .group-title {
-      font-size: 16px;
-      font-weight: 500;
-      padding: 16px;
-      margin-top: 1px;
-
-      &:first-letter {
-        text-transform: capitalize;
-      }
-
-      @include themify(day) {
-        border-bottom: 1px solid $white-four;
-        border-top: 1px solid $white-four;
-        color: $steel-grey;
-      }
-
-      @include themify(night) {
-        border-bottom: 1px solid $metallic-blue;
-        border-top: 1px solid $metallic-blue;
-        color: $powder-blue;
-      }
-    }
-
-    .activity-list-item {
-      @include clearfix();
-      cursor: default;
-      margin-top: 1px;
-
-      &.not-read {
-        @include themify(day) {
-          background: $duck-egg-blue;
-        }
-
-        @include themify(night) {
-          background: darken($metallic-blue, 16);
-        }
-      }
-
-      .activity-inner {
-        @include clearfix();
-        padding: 14px 40px 15px 30px;
-        margin-right: 40px;
-        border-top-right-radius: 40px;
-        border-bottom-right-radius: 40px;
-
-        .activity-control {
-          align-items: center;
-          display: flex;
-          float: left;
-          height: 100%;
-          padding-top: 18px;
-          width: 41px;
-
-          .mark-read {
-            background: $dark-sky-blue;
-            border-radius: 50%;
-            cursor: pointer;
-            height: 9px;
-            margin-left: 5px;
-            width: 9px;
-          }
-        }
-
-        .source {
-          cursor: pointer;
-          float: left;
-          margin-right: 10px;
-          width: 40px;
-        }
-
-        .activity-content {
-          float: left;
-          width: calc(100% - 94px);
-
-          @include themify(day) {
-            color: $charcoal-grey;
-
-            a {
-              color: $charcoal-grey;
-            }
-          }
-
-          @include themify(night) {
-            color: $pinkish-grey;
-
-            a {
-              color: $pinkish-grey;
-            }
-          }
-
-          .first-line,
-          .second-line {
-          }
-
-          .first-line {
-            margin-bottom: 4px;
-
-            .source-name {
-              cursor: pointer;
-              font-weight: 700;
-              margin-right: 4px;
-            }
-
-            .activity-action {
-              margin-right: 10px;
-              opacity: 0.8;
-            }
-          }
-
-          .vert-separator {
-            height: 4px;
-          }
-
-          .post-link {
-            display: inline-block;
-            font-weight: 500;
-            max-width: 98%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-
-          .second-line {
-            .reply-body {
-              border-left: 5px solid lighten($steel-grey, 30);
-              color: $steel-grey;
-              cursor: pointer;
-              font-size: 13px;
-              padding-left: 10px;
-            }
-
-            .follow-label,
-            .unfollow-label,
-            .ignore-label {
-              border-radius: 25px;
-              color: $white;
-              display: inline-block;
-              font-size: 12px;
-              padding: 2px 6px;
-            }
-
-            .follow-label {
-              background: $dark-sky-blue;
-            }
-
-            .unfollow-label {
-              background: $silver;
-            }
-
-            .ignore-label {
-              background: $red3;
-            }
-          }
-        }
-      }
-
-      &:not(.not-read) {
-        .activity-inner {
-          &:hover {
-            background: $white-three;
-          }
-        }
+    &.loading {
+      .content-controls {
+        top: 17px;
       }
     }
   }

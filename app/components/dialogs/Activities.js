@@ -1,4 +1,4 @@
-/* eslint-disable react/no-multi-comp */
+/* eslint-disable react/no-multi-comp, no-underscore-dangle */
 
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
@@ -23,7 +23,8 @@ import {
   getMyFollows,
   getMyReblogs,
   getActivities,
-  marActivityAsRead
+  marActivityAsRead,
+  getLeaderboard
 } from '../../backend/esteem-client';
 import UserAvatar from '../elements/UserAvatar';
 
@@ -293,6 +294,14 @@ class Activities extends Component {
     window.addEventListener('user-login', this.externalNotificationClicked);
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { activityType } = this.state;
+
+    if (nextProps.activityType !== activityType) {
+      this.changeType(nextProps.activityType);
+    }
+  }
+
   componentWillUnmount() {
     this.scrollEl.removeEventListener('scroll', this.detectScroll);
 
@@ -302,6 +311,15 @@ class Activities extends Component {
     );
     window.removeEventListener('user-login', this.externalNotificationClicked);
   }
+
+  changeType = newType => {
+    this.setState(
+      { activityType: newType, activities: [], hasMore: true },
+      () => {
+        this.loadActivities();
+      }
+    );
+  };
 
   externalNotificationClicked = () => {
     this.setState(
@@ -328,15 +346,6 @@ class Activities extends Component {
     }
 
     this.loadActivities();
-  };
-
-  typeChanged = item => {
-    this.setState(
-      { activityType: item.key, activities: [], hasMore: true },
-      () => {
-        this.loadActivities();
-      }
-    );
   };
 
   reload = () => {
@@ -436,8 +445,159 @@ class Activities extends Component {
   };
 
   render() {
-    const { activityType, activities, loading, marking } = this.state;
+    const { activities, loading, marking } = this.state;
     const { intl } = this.props;
+
+    return (
+      <div className={`dialog-content ${loading ? 'loading' : ''}`}>
+        <div className="content-controls">
+          <a
+            role="none"
+            className={`control-button refresh ${loading ? 'disabled' : ''}`}
+            onClick={this.reload}
+          >
+            <Tooltip
+              title={intl.formatMessage({ id: 'activities.refresh' })}
+              placement="left"
+              mouseEnterDelay={2}
+            >
+              <i className="mi">sync</i>
+            </Tooltip>
+          </a>
+          <a
+            role="none"
+            className={`control-button refresh ${marking ? 'disabled' : ''}`}
+            onClick={this.markAll}
+          >
+            <Tooltip
+              title={intl.formatMessage({ id: 'activities.mark-all-read' })}
+              placement="left"
+              mouseEnterDelay={2}
+            >
+              <i className="mi">done</i>
+            </Tooltip>
+          </a>
+        </div>
+
+        {loading && <LinearProgress />}
+        {!loading &&
+          activities.length === 0 && (
+            <div className="activity-list empty-list">
+              <span className="empty-text">
+                <FormattedMessage id="activities.empty-list" />
+              </span>
+            </div>
+          )}
+        {activities.length > 0 && (
+          <div className="activity-list">
+            {activities.map(ac => (
+              <ActivityListItem key={ac.id} {...this.props} activity={ac} />
+            ))}
+          </div>
+        )}
+        {loading && activities.length > 0 && <LinearProgress />}
+      </div>
+    );
+  }
+}
+
+Activities.propTypes = {
+  activeAccount: PropTypes.instanceOf(Object).isRequired,
+  actions: PropTypes.shape({
+    fetchActivities: PropTypes.func.isRequired
+  }).isRequired,
+  activityType: PropTypes.string.isRequired,
+  intl: PropTypes.instanceOf(Object).isRequired
+};
+
+class LeaderBoard extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      list: [],
+      loading: true
+    };
+  }
+
+  componentDidMount() {
+    this.loadData();
+  }
+
+  loadData = () => {
+    const { intl } = this.props;
+    this.setState({ loading: true });
+
+    return getLeaderboard()
+      .then(list => {
+        this.setState({ list });
+        return list;
+      })
+      .catch(() => {
+        message.error(intl.formatMessage({ id: 'g.server-error' }));
+      })
+      .finally(() => {
+        this.setState({ loading: false });
+      });
+  };
+
+  render() {
+    const { loading, list } = this.state;
+    return (
+      <div className={`dialog-content ${loading ? 'loading' : ''}`}>
+        {loading && <LinearProgress />}
+        <div className="notification-list">
+          <div className="list-title">
+            <FormattedMessage id="activities.leaderboard-title" />
+          </div>
+          {list.map((item, index) => (
+            <div className="list-item" key={item._id}>
+              <div className="item-index">{index + 1}</div>
+              <div className="avatar">
+                <UserAvatar user={item._id} size="medium" />
+              </div>
+              <div className="username">{item._id}</div>
+              <div className="score">{item.count}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+}
+
+LeaderBoard.propTypes = {
+  intl: PropTypes.instanceOf(Object).isRequired
+};
+
+class ActivitiesWrapper extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selected: 'activities',
+      activityType: 'all'
+    };
+  }
+
+  typeChanged = item => {
+    this.setState({ activityType: item.key }, () => {});
+  };
+
+  switchActivities = () => {
+    const { selected } = this.state;
+    if (selected === 'activities') return;
+    this.setState({ selected: 'activities' });
+  };
+
+  switchLeaderBoard = () => {
+    const { selected } = this.state;
+    if (selected === 'leaderboard') return;
+    this.setState({ selected: 'leaderboard' });
+  };
+
+  render() {
+    const { selected, activityType } = this.state;
 
     const filterMenu = (
       <Menu
@@ -481,73 +641,47 @@ class Activities extends Component {
     return (
       <div className="activities-dialog-content" id="activities-content">
         <div className="dialog-header">
-          <div className="type-selection">
-            <span className="type-label">
-              <FormattedMessage id={`activities.type-${activityType}`} />
-            </span>
-            <DropDown menu={filterMenu} {...this.props} />
-          </div>
-          <div className="controls">
-            <a
-              role="none"
-              className={`control-button refresh ${loading ? 'disabled' : ''}`}
-              onClick={this.reload}
-            >
-              <Tooltip
-                title={intl.formatMessage({ id: 'activities.refresh' })}
-                placement="left"
-                mouseEnterDelay={2}
+          <div className="header-menu">
+            <div className="header-menu-items">
+              <div
+                role="none"
+                className={`menu-item ${
+                  selected === 'activities' ? 'selected-item' : ''
+                }`}
+                onClick={() => {
+                  this.switchActivities();
+                }}
               >
-                <i className="mi">sync</i>
-              </Tooltip>
-            </a>
-            <a
-              role="none"
-              className={`control-button refresh ${marking ? 'disabled' : ''}`}
-              onClick={this.markAll}
-            >
-              <Tooltip
-                title={intl.formatMessage({ id: 'activities.mark-all-read' })}
-                placement="left"
-                mouseEnterDelay={2}
+                <FormattedMessage id={`activities.type-${activityType}`} />
+                {selected === 'activities' && (
+                  <div className="type-selection">
+                    <DropDown menu={filterMenu} {...this.props} />
+                  </div>
+                )}
+              </div>
+              <div
+                role="none"
+                className={`menu-item ${
+                  selected === 'leaderboard' ? 'selected-item' : ''
+                }`}
+                onClick={() => {
+                  this.switchLeaderBoard();
+                }}
               >
-                <i className="mi">done</i>
-              </Tooltip>
-            </a>
+                <FormattedMessage id="activities.leaderboard" />
+              </div>
+            </div>
           </div>
         </div>
 
-        {loading && <LinearProgress />}
-
-        {!loading &&
-          activities.length === 0 && (
-            <div className="activity-list empty-list">
-              <span className="empty-text">
-                <FormattedMessage id="activities.empty-list" />
-              </span>
-            </div>
-          )}
-
-        {activities.length > 0 && (
-          <div className="activity-list">
-            {activities.map(ac => (
-              <ActivityListItem key={ac.id} {...this.props} activity={ac} />
-            ))}
-          </div>
+        {selected === 'activities' && (
+          <Activities activityType={activityType} {...this.props} />
         )}
 
-        {loading && activities.length > 0 && <LinearProgress />}
+        {selected === 'leaderboard' && <LeaderBoard {...this.props} />}
       </div>
     );
   }
 }
 
-Activities.propTypes = {
-  activeAccount: PropTypes.instanceOf(Object).isRequired,
-  actions: PropTypes.shape({
-    fetchActivities: PropTypes.func.isRequired
-  }).isRequired,
-  intl: PropTypes.instanceOf(Object).isRequired
-};
-
-export default injectIntl(Activities);
+export default injectIntl(ActivitiesWrapper);

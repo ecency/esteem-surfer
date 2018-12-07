@@ -323,6 +323,8 @@
     "reblog-str": "сделал репост вашего поста:",
     "empty-list": "Здесь пусто",
     "refresh": "Обновить",
-    "mark-all-read": "Пометить всё как прочитанное"
+    "mark-all-read": "Пометить всё как прочитанное",
+    "leaderboard": "Leaderboard",
+    "leaderboard-title": "Daily Top users"
   }
 }
