@@ -70,7 +70,6 @@
       .list-title {
         font-size: 16px;
         font-weight: 700;
-
         padding: 10px;
 
         @include themify(day) {
@@ -85,8 +84,9 @@
       .list-item {
         align-items: center;
         display: flex;
-        padding: 25px 16px;
+        padding: 8px 16px;
         width: 100%;
+        border-radius: 8px;
 
         @include themify(day) {
           color: $charcoal-grey;
@@ -99,6 +99,8 @@
         .item-index {
           font-weight: 500;
           width: 30px;
+          color: $silver;
+          font-size: 13px;
         }
 
         .avatar {
@@ -116,7 +118,6 @@
         }
 
         &:nth-child(odd) {
-          border-radius: 25px;
           @include themify(day) {
             background: $white-three;
           }
