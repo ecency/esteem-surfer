@@ -352,7 +352,7 @@ class ReplyListItem extends PureComponent {
             <span className="separator" />
             <span className="date" title={toolTipDate}>
               <FormattedRelative
-                updateInterval={false}
+                updateInterval={0}
                 value={created}
                 initialNow={Date.now()}
               />
@@ -949,7 +949,7 @@ class Entry extends PureComponent {
                 <span className="separator" />
                 <span className="date" title={toolTipDate}>
                   <FormattedRelative
-                    updateInterval={false}
+                    updateInterval={0}
                     value={created}
                     initialNow={Date.now()}
                   />
@@ -973,7 +973,7 @@ class Entry extends PureComponent {
                   <div className="date" title={toolTipDate}>
                     <i className="mi">access_time</i>
                     <FormattedRelative
-                      updateInterval={false}
+                      updateInterval={0}
                       value={created}
                       initialNow={Date.now()}
                     />

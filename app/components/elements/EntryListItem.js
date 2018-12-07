@@ -122,7 +122,7 @@ class EntryListItem extends Component {
           {!isVisited && <span className="read-mark" />}
           <span className="date" title={toolTipDate}>
             <FormattedRelative
-              updateInterval={false}
+              updateInterval={0}
               value={created}
               initialNow={Date.now()}
             />
