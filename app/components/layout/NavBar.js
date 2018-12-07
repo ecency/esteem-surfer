@@ -20,7 +20,7 @@ import addressParser from '../../utils/address-parser';
 
 import { getContent, getAccount } from '../../backend/steem-client';
 
-import { searchSort } from '../../constants/defaults';
+import { searchSort, filter as defaultFilter } from '../../constants/defaults';
 
 import qsParse from '../../utils/qs';
 
@@ -368,10 +368,11 @@ class NavBar extends Component {
   };
 
   logoClicked = () => {
-    const { location, global } = this.props;
-    const { selectedFilter } = global;
+    const { location, activeAccount } = this.props;
 
-    const newLoc = `/${selectedFilter}`;
+    const newLoc = activeAccount
+      ? `@${activeAccount.username}/feed`
+      : `/${defaultFilter}`;
 
     if (newLoc === location.pathname) {
       document.querySelector('#app-content').scrollTop = 0;
