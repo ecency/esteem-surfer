@@ -207,6 +207,7 @@ class Schedules extends Component {
                   author={author}
                   reputation={reputation}
                   item={item}
+                  key={item._id}
                 />
               ))}
             </div>
