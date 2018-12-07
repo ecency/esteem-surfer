@@ -553,10 +553,14 @@ class LeaderBoard extends Component {
           {list.map((item, index) => (
             <div className="list-item" key={item._id}>
               <div className="item-index">{index + 1}</div>
-              <div className="avatar">
-                <UserAvatar user={item._id} size="medium" />
-              </div>
-              <div className="username">{item._id}</div>
+              <AccountLink {...this.props} username={item._id}>
+                <div className="avatar">
+                  <UserAvatar user={item._id} size="medium" />
+                </div>
+              </AccountLink>
+              <AccountLink {...this.props} username={item._id}>
+                <div className="username">{item._id}</div>
+              </AccountLink>
               <div className="score">{item.count}</div>
             </div>
           ))}

@@ -108,6 +108,11 @@
         }
 
         .username,
+        .avatar {
+          cursor: pointer;
+        }
+
+        .username,
         .score {
           font-weight: 700;
         }
