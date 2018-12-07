@@ -79,7 +79,7 @@ class Address extends Component {
   addressKeyup = async e => {
     if (e.keyCode === 13) {
       const { address, changed } = this.state;
-      const { history } = this.props;
+      const { history, activeAccount } = this.props;
 
       if (!changed) return;
 
@@ -118,6 +118,12 @@ class Address extends Component {
           history.push(path);
           return;
         }
+      }
+
+      if (a === 'feed' && activeAccount) {
+        const p = `@${activeAccount.username}/feed`;
+        history.push(p);
+        return;
       }
 
       const q = address.replace(/\//g, ' ');
@@ -229,6 +235,10 @@ class Address extends Component {
   }
 }
 
+Address.defaultProps = {
+  activeAccount: null
+};
+
 Address.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
@@ -238,6 +248,7 @@ Address.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired
   }).isRequired,
+  activeAccount: PropTypes.instanceOf(Object),
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
