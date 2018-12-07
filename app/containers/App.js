@@ -173,6 +173,11 @@ class App extends React.Component {
     };
 
     this.nws.onmessage = evt => {
+      window.dispatchEvent(new CustomEvent('new-notification', {}));
+
+      // Refresh on new message
+      this.fetchActivities();
+
       const { global } = this.props;
       const { pushNotify } = global;
 

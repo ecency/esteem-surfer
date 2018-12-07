@@ -287,11 +287,8 @@ class Activities extends Component {
     this.scrollEl = document.querySelector('#activities-content');
     this.scrollEl.addEventListener('scroll', this.detectScroll);
 
-    window.addEventListener(
-      'notification-clicked',
-      this.externalNotificationClicked
-    );
-    window.addEventListener('user-login', this.externalNotificationClicked);
+    window.addEventListener('new-notification', this.resetActivities);
+    window.addEventListener('user-login', this.resetActivities);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -305,11 +302,8 @@ class Activities extends Component {
   componentWillUnmount() {
     this.scrollEl.removeEventListener('scroll', this.detectScroll);
 
-    window.removeEventListener(
-      'notification-clicked',
-      this.externalNotificationClicked
-    );
-    window.removeEventListener('user-login', this.externalNotificationClicked);
+    window.removeEventListener('new-notification', this.resetActivities);
+    window.removeEventListener('user-login', this.resetActivities);
   }
 
   changeType = newType => {
@@ -321,7 +315,7 @@ class Activities extends Component {
     );
   };
 
-  externalNotificationClicked = () => {
+  resetActivities = () => {
     this.setState(
       { activityType: 'all', activities: [], hasMore: true },
       () => {
@@ -348,7 +342,7 @@ class Activities extends Component {
     this.loadActivities();
   };
 
-  reload = () => {
+  refresh = () => {
     this.setState({ activities: [], hasMore: true }, () => {
       this.loadActivities();
 
@@ -454,7 +448,7 @@ class Activities extends Component {
           <a
             role="none"
             className={`control-button refresh ${loading ? 'disabled' : ''}`}
-            onClick={this.reload}
+            onClick={this.refresh}
           >
             <Tooltip
               title={intl.formatMessage({ id: 'activities.refresh' })}
@@ -582,6 +576,16 @@ class ActivitiesWrapper extends Component {
       selected: 'activities',
       activityType: 'all'
     };
+  }
+
+  componentDidMount() {
+    window.addEventListener('new-notification', this.switchActivities);
+    window.addEventListener('user-login', this.switchActivities);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('new-notification', this.switchActivities);
+    window.removeEventListener('user-login', this.switchActivities);
   }
 
   typeChanged = item => {
