@@ -50,7 +50,7 @@ class ScheduleListItem extends Component {
 
   render() {
     const { author, reputation, item, intl } = this.props;
-    const tags = item.tags ? item.tags.split(' ') : [];
+    const tags = item.tags ? item.tags.split(/,| /) : [];
     const tag = tags[0] || '';
     const img = catchEntryImage(item) || 'img/noimage.png';
     const summary = entryBodySummary(item.body, 200);

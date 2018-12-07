@@ -403,7 +403,7 @@ class Compose extends Component {
       title,
       permlink,
       jsonMeta,
-      tags.join(' '),
+      tags,
       body,
       reward,
       upvote,
