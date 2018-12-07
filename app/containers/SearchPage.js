@@ -27,12 +27,15 @@ import {
   resetSearchError
 } from '../actions/search-results';
 
+import { fetchActivities, resetActivities } from '../actions/activities';
+
 const mapStateToProps = state => ({
   global: state.global,
   accounts: state.accounts,
   activeAccount: state.activeAccount,
   dynamicProps: state.dynamicProps,
-  searchResults: state.searchResults
+  searchResults: state.searchResults,
+  activities: state.activities
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -63,7 +66,8 @@ const mapDispatchToProps = dispatch => ({
     ...bindActionCreators(
       { fetchSearchResults, invalidateSearchResults, resetSearchError },
       dispatch
-    )
+    ),
+    ...bindActionCreators({ fetchActivities, resetActivities }, dispatch)
   }
 });
 
