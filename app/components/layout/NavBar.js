@@ -371,7 +371,7 @@ class NavBar extends Component {
     const { location, activeAccount } = this.props;
 
     const newLoc = activeAccount
-      ? `@${activeAccount.username}/feed`
+      ? `/@${activeAccount.username}/feed`
       : `/${defaultFilter}`;
 
     if (newLoc === location.pathname) {
