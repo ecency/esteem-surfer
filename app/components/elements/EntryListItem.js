@@ -191,10 +191,18 @@ class EntryListItem extends Component {
                 {voteCount}
               </a>
             </EntryVotes>
-            <div className="comments">
-              <i className="mi">comment</i>
-              {contentCount}
-            </div>
+            <EntryLink
+              {...this.props}
+              entry={entry}
+              author={entry.author}
+              permlink={entry.permlink}
+              toReplies
+            >
+              <a className="comments">
+                <i className="mi">comment</i>
+                {contentCount}
+              </a>
+            </EntryLink>
             <EntryReblogBtn {...this.props} entry={entry} />
             <div className="app">{app}</div>
           </div>

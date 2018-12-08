@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 import { getContent } from '../../backend/steem-client';
 
-export const makePath = (category, author, permlink) =>
-  `/${category}/@${author}/${permlink}`;
+export const makePath = (category, author, permlink, toReplies = false) =>
+  `/${category}/@${author}/${permlink}${toReplies ? '#replies' : ''}`;
 
 class EntryLink extends Component {
   goEntry = async () => {
     let { entry } = this.props;
-    const { history, actions } = this.props;
+    const { history, actions, toReplies } = this.props;
 
     if (!entry) {
       const { author, permlink } = this.props;
@@ -19,7 +19,7 @@ class EntryLink extends Component {
     if (entry) {
       const { category, author, permlink } = entry;
       actions.setVisitingEntry(entry);
-      history.push(makePath(category, author, permlink));
+      history.push(makePath(category, author, permlink, toReplies));
     }
   };
 
@@ -33,7 +33,8 @@ class EntryLink extends Component {
 }
 
 EntryLink.defaultProps = {
-  entry: null
+  entry: null,
+  toReplies: false
 };
 
 EntryLink.propTypes = {
@@ -46,6 +47,7 @@ EntryLink.propTypes = {
   }),
   author: PropTypes.string.isRequired,
   permlink: PropTypes.string.isRequired,
+  toReplies: PropTypes.bool,
   actions: PropTypes.shape({
     setVisitingEntry: PropTypes.func.isRequired
   }).isRequired

@@ -603,9 +603,14 @@ class Entry extends PureComponent {
   async componentDidMount() {
     await this.fetch();
 
-    const { match } = this.props;
+    const { match, location } = this.props;
     const { username, permlink } = match.params;
     setEntryRead(username, permlink);
+
+    const { hash } = location;
+    if (hash === '#replies') {
+      this.scrollToReplies();
+    }
 
     window.addEventListener('md-author-clicked', this.mdAuthorClicked);
     window.addEventListener('md-post-clicked', this.mdEntryClicked);
@@ -830,6 +835,17 @@ class Entry extends PureComponent {
         return resp;
       }
     );
+  };
+
+  scrollToReplies = () => {
+    const replyWrapper = document.querySelector('.entry-replies');
+    const scrollEl = document.querySelector('#app-content');
+
+    if (!replyWrapper || !scrollEl) {
+      return;
+    }
+
+    scrollEl.scrollTop = replyWrapper.offsetTop;
   };
 
   render() {
@@ -1153,6 +1169,7 @@ Entry.defaultProps = {
 
 Entry.propTypes = {
   match: PropTypes.instanceOf(Object).isRequired,
+  location: PropTypes.instanceOf(Object).isRequired,
   history: PropTypes.instanceOf(Object).isRequired,
   activeAccount: PropTypes.instanceOf(Object),
   visitingEntry: PropTypes.instanceOf(Object),
