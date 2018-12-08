@@ -850,6 +850,7 @@ class Entry extends PureComponent {
 
   render() {
     const { entry, repliesLoading, editorVisible, bookmarkId } = this.state;
+    const { intl } = this.props;
 
     let content = null;
     if (entry) {
@@ -874,7 +875,7 @@ class Entry extends PureComponent {
       const isPayoutDeclined = parseToken(entry.max_accepted_payout) === 0;
       const voteCount = entry.active_votes.length;
 
-      const { activeAccount, intl } = this.props;
+      const { activeAccount } = this.props;
 
       const isComment = entry.parent_author.trim().length > 0;
 
@@ -964,11 +965,7 @@ class Entry extends PureComponent {
                 </TagLink>
                 <span className="separator" />
                 <span className="date" title={toolTipDate}>
-                  <FormattedRelative
-                    updateInterval={0}
-                    value={created}
-                    initialNow={Date.now()}
-                  />
+                  {intl.formatRelative(created)}
                 </span>
               </div>
             </div>
@@ -988,11 +985,7 @@ class Entry extends PureComponent {
                 <div className="left-side">
                   <div className="date" title={toolTipDate}>
                     <i className="mi">access_time</i>
-                    <FormattedRelative
-                      updateInterval={0}
-                      value={created}
-                      initialNow={Date.now()}
-                    />
+                    {intl.formatRelative(created)}
                   </div>
                   <span className="separator" />
                   <QuickProfile
