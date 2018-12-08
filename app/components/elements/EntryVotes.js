@@ -12,6 +12,8 @@ import parseToken from '../../utils/parse-token';
 import parseDate from '../../utils/parse-date';
 import authorReputation from '../../utils/author-reputation';
 
+import AccountLink from '../helpers/AccountLink';
+
 export const prepareVotes = entry => {
   const totalPayout =
     parseToken(entry.pending_payout_value) +
@@ -118,7 +120,11 @@ class EntryVotes extends Component {
         sorter: (a, b) => a.reputation - b.reputation,
         render: (text, record) => (
           <span>
-            {text}{' '}
+            <AccountLink {...this.props} username={text}>
+              <span style={{ cursor: 'pointer', fontWeight: 'bold' }}>
+                {text}
+              </span>
+            </AccountLink>{' '}
             <Badge
               count={record.reputation}
               style={{
