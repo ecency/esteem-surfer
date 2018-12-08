@@ -1,7 +1,8 @@
-import {remote} from "electron";
+import { remote } from 'electron';
 
 const APP_NAME = 'esteem-app';
-const SCOPE = 'vote,comment,delete_comment,comment_options,custom_json,claim_reward_balance';
+const SCOPE =
+  'vote,comment,delete_comment,comment_options,custom_json,claim_reward_balance,offline';
 const REDIR_URL = 'http://127.0.0.1:3415/';
 
 const windowSettings = {
@@ -15,13 +16,11 @@ const windowSettings = {
   maximizable: false,
   alwaysOnTop: true,
   webPreferences: {
-    nodeIntegration: false,
+    nodeIntegration: false
   }
 };
 
-
-const createWindowView = (redirectUrl) => {
-
+const createWindowView = redirectUrl => {
   const content = encodeURIComponent(`
     <!DOCTYPE html>
     <html>
@@ -68,12 +67,13 @@ const createWindowView = (redirectUrl) => {
   return `data:text/html;charset=UTF-8, ${content}`;
 };
 
-export const scLogin = () => (
+export const scLogin = () =>
   new Promise((resolve, reject) => {
-
     const win = new remote.BrowserWindow(windowSettings);
 
-    const authUrl = `https://v2.steemconnect.com/oauth2/authorize?client_id=${APP_NAME}&redirect_uri=${encodeURIComponent(REDIR_URL)}&scope=${encodeURIComponent(SCOPE)}`;
+    const authUrl = `https://v2.steemconnect.com/oauth2/authorize?client_id=${APP_NAME}&redirect_uri=${encodeURIComponent(
+      REDIR_URL
+    )}&scope=${encodeURIComponent(SCOPE)}`;
 
     win.loadURL(createWindowView(authUrl));
 
@@ -82,8 +82,7 @@ export const scLogin = () => (
 
       try {
         url = win.webContents.getURL();
-      }
-      catch (e) {
+      } catch (e) {
         clearInterval(windowInt);
         reject(Error('Window is not reachable'));
         return;
@@ -104,10 +103,9 @@ export const scLogin = () => (
         win.close();
       }
     }, 200);
-  })
-);
+  });
 
-const standardScWindow = (path) => (
+const standardScWindow = path =>
   new Promise((resolve, reject) => {
     const win = new remote.BrowserWindow(windowSettings);
     const authUrl = `https://steemconnect.com/${path}`;
@@ -116,7 +114,10 @@ const standardScWindow = (path) => (
     const windowInt = setInterval(async () => {
       let result;
       try {
-        result = await win.webContents.executeJavaScript(`document.body.innerHTML`, true);
+        result = await win.webContents.executeJavaScript(
+          `document.body.innerHTML`,
+          true
+        );
       } catch (e) {
         clearInterval(windowInt);
         reject(Error('Window is not reachable'));
@@ -129,8 +130,7 @@ const standardScWindow = (path) => (
         win.close();
       }
     }, 200);
-  })
-);
+  });
 
 export const scAppAuth = () => standardScWindow('authorize/@esteemapp');
 
