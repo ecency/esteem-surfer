@@ -395,7 +395,7 @@ export class TransactionRow extends Component {
           }
           {steemPayout > 0 &&
           <span className="number"><FormattedNumber value={steemPayout}
-                                                    minimumFractionDigits={3}/> {'steemPayout'}</span>
+                                                    minimumFractionDigits={3}/> {'STEEM'}</span>
           }
           {vestingPayout > 0 &&
           <span className="number"><FormattedNumber value={vestsToSp(vestingPayout, steemPerMVests)}
