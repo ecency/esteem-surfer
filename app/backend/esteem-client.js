@@ -33,7 +33,34 @@ export const getTopPosts = user =>
   axios.get(`${BACKEND_URL}/api/top-posts/${user}`).then(resp => resp.data);
 
 export const getMarketData = () =>
-  axios.get(`${BACKEND_URL}/api/market-data/`).then(resp => resp.data);
+  axios.get(`${BACKEND_URL}/api/market-data/`).then(resp => {
+    let { data } = resp;
+
+    const fakeData = {
+      quotes: {
+        btc: {
+          price: 1,
+          percent_change: 1,
+          last_updated: 1
+        },
+        usd: {
+          price: 1,
+          percent_change: 1,
+          last_updated: 1
+        }
+      }
+    };
+
+    if (data.sbd === null) {
+      data = Object.assign({}, data, { sbd: fakeData });
+    }
+
+    if (data.steem === null) {
+      data = Object.assign({}, data, { steem: fakeData });
+    }
+
+    return data;
+  });
 
 export const uploadImage = file => {
   const fData = new FormData();
