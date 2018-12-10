@@ -225,7 +225,13 @@ export default input => {
         el.className = 'markdown-post-link';
         el.removeAttribute('href');
 
-        el.setAttribute('data-tag', postMatch[1]);
+        let tag = postMatch[1];
+        // busy links matches with this regex. need to remove slash trail
+        if (tag === '/busy.org') {
+          tag = 'busy';
+        }
+
+        el.setAttribute('data-tag', tag);
         el.setAttribute('data-author', postMatch[2].replace('@', ''));
         el.setAttribute('data-permlink', postMatch[3]);
 
@@ -332,7 +338,9 @@ export default input => {
       if (
         n.nodeValue &&
         n.nodeValue.trim() &&
-        ['P', 'DIV', 'CENTER', 'STRONG'].indexOf(n.parentNode.tagName) !== -1
+        ['P', 'DIV', 'CENTER', 'STRONG', 'TD', 'TH'].indexOf(
+          n.parentNode.tagName
+        ) !== -1
       ) {
         const href = n.nodeValue.trim();
         if (href.match(imgRegex)) {

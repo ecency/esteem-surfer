@@ -1,6 +1,8 @@
 /* eslint-disable */
 
 import markDown2Html, { linkify, sanitizeNode } from './markdown-2-html';
+import { getTestData } from '../../test/data';
+import addressParser from './address-parser';
 
 const fs = require('fs');
 const path = require('path');
@@ -134,7 +136,29 @@ describe('Markdown to Html', () => {
   });
 
   describe('Mark Down -> Html', () => {
-    expect(markDown2Html('foo').trim()).toBe('<p>foo</p>');
+    it('Should convert markdown to html', () => {
+      expect(markDown2Html('foo').trim()).toBe('<p>foo</p>');
+    });
+  });
+
+  describe('Mark Down -> Html', () => {
+    it('Should catch images in table', () => {
+      const data = getTestData(
+        'steemitboard',
+        'steemitboard-notify-dunsky-20181210t153450000z'
+      );
+      expect(markDown2Html(data.body)).toMatchSnapshot();
+    });
+  });
+
+  describe('Mark Down -> Html', () => {
+    it('Should replace busy links properly', () => {
+      const data = getTestData(
+        'muratkbesiroglu',
+        'sci-fi-novel-underground-city-part-13'
+      );
+      expect(markDown2Html(data.body)).toMatchSnapshot();
+    });
   });
 
   describe('Mark Down -> Html Legacy', () => {
