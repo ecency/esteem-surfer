@@ -102,7 +102,11 @@
     "linux": {
       "target": [
         "deb",
-        "AppImage"
+        "tar.gz",
+        "AppImage",
+        "rpm",
+        "snap",
+        "freebsd"
       ],
       "category": "Development"
     },
