@@ -724,9 +724,12 @@
     }
 
     .body-input {
-      background: $white;
       margin-bottom: 6px;
       min-height: 80px;
+
+      @include themify(night) {
+        background: lighten($dark-six, 5);
+      }
     }
   }
 
