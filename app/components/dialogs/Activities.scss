@@ -308,7 +308,13 @@
         &:not(.not-read) {
           .activity-inner {
             &:hover {
-              background: $white-three;
+              @include themify(day) {
+                background: $white-three;
+              }
+
+              @include themify(night) {
+                background: darken($metallic-blue, 16);
+              }
             }
           }
         }
