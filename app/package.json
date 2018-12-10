@@ -9,5 +9,7 @@
     "electron-rebuild": "node -r babel-register ../internals/scripts/ElectronRebuild.js",
     "postinstall": "yarn electron-rebuild"
   },
-  "dependencies": {}
+  "dependencies": {
+    "dsteem": "^0.10.1"
+  }
 }
