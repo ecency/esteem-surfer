@@ -151,6 +151,16 @@ describe('Markdown to Html', () => {
     });
   });
 
+  describe('Mark Down -> Html', () => {
+    it('Should replace busy links properly', () => {
+      const data = getTestData(
+        'muratkbesiroglu',
+        'sci-fi-novel-underground-city-part-13'
+      );
+      expect(markDown2Html(data.body)).toMatchSnapshot();
+    });
+  });
+
   describe('Mark Down -> Html Legacy', () => {
     const dataDir = `${__dirname}/../../test/data/legacy/markdown-2-html`;
     let files = fs.readdirSync(dataDir);
