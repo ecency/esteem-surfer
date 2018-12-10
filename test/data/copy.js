@@ -1,5 +1,5 @@
-const { Client } = require('dsteem');
 const fs = require('fs');
+const { Client } = require('../../app/node_modules/dsteem');
 
 const client = new Client('https://api.steemit.com');
 

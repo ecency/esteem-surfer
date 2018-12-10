@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Markdown to Html Mark Down -> Html Should catch images in table 1`] = `
+"<p>Congratulations <a class=\\"markdown-author-link\\" data-author=\\"dunsky\\">@dunsky</a>! You have completed the following achievement on the Steem blockchain and have been rewarded with new badge(s) :</p>
+<table><tbody><tr><td><a data-href=\\"https://steemitimages.com/60x70/http://steemitboard.com/@dunsky/votes.png?201812101133\\" class=\\"markdown-img-link\\"><img src=\\"https://steemitimages.com/0x0/https://steemitimages.com/60x70/http://steemitboard.com/@dunsky/votes.png?201812101133\\"></a></td><td>You made more than 6000 upvotes. Your next target is to reach 7000 upvotes.</td></tr>
+<tr><td><a data-href=\\"https://steemitimages.com/60x70/http://steemitboard.com/@dunsky/posts.png?201812101316\\" class=\\"markdown-img-link\\"><img src=\\"https://steemitimages.com/0x0/https://steemitimages.com/60x70/http://steemitboard.com/@dunsky/posts.png?201812101316\\"></a></td><td>You published more than 250 posts. Your next target is to reach 300 posts.</td></tr>
+</tbody></table>
+<p><sub><em><a class=\\"markdown-external-link\\" data-href=\\"https://steemitboard.com/@dunsky\\">Click here to view your Board of Honor</a></em></sub><br>
+<sub><em>If you no longer want to receive notifications, reply to this comment with the word</em> <code>STOP</code></sub></p>
+<p>To support your work, I also upvoted your post!</p>
+<blockquote>
+<p>Support <a class=\\"markdown-external-link\\" data-href=\\"https://steemit.com/@steemitboard\\">SteemitBoard's project</a>! <strong><a class=\\"markdown-external-link\\" data-href=\\"https://v2.steemconnect.com/sign/account-witness-vote?witness=steemitboard&amp;approve=1\\">Vote for its witness</a></strong> and <strong>get one more award</strong>!</p>
+</blockquote>
+"
+`;

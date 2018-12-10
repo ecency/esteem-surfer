@@ -332,7 +332,9 @@ export default input => {
       if (
         n.nodeValue &&
         n.nodeValue.trim() &&
-        ['P', 'DIV', 'CENTER', 'STRONG'].indexOf(n.parentNode.tagName) !== -1
+        ['P', 'DIV', 'CENTER', 'STRONG', 'TD', 'TH'].indexOf(
+          n.parentNode.tagName
+        ) !== -1
       ) {
         const href = n.nodeValue.trim();
         if (href.match(imgRegex)) {
