@@ -728,7 +728,7 @@
       min-height: 80px;
 
       @include themify(night) {
-        background: lighten($dark-six, 5);
+        background: lighten($dark-six, 1);
       }
     }
   }
