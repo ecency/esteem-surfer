@@ -21,6 +21,7 @@ require('codemirror/addon/display/placeholder.js');
 require('codemirror/addon/search/searchcursor.js');
 require('codemirror/addon/search/match-highlighter.js');
 require('codemirror/mode/markdown/markdown');
+require('../../helpers/codemirror-spell-checker.js');
 
 class Editor extends Component {
   constructor(props) {
@@ -736,7 +737,8 @@ class Editor extends Component {
       tabSize: 2,
       dragDrop: true,
       placeholder: bodyPlaceHolder,
-      highlightSelectionMatches: { wordsOnly: true }
+      highlightSelectionMatches: { wordsOnly: true },
+      spellChecker: true
       // cursorScrollMargin: 400
     };
 
