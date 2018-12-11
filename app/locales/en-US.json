@@ -60,7 +60,7 @@
     "server": "Server",
     "server-invalid-address": "Invalid server address",
     "server-connecting": "Connecting to '{server}'...",
-    "server-connect-error": "Could not connected to '{server}'",
+    "server-connect-error": "Could not connected to '{server}'. Make sure you have a good internet connection.",
     "server-timeout-error": "'{server}' looks like not alive",
     "server-changed": "Server changed to {server}",
     "server-custom-address": "Custom server address",

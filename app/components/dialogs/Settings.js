@@ -105,7 +105,7 @@ class Settings extends Component {
 
     this.setState({ connectingServer: true });
 
-    const client = new Client(server, { timeout: 5 });
+    const client = new Client(server, { timeout: 1000 });
 
     const hideMsg = message.loading(
       intl.formatMessage({ id: 'settings.server-connecting' }, { server }),
