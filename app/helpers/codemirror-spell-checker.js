@@ -36,7 +36,7 @@
     window
       .getSpellingCorrections(word)
       .then(suggestions => {
-        return suggestions.map(suggestion => {
+        return suggestions.slice(0, 10).map(suggestion => {
           const item = document.createElement('div');
           item.classList.add('SpellMenu-Item');
           item.innerText = suggestion;
