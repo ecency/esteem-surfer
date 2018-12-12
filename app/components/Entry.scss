@@ -221,7 +221,8 @@
       .entry-tags {
         align-items: flex-start;
         display: flex;
-        margin-bottom: 20px;
+        flex-wrap: wrap;
+        margin-bottom: 16px;
 
         .entry-tag {
           border-radius: 25px;
@@ -229,6 +230,7 @@
           cursor: pointer;
           font-size: 16px;
           line-height: 1em;
+          margin-bottom: 4px;
           margin-right: 12px;
           padding: 4px 12px;
 
