@@ -24,12 +24,16 @@
   width: auto;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
 
-  .SpellMenu-Item {
+  .SpellMenu-Item,
+  .SpellMenu-Item-No-Suggestion {
     padding: 6px 12px;
-    cursor: pointer;
     border-radius: 8px;
     font-weight: 500;
     color: $charcoal-grey;
+  }
+
+  .SpellMenu-Item {
+    cursor: pointer;
 
     &:not(:last-child) {
       margin-bottom: 4px;

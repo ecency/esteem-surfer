@@ -36,27 +36,34 @@
     window
       .getSpellingCorrections(word)
       .then(suggestions => {
-        return suggestions.slice(0, 10).map(suggestion => {
-          const item = document.createElement('div');
-          item.classList.add('SpellMenu-Item');
-          item.innerText = suggestion;
-          item.onclick = () => {
-            const from = {
-              line: parseInt(target.getAttribute('data-from-line'), 10),
-              ch: parseInt(target.getAttribute('data-from-ch'), 10)
+        if (suggestions && suggestions.length) {
+          return suggestions.slice(0, 10).map(suggestion => {
+            const item = document.createElement('div');
+            item.classList.add('SpellMenu-Item');
+            item.innerText = suggestion;
+            item.onclick = () => {
+              const from = {
+                line: parseInt(target.getAttribute('data-from-line'), 10),
+                ch: parseInt(target.getAttribute('data-from-ch'), 10)
+              };
+
+              const to = {
+                line: parseInt(target.getAttribute('data-to-line'), 10),
+                ch: parseInt(target.getAttribute('data-to-ch'), 10)
+              };
+
+              cm.replaceRange(suggestion, from, to);
+
+              removeContentMenu();
             };
+            return item;
+          });
+        }
 
-            const to = {
-              line: parseInt(target.getAttribute('data-to-line'), 10),
-              ch: parseInt(target.getAttribute('data-to-ch'), 10)
-            };
-
-            cm.replaceRange(suggestion, from, to);
-
-            removeContentMenu();
-          };
-          return item;
-        });
+        const item = document.createElement('div');
+        item.classList.add('SpellMenu-Item-No-Suggestion');
+        item.innerText = 'No suggestions...';
+        return [item];
       })
       .then(contextItems => {
         const contextEl = document.createElement('div');
