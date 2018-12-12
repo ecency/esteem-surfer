@@ -68,17 +68,25 @@
       .then(contextItems => {
         const contextEl = document.createElement('div');
 
-        const x = event.clientX;
-        const y = event.clientY;
+        const elLeft = event.clientX;
+        const elTop = event.clientY;
 
         contextEl.setAttribute('id', 'spell-context-menu');
         contextEl.classList.add('CodeMirror-SpellMenu');
-        contextEl.style.left = `${x}px`;
-        contextEl.style.top = `${y}px`;
+        contextEl.style.left = `${elLeft}px`;
+        contextEl.style.top = `${elTop}px`;
 
         contextItems.forEach(x => contextEl.appendChild(x));
-
         document.body.appendChild(contextEl);
+
+        // Check and reposition if context menu height exceeds window height
+        const { bottom: cBottom } = contextEl.getBoundingClientRect();
+        const { bottom: bBottom } = document.body.getBoundingClientRect();
+
+        if (cBottom > bBottom) {
+          const newTop = elTop - (cBottom - bBottom);
+          contextEl.style.top = `${newTop}px`;
+        }
       });
   }
 
