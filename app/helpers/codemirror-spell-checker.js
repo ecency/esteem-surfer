@@ -8,6 +8,7 @@
   const maxSearchOccur = 10;
   let markers = [];
   let interv = null;
+  let menuVisible = false;
 
   let options = {
     appendTo: 'body',
@@ -26,6 +27,9 @@
         event.preventDefault();
 
         if (event.target.className.indexOf('CodeMirror-misspelled') !== -1) {
+          if (menuVisible) {
+            return;
+          }
           createContentMenu(cm, event);
         }
       });
@@ -39,6 +43,7 @@
   function createContentMenu(cm, event) {
     const { target } = event;
     const word = target.innerText.trim();
+    menuVisible = true;
 
     window
       .getSpellingCorrections(word)
@@ -100,6 +105,7 @@
   function removeContentMenu() {
     const contextMenu = document.querySelector('#spell-context-menu');
     if (contextMenu) contextMenu.parentNode.removeChild(contextMenu);
+    menuVisible = false;
   }
 
   function handleChange(cm) {
