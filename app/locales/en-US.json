@@ -208,7 +208,8 @@
     "published": "Post Published",
     "update": "Update",
     "updated": "Post Updated",
-    "sync-scroll": "Scroll Sync"
+    "sync-scroll": "Scroll Sync",
+    "no-suggestions": "No suggestions"
   },
   "gallery": {
     "title": "Gallery",

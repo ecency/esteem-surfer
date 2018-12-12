@@ -7,6 +7,7 @@ import { configureStore, history } from './store/configureStore';
 import './style/app.style.scss';
 
 require('./context-menu');
+require('./spell-checker');
 
 // Themes
 window.dayTheme = require('./style/antd/day.tcss');

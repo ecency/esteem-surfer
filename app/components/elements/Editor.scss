@@ -13,6 +13,39 @@
   }
 }
 
+.CodeMirror-SpellMenu {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  background: $white;
+  padding: 6px;
+  border-radius: 8px;
+  width: auto;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+
+  .SpellMenu-Item,
+  .SpellMenu-Item-No-Suggestion {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: 500;
+    color: $charcoal-grey;
+  }
+
+  .SpellMenu-Item {
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-bottom: 4px;
+    }
+
+    &:hover {
+      background: $dark-sky-blue;
+      color: $white;
+    }
+  }
+}
+
 .editor-form {
   .editor-widget {
     margin: auto;
@@ -54,6 +87,10 @@
 
   .CodeMirror-lines {
     // padding-bottom: 700px;
+  }
+
+  .CodeMirror-misspelled {
+    border-bottom: 1px dashed $red2;
   }
 
   /* CodeMirror day theme */

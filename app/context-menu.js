@@ -6,7 +6,6 @@ const { Menu, MenuItem } = remote;
 
 const isAnyTextSelected = () => window.getSelection().toString() !== '';
 
-
 const itemCut = () =>
   new MenuItem({
     label: formatMessage('context-menu.cut'),
@@ -71,6 +70,11 @@ const imgMenu = () => {
 document.addEventListener(
   'contextmenu',
   event => {
+    // Exception for spell checker menu on code mirror
+    if (event.target.className.indexOf('CodeMirror-misspelled') !== -1) {
+      return;
+    }
+
     // If clicked on code mirror instance
     if (
       event.path.some(
