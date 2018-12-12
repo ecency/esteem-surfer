@@ -209,7 +209,7 @@
     "update": "Обновить",
     "updated": "Пост обновлён",
     "sync-scroll": "Автопрокрутка",
-    "no-suggestions": "No suggestions"
+    "no-suggestions": "Нет предложений"
   },
   "gallery": {
     "title": "Галерея",
@@ -273,10 +273,10 @@
     "favorite": "Добавить в избранное",
     "favoriteRemove": "Убрать из избранного",
     "wallet": "Мой кошелёк",
-    "activities": "Activities",
+    "activities": "Активности",
     "address-enter-url": "Введите url",
     "address-enter-query": "Введите поисковой запрос",
-    "unclaimed-reward-notice": "You have unclaimed reward"
+    "unclaimed-reward-notice": "Есть незачисленные награды"
   },
   "search": {
     "n-results-for-q": "{n} результатов для {q}",
