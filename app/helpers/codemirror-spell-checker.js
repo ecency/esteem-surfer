@@ -9,8 +9,15 @@
   let markers = [];
   let interv = null;
 
+  let options = {
+    appendTo: 'body',
+    noSuggestText: 'No suggestions...'
+  };
+
   CodeMirror.defineOption('spellChecker', false, function(cm, val, old) {
     if (val) {
+      options = Object.assign({}, options, val);
+
       cm.on('change', () => {
         handleChange(cm);
       });
@@ -62,7 +69,7 @@
 
         const item = document.createElement('div');
         item.classList.add('SpellMenu-Item-No-Suggestion');
-        item.innerText = 'No suggestions...';
+        item.innerText = options.noSuggestText;
         return [item];
       })
       .then(contextItems => {
@@ -77,7 +84,7 @@
         contextEl.style.top = `${elTop}px`;
 
         contextItems.forEach(x => contextEl.appendChild(x));
-        document.body.appendChild(contextEl);
+        document.querySelector(options.appendTo).appendChild(contextEl);
 
         // Check and reposition if context menu height exceeds window height
         const { bottom: cBottom } = contextEl.getBoundingClientRect();

@@ -208,7 +208,8 @@
     "published": "Пост опубликован",
     "update": "Обновить",
     "updated": "Пост обновлён",
-    "sync-scroll": "Автопрокрутка"
+    "sync-scroll": "Автопрокрутка",
+    "no-suggestions": "No suggestions"
   },
   "gallery": {
     "title": "Галерея",

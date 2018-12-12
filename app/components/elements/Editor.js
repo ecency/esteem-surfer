@@ -738,7 +738,10 @@ class Editor extends Component {
       dragDrop: true,
       placeholder: bodyPlaceHolder,
       highlightSelectionMatches: { wordsOnly: true },
-      spellChecker: true
+      spellChecker: {
+        appendTo: '#root .wrapper',
+        noSuggestText: intl.formatMessage({ id: 'composer.no-suggestions' })
+      }
       // cursorScrollMargin: 400
     };
 
