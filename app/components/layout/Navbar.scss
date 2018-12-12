@@ -260,13 +260,22 @@
       }
 
       .wallet {
+        position: relative;
+
+        .reward-badge {
+          background: $red4;
+          border-radius: 50%;
+          height: 5px;
+          position: absolute;
+          width: 5px;
+        }
       }
 
       .activities {
         position: relative;
 
         .activity-badge {
-          background: #ec3323;
+          background: $red4;
           border-radius: 50%;
           color: $white;
           font-size: 10px;

@@ -275,7 +275,8 @@
     "wallet": "My Wallet",
     "activities": "Activities",
     "address-enter-url": "Enter url",
-    "address-enter-query": "Enter search query"
+    "address-enter-query": "Enter search query",
+    "unclaimed-reward-notice": "You have unclaimed reward"
   },
   "search": {
     "n-results-for-q": "{n} results for {q}",

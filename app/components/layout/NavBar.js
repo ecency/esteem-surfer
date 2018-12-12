@@ -22,6 +22,8 @@ import { getContent, getAccount } from '../../backend/steem-client';
 
 import { searchSort, filter as defaultFilter } from '../../constants/defaults';
 
+import parseToken from '../../utils/parse-token';
+
 import qsParse from '../../utils/qs';
 
 export const checkPathForBack = path => {
@@ -434,6 +436,21 @@ class NavBar extends Component {
 
     const { unread: unreadActivity } = activities;
 
+    let hasUnclaimedRewards = false;
+    if (activeAccount) {
+      const { accountData: account } = activeAccount;
+
+      if (account) {
+        const rewardSteemBalance = parseToken(account.reward_steem_balance);
+        const rewardSbdBalance = parseToken(account.reward_sbd_balance);
+        const rewardVestingSteem = parseToken(account.reward_vesting_steem);
+        hasUnclaimedRewards =
+          rewardSteemBalance > 0 ||
+          rewardSbdBalance > 0 ||
+          rewardVestingSteem > 0;
+      }
+    }
+
     return (
       <div className="nav-bar">
         <div className="nav-bar-inner">
@@ -586,12 +603,19 @@ class NavBar extends Component {
             {activeAccount && (
               <Fragment>
                 <Tooltip
-                  title={intl.formatMessage({ id: 'navbar.wallet' })}
+                  title={
+                    unreadActivity
+                      ? intl.formatMessage({
+                          id: 'navbar.unclaimed-reward-notice'
+                        })
+                      : intl.formatMessage({ id: 'navbar.wallet' })
+                  }
                   placement="left"
                   mouseEnterDelay={1}
                   onClick={this.walletClicked}
                 >
                   <a role="none" className="wallet">
+                    {hasUnclaimedRewards && <span className="reward-badge" />}
                     <i className="mi">credit_card</i>
                   </a>
                 </Tooltip>

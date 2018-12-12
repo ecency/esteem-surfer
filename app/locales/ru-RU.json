@@ -275,7 +275,8 @@
     "wallet": "Мой кошелёк",
     "activities": "Activities",
     "address-enter-url": "Введите url",
-    "address-enter-query": "Введите поисковой запрос"
+    "address-enter-query": "Введите поисковой запрос",
+    "unclaimed-reward-notice": "You have unclaimed reward"
   },
   "search": {
     "n-results-for-q": "{n} результатов для {q}",
