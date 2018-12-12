@@ -32,7 +32,7 @@ class UserMenu extends Component {
 
     actions.logOut();
 
-    const ev = new CustomEvent('user-logout', {  });
+    const ev = new CustomEvent('user-logout', {});
     window.dispatchEvent(ev);
 
     closeFn();
@@ -230,7 +230,7 @@ class UserMenu extends Component {
             role="none"
             onClick={this.logout}
           >
-            <i className="mi">exit_to_app</i>
+            <i className="mi">power_settings_new</i>
             <FormattedMessage id="user-menu.logout" />
           </a>
         </div>
