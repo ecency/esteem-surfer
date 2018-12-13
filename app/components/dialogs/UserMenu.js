@@ -7,7 +7,7 @@ import { Modal } from 'antd';
 import Login from './Login';
 import UserAvatar from '../elements/UserAvatar';
 
-import GalleryModal from '../Gallery';
+import GalleryModal from './Gallery';
 import DraftsModal from './Drafts';
 import SchedulesModal from '../Schedules';
 import BookmarksModal from './Bookmarks';

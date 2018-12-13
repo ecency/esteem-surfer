@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { UnControlled as CodeMirror } from 'react-codemirror2';
 import { Input, Select, Tooltip, message } from 'antd';
 
-import GalleryModal from '../Gallery';
+import GalleryModal from '../dialogs/Gallery';
 
 import { uploadImage, addMyImage } from '../../backend/esteem-client';
 

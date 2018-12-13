@@ -9,9 +9,9 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 
 import PropTypes from 'prop-types';
 
-import LinearProgress from './common/LinearProgress';
+import LinearProgress from '../common/LinearProgress';
 
-import { getImages, removeImage } from '../backend/esteem-client';
+import { getImages, removeImage } from '../../backend/esteem-client';
 
 class Gallery extends Component {
   constructor(props) {
