@@ -140,7 +140,6 @@ a[target='_external'],
 @import '../components/Gallery.scss';
 @import '../components/Drafts.scss';
 @import '../components/Schedules.scss';
-@import '../components/Bookmarks.scss';
 @import '../components/Favorites.scss';
 @import '../components/Search';
 
@@ -163,6 +162,7 @@ a[target='_external'],
 @import '../components/dialogs/PinConfirm';
 @import '../components/dialogs/UserMenu';
 @import '../components/dialogs/Activities';
+@import '../components/dialogs/Bookmarks';
 
 @import '../components/helpers/QuickProfile';
 @import '../components/helpers/Updater';
