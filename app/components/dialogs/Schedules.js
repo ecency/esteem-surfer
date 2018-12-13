@@ -8,18 +8,18 @@ import PropTypes from 'prop-types';
 import { message, Modal, Popconfirm, Tooltip } from 'antd';
 import { FormattedMessage, injectIntl, FormattedDate } from 'react-intl';
 
-import LinearProgress from './common/LinearProgress';
-import UserAvatar from './elements/UserAvatar';
+import LinearProgress from '../common/LinearProgress';
+import UserAvatar from '../elements/UserAvatar';
 
-import authorReputation from '../utils/author-reputation';
-import catchEntryImage from '../utils/catch-entry-image';
-import entryBodySummary from '../utils/entry-body-summary';
+import authorReputation from '../../utils/author-reputation';
+import catchEntryImage from '../../utils/catch-entry-image';
+import entryBodySummary from '../../utils/entry-body-summary';
 
 import {
   getSchedules,
   removeSchedule,
   moveSchedule
-} from '../backend/esteem-client';
+} from '../../backend/esteem-client';
 
 class ScheduleListItem extends Component {
   delete = item => {

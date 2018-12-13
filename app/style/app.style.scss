@@ -137,7 +137,6 @@ a[target='_external'],
 @import '../components/Account';
 @import '../components/Entry';
 @import '../components/Compose.scss';
-@import '../components/Schedules.scss';
 @import '../components/Search';
 
 @import '../components/elements/EntryListItem';
@@ -163,6 +162,7 @@ a[target='_external'],
 @import '../components/dialogs/Drafts';
 @import '../components/dialogs/Favorites';
 @import '../components/dialogs/Gallery';
+@import '../components/dialogs/Schedules';
 
 @import '../components/helpers/QuickProfile';
 @import '../components/helpers/Updater';
