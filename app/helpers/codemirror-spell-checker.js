@@ -174,12 +174,13 @@
       .map(x => x.trim())
 
       // Eliminate empty ones
-      .filter(x => x !== '')
+      .filter(x => x !== '');
+
+    const misspelledWords = words
+      .filter(w => window.isMisspelled(w))
 
       // Max 20 spell check
       .splice(0, 20);
-
-    const misspelledWords = words.filter(w => window.isMisspelled(w));
 
     misspelledWords.forEach(w => {
       const wordPositions = [];
