@@ -731,6 +731,8 @@ class Entry extends PureComponent {
 
     const entry = await getContent(username, permlink);
 
+    console.log(entry.body);
+
     actions.setVisitingEntry(entry);
 
     this.setState({ entry });

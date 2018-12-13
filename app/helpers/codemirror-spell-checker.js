@@ -123,8 +123,60 @@
     markers.forEach(marker => marker.clear());
     markers = [];
 
-    const editorValue = cm.getValue().replace(/\n/g, ' ');
-    const words = editorValue.split(' ');
+    const words = cm
+      .getValue()
+      // Remove HTML tags
+      .replace(/<[^>]*>/gm, '')
+
+      // Remove images
+      .replace(/\!\[(.*?)\][\[\(].*?[\]\)]/gm, '')
+
+      // Remove inline links
+      .replace(/\[(.*?)\][\[\(].*?[\]\)]/g, '')
+
+      // Remove blockquotes
+      .replace(/^\s{0,3}>\s?/g, '')
+
+      // Remove emphasis (repeat the line to remove double emphasis)
+      .replace(/([\*_]{1,3})(\S.*?\S{0,1})\1/g, '$2')
+      .replace(/([\*_]{1,3})(\S.*?\S{0,1})\1/g, '$2')
+
+      // Remove code blocks
+      .replace(/(`{3,})(.*?)\1/gm, '$2')
+
+      // Remove inline code
+      .replace(/`(.+?)`/g, '$1')
+
+      // Replace new lines with spaces
+      .replace(/\n/g, ' ')
+
+      // Split by spaces and tags
+      .split(/\s|\t/gm)
+
+      // Trim all
+      .map(x => x.trim())
+
+      // Extra filter for unwanted patterns
+      .filter(w => {
+        if (w.startsWith('http')) {
+          return false;
+        }
+
+        // it may be a http link or short link
+        if (w.includes('/')) {
+          return false;
+        }
+
+        return true;
+      })
+
+      // Trim all again
+      .map(x => x.trim())
+
+      // Eliminate empty ones
+      .filter(x => x !== '');
+
+    console.log(words);
 
     const misspelledWords = words.filter(w => window.isMisspelled(w));
 
