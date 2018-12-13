@@ -8,14 +8,14 @@ import PropTypes from 'prop-types';
 import { message, Modal, Popconfirm, Tooltip } from 'antd';
 import { FormattedMessage, injectIntl, FormattedRelative } from 'react-intl';
 
-import LinearProgress from './common/LinearProgress';
-import UserAvatar from './elements/UserAvatar';
+import LinearProgress from '../common/LinearProgress';
+import UserAvatar from '../elements/UserAvatar';
 
-import authorReputation from '../utils/author-reputation';
-import catchEntryImage from '../utils/catch-entry-image';
-import entryBodySummary from '../utils/entry-body-summary';
+import authorReputation from '../../utils/author-reputation';
+import catchEntryImage from '../../utils/catch-entry-image';
+import entryBodySummary from '../../utils/entry-body-summary';
 
-import { getDrafts, removeDraft } from '../backend/esteem-client';
+import { getDrafts, removeDraft } from '../../backend/esteem-client';
 
 class DraftListItem extends Component {
   delete = item => {
