@@ -7,10 +7,10 @@ import PropTypes from 'prop-types';
 import { message, Modal, Input } from 'antd';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
-import LinearProgress from './common/LinearProgress';
-import UserAvatar from './elements/UserAvatar';
+import LinearProgress from '../common/LinearProgress';
+import UserAvatar from '../elements/UserAvatar';
 
-import { getFavorites } from '../backend/esteem-client';
+import { getFavorites } from '../../backend/esteem-client';
 
 class Favorites extends Component {
   constructor(props) {
