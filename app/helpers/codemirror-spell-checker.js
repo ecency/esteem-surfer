@@ -174,9 +174,10 @@
       .map(x => x.trim())
 
       // Eliminate empty ones
-      .filter(x => x !== '');
+      .filter(x => x !== '')
 
-    console.log(words);
+      // Max 20 spell check
+      .splice(0, 20);
 
     const misspelledWords = words.filter(w => window.isMisspelled(w));
 
