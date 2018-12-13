@@ -63,7 +63,10 @@ class ScheduleListItem extends Component {
               <UserAvatar user={author} size="small" />
             </div>
             <div className="author">
-              {author} <span className="author-reputation">{reputation}</span>
+              {author}{' '}
+              {reputation && (
+                <span className="author-reputation">{reputation}</span>
+              )}
             </div>
           </div>
           <a className="category">{tag}</a>
@@ -131,11 +134,15 @@ class ScheduleListItem extends Component {
   }
 }
 
+ScheduleListItem.defaultProps = {
+  reputation: null
+};
+
 ScheduleListItem.propTypes = {
   activeAccount: PropTypes.instanceOf(Object).isRequired,
   onDelete: PropTypes.func.isRequired,
   author: PropTypes.string.isRequired,
-  reputation: PropTypes.number.isRequired,
+  reputation: PropTypes.number,
   item: PropTypes.instanceOf(Object).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };
@@ -192,7 +199,9 @@ class Schedules extends Component {
 
     const { username: author } = activeAccount;
     const { accountData } = activeAccount;
-    const reputation = authorReputation(accountData.reputation);
+    const reputation = accountData
+      ? authorReputation(accountData.reputation)
+      : null;
 
     return (
       <div className="schedules-dialog-content">
