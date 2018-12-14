@@ -8,6 +8,8 @@ import PropTypes from 'prop-types';
 import { Tooltip, message } from 'antd';
 import { FormattedNumber, FormattedDate, FormattedMessage, FormattedRelative, injectIntl } from 'react-intl';
 
+import { Link } from 'react-router-dom';
+
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
 
@@ -24,7 +26,7 @@ import coverFallbackNight from '../img/cover-fallback-night.png';
 import LinearProgress from './common/LinearProgress';
 import EntryLink from './helpers/EntryLink';
 
-import {btc as btcIcon, usd as usdIcon} from '../svg';
+import { btc as btcIcon, usd as usdIcon } from '../svg';
 
 
 import { getFollowCount, getAccount, getState, claimRewardBalance } from '../backend/steem-client';
@@ -67,7 +69,7 @@ class Profile extends Component {
     let website;
     let created;
 
-    const { username, account, intl } = this.props;
+    const { username, account, activeAccount, intl } = this.props;
 
     if (account) {
       vPower = votingPower(account);
@@ -88,6 +90,8 @@ class Profile extends Component {
 
       created = new Date(account.created);
     }
+
+    const showWitnesses = activeAccount && activeAccount.username === username;
 
     return (
       <div className="profile-area">
@@ -203,6 +207,15 @@ class Profile extends Component {
             />
           </div>
         )}
+
+        {showWitnesses && (
+          <Fragment>
+            <div className="divider"/>
+            <div className="witnesses">
+              <Link to="/witnesses">Witnesses</Link>
+            </div>
+          </Fragment>
+        )}
       </div>
     );
   }
@@ -210,13 +223,15 @@ class Profile extends Component {
 
 
 Profile.defaultProps = {
-  account: null
+  account: null,
+  activeAccount: null
 };
 
 Profile.propTypes = {
   username: PropTypes.string.isRequired,
   account: PropTypes.instanceOf(Object),
-  intl: PropTypes.instanceOf(Object).isRequired
+  intl: PropTypes.instanceOf(Object).isRequired,
+  activeAccount: PropTypes.instanceOf(Object)
 };
 
 

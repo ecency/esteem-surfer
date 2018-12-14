@@ -9,10 +9,18 @@ import AccountPage from './containers/AccountPage';
 import ComposePage from './containers/ComposePage';
 import EntryPage from './containers/EntryPage';
 import SearchPage from './containers/SearchPage';
+import WitnessesPage from './containers/WitnessesPage';
 
 export default () => (
   <App>
     <Switch>
+      <Route
+        exact
+        path="/witnesses"
+        component={props => (
+          <WitnessesPage timestamp={new Date().toString()} {...props} />
+        )}
+      />
       <Route
         exact
         path="/search"
