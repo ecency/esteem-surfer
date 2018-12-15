@@ -135,3 +135,5 @@ const standardScWindow = path =>
 export const scAppAuth = () => standardScWindow('authorize/@esteemapp');
 
 export const scAppRevoke = () => standardScWindow('revoke/@esteemapp');
+
+export const scWitnessVote = (account, witness, approve) => standardScWindow(`sign/account-witness-vote?account=${account}&witness=${witness}&approve=${approve}`);
