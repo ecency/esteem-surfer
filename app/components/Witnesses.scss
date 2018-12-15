@@ -1,26 +1,94 @@
 @import '../style/mixins';
 @import '../style/colors';
 
+@keyframes witness-voting-color-change {
+  0% {
+    background: $dark-sky-blue;
+
+    svg {
+      fill: $white;
+    }
+  }
+  25% {
+    background: transparent;
+
+    svg {
+      fill: $dark-sky-blue;
+    }
+  }
+  50% {
+    background: $dark-sky-blue;
+    svg {
+      fill: $white;
+    }
+  }
+  75% {
+    background: transparent;
+    svg {
+      fill: $dark-sky-blue;
+    }
+  }
+  100% {
+    background: $dark-sky-blue;
+    svg {
+      fill: $white;
+    }
+  }
+}
+
+.btn-witness-vote {
+  align-items: center;
+  border: 1px solid $dark-sky-blue;
+  border-radius: 50%;
+  color: $dark-sky-blue;
+  display: flex;
+  height: 28px;
+  justify-content: center;
+  text-decoration: none;
+  width: 28px;
+
+  svg {
+    height: 22px;
+    width: 22px;
+  }
+
+  &:focus {
+    text-decoration: none;
+  }
+
+  &:hover,
+  &.voted {
+    background-color: $dark-sky-blue;
+    color: $white;
+  }
+
+  &.in-progress {
+    animation: witness-voting-color-change 5s infinite;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
 .witnesses-page {
   overflow-y: auto;
-  padding: 0 20px;
+  padding: 0 30px;
 
-  .witnesses-list {
-    margin: 10px auto;
-    width: 94%;
-    .witnesses-list-header {
-      align-items: center;
-      border-bottom: 1px solid $white-four;
-      display: flex;
-      height: 60px;
-      justify-content: space-between;
-      padding: 0 20px;
+  .page-header {
+    align-items: center;
+    border-bottom: 1px solid $white-four;
+    display: flex;
+    height: 60px;
+    justify-content: space-between;
+    padding: 0 20px;
 
-      .list-title {
-        color: $dark-sky-blue;
-        font-size: 22px;
-        font-weight: 500;
-      }
+    &.loading {
+      border-bottom: 0;
+    }
+
+    .main-title {
+      color: $dark-sky-blue;
+      font-size: 22px;
+      font-weight: 500;
     }
   }
 
@@ -30,28 +98,28 @@
   }
 
   .witness-card {
-    display: flex;
     align-items: center;
     cursor: pointer;
+    display: flex;
 
     .user-avatar {
       height: 50px !important;
-      width: 50px !important;
       margin-right: 10px;
+      width: 50px !important;
     }
 
     .username {
       color: $charcoal-grey;
-      font-weight: 700;
       cursor: pointer;
+      font-weight: 700;
     }
 
   }
 
   .witness-link {
-    font-weight: 700;
     color: $dark-sky-blue;
     font-size: 24px;
+    font-weight: 700;
 
     &::after {
       // disable external link icon
@@ -59,10 +127,11 @@
     }
   }
 
-  .witness-column-title{
+  .witness-column-title {
     padding-left: 60px;
   }
 
+  // Antd table overrides
   .ant-table-row:nth-child(odd) {
     background: $white-three;
   }

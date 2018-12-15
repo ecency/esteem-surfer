@@ -442,3 +442,24 @@ export const claimRewardBalance = (
     );
   }
 };
+
+
+export const witnessVote = (account, pin, witness, approve) => {
+  if (account.type === 's') {
+    const opArray = [
+      [
+        'account_witness_vote',
+        {
+          account: account.username,
+          witness,
+          approve
+        }
+      ]
+    ];
+
+    const key = decryptKey(account.keys.active, pin);
+    const privateKey = PrivateKey.fromString(key);
+
+    return client.broadcast.sendOperations(opArray, privateKey);
+  }
+};

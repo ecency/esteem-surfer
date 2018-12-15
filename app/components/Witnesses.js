@@ -1,25 +1,91 @@
-import React, { Fragment, PureComponent } from 'react';
+/*
+eslint-disable react/no-multi-comp
+*/
+
+import React, { PureComponent } from 'react';
 
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 
-
-import { Table } from 'antd';
-
+import { Table, message } from 'antd';
 
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
 import DeepLinkHandler from './helpers/DeepLinkHandler';
 import EntryLink from './helpers/EntryLink';
-import AccountLink from './helpers/AccountLink';
 import QuickProfile from './helpers/QuickProfile';
+import LinearProgress from './common/LinearProgress';
 
 import UserAvatar from './elements/UserAvatar';
 
-import { getWitnessesByVote } from '../backend/steem-client';
+import { getWitnessesByVote, getAccount, witnessVote } from '../backend/steem-client';
 
 import parseToken from '../utils/parse-token';
 import postUrlParser from '../utils/post-url-parser';
+import formatChainError from '../utils/format-chain-error';
+import { chevronUp } from '../svg';
+
+
+class BtnWitnessVote extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      voting: false
+    };
+  }
+
+  clicked = () => {
+    const { witness, voted, activeAccount, global, onSuccess } = this.props;
+    const { voting } = this.state;
+
+    if (voting) {
+      return false;
+    }
+
+    this.setState({ voting: true });
+
+    const approve = !voted;
+
+    return witnessVote(activeAccount, global.pin, witness, approve).then(resp => {
+      if (onSuccess) {
+        onSuccess(approve);
+      }
+      return resp;
+    }).catch(e => {
+      message.error(formatChainError(e));
+    }).finally(() => {
+      this.setState({ voting: false });
+    });
+  };
+
+  render() {
+    const { voting } = this.state;
+    const { voted } = this.props;
+
+    const btnCls = `btn-witness-vote ${voting ? 'in-progress' : ''} ${
+      voted ? 'voted' : ''
+      }`;
+
+    return <a className={btnCls} role="none" onClick={this.clicked}>
+      {chevronUp}
+    </a>;
+  }
+}
+
+BtnWitnessVote.defaultProps = {
+  activeAccount: null
+};
+
+BtnWitnessVote.propTypes = {
+  global: PropTypes.shape({
+    pin: PropTypes.string.isRequired
+  }).isRequired,
+  voted: PropTypes.bool.isRequired,
+  witness: PropTypes.string.isRequired,
+  onSuccess: PropTypes.func.isRequired,
+  activeAccount: PropTypes.instanceOf(Object)
+};
 
 
 class Witnesses extends PureComponent {
@@ -28,14 +94,19 @@ class Witnesses extends PureComponent {
 
     this.state = {
       loading: false,
-      witnesses: []
+      witnesses: [],
+      witnessVotes: []
     };
-
   }
 
   componentDidMount() {
-    this.fetchWitnesses();
+    this.load();
   }
+
+  load = () => {
+    this.fetchVotedWitnesses();
+    this.fetchWitnesses();
+  };
 
   fetchWitnesses = () => {
     this.setState({ loading: true });
@@ -78,6 +149,17 @@ class Witnesses extends PureComponent {
     });
   };
 
+  fetchVotedWitnesses = () => {
+    const { activeAccount } = this.props;
+    if (activeAccount) {
+      return getAccount(activeAccount.username).then(resp => {
+        const { witness_votes: witnessVotes } = resp;
+        this.setState({ witnessVotes });
+        return resp;
+      });
+    }
+  };
+
   refresh = () => {
     this.fetchWitnesses();
   };
@@ -96,7 +178,34 @@ class Witnesses extends PureComponent {
           <span className="index-num">{text}</span>
         )
       },
+      {
+        title: '',
+        fixed: 'left',
+        render: (text, record) => {
+          let { witnessVotes } = this.state;
+          const { name: theWitness } = record;
 
+          const voted = witnessVotes.includes(theWitness);
+
+          return <BtnWitnessVote
+            {...this.props}
+            witness={theWitness}
+            voted={voted}
+            onSuccess={(approve) => {
+
+              if (approve) {
+                witnessVotes.push(theWitness);
+              } else {
+                witnessVotes = witnessVotes.filter(x => x !== theWitness);
+              }
+
+              this.setState({ witnessVotes });
+              this.fetchVotedWitnesses();
+
+            }}
+          />;
+        }
+      },
       {
         title: <span className="witness-column-title">Witness</span>,
         width: 260,
@@ -163,7 +272,6 @@ class Witnesses extends PureComponent {
       }
     ];
 
-
     return (
       <div className="wrapper">
         <NavBar
@@ -174,15 +282,16 @@ class Witnesses extends PureComponent {
             reloading: loading
           })}
         />
-
         <div className="app-content witnesses-page">
-
-          <div className="witnesses-list">
-            <div className="witnesses-list-header">
-              <div className="list-title">Witness Voting</div>
-            </div>
-            <Table columns={columns} dataSource={witnesses} scroll={{ x: 1300 }} pagination={false} />
+          <div className={`page-header ${loading ? 'loading' : ''}`}>
+            <div className="main-title">Witness Voting</div>
           </div>
+          {loading &&
+          <LinearProgress/>
+          }
+          {!loading &&
+          <Table columns={columns} dataSource={witnesses} scroll={{ x: 1300 }} pagination={false}/>
+          }
         </div>
         <AppFooter {...this.props} />
         <DeepLinkHandler {...this.props} />
@@ -197,6 +306,9 @@ Witnesses.defaultProps = {
 
 Witnesses.propTypes = {
   activeAccount: PropTypes.instanceOf(Object),
+  global: PropTypes.shape({
+    pin: PropTypes.string.isRequired
+  }).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
