@@ -5,7 +5,7 @@ eslint-disable react/no-multi-comp
 import React, { PureComponent } from 'react';
 
 import PropTypes from 'prop-types';
-import { injectIntl } from 'react-intl';
+import { injectIntl, FormattedMessage } from 'react-intl';
 
 import { Table, message } from 'antd';
 
@@ -103,6 +103,10 @@ class Witnesses extends PureComponent {
     this.load();
   }
 
+  refresh = () => {
+    this.load();
+  };
+
   load = () => {
     this.fetchVotedWitnesses();
     this.fetchWitnesses();
@@ -160,13 +164,9 @@ class Witnesses extends PureComponent {
     }
   };
 
-  refresh = () => {
-    this.fetchWitnesses();
-  };
-
   render() {
     const { intl } = this.props;
-    const { loading, witnesses } = this.state;
+    const { loading, witnesses, witnessVotes } = this.state;
 
     const columns = [
       {
@@ -182,7 +182,6 @@ class Witnesses extends PureComponent {
         title: '',
         fixed: 'left',
         render: (text, record) => {
-          let { witnessVotes } = this.state;
           const { name: theWitness } = record;
 
           const voted = witnessVotes.includes(theWitness);
@@ -193,21 +192,22 @@ class Witnesses extends PureComponent {
             voted={voted}
             onSuccess={(approve) => {
 
+              let newVotes;
+
               if (approve) {
-                witnessVotes.push(theWitness);
+                newVotes = [...witnessVotes, theWitness];
               } else {
-                witnessVotes = witnessVotes.filter(x => x !== theWitness);
+                newVotes = witnessVotes.filter(x => x !== theWitness);
               }
 
-              this.setState({ witnessVotes });
+              this.setState({ witnessVotes: newVotes });
               this.fetchVotedWitnesses();
-
             }}
           />;
         }
       },
       {
-        title: <span className="witness-column-title">Witness</span>,
+        title: <span className="witness-column-title"><FormattedMessage id="witnesses.witness"/></span>,
         width: 260,
         dataIndex: 'name',
         fixed: 'left',
@@ -221,14 +221,14 @@ class Witnesses extends PureComponent {
         )
       },
       {
-        title: 'Miss',
+        title: <FormattedMessage id="witnesses.miss"/>,
         dataIndex: 'miss',
         render: (text) => (
           intl.formatNumber(text)
         )
       },
       {
-        title: 'URL',
+        title: <FormattedMessage id="witnesses.url"/>,
         render: (text, record) => {
           const { parsedUrl } = record;
 
@@ -242,30 +242,30 @@ class Witnesses extends PureComponent {
         }
       },
       {
-        title: 'Fee',
+        title: <FormattedMessage id="witnesses.fee"/>,
         dataIndex: 'fee'
       },
       {
-        title: 'Feed',
+        title: <FormattedMessage id="witnesses.feed"/>,
         dataIndex: 'feed'
       },
       {
-        title: 'Block size',
+        title: <FormattedMessage id="witnesses.block-size"/>,
         dataIndex: 'blockSize',
         render: (text) => (
           intl.formatNumber(text)
         )
       },
       {
-        title: 'AC avail',
+        title: <FormattedMessage id="witnesses.ac-avail"/>,
         dataIndex: 'acAvail'
       },
       {
-        title: 'AC budget',
+        title: <FormattedMessage id="witnesses.ac-budget"/>,
         dataIndex: 'acBudget'
       },
       {
-        title: 'Version',
+        title: <FormattedMessage id="witnesses.version"/>,
         dataIndex: 'version',
         fixed: 'right',
         width: 140
@@ -284,13 +284,13 @@ class Witnesses extends PureComponent {
         />
         <div className="app-content witnesses-page">
           <div className={`page-header ${loading ? 'loading' : ''}`}>
-            <div className="main-title">Witness Voting</div>
+            <div className="main-title"><FormattedMessage id="witnesses.page-title"/></div>
           </div>
           {loading &&
           <LinearProgress/>
           }
           {!loading &&
-          <Table columns={columns} dataSource={witnesses} scroll={{ x: 1300 }} pagination={false}/>
+          <Table columns={columns} dataSource={witnesses} scroll={{ x: 1300 }}/>
           }
         </div>
         <AppFooter {...this.props} />

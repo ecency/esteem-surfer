@@ -328,5 +328,17 @@
     "mark-all-read": "Mark All as Read",
     "leaderboard": "Leaderboard",
     "leaderboard-title": "Daily Top users"
+  },
+  "witnesses": {
+    "page-title": "Witness Voting",
+    "witness": "Witness",
+    "miss": "Miss",
+    "url": "URL",
+    "fee": "Fee",
+    "feed": "Feed",
+    "block-size": "Block size",
+    "ac-avail": "AC avail",
+    "ac-budget": "AC budget",
+    "version": "Version"
   }
 }
