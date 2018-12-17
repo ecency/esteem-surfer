@@ -341,7 +341,9 @@
     "ac-avail": "AC avail",
     "ac-budget": "AC budget",
     "version": "Version",
+    "username-placeholder": "username",
     "extra-witnesses-exp": "Enter account name below to vote for a witness outside of <strong>Top 50</strong>",
-    "username-placeholder": "username"
+    "proxy-exp": "You can also choose a proxy that will vote for witnesses for you. This will reset your current witness selection.",
+    "set-proxy": "Set Proxy"
   }
 }

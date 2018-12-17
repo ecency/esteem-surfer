@@ -5,9 +5,10 @@ eslint-disable react/no-multi-comp
 import React, { Fragment, PureComponent } from 'react';
 
 import PropTypes from 'prop-types';
+
 import { injectIntl, FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 
-import { Table, Input, message } from 'antd';
+import { Table, Input, Button, message } from 'antd';
 
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
@@ -115,7 +116,7 @@ class ExtraWitnesses extends PureComponent {
                    value={username} maxLength={20} onChange={this.usernameChanged}/>
           </div>
           <div className="btn-submit">
-            <BtnWitnessVote {...this.props} voted={false} onSuccess={() => {
+            <BtnWitnessVote {...this.props} witness="aaa" voted={false} onSuccess={() => {
             }}/>
           </div>
         </div>
@@ -127,6 +128,46 @@ class ExtraWitnesses extends PureComponent {
 ExtraWitnesses.propTypes = {
   intl: PropTypes.instanceOf(Object).isRequired
 };
+
+class Proxy extends PureComponent {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      username: ''
+    };
+  }
+
+  render() {
+
+    const { intl } = this.props;
+    const { username } = this.state;
+
+    return (
+      <div className="proxy">
+        <div className="explanation">
+          <FormattedHTMLMessage id="witnesses.proxy-exp"/>
+        </div>
+
+        <div className="input-form">
+          <div className="txt-username">
+            <Input type="text" placeholder={intl.formatMessage({ id: 'witnesses.username-placeholder' })}
+                   value={username} maxLength={20} onChange={this.usernameChanged}/>
+          </div>
+          <div className="btn-submit">
+            <Button type="primary"><FormattedMessage id="witnesses.set-proxy"/></Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+Proxy.propTypes = {
+  intl: PropTypes.instanceOf(Object).isRequired
+};
+
 
 class Witnesses extends PureComponent {
   constructor(props) {
@@ -344,9 +385,9 @@ class Witnesses extends PureComponent {
             <div className="witnesses-table">
               <Table columns={columns} dataSource={witnesses} scroll={{ x: 1300 }}/>
             </div>
-
             <div className="extra-funcs">
               <ExtraWitnesses {...this.props} />
+              <Proxy {...this.props} />
             </div>
           </Fragment>
           }

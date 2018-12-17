@@ -197,10 +197,19 @@
   }
 
   .extra-funcs {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 30px;
 
     .extra-witnesses {
       width: 300px;
+    }
+
+    .proxy {
+      width: 400px;
+    }
+
+    .extra-witnesses, .proxy {
       .explanation {
         color: $steel-grey;
         font-size: 16px;
