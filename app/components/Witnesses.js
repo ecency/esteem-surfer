@@ -247,7 +247,8 @@ class Witnesses extends PureComponent {
       },
       {
         title: <FormattedMessage id="witnesses.feed"/>,
-        dataIndex: 'feed'
+        dataIndex: 'feed',
+        render: (text) => <span className="feed-price">${text}</span>
       },
       {
         title: <FormattedMessage id="witnesses.block-size"/>,
@@ -268,7 +269,8 @@ class Witnesses extends PureComponent {
         title: <FormattedMessage id="witnesses.version"/>,
         dataIndex: 'version',
         fixed: 'right',
-        width: 140
+        width: 140,
+        render: (text) => <span className="version-num">${text}</span>
       }
     ];
 

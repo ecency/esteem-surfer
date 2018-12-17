@@ -92,9 +92,13 @@
     }
 
     .remaining {
-      font-size: 16px;
       color: $steel-grey;
+      font-size: 16px;
     }
+  }
+
+  .witness-column-title {
+    padding-left: 60px;
   }
 
   .index-num {
@@ -132,8 +136,20 @@
     }
   }
 
-  .witness-column-title {
-    padding-left: 60px;
+  .feed-price, .version-num {
+    border-radius: 9.5px;
+    color: $white;
+    font-weight: 500;
+    padding: 2px 10px;
+  }
+
+  .feed-price {
+    background: $green3;
+
+  }
+
+  .version-num {
+    background: $dark-sky-blue;
   }
 
   // Antd table overrides
@@ -168,9 +184,10 @@
       background: transparent !important;
       border: 0;
       color: $steel-grey;
-      font-size: 18px;
+      font-size: 16px;
     }
     th {
+      font-size: 18px;
       font-weight: 700;
     }
   }
