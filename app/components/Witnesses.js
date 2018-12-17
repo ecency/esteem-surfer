@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 import { injectIntl, FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 
-import { Table, Input, Button, message, Popconfirm, Icon } from 'antd';
+import { Table, Input, Button, message, Icon } from 'antd';
 
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
@@ -25,6 +25,7 @@ import parseToken from '../utils/parse-token';
 import postUrlParser from '../utils/post-url-parser';
 import formatChainError from '../utils/format-chain-error';
 import { chevronUp } from '../svg';
+import LoginRequired from './helpers/LoginRequired';
 
 
 class BtnWitnessVote extends PureComponent {
@@ -75,7 +76,7 @@ class BtnWitnessVote extends PureComponent {
 
   render() {
     const { voting } = this.state;
-    const { voted, witness, intl } = this.props;
+    const { voted, witness } = this.props;
 
     const btnCls = `btn-witness-vote ${voting ? 'in-progress' : ''} ${
       voted ? 'voted' : ''
@@ -84,19 +85,17 @@ class BtnWitnessVote extends PureComponent {
 
     if (voted) {
       return (
-        <Popconfirm
-          title={intl.formatMessage({ id: 'g.are-you-sure' })}
-          okText={intl.formatMessage({ id: 'g.ok' })}
-          cancelText={intl.formatMessage({ id: 'g.cancel' })}
-          onConfirm={this.clicked}>
+        <LoginRequired {...this.props} requiredKeys={['active']}>
           <a className={btnCls} role="none">{chevronUp}</a>
-        </Popconfirm>
+        </LoginRequired>
       );
     }
 
-    return <a className={btnCls} role="none" onClick={this.clicked}>
-      {chevronUp}
-    </a>;
+    return <LoginRequired {...this.props} requiredKeys={['active']}>
+      <a className={btnCls} role="none" onClick={this.clicked}>
+        {chevronUp}
+      </a>
+    </LoginRequired>;
   }
 }
 
@@ -248,9 +247,11 @@ class Proxy extends PureComponent {
                    value={username} maxLength={20} onChange={this.usernameChanged}/>
           </div>
           <div className="btn-submit">
-            <Button type="primary" disabled={username === '' || inProgress} onClick={this.clicked}>
-              {inProgress && <Icon type="loading" style={{ fontSize: 12 }} spin/>}
-              <FormattedMessage id="witnesses.set-proxy"/></Button>
+            <LoginRequired {...this.props} requiredKeys={['active']}>
+              <Button type="primary" disabled={username === '' || inProgress} onClick={this.clicked}>
+                {inProgress && <Icon type="loading" style={{ fontSize: 12 }} spin/>}
+                <FormattedMessage id="witnesses.set-proxy"/></Button>
+            </LoginRequired>
           </div>
         </div>
       </div>
@@ -298,7 +299,7 @@ class ProxyActive extends PureComponent {
   };
 
   render() {
-    const { username, intl } = this.props;
+    const { username } = this.props;
     const { inProgress } = this.state;
 
     return (
@@ -310,15 +311,11 @@ class ProxyActive extends PureComponent {
           <div className="current-proxy">
             <FormattedHTMLMessage id="witnesses.current-proxy" values={{ n: username }}/>
           </div>
-          <Popconfirm
-            title={intl.formatMessage({ id: 'g.are-you-sure' })}
-            okText={intl.formatMessage({ id: 'g.ok' })}
-            cancelText={intl.formatMessage({ id: 'g.cancel' })}
-            onConfirm={this.clicked}>
+          <LoginRequired {...this.props} requiredKeys={['active']}>
             <Button type="primary" size="large" disabled={inProgress}>
               {inProgress && <Icon type="loading" style={{ fontSize: 12 }} spin/>}
               <FormattedMessage id="witnesses.remove-proxy"/></Button>
-          </Popconfirm>
+          </LoginRequired>
         </div>
       </div>
     );
