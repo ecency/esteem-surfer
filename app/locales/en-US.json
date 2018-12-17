@@ -331,6 +331,7 @@
   },
   "witnesses": {
     "page-title": "Witness Voting",
+    "remaining": "<strong>{n}</strong> of {max} votes remaining",
     "witness": "Witness",
     "miss": "Miss",
     "url": "URL",

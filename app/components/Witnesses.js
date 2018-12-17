@@ -5,7 +5,7 @@ eslint-disable react/no-multi-comp
 import React, { PureComponent } from 'react';
 
 import PropTypes from 'prop-types';
-import { injectIntl, FormattedMessage } from 'react-intl';
+import { injectIntl, FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 
 import { Table, message } from 'antd';
 
@@ -165,7 +165,7 @@ class Witnesses extends PureComponent {
   };
 
   render() {
-    const { intl } = this.props;
+    const { intl, activeAccount } = this.props;
     const { loading, witnesses, witnessVotes } = this.state;
 
     const columns = [
@@ -285,6 +285,16 @@ class Witnesses extends PureComponent {
         <div className="app-content witnesses-page">
           <div className={`page-header ${loading ? 'loading' : ''}`}>
             <div className="main-title"><FormattedMessage id="witnesses.page-title"/></div>
+
+            {(!loading && activeAccount) &&
+            <div className="remaining">
+              <FormattedHTMLMessage
+                id="witnesses.remaining"
+                values={{ n: 30 - witnessVotes.length, max: 30 }}
+              />
+            </div>
+            }
+
           </div>
           {loading &&
           <LinearProgress/>
