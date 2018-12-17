@@ -67,6 +67,11 @@
     opacity: 0.5;
     pointer-events: none;
   }
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }
 
 .witnesses-page {
@@ -203,6 +208,28 @@
 
     .extra-witnesses {
       width: 300px;
+
+      .witnesses-list {
+        margin-top: 20px;
+        .item {
+
+          display: flex;
+          justify-content: space-between;
+          margin: 5px 0;
+          width: 240px;
+
+          .username {
+            color: $charcoal-grey;
+            font-size: 16px;
+            font-weight: 500;
+            width: 180px;
+          }
+
+          .btn-submit {
+            width: 40px;
+          }
+        }
+      }
     }
 
     .proxy {

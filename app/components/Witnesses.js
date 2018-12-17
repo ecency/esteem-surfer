@@ -37,11 +37,15 @@ class BtnWitnessVote extends PureComponent {
   }
 
   clicked = () => {
-    const { witness, voted, activeAccount, global, onSuccess } = this.props;
+    const { witness, voted, activeAccount, global, onClick, onSuccess, onError } = this.props;
     const { voting } = this.state;
 
     if (voting) {
       return false;
+    }
+
+    if (onClick) {
+      onClick();
     }
 
     this.setState({ voting: true });
@@ -55,6 +59,9 @@ class BtnWitnessVote extends PureComponent {
       return resp;
     }).catch(e => {
       message.error(formatChainError(e));
+      if (onError) {
+        onError(e);
+      }
     }).finally(() => {
       this.setState({ voting: false });
     });
@@ -62,11 +69,11 @@ class BtnWitnessVote extends PureComponent {
 
   render() {
     const { voting } = this.state;
-    const { voted } = this.props;
+    const { voted, witness } = this.props;
 
     const btnCls = `btn-witness-vote ${voting ? 'in-progress' : ''} ${
       voted ? 'voted' : ''
-      }`;
+      } ${witness === '' ? 'disabled' : ''}`;
 
     return <a className={btnCls} role="none" onClick={this.clicked}>
       {chevronUp}
@@ -75,7 +82,9 @@ class BtnWitnessVote extends PureComponent {
 }
 
 BtnWitnessVote.defaultProps = {
-  activeAccount: null
+  activeAccount: null,
+  onError: null,
+  onClick: null
 };
 
 BtnWitnessVote.propTypes = {
@@ -85,6 +94,8 @@ BtnWitnessVote.propTypes = {
   voted: PropTypes.bool.isRequired,
   witness: PropTypes.string.isRequired,
   onSuccess: PropTypes.func.isRequired,
+  onError: PropTypes.func,
+  onClick: PropTypes.func,
   activeAccount: PropTypes.instanceOf(Object)
 };
 
@@ -93,7 +104,8 @@ class ExtraWitnesses extends PureComponent {
     super(props);
 
     this.state = {
-      username: ''
+      username: '',
+      inProgress: false
     };
   }
 
@@ -101,9 +113,23 @@ class ExtraWitnesses extends PureComponent {
     this.setState({ username: e.target.value.trim() });
   };
 
+  onClick = () => {
+    this.setState({ inProgress: true });
+  };
+
+  onError = () => {
+    this.setState({ inProgress: false });
+  };
+
+  onSuccess = () => {
+    const { onChange } = this.props;
+    this.setState({ username: '', inProgress: false });
+    onChange();
+  };
+
   render() {
-    const { intl } = this.props;
-    const { username } = this.state;
+    const { intl, list } = this.props;
+    const { username, inProgress } = this.state;
 
     return (
       <div className="extra-witnesses">
@@ -113,12 +139,35 @@ class ExtraWitnesses extends PureComponent {
         <div className="input-form">
           <div className="txt-username">
             <Input type="text" placeholder={intl.formatMessage({ id: 'witnesses.username-placeholder' })}
-                   value={username} maxLength={20} onChange={this.usernameChanged}/>
+                   value={username} maxLength={20} onChange={this.usernameChanged} disabled={inProgress}/>
           </div>
           <div className="btn-submit">
-            <BtnWitnessVote {...this.props} witness="aaa" voted={false} onSuccess={() => {
-            }}/>
+            <BtnWitnessVote
+              {...this.props}
+              witness={username}
+              voted={false}
+              onClick={this.onClick}
+              onError={this.onError}
+              onSuccess={this.onSuccess}/>
           </div>
+        </div>
+
+        <div className="witnesses-list">
+          {list.map(i => (
+            <div className="item" key={i}>
+              <span className="username">{i}</span>
+              <div className="btn-submit">
+                <BtnWitnessVote
+                  {...this.props}
+                  witness={i}
+                  voted
+                  onSuccess={() => {
+                    const { onChange } = this.props;
+                    onChange();
+                  }}/>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     );
@@ -126,6 +175,8 @@ class ExtraWitnesses extends PureComponent {
 }
 
 ExtraWitnesses.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  list: PropTypes.arrayOf(Object).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
@@ -248,6 +299,7 @@ class Witnesses extends PureComponent {
   render() {
     const { intl, activeAccount } = this.props;
     const { loading, witnesses, witnessVotes } = this.state;
+    const extraWitnesses = witnessVotes.filter(w => !witnesses.find(y => y.name === w));
 
     const columns = [
       {
@@ -386,7 +438,7 @@ class Witnesses extends PureComponent {
               <Table columns={columns} dataSource={witnesses} scroll={{ x: 1300 }}/>
             </div>
             <div className="extra-funcs">
-              <ExtraWitnesses {...this.props} />
+              <ExtraWitnesses {...this.props} list={extraWitnesses} onChange={this.fetchVotedWitnesses}/>
               <Proxy {...this.props} />
             </div>
           </Fragment>
