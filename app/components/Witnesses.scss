@@ -42,14 +42,14 @@
   border-radius: 50%;
   color: $dark-sky-blue;
   display: flex;
-  height: 28px;
+  height: 22px;
   justify-content: center;
   text-decoration: none;
-  width: 28px;
+  width: 22px;
 
   svg {
-    height: 22px;
-    width: 22px;
+    height: 16px;
+    width: 16px;
   }
 
   &:focus {
@@ -97,98 +97,130 @@
     }
   }
 
-  .witness-column-title {
-    padding-left: 60px;
-  }
+  .witnesses-table {
+    margin-bottom: 30px;
 
-  .index-num {
-    color: $silver;
-    font-size: 16px;
-  }
-
-  .witness-card {
-    align-items: center;
-    cursor: pointer;
-    display: flex;
-
-    .user-avatar {
-      height: 50px !important;
-      margin-right: 10px;
-      width: 50px !important;
+    .witness-column-title {
+      padding-left: 60px;
     }
 
-    .username {
-      color: $charcoal-grey;
-      cursor: pointer;
-      font-weight: 700;
-    }
-
-  }
-
-  .witness-link {
-    color: $dark-sky-blue;
-    font-size: 24px;
-    font-weight: 700;
-
-    &::after {
-      // disable external link icon
-      content: '' !important;
-    }
-  }
-
-  .feed-price, .version-num {
-    border-radius: 9.5px;
-    color: $white;
-    font-weight: 500;
-    padding: 2px 10px;
-  }
-
-  .feed-price {
-    background: $green3;
-
-  }
-
-  .version-num {
-    background: $dark-sky-blue;
-  }
-
-  // Antd table overrides
-  .ant-table-row:nth-child(odd) {
-    background: $white-three;
-  }
-
-  .ant-table-fixed-left {
-    .ant-table-row {
-      td:first-child {
-        border-top-left-radius: 10px;
-      }
-      td:first-child {
-        border-bottom-left-radius: 10px;
-      }
-    }
-  }
-
-  .ant-table-fixed-right {
-    .ant-table-row {
-      td:first-child {
-        border-top-right-radius: 10px;
-      }
-      td:first-child {
-        border-bottom-right-radius: 10px;
-      }
-    }
-  }
-
-  .ant-table-thead, .ant-table-tbody {
-    th, td {
-      background: transparent !important;
-      border: 0;
-      color: $steel-grey;
+    .index-num {
+      color: $silver;
       font-size: 16px;
     }
-    th {
-      font-size: 18px;
+
+    .witness-card {
+      align-items: center;
+      cursor: pointer;
+      display: flex;
+
+      .user-avatar {
+        height: 50px !important;
+        margin-right: 10px;
+        width: 50px !important;
+      }
+
+      .username {
+        color: $charcoal-grey;
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+    }
+
+    .witness-link {
+      color: $dark-sky-blue;
+      font-size: 24px;
       font-weight: 700;
+
+      &::after {
+        // disable external link icon
+        content: '' !important;
+      }
+    }
+
+    .feed-price, .version-num {
+      border-radius: 9.5px;
+      color: $white;
+      font-weight: 500;
+      padding: 2px 10px;
+    }
+
+    .feed-price {
+      background: $green3;
+
+    }
+
+    .version-num {
+      background: $dark-sky-blue;
+    }
+
+    // Antd table overrides
+    .ant-table-row:nth-child(odd) {
+      background: $white-three;
+    }
+
+    .ant-table-fixed-left {
+      .ant-table-row {
+        td:first-child {
+          border-top-left-radius: 10px;
+        }
+        td:first-child {
+          border-bottom-left-radius: 10px;
+        }
+      }
+    }
+
+    .ant-table-fixed-right {
+      .ant-table-row {
+        td:first-child {
+          border-top-right-radius: 10px;
+        }
+        td:first-child {
+          border-bottom-right-radius: 10px;
+        }
+      }
+    }
+
+    .ant-table-thead, .ant-table-tbody {
+      th, td {
+        background: transparent !important;
+        border: 0;
+        color: $steel-grey;
+        font-size: 16px;
+      }
+      th {
+        font-size: 18px;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .extra-funcs {
+    margin-bottom: 30px;
+
+    .extra-witnesses {
+      width: 300px;
+      .explanation {
+        color: $steel-grey;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .input-form {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        width: 240px;
+
+        .txt-username {
+          width: 180px;
+        }
+
+        .btn-submit {
+          width: 40px;
+        }
+      }
     }
   }
 }

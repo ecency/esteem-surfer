@@ -2,12 +2,12 @@
 eslint-disable react/no-multi-comp
 */
 
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 
 import PropTypes from 'prop-types';
 import { injectIntl, FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 
-import { Table, message } from 'antd';
+import { Table, Input, message } from 'antd';
 
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
@@ -87,6 +87,46 @@ BtnWitnessVote.propTypes = {
   activeAccount: PropTypes.instanceOf(Object)
 };
 
+class ExtraWitnesses extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      username: ''
+    };
+  }
+
+  usernameChanged = (e) => {
+    this.setState({ username: e.target.value.trim() });
+  };
+
+  render() {
+    const { intl } = this.props;
+    const { username } = this.state;
+
+    return (
+      <div className="extra-witnesses">
+        <div className="explanation">
+          <FormattedHTMLMessage id="witnesses.extra-witnesses-exp"/>
+        </div>
+        <div className="input-form">
+          <div className="txt-username">
+            <Input type="text" placeholder={intl.formatMessage({ id: 'witnesses.username-placeholder' })}
+                   value={username} maxLength={20} onChange={this.usernameChanged}/>
+          </div>
+          <div className="btn-submit">
+            <BtnWitnessVote {...this.props} voted={false} onSuccess={() => {
+            }}/>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+ExtraWitnesses.propTypes = {
+  intl: PropTypes.instanceOf(Object).isRequired
+};
 
 class Witnesses extends PureComponent {
   constructor(props) {
@@ -115,7 +155,7 @@ class Witnesses extends PureComponent {
   fetchWitnesses = () => {
     this.setState({ loading: true });
 
-    return getWitnessesByVote(undefined, 100).then(resp => {
+    return getWitnessesByVote(undefined, 50).then(resp => {
       const witnesses = resp.map((x, i) => {
 
         const key = i + 1;
@@ -287,7 +327,6 @@ class Witnesses extends PureComponent {
         <div className="app-content witnesses-page">
           <div className={`page-header ${loading ? 'loading' : ''}`}>
             <div className="main-title"><FormattedMessage id="witnesses.page-title"/></div>
-
             {(!loading && activeAccount) &&
             <div className="remaining">
               <FormattedHTMLMessage
@@ -296,13 +335,20 @@ class Witnesses extends PureComponent {
               />
             </div>
             }
-
           </div>
           {loading &&
           <LinearProgress/>
           }
           {!loading &&
-          <Table columns={columns} dataSource={witnesses} scroll={{ x: 1300 }}/>
+          <Fragment>
+            <div className="witnesses-table">
+              <Table columns={columns} dataSource={witnesses} scroll={{ x: 1300 }}/>
+            </div>
+
+            <div className="extra-funcs">
+              <ExtraWitnesses {...this.props} />
+            </div>
+          </Fragment>
           }
         </div>
         <AppFooter {...this.props} />
