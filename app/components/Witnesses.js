@@ -37,7 +37,7 @@ class BtnWitnessVote extends PureComponent {
   }
 
   clicked = () => {
-    const { witness, voted, activeAccount, global, onClick, onSuccess, onError } = this.props;
+    const { witness, voted, activeAccount, global, onClick, onSuccess, onError, intl } = this.props;
     const { voting } = this.state;
 
     if (voting) {
@@ -56,6 +56,12 @@ class BtnWitnessVote extends PureComponent {
       if (onSuccess) {
         onSuccess(approve);
       }
+      if (approve) {
+        message.success(intl.formatMessage({ id: 'witnesses.voted' }, { n: witness }));
+      } else {
+        message.info(intl.formatMessage({ id: 'witnesses.vote-removed' }, { n: witness }));
+      }
+
       return resp;
     }).catch(e => {
       message.error(formatChainError(e));
@@ -96,7 +102,8 @@ BtnWitnessVote.propTypes = {
   onSuccess: PropTypes.func.isRequired,
   onError: PropTypes.func,
   onClick: PropTypes.func,
-  activeAccount: PropTypes.instanceOf(Object)
+  activeAccount: PropTypes.instanceOf(Object),
+  intl: PropTypes.instanceOf(Object).isRequired
 };
 
 class ExtraWitnesses extends PureComponent {
@@ -196,7 +203,7 @@ class Proxy extends PureComponent {
   };
 
   clicked = () => {
-    const { activeAccount, global, onChange } = this.props;
+    const { activeAccount, global, onChange, intl } = this.props;
 
     const { username } = this.state;
     this.setState({ inProgress: true });
@@ -204,6 +211,7 @@ class Proxy extends PureComponent {
     return witnessProxy(activeAccount, global.pin, username).then(resp => {
       this.setState({ username: '', inProgress: false });
       onChange();
+      message.success(intl.formatMessage({ id: 'witnesses.proxy-created' }, { n: username }));
       return resp;
     }).catch(e => {
       this.setState({ inProgress: false });
@@ -258,12 +266,13 @@ class ProxyActive extends PureComponent {
   }
 
   clicked = () => {
-    const { activeAccount, global, onChange } = this.props;
+    const { activeAccount, global, onChange, intl } = this.props;
 
     this.setState({ inProgress: true });
 
     return witnessProxy(activeAccount, global.pin, '').then(resp => {
       onChange();
+      message.info(intl.formatMessage({ id: 'witnesses.proxy-cleared' }));
       return resp;
     }).catch(e => {
       message.error(formatChainError(e));
@@ -532,7 +541,7 @@ class Witnesses extends PureComponent {
             </div>
             <div className="extra-funcs">
               <ExtraWitnesses {...this.props} list={extraWitnesses} onChange={this.fetchVotedWitnesses}/>
-              <Proxy {...this.props} onChange={() => this.load()} />
+              <Proxy {...this.props} onChange={() => this.load()}/>
             </div>
           </Fragment>
           }
