@@ -137,3 +137,5 @@ export const scAppAuth = () => standardScWindow('authorize/@esteemapp');
 export const scAppRevoke = () => standardScWindow('revoke/@esteemapp');
 
 export const scWitnessVote = (account, witness, approve) => standardScWindow(`sign/account-witness-vote?account=${account}&witness=${witness}&approve=${approve}`);
+
+export const scWitnessProxy = (account, proxy) => standardScWindow(`sign/account-witness-proxy?account=${account}&proxy=${proxy}`);

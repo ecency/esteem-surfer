@@ -19,7 +19,7 @@ import LinearProgress from './common/LinearProgress';
 
 import UserAvatar from './elements/UserAvatar';
 
-import { getWitnessesByVote, getAccount, witnessVote } from '../backend/steem-client';
+import { getWitnessesByVote, getAccount, witnessVote, witnessProxy } from '../backend/steem-client';
 
 import parseToken from '../utils/parse-token';
 import postUrlParser from '../utils/post-url-parser';
@@ -186,28 +186,47 @@ class Proxy extends PureComponent {
     super(props);
 
     this.state = {
-      username: ''
+      username: '',
+      inProgress: false
     };
   }
 
-  render() {
+  usernameChanged = (e) => {
+    this.setState({ username: e.target.value.trim() });
+  };
 
-    const { intl } = this.props;
+  clicked = () => {
+    const { activeAccount, global } = this.props;
+
     const { username } = this.state;
+    this.setState({ inProgress: true });
+
+    return witnessProxy(activeAccount, global.pin, username).then(resp => {
+      this.setState({ username: '', inProgress: false });
+      return resp;
+    }).catch(e => {
+      this.setState({ inProgress: false });
+      message.error(formatChainError(e));
+    });
+  };
+
+  render() {
+    const { intl } = this.props;
+    const { username, inProgress } = this.state;
 
     return (
       <div className="proxy">
         <div className="explanation">
           <FormattedHTMLMessage id="witnesses.proxy-exp"/>
         </div>
-
         <div className="input-form">
           <div className="txt-username">
             <Input type="text" placeholder={intl.formatMessage({ id: 'witnesses.username-placeholder' })}
                    value={username} maxLength={20} onChange={this.usernameChanged}/>
           </div>
           <div className="btn-submit">
-            <Button type="primary"><FormattedMessage id="witnesses.set-proxy"/></Button>
+            <Button type="primary" disabled={username === '' || inProgress} onClick={this.clicked}><FormattedMessage
+              id="witnesses.set-proxy"/></Button>
           </div>
         </div>
       </div>
@@ -215,7 +234,15 @@ class Proxy extends PureComponent {
   }
 }
 
+Proxy.defaultProps = {
+  activeAccount: null
+};
+
 Proxy.propTypes = {
+  global: PropTypes.shape({
+    pin: PropTypes.string.isRequired
+  }).isRequired,
+  activeAccount: PropTypes.instanceOf(Object),
   intl: PropTypes.instanceOf(Object).isRequired
 };
 

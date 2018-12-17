@@ -467,3 +467,23 @@ export const witnessVote = (account, pin, witness, approve) => {
     return scWitnessVote(account.username, witness, approve);
   }
 };
+
+
+export const witnessProxy = (account, pin, proxy) => {
+  if (account.type === 's') {
+    const opArray = [
+      [
+        'account_witness_proxy',
+        {
+          account: account.username,
+          proxy
+        }
+      ]
+    ];
+
+    const key = decryptKey(account.keys.active, pin);
+    const privateKey = PrivateKey.fromString(key);
+
+    return client.broadcast.sendOperations(opArray, privateKey);
+  }
+};
