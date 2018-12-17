@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 import { injectIntl, FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 
-import { Table, Input, Button, message } from 'antd';
+import { Table, Input, Button, message, Popconfirm } from 'antd';
 
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
@@ -196,13 +196,14 @@ class Proxy extends PureComponent {
   };
 
   clicked = () => {
-    const { activeAccount, global } = this.props;
+    const { activeAccount, global, onChange } = this.props;
 
     const { username } = this.state;
     this.setState({ inProgress: true });
 
     return witnessProxy(activeAccount, global.pin, username).then(resp => {
       this.setState({ username: '', inProgress: false });
+      onChange();
       return resp;
     }).catch(e => {
       this.setState({ inProgress: false });
@@ -239,10 +240,72 @@ Proxy.defaultProps = {
 };
 
 Proxy.propTypes = {
+  onChange: PropTypes.func.isRequired,
   global: PropTypes.shape({
     pin: PropTypes.string.isRequired
   }).isRequired,
   activeAccount: PropTypes.instanceOf(Object),
+  intl: PropTypes.instanceOf(Object).isRequired
+};
+
+class ProxyActive extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      inProgress: false
+    };
+  }
+
+  clicked = () => {
+    const { activeAccount, global, onChange } = this.props;
+
+    this.setState({ inProgress: true });
+
+    return witnessProxy(activeAccount, global.pin, '').then(resp => {
+      onChange();
+      return resp;
+    }).catch(e => {
+      message.error(formatChainError(e));
+    }).finally(() => {
+      this.setState({ inProgress: false });
+    });
+  };
+
+  render() {
+    const { username, intl } = this.props;
+    const { inProgress } = this.state;
+
+    return (
+      <div className="proxy-active">
+        <div className="proxy-active-exp">
+          <FormattedMessage id="witnesses.proxy-active-exp"/>
+        </div>
+        <div className="clear-proxy-form">
+          <div className="current-proxy">
+            <FormattedHTMLMessage id="witnesses.current-proxy" values={{ n: username }}/>
+          </div>
+          <Popconfirm
+            title={intl.formatMessage({ id: 'g.are-you-sure' })}
+            okText={intl.formatMessage({ id: 'g.ok' })}
+            cancelText={intl.formatMessage({ id: 'g.cancel' })}
+            onConfirm={this.clicked}>
+            <Button type="primary" size="large" disabled={inProgress}>
+              <FormattedMessage id="witnesses.clear-proxy"/></Button>
+          </Popconfirm>
+        </div>
+      </div>
+    );
+  }
+}
+
+ProxyActive.propTypes = {
+  username: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  global: PropTypes.shape({
+    pin: PropTypes.string.isRequired
+  }).isRequired,
+  activeAccount: PropTypes.instanceOf(Object).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
@@ -254,7 +317,8 @@ class Witnesses extends PureComponent {
     this.state = {
       loading: false,
       witnesses: [],
-      witnessVotes: []
+      witnessVotes: [],
+      proxy: null
     };
   }
 
@@ -316,8 +380,10 @@ class Witnesses extends PureComponent {
     const { activeAccount } = this.props;
     if (activeAccount) {
       return getAccount(activeAccount.username).then(resp => {
-        const { witness_votes: witnessVotes } = resp;
-        this.setState({ witnessVotes });
+
+        const { witness_votes: witnessVotes, proxy } = resp;
+        this.setState({ witnessVotes, proxy });
+
         return resp;
       });
     }
@@ -325,7 +391,7 @@ class Witnesses extends PureComponent {
 
   render() {
     const { intl, activeAccount } = this.props;
-    const { loading, witnesses, witnessVotes } = this.state;
+    const { loading, witnesses, witnessVotes, proxy } = this.state;
     const extraWitnesses = witnessVotes.filter(w => !witnesses.find(y => y.name === w));
 
     const columns = [
@@ -447,7 +513,7 @@ class Witnesses extends PureComponent {
         <div className="app-content witnesses-page">
           <div className={`page-header ${loading ? 'loading' : ''}`}>
             <div className="main-title"><FormattedMessage id="witnesses.page-title"/></div>
-            {(!loading && activeAccount) &&
+            {(!loading && !proxy && activeAccount) &&
             <div className="remaining">
               <FormattedHTMLMessage
                 id="witnesses.remaining"
@@ -459,16 +525,20 @@ class Witnesses extends PureComponent {
           {loading &&
           <LinearProgress/>
           }
-          {!loading &&
+          {(!loading && !proxy) &&
           <Fragment>
             <div className="witnesses-table">
               <Table columns={columns} dataSource={witnesses} scroll={{ x: 1300 }}/>
             </div>
             <div className="extra-funcs">
               <ExtraWitnesses {...this.props} list={extraWitnesses} onChange={this.fetchVotedWitnesses}/>
-              <Proxy {...this.props} />
+              <Proxy {...this.props} onChange={() => this.load()} />
             </div>
           </Fragment>
+          }
+
+          {(!loading && proxy) &&
+          <ProxyActive {...this.props} username={proxy} onChange={() => this.load()}/>
           }
         </div>
         <AppFooter {...this.props} />

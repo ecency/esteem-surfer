@@ -102,6 +102,24 @@
     }
   }
 
+  .proxy-active{
+
+    color: $charcoal-grey;
+
+    .proxy-active-exp{
+      font-size: 18px;
+      margin: 20px 0 40px 0;
+    }
+
+    .clear-proxy-form{
+      align-items: center;
+      display: flex;
+      .current-proxy{
+        margin-right: 20px;
+      }
+    }
+  }
+
   .witnesses-table {
     margin-bottom: 30px;
 
