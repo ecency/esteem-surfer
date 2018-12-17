@@ -438,7 +438,7 @@ class Witnesses extends PureComponent {
         dataIndex: 'name',
         fixed: 'left',
         render: (text) => (
-          <QuickProfile {...this.props} username={text}>
+          <QuickProfile {...this.props} username={text} reputation={0}>
             <div className="witness-card">
               <UserAvatar user={text} size="large"/>
               <span className="username">{text}</span>

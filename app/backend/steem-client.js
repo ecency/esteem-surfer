@@ -2,7 +2,7 @@ import { Client, PrivateKey } from 'dsteem';
 
 import sc2 from 'sc2-sdk';
 
-import { scAppAuth, scAppRevoke, scWitnessVote } from '../helpers/sc';
+import { scAppAuth, scAppRevoke, scWitnessVote, scWitnessProxy } from '../helpers/sc';
 
 import { decryptKey } from '../utils/crypto';
 
@@ -485,5 +485,9 @@ export const witnessProxy = (account, pin, proxy) => {
     const privateKey = PrivateKey.fromString(key);
 
     return client.broadcast.sendOperations(opArray, privateKey);
+  }
+
+  if (account.type === 'sc') {
+    return scWitnessProxy(account.username, proxy);
   }
 };
