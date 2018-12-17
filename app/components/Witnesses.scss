@@ -80,11 +80,18 @@
 
   .page-header {
     align-items: center;
-    border-bottom: 1px solid $white-four;
     display: flex;
     height: 60px;
     justify-content: space-between;
     padding: 0 20px;
+
+    @include themify(day) {
+      border-bottom: 1px solid $white-four;
+    }
+
+    @include themify(night) {
+      border-bottom: 1px solid lighten($dark-six, 4);
+    }
 
     &.loading {
       border-bottom: 0;
@@ -97,24 +104,37 @@
     }
 
     .remaining {
-      color: $steel-grey;
       font-size: 16px;
+
+      @include themify(day) {
+        color: $steel-grey;
+      }
+
+      @include themify(night) {
+        color: $powder-blue;
+      }
     }
   }
 
-  .proxy-active{
+  .proxy-active {
 
-    color: $charcoal-grey;
+    @include themify(day) {
+      color: $charcoal-grey;
+    }
 
-    .proxy-active-exp{
+    @include themify(night) {
+      color: $powder-blue;
+    }
+
+    .proxy-active-exp {
       font-size: 18px;
       margin: 20px 0 40px 0;
     }
 
-    .clear-proxy-form{
+    .clear-proxy-form {
       align-items: center;
       display: flex;
-      .current-proxy{
+      .current-proxy {
         margin-right: 20px;
       }
     }
@@ -128,8 +148,12 @@
     }
 
     .index-num {
-      color: $silver;
+
       font-size: 16px;
+
+      @include themify(day) {
+        color: $silver;
+      }
     }
 
     .witness-card {
@@ -144,11 +168,13 @@
       }
 
       .username {
-        color: $charcoal-grey;
         cursor: pointer;
         font-weight: 700;
-      }
 
+        @include themify(day) {
+          color: $charcoal-grey;
+        }
+      }
     }
 
     .witness-link {
@@ -178,9 +204,38 @@
       background: $dark-sky-blue;
     }
 
+    @include themify(night) {
+      table {
+        background: $dark-six;
+      }
+    }
     // Antd table overrides
+    .ant-table-thead, .ant-table-tbody {
+      th, td {
+        border: 0;
+        font-size: 16px;
+
+        @include themify(day) {
+          background: transparent !important;
+          color: $steel-grey;
+        }
+      }
+      th {
+        font-size: 18px;
+        font-weight: 700;
+      }
+    }
+
     .ant-table-row:nth-child(odd) {
-      background: $white-three;
+
+      @include themify(day) {
+        background: $white-three;
+      }
+
+      @include themify(night) {
+        background: lighten($dark-six, 4);
+      }
+
     }
 
     .ant-table-fixed-left {
@@ -205,18 +260,6 @@
       }
     }
 
-    .ant-table-thead, .ant-table-tbody {
-      th, td {
-        background: transparent !important;
-        border: 0;
-        color: $steel-grey;
-        font-size: 16px;
-      }
-      th {
-        font-size: 18px;
-        font-weight: 700;
-      }
-    }
   }
 
   .extra-funcs {
@@ -237,10 +280,19 @@
           width: 240px;
 
           .username {
-            color: $charcoal-grey;
+
             font-size: 16px;
             font-weight: 500;
             width: 180px;
+
+            @include themify(day) {
+              color: $charcoal-grey;
+            }
+
+            @include themify(night) {
+              color: $powder-blue;
+            }
+
           }
 
           .btn-submit {
@@ -256,9 +308,16 @@
 
     .extra-witnesses, .proxy {
       .explanation {
-        color: $steel-grey;
         font-size: 16px;
         margin-bottom: 10px;
+
+        @include themify(day) {
+          color: $steel-grey;
+        }
+
+        @include themify(night) {
+          color: $powder-blue;
+        }
       }
 
       .input-form {
