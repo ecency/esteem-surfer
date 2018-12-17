@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 import { injectIntl, FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 
-import { Table, Input, Button, message, Popconfirm } from 'antd';
+import { Table, Input, Button, message, Popconfirm, Icon } from 'antd';
 
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
@@ -75,11 +75,24 @@ class BtnWitnessVote extends PureComponent {
 
   render() {
     const { voting } = this.state;
-    const { voted, witness } = this.props;
+    const { voted, witness, intl } = this.props;
 
     const btnCls = `btn-witness-vote ${voting ? 'in-progress' : ''} ${
       voted ? 'voted' : ''
       } ${witness === '' ? 'disabled' : ''}`;
+
+
+    if (voted) {
+      return (
+        <Popconfirm
+          title={intl.formatMessage({ id: 'g.are-you-sure' })}
+          okText={intl.formatMessage({ id: 'g.ok' })}
+          cancelText={intl.formatMessage({ id: 'g.cancel' })}
+          onConfirm={this.clicked}>
+          <a className={btnCls} role="none">{chevronUp}</a>
+        </Popconfirm>
+      );
+    }
 
     return <a className={btnCls} role="none" onClick={this.clicked}>
       {chevronUp}
@@ -209,13 +222,14 @@ class Proxy extends PureComponent {
     this.setState({ inProgress: true });
 
     return witnessProxy(activeAccount, global.pin, username).then(resp => {
-      this.setState({ username: '', inProgress: false });
-      onChange();
       message.success(intl.formatMessage({ id: 'witnesses.proxy-created' }, { n: username }));
+      this.setState({ username: '', inProgress: false }, () => {
+        onChange();
+      });
       return resp;
     }).catch(e => {
-      this.setState({ inProgress: false });
       message.error(formatChainError(e));
+      this.setState({ inProgress: false });
     });
   };
 
@@ -234,8 +248,9 @@ class Proxy extends PureComponent {
                    value={username} maxLength={20} onChange={this.usernameChanged}/>
           </div>
           <div className="btn-submit">
-            <Button type="primary" disabled={username === '' || inProgress} onClick={this.clicked}><FormattedMessage
-              id="witnesses.set-proxy"/></Button>
+            <Button type="primary" disabled={username === '' || inProgress} onClick={this.clicked}>
+              {inProgress && <Icon type="loading" style={{ fontSize: 12 }} spin/>}
+              <FormattedMessage id="witnesses.set-proxy"/></Button>
           </div>
         </div>
       </div>
@@ -271,12 +286,13 @@ class ProxyActive extends PureComponent {
     this.setState({ inProgress: true });
 
     return witnessProxy(activeAccount, global.pin, '').then(resp => {
-      onChange();
-      message.info(intl.formatMessage({ id: 'witnesses.proxy-cleared' }));
+      message.info(intl.formatMessage({ id: 'witnesses.proxy-removed' }));
+      this.setState({ inProgress: false }, () => {
+        onChange();
+      });
       return resp;
     }).catch(e => {
       message.error(formatChainError(e));
-    }).finally(() => {
       this.setState({ inProgress: false });
     });
   };
@@ -300,7 +316,8 @@ class ProxyActive extends PureComponent {
             cancelText={intl.formatMessage({ id: 'g.cancel' })}
             onConfirm={this.clicked}>
             <Button type="primary" size="large" disabled={inProgress}>
-              <FormattedMessage id="witnesses.clear-proxy"/></Button>
+              {inProgress && <Icon type="loading" style={{ fontSize: 12 }} spin/>}
+              <FormattedMessage id="witnesses.remove-proxy"/></Button>
           </Popconfirm>
         </div>
       </div>
@@ -317,7 +334,6 @@ ProxyActive.propTypes = {
   activeAccount: PropTypes.instanceOf(Object).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };
-
 
 class Witnesses extends PureComponent {
   constructor(props) {
