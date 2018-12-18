@@ -134,6 +134,13 @@ class Address extends Component {
         return;
       }
 
+
+      if (a === 'transfer') {
+        const p = `/transfer`;
+        history.push(p);
+        return;
+      }
+
       const q = address.replace(/\//g, ' ');
 
       history.push(`/search?q=${encodeURIComponent(q)}&sort=${searchSort}`);
