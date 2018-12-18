@@ -214,6 +214,7 @@ class Address extends Component {
                   id: 'navbar.address-enter-url'
                 })}
                 disabled={inProgress}
+                spellCheck={false}
               />
               {inProgress && (
                 <div className="in-progress">
