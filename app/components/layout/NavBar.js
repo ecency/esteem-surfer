@@ -128,6 +128,12 @@ class Address extends Component {
         return;
       }
 
+      if (a === 'witnesses') {
+        const p = `/witnesses`;
+        history.push(p);
+        return;
+      }
+
       const q = address.replace(/\//g, ' ');
 
       history.push(`/search?q=${encodeURIComponent(q)}&sort=${searchSort}`);

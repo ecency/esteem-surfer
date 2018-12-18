@@ -109,6 +109,14 @@
           window.dispatchEvent(ev);
           return false;
         }
+
+
+        if (el.classList.contains('markdown-witnesses-link')) {
+          event.preventDefault();
+          const ev = new CustomEvent('md-witnesses-clicked', {});
+          window.dispatchEvent(ev);
+          return false;
+        }
       });
 
       window.protocolHandler = function(url) {

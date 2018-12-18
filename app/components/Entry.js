@@ -615,12 +615,14 @@ class Entry extends PureComponent {
     window.addEventListener('md-author-clicked', this.mdAuthorClicked);
     window.addEventListener('md-post-clicked', this.mdEntryClicked);
     window.addEventListener('md-tag-clicked', this.mdTagClicked);
+    window.addEventListener('md-witnesses-clicked', this.mdWitnessesClicked);
   }
 
   componentWillUnmount() {
     window.removeEventListener('md-author-clicked', this.mdAuthorClicked);
     window.removeEventListener('md-post-clicked', this.mdEntryClicked);
     window.removeEventListener('md-tag-clicked', this.mdTagClicked);
+    window.removeEventListener('md-witnesses-clicked', this.mdWitnessesClicked);
   }
 
   compileReplies = (parent, sortOrder) => {
@@ -784,6 +786,12 @@ class Entry extends PureComponent {
 
     const newLoc = makePathTag(selectedFilter, tag);
 
+    history.push(newLoc);
+  };
+
+  mdWitnessesClicked = () => {
+    const { history } = this.props;
+    const newLoc = '/witnesses';
     history.push(newLoc);
   };
 
