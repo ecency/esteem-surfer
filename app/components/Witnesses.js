@@ -19,15 +19,18 @@ import LinearProgress from './common/LinearProgress';
 
 import UserAvatar from './elements/UserAvatar';
 
-import { getWitnessesByVote, getAccount, witnessVote, witnessProxy } from '../backend/steem-client';
+import {
+  getWitnessesByVote,
+  getAccount,
+  witnessVote,
+  witnessProxy
+} from '../backend/steem-client';
 
 import parseToken from '../utils/parse-token';
 import postUrlParser from '../utils/post-url-parser';
 import formatChainError from '../utils/format-chain-error';
 import { chevronUp } from '../svg';
 import LoginRequired from './helpers/LoginRequired';
-import { setEntryRead } from '../helpers/storage';
-
 
 class BtnWitnessVote extends PureComponent {
   constructor(props) {
@@ -39,7 +42,16 @@ class BtnWitnessVote extends PureComponent {
   }
 
   clicked = () => {
-    const { witness, voted, activeAccount, global, onClick, onSuccess, onError, intl } = this.props;
+    const {
+      witness,
+      voted,
+      activeAccount,
+      global,
+      onClick,
+      onSuccess,
+      onError,
+      intl
+    } = this.props;
     const { voting } = this.state;
 
     if (voting) {
@@ -54,25 +66,32 @@ class BtnWitnessVote extends PureComponent {
 
     const approve = !voted;
 
-    return witnessVote(activeAccount, global.pin, witness, approve).then(resp => {
-      if (onSuccess) {
-        onSuccess(approve);
-      }
-      if (approve) {
-        message.success(intl.formatMessage({ id: 'witnesses.voted' }, { n: witness }));
-      } else {
-        message.info(intl.formatMessage({ id: 'witnesses.vote-removed' }, { n: witness }));
-      }
+    return witnessVote(activeAccount, global.pin, witness, approve)
+      .then(resp => {
+        if (onSuccess) {
+          onSuccess(approve);
+        }
+        if (approve) {
+          message.success(
+            intl.formatMessage({ id: 'witnesses.voted' }, { n: witness })
+          );
+        } else {
+          message.info(
+            intl.formatMessage({ id: 'witnesses.vote-removed' }, { n: witness })
+          );
+        }
 
-      return resp;
-    }).catch(e => {
-      message.error(formatChainError(e));
-      if (onError) {
-        onError(e);
-      }
-    }).finally(() => {
-      this.setState({ voting: false });
-    });
+        return resp;
+      })
+      .catch(e => {
+        message.error(formatChainError(e));
+        if (onError) {
+          onError(e);
+        }
+      })
+      .finally(() => {
+        this.setState({ voting: false });
+      });
   };
 
   render() {
@@ -81,22 +100,25 @@ class BtnWitnessVote extends PureComponent {
 
     const btnCls = `btn-witness-vote ${voting ? 'in-progress' : ''} ${
       voted ? 'voted' : ''
-      } ${witness === '' ? 'disabled' : ''}`;
-
+    } ${witness === '' ? 'disabled' : ''}`;
 
     if (voted) {
       return (
         <LoginRequired {...this.props} requiredKeys={['active']}>
-          <a className={btnCls} role="none">{chevronUp}</a>
+          <a className={btnCls} role="none">
+            {chevronUp}
+          </a>
         </LoginRequired>
       );
     }
 
-    return <LoginRequired {...this.props} requiredKeys={['active']}>
-      <a className={btnCls} role="none" onClick={this.clicked}>
-        {chevronUp}
-      </a>
-    </LoginRequired>;
+    return (
+      <LoginRequired {...this.props} requiredKeys={['active']}>
+        <a className={btnCls} role="none" onClick={this.clicked}>
+          {chevronUp}
+        </a>
+      </LoginRequired>
+    );
   }
 }
 
@@ -129,7 +151,7 @@ class ExtraWitnesses extends PureComponent {
     };
   }
 
-  usernameChanged = (e) => {
+  usernameChanged = e => {
     this.setState({ username: e.target.value.trim() });
   };
 
@@ -154,12 +176,20 @@ class ExtraWitnesses extends PureComponent {
     return (
       <div className="extra-witnesses">
         <div className="explanation">
-          <FormattedHTMLMessage id="witnesses.extra-witnesses-exp"/>
+          <FormattedHTMLMessage id="witnesses.extra-witnesses-exp" />
         </div>
         <div className="input-form">
           <div className="txt-username">
-            <Input type="text" placeholder={intl.formatMessage({ id: 'witnesses.username-placeholder' })}
-                   value={username} maxLength={20} onChange={this.usernameChanged} disabled={inProgress}/>
+            <Input
+              type="text"
+              placeholder={intl.formatMessage({
+                id: 'witnesses.username-placeholder'
+              })}
+              value={username}
+              maxLength={20}
+              onChange={this.usernameChanged}
+              disabled={inProgress}
+            />
           </div>
           <div className="btn-submit">
             <BtnWitnessVote
@@ -168,7 +198,8 @@ class ExtraWitnesses extends PureComponent {
               voted={false}
               onClick={this.onClick}
               onError={this.onError}
-              onSuccess={this.onSuccess}/>
+              onSuccess={this.onSuccess}
+            />
           </div>
         </div>
 
@@ -184,7 +215,8 @@ class ExtraWitnesses extends PureComponent {
                   onSuccess={() => {
                     const { onChange } = this.props;
                     onChange();
-                  }}/>
+                  }}
+                />
               </div>
             </div>
           ))}
@@ -201,7 +233,6 @@ ExtraWitnesses.propTypes = {
 };
 
 class Proxy extends PureComponent {
-
   constructor(props) {
     super(props);
 
@@ -211,7 +242,7 @@ class Proxy extends PureComponent {
     };
   }
 
-  usernameChanged = (e) => {
+  usernameChanged = e => {
     this.setState({ username: e.target.value.trim() });
   };
 
@@ -221,16 +252,20 @@ class Proxy extends PureComponent {
     const { username } = this.state;
     this.setState({ inProgress: true });
 
-    return witnessProxy(activeAccount, global.pin, username).then(resp => {
-      message.success(intl.formatMessage({ id: 'witnesses.proxy-created' }, { n: username }));
-      this.setState({ username: '', inProgress: false }, () => {
-        onChange();
+    return witnessProxy(activeAccount, global.pin, username)
+      .then(resp => {
+        message.success(
+          intl.formatMessage({ id: 'witnesses.proxy-created' }, { n: username })
+        );
+        this.setState({ username: '', inProgress: false }, () => {
+          onChange();
+        });
+        return resp;
+      })
+      .catch(e => {
+        message.error(formatChainError(e));
+        this.setState({ inProgress: false });
       });
-      return resp;
-    }).catch(e => {
-      message.error(formatChainError(e));
-      this.setState({ inProgress: false });
-    });
   };
 
   render() {
@@ -240,18 +275,32 @@ class Proxy extends PureComponent {
     return (
       <div className="proxy">
         <div className="explanation">
-          <FormattedHTMLMessage id="witnesses.proxy-exp"/>
+          <FormattedHTMLMessage id="witnesses.proxy-exp" />
         </div>
         <div className="input-form">
           <div className="txt-username">
-            <Input type="text" placeholder={intl.formatMessage({ id: 'witnesses.username-placeholder' })}
-                   value={username} maxLength={20} onChange={this.usernameChanged}/>
+            <Input
+              type="text"
+              placeholder={intl.formatMessage({
+                id: 'witnesses.username-placeholder'
+              })}
+              value={username}
+              maxLength={20}
+              onChange={this.usernameChanged}
+            />
           </div>
           <div className="btn-submit">
             <LoginRequired {...this.props} requiredKeys={['active']}>
-              <Button type="primary" disabled={username === '' || inProgress} onClick={this.clicked}>
-                {inProgress && <Icon type="loading" style={{ fontSize: 12 }} spin/>}
-                <FormattedMessage id="witnesses.set-proxy"/></Button>
+              <Button
+                type="primary"
+                disabled={username === '' || inProgress}
+                onClick={this.clicked}
+              >
+                {inProgress && (
+                  <Icon type="loading" style={{ fontSize: 12 }} spin />
+                )}
+                <FormattedMessage id="witnesses.set-proxy" />
+              </Button>
             </LoginRequired>
           </div>
         </div>
@@ -287,16 +336,18 @@ class ProxyActive extends PureComponent {
 
     this.setState({ inProgress: true });
 
-    return witnessProxy(activeAccount, global.pin, '').then(resp => {
-      message.info(intl.formatMessage({ id: 'witnesses.proxy-removed' }));
-      this.setState({ inProgress: false }, () => {
-        onChange();
+    return witnessProxy(activeAccount, global.pin, '')
+      .then(resp => {
+        message.info(intl.formatMessage({ id: 'witnesses.proxy-removed' }));
+        this.setState({ inProgress: false }, () => {
+          onChange();
+        });
+        return resp;
+      })
+      .catch(e => {
+        message.error(formatChainError(e));
+        this.setState({ inProgress: false });
       });
-      return resp;
-    }).catch(e => {
-      message.error(formatChainError(e));
-      this.setState({ inProgress: false });
-    });
   };
 
   render() {
@@ -306,16 +357,22 @@ class ProxyActive extends PureComponent {
     return (
       <div className="proxy-active">
         <div className="proxy-active-exp">
-          <FormattedMessage id="witnesses.proxy-active-exp"/>
+          <FormattedMessage id="witnesses.proxy-active-exp" />
         </div>
         <div className="clear-proxy-form">
           <div className="current-proxy">
-            <FormattedHTMLMessage id="witnesses.current-proxy" values={{ n: username }}/>
+            <FormattedHTMLMessage
+              id="witnesses.current-proxy"
+              values={{ n: username }}
+            />
           </div>
           <LoginRequired {...this.props} requiredKeys={['active']}>
             <Button type="primary" size="large" disabled={inProgress}>
-              {inProgress && <Icon type="loading" style={{ fontSize: 12 }} spin/>}
-              <FormattedMessage id="witnesses.remove-proxy"/></Button>
+              {inProgress && (
+                <Icon type="loading" style={{ fontSize: 12 }} spin />
+              )}
+              <FormattedMessage id="witnesses.remove-proxy" />
+            </Button>
           </LoginRequired>
         </div>
       </div>
@@ -348,14 +405,18 @@ class Witnesses extends PureComponent {
   componentDidMount() {
     this.load();
 
-    window.addEventListener('user-login', this.refresh);
-    window.addEventListener('user-logout', this.refresh);
+    window.addEventListener('user-login', this.accountActiont);
+    window.addEventListener('user-logout', this.accountActiont);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('user-login', this.refresh);
-    window.removeEventListener('user-logout', this.refresh);
+    window.removeEventListener('user-login', this.accountActiont);
+    window.removeEventListener('user-logout', this.accountActiont);
   }
+
+  accountActiont = () => {
+    setTimeout(this.refresh, 500);
+  };
 
   refresh = () => {
     this.load();
@@ -369,49 +430,48 @@ class Witnesses extends PureComponent {
   fetchWitnesses = () => {
     this.setState({ loading: true });
 
-    return getWitnessesByVote(undefined, 50).then(resp => {
-      const witnesses = resp.map((x, i) => {
+    return getWitnessesByVote(undefined, 50)
+      .then(resp => {
+        const witnesses = resp.map((x, i) => {
+          const key = i + 1;
 
-        const key = i + 1;
+          const { props } = x;
 
-        const { props } = x;
+          const { total_missed: miss, url } = x;
+          const fee = parseToken(props.account_creation_fee);
+          const feed = parseToken(x.sbd_exchange_rate.base);
+          const { maximum_block_size: blockSize } = props;
+          const { available_witness_account_subsidies: acAvail } = x;
+          const { account_subsidy_budget: acBudget } = props;
+          const { running_version: version } = x;
 
-        const { total_missed: miss, url } = x;
-        const fee = parseToken(props.account_creation_fee);
-        const feed = parseToken(x.sbd_exchange_rate.base);
-        const { maximum_block_size: blockSize } = props;
-        const { available_witness_account_subsidies: acAvail } = x;
-        const { account_subsidy_budget: acBudget } = props;
-        const { running_version: version } = x;
-
-        return {
-          key,
-          name: x.owner,
-          miss,
-          fee,
-          feed,
-          blockSize,
-          acAvail: Math.round(acAvail / 10000),
-          acBudget,
-          version,
-          url,
-          parsedUrl: postUrlParser(url)
-        };
+          return {
+            key,
+            name: x.owner,
+            miss,
+            fee,
+            feed,
+            blockSize,
+            acAvail: Math.round(acAvail / 10000),
+            acBudget,
+            version,
+            url,
+            parsedUrl: postUrlParser(url)
+          };
+        });
+        this.setState({ witnesses });
+        return resp;
+      })
+      .catch(() => {})
+      .finally(() => {
+        this.setState({ loading: false });
       });
-      this.setState({ witnesses });
-      return resp;
-    }).catch(() => {
-
-    }).finally(() => {
-      this.setState({ loading: false });
-    });
   };
 
   fetchVotedWitnesses = () => {
     const { activeAccount } = this.props;
     if (activeAccount) {
       return getAccount(activeAccount.username).then(resp => {
-
         const { witness_votes: witnessVotes, proxy } = resp;
         this.setState({ witnessVotes, proxy });
 
@@ -425,7 +485,9 @@ class Witnesses extends PureComponent {
   render() {
     const { intl, activeAccount } = this.props;
     const { loading, witnesses, witnessVotes, proxy } = this.state;
-    const extraWitnesses = witnessVotes.filter(w => !witnesses.find(y => y.name === w));
+    const extraWitnesses = witnessVotes.filter(
+      w => !witnesses.find(y => y.name === w)
+    );
 
     const columns = [
       {
@@ -433,9 +495,7 @@ class Witnesses extends PureComponent {
         width: 68,
         dataIndex: 'key',
         fixed: 'left',
-        render: (text) => (
-          <span className="index-num">{text}</span>
-        )
+        render: text => <span className="index-num">{text}</span>
       },
       {
         title: '',
@@ -445,91 +505,108 @@ class Witnesses extends PureComponent {
 
           const voted = witnessVotes.includes(theWitness);
 
-          return <BtnWitnessVote
-            {...this.props}
-            witness={theWitness}
-            voted={voted}
-            onSuccess={(approve) => {
+          return (
+            <BtnWitnessVote
+              {...this.props}
+              witness={theWitness}
+              voted={voted}
+              onSuccess={approve => {
+                let newVotes;
 
-              let newVotes;
+                if (approve) {
+                  newVotes = [...witnessVotes, theWitness];
+                } else {
+                  newVotes = witnessVotes.filter(x => x !== theWitness);
+                }
 
-              if (approve) {
-                newVotes = [...witnessVotes, theWitness];
-              } else {
-                newVotes = witnessVotes.filter(x => x !== theWitness);
-              }
-
-              this.setState({ witnessVotes: newVotes });
-              this.fetchVotedWitnesses();
-            }}
-          />;
+                this.setState({ witnessVotes: newVotes });
+                this.fetchVotedWitnesses();
+              }}
+            />
+          );
         }
       },
       {
-        title: <span className="witness-column-title"><FormattedMessage id="witnesses.witness"/></span>,
+        title: (
+          <span className="witness-column-title">
+            <FormattedMessage id="witnesses.witness" />
+          </span>
+        ),
         width: 260,
         dataIndex: 'name',
         fixed: 'left',
-        render: (text) => (
+        render: text => (
           <QuickProfile {...this.props} username={text} reputation={0}>
             <div className="witness-card">
-              <UserAvatar user={text} size="large"/>
+              <UserAvatar user={text} size="large" />
               <span className="username">{text}</span>
             </div>
           </QuickProfile>
         )
       },
       {
-        title: <FormattedMessage id="witnesses.miss"/>,
+        title: <FormattedMessage id="witnesses.miss" />,
         dataIndex: 'miss',
-        render: (text) => (
-          intl.formatNumber(text)
-        )
+        render: text => intl.formatNumber(text)
       },
       {
-        title: <FormattedMessage id="witnesses.url"/>,
+        title: <FormattedMessage id="witnesses.url" />,
         render: (text, record) => {
           const { parsedUrl } = record;
 
           if (parsedUrl) {
-            return <EntryLink {...this.props} author={parsedUrl.author} permlink={parsedUrl.permlink}>
-              <a target="_external" href={parsedUrl.url} className="witness-link"><i className="mi">link</i></a>
-            </EntryLink>;
+            return (
+              <EntryLink
+                {...this.props}
+                author={parsedUrl.author}
+                permlink={parsedUrl.permlink}
+              >
+                <a
+                  target="_external"
+                  href={parsedUrl.url}
+                  className="witness-link"
+                >
+                  <i className="mi">link</i>
+                </a>
+              </EntryLink>
+            );
           }
 
-          return <a target="_external" href={record.url} className="witness-link"><i className="mi">link</i></a>;
+          return (
+            <a target="_external" href={record.url} className="witness-link">
+              <i className="mi">link</i>
+            </a>
+          );
         }
       },
       {
-        title: <FormattedMessage id="witnesses.fee"/>,
+        title: <FormattedMessage id="witnesses.fee" />,
         dataIndex: 'fee'
       },
       {
-        title: <FormattedMessage id="witnesses.feed"/>,
+        title: <FormattedMessage id="witnesses.feed" />,
         dataIndex: 'feed',
-        render: (text) => <span className="feed-price">${text}</span>
+        render: text => <span className="feed-price">${text}</span>
       },
       {
-        title: <FormattedMessage id="witnesses.block-size"/>,
+        title: <FormattedMessage id="witnesses.block-size" />,
         dataIndex: 'blockSize',
-        render: (text) => (
-          intl.formatNumber(text)
-        )
+        render: text => intl.formatNumber(text)
       },
       {
-        title: <FormattedMessage id="witnesses.ac-avail"/>,
+        title: <FormattedMessage id="witnesses.ac-avail" />,
         dataIndex: 'acAvail'
       },
       {
-        title: <FormattedMessage id="witnesses.ac-budget"/>,
+        title: <FormattedMessage id="witnesses.ac-budget" />,
         dataIndex: 'acBudget'
       },
       {
-        title: <FormattedMessage id="witnesses.version"/>,
+        title: <FormattedMessage id="witnesses.version" />,
         dataIndex: 'version',
         fixed: 'right',
         width: 140,
-        render: (text) => <span className="version-num">${text}</span>
+        render: text => <span className="version-num">${text}</span>
       }
     ];
 
@@ -545,34 +622,50 @@ class Witnesses extends PureComponent {
         />
         <div className="app-content witnesses-page">
           <div className={`page-header ${loading ? 'loading' : ''}`}>
-            <div className="main-title"><FormattedMessage id="witnesses.page-title"/></div>
-            {(!loading && !proxy && activeAccount) &&
-            <div className="remaining">
-              <FormattedHTMLMessage
-                id="witnesses.remaining"
-                values={{ n: 30 - witnessVotes.length, max: 30 }}
-              />
+            <div className="main-title">
+              <FormattedMessage id="witnesses.page-title" />
             </div>
-            }
+            {!loading &&
+              !proxy &&
+              activeAccount && (
+                <div className="remaining">
+                  <FormattedHTMLMessage
+                    id="witnesses.remaining"
+                    values={{ n: 30 - witnessVotes.length, max: 30 }}
+                  />
+                </div>
+              )}
           </div>
-          {loading &&
-          <LinearProgress/>
-          }
-          {(!loading && !proxy) &&
-          <Fragment>
-            <div className="witnesses-table">
-              <Table columns={columns} dataSource={witnesses} scroll={{ x: 1300 }}/>
-            </div>
-            <div className="extra-funcs">
-              <ExtraWitnesses {...this.props} list={extraWitnesses} onChange={this.fetchVotedWitnesses}/>
-              <Proxy {...this.props} onChange={() => this.load()}/>
-            </div>
-          </Fragment>
-          }
+          {loading && <LinearProgress />}
+          {!loading &&
+            !proxy && (
+              <Fragment>
+                <div className="witnesses-table">
+                  <Table
+                    columns={columns}
+                    dataSource={witnesses}
+                    scroll={{ x: 1300 }}
+                  />
+                </div>
+                <div className="extra-funcs">
+                  <ExtraWitnesses
+                    {...this.props}
+                    list={extraWitnesses}
+                    onChange={this.fetchVotedWitnesses}
+                  />
+                  <Proxy {...this.props} onChange={() => this.load()} />
+                </div>
+              </Fragment>
+            )}
 
-          {(!loading && proxy) &&
-          <ProxyActive {...this.props} username={proxy} onChange={() => this.load()}/>
-          }
+          {!loading &&
+            proxy && (
+              <ProxyActive
+                {...this.props}
+                username={proxy}
+                onChange={() => this.load()}
+              />
+            )}
         </div>
         <AppFooter {...this.props} />
         <DeepLinkHandler {...this.props} />
