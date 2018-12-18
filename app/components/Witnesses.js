@@ -405,16 +405,16 @@ class Witnesses extends PureComponent {
   componentDidMount() {
     this.load();
 
-    window.addEventListener('user-login', this.accountActiont);
-    window.addEventListener('user-logout', this.accountActiont);
+    window.addEventListener('user-login', this.accountAction);
+    window.addEventListener('user-logout', this.accountAction);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('user-login', this.accountActiont);
-    window.removeEventListener('user-logout', this.accountActiont);
+    window.removeEventListener('user-login', this.accountAction);
+    window.removeEventListener('user-logout', this.accountAction);
   }
 
-  accountActiont = () => {
+  accountAction = () => {
     setTimeout(this.refresh, 500);
   };
 
