@@ -26,6 +26,7 @@ import postUrlParser from '../utils/post-url-parser';
 import formatChainError from '../utils/format-chain-error';
 import { chevronUp } from '../svg';
 import LoginRequired from './helpers/LoginRequired';
+import { setEntryRead } from '../helpers/storage';
 
 
 class BtnWitnessVote extends PureComponent {
@@ -346,6 +347,14 @@ class Witnesses extends PureComponent {
 
   componentDidMount() {
     this.load();
+
+    window.addEventListener('user-login', this.refresh);
+    window.addEventListener('user-logout', this.refresh);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('user-login', this.refresh);
+    window.removeEventListener('user-logout', this.refresh);
   }
 
   refresh = () => {
@@ -409,6 +418,8 @@ class Witnesses extends PureComponent {
         return resp;
       });
     }
+
+    this.setState({ witnessVotes: [], proxy: null });
   };
 
   render() {
