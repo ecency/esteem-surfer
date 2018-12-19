@@ -1,0 +1,106 @@
+@import '../style/mixins';
+@import '../style/colors';
+
+.transfer-page {
+
+  .transfer-box {
+    border-radius: 4px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+    margin: 50px auto 0 auto;
+    width: 440px;
+
+    .transfer-box-header {
+      align-items: center;
+      border-bottom: 1px solid $white-four;
+      display: flex;
+      padding: 15px 27px;
+
+      .step-no {
+        color: $silver;
+        flex-grow: 0;
+        flex-shrink: 0;
+        font-size: 48px;
+        font-weight: 700;
+        margin-right: 8px;
+      }
+
+      .box-titles {
+        flex-grow: 1;
+        .main-title {
+          color: $charcoal-grey;
+          font-size: 16px;
+          font-weight: 500;
+          margin-bottom: 4px;
+        }
+
+        .sub-title {
+          color: $steel-grey;
+          font-weight: 300;
+
+        }
+      }
+    }
+
+    .transfer-box-body {
+      padding: 24px 32px;
+
+      .transfer-alert {
+        margin-bottom: 20px;
+      }
+
+      .transfer-form {
+        .form-item {
+          align-items: baseline;
+          display: flex;
+          margin-bottom: 16px;
+
+          .form-label {
+            color: $steel-grey;
+            flex-grow: 0;
+            flex-shrink: 0;
+            width: 100px;
+          }
+
+          .form-input {
+            flex-grow: 1;
+
+            .input-help {
+              color: $charcoal-grey;
+              margin: 12px 0;
+              font-weight: 300;
+            }
+          }
+
+          .select-from {
+            width: 100%;
+          }
+
+          &.item-amount {
+            .txt-amount {
+              width: 129px;
+            }
+
+            .asset-switch {
+              flex-grow: 1;
+
+              .asset {
+                border-radius: 25px;
+                color: $steel-grey;
+                padding: 3px 6px;
+
+                &:not(:last-child) {
+                  margin-right: 8px;
+                }
+
+                &.selected {
+                  background-color: $silver;
+                  color: $white;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

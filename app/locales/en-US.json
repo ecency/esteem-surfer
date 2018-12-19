@@ -352,5 +352,23 @@
     "remove-proxy": "Clear Proxy",
     "proxy-removed": "Proxy cleared",
     "proxy-created": "@{n} has set as proxy"
+  },
+  "transfer": {
+    "transfer-title": "Transfer to Account",
+    "transfer-sub-title": "Move funds to another Steem account",
+    "from": "From",
+    "from-placeholder": "Select a user",
+    "to": "To",
+    "to-placeholder": "username",
+    "to-not-found": "The user that you are trying to transfer funds to does not exist!",
+    "to-bad-actor": "Use caution sending to this account. Please double check your spelling for possible phishing.",
+    "amount": "Amount",
+    "amount-placeholder": "amount",
+    "balance": "Balance",
+    "memo": "Memo",
+    "memo-placeholder": "enter your notes here",
+    "memo-help": "This memo is public",
+    "key-required-err": "Active key could not found for selected account. Please make sure logged in with proper credentials."
+
   }
 }
