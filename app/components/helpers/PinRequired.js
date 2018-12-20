@@ -28,6 +28,10 @@ class PinRequired extends Component {
     });
   };
 
+  cancelFn = () => {
+    this.setState({ show: false });
+  };
+
   render() {
     const { children } = this.props;
     const { show } = this.state;
@@ -44,8 +48,9 @@ class PinRequired extends Component {
         {show && (
           <Modal
             footer={null}
-            closable={false}
-            keyboard={false}
+            closable
+            onCancel={this.cancelFn}
+            keyboard
             visible
             width="500px"
             centered
