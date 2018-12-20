@@ -139,8 +139,7 @@ class Transfer extends PureComponent {
     balance: '0',
     asset: 'STEEM',
     memo: '',
-    inProgress: false,
-    transferring: false
+    inProgress: false
   });
 
   assetChanged = asset => {
@@ -299,7 +298,7 @@ class Transfer extends PureComponent {
 
     const account = accounts.find(x => x.username === from);
 
-    this.setState({ transferring: true });
+    this.setState({ inProgress: true });
     return transfer(account, pin, to, fullAmount, memo)
       .then(resp => {
         this.setState({ step: 3 });
@@ -309,7 +308,7 @@ class Transfer extends PureComponent {
         message.error(formatChainError(err));
       })
       .finally(() => {
-        this.setState({ transferring: false });
+        this.setState({ inProgress: false });
       });
   };
 
@@ -339,8 +338,7 @@ class Transfer extends PureComponent {
       amountError,
       asset,
       memo,
-      inProgress,
-      transferring
+      inProgress
     } = this.state;
 
     const balance = this.getBalance();
@@ -549,8 +547,8 @@ class Transfer extends PureComponent {
                         <FormattedMessage id="transfer.back" />
                       </a>
                       <PinRequired {...this.props} onSuccess={this.confirm}>
-                        <Button type="primary" disabled={transferring}>
-                          {transferring && (
+                        <Button type="primary" disabled={inProgress}>
+                          {inProgress && (
                             <Icon
                               type="loading"
                               style={{ fontSize: 12 }}
@@ -567,7 +565,9 @@ class Transfer extends PureComponent {
             )}
 
             {step === 3 && (
-              <div className="transfer-box">
+              <div
+                className={`transfer-box ${inProgress ? 'in-progress' : ''}`}
+              >
                 <div className="transfer-box-header">
                   <div className="step-no">3</div>
                   <div className="box-titles">
@@ -579,6 +579,7 @@ class Transfer extends PureComponent {
                     </div>
                   </div>
                 </div>
+                {inProgress && <LinearProgress />}
                 <div className="transfer-box-body">
                   <div className="success">
                     <FormattedHTMLMessage
