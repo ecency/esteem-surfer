@@ -13,6 +13,7 @@ import { Input, InputNumber, Select, Alert, Button, Icon, message, Modal } from 
 import AppFooter from './layout/AppFooter';
 import DeepLinkHandler from './helpers/DeepLinkHandler';
 import PropTypes from 'prop-types';
+import PinRequired from './helpers/PinRequired';
 
 
 import badActors from '../data/bad-actors.json';
@@ -207,6 +208,7 @@ class Transfer extends PureComponent {
   };
 
   confirm = () => {
+    console.log('confirm');
 
   };
 
@@ -286,7 +288,10 @@ class Transfer extends PureComponent {
                   <div className="form-input">
                     <Select className="select-from" onChange={this.fromChanged} defaultValue={from} value={from}
                             placeholder={intl.formatMessage({ id: 'transfer.from-placeholder' })}>
-                      {accounts.map(i => <Select.Option value={i.username}>{i.username}</Select.Option>)}
+                      {accounts.map(i =>
+                        <Select.Option key={i.username} value={i.username}>
+                          {i.username}
+                        </Select.Option>)}
                     </Select>
                   </div>
                 </div>
@@ -306,7 +311,7 @@ class Transfer extends PureComponent {
                     <FormattedMessage id="transfer.amount"/>
                   </div>
                   <div className="form-input">
-                    <Input type="text" value={amount} decimalSeparator="." min={0} className="txt-amount"
+                    <Input type="text" value={amount} className="txt-amount"
                            placeholder={intl.formatMessage({ id: 'transfer.amount-placeholder' })}
                            onChange={this.amountChanged}/>
                   </div>
@@ -380,7 +385,9 @@ class Transfer extends PureComponent {
               <div className="transfer-form">
                 <div className="form-controls">
                   <a className="btn-back" onClick={this.back}>Back</a>
-                  <Button type="primary" onClick={this.confirm}><FormattedMessage id="transfer.confirm"/></Button>
+                  <PinRequired {...this.props}>
+                    <Button type="primary" onClick={this.confirm}><FormattedMessage id="transfer.confirm"/></Button>
+                  </PinRequired>
                 </div>
               </div>
             </div>
@@ -392,23 +399,6 @@ class Transfer extends PureComponent {
           <div/>
           }
 
-          {pinConfirmFlag && (
-            <Modal
-              footer={null}
-              closable={false}
-              keyboard={false}
-              visible
-              width="500px"
-              centered
-              destroyOnClose
-            >
-              <PinConfirm
-                compareHash={getItem('pin-code')}
-                onSuccess={this.onConfirmPinSuccess}
-                invalidateFn={this.pinInvalidate}
-              />
-            </Modal>
-          )}
 
         </div>
         <AppFooter {...this.props} />
