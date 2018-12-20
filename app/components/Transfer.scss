@@ -8,7 +8,7 @@
     border-radius: 4px;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
     margin: 50px auto 0 auto;
-    width: 440px;
+    width: 480px;
 
     .transfer-box-header {
       align-items: center;
@@ -37,7 +37,6 @@
         .sub-title {
           color: $steel-grey;
           font-weight: 300;
-
         }
       }
     }
@@ -50,14 +49,13 @@
       }
 
       .transfer-form {
-
         .balance {
           color: $charcoal-grey;
           font-weight: 300;
           margin: 12px 0 24px 100px;
 
           .balance-num {
-            color: $dark-sky-blue
+            color: $dark-sky-blue;
           }
         }
 
@@ -83,13 +81,25 @@
             }
           }
 
+          &.has-error {
+            .form-input {
+              input[type='text'] {
+                border-color: $red2;
+              }
+
+              .input-help {
+                color: $red2;
+              }
+            }
+          }
+
           .select-from {
             width: 100%;
           }
 
           &.item-amount {
             .txt-amount {
-              width: 129px;
+              width: 200px;
             }
 
             .asset-switch {
@@ -137,12 +147,15 @@
           justify-content: space-around;
           margin-bottom: 20px;
 
-          .from-user, .to-user, .arrow {
+          .from-user,
+          .to-user,
+          .arrow {
             height: 100px;
             width: 100px;
           }
 
-          .from-user, .to-user {
+          .from-user,
+          .to-user {
             cursor: pointer;
             .user-avatar {
               height: 100%;
@@ -181,14 +194,16 @@
       }
 
       .success {
-        margin-bottom: 30px;
         color: $charcoal-grey;
+        margin-bottom: 30px;
+        text-align: center;
 
         .amount {
           color: $dark-sky-blue;
         }
 
-        .from-user, .to-user {
+        .from-user,
+        .to-user {
           font-weight: 700;
         }
       }

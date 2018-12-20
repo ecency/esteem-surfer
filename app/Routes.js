@@ -19,7 +19,11 @@ export default () => (
         exact
         path="/@:username/transfer/:asset"
         component={props => (
-          <TransferPage timestamp={new Date().toString()} {...props} />
+          <TransferPage
+            timestamp={new Date().toString()}
+            {...props}
+            mode="transfer"
+          />
         )}
       />
       <Route
@@ -71,11 +75,11 @@ export default () => (
           <ComposePage timestamp={new Date().toString()} {...props} />
         )}
       />
-      <Route exact path="/@:username/feed" component={EntryIndexPage}/>
-      <Route exact path="/@:username" component={AccountPage}/>
-      <Route exact path="/@:username/:section" component={AccountPage}/>
-      <Route exact path="/:filter" component={EntryIndexPage}/>
-      <Route exact path="/:filter/:tag" component={EntryIndexPage}/>
+      <Route exact path="/@:username/feed" component={EntryIndexPage} />
+      <Route exact path="/@:username" component={AccountPage} />
+      <Route exact path="/@:username/:section" component={AccountPage} />
+      <Route exact path="/:filter" component={EntryIndexPage} />
+      <Route exact path="/:filter/:tag" component={EntryIndexPage} />
       <Route
         exact
         path="/:category/@:username/:permlink"
@@ -83,7 +87,7 @@ export default () => (
           <EntryPage timestamp={new Date().toString()} {...props} />
         )}
       />
-      <Route path="/" component={IndexPage}/>
+      <Route path="/" component={IndexPage} />
     </Switch>
   </App>
 );
