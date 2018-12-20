@@ -28,7 +28,7 @@ import { flattenMessages } from '../utils';
 
 import messages from '../locales';
 
-import { getItem, setItem, removeItem } from '../helpers/storage';
+import { getItem, setItem } from '../helpers/storage';
 
 import { NWS_ADDRESS } from '../config';
 
@@ -132,15 +132,7 @@ class App extends React.Component {
     this.setState({ pinConfirmFlag: false, dialogVisible: false });
   };
 
-  pinInvalidate = () => {
-    const { actions } = this.props;
-    actions.wipePin();
-
-    removeItem('pin-code');
-
-    actions.logOut();
-    actions.deleteAccounts();
-
+  pinInvalidated = () => {
     this.setState({ pinConfirmFlag: false, dialogVisible: false });
   };
 
@@ -264,9 +256,9 @@ class App extends React.Component {
               destroyOnClose
             >
               <PinConfirm
-                compareHash={getItem('pin-code')}
+                {...this.props}
                 onSuccess={this.onConfirmPinSuccess}
-                invalidateFn={this.pinInvalidate}
+                onInvalidate={this.pinInvalidated}
               />
             </Modal>
           )}
