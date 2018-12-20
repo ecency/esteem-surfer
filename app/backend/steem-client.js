@@ -491,3 +491,21 @@ export const witnessProxy = (account, pin, proxy) => {
     return scWitnessProxy(account.username, proxy);
   }
 };
+
+
+export const transfer = (account, pin, from, to, amount, memo) => {
+  if (account.type === 's') {
+
+    const key = decryptKey(account.keys.active, pin);
+    const privateKey = PrivateKey.fromString(key);
+
+    const args = {
+      from,
+      to,
+      amount,
+      memo
+    };
+
+    return client.transfer();
+  }
+};

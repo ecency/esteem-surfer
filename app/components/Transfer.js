@@ -9,16 +9,21 @@ import UserAvatar from './elements/UserAvatar';
 import EntryLink from './helpers/EntryLink';
 import NavBar from './layout/NavBar';
 import LinearProgress from './common/LinearProgress';
-import { Input, Select, Alert, Icon, message } from 'antd';
+import { Input, InputNumber, Select, Alert, Button, Icon, message, Modal } from 'antd';
 import AppFooter from './layout/AppFooter';
 import DeepLinkHandler from './helpers/DeepLinkHandler';
 import PropTypes from 'prop-types';
+
 
 import badActors from '../data/bad-actors.json';
 
 import { getAccount } from '../backend/steem-client';
 import formatChainError from '../utils/format-chain-error';
+import parseToken from '../utils/parse-token';
 
+import { arrowRight } from '../svg';
+import { getItem } from '../helpers/storage';
+import PinConfirm from './dialogs/PinConfirm';
 
 class AssetSwitch extends PureComponent {
   constructor(props) {
@@ -42,10 +47,10 @@ class AssetSwitch extends PureComponent {
 
     return (
       <div className="asset-switch">
-        <a onClick={() => this.clicked('steem')} role="none"
-           className={`asset ${selected === 'steem' ? 'selected' : ''}`}>STEEM</a>
-        <a onClick={() => this.clicked('sbd')} role="none"
-           className={`asset ${selected === 'sbd' ? 'selected' : ''}`}>SBD</a>
+        <a onClick={() => this.clicked('STEEM')} role="none"
+           className={`asset ${selected === 'STEEM' ? 'selected' : ''}`}>STEEM</a>
+        <a onClick={() => this.clicked('SBD')} role="none"
+           className={`asset ${selected === 'SBD' ? 'selected' : ''}`}>SBD</a>
       </div>
     );
   }
@@ -62,6 +67,7 @@ class Transfer extends PureComponent {
     super(props);
 
     this.state = {
+      step: 1,
       from: null,
       fromData: null,
       to: null,
@@ -69,9 +75,10 @@ class Transfer extends PureComponent {
       toFetching: false,
       amount: '0.001',
       balance: '0',
-      asset: 'steem',
+      asset: 'STEEM',
       memot: '',
-      keyRequiredErr: false
+      keyRequiredErr: false,
+      pinConfirmFlag: false
     };
 
     this.timer = null;
@@ -82,6 +89,9 @@ class Transfer extends PureComponent {
   };
 
   fromChanged = (from) => {
+
+    this.setState({ from });
+
     const { accounts } = this.props;
     const account = accounts.find(x => x.username === from);
 
@@ -156,7 +166,47 @@ class Transfer extends PureComponent {
       });
 
     }, 300);
+  };
 
+
+  amountChanged = (e) => {
+    const { value: amount } = e.target;
+    this.setState({ amount });
+  };
+
+  memoChanged = (e) => {
+    const { value: memo } = e.target;
+    this.setState({ memo });
+  };
+
+  getBalance = () => {
+
+    /*
+    if (mode === 'from_savings') {
+      const k = (asset === 'STEEM' ? 'savings_balance' : 'savings_sbd_balance');
+      return $scope.account[k].split(' ')[0];
+    }
+    */
+
+    const { fromData, asset } = this.state;
+
+    if (!fromData) {
+      return null;
+    }
+
+    const k = (asset === 'STEEM' ? 'balance' : 'sbd_balance');
+    return parseToken(fromData[k]);
+  };
+
+  next = () => {
+    this.setState({ step: 2 });
+  };
+
+  back = () => {
+    this.setState({ step: 1 });
+  };
+
+  confirm = () => {
 
   };
 
@@ -164,6 +214,7 @@ class Transfer extends PureComponent {
     const { intl, activeAccount, accounts } = this.props;
 
     const {
+      step,
       from,
       fromData,
       to,
@@ -171,9 +222,13 @@ class Transfer extends PureComponent {
       inProgress,
       amount,
       asset,
-      keyRequiredErr
+      memo,
+      keyRequiredErr,
+      pinConfirmFlag
     } = this.state;
 
+
+    const balance = this.getBalance();
 
     const loading = false;
 
@@ -188,6 +243,7 @@ class Transfer extends PureComponent {
           })}
         />
         <div className="app-content transfer-page">
+          {step === 1 &&
           <div className="transfer-box">
             <div className="transfer-box-header">
               <div className="step-no">
@@ -228,7 +284,7 @@ class Transfer extends PureComponent {
                     <FormattedMessage id="transfer.from"/>
                   </div>
                   <div className="form-input">
-                    <Select className="select-from" onChange={this.fromChanged}
+                    <Select className="select-from" onChange={this.fromChanged} defaultValue={from} value={from}
                             placeholder={intl.formatMessage({ id: 'transfer.from-placeholder' })}>
                       {accounts.map(i => <Select.Option value={i.username}>{i.username}</Select.Option>)}
                     </Select>
@@ -240,9 +296,7 @@ class Transfer extends PureComponent {
                   </div>
                   <div className="form-input">
                     <Input type="text"
-                           onBlur={() => {
-                             console.log('blur');
-                           }} onChange={this.toChanged}
+                           onChange={this.toChanged}
                            placeholder={intl.formatMessage({ id: 'transfer.to-placeholder' })}
                            spellCheck={false}/>
                   </div>
@@ -252,25 +306,110 @@ class Transfer extends PureComponent {
                     <FormattedMessage id="transfer.amount"/>
                   </div>
                   <div className="form-input">
-                    <Input defaultValue={amount} type="text" className="txt-amount"
-                           placeholder={intl.formatMessage({ id: 'transfer.amount-placeholder' })}/>
+                    <Input type="text" value={amount} decimalSeparator="." min={0} className="txt-amount"
+                           placeholder={intl.formatMessage({ id: 'transfer.amount-placeholder' })}
+                           onChange={this.amountChanged}/>
                   </div>
                   <AssetSwitch defaultSelected={asset} onChange={this.assetChanged}/>
                 </div>
+                {balance &&
+                <div className="balance">
+                  <FormattedMessage id="transfer.balance"/>: <span className="balance-num"> {balance} {asset}</span>
+                </div>
+                }
                 <div className="form-item">
                   <div className="form-label">
                     <FormattedMessage id="transfer.memo"/>
                   </div>
                   <div className="form-input">
-                    <Input type="text" placeholder={intl.formatMessage({ id: 'transfer.memo-placeholder' })}/>
+                    <Input type="text" value={memo}
+                           placeholder={intl.formatMessage({ id: 'transfer.memo-placeholder' })}
+                           onChange={this.memoChanged}/>
                     <div className="input-help">
                       <FormattedMessage id="transfer.memo-help"/>
                     </div>
                   </div>
                 </div>
+                <div className="form-controls">
+                  <Button type="primary" onClick={this.next}><FormattedMessage id="transfer.next"/></Button>
+                </div>
               </div>
             </div>
           </div>
+          }
+
+          {step === 2 &&
+          <div className="transfer-box">
+            <div className="transfer-box-header">
+              <div className="step-no">
+                2
+              </div>
+              <div className="box-titles">
+                <div className="main-title">
+                  <FormattedMessage id="transfer.confirm-title"/>
+                </div>
+                <div className="sub-title">
+                  <FormattedMessage id="transfer.confirm-sub-title"/>
+                </div>
+              </div>
+            </div>
+
+            <div className="transfer-box-body">
+              <div className="confirmation">
+                <div className="users">
+                  <div className="from-user">
+                    <UserAvatar user={from} size="xLarge"/>
+                  </div>
+                  <div className="arrow">
+                    {arrowRight}
+                  </div>
+                  <div className="to-user">
+                    <UserAvatar user={to} size="xLarge"/>
+                  </div>
+                </div>
+
+                <div className="amount">
+                  {amount} {asset}
+                </div>
+
+                {memo &&
+                <div className="memo">{memo}</div>
+                }
+              </div>
+
+              <div className="transfer-form">
+                <div className="form-controls">
+                  <a className="btn-back" onClick={this.back}>Back</a>
+                  <Button type="primary" onClick={this.confirm}><FormattedMessage id="transfer.confirm"/></Button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          }
+
+          {step === 3 &&
+          <div/>
+          }
+
+          {pinConfirmFlag && (
+            <Modal
+              footer={null}
+              closable={false}
+              keyboard={false}
+              visible
+              width="500px"
+              centered
+              destroyOnClose
+            >
+              <PinConfirm
+                compareHash={getItem('pin-code')}
+                onSuccess={this.onConfirmPinSuccess}
+                invalidateFn={this.pinInvalidate}
+              />
+            </Modal>
+          )}
+
         </div>
         <AppFooter {...this.props} />
         <DeepLinkHandler {...this.props} />

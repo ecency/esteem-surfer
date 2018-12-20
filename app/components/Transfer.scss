@@ -2,6 +2,7 @@
 @import '../style/colors';
 
 .transfer-page {
+  overflow-y: auto;
 
   .transfer-box {
     border-radius: 4px;
@@ -49,6 +50,17 @@
       }
 
       .transfer-form {
+
+        .balance {
+          color: $charcoal-grey;
+          font-weight: 300;
+          margin: 12px 0 24px 100px;
+
+          .balance-num {
+            color: $dark-sky-blue
+          }
+        }
+
         .form-item {
           align-items: baseline;
           display: flex;
@@ -66,8 +78,8 @@
 
             .input-help {
               color: $charcoal-grey;
-              margin: 12px 0;
               font-weight: 300;
+              margin: 12px 0;
             }
           }
 
@@ -99,6 +111,71 @@
               }
             }
           }
+        }
+
+        .form-controls {
+          align-items: center;
+
+          display: flex;
+          justify-content: center;
+
+          .btn-back {
+            color: $silver;
+            margin-right: 10px;
+            &:hover {
+              color: $charcoal-grey;
+            }
+          }
+        }
+      }
+
+      .confirmation {
+        margin-bottom: 30px;
+
+        .users {
+          display: flex;
+          justify-content: space-around;
+          margin-bottom: 20px;
+
+          .from-user, .to-user, .arrow {
+            height: 100px;
+            width: 100px;
+          }
+
+          .from-user, .to-user {
+            .user-avatar {
+              height: 100%;
+              width: 100%;
+            }
+          }
+
+          .arrow {
+            align-items: center;
+            color: $silver;
+            display: flex;
+            justify-content: center;
+            opacity: 0.4;
+
+            svg {
+              height: 60px;
+              width: 60px;
+            }
+          }
+        }
+
+        .amount {
+          color: $dark-sky-blue;
+          font-size: 22px;
+          font-weight: 500;
+          margin-bottom: 30px;
+          text-align: center;
+        }
+
+        .memo {
+          color: $warm-grey;
+          font-size: 16px;
+          text-align: center;
+          word-break: break-all;
         }
       }
     }

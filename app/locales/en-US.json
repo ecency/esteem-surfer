@@ -368,7 +368,10 @@
     "memo": "Memo",
     "memo-placeholder": "enter your notes here",
     "memo-help": "This memo is public",
-    "key-required-err": "Active key could not found for selected account. Please make sure logged in with proper credentials."
-
+    "key-required-err": "Active key could not found for selected account. Please make sure logged in with proper credentials.",
+    "next": "Next",
+    "confirm-title": "Confirm your Transfer",
+    "confirm-sub-title": "Please, check if everything is correct",
+    "confirm": "Confirm"
   }
 }
