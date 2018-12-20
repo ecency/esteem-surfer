@@ -5,7 +5,7 @@ eslint-disable react/no-multi-comp,react/style-prop-object
 import React, { Component, Fragment } from 'react';
 
 import PropTypes from 'prop-types';
-import { Tooltip, message } from 'antd';
+import { Tooltip, message, Menu } from 'antd';
 import { FormattedNumber, FormattedDate, FormattedMessage, FormattedRelative, injectIntl } from 'react-intl';
 
 import { Link } from 'react-router-dom';
@@ -25,6 +25,7 @@ import coverFallbackDay from '../img/cover-fallback-day.png';
 import coverFallbackNight from '../img/cover-fallback-night.png';
 import LinearProgress from './common/LinearProgress';
 import EntryLink from './helpers/EntryLink';
+import DropDown from './common/DropDown';
 
 import { btc as btcIcon, usd as usdIcon } from '../svg';
 
@@ -51,6 +52,7 @@ import catchEntryImage from '../utils/catch-entry-image';
 import entryBodySummary from '../utils/entry-body-summary';
 import formatChainError from '../utils/format-chain-error';
 import DeepLinkHandler from './helpers/DeepLinkHandler';
+import filters from '../constants/filters';
 
 class Profile extends Component {
 
@@ -722,7 +724,7 @@ export class SectionWallet extends Component {
   };
 
   render() {
-    const { transactions, marketData, dynamicProps, global, intl, activeAccount, username } = this.props;
+    const { transactions, marketData, dynamicProps, global, intl, activeAccount, username, location } = this.props;
     const { account, claiming } = this.state;
 
 
@@ -757,6 +759,54 @@ export class SectionWallet extends Component {
       const nextVestingWithdrawal = parseDate(account.next_vesting_withdrawal);
 
       const isMyPage = activeAccount && activeAccount.username === username;
+
+      const actionListSteem = <Menu className="surfer-dropdown-menu">
+        <Menu.Item key="transfer">
+          <Link to={`/@${activeAccount.username}/transfer/steem`}>
+            <FormattedMessage id="account.transfer"/>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="transfer-saving">
+          <Link to={`/@${activeAccount.username}/transfer-saving/steem`}>
+            <FormattedMessage id="account.transfer-to-savings"/>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="power-up">
+          <Link to={`/@${activeAccount.username}/power-up`}>
+            <FormattedMessage id="account.power-up"/>
+          </Link>
+        </Menu.Item>
+      </Menu>;
+
+      const actionListSbd = <Menu className="surfer-dropdown-menu">
+        <Menu.Item key="transfer">
+          <Link to={`/@${activeAccount.username}/transfer/sbd`}>
+            <FormattedMessage id="account.transfer"/>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="transfer-saving">
+          <Link to={`/@${activeAccount.username}/transfer-saving/sbd`}>
+            <FormattedMessage id="account.transfer-to-savings"/>
+          </Link>
+        </Menu.Item>
+      </Menu>;
+
+      const actionListWithdrawSteem = <Menu className="surfer-dropdown-menu">
+        <Menu.Item key="transfer">
+          <Link to={`/@${activeAccount.username}/withdraw/steem`}>
+            <FormattedMessage id="account.withdraw-steem"/>
+          </Link>
+        </Menu.Item>
+      </Menu>;
+
+      const actionListWithdrawSbd = <Menu className="surfer-dropdown-menu">
+        <Menu.Item key="transfer">
+          <Link to={`/@${activeAccount.username}/withdraw/sbd`}>
+            <FormattedMessage id="account.withdraw-sbd"/>
+          </Link>
+        </Menu.Item>
+      </Menu>;
+
 
       return (
         <div className="wallet-section">
@@ -809,7 +859,11 @@ export class SectionWallet extends Component {
                   <div className="fund-title"><FormattedMessage id="account.steem"/></div>
                   <div className="fund-number"><FormattedNumber minimumFractionDigits={3} value={balance}/> {'STEEM'}
                   </div>
-                  <div className="fund-action"/>
+                  {isMyPage &&
+                  <div className="fund-action">
+                    <DropDown menu={actionListSteem} location={location}/>
+                  </div>
+                  }
                 </div>
               </div>
 
@@ -879,10 +933,13 @@ export class SectionWallet extends Component {
                     <FormattedNumber currency="USD" style="currency" currencyDisplay="symbol"
                                      minimumFractionDigits={3} value={sbdBalance}/>
                   </div>
-                  <div className="fund-action"/>
+                  {isMyPage &&
+                  <div className="fund-action">
+                    <DropDown menu={actionListSbd} location={location}/>
+                  </div>
+                  }
                 </div>
               </div>
-
               <div className="fund fund-savings alternative">
                 <div className="fund-line">
                   <Tooltip title={intl.formatMessage({
@@ -894,15 +951,22 @@ export class SectionWallet extends Component {
                   <div className="fund-number">
                     <FormattedNumber minimumFractionDigits={3} value={savingBalance}/> {'STEEM'}
                   </div>
-                  <div className="fund-action"/>
+                  {isMyPage &&
+                  <div className="fund-action">
+                    <DropDown menu={actionListWithdrawSteem} location={location}/>
+                  </div>
+                  }
                 </div>
-
                 <div className="fund-line">
                   <div className="fund-number">
                     <FormattedNumber currency="USD" style="currency" currencyDisplay="symbol"
                                      minimumFractionDigits={3} value={savingBalanceSbd}/>
                   </div>
-                  <div className="fund-action"/>
+                  {isMyPage &&
+                  <div className="fund-action">
+                    <DropDown menu={actionListWithdrawSbd} location={location}/>
+                  </div>
+                  }
                 </div>
               </div>
               {showPowerDown &&
@@ -958,6 +1022,7 @@ SectionWallet.propTypes = {
     pin: PropTypes.string.isRequired
   }).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired,
+  location: PropTypes.instanceOf(Object).isRequired,
   activeAccount: PropTypes.instanceOf(Object)
 };
 
