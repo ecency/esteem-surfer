@@ -30,7 +30,11 @@ export default () => (
         exact
         path="/@:username/transfer-saving/:asset"
         component={props => (
-          <TransferPage timestamp={new Date().toString()} {...props} />
+          <TransferPage
+            timestamp={new Date().toString()}
+            {...props}
+            mode="transfer-saving"
+          />
         )}
       />
       <Route

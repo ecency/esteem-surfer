@@ -160,6 +160,9 @@ class Transfer extends PureComponent {
       case 'transfer':
         u = `/@${from}/transfer/${asset}`;
         break;
+      case 'transfer-saving':
+        u = `/@${from}/transfer-saving/${asset}`;
+        break;
       default:
         break;
     }
