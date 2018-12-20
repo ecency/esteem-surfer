@@ -313,7 +313,9 @@ class Transfer extends PureComponent {
   };
 
   reset = () => {
-    this.setState(this.resetState());
+    this.setState(this.resetState(), () => {
+      this.init();
+    });
   };
 
   finish = () => {

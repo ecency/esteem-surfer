@@ -12,9 +12,16 @@
 
     .transfer-box-header {
       align-items: center;
-      border-bottom: 1px solid $white-four;
       display: flex;
       padding: 15px 27px;
+
+      @include themify(day) {
+        border-bottom: 1px solid $white-four;
+      }
+
+      @include themify(night) {
+        border-bottom: 1px solid $dusky-blue-two;
+      }
 
       .step-no {
         color: $silver;
@@ -28,15 +35,29 @@
       .box-titles {
         flex-grow: 1;
         .main-title {
-          color: $charcoal-grey;
           font-size: 16px;
           font-weight: 500;
           margin-bottom: 4px;
+
+          @include themify(day) {
+            color: $charcoal-grey;
+          }
+
+          @include themify(night) {
+            color: $pinkish-grey;
+          }
         }
 
         .sub-title {
-          color: $steel-grey;
           font-weight: 300;
+
+          @include themify(day) {
+            color: $steel-grey;
+          }
+
+          @include themify(night) {
+            color: $metallic-blue;
+          }
         }
       }
     }
@@ -51,9 +72,16 @@
 
       .transfer-form {
         .balance {
-          color: $charcoal-grey;
           font-weight: 300;
           margin: 12px 0 24px 100px;
+
+          @include themify(day) {
+            color: $charcoal-grey;
+          }
+
+          @include themify(night) {
+            color: $pinkish-grey;
+          }
 
           .balance-num {
             color: $dark-sky-blue;
@@ -66,19 +94,33 @@
           margin-bottom: 16px;
 
           .form-label {
-            color: $steel-grey;
             flex-grow: 0;
             flex-shrink: 0;
             width: 100px;
+
+            @include themify(day) {
+              color: $steel-grey;
+            }
+
+            @include themify(night) {
+              color: $silver;
+            }
           }
 
           .form-input {
             flex-grow: 1;
 
             .input-help {
-              color: $charcoal-grey;
               font-weight: 300;
               margin: 12px 0;
+
+              @include themify(day) {
+                color: $charcoal-grey;
+              }
+
+              @include themify(night) {
+                color: $pinkish-grey;
+              }
             }
           }
 
@@ -108,8 +150,15 @@
 
               .asset {
                 border-radius: 25px;
-                color: $steel-grey;
                 padding: 3px 6px;
+
+                @include themify(day) {
+                  color: $steel-grey;
+                }
+
+                @include themify(night) {
+                  color: $silver;
+                }
 
                 &:not(:last-child) {
                   margin-right: 8px;
@@ -117,7 +166,14 @@
 
                 &.selected {
                   background-color: $silver;
-                  color: $white;
+
+                  @include themify(day) {
+                    color: $white;
+                  }
+
+                  @include themify(night) {
+                    color: $dark;
+                  }
                 }
               }
             }
@@ -195,9 +251,17 @@
       }
 
       .success {
-        color: $charcoal-grey;
+        font-size: 16px;
         margin-bottom: 30px;
         text-align: center;
+
+        @include themify(day) {
+          color: $charcoal-grey;
+        }
+
+        @include themify(night) {
+          color: $pinkish-grey;
+        }
 
         .amount {
           color: $dark-sky-blue;
