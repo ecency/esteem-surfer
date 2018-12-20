@@ -2,28 +2,25 @@
 eslint-disable react/no-multi-comp
 */
 
-import React, { Fragment, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import { FormattedHTMLMessage, FormattedMessage, injectIntl } from 'react-intl';
+
+import PropTypes from 'prop-types';
+import { Input, Select, Alert, Button, Icon, message } from 'antd';
+import NavBar from './layout/NavBar';
+import AppFooter from './layout/AppFooter';
+import PinRequired from './helpers/PinRequired';
 import QuickProfile from './helpers/QuickProfile';
 import UserAvatar from './elements/UserAvatar';
-
-import NavBar from './layout/NavBar';
 import LinearProgress from './common/LinearProgress';
-import { Input, InputNumber, Select, Alert, Button, Icon, message, Modal } from 'antd';
-import AppFooter from './layout/AppFooter';
 import DeepLinkHandler from './helpers/DeepLinkHandler';
-import PropTypes from 'prop-types';
-import PinRequired from './helpers/PinRequired';
-
-
-import badActors from '../data/bad-actors.json';
 
 import { getAccount, transfer } from '../backend/steem-client';
 import formatChainError from '../utils/format-chain-error';
 import parseToken from '../utils/parse-token';
 
+import badActors from '../data/bad-actors.json';
 import { arrowRight } from '../svg';
-
 
 class AssetSwitch extends PureComponent {
   constructor(props) {
@@ -66,7 +63,12 @@ class Transfer extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
+    this.state = this.resetState();
+    this.timer = null;
+  }
+
+  resetState = () => (
+    {
       step: 1,
       from: null,
       fromData: null,
@@ -79,10 +81,8 @@ class Transfer extends PureComponent {
       memo: '',
       keyRequiredErr: false,
       transferring: false
-    };
-
-    this.timer = null;
-  }
+    }
+  );
 
   assetChanged = (asset) => {
     this.setState({ asset });
@@ -222,6 +222,21 @@ class Transfer extends PureComponent {
     }).finally(() => {
       this.setState({ transferring: false });
     });
+  };
+
+  reset = () => {
+    this.setState(this.resetState());
+  };
+
+  finish = () => {
+    const { activeAccount, history } = this.props;
+    if (activeAccount) {
+      const l = `/@${activeAccount.username}/wallet`;
+      history.push(l);
+      return;
+    }
+
+    history.push('/');
   };
 
   render() {
@@ -414,10 +429,36 @@ class Transfer extends PureComponent {
           }
 
           {step === 3 &&
-          <div/>
+          <div className="transfer-box">
+            <div className="transfer-box-header">
+              <div className="step-no">
+                3
+              </div>
+              <div className="box-titles">
+                <div className="main-title">
+                  <FormattedMessage id="transfer.success-title"/>
+                </div>
+                <div className="sub-title">
+                  <FormattedMessage id="transfer.success-sub-title"/>
+                </div>
+              </div>
+            </div>
+            <div className="transfer-box-body">
+              <div className="success">
+                <FormattedHTMLMessage id="transfer.transfer-summary"
+                                      values={{ amount: `${amount} ${asset}`, from, to }}/>
+              </div>
+              <div className="transfer-form">
+                <div className="form-controls">
+                  <a role="none" className="btn-back" onClick={this.reset}><FormattedMessage id="transfer.reset"/></a>
+                  <Button type="primary" onClick={this.finish}>
+                    <FormattedMessage id="transfer.finish"/>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
           }
-
-
         </div>
         <AppFooter {...this.props} />
         <DeepLinkHandler {...this.props} />
@@ -435,9 +476,7 @@ Transfer.defaultProps = {
 Transfer.propTypes = {
   activeAccount: PropTypes.instanceOf(Object),
   accounts: PropTypes.arrayOf(PropTypes.object),
-  global: PropTypes.shape({
-    pin: PropTypes.string.isRequired
-  }).isRequired,
+  history: PropTypes.instanceOf(Object).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };
 

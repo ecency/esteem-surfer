@@ -179,6 +179,16 @@
           word-break: break-all;
         }
       }
+
+      .success {
+        .amount {
+          color: $dark-sky-blue;
+        }
+
+        .from-user, .to-user {
+          font-weight: 600;
+        }
+      }
     }
   }
 }
