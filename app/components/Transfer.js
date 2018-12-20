@@ -78,6 +78,10 @@ class Transfer extends PureComponent {
   }
 
   componentDidMount() {
+    this.init();
+  }
+
+  init = () => {
     const { match, history, intl } = this.props;
     const { username, asset } = match.params;
 
@@ -106,7 +110,7 @@ class Transfer extends PureComponent {
         this.fetchFromData();
       }
     );
-  }
+  };
 
   fetchFromData = () => {
     const { from } = this.state;
@@ -123,24 +127,18 @@ class Transfer extends PureComponent {
 
   resetState = () => ({
     step: 1,
-
     from: null,
     fromData: null,
     fromError: null,
-
     to: null,
-
+    toData: null,
     toError: null,
     toWarning: null,
-
     amount: '0.001',
     amountError: null,
-
     balance: '0',
     asset: 'STEEM',
-
     memo: '',
-
     inProgress: false,
     transferring: false
   });
@@ -194,12 +192,12 @@ class Transfer extends PureComponent {
         this.setState({ toWarning: null });
       }
 
-      this.setState({ inProgress: true });
+      this.setState({ inProgress: true, toData: null });
 
       return getAccount(to)
         .then(resp => {
           if (resp) {
-            this.setState({ toError: null });
+            this.setState({ toError: null, toData: resp });
           } else {
             this.setState({
               toError: intl.formatMessage({ id: 'transfer.to-not-found' })
@@ -265,8 +263,8 @@ class Transfer extends PureComponent {
   };
 
   canSubmit = () => {
-    const { fromError, toError, amountError, inProgress } = this.state;
-    return !fromError && !toError && !amountError && !inProgress;
+    const { fromError, toData, toError, amountError, inProgress } = this.state;
+    return !fromError && toData && !toError && !amountError && !inProgress;
   };
 
   getBalance = () => {
@@ -529,7 +527,7 @@ class Transfer extends PureComponent {
                       <QuickProfile
                         {...this.props}
                         reputation={25}
-                        username={from}
+                        username={to}
                       >
                         <div className="to-user">
                           <UserAvatar user={to} size="xLarge" />
