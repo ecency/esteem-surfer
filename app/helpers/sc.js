@@ -136,8 +136,19 @@ export const scAppAuth = () => standardScWindow('authorize/@esteemapp');
 
 export const scAppRevoke = () => standardScWindow('revoke/@esteemapp');
 
-export const scWitnessVote = (account, witness, approve) => standardScWindow(`sign/account-witness-vote?account=${account}&witness=${witness}&approve=${approve}`);
+export const scWitnessVote = (account, witness, approve) =>
+  standardScWindow(
+    `sign/account-witness-vote?account=${account}&witness=${witness}&approve=${approve}`
+  );
 
-export const scWitnessProxy = (account, proxy) => standardScWindow(`sign/account-witness-proxy?account=${account}&proxy=${proxy}`);
+export const scWitnessProxy = (account, proxy) =>
+  standardScWindow(
+    `sign/account-witness-proxy?account=${account}&proxy=${proxy}`
+  );
 
-export const scTransfer = (from, to, amount, memo) => standardScWindow(`sign/transfer-from-savings?from=${from}&to=${to}&amount=${encodeURIComponent(amount)}&memo=${encodeURIComponent(memo)}`);
+export const scTransfer = (from, to, amount, memo) =>
+  standardScWindow(
+    `sign/transfer?from=${from}&to=${to}&amount=${encodeURIComponent(
+      amount
+    )}&memo=${encodeURIComponent(memo)}`
+  );
