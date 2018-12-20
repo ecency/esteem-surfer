@@ -4,9 +4,7 @@ import { Modal } from 'antd';
 import PropTypes from 'prop-types';
 import PinConfirm from '../dialogs/PinConfirm';
 
-
 class PinRequired extends Component {
-
   constructor(props) {
     super(props);
 
@@ -16,7 +14,10 @@ class PinRequired extends Component {
   }
 
   onPinInvalidated = () => {
-
+    const { history } = this.props;
+    this.setState({ show: false }, () => {
+      history.push('/');
+    });
   };
 
   onConfirmPinSuccess = () => {
@@ -40,33 +41,32 @@ class PinRequired extends Component {
 
     return (
       <Fragment>
-        {show &&
-        <Modal
-          footer={null}
-          closable={false}
-          keyboard={false}
-          visible
-          width="500px"
-          centered
-          destroyOnClose
-        >
-          <PinConfirm
-            {...this.props}
-            onSuccess={this.onConfirmPinSuccess}
-            onInvalidate={this.onPinInvalidated}
-          />
-        </Modal>
-        }
+        {show && (
+          <Modal
+            footer={null}
+            closable={false}
+            keyboard={false}
+            visible
+            width="500px"
+            centered
+            destroyOnClose
+          >
+            <PinConfirm
+              {...this.props}
+              onSuccess={this.onConfirmPinSuccess}
+              onInvalidate={this.onPinInvalidated}
+            />
+          </Modal>
+        )}
         {newChild}
       </Fragment>
     );
   }
 }
 
-PinRequired.defaultProps = {};
-
 PinRequired.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
+  history: PropTypes.instanceOf(Object).isRequired
 };
 
 export default PinRequired;
