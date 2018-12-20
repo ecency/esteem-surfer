@@ -42,6 +42,7 @@
     }
 
     .transfer-box-body {
+      border-top: 1px solid transparent;
       padding: 24px 32px;
 
       .transfer-alert {
@@ -206,6 +207,12 @@
         .to-user {
           font-weight: 700;
         }
+      }
+    }
+
+    &.in-progress {
+      .transfer-box-body {
+        border-top: none;
       }
     }
   }

@@ -361,7 +361,9 @@ class Transfer extends PureComponent {
         {fromData && (
           <div className="app-content transfer-page">
             {step === 1 && (
-              <div className="transfer-box">
+              <div
+                className={`transfer-box ${inProgress ? 'in-progress' : ''}`}
+              >
                 <div className="transfer-box-header">
                   <div className="step-no">1</div>
                   <div className="box-titles">
