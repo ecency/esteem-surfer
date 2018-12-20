@@ -17,7 +17,21 @@ export default () => (
     <Switch>
       <Route
         exact
-        path="/transfer"
+        path="/@:username/transfer/:asset"
+        component={props => (
+          <TransferPage timestamp={new Date().toString()} {...props} />
+        )}
+      />
+      <Route
+        exact
+        path="/@:username/transfer-saving/:asset"
+        component={props => (
+          <TransferPage timestamp={new Date().toString()} {...props} />
+        )}
+      />
+      <Route
+        exact
+        path="/@:username/power-up"
         component={props => (
           <TransferPage timestamp={new Date().toString()} {...props} />
         )}

@@ -807,7 +807,6 @@ export class SectionWallet extends Component {
         </Menu.Item>
       </Menu>;
 
-
       return (
         <div className="wallet-section">
           <div className="first-row">
