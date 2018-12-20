@@ -20,11 +20,10 @@ class PinRequired extends Component {
     });
   };
 
-  onConfirmPinSuccess = () => {
-    const { children } = this.props;
-    const { onClick } = children.props;
+  onConfirmPinSuccess = (value) => {
+    const { onSuccess } = this.props;
     this.setState({ show: false }, () => {
-      onClick();
+      onSuccess(value);
     });
   };
 
@@ -69,9 +68,15 @@ class PinRequired extends Component {
   }
 }
 
+PinRequired.defaultProps = {
+  onSuccess: () => {
+  }
+};
+
 PinRequired.propTypes = {
   children: PropTypes.element.isRequired,
-  history: PropTypes.instanceOf(Object).isRequired
+  history: PropTypes.instanceOf(Object).isRequired,
+  onSuccess: PropTypes.func
 };
 
 export default PinRequired;

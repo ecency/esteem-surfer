@@ -2,7 +2,7 @@ import { Client, PrivateKey } from 'dsteem';
 
 import sc2 from 'sc2-sdk';
 
-import { scAppAuth, scAppRevoke, scWitnessVote, scWitnessProxy } from '../helpers/sc';
+import { scAppAuth, scAppRevoke, scWitnessVote, scWitnessProxy, scTransfer } from '../helpers/sc';
 
 import { decryptKey } from '../utils/crypto';
 
@@ -493,9 +493,10 @@ export const witnessProxy = (account, pin, proxy) => {
 };
 
 
-export const transfer = (account, pin, from, to, amount, memo) => {
-  if (account.type === 's') {
+export const transfer = (account, pin, to, amount, memo) => {
+  const { username: from } = account;
 
+  if (account.type === 's') {
     const key = decryptKey(account.keys.active, pin);
     const privateKey = PrivateKey.fromString(key);
 
@@ -506,6 +507,10 @@ export const transfer = (account, pin, from, to, amount, memo) => {
       memo
     };
 
-    return client.transfer();
+    return client.broadcast.transfer(args, privateKey);
+  }
+
+  if (account.type === 'sc') {
+    return scTransfer(from, to, amount, memo);
   }
 };

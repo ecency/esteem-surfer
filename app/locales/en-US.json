@@ -372,6 +372,10 @@
     "next": "Next",
     "confirm-title": "Confirm your Transfer",
     "confirm-sub-title": "Please, check if everything is correct",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "back": "Back",
+    "success-title": "Success",
+    "success-sub-title": "Transfer successful",
+    "transfer-summary": "Transferred <span class=\"amount\">{amount}</span><br />From {from} to {to}"
   }
 }

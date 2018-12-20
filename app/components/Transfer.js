@@ -6,7 +6,7 @@ import React, { Fragment, PureComponent } from 'react';
 import { FormattedHTMLMessage, FormattedMessage, injectIntl } from 'react-intl';
 import QuickProfile from './helpers/QuickProfile';
 import UserAvatar from './elements/UserAvatar';
-import EntryLink from './helpers/EntryLink';
+
 import NavBar from './layout/NavBar';
 import LinearProgress from './common/LinearProgress';
 import { Input, InputNumber, Select, Alert, Button, Icon, message, Modal } from 'antd';
@@ -18,13 +18,12 @@ import PinRequired from './helpers/PinRequired';
 
 import badActors from '../data/bad-actors.json';
 
-import { getAccount } from '../backend/steem-client';
+import { getAccount, transfer } from '../backend/steem-client';
 import formatChainError from '../utils/format-chain-error';
 import parseToken from '../utils/parse-token';
 
 import { arrowRight } from '../svg';
-import { getItem } from '../helpers/storage';
-import PinConfirm from './dialogs/PinConfirm';
+
 
 class AssetSwitch extends PureComponent {
   constructor(props) {
@@ -77,9 +76,9 @@ class Transfer extends PureComponent {
       amount: '0.001',
       balance: '0',
       asset: 'STEEM',
-      memot: '',
+      memo: '',
       keyRequiredErr: false,
-      pinConfirmFlag: false
+      transferring: false
     };
 
     this.timer = null;
@@ -207,13 +206,26 @@ class Transfer extends PureComponent {
     this.setState({ step: 1 });
   };
 
-  confirm = () => {
-    console.log('confirm');
+  confirm = (pin) => {
+    const { accounts } = this.props;
+    const { from, to, amount, asset, memo } = this.state;
+    const fullAmount = `${amount} ${asset}`;
 
+    const account = accounts.find(x => x.username === from);
+
+    this.setState({ transferring: true });
+    return transfer(account, pin, to, fullAmount, memo).then(resp => {
+      this.setState({ step: 3 });
+      return resp;
+    }).catch(err => {
+      message.error(formatChainError(err));
+    }).finally(() => {
+      this.setState({ transferring: false });
+    });
   };
 
   render() {
-    const { intl, activeAccount, accounts } = this.props;
+    const { intl, accounts } = this.props;
 
     const {
       step,
@@ -226,7 +238,7 @@ class Transfer extends PureComponent {
       asset,
       memo,
       keyRequiredErr,
-      pinConfirmFlag
+      transferring
     } = this.state;
 
 
@@ -358,19 +370,22 @@ class Transfer extends PureComponent {
                 </div>
               </div>
             </div>
-
             <div className="transfer-box-body">
               <div className="confirmation">
                 <div className="users">
-                  <div className="from-user">
-                    <UserAvatar user={from} size="xLarge"/>
-                  </div>
+                  <QuickProfile {...this.props} reputation={25} username={from}>
+                    <div className="from-user">
+                      <UserAvatar user={from} size="xLarge"/>
+                    </div>
+                  </QuickProfile>
                   <div className="arrow">
                     {arrowRight}
                   </div>
-                  <div className="to-user">
-                    <UserAvatar user={to} size="xLarge"/>
-                  </div>
+                  <QuickProfile {...this.props} reputation={25} username={from}>
+                    <div className="to-user">
+                      <UserAvatar user={to} size="xLarge"/>
+                    </div>
+                  </QuickProfile>
                 </div>
 
                 <div className="amount">
@@ -381,17 +396,20 @@ class Transfer extends PureComponent {
                 <div className="memo">{memo}</div>
                 }
               </div>
-
               <div className="transfer-form">
                 <div className="form-controls">
-                  <a className="btn-back" onClick={this.back}>Back</a>
-                  <PinRequired {...this.props}>
-                    <Button type="primary" onClick={this.confirm}><FormattedMessage id="transfer.confirm"/></Button>
+                  <a role="none" className="btn-back" onClick={this.back}><FormattedMessage id="transfer.back"/></a>
+                  <PinRequired {...this.props} onSuccess={this.confirm}>
+                    <Button type="primary" disabled={transferring}>
+                      {transferring &&
+                      <Icon type="loading" style={{ fontSize: 12 }} spin/>
+                      }
+                      <FormattedMessage id="transfer.confirm"/>
+                    </Button>
                   </PinRequired>
                 </div>
               </div>
             </div>
-
           </div>
           }
 
