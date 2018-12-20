@@ -229,14 +229,9 @@ class Transfer extends PureComponent {
   };
 
   finish = () => {
-    const { activeAccount, history } = this.props;
-    if (activeAccount) {
-      const l = `/@${activeAccount.username}/wallet`;
-      history.push(l);
-      return;
-    }
-
-    history.push('/');
+    const { from } = this.state;
+    const l = `/@${from}/wallet`;
+    history.push(l);
   };
 
   render() {

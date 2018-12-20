@@ -181,12 +181,15 @@
       }
 
       .success {
+        margin-bottom: 30px;
+        color: $charcoal-grey;
+
         .amount {
           color: $dark-sky-blue;
         }
 
         .from-user, .to-user {
-          font-weight: 600;
+          font-weight: 700;
         }
       }
     }
