@@ -361,6 +361,8 @@
   "transfer": {
     "transfer-title": "Transfer to Account",
     "transfer-sub-title": "Move funds to another Steem account",
+    "transfer-saving-title": "Transfer to Savings",
+    "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
     "from": "From",
     "from-placeholder": "Select a user",
     "to": "To",

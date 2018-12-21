@@ -15,7 +15,11 @@ import UserAvatar from './elements/UserAvatar';
 import LinearProgress from './common/LinearProgress';
 import DeepLinkHandler from './helpers/DeepLinkHandler';
 
-import { getAccount, transfer } from '../backend/steem-client';
+import {
+  getAccount,
+  transfer,
+  transferToSavings
+} from '../backend/steem-client';
 import formatChainError from '../utils/format-chain-error';
 import parseToken from '../utils/parse-token';
 import amountFormatCheck from '../utils/amount-format-check';
@@ -300,14 +304,27 @@ class Transfer extends PureComponent {
   };
 
   confirm = pin => {
-    const { accounts } = this.props;
+    const { accounts, mode } = this.props;
     const { from, to, amount, asset, memo } = this.state;
     const fullAmount = `${amount} ${asset}`;
 
     const account = accounts.find(x => x.username === from);
 
+    let fn;
+    const args = [account, pin, to, fullAmount, memo];
+    switch (mode) {
+      case 'transfer':
+        fn = transfer;
+        break;
+      case 'transfer-saving':
+        fn = transferToSavings;
+        break;
+      default:
+        return;
+    }
+
     this.setState({ inProgress: true });
-    return transfer(account, pin, to, fullAmount, memo)
+    return fn(...args)
       .then(resp => {
         this.setState({ step: 3 });
         return resp;
@@ -334,7 +351,7 @@ class Transfer extends PureComponent {
   };
 
   render() {
-    const { intl, accounts } = this.props;
+    const { intl, accounts, mode } = this.props;
 
     const {
       step,
@@ -376,10 +393,20 @@ class Transfer extends PureComponent {
                   <div className="step-no">1</div>
                   <div className="box-titles">
                     <div className="main-title">
-                      <FormattedMessage id="transfer.transfer-title" />
+                      {mode === 'transfer' && (
+                        <FormattedMessage id="transfer.transfer-title" />
+                      )}
+                      {mode === 'transfer-saving' && (
+                        <FormattedMessage id="transfer.transfer-saving-title" />
+                      )}
                     </div>
                     <div className="sub-title">
-                      <FormattedMessage id="transfer.transfer-sub-title" />
+                      {mode === 'transfer' && (
+                        <FormattedMessage id="transfer.transfer-sub-title" />
+                      )}
+                      {mode === 'transfer-saving' && (
+                        <FormattedMessage id="transfer.transfer-saving-sub-title" />
+                      )}
                     </div>
                   </div>
                 </div>

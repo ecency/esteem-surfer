@@ -2,7 +2,14 @@ import { Client, PrivateKey } from 'dsteem';
 
 import sc2 from 'sc2-sdk';
 
-import { scAppAuth, scAppRevoke, scWitnessVote, scWitnessProxy, scTransfer } from '../helpers/sc';
+import {
+  scAppAuth,
+  scAppRevoke,
+  scWitnessVote,
+  scWitnessProxy,
+  scTransfer,
+  scTransferToSavings
+} from '../helpers/sc';
 
 import { decryptKey } from '../utils/crypto';
 
@@ -64,13 +71,8 @@ export const getFollowing = (
 export const getAccountRC = username =>
   client.call('rc_api', 'find_rc_accounts', { accounts: [username] });
 
-
 export const getWitnessesByVote = (from = undefined, limit = 100) =>
-  client.call('database_api', 'get_witnesses_by_vote', [
-    from,
-    limit
-  ]);
-
+  client.call('database_api', 'get_witnesses_by_vote', [from, limit]);
 
 export const vote = (account, pin, author, permlink, weight) => {
   if (account.type === 's') {
@@ -443,7 +445,6 @@ export const claimRewardBalance = (
   }
 };
 
-
 export const witnessVote = (account, pin, witness, approve) => {
   if (account.type === 's') {
     const opArray = [
@@ -468,7 +469,6 @@ export const witnessVote = (account, pin, witness, approve) => {
   }
 };
 
-
 export const witnessProxy = (account, pin, proxy) => {
   if (account.type === 's') {
     const opArray = [
@@ -492,7 +492,6 @@ export const witnessProxy = (account, pin, proxy) => {
   }
 };
 
-
 export const transfer = (account, pin, to, amount, memo) => {
   const { username: from } = account;
 
@@ -512,5 +511,32 @@ export const transfer = (account, pin, to, amount, memo) => {
 
   if (account.type === 'sc') {
     return scTransfer(from, to, amount, memo);
+  }
+};
+
+export const transferToSavings = (account, pin, to, amount, memo) => {
+  const { username: from } = account;
+
+  if (account.type === 's') {
+    const key = decryptKey(account.keys.active, pin);
+    const privateKey = PrivateKey.fromString(key);
+
+    const opArray = [
+      [
+        'transfer_to_savings',
+        {
+          from,
+          to,
+          amount,
+          memo
+        }
+      ]
+    ];
+
+    return client.broadcast.sendOperations(opArray, privateKey);
+  }
+
+  if (account.type === 'sc') {
+    return scTransferToSavings(from, to, amount, memo);
   }
 };
