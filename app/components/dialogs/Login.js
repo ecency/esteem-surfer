@@ -15,6 +15,8 @@ import { getAccounts } from '../../backend/steem-client';
 import { scLogin } from '../../helpers/sc';
 import UserAvatar from '../elements/UserAvatar';
 
+import { scTokenRenew } from '../../backend/esteem-client';
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +26,7 @@ class Login extends Component {
     };
   }
 
-  afterLogin = (username) => {
+  afterLogin = username => {
     const ev = new CustomEvent('user-login', { detail: { username } });
     window.dispatchEvent(ev);
   };
@@ -39,13 +41,19 @@ class Login extends Component {
   doScLogin = async () => {
     let resp;
     try {
-      resp = await scLogin();
+      const loginResp = await scLogin();
+      resp = await scTokenRenew(loginResp.code);
     } catch (e) {
       return;
     }
 
     const { actions, onSuccess } = this.props;
-    actions.addAccountSc(resp.username, resp.access_token, resp.expires_in);
+    actions.addAccountSc(
+      resp.username,
+      resp.refresh_token,
+      resp.access_token,
+      resp.expires_in
+    );
     actions.logIn(resp.username);
     onSuccess(resp.username);
     this.afterLogin(resp.username);

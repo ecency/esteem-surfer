@@ -73,7 +73,7 @@ export const scLogin = () =>
 
     const authUrl = `https://v2.steemconnect.com/oauth2/authorize?client_id=${APP_NAME}&redirect_uri=${encodeURIComponent(
       REDIR_URL
-    )}&scope=${encodeURIComponent(SCOPE)}`;
+    )}&response_type=code&scope=${encodeURIComponent(SCOPE)}`;
 
     win.loadURL(createWindowView(authUrl));
 
@@ -92,9 +92,7 @@ export const scLogin = () =>
         const parsedUrl = new URL(url);
 
         const rv = {
-          access_token: parsedUrl.searchParams.get('access_token'),
-          expires_in: parsedUrl.searchParams.get('expires_in'),
-          username: parsedUrl.searchParams.get('username')
+          code: parsedUrl.searchParams.get('code')
         };
 
         resolve(rv);

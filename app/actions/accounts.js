@@ -30,10 +30,12 @@ export const addAccount = (username, keys) => (dispatch, getState) => {
   dispatch(accountAdded(username, accountData));
 };
 
-export const addAccountSc = (username, accessToken, expiresIn) => (
-  dispatch,
-  getState
-) => {
+export const addAccountSc = (
+  username,
+  accessToken,
+  refreshToken,
+  expiresIn
+) => (dispatch, getState) => {
   const { global } = getState();
 
   const { pin } = global;
@@ -42,6 +44,7 @@ export const addAccountSc = (username, accessToken, expiresIn) => (
     type: 'sc',
     username,
     accessToken: encryptKey(accessToken, pin),
+    refreshToken: encryptKey(refreshToken, pin),
     expiresIn
   };
 
