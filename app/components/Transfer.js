@@ -1,5 +1,5 @@
 /*
-eslint-disable react/no-multi-comp
+eslint-disable react/no-multi-comp,no-case-declarations,no-bitwise
 */
 
 import React, { PureComponent } from 'react';
@@ -18,7 +18,8 @@ import DeepLinkHandler from './helpers/DeepLinkHandler';
 import {
   getAccount,
   transfer,
-  transferToSavings
+  transferToSavings,
+  transferFromSavings
 } from '../backend/steem-client';
 import formatChainError from '../utils/format-chain-error';
 import parseToken from '../utils/parse-token';
@@ -291,7 +292,7 @@ class Transfer extends PureComponent {
       return null;
     }
 
-    if (mode === 'from-savings') {
+    if (mode === 'withdraw-saving') {
       const k = asset === 'STEEM' ? 'savings_balance' : 'savings_sbd_balance';
       return parseToken(fromData[k]);
     }
@@ -316,13 +317,18 @@ class Transfer extends PureComponent {
     const account = accounts.find(x => x.username === from);
 
     let fn;
-    const args = [account, pin, to, fullAmount, memo];
+    let args = [account, pin, to, fullAmount, memo];
     switch (mode) {
       case 'transfer':
         fn = transfer;
         break;
       case 'transfer-saving':
         fn = transferToSavings;
+        break;
+      case 'withdraw-saving':
+        fn = transferFromSavings;
+        const requestId = new Date().getTime() >>> 0;
+        args = [account, pin, requestId, to, fullAmount, memo];
         break;
       default:
         return;
@@ -404,6 +410,9 @@ class Transfer extends PureComponent {
                       {mode === 'transfer-saving' && (
                         <FormattedMessage id="transfer.transfer-saving-title" />
                       )}
+                      {mode === 'withdraw-saving' && (
+                        <FormattedMessage id="transfer.withdraw-saving-title" />
+                      )}
                     </div>
                     <div className="sub-title">
                       {mode === 'transfer' && (
@@ -411,6 +420,9 @@ class Transfer extends PureComponent {
                       )}
                       {mode === 'transfer-saving' && (
                         <FormattedMessage id="transfer.transfer-saving-sub-title" />
+                      )}
+                      {mode === 'withdraw-saving' && (
+                        <FormattedMessage id="transfer.withdraw-saving-sub-title" />
                       )}
                     </div>
                   </div>
@@ -499,19 +511,17 @@ class Transfer extends PureComponent {
                         onChange={this.assetChanged}
                       />
                     </div>
-                    {balance && (
-                      <div
-                        role="none"
-                        className="balance"
-                        onClick={this.copyBalance}
-                      >
-                        <FormattedMessage id="transfer.balance" />:{' '}
-                        <span className="balance-num">
-                          {' '}
-                          {balance} {asset}
-                        </span>
-                      </div>
-                    )}
+                    <div
+                      role="none"
+                      className="balance"
+                      onClick={this.copyBalance}
+                    >
+                      <FormattedMessage id="transfer.balance" />:{' '}
+                      <span className="balance-num">
+                        {' '}
+                        {balance} {asset}
+                      </span>
+                    </div>
                     <div className="form-item">
                       <div className="form-label">
                         <FormattedMessage id="transfer.memo" />

@@ -39,9 +39,13 @@ export default () => (
       />
       <Route
         exact
-        path="/@:username/power-up"
+        path="/@:username/withdraw-saving/:asset"
         component={props => (
-          <TransferPage timestamp={new Date().toString()} {...props} />
+          <TransferPage
+            timestamp={new Date().toString()}
+            {...props}
+            mode="withdraw-saving"
+          />
         )}
       />
       <Route

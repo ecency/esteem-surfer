@@ -8,7 +8,8 @@ import {
   scWitnessVote,
   scWitnessProxy,
   scTransfer,
-  scTransferToSavings
+  scTransferToSavings,
+  scTransferFromSavings
 } from '../helpers/sc';
 
 import { decryptKey } from '../utils/crypto';
@@ -538,5 +539,40 @@ export const transferToSavings = (account, pin, to, amount, memo) => {
 
   if (account.type === 'sc') {
     return scTransferToSavings(from, to, amount, memo);
+  }
+};
+
+export const transferFromSavings = (
+  account,
+  pin,
+  requestId,
+  to,
+  amount,
+  memo
+) => {
+  const { username: from } = account;
+
+  if (account.type === 's') {
+    const key = decryptKey(account.keys.active, pin);
+    const privateKey = PrivateKey.fromString(key);
+
+    const opArray = [
+      [
+        'transfer_from_savings',
+        {
+          from,
+          to,
+          amount,
+          memo,
+          request_id: requestId
+        }
+      ]
+    ];
+
+    return client.broadcast.sendOperations(opArray, privateKey);
+  }
+
+  if (account.type === 'sc') {
+    return scTransferFromSavings(from, requestId, to, amount, memo);
   }
 };

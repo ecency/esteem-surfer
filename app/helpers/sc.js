@@ -159,3 +159,12 @@ export const scTransferToSavings = (from, to, amount, memo) =>
       amount
     )}&memo=${encodeURIComponent(memo)}`
   );
+
+export const scTransferFromSavings = (from, requestId, to, amount, memo) =>
+  standardScWindow(
+    `sign/transfer-from-savings?from=${from}&request_id=${encodeURIComponent(
+      requestId
+    )}&to=${to}&amount=${encodeURIComponent(amount)}&memo=${encodeURIComponent(
+      memo
+    )}`
+  );
