@@ -154,7 +154,7 @@
     "steem-power-total": "Всего Силы Steem Power",
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Токены, стоимостью примерно $1 от токена Steem.",
-    "savings": "Сбережения",
+    "savings": "Сейф",
     "savings-description": "Сейф, баланс которого можно вывести в течение 3 дней после запроса.",
     "next-power-down": "Следующее понижение силы запланировано {time}",
     "exchange": "Курс",
@@ -169,11 +169,11 @@
     "transaction-fill_order": "Заказ исполнен",
     "claim-reward-balance": "Зачислить награду на баланс",
     "claim-reward-balance-ok": "Награда зачислена на баланс",
-    "transfer": "Transfer",
-    "transfer-to-savings": "Transfer to savings",
-    "power-up": "Power up",
-    "withdraw-steem": "Withdraw Steem",
-    "withdraw-sbd": "Withdraw Steem Dollar"
+    "transfer": "Перевод",
+    "transfer-to-savings": "Перевод в сейф",
+    "power-up": "Повысить Силу",
+    "withdraw-steem": "Снять Steem",
+    "withdraw-sbd": "Снять Steem Dollar"
   },
   "composer": {
     "title-placeholder": "Заголовок",
