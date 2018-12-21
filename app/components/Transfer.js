@@ -268,6 +268,11 @@ class Transfer extends PureComponent {
     this.setState({ amountError: null });
   };
 
+  copyBalance = () => {
+    const balance = this.getBalance();
+    this.setState({ amount: String(balance) });
+  };
+
   memoChanged = e => {
     const { value: memo } = e.target;
     this.setState({ memo });
@@ -495,7 +500,11 @@ class Transfer extends PureComponent {
                       />
                     </div>
                     {balance && (
-                      <div className="balance">
+                      <div
+                        role="none"
+                        className="balance"
+                        onClick={this.copyBalance}
+                      >
                         <FormattedMessage id="transfer.balance" />:{' '}
                         <span className="balance-num">
                           {' '}

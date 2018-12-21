@@ -74,6 +74,7 @@
         .balance {
           font-weight: 300;
           margin: 12px 0 24px 100px;
+          cursor: pointer;
 
           @include themify(day) {
             color: $charcoal-grey;
