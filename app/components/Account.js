@@ -52,7 +52,7 @@ import catchEntryImage from '../utils/catch-entry-image';
 import entryBodySummary from '../utils/entry-body-summary';
 import formatChainError from '../utils/format-chain-error';
 import DeepLinkHandler from './helpers/DeepLinkHandler';
-import filters from '../constants/filters';
+
 
 class Profile extends Component {
 
@@ -760,52 +760,54 @@ export class SectionWallet extends Component {
 
       const isMyPage = activeAccount && activeAccount.username === username;
 
-      const actionListSteem = <Menu className="surfer-dropdown-menu">
-        <Menu.Item key="transfer">
-          <Link to={`/@${activeAccount.username}/transfer/steem`}>
-            <FormattedMessage id="account.transfer"/>
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="transfer-saving">
-          <Link to={`/@${activeAccount.username}/transfer-saving/steem`}>
-            <FormattedMessage id="account.transfer-to-savings"/>
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="power-up">
-          <Link to={`/@${activeAccount.username}/power-up`}>
-            <FormattedMessage id="account.power-up"/>
-          </Link>
-        </Menu.Item>
-      </Menu>;
+      let actionListSteem;
+      let actionListSbd;
+      let actionListWithdrawSteem;
+      let actionListWithdrawSbd;
 
-      const actionListSbd = <Menu className="surfer-dropdown-menu">
-        <Menu.Item key="transfer">
-          <Link to={`/@${activeAccount.username}/transfer/sbd`}>
-            <FormattedMessage id="account.transfer"/>
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="transfer-saving">
-          <Link to={`/@${activeAccount.username}/transfer-saving/sbd`}>
-            <FormattedMessage id="account.transfer-to-savings"/>
-          </Link>
-        </Menu.Item>
-      </Menu>;
+      if (isMyPage) {
+        actionListSteem = <Menu className="surfer-dropdown-menu">
+          <Menu.Item key="transfer">
+            <Link to={`/@${activeAccount.username}/transfer/steem`}>
+              <FormattedMessage id="account.transfer"/>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="transfer-saving">
+            <Link to={`/@${activeAccount.username}/transfer-saving/steem`}>
+              <FormattedMessage id="account.transfer-to-savings"/>
+            </Link>
+          </Menu.Item>
+        </Menu>;
 
-      const actionListWithdrawSteem = <Menu className="surfer-dropdown-menu">
-        <Menu.Item key="transfer">
-          <Link to={`/@${activeAccount.username}/withdraw/steem`}>
-            <FormattedMessage id="account.withdraw-steem"/>
-          </Link>
-        </Menu.Item>
-      </Menu>;
+        actionListSbd = <Menu className="surfer-dropdown-menu">
+          <Menu.Item key="transfer">
+            <Link to={`/@${activeAccount.username}/transfer/sbd`}>
+              <FormattedMessage id="account.transfer"/>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="transfer-saving">
+            <Link to={`/@${activeAccount.username}/transfer-saving/sbd`}>
+              <FormattedMessage id="account.transfer-to-savings"/>
+            </Link>
+          </Menu.Item>
+        </Menu>;
 
-      const actionListWithdrawSbd = <Menu className="surfer-dropdown-menu">
-        <Menu.Item key="transfer">
-          <Link to={`/@${activeAccount.username}/withdraw/sbd`}>
-            <FormattedMessage id="account.withdraw-sbd"/>
-          </Link>
-        </Menu.Item>
-      </Menu>;
+        actionListWithdrawSteem = <Menu className="surfer-dropdown-menu">
+          <Menu.Item key="withdraw-saving">
+            <Link to={`/@${activeAccount.username}/withdraw-saving/steem`}>
+              <FormattedMessage id="account.withdraw-steem"/>
+            </Link>
+          </Menu.Item>
+        </Menu>;
+
+        actionListWithdrawSbd = <Menu className="surfer-dropdown-menu">
+          <Menu.Item key="withdraw-saving">
+            <Link to={`/@${activeAccount.username}/withdraw-saving/sbd`}>
+              <FormattedMessage id="account.withdraw-sbd"/>
+            </Link>
+          </Menu.Item>
+        </Menu>;
+      }
 
       return (
         <div className="wallet-section">
