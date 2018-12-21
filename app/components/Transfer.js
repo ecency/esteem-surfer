@@ -79,6 +79,12 @@ class Transfer extends PureComponent {
 
   componentDidMount() {
     this.init();
+
+    window.addEventListener('user-login', this.init);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('user-login', this.init);
   }
 
   init = () => {
