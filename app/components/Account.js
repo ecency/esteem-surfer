@@ -860,11 +860,11 @@ export class SectionWallet extends Component {
                   <div className="fund-title"><FormattedMessage id="account.steem"/></div>
                   <div className="fund-number"><FormattedNumber minimumFractionDigits={3} value={balance}/> {'STEEM'}
                   </div>
-                  {isMyPage &&
                   <div className="fund-action">
+                    {isMyPage &&
                     <DropDown menu={actionListSteem} location={location}/>
+                    }
                   </div>
-                  }
                 </div>
               </div>
 
@@ -934,11 +934,11 @@ export class SectionWallet extends Component {
                     <FormattedNumber currency="USD" style="currency" currencyDisplay="symbol"
                                      minimumFractionDigits={3} value={sbdBalance}/>
                   </div>
-                  {isMyPage &&
                   <div className="fund-action">
+                    {isMyPage &&
                     <DropDown menu={actionListSbd} location={location}/>
+                    }
                   </div>
-                  }
                 </div>
               </div>
               <div className="fund fund-savings alternative">
@@ -952,22 +952,22 @@ export class SectionWallet extends Component {
                   <div className="fund-number">
                     <FormattedNumber minimumFractionDigits={3} value={savingBalance}/> {'STEEM'}
                   </div>
-                  {isMyPage &&
                   <div className="fund-action">
+                    {isMyPage &&
                     <DropDown menu={actionListWithdrawSteem} location={location}/>
+                    }
                   </div>
-                  }
                 </div>
                 <div className="fund-line">
                   <div className="fund-number">
                     <FormattedNumber currency="USD" style="currency" currencyDisplay="symbol"
                                      minimumFractionDigits={3} value={savingBalanceSbd}/>
                   </div>
-                  {isMyPage &&
                   <div className="fund-action">
+                    {isMyPage &&
                     <DropDown menu={actionListWithdrawSbd} location={location}/>
+                    }
                   </div>
-                  }
                 </div>
               </div>
               {showPowerDown &&
