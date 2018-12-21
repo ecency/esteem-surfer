@@ -123,7 +123,9 @@ class Transfer extends PureComponent {
 
     return getAccount(from)
       .then(resp => {
-        this.setState({ fromData: resp });
+        this.setState({ fromData: resp }, () => {
+          this.checkAmount();
+        });
         return resp;
       })
       .catch(e => {
