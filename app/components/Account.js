@@ -1337,7 +1337,7 @@ class Account extends Component {
                       ''
                     )}
                     {entryList.valueSeq().map(d => (
-                      <EntryListItem key={d.id} {...this.props} entry={d} asAuthor={username}/>
+                      <EntryListItem key={`${d.author}-${d.permlink}`} {...this.props} entry={d} asAuthor={username}/>
                     ))}
                   </div>
                 </div>

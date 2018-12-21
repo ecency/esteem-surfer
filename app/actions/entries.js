@@ -121,11 +121,11 @@ export function fetchEntries(what, tag = '', more = false) {
   };
 }
 
-export function updateEntry(entryId, newData) {
+export function updateEntry(newData) {
   return dispatch => {
     dispatch({
       type: UPDATE_ENTRY,
-      payload: { id: entryId, data: newData }
+      payload: {data: newData }
     });
   };
 }

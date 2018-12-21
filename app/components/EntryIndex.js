@@ -208,7 +208,7 @@ class EntryIndex extends PureComponent {
                   )}
                   {entryList.valueSeq().map(d => (
                     <EntryListItem
-                      key={d.id}
+                      key={`${d.author}-${d.permlink}`}
                       {...Object.assign({}, this.props, { entry: d })}
                     />
                   ))}

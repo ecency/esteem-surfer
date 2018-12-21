@@ -71,7 +71,7 @@ class EntryVoteBtn extends Component {
     const { global, afterVote } = this.props;
     const { pin } = global;
     const { username } = activeAccount;
-    const { author, permlink, id } = entry;
+    const { author, permlink } = entry;
 
     let weight = 0;
 
@@ -94,7 +94,7 @@ class EntryVoteBtn extends Component {
         this.setState({ voting: false, activeVotes: votes });
       }
 
-      actions.updateEntry(id, newEntry);
+      actions.updateEntry(newEntry);
       afterVote(newEntry);
     }
   };
@@ -216,7 +216,6 @@ EntryVoteBtn.propTypes = {
   dynamicProps: PropTypes.instanceOf(Object).isRequired,
   activeAccount: PropTypes.instanceOf(Object),
   entry: PropTypes.shape({
-    id: PropTypes.number.isRequired,
     author: PropTypes.string.isRequired,
     permlink: PropTypes.string.isRequired,
     active_votes: PropTypes.arrayOf(Object)

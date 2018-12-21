@@ -67,9 +67,9 @@ export default function entries(state = defaultState, action) {
         .setIn([groupKey, 'hasMore'], hasMore);
 
       newEntries.forEach(entry => {
-        if (!newState.hasIn([groupKey, 'entries', `${entry.id}`])) {
+        if (!newState.hasIn([groupKey, 'entries', `${entry.author}-${entry.permlink}`])) {
           newState = newState.setIn(
-            [groupKey, 'entries', `${entry.id}`],
+            [groupKey, 'entries', `${entry.author}-${entry.permlink}`],
             entry
           );
         }
@@ -91,12 +91,12 @@ export default function entries(state = defaultState, action) {
         .setIn([groupKey, 'loading'], false);
     }
     case UPDATE_ENTRY: {
-      const { id, data } = action.payload;
+      const { data } = action.payload;
       let newState = state.asImmutable();
 
       newState.keySeq().forEach(groupKey => {
-        if (newState.hasIn([groupKey, 'entries', `${id}`])) {
-          newState = newState.setIn([groupKey, 'entries', `${id}`], data);
+        if (newState.hasIn([groupKey, 'entries', `${data.author}-${data.permlink}`])) {
+          newState = newState.setIn([groupKey, 'entries', `${data.author}-${data.permlink}`], data);
         }
       });
 

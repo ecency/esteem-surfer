@@ -448,7 +448,7 @@ class ReplyList extends PureComponent {
     return (
       <div className="entry-reply-list">
         {replies.map(reply => (
-          <ReplyListItem {...this.props} reply={reply} key={reply.id} />
+          <ReplyListItem {...this.props} reply={reply} key={`${reply.author}-${reply.permlink}`} />
         ))}
       </div>
     );
