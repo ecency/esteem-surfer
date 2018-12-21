@@ -281,7 +281,11 @@ class Search extends PureComponent {
           )}
 
           {results.valueSeq().map(d => (
-            <SearchListItem {...this.props} key={d.id} result={d} />
+            <SearchListItem
+              {...this.props}
+              key={`${d.author}-${d.permlink}`}
+              result={d}
+            />
           ))}
 
           {loading && <LinearProgress />}
