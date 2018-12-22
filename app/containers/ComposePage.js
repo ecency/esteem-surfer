@@ -14,6 +14,7 @@ import {
 
 import { addAccount, addAccountSc, deleteAccount } from '../actions/accounts';
 import { logIn, logOut, updateActiveAccount } from '../actions/active-account';
+import { setVisitingAccount } from '../actions/visiting-account';
 import { setVisitingEntry } from '../actions/visiting-entry';
 import { fetchActivities, resetActivities } from '../actions/activities';
 
@@ -48,6 +49,7 @@ const mapDispatchToProps = dispatch => ({
       dispatch
     ),
     ...bindActionCreators({ logIn, logOut, updateActiveAccount }, dispatch),
+    ...bindActionCreators({ setVisitingAccount }, dispatch),
     ...bindActionCreators({ setVisitingEntry }, dispatch),
     ...bindActionCreators({ fetchActivities, resetActivities }, dispatch)
   }
