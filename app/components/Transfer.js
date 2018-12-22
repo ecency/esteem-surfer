@@ -390,16 +390,12 @@ class Transfer extends PureComponent {
 
     const balance = this.getBalance();
 
-    const loading = false;
-
     return (
       <div className="wrapper">
         <NavBar
           {...Object.assign({}, this.props, {
-            reloadFn: () => {
-              this.refresh();
-            },
-            reloading: loading
+            reloadFn: () => {},
+            reloading: false
           })}
         />
 
