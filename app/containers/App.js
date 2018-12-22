@@ -63,7 +63,6 @@ class App extends React.Component {
     this.activeAccountInterval = setInterval(this.refreshActiveAccount, 15000);
 
     // Refresh steem connect tokens
-    this.refreshScAccounts();
     this.scRefreshInterval = setInterval(
       this.refreshScAccounts,
       1000 * 60 * 40
@@ -171,6 +170,11 @@ class App extends React.Component {
     const { actions } = this.props;
     actions.exposePin(code);
     this.setState({ pinConfirmFlag: false, dialogVisible: false });
+
+    // Refresh sc accounts on startup after pin code entered with 1 sec delay
+    setTimeout(() => {
+      this.refreshScAccounts();
+    }, 1000);
   };
 
   pinInvalidated = () => {
