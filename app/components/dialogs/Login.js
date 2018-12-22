@@ -50,8 +50,8 @@ class Login extends Component {
     const { actions, onSuccess } = this.props;
     actions.addAccountSc(
       resp.username,
-      resp.refresh_token,
       resp.access_token,
+      resp.refresh_token,
       resp.expires_in
     );
     actions.logIn(resp.username);

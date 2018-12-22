@@ -14,7 +14,7 @@ import history from '../store/history';
 
 import { exposePin, wipePin } from '../actions/global';
 import { fetchGlobalProps } from '../actions/dynamic-props';
-import { deleteAccounts } from '../actions/accounts';
+import { deleteAccounts, addAccountSc } from '../actions/accounts';
 import { logOut, updateActiveAccount } from '../actions/active-account';
 import { fetchActivities } from '../actions/activities';
 
@@ -29,6 +29,9 @@ import { flattenMessages } from '../utils';
 import messages from '../locales';
 
 import { getItem, setItem } from '../helpers/storage';
+
+import { scTokenRenew } from '../backend/esteem-client';
+import { decryptKey } from '../utils/crypto';
 
 import { NWS_ADDRESS } from '../config';
 
@@ -59,6 +62,13 @@ class App extends React.Component {
     this.refreshActiveAccount();
     this.activeAccountInterval = setInterval(this.refreshActiveAccount, 15000);
 
+    // Refresh steem connect tokens
+    this.refreshScAccounts();
+    this.scRefreshInterval = setInterval(
+      this.refreshScAccounts,
+      1000 * 60 * 40
+    );
+
     window.addEventListener('user-login', this.onUserLogin);
     window.addEventListener('user-logout', this.onUserLogout);
 
@@ -73,6 +83,7 @@ class App extends React.Component {
     clearInterval(this.dialogInterval);
     clearInterval(this.globalInterval);
     clearInterval(this.activeAccountInterval);
+    clearInterval(this.scRefreshInterval);
 
     window.removeEventListener('user-login', this.onUserLogin);
     window.removeEventListener('user-logout', this.onUserLogout);
@@ -117,6 +128,36 @@ class App extends React.Component {
     if (activeAccount) {
       actions.updateActiveAccount(activeAccount.username);
     }
+  };
+
+  refreshScAccounts = () => {
+    const { accounts, global, actions } = this.props;
+    if (!global.pin) {
+      return;
+    }
+
+    const scAccounts = accounts.filter(x => x.type === 'sc');
+    scAccounts.forEach(a => {
+      if (!a.refreshToken) {
+        return;
+      }
+
+      const refreshToken = decryptKey(a.refreshToken, global.pin);
+
+      scTokenRenew(refreshToken)
+        .then(resp => {
+          actions.addAccountSc(
+            resp.username,
+            resp.access_token,
+            resp.refresh_token,
+            resp.expires_in,
+            true
+          );
+
+          return resp;
+        })
+        .catch(() => {});
+    });
   };
 
   onCreatePinSuccess = (code, hashedCode) => {
@@ -271,7 +312,8 @@ class App extends React.Component {
 }
 
 App.defaultProps = {
-  activeAccount: null
+  activeAccount: null,
+  accounts: []
 };
 
 App.propTypes = {
@@ -289,14 +331,17 @@ App.propTypes = {
     logOut: PropTypes.func.isRequired,
     fetchGlobalProps: PropTypes.func.isRequired,
     deleteAccounts: PropTypes.func.isRequired,
+    addAccountSc: PropTypes.func.isRequired,
     fetchActivities: PropTypes.func.isRequired
-  }).isRequired
+  }).isRequired,
+  accounts: PropTypes.arrayOf(PropTypes.object)
 };
 
 function mapStateToProps(state) {
   return {
     global: state.global,
-    activeAccount: state.activeAccount
+    activeAccount: state.activeAccount,
+    accounts: state.accounts
   };
 }
 
@@ -308,7 +353,7 @@ function mapDispatchToProps(dispatch) {
       ...bindActionCreators({ updateActiveAccount }, dispatch),
       ...bindActionCreators({ logOut }, dispatch),
       ...bindActionCreators({ fetchGlobalProps }, dispatch),
-      ...bindActionCreators({ deleteAccounts }, dispatch),
+      ...bindActionCreators({ deleteAccounts, addAccountSc }, dispatch),
       ...bindActionCreators({ fetchActivities }, dispatch)
     }
   };

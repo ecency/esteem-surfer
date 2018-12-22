@@ -3,6 +3,7 @@ import { setItem, removeItem, getByPrefix } from '../helpers/storage';
 
 export const ACCOUNT_ADDED = 'accounts/ACCOUNT_ADDED';
 export const ACCOUNT_ADDED_SC = 'accounts/ACCOUNT_SC_ADDED';
+export const ACCOUNT_UPDATED_SC = 'accounts/ACCOUNT_UPDATED_SC';
 export const ACCOUNT_DELETED = 'accounts/ACCOUNT_DELETED';
 export const ACCOUNTS_DELETED = 'accounts/ACCOUNTS_DELETED';
 
@@ -34,7 +35,8 @@ export const addAccountSc = (
   username,
   accessToken,
   refreshToken,
-  expiresIn
+  expiresIn,
+  updated = false
 ) => (dispatch, getState) => {
   const { global } = getState();
 
@@ -49,7 +51,11 @@ export const addAccountSc = (
   };
 
   setItem(`account_${username}`, accountData);
-  dispatch(accountAddedSc(username, accountData));
+  if (!updated) {
+    dispatch(accountAddedSc(username, accountData));
+  } else {
+    dispatch(accountUpdatedSc(username, accountData));
+  }
 };
 
 export const deleteAccount = username => (dispatch, getState) => {
@@ -82,6 +88,11 @@ export const accountAdded = username => ({
 export const accountAddedSc = username => ({
   type: ACCOUNT_ADDED_SC,
   payload: { username }
+});
+
+export const accountUpdatedSc = (username, accountData) => ({
+  type: ACCOUNT_UPDATED_SC,
+  payload: { username, accountData }
 });
 
 export const accountDeleted = username => ({
