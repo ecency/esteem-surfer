@@ -31,7 +31,6 @@ export default function activeAccount(state = defaultState, action) {
       const { username, accountData } = action.payload;
       // active user updated
       if (state.username === username) {
-        console.log('active account updated');
         const { accessToken, refreshToken } = accountData;
         return Object.assign({}, state, { accessToken, refreshToken });
       }
