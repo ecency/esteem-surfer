@@ -121,6 +121,12 @@ class Transfer extends PureComponent {
         this.fetchFromData();
       }
     );
+
+    // auto fill
+    const { mode } = this.props;
+    if (['transfer-saving', 'withdraw-saving'].includes(mode)) {
+      this.toChanged({ target: { value: username } });
+    }
   };
 
   fetchFromData = () => {
@@ -173,6 +179,9 @@ class Transfer extends PureComponent {
       case 'transfer-saving':
         u = `/@${from}/transfer-saving/${asset}`;
         break;
+      case 'withdraw-saving':
+        u = `/@${from}/withdraw-saving/${asset}`;
+        break;
       default:
         break;
     }
@@ -181,6 +190,9 @@ class Transfer extends PureComponent {
   };
 
   toChanged = e => {
+    const { value: to } = e.target;
+    this.setState({ to });
+
     const { inProgress } = this.state;
     if (inProgress) {
       return;
@@ -191,9 +203,6 @@ class Transfer extends PureComponent {
     }
 
     const { intl } = this.props;
-    const { value: to } = e.target;
-
-    this.setState({ to });
 
     this.timer = setTimeout(() => {
       if (badActors.includes(to)) {
