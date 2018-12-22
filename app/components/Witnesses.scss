@@ -117,7 +117,6 @@
   }
 
   .proxy-active {
-
     @include themify(day) {
       color: $charcoal-grey;
     }
@@ -148,7 +147,6 @@
     }
 
     .index-num {
-
       font-size: 16px;
 
       @include themify(day) {
@@ -162,9 +160,9 @@
       display: flex;
 
       .user-avatar {
-        height: 50px !important;
+        height: 40px !important;
         margin-right: 10px;
-        width: 50px !important;
+        width: 40px !important;
       }
 
       .username {
@@ -188,8 +186,9 @@
       }
     }
 
-    .feed-price, .version-num {
-      border-radius: 9.5px;
+    .feed-price,
+    .version-num {
+      border-radius: 25px;
       color: $white;
       font-weight: 500;
       padding: 2px 10px;
@@ -197,7 +196,6 @@
 
     .feed-price {
       background: $green3;
-
     }
 
     .version-num {
@@ -210,8 +208,10 @@
       }
     }
     // Antd table overrides
-    .ant-table-thead, .ant-table-tbody {
-      th, td {
+    .ant-table-thead,
+    .ant-table-tbody {
+      th,
+      td {
         border: 0;
         font-size: 16px;
 
@@ -221,13 +221,11 @@
         }
       }
       th {
-        font-size: 18px;
         font-weight: 700;
       }
     }
 
     .ant-table-row:nth-child(odd) {
-
       @include themify(day) {
         background: $white-three;
       }
@@ -235,7 +233,6 @@
       @include themify(night) {
         background: lighten($dark-six, 4);
       }
-
     }
 
     .ant-table-fixed-left {
@@ -259,7 +256,6 @@
         }
       }
     }
-
   }
 
   .extra-funcs {
@@ -273,14 +269,12 @@
       .witnesses-list {
         margin-top: 20px;
         .item {
-
           display: flex;
           justify-content: space-between;
           margin: 12px 0;
           width: 240px;
 
           .username {
-
             font-size: 16px;
             font-weight: 500;
             width: 180px;
@@ -292,7 +286,6 @@
             @include themify(night) {
               color: $powder-blue;
             }
-
           }
 
           .btn-submit {
@@ -306,7 +299,8 @@
       width: 400px;
     }
 
-    .extra-witnesses, .proxy {
+    .extra-witnesses,
+    .proxy {
       .explanation {
         font-size: 16px;
         margin-bottom: 10px;

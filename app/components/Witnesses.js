@@ -492,19 +492,16 @@ class Witnesses extends PureComponent {
     const columns = [
       {
         title: '',
-        width: 68,
+        width: 50,
         dataIndex: 'key',
-        fixed: 'left',
         render: text => <span className="index-num">{text}</span>
       },
       {
         title: '',
-        fixed: 'left',
+        width: 40,
         render: (text, record) => {
           const { name: theWitness } = record;
-
           const voted = witnessVotes.includes(theWitness);
-
           return (
             <BtnWitnessVote
               {...this.props}
@@ -532,9 +529,7 @@ class Witnesses extends PureComponent {
             <FormattedMessage id="witnesses.witness" />
           </span>
         ),
-        width: 260,
         dataIndex: 'name',
-        fixed: 'left',
         render: text => (
           <QuickProfile {...this.props} username={text} reputation={0}>
             <div className="witness-card">
@@ -547,10 +542,12 @@ class Witnesses extends PureComponent {
       {
         title: <FormattedMessage id="witnesses.miss" />,
         dataIndex: 'miss',
+        width: 100,
         render: text => intl.formatNumber(text)
       },
       {
         title: <FormattedMessage id="witnesses.url" />,
+        width: 100,
         render: (text, record) => {
           const { parsedUrl } = record;
 
@@ -581,32 +578,20 @@ class Witnesses extends PureComponent {
       },
       {
         title: <FormattedMessage id="witnesses.fee" />,
+        width: 100,
         dataIndex: 'fee'
       },
       {
         title: <FormattedMessage id="witnesses.feed" />,
         dataIndex: 'feed',
+        width: 140,
         render: text => <span className="feed-price">${text}</span>
-      },
-      {
-        title: <FormattedMessage id="witnesses.block-size" />,
-        dataIndex: 'blockSize',
-        render: text => intl.formatNumber(text)
-      },
-      {
-        title: <FormattedMessage id="witnesses.ac-avail" />,
-        dataIndex: 'acAvail'
-      },
-      {
-        title: <FormattedMessage id="witnesses.ac-budget" />,
-        dataIndex: 'acBudget'
       },
       {
         title: <FormattedMessage id="witnesses.version" />,
         dataIndex: 'version',
-        fixed: 'right',
         width: 140,
-        render: text => <span className="version-num">${text}</span>
+        render: text => <span className="version-num">{text}</span>
       }
     ];
 
@@ -641,11 +626,7 @@ class Witnesses extends PureComponent {
             !proxy && (
               <Fragment>
                 <div className="witnesses-table">
-                  <Table
-                    columns={columns}
-                    dataSource={witnesses}
-                    scroll={{ x: 1300 }}
-                  />
+                  <Table columns={columns} dataSource={witnesses} />
                 </div>
                 <div className="extra-funcs">
                   <ExtraWitnesses
