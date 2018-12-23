@@ -102,7 +102,12 @@ export class Preview extends Component {
           </h2>
 
           {wordsCount > 0 && (
-            <div className="words-count">{wordsCount} words</div>
+            <div className="words-count">
+              <FormattedMessage
+                id="composer.words-count"
+                values={{ n: wordsCount }}
+              />
+            </div>
           )}
 
           <Tooltip
