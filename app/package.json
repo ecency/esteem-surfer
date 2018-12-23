@@ -10,7 +10,6 @@
     "postinstall": "yarn electron-rebuild"
   },
   "dependencies": {
-    "dsteem": "^0.10.1",
-    "electron-spellchecker": "^1.1.2"
+    "dsteem": "^0.10.1"
   }
 }

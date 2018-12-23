@@ -105,6 +105,11 @@ export default merge.smart(baseConfig, {
         test: /\.tcss/,
         use: 'url-loader'
       },
+      // Dictionary files for spell check
+      {
+        test: /\.(aff|dic)$/,
+        use: 'raw-loader'
+      },
       // WOFF Font
       {
         test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
