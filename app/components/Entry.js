@@ -448,7 +448,11 @@ class ReplyList extends PureComponent {
     return (
       <div className="entry-reply-list">
         {replies.map(reply => (
-          <ReplyListItem {...this.props} reply={reply} key={`${reply.author}-${reply.permlink}`} />
+          <ReplyListItem
+            {...this.props}
+            reply={reply}
+            key={`${reply.author}-${reply.permlink}`}
+          />
         ))}
       </div>
     );
@@ -877,7 +881,7 @@ class Entry extends PureComponent {
         jsonMeta = {};
       }
 
-      const tags = [...new Set(jsonMeta.tags)].slice(0, 5); // Sometimes tag list comes with duplicate items
+      const tags = [...new Set(jsonMeta.tags)]; // Sometimes tag list comes with duplicate items
       const app = appName(jsonMeta.app);
       const totalPayout = sumTotal(entry);
       const isPayoutDeclined = parseToken(entry.max_accepted_payout) === 0;
