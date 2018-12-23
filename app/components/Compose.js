@@ -212,10 +212,10 @@ class Compose extends Component {
       if (drafts.length === 1) {
         const draft = drafts[0];
         const { title, body } = draft;
-        let { tags } = draft;
+        let tags;
 
         try {
-          tags = tags.split(' ');
+          tags = draft.tags.trim() ? draft.tags.split(/[ ,]+/) : [];
         } catch (e) {
           tags = [];
         }

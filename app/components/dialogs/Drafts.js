@@ -37,7 +37,7 @@ class DraftListItem extends Component {
 
   render() {
     const { author, reputation, item, intl } = this.props;
-    const tags = item.tags ? item.tags.split(' ') : [];
+    const tags = item.tags ? item.tags.split(/[ ,]+/) : [];
     const tag = tags[0] || '';
     const img = catchEntryImage(item) || 'img/noimage.png';
     const summary = entryBodySummary(item.body, 200);
@@ -56,7 +56,7 @@ class DraftListItem extends Component {
               )}
             </div>
           </div>
-          <a className="category">{tag}</a>
+          {tag && <a className="category">{tag}</a>}
           <span className="date">
             <FormattedRelative value={item.created} initialNow={Date.now()} />
           </span>
