@@ -273,8 +273,12 @@ class ReplyListItem extends PureComponent {
     };
   }
 
-  afterVote = entry => {
-    this.setState({ reply: entry });
+  afterVote = newObj => {
+    const { reply } = this.state;
+    const newReply = Object.assign({}, reply, {
+      active_votes: newObj.active_votes
+    });
+    this.setState({ reply: newReply });
   };
 
   onReplySuccess = newObj => {
