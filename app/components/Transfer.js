@@ -193,11 +193,6 @@ class Transfer extends PureComponent {
     const { value: to } = e.target;
     this.setState({ to });
 
-    const { inProgress } = this.state;
-    if (inProgress) {
-      return;
-    }
-
     if (this.timer) {
       clearTimeout(this.timer);
     }
