@@ -123,6 +123,8 @@
     markers.forEach(marker => marker.clear());
     markers = [];
 
+    // console.log(cm.getValue().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()'"“”’?–]/g, ' '))
+
     const words = cm
       .getValue()
       // Remove HTML tags
@@ -150,6 +152,9 @@
       // Replace new lines with spaces
       .replace(/\n/g, ' ')
 
+      // Remove all punctuation
+      .replace(/[.,\/#!$%^&*;:{}=\-_`~()\[\]"“”?–]/g, ' ')
+
       // Split by spaces and tags
       .split(/\s|\t/gm)
 
@@ -164,6 +169,10 @@
 
         // it may be a http link or short link
         if (w.includes('/')) {
+          return false;
+        }
+
+        if (/^\d+$/.test(w)) {
           return false;
         }
 

@@ -7,9 +7,15 @@ const dictionary = new Typo('en_US', affData, dicData);
 
 const spCache = {};
 
+const definedList = ['crypto', 'bitcoin', 'steem', 'blockchain'];
+
 window.isMisspelled = str => {
   if (spCache[str]) {
     return spCache[str];
+  }
+
+  if (definedList.includes(str.toLowerCase())) {
+    return false;
   }
 
   const r = !dictionary.check(str);
