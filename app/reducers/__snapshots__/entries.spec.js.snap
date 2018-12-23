@@ -92,19 +92,19 @@ exports[`entries reducer (7) fetching "trending" completed. action:FETCH_OK 1`] 
 Immutable.Map {
   "trending": Immutable.Record {
     "entries": Immutable.OrderedMap {
-      "14": Object {
+      "good-karma-welcome to esteem": Object {
         "author": "good-karma",
         "id": 14,
         "permlink": "welcome to esteem",
         "votes": 5,
       },
-      "12": Object {
+      "talhasch-lorem ipsum": Object {
         "author": "talhasch",
         "id": 12,
         "permlink": "lorem ipsum",
         "votes": 12,
       },
-      "16": Object {
+      "chrisbolten-sit amet": Object {
         "author": "chrisbolten",
         "id": 16,
         "permlink": "sit amet",
@@ -134,6 +134,12 @@ Immutable.Map {
         "permlink": "welcome to esteem",
         "votes": 5,
       },
+      "good-karma-welcome to esteem": Object {
+        "author": "good-karma",
+        "id": 12,
+        "permlink": "welcome to esteem",
+        "votes": 5,
+      },
     },
     "err": null,
     "loading": false,
@@ -158,13 +164,13 @@ Immutable.Map {
         "permlink": "lorem ipsum",
         "votes": 12,
       },
-      "16": Object {
+      "chrisbolten-sit amet": Object {
         "author": "chrisbolten",
         "id": 16,
         "permlink": "sit amet",
         "votes": 3,
       },
-      "3": Object {
+      "dunsky-lorem": Object {
         "author": "dunsky",
         "id": 3,
         "permlink": "lorem",
