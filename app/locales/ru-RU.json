@@ -309,8 +309,8 @@
   "notification": {
     "popup-title": "У вас есть новое уведомление",
     "voted": "{source} проголосовал за ваш пост",
-    "mention-post": "{source} упоминул вас в посте",
-    "mention-comment": "{source} упоминул вас в комментарии",
+    "mention-post": "{source} упомянул вас в посте",
+    "mention-comment": "{source} упомянул вас в комментарии",
     "followed": "{source} подписался на вас",
     "replied": "{source} ответил вам",
     "reblogged": "{source} сделал репост вашего поста"
@@ -324,7 +324,7 @@
     "type-reblogs": "Репосты",
     "vote-str": "на {p}% нравится ваш пост:",
     "reply-str": "ответил на ваш пост:",
-    "mention-str": "упоминул вас в:",
+    "mention-str": "упомянул вас в:",
     "followed-str": "подписан",
     "unfollowed-str": "отписан",
     "ignored-str": "игнор",
