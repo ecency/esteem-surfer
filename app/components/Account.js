@@ -53,6 +53,7 @@ import entryBodySummary from '../utils/entry-body-summary';
 import formatChainError from '../utils/format-chain-error';
 import DeepLinkHandler from './helpers/DeepLinkHandler';
 
+import noImage from '../img/noimage.png';
 
 class Profile extends Component {
 
@@ -332,7 +333,7 @@ export class AccountTopPosts extends Component {
             <EntryLink {...this.props} author={p.author} permlink={p.permlink} key={p.permlink}>
               <div className="top-posts-list-item" role="none">
                 <div className="post-image">
-                  <img alt="" src={catchEntryImage(p, 130, 80) || 'img/noimage.png'}/>
+                  <img alt="" src={catchEntryImage(p, 130, 80) || noImage}/>
                 </div>
                 <div className="post-content">
                   <div className="post-title">{p.title}</div>

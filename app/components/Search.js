@@ -31,12 +31,15 @@ import qsParse from '../utils/qs';
 
 import { makeGroupKeyForResults } from '../actions/search-results';
 
+import fallbackImage from '../img/fallback.png';
+import noImage from '../img/noimage.png';
+
 import { searchSort } from '../constants/defaults';
 
 class SearchListItem extends PureComponent {
   render() {
     const { result: entry } = this.props;
-    const img = catchEntryImage(entry, 130, 80) || 'img/noimage.png';
+    const img = catchEntryImage(entry, 130, 80) || noImage;
     const summary = entryBodySummary(entry.body, 200);
 
     return (
@@ -84,7 +87,7 @@ class SearchListItem extends PureComponent {
                 src={img}
                 alt=""
                 onError={e => {
-                  e.target.src = 'img/fallback.png';
+                  e.target.src = fallbackImage;
                 }}
               />
             </EntryLink>

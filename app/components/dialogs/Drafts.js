@@ -17,6 +17,9 @@ import entryBodySummary from '../../utils/entry-body-summary';
 
 import { getDrafts, removeDraft } from '../../backend/esteem-client';
 
+import fallbackImage from '../../img/fallback.png';
+import noImage from '../../img/noimage.png';
+
 class DraftListItem extends Component {
   delete = item => {
     const { activeAccount, intl, onDelete } = this.props;
@@ -26,7 +29,8 @@ class DraftListItem extends Component {
         onDelete(item);
         return resp;
       })
-      .catch(() => {});
+      .catch(() => {
+      });
   };
 
   edit = item => {
@@ -39,7 +43,7 @@ class DraftListItem extends Component {
     const { author, reputation, item, intl } = this.props;
     const tags = item.tags ? item.tags.split(/[ ,]+/) : [];
     const tag = tags[0] || '';
-    const img = catchEntryImage(item) || 'img/noimage.png';
+    const img = catchEntryImage(item) || noImage;
     const summary = entryBodySummary(item.body, 200);
 
     return (
@@ -47,7 +51,7 @@ class DraftListItem extends Component {
         <div className="item-header">
           <div className="author-part">
             <div className="author-avatar">
-              <UserAvatar user={author} size="small" />
+              <UserAvatar user={author} size="small"/>
             </div>
             <div className="author">
               {author}{' '}
@@ -58,7 +62,7 @@ class DraftListItem extends Component {
           </div>
           {tag && <a className="category">{tag}</a>}
           <span className="date">
-            <FormattedRelative value={item.created} initialNow={Date.now()} />
+            <FormattedRelative value={item.created} initialNow={Date.now()}/>
           </span>
         </div>
         <div className="item-body">
@@ -67,7 +71,7 @@ class DraftListItem extends Component {
               src={img}
               alt=""
               onError={e => {
-                e.target.src = 'img/fallback.png';
+                e.target.src = fallbackImage;
               }}
             />
           </div>
@@ -186,7 +190,7 @@ class Drafts extends Component {
 
     return (
       <div className="drafts-dialog-content">
-        {loading && <LinearProgress />}
+        {loading && <LinearProgress/>}
         {data.length > 0 && (
           <div className="drafts-list">
             <div className="drafts-list-body">
@@ -204,11 +208,11 @@ class Drafts extends Component {
           </div>
         )}
         {!loading &&
-          data.length < 1 && (
-            <div className="drafts-list">
-              <FormattedMessage id="drafts.empty-list" />
-            </div>
-          )}
+        data.length < 1 && (
+          <div className="drafts-list">
+            <FormattedMessage id="drafts.empty-list"/>
+          </div>
+        )}
       </div>
     );
   }

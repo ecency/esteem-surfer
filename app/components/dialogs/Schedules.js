@@ -15,6 +15,10 @@ import authorReputation from '../../utils/author-reputation';
 import catchEntryImage from '../../utils/catch-entry-image';
 import entryBodySummary from '../../utils/entry-body-summary';
 
+import fallbackImage from '../../img/fallback.png';
+import noImage from '../../img/noimage.png';
+
+
 import {
   getSchedules,
   removeSchedule,
@@ -52,7 +56,7 @@ class ScheduleListItem extends Component {
     const { author, reputation, item, intl } = this.props;
     const tags = item.tags ? item.tags.split(/,| /) : [];
     const tag = tags[0] || '';
-    const img = catchEntryImage(item) || 'img/noimage.png';
+    const img = catchEntryImage(item) || noImage;
     const summary = entryBodySummary(item.body, 200);
 
     return (
@@ -87,7 +91,7 @@ class ScheduleListItem extends Component {
               src={img}
               alt=""
               onError={e => {
-                e.target.src = 'img/fallback.png';
+                e.target.src = fallbackImage;
               }}
             />
           </div>
