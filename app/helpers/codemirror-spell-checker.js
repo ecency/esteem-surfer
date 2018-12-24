@@ -153,7 +153,7 @@
       .replace(/\n/g, ' ')
 
       // Remove all punctuation
-      .replace(/[.,\/#!$%^&*;:{}=\-_`~()\[\]"“”?–]/g, ' ')
+      .replace(/[.,\/#!$%^&*;:{}=\-_`~()\[\]"“”?–…|]/g, ' ')
 
       // Split by spaces and tags
       .split(/\s|\t/gm)
@@ -172,7 +172,13 @@
           return false;
         }
 
+        // Only numbers
         if (/^\d+$/.test(w)) {
+          return false;
+        }
+
+        // User names
+        if (w.startsWith('@')) {
           return false;
         }
 
