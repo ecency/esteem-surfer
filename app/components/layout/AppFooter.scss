@@ -31,7 +31,7 @@
       opacity: 0.5;
       display: flex;
       height: 100%;
-      width: 64px;
+      width: 90px;
       flex-direction: column;
       cursor: pointer;
 
@@ -48,7 +48,7 @@
 
       .power-line {
         display: flex;
-        height: 2px;
+        height: 4px;
         background: lighten($steel-grey, 20);
         border-radius: 5px;
 
