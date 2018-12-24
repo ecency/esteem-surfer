@@ -7,7 +7,15 @@ const dictionary = new Typo('en_US', affData, dicData);
 
 const spCache = {};
 
-const definedList = ['crypto', 'bitcoin', 'steem', 'blockchain', 'sbd'];
+const definedList = [
+  'crypto',
+  'bitcoin',
+  'steem',
+  'blockchain',
+  'sbd',
+  'steemit',
+  'esteem'
+];
 
 window.isMisspelled = str => {
   if (spCache[str]) {
