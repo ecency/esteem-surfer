@@ -9,8 +9,8 @@
  * `./app/main.prod.js` using webpack. This gives us some performance wins.
  *
  */
-import {app, BrowserWindow, ipcMain} from 'electron';
-import {autoUpdater} from 'electron-updater';
+import { app, BrowserWindow, ipcMain } from 'electron';
+import { autoUpdater } from 'electron-updater';
 
 import MenuBuilder from './menu';
 
@@ -45,8 +45,7 @@ const installExtensions = async () => {
  * Add event listeners...
  */
 
-
-const sendProtocolUrl2Window = (u) => {
+const sendProtocolUrl2Window = u => {
   if (typeof u !== 'string') {
     return false;
   }
@@ -57,15 +56,15 @@ const sendProtocolUrl2Window = (u) => {
   }
 
   if (m[0]) {
-    mainWindow.webContents.executeJavaScript(`protocolHandler('${ m[0]}')`);
+    mainWindow.webContents.executeJavaScript(`protocolHandler('${m[0]}')`);
   }
 };
 
 let deepUrl;
 
-const singleInstance = app.makeSingleInstance((argv) => {
+const singleInstance = app.makeSingleInstance(argv => {
   if (process.platform === 'win32' || process.platform === 'linux') {
-    deepUrl = argv.slice(1)
+    deepUrl = argv.slice(1);
   }
 
   if (mainWindow) {
@@ -80,9 +79,8 @@ const singleInstance = app.makeSingleInstance((argv) => {
 });
 
 if (singleInstance) {
-  app.quit()
+  app.quit();
 }
-
 
 const setupWindow = async () => {
   if (
@@ -131,18 +129,23 @@ const setupWindow = async () => {
     }, 1000 * 60 * 240);
   }
 
-
   // Protocol handler for win32 and linux
   if (process.platform === 'win32' || process.platform === 'linux') {
-    deepUrl = process.argv.slice(1)
+    deepUrl = process.argv.slice(1);
   }
 
   if (deepUrl) {
     setTimeout(() => {
       sendProtocolUrl2Window(deepUrl);
-    }, 4000)
+    }, 4000);
   }
 
+  try {
+    const devAdditions = require(`./dev-additions.js`);
+    devAdditions(mainWindow);
+  } catch (e) {
+    console.info('Development additions not found');
+  }
 };
 
 app.on('ready', setupWindow);
@@ -154,10 +157,9 @@ app.on('window-all-closed', () => {
 app.setAsDefaultProtocolClient('steem');
 app.setAsDefaultProtocolClient('esteem');
 
-
 app.on('activate', () => {
   if (mainWindow === null) {
-    setupWindow()
+    setupWindow();
   }
 });
 
@@ -176,7 +178,6 @@ app.on('open-url', (event, url) => {
 
   sendProtocolUrl2Window(url);
 });
-
 
 // Event handlers for auto updater
 autoUpdater.on('update-available', info => {
