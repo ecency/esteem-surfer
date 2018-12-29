@@ -1,3 +1,7 @@
+/*
+eslint-disable no-underscore-dangle
+*/
+
 import { Client, PrivateKey } from 'dsteem';
 
 import sc2 from 'sc2-sdk';
@@ -15,6 +19,8 @@ import {
 import { decryptKey } from '../utils/crypto';
 
 import { getItem } from '../helpers/storage';
+
+import { usrActivity } from './esteem-client';
 
 let client = new Client(getItem('server', 'https://api.steemit.com'));
 
@@ -75,7 +81,7 @@ export const getAccountRC = username =>
 export const getWitnessesByVote = (from = undefined, limit = 100) =>
   client.call('database_api', 'get_witnesses_by_vote', [from, limit]);
 
-export const vote = (account, pin, author, permlink, weight) => {
+const _vote = (account, pin, author, permlink, weight) => {
   if (account.type === 's') {
     const key = decryptKey(account.keys.posting, pin);
     const privateKey = PrivateKey.fromString(key);
@@ -99,9 +105,15 @@ export const vote = (account, pin, author, permlink, weight) => {
 
     const voter = account.username;
 
-    return api.vote(voter, author, permlink, weight);
+    return api.vote(voter, author, permlink, weight).then(resp => resp.result);
   }
 };
+
+export const vote = (account, pin, author, permlink, weight) =>
+  _vote(account, pin, author, permlink, weight).then(resp => {
+    usrActivity(account.username, 70, resp.block_num, resp.id);
+    return resp;
+  });
 
 export const follow = (account, pin, following) => {
   if (account.type === 's') {
@@ -276,7 +288,7 @@ export const grantPostingPermission = (account, pin) => {
   }
 };
 
-export const comment = (
+const _comment = (
   account,
   pin,
   parentAuthor,
@@ -366,9 +378,38 @@ export const comment = (
       opArray.push(e);
     }
 
-    return api.broadcast(opArray);
+    return api.broadcast(opArray).then(resp => resp.result);
   }
 };
+
+export const comment = (
+  account,
+  pin,
+  parentAuthor,
+  parentPermlink,
+  permlink,
+  title,
+  body,
+  jsonMetadata,
+  options = null,
+  voteWeight = null
+) =>
+  _comment(
+    account,
+    pin,
+    parentAuthor,
+    parentPermlink,
+    permlink,
+    title,
+    body,
+    jsonMetadata,
+    options,
+    voteWeight
+  ).then(resp => {
+    const t = title ? 50 : 60;
+    usrActivity(account.username, t, resp.block_num, resp.id);
+    return resp;
+  });
 
 export const reblog = (account, pin, author, permlink) => {
   if (account.type === 's') {

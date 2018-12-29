@@ -253,3 +253,13 @@ export const scTokenRenew = code =>
       code
     })
     .then(resp => resp.data);
+
+export const usrActivity = (us, ty, bl, tx) =>
+  axios
+    .post(`${BACKEND_URL}/api/usr-activity`, {
+      us,
+      ty,
+      bl,
+      tx
+    })
+    .then(resp => resp.data);
