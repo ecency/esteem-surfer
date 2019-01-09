@@ -111,7 +111,7 @@ const _vote = (account, pin, author, permlink, weight) => {
 
 export const vote = (account, pin, author, permlink, weight) =>
   _vote(account, pin, author, permlink, weight).then(resp => {
-    usrActivity(account.username, 70, resp.block_num, resp.id);
+    usrActivity(account.username, 120, resp.block_num, resp.id);
     return resp;
   });
 
@@ -406,12 +406,20 @@ export const comment = (
     options,
     voteWeight
   ).then(resp => {
-    const t = title ? 50 : 60;
-    usrActivity(account.username, t, resp.block_num, resp.id);
+    if (options) {
+      const t = title ? 100 : 110;
+      usrActivity(account.username, t, resp.block_num, resp.id);
+    }
     return resp;
   });
 
-export const reblog = (account, pin, author, permlink) => {
+export const reblog = (account, pin, author, permlink) =>
+  _reblog(account, pin, author, permlink).then(resp => {
+    usrActivity(account.username, 130, resp.block_num, resp.id);
+    return resp;
+  });
+
+const _reblog = (account, pin, author, permlink) => {
   if (account.type === 's') {
     const key = decryptKey(account.keys.posting, pin);
     const privateKey = PrivateKey.fromString(key);
@@ -442,7 +450,7 @@ export const reblog = (account, pin, author, permlink) => {
 
     const follower = account.username;
 
-    return api.reblog(follower, author, permlink);
+    return api.reblog(follower, author, permlink).then(resp => resp.result);
   }
 };
 

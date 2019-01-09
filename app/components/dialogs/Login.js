@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { auth } from 'steem';
+import { PrivateKey, PublicKey } from 'dsteem';
 
 import { Button, Divider, Input, Alert, message } from 'antd';
 import { FormattedHTMLMessage, FormattedMessage, injectIntl } from 'react-intl';
@@ -15,7 +15,7 @@ import { getAccounts } from '../../backend/steem-client';
 import { scLogin } from '../../helpers/sc';
 import UserAvatar from '../elements/UserAvatar';
 
-import { scTokenRenew } from '../../backend/esteem-client';
+import { scTokenRenew, usrActivity } from '../../backend/esteem-client';
 
 class Login extends Component {
   constructor(props) {
@@ -29,6 +29,8 @@ class Login extends Component {
   afterLogin = username => {
     const ev = new CustomEvent('user-login', { detail: { username } });
     window.dispatchEvent(ev);
+
+    usrActivity(username, 20);
   };
 
   switchToAccount = username => {
@@ -72,13 +74,28 @@ class Login extends Component {
     }
 
     // Warn user if entered a public key
-    if (auth.isPubkey(code)) {
+    let isPubkey;
+    try {
+      PublicKey.fromString(code);
+      isPubkey = true;
+    } catch (e) {
+      isPubkey = false;
+    }
+
+    if (isPubkey) {
       message.error(intl.formatMessage({ id: 'login.error-public-key' }));
       return false;
     }
 
     // True if the code entered is password else false
-    const codeIsPassword = !auth.isWif(code);
+    // const codeIsPassword = !auth.isWif(code);
+    let codeIsPassword = false;
+    try {
+      PrivateKey.fromString(code);
+    } catch (e) {
+      codeIsPassword = true;
+    }
+
     let accounts;
 
     this.setState({ processing: true });
@@ -116,7 +133,13 @@ class Login extends Component {
       // With master password
 
       // Get all private keys by username and password
-      const userPrivateKeys = auth.getPrivateKeys(account.name, code);
+      const userPrivateKeys = {};
+      ['owner', 'active', 'posting', 'memo'].forEach(r => {
+        const k = PrivateKey.fromLogin(account.name, code, r);
+
+        userPrivateKeys[r] = k.toString();
+        userPrivateKeys[`${r}Pubkey`] = k.createPublic().toString();
+      });
 
       Object.keys(userPublicKeys).map(k => {
         const v = userPublicKeys[k];
@@ -131,7 +154,9 @@ class Login extends Component {
       });
     } else {
       // With wif
-      const publicWif = auth.wifToPublic(code);
+      const publicWif = PrivateKey.fromString(code)
+        .createPublic()
+        .toString();
 
       Object.keys(userPublicKeys).map(k => {
         const v = userPublicKeys[k];
