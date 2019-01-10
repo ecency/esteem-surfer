@@ -26,7 +26,6 @@ require('codemirror/mode/markdown/markdown');
 require('../../helpers/codemirror-spell-checker.js');
 
 const emojiFilterCache = Object.keys(emojiData.emojis).map(e => {
-
   const em = emojiData.emojis[e];
   return {
     id: e,
@@ -44,82 +43,100 @@ class EmojiPicker extends Component {
     };
   }
 
-  renderEmoji = (emoji) => {
+  renderEmoji = emoji => {
     const em = emojiData.emojis[emoji];
     const unicodes = em.b.split('-');
-    const codePoints = unicodes.map((u) => `0x${u}`);
+    const codePoints = unicodes.map(u => `0x${u}`);
     const native = String.fromCodePoint(...codePoints);
 
     const { onClick } = this.props;
 
-    return <div onClick={() => {
-      onClick(native);
-    }} key={emoji} role="none" className="emoji" title={em.a}>{native}</div>;
+    return (
+      <div
+        onClick={() => {
+          onClick(native);
+        }}
+        key={emoji}
+        role="none"
+        className="emoji"
+        title={em.a}
+      >
+        {native}
+      </div>
+    );
   };
 
-  filterKeyChanged = (e) => {
+  filterKeyChanged = e => {
     this.setState({ filterKey: e.target.value });
   };
 
   render() {
+    const { intl } = this.props;
 
     const { filterKey } = this.state;
     let filterResults;
     if (filterKey) {
-      filterResults = emojiFilterCache.filter((i) =>
-        i.id.indexOf(filterKey) !== -1 ||
-        i.name.indexOf(filterKey) !== -1 ||
-        i.keywords.includes(filterKey)
-      ).map(i => i.id);
+      filterResults = emojiFilterCache
+        .filter(
+          i =>
+            i.id.indexOf(filterKey) !== -1 ||
+            i.name.indexOf(filterKey) !== -1 ||
+            i.keywords.includes(filterKey)
+        )
+        .map(i => i.id);
     }
 
     return (
       <div className="emoji-picker">
         <div className="search-box">
-          <Input value={filterKey} onChange={this.filterKeyChanged}/>
+          <Input
+            placeholder={intl.formatMessage({
+              id: 'composer.emoji-filter-placeholder'
+            })}
+            value={filterKey}
+            onChange={this.filterKeyChanged}
+          />
         </div>
 
-        {!filterKey &&
-        <div className="emoji-cat-list">
-          {emojiData.categories.map(cat =>
-            <div className="emoji-cat" key={cat.id}>
-              <div className="cat-title">
-                {cat.name}
+        {!filterKey && (
+          <div className="emoji-cat-list">
+            {emojiData.categories.map(cat => (
+              <div className="emoji-cat" key={cat.id}>
+                <div className="cat-title">{cat.name}</div>
+                <div className="emoji-list">
+                  {cat.emojis.map(emoji => this.renderEmoji(emoji))}
+                </div>
               </div>
+            ))}
+          </div>
+        )}
+
+        {filterKey && (
+          <div className="emoji-cat-list">
+            <div className="emoji-cat">
               <div className="emoji-list">
-                {cat.emojis.map(emoji => this.renderEmoji(emoji))}
+                {filterResults.length === 0 && (
+                  <FormattedMessage id="composer.emoji-filter-no-match" />
+                )}
+                {filterResults.length > 0 &&
+                  filterResults.map(emoji => this.renderEmoji(emoji))}
               </div>
-            </div>
-          )}
-        </div>
-        }
-
-        {filterKey &&
-        <div className="emoji-cat-list">
-          <div className="emoji-cat">
-            <div className="emoji-list">
-              {filterResults.length === 0 && <div>No match</div>}
-              {filterResults.length > 0 && filterResults.map(emoji => this.renderEmoji(emoji))}
             </div>
           </div>
-        </div>
-        }
+        )}
       </div>
     );
   }
 }
 
-
 EmojiPicker.defaultProps = {
-  onClick: () => {
-  }
+  onClick: () => {}
 };
 
 EmojiPicker.propTypes = {
   onClick: PropTypes.func,
   intl: PropTypes.instanceOf(Object).isRequired
 };
-
 
 class Editor extends Component {
   constructor(props) {
@@ -736,7 +753,7 @@ class Editor extends Component {
             </div>
           </div>
         </Tooltip>
-        <div className="tool-separator"/>
+        <div className="tool-separator" />
         <Tooltip
           title={intl.formatMessage({ id: 'composer.tool-code' })}
           mouseEnterDelay={2}
@@ -753,7 +770,7 @@ class Editor extends Component {
             <i className="mi tool-icon">format_quote</i>
           </div>
         </Tooltip>
-        <div className="tool-separator"/>
+        <div className="tool-separator" />
         <Tooltip
           title={intl.formatMessage({ id: 'composer.tool-ol' })}
           mouseEnterDelay={2}
@@ -770,7 +787,7 @@ class Editor extends Component {
             <i className="mi tool-icon">format_list_bulleted</i>
           </div>
         </Tooltip>
-        <div className="tool-separator"/>
+        <div className="tool-separator" />
         <Tooltip
           title={intl.formatMessage({ id: 'composer.tool-link' })}
           mouseEnterDelay={2}
@@ -800,7 +817,7 @@ class Editor extends Component {
                   document.getElementById('file-input').click();
                 }}
               >
-                <FormattedMessage id="composer.tool-upload"/>
+                <FormattedMessage id="composer.tool-upload" />
               </div>
               {activeAccount && (
                 <div
@@ -811,7 +828,7 @@ class Editor extends Component {
                     this.setState({ galleryModalVisible: true });
                   }}
                 >
-                  <FormattedMessage id="composer.tool-gallery"/>
+                  <FormattedMessage id="composer.tool-gallery" />
                 </div>
               )}
             </div>
@@ -825,13 +842,21 @@ class Editor extends Component {
             <i className="mi tool-icon">grid_on</i>
           </div>
         </Tooltip>
-        <div className="editor-tool" role="none">
-          <i className="mi tool-icon">sentiment_satisfied</i>
+        <Tooltip
+          title={intl.formatMessage({ id: 'composer.tool-emoji' })}
+          mouseEnterDelay={2}
+        >
+          <div className="editor-tool" role="none">
+            <i className="mi tool-icon">sentiment_satisfied</i>
 
-          <EmojiPicker {...this.props} onClick={(em) => {
-            this.insertInline(`${em} `);
-          }}/>
-        </div>
+            <EmojiPicker
+              {...this.props}
+              onClick={em => {
+                this.insertInline(`${em} `);
+              }}
+            />
+          </div>
+        </Tooltip>
       </div>
     );
 
