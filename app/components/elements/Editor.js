@@ -324,12 +324,32 @@ class Editor extends Component {
     this.insertBlock('* item1\n* item2\n* item3');
   };
 
-  table = () => {
+  table = e => {
+    e.stopPropagation();
+
     const t =
       '' +
       '|\tColumn 1\t|\tColumn 2\t|\tColumn 3\t|\n' +
       '|\t--------\t|\t--------\t|\t--------\t|\n' +
       '|\t  Text  \t|\t  Text  \t|\t  Text  \t|';
+    this.insertBlock(t);
+  };
+
+  table2 = e => {
+    e.stopPropagation();
+
+    const t =
+      '' +
+      '|\tColumn 1\t|\tColumn 2\t|\n' +
+      '|\t--------\t|\t--------\t|\n' +
+      '|\t  Text  \t|\t  Text  \t|';
+    this.insertBlock(t);
+  };
+
+  table1 = e => {
+    e.stopPropagation();
+
+    const t = '' + '|\tColumn 1\t|\n' + '|\t--------\t|\n' + '|\t  Text  \t|';
     this.insertBlock(t);
   };
 
@@ -840,6 +860,29 @@ class Editor extends Component {
         >
           <div className="editor-tool" onClick={this.table} role="none">
             <i className="mi tool-icon">grid_on</i>
+            <div className="sub-tool-menu">
+              <div
+                className="sub-tool-menu-item"
+                role="none"
+                onClick={this.table}
+              >
+                <FormattedMessage id="composer.tool-table-3-col" />
+              </div>
+              <div
+                className="sub-tool-menu-item"
+                role="none"
+                onClick={this.table2}
+              >
+                <FormattedMessage id="composer.tool-table-2-col" />
+              </div>
+              <div
+                className="sub-tool-menu-item"
+                role="none"
+                onClick={this.table1}
+              >
+                <FormattedMessage id="composer.tool-table-1-col" />
+              </div>
+            </div>
           </div>
         </Tooltip>
         <Tooltip
