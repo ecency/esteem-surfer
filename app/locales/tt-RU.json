@@ -192,6 +192,7 @@
     "tool-table": "Table",
     "tool-upload": "Upload",
     "tool-gallery": "Gallery",
+    "tool-emoji": "Emoji",
     "preview": "Preview",
     "reward": "Reward",
     "reward-default": "Default 50% / 50%",
@@ -215,7 +216,9 @@
     "updated": "Post Updated",
     "sync-scroll": "Scroll Sync",
     "words-count": "{n} words",
-    "no-suggestions": "No suggestions"
+    "no-suggestions": "No suggestions",
+    "emoji-filter-placeholder": "Filter",
+    "emoji-filter-no-match": "No match"
   },
   "gallery": {
     "title": "Gallery",
