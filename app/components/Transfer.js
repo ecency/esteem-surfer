@@ -19,7 +19,8 @@ import {
   getAccount,
   transfer,
   transferToSavings,
-  transferFromSavings
+  transferFromSavings,
+  transferToVesting
 } from '../backend/steem-client';
 import formatChainError from '../utils/format-chain-error';
 import parseToken from '../utils/parse-token';
@@ -94,7 +95,13 @@ class Transfer extends PureComponent {
 
   init = () => {
     const { match, history, intl } = this.props;
-    const { username, asset } = match.params;
+    const { username } = match.params;
+    let { asset } = match.params;
+    const { mode } = this.props;
+
+    if (mode === 'power-up') {
+      asset = 'STEEM';
+    }
 
     const { accounts } = this.props;
     const account = accounts.find(x => x.username === username);
@@ -123,8 +130,7 @@ class Transfer extends PureComponent {
     );
 
     // auto fill
-    const { mode } = this.props;
-    if (['transfer-saving', 'withdraw-saving'].includes(mode)) {
+    if (['transfer-saving', 'withdraw-saving', 'power-up'].includes(mode)) {
       this.toChanged({ target: { value: username } });
     }
   };
@@ -181,6 +187,9 @@ class Transfer extends PureComponent {
         break;
       case 'withdraw-saving':
         u = `/@${from}/withdraw-saving/${asset}`;
+        break;
+      case 'power-up':
+        u = `/@${from}/withdraw-saving`;
         break;
       default:
         break;
@@ -334,6 +343,10 @@ class Transfer extends PureComponent {
         const requestId = new Date().getTime() >>> 0;
         args = [account, pin, requestId, to, fullAmount, memo];
         break;
+      case 'power-up':
+        fn = transferToVesting;
+        args = [account, pin, to, fullAmount];
+        break;
       default:
         return;
     }
@@ -389,7 +402,8 @@ class Transfer extends PureComponent {
       <div className="wrapper">
         <NavBar
           {...Object.assign({}, this.props, {
-            reloadFn: () => {},
+            reloadFn: () => {
+            },
             reloading: false
           })}
         />
@@ -405,36 +419,42 @@ class Transfer extends PureComponent {
                   <div className="box-titles">
                     <div className="main-title">
                       {mode === 'transfer' && (
-                        <FormattedMessage id="transfer.transfer-title" />
+                        <FormattedMessage id="transfer.transfer-title"/>
                       )}
                       {mode === 'transfer-saving' && (
-                        <FormattedMessage id="transfer.transfer-saving-title" />
+                        <FormattedMessage id="transfer.transfer-saving-title"/>
                       )}
                       {mode === 'withdraw-saving' && (
-                        <FormattedMessage id="transfer.withdraw-saving-title" />
+                        <FormattedMessage id="transfer.withdraw-saving-title"/>
+                      )}
+                      {mode === 'power-up' && (
+                        <FormattedMessage id="transfer.power-up-title"/>
                       )}
                     </div>
                     <div className="sub-title">
                       {mode === 'transfer' && (
-                        <FormattedMessage id="transfer.transfer-sub-title" />
+                        <FormattedMessage id="transfer.transfer-sub-title"/>
                       )}
                       {mode === 'transfer-saving' && (
-                        <FormattedMessage id="transfer.transfer-saving-sub-title" />
+                        <FormattedMessage id="transfer.transfer-saving-sub-title"/>
                       )}
                       {mode === 'withdraw-saving' && (
-                        <FormattedMessage id="transfer.withdraw-saving-sub-title" />
+                        <FormattedMessage id="transfer.withdraw-saving-sub-title"/>
+                      )}
+                      {mode === 'power-up' && (
+                        <FormattedMessage id="transfer.power-up-sub-title"/>
                       )}
                     </div>
                   </div>
                 </div>
-                {inProgress && <LinearProgress />}
+                {inProgress && <LinearProgress/>}
                 <div className="transfer-box-body">
                   <div className="transfer-form">
                     <div
                       className={`form-item ${fromError ? 'has-error' : ''}`}
                     >
                       <div className="form-label">
-                        <FormattedMessage id="transfer.from" />
+                        <FormattedMessage id="transfer.from"/>
                       </div>
                       <div className="form-input">
                         <Select
@@ -461,10 +481,10 @@ class Transfer extends PureComponent {
                     <div
                       className={`form-item ${
                         toWarning || toError ? 'has-error' : ''
-                      }`}
+                        }`}
                     >
                       <div className="form-label">
-                        <FormattedMessage id="transfer.to" />
+                        <FormattedMessage id="transfer.to"/>
                       </div>
                       <div className="form-input">
                         <Input
@@ -487,10 +507,10 @@ class Transfer extends PureComponent {
                     <div
                       className={`form-item item-amount ${
                         amountError ? 'has-error' : ''
-                      }`}
+                        }`}
                     >
                       <div className="form-label">
-                        <FormattedMessage id="transfer.amount" />
+                        <FormattedMessage id="transfer.amount"/>
                       </div>
                       <div className="form-input">
                         <Input
@@ -506,25 +526,28 @@ class Transfer extends PureComponent {
                           <div className="input-help">{amountError}</div>
                         )}
                       </div>
+                      {mode !== 'power-up' &&
                       <AssetSwitch
                         defaultSelected={asset}
                         onChange={this.assetChanged}
                       />
+                      }
                     </div>
                     <div
                       role="none"
                       className="balance"
                       onClick={this.copyBalance}
                     >
-                      <FormattedMessage id="transfer.balance" />:{' '}
+                      <FormattedMessage id="transfer.balance"/>:{' '}
                       <span className="balance-num">
                         {' '}
                         {balance} {asset}
                       </span>
                     </div>
+                    {mode !== 'power-up' &&
                     <div className="form-item">
                       <div className="form-label">
-                        <FormattedMessage id="transfer.memo" />
+                        <FormattedMessage id="transfer.memo"/>
                       </div>
                       <div className="form-input">
                         <Input
@@ -536,17 +559,18 @@ class Transfer extends PureComponent {
                           onChange={this.memoChanged}
                         />
                         <div className="input-help">
-                          <FormattedMessage id="transfer.memo-help" />
+                          <FormattedMessage id="transfer.memo-help"/>
                         </div>
                       </div>
                     </div>
+                    }
                     <div className="form-controls">
                       <Button
                         type="primary"
                         disabled={!this.canSubmit()}
                         onClick={this.next}
                       >
-                        <FormattedMessage id="transfer.next" />
+                        <FormattedMessage id="transfer.next"/>
                       </Button>
                     </div>
                   </div>
@@ -560,10 +584,10 @@ class Transfer extends PureComponent {
                   <div className="step-no">2</div>
                   <div className="box-titles">
                     <div className="main-title">
-                      <FormattedMessage id="transfer.confirm-title" />
+                      <FormattedMessage id="transfer.confirm-title"/>
                     </div>
                     <div className="sub-title">
-                      <FormattedMessage id="transfer.confirm-sub-title" />
+                      <FormattedMessage id="transfer.confirm-sub-title"/>
                     </div>
                   </div>
                 </div>
@@ -576,7 +600,7 @@ class Transfer extends PureComponent {
                         username={from}
                       >
                         <div className="from-user">
-                          <UserAvatar user={from} size="xLarge" />
+                          <UserAvatar user={from} size="xLarge"/>
                         </div>
                       </QuickProfile>
                       <div className="arrow">{arrowRight}</div>
@@ -586,7 +610,7 @@ class Transfer extends PureComponent {
                         username={to}
                       >
                         <div className="to-user">
-                          <UserAvatar user={to} size="xLarge" />
+                          <UserAvatar user={to} size="xLarge"/>
                         </div>
                       </QuickProfile>
                     </div>
@@ -600,7 +624,7 @@ class Transfer extends PureComponent {
                   <div className="transfer-form">
                     <div className="form-controls">
                       <a role="none" className="btn-back" onClick={this.back}>
-                        <FormattedMessage id="transfer.back" />
+                        <FormattedMessage id="transfer.back"/>
                       </a>
                       <PinRequired {...this.props} onSuccess={this.confirm}>
                         <Button type="primary" disabled={inProgress}>
@@ -611,7 +635,7 @@ class Transfer extends PureComponent {
                               spin
                             />
                           )}
-                          <FormattedMessage id="transfer.confirm" />
+                          <FormattedMessage id="transfer.confirm"/>
                         </Button>
                       </PinRequired>
                     </div>
@@ -628,14 +652,14 @@ class Transfer extends PureComponent {
                   <div className="step-no">3</div>
                   <div className="box-titles">
                     <div className="main-title">
-                      <FormattedMessage id="transfer.success-title" />
+                      <FormattedMessage id="transfer.success-title"/>
                     </div>
                     <div className="sub-title">
-                      <FormattedMessage id="transfer.success-sub-title" />
+                      <FormattedMessage id="transfer.success-sub-title"/>
                     </div>
                   </div>
                 </div>
-                {inProgress && <LinearProgress />}
+                {inProgress && <LinearProgress/>}
                 <div className="transfer-box-body">
                   <div className="success">
                     <FormattedHTMLMessage
@@ -646,10 +670,10 @@ class Transfer extends PureComponent {
                   <div className="transfer-form">
                     <div className="form-controls">
                       <a role="none" className="btn-back" onClick={this.reset}>
-                        <FormattedMessage id="transfer.reset" />
+                        <FormattedMessage id="transfer.reset"/>
                       </a>
                       <Button type="primary" onClick={this.finish}>
-                        <FormattedMessage id="transfer.finish" />
+                        <FormattedMessage id="transfer.finish"/>
                       </Button>
                     </div>
                   </div>
@@ -659,7 +683,7 @@ class Transfer extends PureComponent {
           </div>
         )}
 
-        {!fromData && <div className="app-content transfer-page" />}
+        {!fromData && <div className="app-content transfer-page"/>}
 
         <AppFooter {...this.props} />
         <DeepLinkHandler {...this.props} />

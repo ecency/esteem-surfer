@@ -50,6 +50,17 @@ export default () => (
       />
       <Route
         exact
+        path="/@:username/power-up"
+        component={props => (
+          <TransferPage
+            timestamp={new Date().toString()}
+            {...props}
+            mode="power-up"
+          />
+        )}
+      />
+      <Route
+        exact
         path="/witnesses"
         component={props => (
           <WitnessesPage timestamp={new Date().toString()} {...props} />

@@ -778,6 +778,11 @@ export class SectionWallet extends Component {
               <FormattedMessage id="account.transfer-to-savings"/>
             </Link>
           </Menu.Item>
+          <Menu.Item key="power-up">
+            <Link to={`/@${activeAccount.username}/power-up`}>
+              <FormattedMessage id="account.power-up"/>
+            </Link>
+          </Menu.Item>
         </Menu>;
 
         actionListSbd = <Menu className="surfer-dropdown-menu">
