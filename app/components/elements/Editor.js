@@ -40,7 +40,7 @@ class EmojiPicker extends Component {
     super(props);
 
     this.state = {
-      searchKey: ''
+      filterKey: ''
     };
   }
 
@@ -57,29 +57,29 @@ class EmojiPicker extends Component {
     }} key={emoji} role="none" className="emoji" title={em.a}>{native}</div>;
   };
 
-  searchKeyChanged = (e) => {
-    this.setState({ searchKey: e.target.value });
+  filterKeyChanged = (e) => {
+    this.setState({ filterKey: e.target.value });
   };
 
   render() {
 
-    const { searchKey } = this.state;
-    let searchResults;
-    if (searchKey) {
-      searchResults = emojiFilterCache.filter((i) =>
-        i.id.indexOf(searchKey) !== -1 ||
-        i.name.indexOf(searchKey) !== -1 ||
-        i.keywords.includes(searchKey)
+    const { filterKey } = this.state;
+    let filterResults;
+    if (filterKey) {
+      filterResults = emojiFilterCache.filter((i) =>
+        i.id.indexOf(filterKey) !== -1 ||
+        i.name.indexOf(filterKey) !== -1 ||
+        i.keywords.includes(filterKey)
       ).map(i => i.id);
     }
 
     return (
       <div className="emoji-picker">
         <div className="search-box">
-          <Input  value={searchKey} onChange={this.searchKeyChanged}/>
+          <Input value={filterKey} onChange={this.filterKeyChanged}/>
         </div>
 
-        {!searchKey &&
+        {!filterKey &&
         <div className="emoji-cat-list">
           {emojiData.categories.map(cat =>
             <div className="emoji-cat" key={cat.id}>
@@ -94,15 +94,12 @@ class EmojiPicker extends Component {
         </div>
         }
 
-        {searchKey &&
+        {filterKey &&
         <div className="emoji-cat-list">
           <div className="emoji-cat">
-            <div className="cat-title">
-              Search Results
-            </div>
             <div className="emoji-list">
-              {searchResults.length === 0 && <div>No match</div>}
-              {searchResults.length > 0 && searchResults.map(emoji => this.renderEmoji(emoji))}
+              {filterResults.length === 0 && <div>No match</div>}
+              {filterResults.length > 0 && filterResults.map(emoji => this.renderEmoji(emoji))}
             </div>
           </div>
         </div>
