@@ -25,10 +25,23 @@ require('codemirror/addon/search/match-highlighter.js');
 require('codemirror/mode/markdown/markdown');
 require('../../helpers/codemirror-spell-checker.js');
 
+const emojiFilterCache = Object.keys(emojiData.emojis).map(e => {
+
+  const em = emojiData.emojis[e];
+  return {
+    id: e,
+    name: em.a.toLowerCase(),
+    keywords: em.j ? em.j : []
+  };
+});
 
 class EmojiPicker extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      searchKey: ''
+    };
   }
 
   renderEmoji = (emoji) => {
@@ -41,26 +54,59 @@ class EmojiPicker extends Component {
 
     return <div onClick={() => {
       onClick(native);
-    }} key={emoji} role="none" className="emoji">{native}</div>;
+    }} key={emoji} role="none" className="emoji" title={em.a}>{native}</div>;
+  };
+
+  searchKeyChanged = (e) => {
+    this.setState({ searchKey: e.target.value });
   };
 
   render() {
+
+    const { searchKey } = this.state;
+    let searchResults;
+    if (searchKey) {
+      searchResults = emojiFilterCache.filter((i) =>
+        i.id.indexOf(searchKey) !== -1 ||
+        i.name.indexOf(searchKey) !== -1 ||
+        i.keywords.includes(searchKey)
+      ).map(i => i.id);
+    }
+
     return (
       <div className="emoji-picker">
+        <div className="search-box">
+          <Input  value={searchKey} onChange={this.searchKeyChanged}/>
+        </div>
+
+        {!searchKey &&
         <div className="emoji-cat-list">
           {emojiData.categories.map(cat =>
             <div className="emoji-cat" key={cat.id}>
               <div className="cat-title">
                 {cat.name}
               </div>
-
               <div className="emoji-list">
                 {cat.emojis.map(emoji => this.renderEmoji(emoji))}
-                <div className="clearfix"/>
               </div>
             </div>
           )}
         </div>
+        }
+
+        {searchKey &&
+        <div className="emoji-cat-list">
+          <div className="emoji-cat">
+            <div className="cat-title">
+              Search Results
+            </div>
+            <div className="emoji-list">
+              {searchResults.length === 0 && <div>No match</div>}
+              {searchResults.length > 0 && searchResults.map(emoji => this.renderEmoji(emoji))}
+            </div>
+          </div>
+        </div>
+        }
       </div>
     );
   }
