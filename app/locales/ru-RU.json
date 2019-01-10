@@ -192,7 +192,7 @@
     "tool-table": "Таблица",
     "tool-upload": "Загрузить",
     "tool-gallery": "Галерея",
-    "tool-emoji": "Emoji",
+    "tool-emoji": "Эмоджи",
     "preview": "Предпросмотр",
     "reward": "Награда",
     "reward-default": "Стандарт 50%/50%",
@@ -217,8 +217,8 @@
     "sync-scroll": "Автопрокрутка",
     "words-count": "{n} слов",
     "no-suggestions": "Нет предложений",
-    "emoji-filter-placeholder": "Filter",
-    "emoji-filter-no-match": "No match"
+    "emoji-filter-placeholder": "Фильтр",
+    "emoji-filter-no-match": "Нет совпадений"
   },
   "gallery": {
     "title": "Галерея",
