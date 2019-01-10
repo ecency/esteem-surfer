@@ -221,7 +221,8 @@
     "words-count": "{n} слов",
     "no-suggestions": "Нет предложений",
     "emoji-filter-placeholder": "Фильтр",
-    "emoji-filter-no-match": "Нет совпадений"
+    "emoji-filter-no-match": "Нет совпадений",
+    "emoji-recently-used": "Recently Used"
   },
   "gallery": {
     "title": "Галерея",

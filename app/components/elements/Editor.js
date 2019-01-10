@@ -13,7 +13,7 @@ import GalleryModal from '../dialogs/Gallery';
 
 import { uploadImage, addMyImage } from '../../backend/esteem-client';
 
-import { getItem } from '../../helpers/storage';
+import { getItem, setItem } from '../../helpers/storage';
 
 import markDown2Html from '../../utils/markdown-2-html';
 
@@ -49,12 +49,11 @@ class EmojiPicker extends Component {
     const codePoints = unicodes.map(u => `0x${u}`);
     const native = String.fromCodePoint(...codePoints);
 
-    const { onClick } = this.props;
 
     return (
       <div
         onClick={() => {
-          onClick(native);
+          this.clicked(emoji, native);
         }}
         key={emoji}
         role="none"
@@ -70,8 +69,21 @@ class EmojiPicker extends Component {
     this.setState({ filterKey: e.target.value });
   };
 
+  clicked = (id, native) => {
+    const recent = getItem('recent-emoji', []);
+    if (!recent.includes(id)) {
+      const newRecent = [...new Set([id, ...recent])].slice(0, 18);
+      setItem('recent-emoji', newRecent);
+    }
+
+    const { onClick } = this.props;
+    onClick(native);
+  };
+
   render() {
     const { intl } = this.props;
+
+    const recent = getItem('recent-emoji', []);
 
     const { filterKey } = this.state;
     let filterResults;
@@ -100,6 +112,16 @@ class EmojiPicker extends Component {
 
         {!filterKey && (
           <div className="emoji-cat-list">
+            {recent.length > 0 &&
+            <div className="emoji-cat">
+              <div className="cat-title">
+                <FormattedMessage id="composer.emoji-recently-used"/>
+              </div>
+              <div className="emoji-list">
+                {recent.map(emoji => this.renderEmoji(emoji))}
+              </div>
+            </div>
+            }
             {emojiData.categories.map(cat => (
               <div className="emoji-cat" key={cat.id}>
                 <div className="cat-title">{cat.name}</div>
@@ -116,10 +138,10 @@ class EmojiPicker extends Component {
             <div className="emoji-cat">
               <div className="emoji-list">
                 {filterResults.length === 0 && (
-                  <FormattedMessage id="composer.emoji-filter-no-match" />
+                  <FormattedMessage id="composer.emoji-filter-no-match"/>
                 )}
                 {filterResults.length > 0 &&
-                  filterResults.map(emoji => this.renderEmoji(emoji))}
+                filterResults.map(emoji => this.renderEmoji(emoji))}
               </div>
             </div>
           </div>
@@ -130,7 +152,8 @@ class EmojiPicker extends Component {
 }
 
 EmojiPicker.defaultProps = {
-  onClick: () => {}
+  onClick: () => {
+  }
 };
 
 EmojiPicker.propTypes = {
@@ -773,7 +796,7 @@ class Editor extends Component {
             </div>
           </div>
         </Tooltip>
-        <div className="tool-separator" />
+        <div className="tool-separator"/>
         <Tooltip
           title={intl.formatMessage({ id: 'composer.tool-code' })}
           mouseEnterDelay={2}
@@ -790,7 +813,7 @@ class Editor extends Component {
             <i className="mi tool-icon">format_quote</i>
           </div>
         </Tooltip>
-        <div className="tool-separator" />
+        <div className="tool-separator"/>
         <Tooltip
           title={intl.formatMessage({ id: 'composer.tool-ol' })}
           mouseEnterDelay={2}
@@ -807,7 +830,7 @@ class Editor extends Component {
             <i className="mi tool-icon">format_list_bulleted</i>
           </div>
         </Tooltip>
-        <div className="tool-separator" />
+        <div className="tool-separator"/>
         <Tooltip
           title={intl.formatMessage({ id: 'composer.tool-link' })}
           mouseEnterDelay={2}
@@ -837,7 +860,7 @@ class Editor extends Component {
                   document.getElementById('file-input').click();
                 }}
               >
-                <FormattedMessage id="composer.tool-upload" />
+                <FormattedMessage id="composer.tool-upload"/>
               </div>
               {activeAccount && (
                 <div
@@ -848,7 +871,7 @@ class Editor extends Component {
                     this.setState({ galleryModalVisible: true });
                   }}
                 >
-                  <FormattedMessage id="composer.tool-gallery" />
+                  <FormattedMessage id="composer.tool-gallery"/>
                 </div>
               )}
             </div>
@@ -866,21 +889,21 @@ class Editor extends Component {
                 role="none"
                 onClick={this.table}
               >
-                <FormattedMessage id="composer.tool-table-3-col" />
+                <FormattedMessage id="composer.tool-table-3-col"/>
               </div>
               <div
                 className="sub-tool-menu-item"
                 role="none"
                 onClick={this.table2}
               >
-                <FormattedMessage id="composer.tool-table-2-col" />
+                <FormattedMessage id="composer.tool-table-2-col"/>
               </div>
               <div
                 className="sub-tool-menu-item"
                 role="none"
                 onClick={this.table1}
               >
-                <FormattedMessage id="composer.tool-table-1-col" />
+                <FormattedMessage id="composer.tool-table-1-col"/>
               </div>
             </div>
           </div>
