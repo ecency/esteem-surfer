@@ -17,11 +17,66 @@ import { getItem } from '../../helpers/storage';
 
 import markDown2Html from '../../utils/markdown-2-html';
 
+import emojiData from '../../data/emoji';
+
 require('codemirror/addon/display/placeholder.js');
 require('codemirror/addon/search/searchcursor.js');
 require('codemirror/addon/search/match-highlighter.js');
 require('codemirror/mode/markdown/markdown');
 require('../../helpers/codemirror-spell-checker.js');
+
+
+class EmojiPicker extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  renderEmoji = (emoji) => {
+    const em = emojiData.emojis[emoji];
+    const unicodes = em.b.split('-');
+    const codePoints = unicodes.map((u) => `0x${u}`);
+    const native = String.fromCodePoint(...codePoints);
+
+    const { onClick } = this.props;
+
+    return <div onClick={() => {
+      onClick(native);
+    }} key={emoji} role="none" className="emoji">{native}</div>;
+  };
+
+  render() {
+    return (
+      <div className="emoji-picker">
+        <div className="emoji-cat-list">
+          {emojiData.categories.map(cat =>
+            <div className="emoji-cat" key={cat.id}>
+              <div className="cat-title">
+                {cat.name}
+              </div>
+
+              <div className="emoji-list">
+                {cat.emojis.map(emoji => this.renderEmoji(emoji))}
+                <div className="clearfix"/>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+}
+
+
+EmojiPicker.defaultProps = {
+  onClick: () => {
+  }
+};
+
+EmojiPicker.propTypes = {
+  onClick: PropTypes.func,
+  intl: PropTypes.instanceOf(Object).isRequired
+};
+
 
 class Editor extends Component {
   constructor(props) {
@@ -638,7 +693,7 @@ class Editor extends Component {
             </div>
           </div>
         </Tooltip>
-        <div className="tool-separator" />
+        <div className="tool-separator"/>
         <Tooltip
           title={intl.formatMessage({ id: 'composer.tool-code' })}
           mouseEnterDelay={2}
@@ -655,7 +710,7 @@ class Editor extends Component {
             <i className="mi tool-icon">format_quote</i>
           </div>
         </Tooltip>
-        <div className="tool-separator" />
+        <div className="tool-separator"/>
         <Tooltip
           title={intl.formatMessage({ id: 'composer.tool-ol' })}
           mouseEnterDelay={2}
@@ -672,7 +727,7 @@ class Editor extends Component {
             <i className="mi tool-icon">format_list_bulleted</i>
           </div>
         </Tooltip>
-        <div className="tool-separator" />
+        <div className="tool-separator"/>
         <Tooltip
           title={intl.formatMessage({ id: 'composer.tool-link' })}
           mouseEnterDelay={2}
@@ -702,7 +757,7 @@ class Editor extends Component {
                   document.getElementById('file-input').click();
                 }}
               >
-                <FormattedMessage id="composer.tool-upload" />
+                <FormattedMessage id="composer.tool-upload"/>
               </div>
               {activeAccount && (
                 <div
@@ -713,7 +768,7 @@ class Editor extends Component {
                     this.setState({ galleryModalVisible: true });
                   }}
                 >
-                  <FormattedMessage id="composer.tool-gallery" />
+                  <FormattedMessage id="composer.tool-gallery"/>
                 </div>
               )}
             </div>
@@ -727,6 +782,13 @@ class Editor extends Component {
             <i className="mi tool-icon">grid_on</i>
           </div>
         </Tooltip>
+        <div className="editor-tool" role="none">
+          <i className="mi tool-icon">sentiment_satisfied</i>
+
+          <EmojiPicker {...this.props} onClick={(em) => {
+            this.insertInline(`${em} `);
+          }}/>
+        </div>
       </div>
     );
 
