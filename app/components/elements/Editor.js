@@ -49,7 +49,6 @@ class EmojiPicker extends Component {
     const codePoints = unicodes.map(u => `0x${u}`);
     const native = String.fromCodePoint(...codePoints);
 
-
     return (
       <div
         onClick={() => {
@@ -112,16 +111,16 @@ class EmojiPicker extends Component {
 
         {!filterKey && (
           <div className="emoji-cat-list">
-            {recent.length > 0 &&
-            <div className="emoji-cat">
-              <div className="cat-title">
-                <FormattedMessage id="composer.emoji-recently-used"/>
+            {recent.length > 0 && (
+              <div className="emoji-cat">
+                <div className="cat-title">
+                  <FormattedMessage id="composer.emoji-recently-used" />
+                </div>
+                <div className="emoji-list">
+                  {recent.map(emoji => this.renderEmoji(emoji))}
+                </div>
               </div>
-              <div className="emoji-list">
-                {recent.map(emoji => this.renderEmoji(emoji))}
-              </div>
-            </div>
-            }
+            )}
             {emojiData.categories.map(cat => (
               <div className="emoji-cat" key={cat.id}>
                 <div className="cat-title">{cat.name}</div>
@@ -138,10 +137,10 @@ class EmojiPicker extends Component {
             <div className="emoji-cat">
               <div className="emoji-list">
                 {filterResults.length === 0 && (
-                  <FormattedMessage id="composer.emoji-filter-no-match"/>
+                  <FormattedMessage id="composer.emoji-filter-no-match" />
                 )}
                 {filterResults.length > 0 &&
-                filterResults.map(emoji => this.renderEmoji(emoji))}
+                  filterResults.map(emoji => this.renderEmoji(emoji))}
               </div>
             </div>
           </div>
@@ -152,8 +151,7 @@ class EmojiPicker extends Component {
 }
 
 EmojiPicker.defaultProps = {
-  onClick: () => {
-  }
+  onClick: () => {}
 };
 
 EmojiPicker.propTypes = {
@@ -372,7 +370,7 @@ class Editor extends Component {
   table1 = e => {
     e.stopPropagation();
 
-    const t = '' + '|\tColumn 1\t|\n' + '|\t--------\t|\n' + '|\t  Text  \t|';
+    const t = '|\tColumn 1\t|\n|\t--------\t|\n|\t  Text  \t|';
     this.insertBlock(t);
   };
 
@@ -796,7 +794,7 @@ class Editor extends Component {
             </div>
           </div>
         </Tooltip>
-        <div className="tool-separator"/>
+        <div className="tool-separator" />
         <Tooltip
           title={intl.formatMessage({ id: 'composer.tool-code' })}
           mouseEnterDelay={2}
@@ -813,7 +811,7 @@ class Editor extends Component {
             <i className="mi tool-icon">format_quote</i>
           </div>
         </Tooltip>
-        <div className="tool-separator"/>
+        <div className="tool-separator" />
         <Tooltip
           title={intl.formatMessage({ id: 'composer.tool-ol' })}
           mouseEnterDelay={2}
@@ -830,7 +828,7 @@ class Editor extends Component {
             <i className="mi tool-icon">format_list_bulleted</i>
           </div>
         </Tooltip>
-        <div className="tool-separator"/>
+        <div className="tool-separator" />
         <Tooltip
           title={intl.formatMessage({ id: 'composer.tool-link' })}
           mouseEnterDelay={2}
@@ -860,7 +858,7 @@ class Editor extends Component {
                   document.getElementById('file-input').click();
                 }}
               >
-                <FormattedMessage id="composer.tool-upload"/>
+                <FormattedMessage id="composer.tool-upload" />
               </div>
               {activeAccount && (
                 <div
@@ -871,7 +869,7 @@ class Editor extends Component {
                     this.setState({ galleryModalVisible: true });
                   }}
                 >
-                  <FormattedMessage id="composer.tool-gallery"/>
+                  <FormattedMessage id="composer.tool-gallery" />
                 </div>
               )}
             </div>
@@ -889,21 +887,21 @@ class Editor extends Component {
                 role="none"
                 onClick={this.table}
               >
-                <FormattedMessage id="composer.tool-table-3-col"/>
+                <FormattedMessage id="composer.tool-table-3-col" />
               </div>
               <div
                 className="sub-tool-menu-item"
                 role="none"
                 onClick={this.table2}
               >
-                <FormattedMessage id="composer.tool-table-2-col"/>
+                <FormattedMessage id="composer.tool-table-2-col" />
               </div>
               <div
                 className="sub-tool-menu-item"
                 role="none"
                 onClick={this.table1}
               >
-                <FormattedMessage id="composer.tool-table-1-col"/>
+                <FormattedMessage id="composer.tool-table-1-col" />
               </div>
             </div>
           </div>
