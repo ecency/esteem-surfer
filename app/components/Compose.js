@@ -640,7 +640,7 @@ class Compose extends Component {
 
     const newDtLocale = Object.assign({}, defaultDtLocale, {
       lang: Object.assign({}, defaultDtLocale.lang, {
-        ok: intl.formatMessage({ id: 'composer.select-schedule-date' }),
+        ok: intl.formatMessage({ id: 'g.ok' }),
         dateSelect: intl.formatMessage({
           id: 'composer.schedule-picker-select-date'
         }),
