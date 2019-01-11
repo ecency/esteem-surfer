@@ -8,6 +8,8 @@ import PropTypes from 'prop-types';
 
 import moment from 'moment';
 
+import defaultDtLocale from 'antd/lib/date-picker/locale/en_US';
+
 import {
   Select,
   Checkbox,
@@ -636,6 +638,19 @@ class Compose extends Component {
       );
     }
 
+    const newDtLocale = Object.assign({}, defaultDtLocale, {
+      lang: Object.assign({}, defaultDtLocale.lang, {
+        ok: intl.formatMessage({ id: 'composer.select-schedule-date' }),
+        dateSelect: intl.formatMessage({
+          id: 'composer.schedule-picker-select-date'
+        }),
+        timeSelect: intl.formatMessage({
+          id: 'composer.schedule-picker-select-time'
+        }),
+        now: null
+      })
+    });
+
     return (
       <div className="wrapper">
         <NavBar {...this.props} reloadFn={() => {}} reloading={loading} />
@@ -809,8 +824,10 @@ class Compose extends Component {
                 <DatePicker
                   open={scheduleDtVisible}
                   value={scheduleDate}
+                  locale={newDtLocale}
                   showTime={{ format: 'HH:mm' }}
                   disabledDate={current => current && current < moment()}
+                  showToday={false}
                   onChange={date => {
                     this.setState({
                       scheduleDate: date.second(0).milliseconds(0)
