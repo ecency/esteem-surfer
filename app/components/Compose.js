@@ -16,6 +16,7 @@ import {
   Menu,
   Modal,
   Tooltip,
+  DatePicker,
   message
 } from 'antd';
 
@@ -168,7 +169,7 @@ class Compose extends Component {
       .add(2, 'hours')
       .minute(0)
       .second(0)
-      .format('YYYY-MM-DDTHH:mm');
+      .milliseconds(0);
 
     this.state = {
       title,
@@ -185,6 +186,7 @@ class Compose extends Component {
       posting: false,
       permProcessing: false,
       scheduleModalVisible: false,
+      scheduleDtVisible: false,
       scheduleDate,
       editMode: false,
       editingEntry: null
@@ -403,6 +405,8 @@ class Compose extends Component {
     const jsonMeta = makeJsonMetadata(meta, tags, version);
     const isoDate = new Date(scheduleDate).toISOString();
 
+    console.log(isoDate);
+
     schedule(
       activeAccount.username,
       title,
@@ -554,6 +558,7 @@ class Compose extends Component {
       posting,
       permProcessing,
       scheduleModalVisible,
+      scheduleDtVisible,
       scheduleDate,
       editMode
     } = this.state;
@@ -592,6 +597,9 @@ class Compose extends Component {
                   return;
                 }
                 this.setState({ scheduleModalVisible: true });
+                setTimeout(() => {
+                  this.setState({ scheduleDtVisible: true });
+                }, 300);
               }}
             >
               <FormattedMessage id="composer.select-schedule-date" />
@@ -781,30 +789,43 @@ class Compose extends Component {
             width={320}
             title={intl.formatMessage({ id: 'composer.select-schedule-date' })}
             onCancel={() => {
-              this.setState({ scheduleModalVisible: false });
+              this.setState({
+                scheduleModalVisible: false,
+                scheduleDtVisible: false
+              });
             }}
           >
-            <div style={{ padding: '10px' }}>
-              <input
-                type="datetime-local"
-                value={scheduleDate}
-                className="ant-input"
-                onChange={e => {
-                  this.setState({ scheduleDate: e.target.value });
-                }}
-              />
-            </div>
+            <div className="schedule-modal-content">
+              <div className="selected-date">
+                {intl.formatDate(scheduleDate, {
+                  year: 'numeric',
+                  month: 'numeric',
+                  day: 'numeric',
+                  hour: 'numeric',
+                  minute: 'numeric'
+                })}
+              </div>
+              <div className="dt-holder">
+                <DatePicker
+                  open={scheduleDtVisible}
+                  value={scheduleDate}
+                  showTime={{ format: 'HH:mm' }}
+                  disabledDate={current => current && current < moment()}
+                  onChange={date => {
+                    this.setState({
+                      scheduleDate: date.second(0).milliseconds(0)
+                    });
+                  }}
+                  onOk={() => {
+                    this.schedulePost();
+                    this.setState({ scheduleDtVisible: false });
 
-            <div style={{ padding: '10px', textAlign: 'right' }}>
-              <Button
-                type="primary"
-                onClick={() => {
-                  this.schedulePost();
-                  this.setState({ scheduleModalVisible: false });
-                }}
-              >
-                <FormattedMessage id="g.select" />
-              </Button>
+                    setTimeout(() => {
+                      this.setState({ scheduleModalVisible: false });
+                    }, 300);
+                  }}
+                />
+              </div>
             </div>
           </Modal>
         </div>
