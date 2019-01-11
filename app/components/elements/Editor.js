@@ -45,6 +45,9 @@ class EmojiPicker extends Component {
 
   renderEmoji = emoji => {
     const em = emojiData.emojis[emoji];
+    if (!em) {
+      return null;
+    }
     const unicodes = em.b.split('-');
     const codePoints = unicodes.map(u => `0x${u}`);
     const native = String.fromCodePoint(...codePoints);
