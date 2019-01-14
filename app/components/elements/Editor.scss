@@ -332,9 +332,16 @@
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
-  background: darken($white-three, 5);
   padding: 14px 6px;
   overflow: auto;
+
+  @include themify(day) {
+    background: darken($white-three, 5);
+  }
+
+  @include themify(night) {
+    background: lighten($dark-six, 4);
+  }
 
   .search-box {
     margin-bottom: 20px;
@@ -346,8 +353,15 @@
       .cat-title {
         font-weight: 600;
         font-size: 16px;
-        color: $charcoal-grey;
         margin: 4px 0 10px 0;
+
+        @include themify(day) {
+          color: $charcoal-grey;
+        }
+
+        @include themify(night) {
+          color: $pinkish-grey;
+        }
       }
 
       .emoji-list {
