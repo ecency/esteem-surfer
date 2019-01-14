@@ -60,7 +60,7 @@
     "server": "Sunucu",
     "server-invalid-address": "Geçersiz sunucu adresi",
     "server-connecting": "'{server}' sunucusuna bağlanılıyor...",
-    "server-connect-error": "'{server}' sunucusuna bağlanılamadı",
+    "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
     "server-timeout-error": "'{server}' sunucusu aktif değil",
     "server-changed": "Sunucu '{server}' olarak değiştirildi",
     "server-custom-address": "Özel sunucu adresi",
