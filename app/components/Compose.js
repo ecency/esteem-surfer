@@ -401,7 +401,7 @@ class Compose extends Component {
     const jsonMeta = makeJsonMetadata(meta, tags, version);
     const isoDate = new Date(scheduleDate).toISOString();
 
-    console.log(isoDate);
+    // console.log(isoDate);
 
     schedule(
       activeAccount.username,
