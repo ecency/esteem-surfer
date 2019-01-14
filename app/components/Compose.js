@@ -12,7 +12,6 @@ import defaultDtLocale from 'antd/lib/date-picker/locale/en_US';
 
 import {
   Select,
-  Checkbox,
   Button,
   Dropdown,
   Menu,
@@ -30,7 +29,7 @@ import Editor from './elements/Editor';
 
 import DeepLinkHandler from './helpers/DeepLinkHandler';
 
-import { getItem, setItem, getVotingPercentage } from '../helpers/storage';
+import { getItem, setItem } from '../helpers/storage';
 import markDown2Html from '../utils/markdown-2-html';
 import formatChainError from '../utils/format-chain-error';
 import { makePath as makePathEntry } from './helpers/EntryLink';
@@ -165,7 +164,6 @@ class Compose extends Component {
     const title = getItem('compose-title') || '';
     const tags = getItem('compose-tags') || [];
     const body = getItem('compose-body') || '';
-    const upvote = getItem('compose-upvote', false);
 
     const scheduleDate = moment()
       .add(2, 'hours')
@@ -184,7 +182,6 @@ class Compose extends Component {
       },
       draftId: null,
       reward: 'default',
-      upvote,
       posting: false,
       permProcessing: false,
       scheduleModalVisible: false,
@@ -280,9 +277,6 @@ class Compose extends Component {
 
   clear = (preventDraftRedir = false) => {
     const editor = this.editor.current.getWrappedInstance();
-
-    setItem('compose-upvote', false);
-    this.setState({ upvote: false });
 
     editor.clear(() => {
       if (preventDraftRedir) return;
@@ -401,7 +395,7 @@ class Compose extends Component {
   schedulePost = () => {
     const { activeAccount, intl } = this.props;
 
-    const { title, body, tags, reward, upvote, scheduleDate } = this.state;
+    const { title, body, tags, reward, scheduleDate } = this.state;
     const permlink = createPermlink(title);
     const meta = extractMetadata(body);
     const jsonMeta = makeJsonMetadata(meta, tags, version);
@@ -417,7 +411,7 @@ class Compose extends Component {
       tags,
       body,
       reward,
-      upvote,
+      false,
       isoDate
     )
       .then(resp => {
@@ -431,7 +425,7 @@ class Compose extends Component {
 
   publish = async () => {
     const { activeAccount, global, intl } = this.props;
-    const { title, tags, body, reward, upvote } = this.state;
+    const { title, tags, body, reward } = this.state;
 
     this.setState({ posting: true });
 
@@ -453,9 +447,6 @@ class Compose extends Component {
     const meta = extractMetadata(body);
     const jsonMeta = makeJsonMetadata(meta, tags, version);
     const options = makeOptions(activeAccount.username, permlink, reward);
-    const voteWeight = upvote
-      ? getVotingPercentage(activeAccount.username) * 100
-      : null;
 
     return comment(
       activeAccount,
@@ -467,7 +458,7 @@ class Compose extends Component {
       body,
       jsonMeta,
       options,
-      voteWeight
+      null
     )
       .then(resp => {
         message.success(intl.formatMessage({ id: 'composer.published' }));
@@ -556,7 +547,6 @@ class Compose extends Component {
       body,
       defaultValues,
       reward,
-      upvote,
       posting,
       permProcessing,
       scheduleModalVisible,
@@ -717,21 +707,6 @@ class Compose extends Component {
                       {intl.formatMessage({ id: 'composer.reward-dp' })}
                     </Select.Option>
                   </Select>
-                </div>
-                <div className="voting">
-                  <Checkbox
-                    checked={upvote}
-                    onChange={e => {
-                      const { checked } = e.target;
-                      setItem('compose-upvote', checked);
-
-                      this.setState({
-                        upvote: checked
-                      });
-                    }}
-                  >
-                    <FormattedMessage id="composer.upvote" />{' '}
-                  </Checkbox>
                 </div>
                 <div className="clear">
                   <Button className="clean-button" onClick={this.clear}>
