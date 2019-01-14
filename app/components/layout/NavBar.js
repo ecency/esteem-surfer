@@ -617,7 +617,7 @@ class NavBar extends Component {
               <Fragment>
                 <Tooltip
                   title={
-                    unreadActivity
+                    hasUnclaimedRewards
                       ? intl.formatMessage({
                           id: 'navbar.unclaimed-reward-notice'
                         })
