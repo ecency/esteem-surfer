@@ -60,7 +60,7 @@
     "server": "Сервер",
     "server-invalid-address": "Неправильный адрес сервера",
     "server-connecting": "Соединение с '{server}'...",
-    "server-connect-error": "Невозможно соединиться с '{server}'",
+    "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
     "server-timeout-error": "'{server}' не похож на живой",
     "server-changed": "Сервер изменён на {server}",
     "server-custom-address": "Впишите адрес сервера",
