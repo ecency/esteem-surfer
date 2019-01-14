@@ -540,8 +540,10 @@
                 }
 
                 .fund-action {
-                  width: 40px;
+                  flex-grow: 0;
+                  flex-shrink: 0;
                   margin-left: 10px;
+                  width: 40px;
                 }
               }
             }
@@ -643,11 +645,11 @@
 
                 .price-usd,
                 .price-btc {
-                  display: flex;
                   align-items: center;
+                  display: flex;
                   svg {
-                    width: 16px;
                     height: 16px;
+                    width: 16px;
                   }
                 }
 
