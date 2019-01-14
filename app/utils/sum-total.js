@@ -1,10 +1,8 @@
 import parseToken from './parse-token';
+import isEmptyDate from './is-empty-date';
 
 export default entry => {
-  if (
-    entry.pending_payout_value &&
-    entry.last_payout === '1970-01-01T00:00:00'
-  ) {
+  if (entry.pending_payout_value && isEmptyDate(entry.last_payout)) {
     return entry.total_payout_value
       ? parseToken(entry.total_payout_value) +
           parseToken(entry.pending_payout_value)
