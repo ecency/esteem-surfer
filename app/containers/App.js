@@ -30,7 +30,7 @@ import messages from '../locales';
 
 import { getItem, setItem } from '../helpers/storage';
 
-import { scTokenRenew } from '../backend/esteem-client';
+import { scTokenRenew, usrActivity } from '../backend/esteem-client';
 import { decryptKey } from '../utils/crypto';
 
 import { NWS_ADDRESS } from '../config';
@@ -76,6 +76,9 @@ class App extends React.Component {
       this.connectNws(activeAccount.username);
       this.fetchActivities();
     }
+
+    this.checkIn();
+    this.checkInInterval = setInterval(this.checkIn, 1000 * 60 * 60 * 6);
   }
 
   componentWillUnmount() {
@@ -83,6 +86,7 @@ class App extends React.Component {
     clearInterval(this.globalInterval);
     clearInterval(this.activeAccountInterval);
     clearInterval(this.scRefreshInterval);
+    clearInterval(this.checkInInterval);
 
     window.removeEventListener('user-login', this.onUserLogin);
     window.removeEventListener('user-logout', this.onUserLogout);
@@ -157,6 +161,15 @@ class App extends React.Component {
         })
         .catch(() => {});
     });
+  };
+
+  checkIn = () => {
+    const { activeAccount } = this.props;
+    if (!activeAccount) {
+      return;
+    }
+
+    usrActivity(activeAccount.username, 10);
   };
 
   onCreatePinSuccess = (code, hashedCode) => {
