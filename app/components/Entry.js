@@ -13,7 +13,9 @@ import {
   injectIntl
 } from 'react-intl';
 
-import { Select, Button, Tooltip, message } from 'antd';
+import { Select, Button, message } from 'antd';
+
+import Tooltip from './common/Tooltip';
 
 import {
   getState,

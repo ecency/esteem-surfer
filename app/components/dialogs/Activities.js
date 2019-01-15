@@ -5,10 +5,11 @@ import PropTypes from 'prop-types';
 
 import moment from 'moment';
 
-import { Menu, Tooltip, message } from 'antd';
+import { Menu, message } from 'antd';
 
 import { FormattedMessage, injectIntl } from 'react-intl';
 
+import Tooltip from '../common/Tooltip';
 import DropDown from '../common/DropDown';
 import AccountLink from '../helpers/AccountLink';
 import EntryLink from '../helpers/EntryLink';
