@@ -97,21 +97,21 @@
     "input-placeholder": "Masukkan kode pin untuk melanjutkan",
     "last-chance": "Ini kesempatan terakhir anda",
     "invalidate": "Oh, saya lupa...",
-    "invalidate-confirm": "Are you really want to invalidate pin code?",
-    "invalidated": "Pin code invalidated"
+    "invalidate-confirm": "Apakah anda yakin ingin membatalkan kode pin?",
+    "invalidated": "Kode pin salah"
   },
   "user-menu": {
-    "profile": "Profile",
-    "bookmarks": "Bookmarks",
-    "favorites": "Favorites",
-    "drafts": "Drafts",
-    "schedules": "Schedules",
-    "gallery": "Gallery",
-    "login-as": "Login As",
-    "logout": "Logout"
+    "profile": "Profil",
+    "bookmarks": "Tandai",
+    "favorites": "Favorit",
+    "drafts": "Konsep",
+    "schedules": "Daftar jadwal",
+    "gallery": "Album",
+    "login-as": "Masuk sebagai",
+    "logout": "Keluar"
   },
   "login-required": {
-    "default": "This action requires login",
+    "default": "Tindakan ini membutuhkan otoritas",
     "key-required": "This action requires {key} key or master password",
     "keys-required": "This action requires {keys} keys or master password"
   },
