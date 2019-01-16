@@ -317,8 +317,8 @@
   },
   "notification": {
     "popup-title": "Anda memiliki pemberitahuan baru",
-    "voted": "{source} voted your post",
-    "mention-post": "{source} mentioned you in a post",
+    "voted": "{source} voted post anda",
+    "mention-post": "{source} menyebut anda dalam sebuah post",
     "mention-comment": "{source} mentioned you in a comment",
     "followed": "{source} followed you",
     "replied": "{source} replied you",
