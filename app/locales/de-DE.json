@@ -22,8 +22,8 @@
     "filter-trending": "im Trend",
     "filter-hot": "Hot",
     "filter-created": "Neu",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
+    "filter-active": "Aktiv",
+    "filter-promoted": "Beworben",
     "filter-votes": "Votes",
     "filter-children": "Kommentare",
     "filter-feed": "Feed"
@@ -37,25 +37,25 @@
   },
   "entry-votes": {
     "n-more": "{n} mehr",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
+    "author": "Autor",
+    "reward": "Belohnung",
+    "percent": "Prozent",
+    "time": "Zeit",
     "modal-title": "Voters ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "rebloggt von {n}"
   },
   "entry-reblog": {
     "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblogged": "Rebloggt"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "Currency",
-    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
-    "currency-changed": "Currency Changed",
-    "locale": "Language",
+    "title": "Einstellungen",
+    "currency": "Währung",
+    "currency-fetch-error": "Der Währungskurs konnte für '{cur}' nicht ermittelt werden",
+    "currency-changed": "Währung gewechselt",
+    "locale": "Sprache",
     "locale-changed": "Language changed",
     "server": "Server",
     "server-invalid-address": "Invalid server address",
