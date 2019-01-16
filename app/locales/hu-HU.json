@@ -295,24 +295,24 @@
   },
   "search": {
     "n-results-for-q": "{n} results for {q}",
-    "sort-by": "Sort by",
-    "sort-popularity": "Popularity",
+    "sort-by": "Rendezés eszerint",
+    "sort-popularity": "Népszerűség",
     "sort-relevance": "Relevance",
-    "sort-newest": "Date"
+    "sort-newest": "Dátum"
   },
   "updater": {
-    "new-version-available": "New version available",
-    "update": "Update",
-    "dismiss": "Dismiss",
+    "new-version-available": "Új verzió elérhető",
+    "update": "Frissítés",
+    "dismiss": "Elvetés",
     "downloading": "Downloading new version...",
-    "download-completed": "Download completed",
-    "restart": "Restart"
+    "download-completed": "Letöltés kész",
+    "restart": "Újraindítás"
   },
   "context-menu": {
-    "cut": "Cut",
-    "copy": "Copy",
-    "paste": "Paste",
-    "open-image-browser": "Open image in browser",
+    "cut": "Kivágás",
+    "copy": "Másolás",
+    "paste": "Beillesztés",
+    "open-image-browser": "A kép megnyitása a böngészőben",
     "copy-image-url": "Copy image url"
   },
   "notification": {
