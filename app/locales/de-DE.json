@@ -1,31 +1,31 @@
 {
   "g": {
-    "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
-    "yes": "Yes",
-    "no": "No",
-    "delete": "Delete",
-    "cancel": "Cancel",
-    "ok": "OK",
-    "edit": "Edit",
-    "server-error": "Process could not completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "compose-entry": "Beitrag erstellen",
+    "are-you-sure": "Bist du sicher?",
+    "yes": "Ja",
+    "no": "Nein",
+    "delete": "Entfernen",
+    "cancel": "Abbrechen",
+    "ok": "Okay",
+    "edit": "Bearbeiten",
+    "server-error": "Der Vorgang konnte aufgrund eines Server-Fehlers nicht durchgeführt werden",
+    "save": "Speichern",
+    "done": "Fertig!",
+    "select": "Auswählen"
   },
   "footer": {
     "faq": "FAQ",
-    "about": "About"
+    "about": "Über"
   },
   "entry-index": {
-    "tags": "Popular Tags",
+    "tags": "beliebte Tags",
     "filter-trending": "Trending",
     "filter-hot": "Hot",
     "filter-created": "New",
     "filter-active": "Active",
     "filter-promoted": "Promoted",
     "filter-votes": "Votes",
-    "filter-children": "Comments",
+    "filter-children": "Kommentare",
     "filter-feed": "Feed"
   },
   "entry-payout": {
