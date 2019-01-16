@@ -98,10 +98,10 @@
     "last-chance": "Das ist deine letzte Chance",
     "invalidate": "Oh, ich hab es vergessen...",
     "invalidate-confirm": "Willst du wirklich den PIN-Code ungültig machen?",
-    "invalidated": "Pin code invalidated"
+    "invalidated": "PIN-Code ist nun ungültig"
   },
   "user-menu": {
-    "profile": "Profile",
+    "profile": "Profil",
     "bookmarks": "Bookmarks",
     "favorites": "Favorites",
     "drafts": "Drafts",
@@ -159,11 +159,11 @@
     "next-power-down": "The next power down is {time}",
     "exchange": "Exchange",
     "transactions": "Transactions",
-    "transaction-curation_reward": "Curation Reward",
-    "transaction-author_reward": "Author Reward",
+    "transaction-curation_reward": "Kurator-Belohnung",
+    "transaction-author_reward": "Autor-Belohnung",
     "transaction-comment_benefactor_reward": "Comment Benefactor Reward",
-    "transaction-claim_reward_balance": "Claim rewards",
-    "transaction-transfer": "Transfer",
+    "transaction-claim_reward_balance": "Belohnungen abholen",
+    "transaction-transfer": "Überweisen",
     "transaction-transfer_to_vesting": "Transfer to vesting",
     "transaction-withdraw_vesting": "Withdraw vesting",
     "transaction-fill_order": "Fill order",
