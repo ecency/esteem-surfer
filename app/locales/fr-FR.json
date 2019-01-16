@@ -1,11 +1,11 @@
 {
   "g": {
-    "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
-    "yes": "Yes",
-    "no": "No",
-    "delete": "Delete",
-    "cancel": "Cancel",
+    "compose-entry": "Créer une publication",
+    "are-you-sure": "Êtes-vous sûr?",
+    "yes": "Oui",
+    "no": "Non",
+    "delete": "Supprimer",
+    "cancel": "Annuler",
     "ok": "OK",
     "edit": "Edit",
     "server-error": "Process could not completed due to server error",
