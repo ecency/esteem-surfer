@@ -1,63 +1,63 @@
 {
   "g": {
     "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
-    "yes": "Yes",
-    "no": "No",
-    "delete": "Delete",
+    "are-you-sure": "Biztos vagy benne?",
+    "yes": "Igen",
+    "no": "Nem",
+    "delete": "Törlés",
     "cancel": "Cancel",
-    "ok": "OK",
+    "ok": "Rendben",
     "edit": "Edit",
     "server-error": "Process could not completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "save": "Mentés",
+    "done": "Kész",
+    "select": "Kiválaszt"
   },
   "footer": {
-    "faq": "FAQ",
+    "faq": "GYÍK",
     "about": "About"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
+    "tags": "Népszerű címkék",
+    "filter-trending": "Népszerű",
     "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
+    "filter-created": "Új",
+    "filter-active": "Aktív",
+    "filter-promoted": "Támogatott",
+    "filter-votes": "Szavazatok",
+    "filter-children": "Hozzászólások",
     "filter-feed": "Feed"
   },
   "entry-payout": {
     "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
+    "promoted": "Támogatott",
     "author-payout": "Author Payout",
     "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "payout-date": "Kifizetés"
   },
   "entry-votes": {
     "n-more": "{n} more",
-    "author": "Author",
+    "author": "Szerző",
     "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
-    "modal-title": "Voters ({n})"
+    "percent": "Százalék",
+    "time": "Idő",
+    "modal-title": "Szavazók ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "megosztva általa {n}"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "Megosztás",
+    "reblogged": "Megosztva"
   },
   "settings": {
     "title": "Settings",
-    "currency": "Currency",
+    "currency": "Pénznem",
     "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
     "currency-changed": "Currency Changed",
-    "locale": "Language",
+    "locale": "Nyelv",
     "locale-changed": "Language changed",
-    "server": "Server",
+    "server": "Szerver",
     "server-invalid-address": "Invalid server address",
     "server-connecting": "Connecting to '{server}'...",
     "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
