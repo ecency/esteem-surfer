@@ -18,10 +18,10 @@
     "about": "Über"
   },
   "entry-index": {
-    "tags": "beliebte Tags",
-    "filter-trending": "Trending",
+    "tags": "Beliebte Tags",
+    "filter-trending": "im Trend",
     "filter-hot": "Hot",
-    "filter-created": "New",
+    "filter-created": "Neu",
     "filter-active": "Active",
     "filter-promoted": "Promoted",
     "filter-votes": "Votes",
