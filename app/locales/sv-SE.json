@@ -15,14 +15,14 @@
   },
   "footer": {
     "faq": "FAQ",
-    "about": "About"
+    "about": "Om"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
+    "tags": "Populära taggar",
+    "filter-trending": "Trendigt",
+    "filter-hot": "Het",
+    "filter-created": "Nytt",
+    "filter-active": "Aktiv",
     "filter-promoted": "Promoted",
     "filter-votes": "Votes",
     "filter-children": "Comments",
