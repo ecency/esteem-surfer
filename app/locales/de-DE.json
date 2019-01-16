@@ -29,14 +29,14 @@
     "filter-feed": "Feed"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "voraussichtliche Auszahlung",
+    "promoted": "Beworben",
+    "author-payout": "Autoren-Vergütung",
+    "curation-payout": "Kuratoren-Vergütung",
+    "payout-date": "Auszahlung"
   },
   "entry-votes": {
-    "n-more": "{n} more",
+    "n-more": "{n} mehr",
     "author": "Author",
     "reward": "Reward",
     "percent": "Percent",
