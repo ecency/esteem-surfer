@@ -3,15 +3,15 @@
     "compose-entry": "Skapa inlägg",
     "are-you-sure": "Är du säker?",
     "yes": "Ja",
-    "no": "No",
-    "delete": "Delete",
-    "cancel": "Cancel",
+    "no": "Nej",
+    "delete": "Ta bort",
+    "cancel": "Avbryt",
     "ok": "OK",
-    "edit": "Edit",
-    "server-error": "Process could not completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "edit": "Redigera",
+    "server-error": "Processen kunde inte slutföras på grund av ett serverfel",
+    "save": "Spara",
+    "done": "Klart",
+    "select": "Välj"
   },
   "footer": {
     "faq": "FAQ",
