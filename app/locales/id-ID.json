@@ -89,14 +89,14 @@
     "title": "Buat Kode PIN",
     "desc1": "Atur kode pin untuk mengenkripsi data anda dan aktifkan pengaman tambahan!",
     "input-placeholder": "Masukkan kode pin",
-    "desc2": "You will be prompted to enter pin code for crucial transactions as well as on every launch.",
-    "created": "Pin code created"
+    "desc2": "Untuk setiap membuka dan transaksi penting anda akan diminta memasukkan kode pin.",
+    "created": "Kode pin dibuat"
   },
   "confirm-pin-code": {
-    "title": "Enter Pin Code",
-    "input-placeholder": "Enter pin code to continue",
-    "last-chance": "This is your last chance",
-    "invalidate": "Oh, I forgot it...",
+    "title": "Masukkan kode pin",
+    "input-placeholder": "Masukkan kode pin untuk melanjutkan",
+    "last-chance": "Ini kesempatan terakhir anda",
+    "invalidate": "Oh, saya lupa...",
     "invalidate-confirm": "Are you really want to invalidate pin code?",
     "invalidated": "Pin code invalidated"
   },
