@@ -402,6 +402,7 @@
     "success-sub-title": "Перевод удался",
     "transfer-summary": "Перевод <span class=\"amount\">{amount}</span> от <span class=\"from-user\">{from}</span> к <span class=\"to-user\">{to}</span>",
     "reset": "Ещё один перевод",
-    "finish": "Завершить"
+    "finish": "Завершить",
+    "recent-transfers": "Recent transfers"
   }
 }
