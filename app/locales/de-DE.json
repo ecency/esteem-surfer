@@ -89,15 +89,15 @@
     "title": "Erstelle einen PIN-Code",
     "desc1": "Setzen deinen Pin-Code um deine Daten zu verschlüsseln und eine zusätzliche Sicherheit zu aktivieren!",
     "input-placeholder": "PIN-Code eingeben",
-    "desc2": "You will be prompted to enter pin code for crucial transactions as well as on every launch.",
-    "created": "Pin code created"
+    "desc2": "Du wirst bei wichtigen Transaktionen sowie bei jedem Start der App zur Eingabe des PIN-Codes aufgefordert.",
+    "created": "PIN-Code erstellt"
   },
   "confirm-pin-code": {
-    "title": "Enter Pin Code",
-    "input-placeholder": "Enter pin code to continue",
-    "last-chance": "This is your last chance",
-    "invalidate": "Oh, I forgot it...",
-    "invalidate-confirm": "Are you really want to invalidate pin code?",
+    "title": "PIN-Code eingeben",
+    "input-placeholder": "PIN-Code eingeben um fortzufahren",
+    "last-chance": "Das ist deine letzte Chance",
+    "invalidate": "Oh, ich hab es vergessen...",
+    "invalidate-confirm": "Willst du wirklich den PIN-Code ungültig machen?",
     "invalidated": "Pin code invalidated"
   },
   "user-menu": {
