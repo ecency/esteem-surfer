@@ -44,19 +44,19 @@
     "modal-title": "Pemberi suara ({n})"
   },
   "entry-list-item": {
-    "reblogged": "direblog oleh {n}"
+    "reblogged": "ditampilkan kembali oleh {n}"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Direblog"
+    "reblog": "Menampilkan kembali",
+    "reblogged": "Menampilkan kembali"
   },
   "settings": {
     "title": "Pengaturan",
-    "currency": "Mata Uang",
-    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
-    "currency-changed": "Currency Changed",
-    "locale": "Language",
-    "locale-changed": "Language changed",
+    "currency": "Nilai Tukar Mata Uang",
+    "currency-fetch-error": "Tidak dapat untuk mengambil nilai tukar mata uang '{cur}'",
+    "currency-changed": "Pertukaran mata uang",
+    "locale": "Bahasa",
+    "locale-changed": "Pergantian bahasa",
     "server": "Server",
     "server-invalid-address": "Invalid server address",
     "server-connecting": "Connecting to '{server}'...",
