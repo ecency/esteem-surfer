@@ -393,16 +393,16 @@
     "memo-placeholder": "enter your notes here",
     "memo-help": "This memo is public",
     "key-required-err": "Active key could not found for selected account. Please make sure logged in with proper credentials.",
-    "next": "Next",
-    "confirm-title": "Confirm your Transfer",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "confirm": "Confirm",
-    "back": "Back",
-    "success-title": "Success",
-    "success-sub-title": "Transfer successful",
+    "next": "Következő",
+    "confirm-title": "Erősítsd meg az átutalást",
+    "confirm-sub-title": "Kérjük ellenőrizd, hogy minden rendben",
+    "confirm": "Megerősítés",
+    "back": "Vissza",
+    "success-title": "Sikerült",
+    "success-sub-title": "Sikeres átutalás",
     "transfer-summary": "Transferred <span class=\"amount\">{amount}</span> From <span class=\"from-user\">{from}</span> to <span class=\"to-user\">{to}</span>",
-    "reset": "Another transfer",
+    "reset": "Újabb átutalás",
     "finish": "Finish",
-    "recent-transfers": "Recent transfers"
+    "recent-transfers": "Legújabb átutalások"
   }
 }
