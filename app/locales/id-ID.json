@@ -8,43 +8,43 @@
     "cancel": "Batal",
     "ok": "Ok",
     "edit": "Edit",
-    "server-error": "Process could not completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "server-error": "Proses tidak dapat diselesaikan karena kesalahan server",
+    "save": "Simpan",
+    "done": "Selesai",
+    "select": "Pilih"
   },
   "footer": {
-    "faq": "FAQ",
-    "about": "About"
+    "faq": "PERTANYAAN YANG SERING DITANYAKAN",
+    "about": "Tentang"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
-    "filter-feed": "Feed"
+    "tags": "Tagar populer",
+    "filter-trending": "Sedang trending",
+    "filter-hot": "Terhangat",
+    "filter-created": "Baru saja",
+    "filter-active": "Aktif",
+    "filter-promoted": "Promosikan",
+    "filter-votes": "Berikan suara",
+    "filter-children": "Komentar",
+    "filter-feed": "Pengikut"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "Potensi pembayaran",
+    "promoted": "Promosikan",
+    "author-payout": "Pembayaran Penulis",
+    "curation-payout": "Pembayaran Kurasi",
+    "payout-date": "Pembayaran"
   },
   "entry-votes": {
-    "n-more": "{n} more",
-    "author": "Author",
+    "n-more": "{n} lagi",
+    "author": "Penulis",
     "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
-    "modal-title": "Voters ({n})"
+    "percent": "Persen",
+    "time": "Waktu",
+    "modal-title": "Voter ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "direblog oleh {n}"
   },
   "entry-reblog": {
     "reblog": "Reblog",
