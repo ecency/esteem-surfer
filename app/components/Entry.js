@@ -597,7 +597,7 @@ class Entry extends PureComponent {
       replies: [],
       repliesLoading: true,
       replySort: 'trending',
-      editorVisible: false,
+      editorVisible: true,
       bookmarkId: null,
       clickedAuthor: null
     };
