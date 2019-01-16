@@ -23,47 +23,47 @@
     "filter-hot": "Het",
     "filter-created": "Nytt",
     "filter-active": "Aktiv",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
-    "filter-feed": "Feed"
+    "filter-promoted": "Promotad",
+    "filter-votes": "Röster",
+    "filter-children": "Kommentarer",
+    "filter-feed": "Flöde"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "Potentiell Utbetalning",
+    "promoted": "Promotad",
+    "author-payout": "Författarens Utbetalning",
+    "curation-payout": "Kuratorers Utbetalning",
+    "payout-date": "Utbetalning"
   },
   "entry-votes": {
-    "n-more": "{n} more",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
-    "modal-title": "Voters ({n})"
+    "n-more": "{n} fler",
+    "author": "Författare",
+    "reward": "Belöning",
+    "percent": "Procent",
+    "time": "Tid",
+    "modal-title": "Röster ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "återbloggat av {n}"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "Återblogga",
+    "reblogged": "Återbloggat"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "Currency",
-    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
-    "currency-changed": "Currency Changed",
-    "locale": "Language",
-    "locale-changed": "Language changed",
+    "title": "Inställningar",
+    "currency": "Valuta",
+    "currency-fetch-error": "Kunde inte hämta valutakurs för '{cur}'",
+    "currency-changed": "Valuta Ändrad",
+    "locale": "Språk",
+    "locale-changed": "Språk ändrat",
     "server": "Server",
-    "server-invalid-address": "Invalid server address",
-    "server-connecting": "Connecting to '{server}'...",
-    "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
-    "server-timeout-error": "'{server}' looks like not alive",
-    "server-changed": "Server changed to {server}",
-    "server-custom-address": "Custom server address",
+    "server-invalid-address": "Ogiltig serveradress",
+    "server-connecting": "Ansluter till '{server}'...",
+    "server-connect-error": "Kunde inte ansluta till '{server}'. Kontrollera din internetanslutning.",
+    "server-timeout-error": "{server} verkar vara nere",
+    "server-changed": "Server ändrad till {server}",
+    "server-custom-address": "Anpassad serveradress",
     "server-list-fetch-error": "Could not fetch server list",
     "push-notifications": "Push Notifications",
     "push-notify-enabled": "Push notifications enabled",
@@ -128,13 +128,13 @@
   },
   "follow-controls": {
     "follow": "Follow",
-    "unFollow": "Unfollow",
-    "mute": "Mute",
-    "unMute": "Unmute"
+    "unFollow": "Sluta följa",
+    "mute": "Ljud av",
+    "unMute": "Ljud på"
   },
   "account": {
-    "voting-power": "Voting Power",
-    "post-count": "Post Count",
+    "voting-power": "Röstkraft",
+    "post-count": "Antal inlägg",
     "number-of-votes": "Number of votes in last 24 hours",
     "followers": "Followers",
     "following": "Following",
