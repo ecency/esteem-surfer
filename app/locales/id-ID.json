@@ -80,15 +80,15 @@
     "error-public-key": "Anda memasukkan kata sandi publik. Diperlukan Kata sandi",
     "error-user-fetch": "Tidak dapat mengambil data pengguna",
     "error-user-not-found": "Pengguna tidak ada",
-    "error-authenticate": "Wrong username or password/wif",
-    "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>",
-    "login-with-sc": "Login with",
-    "divider-text": "OR"
+    "error-authenticate": "Nama pengguna atau kata sandi salah",
+    "create-account-text": "Tidak memiliki akun? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">buat sekarang!</a>",
+    "login-with-sc": "Masuk dengan",
+    "divider-text": "Atau"
   },
   "create-pin-code": {
-    "title": "Create PIN Code",
-    "desc1": "Set pin code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter pin code",
+    "title": "Buat Kode PIN",
+    "desc1": "Atur kode pin untuk mengenkripsi data anda dan aktifkan pengaman tambahan!",
+    "input-placeholder": "Masukkan kode pin",
     "desc2": "You will be prompted to enter pin code for crucial transactions as well as on every launch.",
     "created": "Pin code created"
   },
