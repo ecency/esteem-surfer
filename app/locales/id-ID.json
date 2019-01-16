@@ -239,29 +239,29 @@
     "deleted": "Konsep dihapus"
   },
   "schedules": {
-    "title": "Scheduled Posts",
+    "title": "Posting terjadwal",
     "empty-list": "Nothing here",
-    "deleted": "Scheduled post deleted",
-    "move": "Move to drafts",
+    "deleted": "Jadwal post dihapus",
+    "move": "Pindahkan ke konsep",
     "moved": "Moved to drafts"
   },
   "bookmarks": {
     "title": "Bookmarks",
-    "load-error": "Could not load bookmarks",
+    "load-error": "Tidak dapat menampilkan yang telah ditandai",
     "empty-list": "Nothing here",
-    "deleted": "Bookmark removed",
-    "search": "Search in bookmarks"
+    "deleted": "Hapus yang ditandai",
+    "search": "Cari di dalam halaman yang ditandai"
   },
   "favorites": {
     "title": "Favorites",
-    "load-error": "Could not load favorites",
-    "empty-list": "Nothing here",
-    "search": "Search in favorites"
+    "load-error": "Tidak dapat menampilkan favorit",
+    "empty-list": "Kosong",
+    "search": "Cari di dalam favorit"
   },
   "entry": {
-    "reply": "Reply",
-    "reply-preview": "Preview",
-    "via-app": "via <span class=\"app-name\">{app}</span>",
+    "reply": "Balas",
+    "reply-preview": "Peninjauan kembali",
+    "via-app": "melalui <span class=\"app-name\">{app}</span>",
     "n-replies": "{n} Replies",
     "reply-sort-order": "Sort Order",
     "reply-sort-order-trending": "Trending",
@@ -316,7 +316,7 @@
     "copy-image-url": "Copy image url"
   },
   "notification": {
-    "popup-title": "You have a new notification",
+    "popup-title": "Anda memiliki pemberitahuan baru",
     "voted": "{source} voted your post",
     "mention-post": "{source} mentioned you in a post",
     "mention-comment": "{source} mentioned you in a comment",
