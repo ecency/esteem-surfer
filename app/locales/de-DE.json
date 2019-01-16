@@ -303,32 +303,32 @@
   "updater": {
     "new-version-available": "Neue Version verfügbar",
     "update": "Aktualisieren",
-    "dismiss": "Dismiss",
-    "downloading": "Downloading new version...",
-    "download-completed": "Download completed",
-    "restart": "Restart"
+    "dismiss": "Schließen",
+    "downloading": "Neue Version herunterladen...",
+    "download-completed": "Download abgeschlossen",
+    "restart": "Neustarten"
   },
   "context-menu": {
-    "cut": "Cut",
-    "copy": "Copy",
-    "paste": "Paste",
-    "open-image-browser": "Open image in browser",
-    "copy-image-url": "Copy image url"
+    "cut": "Ausschneiden",
+    "copy": "Kopieren",
+    "paste": "Einfügen",
+    "open-image-browser": "Bild im Browser öffnen",
+    "copy-image-url": "Bildadresse kopieren"
   },
   "notification": {
-    "popup-title": "You have a new notification",
-    "voted": "{source} voted your post",
-    "mention-post": "{source} mentioned you in a post",
-    "mention-comment": "{source} mentioned you in a comment",
-    "followed": "{source} followed you",
-    "replied": "{source} replied you",
-    "reblogged": "{source} reblogged your post"
+    "popup-title": "Du hast eine neue Benachrichtigung",
+    "voted": "{source} hat deinen Beitrag gevotet",
+    "mention-post": "{source} hat dich in einem Beitrag erwähnt",
+    "mention-comment": "{source} hat dich in einem Kommentar erwähnt",
+    "followed": "{source} folgt dir jetzt",
+    "replied": "{source} hat dir geantwortet",
+    "reblogged": "{source} hat deinen Beitrag rebloggt"
   },
   "activities": {
-    "type-all": "All Activities",
+    "type-all": "Alle Aktivitäten",
     "type-votes": "Votes",
-    "type-replies": "Replies",
-    "type-mentions": "Mentions",
+    "type-replies": "Antworten",
+    "type-mentions": "Erwähnungen",
     "type-follows": "Follows",
     "type-reblogs": "Reblogs",
     "vote-str": "{p}% likes your post:",
