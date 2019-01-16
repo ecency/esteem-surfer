@@ -286,23 +286,23 @@
     "bookmark": "Zu deinen Lesezeichen hinzufügen",
     "bookmarkRemove": "Von deinen Lesezeichen entfernen",
     "favorite": "Zu deinen Favoriten hinzufügen",
-    "favoriteRemove": "Removed from favorites",
-    "wallet": "My Wallet",
-    "activities": "Activities",
-    "address-enter-url": "Enter url",
-    "address-enter-query": "Enter search query",
-    "unclaimed-reward-notice": "You have unclaimed reward"
+    "favoriteRemove": "Von deinen Favoriten entfernt",
+    "wallet": "Mein Konto",
+    "activities": "Aktivitäten",
+    "address-enter-url": "Adresse eingeben",
+    "address-enter-query": "Suchbegriff eingeben",
+    "unclaimed-reward-notice": "Du hast nicht abgeholte Belohnungen"
   },
   "search": {
-    "n-results-for-q": "{n} results for {q}",
-    "sort-by": "Sort by",
-    "sort-popularity": "Popularity",
-    "sort-relevance": "Relevance",
-    "sort-newest": "Date"
+    "n-results-for-q": "{n} Suchergebnisse für {q}",
+    "sort-by": "Sortieren nach",
+    "sort-popularity": "Beliebtheit",
+    "sort-relevance": "Relevanz",
+    "sort-newest": "Datum"
   },
   "updater": {
-    "new-version-available": "New version available",
-    "update": "Update",
+    "new-version-available": "Neue Version verfügbar",
+    "update": "Aktualisieren",
     "dismiss": "Dismiss",
     "downloading": "Downloading new version...",
     "download-completed": "Download completed",
