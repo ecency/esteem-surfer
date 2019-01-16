@@ -313,23 +313,23 @@
     "copy": "Másolás",
     "paste": "Beillesztés",
     "open-image-browser": "A kép megnyitása a böngészőben",
-    "copy-image-url": "Copy image url"
+    "copy-image-url": "Kép url-jének másolása"
   },
   "notification": {
-    "popup-title": "You have a new notification",
+    "popup-title": "Van egy új értesítésed",
     "voted": "{source} voted your post",
     "mention-post": "{source} mentioned you in a post",
     "mention-comment": "{source} mentioned you in a comment",
-    "followed": "{source} followed you",
-    "replied": "{source} replied you",
-    "reblogged": "{source} reblogged your post"
+    "followed": "{source} követ téged",
+    "replied": "{source} válaszolt",
+    "reblogged": "{source} megosztotta a bejegyzésed"
   },
   "activities": {
-    "type-all": "All Activities",
-    "type-votes": "Votes",
-    "type-replies": "Replies",
-    "type-mentions": "Mentions",
-    "type-follows": "Follows",
+    "type-all": "Összes tevékenység",
+    "type-votes": "Szavazatok",
+    "type-replies": "Válaszok",
+    "type-mentions": "Említések",
+    "type-follows": "Követések",
     "type-reblogs": "Reblogs",
     "vote-str": "{p}% likes your post:",
     "reply-str": "replied your post:",
