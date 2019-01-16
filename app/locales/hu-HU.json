@@ -250,7 +250,7 @@
     "load-error": "Could not load bookmarks",
     "empty-list": "Nothing here",
     "deleted": "Bookmark removed",
-    "search": "Search in bookmarks"
+    "search": "Keresés a könyvjelzők között"
   },
   "favorites": {
     "title": "Favorites",
@@ -287,9 +287,9 @@
     "bookmarkRemove": "Remove from bookmarks",
     "favorite": "Add to favorites",
     "favoriteRemove": "Removed from favorites",
-    "wallet": "My Wallet",
-    "activities": "Activities",
-    "address-enter-url": "Enter url",
+    "wallet": "Saját pénztárca",
+    "activities": "Tevékenységek",
+    "address-enter-url": "Url megadása",
     "address-enter-query": "Enter search query",
     "unclaimed-reward-notice": "You have unclaimed reward"
   },
