@@ -7,63 +7,63 @@
     "delete": "Supprimer",
     "cancel": "Annuler",
     "ok": "OK",
-    "edit": "Edit",
-    "server-error": "Process could not completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "edit": "Editer",
+    "server-error": "Le processus n'a pas pu être complété en raison d'une erreur du serveur",
+    "save": "Sauvegarder",
+    "done": "Terminé",
+    "select": "Sélectionner"
   },
   "footer": {
     "faq": "FAQ",
-    "about": "About"
+    "about": "À propos"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
+    "tags": "Mots-clés populaires",
+    "filter-trending": "Tendance",
     "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
+    "filter-created": "Nouveau",
+    "filter-active": "Actif",
+    "filter-promoted": "Mis en avant",
     "filter-votes": "Votes",
-    "filter-children": "Comments",
-    "filter-feed": "Feed"
+    "filter-children": "Commentaires",
+    "filter-feed": "Fil d'actualités"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "Gain Potentiel",
+    "promoted": "Mis en avant",
+    "author-payout": "Gain de l'Auteur",
+    "curation-payout": "Gain de la Curation",
+    "payout-date": "Gain"
   },
   "entry-votes": {
-    "n-more": "{n} more",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
+    "n-more": "{n} de plus",
+    "author": "Auteur",
+    "reward": "Récompense",
+    "percent": "Pourcent",
     "time": "Time",
     "modal-title": "Voters ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "reblogué par {n}"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "Rebloguer",
+    "reblogged": "Reblogué"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "Currency",
-    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
+    "title": "Réglages",
+    "currency": "Devise",
+    "currency-fetch-error": "Impossible d'obtenir le taux de change pour '{cur}'",
     "currency-changed": "Currency Changed",
-    "locale": "Language",
-    "locale-changed": "Language changed",
-    "server": "Server",
-    "server-invalid-address": "Invalid server address",
-    "server-connecting": "Connecting to '{server}'...",
-    "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
-    "server-timeout-error": "'{server}' looks like not alive",
-    "server-changed": "Server changed to {server}",
-    "server-custom-address": "Custom server address",
+    "locale": "Langue",
+    "locale-changed": "Langue modifiée",
+    "server": "Serveur",
+    "server-invalid-address": "Adresse du serveur invalide",
+    "server-connecting": "Connexion à '{server}' ...",
+    "server-connect-error": "Impossible de se connecter à '{server}'. Merci de vérifier vos paramètres de réseau.",
+    "server-timeout-error": "'{server}' à l'air hors-ligne",
+    "server-changed": "Serveur remplacé par {server}",
+    "server-custom-address": "Adresse de serveur personnalisée",
     "server-list-fetch-error": "Could not fetch server list",
     "push-notifications": "Push Notifications",
     "push-notify-enabled": "Push notifications enabled",
@@ -123,13 +123,13 @@
     "following": "Following",
     "section-blog": "Blog",
     "section-comments": "Comments",
-    "section-replies": "Replies",
-    "section-wallet": "Wallet"
+    "section-replies": "Réponses",
+    "section-wallet": "Portefeuille"
   },
   "follow-controls": {
-    "follow": "Follow",
-    "unFollow": "Unfollow",
-    "mute": "Mute",
+    "follow": "Suivre",
+    "unFollow": "Se désabonner",
+    "mute": "Rendre muet",
     "unMute": "Unmute"
   },
   "account": {
