@@ -31,28 +31,28 @@
   "entry-payout": {
     "potential-payout": "Potensi pembayaran",
     "promoted": "Promosikan",
-    "author-payout": "Pembayaran Penulis",
-    "curation-payout": "Pembayaran Kurasi",
+    "author-payout": "Pembayaran Pencipta konten",
+    "curation-payout": "Pembayaran Pengkurasi",
     "payout-date": "Pembayaran"
   },
   "entry-votes": {
-    "n-more": "{n} lagi",
-    "author": "Penulis",
-    "reward": "Reward",
+    "n-more": "{n} lainnya",
+    "author": "Pencipta Konten",
+    "reward": "Imbalan",
     "percent": "Persen",
     "time": "Waktu",
-    "modal-title": "Voter ({n})"
+    "modal-title": "Pemberi suara ({n})"
   },
   "entry-list-item": {
     "reblogged": "direblog oleh {n}"
   },
   "entry-reblog": {
     "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblogged": "Direblog"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "Currency",
+    "title": "Pengaturan",
+    "currency": "Mata Uang",
     "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
     "currency-changed": "Currency Changed",
     "locale": "Language",
