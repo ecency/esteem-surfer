@@ -144,7 +144,7 @@
     "section-wallet": "ウォレット",
     "top-posts": "トップ記事",
     "unclaimed-rewards": "未請求の報酬",
-    "estimated-value": "The estimated value is based on a 7 day average value of Steem.",
+    "estimated-value": "推定価格は、Steemの7日間の平均価格に基づいています。",
     "steem": "Steem",
     "steem-description": "Steem are tradeable tokens that may be transferred at anytime. Steem can be converted to Steem Power in a process called powering up.",
     "steem-power": "Steem Power",
@@ -167,7 +167,7 @@
     "transaction-transfer_to_vesting": "Vestingに送金",
     "transaction-withdraw_vesting": "Withdraw vesting",
     "transaction-fill_order": "Fill order",
-    "claim-reward-balance": "Claim reward balance",
+    "claim-reward-balance": "報酬残高の請求",
     "claim-reward-balance-ok": "Reward balance claimed",
     "transfer": "送金",
     "transfer-to-savings": "貯蓄口座に送る",
@@ -247,22 +247,22 @@
   },
   "bookmarks": {
     "title": "ブックマーク",
-    "load-error": "Could not load bookmarks",
+    "load-error": "ブックマークをロードできませんでした",
     "empty-list": "何もありません",
     "deleted": "ブックマークを削除しました",
     "search": "Search in bookmarks"
   },
   "favorites": {
     "title": "お気に入り",
-    "load-error": "Could not load favorites",
+    "load-error": "お気に入りをロードできませんでした",
     "empty-list": "何もありません",
     "search": "Search in favorites"
   },
   "entry": {
     "reply": "返信",
     "reply-preview": "プレビュー",
-    "via-app": "via <span class=\"app-name\">{app}</span>",
-    "n-replies": "{n} Replies",
+    "via-app": "<span class=\"app-name\">{app}</span>を経由",
+    "n-replies": "{n} 件の返信",
     "reply-sort-order": "Sort Order",
     "reply-sort-order-trending": "トレンド",
     "reply-sort-order-reputation": "レピュテーション",
@@ -282,11 +282,11 @@
   "navbar": {
     "settings": "設定",
     "change-theme": "テーマ変更",
-    "login": "Login to you account",
+    "login": "アカウントにログイン",
     "bookmark": "ブックマークに追加",
     "bookmarkRemove": "ブックマークから削除",
     "favorite": "お気に入りに追加",
-    "favoriteRemove": "Removed from favorites",
+    "favoriteRemove": "お気に入りから削除しました",
     "wallet": "マイウォレット",
     "activities": "アクティビティ",
     "address-enter-url": "URLを入力",
@@ -296,7 +296,7 @@
   "search": {
     "n-results-for-q": "{n} results for {q}",
     "sort-by": "並び替え",
-    "sort-popularity": "Popularity",
+    "sort-popularity": "人気",
     "sort-relevance": "Relevance",
     "sort-newest": "Date"
   },
@@ -363,7 +363,7 @@
     "proxy-exp": "You can also choose a proxy that will vote for witnesses for you. This will reset your current witness selection.",
     "set-proxy": "Set Proxy",
     "proxy-active-exp": "You have set a voting proxy. If you would like to re-enable manual voting, please clear your proxy.",
-    "current-proxy": "Your current proxy is: <strong>{n}</strong>",
+    "current-proxy": "現在のプロキシ:<strong>{n}</strong>",
     "remove-proxy": "Clear Proxy",
     "proxy-removed": "Proxy cleared",
     "proxy-created": "@{n} has set as proxy"
