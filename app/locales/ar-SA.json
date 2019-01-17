@@ -222,24 +222,24 @@
     "sync-scroll": "مزامنة التمرير",
     "words-count": "عدد الكلمات {n}",
     "no-suggestions": "لا توجد اقتراحات",
-    "emoji-filter-placeholder": "Filter",
-    "emoji-filter-no-match": "No match",
-    "emoji-recently-used": "Recently Used"
+    "emoji-filter-placeholder": "تصفية",
+    "emoji-filter-no-match": "لا يوجد تطابق",
+    "emoji-recently-used": "مستخدمة حديثًا"
   },
   "gallery": {
-    "title": "Gallery",
-    "copied": "Copied to clipboard",
-    "load-error": "Could not load gallery",
-    "empty-list": "Nothing here"
+    "title": "المعرض",
+    "copied": "تم النسخ إلى الحافظة",
+    "load-error": "لا يمكن تحميل المعرض",
+    "empty-list": "لاشيء هنا"
   },
   "drafts": {
-    "title": "Drafts",
-    "load-error": "Could not load drafts",
-    "empty-list": "Nothing here",
-    "deleted": "Draft deleted"
+    "title": "المسودات",
+    "load-error": "لايمكن تحميل المسودات",
+    "empty-list": "لاشيء هنا",
+    "deleted": "تم مسح المسودة"
   },
   "schedules": {
-    "title": "Scheduled Posts",
+    "title": "المنشورات المجدولة",
     "empty-list": "لاشيء هنا",
     "deleted": "تم مسح المشاركة المجدولة",
     "move": "نقل إلى قسم المسودات",
@@ -309,33 +309,33 @@
     "restart": "إعادة التشغيل"
   },
   "context-menu": {
-    "cut": "Cut",
-    "copy": "Copy",
-    "paste": "Paste",
-    "open-image-browser": "Open image in browser",
-    "copy-image-url": "Copy image url"
+    "cut": "قص",
+    "copy": "نسخ",
+    "paste": "لصق",
+    "open-image-browser": "فتح الصورة في المتصفح",
+    "copy-image-url": "نسخ عنوان الصورة"
   },
   "notification": {
-    "popup-title": "You have a new notification",
-    "voted": "{source} voted your post",
-    "mention-post": "{source} mentioned you in a post",
-    "mention-comment": "{source} mentioned you in a comment",
-    "followed": "{source} followed you",
-    "replied": "{source} replied you",
-    "reblogged": "{source} reblogged your post"
+    "popup-title": "لديك إشعار جديد",
+    "voted": "{source} صوّت على مشاركتك",
+    "mention-post": "{source} أشار إليك في مشاركة",
+    "mention-comment": "{source} أشار إليك في تعليق",
+    "followed": "{source} قام بمتابعتك",
+    "replied": "{source} قام بالرد عليك",
+    "reblogged": "{source} أعاد تدوين مشاركتك"
   },
   "activities": {
-    "type-all": "All Activities",
-    "type-votes": "Votes",
-    "type-replies": "Replies",
-    "type-mentions": "Mentions",
-    "type-follows": "Follows",
-    "type-reblogs": "Reblogs",
-    "vote-str": "{p}% likes your post:",
-    "reply-str": "replied your post:",
-    "mention-str": "mentioned you in:",
-    "followed-str": "followed",
-    "unfollowed-str": "unfollowed",
+    "type-all": "جميع الأنشطة",
+    "type-votes": "الأصوات",
+    "type-replies": "الردود",
+    "type-mentions": "الإشارات",
+    "type-follows": "المتابعات",
+    "type-reblogs": "إعادة التدوين",
+    "vote-str": "{p}% أعجب بمشاركتك",
+    "reply-str": "قام بالرد على مشاركتك:",
+    "mention-str": "أشارك إليك في:",
+    "followed-str": "قام بمتابعتك",
+    "unfollowed-str": "قام بإلغاء متابعتك",
     "ignored-str": "ignored",
     "reblog-str": "reblogged your post:",
     "empty-list": "Nothing here",
