@@ -60,7 +60,7 @@
     "server": "Сервер",
     "server-invalid-address": "Неправильный адрес сервера",
     "server-connecting": "Соединение с '{server}'...",
-    "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
+    "server-connect-error": "Невозможно соединиться с '{server}'. Пожалуйста, проверьте подключение интернет.",
     "server-timeout-error": "'{server}' не похож на живой",
     "server-changed": "Сервер изменён на {server}",
     "server-custom-address": "Впишите адрес сервера",
@@ -403,6 +403,6 @@
     "transfer-summary": "Перевод <span class=\"amount\">{amount}</span> от <span class=\"from-user\">{from}</span> к <span class=\"to-user\">{to}</span>",
     "reset": "Ещё один перевод",
     "finish": "Завершить",
-    "recent-transfers": "Recent transfers"
+    "recent-transfers": "Недавние переводы"
   }
 }
