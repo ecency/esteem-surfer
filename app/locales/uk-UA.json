@@ -97,11 +97,11 @@
     "input-placeholder": "Введіть ПІН-код щоб продовжити",
     "last-chance": "Це ваша остання спроба",
     "invalidate": "Ой, я його забув...",
-    "invalidate-confirm": "Are you really want to invalidate pin code?",
-    "invalidated": "Pin code invalidated"
+    "invalidate-confirm": "Ви дійсно бажаєте анулювати ПІН-код?",
+    "invalidated": "ПІН-код анульований"
   },
   "user-menu": {
-    "profile": "Profile",
+    "profile": "Профіль",
     "bookmarks": "Bookmarks",
     "favorites": "Favorites",
     "drafts": "Drafts",
