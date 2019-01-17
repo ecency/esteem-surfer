@@ -36,12 +36,12 @@
     "payout-date": "보상"
   },
   "entry-votes": {
-    "n-more": "{n} more",
+    "n-more": "그 외 {n} 명",
     "author": "작성자",
     "reward": "보상",
     "percent": "보팅 비율",
     "time": "시간",
-    "modal-title": "Voters ({n})"
+    "modal-title": "투표자 ({n})"
   },
   "entry-list-item": {
     "reblogged": "reblogged by {n}"
@@ -101,7 +101,7 @@
     "invalidated": "Pin code invalidated"
   },
   "user-menu": {
-    "profile": "Profile",
+    "profile": "프로필",
     "bookmarks": "Bookmarks",
     "favorites": "Favorites",
     "drafts": "Drafts",
@@ -116,12 +116,12 @@
     "keys-required": "This action requires {keys} keys or master password"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
-    "fetch-error-content": "Could not fetch posts",
-    "post-count": "Post Count",
-    "followers": "Followers",
-    "following": "Following",
-    "section-blog": "Blog",
+    "fetch-error-profile": "프로필 데이터를 조회할 수 없습니다",
+    "fetch-error-content": "글을 조회할 수 없습니다",
+    "post-count": "등록한 글",
+    "followers": "팔로워",
+    "following": "팔로잉",
+    "section-blog": "블로그",
     "section-comments": "Comments",
     "section-replies": "Replies",
     "section-wallet": "Wallet"
