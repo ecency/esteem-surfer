@@ -128,9 +128,9 @@
   },
   "follow-controls": {
     "follow": "Follow",
-    "unFollow": "Unfollow",
-    "mute": "Mute",
-    "unMute": "Unmute"
+    "unFollow": "Dejar de Seguir",
+    "mute": "Silenciar",
+    "unMute": "Habilitar sonido"
   },
   "account": {
     "voting-power": "Voting Power",
