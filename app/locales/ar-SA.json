@@ -86,50 +86,50 @@
     "divider-text": "أو"
   },
   "create-pin-code": {
-    "title": "Create PIN Code",
-    "desc1": "Set pin code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter pin code",
-    "desc2": "You will be prompted to enter pin code for crucial transactions as well as on every launch.",
-    "created": "Pin code created"
+    "title": "أنشئ رمز PIN",
+    "desc1": "أضف رمز PIN لتشفير بيانات وإضافة طبقة إضافية للأمان!",
+    "input-placeholder": "أدخل رمز PIN",
+    "desc2": "سيتم مطالبتك بإدخل رمز PIN عند التحويلات المهمة وعند فتح التطبيق.",
+    "created": "تم إنشاء رمز PIN"
   },
   "confirm-pin-code": {
-    "title": "Enter Pin Code",
-    "input-placeholder": "Enter pin code to continue",
-    "last-chance": "This is your last chance",
-    "invalidate": "Oh, I forgot it...",
-    "invalidate-confirm": "Are you really want to invalidate pin code?",
-    "invalidated": "Pin code invalidated"
+    "title": "أدخل رمز PIN",
+    "input-placeholder": "أدخل رمز PIN للمتابعة",
+    "last-chance": "هذه فرصتك الأخيرة",
+    "invalidate": "أوه، لقد نسيتها...",
+    "invalidate-confirm": "هل تريد حقاً تعطيل رمز PIN؟",
+    "invalidated": "تم تعطيل رمز PIN"
   },
   "user-menu": {
-    "profile": "Profile",
-    "bookmarks": "Bookmarks",
-    "favorites": "Favorites",
-    "drafts": "Drafts",
-    "schedules": "Schedules",
-    "gallery": "Gallery",
-    "login-as": "Login As",
-    "logout": "Logout"
+    "profile": "الصفحة الشخصية",
+    "bookmarks": "إشارات مرجعية",
+    "favorites": "المفضلات",
+    "drafts": "المسودات",
+    "schedules": "جدولة المشاركات",
+    "gallery": "معرض الصور",
+    "login-as": "تسجيل الدخول كـ",
+    "logout": "تسجيل الخروج"
   },
   "login-required": {
-    "default": "This action requires login",
-    "key-required": "This action requires {key} key or master password",
-    "keys-required": "This action requires {keys} keys or master password"
+    "default": "هذا الإجراء يتطلب تسجيل الدخول",
+    "key-required": "هذه العملية تتطلب مفتاح {key} الخاص بك أو كلمة المرور الرئسية",
+    "keys-required": "هذه العملية تتطلب مفتاح {keys} الخاص بك أو كلمة المرور الرئسية"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
-    "fetch-error-content": "Could not fetch posts",
-    "post-count": "Post Count",
-    "followers": "Followers",
-    "following": "Following",
-    "section-blog": "Blog",
-    "section-comments": "Comments",
-    "section-replies": "Replies",
-    "section-wallet": "Wallet"
+    "fetch-error-profile": "لا يمكن إحضار بيانات الصفحة الشخصية",
+    "fetch-error-content": "لا يمكن إحضار المشاركات",
+    "post-count": "عدد المشاركات",
+    "followers": "المتابعون",
+    "following": "يتابع",
+    "section-blog": "المدونة",
+    "section-comments": "التعليقات",
+    "section-replies": "الردود",
+    "section-wallet": "المحفظة"
   },
   "follow-controls": {
-    "follow": "Follow",
-    "unFollow": "Unfollow",
-    "mute": "Mute",
+    "follow": "متابعة",
+    "unFollow": "إلغاء المتابعة",
+    "mute": "كتم",
     "unMute": "تشغيل الصوت"
   },
   "account": {
@@ -247,8 +247,8 @@
   },
   "bookmarks": {
     "title": "إشارات مرجعية",
-    "load-error": "Could not load bookmarks",
-    "empty-list": "Nothing here",
+    "load-error": "لم يستطيع تحميل الإشارات المرجعية",
+    "empty-list": "لاشيء هنا",
     "deleted": "Bookmark removed",
     "search": "Search in bookmarks"
   },
