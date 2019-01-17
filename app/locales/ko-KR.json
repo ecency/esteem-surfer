@@ -54,15 +54,15 @@
     "title": "Settings",
     "currency": "Currency",
     "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
-    "currency-changed": "Currency Changed",
+    "currency-changed": "화폐 설정이 변경되었습니다",
     "locale": "Language",
-    "locale-changed": "Language changed",
+    "locale-changed": "언어 설정이 변경되었습니다",
     "server": "Server",
     "server-invalid-address": "Invalid server address",
     "server-connecting": "Connecting to '{server}'...",
     "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
     "server-timeout-error": "'{server}' looks like not alive",
-    "server-changed": "Server changed to {server}",
+    "server-changed": "{server}으로 서버가 변경되었습니다",
     "server-custom-address": "Custom server address",
     "server-list-fetch-error": "Could not fetch server list",
     "push-notifications": "Push Notifications",
@@ -83,7 +83,7 @@
     "error-authenticate": "올바른 사용자 이름 또는 비밀번호/wif가 아닙니다",
     "create-account-text": "계정이 없나요? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">지금 계정을 만드세요!</a>",
     "login-with-sc": "steemconnect를 이용해 로그인하세요",
-    "divider-text": "OR"
+    "divider-text": "또는"
   },
   "create-pin-code": {
     "title": "PIN 코드 만들기",
@@ -281,7 +281,7 @@
   },
   "navbar": {
     "settings": "Settings",
-    "change-theme": "Change Theme",
+    "change-theme": "테마 변경",
     "login": "Login to you account",
     "bookmark": "Add to bookmarks",
     "bookmarkRemove": "Remove from bookmarks",
