@@ -392,7 +392,7 @@
     "memo": "メモ",
     "memo-placeholder": "ここにメモを入力してください",
     "memo-help": "このメモは公開されます",
-    "key-required-err": "Active key could not found for selected account. Please make sure logged in with proper credentials.",
+    "key-required-err": "選択したアカウントのアクティブキーが見つかりませんでした。適切な認証情報でログインしていることを確認してください。",
     "next": "次",
     "confirm-title": "送金確認",
     "confirm-sub-title": "すべて正しいか確認してください",
