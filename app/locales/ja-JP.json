@@ -18,10 +18,10 @@
     "about": "About"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
+    "tags": "人気のタグ",
+    "filter-trending": "トレンド",
+    "filter-hot": "ホット",
+    "filter-created": "新着",
     "filter-active": "Active",
     "filter-promoted": "Promoted",
     "filter-votes": "Votes",
