@@ -195,9 +195,9 @@
     "tool-table-1-col": "1열 레이아웃",
     "tool-upload": "업로드",
     "tool-gallery": "갤러리",
-    "tool-emoji": "Emoji",
-    "preview": "Preview",
-    "reward": "Reward",
+    "tool-emoji": "이모티콘",
+    "preview": "미리보기",
+    "reward": "보상",
     "reward-default": "Default 50% / 50%",
     "reward-sp": "Power Up 100%",
     "reward-dp": "Decline Payout",
@@ -224,11 +224,11 @@
     "no-suggestions": "No suggestions",
     "emoji-filter-placeholder": "필터",
     "emoji-filter-no-match": "No match",
-    "emoji-recently-used": "Recently Used"
+    "emoji-recently-used": "최근 사용한 것"
   },
   "gallery": {
-    "title": "Gallery",
-    "copied": "Copied to clipboard",
+    "title": "갤러리",
+    "copied": "클립보드에 복사되었습니다",
     "load-error": "Could not load gallery",
     "empty-list": "Nothing here"
   },
