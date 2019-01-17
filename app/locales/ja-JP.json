@@ -47,7 +47,7 @@
     "reblogged": "reblogged by {n}"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
+    "reblog": "リブログ",
     "reblogged": "Reblogged"
   },
   "settings": {
@@ -86,16 +86,16 @@
     "divider-text": "OR"
   },
   "create-pin-code": {
-    "title": "Create PIN Code",
+    "title": "PINコードを作成",
     "desc1": "Set pin code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter pin code",
+    "input-placeholder": "PINコードを入力",
     "desc2": "You will be prompted to enter pin code for crucial transactions as well as on every launch.",
     "created": "Pin code created"
   },
   "confirm-pin-code": {
-    "title": "Enter Pin Code",
+    "title": "Pinコードを入力",
     "input-placeholder": "Enter pin code to continue",
-    "last-chance": "This is your last chance",
+    "last-chance": "これが最後のチャンスです",
     "invalidate": "Oh, I forgot it...",
     "invalidate-confirm": "Are you really want to invalidate pin code?",
     "invalidated": "Pin code invalidated"
@@ -124,25 +124,25 @@
     "section-blog": "ブログ",
     "section-comments": "コメント",
     "section-replies": "返信",
-    "section-wallet": "Wallet"
+    "section-wallet": "ウォレット"
   },
   "follow-controls": {
     "follow": "フォロー",
-    "unFollow": "Unfollow",
+    "unFollow": "アンフォロー",
     "mute": "ミュート",
     "unMute": "Unmute"
   },
   "account": {
     "voting-power": "Voting Power",
-    "post-count": "Post Count",
+    "post-count": "投稿数",
     "number-of-votes": "Number of votes in last 24 hours",
     "followers": "フォロワー",
     "following": "Following",
     "section-blog": "ブログ",
     "section-comments": "コメント",
     "section-replies": "返信",
-    "section-wallet": "Wallet",
-    "top-posts": "Top Posts",
+    "section-wallet": "ウォレット",
+    "top-posts": "トップ記事",
     "unclaimed-rewards": "Unclaimed rewards",
     "estimated-value": "The estimated value is based on a 7 day average value of Steem.",
     "steem": "Steem",
@@ -157,12 +157,12 @@
     "savings": "Savings",
     "savings-description": "Balance subject to 3 day withdraw waiting period.",
     "next-power-down": "The next power down is {time}",
-    "exchange": "Exchange",
-    "transactions": "Transactions",
+    "exchange": "取引所",
+    "transactions": "トランザクション",
     "transaction-curation_reward": "キュレーション報酬",
     "transaction-author_reward": "投稿報酬",
     "transaction-comment_benefactor_reward": "Comment Benefactor Reward",
-    "transaction-claim_reward_balance": "Claim rewards",
+    "transaction-claim_reward_balance": "報酬を請求する",
     "transaction-transfer": "Transfer",
     "transaction-transfer_to_vesting": "Transfer to vesting",
     "transaction-withdraw_vesting": "Withdraw vesting",
@@ -170,7 +170,7 @@
     "claim-reward-balance": "Claim reward balance",
     "claim-reward-balance-ok": "Reward balance claimed",
     "transfer": "Transfer",
-    "transfer-to-savings": "Transfer to savings",
+    "transfer-to-savings": "貯蓄口座に送る",
     "power-up": "パワーアップ",
     "withdraw-steem": "Withdraw Steem",
     "withdraw-sbd": "Withdraw Steem Dollar"
