@@ -215,25 +215,25 @@
     "posting-perm-removed": "Posting permission removed",
     "save-draft": "Save Draft",
     "draft-saved": "Draft saved",
-    "publish": "Publish",
+    "publish": "公開",
     "published": "Post Published",
     "update": "Update",
     "updated": "Post Updated",
     "sync-scroll": "Scroll Sync",
     "words-count": "{n} words",
     "no-suggestions": "No suggestions",
-    "emoji-filter-placeholder": "Filter",
+    "emoji-filter-placeholder": "フィルター",
     "emoji-filter-no-match": "No match",
     "emoji-recently-used": "Recently Used"
   },
   "gallery": {
-    "title": "Gallery",
+    "title": "ギャラリー",
     "copied": "Copied to clipboard",
     "load-error": "Could not load gallery",
     "empty-list": "Nothing here"
   },
   "drafts": {
-    "title": "Drafts",
+    "title": "下書き",
     "load-error": "Could not load drafts",
     "empty-list": "Nothing here",
     "deleted": "Draft deleted"
@@ -265,7 +265,7 @@
     "n-replies": "{n} Replies",
     "reply-sort-order": "Sort Order",
     "reply-sort-order-trending": "Trending",
-    "reply-sort-order-reputation": "Reputation",
+    "reply-sort-order-reputation": "レピュテーション",
     "reply-sort-order-votes": "Votes",
     "reply-sort-order-created": "Age",
     "reply-body-placeholder": "Write your reply here",
@@ -309,9 +309,9 @@
     "restart": "Restart"
   },
   "context-menu": {
-    "cut": "Cut",
-    "copy": "Copy",
-    "paste": "Paste",
+    "cut": "カット",
+    "copy": "コピー",
+    "paste": "貼り付け",
     "open-image-browser": "Open image in browser",
     "copy-image-url": "Copy image url"
   },
@@ -351,11 +351,11 @@
     "miss": "Miss",
     "url": "URL",
     "fee": "Fee",
-    "feed": "Feed",
-    "block-size": "Block size",
+    "feed": "フィード",
+    "block-size": "ブロックサイズ",
     "ac-avail": "AC avail",
     "ac-budget": "AC budget",
-    "version": "Version",
+    "version": "バージョン",
     "voted": "@{n} voted",
     "vote-removed": "vote removed for @{n}",
     "username-placeholder": "ユーザー名",
@@ -397,12 +397,12 @@
     "confirm-title": "Confirm your Transfer",
     "confirm-sub-title": "Please, check if everything is correct",
     "confirm": "Confirm",
-    "back": "Back",
-    "success-title": "Success",
+    "back": "戻る",
+    "success-title": "成功",
     "success-sub-title": "Transfer successful",
     "transfer-summary": "Transferred <span class=\"amount\">{amount}</span> From <span class=\"from-user\">{from}</span> to <span class=\"to-user\">{to}</span>",
     "reset": "Another transfer",
-    "finish": "Finish",
+    "finish": "終了",
     "recent-transfers": "Recent transfers"
   }
 }
