@@ -29,34 +29,34 @@
     "filter-feed": "الرئيسيّة"
   },
   "entry-payout": {
-    "potential-payout": "العائدات المتوقعة",
+    "potential-payout": "المكافأة المتوقعة",
     "promoted": "مروج له",
-    "author-payout": "عائدات المؤلف",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "author-payout": "مكافأة المؤلف",
+    "curation-payout": "مكافأة المقيّمين",
+    "payout-date": "المكافأة"
   },
   "entry-votes": {
-    "n-more": "{n} more",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
-    "modal-title": "Voters ({n})"
+    "n-more": "{n} آخرون",
+    "author": "المؤلف",
+    "reward": "المكافأة",
+    "percent": "بالمئة",
+    "time": "الوقت",
+    "modal-title": "المصوّتون ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "أعيد تدوينها {n} مرّة"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "إعادة تدوين",
+    "reblogged": "أعيد تدوينه"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "Currency",
-    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
-    "currency-changed": "Currency Changed",
-    "locale": "Language",
-    "locale-changed": "Language changed",
+    "title": "إعدادات",
+    "currency": "العملة",
+    "currency-fetch-error": "لا يتمكن من إحضار سعر العملة '{cur}'",
+    "currency-changed": "العملة تغيرت",
+    "locale": "اللغة",
+    "locale-changed": "اللغة تغيرت",
     "server": "Server",
     "server-invalid-address": "Invalid server address",
     "server-connecting": "Connecting to '{server}'...",
