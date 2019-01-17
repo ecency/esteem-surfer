@@ -37,10 +37,10 @@
   },
   "entry-votes": {
     "n-more": "{n} more",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
+    "author": "작성자",
+    "reward": "보상",
+    "percent": "보팅 비율",
+    "time": "시간",
     "modal-title": "Voters ({n})"
   },
   "entry-list-item": {
@@ -154,8 +154,8 @@
     "steem-power-total": "Total steem power",
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Tokens worth about $1.00 of Steem.",
-    "savings": "Savings",
-    "savings-description": "Balance subject to 3 day withdraw waiting period.",
+    "savings": "안전 금고",
+    "savings-description": "잔액을 출금하려면 3일간 기다려야 합니다.",
     "next-power-down": "The next power down is {time}",
     "exchange": "거래소 시세 정보",
     "transactions": "트랜잭션",
@@ -170,7 +170,7 @@
     "claim-reward-balance": "Claim reward balance",
     "claim-reward-balance-ok": "Reward balance claimed",
     "transfer": "Transfer",
-    "transfer-to-savings": "Transfer to savings",
+    "transfer-to-savings": "안전 금고로 송금",
     "power-up": "Power up",
     "withdraw-steem": "Withdraw Steem",
     "withdraw-sbd": "Withdraw Steem Dollar"
@@ -371,9 +371,9 @@
   "transfer": {
     "transfer-title": "Transfer to Account",
     "transfer-sub-title": "Move funds to another Steem account",
-    "transfer-saving-title": "Transfer to Savings",
+    "transfer-saving-title": "안전 금고로 송금",
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
-    "withdraw-saving-title": "Savings Withdraw",
+    "withdraw-saving-title": "안전 금고 출금",
     "withdraw-saving-sub-title": "Withdraw funds after the required 3 day waiting period",
     "power-up-title": "Convert to STEEM POWER",
     "power-up-sub-title": "Influence tokens which give you more control over post payouts and allow you to earn on curation rewards.",
