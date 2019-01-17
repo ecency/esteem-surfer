@@ -81,16 +81,16 @@
     "error-user-fetch": "User data could not fetched",
     "error-user-not-found": "User not exists",
     "error-authenticate": "Wrong username or password/wif",
-    "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>",
+    "create-account-text": "계정이 없나요? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">지금 계정을 만드세요!</a>",
     "login-with-sc": "Login with",
     "divider-text": "OR"
   },
   "create-pin-code": {
     "title": "PIN 코드 만들기",
-    "desc1": "Set pin code to encrypt your data and enable extra layer of security!",
+    "desc1": "데이터를 암호화하고, 보안을 위한 추가 계층을 활성화하려면 PIN 코드를 설정하세요!",
     "input-placeholder": "PIN 코드를 입력하세요",
-    "desc2": "You will be prompted to enter pin code for crucial transactions as well as on every launch.",
-    "created": "Pin code created"
+    "desc2": "앱이 실행될 때 뿐만 아니라 중요한 트랜잭션이 발생했을 때 PIN 코드 입력화면이 나타날 것입니다.",
+    "created": "PIN 코드 생성 완료"
   },
   "confirm-pin-code": {
     "title": "Enter Pin Code",
@@ -267,7 +267,7 @@
     "reply-sort-order-trending": "Trending",
     "reply-sort-order-reputation": "Reputation",
     "reply-sort-order-votes": "Votes",
-    "reply-sort-order-created": "Age",
+    "reply-sort-order-created": "시기 순",
     "reply-body-placeholder": "Write your reply here",
     "bookmarked": "Added to bookmarks",
     "bookmarkRemoved": "Removed from bookmarks",
