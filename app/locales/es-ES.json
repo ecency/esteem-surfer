@@ -366,12 +366,12 @@
     "current-proxy": "Tu proxy actual es:<strong>{n}</strong>",
     "remove-proxy": "Borrar proxy",
     "proxy-removed": "Proxy borrado",
-    "proxy-created": "@{n} has set as proxy"
+    "proxy-created": "@{n} se ha fijado como proxy"
   },
   "transfer": {
-    "transfer-title": "Transfer to Account",
-    "transfer-sub-title": "Move funds to another Steem account",
-    "transfer-saving-title": "Transfer to Savings",
+    "transfer-title": "Transferir a Cuenta",
+    "transfer-sub-title": "Mover fondos a otra cuenta de Steem",
+    "transfer-saving-title": "Transferir a ahorros",
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
     "withdraw-saving-title": "Savings Withdraw",
     "withdraw-saving-sub-title": "Withdraw funds after the required 3 day waiting period",
