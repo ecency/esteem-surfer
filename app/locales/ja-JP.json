@@ -8,7 +8,7 @@
     "cancel": "キャンセル",
     "ok": "OK",
     "edit": "編集",
-    "server-error": "Process could not completed due to server error",
+    "server-error": "サーバーエラーの為、プロセスを完了できませんでした",
     "save": "保存",
     "done": "完了",
     "select": "Select"
