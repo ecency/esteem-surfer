@@ -64,7 +64,7 @@
     "server-timeout-error": "'{server}' parece no estar vivo",
     "server-changed": "Servidor cambiado a {server}",
     "server-custom-address": "Dirección de servidor personalizada",
-    "server-list-fetch-error": "Could not fetch server list",
+    "server-list-fetch-error": "No se pudo obtener la lista de servidores",
     "push-notifications": "Push Notifications",
     "push-notify-enabled": "Push notifications enabled",
     "push-notify-disabled": "Push notifications disabled"
@@ -392,17 +392,17 @@
     "memo": "Memo",
     "memo-placeholder": "escriba sus notas aquí",
     "memo-help": "Este memo es público",
-    "key-required-err": "Active key could not found for selected account. Please make sure logged in with proper credentials.",
-    "next": "Next",
-    "confirm-title": "Confirm your Transfer",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "confirm": "Confirm",
-    "back": "Back",
-    "success-title": "Success",
-    "success-sub-title": "Transfer successful",
-    "transfer-summary": "Transferred <span class=\"amount\">{amount}</span> From <span class=\"from-user\">{from}</span> to <span class=\"to-user\">{to}</span>",
-    "reset": "Another transfer",
-    "finish": "Finish",
-    "recent-transfers": "Recent transfers"
+    "key-required-err": "Clave activa no encontrada para la cuenta seleccionada. Por favor asegúrese de estar logueado con las credenciales adecuadas.",
+    "next": "Siguiente",
+    "confirm-title": "Confirmar Transferencia",
+    "confirm-sub-title": "Por favor, revise si todo es correcto",
+    "confirm": "Confirmar",
+    "back": "Atrás",
+    "success-title": "Conseguido",
+    "success-sub-title": "Transferencia Correcta",
+    "transfer-summary": "Transferido <span class=\"amount\">{amount}</span> <span class=\"from-user\">{from}</span> a <span class=\"to-user\">{to}</span>",
+    "reset": "Otra transferencia",
+    "finish": "Finalizado",
+    "recent-transfers": "Transferencias recientes"
   }
 }
