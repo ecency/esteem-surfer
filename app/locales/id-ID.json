@@ -317,8 +317,8 @@
   },
   "notification": {
     "popup-title": "Anda memiliki pemberitahuan baru",
-    "voted": "{source} voted post anda",
-    "mention-post": "{source} menyebut anda dalam sebuah post",
+    "voted": "{source} berikan suara pada post anda",
+    "mention-post": "{source} menyebut anda dalam sebuah postingan",
     "mention-comment": "{source} menyebut anda dalam sebuah komentar",
     "followed": "{source} mengikuti anda",
     "replied": "{source} membalas anda",
@@ -331,7 +331,7 @@
     "type-mentions": "Menyebutkan",
     "type-follows": "Ikuti",
     "type-reblogs": "Menampilkan kembali",
-    "vote-str": "{p}% menyukai post anda:",
+    "vote-str": "{p}% menyukai postingan anda:",
     "reply-str": "balas post anda:",
     "mention-str": "menyebut anda dalam:",
     "followed-str": "diikuti",
@@ -371,7 +371,7 @@
   "transfer": {
     "transfer-title": "Transfer ke akun",
     "transfer-sub-title": "Pindahkan dana ke akun steem lain",
-    "transfer-saving-title": "Transfer ke tabungan",
+    "transfer-saving-title": "Transfer ke Tabungan",
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
     "withdraw-saving-title": "Savings Withdraw",
     "withdraw-saving-sub-title": "Withdraw funds after the required 3 day waiting period",
