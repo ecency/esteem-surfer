@@ -317,17 +317,17 @@
   },
   "notification": {
     "popup-title": "新しい通知があります",
-    "voted": "{source} voted your post",
-    "mention-post": "{source} mentioned you in a post",
-    "mention-comment": "{source} mentioned you in a comment",
-    "followed": "{source} followed you",
-    "replied": "{source} replied you",
-    "reblogged": "{source} reblogged your post"
+    "voted": "{source} さんがあなたの投稿をVoteしました",
+    "mention-post": "{source} さんが投稿であなたを話題にしました",
+    "mention-comment": "{source} さんがコメントであなたを話題にしました",
+    "followed": "{source} さんがあなたをフォローしました",
+    "replied": "{source} さんがあなたに返信しました",
+    "reblogged": "{source} さんがあなたの投稿をリブログしました"
   },
   "activities": {
-    "type-all": "All Activities",
+    "type-all": "全てのアクティビティ",
     "type-votes": "Votes",
-    "type-replies": "Replies",
+    "type-replies": "返信",
     "type-mentions": "メンション",
     "type-follows": "フォロー",
     "type-reblogs": "リブログ",
@@ -338,10 +338,10 @@
     "unfollowed-str": "unfollowed",
     "ignored-str": "ignored",
     "reblog-str": "reblogged your post:",
-    "empty-list": "Nothing here",
+    "empty-list": "何もありません",
     "refresh": "Refresh",
-    "mark-all-read": "Mark All as Read",
-    "leaderboard": "Leaderboard",
+    "mark-all-read": "全て既読にする",
+    "leaderboard": "リーダーボード",
     "leaderboard-title": "Daily Top users"
   },
   "witnesses": {
