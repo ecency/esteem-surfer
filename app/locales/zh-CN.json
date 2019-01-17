@@ -41,7 +41,7 @@
     "reward": "奖励",
     "percent": "百分比",
     "time": "时间",
-    "modal-title": "投票 ({n})"
+    "modal-title": "投票者 ({n})"
   },
   "entry-list-item": {
     "reblogged": "转发人 {n}"
