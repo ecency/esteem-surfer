@@ -122,9 +122,9 @@
     "followers": "팔로워",
     "following": "팔로잉",
     "section-blog": "블로그",
-    "section-comments": "Comments",
-    "section-replies": "Replies",
-    "section-wallet": "Wallet"
+    "section-comments": "작성한 댓글",
+    "section-replies": "받은 댓글",
+    "section-wallet": "지갑"
   },
   "follow-controls": {
     "follow": "Follow",
@@ -142,7 +142,7 @@
     "section-comments": "Comments",
     "section-replies": "Replies",
     "section-wallet": "Wallet",
-    "top-posts": "Top Posts",
+    "top-posts": "인기 글",
     "unclaimed-rewards": "Unclaimed rewards",
     "estimated-value": "The estimated value is based on a 7 day average value of Steem.",
     "steem": "Steem",
@@ -287,8 +287,8 @@
     "bookmarkRemove": "Remove from bookmarks",
     "favorite": "Add to favorites",
     "favoriteRemove": "Removed from favorites",
-    "wallet": "My Wallet",
-    "activities": "Activities",
+    "wallet": "내 지갑",
+    "activities": "활동",
     "address-enter-url": "Enter url",
     "address-enter-query": "Enter search query",
     "unclaimed-reward-notice": "You have unclaimed reward"
@@ -325,9 +325,9 @@
     "reblogged": "{source} reblogged your post"
   },
   "activities": {
-    "type-all": "All Activities",
-    "type-votes": "Votes",
-    "type-replies": "Replies",
+    "type-all": "모든 활동",
+    "type-votes": "투표",
+    "type-replies": "받은 댓글",
     "type-mentions": "Mentions",
     "type-follows": "Follows",
     "type-reblogs": "Reblogs",
