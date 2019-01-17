@@ -19,13 +19,13 @@
   },
   "entry-index": {
     "tags": "أشهر المواضيع",
-    "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
+    "filter-trending": "مواضيع رائجة",
+    "filter-hot": "ذات شعبية",
+    "filter-created": "جديد",
+    "filter-active": "نشط",
+    "filter-promoted": "مواضيع مروّجة",
+    "filter-votes": "الأصوات",
+    "filter-children": "التعليقات",
     "filter-feed": "Feed"
   },
   "entry-payout": {
