@@ -10,7 +10,7 @@
     "edit": "編集",
     "server-error": "Process could not completed due to server error",
     "save": "保存",
-    "done": "Done",
+    "done": "完了",
     "select": "Select"
   },
   "footer": {
@@ -33,11 +33,11 @@
     "promoted": "Promoted",
     "author-payout": "Author Payout",
     "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "payout-date": "ペイアウト"
   },
   "entry-votes": {
     "n-more": "{n} more",
-    "author": "Author",
+    "author": "投稿者",
     "reward": "報酬",
     "percent": "パーセント",
     "time": "Time",
