@@ -1,42 +1,42 @@
 {
   "g": {
-    "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
-    "yes": "Yes",
-    "no": "No",
-    "delete": "Delete",
-    "cancel": "Cancel",
-    "ok": "OK",
-    "edit": "Edit",
-    "server-error": "Process could not completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "compose-entry": "发内容",
+    "are-you-sure": "您确定吗？",
+    "yes": "是",
+    "no": "不",
+    "delete": "删除",
+    "cancel": "取消",
+    "ok": "好的",
+    "edit": "编辑",
+    "server-error": "由于服务器出错，无法完成进程。",
+    "save": "保存",
+    "done": "完成",
+    "select": "选择"
   },
   "footer": {
-    "faq": "FAQ",
-    "about": "About"
+    "faq": "常见问题",
+    "about": "关于"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
+    "tags": "热门标签",
+    "filter-trending": "流行",
+    "filter-hot": "热门",
+    "filter-created": "新的",
+    "filter-active": "活跃",
+    "filter-promoted": "推广",
+    "filter-votes": "投票",
+    "filter-children": "评论",
     "filter-feed": "Feed"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "可能收益",
+    "promoted": "推广",
+    "author-payout": "作者收益",
+    "curation-payout": "审查收益",
+    "payout-date": "收益"
   },
   "entry-votes": {
-    "n-more": "{n} more",
+    "n-more": "{n} 更多",
     "author": "Author",
     "reward": "Reward",
     "percent": "Percent",
