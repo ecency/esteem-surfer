@@ -72,7 +72,7 @@
   "login": {
     "title": "お帰りなさい！",
     "accounts-title": "次のユーザーとしてログイン",
-    "traditional-login-desc": "Sign in with your username and password to continue",
+    "traditional-login-desc": "ユーザー名とパスワードでサインインしてください",
     "username-placeholder": "ユーザー名",
     "password-placeholder": "パスワードまたはwif",
     "login": "ログイン",
@@ -89,14 +89,14 @@
     "title": "PINコードを作成",
     "desc1": "あなたのデータを暗号化し、セキュリティを強化するためにPINコードを設定してください",
     "input-placeholder": "PINコードを入力",
-    "desc2": "You will be prompted to enter pin code for crucial transactions as well as on every launch.",
+    "desc2": "重要な取引だけではなく、毎回の起動時にPINコードを入力するよう促されます。",
     "created": "Pinコードが作成されました"
   },
   "confirm-pin-code": {
     "title": "Pinコードを入力",
     "input-placeholder": "PINコードを入力して続行",
     "last-chance": "これが最後のチャンスです",
-    "invalidate": "Oh, I forgot it...",
+    "invalidate": "ああ、私はそれを忘れてしまった...",
     "invalidate-confirm": "Pinコードを本当に無効にしてよろしいですか？",
     "invalidated": "Pin code invalidated"
   },
@@ -165,7 +165,7 @@
     "transaction-claim_reward_balance": "報酬を請求する",
     "transaction-transfer": "送金",
     "transaction-transfer_to_vesting": "Vestingに送金",
-    "transaction-withdraw_vesting": "Withdraw vesting",
+    "transaction-withdraw_vesting": "Vestingを引き出す",
     "transaction-fill_order": "Fill order",
     "claim-reward-balance": "報酬残高の請求",
     "claim-reward-balance-ok": "Reward balance claimed",
@@ -250,13 +250,13 @@
     "load-error": "ブックマークをロードできませんでした",
     "empty-list": "何もありません",
     "deleted": "ブックマークを削除しました",
-    "search": "Search in bookmarks"
+    "search": "ブックマークを検索"
   },
   "favorites": {
     "title": "お気に入り",
     "load-error": "お気に入りをロードできませんでした",
     "empty-list": "何もありません",
-    "search": "Search in favorites"
+    "search": "お気に入りを検索"
   },
   "entry": {
     "reply": "返信",
@@ -298,13 +298,13 @@
     "sort-by": "並び替え",
     "sort-popularity": "人気",
     "sort-relevance": "Relevance",
-    "sort-newest": "Date"
+    "sort-newest": "日付"
   },
   "updater": {
     "new-version-available": "新しいバージョンが利用可能",
     "update": "アップデート",
     "dismiss": "Dismiss",
-    "downloading": "Downloading new version...",
+    "downloading": "新しいバージョンをダウンロードしています...",
     "download-completed": "ダウンロード完了",
     "restart": "再起動"
   },
@@ -373,7 +373,7 @@
     "transfer-sub-title": "Move funds to another Steem account",
     "transfer-saving-title": "貯蓄口座に送る",
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
-    "withdraw-saving-title": "Savings Withdraw",
+    "withdraw-saving-title": "貯蓄を引き出す",
     "withdraw-saving-sub-title": "Withdraw funds after the required 3 day waiting period",
     "power-up-title": "STEEM POWERに変換",
     "power-up-sub-title": "Influence tokens which give you more control over post payouts and allow you to earn on curation rewards.",
@@ -387,7 +387,7 @@
     "amount-placeholder": "数量",
     "wrong-amount": "Wrong amount value",
     "amount-precision-error": "Use only 3 digits of precision",
-    "insufficient-funds": "Insufficient funds",
+    "insufficient-funds": "残高不足",
     "balance": "残高",
     "memo": "メモ",
     "memo-placeholder": "ここにメモを入力してください",
