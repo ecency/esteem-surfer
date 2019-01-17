@@ -177,7 +177,7 @@
   },
   "composer": {
     "title-placeholder": "Judul",
-    "tags-placeholder": "Tag. Tag pertama adalah kategori utama Anda",
+    "tags-placeholder": "Tagar. Tagar pertama adalah kategori utama Anda",
     "max-n-tags": "Maksimal {n} tags",
     "body-placeholder": "Konten postingan",
     "tool-bold": "Tebal",
