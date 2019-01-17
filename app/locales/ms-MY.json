@@ -89,30 +89,30 @@
     "title": "Ciptakan kod PIN",
     "desc1": "Menetapkan kod pin sebagai lapisan keselamatan tambahan, supaya menyulitkan data anda!",
     "input-placeholder": "Masukkan kod PIN",
-    "desc2": "You will be prompted to enter pin code for crucial transactions as well as on every launch.",
-    "created": "Pin code created"
+    "desc2": "Untuk setiap kali buka app dan transaksi penting, anda akan diminta memasukkan kod PIN.",
+    "created": "Kod PIN telah dicipta"
   },
   "confirm-pin-code": {
-    "title": "Enter Pin Code",
-    "input-placeholder": "Enter pin code to continue",
-    "last-chance": "This is your last chance",
-    "invalidate": "Oh, I forgot it...",
-    "invalidate-confirm": "Are you really want to invalidate pin code?",
-    "invalidated": "Pin code invalidated"
+    "title": "Masukkan kod PIN",
+    "input-placeholder": "Masukkan kod pin untuk meneruskan",
+    "last-chance": "Ini adalah peluang terakhir",
+    "invalidate": "Aduh! Terlupa lah...",
+    "invalidate-confirm": "Adakah anda ingin membatalkan kod PIN?",
+    "invalidated": "Kod PIN telah dibatalkan"
   },
   "user-menu": {
-    "profile": "Profile",
-    "bookmarks": "Bookmarks",
-    "favorites": "Favorites",
-    "drafts": "Drafts",
-    "schedules": "Schedules",
-    "gallery": "Gallery",
-    "login-as": "Login As",
-    "logout": "Logout"
+    "profile": "Profil",
+    "bookmarks": "Penanda halaman",
+    "favorites": "Kegemaran",
+    "drafts": "Draf",
+    "schedules": "Jadual",
+    "gallery": "Galeri",
+    "login-as": "Log masuk sebagai",
+    "logout": "Log Keluar"
   },
   "login-required": {
-    "default": "This action requires login",
-    "key-required": "This action requires {key} key or master password",
+    "default": "Tindakan ini memerlukan log masuk",
+    "key-required": "Tindakan ini memerlukan kekunci {key} atau kata laluan Master",
     "keys-required": "This action requires {keys} keys or master password"
   },
   "quick-profile": {
