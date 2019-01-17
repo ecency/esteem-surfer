@@ -2,20 +2,20 @@
   "g": {
     "compose-entry": "إنشاء منشور",
     "are-you-sure": "هل أنت متأكد؟",
-    "yes": "Yes",
-    "no": "No",
-    "delete": "Delete",
-    "cancel": "Cancel",
-    "ok": "OK",
-    "edit": "Edit",
-    "server-error": "Process could not completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "yes": "نعم",
+    "no": "لا",
+    "delete": "حذف",
+    "cancel": "إلغاء",
+    "ok": "موافق",
+    "edit": "تحرير",
+    "server-error": "العملية لم تكتمل بسبب خطأ في الخادم",
+    "save": "حفظ",
+    "done": "إنتهى",
+    "select": "حدّد"
   },
   "footer": {
-    "faq": "FAQ",
-    "about": "About"
+    "faq": "الأسئلة الشائعة",
+    "about": "عن التطبيق"
   },
   "entry-index": {
     "tags": "Popular Tags",
