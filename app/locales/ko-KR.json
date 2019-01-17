@@ -8,23 +8,23 @@
     "cancel": "취소",
     "ok": "확인",
     "edit": "편집",
-    "server-error": "Process could not completed due to server error",
-    "save": "Save",
-    "done": "Done",
+    "server-error": "서버 오류로 인해 처리가 완료되지 않은 것 같습니다",
+    "save": "저장",
+    "done": "완료",
     "select": "Select"
   },
   "footer": {
     "faq": "FAQ",
-    "about": "About"
+    "about": "소개"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
+    "tags": "인기 태그",
+    "filter-trending": "트렌딩",
+    "filter-hot": "인기",
+    "filter-created": "신규",
+    "filter-active": "활동적인",
+    "filter-promoted": "홍보",
+    "filter-votes": "투표",
     "filter-children": "Comments",
     "filter-feed": "Feed"
   },
@@ -86,9 +86,9 @@
     "divider-text": "OR"
   },
   "create-pin-code": {
-    "title": "Create PIN Code",
+    "title": "PIN 코드 만들기",
     "desc1": "Set pin code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter pin code",
+    "input-placeholder": "PIN 코드를 입력하세요",
     "desc2": "You will be prompted to enter pin code for crucial transactions as well as on every launch.",
     "created": "Pin code created"
   },
@@ -222,7 +222,7 @@
     "sync-scroll": "Scroll Sync",
     "words-count": "{n} words",
     "no-suggestions": "No suggestions",
-    "emoji-filter-placeholder": "Filter",
+    "emoji-filter-placeholder": "필터",
     "emoji-filter-no-match": "No match",
     "emoji-recently-used": "Recently Used"
   },
