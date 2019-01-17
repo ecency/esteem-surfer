@@ -51,23 +51,23 @@
     "reblogged": "Reblogged"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "화폐 단위",
+    "title": "설정",
+    "currency": "화폐 표기",
     "currency-fetch-error": "'{cur}'에 대한 환율을 조회할 수 없습니다",
     "currency-changed": "화폐 설정이 변경되었습니다",
     "locale": "언어",
     "locale-changed": "언어 설정이 변경되었습니다",
     "server": "서버",
-    "server-invalid-address": "Invalid server address",
-    "server-connecting": "Connecting to '{server}'...",
-    "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
-    "server-timeout-error": "'{server}' looks like not alive",
+    "server-invalid-address": "유효하지 않은 서버 주소입니다",
+    "server-connecting": "'{server}'에 연결 중...",
+    "server-connect-error": "'{server}'에 연결할 수 없습니다. 인터넷 연결 상태를 확인하세요.",
+    "server-timeout-error": "'{server}'가 죽은 것 같습니다",
     "server-changed": "{server}으로 서버가 변경되었습니다",
-    "server-custom-address": "Custom server address",
-    "server-list-fetch-error": "Could not fetch server list",
-    "push-notifications": "Push Notifications",
-    "push-notify-enabled": "Push notifications enabled",
-    "push-notify-disabled": "Push notifications disabled"
+    "server-custom-address": "커스텀 서버 주소",
+    "server-list-fetch-error": "서버 목록을 조회할 수 없습니다",
+    "push-notifications": "알림",
+    "push-notify-enabled": "알림이 활성화되었습니다",
+    "push-notify-disabled": "알림이 비활성화되었습니다"
   },
   "login": {
     "title": "환영합니다!",
@@ -89,7 +89,7 @@
     "title": "PIN 코드 만들기",
     "desc1": "데이터를 암호화하고, 보안을 위한 추가 계층을 활성화하려면 PIN 코드를 설정하세요!",
     "input-placeholder": "PIN 코드를 입력하세요",
-    "desc2": "앱이 실행될 때 뿐만 아니라 중요한 트랜잭션이 발생했을 때 PIN 코드 입력화면이 나타날 것입니다.",
+    "desc2": "앱 실행뿐만 아니라 중요한 트랜잭션이 발생했을 때 PIN 코드 입력화면이 나타날 것입니다.",
     "created": "PIN 코드 생성 완료"
   },
   "confirm-pin-code": {
@@ -158,7 +158,7 @@
     "savings-description": "Balance subject to 3 day withdraw waiting period.",
     "next-power-down": "The next power down is {time}",
     "exchange": "거래소 시세 정보",
-    "transactions": "Transactions",
+    "transactions": "트랜잭션",
     "transaction-curation_reward": "Curation Reward",
     "transaction-author_reward": "Author Reward",
     "transaction-comment_benefactor_reward": "Comment Benefactor Reward",
@@ -280,7 +280,7 @@
     "comment-entry-go-parent": "View the direct parent"
   },
   "navbar": {
-    "settings": "Settings",
+    "settings": "설정",
     "change-theme": "테마 변경",
     "login": "Login to you account",
     "bookmark": "Add to bookmarks",
