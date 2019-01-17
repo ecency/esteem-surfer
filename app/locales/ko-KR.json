@@ -19,21 +19,21 @@
   },
   "entry-index": {
     "tags": "인기 태그",
-    "filter-trending": "트렌딩",
+    "filter-trending": "트렌드",
     "filter-hot": "인기",
     "filter-created": "신규",
-    "filter-active": "활동적인",
+    "filter-active": "활동성",
     "filter-promoted": "홍보",
     "filter-votes": "투표",
-    "filter-children": "Comments",
-    "filter-feed": "Feed"
+    "filter-children": "댓글",
+    "filter-feed": "피드"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "예상 보상 금액",
+    "promoted": "홍보비",
+    "author-payout": "저자 보상",
+    "curation-payout": "큐레이션 보상",
+    "payout-date": "보상"
   },
   "entry-votes": {
     "n-more": "{n} more",
@@ -70,19 +70,19 @@
     "push-notify-disabled": "Push notifications disabled"
   },
   "login": {
-    "title": "Welcome back!",
+    "title": "환영합니다!",
     "accounts-title": "Login As",
-    "traditional-login-desc": "Sign in with your username and password to continue",
-    "username-placeholder": "username",
+    "traditional-login-desc": "계속 진행하려면 사용자 이름과 비밀번호를 이용해 로그인하세요.",
+    "username-placeholder": "사용자 이름",
     "password-placeholder": "password or wif",
     "login": "Login",
-    "error-fields-required": "Please enter username and password/wif",
+    "error-fields-required": "사용자 이름과 비밀번호/wif를 입력하세요",
     "error-public-key": "You entered a public key. Password/wif required",
     "error-user-fetch": "User data could not fetched",
     "error-user-not-found": "User not exists",
-    "error-authenticate": "Wrong username or password/wif",
+    "error-authenticate": "올바른 사용자 이름 또는 비밀번호/wif가 아닙니다",
     "create-account-text": "계정이 없나요? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">지금 계정을 만드세요!</a>",
-    "login-with-sc": "Login with",
+    "login-with-sc": "steemconnect를 이용해 로그인하세요",
     "divider-text": "OR"
   },
   "create-pin-code": {
@@ -358,7 +358,7 @@
     "version": "Version",
     "voted": "@{n} voted",
     "vote-removed": "vote removed for @{n}",
-    "username-placeholder": "username",
+    "username-placeholder": "사용자 이름",
     "extra-witnesses-exp": "Enter account name below to vote for a witness outside of <strong>Top 50</strong>",
     "proxy-exp": "You can also choose a proxy that will vote for witnesses for you. This will reset your current witness selection.",
     "set-proxy": "Set Proxy",
@@ -380,7 +380,7 @@
     "from": "From",
     "from-placeholder": "Select a user",
     "to": "To",
-    "to-placeholder": "username",
+    "to-placeholder": "사용자 이름",
     "to-not-found": "The user that you are trying to transfer funds to does not exist!",
     "to-bad-actor": "Use caution sending to this account. Please double check your spelling for possible phishing.",
     "amount": "Amount",
