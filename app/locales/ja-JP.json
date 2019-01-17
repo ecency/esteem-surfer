@@ -97,7 +97,7 @@
     "input-placeholder": "Enter pin code to continue",
     "last-chance": "これが最後のチャンスです",
     "invalidate": "Oh, I forgot it...",
-    "invalidate-confirm": "Are you really want to invalidate pin code?",
+    "invalidate-confirm": "Pinコードを本当に無効にしてよろしいですか？",
     "invalidated": "Pin code invalidated"
   },
   "user-menu": {
