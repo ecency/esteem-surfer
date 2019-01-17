@@ -82,49 +82,49 @@
     "error-user-not-found": "用戶不存在",
     "error-authenticate": "錯誤的用戶名或密碼/WIF",
     "create-account-text": "還沒有帳戶？<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">立即註冊！</a>",
-    "login-with-sc": "Login with",
-    "divider-text": "OR"
+    "login-with-sc": "登入方式",
+    "divider-text": "或"
   },
   "create-pin-code": {
-    "title": "Create PIN Code",
-    "desc1": "Set pin code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter pin code",
-    "desc2": "You will be prompted to enter pin code for crucial transactions as well as on every launch.",
-    "created": "Pin code created"
+    "title": "創建PIN碼",
+    "desc1": "設置PIN碼來加密您的資料，並啟用額外的安全保護！",
+    "input-placeholder": "輸入 PIN 碼",
+    "desc2": "每次啟動和進行重要交易時，將提示您輸入PIN碼。",
+    "created": "已創建PIN碼"
   },
   "confirm-pin-code": {
-    "title": "Enter Pin Code",
-    "input-placeholder": "Enter pin code to continue",
-    "last-chance": "This is your last chance",
-    "invalidate": "Oh, I forgot it...",
-    "invalidate-confirm": "Are you really want to invalidate pin code?",
-    "invalidated": "Pin code invalidated"
+    "title": "請輸入PIN碼",
+    "input-placeholder": "輸入PIN碼以繼續",
+    "last-chance": "這是您的最後一次機會",
+    "invalidate": "哦，我忘記了......",
+    "invalidate-confirm": "您是否真的想要作廢PIN碼？",
+    "invalidated": "PIN碼已作廢"
   },
   "user-menu": {
-    "profile": "Profile",
-    "bookmarks": "Bookmarks",
-    "favorites": "Favorites",
-    "drafts": "Drafts",
-    "schedules": "Schedules",
-    "gallery": "Gallery",
-    "login-as": "Login As",
-    "logout": "Logout"
+    "profile": "個人檔案",
+    "bookmarks": "書籤",
+    "favorites": "我的最愛",
+    "drafts": "草稿",
+    "schedules": "排程",
+    "gallery": "陳列",
+    "login-as": "登錄為",
+    "logout": "登出"
   },
   "login-required": {
-    "default": "This action requires login",
-    "key-required": "This action requires {key} key or master password",
-    "keys-required": "This action requires {keys} keys or master password"
+    "default": "此操作需要登錄",
+    "key-required": "此操作需要 {key} 秘鑰或主密碼",
+    "keys-required": "此操作需要 {keys} 秘鑰或主密碼"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
-    "fetch-error-content": "Could not fetch posts",
-    "post-count": "Post Count",
-    "followers": "Followers",
-    "following": "Following",
-    "section-blog": "Blog",
-    "section-comments": "Comments",
-    "section-replies": "Replies",
-    "section-wallet": "Wallet"
+    "fetch-error-profile": "無法讀取個人檔案資料",
+    "fetch-error-content": "無法讀取帖子",
+    "post-count": "帖子數",
+    "followers": "關注者",
+    "following": "已關注",
+    "section-blog": "部落格",
+    "section-comments": "評論",
+    "section-replies": "回覆",
+    "section-wallet": "錢包"
   },
   "follow-controls": {
     "follow": "Follow",
