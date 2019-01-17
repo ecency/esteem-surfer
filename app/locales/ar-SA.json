@@ -274,13 +274,13 @@
     "favorited": "تم الإضافة إلى المفضلات",
     "favoriteRemoved": "تم المسح من المفضلات",
     "copy-clipboard": "نسخ الرابط إلى الحافظة",
-    "copied-clipboard": "Copied",
-    "comment-entry-title": "You are viewing a single comment's thread from: ",
-    "comment-entry-go-root": "View the full context",
-    "comment-entry-go-parent": "View the direct parent"
+    "copied-clipboard": "تم النسخ",
+    "comment-entry-title": "أنت تعرض تعليقاً واحدأً من: ",
+    "comment-entry-go-root": "عرض المحتوى الكامل",
+    "comment-entry-go-parent": "عرض الرسالة الرئيسية"
   },
   "navbar": {
-    "settings": "Settings",
+    "settings": "إعدادات",
     "change-theme": "Change Theme",
     "login": "Login to you account",
     "bookmark": "Add to bookmarks",
