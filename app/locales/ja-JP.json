@@ -1,7 +1,7 @@
 {
   "g": {
-    "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
+    "compose-entry": "投稿を作成",
+    "are-you-sure": "本当によろしいですか？",
     "yes": "はい",
     "no": "いいえ",
     "delete": "削除",
