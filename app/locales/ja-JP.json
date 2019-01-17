@@ -214,7 +214,7 @@
     "remove-posting-perm": "Remove Posting Permission",
     "posting-perm-removed": "Posting permission removed",
     "save-draft": "下書きを保存",
-    "draft-saved": "Draft saved",
+    "draft-saved": "下書きを保存しました",
     "publish": "公開",
     "published": "Post Published",
     "update": "アップデート",
@@ -285,38 +285,38 @@
     "login": "Login to you account",
     "bookmark": "Add to bookmarks",
     "bookmarkRemove": "Remove from bookmarks",
-    "favorite": "Add to favorites",
+    "favorite": "お気に入りに追加",
     "favoriteRemove": "Removed from favorites",
-    "wallet": "My Wallet",
-    "activities": "Activities",
-    "address-enter-url": "Enter url",
+    "wallet": "マイウォレット",
+    "activities": "アクティビティ",
+    "address-enter-url": "URLを入力",
     "address-enter-query": "Enter search query",
     "unclaimed-reward-notice": "You have unclaimed reward"
   },
   "search": {
     "n-results-for-q": "{n} results for {q}",
-    "sort-by": "Sort by",
+    "sort-by": "並び替え",
     "sort-popularity": "Popularity",
     "sort-relevance": "Relevance",
     "sort-newest": "Date"
   },
   "updater": {
-    "new-version-available": "New version available",
+    "new-version-available": "新しいバージョンが利用可能",
     "update": "アップデート",
     "dismiss": "Dismiss",
     "downloading": "Downloading new version...",
-    "download-completed": "Download completed",
+    "download-completed": "ダウンロード完了",
     "restart": "Restart"
   },
   "context-menu": {
     "cut": "カット",
     "copy": "コピー",
     "paste": "貼り付け",
-    "open-image-browser": "Open image in browser",
-    "copy-image-url": "Copy image url"
+    "open-image-browser": "ブラウザで画像を開く",
+    "copy-image-url": "画像のURLをコピー"
   },
   "notification": {
-    "popup-title": "You have a new notification",
+    "popup-title": "新しい通知があります",
     "voted": "{source} voted your post",
     "mention-post": "{source} mentioned you in a post",
     "mention-comment": "{source} mentioned you in a comment",
