@@ -40,7 +40,7 @@
     "author": "Auteur",
     "reward": "Récompense",
     "percent": "Pourcent",
-    "time": "Heure",
+    "time": "Date",
     "modal-title": "Votants ({n})"
   },
   "entry-list-item": {
@@ -217,7 +217,7 @@
     "draft-saved": "Brouillon sauvegardé",
     "publish": "Publier",
     "published": "Article publié",
-    "update": "Update",
+    "update": "Mettre à jour",
     "updated": "Post modifié",
     "sync-scroll": "Synchroniser le défilement",
     "words-count": "{n} mots",
@@ -275,7 +275,7 @@
     "favoriteRemoved": "Supprimer des favoris",
     "copy-clipboard": "Copier le lien interne dans le presse-papiers",
     "copied-clipboard": "Copié",
-    "comment-entry-title": "You are viewing a single comment's thread from: ",
+    "comment-entry-title": "Vous visualisez le fil de discussion d'un seul commentaire à partir de : ",
     "comment-entry-go-root": "Voir le contexte complet",
     "comment-entry-go-parent": "Voir le parent direct"
   },
@@ -361,7 +361,7 @@
     "username-placeholder": "nom d'utilisateur",
     "extra-witnesses-exp": "Entrez le nom du compte ci-dessous pour voter pour un témoin en dehors du <strong>Top 50</strong>",
     "proxy-exp": "Vous pouvez également choisir un mandataire qui votera pour vous. Cela réinitialisera votre sélection de témoins actuels.",
-    "set-proxy": "Set Proxy",
+    "set-proxy": "Définir comme mandataire",
     "proxy-active-exp": "Vous avez autorisé un mandataire à voter pour les témoins. Si vous voulez réactiver le vote manuel, veuillez annuler votre autorisation.",
     "current-proxy": "Votre mandataire actuel est : <strong>{n}</strong>",
     "remove-proxy": "Effacer le mandataire",
