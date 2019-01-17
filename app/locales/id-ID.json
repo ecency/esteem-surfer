@@ -291,7 +291,7 @@
     "activities": "Aktifitas",
     "address-enter-url": "Masukkan url",
     "address-enter-query": "Masukkan permintaan pencarian",
-    "unclaimed-reward-notice": "You have unclaimed reward"
+    "unclaimed-reward-notice": "Anda memiliki hadiah yang belum diklaim"
   },
   "search": {
     "n-results-for-q": "{n} results for {q}",
