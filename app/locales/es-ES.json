@@ -1,65 +1,65 @@
 {
   "g": {
-    "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
-    "yes": "Yes",
+    "compose-entry": "Crear Contenido",
+    "are-you-sure": "Estás seguro?",
+    "yes": "Si",
     "no": "No",
-    "delete": "Delete",
-    "cancel": "Cancel",
-    "ok": "OK",
-    "edit": "Edit",
-    "server-error": "Process could not completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "delete": "Borrar",
+    "cancel": "Cancelar",
+    "ok": "Aceptar",
+    "edit": "Editar",
+    "server-error": "El proceso podría no completarse debido a error del servidor",
+    "save": "Salvar",
+    "done": "Hecho",
+    "select": "Seleccionar"
   },
   "footer": {
-    "faq": "FAQ",
-    "about": "About"
+    "faq": "Preguntas más frecuentes",
+    "about": "Acerca de"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
-    "filter-feed": "Feed"
+    "tags": "Etiquetas Populares",
+    "filter-trending": "Tendencias",
+    "filter-hot": "Caliente",
+    "filter-created": "Nuevo",
+    "filter-active": "Activa",
+    "filter-promoted": "Promocionado",
+    "filter-votes": "Votos",
+    "filter-children": "Comentarios",
+    "filter-feed": "Inicio"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "Pago Potencial",
+    "promoted": "Promocionado",
+    "author-payout": "Pago de Autor",
+    "curation-payout": "Pago de Curación",
+    "payout-date": "Pago"
   },
   "entry-votes": {
-    "n-more": "{n} more",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
-    "modal-title": "Voters ({n})"
+    "n-more": "{n} más",
+    "author": "Autor",
+    "reward": "Recompensa",
+    "percent": "Porcentaje",
+    "time": "Hora",
+    "modal-title": "Votantes ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "resteemeado por {n}"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "Rebloguear",
+    "reblogged": "Reblogueado"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "Currency",
-    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
-    "currency-changed": "Currency Changed",
-    "locale": "Language",
-    "locale-changed": "Language changed",
-    "server": "Server",
-    "server-invalid-address": "Invalid server address",
-    "server-connecting": "Connecting to '{server}'...",
+    "title": "Ajustes",
+    "currency": "Divisa",
+    "currency-fetch-error": "No se pudo obtener el tipo de cambio para '{cur}'",
+    "currency-changed": "Divisa Cambiada",
+    "locale": "Idioma",
+    "locale-changed": "Idioma cambiado",
+    "server": "Servidor",
+    "server-invalid-address": "Dirección de servidor incorrecta",
+    "server-connecting": "Conectando a '{server}'...",
     "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
     "server-timeout-error": "'{server}' looks like not alive",
     "server-changed": "Server changed to {server}",
