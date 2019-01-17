@@ -113,21 +113,21 @@
   "login-required": {
     "default": "Tindakan ini memerlukan log masuk",
     "key-required": "Tindakan ini memerlukan kekunci {key} atau kata laluan Master",
-    "keys-required": "This action requires {keys} keys or master password"
+    "keys-required": "Tindakan ini memerlukan kekunci {keys} atau kata laluan Master"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
-    "fetch-error-content": "Could not fetch posts",
-    "post-count": "Post Count",
+    "fetch-error-profile": "Data profil tidak dapat diambil",
+    "fetch-error-content": "Pos tidak dapat diambil",
+    "post-count": "Bilangan Pos",
     "followers": "Followers",
-    "following": "Following",
+    "following": "Mengikut",
     "section-blog": "Blog",
-    "section-comments": "Comments",
-    "section-replies": "Replies",
+    "section-comments": "Komen-komen",
+    "section-replies": "Balasan",
     "section-wallet": "Wallet"
   },
   "follow-controls": {
-    "follow": "Follow",
+    "follow": "Ikut",
     "unFollow": "Berhenti mengikut",
     "mute": "Bisukan",
     "unMute": "Nyahbisukan"
@@ -298,54 +298,54 @@
     "sort-by": "Susun mengikut",
     "sort-popularity": "Populariti",
     "sort-relevance": "Perkaitan",
-    "sort-newest": "Date"
+    "sort-newest": "Tarikh"
   },
   "updater": {
-    "new-version-available": "New version available",
-    "update": "Update",
-    "dismiss": "Dismiss",
-    "downloading": "Downloading new version...",
-    "download-completed": "Download completed",
-    "restart": "Restart"
+    "new-version-available": "Versi baharu tersedia",
+    "update": "Mengemaskini",
+    "dismiss": "Abaikan",
+    "downloading": "Memuat turun versi baru...",
+    "download-completed": "Muat turun selesai",
+    "restart": "Mula semula"
   },
   "context-menu": {
-    "cut": "Cut",
-    "copy": "Copy",
-    "paste": "Paste",
-    "open-image-browser": "Open image in browser",
-    "copy-image-url": "Copy image url"
+    "cut": "Potong",
+    "copy": "Salin",
+    "paste": "Tampal",
+    "open-image-browser": "Buka gambar di browser",
+    "copy-image-url": "Salin url gambar"
   },
   "notification": {
-    "popup-title": "You have a new notification",
-    "voted": "{source} voted your post",
-    "mention-post": "{source} mentioned you in a post",
-    "mention-comment": "{source} mentioned you in a comment",
-    "followed": "{source} followed you",
-    "replied": "{source} replied you",
-    "reblogged": "{source} reblogged your post"
+    "popup-title": "Anda mempunyai pemberitahuan baru",
+    "voted": "{source} mengundi pos anda",
+    "mention-post": "{source} menyebut anda dalam sebuah pos",
+    "mention-comment": "{source} menyebut anda di ruang komen",
+    "followed": "{source} mengikuti anda",
+    "replied": "{source} membalas anda",
+    "reblogged": "{source} ulang siar pos anda"
   },
   "activities": {
-    "type-all": "All Activities",
-    "type-votes": "Votes",
-    "type-replies": "Replies",
-    "type-mentions": "Mentions",
-    "type-follows": "Follows",
-    "type-reblogs": "Reblogs",
-    "vote-str": "{p}% likes your post:",
-    "reply-str": "replied your post:",
-    "mention-str": "mentioned you in:",
-    "followed-str": "followed",
-    "unfollowed-str": "unfollowed",
-    "ignored-str": "ignored",
-    "reblog-str": "reblogged your post:",
-    "empty-list": "Nothing here",
-    "refresh": "Refresh",
-    "mark-all-read": "Mark All as Read",
-    "leaderboard": "Leaderboard",
-    "leaderboard-title": "Daily Top users"
+    "type-all": "Semua aktiviti",
+    "type-votes": "Undian",
+    "type-replies": "Balasan",
+    "type-mentions": "Menyebutkan",
+    "type-follows": "Ikuti",
+    "type-reblogs": "Ulang siar",
+    "vote-str": "{p}% menyukai pos anda:",
+    "reply-str": "balas pos anda:",
+    "mention-str": "menyebut anda dalam:",
+    "followed-str": "diikuti",
+    "unfollowed-str": "berhenti mengikuti",
+    "ignored-str": "diabaikan",
+    "reblog-str": "ulang siar pos anda:",
+    "empty-list": "Kosong",
+    "refresh": "Kemaskini",
+    "mark-all-read": "Tandakan semua sebagai sudah dibaca",
+    "leaderboard": "Papan Pendahulu",
+    "leaderboard-title": "Pengguna tertinggi harian"
   },
   "witnesses": {
-    "page-title": "Witness Voting",
+    "page-title": "Memilih saksi",
     "remaining": "<strong>{n}</strong> of {max} votes remaining",
     "witness": "Witness",
     "miss": "Miss",
