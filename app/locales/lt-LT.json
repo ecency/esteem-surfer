@@ -44,22 +44,22 @@
     "modal-title": "Balsuotuojai"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "pasidalinta"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "Pasidalinti",
+    "reblogged": "Pasidalinta"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "Currency",
+    "title": "Nustatymai",
+    "currency": "Valiuta",
     "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
-    "currency-changed": "Currency Changed",
-    "locale": "Language",
-    "locale-changed": "Language changed",
-    "server": "Server",
-    "server-invalid-address": "Invalid server address",
-    "server-connecting": "Connecting to '{server}'...",
+    "currency-changed": "Valiuta Pakeista",
+    "locale": "Kalba",
+    "locale-changed": "Kalba pakeista",
+    "server": "Serveris",
+    "server-invalid-address": "Klaidingas serverio adresas",
+    "server-connecting": "Sujungiama su '{server}'...",
     "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
     "server-timeout-error": "'{server}' looks like not alive",
     "server-changed": "Server changed to {server}",
