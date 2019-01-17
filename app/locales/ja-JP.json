@@ -80,7 +80,7 @@
     "error-public-key": "公開鍵が入力されました。パスワード/wifが必要です",
     "error-user-fetch": "ユーザーデータを取り出すことができませんでした",
     "error-user-not-found": "ユーザーが存在しません",
-    "error-authenticate": "Wrong username or password/wif",
+    "error-authenticate": "ユーザー名またはパスワード/wifが間違っています",
     "create-account-text": "アカウントをお持ちでないですか？<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">今すぐ登録！</a>",
     "login-with-sc": "Login with",
     "divider-text": "または"
@@ -94,7 +94,7 @@
   },
   "confirm-pin-code": {
     "title": "Pinコードを入力",
-    "input-placeholder": "Enter pin code to continue",
+    "input-placeholder": "PINコードを入力して続行",
     "last-chance": "これが最後のチャンスです",
     "invalidate": "Oh, I forgot it...",
     "invalidate-confirm": "Pinコードを本当に無効にしてよろしいですか？",
@@ -107,17 +107,17 @@
     "drafts": "下書き",
     "schedules": "スケジュール",
     "gallery": "ギャラリー",
-    "login-as": "Login As",
+    "login-as": "次のユーザーとしてログイン",
     "logout": "ログアウト"
   },
   "login-required": {
-    "default": "This action requires login",
-    "key-required": "This action requires {key} key or master password",
-    "keys-required": "This action requires {keys} keys or master password"
+    "default": "この操作にはログインが必要です",
+    "key-required": "この操作には{key} キーまたはマスターパスワードが必要です。",
+    "keys-required": "この操作には{keys} キーまたはマスターパスワードが必要です"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
-    "fetch-error-content": "Could not fetch posts",
+    "fetch-error-profile": "プロフィールデータを取り出すことができませんでした",
+    "fetch-error-content": "投稿を取得できませんでした",
     "post-count": "投稿数",
     "followers": "フォロワー",
     "following": "フォロー中",
