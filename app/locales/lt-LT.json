@@ -41,7 +41,7 @@
     "reward": "Atlygis",
     "percent": "Procentų",
     "time": "Laikas",
-    "modal-title": "Balsuotuojai"
+    "modal-title": "Balsuotuojai ({n})"
   },
   "entry-list-item": {
     "reblogged": "pasidalinta"
@@ -53,7 +53,7 @@
   "settings": {
     "title": "Nustatymai",
     "currency": "Valiuta",
-    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
+    "currency-fetch-error": "Nepavyko apskaičiuoti valiutos kurso '{cur}'",
     "currency-changed": "Valiuta Pakeista",
     "locale": "Kalba",
     "locale-changed": "Kalba pakeista",
@@ -63,52 +63,52 @@
     "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
     "server-timeout-error": "'{server}' looks like not alive",
     "server-changed": "Server changed to {server}",
-    "server-custom-address": "Custom server address",
+    "server-custom-address": "Pasirinktinas serverio adresas",
     "server-list-fetch-error": "Could not fetch server list",
     "push-notifications": "Push Notifications",
     "push-notify-enabled": "Push notifications enabled",
     "push-notify-disabled": "Push notifications disabled"
   },
   "login": {
-    "title": "Welcome back!",
-    "accounts-title": "Login As",
+    "title": "Sveiki sugrįžę!",
+    "accounts-title": "Prisijungti Kaip",
     "traditional-login-desc": "Sign in with your username and password to continue",
-    "username-placeholder": "username",
+    "username-placeholder": "vartotojo vardas",
     "password-placeholder": "password or wif",
-    "login": "Login",
+    "login": "Prisijungti",
     "error-fields-required": "Please enter username and password/wif",
     "error-public-key": "You entered a public key. Password/wif required",
     "error-user-fetch": "User data could not fetched",
-    "error-user-not-found": "User not exists",
+    "error-user-not-found": "Tokio vartotojo nėra",
     "error-authenticate": "Wrong username or password/wif",
     "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>",
-    "login-with-sc": "Login with",
-    "divider-text": "OR"
+    "login-with-sc": "Prisijungti su",
+    "divider-text": "AR"
   },
   "create-pin-code": {
-    "title": "Create PIN Code",
+    "title": "Sukurti PIN-kodą",
     "desc1": "Set pin code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter pin code",
+    "input-placeholder": "Įveskite PIN kodą",
     "desc2": "You will be prompted to enter pin code for crucial transactions as well as on every launch.",
-    "created": "Pin code created"
+    "created": "PIN kodas sukurtas"
   },
   "confirm-pin-code": {
-    "title": "Enter Pin Code",
-    "input-placeholder": "Enter pin code to continue",
+    "title": "Įveskite Pin kodą",
+    "input-placeholder": "Įveskite PIN kodą",
     "last-chance": "This is your last chance",
-    "invalidate": "Oh, I forgot it...",
+    "invalidate": "Oi, aš pamiršau...",
     "invalidate-confirm": "Are you really want to invalidate pin code?",
     "invalidated": "Pin code invalidated"
   },
   "user-menu": {
-    "profile": "Profile",
-    "bookmarks": "Bookmarks",
-    "favorites": "Favorites",
-    "drafts": "Drafts",
-    "schedules": "Schedules",
-    "gallery": "Gallery",
-    "login-as": "Login As",
-    "logout": "Logout"
+    "profile": "Profilis",
+    "bookmarks": "Žymės",
+    "favorites": "Mėgstamiausi",
+    "drafts": "Juodraščiai",
+    "schedules": "Suplanuota",
+    "gallery": "Galerija",
+    "login-as": "Prisijungti Kaip",
+    "logout": "Atsijungti"
   },
   "login-required": {
     "default": "This action requires login",
@@ -119,29 +119,29 @@
     "fetch-error-profile": "Could not fetch profile data",
     "fetch-error-content": "Could not fetch posts",
     "post-count": "Post Count",
-    "followers": "Followers",
+    "followers": "Sekėjai",
     "following": "Following",
     "section-blog": "Blog",
-    "section-comments": "Comments",
+    "section-comments": "Komentarai",
     "section-replies": "Replies",
     "section-wallet": "Wallet"
   },
   "follow-controls": {
     "follow": "Follow",
     "unFollow": "Unfollow",
-    "mute": "Mute",
-    "unMute": "Unmute"
+    "mute": "Nutildyti",
+    "unMute": "Atitildyti"
   },
   "account": {
-    "voting-power": "Voting Power",
+    "voting-power": "Balsavimo Galia",
     "post-count": "Post Count",
     "number-of-votes": "Number of votes in last 24 hours",
     "followers": "Followers",
     "following": "Following",
-    "section-blog": "Blog",
-    "section-comments": "Comments",
-    "section-replies": "Replies",
-    "section-wallet": "Wallet",
+    "section-blog": "Blogas",
+    "section-comments": "Komentarai",
+    "section-replies": "Atsakymai",
+    "section-wallet": "Piniginė",
     "top-posts": "Top Posts",
     "unclaimed-rewards": "Unclaimed rewards",
     "estimated-value": "The estimated value is based on a 7 day average value of Steem.",
