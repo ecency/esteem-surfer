@@ -61,7 +61,7 @@
     "server-invalid-address": "無効なサーバーアドレス",
     "server-connecting": "{server} に接続しています...",
     "server-connect-error": "{server} に接続できませんでした。インターネット接続を確認してください。",
-    "server-timeout-error": "'{server}' looks like not alive",
+    "server-timeout-error": "'{server}'は動いていないようです",
     "server-changed": "Server changed to {server}",
     "server-custom-address": "カスタムサーバーアドレス",
     "server-list-fetch-error": "サーバーリストを取得できませんでした",
@@ -82,7 +82,7 @@
     "error-user-not-found": "ユーザーが存在しません",
     "error-authenticate": "ユーザー名またはパスワード/wifが間違っています",
     "create-account-text": "アカウントをお持ちでないですか？<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">今すぐ登録！</a>",
-    "login-with-sc": "Login with",
+    "login-with-sc": "次のものでログイン",
     "divider-text": "または"
   },
   "create-pin-code": {
@@ -150,7 +150,7 @@
     "steem-power": "Steem Power",
     "steem-power-description": "Steem Power are influence tokens that earn more power for holding long term and voting on posts. The more Steem Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
     "steem-power-delegated": "委任されたsteem power",
-    "steem-power-received": "Received steem power",
+    "steem-power-received": "委任されたsteem power",
     "steem-power-total": "合計steem power",
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Tokens worth about $1.00 of Steem.",
@@ -172,8 +172,8 @@
     "transfer": "送金",
     "transfer-to-savings": "貯蓄口座に送る",
     "power-up": "パワーアップ",
-    "withdraw-steem": "Withdraw Steem",
-    "withdraw-sbd": "Withdraw Steem Dollar"
+    "withdraw-steem": "Steemを引き出す",
+    "withdraw-sbd": "Steem Dollarを引き出す"
   },
   "composer": {
     "title-placeholder": "タイトル",
@@ -339,7 +339,7 @@
     "ignored-str": "ignored",
     "reblog-str": "reblogged your post:",
     "empty-list": "何もありません",
-    "refresh": "Refresh",
+    "refresh": "更新",
     "mark-all-read": "全て既読にする",
     "leaderboard": "リーダーボード",
     "leaderboard-title": "デイリートップユーザー"
@@ -348,9 +348,9 @@
     "page-title": "Witness投票",
     "remaining": "<strong>{n}</strong> of {max} votes remaining",
     "witness": "Witness",
-    "miss": "Miss",
+    "miss": "ミス",
     "url": "URL",
-    "fee": "Fee",
+    "fee": "手数料",
     "feed": "フィード",
     "block-size": "ブロックサイズ",
     "ac-avail": "AC avail",
@@ -365,7 +365,7 @@
     "proxy-active-exp": "あなたは投票プロキシを設定しています。もし手動投票を再度有効にしたい場合は、プロキシをクリアしてください。",
     "current-proxy": "現在のプロキシ:<strong>{n}</strong>",
     "remove-proxy": "プロキシをクリア",
-    "proxy-removed": "Proxy cleared",
+    "proxy-removed": "プロキシがクリアされました",
     "proxy-created": "@{n} has set as proxy"
   },
   "transfer": {
