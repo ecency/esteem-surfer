@@ -97,37 +97,37 @@
     "input-placeholder": "Ingrese su código Pin para continuar",
     "last-chance": "Esta es tu última oportunidad",
     "invalidate": "Oh, me olvidé...",
-    "invalidate-confirm": "Are you really want to invalidate pin code?",
-    "invalidated": "Pin code invalidated"
+    "invalidate-confirm": "¿Realmente quiere invalidar el código pin?",
+    "invalidated": "Código Pin invalidado"
   },
   "user-menu": {
-    "profile": "Profile",
-    "bookmarks": "Bookmarks",
-    "favorites": "Favorites",
-    "drafts": "Drafts",
-    "schedules": "Schedules",
-    "gallery": "Gallery",
-    "login-as": "Login As",
-    "logout": "Logout"
+    "profile": "Perfil",
+    "bookmarks": "Marcadores",
+    "favorites": "Favoritos",
+    "drafts": "Borradores",
+    "schedules": "Horarios",
+    "gallery": "Galería",
+    "login-as": "Ingresar como",
+    "logout": "Cerrar sesión"
   },
   "login-required": {
-    "default": "This action requires login",
-    "key-required": "This action requires {key} key or master password",
-    "keys-required": "This action requires {keys} keys or master password"
+    "default": "Esta acción requiere inicio de sesión",
+    "key-required": "Esta acción requiere {key} llave, o contraseña maestra",
+    "keys-required": "Esta acción requiere {keys} llave, o contraseña maestra"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
-    "fetch-error-content": "Could not fetch posts",
-    "post-count": "Post Count",
-    "followers": "Followers",
-    "following": "Following",
+    "fetch-error-profile": "No se pudo recuperar los datos del perfil",
+    "fetch-error-content": "No se pudieron recuperar las publicaciones",
+    "post-count": "Número de publicaciones",
+    "followers": "Seguidores",
+    "following": "Siguiendo",
     "section-blog": "Blog",
-    "section-comments": "Comments",
-    "section-replies": "Replies",
-    "section-wallet": "Wallet"
+    "section-comments": "Comentarios",
+    "section-replies": "Respuestas",
+    "section-wallet": "Monedero"
   },
   "follow-controls": {
-    "follow": "Follow",
+    "follow": "Seguir",
     "unFollow": "Dejar de Seguir",
     "mute": "Silenciar",
     "unMute": "Habilitar sonido"
@@ -234,8 +234,8 @@
   },
   "drafts": {
     "title": "Drafts",
-    "load-error": "Could not load drafts",
-    "empty-list": "Nothing here",
+    "load-error": "No se pudieron cargar los borradores",
+    "empty-list": "Nada aquí",
     "deleted": "Borrador eliminado"
   },
   "schedules": {
@@ -298,20 +298,20 @@
     "sort-by": "Ordenar por",
     "sort-popularity": "Popularidad",
     "sort-relevance": "Relevancia",
-    "sort-newest": "Date"
+    "sort-newest": "Fecha"
   },
   "updater": {
-    "new-version-available": "New version available",
-    "update": "Update",
-    "dismiss": "Dismiss",
-    "downloading": "Downloading new version...",
-    "download-completed": "Download completed",
-    "restart": "Restart"
+    "new-version-available": "Nueva versión disponible",
+    "update": "Actualización",
+    "dismiss": "Descartar",
+    "downloading": "Descargando nueva versión...",
+    "download-completed": "Descarga completa",
+    "restart": "Reiniciar"
   },
   "context-menu": {
-    "cut": "Cut",
-    "copy": "Copy",
-    "paste": "Paste",
+    "cut": "Cortar",
+    "copy": "Copiar",
+    "paste": "Pegar",
     "open-image-browser": "Open image in browser",
     "copy-image-url": "Copy image url"
   },
