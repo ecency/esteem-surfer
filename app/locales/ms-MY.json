@@ -247,22 +247,22 @@
   },
   "bookmarks": {
     "title": "Penanda buku",
-    "load-error": "Could not load bookmarks",
-    "empty-list": "Nothing here",
-    "deleted": "Bookmark removed",
-    "search": "Search in bookmarks"
+    "load-error": "Tidak dapat cari penanda buku",
+    "empty-list": "Tiada apa-apa di sini",
+    "deleted": "Penanda buku yang dikeluarkan",
+    "search": "Cari di penanda buku"
   },
   "favorites": {
-    "title": "Favorites",
-    "load-error": "Could not load favorites",
-    "empty-list": "Nothing here",
-    "search": "Search in favorites"
+    "title": "Kegemaran",
+    "load-error": "Tidak dapat cari kegemaran",
+    "empty-list": "Tiada apa-apa di sini",
+    "search": "Cari di kegemaran"
   },
   "entry": {
-    "reply": "Reply",
-    "reply-preview": "Preview",
-    "via-app": "via <span class=\"app-name\">{app}</span>",
-    "n-replies": "{n} Replies",
+    "reply": "Balas",
+    "reply-preview": "Pratonton",
+    "via-app": "melalui <span class=\"app-name\">{app}</span>",
+    "n-replies": "{n} balasan",
     "reply-sort-order": "Sort Order",
     "reply-sort-order-trending": "Trending",
     "reply-sort-order-reputation": "Reputation",
