@@ -8,32 +8,32 @@
     "cancel": "Відміна",
     "ok": "OK",
     "edit": "Редагувати",
-    "server-error": "Process could not completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "server-error": "Неможливо завершити процес через помилку сервера",
+    "save": "Зберегти",
+    "done": "Готово",
+    "select": "Вибрати"
   },
   "footer": {
     "faq": "FAQ",
-    "about": "About"
+    "about": "Про додаток"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
+    "tags": "Популярні теги",
+    "filter-trending": "Популярне",
+    "filter-hot": "Актуальне",
+    "filter-created": "Нове",
+    "filter-active": "Активне",
     "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
-    "filter-feed": "Feed"
+    "filter-votes": "Голоси",
+    "filter-children": "Коментарі",
+    "filter-feed": "Стрічка"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "Потенційна виплата",
+    "promoted": "Просування",
+    "author-payout": "Винагорода автору",
+    "curation-payout": "Винагорода кураторам",
+    "payout-date": "Виплата"
   },
   "entry-votes": {
     "n-more": "{n} more",
