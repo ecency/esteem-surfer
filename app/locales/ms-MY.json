@@ -178,10 +178,10 @@
   "composer": {
     "title-placeholder": "Tajuk",
     "tags-placeholder": "Tag. Tag pertama merupakan kategori utama anda",
-    "max-n-tags": "Max {n} tags",
-    "body-placeholder": "Post Content",
-    "tool-bold": "Bold",
-    "tool-italic": "Italic",
+    "max-n-tags": "Hanya {n} tag dibenarkan",
+    "body-placeholder": "Kandungan pos",
+    "tool-bold": "Tebal",
+    "tool-italic": "Condong",
     "tool-header": "Heading",
     "tool-code": "Code",
     "tool-quote": "Quote",
@@ -236,17 +236,17 @@
     "title": "Drafts",
     "load-error": "Could not load drafts",
     "empty-list": "Nothing here",
-    "deleted": "Draft deleted"
+    "deleted": "Draf yang telah dipadamkan"
   },
   "schedules": {
-    "title": "Scheduled Posts",
-    "empty-list": "Nothing here",
-    "deleted": "Scheduled post deleted",
-    "move": "Move to drafts",
-    "moved": "Moved to drafts"
+    "title": "Jadual siaran",
+    "empty-list": "Tiada apa-apa di sini",
+    "deleted": "Jadual pos yang dipadamkan",
+    "move": "Memindah ke draf",
+    "moved": "Dipindah ke draf"
   },
   "bookmarks": {
-    "title": "Bookmarks",
+    "title": "Penanda buku",
     "load-error": "Could not load bookmarks",
     "empty-list": "Nothing here",
     "deleted": "Bookmark removed",
