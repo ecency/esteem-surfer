@@ -1,21 +1,21 @@
 {
   "g": {
-    "compose-entry": "Create Post",
+    "compose-entry": "Sukurti Įrašą",
     "are-you-sure": "Are you sure?",
-    "yes": "Yes",
-    "no": "No",
-    "delete": "Delete",
-    "cancel": "Cancel",
-    "ok": "OK",
-    "edit": "Edit",
+    "yes": "Taip",
+    "no": "Ne",
+    "delete": "Panaikinti",
+    "cancel": "Atšaukti",
+    "ok": "TAIP",
+    "edit": "Redaguoti",
     "server-error": "Process could not completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "save": "Išsaugoti",
+    "done": "Atlikta",
+    "select": "Pasirinkti"
   },
   "footer": {
-    "faq": "FAQ",
-    "about": "About"
+    "faq": "D.U.K",
+    "about": "Apie"
   },
   "entry-index": {
     "tags": "Popular Tags",
