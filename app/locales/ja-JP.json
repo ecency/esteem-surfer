@@ -23,16 +23,16 @@
     "filter-hot": "ホット",
     "filter-created": "新着",
     "filter-active": "アクティブ",
-    "filter-promoted": "Promoted",
+    "filter-promoted": "プロモート",
     "filter-votes": "Votes",
     "filter-children": "コメント",
     "filter-feed": "フィード"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
+    "potential-payout": "見込み支払い",
+    "promoted": "プロモート",
+    "author-payout": "投稿者の支払い",
+    "curation-payout": "キュレータの支払い",
     "payout-date": "ペイアウト"
   },
   "entry-votes": {
@@ -41,10 +41,10 @@
     "reward": "報酬",
     "percent": "パーセント",
     "time": "時間",
-    "modal-title": "Voters ({n})"
+    "modal-title": "投票者 ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "{n} によってリブログされました"
   },
   "entry-reblog": {
     "reblog": "リブログ",
@@ -53,7 +53,7 @@
   "settings": {
     "title": "設定",
     "currency": "通貨",
-    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
+    "currency-fetch-error": "'{cur}'の通貨レートを取り出すことができませんでした",
     "currency-changed": "通貨が変更されました",
     "locale": "言語",
     "locale-changed": "言語が変更されました",
@@ -87,10 +87,10 @@
   },
   "create-pin-code": {
     "title": "PINコードを作成",
-    "desc1": "Set pin code to encrypt your data and enable extra layer of security!",
+    "desc1": "あなたのデータを暗号化し、セキュリティを強化するためにPINコードを設定してください",
     "input-placeholder": "PINコードを入力",
     "desc2": "You will be prompted to enter pin code for crucial transactions as well as on every launch.",
-    "created": "Pin code created"
+    "created": "Pinコードが作成されました"
   },
   "confirm-pin-code": {
     "title": "Pinコードを入力",
@@ -223,18 +223,18 @@
     "words-count": "{n} 語",
     "no-suggestions": "No suggestions",
     "emoji-filter-placeholder": "フィルター",
-    "emoji-filter-no-match": "No match",
-    "emoji-recently-used": "Recently Used"
+    "emoji-filter-no-match": "一致なし",
+    "emoji-recently-used": "最近使用されたもの"
   },
   "gallery": {
     "title": "ギャラリー",
     "copied": "クリップボードにコピーしました",
-    "load-error": "Could not load gallery",
+    "load-error": "ギャラリーをロードできませんでした",
     "empty-list": "何もありません"
   },
   "drafts": {
     "title": "下書き",
-    "load-error": "Could not load drafts",
+    "load-error": "下書きをロードできませんでした",
     "empty-list": "何もありません",
     "deleted": "下書きを削除しました"
   },
