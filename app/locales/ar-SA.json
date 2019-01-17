@@ -19,19 +19,19 @@
   },
   "entry-index": {
     "tags": "أشهر المواضيع",
-    "filter-trending": "مواضيع رائجة",
-    "filter-hot": "ذات شعبية",
-    "filter-created": "جديد",
-    "filter-active": "نشط",
-    "filter-promoted": "مواضيع مروّجة",
+    "filter-trending": "الرائجة",
+    "filter-hot": "الساخنة",
+    "filter-created": "الجديدة",
+    "filter-active": "النشطة",
+    "filter-promoted": "المروّجة",
     "filter-votes": "الأصوات",
     "filter-children": "التعليقات",
-    "filter-feed": "Feed"
+    "filter-feed": "الرئيسيّة"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
+    "potential-payout": "العائدات المتوقعة",
+    "promoted": "مروج له",
+    "author-payout": "عائدات المؤلف",
     "curation-payout": "Curation Payout",
     "payout-date": "Payout"
   },
