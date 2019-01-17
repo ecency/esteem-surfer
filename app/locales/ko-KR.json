@@ -47,8 +47,8 @@
     "reblogged": "reblogged by {n}"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "리블로그",
+    "reblogged": "리블로그됨"
   },
   "settings": {
     "title": "설정",
@@ -75,11 +75,11 @@
     "traditional-login-desc": "계속 진행하려면 사용자 이름과 비밀번호를 이용해 로그인하세요.",
     "username-placeholder": "사용자 이름",
     "password-placeholder": "password or wif",
-    "login": "Login",
+    "login": "로그인",
     "error-fields-required": "사용자 이름과 비밀번호/wif를 입력하세요",
-    "error-public-key": "You entered a public key. Password/wif required",
-    "error-user-fetch": "User data could not fetched",
-    "error-user-not-found": "User not exists",
+    "error-public-key": "공개 키를 입력했습니다. 비밀번호/wif를 입력해주세요",
+    "error-user-fetch": "사용자 데이터를 조회할 수 없습니다",
+    "error-user-not-found": "사용자가 존재하지 않습니다",
     "error-authenticate": "올바른 사용자 이름 또는 비밀번호/wif가 아닙니다",
     "create-account-text": "계정이 없나요? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">지금 계정을 만드세요!</a>",
     "login-with-sc": "steemconnect를 이용해 로그인하세요",
@@ -93,9 +93,9 @@
     "created": "PIN 코드 생성 완료"
   },
   "confirm-pin-code": {
-    "title": "Enter Pin Code",
-    "input-placeholder": "Enter pin code to continue",
-    "last-chance": "This is your last chance",
+    "title": "PIN 코드를 입력하세요",
+    "input-placeholder": "계속하려면 PIN 코드를 입력하세요",
+    "last-chance": "이번이 마지막 기회입니다",
     "invalidate": "Oh, I forgot it...",
     "invalidate-confirm": "Are you really want to invalidate pin code?",
     "invalidated": "Pin code invalidated"
