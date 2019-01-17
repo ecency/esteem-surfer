@@ -80,54 +80,54 @@
     "error-public-key": "您输入了公开密钥，必须输入密码/WIF",
     "error-user-fetch": "无法获取用户数据",
     "error-user-not-found": "用户不存在",
-    "error-authenticate": "Wrong username or password/wif",
-    "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>",
-    "login-with-sc": "Login with",
-    "divider-text": "OR"
+    "error-authenticate": "错误的用户名或密码/WIF",
+    "create-account-text": "没有账户？<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">立即注册！</a>",
+    "login-with-sc": "登录途径",
+    "divider-text": "或"
   },
   "create-pin-code": {
-    "title": "Create PIN Code",
-    "desc1": "Set pin code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter pin code",
+    "title": "创建 PIN 码",
+    "desc1": "设置 PIN 码加密您的数据并开启额外的安全保护！",
+    "input-placeholder": "输入 PIN 码",
     "desc2": "You will be prompted to enter pin code for crucial transactions as well as on every launch.",
-    "created": "Pin code created"
+    "created": "已创建 PIN 码"
   },
   "confirm-pin-code": {
-    "title": "Enter Pin Code",
-    "input-placeholder": "Enter pin code to continue",
-    "last-chance": "This is your last chance",
-    "invalidate": "Oh, I forgot it...",
-    "invalidate-confirm": "Are you really want to invalidate pin code?",
-    "invalidated": "Pin code invalidated"
+    "title": "输入 PIN 码",
+    "input-placeholder": "输入 PIN 码以继续",
+    "last-chance": "这是您的最后机会",
+    "invalidate": "哦，我忘记了......",
+    "invalidate-confirm": "您确定要作废 PIN 码？",
+    "invalidated": "PIN 码已作废"
   },
   "user-menu": {
-    "profile": "Profile",
-    "bookmarks": "Bookmarks",
-    "favorites": "Favorites",
-    "drafts": "Drafts",
-    "schedules": "Schedules",
-    "gallery": "Gallery",
-    "login-as": "Login As",
-    "logout": "Logout"
+    "profile": "个人资料",
+    "bookmarks": "书签",
+    "favorites": "收藏夹",
+    "drafts": "草稿",
+    "schedules": "计划",
+    "gallery": "图库",
+    "login-as": "登录为",
+    "logout": "注销"
   },
   "login-required": {
-    "default": "This action requires login",
-    "key-required": "This action requires {key} key or master password",
-    "keys-required": "This action requires {keys} keys or master password"
+    "default": "此操作需要登录",
+    "key-required": "此操作需要 {key} 密钥或主密码。",
+    "keys-required": "此操作需要 {keys} 密钥或主密码。"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
-    "fetch-error-content": "Could not fetch posts",
-    "post-count": "Post Count",
-    "followers": "Followers",
-    "following": "Following",
-    "section-blog": "Blog",
-    "section-comments": "Comments",
-    "section-replies": "Replies",
-    "section-wallet": "Wallet"
+    "fetch-error-profile": "无法获取个人资料数据",
+    "fetch-error-content": "无法获取帖子",
+    "post-count": "发布数",
+    "followers": "粉丝",
+    "following": "关注中",
+    "section-blog": "博客",
+    "section-comments": "评论",
+    "section-replies": "回复",
+    "section-wallet": "钱包"
   },
   "follow-controls": {
-    "follow": "Follow",
+    "follow": "关注",
     "unFollow": "取消关注",
     "mute": "静音",
     "unMute": "取消静音"
@@ -181,10 +181,10 @@
     "max-n-tags": "Max {n} tags",
     "body-placeholder": "Post Content",
     "tool-bold": "Bold",
-    "tool-italic": "Italic",
-    "tool-header": "Heading",
-    "tool-code": "Code",
-    "tool-quote": "Quote",
+    "tool-italic": "斜体",
+    "tool-header": "标题",
+    "tool-code": "代码",
+    "tool-quote": "引用",
     "tool-ul": "Unordered List",
     "tool-ol": "Ordered List",
     "tool-link": "Link",
