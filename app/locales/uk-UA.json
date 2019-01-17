@@ -37,22 +37,22 @@
   },
   "entry-votes": {
     "n-more": "ще {n}",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
+    "author": "Автор",
+    "reward": "Винагорода",
+    "percent": "Відсоток",
+    "time": "Час",
     "modal-title": "Voters ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "репост {n}"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
+    "reblog": "Репост",
     "reblogged": "Reblogged"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "Currency",
+    "title": "Налаштування",
+    "currency": "Валюта",
     "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
     "currency-changed": "Currency Changed",
     "locale": "Language",
