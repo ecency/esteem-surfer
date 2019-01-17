@@ -312,20 +312,20 @@
     "cut": "Cortar",
     "copy": "Copiar",
     "paste": "Pegar",
-    "open-image-browser": "Open image in browser",
-    "copy-image-url": "Copy image url"
+    "open-image-browser": "Abrir la imagen en el navegador",
+    "copy-image-url": "Copiar Url de la imagen"
   },
   "notification": {
-    "popup-title": "You have a new notification",
-    "voted": "{source} voted your post",
-    "mention-post": "{source} mentioned you in a post",
-    "mention-comment": "{source} mentioned you in a comment",
-    "followed": "{source} followed you",
-    "replied": "{source} replied you",
-    "reblogged": "{source} reblogged your post"
+    "popup-title": "Tienes una nueva notificación",
+    "voted": "{source} votó tu publicación",
+    "mention-post": "{source} te mencionó en una publicación",
+    "mention-comment": "{source} te mencionó en una publicación",
+    "followed": "{source} te siguió",
+    "replied": "{source} te respondió",
+    "reblogged": "{source} reblogueó tu publicación"
   },
   "activities": {
-    "type-all": "All Activities",
+    "type-all": "Todas las Actividades",
     "type-votes": "Votes",
     "type-replies": "Replies",
     "type-mentions": "Mentions",
