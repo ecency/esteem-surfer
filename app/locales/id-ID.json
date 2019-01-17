@@ -339,13 +339,13 @@
     "ignored-str": "diabaikan",
     "reblog-str": "reblogged your post:",
     "empty-list": "Nothing here",
-    "refresh": "Refresh",
-    "mark-all-read": "Mark All as Read",
-    "leaderboard": "Leaderboard",
-    "leaderboard-title": "Daily Top users"
+    "refresh": "Segarkan",
+    "mark-all-read": "Tandai semua yang telah dibaca",
+    "leaderboard": "Papan Peringkat",
+    "leaderboard-title": "Pengguna harian teratas"
   },
   "witnesses": {
-    "page-title": "Witness Voting",
+    "page-title": "Memilih saksi",
     "remaining": "<strong>{n}</strong> of {max} votes remaining",
     "witness": "Witness",
     "miss": "Miss",
