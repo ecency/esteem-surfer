@@ -247,22 +247,22 @@
   },
   "bookmarks": {
     "title": "إشارات مرجعية",
-    "load-error": "لم يستطيع تحميل الإشارات المرجعية",
+    "load-error": "لا يمكن تحميل الإشارات المرجعية",
     "empty-list": "لاشيء هنا",
-    "deleted": "Bookmark removed",
-    "search": "Search in bookmarks"
+    "deleted": "تم مسح الإشارة المرجعية",
+    "search": "البحث في الإشارات المرجعية"
   },
   "favorites": {
-    "title": "Favorites",
-    "load-error": "Could not load favorites",
-    "empty-list": "Nothing here",
-    "search": "Search in favorites"
+    "title": "المفضلات",
+    "load-error": "لا يمكن تحميل المفضلات",
+    "empty-list": "لاشيء هنا",
+    "search": "البحث في المفضلات"
   },
   "entry": {
-    "reply": "Reply",
-    "reply-preview": "Preview",
-    "via-app": "via <span class=\"app-name\">{app}</span>",
-    "n-replies": "{n} Replies",
+    "reply": "الرد",
+    "reply-preview": "عرض",
+    "via-app": "عبر <span class=\"app-name\">{app}</span>",
+    "n-replies": "الردود {n}",
     "reply-sort-order": "Sort Order",
     "reply-sort-order-trending": "Trending",
     "reply-sort-order-reputation": "Reputation",
