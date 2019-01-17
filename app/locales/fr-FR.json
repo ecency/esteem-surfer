@@ -40,8 +40,8 @@
     "author": "Auteur",
     "reward": "Récompense",
     "percent": "Pourcent",
-    "time": "Time",
-    "modal-title": "Voters ({n})"
+    "time": "Heure",
+    "modal-title": "Votants ({n})"
   },
   "entry-list-item": {
     "reblogged": "reblogué par {n}"
@@ -54,7 +54,7 @@
     "title": "Réglages",
     "currency": "Devise",
     "currency-fetch-error": "Impossible d'obtenir le taux de change pour '{cur}'",
-    "currency-changed": "Currency Changed",
+    "currency-changed": "Devise changée",
     "locale": "Langue",
     "locale-changed": "Langue modifiée",
     "server": "Serveur",
@@ -130,7 +130,7 @@
     "follow": "Suivre",
     "unFollow": "Se désabonner",
     "mute": "Rendre muet",
-    "unMute": "Unmute"
+    "unMute": "Enlever la sourdine"
   },
   "account": {
     "voting-power": "Puissance de vote",
