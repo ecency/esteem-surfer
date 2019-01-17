@@ -219,9 +219,9 @@
     "published": "Beitrag veröffentlicht",
     "update": "Aktualisieren",
     "updated": "Beitrag aktualisiert",
-    "sync-scroll": "Scroll Sync",
-    "words-count": "{n} words",
-    "no-suggestions": "No suggestions",
+    "sync-scroll": "Scroll-Synchronität",
+    "words-count": "{n} Wörter",
+    "no-suggestions": "Keine Vorschläge",
     "emoji-filter-placeholder": "Filter",
     "emoji-filter-no-match": "No match",
     "emoji-recently-used": "Recently Used"
