@@ -223,51 +223,51 @@
     "words-count": "{n} Wörter",
     "no-suggestions": "Keine Vorschläge",
     "emoji-filter-placeholder": "Filter",
-    "emoji-filter-no-match": "No match",
-    "emoji-recently-used": "Recently Used"
+    "emoji-filter-no-match": "Keine passenden Emojis gefunden",
+    "emoji-recently-used": "Zuletzt verwendet"
   },
   "gallery": {
-    "title": "Gallery",
-    "copied": "Copied to clipboard",
-    "load-error": "Could not load gallery",
-    "empty-list": "Nothing here"
+    "title": "Galerie",
+    "copied": "In die Zwischenablage kopiert",
+    "load-error": "Konnte die Galerie nicht laden",
+    "empty-list": "Hier ist leider nichts zu sehen"
   },
   "drafts": {
-    "title": "Drafts",
-    "load-error": "Could not load drafts",
-    "empty-list": "Nothing here",
-    "deleted": "Draft deleted"
+    "title": "Entwürfe",
+    "load-error": "Konnte Entwürfe nicht laden",
+    "empty-list": "Hier ist nichts zu sehen.",
+    "deleted": "Entwurf gelöscht"
   },
   "schedules": {
-    "title": "Scheduled Posts",
-    "empty-list": "Nothing here",
-    "deleted": "Scheduled post deleted",
-    "move": "Move to drafts",
-    "moved": "Moved to drafts"
+    "title": "Geplante Beiträge",
+    "empty-list": "Hier ist nichts zu sehen",
+    "deleted": "Geplanter Beitrag entfernt",
+    "move": "In Entwürfe verschieben",
+    "moved": "Erfolgreich in Entwürfe verschoben"
   },
   "bookmarks": {
-    "title": "Bookmarks",
-    "load-error": "Could not load bookmarks",
-    "empty-list": "Nothing here",
-    "deleted": "Bookmark removed",
-    "search": "Search in bookmarks"
+    "title": "Lesezeichen",
+    "load-error": "Lesezeichen konnten nicht geladen werden",
+    "empty-list": "Hier ist nichts zu sehen",
+    "deleted": "Lesezeichen entfernt",
+    "search": "In Lesezeichen suchen"
   },
   "favorites": {
-    "title": "Favorites",
-    "load-error": "Could not load favorites",
-    "empty-list": "Nothing here",
-    "search": "Search in favorites"
+    "title": "Favoriten",
+    "load-error": "Favoriten konnten nicht geladen werden",
+    "empty-list": "Hier ist nichts zu sehen",
+    "search": "In Favoriten suchen"
   },
   "entry": {
-    "reply": "Reply",
-    "reply-preview": "Preview",
+    "reply": "Antworten",
+    "reply-preview": "Vorschau",
     "via-app": "via <span class=\"app-name\">{app}</span>",
-    "n-replies": "{n} Replies",
-    "reply-sort-order": "Sort Order",
-    "reply-sort-order-trending": "Trending",
+    "n-replies": "{n} Antworten",
+    "reply-sort-order": "Reihenfolge sortieren",
+    "reply-sort-order-trending": "im Trend",
     "reply-sort-order-reputation": "Reputation",
     "reply-sort-order-votes": "Votes",
-    "reply-sort-order-created": "Age",
+    "reply-sort-order-created": "Alter",
     "reply-body-placeholder": "Write your reply here",
     "bookmarked": "Added to bookmarks",
     "bookmarkRemoved": "Removed from bookmarks",
