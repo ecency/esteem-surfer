@@ -89,14 +89,14 @@
     "title": "Задайте PIN-код",
     "desc1": "Встановіть ПІН-код для шифрування даних та додаткового рівня безпеки!",
     "input-placeholder": "Введіть ПІН-код",
-    "desc2": "You will be prompted to enter pin code for crucial transactions as well as on every launch.",
-    "created": "Pin code created"
+    "desc2": "Вам буде запропоновано ввести ПІН-код для критичних транзакцій, а також при кожному запуску.",
+    "created": "ПІН-код задано"
   },
   "confirm-pin-code": {
-    "title": "Enter Pin Code",
-    "input-placeholder": "Enter pin code to continue",
-    "last-chance": "This is your last chance",
-    "invalidate": "Oh, I forgot it...",
+    "title": "Введіть ПІН-код",
+    "input-placeholder": "Введіть ПІН-код щоб продовжити",
+    "last-chance": "Це ваша остання спроба",
+    "invalidate": "Ой, я його забув...",
     "invalidate-confirm": "Are you really want to invalidate pin code?",
     "invalidated": "Pin code invalidated"
   },
