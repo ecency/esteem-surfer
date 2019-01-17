@@ -346,8 +346,8 @@
   },
   "witnesses": {
     "page-title": "Memilih saksi",
-    "remaining": "<strong>{n}</strong> of {max} votes remaining",
-    "witness": "Witness",
+    "remaining": "<strong>{n}</strong> {max} undian saksi yang tinggal",
+    "witness": "Saksi",
     "miss": "Miss",
     "url": "URL",
     "fee": "Fee",
