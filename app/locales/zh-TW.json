@@ -60,7 +60,7 @@
     "server": "伺服器",
     "server-invalid-address": "伺服器位址無效",
     "server-connecting": "連接到 \"{server}\"...",
-    "server-connect-error": "無法連接到 \"{server}\"。請確保您有良好的互聯網連接。",
+    "server-connect-error": "無法連接到 \"{server}\"。請確保您有良好的網際網路連接。",
     "server-timeout-error": "'{server}' 似乎不存在",
     "server-changed": "伺服器更改為 {server}",
     "server-custom-address": "自訂伺服器位址",
@@ -230,17 +230,17 @@
     "title": "陳列",
     "copied": "複製到剪貼簿",
     "load-error": "無法載入陳列",
-    "empty-list": "暫無内容！"
+    "empty-list": "暫無內容！"
   },
   "drafts": {
     "title": "草稿",
     "load-error": "無法載入草稿",
-    "empty-list": "暫無内容！",
+    "empty-list": "暫無內容！",
     "deleted": "草稿已刪除"
   },
   "schedules": {
     "title": "計劃的帖子",
-    "empty-list": "暫無内容！",
+    "empty-list": "暫無內容！",
     "deleted": "已刪除計畫的帖子",
     "move": "儲存為草稿",
     "moved": "已儲存為草稿"
@@ -248,14 +248,14 @@
   "bookmarks": {
     "title": "書籤",
     "load-error": "無法載入書籤",
-    "empty-list": "暫無内容！",
+    "empty-list": "暫無內容！",
     "deleted": "已移除書籤",
     "search": "搜尋書籤"
   },
   "favorites": {
     "title": "我的最愛",
     "load-error": "無法載入「我的最愛」",
-    "empty-list": "暫無内容！",
+    "empty-list": "暫無內容！",
     "search": "搜尋「我的最愛」"
   },
   "entry": {
@@ -338,7 +338,7 @@
     "unfollowed-str": "取消跟隨",
     "ignored-str": "已忽略",
     "reblog-str": "轉發了您的帖子:",
-    "empty-list": "暫無内容！",
+    "empty-list": "暫無內容！",
     "refresh": "刷新",
     "mark-all-read": "將全部標記為已讀",
     "leaderboard": "排行榜",
@@ -400,7 +400,7 @@
     "back": "返回",
     "success-title": "成功",
     "success-sub-title": "轉賬成功",
-    "transfer-summary": "已從 <span class=\"from-user\">{from}</span> 转账 <span class=\"amount\">{amount}</span> 到 <span class=\"to-user\">{to}</span>",
+    "transfer-summary": "已從 <span class=\"from-user\">{from}</span> 轉賬 <span class=\"amount\">{amount}</span> 到 <span class=\"to-user\">{to}</span>",
     "reset": "另一筆轉賬",
     "finish": "完成",
     "recent-transfers": "最近的轉賬"
