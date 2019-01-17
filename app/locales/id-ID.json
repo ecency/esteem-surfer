@@ -111,7 +111,7 @@
     "logout": "Keluar"
   },
   "login-required": {
-    "default": "Tindakan ini membutuhkan otoritas",
+    "default": "Masuk terlebih dahulu untuk tindakan ini",
     "key-required": "Tindakan ini membutuhkan kata sandi {key} atau kata sandi utama",
     "keys-required": "Tindakan ini membutuhkan kata sandi {keys} atau kata sandi utama"
   },
@@ -130,10 +130,10 @@
     "follow": "Ikuti",
     "unFollow": "Berhenti mengikuti",
     "mute": "Matikan suara",
-    "unMute": "Suarakan"
+    "unMute": "Hidupkan suara"
   },
   "account": {
-    "voting-power": "Kekuatan suara",
+    "voting-power": "Kekuatan Suara",
     "post-count": "Hitungan post",
     "number-of-votes": "Jumlah suara dalam 24 jam terakhir",
     "followers": "Pengikut",
@@ -142,7 +142,7 @@
     "section-comments": "Komentar",
     "section-replies": "Balasan",
     "section-wallet": "Dompet",
-    "top-posts": "Postingan teratas",
+    "top-posts": "Postingan Teratas",
     "unclaimed-rewards": "Hadiah yang belum diklaim",
     "estimated-value": "Hitungan steem berdasarkan pada nilai rata-rata selama 7 hari.",
     "steem": "Steem",
@@ -201,8 +201,8 @@
     "reward-default": "Default 50% / 50%",
     "reward-sp": "Power Up 100%",
     "reward-dp": "Menolak pembayaran",
-    "upvote": "Upvote",
-    "clear": "Hapus semua",
+    "upvote": "Berikan suara",
+    "clear": "Hapus Semua",
     "form-error-message": "Formulir tidak sah. Silahkan isi semua kolom",
     "schedule": "Jadwal",
     "select-schedule-date": "Pilih tanggal",
@@ -213,7 +213,7 @@
     "posting-perm-granted": "Izin posting diberikan",
     "remove-posting-perm": "Menghapus izin posting",
     "posting-perm-removed": "Izin posting dihapus",
-    "save-draft": "Simpan konsep",
+    "save-draft": "Simpan Konsep",
     "draft-saved": "Konsep disimpan",
     "publish": "Terbitkan",
     "published": "Post telah diterbitkan",
@@ -222,7 +222,7 @@
     "sync-scroll": "Gulir sinkronisasi",
     "words-count": "{n} jumlah kata",
     "no-suggestions": "Tidak ada saran",
-    "emoji-filter-placeholder": "Saringan",
+    "emoji-filter-placeholder": "Penyaring",
     "emoji-filter-no-match": "Tidak cocok",
     "emoji-recently-used": "Baru saja digunakan"
   },
