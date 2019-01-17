@@ -104,16 +104,16 @@
     "profile": "프로필",
     "bookmarks": "즐겨찾기",
     "favorites": "좋아하는 저자",
-    "drafts": "Drafts",
-    "schedules": "Schedules",
-    "gallery": "Gallery",
-    "login-as": "Login As",
-    "logout": "Logout"
+    "drafts": "임시 보관함",
+    "schedules": "일정",
+    "gallery": "갤러리",
+    "login-as": "로그인",
+    "logout": "로그아웃"
   },
   "login-required": {
-    "default": "This action requires login",
-    "key-required": "This action requires {key} key or master password",
-    "keys-required": "This action requires {keys} keys or master password"
+    "default": "이 작업은 로그인이 필요합니다.",
+    "key-required": "이 작업은 {key} 키 또는 마스터 비밀번호가 필요합니다",
+    "keys-required": "이 작업은 {keys} 키 또는 마스터 비밀번호가 필요합니다"
   },
   "quick-profile": {
     "fetch-error-profile": "프로필 데이터를 조회할 수 없습니다",
@@ -127,10 +127,10 @@
     "section-wallet": "지갑"
   },
   "follow-controls": {
-    "follow": "Follow",
-    "unFollow": "Unfollow",
-    "mute": "Mute",
-    "unMute": "Unmute"
+    "follow": "팔로우",
+    "unFollow": "팔로우 취소",
+    "mute": "뮤트",
+    "unMute": "뮤트 취소"
   },
   "account": {
     "voting-power": "Voting Power",
@@ -145,11 +145,11 @@
     "top-posts": "인기 글",
     "unclaimed-rewards": "Unclaimed rewards",
     "estimated-value": "The estimated value is based on a 7 day average value of Steem.",
-    "steem": "Steem",
+    "steem": "스팀",
     "steem-description": "Steem are tradeable tokens that may be transferred at anytime. Steem can be converted to Steem Power in a process called powering up.",
-    "steem-power": "Steem Power",
+    "steem-power": "스팀 파워",
     "steem-power-description": "Steem Power are influence tokens that earn more power for holding long term and voting on posts. The more Steem Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
-    "steem-power-delegated": "Delegated steem power",
+    "steem-power-delegated": "임대한 스팀 파워",
     "steem-power-received": "Received steem power",
     "steem-power-total": "Total steem power",
     "steem-dollars": "Steem Dollars",
