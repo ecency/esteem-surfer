@@ -1,27 +1,27 @@
 {
   "g": {
-    "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
-    "yes": "Yes",
-    "no": "No",
-    "delete": "Delete",
-    "cancel": "Cancel",
-    "ok": "OK",
-    "edit": "Edit",
-    "server-error": "Process could not completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "compose-entry": "創建貼子",
+    "are-you-sure": "您確定嗎？",
+    "yes": "是",
+    "no": "否",
+    "delete": "刪除",
+    "cancel": "取消",
+    "ok": "好",
+    "edit": "編輯",
+    "server-error": "由於伺服器錯誤, 進程無法完成",
+    "save": "保存",
+    "done": "完成",
+    "select": "選擇"
   },
   "footer": {
-    "faq": "FAQ",
-    "about": "About"
+    "faq": "常見問題與解答",
+    "about": "關於"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
+    "tags": "熱門標籤",
+    "filter-trending": "焦點",
+    "filter-hot": "熱門",
+    "filter-created": "最新",
     "filter-active": "Active",
     "filter-promoted": "Promoted",
     "filter-votes": "Votes",
