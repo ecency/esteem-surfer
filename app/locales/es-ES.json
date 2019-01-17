@@ -236,32 +236,32 @@
     "title": "Drafts",
     "load-error": "Could not load drafts",
     "empty-list": "Nothing here",
-    "deleted": "Draft deleted"
+    "deleted": "Borrador eliminado"
   },
   "schedules": {
-    "title": "Scheduled Posts",
-    "empty-list": "Nothing here",
-    "deleted": "Scheduled post deleted",
-    "move": "Move to drafts",
-    "moved": "Moved to drafts"
+    "title": "Publicaciones programadas",
+    "empty-list": "Nada aquí",
+    "deleted": "Publicación programada eliminada",
+    "move": "Mover a borradores",
+    "moved": "Movido a borradores"
   },
   "bookmarks": {
-    "title": "Bookmarks",
-    "load-error": "Could not load bookmarks",
-    "empty-list": "Nothing here",
-    "deleted": "Bookmark removed",
-    "search": "Search in bookmarks"
+    "title": "Marcadores",
+    "load-error": "No pudo cargar marcadores",
+    "empty-list": "Nada aquí",
+    "deleted": "Marcador removido",
+    "search": "Buscar en marcadores"
   },
   "favorites": {
-    "title": "Favorites",
-    "load-error": "Could not load favorites",
-    "empty-list": "Nothing here",
-    "search": "Search in favorites"
+    "title": "Favoritos",
+    "load-error": "No se pudo cargar favoritos",
+    "empty-list": "Nada aquí",
+    "search": "Buscar en favoritos"
   },
   "entry": {
-    "reply": "Reply",
-    "reply-preview": "Preview",
-    "via-app": "via <span class=\"app-name\">{app}</span>",
+    "reply": "Responder",
+    "reply-preview": "Vista previa",
+    "via-app": "a través de <span class=\"app-name\">{app}</span>",
     "n-replies": "{n} Replies",
     "reply-sort-order": "Sort Order",
     "reply-sort-order-trending": "Trending",
