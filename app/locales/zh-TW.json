@@ -256,7 +256,7 @@
     "title": "我的最愛",
     "load-error": "無法載入「我的最愛」",
     "empty-list": "暫無内容！",
-    "search": "在「我的最愛」中搜索"
+    "search": "搜尋「我的最愛」"
   },
   "entry": {
     "reply": "回覆",
@@ -290,7 +290,7 @@
     "wallet": "我的錢包",
     "activities": "活動",
     "address-enter-url": "輸入網址",
-    "address-enter-query": "輸入搜索查詢",
+    "address-enter-query": "輸入搜尋字串 ",
     "unclaimed-reward-notice": "您有未認領的獎勵"
   },
   "search": {
