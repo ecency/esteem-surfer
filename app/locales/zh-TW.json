@@ -128,13 +128,13 @@
   },
   "follow-controls": {
     "follow": "Follow",
-    "unFollow": "Unfollow",
-    "mute": "Mute",
-    "unMute": "Unmute"
+    "unFollow": "取消關注",
+    "mute": "靜音",
+    "unMute": "取消靜音"
   },
   "account": {
-    "voting-power": "Voting Power",
-    "post-count": "Post Count",
+    "voting-power": "點讚能量",
+    "post-count": "帖子數",
     "number-of-votes": "Number of votes in last 24 hours",
     "followers": "Followers",
     "following": "Following",
