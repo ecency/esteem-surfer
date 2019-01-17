@@ -36,7 +36,7 @@
     "payout-date": "Виплата"
   },
   "entry-votes": {
-    "n-more": "{n} more",
+    "n-more": "ще {n}",
     "author": "Author",
     "reward": "Reward",
     "percent": "Percent",
