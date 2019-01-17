@@ -22,40 +22,40 @@
     "filter-trending": "焦點",
     "filter-hot": "熱門",
     "filter-created": "最新",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
-    "filter-feed": "Feed"
+    "filter-active": "活動",
+    "filter-promoted": "贊助",
+    "filter-votes": "票數",
+    "filter-children": "評論",
+    "filter-feed": "動態消息"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "潛在收入",
+    "promoted": "贊助",
+    "author-payout": "作者收入",
+    "curation-payout": "投票收入",
+    "payout-date": "收入"
   },
   "entry-votes": {
-    "n-more": "{n} more",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
-    "modal-title": "Voters ({n})"
+    "n-more": "{n} 更多",
+    "author": "作者",
+    "reward": "獎勵",
+    "percent": "百分比",
+    "time": "時間",
+    "modal-title": "點讚 ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "轉發 {n}"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "轉發",
+    "reblogged": "已轉發！"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "Currency",
-    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
-    "currency-changed": "Currency Changed",
-    "locale": "Language",
+    "title": "設定",
+    "currency": "幣種",
+    "currency-fetch-error": "無法獲取 \"{cur}\" 的幣種匯率",
+    "currency-changed": "貨幣已更改",
+    "locale": "語言",
     "locale-changed": "Language changed",
     "server": "Server",
     "server-invalid-address": "Invalid server address",
