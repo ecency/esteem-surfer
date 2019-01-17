@@ -18,30 +18,30 @@
     "about": "Apie"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
+    "tags": "Populiarios žymės",
+    "filter-trending": "Tendencijos",
+    "filter-hot": "Karšta",
+    "filter-created": "Nauja",
+    "filter-active": "Aktyvūs",
+    "filter-promoted": "Reklama",
+    "filter-votes": "Balsai",
+    "filter-children": "Komentarai",
     "filter-feed": "Feed"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "Potencialus užmokestis",
+    "promoted": "Paremti",
+    "author-payout": "Autoriaus užmokestis",
+    "curation-payout": "Kuracijos užmokestis",
+    "payout-date": "Užmokestis"
   },
   "entry-votes": {
-    "n-more": "{n} more",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
-    "modal-title": "Voters ({n})"
+    "n-more": "daugiau",
+    "author": "Autorius",
+    "reward": "Atlygis",
+    "percent": "Procentų",
+    "time": "Laikas",
+    "modal-title": "Balsuotuojai"
   },
   "entry-list-item": {
     "reblogged": "reblogged by {n}"
