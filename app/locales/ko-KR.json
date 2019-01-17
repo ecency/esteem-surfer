@@ -102,7 +102,7 @@
   },
   "user-menu": {
     "profile": "프로필",
-    "bookmarks": "Bookmarks",
+    "bookmarks": "즐겨찾기",
     "favorites": "Favorites",
     "drafts": "Drafts",
     "schedules": "Schedules",
@@ -246,11 +246,11 @@
     "moved": "Moved to drafts"
   },
   "bookmarks": {
-    "title": "Bookmarks",
-    "load-error": "Could not load bookmarks",
-    "empty-list": "Nothing here",
-    "deleted": "Bookmark removed",
-    "search": "Search in bookmarks"
+    "title": "즐겨찾기",
+    "load-error": "즐겨찾기를 불러올 수 없습니다",
+    "empty-list": "빈 목록입니다",
+    "deleted": "즐겨찾기가 삭제되었습니다",
+    "search": "즐겨찾기에서 검색"
   },
   "favorites": {
     "title": "Favorites",
@@ -269,8 +269,8 @@
     "reply-sort-order-votes": "Votes",
     "reply-sort-order-created": "시기 순",
     "reply-body-placeholder": "Write your reply here",
-    "bookmarked": "Added to bookmarks",
-    "bookmarkRemoved": "Removed from bookmarks",
+    "bookmarked": "즐겨찾기에 추가되었습니다",
+    "bookmarkRemoved": "즐겨찾기에서 삭제했습니다",
     "favorited": "Added to favorites",
     "favoriteRemoved": "Removed from favorites",
     "copy-clipboard": "Copy internal link to clipboard",
@@ -283,8 +283,8 @@
     "settings": "설정",
     "change-theme": "테마 변경",
     "login": "Login to you account",
-    "bookmark": "Add to bookmarks",
-    "bookmarkRemove": "Remove from bookmarks",
+    "bookmark": "즐겨찾기에 추가",
+    "bookmarkRemove": "즐겨찾기에서 삭제",
     "favorite": "Add to favorites",
     "favoriteRemove": "Removed from favorites",
     "wallet": "내 지갑",
@@ -340,9 +340,9 @@
     "reblog-str": "님이 이 글을 리블로그했습니다:",
     "empty-list": "빈 목록입니다",
     "refresh": "새로고침",
-    "mark-all-read": "Mark All as Read",
-    "leaderboard": "Leaderboard",
-    "leaderboard-title": "Daily Top users"
+    "mark-all-read": "모두 읽음으로 표시",
+    "leaderboard": "순위표",
+    "leaderboard-title": "일별 상위 사용자"
   },
   "witnesses": {
     "page-title": "Witness Voting",
