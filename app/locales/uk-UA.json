@@ -296,15 +296,15 @@
   "search": {
     "n-results-for-q": "{n} результатів для {q}",
     "sort-by": "Сортувати за",
-    "sort-popularity": "Popularity",
-    "sort-relevance": "Relevance",
-    "sort-newest": "Date"
+    "sort-popularity": "Популярністю",
+    "sort-relevance": "Релевантністю",
+    "sort-newest": "Датою"
   },
   "updater": {
-    "new-version-available": "New version available",
-    "update": "Update",
-    "dismiss": "Dismiss",
-    "downloading": "Downloading new version...",
+    "new-version-available": "Доступна нова версiя",
+    "update": "Оновити",
+    "dismiss": "Відхилити",
+    "downloading": "Завантаження нової версії...",
     "download-completed": "Завантаження завершено",
     "restart": "Перезапуск"
   },
@@ -316,10 +316,10 @@
     "copy-image-url": "Скопіювати url зображення"
   },
   "notification": {
-    "popup-title": "You have a new notification",
-    "voted": "{source} voted your post",
-    "mention-post": "{source} mentioned you in a post",
-    "mention-comment": "{source} mentioned you in a comment",
+    "popup-title": "У вас є нове сповіщення",
+    "voted": "{source} проголосував за вашу публікацію",
+    "mention-post": "{source} згадав вас у публікації",
+    "mention-comment": "{source} згадав вас у коментарі",
     "followed": "{source} followed you",
     "replied": "{source} replied you",
     "reblogged": "{source} reblogged your post"
