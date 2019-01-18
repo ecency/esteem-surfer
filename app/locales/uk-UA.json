@@ -345,9 +345,9 @@
     "leaderboard-title": "Щоденний Топ користувачів"
   },
   "witnesses": {
-    "page-title": "Witness Voting",
-    "remaining": "<strong>{n}</strong> of {max} votes remaining",
-    "witness": "Witness",
+    "page-title": "Голосування за делегатів",
+    "remaining": "Залишилось <strong>{n}</strong> із {max} голосів",
+    "witness": "Делегат",
     "miss": "Miss",
     "url": "URL",
     "fee": "Комісія",
