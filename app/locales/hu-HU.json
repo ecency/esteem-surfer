@@ -318,8 +318,8 @@
   "notification": {
     "popup-title": "Van egy új értesítésed",
     "voted": "{source} voted your post",
-    "mention-post": "{source} mentioned you in a post",
-    "mention-comment": "{source} mentioned you in a comment",
+    "mention-post": "{source} említett egy bejegyzésben",
+    "mention-comment": "{source} említett egy hozzászólásban",
     "followed": "{source} követ téged",
     "replied": "{source} válaszolt",
     "reblogged": "{source} megosztotta a bejegyzésed"
