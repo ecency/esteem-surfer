@@ -7,7 +7,7 @@
     "delete": "Törlés",
     "cancel": "Elvet",
     "ok": "Rendben",
-    "edit": "Edit",
+    "edit": "Szerkesztés",
     "server-error": "Process could not completed due to server error",
     "save": "Mentés",
     "done": "Kész",
@@ -15,7 +15,7 @@
   },
   "footer": {
     "faq": "GYÍK",
-    "about": "About"
+    "about": "Rólunk"
   },
   "entry-index": {
     "tags": "Népszerű címkék",
@@ -179,9 +179,9 @@
     "title-placeholder": "Cím",
     "tags-placeholder": "Tags. First tag is your main category",
     "max-n-tags": "Maximum {n} címke",
-    "body-placeholder": "Post Content",
+    "body-placeholder": "Bejegyzés tartalma",
     "tool-bold": "Bold",
-    "tool-italic": "Italic",
+    "tool-italic": "Dőlt",
     "tool-header": "Heading",
     "tool-code": "Kód",
     "tool-quote": "Idézés",
@@ -338,7 +338,7 @@
     "unfollowed-str": "unfollowed",
     "ignored-str": "ignored",
     "reblog-str": "megosztotta a bejegyzésed:",
-    "empty-list": "Nothing here",
+    "empty-list": "Itt nincs semmi",
     "refresh": "Frissítés",
     "mark-all-read": "Összes megjelölése olvasottként",
     "leaderboard": "Ranglista",
