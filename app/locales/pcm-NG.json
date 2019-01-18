@@ -14,16 +14,16 @@
     "select": "Select"
   },
   "footer": {
-    "faq": "FAQ",
+    "faq": "Question wey people dey ask wella",
     "about": "About"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
+    "tags": "Tags wey popular",
+    "filter-trending": "Wey dey reign",
+    "filter-hot": "Wey dey hot",
+    "filter-created": "Wey new",
+    "filter-active": "Wey dey active",
+    "filter-promoted": "Wey dem promote",
     "filter-votes": "Votes",
     "filter-children": "Comments",
     "filter-feed": "Feed"
