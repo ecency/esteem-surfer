@@ -67,64 +67,64 @@
     "server-list-fetch-error": "Não encontrada a lista dos servidores",
     "push-notifications": "Puxar Notificações",
     "push-notify-enabled": "Puxar notificações autorizado",
-    "push-notify-disabled": "Push notifications disabled"
+    "push-notify-disabled": "Puxar notificações não-autorizado"
   },
   "login": {
-    "title": "Welcome back!",
-    "accounts-title": "Login As",
-    "traditional-login-desc": "Sign in with your username and password to continue",
-    "username-placeholder": "username",
-    "password-placeholder": "password or wif",
-    "login": "Login",
-    "error-fields-required": "Please enter username and password/wif",
-    "error-public-key": "You entered a public key. Password/wif required",
-    "error-user-fetch": "User data could not fetched",
-    "error-user-not-found": "User not exists",
-    "error-authenticate": "Wrong username or password/wif",
-    "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>",
-    "login-with-sc": "Login with",
-    "divider-text": "OR"
+    "title": "Bem vindo de Volta!",
+    "accounts-title": "Logar como",
+    "traditional-login-desc": "Inscreva-se com seu nome de usuário e senha para continuar",
+    "username-placeholder": "usuário",
+    "password-placeholder": "senha ou wif",
+    "login": "Entrar",
+    "error-fields-required": "Por favor insira um nome de usuário e palavra passe",
+    "error-public-key": "Você inseriu uma chave pública. Senha/wif exigido",
+    "error-user-fetch": "Dados do usuário não pode ser buscado",
+    "error-user-not-found": "Usuário não existe",
+    "error-authenticate": "Nome de usuário errado ou a senha/wif",
+    "create-account-text": "Não tem uma conta? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Cadastre-se agora!</a>",
+    "login-with-sc": "Entrar com",
+    "divider-text": "OU"
   },
   "create-pin-code": {
-    "title": "Create PIN Code",
-    "desc1": "Set pin code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter pin code",
-    "desc2": "You will be prompted to enter pin code for crucial transactions as well as on every launch.",
-    "created": "Pin code created"
+    "title": "Criar o código PIN",
+    "desc1": "Definir o código pin para criptografar seus dados e habilitar a camada extra de segurança!",
+    "input-placeholder": "Inserir o código pin",
+    "desc2": "Você será solicitado a inserir o código pin para transações cruciais, bem como em cada lançamento.",
+    "created": "Código pin criado"
   },
   "confirm-pin-code": {
-    "title": "Enter Pin Code",
-    "input-placeholder": "Enter pin code to continue",
-    "last-chance": "This is your last chance",
-    "invalidate": "Oh, I forgot it...",
-    "invalidate-confirm": "Are you really want to invalidate pin code?",
-    "invalidated": "Pin code invalidated"
+    "title": "Inserir o código pin",
+    "input-placeholder": "Digite o código pin para continuar",
+    "last-chance": "Esta é sua última chance",
+    "invalidate": "Oh, esqueci disso...",
+    "invalidate-confirm": "Você que quer mesmo invalidar o código pin?",
+    "invalidated": "Código pin invalidado"
   },
   "user-menu": {
-    "profile": "Profile",
-    "bookmarks": "Bookmarks",
-    "favorites": "Favorites",
-    "drafts": "Drafts",
-    "schedules": "Schedules",
-    "gallery": "Gallery",
-    "login-as": "Login As",
-    "logout": "Logout"
+    "profile": "Perfil",
+    "bookmarks": "Marcadores",
+    "favorites": "Favoritos",
+    "drafts": "Rascunhos",
+    "schedules": "Agendamentos",
+    "gallery": "Galeria",
+    "login-as": "Login como",
+    "logout": "Sair"
   },
   "login-required": {
-    "default": "This action requires login",
-    "key-required": "This action requires {key} key or master password",
-    "keys-required": "This action requires {keys} keys or master password"
+    "default": "Esta ação requer login",
+    "key-required": "Esta ação requer {key} chave ou senha master",
+    "keys-required": "Esta ação requer chaves {keys} ou senha master"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
-    "fetch-error-content": "Could not fetch posts",
-    "post-count": "Post Count",
-    "followers": "Followers",
-    "following": "Following",
-    "section-blog": "Blog",
-    "section-comments": "Comments",
-    "section-replies": "Replies",
-    "section-wallet": "Wallet"
+    "fetch-error-profile": "Não pude buscar os dados de perfil",
+    "fetch-error-content": "Não puderia buscar posts",
+    "post-count": "Contagem de posts",
+    "followers": "Seguidores",
+    "following": "Seguindo",
+    "section-blog": "Blogue",
+    "section-comments": "Comentários",
+    "section-replies": "Respostas",
+    "section-wallet": "Carteira"
   },
   "follow-controls": {
     "follow": "Seguir",
