@@ -364,9 +364,9 @@
     "set-proxy": "Встановити proxy",
     "proxy-active-exp": "Ви встановили proxy. Якщо ви бажаєте знов увімкнути голосування вручну, будь ласка, зніміть proxy.",
     "current-proxy": "Ваш нинішній proxy: <strong>{n}</strong>",
-    "remove-proxy": "Clear Proxy",
-    "proxy-removed": "Proxy cleared",
-    "proxy-created": "@{n} has set as proxy"
+    "remove-proxy": "Зняти proxy",
+    "proxy-removed": "Proxy знято",
+    "proxy-created": "@{n} встановлено в якості proxy"
   },
   "transfer": {
     "transfer-title": "Transfer to Account",
