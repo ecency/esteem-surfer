@@ -48,7 +48,7 @@
   },
   "entry-reblog": {
     "reblog": "リブログ",
-    "reblogged": "Reblogged"
+    "reblogged": "リブログ済み"
   },
   "settings": {
     "title": "設定",
@@ -98,7 +98,7 @@
     "last-chance": "これが最後のチャンスです",
     "invalidate": "ああ、私はそれを忘れてしまった...",
     "invalidate-confirm": "Pinコードを本当に無効にしてよろしいですか？",
-    "invalidated": "Pin code invalidated"
+    "invalidated": "Pinコードが無効化されました"
   },
   "user-menu": {
     "profile": "プロフィール",
@@ -161,7 +161,7 @@
     "transactions": "トランザクション",
     "transaction-curation_reward": "キュレーション報酬",
     "transaction-author_reward": "投稿報酬",
-    "transaction-comment_benefactor_reward": "Comment Benefactor Reward",
+    "transaction-comment_benefactor_reward": "コメントBenefactor報酬",
     "transaction-claim_reward_balance": "報酬を請求する",
     "transaction-transfer": "送金",
     "transaction-transfer_to_vesting": "Vestingに送金",
