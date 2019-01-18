@@ -1,45 +1,45 @@
 {
   "g": {
     "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
-    "yes": "Yes",
+    "are-you-sure": "Weet je het zeker?",
+    "yes": "Ja",
     "no": "No",
-    "delete": "Delete",
-    "cancel": "Cancel",
-    "ok": "OK",
-    "edit": "Edit",
-    "server-error": "Process could not completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "delete": "Verwijder",
+    "cancel": "Annuleren",
+    "ok": "Oké",
+    "edit": "Wijzigen",
+    "server-error": "Proces kan niet worden voltooid vanwege een serverfout",
+    "save": "Opslaan",
+    "done": "Voltooid",
+    "select": "Selecteer"
   },
   "footer": {
-    "faq": "FAQ",
-    "about": "About"
+    "faq": "Veelgestelde vragen",
+    "about": "Over"
   },
   "entry-index": {
-    "tags": "Popular Tags",
+    "tags": "Populaire tags",
     "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
+    "filter-hot": "Populair",
+    "filter-created": "Nieuw",
+    "filter-active": "Actief",
+    "filter-promoted": "Gesponsord",
+    "filter-votes": "Stemmen",
+    "filter-children": "Reacties",
     "filter-feed": "Feed"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "Potentiële Uitbetaling",
+    "promoted": "Gesponsord",
+    "author-payout": "Auteurs-uitbetaling",
+    "curation-payout": "Curatie-uitbetaling",
+    "payout-date": "Uitbetaling"
   },
   "entry-votes": {
     "n-more": "{n} more",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
+    "author": "Auteur",
+    "reward": "Beloning",
+    "percent": "Procent",
     "time": "Time",
     "modal-title": "Voters ({n})"
   },
