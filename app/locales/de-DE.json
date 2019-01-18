@@ -77,7 +77,7 @@
     "password-placeholder": "Passwort oder WIF",
     "login": "Einloggen",
     "error-fields-required": "Bitte Username und Passwort/WIF eingeben",
-    "error-public-key": "You entered a public key. Password/wif required",
+    "error-public-key": "Du hast einen Public-Schlüssel eingegeben. Passwort oder WIF erforderlich",
     "error-user-fetch": "Benutzerdaten konnten nicht abgerufen werden",
     "error-user-not-found": "Benutzer existiert nicht",
     "error-authenticate": "Falscher Benutzername oder Passwort/WIF",
@@ -102,28 +102,28 @@
   },
   "user-menu": {
     "profile": "Profil",
-    "bookmarks": "Bookmarks",
-    "favorites": "Favorites",
-    "drafts": "Drafts",
-    "schedules": "Schedules",
-    "gallery": "Gallery",
-    "login-as": "Login As",
-    "logout": "Logout"
+    "bookmarks": "Lesezeichen",
+    "favorites": "Favoriten",
+    "drafts": "Entwürfe",
+    "schedules": "Zeitpläne",
+    "gallery": "Galerie",
+    "login-as": "Einloggen als",
+    "logout": "Abmelden"
   },
   "login-required": {
-    "default": "This action requires login",
-    "key-required": "This action requires {key} key or master password",
-    "keys-required": "This action requires {keys} keys or master password"
+    "default": "Diese Aktion erfordert einen LogIn",
+    "key-required": "Diese Aktion erfordert deinen {key} Key oder das Master-Passwort",
+    "keys-required": "Diese Aktion erfordert {key} Keys oder das Master-Passwort"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
-    "fetch-error-content": "Could not fetch posts",
-    "post-count": "Post Count",
-    "followers": "Followers",
+    "fetch-error-profile": "Profildaten konnten nicht abgerufen werden",
+    "fetch-error-content": "Beiträge konnten nicht abgerufen werden",
+    "post-count": "Beitragsanzahl",
+    "followers": "Follower",
     "following": "Following",
     "section-blog": "Blog",
-    "section-comments": "Comments",
-    "section-replies": "Replies",
+    "section-comments": "Kommentare",
+    "section-replies": "Antworten",
     "section-wallet": "Wallet"
   },
   "follow-controls": {
