@@ -60,9 +60,9 @@
     "server": "Server",
     "server-invalid-address": "Invalid server address",
     "server-connecting": "Connecting to '{server}'...",
-    "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
-    "server-timeout-error": "'{server}' looks like not alive",
-    "server-changed": "Server changed to {server}",
+    "server-connect-error": "E no gree connect to '{server'}. Make sure say you get better network.",
+    "server-timeout-error": "'{server}' look like wetin don die",
+    "server-changed": "The server don change to {server}",
     "server-custom-address": "Custom server address",
     "server-list-fetch-error": "Could not fetch server list",
     "push-notifications": "Push Notifications",
@@ -89,7 +89,7 @@
     "title": "Create PIN Code",
     "desc1": "Set pin code to encrypt your data and enable extra layer of security!",
     "input-placeholder": "Enter pin code",
-    "desc2": "You will be prompted to enter pin code for crucial transactions as well as on every launch.",
+    "desc2": "You go need to enter your password for important transactions and any type wey you open the software.",
     "created": "Pin code created"
   },
   "confirm-pin-code": {
