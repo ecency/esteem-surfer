@@ -15,18 +15,18 @@
   },
   "footer": {
     "faq": "الأسئلة الشائعة",
-    "about": "عن التطبيق"
+    "about": "حول"
   },
   "entry-index": {
-    "tags": "أشهر المواضيع",
-    "filter-trending": "الرائجة",
+    "tags": "علامات رائجة",
+    "filter-trending": "شائع",
     "filter-hot": "الساخنة",
-    "filter-created": "الجديدة",
-    "filter-active": "النشطة",
+    "filter-created": "الجديد",
+    "filter-active": "نشط",
     "filter-promoted": "المروّجة",
     "filter-votes": "الأصوات",
     "filter-children": "التعليقات",
-    "filter-feed": "الرئيسيّة"
+    "filter-feed": "المستجدات"
   },
   "entry-payout": {
     "potential-payout": "المكافأة المتوقعة",
@@ -36,15 +36,15 @@
     "payout-date": "المكافأة"
   },
   "entry-votes": {
-    "n-more": "{n} آخرون",
+    "n-more": "{n} أكثر",
     "author": "المؤلف",
     "reward": "المكافأة",
-    "percent": "بالمئة",
+    "percent": "النسبة المئوية",
     "time": "الوقت",
     "modal-title": "المصوّتون ({n})"
   },
   "entry-list-item": {
-    "reblogged": "أعيد تدوينها {n} مرّة"
+    "reblogged": "تمت مشاركته من طرف {n}"
   },
   "entry-reblog": {
     "reblog": "إعادة تدوين",
