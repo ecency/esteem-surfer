@@ -276,7 +276,7 @@
     "copy-clipboard": "Скопіювати внутрішнє посилання до буферу обміну",
     "copied-clipboard": "Скопійовано",
     "comment-entry-title": "You are viewing a single comment's thread from: ",
-    "comment-entry-go-root": "View the full context",
+    "comment-entry-go-root": "Переглянути повний контекст",
     "comment-entry-go-parent": "View the direct parent"
   },
   "navbar": {
