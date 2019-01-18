@@ -236,13 +236,13 @@
     "title": "Чернетки",
     "load-error": "Не вдалося завантажити чернетки",
     "empty-list": "Тут порожньо",
-    "deleted": "Draft deleted"
+    "deleted": "Чернетку видалено"
   },
   "schedules": {
-    "title": "Scheduled Posts",
-    "empty-list": "Nothing here",
-    "deleted": "Scheduled post deleted",
-    "move": "Move to drafts",
+    "title": "Заплановані публікації",
+    "empty-list": "Тут порожньо",
+    "deleted": "Заплановану публікацію видалено",
+    "move": "Перемістити до чернеток",
     "moved": "Moved to drafts"
   },
   "bookmarks": {
