@@ -61,12 +61,12 @@
     "server-invalid-address": "Endereço do servidor inválido",
     "server-connecting": "A conectar ao '{server}'...",
     "server-connect-error": "Não foi possível conectar ao '{server}'. Verifique se que você tem uma boa conexão de internet.",
-    "server-timeout-error": "'{server}' looks like not alive",
+    "server-timeout-error": "'{server}' não parece estar ligado",
     "server-changed": "Servidor alterado para {server}",
     "server-custom-address": "Endereço de servidor costumizado",
-    "server-list-fetch-error": "Could not fetch server list",
-    "push-notifications": "Push Notifications",
-    "push-notify-enabled": "Push notifications enabled",
+    "server-list-fetch-error": "Não encontrada a lista dos servidores",
+    "push-notifications": "Puxar Notificações",
+    "push-notify-enabled": "Puxar notificações autorizado",
     "push-notify-disabled": "Push notifications disabled"
   },
   "login": {
@@ -177,10 +177,10 @@
   },
   "composer": {
     "title-placeholder": "Título",
-    "tags-placeholder": "Tags. First tag is your main category",
-    "max-n-tags": "Max {n} tags",
-    "body-placeholder": "Post Content",
-    "tool-bold": "Bold",
+    "tags-placeholder": "Etiquetas. A primeira tag é a sua categoria principal",
+    "max-n-tags": "Max {n} etiquetas",
+    "body-placeholder": "Postar conteúdo",
+    "tool-bold": "Negrito",
     "tool-italic": "Italic",
     "tool-header": "Heading",
     "tool-code": "Code",
@@ -233,34 +233,34 @@
     "empty-list": "Nothing here"
   },
   "drafts": {
-    "title": "Drafts",
-    "load-error": "Could not load drafts",
-    "empty-list": "Nothing here",
-    "deleted": "Draft deleted"
+    "title": "Rascunhos",
+    "load-error": "Não foi possível carregar os rascunhos",
+    "empty-list": "Nada aqui",
+    "deleted": "Rascunho eliminado"
   },
   "schedules": {
-    "title": "Scheduled Posts",
-    "empty-list": "Nothing here",
-    "deleted": "Scheduled post deleted",
-    "move": "Move to drafts",
-    "moved": "Moved to drafts"
+    "title": "Posts agendados",
+    "empty-list": "Nada aqui",
+    "deleted": "Post programado excluído",
+    "move": "Mover para Rascunhos",
+    "moved": "Movido para Rascunhos"
   },
   "bookmarks": {
-    "title": "Bookmarks",
-    "load-error": "Could not load bookmarks",
-    "empty-list": "Nothing here",
-    "deleted": "Bookmark removed",
-    "search": "Search in bookmarks"
+    "title": "Marcadores",
+    "load-error": "Não foi possível carregar os Marcadores",
+    "empty-list": "Nada aqui",
+    "deleted": "Marcador removido",
+    "search": "Pesquisar marcadores"
   },
   "favorites": {
-    "title": "Favorites",
-    "load-error": "Could not load favorites",
-    "empty-list": "Nothing here",
-    "search": "Search in favorites"
+    "title": "Favoritos",
+    "load-error": "Não foi possível carregar os favoritos",
+    "empty-list": "Nada aqui",
+    "search": "Procurar nos Favoritos"
   },
   "entry": {
-    "reply": "Reply",
-    "reply-preview": "Preview",
+    "reply": "Responder",
+    "reply-preview": "Pré-visualizar",
     "via-app": "via <span class=\"app-name\">{app}</span>",
     "n-replies": "{n} Replies",
     "reply-sort-order": "Sort Order",
