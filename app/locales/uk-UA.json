@@ -219,7 +219,7 @@
     "published": "Post Published",
     "update": "Оновити",
     "updated": "Публікацію оновлено",
-    "sync-scroll": "Scroll Sync",
+    "sync-scroll": "Автопрокрутка",
     "words-count": "{n} слів",
     "no-suggestions": "Немає пропозицій",
     "emoji-filter-placeholder": "Фільтр",
@@ -247,7 +247,7 @@
   },
   "bookmarks": {
     "title": "Bookmarks",
-    "load-error": "Could not load bookmarks",
+    "load-error": "Не вдалося завантажити закладки",
     "empty-list": "Тут порожньо",
     "deleted": "Закладку видалено",
     "search": "Пошук у закладках"
@@ -329,8 +329,8 @@
     "type-votes": "Голоси",
     "type-replies": "Відповіді",
     "type-mentions": "Згадування",
-    "type-follows": "Follows",
-    "type-reblogs": "Reblogs",
+    "type-follows": "Підписки",
+    "type-reblogs": "Репости",
     "vote-str": "{p}% likes your post:",
     "reply-str": "replied your post:",
     "mention-str": "mentioned you in:",
