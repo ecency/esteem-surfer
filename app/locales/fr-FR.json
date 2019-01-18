@@ -345,7 +345,7 @@
     "leaderboard-title": "Top des utilisateurs du jour"
   },
   "witnesses": {
-    "page-title": "Witness Voting",
+    "page-title": "Vote de témoin",
     "remaining": "<strong>{n}</strong> des {max} votes restants",
     "witness": "Témoin",
     "miss": "Manqué",
@@ -356,11 +356,11 @@
     "ac-avail": "AC avail",
     "ac-budget": "Budget de l’AC",
     "version": "Version",
-    "voted": "@{n} voted",
+    "voted": "@{n} à voté",
     "vote-removed": "vote supprimé pour @{n}",
     "username-placeholder": "nom d'utilisateur",
     "extra-witnesses-exp": "Entrez le nom du compte ci-dessous pour voter pour un témoin en dehors du <strong>Top 50</strong>",
-    "proxy-exp": "Vous pouvez également choisir un mandataire qui votera pour vous. Cela réinitialisera votre sélection de témoins actuels.",
+    "proxy-exp": "Vous pouvez également choisir un mandataire qui votera pour les témoins à votre place. Cela réinitialisera votre sélection de témoins actuelle.",
     "set-proxy": "Définir comme mandataire",
     "proxy-active-exp": "Vous avez autorisé un mandataire à voter pour les témoins. Si vous voulez réactiver le vote manuel, veuillez annuler votre autorisation.",
     "current-proxy": "Votre mandataire actuel est : <strong>{n}</strong>",
