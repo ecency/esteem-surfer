@@ -116,7 +116,7 @@
     "keys-required": "Ця дія вимагає {keys} ключів або головного пароля"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
+    "fetch-error-profile": "Не вдається отримати дані профілю",
     "fetch-error-content": "Could not fetch posts",
     "post-count": "Кількість публікацій",
     "followers": "Читачі",
