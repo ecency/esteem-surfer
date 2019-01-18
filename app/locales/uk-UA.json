@@ -277,13 +277,13 @@
     "copied-clipboard": "Скопійовано",
     "comment-entry-title": "You are viewing a single comment's thread from: ",
     "comment-entry-go-root": "Переглянути повний контекст",
-    "comment-entry-go-parent": "View the direct parent"
+    "comment-entry-go-parent": "Прямий батьківський коментар"
   },
   "navbar": {
     "settings": "Налаштування",
-    "change-theme": "Change Theme",
-    "login": "Login to you account",
-    "bookmark": "Add to bookmarks",
+    "change-theme": "Змінити тему",
+    "login": "Увійти в свій акаунт",
+    "bookmark": "Додати до закладок",
     "bookmarkRemove": "Remove from bookmarks",
     "favorite": "Додати до обраного",
     "favoriteRemove": "Removed from favorites",
