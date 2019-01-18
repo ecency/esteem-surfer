@@ -1,16 +1,16 @@
 {
   "g": {
     "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
+    "are-you-sure": "You sure?",
     "yes": "Yes",
     "no": "No",
     "delete": "Delete",
     "cancel": "Cancel",
-    "ok": "OK",
+    "ok": "Ok",
     "edit": "Edit",
-    "server-error": "Process could not completed due to server error",
+    "server-error": "The process no gree complete because of server wahala",
     "save": "Save",
-    "done": "Done",
+    "done": "E don go",
     "select": "Select"
   },
   "footer": {
