@@ -172,8 +172,8 @@
     "transfer": "Transfer",
     "transfer-to-savings": "Transfer to savings",
     "power-up": "Power up",
-    "withdraw-steem": "Withdraw Steem",
-    "withdraw-sbd": "Withdraw Steem Dollar"
+    "withdraw-steem": "Вивести Steem",
+    "withdraw-sbd": "Вивести Steem Dollar"
   },
   "composer": {
     "title-placeholder": "Заголовок",
@@ -201,7 +201,7 @@
     "reward-default": "Стандарт 50% / 50%",
     "reward-sp": "100% в Steem Power",
     "reward-dp": "Відмова від виплати",
-    "upvote": "Upvote",
+    "upvote": "Проголосувати",
     "clear": "Очистити все",
     "form-error-message": "Форма не дійсна. Будь ласка, заповніть всі поля",
     "schedule": "Запланувати",
@@ -248,26 +248,26 @@
   "bookmarks": {
     "title": "Bookmarks",
     "load-error": "Could not load bookmarks",
-    "empty-list": "Nothing here",
-    "deleted": "Bookmark removed",
-    "search": "Search in bookmarks"
+    "empty-list": "Тут порожньо",
+    "deleted": "Закладку видалено",
+    "search": "Пошук у закладках"
   },
   "favorites": {
-    "title": "Favorites",
-    "load-error": "Could not load favorites",
-    "empty-list": "Nothing here",
-    "search": "Search in favorites"
+    "title": "Обране",
+    "load-error": "Не вдалося завантажити обране",
+    "empty-list": "Тут порожньо",
+    "search": "Пошук в обраному"
   },
   "entry": {
-    "reply": "Reply",
-    "reply-preview": "Preview",
-    "via-app": "via <span class=\"app-name\">{app}</span>",
-    "n-replies": "{n} Replies",
-    "reply-sort-order": "Sort Order",
-    "reply-sort-order-trending": "Trending",
-    "reply-sort-order-reputation": "Reputation",
-    "reply-sort-order-votes": "Votes",
-    "reply-sort-order-created": "Age",
+    "reply": "Відповісти",
+    "reply-preview": "Попередній перегляд",
+    "via-app": "через <span class=\"app-name\">{app}</span>",
+    "n-replies": "{n} відповідей",
+    "reply-sort-order": "Порядок сортування",
+    "reply-sort-order-trending": "Популярність",
+    "reply-sort-order-reputation": "Репутація",
+    "reply-sort-order-votes": "Голоси",
+    "reply-sort-order-created": "Час",
     "reply-body-placeholder": "Напишіть свою відповідь тут",
     "bookmarked": "Додано до закладок",
     "bookmarkRemoved": "Вилучено із закладок",
