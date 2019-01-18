@@ -284,17 +284,17 @@
     "change-theme": "Змінити тему",
     "login": "Увійти в свій акаунт",
     "bookmark": "Додати до закладок",
-    "bookmarkRemove": "Remove from bookmarks",
+    "bookmarkRemove": "Видалити з закладок",
     "favorite": "Додати до обраного",
-    "favoriteRemove": "Removed from favorites",
+    "favoriteRemove": "Видалено з обраного",
     "wallet": "Мій гаманець",
     "activities": "Активність",
-    "address-enter-url": "Enter url",
-    "address-enter-query": "Enter search query",
-    "unclaimed-reward-notice": "You have unclaimed reward"
+    "address-enter-url": "Введіть url",
+    "address-enter-query": "Введіть пошуковий запит",
+    "unclaimed-reward-notice": "У вас є неотримані винагороди"
   },
   "search": {
-    "n-results-for-q": "{n} results for {q}",
+    "n-results-for-q": "{n} результатів для {q}",
     "sort-by": "Sort by",
     "sort-popularity": "Popularity",
     "sort-relevance": "Relevance",
