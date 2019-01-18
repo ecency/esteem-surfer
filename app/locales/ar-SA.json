@@ -348,7 +348,7 @@
     "page-title": "التصويت للشاهد",
     "remaining": "تبقى <strong>{n}</strong> تصويت من {max}",
     "witness": "الشاهد",
-    "miss": "Miss",
+    "miss": "يغيب",
     "url": "URL",
     "fee": "رسوم",
     "feed": "المستجدات",
