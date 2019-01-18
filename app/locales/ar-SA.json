@@ -227,7 +227,7 @@
     "emoji-recently-used": "مستخدمة حديثًا"
   },
   "gallery": {
-    "title": "المعرض",
+    "title": "معرض الصور",
     "copied": "تم النسخ إلى الحافظة",
     "load-error": "لا يمكن تحميل المعرض",
     "empty-list": "لاشيء هنا"
@@ -249,7 +249,7 @@
     "title": "إشارات مرجعية",
     "load-error": "لا يمكن تحميل الإشارات المرجعية",
     "empty-list": "لاشيء هنا",
-    "deleted": "تم مسح الإشارة المرجعية",
+    "deleted": "تمت إزالة الإشارة المرجعية",
     "search": "البحث في الإشارات المرجعية"
   },
   "favorites": {
@@ -260,8 +260,8 @@
   },
   "entry": {
     "reply": "الرد",
-    "reply-preview": "عرض",
-    "via-app": "عبر <span class=\"app-name\">{app}</span>",
+    "reply-preview": "معاينة",
+    "via-app": "بواسطة <span class=\"app-name\">{app}</span>",
     "n-replies": "الردود {n}",
     "reply-sort-order": "الترتيب حسب",
     "reply-sort-order-trending": "الرائجة",
