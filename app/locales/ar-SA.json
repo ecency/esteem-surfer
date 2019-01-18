@@ -77,8 +77,8 @@
     "password-placeholder": "كلمة المرور أو Wif",
     "login": "تسجيل الدخول",
     "error-fields-required": "الرجاء إدخال إسم المستخدم وكلمة المرور/wif",
-    "error-public-key": "لقد أدخلت المفتاج العام. الرجاء إدخال كلمة السر",
-    "error-user-fetch": "لم يتمكن من إحضار بيانات المستخدم",
+    "error-public-key": "لقد أدخلت المفتاج العام.  مطلوبة كلمة المرور/wif",
+    "error-user-fetch": "لا يمكن جلب بيانات المستخدم",
     "error-user-not-found": "المستخدم غير موجود",
     "error-authenticate": "خطأ في اسم المستخدم أو كلمة السر",
     "create-account-text": "ليس لديك حساب <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">سجّل الآن!</a>",
@@ -87,7 +87,7 @@
   },
   "create-pin-code": {
     "title": "أنشئ رمز PIN",
-    "desc1": "أضف رمز PIN لتشفير بيانات وإضافة طبقة إضافية للأمان!",
+    "desc1": "تعيين كلمة السر لتشفير البيانات الخاصة بك وتمكين طبقة إضافية من الأمن!",
     "input-placeholder": "أدخل رمز PIN",
     "desc2": "سيتم مطالبتك بإدخل رمز PIN عند التحويلات المهمة وعند فتح التطبيق.",
     "created": "تم إنشاء رمز PIN"
@@ -101,11 +101,11 @@
     "invalidated": "تم تعطيل رمز PIN"
   },
   "user-menu": {
-    "profile": "الصفحة الشخصية",
+    "profile": "الملف الشخصي",
     "bookmarks": "إشارات مرجعية",
     "favorites": "المفضلات",
     "drafts": "المسودات",
-    "schedules": "جدولة المشاركات",
+    "schedules": "جداول زمنية",
     "gallery": "معرض الصور",
     "login-as": "تسجيل الدخول كـ",
     "logout": "تسجيل الخروج"
@@ -116,11 +116,11 @@
     "keys-required": "هذه العملية تتطلب مفتاح {keys} الخاص بك أو كلمة المرور الرئسية"
   },
   "quick-profile": {
-    "fetch-error-profile": "لا يمكن إحضار بيانات الصفحة الشخصية",
+    "fetch-error-profile": "لا يمكن إحضار بيانات الملف الشخصي",
     "fetch-error-content": "لا يمكن إحضار المشاركات",
     "post-count": "عدد المشاركات",
     "followers": "المتابعون",
-    "following": "يتابع",
+    "following": "الذين اتبعهم",
     "section-blog": "المدونة",
     "section-comments": "التعليقات",
     "section-replies": "الردود",
