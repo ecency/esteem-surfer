@@ -297,14 +297,14 @@
     "n-results-for-q": "{n} نتائج لـ {q}",
     "sort-by": "ترتيب حسب",
     "sort-popularity": "الشعبية",
-    "sort-relevance": "الصلة",
+    "sort-relevance": "العلاقة",
     "sort-newest": "التاريخ"
   },
   "updater": {
-    "new-version-available": "يوجد اصدار جديد",
+    "new-version-available": "النسخة الجديدة متاحة",
     "update": "تحديث",
-    "dismiss": "تجاهل",
-    "downloading": "يتم تحميل الإضدار الجديد",
+    "dismiss": "صرف النظر",
+    "downloading": "تنزيل الإصدار الجديد...",
     "download-completed": "انتهى التحميل",
     "restart": "إعادة التشغيل"
   },
@@ -313,12 +313,12 @@
     "copy": "نسخ",
     "paste": "لصق",
     "open-image-browser": "فتح الصورة في المتصفح",
-    "copy-image-url": "نسخ عنوان الصورة"
+    "copy-image-url": "نسخ رابط الصورة"
   },
   "notification": {
     "popup-title": "لديك إشعار جديد",
     "voted": "{source} صوّت على مشاركتك",
-    "mention-post": "{source} أشار إليك في مشاركة",
+    "mention-post": "{source} ذكرك في مشاركة",
     "mention-comment": "{source} أشار إليك في تعليق",
     "followed": "{source} قام بمتابعتك",
     "replied": "{source} قام بالرد عليك",
