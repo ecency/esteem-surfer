@@ -1,6 +1,6 @@
 {
   "g": {
-    "compose-entry": "Create Post",
+    "compose-entry": "Bericht maken",
     "are-you-sure": "Weet je het zeker?",
     "yes": "Ja",
     "no": "No",
@@ -36,15 +36,15 @@
     "payout-date": "Uitbetaling"
   },
   "entry-votes": {
-    "n-more": "{n} more",
+    "n-more": "{n} meer",
     "author": "Auteur",
     "reward": "Beloning",
     "percent": "Procent",
     "time": "Tijd",
-    "modal-title": "Voters ({n})"
+    "modal-title": "Stemmers ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "gedeeld door {n}"
   },
   "entry-reblog": {
     "reblog": "Delen",
@@ -146,7 +146,7 @@
     "unclaimed-rewards": "Niet-opgeëiste beloningen",
     "estimated-value": "The estimated value is based on a 7 day average value of Steem.",
     "steem": "Steem",
-    "steem-description": "Steem are tradeable tokens that may be transferred at anytime. Steem can be converted to Steem Power in a process called powering up.",
+    "steem-description": "Steem zijn verhandelbare tokens die op elk moment kunnen worden overgedragen. Steem kan worden geconverteerd naar Steem Power in een proces genaamd 'powering up'.",
     "steem-power": "Steem Power",
     "steem-power-description": "Steem Power are influence tokens that earn more power for holding long term and voting on posts. The more Steem Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
     "steem-power-delegated": "Delegated steem power",
@@ -163,14 +163,14 @@
     "transaction-author_reward": "Auteurs-beloning",
     "transaction-comment_benefactor_reward": "Comment Benefactor Reward",
     "transaction-claim_reward_balance": "Claim rewards",
-    "transaction-transfer": "Transfer",
-    "transaction-transfer_to_vesting": "Transfer to vesting",
+    "transaction-transfer": "Overschrijven",
+    "transaction-transfer_to_vesting": "Overschrijven naar Vesting",
     "transaction-withdraw_vesting": "Withdraw vesting",
     "transaction-fill_order": "Fill order",
     "claim-reward-balance": "Claim reward balance",
     "claim-reward-balance-ok": "Reward balance claimed",
-    "transfer": "Transfer",
-    "transfer-to-savings": "Transfer to savings",
+    "transfer": "Overschrijven",
+    "transfer-to-savings": "Overschrijven naar spaarrekening",
     "power-up": "Power up",
     "withdraw-steem": "Withdraw Steem",
     "withdraw-sbd": "Withdraw Steem Dollar"
@@ -369,9 +369,9 @@
     "proxy-created": "@{n} has set as proxy"
   },
   "transfer": {
-    "transfer-title": "Transfer to Account",
-    "transfer-sub-title": "Move funds to another Steem account",
-    "transfer-saving-title": "Transfer to Savings",
+    "transfer-title": "Overschrijven naar account",
+    "transfer-sub-title": "Fondsen verplaatsen naar een ander Steem account",
+    "transfer-saving-title": "Overschrijven naar spaarrekening",
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
     "withdraw-saving-title": "Savings Withdraw",
     "withdraw-saving-sub-title": "Withdraw funds after the required 3 day waiting period",
@@ -381,28 +381,28 @@
     "from-placeholder": "Selecteer een gebruiker",
     "to": "Naar",
     "to-placeholder": "gebruikersnaam",
-    "to-not-found": "The user that you are trying to transfer funds to does not exist!",
+    "to-not-found": "De gebruiker naar wie je probeert over te schrijven bestaat niet!",
     "to-bad-actor": "Use caution sending to this account. Please double check your spelling for possible phishing.",
-    "amount": "Amount",
-    "amount-placeholder": "amount",
+    "amount": "Hoeveelheid",
+    "amount-placeholder": "hoeveelheid",
     "wrong-amount": "Wrong amount value",
     "amount-precision-error": "Use only 3 digits of precision",
     "insufficient-funds": "Insufficient funds",
-    "balance": "Balance",
+    "balance": "Balans",
     "memo": "Memo",
     "memo-placeholder": "enter your notes here",
     "memo-help": "This memo is public",
     "key-required-err": "Active key could not found for selected account. Please make sure logged in with proper credentials.",
-    "next": "Next",
-    "confirm-title": "Confirm your Transfer",
+    "next": "Volgende",
+    "confirm-title": "Bevestig je overschrijving",
     "confirm-sub-title": "Please, check if everything is correct",
-    "confirm": "Confirm",
-    "back": "Back",
-    "success-title": "Success",
-    "success-sub-title": "Transfer successful",
-    "transfer-summary": "Transferred <span class=\"amount\">{amount}</span> From <span class=\"from-user\">{from}</span> to <span class=\"to-user\">{to}</span>",
-    "reset": "Another transfer",
+    "confirm": "Bevestig",
+    "back": "Terug",
+    "success-title": "Succes",
+    "success-sub-title": "Overschrijving succesvol",
+    "transfer-summary": "Overgeschreven <span class=\"amount\">{amount}</span> van <span class=\"from-user\">{from}</span> naar <span class=\"to-user\">{to}</span>",
+    "reset": "Nog een overschrijving",
     "finish": "Finish",
-    "recent-transfers": "Recent transfers"
+    "recent-transfers": "Recente overschrijvingen"
   }
 }
