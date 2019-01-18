@@ -154,7 +154,7 @@
     "steem-power-total": "Всього Steem Power",
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Tokens worth about $1.00 of Steem.",
-    "savings": "Savings",
+    "savings": "Заощадження",
     "savings-description": "Balance subject to 3 day withdraw waiting period.",
     "next-power-down": "Наступне зниження сили голосу відбудеться {time}",
     "exchange": "Exchange",
@@ -320,9 +320,9 @@
     "voted": "{source} проголосував за вашу публікацію",
     "mention-post": "{source} згадав вас у публікації",
     "mention-comment": "{source} згадав вас у коментарі",
-    "followed": "{source} followed you",
-    "replied": "{source} replied you",
-    "reblogged": "{source} reblogged your post"
+    "followed": "{source} підписався на вас",
+    "replied": "{source} відповів вам",
+    "reblogged": "{source} зробив репост вашої публікації"
   },
   "activities": {
     "type-all": "All Activities",
