@@ -218,22 +218,22 @@
     "publish": "Publicar",
     "published": "Post publicado",
     "update": "Actualizar",
-    "updated": "Post Updated",
-    "sync-scroll": "Scroll Sync",
-    "words-count": "{n} words",
-    "no-suggestions": "No suggestions",
-    "emoji-filter-placeholder": "Filter",
-    "emoji-filter-no-match": "No match",
-    "emoji-recently-used": "Recently Used"
+    "updated": "Publicación actualizada",
+    "sync-scroll": "Sincronización de desplazamiento",
+    "words-count": "{n} palabras",
+    "no-suggestions": "Sin sugerencias",
+    "emoji-filter-placeholder": "Filtro",
+    "emoji-filter-no-match": "Sin coincidencia",
+    "emoji-recently-used": "Usada recientemente"
   },
   "gallery": {
-    "title": "Gallery",
-    "copied": "Copied to clipboard",
-    "load-error": "Could not load gallery",
-    "empty-list": "Nothing here"
+    "title": "Galería",
+    "copied": "Copiado al portapapeles",
+    "load-error": "No se pudo cargar la galeria",
+    "empty-list": "Nada aquí"
   },
   "drafts": {
-    "title": "Drafts",
+    "title": "Borradores",
     "load-error": "No se pudieron cargar los borradores",
     "empty-list": "Nada aquí",
     "deleted": "Borrador eliminado"
