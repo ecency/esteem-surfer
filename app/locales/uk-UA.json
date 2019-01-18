@@ -224,18 +224,18 @@
     "no-suggestions": "Немає пропозицій",
     "emoji-filter-placeholder": "Фільтр",
     "emoji-filter-no-match": "Немає збігів",
-    "emoji-recently-used": "Recently Used"
+    "emoji-recently-used": "Нещодавно використані"
   },
   "gallery": {
-    "title": "Gallery",
-    "copied": "Copied to clipboard",
-    "load-error": "Could not load gallery",
-    "empty-list": "Nothing here"
+    "title": "Галерея",
+    "copied": "Скопійовано до буфера обміну",
+    "load-error": "Не вдалося завантажити галерею",
+    "empty-list": "Тут порожньо"
   },
   "drafts": {
-    "title": "Drafts",
-    "load-error": "Could not load drafts",
-    "empty-list": "Nothing here",
+    "title": "Чернетки",
+    "load-error": "Не вдалося завантажити чернетки",
+    "empty-list": "Тут порожньо",
     "deleted": "Draft deleted"
   },
   "schedules": {
