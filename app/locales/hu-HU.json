@@ -41,10 +41,10 @@
     "reward": "Jutalom",
     "percent": "Százalék",
     "time": "Idő",
-    "modal-title": "Szavazók ({n})"
+    "modal-title": "({n}) Szavazók"
   },
   "entry-list-item": {
-    "reblogged": "megosztva általa {n}"
+    "reblogged": "megosztva {n} által"
   },
   "entry-reblog": {
     "reblog": "Megosztás",
