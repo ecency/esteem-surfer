@@ -222,8 +222,8 @@
     "sync-scroll": "Scroll Sync",
     "words-count": "{n} слів",
     "no-suggestions": "Немає пропозицій",
-    "emoji-filter-placeholder": "Filter",
-    "emoji-filter-no-match": "No match",
+    "emoji-filter-placeholder": "Фільтр",
+    "emoji-filter-no-match": "Немає збігів",
     "emoji-recently-used": "Recently Used"
   },
   "gallery": {
