@@ -295,7 +295,7 @@
   },
   "search": {
     "n-results-for-q": "{n} результатів для {q}",
-    "sort-by": "Sort by",
+    "sort-by": "Сортувати за",
     "sort-popularity": "Popularity",
     "sort-relevance": "Relevance",
     "sort-newest": "Date"
