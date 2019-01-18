@@ -161,7 +161,7 @@
     "transactions": "Транзакції",
     "transaction-curation_reward": "Кураторська винагорода",
     "transaction-author_reward": "Авторська винагорода",
-    "transaction-comment_benefactor_reward": "Comment Benefactor Reward",
+    "transaction-comment_benefactor_reward": "Винагорода бенефіціару",
     "transaction-claim_reward_balance": "Запит винагороди",
     "transaction-transfer": "Переказ",
     "transaction-transfer_to_vesting": "Transfer to vesting",
