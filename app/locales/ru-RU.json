@@ -8,7 +8,7 @@
     "cancel": "Отмена",
     "ok": "ОК",
     "edit": "Редактировать",
-    "server-error": "Невозможно завершить процесс из-за ошибки сервера",
+    "server-error": "Process could not be completed due to server error",
     "save": "Сохранить",
     "done": "Готово",
     "select": "Выбрать"
@@ -62,7 +62,7 @@
     "server-connecting": "Соединение с '{server}'...",
     "server-connect-error": "Невозможно соединиться с '{server}'. Пожалуйста, проверьте подключение интернет.",
     "server-timeout-error": "'{server}' не похож на живой",
-    "server-changed": "Сервер изменён на {server}",
+    "server-changed": "Server selection changed to {server}",
     "server-custom-address": "Впишите адрес сервера",
     "server-list-fetch-error": "Невозможно получить список серверов",
     "push-notifications": "Уведомления",
@@ -74,31 +74,31 @@
     "accounts-title": "Войти как",
     "traditional-login-desc": "Войдите под своим именем пользователя и паролем для продолжения",
     "username-placeholder": "пользователь",
-    "password-placeholder": "пароль или приватный ключ",
+    "password-placeholder": "password or WIF",
     "login": "Войти",
-    "error-fields-required": "Пожалуйста, введите имя пользователя и пароль/ключ",
-    "error-public-key": "Вы ввели публичный ключ, а нужен приватный или пароль",
-    "error-user-fetch": "Невозможно получить данные пользователя",
-    "error-user-not-found": "Пользователь не существует",
-    "error-authenticate": "Неправильное имя пользователя или пароль/ключ",
+    "error-fields-required": "Please enter username and password/WIF",
+    "error-public-key": "You entered a public key. Password/WIF required",
+    "error-user-fetch": "User data could not be fetched",
+    "error-user-not-found": "User does not exist",
+    "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "Нет аккаунта? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Зарегистрируйтесь!</a>",
     "login-with-sc": "Войти через",
     "divider-text": "или"
   },
   "create-pin-code": {
     "title": "Создайте ПИН код",
-    "desc1": "Установите ПИН код для шифрования данных и дополнительного уровня безопасности!",
-    "input-placeholder": "Введите ПИН код",
-    "desc2": "ПИН код требуется во время запуска и для важных транзакций.",
-    "created": "ПИН код создан"
+    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
+    "input-placeholder": "Enter PIN code",
+    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
+    "created": "PIN code created"
   },
   "confirm-pin-code": {
-    "title": "Введите ПИН код",
-    "input-placeholder": "для продолжения",
+    "title": "Enter PIN Code",
+    "input-placeholder": "Enter PIN code to continue",
     "last-chance": "Последняя попытка",
     "invalidate": "Ой, я не помню...",
-    "invalidate-confirm": "Вы действительно хотите аннулировать ПИН код?",
-    "invalidated": "ПИН код аннулирован"
+    "invalidate-confirm": "Do you really want to invalidate PIN code?",
+    "invalidated": "PIN code is invalidated"
   },
   "user-menu": {
     "profile": "Профиль",
@@ -146,14 +146,14 @@
     "unclaimed-rewards": "Зачислить награду",
     "estimated-value": "Предполагаемая стоимость. Основана на средней стоимости Steem последние 7 дней.",
     "steem": "Steem",
-    "steem-description": "Steem - это торгуемые токены, которые можно вывести в любое время. Steem можно конвертировать в Steem Power (Силу голоса), этот процесс называется Повышением силы.",
+    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
     "steem-power": "Steem Power (Сила)",
     "steem-power-description": "Steam Power (Сила) - это токены влияния, которые дают ещё больше силы, если их не выводить и использовать для голосования. Чем больше у вас Steem Power, тем больше ваше влияние на награды других и больше ваш заработок за удачные голосования.",
-    "steem-power-delegated": "Делегированная сила Steem Power",
-    "steem-power-received": "Полученная сила Steem Power",
-    "steem-power-total": "Всего Силы Steem Power",
+    "steem-power-delegated": "Delegated Steem Power",
+    "steem-power-received": "Received Steem Power",
+    "steem-power-total": "Total Steem Power",
     "steem-dollars": "Доллары Steem",
-    "steem-dollars-description": "Токены, стоимостью примерно $1 от токена Steem.",
+    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Сейф",
     "savings-description": "Сейф, баланс которого можно вывести в течение 3 дней после запроса.",
     "next-power-down": "Следующее понижение силы запланировано {time}",
@@ -236,12 +236,12 @@
     "title": "Черновики",
     "load-error": "Невозможно загрузить черновики",
     "empty-list": "Здесь пусто",
-    "deleted": "Черновик удалён"
+    "deleted": "Draft is deleted"
   },
   "schedules": {
     "title": "Отложенные (запланированные) посты",
     "empty-list": "Здесь пусто",
-    "deleted": "Отложенный пост удалён",
+    "deleted": "Scheduled post is deleted",
     "move": "Переместить в черновики",
     "moved": "Перемещён в черновики"
   },
@@ -249,7 +249,7 @@
     "title": "Закладки",
     "load-error": "Невозможно загрузить закладки",
     "empty-list": "Здесь пусто",
-    "deleted": "Закладка удалена",
+    "deleted": "Bookmark is removed",
     "search": "Поиск по закладкам"
   },
   "favorites": {
@@ -282,7 +282,7 @@
   "navbar": {
     "settings": "Настройки",
     "change-theme": "Сменить тему",
-    "login": "Войти в свой аккаунт",
+    "login": "Login to your account",
     "bookmark": "Добавить в закладки",
     "bookmarkRemove": "Убрать из закладок",
     "favorite": "Добавить в избранное",
@@ -291,7 +291,7 @@
     "activities": "Активности",
     "address-enter-url": "Введите url",
     "address-enter-query": "Введите поисковой запрос",
-    "unclaimed-reward-notice": "Есть незачисленные награды"
+    "unclaimed-reward-notice": "You have unclaimed rewards"
   },
   "search": {
     "n-results-for-q": "{n} результатов для {q}",
@@ -301,11 +301,11 @@
     "sort-newest": "Дате"
   },
   "updater": {
-    "new-version-available": "Доступна новая версия",
+    "new-version-available": "New version is available",
     "update": "Обновить",
     "dismiss": "Отклонить",
     "downloading": "Загрузка новой версии...",
-    "download-completed": "Загрузка завершена",
+    "download-completed": "Download is completed",
     "restart": "Перезапуск"
   },
   "context-menu": {
@@ -332,7 +332,7 @@
     "type-follows": "Подписки",
     "type-reblogs": "Репосты",
     "vote-str": "на {p}% нравится ваш пост:",
-    "reply-str": "ответил на ваш пост:",
+    "reply-str": "replied to your post:",
     "mention-str": "упомянул вас в:",
     "followed-str": "подписан",
     "unfollowed-str": "отписан",
@@ -365,7 +365,7 @@
     "proxy-active-exp": "Вы установили доверенного. Если вы хотите голосовать вручную, пожалуйста, снимите доверие.",
     "current-proxy": "Ваш доверенный: <strong>{n}</strong>",
     "remove-proxy": "Снять доверие",
-    "proxy-removed": "Доверенный снят",
+    "proxy-removed": "Proxy is cleared",
     "proxy-created": "@{n} ваш доверенный"
   },
   "transfer": {
@@ -375,7 +375,7 @@
     "transfer-saving-sub-title": "Защита средства от вывода трёхдневным периодом ожидания",
     "withdraw-saving-title": "Вывод из сейфа",
     "withdraw-saving-sub-title": "Снять средства после необходимого трёхдневного периода ожидания",
-    "power-up-title": "Перевести в Силу",
+    "power-up-title": "Convert to Steem Power",
     "power-up-sub-title": "Токены влияния, от которых зависит ваша сила голоса и заработок от курирования.",
     "from": "От",
     "from-placeholder": "Выберите пользователя",
@@ -392,7 +392,7 @@
     "memo": "Мемо",
     "memo-placeholder": "введите свою заметку",
     "memo-help": "Эта заметка публична",
-    "key-required-err": "Не найден Активный ключ для выбранного аккаунта. Убедитесь, что вы вошли используя ключи с возможностью перевода.",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
     "next": "Далее",
     "confirm-title": "Подтвердите перевод",
     "confirm-sub-title": "Пожалуйста, убедитесь что всё верно",
