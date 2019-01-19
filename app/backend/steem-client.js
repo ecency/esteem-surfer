@@ -644,7 +644,7 @@ export const transferToVesting = (account,
         {
           from,
           to,
-          amount,
+          amount
         }
       ]
     ];
@@ -654,5 +654,36 @@ export const transferToVesting = (account,
 
   if (account.type === 'sc') {
     return scTransferToVesting(from, to, amount);
+  }
+};
+
+
+export const delegateVestingShares = (account,
+                                      pin,
+                                      delegatee,
+                                      vestingShares) => {
+
+  const { username: delegator } = account;
+
+  if (account.type === 's') {
+    const key = decryptKey(account.keys.active, pin);
+    const privateKey = PrivateKey.fromString(key);
+
+    const opArray = [
+      [
+        'delegate_vesting_shares',
+        {
+          delegator,
+          delegatee,
+          vesting_shares: vestingShares
+        }
+      ]
+    ];
+
+    return client.broadcast.sendOperations(opArray, privateKey);
+  }
+
+  if (account.type === 'sc') {
+    // return scTransferToVesting(from, delegatee, vestingShares);
   }
 };

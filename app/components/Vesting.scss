@@ -1,0 +1,242 @@
+@import '../style/mixins';
+@import '../style/colors';
+
+.delegate-page {
+  overflow-y: auto;
+
+  .transfer-box {
+    border-radius: 4px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+    margin: 50px auto 0 auto;
+    width: 680px;
+
+    .transfer-box-header {
+      align-items: center;
+      display: flex;
+      padding: 15px 27px;
+
+      @include themify(day) {
+        border-bottom: 1px solid $white-four;
+      }
+
+      @include themify(night) {
+        border-bottom: 1px solid $dusky-blue-two;
+      }
+
+      .step-no {
+        color: $silver;
+        flex-grow: 0;
+        flex-shrink: 0;
+        font-size: 48px;
+        font-weight: 700;
+        margin-right: 8px;
+      }
+
+      .box-titles {
+        flex-grow: 1;
+        .main-title {
+          font-size: 16px;
+          font-weight: 500;
+          margin-bottom: 4px;
+
+          @include themify(day) {
+            color: $charcoal-grey;
+          }
+
+          @include themify(night) {
+            color: $pinkish-grey;
+          }
+        }
+
+        .sub-title {
+          font-weight: 300;
+
+          @include themify(day) {
+            color: $steel-grey;
+          }
+
+          @include themify(night) {
+            color: $metallic-blue;
+          }
+        }
+      }
+    }
+
+    .transfer-box-body {
+      border-top: 1px solid transparent;
+      padding: 24px 32px;
+
+      .transfer-alert {
+        margin-bottom: 20px;
+      }
+
+      .transfer-form {
+        .form-item {
+          @include clearfix();
+          margin-bottom: 16px;
+
+          .form-label {
+            float: left;
+            padding-top: 0.6em;
+            width: 100px;
+
+            @include themify(day) {
+              color: $steel-grey;
+            }
+
+            @include themify(night) {
+              color: $silver;
+            }
+          }
+
+          .form-input {
+            float: left;
+            width: calc(100% - 100px);
+
+            .input-help {
+              font-weight: 300;
+              margin: 12px 0;
+
+              @include themify(day) {
+                color: $charcoal-grey;
+              }
+
+              @include themify(night) {
+                color: $pinkish-grey;
+              }
+            }
+
+            .ant-slider {
+              padding-top: 0;
+            }
+          }
+
+          &.has-error {
+            .form-input {
+              input[type='text'] {
+                border-color: $red2;
+              }
+
+              .input-help {
+                color: $red2;
+              }
+            }
+          }
+
+          .select-from,
+          .to-input {
+            width: 100%;
+          }
+        }
+
+        .steem-power {
+          color: $dark-sky-blue;
+          font-size: 20px;
+          font-weight: 500;
+          height: 1em;
+          margin-bottom: 30px;
+          text-align: center;
+        }
+
+        .form-controls {
+          align-items: center;
+          display: flex;
+          justify-content: center;
+
+          .btn-back {
+            color: $silver;
+            margin-right: 10px;
+            &:hover {
+              color: $charcoal-grey;
+            }
+          }
+        }
+      }
+
+      .confirmation {
+        margin-bottom: 30px;
+
+        .users {
+          display: flex;
+          justify-content: space-around;
+          margin-bottom: 20px;
+
+          .from-user,
+          .to-user,
+          .arrow {
+            height: 100px;
+            width: 100px;
+          }
+
+          .from-user,
+          .to-user {
+            cursor: pointer;
+            .user-avatar {
+              height: 100%;
+              width: 100%;
+            }
+          }
+
+          .arrow {
+            align-items: center;
+            color: $silver;
+            display: flex;
+            justify-content: center;
+            opacity: 0.4;
+
+            svg {
+              height: 60px;
+              width: 60px;
+            }
+          }
+        }
+
+        .amount-vest,
+        .amount-sp {
+          font-weight: 500;
+          text-align: center;
+        }
+
+        .amount-sp {
+          color: $dark-sky-blue;
+          font-size: 22px;
+          margin-bottom: 10px;
+        }
+
+        .amount-vest {
+          color: $charcoal-grey;
+          font-size: 16px;
+        }
+      }
+
+      .success {
+        font-size: 16px;
+        margin-bottom: 30px;
+        text-align: center;
+
+        @include themify(day) {
+          color: $charcoal-grey;
+        }
+
+        @include themify(night) {
+          color: $pinkish-grey;
+        }
+
+        .amount {
+          color: $dark-sky-blue;
+        }
+
+        .sp,
+        .to-user {
+          font-weight: 700;
+        }
+      }
+    }
+
+    &.in-progress {
+      .transfer-box-body {
+        border-top: none;
+      }
+    }
+  }
+}

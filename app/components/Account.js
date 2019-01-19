@@ -764,6 +764,7 @@ export class SectionWallet extends Component {
       const isMyPage = activeAccount && activeAccount.username === username;
 
       let actionListSteem;
+      let actionListSp;
       let actionListSbd;
       let actionListWithdrawSteem;
       let actionListWithdrawSbd;
@@ -785,6 +786,15 @@ export class SectionWallet extends Component {
               <FormattedMessage id="account.power-up"/>
             </Link>
           </Menu.Item>
+        </Menu>;
+
+        actionListSp = <Menu className="surfer-dropdown-menu">
+          <Menu.Item key="delegate">
+            <Link to={`/@${activeAccount.username}/delegate`}>
+              <FormattedMessage id="account.delegate"/>
+            </Link>
+          </Menu.Item>
+
         </Menu>;
 
         actionListSbd = <Menu className="surfer-dropdown-menu">
@@ -887,7 +897,11 @@ export class SectionWallet extends Component {
                   <div className="fund-number">
                     <FormattedNumber minimumFractionDigits={3} value={vestsToSp(vestingShares, steemPerMVests)}/> {'SP'}
                   </div>
-                  <div className="fund-action"/>
+                  <div className="fund-action">
+                    {isMyPage &&
+                    <DropDown menu={actionListSp} location={location}/>
+                    }
+                  </div>
                 </div>
 
                 {vestingSharesDelegated > 0 &&
