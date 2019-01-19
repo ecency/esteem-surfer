@@ -89,20 +89,20 @@
     "title": "Kreirajte PIN kod",
     "desc1": "Postavite PIN kod za enkripciju vaših podataka i omogućite dodatni nivo bezbednosti!",
     "input-placeholder": "Unesite PIN kod",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
-    "created": "PIN code created"
+    "desc2": "Bićete upitani da unesete PIN kod za ključne transakcije, kao i pri svakom pokretanju.",
+    "created": "PIN kod je kreiran"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
-    "input-placeholder": "Enter PIN code to continue",
-    "last-chance": "This is your last chance",
-    "invalidate": "Oh, I forgot it...",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "title": "Unesite PIN kod",
+    "input-placeholder": "Unesite PIN kod da biste nastavili",
+    "last-chance": "Ovo je vaša poslednja prilika",
+    "invalidate": "Jao, zaboravio sam...",
+    "invalidate-confirm": "Da li zaista želite da poništite PIN kod?",
+    "invalidated": "PIN kod je poništen"
   },
   "user-menu": {
-    "profile": "Profile",
-    "bookmarks": "Bookmarks",
+    "profile": "Profil",
+    "bookmarks": "Omiljeno",
     "favorites": "Favorites",
     "drafts": "Drafts",
     "schedules": "Schedules",
