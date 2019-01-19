@@ -275,7 +275,7 @@
     "favoriteRemoved": "お気に入りから削除しました",
     "copy-clipboard": "クリップボードに内部リンクをコピー",
     "copied-clipboard": "コピーしました",
-    "comment-entry-title": "You are viewing a single comment's thread from: ",
+    "comment-entry-title": "1つのコメントスレッドを表示しています: ",
     "comment-entry-go-root": "全文を表示",
     "comment-entry-go-parent": "親コメントを表示"
   },
@@ -294,7 +294,7 @@
     "unclaimed-reward-notice": "未請求の報酬があります"
   },
   "search": {
-    "n-results-for-q": "{n} results for {q}",
+    "n-results-for-q": "{q} の検索結果の内{n}",
     "sort-by": "並び替え",
     "sort-popularity": "人気",
     "sort-relevance": "関連",
@@ -400,7 +400,7 @@
     "back": "戻る",
     "success-title": "成功",
     "success-sub-title": "送金成功",
-    "transfer-summary": "Transferred <span class=\"amount\">{amount}</span> From <span class=\"from-user\">{from}</span> to <span class=\"to-user\">{to}</span>",
+    "transfer-summary": "送金しました<span class=\"amount\">{amount}</span>From<span class=\"from-user\">{from}</span>to<span class=\"to-user\">{to}</span>",
     "reset": "別の送金",
     "finish": "終了",
     "recent-transfers": "最近の送金"
