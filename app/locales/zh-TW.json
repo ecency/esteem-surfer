@@ -8,7 +8,7 @@
     "cancel": "取消",
     "ok": "好",
     "edit": "編輯",
-    "server-error": "由於伺服器錯誤, 進程無法完成",
+    "server-error": "Process could not be completed due to server error",
     "save": "儲存",
     "done": "完成",
     "select": "選擇"
@@ -62,7 +62,7 @@
     "server-connecting": "連接到 \"{server}\"...",
     "server-connect-error": "無法連接到 \"{server}\"。請確保您有良好的網際網路連接。",
     "server-timeout-error": "'{server}' 似乎不存在",
-    "server-changed": "伺服器更改為 {server}",
+    "server-changed": "Server selection changed to {server}",
     "server-custom-address": "自訂伺服器位址",
     "server-list-fetch-error": "無法取得伺服器列表",
     "push-notifications": "推送通知",
@@ -74,31 +74,31 @@
     "accounts-title": "登錄為",
     "traditional-login-desc": "請以您的使用者賬號與密碼登入",
     "username-placeholder": "使用者名稱",
-    "password-placeholder": "密碼或WIF",
+    "password-placeholder": "password or WIF",
     "login": "登入",
-    "error-fields-required": "請輸入使用者名稱和密碼（或WIF）:",
-    "error-public-key": "您輸入了公開秘鑰，必須輸入密碼/WIF",
-    "error-user-fetch": "無法獲取用戶資料",
-    "error-user-not-found": "用戶不存在",
-    "error-authenticate": "錯誤的使用者名稱或密碼/WIF",
+    "error-fields-required": "Please enter username and password/WIF",
+    "error-public-key": "You entered a public key. Password/WIF required",
+    "error-user-fetch": "User data could not be fetched",
+    "error-user-not-found": "User does not exist",
+    "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "還沒有賬戶？<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">立即註冊！</a>",
     "login-with-sc": "登入方式",
     "divider-text": "或"
   },
   "create-pin-code": {
     "title": "創建PIN碼",
-    "desc1": "設置PIN碼來加密您的資料，並啟用額外的安全保護！",
-    "input-placeholder": "輸入 PIN 碼",
-    "desc2": "每次啟動和進行重要交易時，將提示您輸入PIN碼。",
-    "created": "已創建PIN碼"
+    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
+    "input-placeholder": "Enter PIN code",
+    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
+    "created": "PIN code created"
   },
   "confirm-pin-code": {
-    "title": "請輸入PIN碼",
-    "input-placeholder": "輸入PIN碼以繼續",
+    "title": "Enter PIN Code",
+    "input-placeholder": "Enter PIN code to continue",
     "last-chance": "這是您的最後一次機會",
     "invalidate": "哦，我忘記了......",
-    "invalidate-confirm": "您是否真的想要作廢PIN碼？",
-    "invalidated": "PIN碼已作廢"
+    "invalidate-confirm": "Do you really want to invalidate PIN code?",
+    "invalidated": "PIN code is invalidated"
   },
   "user-menu": {
     "profile": "個人檔案",
@@ -146,14 +146,14 @@
     "unclaimed-rewards": "未領取的報酬",
     "estimated-value": "概估價值是以Steem7天之平均價為基礎",
     "steem": "Steem",
-    "steem-description": "Steem是可交易的貨幣，隨時可以進行移轉。Steem可以被轉換成Steem Power，此一動作稱為Power Up。",
+    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
     "steem-power": "Steem Power",
     "steem-power-description": "Steem Power 可視為具有影響力的股權，持有可長期增值並對文章投票。持有Steem Power數量越多對於其他人獎勵大小的影響力就越大，也更能從準確的投票行為中獲得獎勵。",
-    "steem-power-delegated": "已代理的Steem Power",
-    "steem-power-received": "收到的Steem Power",
-    "steem-power-total": "總的Steem Power",
+    "steem-power-delegated": "Delegated Steem Power",
+    "steem-power-received": "Received Steem Power",
+    "steem-power-total": "Total Steem Power",
     "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "價值約$1.00 Steem的代幣。",
+    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "儲蓄",
     "savings-description": "餘額有3天的取款等待期。",
     "next-power-down": "下一次Power Down時間是 {time}",
@@ -236,12 +236,12 @@
     "title": "草稿",
     "load-error": "無法載入草稿",
     "empty-list": "暫無內容！",
-    "deleted": "草稿已刪除"
+    "deleted": "Draft is deleted"
   },
   "schedules": {
     "title": "計劃的帖子",
     "empty-list": "暫無內容！",
-    "deleted": "已刪除計畫的帖子",
+    "deleted": "Scheduled post is deleted",
     "move": "儲存為草稿",
     "moved": "已儲存為草稿"
   },
@@ -249,7 +249,7 @@
     "title": "書籤",
     "load-error": "無法載入書籤",
     "empty-list": "暫無內容！",
-    "deleted": "已移除書籤",
+    "deleted": "Bookmark is removed",
     "search": "搜尋書籤"
   },
   "favorites": {
@@ -282,7 +282,7 @@
   "navbar": {
     "settings": "設定",
     "change-theme": "變更主題",
-    "login": "登入您的賬戶",
+    "login": "Login to your account",
     "bookmark": "添加到書簽",
     "bookmarkRemove": "從書簽中刪除",
     "favorite": "添加到「我的最愛」",
@@ -291,7 +291,7 @@
     "activities": "活動",
     "address-enter-url": "輸入網址",
     "address-enter-query": "輸入搜尋字串 ",
-    "unclaimed-reward-notice": "您有未認領的獎勵"
+    "unclaimed-reward-notice": "You have unclaimed rewards"
   },
   "search": {
     "n-results-for-q": "{q} 有 {n} 個結果",
@@ -301,11 +301,11 @@
     "sort-newest": "日期"
   },
   "updater": {
-    "new-version-available": "發現新版本",
+    "new-version-available": "New version is available",
     "update": "更新",
     "dismiss": "忽略",
     "downloading": "正在下載新版本...",
-    "download-completed": "下載完成",
+    "download-completed": "Download is completed",
     "restart": "重新啟動"
   },
   "context-menu": {
@@ -332,7 +332,7 @@
     "type-follows": "跟隨",
     "type-reblogs": "轉發",
     "vote-str": "{p}% 人點贊了您的帖子:",
-    "reply-str": "回復了您的帖子:",
+    "reply-str": "replied to your post:",
     "mention-str": "提到了您:",
     "followed-str": "已跟隨",
     "unfollowed-str": "取消跟隨",
@@ -365,7 +365,7 @@
     "proxy-active-exp": "您已經設置了一個投票代理。如果您想重新啟用手動投票，請清除您的代理。",
     "current-proxy": "您當前的代理是: <strong>{n}</strong>",
     "remove-proxy": "清除代理",
-    "proxy-removed": "已清除代理",
+    "proxy-removed": "Proxy is cleared",
     "proxy-created": "@{n} 已設置為代理"
   },
   "transfer": {
@@ -375,7 +375,7 @@
     "transfer-saving-sub-title": "提款要求3天的取款等待期來保護資金",
     "withdraw-saving-title": "儲蓄提款",
     "withdraw-saving-sub-title": "必須在規定的3天等待期後提取資金",
-    "power-up-title": "轉換為Steem Power",
+    "power-up-title": "Convert to Steem Power",
     "power-up-sub-title": "有影響力的代幣，讓您對帖子的收益有更多的控制權，並讓您可以獲得審查獎勵。",
     "from": "從",
     "from-placeholder": "選擇使用者",
@@ -392,7 +392,7 @@
     "memo": "備註",
     "memo-placeholder": "在此處輸入您的附言",
     "memo-help": "這份備忘錄是公開的",
-    "key-required-err": "找不到所選賬戶的有效秘鑰（active key）。請確保使用正確的憑據登錄。",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
     "next": "繼續",
     "confirm-title": "確認您的轉賬",
     "confirm-sub-title": "請檢查一切是否正確",
