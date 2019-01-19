@@ -8,7 +8,7 @@
     "cancel": "Elvet",
     "ok": "Rendben",
     "edit": "Szerkesztés",
-    "server-error": "Process could not completed due to server error",
+    "server-error": "Process could not be completed due to server error",
     "save": "Mentés",
     "done": "Kész",
     "select": "Kiválaszt"
@@ -62,7 +62,7 @@
     "server-connecting": "Kapcsolódás '{server}'...",
     "server-connect-error": "Nem sikerült csatlakozni a '{server}'-hez. Ellenőrizd az internet kapcsolatot.",
     "server-timeout-error": "'{server}' úgy néz ki nem elérhető",
-    "server-changed": "Szerver {server}-re váltva",
+    "server-changed": "Server selection changed to {server}",
     "server-custom-address": "Custom server address",
     "server-list-fetch-error": "Could not fetch server list",
     "push-notifications": "Push Notifications",
@@ -74,31 +74,31 @@
     "accounts-title": "Bejelentkezés mint",
     "traditional-login-desc": "A folytatáshoz jelentkezz be a felhasználóneveddel és jelszavaddal",
     "username-placeholder": "felhasználónév",
-    "password-placeholder": "jelszó vagy wif",
+    "password-placeholder": "password or WIF",
     "login": "Bejelentkezés",
-    "error-fields-required": "Kérjük add meg felhasználóneved és jelszavad/wif-ed",
-    "error-public-key": "You entered a public key. Password/wif required",
-    "error-user-fetch": "User data could not fetched",
-    "error-user-not-found": "A felhasználó nem létezik",
-    "error-authenticate": "Helytelen felhasználónév vagy jelszó/wif",
+    "error-fields-required": "Please enter username and password/WIF",
+    "error-public-key": "You entered a public key. Password/WIF required",
+    "error-user-fetch": "User data could not be fetched",
+    "error-user-not-found": "User does not exist",
+    "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "Nincs fiókod? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">hozd létre most most!</a>",
     "login-with-sc": "Bejelentkezés mint",
     "divider-text": "VAGY"
   },
   "create-pin-code": {
     "title": "PIN-kód létrehozása",
-    "desc1": "Set pin code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Add meg a PIN kódot",
-    "desc2": "You will be prompted to enter pin code for crucial transactions as well as on every launch.",
-    "created": "Pin-kód létrehozva"
+    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
+    "input-placeholder": "Enter PIN code",
+    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
+    "created": "PIN code created"
   },
   "confirm-pin-code": {
-    "title": "Add meg a PIN kódot",
-    "input-placeholder": "A folytatáshoz add meg a PIN kódot",
+    "title": "Enter PIN Code",
+    "input-placeholder": "Enter PIN code to continue",
     "last-chance": "Utolsó lehetőség",
     "invalidate": "Ó elfelejtettem...",
-    "invalidate-confirm": "Are you really want to invalidate pin code?",
-    "invalidated": "Pin code invalidated"
+    "invalidate-confirm": "Do you really want to invalidate PIN code?",
+    "invalidated": "PIN code is invalidated"
   },
   "user-menu": {
     "profile": "Profil",
@@ -146,14 +146,14 @@
     "unclaimed-rewards": "Átvételre váró jutalom",
     "estimated-value": "The estimated value is based on a 7 day average value of Steem.",
     "steem": "Steem",
-    "steem-description": "Steem are tradeable tokens that may be transferred at anytime. Steem can be converted to Steem Power in a process called powering up.",
+    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
     "steem-power": "Steem Power",
     "steem-power-description": "Steem Power are influence tokens that earn more power for holding long term and voting on posts. The more Steem Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
-    "steem-power-delegated": "Delegált Steem power",
-    "steem-power-received": "Received steem power",
-    "steem-power-total": "Total steem power",
+    "steem-power-delegated": "Delegated Steem Power",
+    "steem-power-received": "Received Steem Power",
+    "steem-power-total": "Total Steem Power",
     "steem-dollars": "Steem Dollár",
-    "steem-dollars-description": "Tokens worth about $1.00 of Steem.",
+    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Megtakarítások",
     "savings-description": "Balance subject to 3 day withdraw waiting period.",
     "next-power-down": "The next power down is {time}",
@@ -236,12 +236,12 @@
     "title": "Piszkozat",
     "load-error": "Nem sikerült betölteni a piszkozatot",
     "empty-list": "Itt nincs semmi",
-    "deleted": "Piszkozat törölve"
+    "deleted": "Draft is deleted"
   },
   "schedules": {
     "title": "Scheduled Posts",
     "empty-list": "Itt nincs semmi",
-    "deleted": "A beütemezett bejegyzés törölve",
+    "deleted": "Scheduled post is deleted",
     "move": "Áthelyezés a vázlatokhoz",
     "moved": "Áthelyezve a vázlatokhoz"
   },
@@ -249,7 +249,7 @@
     "title": "Könyvjelzők",
     "load-error": "Nem sikerült betölteni a piszkozatokat",
     "empty-list": "Itt nincs semmi",
-    "deleted": "Könyvjelző eltávolítva",
+    "deleted": "Bookmark is removed",
     "search": "Keresés a könyvjelzők között"
   },
   "favorites": {
@@ -282,7 +282,7 @@
   "navbar": {
     "settings": "Beállítások",
     "change-theme": "Téma megváltoztatása",
-    "login": "Login to you account",
+    "login": "Login to your account",
     "bookmark": "Hozzáadás a könyvjelzőkhöz",
     "bookmarkRemove": "Eltávolítás a könyvjelzőkből",
     "favorite": "Hozzáadás a kedvencekhez",
@@ -291,7 +291,7 @@
     "activities": "Tevékenységek",
     "address-enter-url": "Url megadása",
     "address-enter-query": "Enter search query",
-    "unclaimed-reward-notice": "You have unclaimed reward"
+    "unclaimed-reward-notice": "You have unclaimed rewards"
   },
   "search": {
     "n-results-for-q": "{n} találat {q} keresésre",
@@ -301,11 +301,11 @@
     "sort-newest": "Dátum"
   },
   "updater": {
-    "new-version-available": "Új verzió elérhető",
+    "new-version-available": "New version is available",
     "update": "Frissítés",
     "dismiss": "Elvetés",
     "downloading": "Új verzió letöltése...",
-    "download-completed": "Letöltés kész",
+    "download-completed": "Download is completed",
     "restart": "Újraindítás"
   },
   "context-menu": {
@@ -332,7 +332,7 @@
     "type-follows": "Követések",
     "type-reblogs": "Megosztások",
     "vote-str": "{p}% nak tetszik a bejegyzésed:",
-    "reply-str": "hozzászolt a bejegyzésedhez:",
+    "reply-str": "replied to your post:",
     "mention-str": "mentioned you in:",
     "followed-str": "followed",
     "unfollowed-str": "követés visszavonva",
@@ -365,7 +365,7 @@
     "proxy-active-exp": "Proxy szavazás beállítva. Ha újra kézi szavazást szeretnél, kérjük töröld a proxy-t.",
     "current-proxy": "Your current proxy is: <strong>{n}</strong>",
     "remove-proxy": "Proxy Törlése",
-    "proxy-removed": "Proxy törölve",
+    "proxy-removed": "Proxy is cleared",
     "proxy-created": "@{n} proxiként beállítva"
   },
   "transfer": {
@@ -375,7 +375,7 @@
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
     "withdraw-saving-title": "Megtakarítások visszavonása",
     "withdraw-saving-sub-title": "Withdraw funds after the required 3 day waiting period",
-    "power-up-title": "Convert to STEEM POWER",
+    "power-up-title": "Convert to Steem Power",
     "power-up-sub-title": "Influence tokens which give you more control over post payouts and allow you to earn on curation rewards.",
     "from": "Feladó",
     "from-placeholder": "Válassz ki egy felhasználót",
@@ -392,7 +392,7 @@
     "memo": "Üzenet",
     "memo-placeholder": "ide írjd a megjegyzést",
     "memo-help": "Ez az üzenet nyilvános",
-    "key-required-err": "Active key could not found for selected account. Please make sure logged in with proper credentials.",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
     "next": "Következő",
     "confirm-title": "Erősítsd meg az átutalást",
     "confirm-sub-title": "Kérjük ellenőrizd, hogy minden rendben",
