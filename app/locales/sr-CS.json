@@ -5,16 +5,16 @@
     "yes": "Da",
     "no": "Ne",
     "delete": "Izbriši",
-    "cancel": "Cancel",
-    "ok": "OK",
-    "edit": "Edit",
-    "server-error": "Process could not completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "cancel": "Otkaži",
+    "ok": "U redu",
+    "edit": "Izmeni",
+    "server-error": "Proces se nije završio zbog greške na serveru",
+    "save": "Sačuvaj",
+    "done": "Gotovo",
+    "select": "Izaberi"
   },
   "footer": {
-    "faq": "FAQ",
+    "faq": "Čеsto postavljana pitanja",
     "about": "About"
   },
   "entry-index": {
