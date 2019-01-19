@@ -29,11 +29,11 @@
     "filter-feed": "フィード"
   },
   "entry-payout": {
-    "potential-payout": "見込み支払い",
+    "potential-payout": "見込み支払い額",
     "promoted": "プロモート",
-    "author-payout": "投稿者の支払い",
-    "curation-payout": "キュレータの支払い",
-    "payout-date": "ペイアウト"
+    "author-payout": "著者支払い額",
+    "curation-payout": "キュレーター支払い額",
+    "payout-date": "支払い額"
   },
   "entry-votes": {
     "n-more": "{n} more",
@@ -53,7 +53,7 @@
   "settings": {
     "title": "設定",
     "currency": "通貨",
-    "currency-fetch-error": "'{cur}'の通貨レートを取り出すことができませんでした",
+    "currency-fetch-error": "'{cur}'の通貨レートを取得できませんでした",
     "currency-changed": "通貨が変更されました",
     "locale": "言語",
     "locale-changed": "言語が変更されました",
