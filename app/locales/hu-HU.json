@@ -29,7 +29,7 @@
     "filter-feed": "Feed"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
+    "potential-payout": "Lehetséges Kifizetés",
     "promoted": "Támogatott",
     "author-payout": "Szerzői Kifizetés",
     "curation-payout": "Kurátori Kifizetés",
@@ -58,7 +58,7 @@
     "locale": "Nyelv",
     "locale-changed": "Nyelv megváltoztatva",
     "server": "Szerver",
-    "server-invalid-address": "Invalid server address",
+    "server-invalid-address": "Érvénytelen szerver cím",
     "server-connecting": "Kapcsolódás '{server}'...",
     "server-connect-error": "Nem sikerült csatlakozni a '{server}'-hez. Ellenőrizd az internet kapcsolatot.",
     "server-timeout-error": "'{server}' úgy néz ki nem elérhető",
@@ -317,7 +317,7 @@
   },
   "notification": {
     "popup-title": "Van egy új értesítésed",
-    "voted": "{source} voted your post",
+    "voted": "{source} szavazott a bejegyzésedre",
     "mention-post": "{source} említett egy bejegyzésben",
     "mention-comment": "{source} említett egy hozzászólásban",
     "followed": "{source} követ téged",
@@ -370,7 +370,7 @@
   },
   "transfer": {
     "transfer-title": "Átutalás más számlára",
-    "transfer-sub-title": "Move funds to another Steem account",
+    "transfer-sub-title": "Tőke átutalása egy másik Steem számlára",
     "transfer-saving-title": "Transfer to Savings",
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
     "withdraw-saving-title": "Megtakarítások visszavonása",
@@ -390,7 +390,7 @@
     "insufficient-funds": "Nincs elegendő fedezet",
     "balance": "Egyenleg",
     "memo": "Üzenet",
-    "memo-placeholder": "enter your notes here",
+    "memo-placeholder": "ide írjd a megjegyzést",
     "memo-help": "Ez az üzenet nyilvános",
     "key-required-err": "Active key could not found for selected account. Please make sure logged in with proper credentials.",
     "next": "Következő",
