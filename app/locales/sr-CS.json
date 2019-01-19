@@ -62,7 +62,7 @@
     "server-connecting": "Povezivanje na '{server}'...",
     "server-connect-error": "Nije uspelo povezivanje na '{server}'. Uverite se da imate dobru internet vezu.",
     "server-timeout-error": "Izgleda da je '{server}' nedostupan",
-    "server-changed": "Server selection changed to {server}",
+    "server-changed": "Izbor servera je promenjen na {server}",
     "server-custom-address": "Custom server address",
     "server-list-fetch-error": "Could not fetch server list",
     "push-notifications": "Push Notifications",
