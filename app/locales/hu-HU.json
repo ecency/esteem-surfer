@@ -335,7 +335,7 @@
     "reply-str": "hozzászolt a bejegyzésedhez:",
     "mention-str": "mentioned you in:",
     "followed-str": "followed",
-    "unfollowed-str": "unfollowed",
+    "unfollowed-str": "követés visszavonva",
     "ignored-str": "ignored",
     "reblog-str": "megosztotta a bejegyzésed:",
     "empty-list": "Itt nincs semmi",
