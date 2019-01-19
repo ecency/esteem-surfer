@@ -8,7 +8,7 @@
     "cancel": "Batai",
     "ok": "Oke",
     "edit": "Ubah",
-    "server-error": "Proses han jeut seuleusoe, na masalah bak server",
+    "server-error": "Process could not be completed due to server error",
     "save": "Ka meukeubah",
     "done": "Seulesoe",
     "select": "Pileh"
@@ -62,7 +62,7 @@
     "server-connecting": "Meuhubong u '{server}'...",
     "server-connect-error": "Hanjeut meuhubong u '{server}'. Ci peureksa koneksi internet droen.",
     "server-timeout-error": "'{server}' hana udeep",
-    "server-changed": "Server ka meu ubah u {server}",
+    "server-changed": "Server selection changed to {server}",
     "server-custom-address": "Alamat server khusus",
     "server-list-fetch-error": "Han jeut buka daftar server",
     "push-notifications": "Teugön Haba",
@@ -74,31 +74,31 @@
     "accounts-title": "Tamong seubagoe",
     "traditional-login-desc": "Tamong dengeun nan pengguna ngon kata gunci droen keu ta lanjut",
     "username-placeholder": "nan pengguna",
-    "password-placeholder": "gunci atawa Wif",
+    "password-placeholder": "password or WIF",
     "login": "Tamong",
-    "error-fields-required": "Peutamong nan pengguna ngon gunci/wif",
-    "error-public-key": "Droen neu pasoe gunci umum. Peureule gunci/wif",
-    "error-user-fetch": "Han jeut cok data pengguna",
-    "error-user-not-found": "Hana pengguna",
-    "error-authenticate": "Meusalah nan pengguna atawa gunci/wif",
+    "error-fields-required": "Please enter username and password/WIF",
+    "error-public-key": "You entered a public key. Password/WIF required",
+    "error-user-fetch": "User data could not be fetched",
+    "error-user-not-found": "User does not exist",
+    "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "Hana akun? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Daftar ilee!</a>",
     "login-with-sc": "Tamong deungon",
     "divider-text": "Atawa"
   },
   "create-pin-code": {
     "title": "Peugoet Kode PIN",
-    "desc1": "Set pin code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Pasoe kode pin",
-    "desc2": "You will be prompted to enter pin code for crucial transactions as well as on every launch.",
-    "created": "Ka lheuh peugoet kode PIN"
+    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
+    "input-placeholder": "Enter PIN code",
+    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
+    "created": "PIN code created"
   },
   "confirm-pin-code": {
-    "title": "Pasoe kode pin",
-    "input-placeholder": "Pasoe kode pin keu teunamah",
+    "title": "Enter PIN Code",
+    "input-placeholder": "Enter PIN code to continue",
     "last-chance": "Nyoe yang paleng akhe",
     "invalidate": "Oh, lôn tuwoe nyan...",
-    "invalidate-confirm": "Are you really want to invalidate pin code?",
-    "invalidated": "Kode pin bateue"
+    "invalidate-confirm": "Do you really want to invalidate PIN code?",
+    "invalidated": "PIN code is invalidated"
   },
   "user-menu": {
     "profile": "Profil",
@@ -146,14 +146,14 @@
     "unclaimed-rewards": "Upah Galoem Cöek",
     "estimated-value": "Nilai yang ka dikira-kira meudasar nibak 7 uroe yuem rata-rata dari {}.",
     "steem": "Steem",
-    "steem-description": "{}, token yang jeut ta publoe nakeuh jeut ta transfer sibarangkajan. {} Jeut ta konversi keu {} dengeun proses yang di kheun dengeun powering up.",
+    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
     "steem-power": "Teunaga Steem",
     "steem-power-description": "{{platformpower}}, token meupengarouh yang meuhasee power leubeh untuk jangka trep dan vote dalam post. Leubeh leu geumat power leubeh leu peungarouh dalam reward ureung laen dan meutumee reward keu voting yang teupat.",
-    "steem-power-delegated": "Kirem Teunaga Steem",
-    "steem-power-received": "Teurimong Teunaga Steem",
-    "steem-power-total": "Total Teunaga Steem",
+    "steem-power-delegated": "Delegated Steem Power",
+    "steem-power-received": "Received Steem Power",
+    "steem-power-total": "Total Steem Power",
     "steem-dollars": "Steem Dolar",
-    "steem-dollars-description": "Yuem token kira-kira {} keu {}.",
+    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Keunëubah",
     "savings-description": "Balance subject to 3 day withdraw waiting period.",
     "next-power-down": "Power yang rhet selanjut jih adalah {time}",
@@ -236,12 +236,12 @@
     "title": "Konsep",
     "load-error": "Hanjeut keumah konsep",
     "empty-list": "Hana sapëuna",
-    "deleted": "Konsep kalhëuh meusampöh"
+    "deleted": "Draft is deleted"
   },
   "schedules": {
     "title": "Peujadual Post",
     "empty-list": "Hana sapëuna",
-    "deleted": "Post meujadwal kalhëuh meusampöh",
+    "deleted": "Scheduled post is deleted",
     "move": "Pinah lam konsep",
     "moved": "Kalheuh pinah lam konsep"
   },
@@ -249,7 +249,7 @@
     "title": "Pëunanda",
     "load-error": "Hanjeut keumah tanda",
     "empty-list": "Hana sapëuna",
-    "deleted": "Pëunanda buku kalhëuh meusampöh",
+    "deleted": "Bookmark is removed",
     "search": "Mita lam buku pëunanda"
   },
   "favorites": {
@@ -282,7 +282,7 @@
   "navbar": {
     "settings": "Meu Atoe",
     "change-theme": "Gantoe Tema",
-    "login": "Tamong keu akun droen",
+    "login": "Login to your account",
     "bookmark": "Tamah bak peutanda",
     "bookmarkRemove": "Sampoh bak peutanda",
     "favorite": "Tamah bak geugalak",
@@ -291,7 +291,7 @@
     "activities": "Peukateun",
     "address-enter-url": "Peutamong Url",
     "address-enter-query": "Enter search query",
-    "unclaimed-reward-notice": "You have unclaimed reward"
+    "unclaimed-reward-notice": "You have unclaimed rewards"
   },
   "search": {
     "n-results-for-q": "{n} hasee dari {q}",
@@ -301,11 +301,11 @@
     "sort-newest": "Tanggai"
   },
   "updater": {
-    "new-version-available": "Na mode baroe",
+    "new-version-available": "New version is available",
     "update": "Peubarô",
     "dismiss": "Tulak",
     "downloading": "Neupeutroen nyang baroe...",
-    "download-completed": "Ka seuleusoe neupeutroen",
+    "download-completed": "Download is completed",
     "restart": "Setel Ulang"
   },
   "context-menu": {
@@ -332,7 +332,7 @@
     "type-follows": "Ikot",
     "type-reblogs": "Reblogs",
     "vote-str": "{p}% galak post dröen:",
-    "reply-str": "balah keu post dröen:",
+    "reply-str": "replied to your post:",
     "mention-str": "seubut dröen:",
     "followed-str": "peungikoët",
     "unfollowed-str": "bek seutot lee",
@@ -365,7 +365,7 @@
     "proxy-active-exp": "You have set a voting proxy. If you would like to re-enable manual voting, please clear your proxy.",
     "current-proxy": "Proxy droen jinoe: <strong>{n}</strong>",
     "remove-proxy": "Meusampoh Proxy",
-    "proxy-removed": "Meusampoh mandum proxy",
+    "proxy-removed": "Proxy is cleared",
     "proxy-created": "@{n} ka lheuh set keu proxy"
   },
   "transfer": {
@@ -375,7 +375,7 @@
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
     "withdraw-saving-title": "Savings Withdraw",
     "withdraw-saving-sub-title": "Withdraw funds after the required 3 day waiting period",
-    "power-up-title": "Gantoe keu STEEM POWER",
+    "power-up-title": "Convert to Steem Power",
     "power-up-sub-title": "Influence tokens which give you more control over post payouts and allow you to earn on curation rewards.",
     "from": "Dari",
     "from-placeholder": "Pileh pengguna",
@@ -392,7 +392,7 @@
     "memo": "Memo",
     "memo-placeholder": "teumuléh catatan droen i sinoe",
     "memo-help": "Tulesan nyoe jeut ke publik",
-    "key-required-err": "Active key could not found for selected account. Please make sure logged in with proper credentials.",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
     "next": "Seulanjot jih",
     "confirm-title": "Konfirmasi kireman dron",
     "confirm-sub-title": "Ci neupeureksa peu ka beutoi mandum",
