@@ -8,7 +8,7 @@
     "cancel": "Відміна",
     "ok": "OK",
     "edit": "Редагувати",
-    "server-error": "Process could not be completed due to server error",
+    "server-error": "Не вдається завершити процес через помилку сервера",
     "save": "Зберегти",
     "done": "Готово",
     "select": "Вибрати"
