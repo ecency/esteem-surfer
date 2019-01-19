@@ -94,9 +94,9 @@
   },
   "confirm-pin-code": {
     "title": "Pinコードを入力",
-    "input-placeholder": "PINコードを入力して続行",
+    "input-placeholder": "続行するにはPINコードを入力してください",
     "last-chance": "これが最後のチャンスです",
-    "invalidate": "ああ、私はそれを忘れてしまった...",
+    "invalidate": "ああ、私はそれを忘れてしまいました...",
     "invalidate-confirm": "Pinコードを本当に無効にしてよろしいですか？",
     "invalidated": "Pinコードが無効化されました"
   },
@@ -116,7 +116,7 @@
     "keys-required": "この操作には{keys} キーまたはマスターパスワードが必要です"
   },
   "quick-profile": {
-    "fetch-error-profile": "プロフィールデータを取り出すことができませんでした",
+    "fetch-error-profile": "プロフィールデータを取得できませんでした",
     "fetch-error-content": "投稿を取得できませんでした",
     "post-count": "投稿数",
     "followers": "フォロワー",
@@ -135,7 +135,7 @@
   "account": {
     "voting-power": "Voting Power",
     "post-count": "投稿数",
-    "number-of-votes": "過去24時間のvote数",
+    "number-of-votes": "過去24時間の投票数",
     "followers": "フォロワー",
     "following": "フォロー中",
     "section-blog": "ブログ",
