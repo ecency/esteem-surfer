@@ -365,7 +365,7 @@
     "proxy-active-exp": "あなたは投票プロキシを設定しています。もし手動投票を再度有効にしたい場合は、プロキシをクリアしてください。",
     "current-proxy": "現在の代理人:<strong>{n}</strong>",
     "remove-proxy": "プロキシをクリア",
-    "proxy-removed": "プロキシがクリアされました",
+    "proxy-removed": "プロキシをクリアしました",
     "proxy-created": "@{n} さんが代理人として設定しました"
   },
   "transfer": {
