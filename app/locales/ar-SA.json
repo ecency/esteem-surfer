@@ -8,7 +8,7 @@
     "cancel": "إلغاء",
     "ok": "حسنا",
     "edit": "تعديل",
-    "server-error": "تعذر إكمال العملية بسبب خطأ في الخادم",
+    "server-error": "Process could not be completed due to server error",
     "save": "حفظ",
     "done": "تم",
     "select": "حدّد"
@@ -62,7 +62,7 @@
     "server-connecting": "يتم الآن الإتصال بـ'{server}'...",
     "server-connect-error": "لم يستطع الإتصال بـ'{server}'. تأكد من إتصالك بالإنترنت.",
     "server-timeout-error": "الخادم '{server}' لا يبدو موجوداً",
-    "server-changed": "تم تغيير الخادم إلى '{server}'",
+    "server-changed": "Server selection changed to {server}",
     "server-custom-address": "عنوان الخادم المخصص",
     "server-list-fetch-error": "لا يمكن جلب قائمة الخادم",
     "push-notifications": "إشعارات الدفع",
@@ -74,31 +74,31 @@
     "accounts-title": "تسجيل الدخول كـ",
     "traditional-login-desc": "سجّل باسمك وكلمة السر للمتابعة",
     "username-placeholder": "اسم المستخدم",
-    "password-placeholder": "كلمة المرور أو Wif",
+    "password-placeholder": "password or WIF",
     "login": "تسجيل الدخول",
-    "error-fields-required": "الرجاء إدخال إسم المستخدم وكلمة المرور/wif",
-    "error-public-key": "لقد أدخلت المفتاج العام.  مطلوبة كلمة المرور/wif",
-    "error-user-fetch": "لا يمكن جلب بيانات المستخدم",
-    "error-user-not-found": "المستخدم غير موجود",
-    "error-authenticate": "خطأ في اسم المستخدم أو كلمة السر",
+    "error-fields-required": "Please enter username and password/WIF",
+    "error-public-key": "You entered a public key. Password/WIF required",
+    "error-user-fetch": "User data could not be fetched",
+    "error-user-not-found": "User does not exist",
+    "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "ليس لديك حساب <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">سجّل الآن!</a>",
     "login-with-sc": "سجّل بواسطة",
     "divider-text": "أو"
   },
   "create-pin-code": {
     "title": "أنشئ رمز PIN",
-    "desc1": "تعيين كلمة السر لتشفير البيانات الخاصة بك وتمكين طبقة إضافية من الأمن!",
-    "input-placeholder": "أدخل رمز PIN",
-    "desc2": "سيتم مطالبتك بإدخل رمز PIN عند التحويلات المهمة وعند فتح التطبيق.",
-    "created": "تم إنشاء رمز PIN"
+    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
+    "input-placeholder": "Enter PIN code",
+    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
+    "created": "PIN code created"
   },
   "confirm-pin-code": {
-    "title": "أدخل رمز PIN",
-    "input-placeholder": "أدخل رمز PIN للمتابعة",
+    "title": "Enter PIN Code",
+    "input-placeholder": "Enter PIN code to continue",
     "last-chance": "هذه فرصتك الأخيرة",
     "invalidate": "أوه، لقد نسيتها...",
-    "invalidate-confirm": "هل تريد حقاً تعطيل رمز PIN؟",
-    "invalidated": "تم تعطيل رمز PIN"
+    "invalidate-confirm": "Do you really want to invalidate PIN code?",
+    "invalidated": "PIN code is invalidated"
   },
   "user-menu": {
     "profile": "الملف الشخصي",
@@ -146,14 +146,14 @@
     "unclaimed-rewards": "المكافآت غير المطالب بها",
     "estimated-value": "تستند القيمة المقدرة على متوسط ​​قيمة 7 أيام لـ Steem.",
     "steem": "ستيم",
-    "steem-description": "عملة Steem هي رموز يمكن تداولها وإرسالها في أي وقت. يمكن تحويل Steem إلى قوة Steem عن طريق عملية تسمى التقوية.",
+    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
     "steem-power": "قوة ستيم",
     "steem-power-description": "قوة ستيم هي رموز التأثير التي تكسب المزيد من القوة لعقدها على المدى الطويل والتصويت على المشاركات. وكلما زادت قوة ستيم ، كلما كان بإمكان المرء التأثير على مكافآت الآخرين وكسب مكافآت مقابل التصويت الدقيق.",
-    "steem-power-delegated": "تفويض قوة ستيم",
-    "steem-power-received": "تم إستلام قوة ستيم",
-    "steem-power-total": "مجموع قوة ستيم",
+    "steem-power-delegated": "Delegated Steem Power",
+    "steem-power-received": "Received Steem Power",
+    "steem-power-total": "Total Steem Power",
     "steem-dollars": "ستيم دولار",
-    "steem-dollars-description": "الرموز التي تبلغ قيمتها حوالي 1.00 دولار من ستيم.",
+    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "المدخرات",
     "savings-description": "يخضع الرصيد لفترة انتظار السحب لمدة 3 أيام.",
     "next-power-down": "الخفض القادم ل قوة ستيم هو {time}",
@@ -236,12 +236,12 @@
     "title": "المسودات",
     "load-error": "لايمكن تحميل المسودات",
     "empty-list": "لاشيء هنا",
-    "deleted": "تم مسح المسودة"
+    "deleted": "Draft is deleted"
   },
   "schedules": {
     "title": "المنشورات المجدولة",
     "empty-list": "لاشيء هنا",
-    "deleted": "تم مسح المشاركة المجدولة",
+    "deleted": "Scheduled post is deleted",
     "move": "نقل إلى قسم المسودات",
     "moved": "تم النقل إلى قسم المسودات"
   },
@@ -249,7 +249,7 @@
     "title": "إشارات مرجعية",
     "load-error": "لا يمكن تحميل الإشارات المرجعية",
     "empty-list": "لاشيء هنا",
-    "deleted": "تمت إزالة الإشارة المرجعية",
+    "deleted": "Bookmark is removed",
     "search": "البحث في الإشارات المرجعية"
   },
   "favorites": {
@@ -282,7 +282,7 @@
   "navbar": {
     "settings": "إعدادات",
     "change-theme": "تغيير الخلفية",
-    "login": "تسجيل الدخول إلى حسابك",
+    "login": "Login to your account",
     "bookmark": "إظافة إلى الإشارات المرجعية",
     "bookmarkRemove": "إزالة من الإشارات المرجعية",
     "favorite": "الإضافة إلى المفضلة",
@@ -291,7 +291,7 @@
     "activities": "الأنشطة",
     "address-enter-url": "أدخل رابط URL",
     "address-enter-query": "أدخل إستعلام البحث",
-    "unclaimed-reward-notice": "لم تقم بمطالبة المكافأة"
+    "unclaimed-reward-notice": "You have unclaimed rewards"
   },
   "search": {
     "n-results-for-q": "{n} نتائج لـ {q}",
@@ -301,11 +301,11 @@
     "sort-newest": "التاريخ"
   },
   "updater": {
-    "new-version-available": "النسخة الجديدة متاحة",
+    "new-version-available": "New version is available",
     "update": "تحديث",
     "dismiss": "صرف النظر",
     "downloading": "تنزيل الإصدار الجديد...",
-    "download-completed": "انتهى التحميل",
+    "download-completed": "Download is completed",
     "restart": "إعادة التشغيل"
   },
   "context-menu": {
@@ -332,7 +332,7 @@
     "type-follows": "المتابعات",
     "type-reblogs": "إعادة التدوين",
     "vote-str": "{p}% الإعجابات على منشورك:",
-    "reply-str": "قام بالرد على مشاركتك:",
+    "reply-str": "replied to your post:",
     "mention-str": "أشارك إليك في:",
     "followed-str": "تمت المتابعة",
     "unfollowed-str": "إلغاء المتابعة",
@@ -365,7 +365,7 @@
     "proxy-active-exp": "لقد إخترت تعيين وكيل. لو أردت إعادة تفعيل التصويت اليدوي على الشهود يرجى مسح الوكيل أولاً.",
     "current-proxy": "وكيلك الحالي هو <strong>{n}</strong>",
     "remove-proxy": "مسح الوكيل",
-    "proxy-removed": "تم مسح الوكيل",
+    "proxy-removed": "Proxy is cleared",
     "proxy-created": "تم إختيار الوكيل @{n}"
   },
   "transfer": {
@@ -375,7 +375,7 @@
     "transfer-saving-sub-title": "حماية الأموال بالمطالبة بفترة 3 أيام للسحب",
     "withdraw-saving-title": "السحب من المدخرات",
     "withdraw-saving-sub-title": "سحب الأموال بعد فترة إنتظار 3 أيام",
-    "power-up-title": "التحويل إلى طاقة Steem Power",
+    "power-up-title": "Convert to Steem Power",
     "power-up-sub-title": "تاثير الرموز تمنحك مزيدًا من التحكم في أرباح المنشور وتسمح لك بزيادة ارباحك.",
     "from": "من",
     "from-placeholder": "إختر مستخدم",
@@ -392,7 +392,7 @@
     "memo": "مذكرة",
     "memo-placeholder": "أدخل ملاحظاتك هنا",
     "memo-help": "هذه المذكرة عامة",
-    "key-required-err": "لم يمكن العثور على المفتاح النشط للحساب المحدد. يرجى التأكد من تسجيل الدخول باستخدام بيانات الاعتماد المناسبة.",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
     "next": "التالي",
     "confirm-title": "تأكيد عميلة التحويل",
     "confirm-sub-title": "من فضلك، تحقق مما إذا كان كل شيء صحيح",
