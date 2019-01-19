@@ -93,12 +93,12 @@
     "created": "ПІН-код задано"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
-    "input-placeholder": "Enter PIN code to continue",
+    "title": "Введіть ПІН-код",
+    "input-placeholder": "Щоб продовжити, введіть ПІН-код",
     "last-chance": "Це ваша остання спроба",
     "invalidate": "Ой, я його забув...",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "invalidate-confirm": "Ви дійсно бажаєте анулювати ПІН-код?",
+    "invalidated": "ПІН-код анульовано"
   },
   "user-menu": {
     "profile": "Профіль",
@@ -149,9 +149,9 @@
     "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
     "steem-power": "Steem Power",
     "steem-power-description": "Steem Power - це токени впливу, які надають більше сили при їх довгостроковому збереженні та голосуванні за пости. Чим більше Steem Power ви маєте, тим більший ваш вплив на винагороду за пост, і більша ваша винагорода за влучне голосування.",
-    "steem-power-delegated": "Delegated Steem Power",
-    "steem-power-received": "Received Steem Power",
-    "steem-power-total": "Total Steem Power",
+    "steem-power-delegated": "Делеговані Steem Power",
+    "steem-power-received": "Отримані Steem Power",
+    "steem-power-total": "Всього Steem Power",
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Заощадження",
@@ -301,11 +301,11 @@
     "sort-newest": "Датою"
   },
   "updater": {
-    "new-version-available": "New version is available",
+    "new-version-available": "Доступна нова версія",
     "update": "Оновити",
     "dismiss": "Відхилити",
     "downloading": "Завантаження нової версії...",
-    "download-completed": "Download is completed",
+    "download-completed": "Завантаження завершено",
     "restart": "Перезапуск"
   },
   "context-menu": {
@@ -325,7 +325,7 @@
     "reblogged": "{source} зробив репост вашої публікації"
   },
   "activities": {
-    "type-all": "All Activities",
+    "type-all": "Всі події",
     "type-votes": "Голоси",
     "type-replies": "Відповіді",
     "type-mentions": "Згадування",
@@ -348,7 +348,7 @@
     "page-title": "Голосування за делегатів",
     "remaining": "Залишилось <strong>{n}</strong> із {max} голосів",
     "witness": "Делегат",
-    "miss": "Miss",
+    "miss": "Пропущено блоків",
     "url": "URL",
     "fee": "Комісія",
     "feed": "Стрічка",
@@ -365,7 +365,7 @@
     "proxy-active-exp": "Ви встановили proxy. Якщо ви бажаєте знов увімкнути голосування вручну, будь ласка, зніміть proxy.",
     "current-proxy": "Ваш нинішній proxy: <strong>{n}</strong>",
     "remove-proxy": "Зняти proxy",
-    "proxy-removed": "Proxy is cleared",
+    "proxy-removed": "Proxy знято",
     "proxy-created": "@{n} встановлено в якості proxy"
   },
   "transfer": {
