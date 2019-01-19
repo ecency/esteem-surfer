@@ -8,9 +8,9 @@
     "cancel": "Batai",
     "ok": "Oke",
     "edit": "Ubah",
-    "server-error": "Process could not completed due to server error",
+    "server-error": "Proses han jeut seuleusoe, na masalah bak server",
     "save": "Ka meukeubah",
-    "done": "Done",
+    "done": "Seulesoe",
     "select": "Pileh"
   },
   "footer": {
@@ -36,9 +36,9 @@
     "payout-date": "Dibayëu"
   },
   "entry-votes": {
-    "n-more": "{n} more",
+    "n-more": "{n} lom",
     "author": "Author",
-    "reward": "Reward",
+    "reward": "Peunayah",
     "percent": "Persen",
     "time": "Watee",
     "modal-title": "Nyang Galak ({n})"
@@ -70,13 +70,13 @@
     "push-notify-disabled": "Push notifications disabled"
   },
   "login": {
-    "title": "Welcome back!",
-    "accounts-title": "Login As",
-    "traditional-login-desc": "Sign in with your username and password to continue",
-    "username-placeholder": "username",
-    "password-placeholder": "password or wif",
-    "login": "Login",
-    "error-fields-required": "Please enter username and password/wif",
+    "title": "Saleum teuka lom!",
+    "accounts-title": "Tamong seubagoe",
+    "traditional-login-desc": "Tamong dengeun nan pengguna ngon kata gunci droen keu ta lanjut",
+    "username-placeholder": "nan pengguna",
+    "password-placeholder": "gunci atawa Wif",
+    "login": "Tamong",
+    "error-fields-required": "Peutamong nan pengguna ngon gunci/wif",
     "error-public-key": "You entered a public key. Password/wif required",
     "error-user-fetch": "User data could not fetched",
     "error-user-not-found": "User not exists",
