@@ -106,31 +106,31 @@
     "favorites": "Omiljeno",
     "drafts": "Radne verzije",
     "schedules": "Schedules",
-    "gallery": "Gallery",
-    "login-as": "Login As",
-    "logout": "Logout"
+    "gallery": "Galerija",
+    "login-as": "Prijavi se kao",
+    "logout": "Odjavi se"
   },
   "login-required": {
-    "default": "This action requires login",
-    "key-required": "This action requires {key} key or master password",
-    "keys-required": "This action requires {keys} keys or master password"
+    "default": "Ova radnja zahteva da ste prijavljeni",
+    "key-required": "Ova radnja zahteva {key} key ili master lozinku",
+    "keys-required": "Ova radnja zahteva {keys} ključeve ili master lozinku"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
-    "fetch-error-content": "Could not fetch posts",
-    "post-count": "Post Count",
-    "followers": "Followers",
-    "following": "Following",
+    "fetch-error-profile": "Nije moguće dobiti podatke o profilu",
+    "fetch-error-content": "Nije moguće učitati post",
+    "post-count": "Broj postova",
+    "followers": "Pratioci",
+    "following": "Pratim",
     "section-blog": "Blog",
-    "section-comments": "Comments",
-    "section-replies": "Replies",
-    "section-wallet": "Wallet"
+    "section-comments": "Komentari",
+    "section-replies": "Odgovori",
+    "section-wallet": "Novčanik"
   },
   "follow-controls": {
-    "follow": "Follow",
-    "unFollow": "Unfollow",
-    "mute": "Mute",
-    "unMute": "Unmute"
+    "follow": "Zaprati",
+    "unFollow": "Prestani da pratiš",
+    "mute": "Isključi obaveštenja",
+    "unMute": "Uključi obaveštenja"
   },
   "account": {
     "voting-power": "Voting Power",
