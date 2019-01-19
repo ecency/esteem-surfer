@@ -8,7 +8,7 @@
     "cancel": "取消",
     "ok": "好",
     "edit": "编辑",
-    "server-error": "由于服务器出错，无法完成进程。",
+    "server-error": "Process could not be completed due to server error",
     "save": "保存",
     "done": "完成",
     "select": "选择"
@@ -62,7 +62,7 @@
     "server-connecting": "正在连接到“{server}”......",
     "server-connect-error": "无法连接到“{server}”，请确定您的网络连接畅通。",
     "server-timeout-error": "“{server}”好像不存在",
-    "server-changed": "服务器已改到 {server}",
+    "server-changed": "Server selection changed to {server}",
     "server-custom-address": "自定义服务器地址",
     "server-list-fetch-error": "无法获取服务器列表",
     "push-notifications": "推送通知",
@@ -74,31 +74,31 @@
     "accounts-title": "登录为",
     "traditional-login-desc": "使用您的用户名和密码登录以继续",
     "username-placeholder": "用户名",
-    "password-placeholder": "密码或WIF",
+    "password-placeholder": "password or WIF",
     "login": "登录",
-    "error-fields-required": "请输入用户名和密码/WIF",
-    "error-public-key": "您输入了公开密钥，必须输入密码/WIF",
-    "error-user-fetch": "无法获取用户数据",
-    "error-user-not-found": "用户不存在",
-    "error-authenticate": "错误的用户名或密码/WIF",
+    "error-fields-required": "Please enter username and password/WIF",
+    "error-public-key": "You entered a public key. Password/WIF required",
+    "error-user-fetch": "User data could not be fetched",
+    "error-user-not-found": "User does not exist",
+    "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "没有账户？<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">立即注册！</a>",
     "login-with-sc": "登录方式",
     "divider-text": "或"
   },
   "create-pin-code": {
     "title": "创建PIN码",
-    "desc1": "设置PIN码加密您的数据，开启额外的安全保护！",
-    "input-placeholder": "输入 PIN 码",
-    "desc2": "每次启动和进行重要交易时，将提示您输入PIN码。",
-    "created": "已创建PIN码"
+    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
+    "input-placeholder": "Enter PIN code",
+    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
+    "created": "PIN code created"
   },
   "confirm-pin-code": {
-    "title": "请输入PIN码",
-    "input-placeholder": "输入PIN码以继续",
+    "title": "Enter PIN Code",
+    "input-placeholder": "Enter PIN code to continue",
     "last-chance": "这是您的最后一次机会",
     "invalidate": "哦，我忘记了......",
-    "invalidate-confirm": "您是否真的想要作废PIN码？",
-    "invalidated": "PIN码已作废"
+    "invalidate-confirm": "Do you really want to invalidate PIN code?",
+    "invalidated": "PIN code is invalidated"
   },
   "user-menu": {
     "profile": "个人资料",
@@ -146,14 +146,14 @@
     "unclaimed-rewards": "未领取奖励",
     "estimated-value": "预估价值基于 Steem 的 7 日平均价。",
     "steem": "Steem",
-    "steem-description": "Steem 是可以随时转账的可交易数字货币。可以通过名为 Power up 的过程将 Steem 转换为 Steem Power。",
+    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
     "steem-power": "Steem Power",
     "steem-power-description": "Steem Power 是有影响力的代币，通过长期持有并给帖子点赞来获得更大影响力。拥有越多 Steem Power，就能对其他人的奖励产生更大影响，并通过准确点赞获得更多收益。",
-    "steem-power-delegated": "已取消 Steem Power 代理",
-    "steem-power-received": "已收到 Steem Power",
-    "steem-power-total": "全部 Steem Power",
+    "steem-power-delegated": "Delegated Steem Power",
+    "steem-power-received": "Received Steem Power",
+    "steem-power-total": "Total Steem Power",
     "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "价值约$1.00 Steem的代币。",
+    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "储蓄",
     "savings-description": "余额有3天的取款等待期。",
     "next-power-down": "下一次Power Down时间是 {time}",
@@ -236,12 +236,12 @@
     "title": "草稿",
     "load-error": "无法加载草稿",
     "empty-list": "暂无内容！",
-    "deleted": "草稿已删除"
+    "deleted": "Draft is deleted"
   },
   "schedules": {
     "title": "计划的帖子",
     "empty-list": "暂无内容！",
-    "deleted": "计划的帖子已删除",
+    "deleted": "Scheduled post is deleted",
     "move": "移到草稿",
     "moved": "已移到草稿"
   },
@@ -249,7 +249,7 @@
     "title": "书签",
     "load-error": "无法加载书签",
     "empty-list": "暂无内容！",
-    "deleted": "书签已移除",
+    "deleted": "Bookmark is removed",
     "search": "搜索书签"
   },
   "favorites": {
@@ -282,7 +282,7 @@
   "navbar": {
     "settings": "设置",
     "change-theme": "更改主题",
-    "login": "登录您的账号",
+    "login": "Login to your account",
     "bookmark": "添加到书签",
     "bookmarkRemove": "从书签中删除",
     "favorite": "添加到收藏夹",
@@ -291,7 +291,7 @@
     "activities": "活动",
     "address-enter-url": "输入网址",
     "address-enter-query": "输入搜索查询",
-    "unclaimed-reward-notice": "您有未领取奖励"
+    "unclaimed-reward-notice": "You have unclaimed rewards"
   },
   "search": {
     "n-results-for-q": "{q} 有 {n} 个结果",
@@ -301,11 +301,11 @@
     "sort-newest": "日期"
   },
   "updater": {
-    "new-version-available": "发现新版本",
+    "new-version-available": "New version is available",
     "update": "更新",
     "dismiss": "忽略",
     "downloading": "正在下载新版本...",
-    "download-completed": "下载完成",
+    "download-completed": "Download is completed",
     "restart": "重新启动"
   },
   "context-menu": {
@@ -332,7 +332,7 @@
     "type-follows": "关注",
     "type-reblogs": "转发",
     "vote-str": "{p}% 人点赞了您的帖子:",
-    "reply-str": "回复了您的帖子:",
+    "reply-str": "replied to your post:",
     "mention-str": "提到了您:",
     "followed-str": "已关注",
     "unfollowed-str": "取消关注",
@@ -365,7 +365,7 @@
     "proxy-active-exp": "您已经设置了一个投票代理。如果您想重新启用手动投票，请清除您的代理。",
     "current-proxy": "您当前的代理是: <strong>{n}</strong>",
     "remove-proxy": "清除代理",
-    "proxy-removed": "代理已清除",
+    "proxy-removed": "Proxy is cleared",
     "proxy-created": "已把 @{n} 设为代理"
   },
   "transfer": {
@@ -375,7 +375,7 @@
     "transfer-saving-sub-title": "提款必须等待3天以保护资金。",
     "withdraw-saving-title": "储蓄提款",
     "withdraw-saving-sub-title": "必须在3天的等待期后提取资金",
-    "power-up-title": "转换为STEEM POWER",
+    "power-up-title": "Convert to Steem Power",
     "power-up-sub-title": "有影响力的代币让您对发帖收益有更多控制权并可以获取审查奖励。",
     "from": "从",
     "from-placeholder": "选择用户",
@@ -392,7 +392,7 @@
     "memo": "备注",
     "memo-placeholder": "请在这里输入您的附言",
     "memo-help": "这是公开备注",
-    "key-required-err": "所选账户未发现有效密钥（active key）。请确认已使用正确的凭证登录。",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
     "next": "继续",
     "confirm-title": "确认您的转账",
     "confirm-sub-title": "请检查是否一切正确。",
