@@ -206,7 +206,7 @@
     "form-error-message": "Formulir hana vallid. Pasoe ban mandum kolom",
     "schedule": "Jaduwal",
     "select-schedule-date": "Pileh tanggai",
-    "schedule-saved": "Post scheduled",
+    "schedule-saved": "Tulesan ka neu jadöi",
     "schedule-picker-select-time": "Pileh watee",
     "schedule-picker-select-date": "Pileh tanggai",
     "grant-posting-perm": "Neu jok izin ke peugot tulesan",
@@ -221,10 +221,10 @@
     "updated": "Neupeubaroe Tulesan",
     "sync-scroll": "Scroll Sync",
     "words-count": "{n} words",
-    "no-suggestions": "No suggestions",
+    "no-suggestions": "Hana peunapat",
     "emoji-filter-placeholder": "Neu sareng",
     "emoji-filter-no-match": "Hana cocok",
-    "emoji-recently-used": "Recently Used"
+    "emoji-recently-used": "Ngui paleng akhe"
   },
   "gallery": {
     "title": "Galeri",
