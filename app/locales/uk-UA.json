@@ -8,7 +8,7 @@
     "cancel": "Відміна",
     "ok": "OK",
     "edit": "Редагувати",
-    "server-error": "Неможливо завершити процес через помилку сервера",
+    "server-error": "Process could not be completed due to server error",
     "save": "Зберегти",
     "done": "Готово",
     "select": "Вибрати"
@@ -62,7 +62,7 @@
     "server-connecting": "З'єднання з '{server}'...",
     "server-connect-error": "Не вдалося з'єднатися з '{server}'. Переконайтеся у наявності інтернет підключення.",
     "server-timeout-error": "'{server}' looks like not alive",
-    "server-changed": "Сервер змінено на {server}",
+    "server-changed": "Server selection changed to {server}",
     "server-custom-address": "Задайте адресу сервера",
     "server-list-fetch-error": "Не вдається отримати список серверів",
     "push-notifications": "Push Notifications",
@@ -74,31 +74,31 @@
     "accounts-title": "Увійти як",
     "traditional-login-desc": "Щоб продовжити, увійдіть за допомогою вашого імені користувача та паролю",
     "username-placeholder": "ім'я користувача",
-    "password-placeholder": "пароль або wif (приватний ключ)",
+    "password-placeholder": "password or WIF",
     "login": "Увійти",
-    "error-fields-required": "Будь ласка, введіть ім'я користувача і пароль/wif",
-    "error-public-key": "Ви ввели публічний ключ. Потрібен пароль/wif",
-    "error-user-fetch": "Не вдалося отримати дані користувача",
-    "error-user-not-found": "Користувач не існує",
-    "error-authenticate": "Невірний логін або пароль/wif",
+    "error-fields-required": "Please enter username and password/WIF",
+    "error-public-key": "You entered a public key. Password/WIF required",
+    "error-user-fetch": "User data could not be fetched",
+    "error-user-not-found": "User does not exist",
+    "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "Немає акаунту?<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Зареєструйтесь!</a>",
     "login-with-sc": "Увійти через",
     "divider-text": "або"
   },
   "create-pin-code": {
     "title": "Задайте PIN-код",
-    "desc1": "Встановіть ПІН-код для шифрування даних та додаткового рівня безпеки!",
-    "input-placeholder": "Введіть ПІН-код",
-    "desc2": "Вам буде запропоновано ввести ПІН-код для критичних транзакцій, а також при кожному запуску.",
-    "created": "ПІН-код задано"
+    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
+    "input-placeholder": "Enter PIN code",
+    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
+    "created": "PIN code created"
   },
   "confirm-pin-code": {
-    "title": "Введіть ПІН-код",
-    "input-placeholder": "Введіть ПІН-код щоб продовжити",
+    "title": "Enter PIN Code",
+    "input-placeholder": "Enter PIN code to continue",
     "last-chance": "Це ваша остання спроба",
     "invalidate": "Ой, я його забув...",
-    "invalidate-confirm": "Ви дійсно бажаєте анулювати ПІН-код?",
-    "invalidated": "ПІН-код анульований"
+    "invalidate-confirm": "Do you really want to invalidate PIN code?",
+    "invalidated": "PIN code is invalidated"
   },
   "user-menu": {
     "profile": "Профіль",
@@ -146,14 +146,14 @@
     "unclaimed-rewards": "Не отримана винагорода",
     "estimated-value": "Орієнтовна вартість базується на 7-денній середній вартості Steem.",
     "steem": "Steem",
-    "steem-description": "Steem are tradeable tokens that may be transferred at anytime. Steem can be converted to Steem Power in a process called powering up.",
+    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
     "steem-power": "Steem Power",
     "steem-power-description": "Steem Power - це токени впливу, які надають більше сили при їх довгостроковому збереженні та голосуванні за пости. Чим більше Steem Power ви маєте, тим більший ваш вплив на винагороду за пост, і більша ваша винагорода за влучне голосування.",
-    "steem-power-delegated": "Делеговані Steem Power",
-    "steem-power-received": "Отримані Steem Power",
-    "steem-power-total": "Всього Steem Power",
+    "steem-power-delegated": "Delegated Steem Power",
+    "steem-power-received": "Received Steem Power",
+    "steem-power-total": "Total Steem Power",
     "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "Tokens worth about $1.00 of Steem.",
+    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Заощадження",
     "savings-description": "Balance subject to 3 day withdraw waiting period.",
     "next-power-down": "Наступне зниження сили голосу відбудеться {time}",
@@ -236,12 +236,12 @@
     "title": "Чернетки",
     "load-error": "Не вдалося завантажити чернетки",
     "empty-list": "Тут порожньо",
-    "deleted": "Чернетку видалено"
+    "deleted": "Draft is deleted"
   },
   "schedules": {
     "title": "Заплановані публікації",
     "empty-list": "Тут порожньо",
-    "deleted": "Заплановану публікацію видалено",
+    "deleted": "Scheduled post is deleted",
     "move": "Перемістити до чернеток",
     "moved": "Moved to drafts"
   },
@@ -249,7 +249,7 @@
     "title": "Bookmarks",
     "load-error": "Не вдалося завантажити закладки",
     "empty-list": "Тут порожньо",
-    "deleted": "Закладку видалено",
+    "deleted": "Bookmark is removed",
     "search": "Пошук у закладках"
   },
   "favorites": {
@@ -282,7 +282,7 @@
   "navbar": {
     "settings": "Налаштування",
     "change-theme": "Змінити тему",
-    "login": "Увійти в свій акаунт",
+    "login": "Login to your account",
     "bookmark": "Додати до закладок",
     "bookmarkRemove": "Видалити з закладок",
     "favorite": "Додати до обраного",
@@ -291,7 +291,7 @@
     "activities": "Активність",
     "address-enter-url": "Введіть url",
     "address-enter-query": "Введіть пошуковий запит",
-    "unclaimed-reward-notice": "У вас є неотримані винагороди"
+    "unclaimed-reward-notice": "You have unclaimed rewards"
   },
   "search": {
     "n-results-for-q": "{n} результатів для {q}",
@@ -301,11 +301,11 @@
     "sort-newest": "Датою"
   },
   "updater": {
-    "new-version-available": "Доступна нова версiя",
+    "new-version-available": "New version is available",
     "update": "Оновити",
     "dismiss": "Відхилити",
     "downloading": "Завантаження нової версії...",
-    "download-completed": "Завантаження завершено",
+    "download-completed": "Download is completed",
     "restart": "Перезапуск"
   },
   "context-menu": {
@@ -332,7 +332,7 @@
     "type-follows": "Підписки",
     "type-reblogs": "Репости",
     "vote-str": "{p}% likes your post:",
-    "reply-str": "replied your post:",
+    "reply-str": "replied to your post:",
     "mention-str": "згадав вас у:",
     "followed-str": "підписався",
     "unfollowed-str": "відписався",
@@ -365,7 +365,7 @@
     "proxy-active-exp": "Ви встановили proxy. Якщо ви бажаєте знов увімкнути голосування вручну, будь ласка, зніміть proxy.",
     "current-proxy": "Ваш нинішній proxy: <strong>{n}</strong>",
     "remove-proxy": "Зняти proxy",
-    "proxy-removed": "Proxy знято",
+    "proxy-removed": "Proxy is cleared",
     "proxy-created": "@{n} встановлено в якості proxy"
   },
   "transfer": {
@@ -375,7 +375,7 @@
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
     "withdraw-saving-title": "Savings Withdraw",
     "withdraw-saving-sub-title": "Withdraw funds after the required 3 day waiting period",
-    "power-up-title": "Convert to STEEM POWER",
+    "power-up-title": "Convert to Steem Power",
     "power-up-sub-title": "Influence tokens which give you more control over post payouts and allow you to earn on curation rewards.",
     "from": "From",
     "from-placeholder": "Виберіть користувача",
@@ -392,7 +392,7 @@
     "memo": "Примітка",
     "memo-placeholder": "введіть сюди свої примітки",
     "memo-help": "Ця примітка є публічною",
-    "key-required-err": "Active key could not found for selected account. Please make sure logged in with proper credentials.",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
     "next": "Далі",
     "confirm-title": "Підтвердіть переказ",
     "confirm-sub-title": "Будь ласка, перевірте, чи все вірно",
