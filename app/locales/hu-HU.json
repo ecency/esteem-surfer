@@ -36,7 +36,7 @@
     "payout-date": "Kifizetés"
   },
   "entry-votes": {
-    "n-more": "{n} more",
+    "n-more": "{n} további",
     "author": "Szerző",
     "reward": "Jutalom",
     "percent": "Százalék",
@@ -59,7 +59,7 @@
     "locale-changed": "Nyelv megváltoztatva",
     "server": "Szerver",
     "server-invalid-address": "Invalid server address",
-    "server-connecting": "Connecting to '{server}'...",
+    "server-connecting": "Kapcsolódás '{server}'...",
     "server-connect-error": "Nem sikerült csatlakozni a '{server}'-hez. Ellenőrizd az internet kapcsolatot.",
     "server-timeout-error": "'{server}' úgy néz ki nem elérhető",
     "server-changed": "Szerver {server}-re váltva",
@@ -70,7 +70,7 @@
     "push-notify-disabled": "Push notifications disabled"
   },
   "login": {
-    "title": "Welcome back!",
+    "title": "Üdv újra!",
     "accounts-title": "Bejelentkezés mint",
     "traditional-login-desc": "A folytatáshoz jelentkezz be a felhasználóneveddel és jelszavaddal",
     "username-placeholder": "felhasználónév",
@@ -95,8 +95,8 @@
   "confirm-pin-code": {
     "title": "Add meg a PIN kódot",
     "input-placeholder": "A folytatáshoz add meg a PIN kódot",
-    "last-chance": "This is your last chance",
-    "invalidate": "Oh, I forgot it...",
+    "last-chance": "Utolsó lehetőség",
+    "invalidate": "Ó elfelejtettem...",
     "invalidate-confirm": "Are you really want to invalidate pin code?",
     "invalidated": "Pin code invalidated"
   },
