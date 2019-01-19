@@ -8,7 +8,7 @@
     "cancel": "Avbryt",
     "ok": "OK",
     "edit": "Redigera",
-    "server-error": "Processen kunde inte slutföras på grund av ett serverfel",
+    "server-error": "Process could not be completed due to server error",
     "save": "Spara",
     "done": "Klart",
     "select": "Välj"
@@ -62,7 +62,7 @@
     "server-connecting": "Ansluter till '{server}'...",
     "server-connect-error": "Kunde inte ansluta till '{server}'. Kontrollera din internetanslutning.",
     "server-timeout-error": "{server} verkar vara nere",
-    "server-changed": "Server ändrad till {server}",
+    "server-changed": "Server selection changed to {server}",
     "server-custom-address": "Anpassad serveradress",
     "server-list-fetch-error": "Det gick inte att hämta serverlistan",
     "push-notifications": "Pushnotiser",
@@ -74,31 +74,31 @@
     "accounts-title": "Logga in som",
     "traditional-login-desc": "Logga in med ditt användarnamn och lösenord för att fortsätta",
     "username-placeholder": "användarnamn",
-    "password-placeholder": "lösenord eller wif",
+    "password-placeholder": "password or WIF",
     "login": "Logga in",
-    "error-fields-required": "Vänligen ange användarnamn och lösenord/wif",
-    "error-public-key": "Diu har anget en public nyckel. Kräver lösenord/wif",
-    "error-user-fetch": "Användardata kunde inte hämtas",
-    "error-user-not-found": "Användare finns inte",
-    "error-authenticate": "Fel användarnamn eller lösenord/wif",
+    "error-fields-required": "Please enter username and password/WIF",
+    "error-public-key": "You entered a public key. Password/WIF required",
+    "error-user-fetch": "User data could not be fetched",
+    "error-user-not-found": "User does not exist",
+    "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "Har du inget konto?<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Registrera dig nu!</a>",
     "login-with-sc": "Logga in med",
     "divider-text": "ELLER"
   },
   "create-pin-code": {
     "title": "Skapa PIN-kod",
-    "desc1": "Ange PIN-kod för att kryptera dina data och aktivera extra säkerhet!",
-    "input-placeholder": "Ange PIN-kod",
-    "desc2": "Du kommer att uppmanas att ange PIN-kod för viktiga transaktioner samt vid varje uppstart.",
-    "created": "PIN-kod skapad"
+    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
+    "input-placeholder": "Enter PIN code",
+    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
+    "created": "PIN code created"
   },
   "confirm-pin-code": {
-    "title": "Ange PIN-kod",
-    "input-placeholder": "Ange din PIN-kod för att fortsätta",
+    "title": "Enter PIN Code",
+    "input-placeholder": "Enter PIN code to continue",
     "last-chance": "Detta är din sista chans",
     "invalidate": "Åh, jag glömde det...",
-    "invalidate-confirm": "Vill du verkligen ogiltiggöra PIN-koden?",
-    "invalidated": "PIN-kod ogiltiggjord"
+    "invalidate-confirm": "Do you really want to invalidate PIN code?",
+    "invalidated": "PIN code is invalidated"
   },
   "user-menu": {
     "profile": "Profil",
@@ -146,14 +146,14 @@
     "unclaimed-rewards": "Outbetald belöning",
     "estimated-value": "Det uppskattade värdet är baserat på ett 7 dagars genomsnittlig värde av Steem.",
     "steem": "Steem",
-    "steem-description": "Steem är utbytsbara tokens som går att överföra när som helst. Steem kan omvandlas till Steem Power i en process som kallas \"powering up\" som ökar rösteffekt.",
+    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
     "steem-power": "Steem Power",
     "steem-power-description": "Steem Power är inflytande-tokens som ger högre rösteffekt för att du sparar dem långsiktigt och röstar på inlägg. Ju mer Steem Power du har, desto mer kan du påverka andras belöningar och du belönas för noggrann röstning.",
-    "steem-power-delegated": "Delegerad Steem Power.",
-    "steem-power-received": "Mottagna Steem Power",
-    "steem-power-total": "Totala Steem Power",
+    "steem-power-delegated": "Delegated Steem Power",
+    "steem-power-received": "Received Steem Power",
+    "steem-power-total": "Total Steem Power",
     "steem-dollars": "Steem Dollar",
-    "steem-dollars-description": "Tokens värda ca. $1.00 av Steem.",
+    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Sparkonto",
     "savings-description": "Saldot föremål för 3 dagars uttag väntetiden.",
     "next-power-down": "Nästa Power Down är {time}",
@@ -236,12 +236,12 @@
     "title": "Utkast",
     "load-error": "Kunde inte ladda utkast",
     "empty-list": "Ingenting här",
-    "deleted": "Utkast raderat"
+    "deleted": "Draft is deleted"
   },
   "schedules": {
     "title": "Schemalagt Inlägg",
     "empty-list": "Ingenting här",
-    "deleted": "Schemalagt inlägg raderat",
+    "deleted": "Scheduled post is deleted",
     "move": "Flytta till utkast",
     "moved": "Flyttad till utkast"
   },
@@ -249,7 +249,7 @@
     "title": "Bokmärken",
     "load-error": "Kunde inte ladda bokmärke",
     "empty-list": "Ingenting här",
-    "deleted": "Bokmärke raderat",
+    "deleted": "Bookmark is removed",
     "search": "Sök bokmärken"
   },
   "favorites": {
@@ -282,7 +282,7 @@
   "navbar": {
     "settings": "Inställningar",
     "change-theme": "Ändra tema",
-    "login": "Logga in på ditt konto",
+    "login": "Login to your account",
     "bookmark": "Lägg till bokmärken",
     "bookmarkRemove": "Ta bort från bokmärken",
     "favorite": "Lägg till i favoriter",
@@ -291,7 +291,7 @@
     "activities": "Aktiviteter",
     "address-enter-url": "Ange url",
     "address-enter-query": "Ange sökord",
-    "unclaimed-reward-notice": "Du har outtagen belöning"
+    "unclaimed-reward-notice": "You have unclaimed rewards"
   },
   "search": {
     "n-results-for-q": "{n} resultat för {q}",
@@ -301,11 +301,11 @@
     "sort-newest": "Datum"
   },
   "updater": {
-    "new-version-available": "Ny version tillgänglig",
+    "new-version-available": "New version is available",
     "update": "Uppdatera",
     "dismiss": "Avfärda",
     "downloading": "Laddar ner ny version...",
-    "download-completed": "Nedladdning slutförd",
+    "download-completed": "Download is completed",
     "restart": "Starta om"
   },
   "context-menu": {
@@ -332,7 +332,7 @@
     "type-follows": "Följer",
     "type-reblogs": "Återblogga",
     "vote-str": "{p}% gillar ditt inlägg:",
-    "reply-str": "svarade ditt inlägg:",
+    "reply-str": "replied to your post:",
     "mention-str": "nämnt dig i:",
     "followed-str": "följer",
     "unfollowed-str": "sluta följa",
@@ -365,7 +365,7 @@
     "proxy-active-exp": "Du har angett en röstproxy. Om du vill återaktivera manuell röstning, ta bort din proxy.",
     "current-proxy": "Din nuvarande proxy är: <strong>{n}</strong>",
     "remove-proxy": "Ta bort Proxy",
-    "proxy-removed": "Proxy borttaget",
+    "proxy-removed": "Proxy is cleared",
     "proxy-created": "@{n} valt som proxy"
   },
   "transfer": {
@@ -375,7 +375,7 @@
     "transfer-saving-sub-title": "Skydda medel genom att kräva en 3 dagars uttag väntetid",
     "withdraw-saving-title": "Sparkonto Uttag",
     "withdraw-saving-sub-title": "Ta ut medel efter den begärda 3 dagars väntetiden",
-    "power-up-title": "Konvertera till STEEM POWER",
+    "power-up-title": "Convert to Steem Power",
     "power-up-sub-title": "Inflytande-tokens som ger dig mer kontroll över inläggsutbetalningar och du kan tjäna på \"curation\" belöningar.",
     "from": "Från",
     "from-placeholder": "Välj en användare",
@@ -392,7 +392,7 @@
     "memo": "PM",
     "memo-placeholder": "skriv din kommentar här",
     "memo-help": "Detta PM är offentlig",
-    "key-required-err": "Aktiva nyckeln hittades inte för valda kontot. Kontrollera att du loggar in med korrekta uppgifter.",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
     "next": "Nästa",
     "confirm-title": "Bekräfta din överföring",
     "confirm-sub-title": "Kontrollera om allt är korrekt",
