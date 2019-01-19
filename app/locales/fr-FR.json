@@ -8,7 +8,7 @@
     "cancel": "Annuler",
     "ok": "OK",
     "edit": "Editer",
-    "server-error": "Le processus n'a pas pu être complété en raison d'une erreur du serveur",
+    "server-error": "Process could not be completed due to server error",
     "save": "Sauvegarder",
     "done": "Terminé",
     "select": "Sélectionner"
@@ -62,7 +62,7 @@
     "server-connecting": "Connexion à '{server}' ...",
     "server-connect-error": "Impossible de se connecter à '{server}'. Merci de vérifier vos paramètres de réseau.",
     "server-timeout-error": "'{server}' à l'air hors-ligne",
-    "server-changed": "Serveur remplacé par {server}",
+    "server-changed": "Server selection changed to {server}",
     "server-custom-address": "Adresse de serveur personnalisée",
     "server-list-fetch-error": "Impossible de récupérer la liste des serveurs",
     "push-notifications": "Notifications push",
@@ -74,31 +74,31 @@
     "accounts-title": "Se connecter en tant que",
     "traditional-login-desc": "Connectez-vous avec votre nom d'utilisateur et votre mot de passe pour continuer",
     "username-placeholder": "nom d'utilisateur",
-    "password-placeholder": "mot de passe ou wif",
+    "password-placeholder": "password or WIF",
     "login": "Connexion",
-    "error-fields-required": "Merci d'entrer votre nom d'utilisateur et mot de passe/wif",
-    "error-public-key": "Vous avez entré une clé publique. Mot de passe/wif requis",
-    "error-user-fetch": "Données utilisateur n'ont pas pu être récupérés",
-    "error-user-not-found": "L'utilisateur n'existe pas",
-    "error-authenticate": "Nom utilisateur ou mot de passe/wif incorrect",
+    "error-fields-required": "Please enter username and password/WIF",
+    "error-public-key": "You entered a public key. Password/WIF required",
+    "error-user-fetch": "User data could not be fetched",
+    "error-user-not-found": "User does not exist",
+    "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "Vous ne possédez pas de compte ? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Inscrivez-vous dès maintenant !</a>",
     "login-with-sc": "Se connecter avec",
     "divider-text": "OU"
   },
   "create-pin-code": {
     "title": "Créer un code PIN",
-    "desc1": "Définir un code pin pour chiffrer vos données et activez un niveau supplémentaire de sécurité !",
-    "input-placeholder": "Saisir le code PIN",
-    "desc2": "Nous vous demanderons de saisir le code pin pour les transactions importantes, ainsi qu'a chaque lancement.",
-    "created": "Code pin créé"
+    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
+    "input-placeholder": "Enter PIN code",
+    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
+    "created": "PIN code created"
   },
   "confirm-pin-code": {
-    "title": "Entrer le code PIN",
-    "input-placeholder": "Veuillez entrer votre code PIN pour continuer",
+    "title": "Enter PIN Code",
+    "input-placeholder": "Enter PIN code to continue",
     "last-chance": "C'est votre dernière chance",
     "invalidate": "Ha, je l'ai oublié ...",
-    "invalidate-confirm": "Vous voulez vraiment invalider le code PIN ?",
-    "invalidated": "Code PIN invalidé"
+    "invalidate-confirm": "Do you really want to invalidate PIN code?",
+    "invalidated": "PIN code is invalidated"
   },
   "user-menu": {
     "profile": "Profil",
@@ -146,14 +146,14 @@
     "unclaimed-rewards": "Récompenses non réclamées",
     "estimated-value": "La valeur estimée est basée sur une valeur moyenne de Steem de 7 jours.",
     "steem": "Steem",
-    "steem-description": "Les Steem sont des jetons échangeables qui peuvent être transférés à tout moment. Les Steem peut être converti en Steem Power dans un processus appelé Power Up.",
+    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
     "steem-power": "Steem Power",
     "steem-power-description": "Les Steem Power sont des jetons d'influence, qui obtiennent plus de puissance en les conservant à long terme et en votant sur les publications. Plus on le conserve, plus on a d'influence sur les récompenses des autres et vous en gagnez pour avoir voté correctement.",
-    "steem-power-delegated": "Steem Power déléguée",
-    "steem-power-received": "Steem Power reçue",
-    "steem-power-total": "Steem Power totale",
+    "steem-power-delegated": "Delegated Steem Power",
+    "steem-power-received": "Received Steem Power",
+    "steem-power-total": "Total Steem Power",
     "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "Jetons d'une valeur d'environ 1.00$ de Steem.",
+    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Économies",
     "savings-description": "Votre solde est sujet à une période de 3 jours d'attente pour les retraits.",
     "next-power-down": "La prochaine diminution de puissance est dans {time}",
@@ -236,12 +236,12 @@
     "title": "Brouillons",
     "load-error": "Impossible de charger les brouillons",
     "empty-list": "Rien ici",
-    "deleted": "Brouillon supprimé"
+    "deleted": "Draft is deleted"
   },
   "schedules": {
     "title": "Publications planifiées",
     "empty-list": "Rien ici",
-    "deleted": "Publications planifiées supprimées",
+    "deleted": "Scheduled post is deleted",
     "move": "Déplacer vers brouillons",
     "moved": "Déplacé vers brouillons"
   },
@@ -249,7 +249,7 @@
     "title": "Signets",
     "load-error": "Impossible de charger les signets",
     "empty-list": "Rien ici",
-    "deleted": "Signet supprimé",
+    "deleted": "Bookmark is removed",
     "search": "Rechercher dans les signets"
   },
   "favorites": {
@@ -282,7 +282,7 @@
   "navbar": {
     "settings": "Réglages",
     "change-theme": "Changer de Thème",
-    "login": "Connexion à votre compte",
+    "login": "Login to your account",
     "bookmark": "Ajouter aux signets",
     "bookmarkRemove": "Retirer des signets",
     "favorite": "Ajouter aux favoris",
@@ -291,7 +291,7 @@
     "activities": "Activités",
     "address-enter-url": "Saisissez l'url",
     "address-enter-query": "Entrer un critère de recherche",
-    "unclaimed-reward-notice": "Vous avez une récompense non réclamée"
+    "unclaimed-reward-notice": "You have unclaimed rewards"
   },
   "search": {
     "n-results-for-q": "{n} résultats pour {q}",
@@ -301,11 +301,11 @@
     "sort-newest": "Date"
   },
   "updater": {
-    "new-version-available": "Nouvelle version disponible",
+    "new-version-available": "New version is available",
     "update": "Mettre à jour",
     "dismiss": "Ignorer",
     "downloading": "Téléchargement de la nouvelle version ...",
-    "download-completed": "Téléchargement terminé",
+    "download-completed": "Download is completed",
     "restart": "Redémarrer"
   },
   "context-menu": {
@@ -332,7 +332,7 @@
     "type-follows": "Suit",
     "type-reblogs": "Reblogs",
     "vote-str": "{p}% ont aimés votre post:",
-    "reply-str": "a répondu à votre post:",
+    "reply-str": "replied to your post:",
     "mention-str": "vous a mentionné sur:",
     "followed-str": "followed",
     "unfollowed-str": "ne suit plus",
@@ -365,7 +365,7 @@
     "proxy-active-exp": "Vous avez autorisé un mandataire à voter pour les témoins. Si vous voulez réactiver le vote manuel, veuillez annuler votre autorisation.",
     "current-proxy": "Votre mandataire actuel est : <strong>{n}</strong>",
     "remove-proxy": "Effacer le mandataire",
-    "proxy-removed": "Mandataire effacé",
+    "proxy-removed": "Proxy is cleared",
     "proxy-created": "@{n} a été défini comme mandataire"
   },
   "transfer": {
@@ -375,7 +375,7 @@
     "transfer-saving-sub-title": "Protéger les fonds en imposant une période d'attente de 3 jours pour les retraits",
     "withdraw-saving-title": "Retrait des économies",
     "withdraw-saving-sub-title": "Retirer les fonds après la période de 3 jours d'attente requise",
-    "power-up-title": "Convertir en STEEM POWER",
+    "power-up-title": "Convert to Steem Power",
     "power-up-sub-title": "Jetons d'influence vous donnant plus de contrôle sur les gains potentiels de publications et vous permet d'augmenter vos gains de curation.",
     "from": "De",
     "from-placeholder": "Sélectionner un utilisateur",
@@ -392,7 +392,7 @@
     "memo": "Mémo",
     "memo-placeholder": "entrez vos notes ici",
     "memo-help": "Ce mémo est public",
-    "key-required-err": "La clé active n'a pas pu être trouvée pour le compte sélectionné. Veuillez vous assurer que vous êtes connecté avec les informations d'identification appropriées.",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
     "next": "Suivant",
     "confirm-title": "Confirmer votre Transfert",
     "confirm-sub-title": "S'il vous plaît, vérifiez si tout est correct",
