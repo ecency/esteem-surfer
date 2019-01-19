@@ -78,45 +78,45 @@
     "login": "Logga in",
     "error-fields-required": "Vänligen ange användarnamn och lösenord/wif",
     "error-public-key": "Diu har anget en public nyckel. Kräver lösenord/wif",
-    "error-user-fetch": "User data could not fetched",
-    "error-user-not-found": "User not exists",
-    "error-authenticate": "Wrong username or password/wif",
-    "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>",
-    "login-with-sc": "Login with",
-    "divider-text": "OR"
+    "error-user-fetch": "Användardata kunde inte hämtas",
+    "error-user-not-found": "Användare finns inte",
+    "error-authenticate": "Fel användarnamn eller lösenord/wif",
+    "create-account-text": "Har du inget konto?<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Registrera dig nu!</a>",
+    "login-with-sc": "Logga in med",
+    "divider-text": "ELLER"
   },
   "create-pin-code": {
-    "title": "Create PIN Code",
-    "desc1": "Set pin code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter pin code",
-    "desc2": "You will be prompted to enter pin code for crucial transactions as well as on every launch.",
-    "created": "Pin code created"
+    "title": "Skapa PIN-kod",
+    "desc1": "Ange PIN-kod för att kryptera dina data och aktivera extra säkerhet!",
+    "input-placeholder": "Ange PIN-kod",
+    "desc2": "Du kommer att uppmanas att ange PIN-kod för viktiga transaktioner samt vid varje uppstart.",
+    "created": "PIN-kod skapad"
   },
   "confirm-pin-code": {
-    "title": "Enter Pin Code",
-    "input-placeholder": "Enter pin code to continue",
-    "last-chance": "This is your last chance",
-    "invalidate": "Oh, I forgot it...",
-    "invalidate-confirm": "Are you really want to invalidate pin code?",
-    "invalidated": "Pin code invalidated"
+    "title": "Ange PIN-kod",
+    "input-placeholder": "Ange din PIN-kod för att fortsätta",
+    "last-chance": "Detta är din sista chans",
+    "invalidate": "Åh, jag glömde det...",
+    "invalidate-confirm": "Vill du verkligen ogiltiggöra PIN-koden?",
+    "invalidated": "PIN-kod ogiltiggjord"
   },
   "user-menu": {
-    "profile": "Profile",
-    "bookmarks": "Bookmarks",
-    "favorites": "Favorites",
-    "drafts": "Drafts",
-    "schedules": "Schedules",
-    "gallery": "Gallery",
-    "login-as": "Login As",
-    "logout": "Logout"
+    "profile": "Profil",
+    "bookmarks": "Bokmärken",
+    "favorites": "Favoriter",
+    "drafts": "Utkast",
+    "schedules": "Scheman",
+    "gallery": "Galleri",
+    "login-as": "Logga in som",
+    "logout": "Logga ut"
   },
   "login-required": {
-    "default": "This action requires login",
-    "key-required": "This action requires {key} key or master password",
-    "keys-required": "This action requires {keys} keys or master password"
+    "default": "Den här åtgärden kräver inloggning",
+    "key-required": "Denna åtgärd kräver {key} nyckel eller huvudlösenord",
+    "keys-required": "Denna åtgärd kräver {keys} nyckel eller huvudlösenord"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
+    "fetch-error-profile": "Det gick inte att hämta profildata",
     "fetch-error-content": "Could not fetch posts",
     "post-count": "Post Count",
     "followers": "Followers",
