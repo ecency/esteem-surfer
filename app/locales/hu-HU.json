@@ -369,11 +369,11 @@
     "proxy-created": "@{n} proxiként beállítva"
   },
   "transfer": {
-    "transfer-title": "Transfer to Account",
+    "transfer-title": "Átutalás más számlára",
     "transfer-sub-title": "Move funds to another Steem account",
     "transfer-saving-title": "Transfer to Savings",
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
-    "withdraw-saving-title": "Savings Withdraw",
+    "withdraw-saving-title": "Megtakarítások visszavonása",
     "withdraw-saving-sub-title": "Withdraw funds after the required 3 day waiting period",
     "power-up-title": "Convert to STEEM POWER",
     "power-up-sub-title": "Influence tokens which give you more control over post payouts and allow you to earn on curation rewards.",
@@ -385,7 +385,7 @@
     "to-bad-actor": "Use caution sending to this account. Please double check your spelling for possible phishing.",
     "amount": "Összeg",
     "amount-placeholder": "összeg",
-    "wrong-amount": "Wrong amount value",
+    "wrong-amount": "Nem megfelelő összeg",
     "amount-precision-error": "Use only 3 digits of precision",
     "insufficient-funds": "Nincs elegendő fedezet",
     "balance": "Egyenleg",
