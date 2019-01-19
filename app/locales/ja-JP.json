@@ -8,7 +8,7 @@
     "cancel": "キャンセル",
     "ok": "OK",
     "edit": "編集",
-    "server-error": "サーバーエラーの為、プロセスを完了できませんでした",
+    "server-error": "Process could not be completed due to server error",
     "save": "保存",
     "done": "完了",
     "select": "選択"
@@ -62,7 +62,7 @@
     "server-connecting": "{server} に接続しています...",
     "server-connect-error": "'{server}' に接続できませんでした。インターネット接続を確認してください。",
     "server-timeout-error": "'{server}'は動いていないようです",
-    "server-changed": "サーバーが{server} に変更されました",
+    "server-changed": "Server selection changed to {server}",
     "server-custom-address": "カスタムサーバーアドレス",
     "server-list-fetch-error": "サーバーリストを取得できませんでした",
     "push-notifications": "プッシュ通知",
@@ -74,31 +74,31 @@
     "accounts-title": "次のユーザーとしてログイン",
     "traditional-login-desc": "ユーザー名とパスワードでサインインしてください",
     "username-placeholder": "ユーザー名",
-    "password-placeholder": "パスワードまたはwif",
+    "password-placeholder": "password or WIF",
     "login": "ログイン",
-    "error-fields-required": "ユーザー名とパスワード/wifを入力してください",
-    "error-public-key": "公開鍵が入力されました。パスワード/wifが必要です",
-    "error-user-fetch": "ユーザーデータを取得できませんでした",
-    "error-user-not-found": "ユーザーが存在しません",
-    "error-authenticate": "ユーザー名またはパスワード/wifが間違っています",
+    "error-fields-required": "Please enter username and password/WIF",
+    "error-public-key": "You entered a public key. Password/WIF required",
+    "error-user-fetch": "User data could not be fetched",
+    "error-user-not-found": "User does not exist",
+    "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "アカウントをお持ちでないですか？<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">今すぐ登録！</a>",
     "login-with-sc": "次のものでログイン",
     "divider-text": "または"
   },
   "create-pin-code": {
     "title": "PINコードを作成",
-    "desc1": "あなたのデータを暗号化し、セキュリティを強化するためにPINコードを設定してください",
-    "input-placeholder": "PINコードを入力",
-    "desc2": "重要な取引だけではなく、毎回の起動時にPINコードを入力するよう促されます。",
-    "created": "Pinコードが作成されました"
+    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
+    "input-placeholder": "Enter PIN code",
+    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
+    "created": "PIN code created"
   },
   "confirm-pin-code": {
-    "title": "Pinコードを入力",
-    "input-placeholder": "続行するにはPINコードを入力してください",
+    "title": "Enter PIN Code",
+    "input-placeholder": "Enter PIN code to continue",
     "last-chance": "これが最後のチャンスです",
     "invalidate": "ああ、私はそれを忘れてしまいました...",
-    "invalidate-confirm": "Pinコードを本当に無効にしてよろしいですか？",
-    "invalidated": "Pinコードが無効化されました"
+    "invalidate-confirm": "Do you really want to invalidate PIN code?",
+    "invalidated": "PIN code is invalidated"
   },
   "user-menu": {
     "profile": "プロフィール",
@@ -146,14 +146,14 @@
     "unclaimed-rewards": "未請求の報酬",
     "estimated-value": "推定価格は、Steemの7日間の平均価格に基づいています。",
     "steem": "Steem",
-    "steem-description": "Steemはいつでも送金や取引が可能なトークンです。Steemはパワーアップと呼ばれるプロセスで、Steem Powerに変換することができます。",
+    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
     "steem-power": "Steem Power",
     "steem-power-description": "Steem Powerは長期保有や投稿に投票することで、より大きな影響力を得ることができるトークンです。より多くのSteem Powerを保有することで、他の人の報酬に影響を与えることができ、投票による報酬を得ることができます。",
-    "steem-power-delegated": "委任されたsteem power",
-    "steem-power-received": "委任されたsteem power",
-    "steem-power-total": "合計steem power",
+    "steem-power-delegated": "Delegated Steem Power",
+    "steem-power-received": "Received Steem Power",
+    "steem-power-total": "Total Steem Power",
     "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "約1ドル相当のSteemと同じ価値を持つトークンです。",
+    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "貯蓄口座",
     "savings-description": "引き出しに3日間の待ち時間が必要となる貯蓄口座です。",
     "next-power-down": "次のパワーダウンは{time}",
@@ -236,12 +236,12 @@
     "title": "下書き",
     "load-error": "下書きをロードできませんでした",
     "empty-list": "何もありません",
-    "deleted": "下書きを削除しました"
+    "deleted": "Draft is deleted"
   },
   "schedules": {
     "title": "予定された投稿",
     "empty-list": "何もありません",
-    "deleted": "予定されていた投稿を削除しました",
+    "deleted": "Scheduled post is deleted",
     "move": "下書きへ移動",
     "moved": "下書きへ移動しました"
   },
@@ -249,7 +249,7 @@
     "title": "ブックマーク",
     "load-error": "ブックマークをロードできませんでした",
     "empty-list": "何もありません",
-    "deleted": "ブックマークを削除しました",
+    "deleted": "Bookmark is removed",
     "search": "ブックマークを検索"
   },
   "favorites": {
@@ -282,7 +282,7 @@
   "navbar": {
     "settings": "設定",
     "change-theme": "テーマ変更",
-    "login": "アカウントにログイン",
+    "login": "Login to your account",
     "bookmark": "ブックマークに追加",
     "bookmarkRemove": "ブックマークから削除",
     "favorite": "お気に入りに追加",
@@ -291,7 +291,7 @@
     "activities": "アクティビティ",
     "address-enter-url": "URLを入力",
     "address-enter-query": "検索クエリを入力",
-    "unclaimed-reward-notice": "未請求の報酬があります"
+    "unclaimed-reward-notice": "You have unclaimed rewards"
   },
   "search": {
     "n-results-for-q": "{q} の検索結果の内{n} 件",
@@ -301,11 +301,11 @@
     "sort-newest": "日付"
   },
   "updater": {
-    "new-version-available": "新しいバージョンが利用可能",
+    "new-version-available": "New version is available",
     "update": "アップデート",
     "dismiss": "中止",
     "downloading": "新しいバージョンをダウンロードしています...",
-    "download-completed": "ダウンロード完了",
+    "download-completed": "Download is completed",
     "restart": "再起動"
   },
   "context-menu": {
@@ -332,7 +332,7 @@
     "type-follows": "フォロー",
     "type-reblogs": "リブログ",
     "vote-str": "{p}%のいいねをもらいました:",
-    "reply-str": "あなたの投稿に返信しました:",
+    "reply-str": "replied to your post:",
     "mention-str": "あなたを話題にしました:",
     "followed-str": "フォロー済み",
     "unfollowed-str": "フォロー解除済み",
@@ -365,7 +365,7 @@
     "proxy-active-exp": "あなたは投票プロキシを設定しています。もし手動投票を再度有効にしたい場合は、プロキシをクリアしてください。",
     "current-proxy": "現在の代理人:<strong>{n}</strong>",
     "remove-proxy": "プロキシをクリア",
-    "proxy-removed": "プロキシをクリアしました",
+    "proxy-removed": "Proxy is cleared",
     "proxy-created": "@{n} さんが代理人として設定しました"
   },
   "transfer": {
@@ -375,7 +375,7 @@
     "transfer-saving-sub-title": "引き出しに3日間の待ち時間を設けて資金を守ります",
     "withdraw-saving-title": "貯蓄を引き出す",
     "withdraw-saving-sub-title": "3日間の待ち時間の後に資金を引き出す",
-    "power-up-title": "STEEM POWERに変換",
+    "power-up-title": "Convert to Steem Power",
     "power-up-sub-title": "投稿への支払額の制御権を持ち、キュレーション報酬を得ることが可能になる、影響力を持つトークンです。",
     "from": "From",
     "from-placeholder": "ユーザーを選択",
@@ -392,7 +392,7 @@
     "memo": "メモ",
     "memo-placeholder": "ここにメモを入力してください",
     "memo-help": "このメモは公開されます",
-    "key-required-err": "選択したアカウントのアクティブキーが見つかりませんでした。適切な認証情報でログインしていることを確認してください。",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
     "next": "次",
     "confirm-title": "送金確認",
     "confirm-sub-title": "すべて正しいか確認してください",
