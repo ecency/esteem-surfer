@@ -167,7 +167,16 @@ export const scTransferFromSavings = (from, requestId, to, amount, memo) =>
     )}`
   );
 
-export const scTransferToVesting  = (from, to, amount) =>
+export const scTransferToVesting = (from, to, amount) =>
   standardScWindow(
-    `sign/transfer-to-vesting?from=${from}&to=${to}&amount=${encodeURIComponent(amount)}`
+    `sign/transfer-to-vesting?from=${from}&to=${to}&amount=${encodeURIComponent(
+      amount
+    )}`
+  );
+
+export const scDelegateVestingShares = (delegator, delegatee, vestingShares) =>
+  standardScWindow(
+    `sign/delegate-vesting-shares?delegator=${delegator}&delegatee=${delegatee}&vesting_shares=${encodeURIComponent(
+      vestingShares
+    )}`
   );

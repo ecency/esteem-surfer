@@ -14,7 +14,8 @@ import {
   scTransfer,
   scTransferToSavings,
   scTransferFromSavings,
-  scTransferToVesting
+  scTransferToVesting,
+  scDelegateVestingShares
 } from '../helpers/sc';
 
 import { decryptKey } from '../utils/crypto';
@@ -627,11 +628,7 @@ export const transferFromSavings = (
   }
 };
 
-export const transferToVesting = (account,
-                                  pin,
-                                  to,
-                                  amount) => {
-
+export const transferToVesting = (account, pin, to, amount) => {
   const { username: from } = account;
 
   if (account.type === 's') {
@@ -657,12 +654,12 @@ export const transferToVesting = (account,
   }
 };
 
-
-export const delegateVestingShares = (account,
-                                      pin,
-                                      delegatee,
-                                      vestingShares) => {
-
+export const delegateVestingShares = (
+  account,
+  pin,
+  delegatee,
+  vestingShares
+) => {
   const { username: delegator } = account;
 
   if (account.type === 's') {
@@ -684,6 +681,6 @@ export const delegateVestingShares = (account,
   }
 
   if (account.type === 'sc') {
-    // return scTransferToVesting(from, delegatee, vestingShares);
+    return scDelegateVestingShares(delegator, delegatee, vestingShares);
   }
 };
