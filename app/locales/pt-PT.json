@@ -31,8 +31,8 @@
   "entry-payout": {
     "potential-payout": "Pagamento potencial",
     "promoted": "Promovidos",
-    "author-payout": "Pagamento do autor",
-    "curation-payout": "Pagamento de curadoria",
+    "author-payout": "Pagamento do Autor",
+    "curation-payout": "Pagamento de Curadoria",
     "payout-date": "Pagamento"
   },
   "entry-votes": {
@@ -48,7 +48,7 @@
   },
   "entry-reblog": {
     "reblog": "Reblogar",
-    "reblogged": "Repostado"
+    "reblogged": "Reblogado"
   },
   "settings": {
     "title": "Configurações",
@@ -148,11 +148,11 @@
     "steem": "Steem",
     "steem-description": "Steem são tokens comercializáveis que podem ser transferidos em qualquer momento. Steem pode ser convertido em Steem Power em um processo chamado Carregar Steem Power.",
     "steem-power": "Poder Steem",
-    "steem-power-description": "Steem poder são tokens de influência que ganham mais força para segurar a longo prazo e votar em posts. Quanto mais poder Steem um detém, quanto mais se pode influenciar outras recompensas e ganhar recompensas por votação exata.",
+    "steem-power-description": "Poder Steem são tokens de influência que ganham mais força para segurar a longo prazo e votar em posts. Quanto mais Poder Steem se detém, quanto mais se pode influenciar outras recompensas e ganhar recompensas por votação exata.",
     "steem-power-delegated": "Poder Steem delegado",
     "steem-power-received": "Poder Steem Recebido",
     "steem-power-total": "Poder Steem total",
-    "steem-dollars": "Steem dólares",
+    "steem-dollars": "Steem Dólares",
     "steem-dollars-description": "Tokens que valem $1.00 de Steem.",
     "savings": "Poupanças",
     "savings-description": "O saldo está sujeito a 3 dias de espera para retirá-lo,.",
@@ -223,7 +223,7 @@
     "words-count": "{n} palavras",
     "no-suggestions": "Sem sugestões",
     "emoji-filter-placeholder": "Filtro",
-    "emoji-filter-no-match": "Nenhuma correspondência",
+    "emoji-filter-no-match": "Sem correspondência",
     "emoji-recently-used": "Recentemente utilizado"
   },
   "gallery": {
@@ -291,7 +291,7 @@
     "activities": "Actividades",
     "address-enter-url": "Inserir url",
     "address-enter-query": "Inserir Termo de Pesquisa",
-    "unclaimed-reward-notice": "Tem uma recompensa não solicitada por você"
+    "unclaimed-reward-notice": "Tem uma recompensa ainda não solicitada"
   },
   "search": {
     "n-results-for-q": "{n} resultados para {q}",
