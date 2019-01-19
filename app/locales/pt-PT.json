@@ -8,7 +8,7 @@
     "cancel": "Cancelar",
     "ok": "Aceitar",
     "edit": "Editar",
-    "server-error": "Processo não foi concluído devido a um erro de servidor",
+    "server-error": "Process could not be completed due to server error",
     "save": "Guardar",
     "done": "Feito",
     "select": "Selecionar"
@@ -62,7 +62,7 @@
     "server-connecting": "A conectar ao '{server}'...",
     "server-connect-error": "Não foi possível conectar ao '{server}'. Verifique se que você tem uma boa conexão de internet.",
     "server-timeout-error": "'{server}' não parece estar ligado",
-    "server-changed": "Servidor alterado para {server}",
+    "server-changed": "Server selection changed to {server}",
     "server-custom-address": "Endereço de servidor costumizado",
     "server-list-fetch-error": "Não encontrada a lista dos servidores",
     "push-notifications": "Puxar Notificações",
@@ -74,31 +74,31 @@
     "accounts-title": "Logar como",
     "traditional-login-desc": "Inscreva-se com seu nome de usuário e senha para continuar",
     "username-placeholder": "usuário",
-    "password-placeholder": "senha ou wif",
+    "password-placeholder": "password or WIF",
     "login": "Entrar",
-    "error-fields-required": "Por favor insira um nome de usuário e palavra passe",
-    "error-public-key": "Você inseriu uma chave pública. Senha/wif exigido",
-    "error-user-fetch": "Dados do usuário não pode ser buscado",
-    "error-user-not-found": "Usuário não existe",
-    "error-authenticate": "Nome de usuário errado ou a senha/wif",
+    "error-fields-required": "Please enter username and password/WIF",
+    "error-public-key": "You entered a public key. Password/WIF required",
+    "error-user-fetch": "User data could not be fetched",
+    "error-user-not-found": "User does not exist",
+    "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "Não tem uma conta? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Cadastre-se agora!</a>",
     "login-with-sc": "Entrar com",
     "divider-text": "OU"
   },
   "create-pin-code": {
     "title": "Criar o código PIN",
-    "desc1": "Definir o código pin para criptografar seus dados e habilitar a camada extra de segurança!",
-    "input-placeholder": "Inserir o código pin",
-    "desc2": "Você será solicitado a inserir o código pin para transações cruciais, bem como em cada lançamento.",
-    "created": "Código pin criado"
+    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
+    "input-placeholder": "Enter PIN code",
+    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
+    "created": "PIN code created"
   },
   "confirm-pin-code": {
-    "title": "Inserir o código pin",
-    "input-placeholder": "Digite o código pin para continuar",
+    "title": "Enter PIN Code",
+    "input-placeholder": "Enter PIN code to continue",
     "last-chance": "Esta é sua última chance",
     "invalidate": "Oh, esqueci disso...",
-    "invalidate-confirm": "Você que quer mesmo invalidar o código pin?",
-    "invalidated": "Código pin invalidado"
+    "invalidate-confirm": "Do you really want to invalidate PIN code?",
+    "invalidated": "PIN code is invalidated"
   },
   "user-menu": {
     "profile": "Perfil",
@@ -146,14 +146,14 @@
     "unclaimed-rewards": "Recompensas não reclamadas",
     "estimated-value": "O valor estimado baseia-se no valor médio de 7 dias do Steem.",
     "steem": "Steem",
-    "steem-description": "Steem são tokens comercializáveis que podem ser transferidos em qualquer momento. Steem pode ser convertido em Steem Power em um processo chamado Carregar Steem Power.",
+    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
     "steem-power": "Poder Steem",
     "steem-power-description": "Poder Steem são tokens de influência que ganham mais força para segurar a longo prazo e votar em posts. Quanto mais Poder Steem se detém, quanto mais se pode influenciar outras recompensas e ganhar recompensas por votação exata.",
-    "steem-power-delegated": "Poder Steem delegado",
-    "steem-power-received": "Poder Steem Recebido",
-    "steem-power-total": "Poder Steem total",
+    "steem-power-delegated": "Delegated Steem Power",
+    "steem-power-received": "Received Steem Power",
+    "steem-power-total": "Total Steem Power",
     "steem-dollars": "Steem Dólares",
-    "steem-dollars-description": "Tokens que valem $1.00 de Steem.",
+    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Poupanças",
     "savings-description": "O saldo está sujeito a 3 dias de espera para retirá-lo,.",
     "next-power-down": "Próxima descarga de poder é em {time}",
@@ -236,12 +236,12 @@
     "title": "Rascunhos",
     "load-error": "Não foi possível carregar os rascunhos",
     "empty-list": "Nada aqui",
-    "deleted": "Rascunho eliminado"
+    "deleted": "Draft is deleted"
   },
   "schedules": {
     "title": "Posts agendados",
     "empty-list": "Nada aqui",
-    "deleted": "Post programado excluído",
+    "deleted": "Scheduled post is deleted",
     "move": "Mover para Rascunhos",
     "moved": "Movido para Rascunhos"
   },
@@ -249,7 +249,7 @@
     "title": "Marcadores",
     "load-error": "Não foi possível carregar os Marcadores",
     "empty-list": "Nada aqui",
-    "deleted": "Marcador removido",
+    "deleted": "Bookmark is removed",
     "search": "Pesquisar marcadores"
   },
   "favorites": {
@@ -282,7 +282,7 @@
   "navbar": {
     "settings": "Configurações",
     "change-theme": "Mudar tema",
-    "login": "Entre na sua conta",
+    "login": "Login to your account",
     "bookmark": "Adicionar aos marcadores",
     "bookmarkRemove": "Eliminar dos marcadores",
     "favorite": "Adicionar aos favoritos",
@@ -291,7 +291,7 @@
     "activities": "Actividades",
     "address-enter-url": "Inserir url",
     "address-enter-query": "Inserir Termo de Pesquisa",
-    "unclaimed-reward-notice": "Tem uma recompensa ainda não solicitada"
+    "unclaimed-reward-notice": "You have unclaimed rewards"
   },
   "search": {
     "n-results-for-q": "{n} resultados para {q}",
@@ -301,11 +301,11 @@
     "sort-newest": "Data"
   },
   "updater": {
-    "new-version-available": "Nova versão disponível",
+    "new-version-available": "New version is available",
     "update": "Atualizar",
     "dismiss": "Descartar",
     "downloading": "Baixando nova versão...",
-    "download-completed": "Transferência concluída",
+    "download-completed": "Download is completed",
     "restart": "Reiniciar"
   },
   "context-menu": {
@@ -332,7 +332,7 @@
     "type-follows": "Segue",
     "type-reblogs": "Reblogs",
     "vote-str": "{p}% votou no seu post:",
-    "reply-str": "respondeu ao seu post:",
+    "reply-str": "replied to your post:",
     "mention-str": "falou de você em:",
     "followed-str": "seguiu",
     "unfollowed-str": "deixou de seguir",
@@ -365,7 +365,7 @@
     "proxy-active-exp": "Você definiu um proxy de voto. Se você gostaria de reativar o voto manual, por favor, limpem o seu proxy.",
     "current-proxy": "Seu proxy atual é: <strong>{n}</strong>",
     "remove-proxy": "Limpar o Proxy",
-    "proxy-removed": "Proxy limpa",
+    "proxy-removed": "Proxy is cleared",
     "proxy-created": "@{n} estabeleceu como proxy"
   },
   "transfer": {
@@ -375,7 +375,7 @@
     "transfer-saving-sub-title": "Proteger os fundos, requerendo 3 dias para retirar como período de espera",
     "withdraw-saving-title": "Retirar da poupança",
     "withdraw-saving-sub-title": "Retirar fundos após o período requerido de espera de 3 dias",
-    "power-up-title": "Converter para STEEM POWER",
+    "power-up-title": "Convert to Steem Power",
     "power-up-sub-title": "Tokens de influência que lhe dão mais controle sobre como postar os pagamentos e permitam ganhar na curadoria recompensas.",
     "from": "De",
     "from-placeholder": "Selecione um usuário",
@@ -392,7 +392,7 @@
     "memo": "Memo",
     "memo-placeholder": "insira aqui as suas notas",
     "memo-help": "Este memo é público",
-    "key-required-err": "A chave ativa não foi encontrada para a conta selecionada. Verifique que se liga com as credencias corretas.",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
     "next": "Seguinte",
     "confirm-title": "Confirme a sua transferência",
     "confirm-sub-title": "Por favor, verfique se está tudo correto",
