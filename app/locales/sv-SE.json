@@ -220,46 +220,46 @@
     "update": "Uppdatera",
     "updated": "Inlägg Uppdaterat",
     "sync-scroll": "Scroll Sync",
-    "words-count": "{n} words",
-    "no-suggestions": "No suggestions",
+    "words-count": "{n} ord",
+    "no-suggestions": "Inga förslag",
     "emoji-filter-placeholder": "Filter",
-    "emoji-filter-no-match": "No match",
-    "emoji-recently-used": "Recently Used"
+    "emoji-filter-no-match": "Ingen träff",
+    "emoji-recently-used": "Senast använda"
   },
   "gallery": {
-    "title": "Gallery",
-    "copied": "Copied to clipboard",
-    "load-error": "Could not load gallery",
-    "empty-list": "Nothing here"
+    "title": "Galleri",
+    "copied": "Kopierat till urklipp",
+    "load-error": "Kunde inte ladda galleri",
+    "empty-list": "Ingenting här"
   },
   "drafts": {
-    "title": "Drafts",
-    "load-error": "Could not load drafts",
-    "empty-list": "Nothing here",
-    "deleted": "Draft deleted"
+    "title": "Utkast",
+    "load-error": "Kunde inte ladda utkast",
+    "empty-list": "Ingenting här",
+    "deleted": "Utkast raderat"
   },
   "schedules": {
-    "title": "Scheduled Posts",
-    "empty-list": "Nothing here",
-    "deleted": "Scheduled post deleted",
-    "move": "Move to drafts",
-    "moved": "Moved to drafts"
+    "title": "Schemalagt Inlägg",
+    "empty-list": "Ingenting här",
+    "deleted": "Schemalagt inlägg raderat",
+    "move": "Flytta till utkast",
+    "moved": "Flyttad till utkast"
   },
   "bookmarks": {
-    "title": "Bookmarks",
-    "load-error": "Could not load bookmarks",
-    "empty-list": "Nothing here",
-    "deleted": "Bookmark removed",
-    "search": "Search in bookmarks"
+    "title": "Bokmärken",
+    "load-error": "Kunde inte ladda bokmärke",
+    "empty-list": "Ingenting här",
+    "deleted": "Bokmärke raderat",
+    "search": "Sök bokmärken"
   },
   "favorites": {
-    "title": "Favorites",
-    "load-error": "Could not load favorites",
-    "empty-list": "Nothing here",
-    "search": "Search in favorites"
+    "title": "Favoriter",
+    "load-error": "Det gick inte att hämta favoriter",
+    "empty-list": "Ingenting här",
+    "search": "Sök i favoriter"
   },
   "entry": {
-    "reply": "Reply",
+    "reply": "Svara",
     "reply-preview": "Preview",
     "via-app": "via <span class=\"app-name\">{app}</span>",
     "n-replies": "{n} Replies",
@@ -320,29 +320,29 @@
     "voted": "{source} voted your post",
     "mention-post": "{source} mentioned you in a post",
     "mention-comment": "{source} mentioned you in a comment",
-    "followed": "{source} followed you",
-    "replied": "{source} replied you",
-    "reblogged": "{source} reblogged your post"
+    "followed": "{source} följde dig",
+    "replied": "{source} svarade dig",
+    "reblogged": "{source} återbloggade ditt inlägg"
   },
   "activities": {
-    "type-all": "All Activities",
-    "type-votes": "Votes",
-    "type-replies": "Replies",
-    "type-mentions": "Mentions",
-    "type-follows": "Follows",
-    "type-reblogs": "Reblogs",
-    "vote-str": "{p}% likes your post:",
-    "reply-str": "replied your post:",
-    "mention-str": "mentioned you in:",
-    "followed-str": "followed",
-    "unfollowed-str": "unfollowed",
-    "ignored-str": "ignored",
-    "reblog-str": "reblogged your post:",
-    "empty-list": "Nothing here",
-    "refresh": "Refresh",
-    "mark-all-read": "Mark All as Read",
-    "leaderboard": "Leaderboard",
-    "leaderboard-title": "Daily Top users"
+    "type-all": "Alla aktiviteter",
+    "type-votes": "Röster",
+    "type-replies": "Svar",
+    "type-mentions": "Omnämningar",
+    "type-follows": "Följer",
+    "type-reblogs": "Återblogga",
+    "vote-str": "{p}% gillar ditt inlägg:",
+    "reply-str": "svarade ditt inlägg:",
+    "mention-str": "nämnt dig i:",
+    "followed-str": "följer",
+    "unfollowed-str": "sluta följa",
+    "ignored-str": "ignorerade",
+    "reblog-str": "återbloggade ditt inlägg:",
+    "empty-list": "Ingenting här",
+    "refresh": "Ladda om",
+    "mark-all-read": "Markera alla som lästa",
+    "leaderboard": "Topplista",
+    "leaderboard-title": "Dagliga Toppanvändare"
   },
   "witnesses": {
     "page-title": "Witness Voting",
