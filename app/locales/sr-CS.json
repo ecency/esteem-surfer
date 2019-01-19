@@ -1,6 +1,6 @@
 {
   "g": {
-    "compose-entry": "Create Post",
+    "compose-entry": "Napiši post",
     "are-you-sure": "Da li ste sigurni?",
     "yes": "Da",
     "no": "Ne",
@@ -14,52 +14,52 @@
     "select": "Izaberi"
   },
   "footer": {
-    "faq": "Čеsto postavljana pitanja",
-    "about": "About"
+    "faq": "FAQ",
+    "about": "O nama"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
-    "filter-feed": "Feed"
+    "tags": "Popularni tagovi",
+    "filter-trending": "Popularno",
+    "filter-hot": "Aktuelno",
+    "filter-created": "Novo",
+    "filter-active": "Aktivan",
+    "filter-promoted": "Promovisano",
+    "filter-votes": "Glasovi",
+    "filter-children": "Komentari",
+    "filter-feed": "Novosti"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "Potencijalna isplata",
+    "promoted": "Promovisano",
+    "author-payout": "Prihod autora",
+    "curation-payout": "Prihod od glasanja",
+    "payout-date": "Isplata"
   },
   "entry-votes": {
-    "n-more": "{n} more",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
-    "modal-title": "Voters ({n})"
+    "n-more": "još {n}",
+    "author": "Autor",
+    "reward": "Nagrada",
+    "percent": "Procenat",
+    "time": "Vreme",
+    "modal-title": "Broj glasova ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "podelili {n}"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "Podeli",
+    "reblogged": "Podeljeno"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "Currency",
+    "title": "Podešavanja",
+    "currency": "Valuta",
     "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
     "currency-changed": "Currency Changed",
-    "locale": "Language",
-    "locale-changed": "Language changed",
+    "locale": "Jezik",
+    "locale-changed": "Jezik je promenjen",
     "server": "Server",
-    "server-invalid-address": "Invalid server address",
-    "server-connecting": "Connecting to '{server}'...",
+    "server-invalid-address": "Nevažeća adresa servera",
+    "server-connecting": "Povezivanje na '{server}'...",
     "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
     "server-timeout-error": "'{server}' looks like not alive",
     "server-changed": "Server changed to {server}",
