@@ -63,7 +63,7 @@
     "server-connect-error": "Hanjeut meuhubong u '{server}'. Ci peureksa koneksi internet droen.",
     "server-timeout-error": "'{server}' hana udeep",
     "server-changed": "Server ka meu ubah u {server}",
-    "server-custom-address": "Custom server address",
+    "server-custom-address": "Alamat server khusus",
     "server-list-fetch-error": "Could not fetch server list",
     "push-notifications": "Push Notifications",
     "push-notify-enabled": "Push notifications enabled",
@@ -112,29 +112,29 @@
   },
   "login-required": {
     "default": "This action requires login",
-    "key-required": "This action requires {key} key or master password",
-    "keys-required": "This action requires {keys} keys or master password"
+    "key-required": "Aksi nyoe peureule {key} gunci atawa kata gunci utama",
+    "keys-required": "Aksi nyoe peureule {keys} gunci atawa kata gunci utama"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
-    "fetch-error-content": "Could not fetch posts",
-    "post-count": "Post Count",
-    "followers": "Followers",
-    "following": "Following",
+    "fetch-error-profile": "Han jeut cok data profil",
+    "fetch-error-content": "Han jeut cok data tulesan",
+    "post-count": "Dum Tulesan",
+    "followers": "Peungikoët",
+    "following": "Meuikoët",
     "section-blog": "Blog",
-    "section-comments": "Comments",
-    "section-replies": "Replies",
-    "section-wallet": "Wallet"
+    "section-comments": "Komentar",
+    "section-replies": "Balah",
+    "section-wallet": "Balum"
   },
   "follow-controls": {
-    "follow": "Follow",
-    "unFollow": "Unfollow",
-    "mute": "Mute",
-    "unMute": "Unmute"
+    "follow": "Ikot",
+    "unFollow": "Bek seutot lee",
+    "mute": "Peu iem",
+    "unMute": "Peu musue"
   },
   "account": {
     "voting-power": "Voting Power",
-    "post-count": "Post Count",
+    "post-count": "Dum Tulesan",
     "number-of-votes": "Number of votes in last 24 hours",
     "followers": "Followers",
     "following": "Following",
