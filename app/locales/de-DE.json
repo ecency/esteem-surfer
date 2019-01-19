@@ -8,7 +8,7 @@
     "cancel": "Abbrechen",
     "ok": "Okay",
     "edit": "Bearbeiten",
-    "server-error": "Der Vorgang konnte aufgrund eines Server-Fehlers nicht durchgeführt werden",
+    "server-error": "Process could not be completed due to server error",
     "save": "Speichern",
     "done": "Fertig!",
     "select": "Auswählen"
@@ -62,7 +62,7 @@
     "server-connecting": "Verbinde zu '{server}'...",
     "server-connect-error": "Keine Verbindung zum '{server}'. Prüfe deine Internetverbindung.",
     "server-timeout-error": "'{server}' scheint Offline zu sein",
-    "server-changed": "Server gewechselt zu {server}",
+    "server-changed": "Server selection changed to {server}",
     "server-custom-address": "Individuelle Server Adresse",
     "server-list-fetch-error": "Serverliste konnte nicht abgerufen werden",
     "push-notifications": "Push Benachrichtigungen",
@@ -74,31 +74,31 @@
     "accounts-title": "Einloggen als",
     "traditional-login-desc": "Melde dich mit deinem Benutzernamen und Passwort an, um fortzufahren",
     "username-placeholder": "Username",
-    "password-placeholder": "Passwort oder WIF",
+    "password-placeholder": "password or WIF",
     "login": "Einloggen",
-    "error-fields-required": "Bitte Username und Passwort/WIF eingeben",
-    "error-public-key": "Du hast einen Public-Schlüssel eingegeben. Passwort oder WIF erforderlich",
-    "error-user-fetch": "Benutzerdaten konnten nicht abgerufen werden",
-    "error-user-not-found": "Benutzer existiert nicht",
-    "error-authenticate": "Falscher Benutzername oder Passwort/WIF",
+    "error-fields-required": "Please enter username and password/WIF",
+    "error-public-key": "You entered a public key. Password/WIF required",
+    "error-user-fetch": "User data could not be fetched",
+    "error-user-not-found": "User does not exist",
+    "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "Noch keinen Account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Jetzt Anmelden!</a>",
     "login-with-sc": "Einloggen mit",
     "divider-text": "oder"
   },
   "create-pin-code": {
     "title": "Erstelle einen PIN-Code",
-    "desc1": "Setzen deinen Pin-Code um deine Daten zu verschlüsseln und eine zusätzliche Sicherheit zu aktivieren!",
-    "input-placeholder": "PIN-Code eingeben",
-    "desc2": "Du wirst bei wichtigen Transaktionen sowie bei jedem Start der App zur Eingabe des PIN-Codes aufgefordert.",
-    "created": "PIN-Code erstellt"
+    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
+    "input-placeholder": "Enter PIN code",
+    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
+    "created": "PIN code created"
   },
   "confirm-pin-code": {
-    "title": "PIN-Code eingeben",
-    "input-placeholder": "PIN-Code eingeben um fortzufahren",
+    "title": "Enter PIN Code",
+    "input-placeholder": "Enter PIN code to continue",
     "last-chance": "Das ist deine letzte Chance",
     "invalidate": "Oh, ich hab es vergessen...",
-    "invalidate-confirm": "Willst du wirklich den PIN-Code ungültig machen?",
-    "invalidated": "PIN-Code ist nun ungültig"
+    "invalidate-confirm": "Do you really want to invalidate PIN code?",
+    "invalidated": "PIN code is invalidated"
   },
   "user-menu": {
     "profile": "Profil",
@@ -146,14 +146,14 @@
     "unclaimed-rewards": "Nicht abgeholte Belohnungen",
     "estimated-value": "Der erwartete Wert basiert auf einem 7 Tage Durchschnittswert vom STEEM.",
     "steem": "Steem",
-    "steem-description": "Steem sind handelbare Tokens die zu jederzeit transferiert werden können. Steem kann auch in Steem Power konvertiert werden, dies nennt sich Power Up und gibt dir mehr Einfluss auf der Blockchain.",
+    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
     "steem-power": "Steem Power",
     "steem-power-description": "Steem Power zeigt deine Stärke und Votekraft. Je mehr Steem Power du hast umso mehr Einfluss hast du auf Beiträge und die Belohnung. Mit einer höheren Steem Power kuratierst du besser und effektiver.",
-    "steem-power-delegated": "delegierte Steem Power",
-    "steem-power-received": "erhaltene Steem Power",
-    "steem-power-total": "gesamte Steem Power",
+    "steem-power-delegated": "Delegated Steem Power",
+    "steem-power-received": "Received Steem Power",
+    "steem-power-total": "Total Steem Power",
     "steem-dollars": "Steem Dollar",
-    "steem-dollars-description": "Steem Dollar mit einem Wert von $1.00 eines Steem.",
+    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Tresor",
     "savings-description": "Werte im Tresor unterliegen einer 3-Tages Sperre.",
     "next-power-down": "Der nächste Power Down ist in {time}",
@@ -236,12 +236,12 @@
     "title": "Entwürfe",
     "load-error": "Konnte Entwürfe nicht laden",
     "empty-list": "Hier ist nichts zu sehen.",
-    "deleted": "Entwurf gelöscht"
+    "deleted": "Draft is deleted"
   },
   "schedules": {
     "title": "Geplante Beiträge",
     "empty-list": "Hier ist nichts zu sehen",
-    "deleted": "Geplanter Beitrag entfernt",
+    "deleted": "Scheduled post is deleted",
     "move": "In Entwürfe verschieben",
     "moved": "Erfolgreich in Entwürfe verschoben"
   },
@@ -249,7 +249,7 @@
     "title": "Lesezeichen",
     "load-error": "Lesezeichen konnten nicht geladen werden",
     "empty-list": "Hier ist nichts zu sehen",
-    "deleted": "Lesezeichen entfernt",
+    "deleted": "Bookmark is removed",
     "search": "In Lesezeichen suchen"
   },
   "favorites": {
@@ -282,7 +282,7 @@
   "navbar": {
     "settings": "Einstellungen",
     "change-theme": "Design ändern",
-    "login": "In deinen Account einloggen",
+    "login": "Login to your account",
     "bookmark": "Zu deinen Lesezeichen hinzufügen",
     "bookmarkRemove": "Von deinen Lesezeichen entfernen",
     "favorite": "Zu deinen Favoriten hinzufügen",
@@ -291,7 +291,7 @@
     "activities": "Aktivitäten",
     "address-enter-url": "Adresse eingeben",
     "address-enter-query": "Suchbegriff eingeben",
-    "unclaimed-reward-notice": "Du hast nicht abgeholte Belohnungen"
+    "unclaimed-reward-notice": "You have unclaimed rewards"
   },
   "search": {
     "n-results-for-q": "{n} Suchergebnisse für {q}",
@@ -301,11 +301,11 @@
     "sort-newest": "Datum"
   },
   "updater": {
-    "new-version-available": "Neue Version verfügbar",
+    "new-version-available": "New version is available",
     "update": "Aktualisieren",
     "dismiss": "Schließen",
     "downloading": "Neue Version herunterladen...",
-    "download-completed": "Download abgeschlossen",
+    "download-completed": "Download is completed",
     "restart": "Neustarten"
   },
   "context-menu": {
@@ -332,7 +332,7 @@
     "type-follows": "Folgen",
     "type-reblogs": "Reblogs",
     "vote-str": "{p}% gefällt deinen Beitrag:",
-    "reply-str": "antwortete auf deinen Beitrag:",
+    "reply-str": "replied to your post:",
     "mention-str": "erwähnte dich in:",
     "followed-str": "folgst du",
     "unfollowed-str": "entfolgt",
@@ -365,7 +365,7 @@
     "proxy-active-exp": "Du hast erfolgreich deinen Proxy gesetzt. Wenn du wieder manuell Witnesse voten möchtest, editiere deine Witness-Liste.",
     "current-proxy": "Dein aktueller Proxy ist: <strong>{n}</strong>",
     "remove-proxy": "Proxy löschen",
-    "proxy-removed": "Proxy gelöscht",
+    "proxy-removed": "Proxy is cleared",
     "proxy-created": "@{n} wurde als Proxy gesetzt"
   },
   "transfer": {
@@ -375,7 +375,7 @@
     "transfer-saving-sub-title": "Guthaben wird durch eine 3-tägige Wartezeit geschützt",
     "withdraw-saving-title": "Aus dem Tresor auszahlen",
     "withdraw-saving-sub-title": "Auszahlungen werden durch eine 3-tägige Wartezeit geschützt",
-    "power-up-title": "In Steem Power konvertieren",
+    "power-up-title": "Convert to Steem Power",
     "power-up-sub-title": "STEEM Token geben dir mehr Kontrolle über Beitrags-Auszahlungen und erhöhen deine Kurations-Belohnungen.",
     "from": "Von",
     "from-placeholder": "Wähle einen Benutzer",
@@ -392,7 +392,7 @@
     "memo": "Memo",
     "memo-placeholder": "Hier dein Memo eingeben",
     "memo-help": "Dieses Memo ist öffentlich",
-    "key-required-err": "Der Active-Key konnte für das ausgewählte Konto nicht gefunden werden. Bitte stelle sicher, dass du dich mit den richtigen Zugangsdaten angemeldet hast.",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
     "next": "Weiter",
     "confirm-title": "Bestätige deine Überweisung",
     "confirm-sub-title": "Bitte überprüfe ob alles korrekt ist",
