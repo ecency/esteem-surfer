@@ -294,7 +294,7 @@
     "unclaimed-reward-notice": "未請求の報酬があります"
   },
   "search": {
-    "n-results-for-q": "{q} の検索結果の内{n}",
+    "n-results-for-q": "{q} の検索結果の内{n} 件",
     "sort-by": "並び替え",
     "sort-popularity": "人気",
     "sort-relevance": "関連",
@@ -317,7 +317,7 @@
   },
   "notification": {
     "popup-title": "新しい通知があります",
-    "voted": "{source} さんがあなたの投稿をVoteしました",
+    "voted": "{source} さんがあなたの投稿に投票しました",
     "mention-post": "{source} さんが投稿であなたを話題にしました",
     "mention-comment": "{source} さんがコメントであなたを話題にしました",
     "followed": "{source} さんがあなたをフォローしました",
@@ -333,7 +333,7 @@
     "type-reblogs": "リブログ",
     "vote-str": "{p}%のいいねをもらいました:",
     "reply-str": "あなたの投稿に返信しました:",
-    "mention-str": "あなたをメンションしました:",
+    "mention-str": "あなたを話題にしました:",
     "followed-str": "フォロー済み",
     "unfollowed-str": "フォロー解除済み",
     "ignored-str": "無視",
@@ -363,7 +363,7 @@
     "proxy-exp": "Witnessへの投票の代理人を選ぶこともできます。この操作はあなたの現在のWitness投票をリセットします。",
     "set-proxy": "プロキシ設定",
     "proxy-active-exp": "あなたは投票プロキシを設定しています。もし手動投票を再度有効にしたい場合は、プロキシをクリアしてください。",
-    "current-proxy": "現在のプロキシ:<strong>{n}</strong>",
+    "current-proxy": "現在の代理人:<strong>{n}</strong>",
     "remove-proxy": "プロキシをクリア",
     "proxy-removed": "プロキシがクリアされました",
     "proxy-created": "@{n} さんが代理人として設定しました"
