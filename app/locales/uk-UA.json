@@ -155,7 +155,7 @@
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Заощадження",
-    "savings-description": "Balance subject to 3 day withdraw waiting period.",
+    "savings-description": "Баланс, для якого діє 3-денний період очікування при знятті коштів.",
     "next-power-down": "Наступне зниження сили голосу відбудеться {time}",
     "exchange": "Обмін",
     "transactions": "Транзакції",
