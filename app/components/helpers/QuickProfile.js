@@ -4,8 +4,10 @@ eslint-disable import/no-cycle
 
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Drawer, Tooltip, message } from 'antd';
+import { Drawer, message } from 'antd';
 import { FormattedMessage, FormattedNumber, injectIntl } from 'react-intl';
+
+import Tooltip from '../common/Tooltip';
 
 import {
   getAccount,

@@ -87,7 +87,14 @@ class EntryVoteBtn extends Component {
     } catch (err) {
       message.error(String(err).substring(0, 30));
     } finally {
-      const newEntry = await getContent(author, permlink);
+      let newEntry = await getContent(author, permlink);
+
+      if (entry.reblogged_by) {
+        newEntry = Object.assign({}, newEntry, {
+          reblogged_by: entry.reblogged_by
+        });
+      }
+
       const { active_votes: votes } = newEntry;
 
       if (this.mounted) {

@@ -5,10 +5,12 @@ eslint-disable react/no-multi-comp,react/style-prop-object
 import React, { Component, Fragment } from 'react';
 
 import PropTypes from 'prop-types';
-import { Tooltip, message, Menu } from 'antd';
+import { message, Menu } from 'antd';
 import { FormattedNumber, FormattedDate, FormattedMessage, FormattedRelative, injectIntl } from 'react-intl';
 
 import { Link } from 'react-router-dom';
+
+import Tooltip from './common/Tooltip';
 
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';

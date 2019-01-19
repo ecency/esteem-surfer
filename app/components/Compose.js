@@ -16,10 +16,11 @@ import {
   Dropdown,
   Menu,
   Modal,
-  Tooltip,
   DatePicker,
   message
 } from 'antd';
+
+import Tooltip from './common/Tooltip';
 
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';

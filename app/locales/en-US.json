@@ -402,6 +402,7 @@
     "success-sub-title": "Transfer successful",
     "transfer-summary": "Transferred <span class=\"amount\">{amount}</span> From <span class=\"from-user\">{from}</span> to <span class=\"to-user\">{to}</span>",
     "reset": "Another transfer",
-    "finish": "Finish"
+    "finish": "Finish",
+    "recent-transfers": "Recent transfers"
   }
 }

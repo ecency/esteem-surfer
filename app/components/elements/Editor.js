@@ -7,7 +7,9 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import { UnControlled as CodeMirror } from 'react-codemirror2';
-import { Input, Select, Tooltip, message } from 'antd';
+import { Input, Select, message } from 'antd';
+
+import Tooltip from '../common/Tooltip';
 
 import GalleryModal from '../dialogs/Gallery';
 

@@ -6,7 +6,7 @@ import React, { PureComponent } from 'react';
 import { FormattedHTMLMessage, FormattedMessage, injectIntl } from 'react-intl';
 
 import PropTypes from 'prop-types';
-import { Input, Select, Button, Icon, message } from 'antd';
+import { Input, AutoComplete, Select, Button, Icon, message } from 'antd';
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
 import PinRequired from './helpers/PinRequired';
@@ -14,6 +14,8 @@ import QuickProfile from './helpers/QuickProfile';
 import UserAvatar from './elements/UserAvatar';
 import LinearProgress from './common/LinearProgress';
 import DeepLinkHandler from './helpers/DeepLinkHandler';
+
+import { getItem, setItem } from '../helpers/storage';
 
 import {
   getAccount,
@@ -150,22 +152,27 @@ class Transfer extends PureComponent {
       });
   };
 
-  resetState = () => ({
-    step: 1,
-    from: null,
-    fromData: null,
-    fromError: null,
-    to: null,
-    toData: null,
-    toError: null,
-    toWarning: null,
-    amount: '0.001',
-    amountError: null,
-    balance: '0',
-    asset: 'STEEM',
-    memo: '',
-    inProgress: false
-  });
+  resetState = () => {
+    this.recentDb = getItem('recent-transfers', []);
+
+    return {
+      step: 1,
+      from: null,
+      fromData: null,
+      fromError: null,
+      to: null,
+      toData: null,
+      toError: null,
+      toWarning: null,
+      amount: '0.001',
+      amountError: null,
+      balance: '0',
+      asset: 'STEEM',
+      memo: '',
+      inProgress: false,
+      recentList: this.recentDb
+    };
+  };
 
   assetChanged = asset => {
     this.setState({ asset }, () => {
@@ -198,13 +205,17 @@ class Transfer extends PureComponent {
     history.push(u);
   };
 
-  toChanged = e => {
-    const { value: to } = e.target;
+  toChanged = to => {
     this.setState({ to });
 
     if (this.timer) {
       clearTimeout(this.timer);
     }
+
+    const recentList = to
+      ? this.recentDb.filter(x => x.indexOf(to) !== -1)
+      : this.recentDb;
+    this.setState({ recentList });
 
     const { intl } = this.props;
 
@@ -355,6 +366,14 @@ class Transfer extends PureComponent {
     return fn(...args)
       .then(resp => {
         this.setState({ step: 3 });
+
+        // Save recipient to recent list
+        const recent = getItem('recent-transfers', []);
+        if (!recent.includes(to)) {
+          const newRecent = [...new Set([to, ...recent])].slice(0, 100);
+          setItem('recent-transfers', newRecent);
+        }
+
         return resp;
       })
       .catch(err => {
@@ -393,17 +412,35 @@ class Transfer extends PureComponent {
       amountError,
       asset,
       memo,
-      inProgress
+      inProgress,
+      recentList
     } = this.state;
 
     const balance = this.getBalance();
+
+    const options =
+      recentList && recentList.length > 0
+        ? [
+            <AutoComplete.OptGroup
+              key="recent"
+              label={intl.formatMessage({
+                id: 'transfer.recent-transfers'
+              })}
+            >
+              {recentList.map(item => (
+                <AutoComplete.Option key={item} value={item}>
+                  {item}
+                </AutoComplete.Option>
+              ))}
+            </AutoComplete.OptGroup>
+          ]
+        : [];
 
     return (
       <div className="wrapper">
         <NavBar
           {...Object.assign({}, this.props, {
-            reloadFn: () => {
-            },
+            reloadFn: () => {},
             reloading: false
           })}
         />
@@ -419,42 +456,42 @@ class Transfer extends PureComponent {
                   <div className="box-titles">
                     <div className="main-title">
                       {mode === 'transfer' && (
-                        <FormattedMessage id="transfer.transfer-title"/>
+                        <FormattedMessage id="transfer.transfer-title" />
                       )}
                       {mode === 'transfer-saving' && (
-                        <FormattedMessage id="transfer.transfer-saving-title"/>
+                        <FormattedMessage id="transfer.transfer-saving-title" />
                       )}
                       {mode === 'withdraw-saving' && (
-                        <FormattedMessage id="transfer.withdraw-saving-title"/>
+                        <FormattedMessage id="transfer.withdraw-saving-title" />
                       )}
                       {mode === 'power-up' && (
-                        <FormattedMessage id="transfer.power-up-title"/>
+                        <FormattedMessage id="transfer.power-up-title" />
                       )}
                     </div>
                     <div className="sub-title">
                       {mode === 'transfer' && (
-                        <FormattedMessage id="transfer.transfer-sub-title"/>
+                        <FormattedMessage id="transfer.transfer-sub-title" />
                       )}
                       {mode === 'transfer-saving' && (
-                        <FormattedMessage id="transfer.transfer-saving-sub-title"/>
+                        <FormattedMessage id="transfer.transfer-saving-sub-title" />
                       )}
                       {mode === 'withdraw-saving' && (
-                        <FormattedMessage id="transfer.withdraw-saving-sub-title"/>
+                        <FormattedMessage id="transfer.withdraw-saving-sub-title" />
                       )}
                       {mode === 'power-up' && (
-                        <FormattedMessage id="transfer.power-up-sub-title"/>
+                        <FormattedMessage id="transfer.power-up-sub-title" />
                       )}
                     </div>
                   </div>
                 </div>
-                {inProgress && <LinearProgress/>}
+                {inProgress && <LinearProgress />}
                 <div className="transfer-box-body">
                   <div className="transfer-form">
                     <div
                       className={`form-item ${fromError ? 'has-error' : ''}`}
                     >
                       <div className="form-label">
-                        <FormattedMessage id="transfer.from"/>
+                        <FormattedMessage id="transfer.from" />
                       </div>
                       <div className="form-input">
                         <Select
@@ -481,20 +518,20 @@ class Transfer extends PureComponent {
                     <div
                       className={`form-item ${
                         toWarning || toError ? 'has-error' : ''
-                        }`}
+                      }`}
                     >
                       <div className="form-label">
-                        <FormattedMessage id="transfer.to"/>
+                        <FormattedMessage id="transfer.to" />
                       </div>
                       <div className="form-input">
-                        <Input
-                          type="text"
+                        <AutoComplete
                           onChange={this.toChanged}
                           value={to}
                           placeholder={intl.formatMessage({
                             id: 'transfer.to-placeholder'
                           })}
                           spellCheck={false}
+                          dataSource={options}
                         />
 
                         {toWarning && (
@@ -507,10 +544,10 @@ class Transfer extends PureComponent {
                     <div
                       className={`form-item item-amount ${
                         amountError ? 'has-error' : ''
-                        }`}
+                      }`}
                     >
                       <div className="form-label">
-                        <FormattedMessage id="transfer.amount"/>
+                        <FormattedMessage id="transfer.amount" />
                       </div>
                       <div className="form-input">
                         <Input
@@ -526,51 +563,51 @@ class Transfer extends PureComponent {
                           <div className="input-help">{amountError}</div>
                         )}
                       </div>
-                      {mode !== 'power-up' &&
-                      <AssetSwitch
-                        defaultSelected={asset}
-                        onChange={this.assetChanged}
-                      />
-                      }
+                      {mode !== 'power-up' && (
+                        <AssetSwitch
+                          defaultSelected={asset}
+                          onChange={this.assetChanged}
+                        />
+                      )}
                     </div>
                     <div
                       role="none"
                       className="balance"
                       onClick={this.copyBalance}
                     >
-                      <FormattedMessage id="transfer.balance"/>:{' '}
+                      <FormattedMessage id="transfer.balance" />:{' '}
                       <span className="balance-num">
                         {' '}
                         {balance} {asset}
                       </span>
                     </div>
-                    {mode !== 'power-up' &&
-                    <div className="form-item">
-                      <div className="form-label">
-                        <FormattedMessage id="transfer.memo"/>
-                      </div>
-                      <div className="form-input">
-                        <Input
-                          type="text"
-                          value={memo}
-                          placeholder={intl.formatMessage({
-                            id: 'transfer.memo-placeholder'
-                          })}
-                          onChange={this.memoChanged}
-                        />
-                        <div className="input-help">
-                          <FormattedMessage id="transfer.memo-help"/>
+                    {mode !== 'power-up' && (
+                      <div className="form-item">
+                        <div className="form-label">
+                          <FormattedMessage id="transfer.memo" />
+                        </div>
+                        <div className="form-input">
+                          <Input
+                            type="text"
+                            value={memo}
+                            placeholder={intl.formatMessage({
+                              id: 'transfer.memo-placeholder'
+                            })}
+                            onChange={this.memoChanged}
+                          />
+                          <div className="input-help">
+                            <FormattedMessage id="transfer.memo-help" />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    }
+                    )}
                     <div className="form-controls">
                       <Button
                         type="primary"
                         disabled={!this.canSubmit()}
                         onClick={this.next}
                       >
-                        <FormattedMessage id="transfer.next"/>
+                        <FormattedMessage id="transfer.next" />
                       </Button>
                     </div>
                   </div>
@@ -584,10 +621,10 @@ class Transfer extends PureComponent {
                   <div className="step-no">2</div>
                   <div className="box-titles">
                     <div className="main-title">
-                      <FormattedMessage id="transfer.confirm-title"/>
+                      <FormattedMessage id="transfer.confirm-title" />
                     </div>
                     <div className="sub-title">
-                      <FormattedMessage id="transfer.confirm-sub-title"/>
+                      <FormattedMessage id="transfer.confirm-sub-title" />
                     </div>
                   </div>
                 </div>
@@ -600,7 +637,7 @@ class Transfer extends PureComponent {
                         username={from}
                       >
                         <div className="from-user">
-                          <UserAvatar user={from} size="xLarge"/>
+                          <UserAvatar user={from} size="xLarge" />
                         </div>
                       </QuickProfile>
                       <div className="arrow">{arrowRight}</div>
@@ -610,7 +647,7 @@ class Transfer extends PureComponent {
                         username={to}
                       >
                         <div className="to-user">
-                          <UserAvatar user={to} size="xLarge"/>
+                          <UserAvatar user={to} size="xLarge" />
                         </div>
                       </QuickProfile>
                     </div>
@@ -624,7 +661,7 @@ class Transfer extends PureComponent {
                   <div className="transfer-form">
                     <div className="form-controls">
                       <a role="none" className="btn-back" onClick={this.back}>
-                        <FormattedMessage id="transfer.back"/>
+                        <FormattedMessage id="transfer.back" />
                       </a>
                       <PinRequired {...this.props} onSuccess={this.confirm}>
                         <Button type="primary" disabled={inProgress}>
@@ -635,7 +672,7 @@ class Transfer extends PureComponent {
                               spin
                             />
                           )}
-                          <FormattedMessage id="transfer.confirm"/>
+                          <FormattedMessage id="transfer.confirm" />
                         </Button>
                       </PinRequired>
                     </div>
@@ -652,14 +689,14 @@ class Transfer extends PureComponent {
                   <div className="step-no">3</div>
                   <div className="box-titles">
                     <div className="main-title">
-                      <FormattedMessage id="transfer.success-title"/>
+                      <FormattedMessage id="transfer.success-title" />
                     </div>
                     <div className="sub-title">
-                      <FormattedMessage id="transfer.success-sub-title"/>
+                      <FormattedMessage id="transfer.success-sub-title" />
                     </div>
                   </div>
                 </div>
-                {inProgress && <LinearProgress/>}
+                {inProgress && <LinearProgress />}
                 <div className="transfer-box-body">
                   <div className="success">
                     <FormattedHTMLMessage
@@ -670,10 +707,10 @@ class Transfer extends PureComponent {
                   <div className="transfer-form">
                     <div className="form-controls">
                       <a role="none" className="btn-back" onClick={this.reset}>
-                        <FormattedMessage id="transfer.reset"/>
+                        <FormattedMessage id="transfer.reset" />
                       </a>
                       <Button type="primary" onClick={this.finish}>
-                        <FormattedMessage id="transfer.finish"/>
+                        <FormattedMessage id="transfer.finish" />
                       </Button>
                     </div>
                   </div>
@@ -683,7 +720,7 @@ class Transfer extends PureComponent {
           </div>
         )}
 
-        {!fromData && <div className="app-content transfer-page"/>}
+        {!fromData && <div className="app-content transfer-page" />}
 
         <AppFooter {...this.props} />
         <DeepLinkHandler {...this.props} />

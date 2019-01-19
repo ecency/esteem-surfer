@@ -3,11 +3,13 @@ eslint-disable react/no-multi-comp, no-underscore-dangle
 */
 
 import React, { Component } from 'react';
-import { Modal, Popconfirm, Tooltip, message } from 'antd';
+import { Modal, Popconfirm, message } from 'antd';
 
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import PropTypes from 'prop-types';
+
+import Tooltip from '../common/Tooltip';
 
 import LinearProgress from '../common/LinearProgress';
 
