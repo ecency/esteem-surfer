@@ -392,7 +392,7 @@
     "memo": "مذكرة",
     "memo-placeholder": "أدخل ملاحظاتك هنا",
     "memo-help": "هذه المذكرة عامة",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "key-required-err": "تعذر العثور على المفتاح النشط للحساب المحدد. يرجى التأكد من تسجيل الدخول باستخدام بيانات الاعتماد المناسبة.",
     "next": "التالي",
     "confirm-title": "تأكيد عميلة التحويل",
     "confirm-sub-title": "من فضلك، تحقق مما إذا كان كل شيء صحيح",
