@@ -41,14 +41,14 @@
     "reward": "Винагорода",
     "percent": "Відсоток",
     "time": "Час",
-    "modal-title": "Voters ({n})"
+    "modal-title": "Проголосували ({n})"
   },
   "entry-list-item": {
     "reblogged": "репост {n}"
   },
   "entry-reblog": {
     "reblog": "Репост",
-    "reblogged": "Reblogged"
+    "reblogged": "Репостнуто"
   },
   "settings": {
     "title": "Налаштування",
@@ -61,12 +61,12 @@
     "server-invalid-address": "Невірна адреса серверу",
     "server-connecting": "З'єднання з '{server}'...",
     "server-connect-error": "Не вдалося з'єднатися з '{server}'. Переконайтеся у наявності інтернет підключення.",
-    "server-timeout-error": "'{server}' looks like not alive",
-    "server-changed": "Server selection changed to {server}",
+    "server-timeout-error": "схоже, '{server}' недоступний",
+    "server-changed": "Сервер змінено на {server}",
     "server-custom-address": "Задайте адресу сервера",
     "server-list-fetch-error": "Не вдається отримати список серверів",
-    "push-notifications": "Push Notifications",
-    "push-notify-enabled": "Push notifications enabled",
+    "push-notifications": "Сповіщення",
+    "push-notify-enabled": "Push сповіщення увімкнено",
     "push-notify-disabled": "Push notifications disabled"
   },
   "login": {
