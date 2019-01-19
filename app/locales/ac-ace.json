@@ -172,14 +172,14 @@
     "transfer": "Kirèm",
     "transfer-to-savings": "Keubah Peng",
     "power-up": "Tamah Teunaga",
-    "withdraw-steem": "Withdraw Steem",
-    "withdraw-sbd": "Withdraw Steem Dollar"
+    "withdraw-steem": "Tarek Steem",
+    "withdraw-sbd": "Tarek Steem Dolar"
   },
   "composer": {
     "title-placeholder": "Judul",
     "tags-placeholder": "Tags. First tag is your main category",
     "max-n-tags": "Max {n} tags",
-    "body-placeholder": "Post Content",
+    "body-placeholder": "Dum Tulesan",
     "tool-bold": "Teubai",
     "tool-italic": "Singèt",
     "tool-header": "Nan",
@@ -190,9 +190,9 @@
     "tool-link": "Link",
     "tool-image": "Gamba",
     "tool-table": "Table",
-    "tool-table-3-col": "3 columns",
-    "tool-table-2-col": "2 columns",
-    "tool-table-1-col": "1 column",
+    "tool-table-3-col": "3 ruweueng",
+    "tool-table-2-col": "2 ruweueng",
+    "tool-table-1-col": "1 ruweueng",
     "tool-upload": "Upload",
     "tool-gallery": "Galeri",
     "tool-emoji": "Emoji",
@@ -274,14 +274,14 @@
     "favorited": "Tamah bak geugalak",
     "favoriteRemoved": "Meusampoh bak geugalak",
     "copy-clipboard": "Copy internal link to clipboard",
-    "copied-clipboard": "Copied",
+    "copied-clipboard": "Ka leuh salen",
     "comment-entry-title": "You are viewing a single comment's thread from: ",
     "comment-entry-go-root": "Kaloen konteks peunoh",
     "comment-entry-go-parent": "View the direct parent"
   },
   "navbar": {
     "settings": "Meu Atoe",
-    "change-theme": "Change Theme",
+    "change-theme": "Gantoe Tema",
     "login": "Tamong keu akun droen",
     "bookmark": "Tamah bak peutanda",
     "bookmarkRemove": "Sampoh bak peutanda",
@@ -306,22 +306,22 @@
     "dismiss": "Dismiss",
     "downloading": "Downloading new version...",
     "download-completed": "Download completed",
-    "restart": "Restart"
+    "restart": "Setel Ulang"
   },
   "context-menu": {
-    "cut": "Cut",
-    "copy": "Copy",
+    "cut": "Koh",
+    "copy": "Salen",
     "paste": "Paste",
     "open-image-browser": "Open image in browser",
     "copy-image-url": "Copy image url"
   },
   "notification": {
-    "popup-title": "You have a new notification",
-    "voted": "{source} voted your post",
-    "mention-post": "{source} mentioned you in a post",
-    "mention-comment": "{source} mentioned you in a comment",
+    "popup-title": "Na beurita keu droen",
+    "voted": "{source}% galak post dröen",
+    "mention-post": "{source} peugah droen lam saboh tulesan",
+    "mention-comment": "{source} peugah droen lam saboh komentar",
     "followed": "{source} followed you",
-    "replied": "{source} replied you",
+    "replied": "{source} neubalah droen",
     "reblogged": "{source} reblogged your post"
   },
   "activities": {
@@ -375,7 +375,7 @@
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
     "withdraw-saving-title": "Savings Withdraw",
     "withdraw-saving-sub-title": "Withdraw funds after the required 3 day waiting period",
-    "power-up-title": "Convert to STEEM POWER",
+    "power-up-title": "Gantoe keu STEEM POWER",
     "power-up-sub-title": "Influence tokens which give you more control over post payouts and allow you to earn on curation rewards.",
     "from": "Dari",
     "from-placeholder": "Pileh pengguna",
@@ -401,8 +401,8 @@
     "success-title": "Meuhasee",
     "success-sub-title": "Transfer successful",
     "transfer-summary": "Transferred <span class=\"amount\">{amount}</span> From <span class=\"from-user\">{from}</span> to <span class=\"to-user\">{to}</span>",
-    "reset": "Another transfer",
+    "reset": "Kirem nyang laen",
     "finish": "Seuleuso",
-    "recent-transfers": "Recent transfers"
+    "recent-transfers": "Kireman paleng akhe"
   }
 }
