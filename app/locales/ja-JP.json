@@ -360,13 +360,13 @@
     "vote-removed": "投票を @{n} から削除しました",
     "username-placeholder": "ユーザー名",
     "extra-witnesses-exp": "<strong>トップ50</strong>外のWitnessに投票するには、以下にアカウント名を入力してください",
-    "proxy-exp": "You can also choose a proxy that will vote for witnesses for you. This will reset your current witness selection.",
+    "proxy-exp": "Witnessへの投票の代理人を選ぶこともできます。この操作はあなたの現在のWitness投票をリセットします。",
     "set-proxy": "プロキシ設定",
     "proxy-active-exp": "あなたは投票プロキシを設定しています。もし手動投票を再度有効にしたい場合は、プロキシをクリアしてください。",
     "current-proxy": "現在のプロキシ:<strong>{n}</strong>",
     "remove-proxy": "プロキシをクリア",
     "proxy-removed": "プロキシがクリアされました",
-    "proxy-created": "@{n} has set as proxy"
+    "proxy-created": "@{n} さんが代理人として設定しました"
   },
   "transfer": {
     "transfer-title": "アカウントに送金",
@@ -386,7 +386,7 @@
     "amount": "数量",
     "amount-placeholder": "数量",
     "wrong-amount": "間違った金額",
-    "amount-precision-error": "Use only 3 digits of precision",
+    "amount-precision-error": "小数点以下は3桁以内を使用します",
     "insufficient-funds": "残高不足",
     "balance": "残高",
     "memo": "メモ",
