@@ -229,21 +229,21 @@
   "gallery": {
     "title": "Gallerij",
     "copied": "Gekopiëerd naar klembord",
-    "load-error": "Could not load gallery",
-    "empty-list": "Nothing here"
+    "load-error": "Kon galerij niet laden",
+    "empty-list": "Niets hier"
   },
   "drafts": {
-    "title": "Drafts",
-    "load-error": "Could not load drafts",
-    "empty-list": "Nothing here",
-    "deleted": "Draft deleted"
+    "title": "Concepten",
+    "load-error": "Kon concepten niet laden",
+    "empty-list": "Niets hier",
+    "deleted": "Concept verwijderd"
   },
   "schedules": {
-    "title": "Scheduled Posts",
-    "empty-list": "Nothing here",
-    "deleted": "Scheduled post deleted",
-    "move": "Move to drafts",
-    "moved": "Moved to drafts"
+    "title": "Geplande artikelen",
+    "empty-list": "Niets hier",
+    "deleted": "Gepland artikel verwijderd",
+    "move": "Verplaats naar concepten",
+    "moved": "Verplaatst naar concepten"
   },
   "bookmarks": {
     "title": "Bladwijzers",
@@ -253,16 +253,16 @@
     "search": "Zoek in bladwijzers"
   },
   "favorites": {
-    "title": "Favorites",
-    "load-error": "Could not load favorites",
-    "empty-list": "Nothing here",
-    "search": "Search in favorites"
+    "title": "Favorieten",
+    "load-error": "Kon favorieten niet laden",
+    "empty-list": "Niets hier",
+    "search": "Zoek in favorieten"
   },
   "entry": {
-    "reply": "Reply",
-    "reply-preview": "Preview",
+    "reply": "Reageer",
+    "reply-preview": "Voorvertoning",
     "via-app": "via <span class=\"app-name\">{app}</span>",
-    "n-replies": "{n} Replies",
+    "n-replies": "{n} antwoorden",
     "reply-sort-order": "Sorteervolgorde",
     "reply-sort-order-trending": "Trending",
     "reply-sort-order-reputation": "Reputatie",
@@ -273,7 +273,7 @@
     "bookmarkRemoved": "Verwijderd van bladwijzers",
     "favorited": "Aan favorieten toegevoegd",
     "favoriteRemoved": "Verwijderd uit favorieten",
-    "copy-clipboard": "Copy internal link to clipboard",
+    "copy-clipboard": "Kopieer interne link naar klembord",
     "copied-clipboard": "Gekopieerd",
     "comment-entry-title": "You are viewing a single comment's thread from: ",
     "comment-entry-go-root": "Bekijk de volledige context",
