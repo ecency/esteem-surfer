@@ -157,7 +157,7 @@
     "savings": "Заощадження",
     "savings-description": "Balance subject to 3 day withdraw waiting period.",
     "next-power-down": "Наступне зниження сили голосу відбудеться {time}",
-    "exchange": "Exchange",
+    "exchange": "Обмін",
     "transactions": "Транзакції",
     "transaction-curation_reward": "Кураторська винагорода",
     "transaction-author_reward": "Авторська винагорода",
@@ -236,20 +236,20 @@
     "title": "Чернетки",
     "load-error": "Не вдалося завантажити чернетки",
     "empty-list": "Тут порожньо",
-    "deleted": "Draft is deleted"
+    "deleted": "Чернетку видалено"
   },
   "schedules": {
     "title": "Заплановані публікації",
     "empty-list": "Тут порожньо",
-    "deleted": "Scheduled post is deleted",
+    "deleted": "Заплановану публікацію видалено",
     "move": "Перемістити до чернеток",
-    "moved": "Moved to drafts"
+    "moved": "Переміщено до чернеток"
   },
   "bookmarks": {
-    "title": "Bookmarks",
+    "title": "Закладки",
     "load-error": "Не вдалося завантажити закладки",
     "empty-list": "Тут порожньо",
-    "deleted": "Bookmark is removed",
+    "deleted": "Закладку видалено",
     "search": "Пошук у закладках"
   },
   "favorites": {
@@ -382,9 +382,9 @@
     "to": "Кому",
     "to-placeholder": "ім'я користувача",
     "to-not-found": "The user that you are trying to transfer funds to does not exist!",
-    "to-bad-actor": "Use caution sending to this account. Please double check your spelling for possible phishing.",
-    "amount": "Amount",
-    "amount-placeholder": "amount",
+    "to-bad-actor": "Будьте обережні, відправляючи на цей рахунок. Будь ласка, перевірте правильність написання, щоб уникнути можливого фішингу.",
+    "amount": "Кількість",
+    "amount-placeholder": "кількість",
     "wrong-amount": "Wrong amount value",
     "amount-precision-error": "Використовуйте лише 3 знаки після коми",
     "insufficient-funds": "Недостатньо коштів",
