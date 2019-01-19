@@ -18,7 +18,7 @@
     "about": "Teuntang"
   },
   "entry-index": {
-    "tags": "Popular Tags",
+    "tags": "Konfirmasi kireman droen",
     "filter-trending": "Yang teungoh Trend",
     "filter-hot": "Tingoeh hangat",
     "filter-created": "Baroo",
@@ -394,9 +394,9 @@
     "memo-help": "Tulesan nyoe jeut ke publik",
     "key-required-err": "Active key could not found for selected account. Please make sure logged in with proper credentials.",
     "next": "Seulanjot jih",
-    "confirm-title": "Confirm your Transfer",
+    "confirm-title": "Konfirmasi kireman dron",
     "confirm-sub-title": "Ci neupeureksa peu ka beutoi mandum",
-    "confirm": "Confirm",
+    "confirm": "Konfirmasi",
     "back": "Balek",
     "success-title": "Meuhasee",
     "success-sub-title": "Kirem Meuhase",
