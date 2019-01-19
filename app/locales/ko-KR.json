@@ -8,7 +8,7 @@
     "cancel": "취소",
     "ok": "확인",
     "edit": "편집",
-    "server-error": "서버 오류로 인해 처리가 완료되지 않은 것 같습니다",
+    "server-error": "Process could not be completed due to server error",
     "save": "저장",
     "done": "완료",
     "select": "Select"
@@ -62,7 +62,7 @@
     "server-connecting": "'{server}'에 연결 중...",
     "server-connect-error": "'{server}'에 연결할 수 없습니다. 인터넷 연결 상태를 확인하세요.",
     "server-timeout-error": "'{server}'가 죽은 것 같습니다",
-    "server-changed": "{server}으로 서버가 변경되었습니다",
+    "server-changed": "Server selection changed to {server}",
     "server-custom-address": "커스텀 서버 주소",
     "server-list-fetch-error": "서버 목록을 조회할 수 없습니다",
     "push-notifications": "알림",
@@ -74,31 +74,31 @@
     "accounts-title": "로그인",
     "traditional-login-desc": "계속 진행하려면 사용자 이름과 비밀번호를 이용해 로그인하세요.",
     "username-placeholder": "사용자 이름",
-    "password-placeholder": "비밀번호 또는 wif",
+    "password-placeholder": "password or WIF",
     "login": "로그인",
-    "error-fields-required": "사용자 이름과 비밀번호/wif를 입력하세요",
-    "error-public-key": "공개 키를 입력했습니다. 비밀번호/wif를 입력해주세요",
-    "error-user-fetch": "사용자 데이터를 조회할 수 없습니다",
-    "error-user-not-found": "사용자가 존재하지 않습니다",
-    "error-authenticate": "올바른 사용자 이름 또는 비밀번호/wif가 아닙니다",
+    "error-fields-required": "Please enter username and password/WIF",
+    "error-public-key": "You entered a public key. Password/WIF required",
+    "error-user-fetch": "User data could not be fetched",
+    "error-user-not-found": "User does not exist",
+    "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "계정이 없나요? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">지금 계정을 만드세요!</a>",
     "login-with-sc": "steemconnect를 이용해 로그인하세요",
     "divider-text": "또는"
   },
   "create-pin-code": {
     "title": "PIN 코드 만들기",
-    "desc1": "데이터를 암호화하고, 보안을 위한 추가 계층을 활성화하려면 PIN 코드를 설정하세요!",
-    "input-placeholder": "PIN 코드를 입력하세요",
-    "desc2": "앱 실행뿐만 아니라 중요한 트랜잭션이 발생했을 때 PIN 코드 입력화면이 나타날 것입니다.",
-    "created": "PIN 코드 생성 완료"
+    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
+    "input-placeholder": "Enter PIN code",
+    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
+    "created": "PIN code created"
   },
   "confirm-pin-code": {
-    "title": "PIN 코드를 입력하세요",
-    "input-placeholder": "계속하려면 PIN 코드를 입력하세요",
+    "title": "Enter PIN Code",
+    "input-placeholder": "Enter PIN code to continue",
     "last-chance": "이번이 마지막 기회입니다",
     "invalidate": "Oh, I forgot it...",
-    "invalidate-confirm": "Are you really want to invalidate pin code?",
-    "invalidated": "Pin code invalidated"
+    "invalidate-confirm": "Do you really want to invalidate PIN code?",
+    "invalidated": "PIN code is invalidated"
   },
   "user-menu": {
     "profile": "프로필",
@@ -146,14 +146,14 @@
     "unclaimed-rewards": "아직 요청하지 않은 보상",
     "estimated-value": "The estimated value is based on a 7 day average value of Steem.",
     "steem": "스팀",
-    "steem-description": "Steem are tradeable tokens that may be transferred at anytime. Steem can be converted to Steem Power in a process called powering up.",
+    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
     "steem-power": "스팀 파워",
     "steem-power-description": "Steem Power are influence tokens that earn more power for holding long term and voting on posts. The more Steem Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
-    "steem-power-delegated": "임대한 스팀 파워",
-    "steem-power-received": "임대받은 스팀 파워",
-    "steem-power-total": "총 스팀 파워",
+    "steem-power-delegated": "Delegated Steem Power",
+    "steem-power-received": "Received Steem Power",
+    "steem-power-total": "Total Steem Power",
     "steem-dollars": "스팀 달러",
-    "steem-dollars-description": "Tokens worth about $1.00 of Steem.",
+    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "안전 금고",
     "savings-description": "잔액을 출금하려면 3일간 기다려야 합니다.",
     "next-power-down": "다음 번 파워 다운은 {time} 입니다",
@@ -236,12 +236,12 @@
     "title": "임시 보관함",
     "load-error": "임시 저장된 글을 불러올 수 없습니다",
     "empty-list": "빈 목록입니다",
-    "deleted": "임시 저장된 글이 삭제되었습니다."
+    "deleted": "Draft is deleted"
   },
   "schedules": {
     "title": "Scheduled Posts",
     "empty-list": "Nothing here",
-    "deleted": "Scheduled post deleted",
+    "deleted": "Scheduled post is deleted",
     "move": "임시보관함으로 이동",
     "moved": "임시보관함으로 이동했습니다"
   },
@@ -249,7 +249,7 @@
     "title": "즐겨찾기",
     "load-error": "즐겨찾기를 불러올 수 없습니다",
     "empty-list": "빈 목록입니다",
-    "deleted": "즐겨찾기가 삭제되었습니다",
+    "deleted": "Bookmark is removed",
     "search": "즐겨찾기에서 검색"
   },
   "favorites": {
@@ -282,7 +282,7 @@
   "navbar": {
     "settings": "설정",
     "change-theme": "테마 변경",
-    "login": "Login to you account",
+    "login": "Login to your account",
     "bookmark": "즐겨찾기에 추가",
     "bookmarkRemove": "즐겨찾기에서 삭제",
     "favorite": "좋아하는 저자 목록에 추가",
@@ -291,7 +291,7 @@
     "activities": "활동",
     "address-enter-url": "Enter url",
     "address-enter-query": "Enter search query",
-    "unclaimed-reward-notice": "You have unclaimed reward"
+    "unclaimed-reward-notice": "You have unclaimed rewards"
   },
   "search": {
     "n-results-for-q": "{n} results for {q}",
@@ -301,11 +301,11 @@
     "sort-newest": "Date"
   },
   "updater": {
-    "new-version-available": "New version available",
+    "new-version-available": "New version is available",
     "update": "Update",
     "dismiss": "Dismiss",
     "downloading": "새로운 버전 다운로드 중...",
-    "download-completed": "다운로드가 완료되었습니다",
+    "download-completed": "Download is completed",
     "restart": "재시작"
   },
   "context-menu": {
@@ -332,7 +332,7 @@
     "type-follows": "팔로우",
     "type-reblogs": "리블로그",
     "vote-str": "님이 {p}% 비율로 보팅하셨습니다:",
-    "reply-str": "님이 댓글을 남겼습니다:",
+    "reply-str": "replied to your post:",
     "mention-str": "님이 이글에서 당신을 언급했습니다:",
     "followed-str": "팔로우",
     "unfollowed-str": "팔로우 취소",
@@ -365,7 +365,7 @@
     "proxy-active-exp": "You have set a voting proxy. If you would like to re-enable manual voting, please clear your proxy.",
     "current-proxy": "Your current proxy is: <strong>{n}</strong>",
     "remove-proxy": "Clear Proxy",
-    "proxy-removed": "Proxy cleared",
+    "proxy-removed": "Proxy is cleared",
     "proxy-created": "@{n} has set as proxy"
   },
   "transfer": {
@@ -375,7 +375,7 @@
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
     "withdraw-saving-title": "안전 금고 출금",
     "withdraw-saving-sub-title": "Withdraw funds after the required 3 day waiting period",
-    "power-up-title": "스팀 파워로 전환하기",
+    "power-up-title": "Convert to Steem Power",
     "power-up-sub-title": "Influence tokens which give you more control over post payouts and allow you to earn on curation rewards.",
     "from": "From",
     "from-placeholder": "Select a user",
@@ -392,7 +392,7 @@
     "memo": "Memo",
     "memo-placeholder": "enter your notes here",
     "memo-help": "This memo is public",
-    "key-required-err": "Active key could not found for selected account. Please make sure logged in with proper credentials.",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
     "next": "Next",
     "confirm-title": "Confirm your Transfer",
     "confirm-sub-title": "Please, check if everything is correct",
