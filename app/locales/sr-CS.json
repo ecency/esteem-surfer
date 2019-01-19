@@ -1,10 +1,10 @@
 {
   "g": {
     "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
-    "yes": "Yes",
-    "no": "No",
-    "delete": "Delete",
+    "are-you-sure": "Da li ste sigurni?",
+    "yes": "Da",
+    "no": "Ne",
+    "delete": "Izbriši",
     "cancel": "Cancel",
     "ok": "OK",
     "edit": "Edit",
