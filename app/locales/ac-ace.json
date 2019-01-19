@@ -2,46 +2,46 @@
   "g": {
     "compose-entry": "Peuget Tulesan",
     "are-you-sure": "Droen yakin?",
-    "yes": "Yes",
-    "no": "No",
-    "delete": "Delete",
-    "cancel": "Cancel",
-    "ok": "OK",
-    "edit": "Edit",
+    "yes": "Ya",
+    "no": "Koen",
+    "delete": "Sampóh",
+    "cancel": "Batai",
+    "ok": "Oke",
+    "edit": "Ubah",
     "server-error": "Process could not completed due to server error",
-    "save": "Save",
+    "save": "Ka meukeubah",
     "done": "Done",
-    "select": "Select"
+    "select": "Pileh"
   },
   "footer": {
     "faq": "FAQ",
-    "about": "About"
+    "about": "Teuntang"
   },
   "entry-index": {
     "tags": "Popular Tags",
-    "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
+    "filter-trending": "Yang teungoh Trend",
+    "filter-hot": "Tingoeh hangat",
+    "filter-created": "Baroo",
+    "filter-active": "Aktif",
+    "filter-promoted": "Ka dipromosi",
     "filter-votes": "Votes",
-    "filter-children": "Comments",
-    "filter-feed": "Feed"
+    "filter-children": "Komentar",
+    "filter-feed": "Umpeun"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "Potensi Dibayëu",
+    "promoted": "Ka dipromosi",
+    "author-payout": "Dibayëu Keupö",
+    "curation-payout": "Dibayëu këukurasi",
+    "payout-date": "Dibayëu"
   },
   "entry-votes": {
     "n-more": "{n} more",
     "author": "Author",
     "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
-    "modal-title": "Voters ({n})"
+    "percent": "Persen",
+    "time": "Watee",
+    "modal-title": "Nyang Galak ({n})"
   },
   "entry-list-item": {
     "reblogged": "reblogged by {n}"
@@ -51,18 +51,18 @@
     "reblogged": "Reblogged"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "Currency",
-    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
+    "title": "Meu Atoe",
+    "currency": "Mata péng",
+    "currency-fetch-error": "Han jeut kalon nilai mata peng ke '{cur}'",
     "currency-changed": "Currency Changed",
-    "locale": "Language",
-    "locale-changed": "Language changed",
+    "locale": "Basa",
+    "locale-changed": "Ka Leuh Gantoe Basa",
     "server": "Server",
-    "server-invalid-address": "Invalid server address",
-    "server-connecting": "Connecting to '{server}'...",
-    "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
-    "server-timeout-error": "'{server}' looks like not alive",
-    "server-changed": "Server changed to {server}",
+    "server-invalid-address": "Salah alamat server",
+    "server-connecting": "Meuhubong u '{server}'...",
+    "server-connect-error": "Hanjeut meuhubong u '{server}'. Ci peureksa koneksi internet droen.",
+    "server-timeout-error": "'{server}' hana udeep",
+    "server-changed": "Server ka meu ubah u {server}",
     "server-custom-address": "Custom server address",
     "server-list-fetch-error": "Could not fetch server list",
     "push-notifications": "Push Notifications",
