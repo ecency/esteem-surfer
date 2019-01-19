@@ -53,7 +53,7 @@
   "settings": {
     "title": "Instellingen",
     "currency": "Valuta",
-    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
+    "currency-fetch-error": "Kon wisselkoers niet ophalen voor '{cur}'",
     "currency-changed": "Valuta gewijzigd",
     "locale": "Taal",
     "locale-changed": "Taal gewijzigd",
@@ -275,26 +275,26 @@
     "favoriteRemoved": "Verwijderd uit favorieten",
     "copy-clipboard": "Kopieer interne link naar klembord",
     "copied-clipboard": "Gekopieerd",
-    "comment-entry-title": "You are viewing a single comment's thread from: ",
+    "comment-entry-title": "Je bekijkt een enkele commentaar-draad van:",
     "comment-entry-go-root": "Bekijk de volledige context",
-    "comment-entry-go-parent": "View the direct parent"
+    "comment-entry-go-parent": "Bekijk de direct-bovenliggende"
   },
   "navbar": {
     "settings": "Instellingen",
     "change-theme": "Thema wijzigen",
-    "login": "Login to you account",
+    "login": "Inloggen op je account",
     "bookmark": "Toevoegen aan bladwijzers",
     "bookmarkRemove": "Verwijderen uit bladwijzers",
     "favorite": "Toevoegen aan Favorieten",
     "favoriteRemove": "Verwijderd uit favorieten",
-    "wallet": "My Wallet",
+    "wallet": "Mijn portemonnee",
     "activities": "Activiteiten",
-    "address-enter-url": "Enter url",
+    "address-enter-url": "Voer url in",
     "address-enter-query": "Voer zoekterm in",
-    "unclaimed-reward-notice": "You have unclaimed reward"
+    "unclaimed-reward-notice": "Je hebt niet-opgeëiste beloningen"
   },
   "search": {
-    "n-results-for-q": "{n} results for {q}",
+    "n-results-for-q": "{n} resultaten voor {q}",
     "sort-by": "Sorteer op",
     "sort-popularity": "Populariteit",
     "sort-relevance": "Relevantie",
@@ -303,8 +303,8 @@
   "updater": {
     "new-version-available": "Nieuwe versie beschikbaar",
     "update": "Update",
-    "dismiss": "Dismiss",
-    "downloading": "Downloading new version...",
+    "dismiss": "Negeren",
+    "downloading": "Nieuwe versie aan het downloaden...",
     "download-completed": "Download voltooid",
     "restart": "Opnieuw starten"
   },
@@ -312,7 +312,7 @@
     "cut": "Knippen",
     "copy": "Kopiëren",
     "paste": "Plakken",
-    "open-image-browser": "Open image in browser",
+    "open-image-browser": "Open afbeelding in browser",
     "copy-image-url": "Copy image url"
   },
   "notification": {
