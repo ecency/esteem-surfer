@@ -206,7 +206,7 @@
     "form-error-message": "フォームは無効です。全てのフィールドを埋めてください",
     "schedule": "スケジュール",
     "select-schedule-date": "日付を選択",
-    "schedule-saved": "Post scheduled",
+    "schedule-saved": "投稿予定",
     "schedule-picker-select-time": "時間を選択",
     "schedule-picker-select-date": "日付を選択",
     "grant-posting-perm": "投稿権限を与える",
@@ -221,7 +221,7 @@
     "updated": "投稿を更新しました",
     "sync-scroll": "スクロールの同期",
     "words-count": "{n} 語",
-    "no-suggestions": "No suggestions",
+    "no-suggestions": "候補はありません",
     "emoji-filter-placeholder": "フィルター",
     "emoji-filter-no-match": "一致なし",
     "emoji-recently-used": "最近使用されたもの"
@@ -239,7 +239,7 @@
     "deleted": "下書きを削除しました"
   },
   "schedules": {
-    "title": "Scheduled Posts",
+    "title": "予定された投稿",
     "empty-list": "何もありません",
     "deleted": "予定された投稿を削除しました",
     "move": "下書きへ移動",
@@ -277,7 +277,7 @@
     "copied-clipboard": "コピーしました",
     "comment-entry-title": "You are viewing a single comment's thread from: ",
     "comment-entry-go-root": "全文を表示",
-    "comment-entry-go-parent": "View the direct parent"
+    "comment-entry-go-parent": "親コメントを表示"
   },
   "navbar": {
     "settings": "設定",
@@ -297,13 +297,13 @@
     "n-results-for-q": "{n} results for {q}",
     "sort-by": "並び替え",
     "sort-popularity": "人気",
-    "sort-relevance": "Relevance",
+    "sort-relevance": "関連",
     "sort-newest": "日付"
   },
   "updater": {
     "new-version-available": "新しいバージョンが利用可能",
     "update": "アップデート",
-    "dismiss": "Dismiss",
+    "dismiss": "中止",
     "downloading": "新しいバージョンをダウンロードしています...",
     "download-completed": "ダウンロード完了",
     "restart": "再起動"
@@ -336,7 +336,7 @@
     "mention-str": "あなたをメンションしました:",
     "followed-str": "フォロー済み",
     "unfollowed-str": "フォロー解除済み",
-    "ignored-str": "ignored",
+    "ignored-str": "無視",
     "reblog-str": "あなたの投稿をリブログしました",
     "empty-list": "何もありません",
     "refresh": "更新",
@@ -346,7 +346,7 @@
   },
   "witnesses": {
     "page-title": "Witness投票",
-    "remaining": "<strong>{n}</strong> of {max} votes remaining",
+    "remaining": "最大{max} 票のうち<strong>{n}</strong>票が残っています",
     "witness": "Witness",
     "miss": "ミス",
     "url": "URL",
@@ -356,7 +356,7 @@
     "ac-avail": "AC avail",
     "ac-budget": "AC budget",
     "version": "バージョン",
-    "voted": "@{n} voted",
+    "voted": "@{n} さんが投票しました",
     "vote-removed": "投票を @{n} から削除しました",
     "username-placeholder": "ユーザー名",
     "extra-witnesses-exp": "<strong>トップ50</strong>外のWitnessに投票するには、以下にアカウント名を入力してください",
