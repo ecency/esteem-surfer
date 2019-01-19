@@ -8,7 +8,7 @@
     "cancel": "Batal",
     "ok": "Ok",
     "edit": "Edit",
-    "server-error": "Proses tidak dapat diselesaikan karena kesalahan server",
+    "server-error": "Process could not be completed due to server error",
     "save": "Simpan",
     "done": "Selesai",
     "select": "Pilih"
@@ -62,7 +62,7 @@
     "server-connecting": "Menghubungkan ke '{server}'...",
     "server-connect-error": "Tidak dapat terhubung ke '{server}'. Pastikan anda memiliki koneksi internet yang baik.",
     "server-timeout-error": "'{server}' tidak aktif",
-    "server-changed": "Server diganti ke {server}",
+    "server-changed": "Server selection changed to {server}",
     "server-custom-address": "Alamat server khusus",
     "server-list-fetch-error": "Tidak dapat mengambil daftar server",
     "push-notifications": "Tekan Pemberitahuan",
@@ -74,31 +74,31 @@
     "accounts-title": "Masuk sebagai",
     "traditional-login-desc": "Masuk dengan nama pengguna dan kata sandi untuk melanjutkan",
     "username-placeholder": "nama pengguna",
-    "password-placeholder": "kata sandi atau wif",
+    "password-placeholder": "password or WIF",
     "login": "Masuk",
-    "error-fields-required": "Silahkan masukkan nama pengguna dan kata sandi",
-    "error-public-key": "Anda memasukkan kata sandi publik. Diperlukan Kata sandi",
-    "error-user-fetch": "Tidak dapat mengambil data pengguna",
-    "error-user-not-found": "Pengguna tidak ada",
-    "error-authenticate": "Nama pengguna atau kata sandi salah",
+    "error-fields-required": "Please enter username and password/WIF",
+    "error-public-key": "You entered a public key. Password/WIF required",
+    "error-user-fetch": "User data could not be fetched",
+    "error-user-not-found": "User does not exist",
+    "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "Tidak memiliki akun? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">buat sekarang!</a>",
     "login-with-sc": "Masuk dengan",
     "divider-text": "Atau"
   },
   "create-pin-code": {
     "title": "Buat Kode PIN",
-    "desc1": "Atur kode pin untuk mengenkripsi data anda dan aktifkan pengaman tambahan!",
-    "input-placeholder": "Masukkan kode pin",
-    "desc2": "Untuk setiap membuka dan transaksi penting anda akan diminta memasukkan kode pin.",
-    "created": "Kode pin dibuat"
+    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
+    "input-placeholder": "Enter PIN code",
+    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
+    "created": "PIN code created"
   },
   "confirm-pin-code": {
-    "title": "Masukkan kode pin",
-    "input-placeholder": "Masukkan kode pin untuk melanjutkan",
+    "title": "Enter PIN Code",
+    "input-placeholder": "Enter PIN code to continue",
     "last-chance": "Ini kesempatan terakhir anda",
     "invalidate": "Oh, saya lupa...",
-    "invalidate-confirm": "Apakah anda yakin ingin membatalkan kode pin?",
-    "invalidated": "Kode pin salah"
+    "invalidate-confirm": "Do you really want to invalidate PIN code?",
+    "invalidated": "PIN code is invalidated"
   },
   "user-menu": {
     "profile": "Profil",
@@ -146,14 +146,14 @@
     "unclaimed-rewards": "Hadiah yang belum diklaim",
     "estimated-value": "Hitungan steem berdasarkan pada nilai rata-rata selama 7 hari.",
     "steem": "Steem",
-    "steem-description": "Steem adalah token yang dapat diperdagangkan dan ditransfer kapan saja. Steem dapat dikonversi menjadi Steem Power proses itu disebut powering up.",
+    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
     "steem-power": "Kekuatan Steem",
     "steem-power-description": "Steem Power adalah token yang dapat mempengaruhi kekuatan sebuah akun dalam memberikan hadiah pada sebuah postingan serta sebagai aset jangka panjang. Semakin besar steem power dimiliki, semakin seseorang dapat mempengaruhi besaran hadiah yang diberikan kepada orang lain, dan juga mempengaruhi besaran hadiah yang di dapat secara akurat dalam memberikan suara.",
-    "steem-power-delegated": "Berikan delegasi kekuatan steem",
-    "steem-power-received": "Menerima kekuatan steem",
-    "steem-power-total": "Total kekuatan steem",
+    "steem-power-delegated": "Delegated Steem Power",
+    "steem-power-received": "Received Steem Power",
+    "steem-power-total": "Total Steem Power",
     "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "Token bernilai sekitar $1.00 dari Steem.",
+    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Menyimpan",
     "savings-description": "Saldo dikenakan masa tunggu penarikan 3 hari.",
     "next-power-down": "Menurunkan kekuatan berikutnya pada {time}",
@@ -236,12 +236,12 @@
     "title": "Konsep",
     "load-error": "Tidak dapat menampilkan konsep",
     "empty-list": "Kosong",
-    "deleted": "Konsep dihapus"
+    "deleted": "Draft is deleted"
   },
   "schedules": {
     "title": "Posting terjadwal",
     "empty-list": "Kosong",
-    "deleted": "Jadwal post dihapus",
+    "deleted": "Scheduled post is deleted",
     "move": "Pindahkan ke konsep",
     "moved": "Pindahkan ke konsep"
   },
@@ -249,7 +249,7 @@
     "title": "Tandai",
     "load-error": "Tidak dapat menampilkan yang telah ditandai",
     "empty-list": "Kosong",
-    "deleted": "Hapus yang ditandai",
+    "deleted": "Bookmark is removed",
     "search": "Cari di dalam halaman yang ditandai"
   },
   "favorites": {
@@ -282,7 +282,7 @@
   "navbar": {
     "settings": "Pengaturan",
     "change-theme": "Ganti Tema",
-    "login": "Login ke account Anda",
+    "login": "Login to your account",
     "bookmark": "Tambah ke penanda",
     "bookmarkRemove": "Hapus dari yang ditandai",
     "favorite": "Tambahkan ke Favorit",
@@ -291,7 +291,7 @@
     "activities": "Aktifitas",
     "address-enter-url": "Masukkan url",
     "address-enter-query": "Masukkan permintaan pencarian",
-    "unclaimed-reward-notice": "Anda memiliki hadiah yang belum diklaim"
+    "unclaimed-reward-notice": "You have unclaimed rewards"
   },
   "search": {
     "n-results-for-q": "{n} hasil untuk {q}",
@@ -301,11 +301,11 @@
     "sort-newest": "Tanggal"
   },
   "updater": {
-    "new-version-available": "Tersedia versi terbaru",
+    "new-version-available": "New version is available",
     "update": "Pembaruan",
     "dismiss": "Memberhentikan",
     "downloading": "Download versi terbaru...",
-    "download-completed": "Download selesai",
+    "download-completed": "Download is completed",
     "restart": "Mengulang kembali"
   },
   "context-menu": {
@@ -332,7 +332,7 @@
     "type-follows": "Ikuti",
     "type-reblogs": "Menampilkan kembali",
     "vote-str": "{p}% menyukai postingan anda:",
-    "reply-str": "balas post anda:",
+    "reply-str": "replied to your post:",
     "mention-str": "menyebut anda dalam:",
     "followed-str": "diikuti",
     "unfollowed-str": "berhenti diikuti",
@@ -365,7 +365,7 @@
     "proxy-active-exp": "Anda telah menetapkan pemungutan suara proxy. Jika Anda ingin mengaktifkan kembali pemungutan suara secara manual, harap hapus proxy Anda.",
     "current-proxy": "Proxy anda saat ini adalah: <strong>{n}</strong>",
     "remove-proxy": "Hapus proxy",
-    "proxy-removed": "Proxy dihapus",
+    "proxy-removed": "Proxy is cleared",
     "proxy-created": "@{n} telah ditetapkan sebagai proxy"
   },
   "transfer": {
@@ -375,7 +375,7 @@
     "transfer-saving-sub-title": "Lindungi dana dengan meminta masa tunggu penarikan 3 hari",
     "withdraw-saving-title": "Simpan Penarikan",
     "withdraw-saving-sub-title": "Diperlukan masa tunggu 3 hari untuk penarikan dana",
-    "power-up-title": "Konversi ke STEEM POWER",
+    "power-up-title": "Convert to Steem Power",
     "power-up-sub-title": "Token berpengaruh besar untuk memberi anda kontrol atas pembayaran pos dan memungkinkan anda untuk mendapat imbalan kurasi.",
     "from": "Dari",
     "from-placeholder": "Pilih pengguna",
@@ -392,7 +392,7 @@
     "memo": "Memo",
     "memo-placeholder": "masukan catatan anda disini",
     "memo-help": "Memo ini bersifat publik",
-    "key-required-err": "Kunci aktif tidak dapat ditemukan untuk akun yang dipilih. Pastikan Anda masuk dengan kredensial yang tepat.",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
     "next": "Lanjut",
     "confirm-title": "Konfirmasi Transfer anda",
     "confirm-sub-title": "Silakan, periksa apakah semuanya benar",
