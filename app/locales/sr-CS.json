@@ -102,9 +102,9 @@
   },
   "user-menu": {
     "profile": "Profil",
-    "bookmarks": "Omiljeno",
-    "favorites": "Favorites",
-    "drafts": "Drafts",
+    "bookmarks": "Obeleživači",
+    "favorites": "Omiljeno",
+    "drafts": "Radne verzije",
     "schedules": "Schedules",
     "gallery": "Gallery",
     "login-as": "Login As",
