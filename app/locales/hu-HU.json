@@ -134,7 +134,7 @@
   },
   "account": {
     "voting-power": "Szavazóerő",
-    "post-count": "Post Count",
+    "post-count": "Bejegyzések száma",
     "number-of-votes": "Szavazatok száma az elmúlt 24 órában",
     "followers": "Követők",
     "following": "Following",
@@ -362,11 +362,11 @@
     "extra-witnesses-exp": "Enter account name below to vote for a witness outside of <strong>Top 50</strong>",
     "proxy-exp": "You can also choose a proxy that will vote for witnesses for you. This will reset your current witness selection.",
     "set-proxy": "Proxy beállítása",
-    "proxy-active-exp": "You have set a voting proxy. If you would like to re-enable manual voting, please clear your proxy.",
+    "proxy-active-exp": "Proxy szavazás beállítva. Ha újra kézi szavazást szeretnél, kérjük töröld a proxy-t.",
     "current-proxy": "Your current proxy is: <strong>{n}</strong>",
     "remove-proxy": "Proxy Törlése",
     "proxy-removed": "Proxy cleared",
-    "proxy-created": "@{n} has set as proxy"
+    "proxy-created": "@{n} proxiként beállítva"
   },
   "transfer": {
     "transfer-title": "Transfer to Account",
