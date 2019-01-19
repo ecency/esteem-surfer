@@ -98,7 +98,7 @@
     "last-chance": "Ini kesempatan terakhir anda",
     "invalidate": "Oh, saya lupa...",
     "invalidate-confirm": "Apakah Anda benar-benar ingin membatalkan kode PIN?",
-    "invalidated": "PIN code is invalidated"
+    "invalidated": "Kode PIN tidak valid"
   },
   "user-menu": {
     "profile": "Profil",
@@ -146,12 +146,12 @@
     "unclaimed-rewards": "Hadiah yang belum diklaim",
     "estimated-value": "Hitungan steem berdasarkan pada nilai rata-rata selama 7 hari.",
     "steem": "Steem",
-    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
+    "steem-description": "STEEM adalah token yang dapat diperdagangkan dan ditransfer kapan saja. Steem dapat dikonversi menjadi STEEM Power proses itu disebut powering up.",
     "steem-power": "Kekuatan Steem",
     "steem-power-description": "Steem Power adalah token yang dapat mempengaruhi kekuatan sebuah akun dalam memberikan hadiah pada sebuah postingan serta sebagai aset jangka panjang. Semakin besar steem power dimiliki, semakin seseorang dapat mempengaruhi besaran hadiah yang diberikan kepada orang lain, dan juga mempengaruhi besaran hadiah yang di dapat secara akurat dalam memberikan suara.",
-    "steem-power-delegated": "Delegated Steem Power",
-    "steem-power-received": "Received Steem Power",
-    "steem-power-total": "Total Steem Power",
+    "steem-power-delegated": "Delegasi Steem Power",
+    "steem-power-received": "Menerima Kekuatan Steem",
+    "steem-power-total": "Total kekuatan steem",
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Menyimpan",
