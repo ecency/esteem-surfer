@@ -370,9 +370,9 @@
   },
   "transfer": {
     "transfer-title": "Transfer to Account",
-    "transfer-sub-title": "Move funds to another Steem account",
-    "transfer-saving-title": "Transfer to Savings",
-    "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
+    "transfer-sub-title": "Переведення коштів на інший Steem акаунт",
+    "transfer-saving-title": "Переведення до Заощаджень",
+    "transfer-saving-sub-title": "Захищає кошти від зняття 3-денним періодом очікування",
     "withdraw-saving-title": "Зняття заощаджень",
     "withdraw-saving-sub-title": "Зняти кошти після обов'язкового 3-денного періоду очікування",
     "power-up-title": "Конвертувати в Steem Power",
