@@ -174,7 +174,7 @@
     "power-up": "Tingkatkan kekuatan",
     "withdraw-steem": "Tarik steem",
     "withdraw-sbd": "Tarik Steem Dollar",
-    "delegate": "Delegate"
+    "delegate": "Melimpahkan"
   },
   "composer": {
     "title-placeholder": "Judul",
@@ -407,9 +407,9 @@
     "recent-transfers": "Transfer terbaru"
   },
   "delegate": {
-    "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
-    "slider-help": "Drag the slider to adjust the amount",
+    "title": "Melimpahkan",
+    "sub-title": "Melimpahkan Kekuatan Steem",
+    "slider-help": "Seret penggeser untuk menyesuaikan jumlahnya",
     "confirm-title": "Confirm Delegation",
     "confirm-sub-title": "Please, check if everything is correct",
     "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
