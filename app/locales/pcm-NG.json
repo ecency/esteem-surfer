@@ -25,7 +25,7 @@
     "filter-active": "Wey dey active",
     "filter-promoted": "Wey dem promote",
     "filter-votes": "Votes",
-    "filter-children": "People reply",
+    "filter-children": "Comments",
     "filter-feed": "Tori"
   },
   "entry-payout": {
@@ -119,24 +119,24 @@
     "fetch-error-profile": "E no locate the person informate",
     "fetch-error-content": "E no locate the tori",
     "post-count": "Number of tori",
-    "followers": "Followers",
+    "followers": "Follower",
     "following": "Following",
     "section-blog": "Blog",
     "section-comments": "Comments",
     "section-replies": "Replies",
-    "section-wallet": "Wallet"
+    "section-wallet": "Account"
   },
   "follow-controls": {
-    "follow": "Follow",
-    "unFollow": "Unfollow",
-    "mute": "Mute",
-    "unMute": "Unmute"
+    "follow": "Follow am",
+    "unFollow": "No follow again",
+    "mute": "Silent am",
+    "unMute": "No Silent again"
   },
   "account": {
     "voting-power": "Voting Power",
-    "post-count": "Post Count",
-    "number-of-votes": "Number of votes in last 24 hours",
-    "followers": "Followers",
+    "post-count": "Number of tori",
+    "number-of-votes": "Number of vote for the pass 24 hours",
+    "followers": "Follower",
     "following": "Following",
     "section-blog": "Blog",
     "section-comments": "Comments",
