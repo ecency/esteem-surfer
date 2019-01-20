@@ -156,7 +156,7 @@
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Keunëubah",
     "savings-description": "Balance subject to 3 day withdraw waiting period.",
-    "next-power-down": "Power yang rhet selanjut jih adalah {time}",
+    "next-power-down": "The next power down is {time} {amount}",
     "exchange": "Saleng Tuka",
     "transactions": "Transactions",
     "transaction-curation_reward": "Neume Kurasi",
