@@ -148,7 +148,7 @@
     "steem": "Steem",
     "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
     "steem-power": "Steem Power",
-    "steem-power-description": "Steem Power are influence tokens that earn more power for holding long term and voting on posts. The more Steem Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-description": "Steem Power na token wey dey give power and the power go dey plenty join if you hold am for long time and if you dey vote people tori. The plenty the Steem Power wey you dey hold, the plenty your power to affect reward for people tori and the more wey you go dey earn say you vote people tori wella. ",
     "steem-power-delegated": "Delegated Steem Power",
     "steem-power-received": "Received Steem Power",
     "steem-power-total": "Total Steem Power",
@@ -173,7 +173,8 @@
     "transfer-to-savings": "Transfer to savings",
     "power-up": "Power up",
     "withdraw-steem": "Withdraw Steem",
-    "withdraw-sbd": "Withdraw Steem Dollar"
+    "withdraw-sbd": "Withdraw Steem Dollar",
+    "delegate": "Delegate"
   },
   "composer": {
     "title-placeholder": "Title",
@@ -404,5 +405,18 @@
     "reset": "Another transfer",
     "finish": "Finish",
     "recent-transfers": "Recent transfers"
+  },
+  "delegate": {
+    "title": "Delegate",
+    "sub-title": "Delegate Steem Power",
+    "slider-help": "Drag the slider to adjust the amount",
+    "confirm-title": "Confirm Delegation",
+    "confirm-sub-title": "Please, check if everything is correct",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "Delegation completed",
+    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+  },
+  "delegation-list": {
+    "empty-list": "Nothing here"
   }
 }
