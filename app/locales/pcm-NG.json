@@ -53,21 +53,21 @@
   "settings": {
     "title": "Settings",
     "currency": "Currency",
-    "currency-fetch-error": "E no gree locate the rate for '{cur}'",
+    "currency-fetch-error": "E no locate the currency rate for '{cur}'",
     "currency-changed": "Currency don change",
     "locale": "Language",
     "locale-changed": "Language don change",
     "server": "Server",
     "server-invalid-address": "Server address no dey correct",
-    "server-connecting": "Connecting to '{server}'...",
+    "server-connecting": "E don dey connect go server '{server}'...",
     "server-connect-error": "E no gree connect to '{server'}. Make sure say you get better network.",
     "server-timeout-error": "'{server}' look like wetin don die",
-    "server-changed": "Server selection changed to {server}",
+    "server-changed": "Server don change to {server}",
     "server-custom-address": "Custom server address",
-    "server-list-fetch-error": "Could not fetch server list",
-    "push-notifications": "Push Notifications",
-    "push-notify-enabled": "Push notifications enabled",
-    "push-notify-disabled": "Push notifications disabled"
+    "server-list-fetch-error": "E no locate list of server",
+    "push-notifications": "Your Alert",
+    "push-notify-enabled": "You don on your alert",
+    "push-notify-disabled": "You don off your alert"
   },
   "login": {
     "title": "Welcome back!",
