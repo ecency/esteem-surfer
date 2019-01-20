@@ -78,7 +78,7 @@
     "login": "Prijavi se",
     "error-fields-required": "Molimo Vas da unesete korisničko ime i lozinku/WIF",
     "error-public-key": "Uneli ste javni ključ. Potrebno je da unesete lozinku/WIF",
-    "error-user-fetch": "Nismo mogli dobiti korisničke podatke",
+    "error-user-fetch": "Nemoguće je dobiti korisničke podatke",
     "error-user-not-found": "Korisnik ne postoji",
     "error-authenticate": "Pogrešno korisničko ime ili lozinka/WIF",
     "create-account-text": "Nemate nalog? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Registrujte se odmah!</a>",
@@ -94,7 +94,7 @@
   },
   "confirm-pin-code": {
     "title": "Unesite PIN kod",
-    "input-placeholder": "Da biste nastavili unesite PIN kod",
+    "input-placeholder": "Unesite PIN kod kako biste nastavili",
     "last-chance": "Ovo je vaša poslednja prilika",
     "invalidate": "Jao, zaboravio sam...",
     "invalidate-confirm": "Da li zaista želite da poništite PIN kod?",
@@ -105,14 +105,14 @@
     "bookmarks": "Obeleživači",
     "favorites": "Omiljeno",
     "drafts": "Radne verzije",
-    "schedules": "Planer",
+    "schedules": "Rasporedi",
     "gallery": "Galerija",
     "login-as": "Prijavi se kao",
     "logout": "Odjavi se"
   },
   "login-required": {
     "default": "Ova radnja zahteva da ste prijavljeni",
-    "key-required": "Ova radnja zahteva {key} key ili master lozinku",
+    "key-required": "Ova radnja zahteva {key} ključ ili master lozinku",
     "keys-required": "Ova radnja zahteva {keys} ključeve ili master lozinku"
   },
   "quick-profile": {
@@ -127,13 +127,13 @@
     "section-wallet": "Novčanik"
   },
   "follow-controls": {
-    "follow": "Prati",
+    "follow": "Zaprati",
     "unFollow": "Prestani da pratiš",
     "mute": "Ućutkajte korisnika",
-    "unMute": "Omogući Razgovor"
+    "unMute": "Uključi obaveštenja"
   },
   "account": {
-    "voting-power": "Voting Power",
+    "voting-power": "Snaga glasa",
     "post-count": "Broj postova",
     "number-of-votes": "Broj glasova u poslednjih 24 sata",
     "followers": "Pratioci",
@@ -160,12 +160,12 @@
     "exchange": "Menjačnica",
     "transactions": "Transakcije",
     "transaction-curation_reward": "Nagrade za glasanje",
-    "transaction-author_reward": "Autorska nagrada",
+    "transaction-author_reward": "Nagrada za autora",
     "transaction-comment_benefactor_reward": "Komentar o dobijenom procentu od nagrade",
     "transaction-claim_reward_balance": "Potvrdi nagrade",
     "transaction-transfer": "Prenos",
-    "transaction-transfer_to_vesting": "Transfer u vesting",
-    "transaction-withdraw_vesting": "Povucite Steem Power",
+    "transaction-transfer_to_vesting": "Premestite u vesting",
+    "transaction-withdraw_vesting": "Povucite vesting",
     "transaction-fill_order": "Popunite nalog",
     "claim-reward-balance": "Bilans prikupljenih nagrada",
     "claim-reward-balance-ok": "Podvrđeni saldo nagrade",
