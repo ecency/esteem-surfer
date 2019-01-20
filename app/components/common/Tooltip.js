@@ -7,14 +7,12 @@ import { Tooltip as RealTooltip } from 'antd';
 import PropTypes from 'prop-types';
 
 class Tooltip extends Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
       visible: true
     };
-
   }
 
   render() {
@@ -29,6 +27,7 @@ class Tooltip extends Component {
 
     return (
       <RealTooltip
+        className="tooltip-handler"
         {...ownProps}
         onClick={() => {
           onClick();
@@ -36,15 +35,16 @@ class Tooltip extends Component {
         }}
         onMouseLeave={() => {
           this.setState({ visible: true });
-        }}>{children}</RealTooltip>
+        }}
+      >
+        {children}
+      </RealTooltip>
     );
   }
 }
 
 Tooltip.defaultProps = {
-  onClick: () => {
-
-  },
+  onClick: () => {},
   mouseEnterDelay: 1,
   placement: 'top'
 };
@@ -56,6 +56,5 @@ Tooltip.propTypes = {
   onClick: PropTypes.func,
   mouseEnterDelay: PropTypes.number
 };
-
 
 export default Tooltip;
