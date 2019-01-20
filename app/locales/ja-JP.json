@@ -173,7 +173,8 @@
     "transfer-to-savings": "貯蓄口座に送る",
     "power-up": "パワーアップ",
     "withdraw-steem": "Steemを引き出す",
-    "withdraw-sbd": "Steem Dollarを引き出す"
+    "withdraw-sbd": "Steem Dollarを引き出す",
+    "delegate": "Delegate"
   },
   "composer": {
     "title-placeholder": "タイトル",
@@ -404,5 +405,18 @@
     "reset": "別の送金",
     "finish": "終了",
     "recent-transfers": "最近の送金"
+  },
+  "delegate": {
+    "title": "Delegate",
+    "sub-title": "Delegate Steem Power",
+    "slider-help": "Drag the slider to adjust the amount",
+    "confirm-title": "Confirm Delegation",
+    "confirm-sub-title": "Please, check if everything is correct",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "Delegation completed",
+    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+  },
+  "delegation-list": {
+    "empty-list": "Nothing here"
   }
 }
