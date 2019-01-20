@@ -257,7 +257,7 @@
     "title": "Omiljeno",
     "load-error": "Nije moguće učitati omiljeno",
     "empty-list": "Ovde nema ništa",
-    "search": "Pretraži u omiljeno"
+    "search": "Pretraži omiljeno"
   },
   "entry": {
     "reply": "Odgovori",
@@ -265,11 +265,11 @@
     "via-app": "pomoću <span class=\"app-name\">{app}</span>",
     "n-replies": "{n} odgovora",
     "reply-sort-order": "Sortiraj po",
-    "reply-sort-order-trending": "Popularno",
-    "reply-sort-order-reputation": "Reputacija",
-    "reply-sort-order-votes": "Glasovi",
-    "reply-sort-order-created": "Starost",
-    "reply-body-placeholder": "Napišite svoj odgovor ovde",
+    "reply-sort-order-trending": "Popularnosti",
+    "reply-sort-order-reputation": "Reputaciji",
+    "reply-sort-order-votes": "Glasovima",
+    "reply-sort-order-created": "Starosti",
+    "reply-body-placeholder": "Unesite svoj odgovor ovde",
     "bookmarked": "Dodato u obeleživače",
     "bookmarkRemoved": "Uklonjeno iz obeleživača",
     "favorited": "Dodato u omiljeno",
@@ -297,9 +297,9 @@
   "search": {
     "n-results-for-q": "{n} rezultata za {q}",
     "sort-by": "Sortiraj po",
-    "sort-popularity": "Popularnost",
-    "sort-relevance": "Relevantnost",
-    "sort-newest": "Datum"
+    "sort-popularity": "Popularnosti",
+    "sort-relevance": "Relevantnosti",
+    "sort-newest": "Datumu"
   },
   "updater": {
     "new-version-available": "Nova verzija je dostupna",
@@ -307,7 +307,7 @@
     "dismiss": "Odbaci",
     "downloading": "Preuzimanje nove verzije...",
     "download-completed": "Preuzimanje je završeno",
-    "restart": "Ponovno pokretanje"
+    "restart": "Restartuj"
   },
   "context-menu": {
     "cut": "Iseci",
