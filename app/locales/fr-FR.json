@@ -409,14 +409,14 @@
   "delegate": {
     "title": "Delegate",
     "sub-title": "Delegate Steem Power",
-    "slider-help": "Drag the slider to adjust the amount",
-    "confirm-title": "Confirm Delegation",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "Delegation completed",
+    "slider-help": "Faites glisser le curseur pour ajuster le montant",
+    "confirm-title": "Confirmer la délégation",
+    "confirm-sub-title": "S'il vous plaît, vérifiez si tout est correct",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> délégués à <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "Délégation terminée",
     "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "Il n'y a rien ici"
   }
 }
