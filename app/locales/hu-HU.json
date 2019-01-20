@@ -78,9 +78,9 @@
     "login": "Bejelentkezés",
     "error-fields-required": "Kérjük add meg felhasználóneved és jelszavad/WIF-ed",
     "error-public-key": "A nyilvános kulcsot adtad meg. Jelszó/WIF szükséges",
-    "error-user-fetch": "User data could not be fetched",
-    "error-user-not-found": "User does not exist",
-    "error-authenticate": "Wrong username or password/WIF",
+    "error-user-fetch": "A felhasználó adatait nem sikerült betölteni",
+    "error-user-not-found": "A felhasználó nem létezik",
+    "error-authenticate": "Helytelen felhasználónév vagy jelszó/WIF",
     "create-account-text": "Nincs fiókod? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">hozd létre most most!</a>",
     "login-with-sc": "Bejelentkezés mint",
     "divider-text": "VAGY"
