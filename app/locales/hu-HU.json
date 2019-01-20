@@ -53,7 +53,7 @@
   "settings": {
     "title": "Beállítások",
     "currency": "Pénznem",
-    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
+    "currency-fetch-error": "Nem sikerült betölteni a '{cur}' árfolyamát",
     "currency-changed": "Pénznem Átváltva",
     "locale": "Nyelv",
     "locale-changed": "Nyelv megváltoztatva",
@@ -156,7 +156,7 @@
     "steem-dollars-description": "Tokenek, amik körülbelül $1.00-nyi STEEM-et érnek.",
     "savings": "Megtakarítások",
     "savings-description": "Balance subject to 3 day withdraw waiting period.",
-    "next-power-down": "The next power down is {time}",
+    "next-power-down": "The next power down is {time} {amount}",
     "exchange": "Váltó",
     "transactions": "Tranzakciók",
     "transaction-curation_reward": "Kurációs Jutalom",
@@ -171,7 +171,7 @@
     "claim-reward-balance-ok": "Jutalom egyenleg átvéve",
     "transfer": "Átutalás",
     "transfer-to-savings": "Átutalás a megtakarításokhoz",
-    "power-up": "Feltöltés",
+    "power-up": "Power up",
     "withdraw-steem": "Steem Visszavonás",
     "withdraw-sbd": "Steem Dollár Visszavonás",
     "delegate": "Delegálás"
