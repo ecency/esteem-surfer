@@ -156,7 +156,7 @@
     "steem-dollars-description": "Tokens mit einem Wert von $1.00 eines STEEM",
     "savings": "Tresor",
     "savings-description": "Werte im Tresor unterliegen einer 3-Tages Sperre.",
-    "next-power-down": "Der nächste Power Down ist in {time}",
+    "next-power-down": "The next power down is {time} {amount}",
     "exchange": "aktueller Handelskurs",
     "transactions": "Transaktionen",
     "transaction-curation_reward": "Kurator-Belohnung",
