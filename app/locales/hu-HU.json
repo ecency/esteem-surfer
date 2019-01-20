@@ -276,7 +276,7 @@
     "copy-clipboard": "Copy internal link to clipboard",
     "copied-clipboard": "Lemásolva",
     "comment-entry-title": "You are viewing a single comment's thread from: ",
-    "comment-entry-go-root": "View the full context",
+    "comment-entry-go-root": "Teljes kontextus megtekintése",
     "comment-entry-go-parent": "View the direct parent"
   },
   "navbar": {
@@ -290,7 +290,7 @@
     "wallet": "Saját pénztárca",
     "activities": "Tevékenységek",
     "address-enter-url": "Url megadása",
-    "address-enter-query": "Enter search query",
+    "address-enter-query": "Írd be a keresési paramétereket",
     "unclaimed-reward-notice": "You have unclaimed rewards"
   },
   "search": {
@@ -333,7 +333,7 @@
     "type-reblogs": "Megosztások",
     "vote-str": "{p}% nak tetszik a bejegyzésed:",
     "reply-str": "válaszolt a bejegyzésedre:",
-    "mention-str": "mentioned you in:",
+    "mention-str": "megemlített téged a: -ben",
     "followed-str": "követés",
     "unfollowed-str": "követés visszavonva",
     "ignored-str": "ignored",
