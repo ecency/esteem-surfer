@@ -156,7 +156,7 @@
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Сейф",
     "savings-description": "Сейф, баланс которого можно вывести в течение 3 дней после запроса.",
-    "next-power-down": "Следующее понижение силы запланировано {time}",
+    "next-power-down": "The next power down is {time} {amount}",
     "exchange": "Курс",
     "transactions": "Транзакции",
     "transaction-curation_reward": "Кураторская награда",
