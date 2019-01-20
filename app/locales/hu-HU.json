@@ -282,7 +282,7 @@
   "navbar": {
     "settings": "Beállítások",
     "change-theme": "Téma megváltoztatása",
-    "login": "Login to your account",
+    "login": "Bejelentkezés a következő fiókba",
     "bookmark": "Hozzáadás a könyvjelzőkhöz",
     "bookmarkRemove": "Eltávolítás a könyvjelzőkből",
     "favorite": "Hozzáadás a kedvencekhez",
@@ -297,7 +297,7 @@
     "n-results-for-q": "{n} találat {q} keresésre",
     "sort-by": "Rendezés eszerint",
     "sort-popularity": "Népszerűség",
-    "sort-relevance": "Relevance",
+    "sort-relevance": "Fontosság",
     "sort-newest": "Dátum"
   },
   "updater": {
@@ -334,7 +334,7 @@
     "vote-str": "{p}% nak tetszik a bejegyzésed:",
     "reply-str": "replied to your post:",
     "mention-str": "mentioned you in:",
-    "followed-str": "followed",
+    "followed-str": "követés",
     "unfollowed-str": "követés visszavonva",
     "ignored-str": "ignored",
     "reblog-str": "megosztotta a bejegyzésed:",
@@ -346,7 +346,7 @@
   },
   "witnesses": {
     "page-title": "Tanú szavazás",
-    "remaining": "<strong>{n}</strong> of {max} votes remaining",
+    "remaining": "<strong>{n}</strong> {max} szavazat maradt",
     "witness": "Tanú",
     "miss": "Miss",
     "url": "URL",
