@@ -173,7 +173,8 @@
     "transfer-to-savings": "Transférer vers mes Économies",
     "power-up": "Augmenter son influence",
     "withdraw-steem": "Retirer des Steem",
-    "withdraw-sbd": "Retirer des Steem Dollar"
+    "withdraw-sbd": "Retirer des Steem Dollar",
+    "delegate": "Delegate"
   },
   "composer": {
     "title-placeholder": "Titre",
@@ -404,5 +405,18 @@
     "reset": "Another transfer",
     "finish": "Terminer",
     "recent-transfers": "Transferts récents"
+  },
+  "delegate": {
+    "title": "Delegate",
+    "sub-title": "Delegate Steem Power",
+    "slider-help": "Drag the slider to adjust the amount",
+    "confirm-title": "Confirm Delegation",
+    "confirm-sub-title": "Please, check if everything is correct",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "Delegation completed",
+    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+  },
+  "delegation-list": {
+    "empty-list": "Nothing here"
   }
 }
