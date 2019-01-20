@@ -156,7 +156,7 @@
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Spaarrekening",
     "savings-description": "Saldo onderhevig aan wachttijd van 3 dagen voor opname.",
-    "next-power-down": "De volgende power down is {time}",
+    "next-power-down": "The next power down is {time} {amount}",
     "exchange": "Exchange",
     "transactions": "Transacties",
     "transaction-curation_reward": "Curatie-beloning",
