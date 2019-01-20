@@ -156,7 +156,7 @@
     "steem-dollars-description": "Token bernilai sekitar $1.00 dari STEEM.",
     "savings": "Menyimpan",
     "savings-description": "Saldo dikenakan masa tunggu penarikan 3 hari.",
-    "next-power-down": "The next power down is {time} {amount}",
+    "next-power-down": "Menurunkan kekuatan berikutnya adalah {time} {amount}",
     "exchange": "Pertukaran",
     "transactions": "Transaksi",
     "transaction-curation_reward": "Hadiah kurasi",
