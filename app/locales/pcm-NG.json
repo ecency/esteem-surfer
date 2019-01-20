@@ -37,28 +37,28 @@
   },
   "entry-votes": {
     "n-more": "{n} more",
-    "author": "Author",
+    "author": "Person Wey Write",
     "reward": "Reward",
     "percent": "Percent",
     "time": "Time",
-    "modal-title": "Voters ({n})"
+    "modal-title": "People wey vote ({n})"
   },
   "entry-list-item": {
     "reblogged": "reblogged by {n}"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "Reblog am",
+    "reblogged": "E don reblog"
   },
   "settings": {
     "title": "Settings",
     "currency": "Currency",
-    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
-    "currency-changed": "Currency Changed",
+    "currency-fetch-error": "E no gree locate the rate for '{cur}'",
+    "currency-changed": "Currency don change",
     "locale": "Language",
-    "locale-changed": "Language changed",
+    "locale-changed": "Language don change",
     "server": "Server",
-    "server-invalid-address": "Invalid server address",
+    "server-invalid-address": "Server address no dey correct",
     "server-connecting": "Connecting to '{server}'...",
     "server-connect-error": "E no gree connect to '{server'}. Make sure say you get better network.",
     "server-timeout-error": "'{server}' look like wetin don die",
