@@ -414,5 +414,8 @@
     "confirm-sub-title": "Please, check if everything is correct",
     "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
     "success-sub-title": "Delegation completed"
+  },
+  "delegation-list": {
+    "empty-list": "Nothing here"
   }
 }
