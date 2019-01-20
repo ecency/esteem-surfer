@@ -156,7 +156,7 @@
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Savings",
     "savings-description": "Balance subject to 3 day withdraw waiting period.",
-    "next-power-down": "The next power down is {time}",
+    "next-power-down": "The next power down is {time} {amount}",
     "exchange": "Exchange",
     "transactions": "Transactions",
     "transaction-curation_reward": "Curation Reward",
