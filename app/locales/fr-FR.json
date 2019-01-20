@@ -93,12 +93,12 @@
     "created": "Code PIN créé"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
+    "title": "Entrer le code PIN",
     "input-placeholder": "Entrez votre code PIN pour continuer",
     "last-chance": "C'est votre dernière chance",
     "invalidate": "Ha, je l'ai oublié ...",
     "invalidate-confirm": "Voulez-vous vraiment invalider le code PIN ?",
-    "invalidated": "PIN code is invalidated"
+    "invalidated": "Code PIN invalidé"
   },
   "user-menu": {
     "profile": "Profil",
@@ -146,14 +146,14 @@
     "unclaimed-rewards": "Récompenses non réclamées",
     "estimated-value": "La valeur estimée est basée sur une valeur moyenne de Steem de 7 jours.",
     "steem": "Steem",
-    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
+    "steem-description": "Les STEEM sont des jetons échangeables qui peuvent être transférés à tout moment. Les STEEM peuvent être convertis en Steem Power dans un processus appelé Power Up.",
     "steem-power": "Steem Power",
     "steem-power-description": "Les Steem Power sont des jetons d'influence, qui obtiennent plus de puissance en les conservant à long terme et en votant sur les publications. Plus on le conserve, plus on a d'influence sur les récompenses des autres et vous en gagnez pour avoir voté correctement.",
-    "steem-power-delegated": "Delegated Steem Power",
-    "steem-power-received": "Received Steem Power",
-    "steem-power-total": "Total Steem Power",
+    "steem-power-delegated": "Steem Power délégué",
+    "steem-power-received": "Steem Power reçu",
+    "steem-power-total": "Steem Power total",
     "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
+    "steem-dollars-description": "Les jetons valent environ 1.00$ de STEEM.",
     "savings": "Économies",
     "savings-description": "Votre solde est sujet à une période de 3 jours d'attente pour les retraits.",
     "next-power-down": "La prochaine diminution de puissance est dans {time}",
@@ -236,12 +236,12 @@
     "title": "Brouillons",
     "load-error": "Impossible de charger les brouillons",
     "empty-list": "Rien ici",
-    "deleted": "Draft is deleted"
+    "deleted": "Brouillon supprimé"
   },
   "schedules": {
     "title": "Publications planifiées",
     "empty-list": "Rien ici",
-    "deleted": "Scheduled post is deleted",
+    "deleted": "Publication planifiée supprimée",
     "move": "Déplacer vers brouillons",
     "moved": "Déplacé vers brouillons"
   },
@@ -249,7 +249,7 @@
     "title": "Signets",
     "load-error": "Impossible de charger les signets",
     "empty-list": "Rien ici",
-    "deleted": "Bookmark is removed",
+    "deleted": "Signet supprimé",
     "search": "Rechercher dans les signets"
   },
   "favorites": {
@@ -282,7 +282,7 @@
   "navbar": {
     "settings": "Réglages",
     "change-theme": "Changer de Thème",
-    "login": "Login to your account",
+    "login": "Connexion à votre compte",
     "bookmark": "Ajouter aux signets",
     "bookmarkRemove": "Retirer des signets",
     "favorite": "Ajouter aux favoris",
@@ -291,7 +291,7 @@
     "activities": "Activités",
     "address-enter-url": "Saisissez l'url",
     "address-enter-query": "Entrer un critère de recherche",
-    "unclaimed-reward-notice": "You have unclaimed rewards"
+    "unclaimed-reward-notice": "Vous avez des récompenses non réclamées"
   },
   "search": {
     "n-results-for-q": "{n} résultats pour {q}",
@@ -301,11 +301,11 @@
     "sort-newest": "Date"
   },
   "updater": {
-    "new-version-available": "New version is available",
+    "new-version-available": "Une nouvelle version est disponible",
     "update": "Mettre à jour",
     "dismiss": "Ignorer",
     "downloading": "Téléchargement de la nouvelle version ...",
-    "download-completed": "Download is completed",
+    "download-completed": "Téléchargement terminé",
     "restart": "Redémarrer"
   },
   "context-menu": {
@@ -332,10 +332,10 @@
     "type-follows": "Suit",
     "type-reblogs": "Reblogs",
     "vote-str": "{p}% ont aimés votre post:",
-    "reply-str": "replied to your post:",
+    "reply-str": "a répondu à votre post:",
     "mention-str": "vous a mentionné sur:",
     "followed-str": "followed",
-    "unfollowed-str": "ne suit plus",
+    "unfollowed-str": "ne vous suit plus",
     "ignored-str": "ignoré",
     "reblog-str": "a reblogué votre publication:",
     "empty-list": "Il n'y a rien ici",
@@ -365,7 +365,7 @@
     "proxy-active-exp": "Vous avez autorisé un mandataire à voter pour les témoins. Si vous voulez réactiver le vote manuel, veuillez annuler votre autorisation.",
     "current-proxy": "Votre mandataire actuel est : <strong>{n}</strong>",
     "remove-proxy": "Effacer le mandataire",
-    "proxy-removed": "Proxy is cleared",
+    "proxy-removed": "Mandataire effacé",
     "proxy-created": "@{n} a été défini comme mandataire"
   },
   "transfer": {
@@ -375,7 +375,7 @@
     "transfer-saving-sub-title": "Protéger les fonds en imposant une période d'attente de 3 jours pour les retraits",
     "withdraw-saving-title": "Retrait des économies",
     "withdraw-saving-sub-title": "Retirer les fonds après la période de 3 jours d'attente requise",
-    "power-up-title": "Convert to Steem Power",
+    "power-up-title": "Convertir en Steem Power",
     "power-up-sub-title": "Jetons d'influence vous donnant plus de contrôle sur les gains potentiels de publications et vous permet d'augmenter vos gains de curation.",
     "from": "De",
     "from-placeholder": "Sélectionner un utilisateur",
@@ -392,7 +392,7 @@
     "memo": "Mémo",
     "memo-placeholder": "entrez vos notes ici",
     "memo-help": "Ce mémo est public",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "key-required-err": "La clé active n'a pas pu être trouvée pour le compte sélectionné. Veuillez vous assurer que vous êtes connecté avec les informations d'identification appropriées.",
     "next": "Suivant",
     "confirm-title": "Confirmer votre Transfert",
     "confirm-sub-title": "S'il vous plaît, vérifiez si tout est correct",
