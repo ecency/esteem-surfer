@@ -1,6 +1,6 @@
 {
   "g": {
-    "compose-entry": "Create Post",
+    "compose-entry": "Make new tori",
     "are-you-sure": "You sure?",
     "yes": "Yes",
     "no": "No",
@@ -25,15 +25,15 @@
     "filter-active": "Wey dey active",
     "filter-promoted": "Wey dem promote",
     "filter-votes": "Votes",
-    "filter-children": "Comments",
-    "filter-feed": "Feed"
+    "filter-children": "People reply",
+    "filter-feed": "Tori"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "Reward wey dey pending",
+    "promoted": "Wey dem promote",
+    "author-payout": "Payment For Person Wey Write",
+    "curation-payout": "Payment For Post Wey You Upvote",
+    "payout-date": "Payment"
   },
   "entry-votes": {
     "n-more": "{n} more",
