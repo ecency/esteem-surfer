@@ -87,18 +87,18 @@
   },
   "create-pin-code": {
     "title": "Criar o código PIN",
-    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter PIN code",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
-    "created": "PIN code created"
+    "desc1": "Definir o código PIN para criptografar seus dados e habilitar a camada extra de segurança!",
+    "input-placeholder": "Inserir o código PIN",
+    "desc2": "Você será solicitado a inserir o código PIN para transações cruciais, bem como em cada lançamento.",
+    "created": "Código PIN criado"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
-    "input-placeholder": "Enter PIN code to continue",
+    "title": "Inserir o código PIN",
+    "input-placeholder": "Digite o código PIN para continuar",
     "last-chance": "Esta é sua última chance",
     "invalidate": "Oh, esqueci disso...",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "invalidate-confirm": "Você realmente quer invalidar o código PIN?",
+    "invalidated": "Código pin invalidado"
   },
   "user-menu": {
     "profile": "Perfil",
