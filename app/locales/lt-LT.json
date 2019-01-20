@@ -121,9 +121,9 @@
     "post-count": "Post Count",
     "followers": "Sekėjai",
     "following": "Following",
-    "section-blog": "Blog",
+    "section-blog": "Blog'as",
     "section-comments": "Komentarai",
-    "section-replies": "Replies",
+    "section-replies": "Atsakymai",
     "section-wallet": "Piniginė"
   },
   "follow-controls": {
@@ -137,7 +137,7 @@
     "post-count": "Post Count",
     "number-of-votes": "Number of votes in last 24 hours",
     "followers": "Followers",
-    "following": "Following",
+    "following": "Sekami",
     "section-blog": "Blogas",
     "section-comments": "Komentarai",
     "section-replies": "Atsakymai",
