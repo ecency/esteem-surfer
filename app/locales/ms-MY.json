@@ -282,7 +282,7 @@
   "navbar": {
     "settings": "Tetapan",
     "change-theme": "Tukar tema",
-    "login": "Login to your account",
+    "login": "Log masuk ke akaun anda",
     "bookmark": "Tambah tanda halaman",
     "bookmarkRemove": "Dikeluarkan dari tanda halaman",
     "favorite": "Tambah ke kegemaran",
@@ -291,7 +291,7 @@
     "activities": "Aktiviti-aktiviti",
     "address-enter-url": "Masukkan url",
     "address-enter-query": "Masukkan pencarian",
-    "unclaimed-reward-notice": "You have unclaimed rewards"
+    "unclaimed-reward-notice": "Anda mempunyai ganjaran yang tidak dituntut"
   },
   "search": {
     "n-results-for-q": "{n} keputusan untuk {q}",
@@ -301,11 +301,11 @@
     "sort-newest": "Tarikh"
   },
   "updater": {
-    "new-version-available": "New version is available",
+    "new-version-available": "Versi terbaru tersedia",
     "update": "Mengemaskini",
     "dismiss": "Abaikan",
     "downloading": "Memuat turun versi baru...",
-    "download-completed": "Download is completed",
+    "download-completed": "Muat turun telah selesai",
     "restart": "Mula semula"
   },
   "context-menu": {
@@ -332,7 +332,7 @@
     "type-follows": "Ikuti",
     "type-reblogs": "Ulang siar",
     "vote-str": "{p}% menyukai pos anda:",
-    "reply-str": "replied to your post:",
+    "reply-str": "balas pos anda:",
     "mention-str": "menyebut anda dalam:",
     "followed-str": "diikuti",
     "unfollowed-str": "berhenti mengikuti",
