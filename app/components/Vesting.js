@@ -29,7 +29,10 @@ import LinearProgress from './common/LinearProgress';
 import DeepLinkHandler from './helpers/DeepLinkHandler';
 import AccountLink from './helpers/AccountLink';
 
-import { getItem, setItem } from '../helpers/storage';
+import {
+  getRecentTransfers,
+  appendToRecentTransfers
+} from '../helpers/storage';
 
 import {
   getAccount,
@@ -107,7 +110,7 @@ class DelegateCls extends PureComponent {
   };
 
   resetState = () => {
-    this.recentDb = getItem('recent-transfers', []);
+    this.recentDb = getRecentTransfers();
 
     return {
       step: 1,
@@ -208,11 +211,7 @@ class DelegateCls extends PureComponent {
         this.setState({ step: 3 });
 
         // Save recipient to recent list
-        const recent = getItem('recent-transfers', []);
-        if (!recent.includes(to)) {
-          const newRecent = [...new Set([to, ...recent])].slice(0, 100);
-          setItem('recent-transfers', newRecent);
-        }
+        appendToRecentTransfers(to);
 
         return resp;
       })

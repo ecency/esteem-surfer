@@ -44,3 +44,13 @@ export const isReleasePostRead = ver => getItem(`release-post-${ver}`, false);
 export const setReleasePostRead = ver => {
   setItem(`release-post-${ver}`, 1);
 };
+
+export const getRecentTransfers = () => getItem('recent-transfers', []);
+
+export const appendToRecentTransfers = to => {
+  const recent = getItem('recent-transfers', []);
+  if (!recent.includes(to)) {
+    const newRecent = [...new Set([to, ...recent])].slice(0, 100);
+    setItem('recent-transfers', newRecent);
+  }
+};
