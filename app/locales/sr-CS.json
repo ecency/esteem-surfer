@@ -168,7 +168,7 @@
     "transaction-withdraw_vesting": "Povucite Steem Power",
     "transaction-fill_order": "Popunite nalog",
     "claim-reward-balance": "Bilans prikupljenih nagrada",
-    "claim-reward-balance-ok": "Reward balance claimed",
+    "claim-reward-balance-ok": "Podvrđeni bilans nagrade",
     "transfer": "Prenos",
     "transfer-to-savings": "Premestite u štednju",
     "power-up": "Uložite u Steem Power",
@@ -277,7 +277,7 @@
     "copied-clipboard": "Kopirano",
     "comment-entry-title": "Pregledate komentare u vezi sa: ",
     "comment-entry-go-root": "Pogledaj ceo kontekst",
-    "comment-entry-go-parent": "View the direct parent"
+    "comment-entry-go-parent": "Pogledaj nadređeni komentar"
   },
   "navbar": {
     "settings": "Podešavanja",
