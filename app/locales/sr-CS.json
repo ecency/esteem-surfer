@@ -287,17 +287,17 @@
     "bookmarkRemove": "Remove from bookmarks",
     "favorite": "Add to favorites",
     "favoriteRemove": "Removed from favorites",
-    "wallet": "My Wallet",
-    "activities": "Activities",
+    "wallet": "Moj novčanik",
+    "activities": "Aktivnosti",
     "address-enter-url": "Unesite URL adresu",
-    "address-enter-query": "Enter search query",
-    "unclaimed-reward-notice": "You have unclaimed rewards"
+    "address-enter-query": "Unesite upit za pretragu",
+    "unclaimed-reward-notice": "Imate nepotvrđene nagrade"
   },
   "search": {
-    "n-results-for-q": "{n} results for {q}",
-    "sort-by": "Sort by",
-    "sort-popularity": "Popularity",
-    "sort-relevance": "Relevance",
+    "n-results-for-q": "{n} rezultata za {q}",
+    "sort-by": "Sortiraj po",
+    "sort-popularity": "Popularnost",
+    "sort-relevance": "Relevantnost",
     "sort-newest": "Datum"
   },
   "updater": {
