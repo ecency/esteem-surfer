@@ -537,6 +537,11 @@
                   &.total-sp {
                     font-weight: 700;
                   }
+
+                  .btn-delegated {
+                    border-bottom: 1px dashed $steel-grey;
+                    cursor: pointer;
+                  }
                 }
 
                 .fund-action {

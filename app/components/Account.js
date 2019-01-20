@@ -5,7 +5,7 @@ eslint-disable react/no-multi-comp,react/style-prop-object
 import React, { Component, Fragment } from 'react';
 
 import PropTypes from 'prop-types';
-import { message, Menu } from 'antd';
+import { message, Menu, Modal } from 'antd';
 import { FormattedNumber, FormattedDate, FormattedMessage, FormattedRelative, injectIntl } from 'react-intl';
 
 import { Link } from 'react-router-dom';
@@ -20,6 +20,8 @@ import UserAvatar from './elements/UserAvatar';
 import FollowControls from './elements/FollowControls';
 import EntryListLoadingItem from './elements/EntryListLoadingItem';
 import EntryListItem from './elements/EntryListItem';
+import {DelegationList} from './Vesting';
+
 
 import ScrollReplace from './helpers/ScrollReplace';
 import ListSwitch from './elements/ListSwitch';
@@ -686,7 +688,8 @@ export class SectionWallet extends Component {
 
     this.state = {
       account,
-      claiming: false
+      claiming: false,
+      delegationModalOpen: false
     };
   }
 
@@ -726,9 +729,13 @@ export class SectionWallet extends Component {
       });
   };
 
+  delegationClicked = () => {
+    this.setState({ delegationModalOpen: true });
+  };
+
   render() {
     const { transactions, marketData, dynamicProps, global, intl, activeAccount, username, location } = this.props;
-    const { account, claiming } = this.state;
+    const { account, claiming, delegationModalOpen } = this.state;
 
 
     if (account) {
@@ -910,7 +917,9 @@ export class SectionWallet extends Component {
                     <Tooltip title={intl.formatMessage({
                       id: 'account.steem-power-delegated'
                     })}>
-                      {'-'} <FormattedNumber value={vestsToSp(vestingSharesDelegated, steemPerMVests)}/> {'SP'}
+                     <span className="btn-delegated" role="none" onClick={this.delegationClicked}>
+                       {'-'} <FormattedNumber value={vestsToSp(vestingSharesDelegated, steemPerMVests)}/> {'SP'}
+                     </span>
                     </Tooltip>
                   </div>
                   <div className="fund-action"/>
@@ -1015,6 +1024,20 @@ export class SectionWallet extends Component {
               ))}
             </div>
           </div>
+
+          <Modal
+            visible={delegationModalOpen}
+            footer={false}
+            width="550px"
+            onCancel={() => {
+              this.setState({ delegationModalOpen: false });
+            }}
+            destroyOnClose
+            centered
+            title={intl.formatMessage({ id: 'account.steem-power-delegated' })}
+          >
+            <DelegationList {...this.props} username={username} />
+          </Modal>
         </div>
       );
     }

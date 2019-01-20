@@ -684,3 +684,13 @@ export const delegateVestingShares = (
     return scDelegateVestingShares(delegator, delegatee, vestingShares);
   }
 };
+
+
+export const getVestingDelegations = (
+  account, from = '', limit = 50
+) =>
+  client.database.call('get_vesting_delegations', [
+    account,
+    from,
+    limit
+  ]);

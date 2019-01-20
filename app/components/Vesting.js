@@ -6,7 +6,7 @@ import React, { Fragment, PureComponent } from 'react';
 import { FormattedHTMLMessage, FormattedNumber, FormattedMessage, injectIntl } from 'react-intl';
 
 import PropTypes from 'prop-types';
-import { Slider, AutoComplete, Select, Button, Icon, message } from 'antd';
+import { Slider, AutoComplete, Table, Select, Button, Icon, message } from 'antd';
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
 import PinRequired from './helpers/PinRequired';
@@ -14,12 +14,14 @@ import QuickProfile from './helpers/QuickProfile';
 import UserAvatar from './elements/UserAvatar';
 import LinearProgress from './common/LinearProgress';
 import DeepLinkHandler from './helpers/DeepLinkHandler';
+import AccountLink from './helpers/AccountLink';
 
 import { getItem, setItem } from '../helpers/storage';
 
 import {
   getAccount,
-  delegateVestingShares
+  delegateVestingShares,
+  getVestingDelegations
 } from '../backend/steem-client';
 import formatChainError from '../utils/format-chain-error';
 import parseToken from '../utils/parse-token';
@@ -532,11 +534,86 @@ const Delegate = injectIntl(DelegateCls);
 
 export { Delegate };
 
+class DelegationListCls extends PureComponent {
 
-export class DelegateList extends PureComponent {
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      loading: true,
+      list: []
+    };
+
+  }
+
+  componentDidMount() {
+    const { username } = this.props;
+
+    return getVestingDelegations(username).then(resp => {
+      this.setState({ list: resp });
+      return resp;
+    }).catch(e => {
+      message.error(formatChainError(e));
+    }).finally(() => {
+      this.setState({ loading: false });
+    });
+  }
+
+  render() {
+    const { list, loading } = this.state;
+
+
+    const { dynamicProps } = this.props;
+    const { steemPerMVests } = dynamicProps;
+
+
+    if (loading) {
+      return <div className="delegate-modal-table"><LinearProgress/></div>;
+    }
+
+
+    const dataSource = list.map((i, k) => ({
+        key: k,
+        delegatee: i.delegatee,
+        vesting_shares: i.vesting_shares
+      })
+    );
+
+    const columns = [{
+      title: null,
+      dataIndex: 'delegatee',
+      key: 'delegatee',
+      render: (value) => <AccountLink {...this.props} username={value}><a>{value}</a></AccountLink>
+    },
+      {
+        title: null,
+        dataIndex: 'vesting_shares',
+        key: 'vesting_shares',
+        render: (value) => <Fragment>
+          <FormattedNumber value={vestsToSp(parseToken(value), steemPerMVests)}
+                           minimumFractionDigits={3}/> {'SP'} <br/>
+          <small>{value}</small>
+        </Fragment>
+      }];
+
+    return <div className="delegate-modal-table">
+      <Table dataSource={dataSource} columns={columns} pagination={false} showHeader={false}/>
+    </div>;
+
+
+  }
 }
 
+DelegationListCls.propTypes = {
+  username: PropTypes.string.isRequired,
+  dynamicProps: PropTypes.shape({
+    steemPerMVests: PropTypes.number.isRequired
+  }).isRequired,
+  intl: PropTypes.instanceOf(Object).isRequired
+};
+
+const DelegationList = injectIntl(DelegationListCls);
+export { DelegationList };
 
 export class PowerDown extends PureComponent {
 
