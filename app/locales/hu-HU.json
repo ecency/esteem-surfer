@@ -407,10 +407,10 @@
     "recent-transfers": "Legújabb átutalások"
   },
   "delegate": {
-    "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
+    "title": "Delegálás",
+    "sub-title": "Steem Power Delegálás",
     "slider-help": "Drag the slider to adjust the amount",
-    "confirm-title": "Confirm Delegation",
+    "confirm-title": "Erősítsd meg a delegálást",
     "confirm-sub-title": "Please, check if everything is correct",
     "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
     "success-sub-title": "Delegation completed",
