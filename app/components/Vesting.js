@@ -18,6 +18,7 @@ import {
   Select,
   Button,
   Icon,
+  Alert,
   message
 } from 'antd';
 import NavBar from './layout/NavBar';
@@ -379,13 +380,24 @@ class DelegateCls extends PureComponent {
                           step={1}
                           max={availableVestingShares}
                           tipFormatter={a => `${a}.000000 VESTS`}
-                          tooltipVisible
+                          tooltipVisible={availableVestingShares >= 1}
                           value={amount}
                           onChange={this.amountChanged}
+                          disabled={availableVestingShares < 1}
                         />
                         <div className="input-help">
                           <FormattedMessage id="delegate.slider-help" />
                         </div>
+
+                        {availableVestingShares < 1 && (
+                          <Alert
+                            type="error"
+                            message={intl.formatMessage(
+                              { id: 'delegate.insufficient-vesting' },
+                              { a: availableVestingShares }
+                            )}
+                          />
+                        )}
                       </div>
                     </div>
                     <div className="steem-power">
