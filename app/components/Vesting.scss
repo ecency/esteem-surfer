@@ -244,4 +244,16 @@
 .delegate-modal-table {
   height: 400px;
   overflow-y: auto;
+
+  .empty-list {
+    padding: 10px;
+
+    @include themify(day) {
+      border-top: 1px solid $white-four;
+    }
+
+    @include themify(night) {
+      border-top: 1px solid $dusky-blue-two;
+    }
+  }
 }

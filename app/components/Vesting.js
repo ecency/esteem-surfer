@@ -678,12 +678,19 @@ class DelegationListCls extends PureComponent {
 
     return (
       <div className="delegate-modal-table">
-        <Table
-          dataSource={dataSource}
-          columns={columns}
-          pagination={false}
-          showHeader={false}
-        />
+        {dataSource.length === 0 && (
+          <div className="empty-list">
+            <FormattedMessage id="delegation-list.empty-list" />
+          </div>
+        )}
+        {dataSource.length > 0 && (
+          <Table
+            dataSource={dataSource}
+            columns={columns}
+            pagination={false}
+            showHeader={false}
+          />
+        )}
       </div>
     );
   }
