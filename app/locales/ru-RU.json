@@ -146,17 +146,17 @@
     "unclaimed-rewards": "Зачислить награду",
     "estimated-value": "Предполагаемая стоимость. Основана на средней стоимости Steem последние 7 дней.",
     "steem": "Steem",
-    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
+    "steem-description": "Steem - это торгуемые токены, которые можно вывести в любое время. Steem можно конвертировать в Силу голоса, этот процесс называется Повышением силы.",
     "steem-power": "Steem Power (Сила)",
     "steem-power-description": "Steam Power (Сила) - это токены влияния, которые дают ещё больше силы, если их не выводить и использовать для голосования. Чем больше у вас Steem Power, тем больше ваше влияние на награды других и больше ваш заработок за удачные голосования.",
-    "steem-power-delegated": "Delegated Steem Power",
-    "steem-power-received": "Received Steem Power",
-    "steem-power-total": "Total Steem Power",
+    "steem-power-delegated": "Делегированная Сила Голоса",
+    "steem-power-received": "Полученная Сила Голоса",
+    "steem-power-total": "Всего Силы Голоса",
     "steem-dollars": "Доллары Steem",
-    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
+    "steem-dollars-description": "Токены, стоимостью примерно $1 от токена Steem.",
     "savings": "Сейф",
     "savings-description": "Сейф, баланс которого можно вывести в течение 3 дней после запроса.",
-    "next-power-down": "The next power down is {time} {amount}",
+    "next-power-down": "Следующее понижение силы {amount} запланировано {time}",
     "exchange": "Курс",
     "transactions": "Транзакции",
     "transaction-curation_reward": "Кураторская награда",
@@ -174,7 +174,7 @@
     "power-up": "Повысить Силу",
     "withdraw-steem": "Снять Steem",
     "withdraw-sbd": "Снять Steem Dollar",
-    "delegate": "Delegate"
+    "delegate": "Делегировать"
   },
   "composer": {
     "title-placeholder": "Заголовок",
@@ -237,12 +237,12 @@
     "title": "Черновики",
     "load-error": "Невозможно загрузить черновики",
     "empty-list": "Здесь пусто",
-    "deleted": "Draft is deleted"
+    "deleted": "Черновик удалён"
   },
   "schedules": {
     "title": "Отложенные (запланированные) посты",
     "empty-list": "Здесь пусто",
-    "deleted": "Scheduled post is deleted",
+    "deleted": "Отложенный пост удалён",
     "move": "Переместить в черновики",
     "moved": "Перемещён в черновики"
   },
@@ -250,7 +250,7 @@
     "title": "Закладки",
     "load-error": "Невозможно загрузить закладки",
     "empty-list": "Здесь пусто",
-    "deleted": "Bookmark is removed",
+    "deleted": "Закладка удалена",
     "search": "Поиск по закладкам"
   },
   "favorites": {
@@ -283,7 +283,7 @@
   "navbar": {
     "settings": "Настройки",
     "change-theme": "Сменить тему",
-    "login": "Login to your account",
+    "login": "Войдите в свой аккаунт",
     "bookmark": "Добавить в закладки",
     "bookmarkRemove": "Убрать из закладок",
     "favorite": "Добавить в избранное",
@@ -292,7 +292,7 @@
     "activities": "Активности",
     "address-enter-url": "Введите url",
     "address-enter-query": "Введите поисковой запрос",
-    "unclaimed-reward-notice": "You have unclaimed rewards"
+    "unclaimed-reward-notice": "Есть незачисленные награды"
   },
   "search": {
     "n-results-for-q": "{n} результатов для {q}",
@@ -302,11 +302,11 @@
     "sort-newest": "Дате"
   },
   "updater": {
-    "new-version-available": "New version is available",
+    "new-version-available": "Доступна новая версия",
     "update": "Обновить",
     "dismiss": "Отклонить",
     "downloading": "Загрузка новой версии...",
-    "download-completed": "Download is completed",
+    "download-completed": "Загрузка завершена",
     "restart": "Перезапуск"
   },
   "context-menu": {
@@ -333,7 +333,7 @@
     "type-follows": "Подписки",
     "type-reblogs": "Репосты",
     "vote-str": "на {p}% нравится ваш пост:",
-    "reply-str": "replied to your post:",
+    "reply-str": "ответил на ваш пост:",
     "mention-str": "упомянул вас в:",
     "followed-str": "подписан",
     "unfollowed-str": "отписан",
@@ -366,7 +366,7 @@
     "proxy-active-exp": "Вы установили доверенного. Если вы хотите голосовать вручную, пожалуйста, снимите доверие.",
     "current-proxy": "Ваш доверенный: <strong>{n}</strong>",
     "remove-proxy": "Снять доверие",
-    "proxy-removed": "Proxy is cleared",
+    "proxy-removed": "Доверенный снят",
     "proxy-created": "@{n} ваш доверенный"
   },
   "transfer": {
@@ -376,7 +376,7 @@
     "transfer-saving-sub-title": "Защита средства от вывода трёхдневным периодом ожидания",
     "withdraw-saving-title": "Вывод из сейфа",
     "withdraw-saving-sub-title": "Снять средства после необходимого трёхдневного периода ожидания",
-    "power-up-title": "Convert to Steem Power",
+    "power-up-title": "Перевести в Силу Голоса",
     "power-up-sub-title": "Токены влияния, от которых зависит ваша сила голоса и заработок от курирования.",
     "from": "От",
     "from-placeholder": "Выберите пользователя",
@@ -393,7 +393,7 @@
     "memo": "Мемо",
     "memo-placeholder": "введите свою заметку",
     "memo-help": "Эта заметка публична",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "key-required-err": "Не найден Активный ключ для выбранного аккаунта. Убедитесь, что вы вошли используя ключи с возможностью перевода.",
     "next": "Далее",
     "confirm-title": "Подтвердите перевод",
     "confirm-sub-title": "Пожалуйста, убедитесь что всё верно",
@@ -407,16 +407,16 @@
     "recent-transfers": "Недавние переводы"
   },
   "delegate": {
-    "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
-    "slider-help": "Drag the slider to adjust the amount",
-    "confirm-title": "Confirm Delegation",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "Delegation completed",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "title": "Делегировать",
+    "sub-title": "Делегирование Силы Голоса",
+    "slider-help": "Потяните ползунок для регулировки количества",
+    "confirm-title": "Подтвердите делегирование",
+    "confirm-sub-title": "Пожалуйста, убедитесь что всё верно",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> делегировано к <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "Делегирование завершено",
+    "insufficient-vesting": "Не хватает средств {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "Ничего нет"
   }
 }
