@@ -161,7 +161,7 @@
     "transactions": "Transakcije",
     "transaction-curation_reward": "Nagrade za glasanje",
     "transaction-author_reward": "Autorska nagrada",
-    "transaction-comment_benefactor_reward": "Comment Benefactor Reward",
+    "transaction-comment_benefactor_reward": "Komentar o procenat od nagrade",
     "transaction-claim_reward_balance": "Potvrdi nagrade",
     "transaction-transfer": "Prenos",
     "transaction-transfer_to_vesting": "Transfer u vesting",
@@ -174,7 +174,7 @@
     "power-up": "Uložite u Steem Power",
     "withdraw-steem": "Povucite Steem",
     "withdraw-sbd": "Povucite Steem dolar",
-    "delegate": "Delegate"
+    "delegate": "Delegiraj"
   },
   "composer": {
     "title-placeholder": "Naslov",
@@ -373,8 +373,8 @@
     "transfer-title": "Transfer na korisnički nalog",
     "transfer-sub-title": "Pošalji sredstva na drugi Steem nalog",
     "transfer-saving-title": "Premestite u ušteđevinu",
-    "transfer-saving-sub-title": "Zaštite sredstva tako što ćete zatražiti period čekanja za povlačenje u trajanju od 3 dana",
-    "withdraw-saving-title": "Povucite štednju",
+    "transfer-saving-sub-title": "Zaštitite sredstva tako što ćete zatražiti period čekanja od 3 dana za povlačenje sredstava",
+    "withdraw-saving-title": "Povucite ušteđevinu",
     "withdraw-saving-sub-title": "Period čekanja za povlačenje sredstava traje 3 dana",
     "power-up-title": "Pretvorite u Steem Power",
     "power-up-sub-title": "Tokeni uticaja koji vam daju više kontrole nad isplatama postova i omogućavaju vam da zaradite na nagradama od glasova.",
@@ -389,34 +389,34 @@
     "wrong-amount": "Pogrešan iznos",
     "amount-precision-error": "Koristite samo 3 cifre preciznosti",
     "insufficient-funds": "Nedovoljno sredstava",
-    "balance": "Bilans",
+    "balance": "Saldo",
     "memo": "Poruka",
     "memo-placeholder": "unesite vaš dopis ovde",
     "memo-help": "Ova poruka je javna",
     "key-required-err": "Nije moguće pronaći Active key za izabrani nalog. Proverite da li ste prijavljeni sa odgovarajućim ovlašćenjima.",
-    "next": "Slеdеćе",
-    "confirm-title": "Potvrdite vaš transfer",
-    "confirm-sub-title": "Molim, proverite da li je sve ispravno",
+    "next": "Dalje",
+    "confirm-title": "Potvrdite vaš prenos",
+    "confirm-sub-title": "Molimo, proverite da li je sve ispravno",
     "confirm": "Potvrdi",
     "back": "Nazad",
     "success-title": "Uspeh",
     "success-sub-title": "Uspešan prenos",
-    "transfer-summary": "Transferovano <span class=\"amount\">{amount}</span> šalje <span class=\"from-user\">{from}</span> prima<span class=\"to-user\">{to}</span>",
-    "reset": "Još jedan transfer",
+    "transfer-summary": "Transferovano <span class=\"amount\">{amount}</span> šalje <span class=\"from-user\">{from}</span> primalac <span class=\"to-user\">{to}</span>",
+    "reset": "Još jedan prenos",
     "finish": "Završi",
-    "recent-transfers": "Nedavni transferi"
+    "recent-transfers": "Nedavni prenosi"
   },
   "delegate": {
-    "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
-    "slider-help": "Drag the slider to adjust the amount",
-    "confirm-title": "Confirm Delegation",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "Delegation completed",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "title": "Delegiraj",
+    "sub-title": "Delegirajte Steem Power",
+    "slider-help": "Prevucite klizač da biste prilagodili količinu",
+    "confirm-title": "Potvrdite delegaciju",
+    "confirm-sub-title": "Molimo, proverite da li je sve ispravno",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> je delegirano <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "Delegacija je završena",
+    "insufficient-vesting": "Nedovoljno vesting deonica {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "Ovde nema ništa"
   }
 }
