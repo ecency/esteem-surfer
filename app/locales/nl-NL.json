@@ -173,7 +173,8 @@
     "transfer-to-savings": "Overschrijven naar spaarrekening",
     "power-up": "Power up",
     "withdraw-steem": "Withdraw Steem",
-    "withdraw-sbd": "Withdraw Steem Dollar"
+    "withdraw-sbd": "Withdraw Steem Dollar",
+    "delegate": "Delegate"
   },
   "composer": {
     "title-placeholder": "Titel",
@@ -404,5 +405,18 @@
     "reset": "Nog een overschrijving",
     "finish": "Finish",
     "recent-transfers": "Recente overschrijvingen"
+  },
+  "delegate": {
+    "title": "Delegate",
+    "sub-title": "Delegate Steem Power",
+    "slider-help": "Drag the slider to adjust the amount",
+    "confirm-title": "Confirm Delegation",
+    "confirm-sub-title": "Please, check if everything is correct",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "Delegation completed",
+    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+  },
+  "delegation-list": {
+    "empty-list": "Nothing here"
   }
 }
