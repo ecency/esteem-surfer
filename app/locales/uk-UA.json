@@ -156,7 +156,7 @@
     "steem-dollars-description": "Токени вартістю близько $1.00 в STEEM.",
     "savings": "Заощадження",
     "savings-description": "Баланс, для якого діє 3-денний період очікування при знятті коштів.",
-    "next-power-down": "Наступне зниження сили голосу відбудеться {time}",
+    "next-power-down": "The next power down is {time} {amount}",
     "exchange": "Обмін",
     "transactions": "Транзакції",
     "transaction-curation_reward": "Кураторська винагорода",
