@@ -156,7 +156,7 @@
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "貯蓄口座",
     "savings-description": "引き出しに3日間の待ち時間が必要となる貯蓄口座です。",
-    "next-power-down": "次のパワーダウンは{time}",
+    "next-power-down": "The next power down is {time} {amount}",
     "exchange": "取引所",
     "transactions": "トランザクション",
     "transaction-curation_reward": "キュレーション報酬",
