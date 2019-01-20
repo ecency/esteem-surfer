@@ -161,7 +161,7 @@
     "transactions": "Transakcije",
     "transaction-curation_reward": "Nagrade za glasanje",
     "transaction-author_reward": "Autorska nagrada",
-    "transaction-comment_benefactor_reward": "Komentar o procenat od nagrade",
+    "transaction-comment_benefactor_reward": "Komentar o dobijenom procentu od nagrade",
     "transaction-claim_reward_balance": "Potvrdi nagrade",
     "transaction-transfer": "Prenos",
     "transaction-transfer_to_vesting": "Transfer u vesting",
