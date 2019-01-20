@@ -409,9 +409,9 @@
   "delegate": {
     "title": "Delegieren",
     "sub-title": "Steem-Power delegieren",
-    "slider-help": "Ziehe den Slider um den Wert zu definieren",
+    "slider-help": "Ziehe den Slider, um den Wert zu definieren",
     "confirm-title": "Bestätige die Delegation",
-    "confirm-sub-title": "Bitte überprüfe ob alles korrekt ist",
+    "confirm-sub-title": "Bitte überprüfe, ob alles korrekt ist",
     "delegation-summary": "<span class=\"sp\">{sp}</span> delegiere nach <span class=\"to-user\">{to}</span>",
     "success-sub-title": "Delegation abgeschlossen",
     "insufficient-vesting": "Unzureichende Vesting-Shares {a} VESTS"
