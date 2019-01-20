@@ -6,7 +6,13 @@ import React, { Component, Fragment } from 'react';
 
 import PropTypes from 'prop-types';
 import { message, Menu, Modal } from 'antd';
-import { FormattedNumber, FormattedDate, FormattedMessage, FormattedRelative, injectIntl } from 'react-intl';
+import {
+  FormattedNumber,
+  FormattedDate,
+  FormattedMessage,
+  FormattedRelative,
+  injectIntl
+} from 'react-intl';
 
 import { Link } from 'react-router-dom';
 
@@ -20,7 +26,7 @@ import UserAvatar from './elements/UserAvatar';
 import FollowControls from './elements/FollowControls';
 import EntryListLoadingItem from './elements/EntryListLoadingItem';
 import EntryListItem from './elements/EntryListItem';
-import {DelegationList} from './Vesting';
+import { DelegationList } from './Vesting';
 
 
 import ScrollReplace from './helpers/ScrollReplace';
@@ -767,6 +773,7 @@ export class SectionWallet extends Component {
 
       const showPowerDown = account.next_vesting_withdrawal !== '1969-12-31T23:59:59';
       const nextVestingWithdrawal = parseDate(account.next_vesting_withdrawal);
+      const nextVestingWithdrawalAmount = vestsToSp(parseToken(account.vesting_withdraw_rate), steemPerMVests);
 
       const isMyPage = activeAccount && activeAccount.username === username;
 
@@ -1005,7 +1012,13 @@ export class SectionWallet extends Component {
               <div className="next-power-down">
                 <div className="fund-info-icon"/>
                 <FormattedMessage id="account.next-power-down"
-                                  values={{ time: <FormattedRelative value={nextVestingWithdrawal}/> }}/>
+                                  values={
+                                    {
+                                      time: <FormattedRelative value={nextVestingWithdrawal}/>,
+                                      amount: <strong><FormattedNumber value={nextVestingWithdrawalAmount}
+                                                                       minimumFractionDigits={3}/> SP</strong>
+                                    }
+                                  }/>
               </div>
               }
             </div>
@@ -1036,7 +1049,7 @@ export class SectionWallet extends Component {
             centered
             title={intl.formatMessage({ id: 'account.steem-power-delegated' })}
           >
-            <DelegationList {...this.props} username={username} />
+            <DelegationList {...this.props} username={username}/>
           </Modal>
         </div>
       );
