@@ -365,7 +365,7 @@
     "proxy-active-exp": "Proxy szavazás beállítva. Ha újra kézi szavazást szeretnél, kérjük töröld a proxy-t.",
     "current-proxy": "Your current proxy is: <strong>{n}</strong>",
     "remove-proxy": "Proxy Törlése",
-    "proxy-removed": "Proxy is cleared",
+    "proxy-removed": "Proxy törölve",
     "proxy-created": "@{n} proxiként beállítva"
   },
   "transfer": {
