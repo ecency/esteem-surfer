@@ -156,7 +156,7 @@
     "steem-dollars-description": "Les jetons valent environ 1.00$ de STEEM.",
     "savings": "Économies",
     "savings-description": "Votre solde est sujet à une période de 3 jours d'attente pour les retraits.",
-    "next-power-down": "La prochaine diminution de puissance est dans {time}",
+    "next-power-down": "The next power down is {time} {amount}",
     "exchange": "Echange",
     "transactions": "Transactions",
     "transaction-curation_reward": "Gains de curation",
