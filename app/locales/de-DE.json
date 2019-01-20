@@ -198,11 +198,11 @@
     "tool-emoji": "Emoji",
     "preview": "Vorschau",
     "reward": "Belohnung",
-    "reward-default": "50% SBD-Steem / 50% Steem Power",
-    "reward-sp": "100% Steem Power",
+    "reward-default": "Standard 50% / 50%",
+    "reward-sp": "100% Power-Up",
     "reward-dp": "Auf die Auszahlung verzichten",
     "upvote": "Upvote",
-    "clear": "Alles Löschen",
+    "clear": "Alles löschen",
     "form-error-message": "Das Formular ist ungültig. Bitte alle Felder ausfüllen",
     "schedule": "Zeitplan",
     "select-schedule-date": "Datum auswählen",
@@ -210,7 +210,7 @@
     "schedule-picker-select-time": "Zeit wählen",
     "schedule-picker-select-date": "Datum auswählen",
     "grant-posting-perm": "Post-Berechtigung einstellen",
-    "posting-perm-granted": "Genehmigung zum Posten erteilt",
+    "posting-perm-granted": "Posting-Genehmigung erteilt",
     "remove-posting-perm": "Entferne deine Posting-Berechtigung",
     "posting-perm-removed": "Posting-Berechtigung entfernt",
     "save-draft": "Entwurf speichern",
@@ -322,7 +322,7 @@
     "mention-comment": "{source} hat dich in einem Kommentar erwähnt",
     "followed": "{source} folgt dir jetzt",
     "replied": "{source} hat dir geantwortet",
-    "reblogged": "{source} hat deinen Beitrag rebloggt"
+    "reblogged": "{source} hat deinen Beitrag geteilt"
   },
   "activities": {
     "type-all": "Alle Aktivitäten",
