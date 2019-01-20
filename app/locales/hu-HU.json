@@ -26,7 +26,7 @@
     "filter-promoted": "Támogatott",
     "filter-votes": "Szavazatok",
     "filter-children": "Hozzászólások",
-    "filter-feed": "Feed"
+    "filter-feed": "Hírfolyam"
   },
   "entry-payout": {
     "potential-payout": "Lehetséges Kifizetés",
@@ -262,7 +262,7 @@
   "entry": {
     "reply": "Válasz",
     "reply-preview": "Előnézet",
-    "via-app": "via <span class=\"app-name\">{app}</span>",
+    "via-app": "<span class=\"app-name\">{app}</span>-n keresztül",
     "n-replies": "{n} Válasz",
     "reply-sort-order": "Rendezési sorrend",
     "reply-sort-order-trending": "Népszerű",
@@ -352,10 +352,10 @@
     "miss": "Miss",
     "url": "URL",
     "fee": "Díj",
-    "feed": "Feed",
+    "feed": "Hírfolyam",
     "block-size": "Blokk mérete",
-    "ac-avail": "AC avail",
-    "ac-budget": "AC budget",
+    "ac-avail": "AC elérhető",
+    "ac-budget": "AC költségvetés",
     "version": "Verzió",
     "voted": "@{n} szavazott",
     "vote-removed": "szavazat visszavonva @{n} esetében",
