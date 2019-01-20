@@ -236,12 +236,12 @@
     "title": "Piszkozat",
     "load-error": "Nem sikerült betölteni a piszkozatot",
     "empty-list": "Itt nincs semmi",
-    "deleted": "Draft is deleted"
+    "deleted": "Piszkozat törölve"
   },
   "schedules": {
-    "title": "Scheduled Posts",
+    "title": "Beütemezett Bejegyzések",
     "empty-list": "Itt nincs semmi",
-    "deleted": "Scheduled post is deleted",
+    "deleted": "A beütemezett bejegyzés törölve",
     "move": "Áthelyezés a vázlatokhoz",
     "moved": "Áthelyezve a vázlatokhoz"
   },
@@ -249,7 +249,7 @@
     "title": "Könyvjelzők",
     "load-error": "Nem sikerült betölteni a piszkozatokat",
     "empty-list": "Itt nincs semmi",
-    "deleted": "Bookmark is removed",
+    "deleted": "Könyvjelző eltávolítva",
     "search": "Keresés a könyvjelzők között"
   },
   "favorites": {
@@ -301,11 +301,11 @@
     "sort-newest": "Dátum"
   },
   "updater": {
-    "new-version-available": "New version is available",
+    "new-version-available": "Új verzió elérhető",
     "update": "Frissítés",
     "dismiss": "Elvetés",
     "downloading": "Új verzió letöltése...",
-    "download-completed": "Download is completed",
+    "download-completed": "A letöltés befejeződött",
     "restart": "Újraindítás"
   },
   "context-menu": {
@@ -332,7 +332,7 @@
     "type-follows": "Követések",
     "type-reblogs": "Megosztások",
     "vote-str": "{p}% nak tetszik a bejegyzésed:",
-    "reply-str": "replied to your post:",
+    "reply-str": "válaszolt a bejegyzésedre:",
     "mention-str": "mentioned you in:",
     "followed-str": "követés",
     "unfollowed-str": "követés visszavonva",
@@ -359,11 +359,11 @@
     "voted": "@{n} szavazott",
     "vote-removed": "szavazat visszavonva @{n} esetében",
     "username-placeholder": "felhasználónév",
-    "extra-witnesses-exp": "Enter account name below to vote for a witness outside of <strong>Top 50</strong>",
+    "extra-witnesses-exp": "Ide írd be a tanú nevét, ha az nem szerepel a <strong>Top 50</strong>-ben",
     "proxy-exp": "You can also choose a proxy that will vote for witnesses for you. This will reset your current witness selection.",
     "set-proxy": "Proxy beállítása",
     "proxy-active-exp": "Proxy szavazás beállítva. Ha újra kézi szavazást szeretnél, kérjük töröld a proxy-t.",
-    "current-proxy": "Your current proxy is: <strong>{n}</strong>",
+    "current-proxy": "A jelenlegi proxyd: <strong>{n}</strong>",
     "remove-proxy": "Proxy Törlése",
     "proxy-removed": "Proxy törölve",
     "proxy-created": "@{n} proxiként beállítva"
@@ -371,7 +371,7 @@
   "transfer": {
     "transfer-title": "Átutalás más számlára",
     "transfer-sub-title": "Tőke átutalása egy másik Steem számlára",
-    "transfer-saving-title": "Transfer to Savings",
+    "transfer-saving-title": "Átutalás a megtakarításokhoz",
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
     "withdraw-saving-title": "Megtakarítások visszavonása",
     "withdraw-saving-sub-title": "Withdraw funds after the required 3 day waiting period",
