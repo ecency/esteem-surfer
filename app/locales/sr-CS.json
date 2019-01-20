@@ -78,7 +78,7 @@
     "login": "Prijavi se",
     "error-fields-required": "Molimo Vas da unesete korisničko ime i lozinku/WIF",
     "error-public-key": "Uneli ste javni ključ. Potrebno je da unesete lozinku/WIF",
-    "error-user-fetch": "Nemoguće je dobiti korisničke podatke",
+    "error-user-fetch": "Nismo mogli dobiti korisničke podatke",
     "error-user-not-found": "Korisnik ne postoji",
     "error-authenticate": "Pogrešno korisničko ime ili lozinka/WIF",
     "create-account-text": "Nemate nalog? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Registrujte se odmah!</a>",
@@ -94,7 +94,7 @@
   },
   "confirm-pin-code": {
     "title": "Unesite PIN kod",
-    "input-placeholder": "Unesite PIN kod da biste nastavili",
+    "input-placeholder": "Da biste nastavili unesite PIN kod",
     "last-chance": "Ovo je vaša poslednja prilika",
     "invalidate": "Jao, zaboravio sam...",
     "invalidate-confirm": "Da li zaista želite da poništite PIN kod?",
@@ -105,7 +105,7 @@
     "bookmarks": "Obeleživači",
     "favorites": "Omiljeno",
     "drafts": "Radne verzije",
-    "schedules": "Rasporedi",
+    "schedules": "Planer",
     "gallery": "Galerija",
     "login-as": "Prijavi se kao",
     "logout": "Odjavi se"
