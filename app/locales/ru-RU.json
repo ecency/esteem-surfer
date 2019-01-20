@@ -8,7 +8,7 @@
     "cancel": "Отмена",
     "ok": "ОК",
     "edit": "Редактировать",
-    "server-error": "Process could not be completed due to server error",
+    "server-error": "Невозможно завершить процесс из-за ошибки сервера",
     "save": "Сохранить",
     "done": "Готово",
     "select": "Выбрать"
@@ -62,7 +62,7 @@
     "server-connecting": "Соединение с '{server}'...",
     "server-connect-error": "Невозможно соединиться с '{server}'. Пожалуйста, проверьте подключение интернет.",
     "server-timeout-error": "'{server}' не похож на живой",
-    "server-changed": "Server selection changed to {server}",
+    "server-changed": "Сервер изменён на {server}",
     "server-custom-address": "Впишите адрес сервера",
     "server-list-fetch-error": "Невозможно получить список серверов",
     "push-notifications": "Уведомления",
@@ -74,31 +74,31 @@
     "accounts-title": "Войти как",
     "traditional-login-desc": "Войдите под своим именем пользователя и паролем для продолжения",
     "username-placeholder": "пользователь",
-    "password-placeholder": "password or WIF",
+    "password-placeholder": "пароль или ключ",
     "login": "Войти",
-    "error-fields-required": "Please enter username and password/WIF",
-    "error-public-key": "You entered a public key. Password/WIF required",
-    "error-user-fetch": "User data could not be fetched",
-    "error-user-not-found": "User does not exist",
-    "error-authenticate": "Wrong username or password/WIF",
+    "error-fields-required": "Пожалуйста, введите имя пользователя и пароль/ключ",
+    "error-public-key": "Вы ввели публичный ключ, а нужен приватный или пароль",
+    "error-user-fetch": "Невозможно получить данные пользователя",
+    "error-user-not-found": "Пользователь не существует",
+    "error-authenticate": "Неправильное имя пользователя или пароль/ключ",
     "create-account-text": "Нет аккаунта? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Зарегистрируйтесь!</a>",
     "login-with-sc": "Войти через",
     "divider-text": "или"
   },
   "create-pin-code": {
     "title": "Создайте ПИН код",
-    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter PIN code",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
-    "created": "PIN code created"
+    "desc1": "Установите ПИН код для шифрования данных и дополнительного уровня безопасности!",
+    "input-placeholder": "Введите ПИН",
+    "desc2": "ПИН потребуется во время запуска и для совершения важных транзакций.",
+    "created": "ПИН код создан"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
-    "input-placeholder": "Enter PIN code to continue",
+    "title": "Введите ПИН",
+    "input-placeholder": "Подтвердите ПИН",
     "last-chance": "Последняя попытка",
     "invalidate": "Ой, я не помню...",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "invalidate-confirm": "Вы действительно хотите аннулировать ПИН код?",
+    "invalidated": "ПИН код аннулирован"
   },
   "user-menu": {
     "profile": "Профиль",
