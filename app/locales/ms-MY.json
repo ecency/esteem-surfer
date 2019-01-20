@@ -8,7 +8,7 @@
     "cancel": "Batal",
     "ok": "Ok",
     "edit": "Menyunting",
-    "server-error": "Process could not be completed due to server error",
+    "server-error": "Proses tidak dapat diselesaikan kerana gangguan server",
     "save": "Simpan Perubahan",
     "done": "Selesai",
     "select": "Pilih"
@@ -62,7 +62,7 @@
     "server-connecting": "Menyambung ke '{server}'...",
     "server-connect-error": "Tidak dapat menyambung ke '{server}'. Pastikan anda mempunyai sambungan internet yang baik.",
     "server-timeout-error": "'{server}' mungkin tidak hidup",
-    "server-changed": "Server selection changed to {server}",
+    "server-changed": "Server telah ditukar kepada {server}",
     "server-custom-address": "Alamat server adat",
     "server-list-fetch-error": "Tidak dapat senarai server",
     "push-notifications": "Pemberitahuan Segera",
@@ -74,31 +74,31 @@
     "accounts-title": "Log masuk sebagai",
     "traditional-login-desc": "Daftar masuk dengan nama pengguna dan katalaluan anda untuk teruskan",
     "username-placeholder": "nama pengguna",
-    "password-placeholder": "password or WIF",
+    "password-placeholder": "kata laluan atau wif",
     "login": "Log Masuk",
-    "error-fields-required": "Please enter username and password/WIF",
-    "error-public-key": "You entered a public key. Password/WIF required",
-    "error-user-fetch": "User data could not be fetched",
-    "error-user-not-found": "User does not exist",
-    "error-authenticate": "Wrong username or password/WIF",
+    "error-fields-required": "Sila masukkan nama pengguna dan kata laluan/wif",
+    "error-public-key": "Anda telah memasukkan kekunci awam. Kata laluan/wif diperlukan",
+    "error-user-fetch": "Data pengguna tidak dapat diambil",
+    "error-user-not-found": "Pengguna tidak wujud",
+    "error-authenticate": "Nama pengguna atau kata laluan salah",
     "create-account-text": "Tiada akaun? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\"> Daftarkan segera! </a>",
     "login-with-sc": "Log masuk dengan",
     "divider-text": "ATAU"
   },
   "create-pin-code": {
     "title": "Ciptakan kod PIN",
-    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter PIN code",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
-    "created": "PIN code created"
+    "desc1": "Menetapkan kod pin sebagai lapisan keselamatan tambahan, supaya menyulitkan data anda!",
+    "input-placeholder": "Masukkan kod PIN",
+    "desc2": "Untuk setiap kali buka app dan transaksi penting, anda akan diminta memasukkan kod PIN.",
+    "created": "Kod PIN telah dicipta"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
-    "input-placeholder": "Enter PIN code to continue",
+    "title": "Masukkan kod PIN",
+    "input-placeholder": "Masukkan kod pin untuk meneruskan",
     "last-chance": "Ini adalah peluang terakhir",
     "invalidate": "Aduh! Terlupa lah...",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "invalidate-confirm": "Adakah anda ingin membatalkan kod PIN?",
+    "invalidated": "Kod PIN telah dibatalkan"
   },
   "user-menu": {
     "profile": "Profil",
@@ -146,14 +146,14 @@
     "unclaimed-rewards": "Ganjaran yang belum dituntut",
     "estimated-value": "Nilai anggaran ini adalah berdasarkan kepada nilai Steem purata 7 hari {}.",
     "steem": "Steem",
-    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
+    "steem-description": "Steem adalah token yang boleh dipindahkan pada bila-bila masa. Steem boleh ditukar kepada Steem Power dengan proses yang dipanggil Power Up.",
     "steem-power": "Steem Power",
     "steem-power-description": "Steem Power adalah token berkuasa untuk mempengaruhi dan pegangan jangka masa panjang. Seseorang yang memegang lebih Steem Power, maka lebih berkuasa mempengaruhi ganjaran bila dia mengundi.",
-    "steem-power-delegated": "Delegated Steem Power",
-    "steem-power-received": "Received Steem Power",
-    "steem-power-total": "Total Steem Power",
+    "steem-power-delegated": "Mewakilkan Steem Power",
+    "steem-power-received": "Steem Power diterima",
+    "steem-power-total": "Jumlah Steem Power",
     "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
+    "steem-dollars-description": "Token bernilai kira-kira $1.00 daripada Steem.",
     "savings": "Simpanan",
     "savings-description": "Baki tertakluk kepada 3 hari tempoh menunggu jika mengeluarkan.",
     "next-power-down": "Penurunan kuasa seterusnya pada {time}",
@@ -236,12 +236,12 @@
     "title": "Draf",
     "load-error": "Tidak dapat memuatkan Draf",
     "empty-list": "Kosong",
-    "deleted": "Draft is deleted"
+    "deleted": "Draf telah dipadamkan"
   },
   "schedules": {
     "title": "Jadual siaran",
     "empty-list": "Kosong",
-    "deleted": "Scheduled post is deleted",
+    "deleted": "Jadual pos telah dipadamkan",
     "move": "Memindah ke draf",
     "moved": "Dipindah ke draf"
   },
@@ -249,7 +249,7 @@
     "title": "Tanda halaman",
     "load-error": "Tidak dapat cari tanda halaman",
     "empty-list": "Kosong",
-    "deleted": "Bookmark is removed",
+    "deleted": "Tanda halaman yang dikeluarkan",
     "search": "Cari di penanda halaman"
   },
   "favorites": {
