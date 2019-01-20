@@ -309,19 +309,19 @@
     "restart": "Restart"
   },
   "context-menu": {
-    "cut": "Cut",
-    "copy": "Copy",
-    "paste": "Paste",
-    "open-image-browser": "Open image in browser",
-    "copy-image-url": "Copy image url"
+    "cut": "Iseci",
+    "copy": "Kopiraj",
+    "paste": "Nalеpi",
+    "open-image-browser": "Otvorite sliku u pregledaču",
+    "copy-image-url": "Kopiraj URL adrеsu slikе"
   },
   "notification": {
-    "popup-title": "You have a new notification",
-    "voted": "{source} voted your post",
-    "mention-post": "{source} mentioned you in a post",
-    "mention-comment": "{source} mentioned you in a comment",
-    "followed": "{source} followed you",
-    "replied": "{source} replied you",
+    "popup-title": "Imate novo obaveštenje",
+    "voted": "Korisnik {source} je glasao tvoj post",
+    "mention-post": "Korisnik {source} vas je spomenuo u postu",
+    "mention-comment": "Korisnik {source} vas je spomenuo u komentaru",
+    "followed": "Korisnik {source} vas prati",
+    "replied": "Korisnik {source} vam je odgovorio",
     "reblogged": "{source} reblogged your post"
   },
   "activities": {
@@ -359,13 +359,13 @@
     "voted": "@{n} voted",
     "vote-removed": "vote removed for @{n}",
     "username-placeholder": "username",
-    "extra-witnesses-exp": "Enter account name below to vote for a witness outside of <strong>Top 50</strong>",
-    "proxy-exp": "You can also choose a proxy that will vote for witnesses for you. This will reset your current witness selection.",
+    "extra-witnesses-exp": "Unesite ispod ime naloga kako biste glasali za svedoka izvan <strong>50 najboljih</strong>",
+    "proxy-exp": "Možete podesiti proxy nalog koji će glasati svedoke za Vas. Ovo će poništiti vaš trenutni izbor.",
     "set-proxy": "Podesite proxy",
-    "proxy-active-exp": "You have set a voting proxy. If you would like to re-enable manual voting, please clear your proxy.",
-    "current-proxy": "Your current proxy is: <strong>{n}</strong>",
+    "proxy-active-exp": "Podesili ste glasački proxy. Ukoliko želite da ponovo omogućite ručno glasanje, molimo uklonite proxy.",
+    "current-proxy": "Proxy ste trenutno dodelili <strong>{n}</strong>",
     "remove-proxy": "Uklonite proxy",
-    "proxy-removed": "Proxy is cleared",
+    "proxy-removed": "Proxy je uklonjen",
     "proxy-created": "@{n} je određen kao proxy"
   },
   "transfer": {
