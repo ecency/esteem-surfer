@@ -61,13 +61,13 @@
     "server-invalid-address": "Ungültige Serveradresse",
     "server-connecting": "Verbinde zu '{server}'...",
     "server-connect-error": "Keine Verbindung zum '{server}'. Prüfe deine Internetverbindung.",
-    "server-timeout-error": "'{server}' scheint Offline zu sein",
+    "server-timeout-error": "'{server}' scheint offline zu sein",
     "server-changed": "Server selection changed to {server}",
-    "server-custom-address": "Individuelle Server Adresse",
+    "server-custom-address": "Individuelle Serveradresse",
     "server-list-fetch-error": "Serverliste konnte nicht abgerufen werden",
-    "push-notifications": "Push Benachrichtigungen",
-    "push-notify-enabled": "Push Benachrichtigungen eingeschaltet",
-    "push-notify-disabled": "Push Benachrichtigungen abgeschaltet"
+    "push-notifications": "Push-Benachrichtigungen",
+    "push-notify-enabled": "Push-Benachrichtigungen eingeschaltet",
+    "push-notify-disabled": "Push-Benachrichtigungen abgeschaltet"
   },
   "login": {
     "title": "Willkommen zurück!",
@@ -111,7 +111,7 @@
     "logout": "Abmelden"
   },
   "login-required": {
-    "default": "Diese Aktion erfordert einen LogIn",
+    "default": "Diese Aktion erfordert einen Login",
     "key-required": "Diese Aktion erfordert deinen {key} Key oder das Master-Passwort",
     "keys-required": "Diese Aktion erfordert {key} Keys oder das Master-Passwort"
   },
