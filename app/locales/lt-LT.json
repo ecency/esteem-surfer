@@ -271,9 +271,9 @@
     "reply-sort-order-created": "Age",
     "reply-body-placeholder": "Write your reply here",
     "bookmarked": "Pridėti į žymes",
-    "bookmarkRemoved": "Removed from bookmarks",
+    "bookmarkRemoved": "Pašalinta iš žymų",
     "favorited": "Pridėta prie mėgstamiausių",
-    "favoriteRemoved": "Removed from favorites",
+    "favoriteRemoved": "Pašalinta iš mėgstamiausių",
     "copy-clipboard": "Copy internal link to clipboard",
     "copied-clipboard": "Nukopijuota",
     "comment-entry-title": "You are viewing a single comment's thread from: ",
@@ -288,11 +288,11 @@
     "bookmarkRemove": "Pašalinti iš žymų",
     "favorite": "Add to favorites",
     "favoriteRemove": "Removed from favorites",
-    "wallet": "My Wallet",
-    "activities": "Activities",
-    "address-enter-url": "Enter url",
-    "address-enter-query": "Enter search query",
-    "unclaimed-reward-notice": "You have unclaimed rewards"
+    "wallet": "Mano Piniginė",
+    "activities": "Veikla",
+    "address-enter-url": "Įveskite url",
+    "address-enter-query": "Įveskite paieškos užklausą",
+    "unclaimed-reward-notice": "Jūs turite neatsiimtą atlygį"
   },
   "search": {
     "n-results-for-q": "{n} results for {q}",
@@ -341,9 +341,9 @@
     "reblog-str": "reblogged your post:",
     "empty-list": "Nieko nėra",
     "refresh": "Atnaujinti",
-    "mark-all-read": "Mark All as Read",
+    "mark-all-read": "Žymėti visus kaip skaitytus",
     "leaderboard": "Leaderboard",
-    "leaderboard-title": "Daily Top users"
+    "leaderboard-title": "Dienos Top vartotojai"
   },
   "witnesses": {
     "page-title": "Witness Voting",
@@ -353,7 +353,7 @@
     "url": "URL",
     "fee": "Mokestis",
     "feed": "Feed",
-    "block-size": "Block size",
+    "block-size": "Bloko dydis",
     "ac-avail": "AC avail",
     "ac-budget": "AC budget",
     "version": "Versija",
@@ -411,7 +411,7 @@
     "sub-title": "Deleguoti Steem Power",
     "slider-help": "Drag the slider to adjust the amount",
     "confirm-title": "Patvirtinti delegaciją",
-    "confirm-sub-title": "Please, check if everything is correct",
+    "confirm-sub-title": "Prašome atidžiai patikrinti ar viskas teisinga",
     "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
     "success-sub-title": "Delegacija įvykdyta",
     "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
