@@ -89,7 +89,7 @@
     "title": "PIN-kód létrehozása",
     "desc1": "Állítsd be a PIN kódot az adatok titkosításához és egy további biztonsági réteg létrehozásához!",
     "input-placeholder": "PIN kód megadása",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
+    "desc2": "Át leszel irányítva a PIN kód beírásához a fontos tranzakciók és minden indítás esetén.",
     "created": "PIN kód létrehozva"
   },
   "confirm-pin-code": {
@@ -174,7 +174,7 @@
     "power-up": "Feltöltés",
     "withdraw-steem": "Steem Visszavonás",
     "withdraw-sbd": "Steem Dollár Visszavonás",
-    "delegate": "Delegate"
+    "delegate": "Delegálás"
   },
   "composer": {
     "title-placeholder": "Cím",
@@ -274,7 +274,7 @@
     "bookmarkRemoved": "Eltávolítva a könyvjelzőkből",
     "favorited": "Hozzáadva a kedvencekhez",
     "favoriteRemoved": "Eltávolítva a kedvencek közül",
-    "copy-clipboard": "Copy internal link to clipboard",
+    "copy-clipboard": "Másold a belső linket a vágólapra",
     "copied-clipboard": "Lemásolva",
     "comment-entry-title": "You are viewing a single comment's thread from: ",
     "comment-entry-go-root": "Teljes kontextus megtekintése",
@@ -292,7 +292,7 @@
     "activities": "Tevékenységek",
     "address-enter-url": "Url megadása",
     "address-enter-query": "Írd be a keresési paramétereket",
-    "unclaimed-reward-notice": "You have unclaimed rewards"
+    "unclaimed-reward-notice": "Árvételre váró jutalmad van"
   },
   "search": {
     "n-results-for-q": "{n} találat {q} keresésre",
@@ -337,7 +337,7 @@
     "mention-str": "megemlített téged a: -ben",
     "followed-str": "követés",
     "unfollowed-str": "követés visszavonva",
-    "ignored-str": "ignored",
+    "ignored-str": "mellőzve",
     "reblog-str": "megosztotta a bejegyzésed:",
     "empty-list": "Itt nincs semmi",
     "refresh": "Frissítés",
