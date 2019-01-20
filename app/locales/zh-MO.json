@@ -156,7 +156,7 @@
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "儲蓄",
     "savings-description": "餘額有3天的取款等待期。",
-    "next-power-down": "下一次Power Down時間是 {time}",
+    "next-power-down": "The next power down is {time} {amount}",
     "exchange": "交易所",
     "transactions": "交易",
     "transaction-curation_reward": "點贊獎勵",
