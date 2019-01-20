@@ -152,28 +152,29 @@
     "steem-power-delegated": "Delegirani Steem Power",
     "steem-power-received": "Primljena Delegacija Steem Power-a",
     "steem-power-total": "Ukupan Steem Power",
-    "steem-dollars": "Steem Dolari",
-    "steem-dollars-description": "Tokeni vrednosti oko $1.00 od STEEM-a.",
-    "savings": "Štednja",
+    "steem-dollars": "Steem dolari",
+    "steem-dollars-description": "Tokeni vrednosti oko $1.00 u STEEM-u.",
+    "savings": "Ušteđevina",
     "savings-description": "Saldo je podložan trodnevnom periodu čekanja za povlačenje sredstava.",
-    "next-power-down": "Sledeće povčačenje Steem Powera je {time}",
+    "next-power-down": "Sledeći power down je {time}",
     "exchange": "Menjačnica",
     "transactions": "Transakcije",
     "transaction-curation_reward": "Nagrade za glasanje",
-    "transaction-author_reward": "Nagrada za autora",
+    "transaction-author_reward": "Autorska nagrada",
     "transaction-comment_benefactor_reward": "Comment Benefactor Reward",
     "transaction-claim_reward_balance": "Potvrdi nagrade",
-    "transaction-transfer": "Transfer",
-    "transaction-transfer_to_vesting": "Premestite u Steem Power",
+    "transaction-transfer": "Prenos",
+    "transaction-transfer_to_vesting": "Transfer u vesting",
     "transaction-withdraw_vesting": "Povucite Steem Power",
     "transaction-fill_order": "Popunite nalog",
     "claim-reward-balance": "Bilans prikupljenih nagrada",
-    "claim-reward-balance-ok": "Podvrđeni bilans nagrade",
+    "claim-reward-balance-ok": "Podvrđeni saldo nagrade",
     "transfer": "Prenos",
-    "transfer-to-savings": "Premestite u štednju",
+    "transfer-to-savings": "Premestite u ušteđevinu",
     "power-up": "Uložite u Steem Power",
     "withdraw-steem": "Povucite Steem",
-    "withdraw-sbd": "Povucite Steem dolar"
+    "withdraw-sbd": "Povucite Steem dolar",
+    "delegate": "Delegate"
   },
   "composer": {
     "title-placeholder": "Naslov",
@@ -206,7 +207,7 @@
     "form-error-message": "Obrazac nije važeći. Molimo vas, popunite sva polja",
     "schedule": "Planer",
     "select-schedule-date": "Izaberite Datum",
-    "schedule-saved": "Post je isplaniran",
+    "schedule-saved": "Objava posta je isplanirana",
     "schedule-picker-select-time": "Izaberite vreme",
     "schedule-picker-select-date": "Izaberite datum",
     "grant-posting-perm": "Odobrite dozvolu za objavu postova",
@@ -404,5 +405,18 @@
     "reset": "Još jedan transfer",
     "finish": "Završi",
     "recent-transfers": "Nedavni transferi"
+  },
+  "delegate": {
+    "title": "Delegate",
+    "sub-title": "Delegate Steem Power",
+    "slider-help": "Drag the slider to adjust the amount",
+    "confirm-title": "Confirm Delegation",
+    "confirm-sub-title": "Please, check if everything is correct",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "Delegation completed",
+    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+  },
+  "delegation-list": {
+    "empty-list": "Nothing here"
   }
 }
