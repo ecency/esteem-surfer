@@ -44,11 +44,11 @@
     "modal-title": "Voters ({n})"
   },
   "entry-list-item": {
-    "reblogged": "rebloggt von {n}"
+    "reblogged": "geteilt von {n}"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Rebloggt"
+    "reblog": "Teilen",
+    "reblogged": "Geteilt"
   },
   "settings": {
     "title": "Einstellungen",
@@ -87,14 +87,14 @@
   },
   "create-pin-code": {
     "title": "Erstelle einen PIN-Code",
-    "desc1": "Um eine zusätzliche Sicherheit zu aktivieren, setze dir einen PIN-Code um deine Daten zu verschlüsseln!",
+    "desc1": "Um eine zusätzliche Sicherheit zu aktivieren, setze dir einen PIN-Code, um deine Daten zu verschlüsseln!",
     "input-placeholder": "PIN-Code eingeben",
     "desc2": "Du wirst bei wichtigen Transaktionen sowie bei jedem Start der App zur Eingabe des PIN-Codes aufgefordert.",
     "created": "PIN-Code erstellt"
   },
   "confirm-pin-code": {
     "title": "PIN-Code eingeben",
-    "input-placeholder": "PIN-Code eingeben um fortzufahren",
+    "input-placeholder": "PIN-Code eingeben, um fortzufahren",
     "last-chance": "Das ist deine letzte Chance",
     "invalidate": "Oh, ich hab es vergessen...",
     "invalidate-confirm": "Willst du wirklich den PIN-Code ungültig machen?",
@@ -171,9 +171,9 @@
     "claim-reward-balance-ok": "Belohnungen abgeholt",
     "transfer": "Überweisen",
     "transfer-to-savings": "Transfer zum Tresor",
-    "power-up": "In Steem Power umwandeln",
+    "power-up": "In Steem-Power umwandeln",
     "withdraw-steem": "Steem auszahlen",
-    "withdraw-sbd": "Steem Dollar auszahlen"
+    "withdraw-sbd": "Steem-Dollar auszahlen"
   },
   "composer": {
     "title-placeholder": "Titel",
@@ -268,7 +268,7 @@
     "reply-sort-order-reputation": "Reputation",
     "reply-sort-order-votes": "Votes",
     "reply-sort-order-created": "Alter",
-    "reply-body-placeholder": "Schreibe deine Antwort hier",
+    "reply-body-placeholder": "Schreibe hier deine Antwort",
     "bookmarked": "Zu deinen Lesezeichen hinzugefügt",
     "bookmarkRemoved": "Von deinen Lesezeichen entfernt",
     "favorited": "Zu deinen Favoriten hinzugefügt",
