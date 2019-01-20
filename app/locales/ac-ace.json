@@ -173,7 +173,8 @@
     "transfer-to-savings": "Keubah Peng",
     "power-up": "Tamah Teunaga",
     "withdraw-steem": "Tarek Steem",
-    "withdraw-sbd": "Tarek Steem Dolar"
+    "withdraw-sbd": "Tarek Steem Dolar",
+    "delegate": "Delegate"
   },
   "composer": {
     "title-placeholder": "Judul",
@@ -404,5 +405,18 @@
     "reset": "Kirem nyang laen",
     "finish": "Seuleuso",
     "recent-transfers": "Kireman paleng akhe"
+  },
+  "delegate": {
+    "title": "Delegate",
+    "sub-title": "Delegate Steem Power",
+    "slider-help": "Drag the slider to adjust the amount",
+    "confirm-title": "Confirm Delegation",
+    "confirm-sub-title": "Please, check if everything is correct",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "Delegation completed",
+    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+  },
+  "delegation-list": {
+    "empty-list": "Nothing here"
   }
 }
