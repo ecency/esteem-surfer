@@ -8,7 +8,7 @@
     "cancel": "Cancel",
     "ok": "OK",
     "edit": "Edit",
-    "server-error": "Process could not completed due to server error",
+    "server-error": "Process could not be completed due to server error",
     "save": "Save",
     "done": "Done",
     "select": "Select"
@@ -62,7 +62,7 @@
     "server-connecting": "Connecting to '{server}'...",
     "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
     "server-timeout-error": "'{server}' looks like not alive",
-    "server-changed": "Server changed to {server}",
+    "server-changed": "Server selection changed to {server}",
     "server-custom-address": "Custom server address",
     "server-list-fetch-error": "Could not fetch server list",
     "push-notifications": "Push Notifications",
@@ -74,31 +74,31 @@
     "accounts-title": "Login As",
     "traditional-login-desc": "Sign in with your username and password to continue",
     "username-placeholder": "username",
-    "password-placeholder": "password or wif",
+    "password-placeholder": "password or WIF",
     "login": "Login",
-    "error-fields-required": "Please enter username and password/wif",
-    "error-public-key": "You entered a public key. Password/wif required",
-    "error-user-fetch": "User data could not fetched",
-    "error-user-not-found": "User not exists",
-    "error-authenticate": "Wrong username or password/wif",
+    "error-fields-required": "Please enter username and password/WIF",
+    "error-public-key": "You entered a public key. Password/WIF required",
+    "error-user-fetch": "User data could not be fetched",
+    "error-user-not-found": "User does not exist",
+    "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>",
     "login-with-sc": "Login with",
     "divider-text": "OR"
   },
   "create-pin-code": {
     "title": "Create PIN Code",
-    "desc1": "Set pin code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter pin code",
-    "desc2": "You will be prompted to enter pin code for crucial transactions as well as on every launch.",
-    "created": "Pin code created"
+    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
+    "input-placeholder": "Enter PIN code",
+    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
+    "created": "PIN code created"
   },
   "confirm-pin-code": {
-    "title": "Enter Pin Code",
-    "input-placeholder": "Enter pin code to continue",
+    "title": "Enter PIN Code",
+    "input-placeholder": "Enter PIN code to continue",
     "last-chance": "This is your last chance",
     "invalidate": "Oh, I forgot it...",
-    "invalidate-confirm": "Are you really want to invalidate pin code?",
-    "invalidated": "Pin code invalidated"
+    "invalidate-confirm": "Do you really want to invalidate PIN code?",
+    "invalidated": "PIN code is invalidated"
   },
   "user-menu": {
     "profile": "Profile",
@@ -146,14 +146,14 @@
     "unclaimed-rewards": "Unclaimed rewards",
     "estimated-value": "The estimated value is based on a 7 day average value of Steem.",
     "steem": "Steem",
-    "steem-description": "Steem are tradeable tokens that may be transferred at anytime. Steem can be converted to Steem Power in a process called powering up.",
+    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
     "steem-power": "Steem Power",
     "steem-power-description": "Steem Power are influence tokens that earn more power for holding long term and voting on posts. The more Steem Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
-    "steem-power-delegated": "Delegated steem power",
-    "steem-power-received": "Received steem power",
-    "steem-power-total": "Total steem power",
+    "steem-power-delegated": "Delegated Steem Power",
+    "steem-power-received": "Received Steem Power",
+    "steem-power-total": "Total Steem Power",
     "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "Tokens worth about $1.00 of Steem.",
+    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Savings",
     "savings-description": "Balance subject to 3 day withdraw waiting period.",
     "next-power-down": "The next power down is {time}",
@@ -237,12 +237,12 @@
     "title": "Drafts",
     "load-error": "Could not load drafts",
     "empty-list": "Nothing here",
-    "deleted": "Draft deleted"
+    "deleted": "Draft is deleted"
   },
   "schedules": {
     "title": "Scheduled Posts",
     "empty-list": "Nothing here",
-    "deleted": "Scheduled post deleted",
+    "deleted": "Scheduled post is deleted",
     "move": "Move to drafts",
     "moved": "Moved to drafts"
   },
@@ -250,7 +250,7 @@
     "title": "Bookmarks",
     "load-error": "Could not load bookmarks",
     "empty-list": "Nothing here",
-    "deleted": "Bookmark removed",
+    "deleted": "Bookmark is removed",
     "search": "Search in bookmarks"
   },
   "favorites": {
@@ -283,7 +283,7 @@
   "navbar": {
     "settings": "Settings",
     "change-theme": "Change Theme",
-    "login": "Login to you account",
+    "login": "Login to your account",
     "bookmark": "Add to bookmarks",
     "bookmarkRemove": "Remove from bookmarks",
     "favorite": "Add to favorites",
@@ -292,7 +292,7 @@
     "activities": "Activities",
     "address-enter-url": "Enter url",
     "address-enter-query": "Enter search query",
-    "unclaimed-reward-notice": "You have unclaimed reward"
+    "unclaimed-reward-notice": "You have unclaimed rewards"
   },
   "search": {
     "n-results-for-q": "{n} results for {q}",
@@ -302,11 +302,11 @@
     "sort-newest": "Date"
   },
   "updater": {
-    "new-version-available": "New version available",
+    "new-version-available": "New version is available",
     "update": "Update",
     "dismiss": "Dismiss",
     "downloading": "Downloading new version...",
-    "download-completed": "Download completed",
+    "download-completed": "Download is completed",
     "restart": "Restart"
   },
   "context-menu": {
@@ -333,7 +333,7 @@
     "type-follows": "Follows",
     "type-reblogs": "Reblogs",
     "vote-str": "{p}% likes your post:",
-    "reply-str": "replied your post:",
+    "reply-str": "replied to your post:",
     "mention-str": "mentioned you in:",
     "followed-str": "followed",
     "unfollowed-str": "unfollowed",
@@ -366,7 +366,7 @@
     "proxy-active-exp": "You have set a voting proxy. If you would like to re-enable manual voting, please clear your proxy.",
     "current-proxy": "Your current proxy is: <strong>{n}</strong>",
     "remove-proxy": "Clear Proxy",
-    "proxy-removed": "Proxy cleared",
+    "proxy-removed": "Proxy is cleared",
     "proxy-created": "@{n} has set as proxy"
   },
   "transfer": {
@@ -376,7 +376,7 @@
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
     "withdraw-saving-title": "Savings Withdraw",
     "withdraw-saving-sub-title": "Withdraw funds after the required 3 day waiting period",
-    "power-up-title": "Convert to STEEM POWER",
+    "power-up-title": "Convert to Steem Power",
     "power-up-sub-title": "Influence tokens which give you more control over post payouts and allow you to earn on curation rewards.",
     "from": "From",
     "from-placeholder": "Select a user",
@@ -393,7 +393,7 @@
     "memo": "Memo",
     "memo-placeholder": "enter your notes here",
     "memo-help": "This memo is public",
-    "key-required-err": "Active key could not found for selected account. Please make sure logged in with proper credentials.",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
     "next": "Next",
     "confirm-title": "Confirm your Transfer",
     "confirm-sub-title": "Please, check if everything is correct",
