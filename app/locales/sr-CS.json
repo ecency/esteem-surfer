@@ -1,6 +1,6 @@
 {
   "g": {
-    "compose-entry": "Kreiraj Post",
+    "compose-entry": "Napiši post",
     "are-you-sure": "Da li ste sigurni?",
     "yes": "Da",
     "no": "Ne",
@@ -14,11 +14,11 @@
     "select": "Izaberi"
   },
   "footer": {
-    "faq": "FAQ",
+    "faq": "Čеsto postavljana pitanja",
     "about": "O nama"
   },
   "entry-index": {
-    "tags": "Popularne oznake",
+    "tags": "Popularni tagovi",
     "filter-trending": "Popularno",
     "filter-hot": "Aktuelno",
     "filter-created": "Novo",
@@ -31,7 +31,7 @@
   "entry-payout": {
     "potential-payout": "Potencijalna isplata",
     "promoted": "Promovisano",
-    "author-payout": "Prihod autora",
+    "author-payout": "Isplata autoru",
     "curation-payout": "Isplata glasačima",
     "payout-date": "Isplata"
   },
