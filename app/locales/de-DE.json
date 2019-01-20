@@ -31,8 +31,8 @@
   "entry-payout": {
     "potential-payout": "voraussichtliche Auszahlung",
     "promoted": "Beworben",
-    "author-payout": "Autoren-Vergütung",
-    "curation-payout": "Kuratoren-Vergütung",
+    "author-payout": "Autoren-Auszahlung",
+    "curation-payout": "Kuratoren-Auszahlung",
     "payout-date": "Auszahlung"
   },
   "entry-votes": {
@@ -87,18 +87,18 @@
   },
   "create-pin-code": {
     "title": "Erstelle einen PIN-Code",
-    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter PIN code",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
-    "created": "PIN code created"
+    "desc1": "Um eine zusätzliche Sicherheit zu aktivieren, setze dir einen PIN-Code um deine Daten zu verschlüsseln!",
+    "input-placeholder": "PIN-Code eingeben",
+    "desc2": "Du wirst bei wichtigen Transaktionen sowie bei jedem Start der App zur Eingabe des PIN-Codes aufgefordert.",
+    "created": "PIN-Code erstellt"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
-    "input-placeholder": "Enter PIN code to continue",
+    "title": "PIN-Code eingeben",
+    "input-placeholder": "PIN-Code eingeben um fortzufahren",
     "last-chance": "Das ist deine letzte Chance",
     "invalidate": "Oh, ich hab es vergessen...",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "invalidate-confirm": "Willst du wirklich den PIN-Code ungültig machen?",
+    "invalidated": "PIN-Code ist nun ungültig"
   },
   "user-menu": {
     "profile": "Profil",
@@ -146,12 +146,12 @@
     "unclaimed-rewards": "Nicht abgeholte Belohnungen",
     "estimated-value": "Der erwartete Wert basiert auf einem 7 Tage Durchschnittswert vom STEEM.",
     "steem": "Steem",
-    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
+    "steem-description": "STEEM sind handelbare Token die man zu jederzeit transferieren kann. STEEM können ebenfalls auch durch ein Power Up zu Steem Power konvertiert werden.",
     "steem-power": "Steem Power",
     "steem-power-description": "Steem Power zeigt deine Stärke und Votekraft. Je mehr Steem Power du hast umso mehr Einfluss hast du auf Beiträge und die Belohnung. Mit einer höheren Steem Power kuratierst du besser und effektiver.",
-    "steem-power-delegated": "Delegated Steem Power",
-    "steem-power-received": "Received Steem Power",
-    "steem-power-total": "Total Steem Power",
+    "steem-power-delegated": "delegierte Steem Power",
+    "steem-power-received": "erhaltene Steem Power",
+    "steem-power-total": "gesamte Steem Power",
     "steem-dollars": "Steem Dollar",
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Tresor",
