@@ -127,10 +127,10 @@
     "section-wallet": "Novčanik"
   },
   "follow-controls": {
-    "follow": "Zaprati",
+    "follow": "Prati",
     "unFollow": "Prestani da pratiš",
-    "mute": "Isključi obaveštenja",
-    "unMute": "Uključi obaveštenja"
+    "mute": "Ućutkajte korisnika",
+    "unMute": "Omogući Razgovor"
   },
   "account": {
     "voting-power": "Voting Power",
