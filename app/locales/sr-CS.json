@@ -346,7 +346,7 @@
   },
   "witnesses": {
     "page-title": "Witness Voting",
-    "remaining": "<strong>{n}</strong> of {max} votes remaining",
+    "remaining": "<strong>{n}</strong> od {max} glasova je preostalo",
     "witness": "Witness",
     "miss": "Miss",
     "url": "URL",
