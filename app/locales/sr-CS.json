@@ -239,9 +239,9 @@
     "deleted": "Radna verzija je izbrisana"
   },
   "schedules": {
-    "title": "Scheduled Posts",
+    "title": "Planirani postovi",
     "empty-list": "Ovde nema ništa",
-    "deleted": "Scheduled post is deleted",
+    "deleted": "Planirani post je izbrisan",
     "move": "Premesti u radne verzije",
     "moved": "Premešteno u radne verzije"
   },
