@@ -54,7 +54,7 @@
     "title": "Beállítások",
     "currency": "Pénznem",
     "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
-    "currency-changed": "Currency Changed",
+    "currency-changed": "Pénznem Átváltva",
     "locale": "Nyelv",
     "locale-changed": "Nyelv megváltoztatva",
     "server": "Szerver",
@@ -401,7 +401,7 @@
     "back": "Vissza",
     "success-title": "Sikerült",
     "success-sub-title": "Sikeres átutalás",
-    "transfer-summary": "Transferred <span class=\"amount\">{amount}</span> From <span class=\"from-user\">{from}</span> to <span class=\"to-user\">{to}</span>",
+    "transfer-summary": "Átutalva <span class=\"amount\">{amount}</span> <span class=\"from-user\">{from}</span> -tól <span class=\"to-user\">{to}</span>-nak",
     "reset": "Újabb átutalás",
     "finish": "Befejezés",
     "recent-transfers": "Legújabb átutalások"
@@ -409,7 +409,7 @@
   "delegate": {
     "title": "Delegálás",
     "sub-title": "Steem Power Delegálás",
-    "slider-help": "Drag the slider to adjust the amount",
+    "slider-help": "A csúszka húzásával állítsd be a mennyiséget",
     "confirm-title": "Erősítsd meg a delegálást",
     "confirm-sub-title": "Kérjük ellenőrizd, hogy minden rendben",
     "delegation-summary": "<span class=\"sp\">{sp}</span><span class=\"to-user\">{to}</span>-nak delegálva",
@@ -417,6 +417,6 @@
     "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "Itt nincs semmi"
   }
 }
