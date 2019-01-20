@@ -146,14 +146,14 @@
     "unclaimed-rewards": "Recompensas não reclamadas",
     "estimated-value": "O valor estimado baseia-se no valor médio de 7 dias do Steem.",
     "steem": "Steem",
-    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
+    "steem-description": "Steem são tokens comercializáveis que podem ser transferidos em qualquer momento. Steem pode ser convertido em Steem Power em um processo chamado Carregar Steem Power.",
     "steem-power": "Poder Steem",
     "steem-power-description": "Poder Steem são tokens de influência que ganham mais força para segurar a longo prazo e votar em posts. Quanto mais Poder Steem se detém, quanto mais se pode influenciar outras recompensas e ganhar recompensas por votação exata.",
-    "steem-power-delegated": "Delegated Steem Power",
-    "steem-power-received": "Received Steem Power",
-    "steem-power-total": "Total Steem Power",
+    "steem-power-delegated": "Poder Steem delegado",
+    "steem-power-received": "Poder Steem Recebido",
+    "steem-power-total": "Poder Steem total",
     "steem-dollars": "Steem Dólares",
-    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
+    "steem-dollars-description": "Tokens que valem $1.00 de Steem.",
     "savings": "Poupanças",
     "savings-description": "O saldo está sujeito a 3 dias de espera para retirá-lo,.",
     "next-power-down": "The next power down is {time} {amount}",
@@ -237,12 +237,12 @@
     "title": "Rascunhos",
     "load-error": "Não foi possível carregar os rascunhos",
     "empty-list": "Nada aqui",
-    "deleted": "Draft is deleted"
+    "deleted": "Rascunho foi eliminado"
   },
   "schedules": {
     "title": "Posts agendados",
     "empty-list": "Nada aqui",
-    "deleted": "Scheduled post is deleted",
+    "deleted": "Post agendado é excluído",
     "move": "Mover para Rascunhos",
     "moved": "Movido para Rascunhos"
   },
@@ -250,7 +250,7 @@
     "title": "Marcadores",
     "load-error": "Não foi possível carregar os Marcadores",
     "empty-list": "Nada aqui",
-    "deleted": "Bookmark is removed",
+    "deleted": "Marcador removido",
     "search": "Pesquisar marcadores"
   },
   "favorites": {
@@ -283,7 +283,7 @@
   "navbar": {
     "settings": "Configurações",
     "change-theme": "Mudar tema",
-    "login": "Login to your account",
+    "login": "Entre na sua conta",
     "bookmark": "Adicionar aos marcadores",
     "bookmarkRemove": "Eliminar dos marcadores",
     "favorite": "Adicionar aos favoritos",
@@ -292,7 +292,7 @@
     "activities": "Actividades",
     "address-enter-url": "Inserir url",
     "address-enter-query": "Inserir Termo de Pesquisa",
-    "unclaimed-reward-notice": "You have unclaimed rewards"
+    "unclaimed-reward-notice": "Você tem recompensas não reclamadas"
   },
   "search": {
     "n-results-for-q": "{n} resultados para {q}",
@@ -302,11 +302,11 @@
     "sort-newest": "Data"
   },
   "updater": {
-    "new-version-available": "New version is available",
+    "new-version-available": "Nova versão disponível",
     "update": "Atualizar",
     "dismiss": "Descartar",
     "downloading": "Baixando nova versão...",
-    "download-completed": "Download is completed",
+    "download-completed": "Transferência terminada",
     "restart": "Reiniciar"
   },
   "context-menu": {
@@ -333,7 +333,7 @@
     "type-follows": "Segue",
     "type-reblogs": "Reblogs",
     "vote-str": "{p}% votou no seu post:",
-    "reply-str": "replied to your post:",
+    "reply-str": "respondeu ao seu post:",
     "mention-str": "falou de você em:",
     "followed-str": "seguiu",
     "unfollowed-str": "deixou de seguir",
@@ -366,7 +366,7 @@
     "proxy-active-exp": "Você definiu um proxy de voto. Se você gostaria de reativar o voto manual, por favor, limpem o seu proxy.",
     "current-proxy": "Seu proxy atual é: <strong>{n}</strong>",
     "remove-proxy": "Limpar o Proxy",
-    "proxy-removed": "Proxy is cleared",
+    "proxy-removed": "Proxy limpa",
     "proxy-created": "@{n} estabeleceu como proxy"
   },
   "transfer": {
@@ -376,7 +376,7 @@
     "transfer-saving-sub-title": "Proteger os fundos, requerendo 3 dias para retirar como período de espera",
     "withdraw-saving-title": "Retirar da poupança",
     "withdraw-saving-sub-title": "Retirar fundos após o período requerido de espera de 3 dias",
-    "power-up-title": "Convert to Steem Power",
+    "power-up-title": "Converter para poder Steem",
     "power-up-sub-title": "Tokens de influência que lhe dão mais controle sobre como postar os pagamentos e permitam ganhar na curadoria recompensas.",
     "from": "De",
     "from-placeholder": "Selecione um usuário",
@@ -393,7 +393,7 @@
     "memo": "Memo",
     "memo-placeholder": "insira aqui as suas notas",
     "memo-help": "Este memo é público",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "key-required-err": "A chave ativa não foi encontrada para a conta selecionada. Verifique que se liga com as credencias corretas.",
     "next": "Seguinte",
     "confirm-title": "Confirme a sua transferência",
     "confirm-sub-title": "Por favor, verfique se está tudo correto",
