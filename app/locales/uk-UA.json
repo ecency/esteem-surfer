@@ -105,7 +105,7 @@
     "bookmarks": "Закладки",
     "favorites": "Обране",
     "drafts": "Чернетки",
-    "schedules": "Schedules",
+    "schedules": "Заплановані",
     "gallery": "Галерея",
     "login-as": "Увійти як",
     "logout": "Вийти"
@@ -142,7 +142,7 @@
     "section-comments": "Коментарі",
     "section-replies": "Відповіді",
     "section-wallet": "Гаманець",
-    "top-posts": "Top Posts",
+    "top-posts": "Топ публікації",
     "unclaimed-rewards": "Не отримана винагорода",
     "estimated-value": "Орієнтовна вартість базується на 7-денній середній вартості Steem.",
     "steem": "Steem",
@@ -167,8 +167,8 @@
     "transaction-transfer_to_vesting": "Transfer to vesting",
     "transaction-withdraw_vesting": "Withdraw vesting",
     "transaction-fill_order": "Fill order",
-    "claim-reward-balance": "Claim reward balance",
-    "claim-reward-balance-ok": "Reward balance claimed",
+    "claim-reward-balance": "Зарахувати винагороду на баланс",
+    "claim-reward-balance-ok": "Винагорода зарахована на баланс",
     "transfer": "Transfer",
     "transfer-to-savings": "Transfer to savings",
     "power-up": "Power up",
@@ -291,7 +291,7 @@
     "activities": "Активність",
     "address-enter-url": "Введіть url",
     "address-enter-query": "Введіть пошуковий запит",
-    "unclaimed-reward-notice": "You have unclaimed rewards"
+    "unclaimed-reward-notice": "Ви маєте незараховані винагороди"
   },
   "search": {
     "n-results-for-q": "{n} результатів для {q}",
@@ -369,7 +369,7 @@
     "proxy-created": "@{n} встановлено в якості proxy"
   },
   "transfer": {
-    "transfer-title": "Transfer to Account",
+    "transfer-title": "Переведення на акаунт",
     "transfer-sub-title": "Переведення коштів на інший Steem акаунт",
     "transfer-saving-title": "Переведення до Заощаджень",
     "transfer-saving-sub-title": "Захищає кошти від зняття 3-денним періодом очікування",
