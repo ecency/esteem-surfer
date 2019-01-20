@@ -41,7 +41,7 @@
     "reward": "Nagrada",
     "percent": "Procenat",
     "time": "Vreme",
-    "modal-title": "Broja glasača ({n})"
+    "modal-title": "Glasača ({n})"
   },
   "entry-list-item": {
     "reblogged": "podelilo je {n}"
@@ -70,7 +70,7 @@
     "push-notify-disabled": "Obaveštenja su isključena"
   },
   "login": {
-    "title": "Dobrodrošli nazad!",
+    "title": "Dobrodošli nazad!",
     "accounts-title": "Prijavi se kao",
     "traditional-login-desc": "Prijavite se koristeći vaše korisničko ime i lozinku da biste nastavili",
     "username-placeholder": "korisničko ime",
@@ -156,7 +156,7 @@
     "steem-dollars-description": "Tokeni vrednosti oko $1.00 u STEEM-u.",
     "savings": "Ušteđevina",
     "savings-description": "Saldo je podložan trodnevnom periodu čekanja za povlačenje sredstava.",
-    "next-power-down": "The next power down is {time} {amount}",
+    "next-power-down": "Sledeći power down je {time}{amount}",
     "exchange": "Menjačnica",
     "transactions": "Transakcije",
     "transaction-curation_reward": "Nagrade za glasanje",
@@ -168,7 +168,7 @@
     "transaction-withdraw_vesting": "Povucite vesting",
     "transaction-fill_order": "Popunite nalog",
     "claim-reward-balance": "Bilans prikupljenih nagrada",
-    "claim-reward-balance-ok": "Podvrđeni bilans nagrade",
+    "claim-reward-balance-ok": "Potvrđeni bilans nagrade",
     "transfer": "Prenos",
     "transfer-to-savings": "Premestite u ušteđevinu",
     "power-up": "Uložite u Steem Power",
@@ -343,7 +343,7 @@
     "refresh": "Osveži",
     "mark-all-read": "Označi svе kao pročitano",
     "leaderboard": "Rang lista",
-    "leaderboard-title": "Najbolji dnevni korisnici"
+    "leaderboard-title": "Najbolji korisnici na dnevnom nivou"
   },
   "witnesses": {
     "page-title": "Glasanje svedoka (witness)",
