@@ -173,7 +173,8 @@
     "transfer-to-savings": "转入储蓄",
     "power-up": "Power Up",
     "withdraw-steem": "取出Steem",
-    "withdraw-sbd": "取出Steem Dollar"
+    "withdraw-sbd": "取出Steem Dollar",
+    "delegate": "Delegate"
   },
   "composer": {
     "title-placeholder": "标题",
@@ -404,5 +405,18 @@
     "reset": "下一笔转账",
     "finish": "完成",
     "recent-transfers": "最近的转账"
+  },
+  "delegate": {
+    "title": "Delegate",
+    "sub-title": "Delegate Steem Power",
+    "slider-help": "Drag the slider to adjust the amount",
+    "confirm-title": "Confirm Delegation",
+    "confirm-sub-title": "Please, check if everything is correct",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "Delegation completed",
+    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+  },
+  "delegation-list": {
+    "empty-list": "Nothing here"
   }
 }
