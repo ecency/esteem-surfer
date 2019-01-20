@@ -382,7 +382,7 @@
     "from-placeholder": "Válassz ki egy felhasználót",
     "to": "Címzett",
     "to-placeholder": "felhasználónév",
-    "to-not-found": "The user that you are trying to transfer funds to does not exist!",
+    "to-not-found": "A felhasználó, akinek utalni próbálsz, nem létezik!",
     "to-bad-actor": "Use caution sending to this account. Please double check your spelling for possible phishing.",
     "amount": "Összeg",
     "amount-placeholder": "összeg",
