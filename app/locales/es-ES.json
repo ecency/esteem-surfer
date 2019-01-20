@@ -156,7 +156,7 @@
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Ahorros",
     "savings-description": "El balance está sujeto a 3 días de espera para la retirada.",
-    "next-power-down": "El próximo power down es {time}",
+    "next-power-down": "The next power down is {time} {amount}",
     "exchange": "Cambio",
     "transactions": "Transacciones",
     "transaction-curation_reward": "Recompensa por curación",
