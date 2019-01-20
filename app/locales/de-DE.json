@@ -414,9 +414,9 @@
     "confirm-sub-title": "Bitte überprüfe ob alles korrekt ist",
     "delegation-summary": "<span class=\"sp\">{sp}</span> delegiere nach <span class=\"to-user\">{to}</span>",
     "success-sub-title": "Delegation abgeschlossen",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "insufficient-vesting": "Unzureichende Vesting-Shares {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "Hier ist nichts zu sehen"
   }
 }
