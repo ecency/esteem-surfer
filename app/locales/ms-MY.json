@@ -365,7 +365,7 @@
     "proxy-active-exp": "Anda telah menetapkan pilihan proxy. Jika anda ingin mengaktif semula pilihan saksi secara manual, sila padamkan proxy.",
     "current-proxy": "Proxy anda adalah: <strong>{n}</strong>",
     "remove-proxy": "Padamkan Proxy",
-    "proxy-removed": "Proxy is cleared",
+    "proxy-removed": "Proxy telah dipadamkan",
     "proxy-created": "@{n} telah ditetapkan sebagai proxy"
   },
   "transfer": {
@@ -375,7 +375,7 @@
     "transfer-saving-sub-title": "Melindungi dana dengan masa tunggu 3 hari bila ingin dikeluarkan",
     "withdraw-saving-title": "Mengeluarkan simpanan",
     "withdraw-saving-sub-title": "Keluarkan dana selepas menunggu 3 hari masa lindungan",
-    "power-up-title": "Convert to Steem Power",
+    "power-up-title": "Menukar kepada Steem Power",
     "power-up-sub-title": "Token berpengaruh untuk memberi anda penyelarasan atas ganjaran pos dan memungkinkan anda untuk menjana ganjaran kurasi.",
     "from": "Daripada",
     "from-placeholder": "Pilih pengguna",
@@ -392,7 +392,7 @@
     "memo": "Memo",
     "memo-placeholder": "masukkan catatan anda di sini",
     "memo-help": "Memo ini adalah umum",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "key-required-err": "Kunci aktif tidak dapat ditemui untuk akaun yang dipilih. Pastikan anda log masuk dengan kredensi sulit yang tepat.",
     "next": "Seterusnya",
     "confirm-title": "Mengesahkan transfer anda",
     "confirm-sub-title": "Sila periksa, adakah semua betul",
