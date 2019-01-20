@@ -80,25 +80,25 @@
     "error-public-key": "You entered a public key. Password/WIF required",
     "error-user-fetch": "User data could not be fetched",
     "error-user-not-found": "Vartotojas neegzistuoja",
-    "error-authenticate": "Wrong username or password/WIF",
-    "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>",
+    "error-authenticate": "Neteisingas prisijungimo vardas arba slaptažodis/WIF",
+    "create-account-text": "Neturi paskyros? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Užsiregistruok dabar!</a>",
     "login-with-sc": "Prisijungti su",
     "divider-text": "AR"
   },
   "create-pin-code": {
     "title": "Sukurti PIN-kodą",
     "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter PIN code",
+    "input-placeholder": "Įveskite PIN kodą",
     "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
     "created": "PIN code created"
   },
   "confirm-pin-code": {
     "title": "Enter PIN Code",
     "input-placeholder": "Enter PIN code to continue",
-    "last-chance": "This is your last chance",
+    "last-chance": "Tai jūsų paskutinis šansas",
     "invalidate": "Oi, aš pamiršau...",
     "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "invalidated": "PIN kodas negalioja"
   },
   "user-menu": {
     "profile": "Profilis",
@@ -111,8 +111,8 @@
     "logout": "Atsijungti"
   },
   "login-required": {
-    "default": "This action requires login",
-    "key-required": "This action requires {key} key or master password",
+    "default": "Šis veiksmas reikalauja prisijungimo",
+    "key-required": "Šis veiksmas reikalauja {key} rakto arba pagrindino slaptažodžio",
     "keys-required": "This action requires {keys} keys or master password"
   },
   "quick-profile": {
@@ -156,7 +156,7 @@
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Savings",
     "savings-description": "Balance subject to 3 day withdraw waiting period.",
-    "next-power-down": "The next power down is {time}",
+    "next-power-down": "The next power down is {time} {amount}",
     "exchange": "Keitykla",
     "transactions": "Transakcijos",
     "transaction-curation_reward": "Curation Reward",
