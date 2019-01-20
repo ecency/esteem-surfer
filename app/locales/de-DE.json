@@ -153,7 +153,7 @@
     "steem-power-received": "erhaltene Steem Power",
     "steem-power-total": "gesamte Steem Power",
     "steem-dollars": "Steem Dollar",
-    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
+    "steem-dollars-description": "Tokens mit einem Wert von $1.00 eines STEEM",
     "savings": "Tresor",
     "savings-description": "Werte im Tresor unterliegen einer 3-Tages Sperre.",
     "next-power-down": "Der nächste Power Down ist in {time}",
@@ -236,12 +236,12 @@
     "title": "Entwürfe",
     "load-error": "Konnte Entwürfe nicht laden",
     "empty-list": "Hier ist nichts zu sehen.",
-    "deleted": "Draft is deleted"
+    "deleted": "Entwurf wurde gelöscht"
   },
   "schedules": {
     "title": "Geplante Beiträge",
     "empty-list": "Hier ist nichts zu sehen",
-    "deleted": "Scheduled post is deleted",
+    "deleted": "geplanter Beitrag wurde gelöscht",
     "move": "In Entwürfe verschieben",
     "moved": "Erfolgreich in Entwürfe verschoben"
   },
@@ -249,7 +249,7 @@
     "title": "Lesezeichen",
     "load-error": "Lesezeichen konnten nicht geladen werden",
     "empty-list": "Hier ist nichts zu sehen",
-    "deleted": "Bookmark is removed",
+    "deleted": "Lesezeichen wurde gelöscht",
     "search": "In Lesezeichen suchen"
   },
   "favorites": {
@@ -282,7 +282,7 @@
   "navbar": {
     "settings": "Einstellungen",
     "change-theme": "Design ändern",
-    "login": "Login to your account",
+    "login": "In deinen Account einloggen",
     "bookmark": "Zu deinen Lesezeichen hinzufügen",
     "bookmarkRemove": "Von deinen Lesezeichen entfernen",
     "favorite": "Zu deinen Favoriten hinzufügen",
@@ -291,7 +291,7 @@
     "activities": "Aktivitäten",
     "address-enter-url": "Adresse eingeben",
     "address-enter-query": "Suchbegriff eingeben",
-    "unclaimed-reward-notice": "You have unclaimed rewards"
+    "unclaimed-reward-notice": "Du hast nicht abgeholte Belohnungen"
   },
   "search": {
     "n-results-for-q": "{n} Suchergebnisse für {q}",
@@ -301,11 +301,11 @@
     "sort-newest": "Datum"
   },
   "updater": {
-    "new-version-available": "New version is available",
+    "new-version-available": "Neue Version verfügbar",
     "update": "Aktualisieren",
     "dismiss": "Schließen",
     "downloading": "Neue Version herunterladen...",
-    "download-completed": "Download is completed",
+    "download-completed": "Download ist abgeschlossen",
     "restart": "Neustarten"
   },
   "context-menu": {
@@ -332,7 +332,7 @@
     "type-follows": "Folgen",
     "type-reblogs": "Reblogs",
     "vote-str": "{p}% gefällt deinen Beitrag:",
-    "reply-str": "replied to your post:",
+    "reply-str": "antwortete auf deinen Beitrag:",
     "mention-str": "erwähnte dich in:",
     "followed-str": "folgst du",
     "unfollowed-str": "entfolgt",
@@ -365,7 +365,7 @@
     "proxy-active-exp": "Du hast erfolgreich deinen Proxy gesetzt. Wenn du wieder manuell Witnesse voten möchtest, editiere deine Witness-Liste.",
     "current-proxy": "Dein aktueller Proxy ist: <strong>{n}</strong>",
     "remove-proxy": "Proxy löschen",
-    "proxy-removed": "Proxy is cleared",
+    "proxy-removed": "Proxy wurde gelöscht",
     "proxy-created": "@{n} wurde als Proxy gesetzt"
   },
   "transfer": {
@@ -375,7 +375,7 @@
     "transfer-saving-sub-title": "Guthaben wird durch eine 3-tägige Wartezeit geschützt",
     "withdraw-saving-title": "Aus dem Tresor auszahlen",
     "withdraw-saving-sub-title": "Auszahlungen werden durch eine 3-tägige Wartezeit geschützt",
-    "power-up-title": "Convert to Steem Power",
+    "power-up-title": "in Steem Power konvertieren",
     "power-up-sub-title": "STEEM Token geben dir mehr Kontrolle über Beitrags-Auszahlungen und erhöhen deine Kurations-Belohnungen.",
     "from": "Von",
     "from-placeholder": "Wähle einen Benutzer",
@@ -392,7 +392,7 @@
     "memo": "Memo",
     "memo-placeholder": "Hier dein Memo eingeben",
     "memo-help": "Dieses Memo ist öffentlich",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "key-required-err": "Der Active-Key wurde für den ausgewählten Account nicht gefunden. Bitte stelle sicher, dass du mit den richtigen Zugangsdaten angemeldet bist.",
     "next": "Weiter",
     "confirm-title": "Bestätige deine Überweisung",
     "confirm-sub-title": "Bitte überprüfe ob alles korrekt ist",
