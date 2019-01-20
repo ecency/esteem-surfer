@@ -3,10 +3,23 @@ eslint-disable react/no-multi-comp
 */
 
 import React, { Fragment, PureComponent } from 'react';
-import { FormattedHTMLMessage, FormattedNumber, FormattedMessage, injectIntl } from 'react-intl';
+import {
+  FormattedHTMLMessage,
+  FormattedNumber,
+  FormattedMessage,
+  injectIntl
+} from 'react-intl';
 
 import PropTypes from 'prop-types';
-import { Slider, AutoComplete, Table, Select, Button, Icon, message } from 'antd';
+import {
+  Slider,
+  AutoComplete,
+  Table,
+  Select,
+  Button,
+  Icon,
+  message
+} from 'antd';
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
 import PinRequired from './helpers/PinRequired';
@@ -30,12 +43,9 @@ import isEmptyDate from '../utils/is-empty-date';
 import badActors from '../data/bad-actors.json';
 import { arrowRight } from '../svg';
 
-
 import { vestsToSp } from '../utils/conversions';
 
-
 class DelegateCls extends PureComponent {
-
   constructor(props) {
     super(props);
 
@@ -56,7 +66,6 @@ class DelegateCls extends PureComponent {
   init = () => {
     const { match, history, intl } = this.props;
     const { username } = match.params;
-
 
     const { accounts } = this.props;
     const account = accounts.find(x => x.username === username);
@@ -193,7 +202,6 @@ class DelegateCls extends PureComponent {
 
     const account = accounts.find(x => x.username === from);
 
-
     this.setState({ inProgress: true });
     return delegateVestingShares(account, pin, to, fullAmount)
       .then(resp => {
@@ -230,7 +238,6 @@ class DelegateCls extends PureComponent {
   };
 
   render() {
-
     const { intl, accounts, dynamicProps } = this.props;
     const { steemPerMVests } = dynamicProps;
 
@@ -247,34 +254,37 @@ class DelegateCls extends PureComponent {
       recentList
     } = this.state;
 
-
     const options =
       recentList && recentList.length > 0
         ? [
-          <AutoComplete.OptGroup
-            key="recent"
-            label={intl.formatMessage({
-              id: 'transfer.recent-transfers'
-            })}
-          >
-            {recentList.map(item => (
-              <AutoComplete.Option key={item} value={item}>
-                {item}
-              </AutoComplete.Option>
-            ))}
-          </AutoComplete.OptGroup>
-        ]
+            <AutoComplete.OptGroup
+              key="recent"
+              label={intl.formatMessage({
+                id: 'transfer.recent-transfers'
+              })}
+            >
+              {recentList.map(item => (
+                <AutoComplete.Option key={item} value={item}>
+                  {item}
+                </AutoComplete.Option>
+              ))}
+            </AutoComplete.OptGroup>
+          ]
         : [];
-
 
     let availableVestingShares = 0;
     if (fromData) {
       if (!isEmptyDate(fromData.next_vesting_withdrawal)) {
         // powering down
-        availableVestingShares = parseToken(fromData.vesting_shares) - (Number(fromData.to_withdraw) - Number(fromData.withdrawn)) / 1e6 - parseToken(fromData.delegated_vesting_shares);
+        availableVestingShares =
+          parseToken(fromData.vesting_shares) -
+          (Number(fromData.to_withdraw) - Number(fromData.withdrawn)) / 1e6 -
+          parseToken(fromData.delegated_vesting_shares);
       } else {
         // not powering down
-        availableVestingShares = parseToken(fromData.vesting_shares) - parseFloat(fromData.delegated_vesting_shares);
+        availableVestingShares =
+          parseToken(fromData.vesting_shares) -
+          parseFloat(fromData.delegated_vesting_shares);
       }
     }
 
@@ -282,12 +292,10 @@ class DelegateCls extends PureComponent {
       <div className="wrapper">
         <NavBar
           {...Object.assign({}, this.props, {
-            reloadFn: () => {
-            },
+            reloadFn: () => {},
             reloading: false
           })}
         />
-
 
         {fromData && (
           <div className="app-content delegate-page">
@@ -299,21 +307,21 @@ class DelegateCls extends PureComponent {
                   <div className="step-no">1</div>
                   <div className="box-titles">
                     <div className="main-title">
-                      <FormattedMessage id="delegate.title"/>
+                      <FormattedMessage id="delegate.title" />
                     </div>
                     <div className="sub-title">
-                      <FormattedMessage id="delegate.sub-title"/>
+                      <FormattedMessage id="delegate.sub-title" />
                     </div>
                   </div>
                 </div>
-                {inProgress && <LinearProgress/>}
+                {inProgress && <LinearProgress />}
                 <div className="transfer-box-body">
                   <div className="transfer-form">
                     <div
                       className={`form-item ${fromError ? 'has-error' : ''}`}
                     >
                       <div className="form-label">
-                        <FormattedMessage id="transfer.from"/>
+                        <FormattedMessage id="transfer.from" />
                       </div>
                       <div className="form-input">
                         <Select
@@ -340,10 +348,10 @@ class DelegateCls extends PureComponent {
                     <div
                       className={`form-item ${
                         toWarning || toError ? 'has-error' : ''
-                        }`}
+                      }`}
                     >
                       <div className="form-label">
-                        <FormattedMessage id="transfer.to"/>
+                        <FormattedMessage id="transfer.to" />
                       </div>
                       <div className="form-input">
                         <AutoComplete
@@ -354,7 +362,8 @@ class DelegateCls extends PureComponent {
                             id: 'transfer.to-placeholder'
                           })}
                           spellCheck={false}
-                          dataSource={options} dropdownStyle={{ zIndex: 1070 }}
+                          dataSource={options}
+                          dropdownStyle={{ zIndex: 1070 }}
                         />
                         {toWarning && (
                           <div className="input-help">{toWarning}</div>
@@ -364,27 +373,32 @@ class DelegateCls extends PureComponent {
                     </div>
                     <div className="form-item" style={{ marginTop: '50px' }}>
                       <div className="form-label">
-                        <FormattedMessage id="transfer.amount"/>
+                        <FormattedMessage id="transfer.amount" />
                       </div>
                       <div className="form-input">
                         <Slider
                           step={1}
                           max={availableVestingShares}
-                          tipFormatter={(a) => `${a}.000000 VESTS`}
+                          tipFormatter={a => `${a}.000000 VESTS`}
                           tooltipVisible
                           value={amount}
-                          onChange={this.amountChanged}/>
+                          onChange={this.amountChanged}
+                        />
                         <div className="input-help">
-                          <FormattedMessage id="delegate.slider-help"/>
+                          <FormattedMessage id="delegate.slider-help" />
                         </div>
                       </div>
                     </div>
                     <div className="steem-power">
-                      {amount > 0 &&
-                      <Fragment>
-                        <FormattedNumber minimumFractionDigits={3} value={vestsToSp(amount, steemPerMVests)}/> {'SP'}
-                      </Fragment>
-                      }
+                      {amount > 0 && (
+                        <Fragment>
+                          <FormattedNumber
+                            minimumFractionDigits={3}
+                            value={vestsToSp(amount, steemPerMVests)}
+                          />{' '}
+                          {'SP'}
+                        </Fragment>
+                      )}
                     </div>
                     <div className="form-controls">
                       <Button
@@ -392,7 +406,7 @@ class DelegateCls extends PureComponent {
                         disabled={!this.canSubmit()}
                         onClick={this.next}
                       >
-                        <FormattedMessage id="transfer.next"/>
+                        <FormattedMessage id="transfer.next" />
                       </Button>
                     </div>
                   </div>
@@ -406,10 +420,10 @@ class DelegateCls extends PureComponent {
                   <div className="step-no">2</div>
                   <div className="box-titles">
                     <div className="main-title">
-                      <FormattedMessage id="delegate.confirm-title"/>
+                      <FormattedMessage id="delegate.confirm-title" />
                     </div>
                     <div className="sub-title">
-                      <FormattedMessage id="delegate.confirm-sub-title"/>
+                      <FormattedMessage id="delegate.confirm-sub-title" />
                     </div>
                   </div>
                 </div>
@@ -422,7 +436,7 @@ class DelegateCls extends PureComponent {
                         username={from}
                       >
                         <div className="from-user">
-                          <UserAvatar user={from} size="xLarge"/>
+                          <UserAvatar user={from} size="xLarge" />
                         </div>
                       </QuickProfile>
                       <div className="arrow">{arrowRight}</div>
@@ -432,12 +446,16 @@ class DelegateCls extends PureComponent {
                         username={to}
                       >
                         <div className="to-user">
-                          <UserAvatar user={to} size="xLarge"/>
+                          <UserAvatar user={to} size="xLarge" />
                         </div>
                       </QuickProfile>
                     </div>
                     <div className="amount-sp">
-                      <FormattedNumber minimumFractionDigits={3} value={vestsToSp(amount, steemPerMVests)}/> {'SP'}
+                      <FormattedNumber
+                        minimumFractionDigits={3}
+                        value={vestsToSp(amount, steemPerMVests)}
+                      />{' '}
+                      {'SP'}
                     </div>
                     <div className="amount-vest">
                       {`${amount}.000000 VESTS`}
@@ -446,7 +464,7 @@ class DelegateCls extends PureComponent {
                   <div className="transfer-form">
                     <div className="form-controls">
                       <a role="none" className="btn-back" onClick={this.back}>
-                        <FormattedMessage id="transfer.back"/>
+                        <FormattedMessage id="transfer.back" />
                       </a>
                       <PinRequired {...this.props} onSuccess={this.confirm}>
                         <Button type="primary" disabled={inProgress}>
@@ -457,7 +475,7 @@ class DelegateCls extends PureComponent {
                               spin
                             />
                           )}
-                          <FormattedMessage id="transfer.confirm"/>
+                          <FormattedMessage id="transfer.confirm" />
                         </Button>
                       </PinRequired>
                     </div>
@@ -474,20 +492,22 @@ class DelegateCls extends PureComponent {
                   <div className="step-no">3</div>
                   <div className="box-titles">
                     <div className="main-title">
-                      <FormattedMessage id="transfer.success-title"/>
+                      <FormattedMessage id="transfer.success-title" />
                     </div>
                     <div className="sub-title">
-                      <FormattedMessage id="delegate.success-sub-title"/>
+                      <FormattedMessage id="delegate.success-sub-title" />
                     </div>
                   </div>
                 </div>
-                {inProgress && <LinearProgress/>}
+                {inProgress && <LinearProgress />}
                 <div className="transfer-box-body">
                   <div className="success">
                     <FormattedHTMLMessage
                       id="delegate.delegation-summary"
                       values={{
-                        sp: `${intl.formatNumber(vestsToSp(amount, steemPerMVests))} SP`,
+                        sp: `${intl.formatNumber(
+                          vestsToSp(amount, steemPerMVests)
+                        )} SP`,
                         to
                       }}
                     />
@@ -495,10 +515,10 @@ class DelegateCls extends PureComponent {
                   <div className="transfer-form">
                     <div className="form-controls">
                       <a role="none" className="btn-back" onClick={this.reset}>
-                        <FormattedMessage id="transfer.reset"/>
+                        <FormattedMessage id="transfer.reset" />
                       </a>
                       <Button type="primary" onClick={this.finish}>
-                        <FormattedMessage id="transfer.finish"/>
+                        <FormattedMessage id="transfer.finish" />
                       </Button>
                     </div>
                   </div>
@@ -508,7 +528,7 @@ class DelegateCls extends PureComponent {
           </div>
         )}
 
-        {!fromData && <div className="app-content transfer-page"/>}
+        {!fromData && <div className="app-content transfer-page" />}
 
         <AppFooter {...this.props} />
         <DeepLinkHandler {...this.props} />
@@ -516,7 +536,6 @@ class DelegateCls extends PureComponent {
     );
   }
 }
-
 
 DelegateCls.defaultProps = {
   accounts: []
@@ -535,7 +554,6 @@ const Delegate = injectIntl(DelegateCls);
 export { Delegate };
 
 class DelegationListCls extends PureComponent {
-
   constructor(props) {
     super(props);
 
@@ -543,82 +561,150 @@ class DelegationListCls extends PureComponent {
       loading: true,
       list: []
     };
-
   }
 
   componentDidMount() {
+    this.load();
+  }
+
+  load = () => {
     const { username } = this.props;
 
-    return getVestingDelegations(username).then(resp => {
-      this.setState({ list: resp });
-      return resp;
-    }).catch(e => {
-      message.error(formatChainError(e));
-    }).finally(() => {
-      this.setState({ loading: false });
-    });
-  }
+    return getVestingDelegations(username)
+      .then(resp => {
+        this.setState({ list: resp });
+        return resp;
+      })
+      .catch(e => {
+        message.error(formatChainError(e));
+      })
+      .finally(() => {
+        this.setState({ loading: false });
+      });
+  };
+
+  undelegate = (pin, delegatee) => {
+    const { activeAccount } = this.props;
+    if (activeAccount.type === 's' && !activeAccount.keys.active) {
+      message.error('Active key required!');
+      return;
+    }
+
+    return delegateVestingShares(
+      activeAccount,
+      pin,
+      delegatee,
+      '0.000000 VESTS'
+    )
+      .then(resp => {
+        this.load();
+        return resp;
+      })
+      .catch(e => {
+        message.error(formatChainError(e));
+      });
+  };
 
   render() {
     const { list, loading } = this.state;
 
-
-    const { dynamicProps } = this.props;
+    const { dynamicProps, activeAccount, username } = this.props;
     const { steemPerMVests } = dynamicProps;
 
-
     if (loading) {
-      return <div className="delegate-modal-table"><LinearProgress/></div>;
+      return (
+        <div className="delegate-modal-table">
+          <LinearProgress />
+        </div>
+      );
     }
 
-
     const dataSource = list.map((i, k) => ({
-        key: k,
-        delegatee: i.delegatee,
-        vesting_shares: i.vesting_shares
-      })
-    );
+      key: k,
+      delegatee: i.delegatee,
+      vesting_shares: i.vesting_shares
+    }));
 
-    const columns = [{
-      title: null,
-      dataIndex: 'delegatee',
-      key: 'delegatee',
-      render: (value) => <AccountLink {...this.props} username={value}><a>{value}</a></AccountLink>
-    },
+    const columns = [
+      {
+        title: null,
+        dataIndex: 'delegatee',
+        key: 'delegatee',
+        render: value => (
+          <AccountLink {...this.props} username={value}>
+            <a>{value}</a>
+          </AccountLink>
+        )
+      },
       {
         title: null,
         dataIndex: 'vesting_shares',
         key: 'vesting_shares',
-        render: (value) => <Fragment>
-          <FormattedNumber value={vestsToSp(parseToken(value), steemPerMVests)}
-                           minimumFractionDigits={3}/> {'SP'} <br/>
-          <small>{value}</small>
-        </Fragment>
-      }];
+        render: value => (
+          <Fragment>
+            <FormattedNumber
+              value={vestsToSp(parseToken(value), steemPerMVests)}
+              minimumFractionDigits={3}
+            />{' '}
+            {'SP'} <br />
+            <small>{value}</small>
+          </Fragment>
+        )
+      },
+      {
+        title: null,
+        dataIndex: 'undelegate',
+        key: 'undelegate',
+        render: (value, record) => {
+          if (activeAccount.username === username) {
+            return (
+              <PinRequired
+                {...this.props}
+                onSuccess={pin => {
+                  this.undelegate(pin, record.delegatee);
+                }}
+              >
+                <span className="btn-delete">
+                  <i className="mi">delete_forever</i>
+                </span>
+              </PinRequired>
+            );
+          }
 
-    return <div className="delegate-modal-table">
-      <Table dataSource={dataSource} columns={columns} pagination={false} showHeader={false}/>
-    </div>;
+          return '';
+        }
+      }
+    ];
 
-
+    return (
+      <div className="delegate-modal-table">
+        <Table
+          dataSource={dataSource}
+          columns={columns}
+          pagination={false}
+          showHeader={false}
+        />
+      </div>
+    );
   }
 }
+
+DelegationListCls.defaultProps = {
+  activeAccount: null
+};
 
 DelegationListCls.propTypes = {
   username: PropTypes.string.isRequired,
   dynamicProps: PropTypes.shape({
     steemPerMVests: PropTypes.number.isRequired
   }).isRequired,
+  activeAccount: PropTypes.instanceOf(Object),
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
 const DelegationList = injectIntl(DelegationListCls);
 export { DelegationList };
 
-export class PowerDown extends PureComponent {
+export class PowerDown extends PureComponent {}
 
-}
-
-export class PowerDownTargetList extends PureComponent {
-
-}
+export class PowerDownTargetList extends PureComponent {}
