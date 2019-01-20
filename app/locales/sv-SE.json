@@ -156,7 +156,7 @@
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Sparkonto",
     "savings-description": "Saldot föremål för 3 dagars uttag väntetiden.",
-    "next-power-down": "Nästa Power Down är {time}",
+    "next-power-down": "The next power down is {time} {amount}",
     "exchange": "Växla",
     "transactions": "Transaktioner",
     "transaction-curation_reward": "Curation Reward",
