@@ -111,14 +111,14 @@
     "logout": "Logout"
   },
   "login-required": {
-    "default": "This action requires login",
-    "key-required": "This action requires {key} key or master password",
-    "keys-required": "This action requires {keys} keys or master password"
+    "default": "E go need you to login",
+    "key-required": "E go need your {key} key or master password",
+    "keys-required": "E go need your {keys} keys or master password"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
-    "fetch-error-content": "Could not fetch posts",
-    "post-count": "Post Count",
+    "fetch-error-profile": "E no locate the person informate",
+    "fetch-error-content": "E no locate the tori",
+    "post-count": "Number of tori",
     "followers": "Followers",
     "following": "Following",
     "section-blog": "Blog",
@@ -150,7 +150,7 @@
     "steem-power": "Steem Power",
     "steem-power-description": "Steem Power na token wey dey give power and the power go dey plenty join if you hold am for long time and if you dey vote people tori. The plenty the Steem Power wey you dey hold, the plenty your power to affect reward for people tori and the more wey you go dey earn say you vote people tori wella. ",
     "steem-power-delegated": "Delegated Steem Power",
-    "steem-power-received": "Received Steem Power",
+    "steem-power-received": "Steem Power wey you Receive",
     "steem-power-total": "Total Steem Power",
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
