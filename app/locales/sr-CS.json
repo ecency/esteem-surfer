@@ -18,11 +18,11 @@
     "about": "O nama"
   },
   "entry-index": {
-    "tags": "Popularni tagovi",
+    "tags": "Popularne oznake",
     "filter-trending": "Popularno",
     "filter-hot": "Aktuelno",
     "filter-created": "Novo",
-    "filter-active": "Aktivan",
+    "filter-active": "Aktivno",
     "filter-promoted": "Promovisano",
     "filter-votes": "Glasovi",
     "filter-children": "Komentari",
@@ -32,7 +32,7 @@
     "potential-payout": "Potencijalna isplata",
     "promoted": "Promovisano",
     "author-payout": "Prihod autora",
-    "curation-payout": "Prihod od glasanja",
+    "curation-payout": "Isplata glasačima",
     "payout-date": "Isplata"
   },
   "entry-votes": {
@@ -41,10 +41,10 @@
     "reward": "Nagrada",
     "percent": "Procenat",
     "time": "Vreme",
-    "modal-title": "Broj glasova ({n})"
+    "modal-title": "Broja glasača ({n})"
   },
   "entry-list-item": {
-    "reblogged": "podelili {n}"
+    "reblogged": "podelilo je {n}"
   },
   "entry-reblog": {
     "reblog": "Podeli",
