@@ -156,7 +156,7 @@
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Poupanças",
     "savings-description": "O saldo está sujeito a 3 dias de espera para retirá-lo,.",
-    "next-power-down": "Próxima descarga de poder é em {time}",
+    "next-power-down": "The next power down is {time} {amount}",
     "exchange": "Câmbio",
     "transactions": "Transações",
     "transaction-curation_reward": "Recompensas de curadoria",
