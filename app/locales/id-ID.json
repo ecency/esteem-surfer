@@ -153,7 +153,7 @@
     "steem-power-received": "Menerima Kekuatan Steem",
     "steem-power-total": "Total kekuatan steem",
     "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
+    "steem-dollars-description": "Token bernilai sekitar $1.00 dari STEEM.",
     "savings": "Menyimpan",
     "savings-description": "Saldo dikenakan masa tunggu penarikan 3 hari.",
     "next-power-down": "Menurunkan kekuatan berikutnya pada {time}",
@@ -236,12 +236,12 @@
     "title": "Konsep",
     "load-error": "Tidak dapat menampilkan konsep",
     "empty-list": "Kosong",
-    "deleted": "Draft is deleted"
+    "deleted": "Konsep di hapus"
   },
   "schedules": {
     "title": "Posting terjadwal",
     "empty-list": "Kosong",
-    "deleted": "Scheduled post is deleted",
+    "deleted": "Jadwal post di hapus",
     "move": "Pindahkan ke konsep",
     "moved": "Pindahkan ke konsep"
   },
@@ -249,7 +249,7 @@
     "title": "Tandai",
     "load-error": "Tidak dapat menampilkan yang telah ditandai",
     "empty-list": "Kosong",
-    "deleted": "Bookmark is removed",
+    "deleted": "Hapus yang di tandai",
     "search": "Cari di dalam halaman yang ditandai"
   },
   "favorites": {
@@ -282,7 +282,7 @@
   "navbar": {
     "settings": "Pengaturan",
     "change-theme": "Ganti Tema",
-    "login": "Login to your account",
+    "login": "Masuk ke akun anda",
     "bookmark": "Tambah ke penanda",
     "bookmarkRemove": "Hapus dari yang ditandai",
     "favorite": "Tambahkan ke Favorit",
@@ -291,7 +291,7 @@
     "activities": "Aktifitas",
     "address-enter-url": "Masukkan url",
     "address-enter-query": "Masukkan permintaan pencarian",
-    "unclaimed-reward-notice": "You have unclaimed rewards"
+    "unclaimed-reward-notice": "Anda memiliki hadiah yang tidak di klaim"
   },
   "search": {
     "n-results-for-q": "{n} hasil untuk {q}",
@@ -301,11 +301,11 @@
     "sort-newest": "Tanggal"
   },
   "updater": {
-    "new-version-available": "New version is available",
+    "new-version-available": "Tersedia versi terbaru",
     "update": "Pembaruan",
     "dismiss": "Memberhentikan",
     "downloading": "Download versi terbaru...",
-    "download-completed": "Download is completed",
+    "download-completed": "Selesai mengunduh",
     "restart": "Mengulang kembali"
   },
   "context-menu": {
@@ -332,7 +332,7 @@
     "type-follows": "Ikuti",
     "type-reblogs": "Menampilkan kembali",
     "vote-str": "{p}% menyukai postingan anda:",
-    "reply-str": "replied to your post:",
+    "reply-str": "membalas postingan anda:",
     "mention-str": "menyebut anda dalam:",
     "followed-str": "diikuti",
     "unfollowed-str": "berhenti diikuti",
@@ -365,7 +365,7 @@
     "proxy-active-exp": "Anda telah menetapkan pemungutan suara proxy. Jika Anda ingin mengaktifkan kembali pemungutan suara secara manual, harap hapus proxy Anda.",
     "current-proxy": "Proxy anda saat ini adalah: <strong>{n}</strong>",
     "remove-proxy": "Hapus proxy",
-    "proxy-removed": "Proxy is cleared",
+    "proxy-removed": "Proxy di hapus",
     "proxy-created": "@{n} telah ditetapkan sebagai proxy"
   },
   "transfer": {
