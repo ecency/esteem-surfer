@@ -173,7 +173,8 @@
     "transfer-to-savings": "안전 금고로 송금",
     "power-up": "파워 업",
     "withdraw-steem": "스팀 출금",
-    "withdraw-sbd": "스팀 달러 출금"
+    "withdraw-sbd": "스팀 달러 출금",
+    "delegate": "Delegate"
   },
   "composer": {
     "title-placeholder": "제목",
@@ -404,5 +405,18 @@
     "reset": "Another transfer",
     "finish": "Finish",
     "recent-transfers": "Recent transfers"
+  },
+  "delegate": {
+    "title": "Delegate",
+    "sub-title": "Delegate Steem Power",
+    "slider-help": "Drag the slider to adjust the amount",
+    "confirm-title": "Confirm Delegation",
+    "confirm-sub-title": "Please, check if everything is correct",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "Delegation completed",
+    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+  },
+  "delegation-list": {
+    "empty-list": "Nothing here"
   }
 }
