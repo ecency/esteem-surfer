@@ -156,7 +156,7 @@
     "steem-dollars-description": "Tokeni vrednosti oko $1.00 u STEEM-u.",
     "savings": "Ušteđevina",
     "savings-description": "Saldo je podložan trodnevnom periodu čekanja za povlačenje sredstava.",
-    "next-power-down": "Sledeći power down je {time}",
+    "next-power-down": "The next power down is {time} {amount}",
     "exchange": "Menjačnica",
     "transactions": "Transakcije",
     "transaction-curation_reward": "Nagrade za glasanje",
