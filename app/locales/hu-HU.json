@@ -90,15 +90,15 @@
     "desc1": "Állítsd be a PIN kódot az adatok titkosításához és egy további biztonsági réteg létrehozásához!",
     "input-placeholder": "PIN kód megadása",
     "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
-    "created": "PIN code created"
+    "created": "PIN kód létrehozva"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
-    "input-placeholder": "Enter PIN code to continue",
+    "title": "PIN kód megadása",
+    "input-placeholder": "A folytatáshoz add meg a PIN kódot",
     "last-chance": "Utolsó lehetőség",
     "invalidate": "Ó elfelejtettem...",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "invalidate-confirm": "Biztosan érvényteleníted a PIN kódot?",
+    "invalidated": "PIN kód érvénytelenírve"
   },
   "user-menu": {
     "profile": "Profil",
@@ -112,11 +112,11 @@
   },
   "login-required": {
     "default": "Ez a művelet bejelentkezést igényel",
-    "key-required": "This action requires {key} key or master password",
+    "key-required": "A művelethez a {key} kulcs szükséges vagy a master jelszó",
     "keys-required": "This action requires {keys} keys or master password"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
+    "fetch-error-profile": "A profil adatokat nem sikerült betölteni",
     "fetch-error-content": "Could not fetch posts",
     "post-count": "Bejegyzések száma",
     "followers": "Követők",
