@@ -156,7 +156,7 @@
     "steem-dollars-description": "Token bernilai sekitar $1.00 dari STEEM.",
     "savings": "Menyimpan",
     "savings-description": "Saldo dikenakan masa tunggu penarikan 3 hari.",
-    "next-power-down": "Menurunkan kekuatan berikutnya pada {time}",
+    "next-power-down": "The next power down is {time} {amount}",
     "exchange": "Pertukaran",
     "transactions": "Transaksi",
     "transaction-curation_reward": "Hadiah kurasi",
@@ -410,13 +410,13 @@
     "title": "Melimpahkan",
     "sub-title": "Melimpahkan Kekuatan Steem",
     "slider-help": "Seret penggeser untuk menyesuaikan jumlahnya",
-    "confirm-title": "Confirm Delegation",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "Delegation completed",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "confirm-title": "Konfirmasikan Delegasi",
+    "confirm-sub-title": "Silakan, periksa jika semuanya sudah benar",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> didelegasikan kepada <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "Delegasi selesai",
+    "insufficient-vesting": "Saham vesting tidak mencukupi {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "Kosong"
   }
 }
