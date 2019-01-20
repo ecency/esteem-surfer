@@ -156,7 +156,7 @@
     "steem-dollars-description": "الرموز التي تبلغ قيمتها حوالي 1.00 دولار من STEEM.",
     "savings": "المدخرات",
     "savings-description": "يخضع الرصيد لفترة انتظار السحب لمدة 3 أيام.",
-    "next-power-down": "الخفض القادم ل قوة ستيم هو {time}",
+    "next-power-down": "The next power down is {time} {amount}",
     "exchange": "تبادل",
     "transactions": "المعاملات",
     "transaction-curation_reward": "مكافأة المصوت",
