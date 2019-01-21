@@ -89,7 +89,7 @@
     "title": "Sukurti PIN-kodą",
     "desc1": "Sukurkite PIN kodą, kad įgalintumėte papildomą apsaugos sluoksnį!",
     "input-placeholder": "Įveskite PIN kodą",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
+    "desc2": "Jūs privalėsite įvesti PIN kodą atliekant svarbius veiksmus ir kiekvieną kartą atidarę programėlę.",
     "created": "PIN kodas sukurtas"
   },
   "confirm-pin-code": {
@@ -113,11 +113,11 @@
   "login-required": {
     "default": "Šis veiksmas reikalauja prisijungimo",
     "key-required": "Šis veiksmas reikalauja {key} rakto arba pagrindino slaptažodžio",
-    "keys-required": "This action requires {keys} keys or master password"
+    "keys-required": "Šis veiksmas reikalauja {keys} raktų arba pagrindino slaptažodžio"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
-    "fetch-error-content": "Could not fetch posts",
+    "fetch-error-profile": "Nepavyko pakrauti profilio duomenų",
+    "fetch-error-content": "Nepavyko pakrauti įrašų",
     "post-count": "Įrašų skaičius",
     "followers": "Sekėjai",
     "following": "Sekami",
@@ -153,7 +153,7 @@
     "steem-power-received": "Gautas Steem Power",
     "steem-power-total": "Visas Steem Power",
     "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
+    "steem-dollars-description": "Žetonai verti apie $1.00 STEEM.",
     "savings": "Santaupos",
     "savings-description": "Balance subject to 3 day withdraw waiting period.",
     "next-power-down": "The next power down is {time} {amount}",
