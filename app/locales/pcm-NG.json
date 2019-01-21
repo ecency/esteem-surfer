@@ -402,21 +402,21 @@
     "success-title": "E don Successful",
     "success-sub-title": "E don transfer finish",
     "transfer-summary": "Transfer <span class=\"amount\">{amount}</span> From <span class=\"from-user\">{from}</span> to <span class=\"to-user\">{to}</span>",
-    "reset": "Another transfer",
+    "reset": "Do another transfer",
     "finish": "Finish",
-    "recent-transfers": "Recent transfers"
+    "recent-transfers": "All transfer wey you just do"
   },
   "delegate": {
     "title": "Delegate",
     "sub-title": "Delegate Steem Power",
     "slider-help": "Drag the slider to adjust the amount",
-    "confirm-title": "Confirm Delegation",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "Delegation completed",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "confirm-title": "Confam Delegation",
+    "confirm-sub-title": "Abeg, check if everything dey correct",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> don delegate to <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "Delegation don complete",
+    "insufficient-vesting": "Vesting shares no reach {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "Nothing dey here"
   }
 }
