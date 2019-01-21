@@ -278,7 +278,7 @@
     "copied-clipboard": "Nukopijuota",
     "comment-entry-title": "Jūs skaitote komentarą iš: ",
     "comment-entry-go-root": "Peržiūrėti visą kontekstą",
-    "comment-entry-go-parent": "View the direct parent"
+    "comment-entry-go-parent": "Peržiūrėti pirminį"
   },
   "navbar": {
     "settings": "Nustatymai",
@@ -354,8 +354,8 @@
     "fee": "Mokestis",
     "feed": "Pagrindinis",
     "block-size": "Bloko dydis",
-    "ac-avail": "AC avail",
-    "ac-budget": "AC budget",
+    "ac-avail": "AC nauda",
+    "ac-budget": "AC biudžetas",
     "version": "Versija",
     "voted": "@{n} prabalsavo",
     "vote-removed": "balsas nuimtas @{n}",
@@ -393,7 +393,7 @@
     "memo": "Atmintinė",
     "memo-placeholder": "įveskite savo užrašus čia",
     "memo-help": "Ši atmintinė yra vieša",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "key-required-err": "Aktyvusis raktas nebuvo rastas pasirinktam vartotojui. Prašome įsitikinti, kad esate prisijungęs su teisingais duomenimis.",
     "next": "Kitas",
     "confirm-title": "Patvirtinti persiuntimą",
     "confirm-sub-title": "Prašome atidžiai patikrinti ar viskas teisinga",
