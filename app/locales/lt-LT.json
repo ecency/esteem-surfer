@@ -224,7 +224,7 @@
     "words-count": "{n} žodžių",
     "no-suggestions": "Jokių pasiūlymų",
     "emoji-filter-placeholder": "Filtras",
-    "emoji-filter-no-match": "No match",
+    "emoji-filter-no-match": "Atitikmenų nėra",
     "emoji-recently-used": "Neseniai Naudota"
   },
   "gallery": {
@@ -247,29 +247,29 @@
     "moved": "Moved to drafts"
   },
   "bookmarks": {
-    "title": "Bookmarks",
+    "title": "Žymės",
     "load-error": "Could not load bookmarks",
     "empty-list": "Nieko nėra",
     "deleted": "Bookmark is removed",
     "search": "Search in bookmarks"
   },
   "favorites": {
-    "title": "Favorites",
+    "title": "Mėgstamiausi",
     "load-error": "Could not load favorites",
     "empty-list": "Nieko nėra",
-    "search": "Search in favorites"
+    "search": "Ieškoti mėgstamiausiuose"
   },
   "entry": {
-    "reply": "Reply",
-    "reply-preview": "Preview",
+    "reply": "Atsakyti",
+    "reply-preview": "Peržiūrėti",
     "via-app": "via <span class=\"app-name\">{app}</span>",
     "n-replies": "{n} atsakymai",
     "reply-sort-order": "Rušiuoti pagal",
     "reply-sort-order-trending": "Tendencijos",
     "reply-sort-order-reputation": "Reputacija",
     "reply-sort-order-votes": "Balsai",
-    "reply-sort-order-created": "Age",
-    "reply-body-placeholder": "Write your reply here",
+    "reply-sort-order-created": "Amžius",
+    "reply-body-placeholder": "Rašykite savo atsakymą čia",
     "bookmarked": "Pridėti į žymes",
     "bookmarkRemoved": "Pašalinta iš žymų",
     "favorited": "Pridėta prie mėgstamiausių",
@@ -360,7 +360,7 @@
     "voted": "@{n} prabalsavo",
     "vote-removed": "vote removed for @{n}",
     "username-placeholder": "vartotojo vardas",
-    "extra-witnesses-exp": "Enter account name below to vote for a witness outside of <strong>Top 50</strong>",
+    "extra-witnesses-exp": "Įveskite vartotojo vardą, kad pabalsuotumėte už liudininką žemiau <strong>Top 50</strong>",
     "proxy-exp": "You can also choose a proxy that will vote for witnesses for you. This will reset your current witness selection.",
     "set-proxy": "Set Proxy",
     "proxy-active-exp": "You have set a voting proxy. If you would like to re-enable manual voting, please clear your proxy.",
@@ -370,9 +370,9 @@
     "proxy-created": "@{n} has set as proxy"
   },
   "transfer": {
-    "transfer-title": "Transfer to Account",
+    "transfer-title": "Pervesti į Paskyrą",
     "transfer-sub-title": "Move funds to another Steem account",
-    "transfer-saving-title": "Transfer to Savings",
+    "transfer-saving-title": "Pervesti į Santaupas",
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
     "withdraw-saving-title": "Išsiimti Santaupas",
     "withdraw-saving-sub-title": "Withdraw funds after the required 3 day waiting period",
@@ -386,7 +386,7 @@
     "to-bad-actor": "Use caution sending to this account. Please double check your spelling for possible phishing.",
     "amount": "Kiekis",
     "amount-placeholder": "kiekis",
-    "wrong-amount": "Wrong amount value",
+    "wrong-amount": "Klaidinga sumos vertė",
     "amount-precision-error": "Use only 3 digits of precision",
     "insufficient-funds": "Nepakankamas likutis",
     "balance": "Balansas",
