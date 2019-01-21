@@ -242,7 +242,7 @@
   "schedules": {
     "title": "Geplande artikelen",
     "empty-list": "Niets hier",
-    "deleted": "Scheduled post is deleted",
+    "deleted": "Gepland artikel is verwijderd",
     "move": "Verplaats naar concepten",
     "moved": "Verplaatst naar concepten"
   },
@@ -250,7 +250,7 @@
     "title": "Bladwijzers",
     "load-error": "Kon bladwijzers niet laden",
     "empty-list": "Niets hier",
-    "deleted": "Bookmark is removed",
+    "deleted": "Bladwijzer is verwijderd",
     "search": "Zoek in bladwijzers"
   },
   "favorites": {
@@ -283,7 +283,7 @@
   "navbar": {
     "settings": "Instellingen",
     "change-theme": "Thema wijzigen",
-    "login": "Login to your account",
+    "login": "Inloggen op je account",
     "bookmark": "Toevoegen aan bladwijzers",
     "bookmarkRemove": "Verwijderen uit bladwijzers",
     "favorite": "Toevoegen aan Favorieten",
@@ -292,7 +292,7 @@
     "activities": "Activiteiten",
     "address-enter-url": "Voer url in",
     "address-enter-query": "Voer zoekterm in",
-    "unclaimed-reward-notice": "You have unclaimed rewards"
+    "unclaimed-reward-notice": "Je hebt niet-opgeëiste beloningen"
   },
   "search": {
     "n-results-for-q": "{n} resultaten voor {q}",
@@ -302,11 +302,11 @@
     "sort-newest": "Datum"
   },
   "updater": {
-    "new-version-available": "New version is available",
+    "new-version-available": "Nieuwe versie is beschikbaar",
     "update": "Update",
     "dismiss": "Negeren",
     "downloading": "Nieuwe versie aan het downloaden...",
-    "download-completed": "Download is completed",
+    "download-completed": "Download is voltooid",
     "restart": "Opnieuw starten"
   },
   "context-menu": {
@@ -317,23 +317,23 @@
     "copy-image-url": "Kopieer afbeeldings-url"
   },
   "notification": {
-    "popup-title": "You have a new notification",
+    "popup-title": "Je hebt een nieuwe notificatie",
     "voted": "{source} stemde op je post",
-    "mention-post": "{source} mentioned you in a post",
-    "mention-comment": "{source} mentioned you in a comment",
-    "followed": "{source} followed you",
-    "replied": "{source} replied you",
-    "reblogged": "{source} reblogged your post"
+    "mention-post": "{source} noemde je in een bericht",
+    "mention-comment": "{source} noemde je in een reactie",
+    "followed": "{source} volgde je",
+    "replied": "{source} antwoordde je",
+    "reblogged": "{source} deelde je artikel"
   },
   "activities": {
     "type-all": "Alle activiteiten",
     "type-votes": "Stemmen",
     "type-replies": "Reacties",
     "type-mentions": "Vermeldingen",
-    "type-follows": "Follows",
-    "type-reblogs": "Reblogs",
-    "vote-str": "{p}% likes your post:",
-    "reply-str": "replied to your post:",
+    "type-follows": "Volgt",
+    "type-reblogs": "Deelt",
+    "vote-str": "{p}% vindt je artikel leuk:",
+    "reply-str": "heeft op je bericht gereageerd:",
     "mention-str": "noemde je in:",
     "followed-str": "gevolgd",
     "unfollowed-str": "ontvolgde",
@@ -349,16 +349,16 @@
     "page-title": "Getuigen stemmen",
     "remaining": "<strong>{n}</strong> van {max} stemmen resterend",
     "witness": "Getuige",
-    "miss": "Miss",
+    "miss": "Gemist",
     "url": "URL",
     "fee": "Transactiekosten",
     "feed": "Feed",
     "block-size": "Blokgrootte",
-    "ac-avail": "AC avail",
+    "ac-avail": "AC beschikbaar",
     "ac-budget": "AC budget",
-    "version": "Version",
-    "voted": "@{n} voted",
-    "vote-removed": "vote removed for @{n}",
+    "version": "Versie",
+    "voted": "@{n} gestemd",
+    "vote-removed": "stem verwijderd voor @{n}",
     "username-placeholder": "gebruikersnaam",
     "extra-witnesses-exp": "Enter account name below to vote for a witness outside of <strong>Top 50</strong>",
     "proxy-exp": "You can also choose a proxy that will vote for witnesses for you. This will reset your current witness selection.",
