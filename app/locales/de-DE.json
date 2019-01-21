@@ -330,7 +330,7 @@
     "type-votes": "Votes",
     "type-replies": "Antworten",
     "type-mentions": "Erwähnungen",
-    "type-follows": "Folgen",
+    "type-follows": "Folgen dir",
     "type-reblogs": "Reblogs",
     "vote-str": "{p}% gefällt deinen Beitrag:",
     "reply-str": "antwortete auf deinen Beitrag:",
