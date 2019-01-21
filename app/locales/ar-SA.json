@@ -414,9 +414,9 @@
     "confirm-sub-title": "من فضلك، تحقق مما إذا كان كل شيء صحيح",
     "delegation-summary": "<span class=\"sp\">{sp}</span> تم التفويض ل <span class=\"to-user\">{to}</span>",
     "success-sub-title": "إكتملت عملية التفويض",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "insufficient-vesting": "أسهم الإستحقاق غير الكافية {a} الإستحقاق"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "لا شيء هنا"
   }
 }
