@@ -17,6 +17,8 @@ import Login from '../dialogs/Login';
 import UserMenu from '../dialogs/UserMenu';
 import Activities from '../dialogs/Activities';
 import LoginRequired from '../helpers/LoginRequired';
+import SearchInPage from '../helpers/SearchInPage';
+
 
 import addressParser from '../../utils/address-parser';
 
@@ -518,6 +520,7 @@ class NavBar extends Component {
             </a>
           </div>
           <div className="address-bar">
+            <SearchInPage {...this.props} />
             <Address {...this.props} />
             {favoriteFn ? (
               <LoginRequired {...this.props}>

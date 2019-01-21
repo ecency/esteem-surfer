@@ -247,6 +247,7 @@
     "history": "^4.7.2",
     "immutable": "^3.8.2",
     "jsdom": "^12.2.0",
+    "mark.js": "^8.11.1",
     "material-design-icons": "^3.0.1",
     "moment": "^2.22.2",
     "prop-types": "^15.6.2",
