@@ -156,7 +156,7 @@
     "steem-dollars-description": "الرموز التي تبلغ قيمتها حوالي 1.00 دولار من STEEM.",
     "savings": "المدخرات",
     "savings-description": "يخضع الرصيد لفترة انتظار السحب لمدة 3 أيام.",
-    "next-power-down": "The next power down is {time} {amount}",
+    "next-power-down": "الخفض القادم لقوة ستيم هو {amount} {time}",
     "exchange": "تبادل",
     "transactions": "المعاملات",
     "transaction-curation_reward": "مكافأة المصوت",
@@ -174,7 +174,7 @@
     "power-up": "رفع الطاقة",
     "withdraw-steem": "سحب ستيم",
     "withdraw-sbd": "سحب ستيم دولار",
-    "delegate": "Delegate"
+    "delegate": "تفويض"
   },
   "composer": {
     "title-placeholder": "العنوان",
@@ -407,8 +407,8 @@
     "recent-transfers": "عمليات التحويل الأخيرة"
   },
   "delegate": {
-    "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
+    "title": "تفويض",
+    "sub-title": "تفويض قوة ستيم",
     "slider-help": "Drag the slider to adjust the amount",
     "confirm-title": "Confirm Delegation",
     "confirm-sub-title": "Please, check if everything is correct",
