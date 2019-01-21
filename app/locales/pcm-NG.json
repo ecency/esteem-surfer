@@ -8,7 +8,7 @@
     "cancel": "Cancel",
     "ok": "Ok",
     "edit": "Edit",
-    "server-error": "Process could not be completed due to server error",
+    "server-error": "The thing no gree complete because of server wahala",
     "save": "Save",
     "done": "E don go",
     "select": "Select"
@@ -88,8 +88,8 @@
   "create-pin-code": {
     "title": "Create PIN Code",
     "desc1": "Oya set PIN Code to make sure say your informate dey secure wella! ",
-    "input-placeholder": "Enter PIN code",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
+    "input-placeholder": "Enter your PIN code",
+    "desc2": "You go need to enter your password for important transactions and any time wey you open the software.",
     "created": "PIN code created"
   },
   "confirm-pin-code": {
