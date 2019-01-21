@@ -283,37 +283,37 @@
   "navbar": {
     "settings": "Settings",
     "change-theme": "Change Theme",
-    "login": "Login to your account",
-    "bookmark": "Add to bookmarks",
-    "bookmarkRemove": "Remove from bookmarks",
+    "login": "Login enter your account",
+    "bookmark": "Add am to bookmark",
+    "bookmarkRemove": "Komot am from bookmark",
     "favorite": "Add am to favorites",
     "favoriteRemove": "Remove am from favourites",
-    "wallet": "My Wallet",
-    "activities": "Activities",
-    "address-enter-url": "Enter url",
-    "address-enter-query": "Enter search query",
-    "unclaimed-reward-notice": "You have unclaimed rewards"
+    "wallet": "My Account",
+    "activities": "All your matter",
+    "address-enter-url": "Put link",
+    "address-enter-query": "Put wetin you won search",
+    "unclaimed-reward-notice": "You get reward wey you never collect"
   },
   "search": {
-    "n-results-for-q": "{n} results for {q}",
-    "sort-by": "Sort by",
-    "sort-popularity": "Popularity",
-    "sort-relevance": "Relevance",
+    "n-results-for-q": "{n} results for {n}",
+    "sort-by": "Separate am by",
+    "sort-popularity": "As e popular reach",
+    "sort-relevance": "As e important reach",
     "sort-newest": "Date"
   },
   "updater": {
-    "new-version-available": "New version is available",
-    "update": "Update",
-    "dismiss": "Dismiss",
-    "downloading": "Downloading new version...",
-    "download-completed": "Download is completed",
-    "restart": "Restart"
+    "new-version-available": "New version don dey ready",
+    "update": "Update am",
+    "dismiss": "Komot",
+    "downloading": "E don dey download the new version...",
+    "download-completed": "E don download finish",
+    "restart": "Restart am"
   },
   "context-menu": {
     "cut": "Cut",
     "copy": "Copy",
     "paste": "Paste",
-    "open-image-browser": "Open image in browser",
+    "open-image-browser": "Open the image for browser",
     "copy-image-url": "Copy image url"
   },
   "notification": {
