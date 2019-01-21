@@ -360,14 +360,14 @@
     "voted": "@{n} gestemd",
     "vote-removed": "stem verwijderd voor @{n}",
     "username-placeholder": "gebruikersnaam",
-    "extra-witnesses-exp": "Enter account name below to vote for a witness outside of <strong>Top 50</strong>",
-    "proxy-exp": "You can also choose a proxy that will vote for witnesses for you. This will reset your current witness selection.",
-    "set-proxy": "Set Proxy",
-    "proxy-active-exp": "You have set a voting proxy. If you would like to re-enable manual voting, please clear your proxy.",
-    "current-proxy": "Your current proxy is: <strong>{n}</strong>",
-    "remove-proxy": "Clear Proxy",
-    "proxy-removed": "Proxy is cleared",
-    "proxy-created": "@{n} has set as proxy"
+    "extra-witnesses-exp": "Voer hieronder accountnaam in om te stemmen voor een getuige buiten de <strong>Top 50</strong>",
+    "proxy-exp": "Je kunt ook een proxy kiezen die voor je stemt op getuigen. Dit zal de huidige selectie van getuigen resetten.",
+    "set-proxy": "Proxy instellen",
+    "proxy-active-exp": "Je hebt een stem-proxy ingesteld. Als je handmatig stemmen opnieuw wenst in te stellen, verwijder dan je proxy.",
+    "current-proxy": "Je huidige proxy is: <strong>{n}</strong>",
+    "remove-proxy": "Proxy wissen",
+    "proxy-removed": "Proxy is gewist",
+    "proxy-created": "@{n} heeft ingesteld als proxy"
   },
   "transfer": {
     "transfer-title": "Overschrijven naar account",
