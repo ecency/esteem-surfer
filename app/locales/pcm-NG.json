@@ -313,17 +313,17 @@
     "cut": "Cut",
     "copy": "Copy",
     "paste": "Paste",
-    "open-image-browser": "Open the image for browser",
-    "copy-image-url": "Copy image url"
+    "open-image-browser": "Open the picture for browser",
+    "copy-image-url": "Copy the picture link"
   },
   "notification": {
-    "popup-title": "You have a new notification",
-    "voted": "{source} voted your post",
-    "mention-post": "{source} mentioned you in a post",
-    "mention-comment": "{source} mentioned you in a comment",
-    "followed": "{source} followed you",
-    "replied": "{source} replied you",
-    "reblogged": "{source} reblogged your post"
+    "popup-title": "You get new alert",
+    "voted": "{source} don vote your tori",
+    "mention-post": "{source} don holla you for e tori",
+    "mention-comment": "{source} don holla you for e comment ",
+    "followed": "{source} don dey follow you",
+    "replied": "{source} don reply you",
+    "reblogged": "{source} don reblog your tori"
   },
   "activities": {
     "type-all": "All Activities",
@@ -381,9 +381,9 @@
     "from": "From",
     "from-placeholder": "Select a user",
     "to": "To",
-    "to-placeholder": "username",
-    "to-not-found": "The user that you are trying to transfer funds to does not exist!",
-    "to-bad-actor": "Use caution sending to this account. Please double check your spelling for possible phishing.",
+    "to-placeholder": "guy-name",
+    "to-not-found": "The person wey you dey try transfer money to no dey exist!",
+    "to-bad-actor": "Make you dey careful dey send go this account.  Abeg check your spelling wella so that dem no go hack you. ",
     "amount": "Amount",
     "amount-placeholder": "amount",
     "wrong-amount": "Wrong amount value",
