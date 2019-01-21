@@ -174,7 +174,7 @@
     "power-up": "Power Up",
     "withdraw-steem": "Keluarkan Steem",
     "withdraw-sbd": "Keluarkan Steem Dollar",
-    "delegate": "Delegate"
+    "delegate": "Mewakilkan"
   },
   "composer": {
     "title-placeholder": "Tajuk",
@@ -407,13 +407,13 @@
     "recent-transfers": "Transfer terbaru"
   },
   "delegate": {
-    "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
-    "slider-help": "Drag the slider to adjust the amount",
-    "confirm-title": "Confirm Delegation",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "Delegation completed",
+    "title": "Mewakilkan",
+    "sub-title": "Mewakilkan Steem Power",
+    "slider-help": "Seret penggelongsor untuk menyelaraskan amaun",
+    "confirm-title": "Mengesahkan wakil",
+    "confirm-sub-title": "Sila periksa, adakah semua betul",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> wakilkan kepada <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "Wakil delegasi selesai",
     "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
   },
   "delegation-list": {
