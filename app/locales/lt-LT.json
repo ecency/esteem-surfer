@@ -414,7 +414,7 @@
     "confirm-sub-title": "Prašome atidžiai patikrinti ar viskas teisinga",
     "delegation-summary": "<span class=\"sp\">{sp}</span> deleguota <span class=\"to-user\">{to}</span>",
     "success-sub-title": "Delegacija įvykdyta",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "insufficient-vesting": "Nepakanka bendrintų investicijų {a} VESTS"
   },
   "delegation-list": {
     "empty-list": "Nieko nėra"
