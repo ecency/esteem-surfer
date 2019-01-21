@@ -77,7 +77,7 @@
     "password-placeholder": "slaptažodis arba WIF",
     "login": "Prisijungti",
     "error-fields-required": "Prašome įvesti vartotojo vardą ir slaptažodį/WIF",
-    "error-public-key": "Įvedėte viešąjį raktą. Reikia Slaptažodžio/WIF",
+    "error-public-key": "Įvedėte public key. Reikia Slaptažodžio/WIF",
     "error-user-fetch": "Nepavyko pakrauti vartotojo duomenų",
     "error-user-not-found": "Vartotojas neegzistuoja",
     "error-authenticate": "Neteisingas prisijungimo vardas arba slaptažodis/WIF",
@@ -112,8 +112,8 @@
   },
   "login-required": {
     "default": "Šis veiksmas reikalauja prisijungimo",
-    "key-required": "Šis veiksmas reikalauja {key} rakto arba pagrindino slaptažodžio",
-    "keys-required": "Šis veiksmas reikalauja {keys} raktų arba pagrindino slaptažodžio"
+    "key-required": "Šis veiksmas reikalauja {key} key arba pagrindino slaptažodžio",
+    "keys-required": "Šis veiksmas reikalauja {keys} keys arba pagrindino slaptažodžio"
   },
   "quick-profile": {
     "fetch-error-profile": "Nepavyko pakrauti profilio duomenų",
@@ -393,7 +393,7 @@
     "memo": "Atmintinė",
     "memo-placeholder": "įveskite savo užrašus čia",
     "memo-help": "Ši atmintinė yra vieša",
-    "key-required-err": "Aktyvusis raktas nebuvo rastas pasirinktam vartotojui. Prašome įsitikinti, kad esate prisijungęs su teisingais duomenimis.",
+    "key-required-err": "Active key nebuvo rastas pasirinktam vartotojui. Prašome įsitikinti, kad esate prisijungęs su teisingais duomenimis.",
     "next": "Kitas",
     "confirm-title": "Patvirtinti persiuntimą",
     "confirm-sub-title": "Prašome atidžiai patikrinti ar viskas teisinga",
