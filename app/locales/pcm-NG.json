@@ -90,15 +90,15 @@
     "desc1": "Oya set PIN Code to make sure say your informate dey secure wella! ",
     "input-placeholder": "Enter your PIN code",
     "desc2": "You go need to enter your password for important transactions and any time wey you open the software.",
-    "created": "PIN code created"
+    "created": "The PIN code don ready"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
-    "input-placeholder": "Enter PIN code to continue",
-    "last-chance": "This is your last chance",
-    "invalidate": "Oh, I forgot it...",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "title": "Enter your PIN code",
+    "input-placeholder": "Enter your PIN code if you wan continue",
+    "last-chance": "Na your last chance be this",
+    "invalidate": "Chai, I don forget am...",
+    "invalidate-confirm": "You sure say you won reset the PIN code? ",
+    "invalidated": "PIN code don reset finish"
   },
   "user-menu": {
     "profile": "Profile",
