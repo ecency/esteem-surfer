@@ -332,7 +332,7 @@
     "type-mentions": "Paminėjimai",
     "type-follows": "Sekėjai",
     "type-reblogs": "Pasidalinimai",
-    "vote-str": "{p} balsavo už jūsų įrašą:",
+    "vote-str": "{p} mėgsta jūsų įrašą:",
     "reply-str": "atsakė į jūsų įrašą:",
     "mention-str": "paminėjo jus:",
     "followed-str": "seka",
