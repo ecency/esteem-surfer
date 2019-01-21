@@ -94,11 +94,11 @@
   },
   "confirm-pin-code": {
     "title": "Ange PIN-kod",
-    "input-placeholder": "Enter PIN code to continue",
+    "input-placeholder": "Ange din PIN-kod för att fortsätta",
     "last-chance": "Detta är din sista chans",
     "invalidate": "Åh, jag glömde det...",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "invalidate-confirm": "Vill du verkligen ogiltiggöra PIN-koden?",
+    "invalidated": "PIN-kod ogiltiggjord"
   },
   "user-menu": {
     "profile": "Profil",
@@ -146,17 +146,17 @@
     "unclaimed-rewards": "Outbetald belöning",
     "estimated-value": "Det uppskattade värdet är baserat på ett 7 dagars genomsnittlig värde av Steem.",
     "steem": "Steem",
-    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
+    "steem-description": "STEEM är utbytsbara tokens som går att överföra när som helst. STEEM kan omvandlas till Steem Power i en process som kallas \"powering up\".",
     "steem-power": "Steem Power",
     "steem-power-description": "Steem Power är inflytande-tokens som ger högre rösteffekt för att du sparar dem långsiktigt och röstar på inlägg. Ju mer Steem Power du har, desto mer kan du påverka andras belöningar och du belönas för noggrann röstning.",
-    "steem-power-delegated": "Delegated Steem Power",
-    "steem-power-received": "Received Steem Power",
-    "steem-power-total": "Total Steem Power",
+    "steem-power-delegated": "Delegerad Steem Power",
+    "steem-power-received": "Mottagna Steem Power",
+    "steem-power-total": "Totalt Steem Power",
     "steem-dollars": "Steem Dollar",
-    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
+    "steem-dollars-description": "Tokens värda ca. $1.00 av STEEM.",
     "savings": "Sparkonto",
     "savings-description": "Saldot föremål för 3 dagars uttag väntetiden.",
-    "next-power-down": "The next power down is {time} {amount}",
+    "next-power-down": "Nästa power down är {time} {amount}",
     "exchange": "Växla",
     "transactions": "Transaktioner",
     "transaction-curation_reward": "Curation Reward",
@@ -174,7 +174,7 @@
     "power-up": "Power Up",
     "withdraw-steem": "Ta ut Steem",
     "withdraw-sbd": "Ta ut Steem Dollar",
-    "delegate": "Delegate"
+    "delegate": "Delegera"
   },
   "composer": {
     "title-placeholder": "Titel",
@@ -237,12 +237,12 @@
     "title": "Utkast",
     "load-error": "Kunde inte ladda utkast",
     "empty-list": "Ingenting här",
-    "deleted": "Draft is deleted"
+    "deleted": "Utkast raderat"
   },
   "schedules": {
     "title": "Schemalagt Inlägg",
     "empty-list": "Ingenting här",
-    "deleted": "Scheduled post is deleted",
+    "deleted": "Schemalagt inlägg raderat",
     "move": "Flytta till utkast",
     "moved": "Flyttad till utkast"
   },
@@ -250,7 +250,7 @@
     "title": "Bokmärken",
     "load-error": "Kunde inte ladda bokmärke",
     "empty-list": "Ingenting här",
-    "deleted": "Bookmark is removed",
+    "deleted": "Bokmärke raderat",
     "search": "Sök bokmärken"
   },
   "favorites": {
@@ -283,7 +283,7 @@
   "navbar": {
     "settings": "Inställningar",
     "change-theme": "Ändra tema",
-    "login": "Login to your account",
+    "login": "Logga in på ditt konto",
     "bookmark": "Lägg till bokmärken",
     "bookmarkRemove": "Ta bort från bokmärken",
     "favorite": "Lägg till i favoriter",
@@ -292,7 +292,7 @@
     "activities": "Aktiviteter",
     "address-enter-url": "Ange url",
     "address-enter-query": "Ange sökord",
-    "unclaimed-reward-notice": "You have unclaimed rewards"
+    "unclaimed-reward-notice": "Du har outtagen belöning"
   },
   "search": {
     "n-results-for-q": "{n} resultat för {q}",
@@ -302,11 +302,11 @@
     "sort-newest": "Datum"
   },
   "updater": {
-    "new-version-available": "New version is available",
+    "new-version-available": "Ny version finns tillgänglig",
     "update": "Uppdatera",
     "dismiss": "Avfärda",
     "downloading": "Laddar ner ny version...",
-    "download-completed": "Download is completed",
+    "download-completed": "Nedladdning slutförd",
     "restart": "Starta om"
   },
   "context-menu": {
@@ -333,7 +333,7 @@
     "type-follows": "Följer",
     "type-reblogs": "Återblogga",
     "vote-str": "{p}% gillar ditt inlägg:",
-    "reply-str": "replied to your post:",
+    "reply-str": "svarade ditt inlägg:",
     "mention-str": "nämnt dig i:",
     "followed-str": "följer",
     "unfollowed-str": "sluta följa",
@@ -366,7 +366,7 @@
     "proxy-active-exp": "Du har angett en röstproxy. Om du vill återaktivera manuell röstning, ta bort din proxy.",
     "current-proxy": "Din nuvarande proxy är: <strong>{n}</strong>",
     "remove-proxy": "Ta bort Proxy",
-    "proxy-removed": "Proxy is cleared",
+    "proxy-removed": "Proxy borttaget",
     "proxy-created": "@{n} valt som proxy"
   },
   "transfer": {
@@ -376,7 +376,7 @@
     "transfer-saving-sub-title": "Skydda medel genom att kräva en 3 dagars uttag väntetid",
     "withdraw-saving-title": "Sparkonto Uttag",
     "withdraw-saving-sub-title": "Ta ut medel efter den begärda 3 dagars väntetiden",
-    "power-up-title": "Convert to Steem Power",
+    "power-up-title": "Konvertera till Steem Power",
     "power-up-sub-title": "Inflytande-tokens som ger dig mer kontroll över inläggsutbetalningar och du kan tjäna på \"curation\" belöningar.",
     "from": "Från",
     "from-placeholder": "Välj en användare",
@@ -393,7 +393,7 @@
     "memo": "PM",
     "memo-placeholder": "skriv din kommentar här",
     "memo-help": "Detta PM är offentlig",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "key-required-err": "Aktiva nyckeln hittades inte för valda kontot. Kontrollera att du loggar in med korrekta uppgifter.",
     "next": "Nästa",
     "confirm-title": "Bekräfta din överföring",
     "confirm-sub-title": "Kontrollera om allt är korrekt",
@@ -407,16 +407,16 @@
     "recent-transfers": "Senaste överföringar"
   },
   "delegate": {
-    "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
-    "slider-help": "Drag the slider to adjust the amount",
-    "confirm-title": "Confirm Delegation",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "Delegation completed",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "title": "Delegera",
+    "sub-title": "Delegera Steem Power",
+    "slider-help": "Dra skjutreglaget för att justera mängden",
+    "confirm-title": "Bekräfta Delegation",
+    "confirm-sub-title": "Kontrollera om allt är korrekt",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> delegeras till <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "Delegationen avslutat",
+    "insufficient-vesting": "Otillräckligt med \"vesting shares\" {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "Ingenting här"
   }
 }
