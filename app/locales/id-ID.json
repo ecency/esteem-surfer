@@ -20,8 +20,8 @@
   "entry-index": {
     "tags": "Tags populer",
     "filter-trending": "Sedang trending",
-    "filter-hot": "Panas",
-    "filter-created": "Baru saja",
+    "filter-hot": "Hot",
+    "filter-created": "Baru",
     "filter-active": "Aktif",
     "filter-promoted": "Promosikan",
     "filter-votes": "Berikan suara",
