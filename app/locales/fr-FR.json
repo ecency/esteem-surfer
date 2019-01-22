@@ -292,7 +292,8 @@
     "activities": "Activités",
     "address-enter-url": "Saisissez l'url",
     "address-enter-query": "Entrer un critère de recherche",
-    "unclaimed-reward-notice": "Vous avez des récompenses non réclamées"
+    "unclaimed-reward-notice": "Vous avez des récompenses non réclamées",
+    "search-no-matches": "No matches"
   },
   "search": {
     "n-results-for-q": "{n} résultats pour {q}",
