@@ -222,20 +222,20 @@
     "updated": "You don update your tori",
     "sync-scroll": "Scroll Sync",
     "words-count": "{n} words",
-    "no-suggestions": "No suggestions",
+    "no-suggestions": "Suggestion no dey",
     "emoji-filter-placeholder": "Filter",
     "emoji-filter-no-match": "No match",
-    "emoji-recently-used": "Recently Used"
+    "emoji-recently-used": "Wetin you just use"
   },
   "gallery": {
-    "title": "Gallery",
-    "copied": "Copied to clipboard",
-    "load-error": "Could not load gallery",
-    "empty-list": "Nothing here"
+    "title": "Picture",
+    "copied": "E don copy go clipboard",
+    "load-error": "Pictures no gree load",
+    "empty-list": "Nothing dey here"
   },
   "drafts": {
-    "title": "Drafts",
-    "load-error": "Could not load drafts",
+    "title": "Draft",
+    "load-error": "Draft no gree load oo",
     "empty-list": "Nothing here",
     "deleted": "Draft is deleted"
   },
