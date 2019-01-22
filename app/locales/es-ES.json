@@ -94,10 +94,10 @@
   },
   "confirm-pin-code": {
     "title": "Ingrese el código PIN",
-    "input-placeholder": "Enter PIN code to continue",
+    "input-placeholder": "Ingrese el código PIN para continuar",
     "last-chance": "Esta es tu última oportunidad",
     "invalidate": "Oh, me olvidé...",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
+    "invalidate-confirm": "¿Realmente quieres invalidar el código PIN?",
     "invalidated": "PIN code is invalidated"
   },
   "user-menu": {
@@ -146,17 +146,17 @@
     "unclaimed-rewards": "Recompensas no reclamadas",
     "estimated-value": "El valor estimado se basa en el promedio de 7 días de Steem.",
     "steem": "Steem",
-    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
+    "steem-description": "STEEM son fichas intercambiables que pueden transferirse en cualquier momento. STEEM se puede convertir a Steem Power en un proceso llamado encendido.",
     "steem-power": "Steem Power",
     "steem-power-description": "Steem Power son fichas de influencia que consiguen más poder por mantenerlas a largo plazo y votar en los posts. Cuántas más tengas, más influencia tendrás en las recompensas que le das al resto de gente y más recompensas obtendrás por tus votos.",
-    "steem-power-delegated": "Delegated Steem Power",
-    "steem-power-received": "Received Steem Power",
-    "steem-power-total": "Total Steem Power",
+    "steem-power-delegated": "Poder Steem delegado\n",
+    "steem-power-received": "Recibió Steem Power",
+    "steem-power-total": "Potencia total de Steem",
     "steem-dollars": "Steem Dólares",
-    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
+    "steem-dollars-description": "Fichas por valor de alrededor de $ 1.00 de STEEM.",
     "savings": "Ahorros",
     "savings-description": "El balance está sujeto a 3 días de espera para la retirada.",
-    "next-power-down": "The next power down is {time} {amount}",
+    "next-power-down": "El siguiente apagado es {tiempo} {cantidad}",
     "exchange": "Cambio",
     "transactions": "Transacciones",
     "transaction-curation_reward": "Recompensa por curación",
@@ -174,7 +174,7 @@
     "power-up": "Power up",
     "withdraw-steem": "Retirar Steem",
     "withdraw-sbd": "Retirar Steem dólar",
-    "delegate": "Delegate"
+    "delegate": "Delegar"
   },
   "composer": {
     "title-placeholder": "Título",
@@ -237,12 +237,12 @@
     "title": "Borradores",
     "load-error": "No se pudieron cargar los borradores",
     "empty-list": "Nada aquí",
-    "deleted": "Draft is deleted"
+    "deleted": "Borrador es eliminado"
   },
   "schedules": {
     "title": "Publicaciones programadas",
     "empty-list": "Nada aquí",
-    "deleted": "Scheduled post is deleted",
+    "deleted": "Se borra la publicación programada",
     "move": "Mover a borradores",
     "moved": "Movido a borradores"
   },
@@ -250,7 +250,7 @@
     "title": "Marcadores",
     "load-error": "No pudo cargar marcadores",
     "empty-list": "Nada aquí",
-    "deleted": "Bookmark is removed",
+    "deleted": "Se ha eliminado el marcador",
     "search": "Buscar en marcadores"
   },
   "favorites": {
@@ -283,7 +283,7 @@
   "navbar": {
     "settings": "Ajustes",
     "change-theme": "Cambiar tema",
-    "login": "Login to your account",
+    "login": "Ingrese a su cuenta",
     "bookmark": "Añadir a favoritos",
     "bookmarkRemove": "Quitar de los favoritos",
     "favorite": "Añadir a Favoritos",
