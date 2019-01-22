@@ -292,7 +292,8 @@
     "activities": "Activiteiten",
     "address-enter-url": "Voer url in",
     "address-enter-query": "Voer zoekterm in",
-    "unclaimed-reward-notice": "Je hebt niet-opgeëiste beloningen"
+    "unclaimed-reward-notice": "Je hebt niet-opgeëiste beloningen",
+    "search-no-matches": "No matches"
   },
   "search": {
     "n-results-for-q": "{n} resultaten voor {q}",
