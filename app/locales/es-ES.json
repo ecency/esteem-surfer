@@ -6,7 +6,7 @@
     "no": "No",
     "delete": "Borrar",
     "cancel": "Cancelar",
-    "ok": "Aceptar",
+    "ok": "De acuerdo",
     "edit": "Editar",
     "server-error": "El proceso no se pudo completar debido a un error del servidor",
     "save": "Salvar",
@@ -81,7 +81,7 @@
     "error-user-fetch": "Los datos del usuario no se pudieron recuperar",
     "error-user-not-found": "User does not exist",
     "error-authenticate": "Nombre de usuario o contraseña incorrectos / WIF",
-    "create-account-text": "¿No tienes una cuenta? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">¡Regístrese ahora!</a>",
+    "create-account-text": "¿No tienes una cuenta? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\"> ¡Regístrese ahora! </a>",
     "login-with-sc": "Iniciar sesión con",
     "divider-text": "O"
   },
@@ -98,7 +98,7 @@
     "last-chance": "Esta es tu última oportunidad",
     "invalidate": "Oh, me olvidé...",
     "invalidate-confirm": "¿Realmente quieres invalidar el código PIN?",
-    "invalidated": "PIN code is invalidated"
+    "invalidated": "El código PIN está invalidado"
   },
   "user-menu": {
     "profile": "Perfil",
@@ -412,12 +412,12 @@
     "sub-title": "Delegate Steem Power",
     "slider-help": "Arrastre el control deslizante para ajustar la cantidad",
     "confirm-title": "Confirmar la delegación",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "Delegation completed",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "confirm-sub-title": "Por favor, compruebe si todo es correcto.",
+    "delegation-summary": "<span class = \"sp\"> {sp} </span> delegado a <span class = \"to-user\"> {to} </span>",
+    "success-sub-title": "Delegación completada",
+    "insufficient-vesting": "Insuficientes acciones de adjudicación {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "Nada aquí"
   }
 }
