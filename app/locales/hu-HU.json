@@ -292,7 +292,8 @@
     "activities": "Tevékenységek",
     "address-enter-url": "Url megadása",
     "address-enter-query": "Írd be a keresési paramétereket",
-    "unclaimed-reward-notice": "Árvételre váró jutalmad van"
+    "unclaimed-reward-notice": "Árvételre váró jutalmad van",
+    "search-no-matches": "No matches"
   },
   "search": {
     "n-results-for-q": "{n} találat {q} keresésre",
