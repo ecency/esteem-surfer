@@ -344,16 +344,16 @@
     "refresh": "Refresh am",
     "mark-all-read": "Mark everytin say u don read dem",
     "leaderboard": "Leaderboard",
-    "leaderboard-title": "Daily Top users"
+    "leaderboard-title": "People Wey Dey Top Today"
   },
   "witnesses": {
     "page-title": "Witness Voting",
-    "remaining": "<strong>{n}</strong> of {max} votes remaining",
+    "remaining": "<strong>{n}</strong> of {max} votes nai remain",
     "witness": "Witness",
     "miss": "Miss",
-    "url": "URL",
+    "url": "LINK",
     "fee": "Fee",
-    "feed": "Feed",
+    "feed": "Tori",
     "block-size": "Block size",
     "ac-avail": "AC avail",
     "ac-budget": "AC budget",
