@@ -292,8 +292,8 @@
     "activities": "Actividades",
     "address-enter-url": "Introduzca url",
     "address-enter-query": "Introduce el término de búsqueda",
-    "unclaimed-reward-notice": "You have unclaimed rewards",
-    "search-no-matches": "No matches"
+    "unclaimed-reward-notice": "Tienes recompensas no reclamadas",
+    "search-no-matches": "No hay coincidencias"
   },
   "search": {
     "n-results-for-q": "{n} resultados para {q}",
@@ -303,11 +303,11 @@
     "sort-newest": "Fecha"
   },
   "updater": {
-    "new-version-available": "New version is available",
+    "new-version-available": "La nueva versión está disponible",
     "update": "Actualización",
     "dismiss": "Descartar",
     "downloading": "Descargando nueva versión...",
-    "download-completed": "Download is completed",
+    "download-completed": "La descarga esta completa",
     "restart": "Reiniciar"
   },
   "context-menu": {
@@ -334,7 +334,7 @@
     "type-follows": "Sigue",
     "type-reblogs": "Reblogueos",
     "vote-str": "A {p}% le gusta tu publicación:",
-    "reply-str": "replied to your post:",
+    "reply-str": "respondió a tu mensaje:",
     "mention-str": "te mencionó en:",
     "followed-str": "seguido",
     "unfollowed-str": "dejado de seguir",
@@ -367,7 +367,7 @@
     "proxy-active-exp": "Has seleccionado un proxy de votación. Si quieres volver a habilitar el voto manual, por favor borra el proxy.",
     "current-proxy": "Tu proxy actual es:<strong>{n}</strong>",
     "remove-proxy": "Borrar proxy",
-    "proxy-removed": "Proxy is cleared",
+    "proxy-removed": "Proxy se borra",
     "proxy-created": "@{n} se ha fijado como proxy"
   },
   "transfer": {
@@ -377,7 +377,7 @@
     "transfer-saving-sub-title": "Protege los fondos al pedir la retirada con un periodo de 3 días de espera",
     "withdraw-saving-title": "Retirar ahorros",
     "withdraw-saving-sub-title": "Retirada de fondos después del periodo de 3 días de espera",
-    "power-up-title": "Convert to Steem Power",
+    "power-up-title": "Convertir a Steem Power",
     "power-up-sub-title": "Fichas con influencia te dan más control sobre los pagos de los posts y te permiten ganar recompensas de curación.",
     "from": "Desde",
     "from-placeholder": "Seleccione un usuario",
@@ -394,7 +394,7 @@
     "memo": "Memo",
     "memo-placeholder": "escriba sus notas aquí",
     "memo-help": "Este memo es público",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "key-required-err": "No se pudo encontrar la clave activa para la cuenta seleccionada. Por favor, asegúrese de haber iniciado sesión con las credenciales adecuadas.\n\n",
     "next": "Siguiente",
     "confirm-title": "Confirmar Transferencia",
     "confirm-sub-title": "Por favor, revise si todo es correcto",
@@ -410,8 +410,8 @@
   "delegate": {
     "title": "Delegate",
     "sub-title": "Delegate Steem Power",
-    "slider-help": "Drag the slider to adjust the amount",
-    "confirm-title": "Confirm Delegation",
+    "slider-help": "Arrastre el control deslizante para ajustar la cantidad",
+    "confirm-title": "Confirmar la delegación",
     "confirm-sub-title": "Please, check if everything is correct",
     "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
     "success-sub-title": "Delegation completed",
