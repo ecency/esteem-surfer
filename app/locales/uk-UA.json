@@ -292,7 +292,8 @@
     "activities": "Активність",
     "address-enter-url": "Введіть url",
     "address-enter-query": "Введіть пошуковий запит",
-    "unclaimed-reward-notice": "Ви маєте незараховані винагороди"
+    "unclaimed-reward-notice": "Ви маєте незараховані винагороди",
+    "search-no-matches": "No matches"
   },
   "search": {
     "n-results-for-q": "{n} результатів для {q}",
