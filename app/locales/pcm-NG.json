@@ -44,7 +44,7 @@
     "modal-title": "People wey vote ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "reblog by {n}"
   },
   "entry-reblog": {
     "reblog": "Reblog am",
