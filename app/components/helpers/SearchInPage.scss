@@ -17,8 +17,6 @@ mark[data-markjs='true'] {
   width: 100%;
 
   .search-control {
-    background: $white;
-    border: solid 1px $white-three;
     border-radius: 8px;
     display: flex;
     position: absolute;
@@ -26,6 +24,16 @@ mark[data-markjs='true'] {
     top: 0;
     width: 300px;
     z-index: 10;
+
+    @include themify(day) {
+      background: $white;
+      border: solid 1px $white-three;
+    }
+
+    @include themify(night) {
+      background: $dark-six;
+      border: solid 1px $metallic-blue;
+    }
 
     .search-part {
       align-items: center;
@@ -42,30 +50,54 @@ mark[data-markjs='true'] {
         padding-left: 4px;
         padding-right: 4px;
 
+        @include themify(day) {
+          color: $steel-grey;
+        }
+
+        @include themify(night) {
+          color: $silver;
+        }
+
         &:focus {
           outline: none;
         }
 
-        &::placeholder {
-          color: $white-four;
+        @include themify(day) {
+          &::placeholder {
+            color: $white-four;
+          }
         }
       }
 
       .control-separator {
-        background-color: $white-three;
         flex-grow: 0;
         height: 28px;
         width: 1px;
+
+        @include themify(day) {
+          background-color: $white-three;
+        }
+
+        @include themify(night) {
+          background-color: $metallic-blue;
+        }
       }
 
       .matches {
         align-items: center;
-        color: $steel-grey;
         display: flex;
         font-size: 12px;
         height: 100%;
         position: absolute;
         right: 6px;
+
+        @include themify(day) {
+          color: $steel-grey;
+        }
+
+        @include themify(night) {
+          color: $silver;
+        }
       }
     }
 
@@ -78,11 +110,18 @@ mark[data-markjs='true'] {
       .control-prev,
       .control-next,
       .control-close {
-        color: $steel-grey;
         cursor: pointer;
         display: inline-flex;
         font-size: 16px;
         line-height: 100%;
+
+        @include themify(day) {
+          color: $steel-grey;
+        }
+
+        @include themify(night) {
+          color: $metallic-blue;
+        }
       }
     }
   }

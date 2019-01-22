@@ -292,7 +292,8 @@
     "activities": "Активности",
     "address-enter-url": "Введите url",
     "address-enter-query": "Введите поисковой запрос",
-    "unclaimed-reward-notice": "Есть незачисленные награды"
+    "unclaimed-reward-notice": "Есть незачисленные награды",
+    "search-no-matches": "No matches"
   },
   "search": {
     "n-results-for-q": "{n} результатов для {q}",

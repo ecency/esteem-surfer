@@ -1,12 +1,11 @@
+/* eslint-disable jsx-a11y/no-autofocus */
+
 import React, { PureComponent, Fragment } from 'react';
 
-import {
-  FormattedMessage,
-  injectIntl
-} from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
-import Mark from 'mark.js';
+const Mark = require('mark.js');
 
 let markInstance = null;
 
@@ -34,9 +33,7 @@ class SearchInPage extends PureComponent {
     history.listen(() => {
       this.close();
     });
-
   }
-
 
   componentWillUnmount() {
     window.removeEventListener('keydown', this.onWindowKeyDown);
@@ -44,17 +41,18 @@ class SearchInPage extends PureComponent {
   }
 
   close = () => {
-    this.setState({ visible: false, keyword: '', matches: 0, cursor: 0, active: false }, () => {
-      markInstance.unmark({});
-    });
+    this.setState(
+      { visible: false, keyword: '', matches: 0, cursor: 0, active: false },
+      () => {
+        markInstance.unmark({});
+      }
+    );
   };
 
   toggle = () => {
-
     const { visible, focus } = this.state;
 
     if (visible) {
-
       if (!focus) {
         document.querySelector('#page-search-query').focus();
         return;
@@ -66,15 +64,14 @@ class SearchInPage extends PureComponent {
     }
   };
 
-  onWindowKeyDown = (e) => {
+  onWindowKeyDown = e => {
     // ctrl + f
     if (e.keyCode === 70 && e.metaKey) {
       this.toggle();
     }
   };
 
-
-  focusElem = (index) => {
+  focusElem = index => {
     const elems = document.querySelectorAll('mark[data-markjs="true"]');
 
     if (elems.length === 0) {
@@ -121,10 +118,9 @@ class SearchInPage extends PureComponent {
     this.setState({ cursor: newCursor }, () => {
       this.focusElem(newCursor);
     });
-
   };
 
-  onKeyDown = (e) => {
+  onKeyDown = e => {
     if (e.keyCode !== 13) {
       return;
     }
@@ -132,9 +128,7 @@ class SearchInPage extends PureComponent {
     this.moveNext();
   };
 
-
   search = () => {
-
     markInstance.unmark({});
 
     const { keyword } = this.state;
@@ -147,14 +141,8 @@ class SearchInPage extends PureComponent {
     const opts = {
       diacritics: false,
       separateWordSearch: false,
-      'exclude': [
-        '.mi',
-        '.CodeMirror *',
-        '.ant-select *',
-        'input',
-        'button *'
-      ],
-      done: (c) => {
+      exclude: ['.mi', '.CodeMirror *', '.ant-select *', 'input', 'button *'],
+      done: c => {
         this.setState({ matches: c, active: true });
 
         if (c > 0) {
@@ -168,7 +156,7 @@ class SearchInPage extends PureComponent {
     markInstance.mark(keyword, opts);
   };
 
-  keywordChanged = (e) => {
+  keywordChanged = e => {
     const keyword = e.target.value;
 
     if (this.timer) {
@@ -181,47 +169,58 @@ class SearchInPage extends PureComponent {
   };
 
   render() {
-
     const { visible, keyword, cursor, matches, active } = this.state;
 
     if (visible) {
-      return <div className="search-in-page">
-        <div className="search-control">
-          <div className="search-part">
-            <input id="page-search-query" type="text" value={keyword} autoFocus placeholder="Search"
-                   onChange={this.keywordChanged}
-                   onKeyDown={this.onKeyDown}
-                   onFocus={() => {
-                     this.setState({ focus: true });
-                   }}
-                   onBlur={() => {
-                     this.setState({ focus: false });
-                   }}/>
-            <div className="control-separator"/>
-            {active &&
-            <div className="matches">
-              {matches > 0 &&
-              <Fragment>{cursor} / {matches}</Fragment>
-              }
-              {!matches &&
-              <Fragment>No matches</Fragment>
-              }
+      return (
+        <div className="search-in-page">
+          <div className="search-control">
+            <div className="search-part">
+              <input
+                id="page-search-query"
+                type="text"
+                value={keyword}
+                autoFocus
+                placeholder="Search"
+                onChange={this.keywordChanged}
+                onKeyDown={this.onKeyDown}
+                onFocus={() => {
+                  this.setState({ focus: true });
+                }}
+                onBlur={() => {
+                  this.setState({ focus: false });
+                }}
+              />
+              <div className="control-separator" />
+              {active && (
+                <div className="matches">
+                  {matches > 0 && (
+                    <Fragment>
+                      {cursor} / {matches}
+                    </Fragment>
+                  )}
+                  {!matches && (
+                    <Fragment>
+                      <FormattedMessage id="navbar.search-no-matches" />
+                    </Fragment>
+                  )}
+                </div>
+              )}
             </div>
-            }
-          </div>
-          <div className="control-part">
-            <div className="control-prev" onClick={this.movePrev}><i className="mi">keyboard_arrow_up</i></div>
-            <div className="control-next" onClick={this.moveNext}><i className="mi">keyboard_arrow_down</i></div>
-            <div className="control-prev" onClick={this.toggle}><i className="mi">close</i></div>
+            <div className="control-part">
+              <div role="none" className="control-prev" onClick={this.movePrev}>
+                <i className="mi">keyboard_arrow_up</i>
+              </div>
+              <div role="none" className="control-next" onClick={this.moveNext}>
+                <i className="mi">keyboard_arrow_down</i>
+              </div>
+              <div role="none" className="control-prev" onClick={this.toggle}>
+                <i className="mi">close</i>
+              </div>
+            </div>
           </div>
         </div>
-        {/*
-        <div className="search-input">
-          <Input value={keyword} autoFocus placeHolder="Search" onChange={this.keywordChanged}
-                 onKeyDown={this.onKeyDown}/>
-        </div>
-        */}
-      </div>;
+      );
     }
 
     return '';
@@ -229,7 +228,7 @@ class SearchInPage extends PureComponent {
 }
 
 SearchInPage.propTypes = {
-  intl: PropTypes.instanceOf(Object).isRequired
+  history: PropTypes.instanceOf(Object).isRequired
 };
 
-export default injectIntl(SearchInPage);
+export default SearchInPage;
