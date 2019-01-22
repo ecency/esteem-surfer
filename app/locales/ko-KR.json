@@ -62,7 +62,7 @@
     "server-connecting": "'{server}'에 연결 중...",
     "server-connect-error": "'{server}'에 연결할 수 없습니다. 인터넷 연결 상태를 확인하세요.",
     "server-timeout-error": "'{server}'가 죽은 것 같습니다",
-    "server-changed": "Server selection changed to {server}",
+    "server-changed": "서버 선택이 {server} (으)로 변경되었습니다.",
     "server-custom-address": "커스텀 서버 주소",
     "server-list-fetch-error": "서버 목록을 조회할 수 없습니다",
     "push-notifications": "알림",
@@ -96,7 +96,7 @@
     "title": "Enter PIN Code",
     "input-placeholder": "Enter PIN code to continue",
     "last-chance": "이번이 마지막 기회입니다",
-    "invalidate": "Oh, I forgot it...",
+    "invalidate": "오, 잊어 버렸습니다 ...",
     "invalidate-confirm": "Do you really want to invalidate PIN code?",
     "invalidated": "PIN code is invalidated"
   },
