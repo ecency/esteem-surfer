@@ -1,12 +1,12 @@
 {
   "g": {
-    "compose-entry": "Membuat postingan",
+    "compose-entry": "Membuat posting",
     "are-you-sure": "Apakah anda yakin?",
     "yes": "Iya",
     "no": "Tidak",
     "delete": "Hapus",
     "cancel": "Batal",
-    "ok": "Ok",
+    "ok": "Iya",
     "edit": "Edit",
     "server-error": "Proses tidak dapat di selesaikan karena kesalahan server",
     "save": "Simpan",
@@ -18,9 +18,9 @@
     "about": "Tentang"
   },
   "entry-index": {
-    "tags": "Tagar populer",
+    "tags": "Tags populer",
     "filter-trending": "Sedang trending",
-    "filter-hot": "Terhangat",
+    "filter-hot": "Terpanas",
     "filter-created": "Baru saja",
     "filter-active": "Aktif",
     "filter-promoted": "Promosikan",
