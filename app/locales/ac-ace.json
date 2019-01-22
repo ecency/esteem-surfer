@@ -74,7 +74,7 @@
     "accounts-title": "Tamong seubagoe",
     "traditional-login-desc": "Tamong dengeun nan pengguna ngon kata gunci droen keu ta lanjut",
     "username-placeholder": "nan pengguna",
-    "password-placeholder": "password or WIF",
+    "password-placeholder": "Kata gunci atawa WIF",
     "login": "Tamong",
     "error-fields-required": "Please enter username and password/WIF",
     "error-public-key": "You entered a public key. Password/WIF required",
@@ -93,8 +93,8 @@
     "created": "PIN code created"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
-    "input-placeholder": "Enter PIN code to continue",
+    "title": "Pasoe kode PIN",
+    "input-placeholder": "Pasoe kode PIN keu teunamah",
     "last-chance": "Nyoe yang paleng akhe",
     "invalidate": "Oh, lôn tuwoe nyan...",
     "invalidate-confirm": "Do you really want to invalidate PIN code?",
