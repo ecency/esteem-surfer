@@ -97,7 +97,7 @@
     "input-placeholder": "Enter your PIN code if you wan continue",
     "last-chance": "Na your last chance be this",
     "invalidate": "Chai, I don forget am...",
-    "invalidate-confirm": "You sure say you won reset the PIN code? ",
+    "invalidate-confirm": "You sure say you wan reset the PIN code? ",
     "invalidated": "PIN code don reset finish"
   },
   "user-menu": {
@@ -105,7 +105,7 @@
     "bookmarks": "Bookmarks",
     "favorites": "Favorites",
     "drafts": "Draft",
-    "schedules": "Schedules",
+    "schedules": "Tori Wey You Time",
     "gallery": "Picture",
     "login-as": "Login As",
     "logout": "Logout"
@@ -205,9 +205,9 @@
     "upvote": "Upvote",
     "clear": "Clear everything",
     "form-error-message": "The form no complete. Abeg fill everything",
-    "schedule": "Schedule",
+    "schedule": "Tori Wey You Time",
     "select-schedule-date": "Select Date",
-    "schedule-saved": "Tori don dey scheduled",
+    "schedule-saved": "You don time the tori",
     "schedule-picker-select-time": "Select Time",
     "schedule-picker-select-date": "Select Date",
     "grant-posting-perm": "Give am permission to post",
