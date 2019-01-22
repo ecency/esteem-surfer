@@ -292,7 +292,8 @@
     "activities": "활동",
     "address-enter-url": "Enter url",
     "address-enter-query": "Enter search query",
-    "unclaimed-reward-notice": "You have unclaimed rewards"
+    "unclaimed-reward-notice": "You have unclaimed rewards",
+    "search-no-matches": "No matches"
   },
   "search": {
     "n-results-for-q": "{n} results for {q}",
