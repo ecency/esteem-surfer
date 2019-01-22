@@ -292,7 +292,8 @@
     "activities": "活動",
     "address-enter-url": "輸入網址",
     "address-enter-query": "輸入搜尋字串 ",
-    "unclaimed-reward-notice": "You have unclaimed rewards"
+    "unclaimed-reward-notice": "You have unclaimed rewards",
+    "search-no-matches": "No matches"
   },
   "search": {
     "n-results-for-q": "{q} 有 {n} 個結果",
