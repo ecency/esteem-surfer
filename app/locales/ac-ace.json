@@ -8,7 +8,7 @@
     "cancel": "Batai",
     "ok": "Oke",
     "edit": "Ubah",
-    "server-error": "Process could not be completed due to server error",
+    "server-error": "Proses han jeut seuleusoe, na masalah bak server",
     "save": "Ka meukeubah",
     "done": "Seulesoe",
     "select": "Pileh"
@@ -78,7 +78,7 @@
     "login": "Tamong",
     "error-fields-required": "Please enter username and password/WIF",
     "error-public-key": "You entered a public key. Password/WIF required",
-    "error-user-fetch": "User data could not be fetched",
+    "error-user-fetch": "Han jeut cok data pengguna",
     "error-user-not-found": "User does not exist",
     "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "Hana akun? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Daftar ilee!</a>",
