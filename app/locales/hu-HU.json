@@ -62,7 +62,7 @@
     "server-connecting": "Kapcsolódás '{server}'...",
     "server-connect-error": "Nem sikerült csatlakozni a '{server}'-hez. Ellenőrizd az internet kapcsolatot.",
     "server-timeout-error": "'{server}' úgy néz ki nem elérhető",
-    "server-changed": "Server selection changed to {server}",
+    "server-changed": "Szerver {server}-re váltva",
     "server-custom-address": "Custom server address",
     "server-list-fetch-error": "Nem sikerült betölteni a szerverlistát",
     "push-notifications": "Értesítések bekapcsolása",
