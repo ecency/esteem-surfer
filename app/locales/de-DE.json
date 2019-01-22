@@ -292,7 +292,8 @@
     "activities": "Aktivitäten",
     "address-enter-url": "Adresse eingeben",
     "address-enter-query": "Suchbegriff eingeben",
-    "unclaimed-reward-notice": "Du hast nicht abgeholte Belohnungen"
+    "unclaimed-reward-notice": "Du hast nicht abgeholte Belohnungen",
+    "search-no-matches": "No matches"
   },
   "search": {
     "n-results-for-q": "{n} Suchergebnisse für {q}",
