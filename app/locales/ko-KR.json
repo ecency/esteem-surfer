@@ -8,13 +8,13 @@
     "cancel": "취소",
     "ok": "확인",
     "edit": "편집",
-    "server-error": "Process could not be completed due to server error",
+    "server-error": "서버 오류로 인해 프로세스를 완료 할 수 없습니다.",
     "save": "저장",
     "done": "완료",
-    "select": "Select"
+    "select": "선택"
   },
   "footer": {
-    "faq": "FAQ",
+    "faq": "자주하는 질문",
     "about": "소개"
   },
   "entry-index": {
@@ -44,7 +44,7 @@
     "modal-title": "투표자 ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "{n}에 의해 :"
   },
   "entry-reblog": {
     "reblog": "리블로그",
@@ -62,7 +62,7 @@
     "server-connecting": "'{server}'에 연결 중...",
     "server-connect-error": "'{server}'에 연결할 수 없습니다. 인터넷 연결 상태를 확인하세요.",
     "server-timeout-error": "'{server}'가 죽은 것 같습니다",
-    "server-changed": "서버 선택이 {server} (으)로 변경되었습니다.",
+    "server-changed": "서버 선택이 {server} (으) 로 변경되었습니다.",
     "server-custom-address": "커스텀 서버 주소",
     "server-list-fetch-error": "서버 목록을 조회할 수 없습니다",
     "push-notifications": "알림",
@@ -358,13 +358,13 @@
     "ac-avail": "AC avail",
     "ac-budget": "AC budget",
     "version": "Version",
-    "voted": "@{n} voted",
-    "vote-removed": "vote removed for @{n}",
+    "voted": "@ {n} 명이 투표했습니다.",
+    "vote-removed": "@ {n}에 투표가 삭제되었습니다.",
     "username-placeholder": "사용자 이름",
-    "extra-witnesses-exp": "Enter account name below to vote for a witness outside of <strong>Top 50</strong>",
-    "proxy-exp": "You can also choose a proxy that will vote for witnesses for you. This will reset your current witness selection.",
-    "set-proxy": "Set Proxy",
-    "proxy-active-exp": "You have set a voting proxy. If you would like to re-enable manual voting, please clear your proxy.",
+    "extra-witnesses-exp": "<strong> 상위 50 개 </ strong> 이외의 증인에게 투표하려면 아래에 계정 이름을 입력하십시오.",
+    "proxy-exp": "목격자에게 투표 할 프록시를 선택할 수도 있습니다. 그러면 현재 목격자 선택이 재설정됩니다.",
+    "set-proxy": "프록시 설정",
+    "proxy-active-exp": "투표 프록시를 설정했습니다. 수동 투표를 다시 사용하려면 프록시를 지우십시오.",
     "current-proxy": "Your current proxy is: <strong>{n}</strong>",
     "remove-proxy": "Clear Proxy",
     "proxy-removed": "Proxy is cleared",
