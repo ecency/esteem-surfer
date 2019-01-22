@@ -292,7 +292,8 @@
     "activities": "All your matter",
     "address-enter-url": "Put link",
     "address-enter-query": "Put wetin you won search",
-    "unclaimed-reward-notice": "You get reward wey you never collect"
+    "unclaimed-reward-notice": "You get reward wey you never collect",
+    "search-no-matches": "No matches"
   },
   "search": {
     "n-results-for-q": "{n} results for {n}",
