@@ -1,6 +1,6 @@
 {
   "g": {
-    "compose-entry": "Make new tori",
+    "compose-entry": "Write new tori",
     "are-you-sure": "You sure?",
     "yes": "Yes",
     "no": "No",
@@ -8,7 +8,7 @@
     "cancel": "Cancel",
     "ok": "Ok",
     "edit": "Edit",
-    "server-error": "The thing no gree complete because of server wahala",
+    "server-error": "The process no gree complete because of server wahala",
     "save": "Save",
     "done": "E don go",
     "select": "Select"
