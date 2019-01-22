@@ -79,7 +79,7 @@
     "error-fields-required": "Please enter username and password/WIF",
     "error-public-key": "You entered a public key. Password/WIF required",
     "error-user-fetch": "Han jeut cok data pengguna",
-    "error-user-not-found": "User does not exist",
+    "error-user-not-found": "Hana pengguna",
     "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "Hana akun? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Daftar ilee!</a>",
     "login-with-sc": "Tamong deungon",
