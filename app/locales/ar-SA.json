@@ -292,7 +292,8 @@
     "activities": "الأنشطة",
     "address-enter-url": "أدخل رابط URL",
     "address-enter-query": "أدخل إستعلام البحث",
-    "unclaimed-reward-notice": "أنت لم تقم بمطالبة المافأة"
+    "unclaimed-reward-notice": "أنت لم تقم بمطالبة المافأة",
+    "search-no-matches": "No matches"
   },
   "search": {
     "n-results-for-q": "{n} نتائج لـ {q}",
