@@ -335,7 +335,7 @@
     "vote-str": "{p}% ont aimés votre post:",
     "reply-str": "a répondu à votre post:",
     "mention-str": "vous a mentionné sur:",
-    "followed-str": "followed",
+    "followed-str": "vous a suivi",
     "unfollowed-str": "ne vous suit plus",
     "ignored-str": "ignoré",
     "reblog-str": "a reblogué votre publication:",
