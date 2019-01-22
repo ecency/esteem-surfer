@@ -293,7 +293,7 @@
     "address-enter-url": "Įveskite url",
     "address-enter-query": "Įveskite paieškos užklausą",
     "unclaimed-reward-notice": "Jūs turite neatsiimtą atlygį",
-    "search-no-matches": "No matches"
+    "search-no-matches": "Rezultatų nėra"
   },
   "search": {
     "n-results-for-q": "{n} rezultatų {q}",
