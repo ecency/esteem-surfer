@@ -20,7 +20,7 @@
   "entry-index": {
     "tags": "Tags populer",
     "filter-trending": "Sedang trending",
-    "filter-hot": "Terpanas",
+    "filter-hot": "Panas",
     "filter-created": "Baru saja",
     "filter-active": "Aktif",
     "filter-promoted": "Promosikan",
@@ -31,13 +31,13 @@
   "entry-payout": {
     "potential-payout": "Potensi pembayaran",
     "promoted": "Promosikan",
-    "author-payout": "Pembayaran Pencipta konten",
-    "curation-payout": "Pembayaran Pengkurasi",
+    "author-payout": "Pembayaran penulis",
+    "curation-payout": "Pembayaran pemberi Suara",
     "payout-date": "Pembayaran"
   },
   "entry-votes": {
     "n-more": "{n} lainnya",
-    "author": "Pencipta Konten",
+    "author": "Penulis",
     "reward": "Imbalan",
     "percent": "Persen",
     "time": "Waktu",
