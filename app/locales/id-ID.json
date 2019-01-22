@@ -292,7 +292,8 @@
     "activities": "Aktifitas",
     "address-enter-url": "Masukkan url",
     "address-enter-query": "Masukkan permintaan pencarian",
-    "unclaimed-reward-notice": "Anda memiliki hadiah yang tidak di klaim"
+    "unclaimed-reward-notice": "Anda memiliki hadiah yang tidak di klaim",
+    "search-no-matches": "No matches"
   },
   "search": {
     "n-results-for-q": "{n} hasil untuk {q}",
