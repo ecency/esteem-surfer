@@ -98,7 +98,7 @@
     "last-chance": "Esta es tu última oportunidad",
     "invalidate": "Oh, me olvidé...",
     "invalidate-confirm": "¿Realmente quieres invalidar el código PIN?",
-    "invalidated": "El código PIN está invalidado"
+    "invalidated": "Código Pin invalidado"
   },
   "user-menu": {
     "profile": "Perfil",
@@ -409,7 +409,7 @@
   },
   "delegate": {
     "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
+    "sub-title": "Delegado Steem Power",
     "slider-help": "Arrastre el control deslizante para ajustar la cantidad",
     "confirm-title": "Confirmar la delegación",
     "confirm-sub-title": "Por favor, compruebe si todo es correcto.",
