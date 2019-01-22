@@ -292,7 +292,8 @@
     "activities": "アクティビティ",
     "address-enter-url": "URLを入力",
     "address-enter-query": "検索クエリを入力",
-    "unclaimed-reward-notice": "You have unclaimed rewards"
+    "unclaimed-reward-notice": "You have unclaimed rewards",
+    "search-no-matches": "No matches"
   },
   "search": {
     "n-results-for-q": "{q} の検索結果の内{n} 件",
