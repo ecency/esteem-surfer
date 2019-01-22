@@ -292,7 +292,8 @@
     "activities": "Aktivnosti",
     "address-enter-url": "Unesite URL adresu",
     "address-enter-query": "Unesite upit za pretragu",
-    "unclaimed-reward-notice": "Imate nepotvrđene nagrade"
+    "unclaimed-reward-notice": "Imate nepotvrđene nagrade",
+    "search-no-matches": "No matches"
   },
   "search": {
     "n-results-for-q": "{n} rezultata za {q}",
