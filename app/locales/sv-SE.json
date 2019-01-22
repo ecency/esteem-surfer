@@ -292,7 +292,8 @@
     "activities": "Aktiviteter",
     "address-enter-url": "Ange url",
     "address-enter-query": "Ange sökord",
-    "unclaimed-reward-notice": "Du har outtagen belöning"
+    "unclaimed-reward-notice": "Du har outtagen belöning",
+    "search-no-matches": "No matches"
   },
   "search": {
     "n-results-for-q": "{n} resultat för {q}",
