@@ -8,7 +8,7 @@
     "cancel": "Cancelar",
     "ok": "Aceptar",
     "edit": "Editar",
-    "server-error": "Process could not be completed due to server error",
+    "server-error": "El proceso no se pudo completar debido a un error del servidor",
     "save": "Salvar",
     "done": "Hecho",
     "select": "Seleccionar"
@@ -77,23 +77,23 @@
     "password-placeholder": "contraseña o WIF",
     "login": "Iniciar Sesión",
     "error-fields-required": "Por favor ingrese su nombre de usuario y contraseña / WIF",
-    "error-public-key": "You entered a public key. Password/WIF required",
-    "error-user-fetch": "User data could not be fetched",
+    "error-public-key": "Has introducido una clave pública. Contraseña / WIF requerido",
+    "error-user-fetch": "Los datos del usuario no se pudieron recuperar",
     "error-user-not-found": "User does not exist",
-    "error-authenticate": "Wrong username or password/WIF",
+    "error-authenticate": "Nombre de usuario o contraseña incorrectos / WIF",
     "create-account-text": "¿No tienes una cuenta? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">¡Regístrese ahora!</a>",
     "login-with-sc": "Iniciar sesión con",
     "divider-text": "O"
   },
   "create-pin-code": {
     "title": "Crear código PIN",
-    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter PIN code",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
-    "created": "PIN code created"
+    "desc1": "Configure el código PIN para cifrar sus datos y habilitar una capa adicional de seguridad.",
+    "input-placeholder": "Ingrese el código PIN",
+    "desc2": "Se le pedirá que ingrese el código PIN para transacciones cruciales, así como en cada lanzamiento.",
+    "created": "Código PIN creado"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
+    "title": "Ingrese el código PIN",
     "input-placeholder": "Enter PIN code to continue",
     "last-chance": "Esta es tu última oportunidad",
     "invalidate": "Oh, me olvidé...",
