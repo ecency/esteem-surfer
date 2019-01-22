@@ -350,7 +350,7 @@
     "page-title": "Tanú szavazás",
     "remaining": "<strong>{n}</strong> {max} szavazat maradt",
     "witness": "Tanú",
-    "miss": "Miss",
+    "miss": "Elmulasztott",
     "url": "URL",
     "fee": "Díj",
     "feed": "Hírfolyam",
