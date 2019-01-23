@@ -17,8 +17,10 @@
 - Favorites `synced with eSteem Mobile`
 - Comments/Memo Encryption
 - Night Mode (Dark Theme)
+- Wallet Transfers
 - Image Gallery
 - Detailed Voters Info
+- Witness Voting
 
 More functions are coming!
 
