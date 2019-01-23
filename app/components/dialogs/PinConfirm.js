@@ -36,7 +36,7 @@ class PinConfirm extends Component {
       actions.deleteAccounts();
       onInvalidate();
       message.info(intl.formatMessage({ id: 'confirm-pin-code.invalidated' }));
-    });
+    }, 100);
   };
 
   submitForm = () => {
