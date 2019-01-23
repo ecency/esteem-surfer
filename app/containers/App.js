@@ -315,6 +315,7 @@ class App extends React.Component {
             >
               <PinConfirm
                 {...this.props}
+                history={history}
                 onSuccess={this.onConfirmPinSuccess}
                 onInvalidate={this.pinInvalidated}
               />

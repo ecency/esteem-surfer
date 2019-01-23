@@ -25,18 +25,18 @@ class PinConfirm extends Component {
 
   invalidate = () => {
     const { intl } = this.props;
+    const { actions, onInvalidate, history } = this.props;
 
-    const { actions, onInvalidate } = this.props;
-    actions.wipePin();
+    history.push('/');
 
-    removeItem('pin-code');
-
-    actions.logOut();
-    actions.deleteAccounts();
-
-    onInvalidate();
-
-    message.info(intl.formatMessage({ id: 'confirm-pin-code.invalidated' }));
+    setTimeout(() => {
+      actions.wipePin();
+      removeItem('pin-code');
+      actions.logOut();
+      actions.deleteAccounts();
+      onInvalidate();
+      message.info(intl.formatMessage({ id: 'confirm-pin-code.invalidated' }));
+    });
   };
 
   submitForm = () => {
@@ -148,6 +148,7 @@ PinConfirm.propTypes = {
     logOut: PropTypes.func.isRequired,
     deleteAccounts: PropTypes.func.isRequired
   }).isRequired,
+  history: PropTypes.instanceOf(Object).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
