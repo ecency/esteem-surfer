@@ -88,13 +88,16 @@ class SearchInPage extends PureComponent {
   };
 
   moveNext = () => {
-    const { matches, cursor, active } = this.state;
+    const { matches, active } = this.state;
+
     if (!active) {
       return;
     }
 
+    let { cursor } = this.state;
+
     if (cursor === matches) {
-      return;
+      cursor = 0;
     }
 
     const newCursor = cursor + 1;
