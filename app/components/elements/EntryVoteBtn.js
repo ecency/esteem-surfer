@@ -126,7 +126,8 @@ class EntryVoteBtn extends Component {
     const votingPower = account.voting_power;
     const totalVests =
       parseToken(account.vesting_shares) +
-      parseToken(account.received_vesting_shares);
+      parseToken(account.received_vesting_shares) -
+      parseToken(account.delegated_vesting_shares);
     const votePct = w * 100;
 
     const rShares = vestsToRshares(totalVests, votingPower, votePct);
