@@ -65,6 +65,13 @@ class SearchInPage extends PureComponent {
   };
 
   onWindowKeyDown = e => {
+    // Close on escape
+    const { visible } = this.state;
+    if (visible && e.key === 'Escape') {
+      this.toggle();
+      return;
+    }
+
     // ctrl + f
     if (e.keyCode === 70 && e.metaKey) {
       this.toggle();
@@ -217,7 +224,7 @@ class SearchInPage extends PureComponent {
               <div role="none" className="control-next" onClick={this.moveNext}>
                 <i className="mi">keyboard_arrow_down</i>
               </div>
-              <div role="none" className="control-prev" onClick={this.toggle}>
+              <div role="none" className="control-prev" onClick={this.close}>
                 <i className="mi">close</i>
               </div>
             </div>
