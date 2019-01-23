@@ -192,11 +192,7 @@ class DelegateCls extends PureComponent {
   };
 
   next = () => {
-    // make sure 3 decimals in amount
-    const { amount } = this.state;
-    const fixedAmount = Number(amount).toFixed(3);
-
-    this.setState({ step: 2, amount: fixedAmount });
+    this.setState({ step: 2 });
   };
 
   back = () => {
