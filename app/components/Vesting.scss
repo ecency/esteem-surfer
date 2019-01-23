@@ -245,6 +245,19 @@
   height: 400px;
   overflow-y: auto;
 
+  .btn-delete {
+    cursor: pointer;
+    font-size: 18px;
+
+    @include themify(day) {
+      color: $silver;
+    }
+
+    @include themify(night) {
+      color: $gunmetal;
+    }
+  }
+
   .empty-list {
     padding: 10px;
 
