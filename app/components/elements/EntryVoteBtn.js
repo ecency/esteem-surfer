@@ -57,7 +57,10 @@ class EntryVoteBtn extends Component {
       e.target.tagName === 'path'
         ? e.target.parentNode.parentNode
         : e.target.parentNode;
-    if (parentNode.getAttribute('class').indexOf('btn-inner') !== 0) {
+    if (
+      !parentNode ||
+      parentNode.getAttribute('class').indexOf('btn-inner') !== 0
+    ) {
       return false;
     }
 
