@@ -293,7 +293,7 @@
     "address-enter-url": "Введите url",
     "address-enter-query": "Введите поисковой запрос",
     "unclaimed-reward-notice": "Есть незачисленные награды",
-    "search-no-matches": "No matches"
+    "search-no-matches": "Нет совпадений"
   },
   "search": {
     "n-results-for-q": "{n} результатов для {q}",
