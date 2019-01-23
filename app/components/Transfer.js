@@ -329,7 +329,11 @@ class Transfer extends PureComponent {
   };
 
   next = () => {
-    this.setState({ step: 2 });
+    // make sure 3 decimals in amount
+    const { amount } = this.state;
+    const fixedAmount = Number(amount).toFixed(3);
+
+    this.setState({ step: 2, amount: fixedAmount });
   };
 
   back = () => {
