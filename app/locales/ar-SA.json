@@ -293,7 +293,7 @@
     "address-enter-url": "أدخل رابط URL",
     "address-enter-query": "أدخل إستعلام البحث",
     "unclaimed-reward-notice": "أنت لم تقم بمطالبة المافأة",
-    "search-no-matches": "No matches"
+    "search-no-matches": "ليس هناك أي مطابقات"
   },
   "search": {
     "n-results-for-q": "{n} نتائج لـ {q}",
