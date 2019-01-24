@@ -1,21 +1,21 @@
 {
   "g": {
-    "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
-    "yes": "Yes",
-    "no": "No",
-    "delete": "Delete",
-    "cancel": "Cancel",
+    "compose-entry": "Utwórz Post",
+    "are-you-sure": "Jesteś pewien?",
+    "yes": "Tak",
+    "no": "Nie",
+    "delete": "Usuń",
+    "cancel": "Anuluj",
     "ok": "OK",
-    "edit": "Edit",
-    "server-error": "Process could not be completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "edit": "Edytuj",
+    "server-error": "Nie można ukończyć procesu z powodu błędu serwera",
+    "save": "Zapisz",
+    "done": "Gotowe",
+    "select": "Wybierz"
   },
   "footer": {
     "faq": "FAQ",
-    "about": "About"
+    "about": "O"
   },
   "entry-index": {
     "tags": "Popular Tags",
