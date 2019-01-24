@@ -1,65 +1,65 @@
 {
   "g": {
-    "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
-    "yes": "Yes",
+    "compose-entry": "Scrivi post",
+    "are-you-sure": "Sei sicuro?",
+    "yes": "Sì",
     "no": "No",
-    "delete": "Delete",
-    "cancel": "Cancel",
+    "delete": "Elimina",
+    "cancel": "Cancella",
     "ok": "OK",
-    "edit": "Edit",
-    "server-error": "Process could not be completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "edit": "Modifica",
+    "server-error": "Il processo non può essere completato a causa di un errore del server",
+    "save": "Salva",
+    "done": "Fatto",
+    "select": "Seleziona"
   },
   "footer": {
     "faq": "FAQ",
-    "about": "About"
+    "about": "Info"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
+    "tags": "Tag popolari",
+    "filter-trending": "Di tendenza",
     "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
+    "filter-created": "Nuovo",
+    "filter-active": "Attivo",
+    "filter-promoted": "Sponsorizzati",
+    "filter-votes": "Voti",
+    "filter-children": "Commenti",
     "filter-feed": "Feed"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "Pagamento Potenziale",
+    "promoted": "Sponsorizzato",
+    "author-payout": "Ricompensa Autore",
+    "curation-payout": "Ricompensa Curatore",
+    "payout-date": "Pagamento"
   },
   "entry-votes": {
-    "n-more": "{n} more",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
-    "modal-title": "Voters ({n})"
+    "n-more": "{n} più",
+    "author": "Autore",
+    "reward": "Ricompensa",
+    "percent": "Percentuale",
+    "time": "Orario",
+    "modal-title": "Votanti ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "condiviso da {n}"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "Condividi",
+    "reblogged": "Condiviso"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "Currency",
-    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
-    "currency-changed": "Currency Changed",
-    "locale": "Language",
-    "locale-changed": "Language changed",
+    "title": "Impostazioni",
+    "currency": "Valuta",
+    "currency-fetch-error": "Potrebbe non recuperare il tasso di cambio per '{cur}'",
+    "currency-changed": "Valuta Cambiata",
+    "locale": "Lingua",
+    "locale-changed": "Lingua modificata",
     "server": "Server",
-    "server-invalid-address": "Invalid server address",
-    "server-connecting": "Connecting to '{server}'...",
+    "server-invalid-address": "Indirizzo del server non valido",
+    "server-connecting": "Connessione a '{server}'...",
     "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
     "server-timeout-error": "'{server}' looks like not alive",
     "server-changed": "Server selection changed to {server}",
