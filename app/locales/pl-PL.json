@@ -18,29 +18,29 @@
     "about": "O"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
-    "filter-feed": "Feed"
+    "tags": "Popularne Tagi",
+    "filter-trending": "Popularne",
+    "filter-hot": "Gorące",
+    "filter-created": "Nowy",
+    "filter-active": "Aktywny",
+    "filter-promoted": "Promowane",
+    "filter-votes": "Głosy",
+    "filter-children": "Komentarze",
+    "filter-feed": "Aktualności"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
+    "potential-payout": "Potencjalna Wypłata",
+    "promoted": "Promowane",
+    "author-payout": "Wypłata Autora",
     "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "payout-date": "Wypłata"
   },
   "entry-votes": {
-    "n-more": "{n} more",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
+    "n-more": "{n} więcej",
+    "author": "Autor",
+    "reward": "Wynagrodzenie",
+    "percent": "Procent",
+    "time": "Czas",
     "modal-title": "Voters ({n})"
   },
   "entry-list-item": {
