@@ -645,7 +645,7 @@ class Compose extends Component {
     return (
       <div className="wrapper">
         <NavBar {...this.props} reloadFn={() => {}} reloading={loading} />
-        <div className="app-content compose-page">
+        <div className="app-content compose-page" id="app-content">
           <Editor
             {...this.props}
             defaultValues={defaultValues}
