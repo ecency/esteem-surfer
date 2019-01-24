@@ -216,10 +216,10 @@
     "posting-perm-removed": "Posting permission removed",
     "save-draft": "Save Draft",
     "draft-saved": "Draft saved",
-    "publish": "Publish",
-    "published": "Post Published",
-    "update": "Update",
-    "updated": "Post Updated",
+    "publish": "Publikuj",
+    "published": "Post Opublikowany",
+    "update": "Aktualizuj",
+    "updated": "Post Zaktualizowany",
     "sync-scroll": "Scroll Sync",
     "words-count": "{n} words",
     "no-suggestions": "Brak sugestii",
@@ -229,7 +229,7 @@
   },
   "gallery": {
     "title": "Galeria",
-    "copied": "Copied to clipboard",
+    "copied": "Skopiowane do schowka",
     "load-error": "Nie udało się załadować galerii",
     "empty-list": "Nic tu nie ma"
   },
@@ -243,8 +243,8 @@
     "title": "Zaplanowane Posty",
     "empty-list": "Nic tu nie ma",
     "deleted": "Zaplanowany post został usunięty",
-    "move": "Move to drafts",
-    "moved": "Moved to drafts"
+    "move": "Przenieś do wersji roboczych",
+    "moved": "Przeniesiono do wersji roboczych"
   },
   "bookmarks": {
     "title": "Zakładki",
@@ -285,20 +285,20 @@
     "change-theme": "Zmień Motyw",
     "login": "Zaloguj się na swoje konto",
     "bookmark": "Dodaj do zakładek",
-    "bookmarkRemove": "Remove from bookmarks",
+    "bookmarkRemove": "Usuń z zakładek",
     "favorite": "Dodaj do ulubionych",
-    "favoriteRemove": "Removed from favorites",
-    "wallet": "My Wallet",
-    "activities": "Activities",
+    "favoriteRemove": "Usunięto z ulubionych",
+    "wallet": "Mój Portfel",
+    "activities": "Aktywność",
     "address-enter-url": "Enter url",
     "address-enter-query": "Enter search query",
-    "unclaimed-reward-notice": "You have unclaimed rewards",
-    "search-no-matches": "No matches"
+    "unclaimed-reward-notice": "Masz nieodebrane wynagrodzenia",
+    "search-no-matches": "Brak wyników"
   },
   "search": {
-    "n-results-for-q": "{n} results for {q}",
+    "n-results-for-q": "{n} wyniki wyszukiwania dla {q}",
     "sort-by": "Sortuj według",
-    "sort-popularity": "Popularity",
+    "sort-popularity": "Popularność",
     "sort-relevance": "Relevance",
     "sort-newest": "Date"
   },
