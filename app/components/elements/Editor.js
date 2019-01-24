@@ -736,6 +736,27 @@ class Editor extends Component {
     return getItem('compose-sync', false);
   };
 
+  onEmojiSelected = em => {
+    const { activeInput } = this.state;
+    if (activeInput === 'title') {
+      const titleEl = document.querySelector('#editor-title');
+      if (titleEl) {
+        let { title: editorTitle } = this.state;
+        const pos = titleEl.selectionStart;
+        const endPos = pos + 1;
+        editorTitle =
+          editorTitle.slice(0, pos) + em + editorTitle.slice(endPos);
+        this.setState({ title: editorTitle }, () => {
+          titleEl.selectionStart = endPos;
+          titleEl.selectionEnd = endPos;
+          titleEl.focus();
+        });
+        return;
+      }
+    }
+    this.insertInline(`${em} `);
+  };
+
   render() {
     const {
       defaultValues,
@@ -917,13 +938,7 @@ class Editor extends Component {
         >
           <div className="editor-tool" role="none">
             <i className="mi tool-icon">sentiment_satisfied</i>
-
-            <EmojiPicker
-              {...this.props}
-              onClick={em => {
-                this.insertInline(`${em} `);
-              }}
-            />
+            <EmojiPicker {...this.props} onClick={this.onEmojiSelected} />
           </div>
         </Tooltip>
       </div>
@@ -959,6 +974,10 @@ class Editor extends Component {
                 onChange={this.titleChanged}
                 defaultValue={defaultValues.title}
                 value={title}
+                onFocus={() => {
+                  this.setState({ activeInput: 'title' });
+                }}
+                id="editor-title"
               />
             </div>
             <div className="tags-input">
@@ -1009,6 +1028,9 @@ class Editor extends Component {
             onDrop={this.onDrop}
             onScroll={this.onScroll}
             value={defaultValues.body}
+            onFocus={() => {
+              this.setState({ activeInput: 'body' });
+            }}
           />
         </div>
 
