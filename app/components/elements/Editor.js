@@ -743,12 +743,10 @@ class Editor extends Component {
       if (titleEl) {
         let { title: editorTitle } = this.state;
         const pos = titleEl.selectionStart;
-        const endPos = pos + 1;
-        editorTitle =
-          editorTitle.slice(0, pos) + em + editorTitle.slice(endPos);
+        editorTitle = editorTitle.slice(0, pos) + em + editorTitle.slice(pos);
         this.setState({ title: editorTitle }, () => {
-          titleEl.selectionStart = endPos;
-          titleEl.selectionEnd = endPos;
+          titleEl.selectionStart = pos + 1;
+          titleEl.selectionEnd = pos + 2;
           titleEl.focus();
         });
         return;
