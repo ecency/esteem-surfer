@@ -361,7 +361,7 @@
     "voted": "@{n} رای داد",
     "vote-removed": "لغو رای برای @{n}",
     "username-placeholder": "نام کاربری",
-    "extra-witnesses-exp": "Enter account name below to vote for a witness outside of <strong>Top 50</strong>",
+    "extra-witnesses-exp": "نام حساب را در زیر برای رای دادن به یک شاهد از <strong> پنجاه نفر اول </strong> وارد کنید",
     "proxy-exp": "شما همچنین میتوانید یک پروکسی انتخاب کنید تا به عنوان شاهد برای شما رای دهد. این عمل باعث تنظیم مجدد حالت شاهد شما می شود.",
     "set-proxy": "تنظیم پروکسی",
     "proxy-active-exp": "شما پروکسی رای گیری را فعال کرده اید. اگر می خواهید رای گیری دستی را دوباره فعال کنید، لطفا پروکسی را پاک کنید.",
