@@ -86,6 +86,13 @@ export const makeJsonMetadata = (meta, tags, appVer) =>
     community: 'esteem.app'
   });
 
+export const makeJsonMetadataForUpdate = (oldJson, meta, tags) => {
+  const { meta: oldMeta } = oldJson;
+  const mergedMeta = Object.assign({}, oldMeta, meta);
+
+  return Object.assign({}, oldJson, mergedMeta, { tags });
+};
+
 export const makeJsonMetadataReply = (tags, appVer) => ({
   tags,
   app: `esteem/${appVer}-surfer`,

@@ -53,6 +53,7 @@ import {
   createPermlink,
   makeOptions,
   makeJsonMetadata,
+  makeJsonMetadataForUpdate,
   extractMetadata,
   createPatch
 } from '../utils/posting-helpers';
@@ -491,7 +492,8 @@ class Compose extends Component {
       body: oldBody,
       author,
       parent_permlink: parentPermlink,
-      permlink
+      permlink,
+      json_metadata: jsonMetadata
     } = editingEntry;
 
     let newBody = body;
@@ -506,7 +508,15 @@ class Compose extends Component {
     this.setState({ posting: true });
 
     const meta = extractMetadata(body);
-    const jsonMeta = makeJsonMetadata(meta, tags, version);
+
+    let jsonMeta = {};
+
+    try {
+      const oldJson = JSON.parse(jsonMetadata);
+      jsonMeta = makeJsonMetadataForUpdate(oldJson, meta, tags);
+    } catch (e) {
+      jsonMeta = makeJsonMetadata(meta, tags, version);
+    }
 
     return comment(
       activeAccount,
