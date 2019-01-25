@@ -26,33 +26,33 @@
     "filter-promoted": "Quảng cáo",
     "filter-votes": "Bình chọn",
     "filter-children": "Những bình luận",
-    "filter-feed": "Feed"
+    "filter-feed": "Nguồn cấp dữ liệu web"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "Thanh toán dự kiến",
+    "promoted": "Quảng cáo",
+    "author-payout": "Thanh toán cho tác giả",
+    "curation-payout": "Thanh toán cho người bầu chọn, bình luận",
+    "payout-date": "Thanh toán"
   },
   "entry-votes": {
-    "n-more": "{n} more",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
-    "modal-title": "Voters ({n})"
+    "n-more": "Thêm {n}",
+    "author": "Tác giả",
+    "reward": "Phần thưởng",
+    "percent": "Phần trăm",
+    "time": "Thời gian",
+    "modal-title": "Bầu chọn ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "đã được {n} đăng lại bài viết"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "Đăng lại bài viết",
+    "reblogged": "Đã đăng lại bài viết"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "Currency",
+    "title": "Cài đặt",
+    "currency": "Tiền tệ",
     "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
     "currency-changed": "Currency Changed",
     "locale": "Language",
