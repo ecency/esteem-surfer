@@ -1,11 +1,11 @@
 {
   "g": {
-    "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
-    "yes": "Yes",
-    "no": "No",
-    "delete": "Delete",
-    "cancel": "Cancel",
+    "compose-entry": "Viết bài",
+    "are-you-sure": "Bạn có chắc không?",
+    "yes": "Có",
+    "no": "Không",
+    "delete": "Xóa",
+    "cancel": "Hủy",
     "ok": "OK",
     "edit": "Edit",
     "server-error": "Process could not be completed due to server error",
