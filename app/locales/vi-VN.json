@@ -15,13 +15,13 @@
   },
   "footer": {
     "faq": "Những câu thường gặp",
-    "about": "About"
+    "about": "Phần giới thiệu"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
+    "tags": "Gắn những thẻ thường dùng",
+    "filter-trending": "Xu hướng",
+    "filter-hot": "Chủ đề thu hút",
+    "filter-created": "Chủ đề mới",
     "filter-active": "Active",
     "filter-promoted": "Promoted",
     "filter-votes": "Votes",
