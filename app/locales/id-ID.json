@@ -60,7 +60,7 @@
     "server": "Server",
     "server-invalid-address": "Alamat server tidak sah",
     "server-connecting": "Menghubungkan ke '{server}'...",
-    "server-connect-error": "Tidak dapat terhubung ke '{server}'. Pastikan anda memiliki akses internet yang baik.",
+    "server-connect-error": "Tidak dapat terhubung ke '{server}'. Pastikan anda memiliki koneksi jaringan yang baik.",
     "server-timeout-error": "'{server}' tidak aktif",
     "server-changed": "Pilihan server diubah menjadi {server}",
     "server-custom-address": "Alamat server khusus",
