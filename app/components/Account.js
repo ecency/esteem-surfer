@@ -44,7 +44,6 @@ import { getFollowCount, getAccount, getState, claimRewardBalance } from '../bac
 import {
   getActiveVotes,
   getTopPosts,
-  getMarketData,
   isFavorite,
   addFavorite,
   removeFavoriteUser
@@ -740,7 +739,7 @@ export class SectionWallet extends Component {
   };
 
   render() {
-    const { transactions, marketData, dynamicProps, global, intl, activeAccount, username, location } = this.props;
+    const { transactions, dynamicProps, global, intl, activeAccount, username, location } = this.props;
     const { account, claiming, delegationModalOpen } = this.state;
 
 
@@ -1023,7 +1022,7 @@ export class SectionWallet extends Component {
               }
             </div>
 
-            <Exchange {...this.props} marketData={marketData}/>
+            <Exchange {...this.props} />
           </div>
 
           <div className="transaction-list">
@@ -1062,7 +1061,6 @@ export class SectionWallet extends Component {
 SectionWallet.defaultProps = {
   account: null,
   transactions: [],
-  marketData: null,
   activeAccount: null
 };
 
@@ -1070,7 +1068,6 @@ SectionWallet.propTypes = {
   username: PropTypes.string.isRequired,
   account: PropTypes.instanceOf(Object),
   transactions: PropTypes.arrayOf(Object),
-  marketData: PropTypes.instanceOf(Object),
   dynamicProps: PropTypes.shape({
     steemPerMVests: PropTypes.number.isRequired,
     base: PropTypes.number.isRequired
@@ -1095,8 +1092,6 @@ class Account extends Component {
       topPosts: null,
       transactions: null,
       transactionsLoading: true,
-      marketData: null,
-      marketDataLoading: true,
       favorite: false
     };
   }
@@ -1140,9 +1135,7 @@ class Account extends Component {
       account: null,
       topPosts: null,
       transactions: null,
-      transactionsLoading: true,
-      marketData: null,
-      marketDataLoading: true
+      transactionsLoading: true
     });
 
     // Account data
@@ -1164,20 +1157,6 @@ class Account extends Component {
       return resp;
     }).catch(() => {
 
-    });
-
-    // Exchange data
-    getMarketData().then((resp) => {
-      this.setState({
-        marketData: resp
-      });
-      return resp;
-    }).catch(() => {
-
-    }).finally(() => {
-      this.setState({
-        marketDataLoading: false
-      });
     });
 
     // Transactions
@@ -1338,13 +1317,12 @@ class Account extends Component {
       entryList = data.get('entries');
       loading = data.get('loading');
     } else {
-      const { transactionsLoading, marketDataLoading } = this.state;
-      loading = transactionsLoading || marketDataLoading;
+      const { transactionsLoading } = this.state;
+      loading = transactionsLoading;
     }
 
     const { topPosts } = this.state;
     const { transactions } = this.state;
-    const { marketData } = this.state;
 
     return (
       <div className="wrapper">
@@ -1405,8 +1383,7 @@ class Account extends Component {
               }
 
               {isWallet && account &&
-              <SectionWallet {...this.props} transactions={transactions} username={username} account={account}
-                             marketData={marketData}/>
+              <SectionWallet {...this.props} transactions={transactions} username={username} account={account} />
               }
             </div>
           </div>

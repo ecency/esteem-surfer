@@ -35,7 +35,8 @@ const mapStateToProps = state => ({
   activeAccount: state.activeAccount,
   dynamicProps: state.dynamicProps,
   visitingAccount: state.visitingAccount,
-  activities: state.activities
+  activities: state.activities,
+  marketData: state.marketData
 });
 
 const mapDispatchToProps = dispatch => ({
