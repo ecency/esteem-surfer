@@ -8,58 +8,58 @@
     "cancel": "انصراف",
     "ok": "باشه",
     "edit": "ویرایش",
-    "server-error": "Process could not be completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "server-error": "عملیات بدلیل خطای سرویس دهنده مقدور نمی باشد",
+    "save": "ذخیره",
+    "done": "انجام شد",
+    "select": "انتخاب"
   },
   "footer": {
-    "faq": "FAQ",
-    "about": "About"
+    "faq": "سوالات متداول",
+    "about": "درباره ما"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
-    "filter-feed": "Feed"
+    "tags": "برچسب های محبوب",
+    "filter-trending": "پرطرفدار",
+    "filter-hot": "توده پسند",
+    "filter-created": "جدید",
+    "filter-active": "فعال",
+    "filter-promoted": "ترویج داده شده",
+    "filter-votes": "امتيازات",
+    "filter-children": "نظرات",
+    "filter-feed": "خبرنامه"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "پرداخت های بالقوه",
+    "promoted": "ارتقا داده شده",
+    "author-payout": "پاداش نویسنده",
+    "curation-payout": "دستمزد حامیان",
+    "payout-date": "پرداخت"
   },
   "entry-votes": {
-    "n-more": "{n} more",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
-    "modal-title": "Voters ({n})"
+    "n-more": "{n} بیشتر",
+    "author": "مولف",
+    "reward": "پاداش",
+    "percent": "درصد",
+    "time": "زمان",
+    "modal-title": "رای دهندگان ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "اشتراک گذاری توسط {n}"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "اشتراک گذاری",
+    "reblogged": "اشتراک گذاری شده"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "Currency",
-    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
-    "currency-changed": "Currency Changed",
-    "locale": "Language",
-    "locale-changed": "Language changed",
-    "server": "Server",
-    "server-invalid-address": "Invalid server address",
-    "server-connecting": "Connecting to '{server}'...",
+    "title": "تنظیمات",
+    "currency": "واحد پول",
+    "currency-fetch-error": "نرخ ارز برای '{cur}' دریافت نشد",
+    "currency-changed": "ارز تغییر کرد",
+    "locale": "زبان",
+    "locale-changed": "زبان تغییر داده شد",
+    "server": "سرویس دهنده",
+    "server-invalid-address": "آدرس سرویس دنده نامعتبر است",
+    "server-connecting": "اتصال به '{server}'...",
     "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
     "server-timeout-error": "'{server}' looks like not alive",
     "server-changed": "Server selection changed to {server}",
