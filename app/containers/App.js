@@ -18,6 +18,8 @@ import { deleteAccounts, addAccountSc } from '../actions/accounts';
 import { logOut, updateActiveAccount } from '../actions/active-account';
 import { fetchActivities } from '../actions/activities';
 
+import { fetchMarketData } from '../actions/market-data';
+
 import PinCreate from '../components/dialogs/PinCreate';
 import PinConfirm from '../components/dialogs/PinConfirm';
 import Updater from '../components/helpers/Updater';
@@ -68,6 +70,10 @@ class App extends React.Component {
       1000 * 60 * 40
     );
 
+    // Market exchange data
+    this.refreshMarketData();
+    this.marketDataInterval = setInterval(this.refreshMarketData, 70000);
+
     window.addEventListener('user-login', this.onUserLogin);
     window.addEventListener('user-logout', this.onUserLogout);
 
@@ -86,6 +92,7 @@ class App extends React.Component {
     clearInterval(this.globalInterval);
     clearInterval(this.activeAccountInterval);
     clearInterval(this.scRefreshInterval);
+    clearInterval(this.marketDataInterval);
     clearInterval(this.checkInInterval);
 
     window.removeEventListener('user-login', this.onUserLogin);
@@ -131,6 +138,11 @@ class App extends React.Component {
     if (activeAccount) {
       actions.updateActiveAccount(activeAccount.username);
     }
+  };
+
+  refreshMarketData = () => {
+    const { actions } = this.props;
+    actions.fetchMarketData();
   };
 
   refreshScAccounts = () => {
@@ -350,7 +362,8 @@ App.propTypes = {
     fetchGlobalProps: PropTypes.func.isRequired,
     deleteAccounts: PropTypes.func.isRequired,
     addAccountSc: PropTypes.func.isRequired,
-    fetchActivities: PropTypes.func.isRequired
+    fetchActivities: PropTypes.func.isRequired,
+    fetchMarketData: PropTypes.func.isRequired
   }).isRequired,
   accounts: PropTypes.arrayOf(PropTypes.object)
 };
@@ -372,7 +385,8 @@ function mapDispatchToProps(dispatch) {
       ...bindActionCreators({ logOut }, dispatch),
       ...bindActionCreators({ fetchGlobalProps }, dispatch),
       ...bindActionCreators({ deleteAccounts, addAccountSc }, dispatch),
-      ...bindActionCreators({ fetchActivities }, dispatch)
+      ...bindActionCreators({ fetchActivities }, dispatch),
+      ...bindActionCreators({ fetchMarketData }, dispatch)
     }
   };
 }

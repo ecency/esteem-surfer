@@ -13,6 +13,7 @@ import * as visitingProfileActions from '../actions/visiting-account';
 import * as visitingEntryActions from '../actions/visiting-entry';
 import * as searchResultsActions from '../actions/search-results';
 import * as activitiesActions from '../actions/activities';
+import * as marketDataActivities from '../actions/market-data';
 
 import history from './history';
 
@@ -51,6 +52,7 @@ const configureStore = (initialState = {}) => {
     ...visitingEntryActions,
     ...searchResultsActions,
     ...activitiesActions,
+    ...marketDataActivities,
     ...routerActions
   };
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
