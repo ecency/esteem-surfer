@@ -112,22 +112,22 @@
   },
   "login-required": {
     "default": "این عمل نیازمند ورود به سیستم است",
-    "key-required": "این عمل نیازمند کلید {key} و یا رمز عبور اصلی است",
-    "keys-required": "This action requires {keys} keys or master password"
+    "key-required": "این عمل نیازمند کلید {key} یا رمز عبور اصلی است",
+    "keys-required": "این عمل نیازمند کلید {keys} یا رمز عبور اصلی است"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
-    "fetch-error-content": "Could not fetch posts",
-    "post-count": "Post Count",
-    "followers": "Followers",
-    "following": "Following",
-    "section-blog": "Blog",
-    "section-comments": "Comments",
-    "section-replies": "Replies",
-    "section-wallet": "Wallet"
+    "fetch-error-profile": "اطلاعات پروفایل در دسترس نیست",
+    "fetch-error-content": "دریافت مطالب مقدور نیست",
+    "post-count": "شمار نوشته ها",
+    "followers": "پیروان",
+    "following": "دنبال میکنید",
+    "section-blog": "وبلاگ",
+    "section-comments": "نظرات",
+    "section-replies": "پاسخ‌ ها",
+    "section-wallet": "کیف پول"
   },
   "follow-controls": {
-    "follow": "Follow",
+    "follow": "دنبال کردن",
     "unFollow": "لغو دنبال کردن",
     "mute": "بيصدا",
     "unMute": "صدادار"
@@ -297,39 +297,39 @@
   },
   "search": {
     "n-results-for-q": "{n} نتیجه برای {q}",
-    "sort-by": "Sort by",
-    "sort-popularity": "Popularity",
-    "sort-relevance": "Relevance",
-    "sort-newest": "Date"
+    "sort-by": "مرتب سازی بر اساس",
+    "sort-popularity": "محبوبیت",
+    "sort-relevance": "ارتباط",
+    "sort-newest": "تاریخ"
   },
   "updater": {
-    "new-version-available": "New version is available",
-    "update": "Update",
-    "dismiss": "Dismiss",
-    "downloading": "Downloading new version...",
-    "download-completed": "Download is completed",
-    "restart": "Restart"
+    "new-version-available": "نسخه جدید موجود است",
+    "update": "به روز رسانی",
+    "dismiss": "رد کردن",
+    "downloading": "بارگیری نسخه جدید...",
+    "download-completed": "بارگیری کامل شد",
+    "restart": "راه اندازی مجدد"
   },
   "context-menu": {
-    "cut": "Cut",
-    "copy": "Copy",
-    "paste": "Paste",
-    "open-image-browser": "Open image in browser",
-    "copy-image-url": "Copy image url"
+    "cut": "بُرش",
+    "copy": "رونوشت‌",
+    "paste": "چسباندن",
+    "open-image-browser": "گشودن در مرورگر",
+    "copy-image-url": "کپی آدرس تصویر"
   },
   "notification": {
-    "popup-title": "You have a new notification",
-    "voted": "{source} voted your post",
-    "mention-post": "{source} mentioned you in a post",
-    "mention-comment": "{source} mentioned you in a comment",
-    "followed": "{source} followed you",
-    "replied": "{source} replied you",
-    "reblogged": "{source} reblogged your post"
+    "popup-title": "شما اطلاع رسانی جدید دارید",
+    "voted": "{source} به پست شما رأی داد",
+    "mention-post": "{source} شما را در یک پست ذکر کرد",
+    "mention-comment": "{source} شما را در یک نظر ذکر کرد",
+    "followed": "{source} شما را دنبال میکند",
+    "replied": "{source} به شما پاسخ داد",
+    "reblogged": "{source} پست شما را به اشتراک گذاشت"
   },
   "activities": {
-    "type-all": "All Activities",
-    "type-votes": "Votes",
-    "type-replies": "Replies",
+    "type-all": "تمام فعالیت ها",
+    "type-votes": "رأی‌ ها",
+    "type-replies": "پاسخ‌ ها",
     "type-mentions": "Mentions",
     "type-follows": "Follows",
     "type-reblogs": "Reblogs",
