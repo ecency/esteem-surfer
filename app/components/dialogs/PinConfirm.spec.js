@@ -19,7 +19,8 @@ describe('PinConfirm', () => {
         logOut: () => {},
         deleteAccounts: () => {}
       },
-      compareHash: 'foo'
+      compareHash: 'foo',
+      history: {}
     };
 
     const wrapper = mountWithIntl(<PinConfirm {...props} />);
