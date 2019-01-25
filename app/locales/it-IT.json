@@ -335,7 +335,7 @@
     "type-reblogs": "Riblogga",
     "vote-str": "{p}% ha messo mi piace al tuo post:",
     "reply-str": "ha risposto al tuo post:",
-    "mention-str": "mentioned you in:",
+    "mention-str": "ti ha menzionato su:",
     "followed-str": "seguito",
     "unfollowed-str": "unfollowed",
     "ignored-str": "ignorato",
@@ -394,30 +394,30 @@
     "memo": "Memo",
     "memo-placeholder": "inserisci qui le tue note",
     "memo-help": "Questo memo è pubblico",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
-    "next": "Next",
-    "confirm-title": "Confirm your Transfer",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "confirm": "Confirm",
-    "back": "Back",
-    "success-title": "Success",
-    "success-sub-title": "Transfer successful",
-    "transfer-summary": "Transferred <span class=\"amount\">{amount}</span> From <span class=\"from-user\">{from}</span> to <span class=\"to-user\">{to}</span>",
-    "reset": "Another transfer",
-    "finish": "Finish",
-    "recent-transfers": "Recent transfers"
+    "key-required-err": "L' active key non è stata trovata per l' account selezionato. Per favore assicurati di essere connesso con le giuste credenziali.",
+    "next": "Successivo",
+    "confirm-title": "Conferma il tuo trasferimento",
+    "confirm-sub-title": "Per favore, controlla che sia tutto corretto",
+    "confirm": "Conferma",
+    "back": "Indietro",
+    "success-title": "Successo",
+    "success-sub-title": "Trasferimento riuscito",
+    "transfer-summary": "Trasferiti <span class=\"amount\">{amount}</span> da <span class=\"from-user\">{from}</span> a <span class=\"to-user\">{to}</span>",
+    "reset": "Altro trasferimento",
+    "finish": "Finito",
+    "recent-transfers": "Trasferimenti recenti"
   },
   "delegate": {
-    "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
-    "slider-help": "Drag the slider to adjust the amount",
-    "confirm-title": "Confirm Delegation",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "Delegation completed",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "title": "Delega",
+    "sub-title": "Steem Power Delegati",
+    "slider-help": "Sposta lo slider per aggiustare la quantità",
+    "confirm-title": "Conferma delegazione",
+    "confirm-sub-title": "Per favore, controlla che sia tutto corretto",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> ha delegato a <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "Delegazione confermata",
+    "insufficient-vesting": "Condivisioni di investimenti insufficenti {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "Non c'è niente qui"
   }
 }
