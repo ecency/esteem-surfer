@@ -28,7 +28,6 @@ import EntryListLoadingItem from './elements/EntryListLoadingItem';
 import EntryListItem from './elements/EntryListItem';
 import { DelegationList } from './Vesting';
 
-
 import ScrollReplace from './helpers/ScrollReplace';
 import ListSwitch from './elements/ListSwitch';
 import coverFallbackDay from '../img/cover-fallback-day.png';
@@ -39,8 +38,12 @@ import DropDown from './common/DropDown';
 
 import { btc as btcIcon, usd as usdIcon } from '../svg';
 
-
-import { getFollowCount, getAccount, getState, claimRewardBalance } from '../backend/steem-client';
+import {
+  getFollowCount,
+  getAccount,
+  getState,
+  claimRewardBalance
+} from '../backend/steem-client';
 import {
   getActiveVotes,
   getTopPosts,
@@ -65,9 +68,7 @@ import DeepLinkHandler from './helpers/DeepLinkHandler';
 import noImage from '../img/noimage.png';
 
 class Profile extends Component {
-
   render() {
-
     let vPower;
     let vPowerPercentage;
     let reputation;
@@ -108,7 +109,7 @@ class Profile extends Component {
     return (
       <div className="profile-area">
         <div className="account-avatar">
-          <UserAvatar user={username} size="xLarge"/>
+          <UserAvatar user={username} size="xLarge" />
           {reputation && <div className="reputation">{reputation}</div>}
         </div>
 
@@ -125,9 +126,11 @@ class Profile extends Component {
 
         {vPower && (
           <div className="vpower-percentage">
-            <Tooltip title={intl.formatMessage({
-              id: 'account.voting-power'
-            })}>
+            <Tooltip
+              title={intl.formatMessage({
+                id: 'account.voting-power'
+              })}
+            >
               {vPower.toFixed(2)}
             </Tooltip>
           </div>
@@ -137,16 +140,19 @@ class Profile extends Component {
 
         {about && <div className="about">{about}</div>}
 
-        {(name || about) && <div className="divider"/>}
+        {(name || about) && <div className="divider" />}
 
         <div className="account-numbers">
           <div className="account-prop">
-            <Tooltip title={intl.formatMessage({
-              id: 'account.post-count'
-            })} className="holder-tooltip">
+            <Tooltip
+              title={intl.formatMessage({
+                id: 'account.post-count'
+              })}
+              className="holder-tooltip"
+            >
               <i className="mi">list</i>
               {typeof postCount === 'number' ? (
-                <FormattedNumber value={postCount}/>
+                <FormattedNumber value={postCount} />
               ) : (
                 <span>--</span>
               )}
@@ -161,31 +167,37 @@ class Profile extends Component {
             >
               <i className="mi active-votes-icon">keyboard_arrow_up</i>
               {typeof activeVotes === 'number' ? (
-                <FormattedNumber value={activeVotes}/>
+                <FormattedNumber value={activeVotes} />
               ) : (
                 <span>--</span>
               )}
             </Tooltip>
           </div>
           <div className="account-prop">
-            <Tooltip title={intl.formatMessage({
-              id: 'account.followers'
-            })} className="holder-tooltip">
+            <Tooltip
+              title={intl.formatMessage({
+                id: 'account.followers'
+              })}
+              className="holder-tooltip"
+            >
               <i className="mi">people</i>
               {typeof followerCount === 'number' ? (
-                <FormattedNumber value={followerCount}/>
+                <FormattedNumber value={followerCount} />
               ) : (
                 <span>--</span>
               )}
             </Tooltip>
           </div>
           <div className="account-prop">
-            <Tooltip title={intl.formatMessage({
-              id: 'account.following'
-            })} className="holder-tooltip">
+            <Tooltip
+              title={intl.formatMessage({
+                id: 'account.following'
+              })}
+              className="holder-tooltip"
+            >
               <i className="mi">person_add</i>
               {typeof followingCount === 'number' ? (
-                <FormattedNumber value={followingCount}/>
+                <FormattedNumber value={followingCount} />
               ) : (
                 <span>--</span>
               )}
@@ -193,7 +205,7 @@ class Profile extends Component {
           </div>
         </div>
 
-        <div className="divider"/>
+        <div className="divider" />
 
         {location && (
           <div className="account-prop">
@@ -204,7 +216,9 @@ class Profile extends Component {
         {website && (
           <div className="account-prop prop-website">
             <i className="mi">public</i>{' '}
-            <a target="_external" className="website-link" href={website}>{website}</a>
+            <a target="_external" className="website-link" href={website}>
+              {website}
+            </a>
           </div>
         )}
 
@@ -222,7 +236,7 @@ class Profile extends Component {
 
         {showWitnesses && (
           <Fragment>
-            <div className="divider"/>
+            <div className="divider" />
             <div className="witnesses">
               <Link to="/witnesses">Witnesses</Link>
             </div>
@@ -232,7 +246,6 @@ class Profile extends Component {
     );
   }
 }
-
 
 Profile.defaultProps = {
   account: null,
@@ -246,9 +259,8 @@ Profile.propTypes = {
   activeAccount: PropTypes.instanceOf(Object)
 };
 
-
 export class AccountMenu extends Component {
-  goSection = (section) => {
+  goSection = section => {
     const { history, username } = this.props;
     const u = section ? `/@${username}/${section}` : `/@${username}`;
     history.push(u);
@@ -260,23 +272,45 @@ export class AccountMenu extends Component {
     return (
       <div className="account-menu">
         <div className="account-menu-items">
-          <a role="none" className={`menu-item ${section === 'blog' && 'selected-item'}`} onClick={() => {
-            this.goSection('blog');
-          }}><FormattedMessage id="account.section-blog"/></a>
-          <a role="none" className={`menu-item ${section === 'comments' && 'selected-item'}`} onClick={() => {
-            this.goSection('comments');
-          }}><FormattedMessage id="account.section-comments"/></a>
-          <a role="none" className={`menu-item ${section === 'replies' && 'selected-item'}`} onClick={() => {
-            this.goSection('replies');
-          }}><FormattedMessage id="account.section-replies"/></a>
-          <a role="none" className={`menu-item ${section === 'wallet' && 'selected-item'}`} onClick={() => {
-            this.goSection('wallet');
-          }}><FormattedMessage id="account.section-wallet"/></a>
+          <a
+            role="none"
+            className={`menu-item ${section === 'blog' && 'selected-item'}`}
+            onClick={() => {
+              this.goSection('blog');
+            }}
+          >
+            <FormattedMessage id="account.section-blog" />
+          </a>
+          <a
+            role="none"
+            className={`menu-item ${section === 'comments' && 'selected-item'}`}
+            onClick={() => {
+              this.goSection('comments');
+            }}
+          >
+            <FormattedMessage id="account.section-comments" />
+          </a>
+          <a
+            role="none"
+            className={`menu-item ${section === 'replies' && 'selected-item'}`}
+            onClick={() => {
+              this.goSection('replies');
+            }}
+          >
+            <FormattedMessage id="account.section-replies" />
+          </a>
+          <a
+            role="none"
+            className={`menu-item ${section === 'wallet' && 'selected-item'}`}
+            onClick={() => {
+              this.goSection('wallet');
+            }}
+          >
+            <FormattedMessage id="account.section-wallet" />
+          </a>
         </div>
         <div className="page-tools">
-          {section !== 'wallet' &&
-          <ListSwitch {...this.props} />
-          }
+          {section !== 'wallet' && <ListSwitch {...this.props} />}
         </div>
       </div>
     );
@@ -294,7 +328,8 @@ export class AccountCover extends Component {
     let coverImage;
 
     const { account, username, global, activeAccount } = this.props;
-    const hideFollowControls = activeAccount && activeAccount.username === username;
+    const hideFollowControls =
+      activeAccount && activeAccount.username === username;
 
     if (account) {
       const { accountProfile } = account;
@@ -303,16 +338,23 @@ export class AccountCover extends Component {
       }
     }
 
-    const bgImage = coverImage && proxifyImageSrc(coverImage) || (global.theme === 'day' ? coverFallbackDay : coverFallbackNight);
+    const bgImage =
+      (coverImage && proxifyImageSrc(coverImage)) ||
+      (global.theme === 'day' ? coverFallbackDay : coverFallbackNight);
 
-    return <div className="account-cover">
-      <div className="cover-image" style={{ backgroundImage: `url('${bgImage}')` }}/>
-      {!hideFollowControls &&
-      <div className="follow-controls-holder">
-        <FollowControls {...this.props} targetUsername={username}/>
+    return (
+      <div className="account-cover">
+        <div
+          className="cover-image"
+          style={{ backgroundImage: `url('${bgImage}')` }}
+        />
+        {!hideFollowControls && (
+          <div className="follow-controls-holder">
+            <FollowControls {...this.props} targetUsername={username} />
+          </div>
+        )}
       </div>
-      }
-    </div>;
+    );
   }
 }
 
@@ -336,17 +378,26 @@ export class AccountTopPosts extends Component {
 
     return (
       <div className="top-posts-list">
-        <h2 className="top-posts-list-header"><FormattedMessage id="account.top-posts"/></h2>
+        <h2 className="top-posts-list-header">
+          <FormattedMessage id="account.top-posts" />
+        </h2>
         <div className="top-posts-list-body">
           {posts.map(p => (
-            <EntryLink {...this.props} author={p.author} permlink={p.permlink} key={p.permlink}>
+            <EntryLink
+              {...this.props}
+              author={p.author}
+              permlink={p.permlink}
+              key={p.permlink}
+            >
               <div className="top-posts-list-item" role="none">
                 <div className="post-image">
-                  <img alt="" src={catchEntryImage(p, 130, 80) || noImage}/>
+                  <img alt="" src={catchEntryImage(p, 130, 80) || noImage} />
                 </div>
                 <div className="post-content">
                   <div className="post-title">{p.title}</div>
-                  <div className="post-body">{entryBodySummary(p.body, 40)}</div>
+                  <div className="post-body">
+                    {entryBodySummary(p.body, 40)}
+                  </div>
                 </div>
               </div>
             </EntryLink>
@@ -366,11 +417,8 @@ AccountTopPosts.propTypes = {
   history: PropTypes.instanceOf(Object).isRequired
 };
 
-
 export class TransactionRow extends Component {
-
   render() {
-
     const { dynamicProps, transaction: tr } = this.props;
     const { steemPerMVests } = dynamicProps;
 
@@ -392,12 +440,18 @@ export class TransactionRow extends Component {
 
       numbers = (
         <Fragment>
-          <FormattedNumber value={vestsToSp(parseToken(vestingPayout), steemPerMVests)}
-                           minimumFractionDigits={3}/> {'SP'}
+          <FormattedNumber
+            value={vestsToSp(parseToken(vestingPayout), steemPerMVests)}
+            minimumFractionDigits={3}
+          />{' '}
+          {'SP'}
         </Fragment>
       );
 
-      const { comment_author: commentAuthor, comment_permlink: commentPermlink } = opData;
+      const {
+        comment_author: commentAuthor,
+        comment_permlink: commentPermlink
+      } = opData;
       details = `@${commentAuthor}/${commentPermlink}`;
     }
 
@@ -416,25 +470,31 @@ export class TransactionRow extends Component {
 
       numbers = (
         <Fragment>
-          {sbdPayout > 0 &&
-          <span className="number"><FormattedNumber value={sbdPayout}
-                                                    minimumFractionDigits={3}/> {'SBD'}</span>
-          }
-          {steemPayout > 0 &&
-          <span className="number"><FormattedNumber value={steemPayout}
-                                                    minimumFractionDigits={3}/> {'STEEM'}</span>
-          }
-          {vestingPayout > 0 &&
-          <span className="number"><FormattedNumber value={vestsToSp(vestingPayout, steemPerMVests)}
-                                                    minimumFractionDigits={3}/> {'SP'}</span>
-          }
+          {sbdPayout > 0 && (
+            <span className="number">
+              <FormattedNumber value={sbdPayout} minimumFractionDigits={3} />{' '}
+              {'SBD'}
+            </span>
+          )}
+          {steemPayout > 0 && (
+            <span className="number">
+              <FormattedNumber value={steemPayout} minimumFractionDigits={3} />{' '}
+              {'STEEM'}
+            </span>
+          )}
+          {vestingPayout > 0 && (
+            <span className="number">
+              <FormattedNumber
+                value={vestsToSp(vestingPayout, steemPerMVests)}
+                minimumFractionDigits={3}
+              />{' '}
+              {'SP'}
+            </span>
+          )}
         </Fragment>
       );
 
-      const {
-        author,
-        permlink
-      } = opData;
+      const { author, permlink } = opData;
 
       details = `@${author}/${permlink}`;
     }
@@ -458,18 +518,27 @@ export class TransactionRow extends Component {
 
       numbers = (
         <Fragment>
-          {rewardSdb > 0 &&
-          <span className="number"><FormattedNumber value={rewardSdb}
-                                                    minimumFractionDigits={3}/> {'SBD'}</span>
-          }
-          {rewardSteem > 0 &&
-          <span className="number"><FormattedNumber value={rewardSteem}
-                                                    minimumFractionDigits={3}/> {'STEEM'}</span>
-          }
-          {rewardVests > 0 &&
-          <span className="number"><FormattedNumber value={vestsToSp(rewardVests, steemPerMVests)}
-                                                    minimumFractionDigits={3}/> {'SP'}</span>
-          }
+          {rewardSdb > 0 && (
+            <span className="number">
+              <FormattedNumber value={rewardSdb} minimumFractionDigits={3} />{' '}
+              {'SBD'}
+            </span>
+          )}
+          {rewardSteem > 0 && (
+            <span className="number">
+              <FormattedNumber value={rewardSteem} minimumFractionDigits={3} />{' '}
+              {'STEEM'}
+            </span>
+          )}
+          {rewardVests > 0 && (
+            <span className="number">
+              <FormattedNumber
+                value={vestsToSp(rewardVests, steemPerMVests)}
+                minimumFractionDigits={3}
+              />{' '}
+              {'SP'}
+            </span>
+          )}
         </Fragment>
       );
     }
@@ -479,11 +548,14 @@ export class TransactionRow extends Component {
       icon = 'compare_arrows';
 
       const { amount, memo, from, to } = opData;
-      details = <span>{memo} <br/><br/> <strong>@{from}</strong> -&gt; <strong>@{to}</strong></span>;
-
-      numbers = (
-        <span>{amount}</span>
+      details = (
+        <span>
+          {memo} <br />
+          <br /> <strong>@{from}</strong> -&gt; <strong>@{to}</strong>
+        </span>
       );
+
+      numbers = <span>{amount}</span>;
     }
 
     if (opName === 'withdraw_vesting') {
@@ -492,27 +564,37 @@ export class TransactionRow extends Component {
 
       const { acc } = opData;
 
-      let {
-        vesting_shares: opVestingShares
-      } = opData;
+      let { vesting_shares: opVestingShares } = opData;
 
       opVestingShares = parseToken(opVestingShares);
-      numbers = <span className="number"><FormattedNumber value={vestsToSp(opVestingShares, steemPerMVests)}
-                                                          minimumFractionDigits={3}/> {'SP'}</span>;
+      numbers = (
+        <span className="number">
+          <FormattedNumber
+            value={vestsToSp(opVestingShares, steemPerMVests)}
+            minimumFractionDigits={3}
+          />{' '}
+          {'SP'}
+        </span>
+      );
 
-      details = <span><strong>@{acc}</strong></span>;
+      details = (
+        <span>
+          <strong>@{acc}</strong>
+        </span>
+      );
     }
 
     if (opName === 'fill_order') {
       flag = true;
       icon = 'reorder';
 
-      const {
-        current_pays: currentPays,
-        open_pays: openPays
-      } = opData;
+      const { current_pays: currentPays, open_pays: openPays } = opData;
 
-      numbers = <span className="number">{currentPays} = {openPays}</span>;
+      numbers = (
+        <span className="number">
+          {currentPays} = {openPays}
+        </span>
+      );
     }
 
     if (flag) {
@@ -523,36 +605,28 @@ export class TransactionRow extends Component {
           </div>
           <div className="transaction-title">
             <div className="transaction-name">
-              <FormattedMessage id={`account.transaction-${opName}`}/>
+              <FormattedMessage id={`account.transaction-${opName}`} />
             </div>
             <div className="transaction-date">
-              <FormattedRelative value={transDate}/>
+              <FormattedRelative value={transDate} />
             </div>
           </div>
-          <div className="transaction-numbers">
-            {numbers}
-          </div>
-          <div className="transaction-details">
-            {details}
-          </div>
+          <div className="transaction-numbers">{numbers}</div>
+          <div className="transaction-details">{details}</div>
         </div>
       );
     }
 
-
     return null;
   }
 }
-
 
 TransactionRow.propTypes = {
   transaction: PropTypes.arrayOf(Object).isRequired,
   dynamicProps: PropTypes.instanceOf(Object).isRequired
 };
 
-
 export class Exchange extends Component {
-
   render() {
     const { marketData } = this.props;
 
@@ -566,110 +640,147 @@ export class Exchange extends Component {
       const { usd: steemUsd, btc: steemBtc } = steem.quotes;
       const { usd: sbdUsd, btc: sbdBtc } = sbd.quotes;
 
-      steemUsdDir = steemUsd.percent_change === 0 && 'same' || (steemUsd.percent_change > 0 ? 'up' : 'down');
-      steemBtcDir = steemBtc.percent_change === 0 && 'same' || (steemBtc.percent_change > 0 ? 'up' : 'down');
+      steemUsdDir =
+        (steemUsd.percent_change === 0 && 'same') ||
+        (steemUsd.percent_change > 0 ? 'up' : 'down');
+      steemBtcDir =
+        (steemBtc.percent_change === 0 && 'same') ||
+        (steemBtc.percent_change > 0 ? 'up' : 'down');
 
-      sbdUsdDir = sbdUsd.percent_change === 0 && 'same' || (sbdUsd.percent_change > 0 ? 'up' : 'down');
-      sbdBtcDir = sbdBtc.percent_change === 0 && 'same' || (sbdBtc.percent_change > 0 ? 'up' : 'down');
+      sbdUsdDir =
+        (sbdUsd.percent_change === 0 && 'same') ||
+        (sbdUsd.percent_change > 0 ? 'up' : 'down');
+      sbdBtcDir =
+        (sbdBtc.percent_change === 0 && 'same') ||
+        (sbdBtc.percent_change > 0 ? 'up' : 'down');
     }
 
     return (
       <div className="exchange-data">
         <div className="exchange-title">
-              <span className="title-icon ">
-                <i className="mi">show_chart</i>
-              </span>
-          <h2><FormattedMessage id="account.exchange"/></h2>
+          <span className="title-icon ">
+            <i className="mi">show_chart</i>
+          </span>
+          <h2>
+            <FormattedMessage id="account.exchange" />
+          </h2>
         </div>
 
         <div className="market-data">
           <div className="market-data-title">Steem</div>
 
-          {marketData &&
-          <Fragment>
-            <div className={`price change-${steemUsdDir}`}>
-              <div className="price-usd">
-                {usdIcon} <FormattedNumber maximumFractionDigits={2} value={marketData.steem.quotes.usd.price}/>
+          {marketData && (
+            <Fragment>
+              <div className={`price change-${steemUsdDir}`}>
+                <div className="price-usd">
+                  {usdIcon}{' '}
+                  <FormattedNumber
+                    maximumFractionDigits={2}
+                    value={marketData.steem.quotes.usd.price}
+                  />
+                </div>
+
+                <div className="price-change">
+                  (
+                  <FormattedNumber
+                    maximumFractionDigits={2}
+                    value={marketData.steem.quotes.usd.percent_change}
+                  />
+                  %)
+                </div>
+                {steemUsdDir === 'same' && <i className="change-icon">--</i>}
+                {steemUsdDir === 'up' && (
+                  <i className="mi change-icon">arrow_drop_up</i>
+                )}
+                {steemUsdDir === 'down' && (
+                  <i className="mi change-icon">arrow_drop_down</i>
+                )}
               </div>
 
-              <div className="price-change">
-                (<FormattedNumber maximumFractionDigits={2} value={marketData.steem.quotes.usd.percent_change}/>%)
-              </div>
-              {steemUsdDir === 'same' &&
-              <i className="change-icon">--</i>
-              }
-              {steemUsdDir === 'up' &&
-              <i className="mi change-icon">arrow_drop_up</i>
-              }
-              {steemUsdDir === 'down' &&
-              <i className="mi change-icon">arrow_drop_down</i>
-              }
-            </div>
+              <div className={`price change-${steemBtcDir}`}>
+                <div className="price-btc">
+                  {btcIcon}{' '}
+                  <FormattedNumber
+                    minimumFractionDigits={8}
+                    value={marketData.steem.quotes.btc.price}
+                  />
+                </div>
 
-
-            <div className={`price change-${steemBtcDir}`}>
-              <div className="price-btc">
-                {btcIcon} <FormattedNumber minimumFractionDigits={8} value={marketData.steem.quotes.btc.price}/>
+                <div className="price-change">
+                  (
+                  <FormattedNumber
+                    maximumFractionDigits={2}
+                    value={marketData.steem.quotes.btc.percent_change}
+                  />
+                  %)
+                </div>
+                {steemBtcDir === 'same' && <i className="change-icon">--</i>}
+                {steemBtcDir === 'up' && (
+                  <i className="mi change-icon">arrow_drop_up</i>
+                )}
+                {steemBtcDir === 'down' && (
+                  <i className="mi change-icon">arrow_drop_down</i>
+                )}
               </div>
-
-              <div className="price-change">
-                (<FormattedNumber maximumFractionDigits={2} value={marketData.steem.quotes.btc.percent_change}/>%)
-              </div>
-              {steemBtcDir === 'same' &&
-              <i className="change-icon">--</i>
-              }
-              {steemBtcDir === 'up' &&
-              <i className="mi change-icon">arrow_drop_up</i>
-              }
-              {steemBtcDir === 'down' &&
-              <i className="mi change-icon">arrow_drop_down</i>
-              }
-            </div>
-          </Fragment>
-          }
+            </Fragment>
+          )}
         </div>
 
         <div className="market-data">
           <div className="market-data-title">Steem Dollar</div>
-          {marketData &&
-          <Fragment>
-            <div className={`price change-${sbdUsdDir}`}>
-              <div className="price-usd">
-                {usdIcon} <FormattedNumber maximumFractionDigits={2} value={marketData.sbd.quotes.usd.price}/>
-              </div>
+          {marketData && (
+            <Fragment>
+              <div className={`price change-${sbdUsdDir}`}>
+                <div className="price-usd">
+                  {usdIcon}{' '}
+                  <FormattedNumber
+                    maximumFractionDigits={2}
+                    value={marketData.sbd.quotes.usd.price}
+                  />
+                </div>
 
-              <div className="price-change">
-                (<FormattedNumber maximumFractionDigits={2} value={marketData.sbd.quotes.usd.percent_change}/>%)
+                <div className="price-change">
+                  (
+                  <FormattedNumber
+                    maximumFractionDigits={2}
+                    value={marketData.sbd.quotes.usd.percent_change}
+                  />
+                  %)
+                </div>
+                {sbdUsdDir === 'same' && <i className="change-icon">--</i>}
+                {sbdUsdDir === 'up' && (
+                  <i className="mi change-icon">arrow_drop_up</i>
+                )}
+                {sbdUsdDir === 'down' && (
+                  <i className="mi change-icon">arrow_drop_down</i>
+                )}
               </div>
-              {sbdUsdDir === 'same' &&
-              <i className="change-icon">--</i>
-              }
-              {sbdUsdDir === 'up' &&
-              <i className="mi change-icon">arrow_drop_up</i>
-              }
-              {sbdUsdDir === 'down' &&
-              <i className="mi change-icon">arrow_drop_down</i>
-              }
-            </div>
-            <div className={`price change-${sbdBtcDir}`}>
-              <div className="price-btc">
-                {btcIcon} <FormattedNumber minimumFractionDigits={8} value={marketData.sbd.quotes.btc.price}/>
+              <div className={`price change-${sbdBtcDir}`}>
+                <div className="price-btc">
+                  {btcIcon}{' '}
+                  <FormattedNumber
+                    minimumFractionDigits={8}
+                    value={marketData.sbd.quotes.btc.price}
+                  />
+                </div>
+                <div className="price-change">
+                  (
+                  <FormattedNumber
+                    maximumFractionDigits={2}
+                    value={marketData.sbd.quotes.btc.percent_change}
+                  />
+                  %)
+                </div>
+                {sbdBtcDir === 'same' && <i className="change-icon">--</i>}
+                {sbdBtcDir === 'up' && (
+                  <i className="mi change-icon">arrow_drop_up</i>
+                )}
+                {sbdBtcDir === 'down' && (
+                  <i className="mi change-icon">arrow_drop_down</i>
+                )}
               </div>
-              <div className="price-change">
-                (<FormattedNumber maximumFractionDigits={2} value={marketData.sbd.quotes.btc.percent_change}/>%)
-              </div>
-              {sbdBtcDir === 'same' &&
-              <i className="change-icon">--</i>
-              }
-              {sbdBtcDir === 'up' &&
-              <i className="mi change-icon">arrow_drop_up</i>
-              }
-              {sbdBtcDir === 'down' &&
-              <i className="mi change-icon">arrow_drop_down</i>
-              }
-            </div>
-          </Fragment>
-          }
+            </Fragment>
+          )}
         </div>
       </div>
     );
@@ -685,7 +796,6 @@ Exchange.propTypes = {
 };
 
 export class SectionWallet extends Component {
-
   constructor(props) {
     super(props);
 
@@ -708,28 +818,40 @@ export class SectionWallet extends Component {
 
     this.setState({ claiming: true });
 
-    return getAccount(activeAccount.username).then(account => {
-      const {
-        reward_steem_balance: steemBal,
-        reward_sbd_balance: sbdBal,
-        reward_vesting_balance: vestingBal
-      } = account;
+    return getAccount(activeAccount.username)
+      .then(account => {
+        const {
+          reward_steem_balance: steemBal,
+          reward_sbd_balance: sbdBal,
+          reward_vesting_balance: vestingBal
+        } = account;
 
-      return claimRewardBalance(activeAccount, global.pin, steemBal, sbdBal, vestingBal);
-    })
+        return claimRewardBalance(
+          activeAccount,
+          global.pin,
+          steemBal,
+          sbdBal,
+          vestingBal
+        );
+      })
       .then(() => getAccount(activeAccount.username))
       .then(account => {
-        message.success(intl.formatMessage({
-          id: 'account.claim-reward-balance-ok'
-        }));
+        message.success(
+          intl.formatMessage({
+            id: 'account.claim-reward-balance-ok'
+          })
+        );
         this.setState({ account });
         return account;
-      }).then(account => {
+      })
+      .then(account => {
         this.setState({ account });
         return account;
-      }).catch(err => {
+      })
+      .catch(err => {
         message.error(formatChainError(err));
-      }).finally(() => {
+      })
+      .finally(() => {
         this.setState({ claiming: false });
       });
   };
@@ -739,40 +861,56 @@ export class SectionWallet extends Component {
   };
 
   render() {
-    const { transactions, dynamicProps, global, intl, activeAccount, username, location } = this.props;
+    const {
+      transactions,
+      dynamicProps,
+      global,
+      intl,
+      activeAccount,
+      username,
+      location
+    } = this.props;
     const { account, claiming, delegationModalOpen } = this.state;
 
-
     if (account) {
-
       const { steemPerMVests, base, quote } = dynamicProps;
       const { currency, currencyRate } = global;
 
       const rewardSteemBalance = parseToken(account.reward_steem_balance);
       const rewardSbdBalance = parseToken(account.reward_sbd_balance);
       const rewardVestingSteem = parseToken(account.reward_vesting_steem);
-      const hasUnclaimedRewards = (rewardSteemBalance > 0 || rewardSbdBalance > 0 || rewardVestingSteem > 0);
+      const hasUnclaimedRewards =
+        rewardSteemBalance > 0 ||
+        rewardSbdBalance > 0 ||
+        rewardVestingSteem > 0;
 
       const balance = parseToken(account.balance);
 
       const vestingShares = parseToken(account.vesting_shares);
-      const vestingSharesDelegated = parseToken(account.delegated_vesting_shares);
+      const vestingSharesDelegated = parseToken(
+        account.delegated_vesting_shares
+      );
       const vestingSharesReceived = parseToken(account.received_vesting_shares);
-      const vestingSharesTotal = (vestingShares - vestingSharesDelegated + vestingSharesReceived);
+      const vestingSharesTotal =
+        vestingShares - vestingSharesDelegated + vestingSharesReceived;
 
       const sbdBalance = parseToken(account.sbd_balance);
       const savingBalance = parseToken(account.savings_balance);
       const savingBalanceSbd = parseToken(account.savings_sbd_balance);
 
-      const estimatedValue = (
-        (vestsToSp(vestingShares, steemPerMVests) * (base / quote)) +
-        (balance * (base / quote)) +
-        sbdBalance
-      ) * currencyRate;
+      const estimatedValue =
+        (vestsToSp(vestingShares, steemPerMVests) * (base / quote) +
+          balance * (base / quote) +
+          sbdBalance) *
+        currencyRate;
 
-      const showPowerDown = account.next_vesting_withdrawal !== '1969-12-31T23:59:59';
+      const showPowerDown =
+        account.next_vesting_withdrawal !== '1969-12-31T23:59:59';
       const nextVestingWithdrawal = parseDate(account.next_vesting_withdrawal);
-      const nextVestingWithdrawalAmount = vestsToSp(parseToken(account.vesting_withdraw_rate), steemPerMVests);
+      const nextVestingWithdrawalAmount = vestsToSp(
+        parseToken(account.vesting_withdraw_rate),
+        steemPerMVests
+      );
 
       const isMyPage = activeAccount && activeAccount.username === username;
 
@@ -783,99 +921,126 @@ export class SectionWallet extends Component {
       let actionListWithdrawSbd;
 
       if (isMyPage) {
-        actionListSteem = <Menu className="surfer-dropdown-menu">
-          <Menu.Item key="transfer">
-            <Link to={`/@${activeAccount.username}/transfer/steem`}>
-              <FormattedMessage id="account.transfer"/>
-            </Link>
-          </Menu.Item>
-          <Menu.Item key="transfer-saving">
-            <Link to={`/@${activeAccount.username}/transfer-saving/steem`}>
-              <FormattedMessage id="account.transfer-to-savings"/>
-            </Link>
-          </Menu.Item>
-          <Menu.Item key="power-up">
-            <Link to={`/@${activeAccount.username}/power-up`}>
-              <FormattedMessage id="account.power-up"/>
-            </Link>
-          </Menu.Item>
-        </Menu>;
+        actionListSteem = (
+          <Menu className="surfer-dropdown-menu">
+            <Menu.Item key="transfer">
+              <Link to={`/@${activeAccount.username}/transfer/steem`}>
+                <FormattedMessage id="account.transfer" />
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="transfer-saving">
+              <Link to={`/@${activeAccount.username}/transfer-saving/steem`}>
+                <FormattedMessage id="account.transfer-to-savings" />
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="power-up">
+              <Link to={`/@${activeAccount.username}/power-up`}>
+                <FormattedMessage id="account.power-up" />
+              </Link>
+            </Menu.Item>
+          </Menu>
+        );
 
-        actionListSp = <Menu className="surfer-dropdown-menu">
-          <Menu.Item key="delegate">
-            <Link to={`/@${activeAccount.username}/delegate`}>
-              <FormattedMessage id="account.delegate"/>
-            </Link>
-          </Menu.Item>
+        actionListSp = (
+          <Menu className="surfer-dropdown-menu">
+            <Menu.Item key="delegate">
+              <Link to={`/@${activeAccount.username}/delegate`}>
+                <FormattedMessage id="account.delegate" />
+              </Link>
+            </Menu.Item>
+          </Menu>
+        );
 
-        </Menu>;
+        actionListSbd = (
+          <Menu className="surfer-dropdown-menu">
+            <Menu.Item key="transfer">
+              <Link to={`/@${activeAccount.username}/transfer/sbd`}>
+                <FormattedMessage id="account.transfer" />
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="transfer-saving">
+              <Link to={`/@${activeAccount.username}/transfer-saving/sbd`}>
+                <FormattedMessage id="account.transfer-to-savings" />
+              </Link>
+            </Menu.Item>
+          </Menu>
+        );
 
-        actionListSbd = <Menu className="surfer-dropdown-menu">
-          <Menu.Item key="transfer">
-            <Link to={`/@${activeAccount.username}/transfer/sbd`}>
-              <FormattedMessage id="account.transfer"/>
-            </Link>
-          </Menu.Item>
-          <Menu.Item key="transfer-saving">
-            <Link to={`/@${activeAccount.username}/transfer-saving/sbd`}>
-              <FormattedMessage id="account.transfer-to-savings"/>
-            </Link>
-          </Menu.Item>
-        </Menu>;
+        actionListWithdrawSteem = (
+          <Menu className="surfer-dropdown-menu">
+            <Menu.Item key="withdraw-saving">
+              <Link to={`/@${activeAccount.username}/withdraw-saving/steem`}>
+                <FormattedMessage id="account.withdraw-steem" />
+              </Link>
+            </Menu.Item>
+          </Menu>
+        );
 
-        actionListWithdrawSteem = <Menu className="surfer-dropdown-menu">
-          <Menu.Item key="withdraw-saving">
-            <Link to={`/@${activeAccount.username}/withdraw-saving/steem`}>
-              <FormattedMessage id="account.withdraw-steem"/>
-            </Link>
-          </Menu.Item>
-        </Menu>;
-
-        actionListWithdrawSbd = <Menu className="surfer-dropdown-menu">
-          <Menu.Item key="withdraw-saving">
-            <Link to={`/@${activeAccount.username}/withdraw-saving/sbd`}>
-              <FormattedMessage id="account.withdraw-sbd"/>
-            </Link>
-          </Menu.Item>
-        </Menu>;
+        actionListWithdrawSbd = (
+          <Menu className="surfer-dropdown-menu">
+            <Menu.Item key="withdraw-saving">
+              <Link to={`/@${activeAccount.username}/withdraw-saving/sbd`}>
+                <FormattedMessage id="account.withdraw-sbd" />
+              </Link>
+            </Menu.Item>
+          </Menu>
+        );
       }
 
       return (
         <div className="wallet-section">
           <div className="first-row">
-            {hasUnclaimedRewards &&
-            <div className="unclaimed-rewards">
-              <div className="title"><FormattedMessage id="account.unclaimed-rewards"/></div>
-              <div className="rewards">
-                {rewardSteemBalance > 0 &&
-                <span className="reward-type">{`${rewardSteemBalance} STEEM`}</span>
-                }
-                {rewardSbdBalance > 0 &&
-                <span className="reward-type">{`${rewardSbdBalance} SDB`}</span>
-                }
-                {rewardVestingSteem > 0 &&
-                <span className="reward-type">{`${rewardVestingSteem} SP`}</span>
-                }
-                {isMyPage &&
-                <Tooltip title={intl.formatMessage({
-                  id: 'account.claim-reward-balance'
-                })} mouseEnterDelay={2}>
-                  <a className={`claim-btn ${claiming ? 'in-progress' : ''}`} onClick={() => {
-                    this.claimRewardBalance();
-                  }} role="none">
-                    <i className="mi">add_circle</i>
-                  </a>
-                </Tooltip>
-                }
+            {hasUnclaimedRewards && (
+              <div className="unclaimed-rewards">
+                <div className="title">
+                  <FormattedMessage id="account.unclaimed-rewards" />
+                </div>
+                <div className="rewards">
+                  {rewardSteemBalance > 0 && (
+                    <span className="reward-type">{`${rewardSteemBalance} STEEM`}</span>
+                  )}
+                  {rewardSbdBalance > 0 && (
+                    <span className="reward-type">{`${rewardSbdBalance} SDB`}</span>
+                  )}
+                  {rewardVestingSteem > 0 && (
+                    <span className="reward-type">{`${rewardVestingSteem} SP`}</span>
+                  )}
+                  {isMyPage && (
+                    <Tooltip
+                      title={intl.formatMessage({
+                        id: 'account.claim-reward-balance'
+                      })}
+                      mouseEnterDelay={2}
+                    >
+                      <a
+                        className={`claim-btn ${claiming ? 'in-progress' : ''}`}
+                        onClick={() => {
+                          this.claimRewardBalance();
+                        }}
+                        role="none"
+                      >
+                        <i className="mi">add_circle</i>
+                      </a>
+                    </Tooltip>
+                  )}
+                </div>
               </div>
-            </div>
-            }
+            )}
             <div className="estimated-value">
-              <Tooltip title={intl.formatMessage({
-                id: 'account.estimated-value'
-              })}>
-              <span><FormattedNumber currency={currency} style="currency" currencyDisplay="symbol"
-                                     minimumFractionDigits={3} value={estimatedValue}/></span>
+              <Tooltip
+                title={intl.formatMessage({
+                  id: 'account.estimated-value'
+                })}
+              >
+                <span>
+                  <FormattedNumber
+                    currency={currency}
+                    style="currency"
+                    currencyDisplay="symbol"
+                    minimumFractionDigits={3}
+                    value={estimatedValue}
+                  />
+                </span>
               </Tooltip>
             </div>
           </div>
@@ -883,143 +1048,223 @@ export class SectionWallet extends Component {
             <div className="funds">
               <div className="fund fund-steem">
                 <div className="fund-line">
-                  <Tooltip title={intl.formatMessage({
-                    id: 'account.steem-description'
-                  })}>
-                    <div className="fund-info-icon"/>
+                  <Tooltip
+                    title={intl.formatMessage({
+                      id: 'account.steem-description'
+                    })}
+                  >
+                    <div className="fund-info-icon" />
                   </Tooltip>
-                  <div className="fund-title"><FormattedMessage id="account.steem"/></div>
-                  <div className="fund-number"><FormattedNumber minimumFractionDigits={3} value={balance}/> {'STEEM'}
+                  <div className="fund-title">
+                    <FormattedMessage id="account.steem" />
+                  </div>
+                  <div className="fund-number">
+                    <FormattedNumber
+                      minimumFractionDigits={3}
+                      value={balance}
+                    />{' '}
+                    {'STEEM'}
                   </div>
                   <div className="fund-action">
-                    {isMyPage &&
-                    <DropDown menu={actionListSteem} location={location}/>
-                    }
+                    {isMyPage && (
+                      <DropDown menu={actionListSteem} location={location} />
+                    )}
                   </div>
                 </div>
               </div>
 
               <div className="fund fund-sp alternative">
                 <div className="fund-line">
-                  <Tooltip title={intl.formatMessage({
-                    id: 'account.steem-power-description'
-                  })}>
-                    <div className="fund-info-icon"/>
+                  <Tooltip
+                    title={intl.formatMessage({
+                      id: 'account.steem-power-description'
+                    })}
+                  >
+                    <div className="fund-info-icon" />
                   </Tooltip>
-                  <div className="fund-title"><FormattedMessage id="account.steem-power"/></div>
+                  <div className="fund-title">
+                    <FormattedMessage id="account.steem-power" />
+                  </div>
                   <div className="fund-number">
-                    <FormattedNumber minimumFractionDigits={3} value={vestsToSp(vestingShares, steemPerMVests)}/> {'SP'}
+                    <FormattedNumber
+                      minimumFractionDigits={3}
+                      value={vestsToSp(vestingShares, steemPerMVests)}
+                    />{' '}
+                    {'SP'}
                   </div>
                   <div className="fund-action">
-                    {isMyPage &&
-                    <DropDown menu={actionListSp} location={location}/>
-                    }
+                    {isMyPage && (
+                      <DropDown menu={actionListSp} location={location} />
+                    )}
                   </div>
                 </div>
 
-                {vestingSharesDelegated > 0 &&
-                <div className="fund-line">
-                  <div className="fund-number delegated-shares">
-                    <Tooltip title={intl.formatMessage({
-                      id: 'account.steem-power-delegated'
-                    })}>
-                     <span className="btn-delegated" role="none" onClick={this.delegationClicked}>
-                       {'-'} <FormattedNumber value={vestsToSp(vestingSharesDelegated, steemPerMVests)}/> {'SP'}
-                     </span>
-                    </Tooltip>
+                {vestingSharesDelegated > 0 && (
+                  <div className="fund-line">
+                    <div className="fund-number delegated-shares">
+                      <Tooltip
+                        title={intl.formatMessage({
+                          id: 'account.steem-power-delegated'
+                        })}
+                      >
+                        <span
+                          className="btn-delegated"
+                          role="none"
+                          onClick={this.delegationClicked}
+                        >
+                          {'-'}{' '}
+                          <FormattedNumber
+                            value={vestsToSp(
+                              vestingSharesDelegated,
+                              steemPerMVests
+                            )}
+                          />{' '}
+                          {'SP'}
+                        </span>
+                      </Tooltip>
+                    </div>
+                    <div className="fund-action" />
                   </div>
-                  <div className="fund-action"/>
-                </div>
-                }
+                )}
 
-                {vestingSharesReceived > 0 &&
-                <div className="fund-line">
-                  <div className="fund-number received-shares">
-                    <Tooltip title={intl.formatMessage({
-                      id: 'account.steem-power-received'
-                    })}>
-                      {'+'} <FormattedNumber value={vestsToSp(vestingSharesReceived, steemPerMVests)}/> {'SP'}
-                    </Tooltip>
+                {vestingSharesReceived > 0 && (
+                  <div className="fund-line">
+                    <div className="fund-number received-shares">
+                      <Tooltip
+                        title={intl.formatMessage({
+                          id: 'account.steem-power-received'
+                        })}
+                      >
+                        {'+'}{' '}
+                        <FormattedNumber
+                          value={vestsToSp(
+                            vestingSharesReceived,
+                            steemPerMVests
+                          )}
+                        />{' '}
+                        {'SP'}
+                      </Tooltip>
+                    </div>
+                    <div className="fund-action" />
                   </div>
-                  <div className="fund-action"/>
-                </div>
-                }
+                )}
 
-                {(vestingSharesDelegated > 0 || vestingSharesReceived > 0) &&
-                <div className="fund-line">
-                  <div className="fund-number total-sp">
-                    <Tooltip title={intl.formatMessage({
-                      id: 'account.steem-power-total'
-                    })}>
-                      {'='} <FormattedNumber value={vestsToSp(vestingSharesTotal, steemPerMVests)}/> {'SP'}
-                    </Tooltip>
+                {(vestingSharesDelegated > 0 || vestingSharesReceived > 0) && (
+                  <div className="fund-line">
+                    <div className="fund-number total-sp">
+                      <Tooltip
+                        title={intl.formatMessage({
+                          id: 'account.steem-power-total'
+                        })}
+                      >
+                        {'='}{' '}
+                        <FormattedNumber
+                          value={vestsToSp(vestingSharesTotal, steemPerMVests)}
+                        />{' '}
+                        {'SP'}
+                      </Tooltip>
+                    </div>
+                    <div className="fund-action" />
                   </div>
-                  <div className="fund-action"/>
-                </div>
-                }
+                )}
               </div>
 
               <div className="fund fund-sbd">
                 <div className="fund-line">
-                  <Tooltip title={intl.formatMessage({
-                    id: 'account.steem-dollars-description'
-                  })}>
-                    <div className="fund-info-icon"/>
+                  <Tooltip
+                    title={intl.formatMessage({
+                      id: 'account.steem-dollars-description'
+                    })}
+                  >
+                    <div className="fund-info-icon" />
                   </Tooltip>
-                  <div className="fund-title"><FormattedMessage id="account.steem-dollars"/></div>
+                  <div className="fund-title">
+                    <FormattedMessage id="account.steem-dollars" />
+                  </div>
                   <div className="fund-number">
-                    <FormattedNumber currency="USD" style="currency" currencyDisplay="symbol"
-                                     minimumFractionDigits={3} value={sbdBalance}/>
+                    <FormattedNumber
+                      currency="USD"
+                      style="currency"
+                      currencyDisplay="symbol"
+                      minimumFractionDigits={3}
+                      value={sbdBalance}
+                    />
                   </div>
                   <div className="fund-action">
-                    {isMyPage &&
-                    <DropDown menu={actionListSbd} location={location}/>
-                    }
+                    {isMyPage && (
+                      <DropDown menu={actionListSbd} location={location} />
+                    )}
                   </div>
                 </div>
               </div>
               <div className="fund fund-savings alternative">
                 <div className="fund-line">
-                  <Tooltip title={intl.formatMessage({
-                    id: 'account.savings-description'
-                  })}>
-                    <div className="fund-info-icon"/>
+                  <Tooltip
+                    title={intl.formatMessage({
+                      id: 'account.savings-description'
+                    })}
+                  >
+                    <div className="fund-info-icon" />
                   </Tooltip>
-                  <div className="fund-title"><FormattedMessage id="account.savings"/></div>
+                  <div className="fund-title">
+                    <FormattedMessage id="account.savings" />
+                  </div>
                   <div className="fund-number">
-                    <FormattedNumber minimumFractionDigits={3} value={savingBalance}/> {'STEEM'}
+                    <FormattedNumber
+                      minimumFractionDigits={3}
+                      value={savingBalance}
+                    />{' '}
+                    {'STEEM'}
                   </div>
                   <div className="fund-action">
-                    {isMyPage &&
-                    <DropDown menu={actionListWithdrawSteem} location={location}/>
-                    }
+                    {isMyPage && (
+                      <DropDown
+                        menu={actionListWithdrawSteem}
+                        location={location}
+                      />
+                    )}
                   </div>
                 </div>
                 <div className="fund-line">
                   <div className="fund-number">
-                    <FormattedNumber currency="USD" style="currency" currencyDisplay="symbol"
-                                     minimumFractionDigits={3} value={savingBalanceSbd}/>
+                    <FormattedNumber
+                      currency="USD"
+                      style="currency"
+                      currencyDisplay="symbol"
+                      minimumFractionDigits={3}
+                      value={savingBalanceSbd}
+                    />
                   </div>
                   <div className="fund-action">
-                    {isMyPage &&
-                    <DropDown menu={actionListWithdrawSbd} location={location}/>
-                    }
+                    {isMyPage && (
+                      <DropDown
+                        menu={actionListWithdrawSbd}
+                        location={location}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
-              {showPowerDown &&
-              <div className="next-power-down">
-                <div className="fund-info-icon"/>
-                <FormattedMessage id="account.next-power-down"
-                                  values={
-                                    {
-                                      time: <FormattedRelative value={nextVestingWithdrawal}/>,
-                                      amount: <strong><FormattedNumber value={nextVestingWithdrawalAmount}
-                                                                       minimumFractionDigits={3}/> SP</strong>
-                                    }
-                                  }/>
-              </div>
-              }
+              {showPowerDown && (
+                <div className="next-power-down">
+                  <div className="fund-info-icon" />
+                  <FormattedMessage
+                    id="account.next-power-down"
+                    values={{
+                      time: <FormattedRelative value={nextVestingWithdrawal} />,
+                      amount: (
+                        <strong>
+                          <FormattedNumber
+                            value={nextVestingWithdrawalAmount}
+                            minimumFractionDigits={3}
+                          />{' '}
+                          SP
+                        </strong>
+                      )
+                    }}
+                  />
+                </div>
+              )}
             </div>
 
             <Exchange {...this.props} />
@@ -1027,13 +1272,19 @@ export class SectionWallet extends Component {
 
           <div className="transaction-list">
             <div className="transaction-list-header">
-              <h2><FormattedMessage id="account.transactions"/></h2>
+              <h2>
+                <FormattedMessage id="account.transactions" />
+              </h2>
             </div>
             <div className="transaction-list-body">
-
-              {transactions && transactions.map(tr => (
-                <TransactionRow {...this.props} transaction={tr} key={tr[0]}/>
-              ))}
+              {transactions &&
+                transactions.map(tr => (
+                  <TransactionRow
+                    {...this.props}
+                    transaction={tr}
+                    key={tr[0]}
+                  />
+                ))}
             </div>
           </div>
 
@@ -1048,13 +1299,13 @@ export class SectionWallet extends Component {
             centered
             title={intl.formatMessage({ id: 'account.steem-power-delegated' })}
           >
-            <DelegationList {...this.props} username={username}/>
+            <DelegationList {...this.props} username={username} />
           </Modal>
         </div>
       );
     }
 
-    return <div className="wallet-section"/>;
+    return <div className="wallet-section" />;
   }
 }
 
@@ -1081,7 +1332,6 @@ SectionWallet.propTypes = {
   location: PropTypes.instanceOf(Object).isRequired,
   activeAccount: PropTypes.instanceOf(Object)
 };
-
 
 class Account extends Component {
   constructor(props) {
@@ -1112,7 +1362,6 @@ class Account extends Component {
     const { location } = this.props;
 
     if (location !== prevProps.location) {
-
       // fetch entries when location changed.
       this.fetchEntries();
 
@@ -1139,55 +1388,64 @@ class Account extends Component {
     });
 
     // Account data
-    this.fetchAccount().then(account => {
-      this.setState({ account });
-      return account;
-    }).catch(err => {
-      message.error(formatChainError(err));
-    });
+    this.fetchAccount()
+      .then(account => {
+        this.setState({ account });
+        return account;
+      })
+      .catch(err => {
+        message.error(formatChainError(err));
+      });
 
     const { match } = this.props;
     const { username } = match.params;
 
     // Top posts
-    getTopPosts(username).then(resp => {
-      this.setState({
-        topPosts: resp.list
-      });
-      return resp;
-    }).catch(() => {
-
-    });
-
-    // Transactions
-    getState(`/@${username}/transfers`).then(state => {
-      const { accounts } = state;
-      const { transfer_history: transferHistory } = accounts[username];
-      const transactions = transferHistory.slice(Math.max(transferHistory.length - 50, 0));
-      transactions.sort((a, b) => b[0] - a[0]);
-      return transactions;
-    }).then(transactions => {
-      this.setState({
-        transactions
-      });
-      return transactions;
-    }).catch(err => {
-      message.error(formatChainError(err));
-    }).finally(() => {
-      this.setState({
-        transactionsLoading: false
-      });
-    });
+    getTopPosts(username)
+      .then(resp => {
+        this.setState({
+          topPosts: resp.list
+        });
+        return resp;
+      })
+      .catch(() => {});
 
     // is favorite
     const { activeAccount } = this.props;
     if (activeAccount) {
-      isFavorite(activeAccount.username, username).then(favorite => {
-        this.setState({ favorite });
-        return favorite;
-      }).catch(() => {
-      });
+      isFavorite(activeAccount.username, username)
+        .then(favorite => {
+          this.setState({ favorite });
+          return favorite;
+        })
+        .catch(() => {});
     }
+
+    // Transactions
+    return getState(`/@${username}/transfers`)
+      .then(state => {
+        const { accounts } = state;
+        const { transfer_history: transferHistory } = accounts[username];
+        const transactions = transferHistory.slice(
+          Math.max(transferHistory.length - 50, 0)
+        );
+        transactions.sort((a, b) => b[0] - a[0]);
+        return transactions;
+      })
+      .then(transactions => {
+        this.setState({
+          transactions
+        });
+        return transactions;
+      })
+      .catch(err => {
+        message.error(formatChainError(err));
+      })
+      .finally(() => {
+        this.setState({
+          transactionsLoading: false
+        });
+      });
   };
 
   fetchAccount = async () => {
@@ -1283,23 +1541,23 @@ class Account extends Component {
     const { username } = match.params;
 
     if (favorite) {
-      removeFavoriteUser(activeAccount.username, username).then(resp => {
-        this.setState({ favorite: false });
-        message.info(intl.formatMessage({ id: 'entry.favoriteRemoved' }));
-        return resp;
-      }).catch(() => {
-
-      });
+      removeFavoriteUser(activeAccount.username, username)
+        .then(resp => {
+          this.setState({ favorite: false });
+          message.info(intl.formatMessage({ id: 'entry.favoriteRemoved' }));
+          return resp;
+        })
+        .catch(() => {});
       return;
     }
 
-    addFavorite(activeAccount.username, username).then(resp => {
-      this.setState({ favorite: true });
-      message.info(intl.formatMessage({ id: 'entry.favorited' }));
-      return resp;
-    }).catch(() => {
-
-    });
+    addFavorite(activeAccount.username, username)
+      .then(resp => {
+        this.setState({ favorite: true });
+        message.info(intl.formatMessage({ id: 'entry.favorited' }));
+        return resp;
+      })
+      .catch(() => {});
   };
 
   render() {
@@ -1342,49 +1600,73 @@ class Account extends Component {
               <ComposeBtn {...this.props} />
             </div>
             <div className="right-side">
-              <AccountMenu {...this.props} section={section} username={username}/>
+              <AccountMenu
+                {...this.props}
+                section={section}
+                username={username}
+              />
             </div>
           </div>
           <div className="page-inner" id="app-content">
             <div className="left-side">
-              <Profile {...this.props} username={username} account={account}/>
+              <Profile {...this.props} username={username} account={account} />
             </div>
 
             <div className="right-side">
-              {!isWallet &&
-              <AccountCover {...this.props} account={account} username={username}/>
-              }
+              {!isWallet && (
+                <AccountCover
+                  {...this.props}
+                  account={account}
+                  username={username}
+                />
+              )}
 
-              {section === 'blog' && topPosts &&
-              <AccountTopPosts {...this.props} posts={topPosts}/>
-              }
+              {section === 'blog' &&
+                topPosts && (
+                  <AccountTopPosts {...this.props} posts={topPosts} />
+                )}
 
-              {!isWallet &&
-              <Fragment>
-                <div className={`entry-list ${loading ? 'loading' : ''}`}>
-                  <div
-                    className={`entry-list-body ${
-                      global.listStyle === 'grid' ? 'grid-view' : ''
+              {!isWallet && (
+                <Fragment>
+                  <div className={`entry-list ${loading ? 'loading' : ''}`}>
+                    <div
+                      className={`entry-list-body ${
+                        global.listStyle === 'grid' ? 'grid-view' : ''
                       }`}
-                  >
-                    {loading && entryList.size === 0 ? (
-                      <EntryListLoadingItem/>
-                    ) : (
-                      ''
-                    )}
-                    {entryList.valueSeq().map(d => (
-                      <EntryListItem key={`${d.author}-${d.permlink}`} {...this.props} entry={d} asAuthor={username}/>
-                    ))}
+                    >
+                      {loading && entryList.size === 0 ? (
+                        <EntryListLoadingItem />
+                      ) : (
+                        ''
+                      )}
+                      {entryList.valueSeq().map(d => (
+                        <EntryListItem
+                          key={`${d.author}-${d.permlink}`}
+                          {...this.props}
+                          entry={d}
+                          asAuthor={username}
+                        />
+                      ))}
+                    </div>
                   </div>
-                </div>
-                {loading && entryList.size > 0 ? <LinearProgress/> : ''}
-                <ScrollReplace {...this.props} selector="#app-content" onBottom={this.bottomReached}/>
-              </Fragment>
-              }
+                  {loading && entryList.size > 0 ? <LinearProgress /> : ''}
+                  <ScrollReplace
+                    {...this.props}
+                    selector="#app-content"
+                    onBottom={this.bottomReached}
+                  />
+                </Fragment>
+              )}
 
-              {isWallet && account &&
-              <SectionWallet {...this.props} transactions={transactions} username={username} account={account} />
-              }
+              {isWallet &&
+                account && (
+                  <SectionWallet
+                    {...this.props}
+                    transactions={transactions}
+                    username={username}
+                    account={account}
+                  />
+                )}
             </div>
           </div>
         </div>
