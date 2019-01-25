@@ -19,13 +19,13 @@
   },
   "entry-index": {
     "tags": "Gắn những thẻ thường dùng",
-    "filter-trending": "Xu hướng",
-    "filter-hot": "Chủ đề thu hút",
-    "filter-created": "Chủ đề mới",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
+    "filter-trending": "Bài viết theo xu thế",
+    "filter-hot": "Bài viết hot",
+    "filter-created": "Bài viết mới",
+    "filter-active": "Kích hoạt",
+    "filter-promoted": "Quảng cáo",
+    "filter-votes": "Bình chọn",
+    "filter-children": "Những bình luận",
     "filter-feed": "Feed"
   },
   "entry-payout": {
