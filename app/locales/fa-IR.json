@@ -87,32 +87,32 @@
   },
   "create-pin-code": {
     "title": "ایجاد پین کد",
-    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter PIN code",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
-    "created": "PIN code created"
+    "desc1": "پین کدی تعیین کنید تا اطلاعاتتان رمزگذاری شوند و لایه اضافی امنیتی فعال شود!",
+    "input-placeholder": "پین کد را وارد کنید",
+    "desc2": "از شما برای هربار راه اندازی و همچنین نقل و انتقالات مهم پین کد درخواست خواهد شد.",
+    "created": "پین کد ایجاد شد"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
-    "input-placeholder": "Enter PIN code to continue",
-    "last-chance": "This is your last chance",
-    "invalidate": "Oh, I forgot it...",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "title": "پین کد را وارد کنید",
+    "input-placeholder": "پین کد را برای ادامه وارد کنید",
+    "last-chance": "این آخرین شانس شماست",
+    "invalidate": "آه، فراموشش کردم...",
+    "invalidate-confirm": "شما واقعا می خواهید پین کد را باطل كنید؟",
+    "invalidated": "پین کد باطل شد"
   },
   "user-menu": {
-    "profile": "Profile",
-    "bookmarks": "Bookmarks",
-    "favorites": "Favorites",
-    "drafts": "Drafts",
-    "schedules": "Schedules",
-    "gallery": "Gallery",
-    "login-as": "Login As",
-    "logout": "Logout"
+    "profile": "نمایه",
+    "bookmarks": "بوک مارک ها",
+    "favorites": "برگزیده‌ها",
+    "drafts": "پیش نویس",
+    "schedules": "زمان بندی ها",
+    "gallery": "گالری",
+    "login-as": "ورود به عنوان",
+    "logout": "خروج"
   },
   "login-required": {
-    "default": "This action requires login",
-    "key-required": "This action requires {key} key or master password",
+    "default": "این عمل نیازمند ورود به سیستم است",
+    "key-required": "این عمل نیازمند کلید {key} و یا رمز عبور اصلی است",
     "keys-required": "This action requires {keys} keys or master password"
   },
   "quick-profile": {
