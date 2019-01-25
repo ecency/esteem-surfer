@@ -362,9 +362,9 @@
     "vote-removed": "لغو رای برای @{n}",
     "username-placeholder": "نام کاربری",
     "extra-witnesses-exp": "Enter account name below to vote for a witness outside of <strong>Top 50</strong>",
-    "proxy-exp": "You can also choose a proxy that will vote for witnesses for you. This will reset your current witness selection.",
+    "proxy-exp": "شما همچنین میتوانید یک پروکسی انتخاب کنید تا به عنوان شاهد برای شما رای دهد. این عمل باعث تنظیم مجدد حالت شاهد شما می شود.",
     "set-proxy": "تنظیم پروکسی",
-    "proxy-active-exp": "You have set a voting proxy. If you would like to re-enable manual voting, please clear your proxy.",
+    "proxy-active-exp": "شما پروکسی رای گیری را فعال کرده اید. اگر می خواهید رای گیری دستی را دوباره فعال کنید، لطفا پروکسی را پاک کنید.",
     "current-proxy": "پروکسی فعلی شما: <strong>{n}</strong>",
     "remove-proxy": "پاک کردن پروکسی",
     "proxy-removed": "پروکسی پاک شد",
@@ -415,7 +415,7 @@
     "confirm-sub-title": "لطفاً بررسی کنید که همه چیز درست است",
     "delegation-summary": "<span class=\"sp\">{sp}</span> محول شده به <span class=\"to-user\">{to}</span>",
     "success-sub-title": "محول کردن انجام شد",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "insufficient-vesting": "نا کافی بودن سهام برای سرمایه گذاری {a} سهامدار"
   },
   "delegation-list": {
     "empty-list": "اینجا چیزی نیست"
