@@ -6,15 +6,15 @@
     "no": "Không",
     "delete": "Xóa",
     "cancel": "Hủy",
-    "ok": "OK",
-    "edit": "Edit",
-    "server-error": "Process could not be completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "ok": "Đồng ý",
+    "edit": "Chỉnh sửa",
+    "server-error": "Quá trình xử lý không thể thực hiện do lỗi máy chủ",
+    "save": "Lưu lại",
+    "done": "Đã xử lý xong",
+    "select": "Chọn"
   },
   "footer": {
-    "faq": "FAQ",
+    "faq": "Những câu thường gặp",
     "about": "About"
   },
   "entry-index": {
