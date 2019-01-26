@@ -278,7 +278,7 @@
     "copied-clipboard": "Skopiowano",
     "comment-entry-title": "Przeglądasz wątek pojedynczego komentarza z: ",
     "comment-entry-go-root": "Zobacz pełny kontekst",
-    "comment-entry-go-parent": "View the direct parent"
+    "comment-entry-go-parent": "Zobacz poprzedni komentarz"
   },
   "navbar": {
     "settings": "Ustawienia",
@@ -299,13 +299,13 @@
     "n-results-for-q": "{n} wyniki wyszukiwania dla {q}",
     "sort-by": "Sortuj według",
     "sort-popularity": "Popularność",
-    "sort-relevance": "Relevance",
+    "sort-relevance": "Trafność",
     "sort-newest": "Data"
   },
   "updater": {
     "new-version-available": "Nowa wersja jest dostępna",
     "update": "Aktualizuj",
-    "dismiss": "Dismiss",
+    "dismiss": "Odrzuć",
     "downloading": "Pobieranie nowej wersji...",
     "download-completed": "Pobieranie zakończone",
     "restart": "Zrestartuj"
@@ -324,7 +324,7 @@
     "mention-comment": "{source} wspomniał o Tobie w komentarzu",
     "followed": "{source} obserwuje Cię",
     "replied": "{source} odpowiedział Ci",
-    "reblogged": "{source} reblogged your post"
+    "reblogged": "{source} zresteemował twój post"
   },
   "activities": {
     "type-all": "Wszystkie Aktywności",
