@@ -41,7 +41,7 @@
     "reward": "Jutalom",
     "percent": "Százalék",
     "time": "Idő",
-    "modal-title": "({n}) Szavazók"
+    "modal-title": "({n}) Szavazó"
   },
   "entry-list-item": {
     "reblogged": "megosztva {n} által"
@@ -54,7 +54,7 @@
     "title": "Beállítások",
     "currency": "Pénznem",
     "currency-fetch-error": "Nem sikerült betölteni a '{cur}' árfolyamát",
-    "currency-changed": "Pénznem Átváltva",
+    "currency-changed": "Pénznem Megváltoztatva",
     "locale": "Nyelv",
     "locale-changed": "Nyelv megváltoztatva",
     "server": "Szerver",
