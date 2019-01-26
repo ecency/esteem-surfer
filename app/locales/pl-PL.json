@@ -44,16 +44,16 @@
     "modal-title": "Głosujący ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "resteemowany przez {n}"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "Resteemuj",
+    "reblogged": "Resteemowany"
   },
   "settings": {
     "title": "Ustawienia",
     "currency": "Waluta",
-    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
+    "currency-fetch-error": "Nie można pobrać kursu waluty dla '{cur}'",
     "currency-changed": "Waluta Zmieniona",
     "locale": "Język",
     "locale-changed": "Język zmieniony",
@@ -62,12 +62,12 @@
     "server-connecting": "Łączenie z '{server}'...",
     "server-connect-error": "Nie można połączyć z '{server}'. Upewnij się, że masz dobre połączenie internetowe.",
     "server-timeout-error": "'{server}' wygląda na nieistniejący",
-    "server-changed": "Server selection changed to {server}",
+    "server-changed": "Wybór serwera został zmieniony na {server}",
     "server-custom-address": "Adres niestandardowego serwera",
     "server-list-fetch-error": "Nie można pobrać listy serwerów",
-    "push-notifications": "Push Notifications",
-    "push-notify-enabled": "Push notifications enabled",
-    "push-notify-disabled": "Push notifications disabled"
+    "push-notifications": "Powiadomienia Push",
+    "push-notify-enabled": "Włączono powiadomienia push",
+    "push-notify-disabled": "Wyłączono powiadomienia push"
   },
   "login": {
     "title": "Witaj ponownie!",
@@ -78,18 +78,18 @@
     "login": "Zaloguj się",
     "error-fields-required": "Wprowadź nazwę użytkownika i hasło/WIF",
     "error-public-key": "Wprowadziłeś klucz publiczny. Wymagane hasło/WIF",
-    "error-user-fetch": "User data could not be fetched",
+    "error-user-fetch": "Nie można pobrać danych użytkownika",
     "error-user-not-found": "Użytkownik nie istnieje",
-    "error-authenticate": "Wrong username or password/WIF",
-    "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>",
+    "error-authenticate": "Nieprawidłowa nazwa użytkownika lub hasło/WIF",
+    "create-account-text": "Nie masz konta? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Zarejestruj się teraz!</a>",
     "login-with-sc": "Zaloguj się przy użyciu",
     "divider-text": "LUB"
   },
   "create-pin-code": {
     "title": "Utwórz Kod PIN",
-    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
+    "desc1": "Ustaw kod PIN, aby szyfrować dane i włączyć dodatkową warstwę zabezpieczeń!",
     "input-placeholder": "Wprowadź kod PIN",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
+    "desc2": "Zostaniesz poproszony o podanie kodu PIN dla kluczowych transakcji, a także przy każdym uruchomieniu.",
     "created": "Kod PIN został utworzony"
   },
   "confirm-pin-code": {
