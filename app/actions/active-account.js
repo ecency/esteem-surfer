@@ -23,8 +23,7 @@ export const logIn = username => dispatch => {
 
       return getAccountRC(username).then(r => {
         if (r.rc_accounts && r.rc_accounts.length > 0) {
-          const { rc_manabar } = r.rc_accounts[0];
-          return Object.assign({}, account, { rc_manabar });
+          return Object.assign({}, account, { rcAccount: r.rc_accounts[0] });
         }
 
         return account;
@@ -60,8 +59,7 @@ export const updateActiveAccount = () => (dispatch, getState) => {
 
       return getAccountRC(username).then(r => {
         if (r.rc_accounts && r.rc_accounts.length > 0) {
-          const { rc_manabar } = r.rc_accounts[0];
-          return Object.assign({}, account, { rc_manabar });
+          return Object.assign({}, account, { rcAccount: r.rc_accounts[0] });
         }
 
         return account;
