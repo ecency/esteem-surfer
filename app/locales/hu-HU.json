@@ -220,7 +220,7 @@
     "published": "Bejegyzés közzétéve",
     "update": "Frissítés",
     "updated": "Bejegyzés frissítve",
-    "sync-scroll": "Scroll Sync",
+    "sync-scroll": "Görgetés szinkron",
     "words-count": "{n} szó",
     "no-suggestions": "Nincs javaslat",
     "emoji-filter-placeholder": "Szűrés",
@@ -384,7 +384,7 @@
     "to": "Címzett",
     "to-placeholder": "felhasználónév",
     "to-not-found": "A felhasználó, akinek utalni próbálsz, nem létezik!",
-    "to-bad-actor": "Use caution sending to this account. Please double check your spelling for possible phishing.",
+    "to-bad-actor": "Óvatosan járj el ezen partnernek való utalás esetén. Kérjük ellenőrizd a helyesírást lehetséges adathalászat miatt.",
     "amount": "Összeg",
     "amount-placeholder": "összeg",
     "wrong-amount": "Nem megfelelő összeg",
@@ -415,7 +415,7 @@
     "confirm-sub-title": "Kérjük ellenőrizd, hogy minden rendben",
     "delegation-summary": "<span class=\"sp\">{sp}</span><span class=\"to-user\">{to}</span>-nak delegálva",
     "success-sub-title": "Delegálás teljesítve",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "insufficient-vesting": "Elégtelen vesting shares {a} VESTS"
   },
   "delegation-list": {
     "empty-list": "Itt nincs semmi"
