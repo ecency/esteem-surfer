@@ -63,7 +63,7 @@
     "server-connect-error": "Nem sikerült csatlakozni a '{server}'-hez. Ellenőrizd az internet kapcsolatot.",
     "server-timeout-error": "'{server}' úgy néz ki nem elérhető",
     "server-changed": "Szerver {server}-re váltva",
-    "server-custom-address": "Custom server address",
+    "server-custom-address": "Egyéni szerver címe",
     "server-list-fetch-error": "Nem sikerült betölteni a szerverlistát",
     "push-notifications": "Értesítések bekapcsolása",
     "push-notify-enabled": "Értesítések bekapcsolva",
@@ -113,7 +113,7 @@
   "login-required": {
     "default": "Ez a művelet bejelentkezést igényel",
     "key-required": "A művelethez a {key} kulcs szükséges vagy a master jelszó",
-    "keys-required": "This action requires {keys} keys or master password"
+    "keys-required": "A művelethez {keys} kulcsok szükségesek vagy a master jelszó"
   },
   "quick-profile": {
     "fetch-error-profile": "A profil adatokat nem sikerült betölteni",
@@ -161,11 +161,11 @@
     "transactions": "Tranzakciók",
     "transaction-curation_reward": "Kurációs Jutalom",
     "transaction-author_reward": "Szerzői Jutalom",
-    "transaction-comment_benefactor_reward": "Comment Benefactor Reward",
+    "transaction-comment_benefactor_reward": "Hozzászólás Támogató Jutalom",
     "transaction-claim_reward_balance": "Jutalmak átvétele",
     "transaction-transfer": "Átutalás",
-    "transaction-transfer_to_vesting": "Transfer to vesting",
-    "transaction-withdraw_vesting": "Withdraw vesting",
+    "transaction-transfer_to_vesting": "Átutalás a vetingbe",
+    "transaction-withdraw_vesting": "Vesting visszavonás",
     "transaction-fill_order": "Megrendelés kitöltése",
     "claim-reward-balance": "Jutalom egyenleg átvétele",
     "claim-reward-balance-ok": "Jutalom egyenleg átvéve",
