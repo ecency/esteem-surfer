@@ -152,6 +152,14 @@ describe('Markdown to Html', () => {
   });
 
   describe('Mark Down -> Html', () => {
+    it('Should add https prefix', () => {
+      expect(markDown2Html('<a href="foo">foo</a>').trim()).toBe(
+        '<p><a class="markdown-external-link" data-href="https://foo">foo</a></p>'
+      );
+    });
+  });
+
+  describe('Mark Down -> Html', () => {
     it('Should replace busy links properly', () => {
       const data = getTestData(
         'muratkbesiroglu',
