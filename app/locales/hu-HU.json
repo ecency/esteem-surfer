@@ -278,7 +278,7 @@
     "copied-clipboard": "Lemásolva",
     "comment-entry-title": "You are viewing a single comment's thread from: ",
     "comment-entry-go-root": "Teljes kontextus megtekintése",
-    "comment-entry-go-parent": "View the direct parent"
+    "comment-entry-go-parent": "Nézd meg a direkt felemenőt"
   },
   "navbar": {
     "settings": "Beállítások",
@@ -374,7 +374,7 @@
     "transfer-title": "Átutalás más számlára",
     "transfer-sub-title": "Tőke átutalása egy másik Steem számlára",
     "transfer-saving-title": "Átutalás a megtakarításokhoz",
-    "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
+    "transfer-saving-sub-title": "Tőkevédelem érdekében visszavonás esetén ígényelj 3 nap várakozási időt",
     "withdraw-saving-title": "Megtakarítások visszavonása",
     "withdraw-saving-sub-title": "Tőke visszavonás a kötelező 3 napos várakozási idő után",
     "power-up-title": "Steem Power-re való váltás",
