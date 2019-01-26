@@ -331,7 +331,7 @@
     "type-votes": "Głosy",
     "type-replies": "Odpowiedzi",
     "type-mentions": "Wzmianki",
-    "type-follows": "Follows",
+    "type-follows": "Obserwacje",
     "type-reblogs": "Resteemy",
     "vote-str": "{p}% lubi twój post:",
     "reply-str": "odpowiedział na twój post:",
@@ -339,12 +339,12 @@
     "followed-str": "obserwowany",
     "unfollowed-str": "nieobserwowany",
     "ignored-str": "ignorowany",
-    "reblog-str": "reblogged your post:",
+    "reblog-str": "zresteemował twój post:",
     "empty-list": "Nic tu nie ma",
     "refresh": "Odśwież",
     "mark-all-read": "Oznacz Wszystkie jako Przeczytane",
     "leaderboard": "Ranking",
-    "leaderboard-title": "Daily Top users"
+    "leaderboard-title": "Najlepsi codzienni użytkownicy"
   },
   "witnesses": {
     "page-title": "Głosowanie na Delegata",
@@ -408,16 +408,16 @@
     "recent-transfers": "Recent transfers"
   },
   "delegate": {
-    "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
-    "slider-help": "Drag the slider to adjust the amount",
-    "confirm-title": "Confirm Delegation",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "Delegation completed",
+    "title": "Deleguj",
+    "sub-title": "Deleguj Steem Power",
+    "slider-help": "Przeciągnij suwak, aby dostosować ilość",
+    "confirm-title": "Potwierdź Delegację",
+    "confirm-sub-title": "Prosimy sprawdzić, czy wszystko jest poprawne",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> oddelegowane do <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "Delegacja zakończona",
     "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "Nic tu nie ma"
   }
 }
