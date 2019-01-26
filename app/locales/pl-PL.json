@@ -82,20 +82,20 @@
     "error-user-not-found": "Użytkownik nie istnieje",
     "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>",
-    "login-with-sc": "Login with",
-    "divider-text": "OR"
+    "login-with-sc": "Zaloguj się przy użyciu",
+    "divider-text": "LUB"
   },
   "create-pin-code": {
-    "title": "Create PIN Code",
+    "title": "Utwórz Kod PIN",
     "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter PIN code",
+    "input-placeholder": "Wprowadź kod PIN",
     "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
-    "created": "PIN code created"
+    "created": "Kod PIN został utworzony"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
-    "input-placeholder": "Enter PIN code to continue",
-    "last-chance": "This is your last chance",
+    "title": "Wprowadź Kod PIN",
+    "input-placeholder": "Wprowadź kod PIN, aby kontynuować",
+    "last-chance": "To twoja ostatnia szansa",
     "invalidate": "Och, zapomniałem go...",
     "invalidate-confirm": "Czy na pewno chcesz unieważnić kod PIN?",
     "invalidated": "Kod PIN jest unieważniony"
@@ -104,19 +104,19 @@
     "profile": "Profil",
     "bookmarks": "Zakładki",
     "favorites": "Ulubione",
-    "drafts": "Drafts",
+    "drafts": "Wersje robocze",
     "schedules": "Harmonogramy",
     "gallery": "Galeria",
     "login-as": "Zaloguj Się Jako",
     "logout": "Wyloguj"
   },
   "login-required": {
-    "default": "This action requires login",
-    "key-required": "This action requires {key} key or master password",
-    "keys-required": "This action requires {keys} keys or master password"
+    "default": "To działanie wymaga zalogowania",
+    "key-required": "To działanie wymaga {key} klucza lub głównego hasła",
+    "keys-required": "To działanie wymaga {keys} kluczy lub głównego hasła"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
+    "fetch-error-profile": "Nie można pobrać danych profilu",
     "fetch-error-content": "Nie można pobrać postów",
     "post-count": "Liczba Postów",
     "followers": "Obserwujący",
@@ -181,13 +181,13 @@
     "tags-placeholder": "Tags. First tag is your main category",
     "max-n-tags": "Max {n} tags",
     "body-placeholder": "Post Content",
-    "tool-bold": "Bold",
-    "tool-italic": "Italic",
-    "tool-header": "Heading",
-    "tool-code": "Code",
-    "tool-quote": "Quote",
-    "tool-ul": "Unordered List",
-    "tool-ol": "Ordered List",
+    "tool-bold": "Pogrubienie",
+    "tool-italic": "Kursywa",
+    "tool-header": "Nagłówek",
+    "tool-code": "Kod",
+    "tool-quote": "Cytat",
+    "tool-ul": "Nieuporządkowana Lista",
+    "tool-ol": "Uporządkowana Lista",
     "tool-link": "Link",
     "tool-image": "Obraz",
     "tool-table": "Tabela",
@@ -306,15 +306,15 @@
     "new-version-available": "New version is available",
     "update": "Update",
     "dismiss": "Dismiss",
-    "downloading": "Downloading new version...",
-    "download-completed": "Download is completed",
-    "restart": "Restart"
+    "downloading": "Pobieranie nowej wersji...",
+    "download-completed": "Pobieranie zakończone",
+    "restart": "Zrestartuj"
   },
   "context-menu": {
-    "cut": "Cut",
-    "copy": "Copy",
-    "paste": "Paste",
-    "open-image-browser": "Open image in browser",
+    "cut": "Wytnij",
+    "copy": "Kopiuj",
+    "paste": "Wklej",
+    "open-image-browser": "Otwórz obraz w przeglądarce",
     "copy-image-url": "Copy image url"
   },
   "notification": {
