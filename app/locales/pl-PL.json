@@ -234,10 +234,10 @@
     "empty-list": "Nic tu nie ma"
   },
   "drafts": {
-    "title": "Drafts",
-    "load-error": "Could not load drafts",
+    "title": "Wersje robocze",
+    "load-error": "Nie można załadować wersji roboczych",
     "empty-list": "Nic tu nie ma",
-    "deleted": "Draft is deleted"
+    "deleted": "Wersja robocza jest usunięta"
   },
   "schedules": {
     "title": "Zaplanowane Posty",
@@ -300,11 +300,11 @@
     "sort-by": "Sortuj według",
     "sort-popularity": "Popularność",
     "sort-relevance": "Relevance",
-    "sort-newest": "Date"
+    "sort-newest": "Data"
   },
   "updater": {
-    "new-version-available": "New version is available",
-    "update": "Update",
+    "new-version-available": "Nowa wersja jest dostępna",
+    "update": "Aktualizuj",
     "dismiss": "Dismiss",
     "downloading": "Pobieranie nowej wersji...",
     "download-completed": "Pobieranie zakończone",
@@ -357,7 +357,7 @@
     "block-size": "Rozmiar bloku",
     "ac-avail": "AC avail",
     "ac-budget": "AC budget",
-    "version": "Version",
+    "version": "Wersja",
     "voted": "@{n} voted",
     "vote-removed": "vote removed for @{n}",
     "username-placeholder": "nazwa użytkownika",
@@ -392,19 +392,19 @@
     "insufficient-funds": "Insufficient funds",
     "balance": "Balans",
     "memo": "Memo",
-    "memo-placeholder": "enter your notes here",
+    "memo-placeholder": "tu wpisuj swoje notatki",
     "memo-help": "This memo is public",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "key-required-err": "Nie znaleziono aktywnego klucza dla wybranego konta. Upewnij się, że jesteś zalogowany z właściwymi danymi uwierzytelniającymi.",
     "next": "Next",
-    "confirm-title": "Confirm your Transfer",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "confirm": "Confirm",
-    "back": "Back",
-    "success-title": "Success",
-    "success-sub-title": "Transfer successful",
-    "transfer-summary": "Transferred <span class=\"amount\">{amount}</span> From <span class=\"from-user\">{from}</span> to <span class=\"to-user\">{to}</span>",
-    "reset": "Another transfer",
-    "finish": "Finish",
+    "confirm-title": "Potwierdź Transfer",
+    "confirm-sub-title": "Prosimy sprawdzić, czy wszystko jest poprawne",
+    "confirm": "Zatwierdź",
+    "back": "Wstecz",
+    "success-title": "Zakończono powodzeniem",
+    "success-sub-title": "Transfer zakończony powodzeniem",
+    "transfer-summary": "Przetransferowano <span class=\"amount\">{amount}</span> Z <span class=\"from-user\">{from}</span> do <span class=\"to-user\">{to}</span>",
+    "reset": "Kolejny transfer",
+    "finish": "Zakończ",
     "recent-transfers": "Recent transfers"
   },
   "delegate": {
