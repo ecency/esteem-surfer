@@ -3,7 +3,6 @@
 
 .app-footer {
   align-items: center;
-
   display: flex;
   flex-shrink: 0;
   height: 32px;
@@ -19,64 +18,53 @@
   }
 
   .left-side {
-    width: 40%;
+    align-items: center;
     display: flex;
+    width: 40%;
 
-    .voting-power {
-      margin-right: 20px;
+    @include themify(day) {
+      color: $steel-grey;
     }
 
-    .voting-power,
-    .resource-credits {
-      opacity: 0.5;
+    .vp {
+      align-items: center;
       display: flex;
-      height: 100%;
-      width: 90px;
-      flex-direction: column;
-      cursor: pointer;
 
-      .first-line {
-        font-size: 12px;
-        margin-bottom: 3px;
-        justify-content: space-between;
-        display: flex;
+      .battery-img {
+        margin-right: 10px;
+        transform: rotate(90deg);
 
-        .first-line-label {
-          font-weight: 700;
+        @include themify(day) {
+          color: $warm-grey;
         }
-      }
 
-      .power-line {
-        display: flex;
-        height: 4px;
-        background: lighten($steel-grey, 20);
-        border-radius: 5px;
-
-        .power-line-inner {
-          height: 100%;
-          background: $dark-sky-blue;
-          border-radius: 5px;
+        svg {
+          height: 24px;
+          width: 24px;
         }
-      }
-
-      &:hover {
-        opacity: 1;
       }
     }
 
-    .resource-credits {
-      .power-line {
-        .power-line-inner {
-          background: $green1;
-        }
-      }
+    .vp,
+    .rc {
+      cursor: default;
+      font-size: 12px;
+    }
+
+    .vp,
+    .separator {
+      margin-right: 12px;
+    }
+
+    .separator {
+      font-weight: bold;
     }
   }
 
   .right-side {
     font-size: 12px;
-    width: 50%;
     text-align: right;
+    width: 50%;
 
     a {
       @include themify(day) {

@@ -71,10 +71,156 @@ export const facebook = (
   </svg>
 );
 
-
 export const arrowRight = (
-  <svg className="fa-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-    <path fill="currentColor"
-          d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/>
+  <svg
+    className="fa-arrow-right"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 448 512"
+  >
+    <path
+      fill="currentColor"
+      d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"
+    />
   </svg>
 );
+
+export const battery = {
+  100: (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M0 0h24v24H0z" fill="transparent" />
+      <path
+        fill="currentColor"
+        d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"
+      />
+    </svg>
+  ),
+  90: (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M0 0h24v24H0z" fill="transparent" />
+      <path
+        fill="currentColor"
+        fillOpacity=".3"
+        d="M17 5.33C17 4.6 16.4 4 15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33V8h10V5.33z"
+      />
+      <path
+        fill="currentColor"
+        d="M7 8v12.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V8H7z"
+      />
+    </svg>
+  ),
+  80: (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M0 0h24v24H0z" fill="transparent" />
+      <path
+        fill="currentColor"
+        fillOpacity=".3"
+        d="M17 5.33C17 4.6 16.4 4 15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33V9h10V5.33z"
+      />
+      <path
+        fill="currentColor"
+        d="M7 9v11.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V9H7z"
+      />
+    </svg>
+  ),
+  /* Copy of 80 */
+  70: (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M0 0h24v24H0z" fill="transparent" />
+      <path
+        fill="currentColor"
+        fillOpacity=".3"
+        d="M17 5.33C17 4.6 16.4 4 15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33V9h10V5.33z"
+      />
+      <path
+        fill="currentColor"
+        d="M7 9v11.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V9H7z"
+      />
+    </svg>
+  ),
+  60: (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M0 0h24v24H0z" fill="transparent" />
+      <path
+        fill="currentColor"
+        fillOpacity=".3"
+        d="M17 5.33C17 4.6 16.4 4 15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33V11h10V5.33z"
+      />
+      <path
+        fill="currentColor"
+        d="M7 11v9.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V11H7z"
+      />
+    </svg>
+  ),
+  50: (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M0 0h24v24H0z" fill="transparent" />
+      <path
+        fill="currentColor"
+        fillOpacity=".3"
+        d="M17 5.33C17 4.6 16.4 4 15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33V13h10V5.33z"
+      />
+      <path
+        fill="currentColor"
+        d="M7 13v7.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V13H7z"
+      />
+    </svg>
+  ),
+  /* Copy of 50 */
+  40: (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M0 0h24v24H0z" fill="transparent" />
+      <path
+        fill="currentColor"
+        fillOpacity=".3"
+        d="M17 5.33C17 4.6 16.4 4 15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33V13h10V5.33z"
+      />
+      <path
+        fill="currentColor"
+        d="M7 13v7.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V13H7z"
+      />
+    </svg>
+  ),
+  30: (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M0 0h24v24H0z" fill="transparent" />
+      <path
+        fill="currentColor"
+        fillOpacity=".3"
+        d="M17 5.33C17 4.6 16.4 4 15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33V15h10V5.33z"
+      />
+      <path
+        fill="currentColor"
+        d="M7 15v5.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V15H7z"
+      />
+    </svg>
+  ),
+  20: (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M0 0h24v24H0z" fill="transparent" />
+      <path
+        fill="currentColor"
+        d="M7 17v3.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V17H7z"
+      />
+      <path
+        fill="currentColor"
+        fillOpacity=".3"
+        d="M17 5.33C17 4.6 16.4 4 15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33V17h10V5.33z"
+      />
+    </svg>
+  ),
+  /* Copy of 20 */
+  10: (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M0 0h24v24H0z" fill="transparent" />
+      <path
+        fill="currentColor"
+        d="M7 17v3.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V17H7z"
+      />
+      <path
+        fill="currentColor"
+        fillOpacity=".3"
+        d="M17 5.33C17 4.6 16.4 4 15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33V17h10V5.33z"
+      />
+    </svg>
+  )
+};
