@@ -8,10 +8,10 @@
     "cancel": "Elvet",
     "ok": "Rendben",
     "edit": "Szerkesztés",
-    "server-error": "Folyamat szerver hiba miatt nem hajtható végre",
+    "server-error": "A folyamat szerver hiba miatt nem hajtható végre",
     "save": "Mentés",
     "done": "Kész",
-    "select": "Kiválaszt"
+    "select": "Kiválasztás"
   },
   "footer": {
     "faq": "GYÍK",
@@ -20,7 +20,7 @@
   "entry-index": {
     "tags": "Népszerű címkék",
     "filter-trending": "Népszerű",
-    "filter-hot": "Hot",
+    "filter-hot": "Forró",
     "filter-created": "Új",
     "filter-active": "Aktív",
     "filter-promoted": "Támogatott",
