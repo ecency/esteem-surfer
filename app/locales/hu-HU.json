@@ -392,7 +392,7 @@
     "insufficient-funds": "Nincs elegendő fedezet",
     "balance": "Egyenleg",
     "memo": "Üzenet",
-    "memo-placeholder": "ide írjd a megjegyzést",
+    "memo-placeholder": "megjegyzés ide",
     "memo-help": "Ez az üzenet nyilvános",
     "key-required-err": "Az aktív kulcs nem található a kijelölt fiókhoz. Kérjük, győződj meg arról, hogy a megfelelő hitelesítő adatokkal jelentkeztél be.",
     "next": "Következő",
