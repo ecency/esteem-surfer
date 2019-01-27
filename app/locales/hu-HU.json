@@ -283,7 +283,7 @@
   "navbar": {
     "settings": "Beállítások",
     "change-theme": "Téma Megváltoztatása",
-    "login": "Bejelentkezés a következő fiókba: %s",
+    "login": "Bejelentkezés a következő fiókba",
     "bookmark": "Hozzáadás a könyvjelzőkhöz",
     "bookmarkRemove": "Eltávolítás a könyvjelzőkből",
     "favorite": "Hozzáadás a kedvencekhez",
@@ -371,7 +371,7 @@
     "proxy-created": "@{n} proxy-ként beállítva"
   },
   "transfer": {
-    "transfer-title": "Átutalás más fióknak",
+    "transfer-title": "Átutalás más fiókba",
     "transfer-sub-title": "Tőke átutalása egy másik Steem fiókba",
     "transfer-saving-title": "Átutalás a megtakarításokhoz",
     "transfer-saving-sub-title": "Tőkevédelem érdekében visszavonás esetén ígényelj 3 nap várakozási időt",
@@ -384,7 +384,7 @@
     "to": "Címzett",
     "to-placeholder": "felhasználónév",
     "to-not-found": "A felhasználó, akinek utalni próbálsz, nem létezik!",
-    "to-bad-actor": "Óvatosan járj el ezen partnernek való utalás esetén. Kérjük ellenőrizd a helyesírást lehetséges adathalászat miatt.",
+    "to-bad-actor": "Óvatosan járj el, ha utalni szeretnél ennek a felhasználónak. Kérjük ellenőrizd a helyesírást lehetséges adathalászat miatt.",
     "amount": "Összeg",
     "amount-placeholder": "összeg",
     "wrong-amount": "Nem megfelelő összeg",
