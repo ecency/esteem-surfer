@@ -361,7 +361,7 @@
     "voted": "@{n} szavazott",
     "vote-removed": "szavazat visszavonva @{n} esetében",
     "username-placeholder": "felhasználónév",
-    "extra-witnesses-exp": "Ide írd be a tanú nevét, ha az nem szerepel a <strong>Top 50</strong>-ben",
+    "extra-witnesses-exp": "Alul írd be a tanú nevét, ha az nem szerepel a <strong>Top 50</strong>-ben",
     "proxy-exp": "Választhatsz egy proxy-t is, ami tanúkat fog szavazni helyetted. Ez a művelet felülírja a jelenlegi tanú listádat.",
     "set-proxy": "Proxy beállítása",
     "proxy-active-exp": "Proxy szavazás beállítva. Ha újra kézi szavazást szeretnél, kérjük töröld a proxy-t.",
