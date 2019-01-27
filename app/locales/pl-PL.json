@@ -164,8 +164,8 @@
     "transaction-comment_benefactor_reward": "Wynagrodzenie Ofiarodawcy Komentarza",
     "transaction-claim_reward_balance": "Odbierz wynagrodzenie",
     "transaction-transfer": "Transfer",
-    "transaction-transfer_to_vesting": "Zwiększ moc",
-    "transaction-withdraw_vesting": "Zmniejsz moc",
+    "transaction-transfer_to_vesting": "Transfer do udziałów",
+    "transaction-withdraw_vesting": "Wycofaj udziały",
     "transaction-fill_order": "Wypełnij zamówienie",
     "claim-reward-balance": "Saldo uzyskanego wynagrodzenia",
     "claim-reward-balance-ok": "Balans wynagrodzenia zatwierdzony",
@@ -415,7 +415,7 @@
     "confirm-sub-title": "Prosimy sprawdzić, czy wszystko jest poprawne",
     "delegation-summary": "<span class=\"sp\">{sp}</span> oddelegowane do <span class=\"to-user\">{to}</span>",
     "success-sub-title": "Delegacja zakończona",
-    "insufficient-vesting": "Niewystarczające ilość Steem Power {a} VESTS"
+    "insufficient-vesting": "Niewystarczająca ilość udziałów {a} VESTS"
   },
   "delegation-list": {
     "empty-list": "Nic tu nie ma"
