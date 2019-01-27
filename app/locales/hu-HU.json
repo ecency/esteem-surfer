@@ -209,33 +209,33 @@
     "select-schedule-date": "Dátum kiválasztása",
     "schedule-saved": "Bejegyzés időzítve",
     "schedule-picker-select-time": "Időpont Kiválasztása",
-    "schedule-picker-select-date": "Dátum kiválasztása",
+    "schedule-picker-select-date": "Dátum Kiválasztása",
     "grant-posting-perm": "Bejegyzések Írásának Engedélyezése",
     "posting-perm-granted": "Bejegyzések Írása Engedélyezve",
     "remove-posting-perm": "Bejegyzések Írása Engedélyezésének Visszavonása",
     "posting-perm-removed": "Bejegyzések írásának engedélyezése visszavonva",
-    "save-draft": "Piszkozat mentése",
+    "save-draft": "Piszkozat Mentése",
     "draft-saved": "Piszkozat mentve",
     "publish": "Közzétesz",
     "published": "Bejegyzés közzétéve",
     "update": "Frissítés",
-    "updated": "Bejegyzés frissítve",
-    "sync-scroll": "Görgetés szinkron",
+    "updated": "Bejegyzés Frissítve",
+    "sync-scroll": "Görgetés Szinkron",
     "words-count": "{n} szó",
     "no-suggestions": "Nincs javaslat",
     "emoji-filter-placeholder": "Szűrés",
     "emoji-filter-no-match": "Nincs találat",
-    "emoji-recently-used": "Legutóbb használt"
+    "emoji-recently-used": "Legutóbb Használt"
   },
   "gallery": {
     "title": "Galéria",
     "copied": "Vágólapra másolva",
-    "load-error": "Nem sikerült betölteni a galériát",
+    "load-error": "A galériát nem sikerült betölteni",
     "empty-list": "Itt nincs semmi"
   },
   "drafts": {
-    "title": "Piszkozat",
-    "load-error": "Nem sikerült betölteni a piszkozatot",
+    "title": "Piszkozatok",
+    "load-error": "A piszkozatokat nem sikerült betölteni",
     "empty-list": "Itt nincs semmi",
     "deleted": "Piszkozat törölve"
   },
@@ -248,7 +248,7 @@
   },
   "bookmarks": {
     "title": "Könyvjelzők",
-    "load-error": "Nem sikerült betölteni a piszkozatokat",
+    "load-error": "Nem sikerült betölteni a könyvjelzőket",
     "empty-list": "Itt nincs semmi",
     "deleted": "Könyvjelző eltávolítva",
     "search": "Keresés a könyvjelzők között"
