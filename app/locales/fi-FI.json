@@ -1,32 +1,32 @@
 {
   "g": {
-    "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
-    "yes": "Yes",
-    "no": "No",
-    "delete": "Delete",
-    "cancel": "Cancel",
+    "compose-entry": "Luo julkaisu",
+    "are-you-sure": "Oletko varma?",
+    "yes": "Kyllä",
+    "no": "Ei",
+    "delete": "Poista",
+    "cancel": "Peruuta",
     "ok": "OK",
-    "edit": "Edit",
+    "edit": "Muokkaa",
     "server-error": "Process could not be completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "save": "Tallenna",
+    "done": "Valmis",
+    "select": "Valitse"
   },
   "footer": {
-    "faq": "FAQ",
-    "about": "About"
+    "faq": "UKK",
+    "about": "Tietoa"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
+    "tags": "Suositut tunnisteet",
+    "filter-trending": "Nousussa",
+    "filter-hot": "Ajanhohtaista",
+    "filter-created": "Uusi",
+    "filter-active": "Aktiivinen",
     "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
-    "filter-feed": "Feed"
+    "filter-votes": "Äänet",
+    "filter-children": "Kommentit",
+    "filter-feed": "Syöte"
   },
   "entry-payout": {
     "potential-payout": "Potential Payout",
@@ -36,12 +36,12 @@
     "payout-date": "Payout"
   },
   "entry-votes": {
-    "n-more": "{n} more",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
-    "modal-title": "Voters ({n})"
+    "n-more": "{n} lisää",
+    "author": "Kirjoittaja",
+    "reward": "Palkinto",
+    "percent": "Prosentti",
+    "time": "Aika",
+    "modal-title": "Äänestäjät ({n})"
   },
   "entry-list-item": {
     "reblogged": "reblogged by {n}"
@@ -51,42 +51,42 @@
     "reblogged": "Reblogged"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "Currency",
+    "title": "Asetukset",
+    "currency": "Valuutta",
     "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
-    "currency-changed": "Currency Changed",
-    "locale": "Language",
-    "locale-changed": "Language changed",
-    "server": "Server",
-    "server-invalid-address": "Invalid server address",
-    "server-connecting": "Connecting to '{server}'...",
+    "currency-changed": "Valuutta muutettu",
+    "locale": "Kieli",
+    "locale-changed": "Kieli muutettu",
+    "server": "Palvelin",
+    "server-invalid-address": "Virheellinen palvelimen osoite",
+    "server-connecting": "Yhdistetään '{server}'...",
     "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
     "server-timeout-error": "'{server}' looks like not alive",
     "server-changed": "Server selection changed to {server}",
     "server-custom-address": "Custom server address",
     "server-list-fetch-error": "Could not fetch server list",
-    "push-notifications": "Push Notifications",
-    "push-notify-enabled": "Push notifications enabled",
-    "push-notify-disabled": "Push notifications disabled"
+    "push-notifications": "Push-ilmoitukset",
+    "push-notify-enabled": "Push-ilmoitukset otettu käyttöön",
+    "push-notify-disabled": "Push-ilmoitukset poistettu käytöstä"
   },
   "login": {
-    "title": "Welcome back!",
-    "accounts-title": "Login As",
-    "traditional-login-desc": "Sign in with your username and password to continue",
-    "username-placeholder": "username",
+    "title": "Tervetuloa takaisin!",
+    "accounts-title": "Kirjaudu sisään",
+    "traditional-login-desc": "Kirjaudu sisään käyttäjätunnuksellasi ja salasanallasi jatkaaksesi",
+    "username-placeholder": "käyttäjänimi",
     "password-placeholder": "password or WIF",
-    "login": "Login",
+    "login": "Kirjaudu sisään",
     "error-fields-required": "Please enter username and password/WIF",
     "error-public-key": "You entered a public key. Password/WIF required",
     "error-user-fetch": "User data could not be fetched",
-    "error-user-not-found": "User does not exist",
+    "error-user-not-found": "Käyttäjää ei ole olemassa",
     "error-authenticate": "Wrong username or password/WIF",
-    "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>",
-    "login-with-sc": "Login with",
-    "divider-text": "OR"
+    "create-account-text": "Eikö sinulla ole tiliä? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Rekisteröidy nyt!</a>",
+    "login-with-sc": "Kirjaudu käyttäen",
+    "divider-text": "TAI"
   },
   "create-pin-code": {
-    "title": "Create PIN Code",
+    "title": "Luo PIN-koodi",
     "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
     "input-placeholder": "Enter PIN code",
     "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
