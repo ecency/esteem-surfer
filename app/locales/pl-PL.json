@@ -350,7 +350,7 @@
     "page-title": "Głosowanie na Delegata",
     "remaining": "<strong>{n}</strong> z {max} pozostały głosy",
     "witness": "Delegaci",
-    "miss": "Miss",
+    "miss": "Brakujące",
     "url": "URL",
     "fee": "Opłata",
     "feed": "Aktualności",
@@ -415,7 +415,7 @@
     "confirm-sub-title": "Prosimy sprawdzić, czy wszystko jest poprawne",
     "delegation-summary": "<span class=\"sp\">{sp}</span> oddelegowane do <span class=\"to-user\">{to}</span>",
     "success-sub-title": "Delegacja zakończona",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "insufficient-vesting": "Niewystarczające ilość Steem Power {a} VESTS"
   },
   "delegation-list": {
     "empty-list": "Nic tu nie ma"
