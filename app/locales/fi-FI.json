@@ -396,19 +396,19 @@
     "memo-help": "Tämä muistio on julkinen",
     "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
     "next": "Seuraava",
-    "confirm-title": "Confirm your Transfer",
+    "confirm-title": "Vahvista siirtotapahtuma",
     "confirm-sub-title": "Please, check if everything is correct",
     "confirm": "Vahvista",
     "back": "Takaisin",
     "success-title": "Onnistui",
-    "success-sub-title": "Transfer successful",
+    "success-sub-title": "Siirto onnistui",
     "transfer-summary": "Transferred <span class=\"amount\">{amount}</span> From <span class=\"from-user\">{from}</span> to <span class=\"to-user\">{to}</span>",
     "reset": "Another transfer",
-    "finish": "Finish",
-    "recent-transfers": "Recent transfers"
+    "finish": "Valmis",
+    "recent-transfers": "Viimeisimmät siirrot"
   },
   "delegate": {
-    "title": "Delegate",
+    "title": "Delegoi",
     "sub-title": "Delegate Steem Power",
     "slider-help": "Drag the slider to adjust the amount",
     "confirm-title": "Confirm Delegation",
@@ -418,6 +418,6 @@
     "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "Täällä ei ole mitään"
   }
 }
