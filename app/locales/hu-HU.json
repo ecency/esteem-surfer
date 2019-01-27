@@ -323,11 +323,11 @@
     "mention-post": "{source} említett egy bejegyzésben",
     "mention-comment": "{source} említett egy hozzászólásban",
     "followed": "{source} követ téged",
-    "replied": "{source} válaszolt",
+    "replied": "{source} válaszolt neked",
     "reblogged": "{source} megosztotta a bejegyzésed"
   },
   "activities": {
-    "type-all": "Összes tevékenység",
+    "type-all": "Összes Tevékenység",
     "type-votes": "Szavazatok",
     "type-replies": "Válaszok",
     "type-mentions": "Említések",
@@ -335,7 +335,7 @@
     "type-reblogs": "Megosztások",
     "vote-str": "{p}% nak tetszik a bejegyzésed:",
     "reply-str": "válaszolt a bejegyzésedre:",
-    "mention-str": "megemlített téged a: -ben",
+    "mention-str": "megemlített téged itt:",
     "followed-str": "követés",
     "unfollowed-str": "követés visszavonva",
     "ignored-str": "mellőzve",
