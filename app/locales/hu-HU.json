@@ -255,7 +255,7 @@
   },
   "favorites": {
     "title": "Kedvencek",
-    "load-error": "Nem sikerült betölteni a Kedvenceket",
+    "load-error": "Nem sikerült betölteni a kedvenceket",
     "empty-list": "Itt nincs semmi",
     "search": "Keresés a kedvencekben"
   },
@@ -264,12 +264,12 @@
     "reply-preview": "Előnézet",
     "via-app": "<span class=\"app-name\">{app}</span>-n keresztül",
     "n-replies": "{n} Válasz",
-    "reply-sort-order": "Rendezési sorrend",
+    "reply-sort-order": "Rendezési Sorrend",
     "reply-sort-order-trending": "Népszerű",
     "reply-sort-order-reputation": "Reputáció",
     "reply-sort-order-votes": "Szavazatok",
     "reply-sort-order-created": "Életkor",
-    "reply-body-placeholder": "Ide írd az üzeneted",
+    "reply-body-placeholder": "Ide írd a választ",
     "bookmarked": "Hozzáadva a könyvjelzőkhöz",
     "bookmarkRemoved": "Eltávolítva a könyvjelzőkből",
     "favorited": "Hozzáadva a kedvencekhez",
