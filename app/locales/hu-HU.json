@@ -278,17 +278,17 @@
     "copied-clipboard": "Lemásolva",
     "comment-entry-title": "You are viewing a single comment's thread from: ",
     "comment-entry-go-root": "Teljes kontextus megtekintése",
-    "comment-entry-go-parent": "Nézd meg a direkt felemenőt"
+    "comment-entry-go-parent": "Direkt felmenő megtekintése"
   },
   "navbar": {
     "settings": "Beállítások",
-    "change-theme": "Téma megváltoztatása",
-    "login": "Bejelentkezés a következő fiókba",
+    "change-theme": "Téma Megváltoztatása",
+    "login": "Bejelentkezés a következő fiókba: %s",
     "bookmark": "Hozzáadás a könyvjelzőkhöz",
     "bookmarkRemove": "Eltávolítás a könyvjelzőkből",
     "favorite": "Hozzáadás a kedvencekhez",
     "favoriteRemove": "Eltávolítás a kedvencek közül",
-    "wallet": "Saját pénztárca",
+    "wallet": "Saját Tárca",
     "activities": "Tevékenységek",
     "address-enter-url": "Url megadása",
     "address-enter-query": "Írd be a keresési paramétereket",
