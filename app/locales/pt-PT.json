@@ -156,7 +156,7 @@
     "steem-dollars-description": "Tokens que valem $1.00 de Steem.",
     "savings": "Poupanças",
     "savings-description": "O saldo está sujeito a 3 dias de espera para retirá-lo,.",
-    "next-power-down": "The next power down is {time} {amount}",
+    "next-power-down": "Próxima descarga de poder é em {time} {amount}",
     "exchange": "Câmbio",
     "transactions": "Transações",
     "transaction-curation_reward": "Recompensas de curadoria",
@@ -174,7 +174,7 @@
     "power-up": "Carregar Poder",
     "withdraw-steem": "Levantar o Steem",
     "withdraw-sbd": "Retirar Steem dólar",
-    "delegate": "Delegate"
+    "delegate": "Delegar"
   },
   "composer": {
     "title-placeholder": "Título",
@@ -293,7 +293,7 @@
     "address-enter-url": "Inserir url",
     "address-enter-query": "Inserir Termo de Pesquisa",
     "unclaimed-reward-notice": "Você tem recompensas não reclamadas",
-    "search-no-matches": "No matches"
+    "search-no-matches": "Sem correspondências"
   },
   "search": {
     "n-results-for-q": "{n} resultados para {q}",
@@ -408,16 +408,16 @@
     "recent-transfers": "Transferências recentes"
   },
   "delegate": {
-    "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
-    "slider-help": "Drag the slider to adjust the amount",
-    "confirm-title": "Confirm Delegation",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "Delegation completed",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "title": "Delegar",
+    "sub-title": "Delegar poder Steem",
+    "slider-help": "Arraste o controle deslizante para ajustar a quantidade",
+    "confirm-title": "Confirmar a delegação",
+    "confirm-sub-title": "Por favor, verfique se está tudo correto",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> delegado a <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "Delegação concluída",
+    "insufficient-vesting": "Insuficientes Ações investidas {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "Nada aqui"
   }
 }
