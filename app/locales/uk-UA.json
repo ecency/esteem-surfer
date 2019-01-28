@@ -334,7 +334,7 @@
     "type-follows": "Підписки",
     "type-reblogs": "Репости",
     "vote-str": "{p}% likes your post:",
-    "reply-str": "replied to your post:",
+    "reply-str": "відповів на ваш пост:",
     "mention-str": "згадав вас у:",
     "followed-str": "підписався",
     "unfollowed-str": "відписався",
