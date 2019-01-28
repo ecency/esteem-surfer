@@ -171,7 +171,7 @@
     "claim-reward-balance-ok": "Винагорода зарахована на баланс",
     "transfer": "Transfer",
     "transfer-to-savings": "Переведення до заощаджень",
-    "power-up": "Power up",
+    "power-up": "Power Up",
     "withdraw-steem": "Вивести Steem",
     "withdraw-sbd": "Вивести Steem Dollar",
     "delegate": "Делегувати"
@@ -293,7 +293,7 @@
     "address-enter-url": "Введіть url",
     "address-enter-query": "Введіть пошуковий запит",
     "unclaimed-reward-notice": "У вас є не зараховані винагороди",
-    "search-no-matches": "No matches"
+    "search-no-matches": "Немає збігів"
   },
   "search": {
     "n-results-for-q": "{n} результатів для {q}",
@@ -338,7 +338,7 @@
     "mention-str": "згадав вас у:",
     "followed-str": "підписався",
     "unfollowed-str": "відписався",
-    "ignored-str": "ignored",
+    "ignored-str": "ігнорується",
     "reblog-str": "зробив репост вашого посту:",
     "empty-list": "Тут порожньо",
     "refresh": "Оновити",
