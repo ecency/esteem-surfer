@@ -1,11 +1,8 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Account from '../components/Account';
-import {
-  fetchEntries,
-  invalidateEntries,
-  updateEntry
-} from '../actions/entries';
+import { Delegate, PowerDown } from '../components/Vesting';
+
+import { updateEntry } from '../actions/entries';
 
 import {
   changeTheme,
@@ -23,28 +20,27 @@ import {
   deleteAccount,
   deleteAccounts
 } from '../actions/accounts';
+
 import { logIn, logOut, updateActiveAccount } from '../actions/active-account';
+
 import { setVisitingAccount } from '../actions/visiting-account';
+
 import { setVisitingEntry } from '../actions/visiting-entry';
+
 import { fetchActivities, resetActivities } from '../actions/activities';
 
 const mapStateToProps = state => ({
   global: state.global,
-  entries: state.entries,
   accounts: state.accounts,
   activeAccount: state.activeAccount,
   dynamicProps: state.dynamicProps,
-  visitingAccount: state.visitingAccount,
-  activities: state.activities,
-  marketData: state.marketData
+  searchResults: state.searchResults,
+  activities: state.activities
 });
 
 const mapDispatchToProps = dispatch => ({
   actions: {
-    ...bindActionCreators(
-      { fetchEntries, invalidateEntries, updateEntry },
-      dispatch
-    ),
+    ...bindActionCreators({ updateEntry }, dispatch),
     ...bindActionCreators(
       {
         changeTheme,
@@ -61,19 +57,26 @@ const mapDispatchToProps = dispatch => ({
       {
         addAccount,
         addAccountSc,
-        deleteAccount,
-        deleteAccounts
+        deleteAccount
       },
       dispatch
     ),
-    ...bindActionCreators({ logIn, logOut, updateActiveAccount }, dispatch),
-    ...bindActionCreators({ setVisitingAccount }, dispatch),
+    ...bindActionCreators(
+      { logIn, logOut, updateActiveAccount, deleteAccounts },
+      dispatch
+    ),
     ...bindActionCreators({ setVisitingEntry }, dispatch),
+    ...bindActionCreators({ setVisitingAccount }, dispatch),
     ...bindActionCreators({ fetchActivities, resetActivities }, dispatch)
   }
 });
 
-export default connect(
+export const DelegatePage = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Account);
+)(Delegate);
+
+export const PowerDownPage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PowerDown);

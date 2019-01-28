@@ -7,21 +7,162 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import { UnControlled as CodeMirror } from 'react-codemirror2';
-import { Input, Select, Tooltip, message } from 'antd';
+import { Input, Select, message } from 'antd';
+
+import Tooltip from '../common/Tooltip';
 
 import GalleryModal from '../dialogs/Gallery';
 
 import { uploadImage, addMyImage } from '../../backend/esteem-client';
 
-import { getItem } from '../../helpers/storage';
+import { getItem, setItem } from '../../helpers/storage';
 
 import markDown2Html from '../../utils/markdown-2-html';
+
+import emojiData from '../../data/emoji';
 
 require('codemirror/addon/display/placeholder.js');
 require('codemirror/addon/search/searchcursor.js');
 require('codemirror/addon/search/match-highlighter.js');
 require('codemirror/mode/markdown/markdown');
 require('../../helpers/codemirror-spell-checker.js');
+
+const emojiFilterCache = Object.keys(emojiData.emojis).map(e => {
+  const em = emojiData.emojis[e];
+  return {
+    id: e,
+    name: em.a.toLowerCase(),
+    keywords: em.j ? em.j : []
+  };
+});
+
+class EmojiPicker extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      filterKey: ''
+    };
+  }
+
+  renderEmoji = emoji => {
+    const em = emojiData.emojis[emoji];
+    if (!em) {
+      return null;
+    }
+    const unicodes = em.b.split('-');
+    const codePoints = unicodes.map(u => `0x${u}`);
+    const native = String.fromCodePoint(...codePoints);
+
+    return (
+      <div
+        onClick={() => {
+          this.clicked(emoji, native);
+        }}
+        key={emoji}
+        role="none"
+        className="emoji"
+        title={em.a}
+      >
+        {native}
+      </div>
+    );
+  };
+
+  filterKeyChanged = e => {
+    this.setState({ filterKey: e.target.value });
+  };
+
+  clicked = (id, native) => {
+    const recent = getItem('recent-emoji', []);
+    if (!recent.includes(id)) {
+      const newRecent = [...new Set([id, ...recent])].slice(0, 18);
+      setItem('recent-emoji', newRecent);
+    }
+
+    const { onClick } = this.props;
+    onClick(native);
+  };
+
+  render() {
+    const { intl } = this.props;
+
+    const recent = getItem('recent-emoji', []);
+
+    const { filterKey } = this.state;
+    let filterResults;
+    if (filterKey) {
+      filterResults = emojiFilterCache
+        .filter(
+          i =>
+            i.id.indexOf(filterKey) !== -1 ||
+            i.name.indexOf(filterKey) !== -1 ||
+            i.keywords.includes(filterKey)
+        )
+        .map(i => i.id);
+    }
+
+    return (
+      <div className="emoji-picker">
+        <div className="search-box">
+          <Input
+            placeholder={intl.formatMessage({
+              id: 'composer.emoji-filter-placeholder'
+            })}
+            value={filterKey}
+            onChange={this.filterKeyChanged}
+          />
+        </div>
+
+        {!filterKey && (
+          <div className="emoji-cat-list">
+            {recent.length > 0 && (
+              <div className="emoji-cat">
+                <div className="cat-title">
+                  <FormattedMessage id="composer.emoji-recently-used" />
+                </div>
+                <div className="emoji-list">
+                  {recent.map(emoji => this.renderEmoji(emoji))}
+                </div>
+              </div>
+            )}
+            {emojiData.categories.map(cat => (
+              <div className="emoji-cat" key={cat.id}>
+                <div className="cat-title">{cat.name}</div>
+                <div className="emoji-list">
+                  {cat.emojis.map(emoji => this.renderEmoji(emoji))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {filterKey && (
+          <div className="emoji-cat-list">
+            <div className="emoji-cat">
+              <div className="emoji-list">
+                {filterResults.length === 0 && (
+                  <FormattedMessage id="composer.emoji-filter-no-match" />
+                )}
+                {filterResults.length > 0 &&
+                  filterResults.map(emoji => this.renderEmoji(emoji))}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+}
+
+EmojiPicker.defaultProps = {
+  onClick: () => {}
+};
+
+EmojiPicker.propTypes = {
+  onClick: PropTypes.func,
+  intl: PropTypes.instanceOf(Object).isRequired
+};
 
 class Editor extends Component {
   constructor(props) {
@@ -209,12 +350,32 @@ class Editor extends Component {
     this.insertBlock('* item1\n* item2\n* item3');
   };
 
-  table = () => {
+  table = e => {
+    e.stopPropagation();
+
     const t =
       '' +
       '|\tColumn 1\t|\tColumn 2\t|\tColumn 3\t|\n' +
       '|\t--------\t|\t--------\t|\t--------\t|\n' +
       '|\t  Text  \t|\t  Text  \t|\t  Text  \t|';
+    this.insertBlock(t);
+  };
+
+  table2 = e => {
+    e.stopPropagation();
+
+    const t =
+      '' +
+      '|\tColumn 1\t|\tColumn 2\t|\n' +
+      '|\t--------\t|\t--------\t|\n' +
+      '|\t  Text  \t|\t  Text  \t|';
+    this.insertBlock(t);
+  };
+
+  table1 = e => {
+    e.stopPropagation();
+
+    const t = '|\tColumn 1\t|\n|\t--------\t|\n|\t  Text  \t|';
     this.insertBlock(t);
   };
 
@@ -575,6 +736,25 @@ class Editor extends Component {
     return getItem('compose-sync', false);
   };
 
+  onEmojiSelected = em => {
+    const { activeInput } = this.state;
+    if (activeInput === 'title') {
+      const titleEl = document.querySelector('#editor-title');
+      if (titleEl) {
+        let { title: editorTitle } = this.state;
+        const pos = titleEl.selectionStart;
+        editorTitle = editorTitle.slice(0, pos) + em + editorTitle.slice(pos);
+        this.setState({ title: editorTitle }, () => {
+          titleEl.selectionStart = pos + 1;
+          titleEl.selectionEnd = pos + 2;
+          titleEl.focus();
+        });
+        return;
+      }
+    }
+    this.insertInline(`${em} `);
+  };
+
   render() {
     const {
       defaultValues,
@@ -725,6 +905,38 @@ class Editor extends Component {
         >
           <div className="editor-tool" onClick={this.table} role="none">
             <i className="mi tool-icon">grid_on</i>
+            <div className="sub-tool-menu">
+              <div
+                className="sub-tool-menu-item"
+                role="none"
+                onClick={this.table}
+              >
+                <FormattedMessage id="composer.tool-table-3-col" />
+              </div>
+              <div
+                className="sub-tool-menu-item"
+                role="none"
+                onClick={this.table2}
+              >
+                <FormattedMessage id="composer.tool-table-2-col" />
+              </div>
+              <div
+                className="sub-tool-menu-item"
+                role="none"
+                onClick={this.table1}
+              >
+                <FormattedMessage id="composer.tool-table-1-col" />
+              </div>
+            </div>
+          </div>
+        </Tooltip>
+        <Tooltip
+          title={intl.formatMessage({ id: 'composer.tool-emoji' })}
+          mouseEnterDelay={2}
+        >
+          <div className="editor-tool" role="none">
+            <i className="mi tool-icon">sentiment_satisfied</i>
+            <EmojiPicker {...this.props} onClick={this.onEmojiSelected} />
           </div>
         </Tooltip>
       </div>
@@ -760,6 +972,10 @@ class Editor extends Component {
                 onChange={this.titleChanged}
                 defaultValue={defaultValues.title}
                 value={title}
+                onFocus={() => {
+                  this.setState({ activeInput: 'title' });
+                }}
+                id="editor-title"
               />
             </div>
             <div className="tags-input">
@@ -810,6 +1026,9 @@ class Editor extends Component {
             onDrop={this.onDrop}
             onScroll={this.onScroll}
             value={defaultValues.body}
+            onFocus={() => {
+              this.setState({ activeInput: 'body' });
+            }}
           />
         </div>
 

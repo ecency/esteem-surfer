@@ -5,8 +5,10 @@ eslint-disable react/no-multi-comp, no-underscore-dangle
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { message, Modal, Popconfirm, Tooltip } from 'antd';
+import { message, Modal, Popconfirm } from 'antd';
 import { FormattedMessage, injectIntl, FormattedDate } from 'react-intl';
+
+import Tooltip from '../common/Tooltip';
 
 import LinearProgress from '../common/LinearProgress';
 import UserAvatar from '../elements/UserAvatar';
@@ -17,7 +19,6 @@ import entryBodySummary from '../../utils/entry-body-summary';
 
 import fallbackImage from '../../img/fallback.png';
 import noImage from '../../img/noimage.png';
-
 
 import {
   getSchedules,

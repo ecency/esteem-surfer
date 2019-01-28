@@ -8,6 +8,7 @@ import FormattedCurrency from './FormattedCurrency';
 
 import parseToken from '../../utils/parse-token';
 import parseDate from '../../utils/parse-date';
+import isEmptyDate from '../../utils/is-empty-date';
 
 class EntryPayoutContent extends Component {
   render() {
@@ -18,9 +19,7 @@ class EntryPayoutContent extends Component {
     const authorPayout = parseToken(entry.total_payout_value);
     const curationPayout = parseToken(entry.curator_payout_value);
     const payoutDate = parseDate(
-      entry.last_payout === '1970-01-01T00:00:00'
-        ? entry.cashout_time
-        : entry.last_payout
+      isEmptyDate(entry.last_payout) ? entry.cashout_time : entry.last_payout
     );
 
     return (

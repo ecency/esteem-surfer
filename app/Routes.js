@@ -11,10 +11,18 @@ import EntryPage from './containers/EntryPage';
 import SearchPage from './containers/SearchPage';
 import WitnessesPage from './containers/WitnessesPage';
 import TransferPage from './containers/TransferPage';
+import { DelegatePage } from './containers/VestingPage';
 
 export default () => (
   <App>
     <Switch>
+      <Route
+        exact
+        path="/@:username/delegate"
+        component={props => (
+          <DelegatePage timestamp={new Date().toString()} {...props} />
+        )}
+      />
       <Route
         exact
         path="/@:username/transfer/:asset"
@@ -45,6 +53,17 @@ export default () => (
             timestamp={new Date().toString()}
             {...props}
             mode="withdraw-saving"
+          />
+        )}
+      />
+      <Route
+        exact
+        path="/@:username/power-up"
+        component={props => (
+          <TransferPage
+            timestamp={new Date().toString()}
+            {...props}
+            mode="power-up"
           />
         )}
       />

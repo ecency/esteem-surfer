@@ -1,12 +1,26 @@
 /*
-eslint-disable react/no-multi-comp,no-case-declarations,no-bitwise
+eslint-disable react/no-multi-comp
 */
 
-import React, { PureComponent } from 'react';
-import { FormattedHTMLMessage, FormattedMessage, injectIntl } from 'react-intl';
+import React, { Fragment, PureComponent } from 'react';
+import {
+  FormattedHTMLMessage,
+  FormattedNumber,
+  FormattedMessage,
+  injectIntl
+} from 'react-intl';
 
 import PropTypes from 'prop-types';
-import { Input, AutoComplete, Select, Button, Icon, message } from 'antd';
+import {
+  Slider,
+  AutoComplete,
+  Table,
+  Select,
+  Button,
+  Icon,
+  Alert,
+  message
+} from 'antd';
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
 import PinRequired from './helpers/PinRequired';
@@ -14,6 +28,7 @@ import QuickProfile from './helpers/QuickProfile';
 import UserAvatar from './elements/UserAvatar';
 import LinearProgress from './common/LinearProgress';
 import DeepLinkHandler from './helpers/DeepLinkHandler';
+import AccountLink from './helpers/AccountLink';
 
 import {
   getRecentTransfers,
@@ -22,65 +37,19 @@ import {
 
 import {
   getAccount,
-  transfer,
-  transferToSavings,
-  transferFromSavings,
-  transferToVesting
+  delegateVestingShares,
+  getVestingDelegations
 } from '../backend/steem-client';
 import formatChainError from '../utils/format-chain-error';
 import parseToken from '../utils/parse-token';
-import amountFormatCheck from '../utils/amount-format-check';
+import isEmptyDate from '../utils/is-empty-date';
 
 import badActors from '../data/bad-actors.json';
 import { arrowRight } from '../svg';
 
-class AssetSwitch extends PureComponent {
-  constructor(props) {
-    super(props);
+import { vestsToSp } from '../utils/conversions';
 
-    const { defaultSelected: selected } = this.props;
-
-    this.state = {
-      selected
-    };
-  }
-
-  clicked = i => {
-    this.setState({ selected: i });
-    const { onChange } = this.props;
-    onChange(i);
-  };
-
-  render() {
-    const { selected } = this.state;
-
-    return (
-      <div className="asset-switch">
-        <a
-          onClick={() => this.clicked('STEEM')}
-          role="none"
-          className={`asset ${selected === 'STEEM' ? 'selected' : ''}`}
-        >
-          STEEM
-        </a>
-        <a
-          onClick={() => this.clicked('SBD')}
-          role="none"
-          className={`asset ${selected === 'SBD' ? 'selected' : ''}`}
-        >
-          SBD
-        </a>
-      </div>
-    );
-  }
-}
-
-AssetSwitch.propTypes = {
-  defaultSelected: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired
-};
-
-class Transfer extends PureComponent {
+class DelegateCls extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -101,12 +70,6 @@ class Transfer extends PureComponent {
   init = () => {
     const { match, history, intl } = this.props;
     const { username } = match.params;
-    let { asset } = match.params;
-    const { mode } = this.props;
-
-    if (mode === 'power-up') {
-      asset = 'STEEM';
-    }
 
     const { accounts } = this.props;
     const account = accounts.find(x => x.username === username);
@@ -126,18 +89,12 @@ class Transfer extends PureComponent {
 
     this.setState(
       {
-        from: username,
-        asset: asset.toUpperCase()
+        from: username
       },
       () => {
         this.fetchFromData();
       }
     );
-
-    // auto fill
-    if (['transfer-saving', 'withdraw-saving', 'power-up'].includes(mode)) {
-      this.toChanged({ target: { value: username } });
-    }
   };
 
   fetchFromData = () => {
@@ -145,9 +102,7 @@ class Transfer extends PureComponent {
 
     return getAccount(from)
       .then(resp => {
-        this.setState({ fromData: resp }, () => {
-          this.checkAmount();
-        });
+        this.setState({ fromData: resp });
         return resp;
       })
       .catch(e => {
@@ -167,44 +122,17 @@ class Transfer extends PureComponent {
       toData: null,
       toError: null,
       toWarning: null,
-      amount: '0.001',
-      amountError: null,
+      amount: 0,
       balance: '0',
-      asset: 'STEEM',
       memo: '',
       inProgress: false,
       recentList: this.recentDb
     };
   };
 
-  assetChanged = asset => {
-    this.setState({ asset }, () => {
-      this.checkAmount();
-    });
-  };
-
   fromChanged = from => {
-    const { mode, history } = this.props;
-    const { asset } = this.state;
-
-    let u = '/';
-    switch (mode) {
-      case 'transfer':
-        u = `/@${from}/transfer/${asset}`;
-        break;
-      case 'transfer-saving':
-        u = `/@${from}/transfer-saving/${asset}`;
-        break;
-      case 'withdraw-saving':
-        u = `/@${from}/withdraw-saving/${asset}`;
-        break;
-      case 'power-up':
-        u = `/@${from}/withdraw-saving`;
-        break;
-      default:
-        break;
-    }
-
+    const { history } = this.props;
+    const u = `/@${from}/delegate`;
     history.push(u);
   };
 
@@ -254,86 +182,17 @@ class Transfer extends PureComponent {
     }, 500);
   };
 
-  amountChanged = e => {
-    const { value: amount } = e.target;
-    this.setState({ amount }, () => {
-      this.checkAmount();
-    });
-  };
-
-  checkAmount = () => {
-    const { intl } = this.props;
-    const { amount } = this.state;
-
-    if (!amountFormatCheck(amount)) {
-      this.setState({
-        amountError: intl.formatMessage({ id: 'transfer.wrong-amount' })
-      });
-      return;
-    }
-
-    const dotParts = amount.split('.');
-    if (dotParts.length > 1) {
-      const precision = dotParts[1];
-      if (precision.length > 3) {
-        this.setState({
-          amountError: intl.formatMessage({
-            id: 'transfer.amount-precision-error'
-          })
-        });
-        return;
-      }
-    }
-
-    if (parseFloat(amount) > parseFloat(this.getBalance())) {
-      this.setState({
-        amountError: intl.formatMessage({ id: 'transfer.insufficient-funds' })
-      });
-
-      return;
-    }
-
-    this.setState({ amountError: null });
-  };
-
-  copyBalance = () => {
-    const balance = this.getBalance();
-    this.setState({ amount: String(balance) });
-  };
-
-  memoChanged = e => {
-    const { value: memo } = e.target;
-    this.setState({ memo });
+  amountChanged = amount => {
+    this.setState({ amount });
   };
 
   canSubmit = () => {
-    const { fromError, toData, toError, amountError, inProgress } = this.state;
-    return !fromError && toData && !toError && !amountError && !inProgress;
-  };
-
-  getBalance = () => {
-    const { mode } = this.props;
-    const { fromData, asset } = this.state;
-
-    if (!fromData) {
-      return null;
-    }
-
-    if (mode === 'withdraw-saving') {
-      const k = asset === 'STEEM' ? 'savings_balance' : 'savings_sbd_balance';
-      return parseToken(fromData[k]);
-    }
-
-    const k = asset === 'STEEM' ? 'balance' : 'sbd_balance';
-    return parseToken(fromData[k]);
+    const { fromError, toData, toError, inProgress } = this.state;
+    return !fromError && toData && !toError && !inProgress;
   };
 
   next = () => {
-    // make sure 3 decimals in amount
-    const { amount } = this.state;
-    const fixedAmount = Number(amount).toFixed(3);
-
-    this.setState({ step: 2, amount: fixedAmount });
+    this.setState({ step: 2 });
   };
 
   back = () => {
@@ -341,36 +200,14 @@ class Transfer extends PureComponent {
   };
 
   confirm = pin => {
-    const { accounts, mode } = this.props;
-    const { from, to, amount, asset, memo } = this.state;
-    const fullAmount = `${amount} ${asset}`;
+    const { accounts } = this.props;
+    const { from, to, amount } = this.state;
+    const fullAmount = `${amount}.000000 VESTS`;
 
     const account = accounts.find(x => x.username === from);
 
-    let fn;
-    let args = [account, pin, to, fullAmount, memo];
-    switch (mode) {
-      case 'transfer':
-        fn = transfer;
-        break;
-      case 'transfer-saving':
-        fn = transferToSavings;
-        break;
-      case 'withdraw-saving':
-        fn = transferFromSavings;
-        const requestId = new Date().getTime() >>> 0;
-        args = [account, pin, requestId, to, fullAmount, memo];
-        break;
-      case 'power-up':
-        fn = transferToVesting;
-        args = [account, pin, to, fullAmount];
-        break;
-      default:
-        return;
-    }
-
     this.setState({ inProgress: true });
-    return fn(...args)
+    return delegateVestingShares(account, pin, to, fullAmount)
       .then(resp => {
         this.setState({ step: 3 });
 
@@ -401,7 +238,8 @@ class Transfer extends PureComponent {
   };
 
   render() {
-    const { intl, accounts, mode } = this.props;
+    const { intl, accounts, dynamicProps } = this.props;
+    const { steemPerMVests } = dynamicProps;
 
     const {
       step,
@@ -412,14 +250,9 @@ class Transfer extends PureComponent {
       toError,
       toWarning,
       amount,
-      amountError,
-      asset,
-      memo,
       inProgress,
       recentList
     } = this.state;
-
-    const balance = this.getBalance();
 
     const options =
       recentList && recentList.length > 0
@@ -439,6 +272,22 @@ class Transfer extends PureComponent {
           ]
         : [];
 
+    let availableVestingShares = 0;
+    if (fromData) {
+      if (!isEmptyDate(fromData.next_vesting_withdrawal)) {
+        // powering down
+        availableVestingShares =
+          parseToken(fromData.vesting_shares) -
+          (Number(fromData.to_withdraw) - Number(fromData.withdrawn)) / 1e6 -
+          parseToken(fromData.delegated_vesting_shares);
+      } else {
+        // not powering down
+        availableVestingShares =
+          parseToken(fromData.vesting_shares) -
+          parseFloat(fromData.delegated_vesting_shares);
+      }
+    }
+
     return (
       <div className="wrapper">
         <NavBar
@@ -449,7 +298,7 @@ class Transfer extends PureComponent {
         />
 
         {fromData && (
-          <div className="app-content transfer-page">
+          <div className="app-content delegate-page">
             {step === 1 && (
               <div
                 className={`transfer-box ${inProgress ? 'in-progress' : ''}`}
@@ -458,32 +307,10 @@ class Transfer extends PureComponent {
                   <div className="step-no">1</div>
                   <div className="box-titles">
                     <div className="main-title">
-                      {mode === 'transfer' && (
-                        <FormattedMessage id="transfer.transfer-title" />
-                      )}
-                      {mode === 'transfer-saving' && (
-                        <FormattedMessage id="transfer.transfer-saving-title" />
-                      )}
-                      {mode === 'withdraw-saving' && (
-                        <FormattedMessage id="transfer.withdraw-saving-title" />
-                      )}
-                      {mode === 'power-up' && (
-                        <FormattedMessage id="transfer.power-up-title" />
-                      )}
+                      <FormattedMessage id="delegate.title" />
                     </div>
                     <div className="sub-title">
-                      {mode === 'transfer' && (
-                        <FormattedMessage id="transfer.transfer-sub-title" />
-                      )}
-                      {mode === 'transfer-saving' && (
-                        <FormattedMessage id="transfer.transfer-saving-sub-title" />
-                      )}
-                      {mode === 'withdraw-saving' && (
-                        <FormattedMessage id="transfer.withdraw-saving-sub-title" />
-                      )}
-                      {mode === 'power-up' && (
-                        <FormattedMessage id="transfer.power-up-sub-title" />
-                      )}
+                      <FormattedMessage id="delegate.sub-title" />
                     </div>
                   </div>
                 </div>
@@ -528,6 +355,7 @@ class Transfer extends PureComponent {
                       </div>
                       <div className="form-input">
                         <AutoComplete
+                          className="to-input"
                           onChange={this.toChanged}
                           value={to}
                           placeholder={intl.formatMessage({
@@ -535,75 +363,54 @@ class Transfer extends PureComponent {
                           })}
                           spellCheck={false}
                           dataSource={options}
+                          dropdownStyle={{ zIndex: 1070 }}
                         />
-
                         {toWarning && (
                           <div className="input-help">{toWarning}</div>
                         )}
-
                         {toError && <div className="input-help">{toError}</div>}
                       </div>
                     </div>
-                    <div
-                      className={`form-item item-amount ${
-                        amountError ? 'has-error' : ''
-                      }`}
-                    >
+                    <div className="form-item" style={{ marginTop: '50px' }}>
                       <div className="form-label">
                         <FormattedMessage id="transfer.amount" />
                       </div>
                       <div className="form-input">
-                        <Input
-                          type="text"
+                        <Slider
+                          step={1}
+                          max={availableVestingShares}
+                          tipFormatter={a => `${a}.000000 VESTS`}
+                          tooltipVisible={availableVestingShares >= 1}
                           value={amount}
-                          className="txt-amount"
-                          placeholder={intl.formatMessage({
-                            id: 'transfer.amount-placeholder'
-                          })}
                           onChange={this.amountChanged}
+                          disabled={availableVestingShares < 1}
                         />
-                        {amountError && (
-                          <div className="input-help">{amountError}</div>
+                        <div className="input-help">
+                          <FormattedMessage id="delegate.slider-help" />
+                        </div>
+
+                        {availableVestingShares < 1 && (
+                          <Alert
+                            type="error"
+                            message={intl.formatMessage(
+                              { id: 'delegate.insufficient-vesting' },
+                              { a: availableVestingShares }
+                            )}
+                          />
                         )}
                       </div>
-                      {mode !== 'power-up' && (
-                        <AssetSwitch
-                          defaultSelected={asset}
-                          onChange={this.assetChanged}
-                        />
+                    </div>
+                    <div className="steem-power">
+                      {amount > 0 && (
+                        <Fragment>
+                          <FormattedNumber
+                            minimumFractionDigits={3}
+                            value={vestsToSp(amount, steemPerMVests)}
+                          />{' '}
+                          {'SP'}
+                        </Fragment>
                       )}
                     </div>
-                    <div
-                      role="none"
-                      className="balance"
-                      onClick={this.copyBalance}
-                    >
-                      <FormattedMessage id="transfer.balance" />:{' '}
-                      <span className="balance-num">
-                        {' '}
-                        {balance} {asset}
-                      </span>
-                    </div>
-                    {mode !== 'power-up' && (
-                      <div className="form-item">
-                        <div className="form-label">
-                          <FormattedMessage id="transfer.memo" />
-                        </div>
-                        <div className="form-input">
-                          <Input
-                            type="text"
-                            value={memo}
-                            placeholder={intl.formatMessage({
-                              id: 'transfer.memo-placeholder'
-                            })}
-                            onChange={this.memoChanged}
-                          />
-                          <div className="input-help">
-                            <FormattedMessage id="transfer.memo-help" />
-                          </div>
-                        </div>
-                      </div>
-                    )}
                     <div className="form-controls">
                       <Button
                         type="primary"
@@ -624,10 +431,10 @@ class Transfer extends PureComponent {
                   <div className="step-no">2</div>
                   <div className="box-titles">
                     <div className="main-title">
-                      <FormattedMessage id="transfer.confirm-title" />
+                      <FormattedMessage id="delegate.confirm-title" />
                     </div>
                     <div className="sub-title">
-                      <FormattedMessage id="transfer.confirm-sub-title" />
+                      <FormattedMessage id="delegate.confirm-sub-title" />
                     </div>
                   </div>
                 </div>
@@ -654,12 +461,16 @@ class Transfer extends PureComponent {
                         </div>
                       </QuickProfile>
                     </div>
-
-                    <div className="amount">
-                      {amount} {asset}
+                    <div className="amount-sp">
+                      <FormattedNumber
+                        minimumFractionDigits={3}
+                        value={vestsToSp(amount, steemPerMVests)}
+                      />{' '}
+                      {'SP'}
                     </div>
-
-                    {memo && <div className="memo">{memo}</div>}
+                    <div className="amount-vest">
+                      {`${amount}.000000 VESTS`}
+                    </div>
                   </div>
                   <div className="transfer-form">
                     <div className="form-controls">
@@ -695,7 +506,7 @@ class Transfer extends PureComponent {
                       <FormattedMessage id="transfer.success-title" />
                     </div>
                     <div className="sub-title">
-                      <FormattedMessage id="transfer.success-sub-title" />
+                      <FormattedMessage id="delegate.success-sub-title" />
                     </div>
                   </div>
                 </div>
@@ -703,8 +514,13 @@ class Transfer extends PureComponent {
                 <div className="transfer-box-body">
                   <div className="success">
                     <FormattedHTMLMessage
-                      id="transfer.transfer-summary"
-                      values={{ amount: `${amount} ${asset}`, from, to }}
+                      id="delegate.delegation-summary"
+                      values={{
+                        sp: `${intl.formatNumber(
+                          vestsToSp(amount, steemPerMVests)
+                        )} SP`,
+                        to
+                      }}
                     />
                   </div>
                   <div className="transfer-form">
@@ -732,18 +548,181 @@ class Transfer extends PureComponent {
   }
 }
 
-Transfer.defaultProps = {
-  accounts: [],
-  activeAccount: null
+DelegateCls.defaultProps = {
+  accounts: []
 };
 
-Transfer.propTypes = {
-  mode: PropTypes.string.isRequired,
-  activeAccount: PropTypes.instanceOf(Object),
+DelegateCls.propTypes = {
+  dynamicProps: PropTypes.instanceOf(Object).isRequired,
   accounts: PropTypes.arrayOf(PropTypes.object),
   history: PropTypes.instanceOf(Object).isRequired,
   match: PropTypes.instanceOf(Object).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
-export default injectIntl(Transfer);
+const Delegate = injectIntl(DelegateCls);
+
+export { Delegate };
+
+class DelegationListCls extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loading: true,
+      list: []
+    };
+  }
+
+  componentDidMount() {
+    this.load();
+  }
+
+  load = () => {
+    const { username } = this.props;
+
+    return getVestingDelegations(username)
+      .then(resp => {
+        this.setState({ list: resp });
+        return resp;
+      })
+      .catch(e => {
+        message.error(formatChainError(e));
+      })
+      .finally(() => {
+        this.setState({ loading: false });
+      });
+  };
+
+  undelegate = (pin, delegatee) => {
+    const { activeAccount } = this.props;
+    if (activeAccount.type === 's' && !activeAccount.keys.active) {
+      message.error('Active key required!');
+      return;
+    }
+
+    return delegateVestingShares(
+      activeAccount,
+      pin,
+      delegatee,
+      '0.000000 VESTS'
+    )
+      .then(resp => {
+        this.load();
+        return resp;
+      })
+      .catch(e => {
+        message.error(formatChainError(e));
+      });
+  };
+
+  render() {
+    const { list, loading } = this.state;
+
+    const { dynamicProps, activeAccount, username } = this.props;
+    const { steemPerMVests } = dynamicProps;
+
+    if (loading) {
+      return (
+        <div className="delegate-modal-table">
+          <LinearProgress />
+        </div>
+      );
+    }
+
+    const dataSource = list.map((i, k) => ({
+      key: k,
+      delegatee: i.delegatee,
+      vesting_shares: i.vesting_shares
+    }));
+
+    const columns = [
+      {
+        title: null,
+        dataIndex: 'delegatee',
+        key: 'delegatee',
+        render: value => (
+          <AccountLink {...this.props} username={value}>
+            <a>{value}</a>
+          </AccountLink>
+        )
+      },
+      {
+        title: null,
+        dataIndex: 'vesting_shares',
+        key: 'vesting_shares',
+        render: value => (
+          <Fragment>
+            <FormattedNumber
+              value={vestsToSp(parseToken(value), steemPerMVests)}
+              minimumFractionDigits={3}
+            />{' '}
+            {'SP'} <br />
+            <small>{value}</small>
+          </Fragment>
+        )
+      },
+      {
+        title: null,
+        dataIndex: 'undelegate',
+        key: 'undelegate',
+        render: (value, record) => {
+          if (activeAccount.username === username) {
+            return (
+              <PinRequired
+                {...this.props}
+                onSuccess={pin => {
+                  this.undelegate(pin, record.delegatee);
+                }}
+              >
+                <span className="btn-delete">
+                  <i className="mi">delete_forever</i>
+                </span>
+              </PinRequired>
+            );
+          }
+
+          return '';
+        }
+      }
+    ];
+
+    return (
+      <div className="delegate-modal-table">
+        {dataSource.length === 0 && (
+          <div className="empty-list">
+            <FormattedMessage id="delegation-list.empty-list" />
+          </div>
+        )}
+        {dataSource.length > 0 && (
+          <Table
+            dataSource={dataSource}
+            columns={columns}
+            pagination={false}
+            showHeader={false}
+          />
+        )}
+      </div>
+    );
+  }
+}
+
+DelegationListCls.defaultProps = {
+  activeAccount: null
+};
+
+DelegationListCls.propTypes = {
+  username: PropTypes.string.isRequired,
+  dynamicProps: PropTypes.shape({
+    steemPerMVests: PropTypes.number.isRequired
+  }).isRequired,
+  activeAccount: PropTypes.instanceOf(Object),
+  intl: PropTypes.instanceOf(Object).isRequired
+};
+
+const DelegationList = injectIntl(DelegationListCls);
+export { DelegationList };
+
+export class PowerDown extends PureComponent {}
+
+export class PowerDownTargetList extends PureComponent {}

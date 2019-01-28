@@ -57,7 +57,10 @@ class EntryVoteBtn extends Component {
       e.target.tagName === 'path'
         ? e.target.parentNode.parentNode
         : e.target.parentNode;
-    if (parentNode.getAttribute('class').indexOf('btn-inner') !== 0) {
+    if (
+      !parentNode ||
+      parentNode.getAttribute('class').indexOf('btn-inner') !== 0
+    ) {
       return false;
     }
 
@@ -87,7 +90,14 @@ class EntryVoteBtn extends Component {
     } catch (err) {
       message.error(String(err).substring(0, 30));
     } finally {
-      const newEntry = await getContent(author, permlink);
+      let newEntry = await getContent(author, permlink);
+
+      if (entry.reblogged_by) {
+        newEntry = Object.assign({}, newEntry, {
+          reblogged_by: entry.reblogged_by
+        });
+      }
+
       const { active_votes: votes } = newEntry;
 
       if (this.mounted) {
@@ -119,7 +129,8 @@ class EntryVoteBtn extends Component {
     const votingPower = account.voting_power;
     const totalVests =
       parseToken(account.vesting_shares) +
-      parseToken(account.received_vesting_shares);
+      parseToken(account.received_vesting_shares) -
+      parseToken(account.delegated_vesting_shares);
     const votePct = w * 100;
 
     const rShares = vestsToRshares(totalVests, votingPower, votePct);

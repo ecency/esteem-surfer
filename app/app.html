@@ -44,12 +44,32 @@
         shell.openExternal(href);
       };
 
+      document.addEventListener('mouseover', function(event) {
+        const { target } = event;
+
+        if (!(target.tagName === 'A' && target.classList.contains('markdown-external-link'))) {
+          return;
+        }
+
+        const href = target.getAttribute('data-href');
+        if (target.getAttribute('title') !== href) {
+          target.setAttribute('title', href);
+        }
+      });
+
       document.addEventListener('click', function(event) {
+        let el = event.target;
 
-        // A element can be wrapped with inline element. Look parent element.
-        let el = event.target.tagName === 'A' ? event.target : event.target.parentNode;
+        // A element can be wrapped with inline element. Look parent elements.
+        while (el.tagName !== 'A') {
+          if (!el.parentNode) {
+            break;
+          }
 
-        if (el.tagName !== 'A') {
+          el = el.parentNode;
+        }
+
+        if (!el || el.tagName !== 'A') {
           return;
         }
 

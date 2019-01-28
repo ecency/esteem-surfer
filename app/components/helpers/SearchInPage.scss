@@ -1,0 +1,136 @@
+@import '../../style/mixins';
+@import '../../style/colors';
+
+mark[data-markjs='true'] {
+  padding-left: 0;
+  padding-right: 0;
+
+  &.active-elem {
+    background-color: #e7953d;
+  }
+}
+
+.search-in-page {
+  left: 0;
+  position: absolute;
+  top: 48px;
+  width: 100%;
+
+  .search-control {
+    border-radius: 8px;
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 300px;
+    z-index: 10;
+
+    @include themify(day) {
+      background: $white;
+      border: solid 1px $white-three;
+    }
+
+    @include themify(night) {
+      background: $dark-six;
+      border: solid 1px $metallic-blue;
+    }
+
+    .search-part {
+      align-items: center;
+      display: flex;
+      position: relative;
+      width: 205px;
+
+      input[type='text'] {
+        background: transparent;
+        border: 0;
+        flex-grow: 1;
+        font-size: 18px;
+        height: 36px;
+        padding-left: 4px;
+        padding-right: 4px;
+
+        @include themify(day) {
+          color: $steel-grey;
+        }
+
+        @include themify(night) {
+          color: $silver;
+        }
+
+        &:focus {
+          outline: none;
+        }
+
+        @include themify(day) {
+          &::placeholder {
+            color: $white-four;
+          }
+        }
+      }
+
+      .control-separator {
+        flex-grow: 0;
+        height: 28px;
+        width: 1px;
+
+        @include themify(day) {
+          background-color: $white-three;
+        }
+
+        @include themify(night) {
+          background-color: $metallic-blue;
+        }
+      }
+
+      .matches {
+        align-items: center;
+        display: flex;
+        font-size: 12px;
+        height: 100%;
+        position: absolute;
+        right: 6px;
+
+        @include themify(day) {
+          color: $steel-grey;
+        }
+
+        @include themify(night) {
+          color: $silver;
+        }
+      }
+    }
+
+    .control-part {
+      align-items: center;
+      display: flex;
+      justify-content: space-around;
+      width: calc(100% - 205px);
+
+      .control-prev,
+      .control-next,
+      .control-close {
+        cursor: pointer;
+        display: inline-flex;
+        font-size: 16px;
+        line-height: 100%;
+
+        @include themify(day) {
+          color: $steel-grey;
+        }
+
+        @include themify(night) {
+          color: $metallic-blue;
+        }
+      }
+    }
+  }
+
+  @include themify(day) {
+    background-color: $white-three;
+  }
+
+  @include themify(night) {
+    background-color: $metallic-blue;
+  }
+}

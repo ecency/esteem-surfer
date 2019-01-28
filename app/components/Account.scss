@@ -217,6 +217,11 @@
           .account-prop {
             width: 88px;
           }
+
+          .tooltip-handler {
+            display: flex;
+            align-items: center;
+          }
         }
 
         .website-link {
@@ -537,11 +542,18 @@
                   &.total-sp {
                     font-weight: 700;
                   }
+
+                  .btn-delegated {
+                    border-bottom: 1px dashed $steel-grey;
+                    cursor: pointer;
+                  }
                 }
 
                 .fund-action {
-                  width: 40px;
+                  flex-grow: 0;
+                  flex-shrink: 0;
                   margin-left: 10px;
+                  width: 40px;
                 }
               }
             }
@@ -643,11 +655,11 @@
 
                 .price-usd,
                 .price-btc {
-                  display: flex;
                   align-items: center;
+                  display: flex;
                   svg {
-                    width: 16px;
                     height: 16px;
+                    width: 16px;
                   }
                 }
 

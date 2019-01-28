@@ -223,7 +223,7 @@
       height: 100%;
       justify-content: center;
       position: relative;
-      width: 42px;
+      width: 39px;
 
       @include themify(day) {
         color: $steel-grey;
@@ -290,6 +290,14 @@
         .sub-tool-menu {
           display: block;
         }
+
+        .emoji-picker {
+          display: block;
+        }
+      }
+
+      .emoji-picker {
+        top: 44px;
       }
     }
 
@@ -311,5 +319,67 @@
   .body-input {
     position: relative;
     z-index: 1;
+  }
+}
+
+.emoji-picker {
+  display: none;
+  width: 300px;
+  height: 240px;
+  position: absolute;
+  left: 0;
+  z-index: 100;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  padding: 14px 6px;
+  overflow: auto;
+
+  @include themify(day) {
+    background: darken($white-three, 5);
+  }
+
+  @include themify(night) {
+    background: lighten($dark-six, 4);
+  }
+
+  .search-box {
+    margin-bottom: 20px;
+  }
+
+  .emoji-cat-list,
+  .emoji-search-results {
+    .emoji-cat {
+      .cat-title {
+        font-weight: 600;
+        font-size: 16px;
+        margin: 4px 0 10px 0;
+
+        @include themify(day) {
+          color: $charcoal-grey;
+        }
+
+        @include themify(night) {
+          color: $pinkish-grey;
+        }
+      }
+
+      .emoji-list {
+        @include clearfix();
+        display: flex;
+        flex-wrap: wrap;
+
+        .emoji {
+          cursor: pointer;
+          font-size: 22px;
+          margin: 5px;
+          align-items: center;
+          justify-content: center;
+          display: flex;
+          font-family: 'Segoe UI Emoji', 'Segoe UI Symbol', 'Segoe UI',
+            'Apple Color Emoji';
+        }
+      }
+    }
   }
 }

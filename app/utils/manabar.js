@@ -1,48 +1,16 @@
-import parseToken from './parse-token';
+import { Client } from 'dsteem';
 
-// 432000 sec = 5 days
-const PERIOD = 432000;
+const client = new Client();
 
 export const votingPower = account => {
-  const totalShares =
-    parseToken(account.vesting_shares) +
-    (parseToken(account.received_vesting_shares) -
-      parseToken(account.delegated_vesting_shares) -
-      parseToken(account.vesting_withdraw_rate));
-
-  const { voting_manabar: manabar } = account;
-
-  const elapsed = Math.floor(Date.now() / 1000) - manabar.last_update_time;
-
-  const maxMana = totalShares * 1e6;
-
-  let currentMana = Number(manabar.current_mana) + (elapsed * maxMana) / PERIOD;
-
-  if (currentMana > maxMana) currentMana = maxMana;
-
-  const r = (currentMana * 100) / maxMana;
-
-  return r > 100 ? 100 : r;
+  const calc = client.rc.calculateVPMana(account);
+  const { percentage } = calc;
+  return percentage / 100;
 };
 
 export const rcPower = account => {
-  const totalShares =
-    parseToken(account.vesting_shares) +
-    (parseToken(account.received_vesting_shares) -
-      parseToken(account.delegated_vesting_shares) -
-      parseToken(account.vesting_withdraw_rate));
-
-  const { rc_manabar: manabar } = account;
-
-  const elapsed = Math.floor(Date.now() / 1000) - manabar.last_update_time;
-
-  const maxMana = totalShares * 1e6;
-
-  let currentMana = Number(manabar.current_mana) + (elapsed * maxMana) / PERIOD;
-
-  if (currentMana > maxMana) currentMana = maxMana;
-
-  const r = (currentMana * 100) / maxMana;
-
-  return r > 100 ? 100 : r;
+  const { rcAccount } = account;
+  const calc = client.rc.calculateRCMana(rcAccount);
+  const { percentage } = calc;
+  return percentage / 100;
 };

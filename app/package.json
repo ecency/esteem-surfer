@@ -2,7 +2,7 @@
   "name": "esteem-surfer",
   "productName": "eSteem Surfer",
   "description": "eSteem desktop application reimagined for Windows, Mac, Linux users, start earning cryptocurrency!",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "main": "./main.prod.js",
   "author": "eSteem <info@esteem.app>",
   "scripts": {
@@ -10,6 +10,6 @@
     "postinstall": "yarn electron-rebuild"
   },
   "dependencies": {
-    "dsteem": "^0.10.1"
+    "dsteem": "^0.11.2"
   }
 }

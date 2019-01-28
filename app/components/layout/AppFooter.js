@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import { Tooltip } from 'antd';
@@ -9,30 +9,35 @@ import { releasePost, version } from '../../../package.json';
 
 import { votingPower, rcPower } from '../../utils/manabar';
 
+import { battery } from '../../svg';
+
 import EntryLink from '../helpers/EntryLink';
 
-export const powerCssPercentage = p => {
-  if (p >= 100) {
-    return '100%';
+export const powerImg = power => {
+  if (power >= 100) {
+    return 100;
   }
 
-  if (p <= 10) return '10%';
+  if (power <= 10) return 10;
 
-  return `${String(p).split('')[0]}0%`;
+  return parseInt(`${String(power).split('')[0]}0`, 10);
 };
 
 class AppFooter extends Component {
   render() {
     const { activeAccount } = this.props;
 
+    let showPower = false;
     let vp;
     let rc;
 
     if (activeAccount) {
       const { accountData } = activeAccount;
       if (accountData) {
-        vp = votingPower(accountData).toFixed(1);
-        rc = rcPower(accountData).toFixed(1);
+        vp = votingPower(accountData).toFixed(2);
+        rc = rcPower(accountData).toFixed(2);
+
+        showPower = true;
       }
     }
 
@@ -41,37 +46,21 @@ class AppFooter extends Component {
     return (
       <div className="app-footer">
         <div className="left-side">
-          {vp && (
-            <Tooltip title="Voting Power" mouseEnterDelay={2}>
-              <div className="voting-power">
-                <span className="first-line">
-                  <span className="first-line-label">VP</span>
-                  <span>{vp}%</span>
-                </span>
-                <span className="power-line">
-                  <span
-                    className="power-line-inner"
-                    style={{ width: powerCssPercentage(vp) }}
-                  />
-                </span>
-              </div>
-            </Tooltip>
-          )}
-          {rc && (
-            <Tooltip title="Resource Credits" mouseEnterDelay={2}>
-              <div className="resource-credits">
-                <span className="first-line">
-                  <span className="first-line-label">RC</span>
-                  <span>{rc}%</span>
-                </span>
-                <span className="power-line">
-                  <span
-                    className="power-line-inner"
-                    style={{ width: powerCssPercentage(rc) }}
-                  />
-                </span>
-              </div>
-            </Tooltip>
+          {showPower && (
+            <Fragment>
+              <Tooltip title="Voting Power" mouseEnterDelay={1}>
+                <div className="vp">
+                  <div className="battery-img">{battery[powerImg(vp)]}</div>
+                  {vp}%
+                </div>
+              </Tooltip>
+              <div className="separator">•</div>
+              <Tooltip title="Resource Credits" mouseEnterDelay={1}>
+                <div className="rc">
+                  <strong>RC:</strong> {rc}%
+                </div>
+              </Tooltip>
+            </Fragment>
           )}
         </div>
 

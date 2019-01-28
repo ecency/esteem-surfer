@@ -7,6 +7,8 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 
 import { Client } from 'dsteem';
 
+import moment from 'moment';
+
 import currencies from '../../constants/currencies';
 import { locales } from '../../locales/index';
 
@@ -66,6 +68,7 @@ class Settings extends Component {
     const { actions, intl } = this.props;
     const { changeLocale } = actions;
     changeLocale(e);
+    moment.locale(e);
     message.success(intl.formatMessage({ id: 'settings.locale-changed' }));
   }
 

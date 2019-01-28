@@ -166,7 +166,7 @@ export default input => {
   // Manipulate link (a) elements
   const links = dom.window.document.body.querySelectorAll('a');
   links.forEach(el => {
-    const href = el.getAttribute('href');
+    let href = el.getAttribute('href');
 
     // Continue if href has no value
     if (!href) {
@@ -324,6 +324,15 @@ export default input => {
     // If nothing matched element as external link so it will be opened in external window
     if (!f) {
       el.className = 'markdown-external-link';
+
+      // Prepend https if no scheme provided
+      if (
+        !/^((#)|(mailto:)|(\/(?!\/))|(((steem|esteem|https?):)?\/\/))/.test(
+          href
+        )
+      ) {
+        href = `https://${href}`;
+      }
 
       el.setAttribute('data-href', href);
       el.removeAttribute('href');

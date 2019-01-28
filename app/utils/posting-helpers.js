@@ -5,12 +5,14 @@ eslint-disable no-plusplus, camelcase, new-cap
 import getSlug from 'speakingurl';
 import { diff_match_patch } from 'diff-match-patch';
 
+const permlinkRnd = () => (Math.random() + 1).toString(16).substring(2);
+
 export const createPermlink = (title, random = false) => {
   const slug = getSlug(title);
   let perm = slug.toString();
 
   if (random) {
-    const rnd = (Math.random() + 1).toString(16).substring(2);
+    const rnd = permlinkRnd();
     perm = `${slug.toString()}-${rnd}est`;
   }
 
@@ -21,6 +23,11 @@ export const createPermlink = (title, random = false) => {
 
   // only letters numbers and dashes
   perm = perm.toLowerCase().replace(/[^a-z0-9-]+/g, '');
+
+  if (perm.length === 0) {
+    return permlinkRnd();
+  }
+
   return perm;
 };
 
@@ -78,6 +85,13 @@ export const makeJsonMetadata = (meta, tags, appVer) =>
     format: 'markdown+html',
     community: 'esteem.app'
   });
+
+export const makeJsonMetadataForUpdate = (oldJson, meta, tags) => {
+  const { meta: oldMeta } = oldJson;
+  const mergedMeta = Object.assign({}, oldMeta, meta);
+
+  return Object.assign({}, oldJson, mergedMeta, { tags });
+};
 
 export const makeJsonMetadataReply = (tags, appVer) => ({
   tags,

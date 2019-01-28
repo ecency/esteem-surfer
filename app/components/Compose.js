@@ -8,16 +8,19 @@ import PropTypes from 'prop-types';
 
 import moment from 'moment';
 
+import defaultDtLocale from 'antd/lib/date-picker/locale/en_US';
+
 import {
   Select,
-  Checkbox,
   Button,
   Dropdown,
   Menu,
   Modal,
-  Tooltip,
+  DatePicker,
   message
 } from 'antd';
+
+import Tooltip from './common/Tooltip';
 
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
@@ -27,7 +30,7 @@ import Editor from './elements/Editor';
 
 import DeepLinkHandler from './helpers/DeepLinkHandler';
 
-import { getItem, setItem, getVotingPercentage } from '../helpers/storage';
+import { getItem, setItem } from '../helpers/storage';
 import markDown2Html from '../utils/markdown-2-html';
 import formatChainError from '../utils/format-chain-error';
 import { makePath as makePathEntry } from './helpers/EntryLink';
@@ -50,6 +53,7 @@ import {
   createPermlink,
   makeOptions,
   makeJsonMetadata,
+  makeJsonMetadataForUpdate,
   extractMetadata,
   createPatch
 } from '../utils/posting-helpers';
@@ -162,13 +166,12 @@ class Compose extends Component {
     const title = getItem('compose-title') || '';
     const tags = getItem('compose-tags') || [];
     const body = getItem('compose-body') || '';
-    const upvote = getItem('compose-upvote', false);
 
     const scheduleDate = moment()
       .add(2, 'hours')
       .minute(0)
       .second(0)
-      .format('YYYY-MM-DDTHH:mm');
+      .milliseconds(0);
 
     this.state = {
       title,
@@ -181,10 +184,10 @@ class Compose extends Component {
       },
       draftId: null,
       reward: 'default',
-      upvote,
       posting: false,
       permProcessing: false,
       scheduleModalVisible: false,
+      scheduleDtVisible: false,
       scheduleDate,
       editMode: false,
       editingEntry: null
@@ -276,9 +279,6 @@ class Compose extends Component {
 
   clear = (preventDraftRedir = false) => {
     const editor = this.editor.current.getWrappedInstance();
-
-    setItem('compose-upvote', false);
-    this.setState({ upvote: false });
 
     editor.clear(() => {
       if (preventDraftRedir) return;
@@ -397,11 +397,13 @@ class Compose extends Component {
   schedulePost = () => {
     const { activeAccount, intl } = this.props;
 
-    const { title, body, tags, reward, upvote, scheduleDate } = this.state;
+    const { title, body, tags, reward, scheduleDate } = this.state;
     const permlink = createPermlink(title);
     const meta = extractMetadata(body);
     const jsonMeta = makeJsonMetadata(meta, tags, version);
     const isoDate = new Date(scheduleDate).toISOString();
+
+    // console.log(isoDate);
 
     schedule(
       activeAccount.username,
@@ -411,7 +413,7 @@ class Compose extends Component {
       tags,
       body,
       reward,
-      upvote,
+      false,
       isoDate
     )
       .then(resp => {
@@ -425,7 +427,7 @@ class Compose extends Component {
 
   publish = async () => {
     const { activeAccount, global, intl } = this.props;
-    const { title, tags, body, reward, upvote } = this.state;
+    const { title, tags, body, reward } = this.state;
 
     this.setState({ posting: true });
 
@@ -447,9 +449,6 @@ class Compose extends Component {
     const meta = extractMetadata(body);
     const jsonMeta = makeJsonMetadata(meta, tags, version);
     const options = makeOptions(activeAccount.username, permlink, reward);
-    const voteWeight = upvote
-      ? getVotingPercentage(activeAccount.username) * 100
-      : null;
 
     return comment(
       activeAccount,
@@ -461,7 +460,7 @@ class Compose extends Component {
       body,
       jsonMeta,
       options,
-      voteWeight
+      null
     )
       .then(resp => {
         message.success(intl.formatMessage({ id: 'composer.published' }));
@@ -493,7 +492,8 @@ class Compose extends Component {
       body: oldBody,
       author,
       parent_permlink: parentPermlink,
-      permlink
+      permlink,
+      json_metadata: jsonMetadata
     } = editingEntry;
 
     let newBody = body;
@@ -508,7 +508,15 @@ class Compose extends Component {
     this.setState({ posting: true });
 
     const meta = extractMetadata(body);
-    const jsonMeta = makeJsonMetadata(meta, tags, version);
+
+    let jsonMeta = {};
+
+    try {
+      const oldJson = JSON.parse(jsonMetadata);
+      jsonMeta = makeJsonMetadataForUpdate(oldJson, meta, tags);
+    } catch (e) {
+      jsonMeta = makeJsonMetadata(meta, tags, version);
+    }
 
     return comment(
       activeAccount,
@@ -550,10 +558,10 @@ class Compose extends Component {
       body,
       defaultValues,
       reward,
-      upvote,
       posting,
       permProcessing,
       scheduleModalVisible,
+      scheduleDtVisible,
       scheduleDate,
       editMode
     } = this.state;
@@ -592,6 +600,9 @@ class Compose extends Component {
                   return;
                 }
                 this.setState({ scheduleModalVisible: true });
+                setTimeout(() => {
+                  this.setState({ scheduleDtVisible: true });
+                }, 300);
               }}
             >
               <FormattedMessage id="composer.select-schedule-date" />
@@ -628,10 +639,23 @@ class Compose extends Component {
       );
     }
 
+    const newDtLocale = Object.assign({}, defaultDtLocale, {
+      lang: Object.assign({}, defaultDtLocale.lang, {
+        ok: intl.formatMessage({ id: 'g.ok' }),
+        dateSelect: intl.formatMessage({
+          id: 'composer.schedule-picker-select-date'
+        }),
+        timeSelect: intl.formatMessage({
+          id: 'composer.schedule-picker-select-time'
+        }),
+        now: null
+      })
+    });
+
     return (
       <div className="wrapper">
         <NavBar {...this.props} reloadFn={() => {}} reloading={loading} />
-        <div className="app-content compose-page">
+        <div className="app-content compose-page" id="app-content">
           <Editor
             {...this.props}
             defaultValues={defaultValues}
@@ -694,21 +718,6 @@ class Compose extends Component {
                       {intl.formatMessage({ id: 'composer.reward-dp' })}
                     </Select.Option>
                   </Select>
-                </div>
-                <div className="voting">
-                  <Checkbox
-                    checked={upvote}
-                    onChange={e => {
-                      const { checked } = e.target;
-                      setItem('compose-upvote', checked);
-
-                      this.setState({
-                        upvote: checked
-                      });
-                    }}
-                  >
-                    <FormattedMessage id="composer.upvote" />{' '}
-                  </Checkbox>
                 </div>
                 <div className="clear">
                   <Button className="clean-button" onClick={this.clear}>
@@ -781,30 +790,45 @@ class Compose extends Component {
             width={320}
             title={intl.formatMessage({ id: 'composer.select-schedule-date' })}
             onCancel={() => {
-              this.setState({ scheduleModalVisible: false });
+              this.setState({
+                scheduleModalVisible: false,
+                scheduleDtVisible: false
+              });
             }}
           >
-            <div style={{ padding: '10px' }}>
-              <input
-                type="datetime-local"
-                value={scheduleDate}
-                className="ant-input"
-                onChange={e => {
-                  this.setState({ scheduleDate: e.target.value });
-                }}
-              />
-            </div>
+            <div className="schedule-modal-content">
+              <div className="selected-date">
+                {intl.formatDate(scheduleDate, {
+                  year: 'numeric',
+                  month: 'numeric',
+                  day: 'numeric',
+                  hour: 'numeric',
+                  minute: 'numeric'
+                })}
+              </div>
+              <div className="dt-holder">
+                <DatePicker
+                  open={scheduleDtVisible}
+                  value={scheduleDate}
+                  locale={newDtLocale}
+                  showTime={{ format: 'HH:mm' }}
+                  disabledDate={current => current && current < moment()}
+                  showToday={false}
+                  onChange={date => {
+                    this.setState({
+                      scheduleDate: date.second(0).milliseconds(0)
+                    });
+                  }}
+                  onOk={() => {
+                    this.schedulePost();
+                    this.setState({ scheduleDtVisible: false });
 
-            <div style={{ padding: '10px', textAlign: 'right' }}>
-              <Button
-                type="primary"
-                onClick={() => {
-                  this.schedulePost();
-                  this.setState({ scheduleModalVisible: false });
-                }}
-              >
-                <FormattedMessage id="g.select" />
-              </Button>
+                    setTimeout(() => {
+                      this.setState({ scheduleModalVisible: false });
+                    }, 300);
+                  }}
+                />
+              </div>
             </div>
           </Modal>
         </div>

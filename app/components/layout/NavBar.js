@@ -4,8 +4,10 @@ import React, { Component, Fragment } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { Tooltip, Modal, Drawer, Icon } from 'antd';
+import { Modal, Drawer, Icon } from 'antd';
 import { FormattedMessage, injectIntl } from 'react-intl';
+
+import Tooltip from '../common/Tooltip';
 
 import Mi from '../common/Mi';
 import UserAvatar from '../elements/UserAvatar';
@@ -15,6 +17,7 @@ import Login from '../dialogs/Login';
 import UserMenu from '../dialogs/UserMenu';
 import Activities from '../dialogs/Activities';
 import LoginRequired from '../helpers/LoginRequired';
+import SearchInPage from '../helpers/SearchInPage';
 
 import addressParser from '../../utils/address-parser';
 
@@ -84,6 +87,10 @@ class Address extends Component {
       const { history, activeAccount } = this.props;
 
       if (!changed) return;
+
+      if (address.trim() === '') {
+        return;
+      }
 
       const a = addressParser(address);
 
@@ -516,6 +523,7 @@ class NavBar extends Component {
             </a>
           </div>
           <div className="address-bar">
+            <SearchInPage {...this.props} />
             <Address {...this.props} />
             {favoriteFn ? (
               <LoginRequired {...this.props}>
@@ -617,7 +625,7 @@ class NavBar extends Component {
               <Fragment>
                 <Tooltip
                   title={
-                    unreadActivity
+                    hasUnclaimedRewards
                       ? intl.formatMessage({
                           id: 'navbar.unclaimed-reward-notice'
                         })

@@ -3,7 +3,9 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import { injectIntl } from 'react-intl';
-import { Tooltip, Popconfirm, message } from 'antd';
+import { Popconfirm, message } from 'antd';
+
+import Tooltip from '../common/Tooltip';
 
 import LoginRequired, { checkLogin } from '../helpers/LoginRequired';
 import formatChainError from '../../utils/format-chain-error';

@@ -1,3 +1,7 @@
+/*
+eslint-disable no-underscore-dangle
+*/
+
 import { Client, PrivateKey } from 'dsteem';
 
 import sc2 from 'sc2-sdk';
@@ -9,12 +13,16 @@ import {
   scWitnessProxy,
   scTransfer,
   scTransferToSavings,
-  scTransferFromSavings
+  scTransferFromSavings,
+  scTransferToVesting,
+  scDelegateVestingShares
 } from '../helpers/sc';
 
 import { decryptKey } from '../utils/crypto';
 
 import { getItem } from '../helpers/storage';
+
+import { usrActivity } from './esteem-client';
 
 let client = new Client(getItem('server', 'https://api.steemit.com'));
 
@@ -75,7 +83,7 @@ export const getAccountRC = username =>
 export const getWitnessesByVote = (from = undefined, limit = 100) =>
   client.call('database_api', 'get_witnesses_by_vote', [from, limit]);
 
-export const vote = (account, pin, author, permlink, weight) => {
+const _vote = (account, pin, author, permlink, weight) => {
   if (account.type === 's') {
     const key = decryptKey(account.keys.posting, pin);
     const privateKey = PrivateKey.fromString(key);
@@ -99,9 +107,15 @@ export const vote = (account, pin, author, permlink, weight) => {
 
     const voter = account.username;
 
-    return api.vote(voter, author, permlink, weight);
+    return api.vote(voter, author, permlink, weight).then(resp => resp.result);
   }
 };
+
+export const vote = (account, pin, author, permlink, weight) =>
+  _vote(account, pin, author, permlink, weight).then(resp => {
+    usrActivity(account.username, 120, resp.block_num, resp.id);
+    return resp;
+  });
 
 export const follow = (account, pin, following) => {
   if (account.type === 's') {
@@ -276,7 +290,7 @@ export const grantPostingPermission = (account, pin) => {
   }
 };
 
-export const comment = (
+const _comment = (
   account,
   pin,
   parentAuthor,
@@ -366,11 +380,48 @@ export const comment = (
       opArray.push(e);
     }
 
-    return api.broadcast(opArray);
+    return api.broadcast(opArray).then(resp => resp.result);
   }
 };
 
-export const reblog = (account, pin, author, permlink) => {
+export const comment = (
+  account,
+  pin,
+  parentAuthor,
+  parentPermlink,
+  permlink,
+  title,
+  body,
+  jsonMetadata,
+  options = null,
+  voteWeight = null
+) =>
+  _comment(
+    account,
+    pin,
+    parentAuthor,
+    parentPermlink,
+    permlink,
+    title,
+    body,
+    jsonMetadata,
+    options,
+    voteWeight
+  ).then(resp => {
+    if (options) {
+      const t = title ? 100 : 110;
+      usrActivity(account.username, t, resp.block_num, resp.id);
+    }
+    return resp;
+  });
+
+export const reblog = (account, pin, author, permlink) =>
+  _reblog(account, pin, author, permlink).then(resp => {
+    usrActivity(account.username, 130, resp.block_num, resp.id);
+    return resp;
+  });
+
+const _reblog = (account, pin, author, permlink) => {
   if (account.type === 's') {
     const key = decryptKey(account.keys.posting, pin);
     const privateKey = PrivateKey.fromString(key);
@@ -401,7 +452,7 @@ export const reblog = (account, pin, author, permlink) => {
 
     const follower = account.username;
 
-    return api.reblog(follower, author, permlink);
+    return api.reblog(follower, author, permlink).then(resp => resp.result);
   }
 };
 
@@ -576,3 +627,63 @@ export const transferFromSavings = (
     return scTransferFromSavings(from, requestId, to, amount, memo);
   }
 };
+
+export const transferToVesting = (account, pin, to, amount) => {
+  const { username: from } = account;
+
+  if (account.type === 's') {
+    const key = decryptKey(account.keys.active, pin);
+    const privateKey = PrivateKey.fromString(key);
+
+    const opArray = [
+      [
+        'transfer_to_vesting',
+        {
+          from,
+          to,
+          amount
+        }
+      ]
+    ];
+
+    return client.broadcast.sendOperations(opArray, privateKey);
+  }
+
+  if (account.type === 'sc') {
+    return scTransferToVesting(from, to, amount);
+  }
+};
+
+export const delegateVestingShares = (
+  account,
+  pin,
+  delegatee,
+  vestingShares
+) => {
+  const { username: delegator } = account;
+
+  if (account.type === 's') {
+    const key = decryptKey(account.keys.active, pin);
+    const privateKey = PrivateKey.fromString(key);
+
+    const opArray = [
+      [
+        'delegate_vesting_shares',
+        {
+          delegator,
+          delegatee,
+          vesting_shares: vestingShares
+        }
+      ]
+    ];
+
+    return client.broadcast.sendOperations(opArray, privateKey);
+  }
+
+  if (account.type === 'sc') {
+    return scDelegateVestingShares(delegator, delegatee, vestingShares);
+  }
+};
+
+export const getVestingDelegations = (account, from = '', limit = 50) =>
+  client.database.call('get_vesting_delegations', [account, from, limit]);

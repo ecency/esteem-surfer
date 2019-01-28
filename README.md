@@ -17,8 +17,10 @@
 - Favorites `synced with eSteem Mobile`
 - Comments/Memo Encryption
 - Night Mode (Dark Theme)
+- Wallet Transfers
 - Image Gallery
 - Detailed Voters Info
+- Witness Voting
 
 More functions are coming!
 
@@ -36,7 +38,7 @@ More functions are coming!
 - node ^6.14.0 || ^8.10.0 || >=9.10.0
 - yarn
 
-### Clone and switch to surfer2 branch
+### Clone
 
 ```
 $ git clone https://github.com/eSteemApp/esteem-surfer

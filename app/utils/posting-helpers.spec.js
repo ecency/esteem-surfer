@@ -29,6 +29,17 @@ describe('createPermlink random', () => {
   });
 });
 
+describe('createPermlink non-latin chars', () => {
+  jest.spyOn(Math, 'random').mockImplementation(() => {
+    return 1.95136022969379;
+  });
+
+  it('(1) ', () => {
+    const input = 'ปลาตัวใหญ่สีเหลืองทอง';
+    expect(createPermlink(input)).toMatchSnapshot();
+  });
+});
+
 describe('makeOptions', () => {
   it('(1) Default 50% / 50%', () => {
     expect(

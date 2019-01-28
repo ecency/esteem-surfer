@@ -18,6 +18,8 @@ import { deleteAccounts, addAccountSc } from '../actions/accounts';
 import { logOut, updateActiveAccount } from '../actions/active-account';
 import { fetchActivities } from '../actions/activities';
 
+import { fetchMarketData } from '../actions/market-data';
+
 import PinCreate from '../components/dialogs/PinCreate';
 import PinConfirm from '../components/dialogs/PinConfirm';
 import Updater from '../components/helpers/Updater';
@@ -30,7 +32,7 @@ import messages from '../locales';
 
 import { getItem, setItem } from '../helpers/storage';
 
-import { scTokenRenew } from '../backend/esteem-client';
+import { scTokenRenew, usrActivity } from '../backend/esteem-client';
 import { decryptKey } from '../utils/crypto';
 
 import { NWS_ADDRESS } from '../config';
@@ -68,6 +70,10 @@ class App extends React.Component {
       1000 * 60 * 40
     );
 
+    // Market exchange data
+    this.refreshMarketData();
+    this.marketDataInterval = setInterval(this.refreshMarketData, 70000);
+
     window.addEventListener('user-login', this.onUserLogin);
     window.addEventListener('user-logout', this.onUserLogout);
 
@@ -76,6 +82,9 @@ class App extends React.Component {
       this.connectNws(activeAccount.username);
       this.fetchActivities();
     }
+
+    this.checkIn();
+    this.checkInInterval = setInterval(this.checkIn, 1000 * 60 * 60 * 6);
   }
 
   componentWillUnmount() {
@@ -83,6 +92,8 @@ class App extends React.Component {
     clearInterval(this.globalInterval);
     clearInterval(this.activeAccountInterval);
     clearInterval(this.scRefreshInterval);
+    clearInterval(this.marketDataInterval);
+    clearInterval(this.checkInInterval);
 
     window.removeEventListener('user-login', this.onUserLogin);
     window.removeEventListener('user-logout', this.onUserLogout);
@@ -129,6 +140,11 @@ class App extends React.Component {
     }
   };
 
+  refreshMarketData = () => {
+    const { actions } = this.props;
+    actions.fetchMarketData();
+  };
+
   refreshScAccounts = () => {
     const { accounts, global, actions } = this.props;
     if (!global.pin) {
@@ -157,6 +173,15 @@ class App extends React.Component {
         })
         .catch(() => {});
     });
+  };
+
+  checkIn = () => {
+    const { activeAccount } = this.props;
+    if (!activeAccount) {
+      return;
+    }
+
+    usrActivity(activeAccount.username, 10);
   };
 
   onCreatePinSuccess = (code, hashedCode) => {
@@ -302,6 +327,7 @@ class App extends React.Component {
             >
               <PinConfirm
                 {...this.props}
+                history={history}
                 onSuccess={this.onConfirmPinSuccess}
                 onInvalidate={this.pinInvalidated}
               />
@@ -336,7 +362,8 @@ App.propTypes = {
     fetchGlobalProps: PropTypes.func.isRequired,
     deleteAccounts: PropTypes.func.isRequired,
     addAccountSc: PropTypes.func.isRequired,
-    fetchActivities: PropTypes.func.isRequired
+    fetchActivities: PropTypes.func.isRequired,
+    fetchMarketData: PropTypes.func.isRequired
   }).isRequired,
   accounts: PropTypes.arrayOf(PropTypes.object)
 };
@@ -358,7 +385,8 @@ function mapDispatchToProps(dispatch) {
       ...bindActionCreators({ logOut }, dispatch),
       ...bindActionCreators({ fetchGlobalProps }, dispatch),
       ...bindActionCreators({ deleteAccounts, addAccountSc }, dispatch),
-      ...bindActionCreators({ fetchActivities }, dispatch)
+      ...bindActionCreators({ fetchActivities }, dispatch),
+      ...bindActionCreators({ fetchMarketData }, dispatch)
     }
   };
 }

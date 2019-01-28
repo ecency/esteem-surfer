@@ -101,17 +101,17 @@ drbg.js@^1.0.1:
     create-hash "^1.1.2"
     create-hmac "^1.1.4"
 
-dsteem@^0.10.1:
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/dsteem/-/dsteem-0.10.1.tgz#1921d9f662f138c0b52f8fa77c7abc37ceab42f4"
+dsteem@^0.11.2:
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/dsteem/-/dsteem-0.11.2.tgz#1c3b4185999c804a234475738e00a49b55112fed"
   dependencies:
     bs58 "^4.0.1"
     bytebuffer "^5.0.1"
     core-js "^2.5.0"
-    node-fetch "^2.1.2"
-    secp256k1 "^3.3.1"
+    node-fetch "^2.3.0"
+    secp256k1 "^3.5.2"
     verror "^1.10.0"
-    whatwg-fetch "^2.0.3"
+    whatwg-fetch "^3.0.0"
 
 elliptic@^6.2.3:
   version "6.4.1"
@@ -186,7 +186,7 @@ nan@^2.2.1:
   version "2.11.1"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.11.1.tgz#90e22bccb8ca57ea4cd37cc83d3819b52eea6766"
 
-node-fetch@^2.1.2:
+node-fetch@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.3.0.tgz#1a1d940bbfb916a1d3e0219f037e89e71f8c5fa5"
 
@@ -201,9 +201,9 @@ safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, safe-buffer@^5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
 
-secp256k1@^3.3.1:
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/secp256k1/-/secp256k1-3.5.2.tgz#f95f952057310722184fe9c914e6b71281f2f2ae"
+secp256k1@^3.5.2:
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/secp256k1/-/secp256k1-3.6.1.tgz#f0475d42096218ff00e45a127242abdff9285335"
   dependencies:
     bindings "^1.2.1"
     bip66 "^1.1.3"
@@ -229,6 +229,6 @@ verror@^1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-whatwg-fetch@^2.0.3:
-  version "2.0.4"
-  resolved "http://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-2.0.4.tgz#dde6a5df315f9d39991aa17621853d720b85566f"
+whatwg-fetch@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.0.0.tgz#fc804e458cc460009b1a2b966bc8817d2578aefb"

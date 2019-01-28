@@ -78,6 +78,7 @@
       font-size: 24px;
       height: 44px;
       margin-right: 26px;
+
       .back,
       .forward,
       .reload {
@@ -118,6 +119,7 @@
       flex-grow: 1;
       height: 44px;
       width: 484px;
+      position: relative;
 
       @include themify(day) {
         background-color: $white-three;

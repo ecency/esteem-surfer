@@ -13,7 +13,9 @@ import {
   injectIntl
 } from 'react-intl';
 
-import { Select, Button, Tooltip, message } from 'antd';
+import { Select, Button, message } from 'antd';
+
+import Tooltip from './common/Tooltip';
 
 import {
   getState,
@@ -245,7 +247,10 @@ class ReplyEditor extends Component {
 }
 
 ReplyEditor.defaultProps = {
-  activeAccount: null
+  activeAccount: null,
+  global: {
+    pin: null
+  }
 };
 
 ReplyEditor.propTypes = {
@@ -254,8 +259,8 @@ ReplyEditor.propTypes = {
   onCancel: PropTypes.func.isRequired,
   activeAccount: PropTypes.instanceOf(Object),
   global: PropTypes.shape({
-    pin: PropTypes.string.isRequired
-  }).isRequired,
+    pin: PropTypes.string
+  }),
   intl: PropTypes.instanceOf(Object).isRequired,
   mode: PropTypes.string.isRequired
 };
@@ -595,7 +600,7 @@ class Entry extends PureComponent {
       replies: [],
       repliesLoading: true,
       replySort: 'trending',
-      editorVisible: false,
+      editorVisible: true,
       bookmarkId: null,
       clickedAuthor: null
     };

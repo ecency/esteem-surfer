@@ -14,13 +14,10 @@ class PinRequired extends Component {
   }
 
   onPinInvalidated = () => {
-    const { history } = this.props;
-    this.setState({ show: false }, () => {
-      history.push('/');
-    });
+    this.setState({ show: false });
   };
 
-  onConfirmPinSuccess = (value) => {
+  onConfirmPinSuccess = value => {
     const { onSuccess } = this.props;
     this.setState({ show: false }, () => {
       onSuccess(value);
@@ -69,8 +66,7 @@ class PinRequired extends Component {
 }
 
 PinRequired.defaultProps = {
-  onSuccess: () => {
-  }
+  onSuccess: () => {}
 };
 
 PinRequired.propTypes = {
