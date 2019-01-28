@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {Delegate, PowerDown} from '../components/Vesting';
+import { Delegate, PowerDown } from '../components/Vesting';
 
 import { updateEntry } from '../actions/entries';
 
@@ -80,4 +80,3 @@ export const PowerDownPage = connect(
   mapStateToProps,
   mapDispatchToProps
 )(PowerDown);
-

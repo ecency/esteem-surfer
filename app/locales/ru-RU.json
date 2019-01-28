@@ -6,7 +6,7 @@
     "no": "Нет",
     "delete": "Удалить",
     "cancel": "Отмена",
-    "ok": "OK",
+    "ok": "ОК",
     "edit": "Редактировать",
     "server-error": "Невозможно завершить процесс из-за ошибки сервера",
     "save": "Сохранить",
@@ -60,7 +60,7 @@
     "server": "Сервер",
     "server-invalid-address": "Неправильный адрес сервера",
     "server-connecting": "Соединение с '{server}'...",
-    "server-connect-error": "Невозможно соединиться с '{server}'",
+    "server-connect-error": "Невозможно соединиться с '{server}'. Пожалуйста, проверьте подключение интернет.",
     "server-timeout-error": "'{server}' не похож на живой",
     "server-changed": "Сервер изменён на {server}",
     "server-custom-address": "Впишите адрес сервера",
@@ -74,7 +74,7 @@
     "accounts-title": "Войти как",
     "traditional-login-desc": "Войдите под своим именем пользователя и паролем для продолжения",
     "username-placeholder": "пользователь",
-    "password-placeholder": "пароль или приватный ключ",
+    "password-placeholder": "пароль или ключ",
     "login": "Войти",
     "error-fields-required": "Пожалуйста, введите имя пользователя и пароль/ключ",
     "error-public-key": "Вы ввели публичный ключ, а нужен приватный или пароль",
@@ -88,13 +88,13 @@
   "create-pin-code": {
     "title": "Создайте ПИН код",
     "desc1": "Установите ПИН код для шифрования данных и дополнительного уровня безопасности!",
-    "input-placeholder": "Введите ПИН код",
-    "desc2": "ПИН код требуется во время запуска и для важных транзакций.",
+    "input-placeholder": "Введите ПИН",
+    "desc2": "ПИН потребуется во время запуска и для совершения важных транзакций.",
     "created": "ПИН код создан"
   },
   "confirm-pin-code": {
-    "title": "Введите ПИН код",
-    "input-placeholder": "для продолжения",
+    "title": "Введите ПИН",
+    "input-placeholder": "Подтвердите ПИН",
     "last-chance": "Последняя попытка",
     "invalidate": "Ой, я не помню...",
     "invalidate-confirm": "Вы действительно хотите аннулировать ПИН код?",
@@ -146,17 +146,17 @@
     "unclaimed-rewards": "Зачислить награду",
     "estimated-value": "Предполагаемая стоимость. Основана на средней стоимости Steem последние 7 дней.",
     "steem": "Steem",
-    "steem-description": "Steem - это торгуемые токены, которые можно вывести в любое время. Steem можно конвертировать в Steem Power (Силу голоса), этот процесс называется Повышением силы.",
+    "steem-description": "Steem - это торгуемые токены, которые можно вывести в любое время. Steem можно конвертировать в Силу голоса, этот процесс называется Повышением силы.",
     "steem-power": "Steem Power (Сила)",
     "steem-power-description": "Steam Power (Сила) - это токены влияния, которые дают ещё больше силы, если их не выводить и использовать для голосования. Чем больше у вас Steem Power, тем больше ваше влияние на награды других и больше ваш заработок за удачные голосования.",
-    "steem-power-delegated": "Делегированная сила Steem Power",
-    "steem-power-received": "Полученная сила Steem Power",
-    "steem-power-total": "Всего Силы Steem Power",
-    "steem-dollars": "Steem Dollars",
+    "steem-power-delegated": "Делегированная Сила Голоса",
+    "steem-power-received": "Полученная Сила Голоса",
+    "steem-power-total": "Всего Силы Голоса",
+    "steem-dollars": "Доллары Steem",
     "steem-dollars-description": "Токены, стоимостью примерно $1 от токена Steem.",
     "savings": "Сейф",
     "savings-description": "Сейф, баланс которого можно вывести в течение 3 дней после запроса.",
-    "next-power-down": "Следующее понижение силы запланировано {time} {amount}",
+    "next-power-down": "Следующее понижение силы {amount} запланировано {time}",
     "exchange": "Курс",
     "transactions": "Транзакции",
     "transaction-curation_reward": "Кураторская награда",
@@ -174,7 +174,7 @@
     "power-up": "Повысить Силу",
     "withdraw-steem": "Снять Steem",
     "withdraw-sbd": "Снять Steem Dollar",
-    "delegate": "Delegate"
+    "delegate": "Делегировать"
   },
   "composer": {
     "title-placeholder": "Заголовок",
@@ -191,12 +191,12 @@
     "tool-link": "Ссылка",
     "tool-image": "Изображение",
     "tool-table": "Таблица",
-    "tool-table-3-col": "3 columns",
-    "tool-table-2-col": "2 columns",
-    "tool-table-1-col": "1 column",
+    "tool-table-3-col": "3 колонки",
+    "tool-table-2-col": "2 колонки",
+    "tool-table-1-col": "1 колонка",
     "tool-upload": "Загрузить",
     "tool-gallery": "Галерея",
-    "tool-emoji": "Эмоджи",
+    "tool-emoji": "Смайлики",
     "preview": "Предпросмотр",
     "reward": "Награда",
     "reward-default": "Стандарт 50%/50%",
@@ -223,9 +223,9 @@
     "sync-scroll": "Автопрокрутка",
     "words-count": "{n} слов",
     "no-suggestions": "Нет предложений",
-    "emoji-filter-placeholder": "Фильтр",
+    "emoji-filter-placeholder": "Отфильтровать",
     "emoji-filter-no-match": "Нет совпадений",
-    "emoji-recently-used": "Recently Used"
+    "emoji-recently-used": "Недавние"
   },
   "gallery": {
     "title": "Галерея",
@@ -283,7 +283,7 @@
   "navbar": {
     "settings": "Настройки",
     "change-theme": "Сменить тему",
-    "login": "Войти в свой аккаунт",
+    "login": "Войдите в свой аккаунт",
     "bookmark": "Добавить в закладки",
     "bookmarkRemove": "Убрать из закладок",
     "favorite": "Добавить в избранное",
@@ -293,7 +293,7 @@
     "address-enter-url": "Введите url",
     "address-enter-query": "Введите поисковой запрос",
     "unclaimed-reward-notice": "Есть незачисленные награды",
-    "search-no-matches": "No matches"
+    "search-no-matches": "Нет совпадений"
   },
   "search": {
     "n-results-for-q": "{n} результатов для {q}",
@@ -377,8 +377,8 @@
     "transfer-saving-sub-title": "Защита средства от вывода трёхдневным периодом ожидания",
     "withdraw-saving-title": "Вывод из сейфа",
     "withdraw-saving-sub-title": "Снять средства после необходимого трёхдневного периода ожидания",
-    "power-up-title": "Convert to STEEM POWER",
-    "power-up-sub-title": "Influence tokens which give you more control over post payouts and allow you to earn on curation rewards.",
+    "power-up-title": "Перевести в Силу Голоса",
+    "power-up-sub-title": "Токены влияния, от которых зависит ваша сила голоса и заработок от курирования.",
     "from": "От",
     "from-placeholder": "Выберите пользователя",
     "to": "Кому",
@@ -405,19 +405,19 @@
     "transfer-summary": "Перевод <span class=\"amount\">{amount}</span> от <span class=\"from-user\">{from}</span> к <span class=\"to-user\">{to}</span>",
     "reset": "Ещё один перевод",
     "finish": "Завершить",
-    "recent-transfers": "Recent transfers"
+    "recent-transfers": "Недавние переводы"
   },
   "delegate": {
-    "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
-    "slider-help": "Drag the slider to adjust the amount",
-    "confirm-title": "Confirm Delegation",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "Delegation completed",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "title": "Делегировать",
+    "sub-title": "Делегирование Силы Голоса",
+    "slider-help": "Потяните ползунок для регулировки количества",
+    "confirm-title": "Подтвердите делегирование",
+    "confirm-sub-title": "Пожалуйста, убедитесь что всё верно",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> делегировано к <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "Делегирование завершено",
+    "insufficient-vesting": "Не хватает средств {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "Ничего нет"
   }
 }

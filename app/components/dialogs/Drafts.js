@@ -31,8 +31,7 @@ class DraftListItem extends Component {
         onDelete(item);
         return resp;
       })
-      .catch(() => {
-      });
+      .catch(() => {});
   };
 
   edit = item => {
@@ -53,7 +52,7 @@ class DraftListItem extends Component {
         <div className="item-header">
           <div className="author-part">
             <div className="author-avatar">
-              <UserAvatar user={author} size="small"/>
+              <UserAvatar user={author} size="small" />
             </div>
             <div className="author">
               {author}{' '}
@@ -64,7 +63,7 @@ class DraftListItem extends Component {
           </div>
           {tag && <a className="category">{tag}</a>}
           <span className="date">
-            <FormattedRelative value={item.created} initialNow={Date.now()}/>
+            <FormattedRelative value={item.created} initialNow={Date.now()} />
           </span>
         </div>
         <div className="item-body">
@@ -192,7 +191,7 @@ class Drafts extends Component {
 
     return (
       <div className="drafts-dialog-content">
-        {loading && <LinearProgress/>}
+        {loading && <LinearProgress />}
         {data.length > 0 && (
           <div className="drafts-list">
             <div className="drafts-list-body">
@@ -210,11 +209,11 @@ class Drafts extends Component {
           </div>
         )}
         {!loading &&
-        data.length < 1 && (
-          <div className="drafts-list">
-            <FormattedMessage id="drafts.empty-list"/>
-          </div>
-        )}
+          data.length < 1 && (
+            <div className="drafts-list">
+              <FormattedMessage id="drafts.empty-list" />
+            </div>
+          )}
       </div>
     );
   }

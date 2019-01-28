@@ -11,8 +11,7 @@ import EntryPage from './containers/EntryPage';
 import SearchPage from './containers/SearchPage';
 import WitnessesPage from './containers/WitnessesPage';
 import TransferPage from './containers/TransferPage';
-import {DelegatePage} from './containers/VestingPage';
-
+import { DelegatePage } from './containers/VestingPage';
 
 export default () => (
   <App>
@@ -21,10 +20,7 @@ export default () => (
         exact
         path="/@:username/delegate"
         component={props => (
-          <DelegatePage
-            timestamp={new Date().toString()}
-            {...props}
-          />
+          <DelegatePage timestamp={new Date().toString()} {...props} />
         )}
       />
       <Route
@@ -106,11 +102,11 @@ export default () => (
           <ComposePage timestamp={new Date().toString()} {...props} />
         )}
       />
-      <Route exact path="/@:username/feed" component={EntryIndexPage}/>
-      <Route exact path="/@:username" component={AccountPage}/>
-      <Route exact path="/@:username/:section" component={AccountPage}/>
-      <Route exact path="/:filter" component={EntryIndexPage}/>
-      <Route exact path="/:filter/:tag" component={EntryIndexPage}/>
+      <Route exact path="/@:username/feed" component={EntryIndexPage} />
+      <Route exact path="/@:username" component={AccountPage} />
+      <Route exact path="/@:username/:section" component={AccountPage} />
+      <Route exact path="/:filter" component={EntryIndexPage} />
+      <Route exact path="/:filter/:tag" component={EntryIndexPage} />
       <Route
         exact
         path="/:category/@:username/:permlink"
@@ -118,7 +114,7 @@ export default () => (
           <EntryPage timestamp={new Date().toString()} {...props} />
         )}
       />
-      <Route path="/" component={IndexPage}/>
+      <Route path="/" component={IndexPage} />
     </Switch>
   </App>
 );

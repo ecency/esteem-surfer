@@ -685,12 +685,5 @@ export const delegateVestingShares = (
   }
 };
 
-
-export const getVestingDelegations = (
-  account, from = '', limit = 50
-) =>
-  client.database.call('get_vesting_delegations', [
-    account,
-    from,
-    limit
-  ]);
+export const getVestingDelegations = (account, from = '', limit = 50) =>
+  client.database.call('get_vesting_delegations', [account, from, limit]);

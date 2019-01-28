@@ -20,7 +20,6 @@ import entryBodySummary from '../../utils/entry-body-summary';
 import fallbackImage from '../../img/fallback.png';
 import noImage from '../../img/noimage.png';
 
-
 import {
   getSchedules,
   removeSchedule,
