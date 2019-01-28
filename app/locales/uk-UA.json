@@ -271,9 +271,9 @@
     "reply-sort-order-created": "Час",
     "reply-body-placeholder": "Напишіть свою відповідь тут",
     "bookmarked": "Додано до закладок",
-    "bookmarkRemoved": "Вилучено із закладок",
+    "bookmarkRemoved": "Видалено із закладок",
     "favorited": "Додано до обраного",
-    "favoriteRemoved": "Вилучено з обраного",
+    "favoriteRemoved": "Видалено з обраного",
     "copy-clipboard": "Скопіювати внутрішнє посилання до буферу обміну",
     "copied-clipboard": "Скопійовано",
     "comment-entry-title": "Ви переглядаєте гілку одного коментарю із: ",
@@ -292,7 +292,7 @@
     "activities": "Активність",
     "address-enter-url": "Введіть url",
     "address-enter-query": "Введіть пошуковий запит",
-    "unclaimed-reward-notice": "Ви маєте незараховані винагороди",
+    "unclaimed-reward-notice": "У вас є не зараховані винагороди",
     "search-no-matches": "No matches"
   },
   "search": {
@@ -319,12 +319,12 @@
   },
   "notification": {
     "popup-title": "У вас є нове сповіщення",
-    "voted": "{source} проголосував за вашу публікацію",
-    "mention-post": "{source} згадав вас у публікації",
+    "voted": "{source} проголосував за ваш пост",
+    "mention-post": "{source} згадав вас у пості",
     "mention-comment": "{source} згадав вас у коментарі",
     "followed": "{source} підписався на вас",
     "replied": "{source} відповів вам",
-    "reblogged": "{source} зробив репост вашої публікації"
+    "reblogged": "{source} зробив репост вашого посту"
   },
   "activities": {
     "type-all": "Всі події",
@@ -339,7 +339,7 @@
     "followed-str": "підписався",
     "unfollowed-str": "відписався",
     "ignored-str": "ignored",
-    "reblog-str": "зробив репост вашої публікації:",
+    "reblog-str": "зробив репост вашого посту:",
     "empty-list": "Тут порожньо",
     "refresh": "Оновити",
     "mark-all-read": "Позначити всі як прочитані",
