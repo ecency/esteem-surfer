@@ -65,7 +65,7 @@
     "server-changed": "Сервер змінено на {server}",
     "server-custom-address": "Задайте адресу сервера",
     "server-list-fetch-error": "Не вдається отримати список серверів",
-    "push-notifications": "Сповіщення",
+    "push-notifications": "Push сповіщення",
     "push-notify-enabled": "Push сповіщення увімкнено",
     "push-notify-disabled": "Push сповіщення вимкнено"
   },
@@ -83,13 +83,13 @@
     "error-authenticate": "Невірне ім'я користувача або пароль/WIF",
     "create-account-text": "Немає акаунту?<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Зареєструйтесь!</a>",
     "login-with-sc": "Увійти через",
-    "divider-text": "або"
+    "divider-text": "АБО"
   },
   "create-pin-code": {
     "title": "Задайте PIN-код",
     "desc1": "Встановіть ПІН-код для шифрування даних та додаткового рівня безпеки!",
     "input-placeholder": "Введіть ПІН-код",
-    "desc2": "Вам буде запропоновано ввести ПІН-код для критичних транзакцій, а також при кожному запуску.",
+    "desc2": "Вам потрібно буде ввести ПІН-код для критичних транзакцій, а також при кожному запуску.",
     "created": "ПІН-код задано"
   },
   "confirm-pin-code": {
@@ -105,20 +105,20 @@
     "bookmarks": "Закладки",
     "favorites": "Обране",
     "drafts": "Чернетки",
-    "schedules": "Заплановані",
+    "schedules": "Розклад",
     "gallery": "Галерея",
     "login-as": "Увійти як",
     "logout": "Вийти"
   },
   "login-required": {
     "default": "Ця дія вимагає авторизації",
-    "key-required": "Ця дія вимагає {key} ключа або головного пароля",
-    "keys-required": "Ця дія вимагає {keys} ключів або головного пароля"
+    "key-required": "Ця дія вимагає {key} ключа або головного паролю",
+    "keys-required": "Ця дія вимагає {keys} ключів або головного паролю"
   },
   "quick-profile": {
     "fetch-error-profile": "Не вдається отримати дані профілю",
-    "fetch-error-content": "Не вдалось завантажити публікації",
-    "post-count": "Кількість публікацій",
+    "fetch-error-content": "Не вдається завантажити пости",
+    "post-count": "Кількість постів",
     "followers": "Читачі",
     "following": "Підписки",
     "section-blog": "Блог",
@@ -129,12 +129,12 @@
   "follow-controls": {
     "follow": "Підписатися",
     "unFollow": "Відписатися",
-    "mute": "Ігнорувати",
+    "mute": "Заглушити",
     "unMute": "Увімкнути"
   },
   "account": {
     "voting-power": "Сила Голосу",
-    "post-count": "Кількість публікацій",
+    "post-count": "Кількість постів",
     "number-of-votes": "Кількість голосів за останні 24 години",
     "followers": "Читачі",
     "following": "Підписки",
@@ -142,9 +142,9 @@
     "section-comments": "Коментарі",
     "section-replies": "Відповіді",
     "section-wallet": "Гаманець",
-    "top-posts": "Топ публікації",
+    "top-posts": "Топ пости",
     "unclaimed-rewards": "Не отримана винагорода",
-    "estimated-value": "Орієнтовна вартість базується на 7-денній середній вартості Steem.",
+    "estimated-value": "The estimated value is based on a 7 day average value of Steem.",
     "steem": "Steem",
     "steem-description": "STEEM - токени, що вільно торгуються та можуть бути передані будь-коли. STEEM можна конвертувати в Steem Power в процесі під назвою \"посилення голосу\" (Power Up).",
     "steem-power": "Steem Power",
