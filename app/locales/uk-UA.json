@@ -408,16 +408,16 @@
     "recent-transfers": "Останні перекази"
   },
   "delegate": {
-    "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
-    "slider-help": "Drag the slider to adjust the amount",
-    "confirm-title": "Confirm Delegation",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "Delegation completed",
+    "title": "Делегувати",
+    "sub-title": "Делегування Steem Power",
+    "slider-help": "Перетягніть бігунок для регулювання кількості",
+    "confirm-title": "Підтвердіть делегування",
+    "confirm-sub-title": "Будь ласка, перевірте, чи все вірно",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> делеговано <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "Делегування завершено",
     "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "Тут порожньо"
   }
 }
