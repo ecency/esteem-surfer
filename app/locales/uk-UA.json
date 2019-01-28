@@ -23,7 +23,7 @@
     "filter-hot": "Актуальне",
     "filter-created": "Нове",
     "filter-active": "Активне",
-    "filter-promoted": "Promoted",
+    "filter-promoted": "Просування",
     "filter-votes": "Голоси",
     "filter-children": "Коментарі",
     "filter-feed": "Стрічка"
@@ -31,8 +31,8 @@
   "entry-payout": {
     "potential-payout": "Потенційна виплата",
     "promoted": "Просування",
-    "author-payout": "Винагорода автору",
-    "curation-payout": "Винагорода кураторам",
+    "author-payout": "Виплата автору",
+    "curation-payout": "Виплата кураторам",
     "payout-date": "Виплата"
   },
   "entry-votes": {
@@ -130,7 +130,7 @@
     "follow": "Підписатися",
     "unFollow": "Відписатися",
     "mute": "Ігнорувати",
-    "unMute": "Unmute"
+    "unMute": "Увімкнути"
   },
   "account": {
     "voting-power": "Сила Голосу",
