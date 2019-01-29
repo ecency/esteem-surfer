@@ -6,7 +6,7 @@
   "releasePost": "esteem/@esteemapp/esteem-surfer-changelog",
   "private": true,
   "author": "eSteem <info@esteem.app>",
-  "copyright": "© 2018, eSteem",
+  "copyright": "© 2019, eSteem",
   "homepage": "https://esteem.app",
   "scripts": {
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
@@ -105,8 +105,7 @@
         "tar.gz",
         "AppImage",
         "rpm",
-        "snap",
-        "freebsd"
+        "snap"
       ],
       "category": "Development"
     },
