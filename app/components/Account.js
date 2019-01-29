@@ -507,20 +507,20 @@ export class TransactionRow extends Component {
       flag = true;
 
       let {
-        reward_sbd: rewardSdb,
+        reward_sbd: rewardSbd,
         reward_steem: rewardSteem,
         reward_vests: rewardVests
       } = opData;
 
-      rewardSdb = parseToken(rewardSdb);
+      rewardSbd = parseToken(rewardSbd);
       rewardSteem = parseToken(rewardSteem);
       rewardVests = parseToken(rewardVests);
 
       numbers = (
         <Fragment>
-          {rewardSdb > 0 && (
+          {rewardSbd > 0 && (
             <span className="number">
-              <FormattedNumber value={rewardSdb} minimumFractionDigits={3} />{' '}
+              <FormattedNumber value={rewardSbd} minimumFractionDigits={3} />{' '}
               {'SBD'}
             </span>
           )}
@@ -1000,7 +1000,7 @@ export class SectionWallet extends Component {
                     <span className="reward-type">{`${rewardSteemBalance} STEEM`}</span>
                   )}
                   {rewardSbdBalance > 0 && (
-                    <span className="reward-type">{`${rewardSbdBalance} SDB`}</span>
+                    <span className="reward-type">{`${rewardSbdBalance} SBD`}</span>
                   )}
                   {rewardVestingSteem > 0 && (
                     <span className="reward-type">{`${rewardVestingSteem} SP`}</span>
