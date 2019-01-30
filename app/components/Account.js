@@ -891,8 +891,6 @@ export class SectionWallet extends Component {
         account.delegated_vesting_shares
       );
       const vestingSharesReceived = parseToken(account.received_vesting_shares);
-      const vestingSharesTotal =
-        vestingShares - vestingSharesDelegated + vestingSharesReceived;
 
       const sbdBalance = parseToken(account.sbd_balance);
       const savingBalance = parseToken(account.savings_balance);
@@ -907,12 +905,20 @@ export class SectionWallet extends Component {
       const showPowerDown =
         account.next_vesting_withdrawal !== '1969-12-31T23:59:59';
       const nextVestingWithdrawal = parseDate(account.next_vesting_withdrawal);
-      // min needed due to 14th week powerdown: https://github.com/steemit/steem/issues/3237
-      const vestingSharesWithdrawal = Math.min(
-        parseToken(account.vesting_withdraw_rate),
-        (parseToken(account.to_withdraw) - parseToken(account.withdrawn)) /
-          100000
-      );
+      // Math.min: 14th week powerdown: https://github.com/steemit/steem/issues/3237
+      // "?:": to_withdraw & withdrawn is integer 0 not string with no powerdown
+      const vestingSharesWithdrawal = showPowerDown
+        ? Math.min(
+            parseToken(account.vesting_withdraw_rate),
+            (parseToken(account.to_withdraw) - parseToken(account.withdrawn)) /
+              100000
+          )
+        : 0;
+      const vestingSharesTotal =
+        vestingShares -
+        vestingSharesDelegated +
+        vestingSharesReceived -
+        vestingSharesWithdrawal;
 
       const isMyPage = activeAccount && activeAccount.username === username;
 
@@ -1151,7 +1157,28 @@ export class SectionWallet extends Component {
                   </div>
                 )}
 
-                {(vestingSharesDelegated > 0 || vestingSharesReceived > 0) && (
+                {vestingSharesWithdrawal > 0 && (
+                  <div className="fund-line">
+                    <div className="fund-number pending-withdrawal">
+                      <Tooltip title="Pending Withdrawal Steem Power">
+                        {'-'}{' '}
+                        <FormattedNumber
+                          value={vestsToSp(
+                            vestingSharesWithdrawal,
+                            steemPerMVests
+                          )}
+                          minimumFractionDigits={3}
+                        />{' '}
+                        {'SP'}
+                      </Tooltip>
+                    </div>
+                    <div className="fund-action" />
+                  </div>
+                )}
+
+                {(vestingSharesDelegated > 0 ||
+                  vestingSharesReceived > 0 ||
+                  vestingSharesWithdrawal > 0) && (
                   <div className="fund-line">
                     <div className="fund-number total-sp">
                       <Tooltip
