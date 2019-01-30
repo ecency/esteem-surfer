@@ -1068,8 +1068,8 @@ export class SectionWallet extends Component {
                   </div>
                   <div className="fund-number">
                     <FormattedNumber
-                      minimumFractionDigits={3}
                       value={balance}
+                      minimumFractionDigits={3}
                     />{' '}
                     {'STEEM'}
                   </div>
@@ -1095,8 +1095,8 @@ export class SectionWallet extends Component {
                   </div>
                   <div className="fund-number">
                     <FormattedNumber
-                      minimumFractionDigits={3}
                       value={vestsToSp(vestingShares, steemPerMVests)}
+                      minimumFractionDigits={3}
                     />{' '}
                     {'SP'}
                   </div>
@@ -1126,6 +1126,7 @@ export class SectionWallet extends Component {
                               vestingSharesDelegated,
                               steemPerMVests
                             )}
+                            minimumFractionDigits={3}
                           />{' '}
                           {'SP'}
                         </span>
@@ -1149,6 +1150,7 @@ export class SectionWallet extends Component {
                             vestingSharesReceived,
                             steemPerMVests
                           )}
+                          minimumFractionDigits={3}
                         />{' '}
                         {'SP'}
                       </Tooltip>
@@ -1189,6 +1191,7 @@ export class SectionWallet extends Component {
                         {'='}{' '}
                         <FormattedNumber
                           value={vestsToSp(vestingSharesTotal, steemPerMVests)}
+                          minimumFractionDigits={3}
                         />{' '}
                         {'SP'}
                       </Tooltip>
