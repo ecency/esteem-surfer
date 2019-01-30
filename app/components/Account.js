@@ -1161,8 +1161,12 @@ export class SectionWallet extends Component {
 
                 {vestingSharesWithdrawal > 0 && (
                   <div className="fund-line">
-                    <div className="fund-number pending-withdrawal">
-                      <Tooltip title="Pending Withdrawal Steem Power">
+                    <div className="fund-number next-power-down-amount">
+                      <Tooltip
+                        title={intl.formatMessage({
+                          id: 'account.next-power-down-amount'
+                        })}
+                      >
                         {'-'}{' '}
                         <FormattedNumber
                           value={vestsToSp(
