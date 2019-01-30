@@ -907,9 +907,11 @@ export class SectionWallet extends Component {
       const showPowerDown =
         account.next_vesting_withdrawal !== '1969-12-31T23:59:59';
       const nextVestingWithdrawal = parseDate(account.next_vesting_withdrawal);
-      const nextVestingWithdrawalAmount = vestsToSp(
+      // min needed due to 14th week powerdown: https://github.com/steemit/steem/issues/3237
+      const vestingSharesWithdrawal = Math.min(
         parseToken(account.vesting_withdraw_rate),
-        steemPerMVests
+        (parseToken(account.to_withdraw) - parseToken(account.withdrawn)) /
+          100000
       );
 
       const isMyPage = activeAccount && activeAccount.username === username;
@@ -1255,7 +1257,10 @@ export class SectionWallet extends Component {
                       amount: (
                         <strong>
                           <FormattedNumber
-                            value={nextVestingWithdrawalAmount}
+                            value={vestsToSp(
+                              vestingSharesWithdrawal,
+                              steemPerMVests
+                            )}
                             minimumFractionDigits={3}
                           />{' '}
                           SP
