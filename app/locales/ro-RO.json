@@ -1,11 +1,11 @@
 {
   "g": {
     "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
+    "are-you-sure": "Sînteți sigur?",
     "yes": "Da",
     "no": "Nu",
     "delete": "Șterge",
-    "cancel": "Cancel",
+    "cancel": "Anulează",
     "ok": "OK",
     "edit": "Modifică",
     "server-error": "Process could not be completed due to server error",
@@ -40,8 +40,8 @@
     "author": "Autor",
     "reward": "Recompensă",
     "percent": "Procent",
-    "time": "Time",
-    "modal-title": "Voters ({n})"
+    "time": "Timp",
+    "modal-title": "Votanți ({n})"
   },
   "entry-list-item": {
     "reblogged": "reblogged by {n}"
@@ -51,17 +51,17 @@
     "reblogged": "Reblogged"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "Currency",
+    "title": "Setări",
+    "currency": "Valuta",
     "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
     "currency-changed": "Currency Changed",
-    "locale": "Language",
-    "locale-changed": "Language changed",
+    "locale": "Limbă",
+    "locale-changed": "Limba a fost schimbată",
     "server": "Server",
-    "server-invalid-address": "Invalid server address",
-    "server-connecting": "Connecting to '{server}'...",
-    "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
-    "server-timeout-error": "'{server}' looks like not alive",
+    "server-invalid-address": "Adresa serverului invalidă",
+    "server-connecting": "Conectare la '{server}'...",
+    "server-connect-error": "Nu s-a putut conecta la '{server}'. Asigură-te că ai o conexiune bună la internet.",
+    "server-timeout-error": "Se pare că '{server}' nu e valid",
     "server-changed": "Server selection changed to {server}",
     "server-custom-address": "Custom server address",
     "server-list-fetch-error": "Could not fetch server list",
@@ -118,12 +118,12 @@
   "quick-profile": {
     "fetch-error-profile": "Could not fetch profile data",
     "fetch-error-content": "Could not fetch posts",
-    "post-count": "Post Count",
-    "followers": "Followers",
-    "following": "Following",
+    "post-count": "Număr postări",
+    "followers": "Urmăritori",
+    "following": "Urmăriți",
     "section-blog": "Blog",
-    "section-comments": "Comments",
-    "section-replies": "Replies",
+    "section-comments": "Comentarii",
+    "section-replies": "Răspunsuri",
     "section-wallet": "Wallet"
   },
   "follow-controls": {
