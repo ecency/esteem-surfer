@@ -151,6 +151,7 @@
     "steem-power-description": "Steem Power är inflytande-tokens som ger högre rösteffekt för att du sparar dem långsiktigt och röstar på inlägg. Ju mer Steem Power du har, desto mer kan du påverka andras belöningar och du belönas för noggrann röstning.",
     "steem-power-delegated": "Delegerad Steem Power",
     "steem-power-received": "Mottagna Steem Power",
+    "next-power-down-amount": "Next power down amount",
     "steem-power-total": "Totalt Steem Power",
     "steem-dollars": "Steem Dollar",
     "steem-dollars-description": "Tokens värda ca. $1.00 av STEEM.",
