@@ -151,7 +151,7 @@
     "steem-power-description": "Les Steem Power sont des jetons d'influence, qui obtiennent plus de puissance en les conservant à long terme et en votant sur les publications. Plus on le conserve, plus on a d'influence sur les récompenses des autres et vous en gagnez pour avoir voté correctement.",
     "steem-power-delegated": "Steem Power délégué",
     "steem-power-received": "Steem Power reçu",
-    "next-power-down-amount": "Next power down amount",
+    "next-power-down-amount": "Prochaine diminution d'influence dans",
     "steem-power-total": "Steem Power total",
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Les jetons valent environ 1.00$ de STEEM.",
@@ -294,7 +294,7 @@
     "address-enter-url": "Saisissez l'url",
     "address-enter-query": "Entrer un critère de recherche",
     "unclaimed-reward-notice": "Vous avez des récompenses non réclamées",
-    "search-no-matches": "No matches"
+    "search-no-matches": "Aucune correspondance"
   },
   "search": {
     "n-results-for-q": "{n} résultats pour {q}",
@@ -404,12 +404,12 @@
     "success-title": "Succés",
     "success-sub-title": "Transfert réussi",
     "transfer-summary": "Transféré <span class=\"amount\">{amount}</span> De <span class=\"from-user\">{from}</span> à <span class=\"to-user\">{to}</span>",
-    "reset": "Another transfer",
+    "reset": "Autre transfert",
     "finish": "Terminer",
     "recent-transfers": "Transferts récents"
   },
   "delegate": {
-    "title": "Delegate",
+    "title": "Déléguer",
     "sub-title": "Delegate Steem Power",
     "slider-help": "Faites glisser le curseur pour ajuster le montant",
     "confirm-title": "Confirmer la délégation",
