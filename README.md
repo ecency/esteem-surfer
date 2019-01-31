@@ -56,7 +56,7 @@ $ yarn
 This is for the backend server configuration. Actual server addresses are not needed for most functions.
 
 ```
-$ copy app/config.example.js app/config.js
+$ cp app/config.example.js app/config.js
 ```
 
 ### Run in development mode
