@@ -151,6 +151,7 @@
     "steem-power-description": "Les Steem Power sont des jetons d'influence, qui obtiennent plus de puissance en les conservant à long terme et en votant sur les publications. Plus on le conserve, plus on a d'influence sur les récompenses des autres et vous en gagnez pour avoir voté correctement.",
     "steem-power-delegated": "Steem Power délégué",
     "steem-power-received": "Steem Power reçu",
+    "next-power-down-amount": "Next power down amount",
     "steem-power-total": "Steem Power total",
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Les jetons valent environ 1.00$ de STEEM.",
