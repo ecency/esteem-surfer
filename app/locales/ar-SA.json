@@ -151,6 +151,7 @@
     "steem-power-description": "قوة ستيم هي رموز التأثير التي تكسب المزيد من القوة لعقدها على المدى الطويل والتصويت على المشاركات. وكلما زادت قوة ستيم ، كلما كان بإمكان المرء التأثير على مكافآت الآخرين وكسب مكافآت مقابل التصويت الدقيق.",
     "steem-power-delegated": "تفويض قوة ستيم",
     "steem-power-received": "تم إستلام قوة ستيم",
+    "next-power-down-amount": "Next power down amount",
     "steem-power-total": "مجموع قوة ستيم",
     "steem-dollars": "ستيم دولار",
     "steem-dollars-description": "الرموز التي تبلغ قيمتها حوالي 1.00 دولار من STEEM.",
