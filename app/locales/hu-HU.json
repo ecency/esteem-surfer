@@ -151,6 +151,7 @@
     "steem-power-description": "A Steem Power olyan befolyásos token, amely több erőt bistosít hosszú távú birtoklás esetén és a bejegyzések szavazásakor. Minél több Steem Power-t birtokolsz, annál több befolyásod lehet mások jutalma fölött, és annál tőbb jutalmat biztosít a megfelelő szavazásért.",
     "steem-power-delegated": "Delegált Steem Power",
     "steem-power-received": "Kapott Steem Power",
+    "next-power-down-amount": "Next power down amount",
     "steem-power-total": "Össz Steem Power",
     "steem-dollars": "Steem Dollár",
     "steem-dollars-description": "Tokenek, melyek körülbelül $1.00-nyi STEEM-et érnek.",
