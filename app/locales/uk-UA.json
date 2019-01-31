@@ -1,6 +1,6 @@
 {
   "g": {
-    "compose-entry": "Створити публікацію",
+    "compose-entry": "Створити пост",
     "are-you-sure": "Ви впевнені?",
     "yes": "Так",
     "no": "Ні",
@@ -23,7 +23,7 @@
     "filter-hot": "Актуальне",
     "filter-created": "Нове",
     "filter-active": "Активне",
-    "filter-promoted": "Promoted",
+    "filter-promoted": "Просування",
     "filter-votes": "Голоси",
     "filter-children": "Коментарі",
     "filter-feed": "Стрічка"
@@ -31,8 +31,8 @@
   "entry-payout": {
     "potential-payout": "Потенційна виплата",
     "promoted": "Просування",
-    "author-payout": "Винагорода автору",
-    "curation-payout": "Винагорода кураторам",
+    "author-payout": "Виплата автору",
+    "curation-payout": "Виплата кураторам",
     "payout-date": "Виплата"
   },
   "entry-votes": {
@@ -65,7 +65,7 @@
     "server-changed": "Сервер змінено на {server}",
     "server-custom-address": "Задайте адресу сервера",
     "server-list-fetch-error": "Не вдається отримати список серверів",
-    "push-notifications": "Сповіщення",
+    "push-notifications": "Push сповіщення",
     "push-notify-enabled": "Push сповіщення увімкнено",
     "push-notify-disabled": "Push сповіщення вимкнено"
   },
@@ -83,13 +83,13 @@
     "error-authenticate": "Невірне ім'я користувача або пароль/WIF",
     "create-account-text": "Немає акаунту?<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Зареєструйтесь!</a>",
     "login-with-sc": "Увійти через",
-    "divider-text": "або"
+    "divider-text": "АБО"
   },
   "create-pin-code": {
     "title": "Задайте PIN-код",
     "desc1": "Встановіть ПІН-код для шифрування даних та додаткового рівня безпеки!",
     "input-placeholder": "Введіть ПІН-код",
-    "desc2": "Вам буде запропоновано ввести ПІН-код для критичних транзакцій, а також при кожному запуску.",
+    "desc2": "Вам потрібно буде ввести ПІН-код для критичних транзакцій, а також при кожному запуску.",
     "created": "ПІН-код задано"
   },
   "confirm-pin-code": {
@@ -105,20 +105,20 @@
     "bookmarks": "Закладки",
     "favorites": "Обране",
     "drafts": "Чернетки",
-    "schedules": "Заплановані",
+    "schedules": "Розклад",
     "gallery": "Галерея",
     "login-as": "Увійти як",
     "logout": "Вийти"
   },
   "login-required": {
     "default": "Ця дія вимагає авторизації",
-    "key-required": "Ця дія вимагає {key} ключа або головного пароля",
-    "keys-required": "Ця дія вимагає {keys} ключів або головного пароля"
+    "key-required": "Ця дія вимагає {key} ключа або головного паролю",
+    "keys-required": "Ця дія вимагає {keys} ключів або головного паролю"
   },
   "quick-profile": {
     "fetch-error-profile": "Не вдається отримати дані профілю",
-    "fetch-error-content": "Не вдалось завантажити публікації",
-    "post-count": "Кількість публікацій",
+    "fetch-error-content": "Не вдається завантажити пости",
+    "post-count": "Кількість постів",
     "followers": "Читачі",
     "following": "Підписки",
     "section-blog": "Блог",
@@ -129,22 +129,22 @@
   "follow-controls": {
     "follow": "Підписатися",
     "unFollow": "Відписатися",
-    "mute": "Ігнорувати",
-    "unMute": "Unmute"
+    "mute": "Заглушити",
+    "unMute": "Увімкнути"
   },
   "account": {
     "voting-power": "Сила Голосу",
-    "post-count": "Кількість публікацій",
+    "post-count": "Кількість постів",
     "number-of-votes": "Кількість голосів за останні 24 години",
     "followers": "Читачі",
-    "following": "Following",
+    "following": "Підписки",
     "section-blog": "Блог",
     "section-comments": "Коментарі",
     "section-replies": "Відповіді",
     "section-wallet": "Гаманець",
-    "top-posts": "Топ публікації",
+    "top-posts": "Топ пости",
     "unclaimed-rewards": "Не отримана винагорода",
-    "estimated-value": "Орієнтовна вартість базується на 7-денній середній вартості Steem.",
+    "estimated-value": "Оціночна вартість базується на 7-денній середній вартості STEEM.",
     "steem": "Steem",
     "steem-description": "STEEM - токени, що вільно торгуються та можуть бути передані будь-коли. STEEM можна конвертувати в Steem Power в процесі під назвою \"посилення голосу\" (Power Up).",
     "steem-power": "Steem Power",
@@ -156,7 +156,7 @@
     "steem-dollars-description": "Токени вартістю близько $1.00 в STEEM.",
     "savings": "Заощадження",
     "savings-description": "Баланс, для якого діє 3-денний період очікування при знятті коштів.",
-    "next-power-down": "The next power down is {time} {amount}",
+    "next-power-down": "Наступний power down {amount} відбудеться {time}",
     "exchange": "Обмін",
     "transactions": "Транзакції",
     "transaction-curation_reward": "Кураторська винагорода",
@@ -166,12 +166,12 @@
     "transaction-transfer": "Переказ",
     "transaction-transfer_to_vesting": "Transfer to vesting",
     "transaction-withdraw_vesting": "Withdraw vesting",
-    "transaction-fill_order": "Fill order",
+    "transaction-fill_order": "Виконання заявки",
     "claim-reward-balance": "Зарахувати винагороду на баланс",
     "claim-reward-balance-ok": "Винагорода зарахована на баланс",
     "transfer": "Transfer",
-    "transfer-to-savings": "Transfer to savings",
-    "power-up": "Power up",
+    "transfer-to-savings": "Переведення до заощаджень",
+    "power-up": "Power Up",
     "withdraw-steem": "Вивести Steem",
     "withdraw-sbd": "Вивести Steem Dollar",
     "delegate": "Делегувати"
@@ -180,7 +180,7 @@
     "title-placeholder": "Заголовок",
     "tags-placeholder": "Теги. Перший тег - ваша основна категорія",
     "max-n-tags": "Максимум {n} тегів",
-    "body-placeholder": "Зміст публікації",
+    "body-placeholder": "Вміст посту",
     "tool-bold": "Напівжирний",
     "tool-italic": "Курсив",
     "tool-header": "Заголовок",
@@ -207,7 +207,7 @@
     "form-error-message": "Форма не дійсна. Будь ласка, заповніть всі поля",
     "schedule": "Запланувати",
     "select-schedule-date": "Вибрати дату",
-    "schedule-saved": "Публікацію заплановано",
+    "schedule-saved": "Пост заплановано",
     "schedule-picker-select-time": "Оберіть час",
     "schedule-picker-select-date": "Оберіть дату",
     "grant-posting-perm": "Видати дозвіл на публікацію",
@@ -217,9 +217,9 @@
     "save-draft": "Зберегти Чернетку",
     "draft-saved": "Чернетку збережено",
     "publish": "Опублікувати",
-    "published": "Post Published",
+    "published": "Пост опубліковано",
     "update": "Оновити",
-    "updated": "Публікацію оновлено",
+    "updated": "Пост оновлено",
     "sync-scroll": "Автопрокрутка",
     "words-count": "{n} слів",
     "no-suggestions": "Немає пропозицій",
@@ -242,7 +242,7 @@
   "schedules": {
     "title": "Заплановані публікації",
     "empty-list": "Тут порожньо",
-    "deleted": "Заплановану публікацію видалено",
+    "deleted": "Запланований пост видалено",
     "move": "Перемістити до чернеток",
     "moved": "Переміщено до чернеток"
   },
@@ -271,12 +271,12 @@
     "reply-sort-order-created": "Час",
     "reply-body-placeholder": "Напишіть свою відповідь тут",
     "bookmarked": "Додано до закладок",
-    "bookmarkRemoved": "Вилучено із закладок",
+    "bookmarkRemoved": "Видалено із закладок",
     "favorited": "Додано до обраного",
-    "favoriteRemoved": "Вилучено з обраного",
+    "favoriteRemoved": "Видалено з обраного",
     "copy-clipboard": "Скопіювати внутрішнє посилання до буферу обміну",
     "copied-clipboard": "Скопійовано",
-    "comment-entry-title": "You are viewing a single comment's thread from: ",
+    "comment-entry-title": "Ви переглядаєте гілку одного коментарю із: ",
     "comment-entry-go-root": "Переглянути повний контекст",
     "comment-entry-go-parent": "Прямий батьківський коментар"
   },
@@ -292,8 +292,8 @@
     "activities": "Активність",
     "address-enter-url": "Введіть url",
     "address-enter-query": "Введіть пошуковий запит",
-    "unclaimed-reward-notice": "Ви маєте незараховані винагороди",
-    "search-no-matches": "No matches"
+    "unclaimed-reward-notice": "У вас є не зараховані винагороди",
+    "search-no-matches": "Немає збігів"
   },
   "search": {
     "n-results-for-q": "{n} результатів для {q}",
@@ -319,12 +319,12 @@
   },
   "notification": {
     "popup-title": "У вас є нове сповіщення",
-    "voted": "{source} проголосував за вашу публікацію",
-    "mention-post": "{source} згадав вас у публікації",
+    "voted": "{source} проголосував за ваш пост",
+    "mention-post": "{source} згадав вас у пості",
     "mention-comment": "{source} згадав вас у коментарі",
     "followed": "{source} підписався на вас",
     "replied": "{source} відповів вам",
-    "reblogged": "{source} зробив репост вашої публікації"
+    "reblogged": "{source} зробив репост вашого посту"
   },
   "activities": {
     "type-all": "Всі події",
@@ -333,13 +333,13 @@
     "type-mentions": "Згадування",
     "type-follows": "Підписки",
     "type-reblogs": "Репости",
-    "vote-str": "{p}% likes your post:",
-    "reply-str": "replied to your post:",
+    "vote-str": "на {p}% подобається ваш пост:",
+    "reply-str": "відповів на ваш пост:",
     "mention-str": "згадав вас у:",
     "followed-str": "підписався",
     "unfollowed-str": "відписався",
-    "ignored-str": "ignored",
-    "reblog-str": "зробив репост вашої публікації:",
+    "ignored-str": "ігнорується",
+    "reblog-str": "зробив репост вашого посту:",
     "empty-list": "Тут порожньо",
     "refresh": "Оновити",
     "mark-all-read": "Позначити всі як прочитані",
@@ -401,23 +401,23 @@
     "confirm": "Підтвердити",
     "back": "Назад",
     "success-title": "Успіх",
-    "success-sub-title": "Переказ успішний",
+    "success-sub-title": "Переказ здійснений успішно",
     "transfer-summary": "Переказ <span class=\"amount\">{amount}</span> від <span class=\"from-user\">{from}</span> до <span class=\"to-user\">{to}</span>",
     "reset": "Ще один переказ",
     "finish": "Закінчити",
     "recent-transfers": "Останні перекази"
   },
   "delegate": {
-    "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
-    "slider-help": "Drag the slider to adjust the amount",
-    "confirm-title": "Confirm Delegation",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "Delegation completed",
+    "title": "Делегувати",
+    "sub-title": "Делегування Steem Power",
+    "slider-help": "Перетягніть бігунок для регулювання кількості",
+    "confirm-title": "Підтвердіть делегування",
+    "confirm-sub-title": "Будь ласка, перевірте, чи все вірно",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> делеговано <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "Делегування завершено",
     "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "Тут порожньо"
   }
 }
