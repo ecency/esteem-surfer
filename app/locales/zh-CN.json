@@ -151,6 +151,7 @@
     "steem-power-description": "Steem Power 是有影响力的代币，通过长期持有并给帖子点赞来获得更大影响力。拥有越多 Steem Power，就能对其他人的奖励产生更大影响，并通过准确点赞获得更多收益。",
     "steem-power-delegated": "Delegated Steem Power",
     "steem-power-received": "Received Steem Power",
+    "next-power-down-amount": "Next power down amount",
     "steem-power-total": "Total Steem Power",
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
