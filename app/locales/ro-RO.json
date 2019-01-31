@@ -88,27 +88,27 @@
   "create-pin-code": {
     "title": "Creează cod PIN",
     "desc1": "Setează codul PIN pentru a cripta datele şi a permite un strat suplimentar de securitate!",
-    "input-placeholder": "Enter PIN code",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
-    "created": "PIN code created"
+    "input-placeholder": "Introdu codul PIN",
+    "desc2": "Ti se va solicita să introduci codul PIN pentru tranzacţiile de o importanţă crucială, precum şi la fiecare lansare.",
+    "created": "Codul PIN creat"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
-    "input-placeholder": "Enter PIN code to continue",
-    "last-chance": "This is your last chance",
-    "invalidate": "Oh, I forgot it...",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "title": "Introdu codul PIN",
+    "input-placeholder": "Introdu codul PIN pentru a continua",
+    "last-chance": "Aceasta este ultima ta şansă",
+    "invalidate": "Oh, am uitat-o...",
+    "invalidate-confirm": "Chiar vrei să invalidezi codul PIN?",
+    "invalidated": "Codul PIN este invalidat"
   },
   "user-menu": {
-    "profile": "Profile",
+    "profile": "Profil",
     "bookmarks": "Bookmarks",
-    "favorites": "Favorites",
+    "favorites": "Favorite",
     "drafts": "Drafts",
     "schedules": "Schedules",
     "gallery": "Gallery",
     "login-as": "Login As",
-    "logout": "Logout"
+    "logout": "Deconectare"
   },
   "login-required": {
     "default": "This action requires login",
@@ -171,7 +171,7 @@
     "claim-reward-balance": "Claim reward balance",
     "claim-reward-balance-ok": "Reward balance claimed",
     "transfer": "Transfer",
-    "transfer-to-savings": "Transfer to savings",
+    "transfer-to-savings": "Transfer la economii",
     "power-up": "Power up",
     "withdraw-steem": "Withdraw Steem",
     "withdraw-sbd": "Withdraw Steem Dollar",
@@ -320,7 +320,7 @@
   },
   "notification": {
     "popup-title": "Ai o nouă notificare",
-    "voted": "{source} voted your post",
+    "voted": "{source} a votat postul tău",
     "mention-post": "{source} mentioned you in a post",
     "mention-comment": "{source} mentioned you in a comment",
     "followed": "{source} followed you",
