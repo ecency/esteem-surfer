@@ -1,6 +1,6 @@
 {
   "g": {
-    "compose-entry": "ایجاد مطلب",
+    "compose-entry": "نوشتن پست جدید",
     "are-you-sure": "آیا مطمئن هستید؟",
     "yes": "آري",
     "no": "خیر",
@@ -151,7 +151,7 @@
     "steem-power-description": "استیم پاور نماد قدرت و نفوذ شما بر پست ها و رای هاست که با فعالیت مستمر و یا رای های دریافتی برای پست ها بدست می آید. در اختیار داشتن مقدار بیشتری از آن برابر است با تاثیر گذاری بیشتر آن بر رای های داده شده و پاداش هاست.",
     "steem-power-delegated": "استیم پاور های سپرده شده به شما",
     "steem-power-received": "استیم پاور دریافت شده",
-    "next-power-down-amount": "Next power down amount",
+    "next-power-down-amount": "مقدار کاهش قدرت بعدی",
     "steem-power-total": "کل استیم پاور",
     "steem-dollars": "دلار استیم",
     "steem-dollars-description": "ارزش ژتون ها حدود 1.00$ استیم است.",
