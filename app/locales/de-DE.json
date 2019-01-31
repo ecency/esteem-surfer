@@ -151,7 +151,7 @@
     "steem-power-description": "Steem-Power zeigt deine Stärke und Votekraft. Je mehr Steem-Power du hast, umso mehr Einfluss hast du auf Beiträge und die Belohnung. Mit einer höheren Steem-Power kuratierst du besser und effektiver.",
     "steem-power-delegated": "delegierte Steem-Power",
     "steem-power-received": "erhaltene Steem-Power",
-    "next-power-down-amount": "Next power down amount",
+    "next-power-down-amount": "Nächster Power-Down Betrag",
     "steem-power-total": "gesamte Steem-Power",
     "steem-dollars": "Steem-Dollar",
     "steem-dollars-description": "Tokens mit einem Wert von $1.00 eines STEEM",
@@ -294,7 +294,7 @@
     "address-enter-url": "Adresse eingeben",
     "address-enter-query": "Suchbegriff eingeben",
     "unclaimed-reward-notice": "Du hast nicht abgeholte Belohnungen",
-    "search-no-matches": "No matches"
+    "search-no-matches": "keine Ergebnisse gefunden"
   },
   "search": {
     "n-results-for-q": "{n} Suchergebnisse für {q}",
