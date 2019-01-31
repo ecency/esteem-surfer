@@ -7,39 +7,39 @@
     "delete": "Șterge",
     "cancel": "Cancel",
     "ok": "OK",
-    "edit": "Edit",
+    "edit": "Modifică",
     "server-error": "Process could not be completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "save": "Salvează",
+    "done": "Efectuat",
+    "select": "Selectează"
   },
   "footer": {
-    "faq": "FAQ",
-    "about": "About"
+    "faq": "Întrebări frecvente",
+    "about": "Despre"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
+    "tags": "Tag-uri populare",
+    "filter-trending": "Trenduri",
     "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
+    "filter-created": "Nou",
+    "filter-active": "Activ",
+    "filter-promoted": "Promovat",
+    "filter-votes": "Voturi",
+    "filter-children": "Comentarii",
     "filter-feed": "Feed"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "Plată probabilă",
+    "promoted": "Promovat",
+    "author-payout": "Plata Autorului",
+    "curation-payout": "Plata Votanților",
+    "payout-date": "Plată"
   },
   "entry-votes": {
-    "n-more": "{n} more",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
+    "n-more": "{n} mai mult",
+    "author": "Autor",
+    "reward": "Recompensă",
+    "percent": "Procent",
     "time": "Time",
     "modal-title": "Voters ({n})"
   },
