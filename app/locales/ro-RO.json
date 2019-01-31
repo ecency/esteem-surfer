@@ -77,17 +77,17 @@
     "password-placeholder": "parolă sau WIF",
     "login": "Logare",
     "error-fields-required": "Introdu numele de utilizator și parolă/WIF",
-    "error-public-key": "You entered a public key. Password/WIF required",
+    "error-public-key": "Ai introdus o cheie publică. Este necesară parola/WIF",
     "error-user-fetch": "User data could not be fetched",
-    "error-user-not-found": "User does not exist",
-    "error-authenticate": "Wrong username or password/WIF",
-    "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>",
+    "error-user-not-found": "Utilizatorul nu există",
+    "error-authenticate": "Nume de utilizator sau parolă/WIF greșită",
+    "create-account-text": "Nu ai cont? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Înscrie-te acum!</a>",
     "login-with-sc": "Login with",
-    "divider-text": "OR"
+    "divider-text": "SAU"
   },
   "create-pin-code": {
-    "title": "Create PIN Code",
-    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
+    "title": "Creează cod PIN",
+    "desc1": "Setează codul PIN pentru a cripta datele şi a permite un strat suplimentar de securitate!",
     "input-placeholder": "Enter PIN code",
     "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
     "created": "PIN code created"
