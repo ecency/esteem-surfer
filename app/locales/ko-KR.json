@@ -151,6 +151,7 @@
     "steem-power-description": "Steem Power are influence tokens that earn more power for holding long term and voting on posts. The more Steem Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
     "steem-power-delegated": "Delegated Steem Power",
     "steem-power-received": "Received Steem Power",
+    "next-power-down-amount": "Next power down amount",
     "steem-power-total": "Total Steem Power",
     "steem-dollars": "스팀 달러",
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
