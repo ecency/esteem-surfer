@@ -535,7 +535,8 @@
                   width: 180px;
 
                   &.delegated-shares,
-                  &.received-shares {
+                  &.received-shares,
+                  &.next-power-down-amount {
                     color: $steel-grey;
                   }
 
