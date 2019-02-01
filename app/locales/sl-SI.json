@@ -8,10 +8,10 @@
     "cancel": "Prekliči",
     "ok": "V redu",
     "edit": "Uredi",
-    "server-error": "Postopka ni mogoče zaključiti zaradi napake na strežniku",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "server-error": "Postopka ni mogoče končati zaradi napake na strežniku",
+    "save": "Shrani",
+    "done": "Končano",
+    "select": "Izberi"
   },
   "footer": {
     "faq": "FAQ",
