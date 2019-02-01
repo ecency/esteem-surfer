@@ -365,7 +365,7 @@
     "extra-witnesses-exp": "Introdu numele de cont mai jos pentru a vota un martor în afara <strong>Top 50</strong>",
     "proxy-exp": "Poți alege un proxy care să voteze martorii pentru tine. Aceasta o să reseteze selecția ta actuală a martorilor.",
     "set-proxy": "Selectare Proxy",
-    "proxy-active-exp": "You have set a voting proxy. If you would like to re-enable manual voting, please clear your proxy.",
+    "proxy-active-exp": "Ai setat un proxy de votare. Dacă vrei să activezi votarea manuală, te rugăm să-ți deselectezi proxy-ul.",
     "current-proxy": "Your current proxy is: <strong>{n}</strong>",
     "remove-proxy": "Elimină Proxy",
     "proxy-removed": "Proxy eliminat",
