@@ -166,7 +166,7 @@
     "transaction-claim_reward_balance": "Colectează recompensele",
     "transaction-transfer": "Transfer",
     "transaction-transfer_to_vesting": "Transfer la vesting",
-    "transaction-withdraw_vesting": "Withdraw vesting",
+    "transaction-withdraw_vesting": "Retragere vesting",
     "transaction-fill_order": "Completează comanda",
     "claim-reward-balance": "Claim reward balance",
     "claim-reward-balance-ok": "Reward balance claimed",
