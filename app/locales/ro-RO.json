@@ -1,6 +1,6 @@
 {
   "g": {
-    "compose-entry": "Create Post",
+    "compose-entry": "Creează o postare",
     "are-you-sure": "Sînteți sigur?",
     "yes": "Da",
     "no": "Nu",
@@ -106,13 +106,13 @@
     "favorites": "Favorite",
     "drafts": "Drafts",
     "schedules": "Schedules",
-    "gallery": "Gallery",
+    "gallery": "Galerie",
     "login-as": "Login As",
     "logout": "Deconectare"
   },
   "login-required": {
-    "default": "This action requires login",
-    "key-required": "This action requires {key} key or master password",
+    "default": "Această acţiune necesită autentificare",
+    "key-required": "Această acţiune necesită cheia {key} sau master password",
     "keys-required": "Această acţiune necesită {keys} chei sau master password"
   },
   "quick-profile": {
@@ -142,8 +142,8 @@
     "section-comments": "Comentarii",
     "section-replies": "Răspunsuri",
     "section-wallet": "Wallet",
-    "top-posts": "Top Posts",
-    "unclaimed-rewards": "Unclaimed rewards",
+    "top-posts": "Top Postări",
+    "unclaimed-rewards": "Recompense nerevendicate",
     "estimated-value": "The estimated value is based on a 7 day average value of Steem.",
     "steem": "Steem",
     "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
@@ -153,7 +153,7 @@
     "steem-power-received": "Steem Power Primit",
     "next-power-down-amount": "Next power down amount",
     "steem-power-total": "Steem Power Total",
-    "steem-dollars": "Steem Dollars",
+    "steem-dollars": "Steem Dolari",
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Savings",
     "savings-description": "Balance subject to 3 day withdraw waiting period.",
@@ -172,14 +172,14 @@
     "claim-reward-balance-ok": "Reward balance claimed",
     "transfer": "Transfer",
     "transfer-to-savings": "Transfer la economii",
-    "power-up": "Power up",
-    "withdraw-steem": "Withdraw Steem",
-    "withdraw-sbd": "Withdraw Steem Dollar",
+    "power-up": "Power Up",
+    "withdraw-steem": "Retrage Steem",
+    "withdraw-sbd": "Retrage Steem Dolar",
     "delegate": "Delegare"
   },
   "composer": {
     "title-placeholder": "Titlu",
-    "tags-placeholder": "Tags. First tag is your main category",
+    "tags-placeholder": "Tag-uri. Primul tag este categoria ta principală",
     "max-n-tags": "Max {n} tags",
     "body-placeholder": "Conținut Post",
     "tool-bold": "Îngroșat",
