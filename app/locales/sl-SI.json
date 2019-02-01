@@ -14,11 +14,11 @@
     "select": "Izberi"
   },
   "footer": {
-    "faq": "FAQ",
-    "about": "About"
+    "faq": "Pogosto zastavljena vprašanja",
+    "about": "O programu"
   },
   "entry-index": {
-    "tags": "Popular Tags",
+    "tags": "Priljubljene značke",
     "filter-trending": "Trending",
     "filter-hot": "Hot",
     "filter-created": "New",
