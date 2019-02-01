@@ -1,14 +1,14 @@
 {
   "g": {
-    "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
-    "yes": "Yes",
-    "no": "No",
-    "delete": "Delete",
-    "cancel": "Cancel",
-    "ok": "OK",
-    "edit": "Edit",
-    "server-error": "Process could not be completed due to server error",
+    "compose-entry": "Ustvari objavo",
+    "are-you-sure": "Si prepričan/a?",
+    "yes": "Da",
+    "no": "Ne",
+    "delete": "Izbriši",
+    "cancel": "Prekliči",
+    "ok": "V redu",
+    "edit": "Uredi",
+    "server-error": "Postopka ni mogoče zaključiti zaradi napake na strežniku",
     "save": "Save",
     "done": "Done",
     "select": "Select"
