@@ -82,7 +82,7 @@
     "error-user-not-found": "Utilizatorul nu există",
     "error-authenticate": "Nume de utilizator sau parolă/WIF greșită",
     "create-account-text": "Nu ai cont? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Înscrie-te acum!</a>",
-    "login-with-sc": "Login with",
+    "login-with-sc": "Autentificare cu",
     "divider-text": "SAU"
   },
   "create-pin-code": {
