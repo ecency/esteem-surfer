@@ -289,10 +289,10 @@
     "bookmarkRemove": "Remove from bookmarks",
     "favorite": "Adaugă la favorite",
     "favoriteRemove": "Eliminat din favorite",
-    "wallet": "My Wallet",
+    "wallet": "Portofelul meu",
     "activities": "Activități",
     "address-enter-url": "Introduce url-ul",
-    "address-enter-query": "Enter search query",
+    "address-enter-query": "Introdu obiectul căutării",
     "unclaimed-reward-notice": "You have unclaimed rewards",
     "search-no-matches": "Nicio potrivire"
   },
