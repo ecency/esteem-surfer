@@ -65,20 +65,20 @@
     "server-changed": "Server selection changed to {server}",
     "server-custom-address": "Custom server address",
     "server-list-fetch-error": "Could not fetch server list",
-    "push-notifications": "Push Notifications",
-    "push-notify-enabled": "Push notifications enabled",
-    "push-notify-disabled": "Push notifications disabled"
+    "push-notifications": "Notificări",
+    "push-notify-enabled": "Notificări activate",
+    "push-notify-disabled": "Notificări dezactivate"
   },
   "login": {
     "title": "Bine ai revenit!",
-    "accounts-title": "Login As",
+    "accounts-title": "Autentificare ca",
     "traditional-login-desc": "Loghează-te cu userul și parola ta pentru a continua",
     "username-placeholder": "nume utilizator",
     "password-placeholder": "parolă sau WIF",
     "login": "Logare",
     "error-fields-required": "Introdu numele de utilizator și parolă/WIF",
     "error-public-key": "Ai introdus o cheie publică. Este necesară parola/WIF",
-    "error-user-fetch": "User data could not be fetched",
+    "error-user-fetch": "Datele tale nu au putut fi încărcate",
     "error-user-not-found": "Utilizatorul nu există",
     "error-authenticate": "Nume de utilizator sau parolă/WIF greșită",
     "create-account-text": "Nu ai cont? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Înscrie-te acum!</a>",
@@ -180,7 +180,7 @@
   "composer": {
     "title-placeholder": "Titlu",
     "tags-placeholder": "Tag-uri. Primul tag este categoria ta principală",
-    "max-n-tags": "Max {n} tags",
+    "max-n-tags": "Maximum {n} tag-uri",
     "body-placeholder": "Conținut Post",
     "tool-bold": "Îngroșat",
     "tool-italic": "Italic",
@@ -208,13 +208,13 @@
     "form-error-message": "Formularul nu este valid. Vă rugăm să completezi toate câmpurile",
     "schedule": "Planificare",
     "select-schedule-date": "Selectează data",
-    "schedule-saved": "Post scheduled",
+    "schedule-saved": "Post programat",
     "schedule-picker-select-time": "Selectează ora",
     "schedule-picker-select-date": "Selectează data",
     "grant-posting-perm": "Acordă permisiunea de a posta",
-    "posting-perm-granted": "Posting permission granted",
+    "posting-perm-granted": "Permisiunea de postare acordată",
     "remove-posting-perm": "Remove Posting Permission",
-    "posting-perm-removed": "Posting permission removed",
+    "posting-perm-removed": "Permisiunea de postare eliminată",
     "save-draft": "Save Draft",
     "draft-saved": "Draft saved",
     "publish": "Publică",
@@ -231,7 +231,7 @@
   "gallery": {
     "title": "Galerie",
     "copied": "Copiat în clipboard",
-    "load-error": "Could not load gallery",
+    "load-error": "Nu s-a putut încărca galeria",
     "empty-list": "Gol (0 rezultate)"
   },
   "drafts": {
@@ -256,7 +256,7 @@
   },
   "favorites": {
     "title": "Favorite",
-    "load-error": "Could not load favorites",
+    "load-error": "Nu s-au putut încărca favoritele",
     "empty-list": "Gol (0 rezultate)",
     "search": "Caută în favorite"
   },
