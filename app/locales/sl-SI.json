@@ -20,51 +20,51 @@
   "entry-index": {
     "tags": "Priljubljene značke",
     "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
-    "filter-feed": "Feed"
+    "filter-hot": "Vroče",
+    "filter-created": "Novo",
+    "filter-active": "Dejavno",
+    "filter-promoted": "Oglaševano",
+    "filter-votes": "Glasovi",
+    "filter-children": "Komentarji",
+    "filter-feed": "Članki"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "Morebitno izplačilo",
+    "promoted": "Oglaševano",
+    "author-payout": "Izplačilo avtorju",
+    "curation-payout": "Izplačilo kuratorju",
+    "payout-date": "Izplačilo"
   },
   "entry-votes": {
-    "n-more": "{n} more",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
-    "modal-title": "Voters ({n})"
+    "n-more": "{n} več",
+    "author": "Avtor",
+    "reward": "Nagrada",
+    "percent": "Odstotek",
+    "time": "Čas",
+    "modal-title": "Glasovalci ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "delil/a je {n}"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "Delitev",
+    "reblogged": "Deljeno"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "Currency",
-    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
-    "currency-changed": "Currency Changed",
-    "locale": "Language",
-    "locale-changed": "Language changed",
-    "server": "Server",
-    "server-invalid-address": "Invalid server address",
-    "server-connecting": "Connecting to '{server}'...",
-    "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
-    "server-timeout-error": "'{server}' looks like not alive",
-    "server-changed": "Server selection changed to {server}",
-    "server-custom-address": "Custom server address",
-    "server-list-fetch-error": "Could not fetch server list",
+    "title": "Nastavitve",
+    "currency": "Valuta",
+    "currency-fetch-error": "Ne morem pridobiti vrednosti valute za '{cur}'",
+    "currency-changed": "Valuta spremenjena",
+    "locale": "Jezik",
+    "locale-changed": "Jezik spremenjen",
+    "server": "Strežnik",
+    "server-invalid-address": "Neveljaven naslov strežnika",
+    "server-connecting": "Povezovanje z \"{server}\"...",
+    "server-connect-error": "Povezavo s strežnikom \"{server}\" ni bilo mogoče vzpostaviti. Poskrbi, da imaš dobro nternetno povezavo.",
+    "server-timeout-error": "Kaže, da strežnik \"{server}\" ni dosegljiv",
+    "server-changed": "Izbira strežnika spremenjena na {server}",
+    "server-custom-address": "Po meri določen naslov strežnika",
+    "server-list-fetch-error": "Ne morem pridobiti seznama strežnikov",
     "push-notifications": "Push Notifications",
     "push-notify-enabled": "Push notifications enabled",
     "push-notify-disabled": "Push notifications disabled"
