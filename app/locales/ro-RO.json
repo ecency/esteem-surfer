@@ -232,17 +232,17 @@
     "title": "Galerie",
     "copied": "Copiat în clipboard",
     "load-error": "Nu s-a putut încărca galeria",
-    "empty-list": "Gol (0 rezultate)"
+    "empty-list": "Nici un rezultat"
   },
   "drafts": {
     "title": "Drafts",
     "load-error": "Could not load drafts",
-    "empty-list": "Gol (0 rezultate)",
+    "empty-list": "Nici un rezultat",
     "deleted": "Draft is deleted"
   },
   "schedules": {
     "title": "Scheduled Posts",
-    "empty-list": "Gol (0 rezultate)",
+    "empty-list": "Nici un rezultat",
     "deleted": "Scheduled post is deleted",
     "move": "Move to drafts",
     "moved": "Moved to drafts"
@@ -250,14 +250,14 @@
   "bookmarks": {
     "title": "Bookmarks",
     "load-error": "Could not load bookmarks",
-    "empty-list": "Gol (0 rezultate)",
+    "empty-list": "Nici un rezultat",
     "deleted": "Bookmark is removed",
     "search": "Search in bookmarks"
   },
   "favorites": {
     "title": "Favorite",
     "load-error": "Nu s-au putut încărca favoritele",
-    "empty-list": "Gol (0 rezultate)",
+    "empty-list": "Nici un rezultat",
     "search": "Caută în favorite"
   },
   "entry": {
@@ -341,7 +341,7 @@
     "unfollowed-str": "urmărire anulată",
     "ignored-str": "ignorat",
     "reblog-str": "reblogged your post:",
-    "empty-list": "Gol (0 rezultate)",
+    "empty-list": "Nici un rezultat",
     "refresh": "Actualizează",
     "mark-all-read": "Marchează toate ca citite",
     "leaderboard": "Clasament",
@@ -419,6 +419,6 @@
     "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Gol (0 rezultate)"
+    "empty-list": "Nici un rezultat"
   }
 }
