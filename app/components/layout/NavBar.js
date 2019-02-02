@@ -81,10 +81,77 @@ class Address extends Component {
     });
   };
 
+  gotoAddress = async address => {
+    const a = addressParser(address);
+    const { history, activeAccount } = this.props;
+
+    if (a.type === 'filter') {
+      const { path } = a;
+      history.push(path);
+      return;
+    }
+
+    if (a.type === 'post') {
+      const { author, permlink } = a;
+
+      this.setState({ inProgress: true });
+      const content = await getContent(author, permlink);
+      this.setState({ inProgress: false });
+
+      if (content.id) {
+        const path = `/${content.category}/@${content.author}/${
+          content.permlink
+        }`;
+        history.push(path);
+        return;
+      }
+    }
+
+    if (a.type === 'author') {
+      const { author, path } = a;
+
+      this.setState({ inProgress: true });
+      const account = await getAccount(author);
+      this.setState({ inProgress: false });
+
+      if (account) {
+        history.push(path);
+        return;
+      }
+    }
+
+    if (a === 'feed' && activeAccount) {
+      const p = `@${activeAccount.username}/feed`;
+      history.push(p);
+      return;
+    }
+
+    if (a === 'witnesses') {
+      const p = `/witnesses`;
+      history.push(p);
+      return;
+    }
+
+    if (a === 'transfer' && activeAccount) {
+      const p = `/@${activeAccount.username}/transfer/steem`;
+      history.push(p);
+      return;
+    }
+
+    const q = address.replace(/\//g, ' ');
+
+    this.searchKeyword(q);
+  };
+
+  searchKeyword(q) {
+    const { history } = this.props;
+
+    history.push(`/search?q=${encodeURIComponent(q)}&sort=${searchSort}`);
+  }
+
   addressKeyup = async e => {
     if (e.keyCode === 13) {
       const { address, changed } = this.state;
-      const { history, activeAccount } = this.props;
 
       if (!changed) return;
 
@@ -92,64 +159,7 @@ class Address extends Component {
         return;
       }
 
-      const a = addressParser(address);
-
-      if (a.type === 'filter') {
-        const { path } = a;
-        history.push(path);
-        return;
-      }
-
-      if (a.type === 'post') {
-        const { author, permlink } = a;
-
-        this.setState({ inProgress: true });
-        const content = await getContent(author, permlink);
-        this.setState({ inProgress: false });
-
-        if (content.id) {
-          const path = `/${content.category}/@${content.author}/${
-            content.permlink
-          }`;
-          history.push(path);
-          return;
-        }
-      }
-
-      if (a.type === 'author') {
-        const { author, path } = a;
-
-        this.setState({ inProgress: true });
-        const account = await getAccount(author);
-        this.setState({ inProgress: false });
-
-        if (account) {
-          history.push(path);
-          return;
-        }
-      }
-
-      if (a === 'feed' && activeAccount) {
-        const p = `@${activeAccount.username}/feed`;
-        history.push(p);
-        return;
-      }
-
-      if (a === 'witnesses') {
-        const p = `/witnesses`;
-        history.push(p);
-        return;
-      }
-
-      if (a === 'transfer' && activeAccount) {
-        const p = `/@${activeAccount.username}/transfer/steem`;
-        history.push(p);
-        return;
-      }
-
-      const q = address.replace(/\//g, ' ');
-
-      history.push(`/search?q=${encodeURIComponent(q)}&sort=${searchSort}`);
+      this.gotoAddress(address);
     }
 
     if (e.keyCode === 27) {
@@ -168,9 +178,14 @@ class Address extends Component {
       return;
     }
 
-    const { history } = this.props;
+    // if query starts with @, try to visit the page before search.
+    if (q[0] === '@') {
+      this.toggle();
+      this.gotoAddress(q);
+      return;
+    }
 
-    history.push(`/search?q=${encodeURIComponent(q)}&sort=${searchSort}`);
+    this.searchKeyword(q);
   };
 
   toggle = () => {
