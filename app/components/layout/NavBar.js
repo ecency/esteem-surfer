@@ -174,11 +174,7 @@ class Address extends Component {
   };
 
   toggle = () => {
-    const { addressType, inSearchPage } = this.state;
-
-    if (inSearchPage) {
-      return;
-    }
+    const { addressType } = this.state;
 
     if (addressType === 'url') {
       this.setState({ addressType: 'search' }, () => {
