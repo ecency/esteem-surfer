@@ -52,7 +52,6 @@ export function fetchEntries(what, tag = '', more = false) {
         case 'comments':
           fn = getDiscussions;
           query = {
-            tag: username,
             limit: pageSize,
             start_author: username,
             start_permlink: undefined
@@ -125,7 +124,7 @@ export function updateEntry(newData) {
   return dispatch => {
     dispatch({
       type: UPDATE_ENTRY,
-      payload: {data: newData }
+      payload: { data: newData }
     });
   };
 }
