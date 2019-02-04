@@ -296,13 +296,21 @@
 
         .top-posts-list-body {
           display: flex;
-          justify-content: space-between;
-          max-width: 750px;
+          justify-content: flex-start;
+          max-width: 100%;
+          overflow-y: scroll;
+
+          &::-webkit-scrollbar {
+            width: 0;
+            background: transparent;
+          }
+
           .top-posts-list-item {
             border-radius: 8px;
             cursor: pointer;
             height: 120px;
             width: 130px;
+            margin-right: 10px;
 
             @include themify(day) {
               border: 1px solid $white-four;
