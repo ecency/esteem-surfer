@@ -116,21 +116,21 @@
     "keys-required": "Această acţiune necesită {keys} chei sau master password"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
-    "fetch-error-content": "Could not fetch posts",
+    "fetch-error-profile": "Datele de profil nu au putut fi încărcate",
+    "fetch-error-content": "Postările nu au putut fi încărcate",
     "post-count": "Număr Postări",
     "followers": "Urmăritori",
     "following": "Urmăriți",
     "section-blog": "Blog",
     "section-comments": "Comentarii",
     "section-replies": "Răspunsuri",
-    "section-wallet": "Wallet"
+    "section-wallet": "Portofel"
   },
   "follow-controls": {
     "follow": "Urmărește",
     "unFollow": "Anulează urmărirea",
-    "mute": "Mute",
-    "unMute": "Unmute"
+    "mute": "Dezactivează",
+    "unMute": "Activează"
   },
   "account": {
     "voting-power": "Puterea de Votare",
@@ -141,7 +141,7 @@
     "section-blog": "Blog",
     "section-comments": "Comentarii",
     "section-replies": "Răspunsuri",
-    "section-wallet": "Wallet",
+    "section-wallet": "Portofel",
     "top-posts": "Top Postări",
     "unclaimed-rewards": "Recompense nerevendicate",
     "estimated-value": "Valoarea estimată se bazează pe o valoare medie a Steem pe 7 zile.",
