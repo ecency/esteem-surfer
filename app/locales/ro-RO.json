@@ -345,10 +345,10 @@
     "refresh": "Actualizează",
     "mark-all-read": "Marchează toate ca citite",
     "leaderboard": "Clasament",
-    "leaderboard-title": "Daily Top users"
+    "leaderboard-title": "Utilizatori de Top Zilnic"
   },
   "witnesses": {
-    "page-title": "Witness Voting",
+    "page-title": "Votare Witness",
     "remaining": "<strong>{n}</strong> voturi rămase din {max}",
     "witness": "Witness",
     "miss": "Ratări",
@@ -356,14 +356,14 @@
     "fee": "Comision",
     "feed": "Noutăți",
     "block-size": "Mărime bloc",
-    "ac-avail": "AC avail",
-    "ac-budget": "AC budget",
+    "ac-avail": "Servicii AC",
+    "ac-budget": "Buget AC",
     "version": "Versiune",
     "voted": "{n} au votat",
     "vote-removed": "vot eliminat pentru @{n}",
     "username-placeholder": "nume utilizator",
-    "extra-witnesses-exp": "Introdu numele de cont mai jos pentru a vota un martor în afara <strong>Top 50</strong>",
-    "proxy-exp": "Poți alege un proxy care să voteze martorii pentru tine. Aceasta o să reseteze selecția ta actuală a martorilor.",
+    "extra-witnesses-exp": "Introdu numele de cont mai jos pentru a vota un witness în afara <strong>Top 50</strong>",
+    "proxy-exp": "Poți alege un proxy care să voteze witness pentru tine. Aceasta va reseta selecția ta actuală de witness.",
     "set-proxy": "Selectare Proxy",
     "proxy-active-exp": "Ai setat un proxy de votare. Dacă vrei să activezi votarea manuală, te rugăm să-ți deselectezi proxy-ul.",
     "current-proxy": "Proxy-ul actual este: <strong>{n}</strong>",
@@ -372,7 +372,7 @@
     "proxy-created": "@{n} has set as proxy"
   },
   "transfer": {
-    "transfer-title": "Transfer către contul",
+    "transfer-title": "Transfer către Cont",
     "transfer-sub-title": "Mută fonduri către un alt cont Steem",
     "transfer-saving-title": "Transfer la Economii",
     "transfer-saving-sub-title": "Protejează fondurile prin a cere o perioadă de așteptare de 3 zile",
