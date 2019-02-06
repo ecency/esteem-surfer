@@ -8,7 +8,7 @@
     "cancel": "Anulează",
     "ok": "OK",
     "edit": "Modifică",
-    "server-error": "Process could not be completed due to server error",
+    "server-error": "Acțiunea nu a putut fi completată datorită unei erori de server",
     "save": "Salvează",
     "done": "Efectuat",
     "select": "Selectează"
@@ -20,13 +20,13 @@
   "entry-index": {
     "tags": "Tag-uri populare",
     "filter-trending": "Trenduri",
-    "filter-hot": "Hot",
+    "filter-hot": "În tendințe",
     "filter-created": "Nou",
     "filter-active": "Activ",
     "filter-promoted": "Promovat",
     "filter-votes": "Voturi",
     "filter-children": "Comentarii",
-    "filter-feed": "Feed"
+    "filter-feed": "Flux"
   },
   "entry-payout": {
     "potential-payout": "Plată probabilă",
@@ -44,7 +44,7 @@
     "modal-title": "Votanți ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "redistribuit de {n}"
   },
   "entry-reblog": {
     "reblog": "Reblog",
