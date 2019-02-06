@@ -47,14 +47,14 @@
     "reblogged": "redistribuit de {n}"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "Redistribuire",
+    "reblogged": "Redistribuit"
   },
   "settings": {
     "title": "Setări",
     "currency": "Valuta",
-    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
-    "currency-changed": "Currency Changed",
+    "currency-fetch-error": "Nu am putut obține rata de schimb moneda pentru ‘{cur}’",
+    "currency-changed": "Monedă Schimbată",
     "locale": "Limbă",
     "locale-changed": "Limba a fost schimbată",
     "server": "Server",
@@ -62,9 +62,9 @@
     "server-connecting": "Conectare la '{server}'...",
     "server-connect-error": "Nu s-a putut conecta la '{server}'. Asigură-te că ai o conexiune bună la internet.",
     "server-timeout-error": "Se pare că '{server}' nu e valid",
-    "server-changed": "Server selection changed to {server}",
-    "server-custom-address": "Custom server address",
-    "server-list-fetch-error": "Could not fetch server list",
+    "server-changed": "Selectare server schimbată pentru {server}",
+    "server-custom-address": "Adresă server dedicat",
+    "server-list-fetch-error": "Lista de servere inaccesibila",
     "push-notifications": "Notificări",
     "push-notify-enabled": "Notificări activate",
     "push-notify-disabled": "Notificări dezactivate"
@@ -78,7 +78,7 @@
     "login": "Logare",
     "error-fields-required": "Introdu numele de utilizator și parolă/WIF",
     "error-public-key": "Ai introdus o cheie publică. Este necesară parola/WIF",
-    "error-user-fetch": "Datele tale nu au putut fi încărcate",
+    "error-user-fetch": "Date utilizator nu au putut fi încărcate",
     "error-user-not-found": "Utilizatorul nu există",
     "error-authenticate": "Nume de utilizator sau parolă/WIF greșită",
     "create-account-text": "Nu ai cont? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Înscrie-te acum!</a>",
@@ -104,8 +104,8 @@
     "profile": "Profil",
     "bookmarks": "Bookmarks",
     "favorites": "Favorite",
-    "drafts": "Drafts",
-    "schedules": "Schedules",
+    "drafts": "Schițe",
+    "schedules": "Programate",
     "gallery": "Galerie",
     "login-as": "Autentificare ca",
     "logout": "Deconectare"
