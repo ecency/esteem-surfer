@@ -251,8 +251,8 @@
     "title": "Bookmarks",
     "load-error": "Could not load bookmarks",
     "empty-list": "Nici un rezultat",
-    "deleted": "Mută de la bookmarks",
-    "search": "Search in bookmarks"
+    "deleted": "Mutat de la bookmarks",
+    "search": "Căutare la bookmarks"
   },
   "favorites": {
     "title": "Favorite",
@@ -271,8 +271,8 @@
     "reply-sort-order-votes": "Voturi",
     "reply-sort-order-created": "Vechime",
     "reply-body-placeholder": "Write your reply here",
-    "bookmarked": "Added to bookmarks",
-    "bookmarkRemoved": "Removed from bookmarks",
+    "bookmarked": "Adaugat la bookmarks",
+    "bookmarkRemoved": "Mutat de la bookmarks",
     "favorited": "Adăugat la favorite",
     "favoriteRemoved": "Eliminat din favorite",
     "copy-clipboard": "Copy internal link to clipboard",
@@ -285,7 +285,7 @@
     "settings": "Setări",
     "change-theme": "Schimbă tema",
     "login": "Login to your account",
-    "bookmark": "Add to bookmarks",
+    "bookmark": "Adaugă la bookmarks",
     "bookmarkRemove": "Mută de la bookmarks",
     "favorite": "Adaugă la favorite",
     "favoriteRemove": "Eliminat din favorite",
@@ -314,7 +314,7 @@
   "context-menu": {
     "cut": "Decupează",
     "copy": "Copiază",
-    "paste": "Paste",
+    "paste": "Lipește",
     "open-image-browser": "Deschide imaginea în browser",
     "copy-image-url": "Copiaţi URL-ul imaginii"
   },
@@ -340,7 +340,7 @@
     "followed-str": "urmărit",
     "unfollowed-str": "urmărire anulată",
     "ignored-str": "ignorat",
-    "reblog-str": "reblogged your post:",
+    "reblog-str": "a redistribuit postarea ta:",
     "empty-list": "Nici un rezultat",
     "refresh": "Actualizează",
     "mark-all-read": "Marchează toate ca citite",
