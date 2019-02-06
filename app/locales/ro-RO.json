@@ -215,8 +215,8 @@
     "posting-perm-granted": "Permisiunea de postare acordată",
     "remove-posting-perm": "Remove Posting Permission",
     "posting-perm-removed": "Permisiunea de postare eliminată",
-    "save-draft": "Save Draft",
-    "draft-saved": "Draft saved",
+    "save-draft": "Salvare schiţă",
+    "draft-saved": "Schiță salvată",
     "publish": "Publică",
     "published": "Post publicat",
     "update": "Actualizare",
@@ -235,13 +235,13 @@
     "empty-list": "Nici un rezultat"
   },
   "drafts": {
-    "title": "Drafts",
+    "title": "Schițe",
     "load-error": "Could not load drafts",
     "empty-list": "Nici un rezultat",
-    "deleted": "Draft is deleted"
+    "deleted": "Schiță ștearsă"
   },
   "schedules": {
-    "title": "Scheduled Posts",
+    "title": "Postări Programate",
     "empty-list": "Nici un rezultat",
     "deleted": "Scheduled post is deleted",
     "move": "Move to drafts",
