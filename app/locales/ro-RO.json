@@ -75,7 +75,7 @@
     "traditional-login-desc": "Loghează-te cu userul și parola ta pentru a continua",
     "username-placeholder": "nume utilizator",
     "password-placeholder": "parolă sau WIF",
-    "login": "Logare",
+    "login": "Autentificare",
     "error-fields-required": "Introdu numele de utilizator și parolă/WIF",
     "error-public-key": "Ai introdus o cheie publică. Este necesară parola/WIF",
     "error-user-fetch": "Date utilizator nu au putut fi încărcate",
@@ -325,7 +325,7 @@
     "mention-comment": "{source} te-a menționat într-un comentariu",
     "followed": "{source} te urmărește",
     "replied": "{source} ți-a răspuns",
-    "reblogged": "{source} reblogged your post"
+    "reblogged": "{source} a redistribuit postarea ta"
   },
   "activities": {
     "type-all": "Toate Activitățile",
