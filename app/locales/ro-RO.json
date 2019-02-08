@@ -416,7 +416,7 @@
     "confirm-sub-title": "Te rugăm să verifici dacă totul este corect",
     "delegation-summary": "<span class=\"sp\">{sp}</span> delegat pentru <span class=\"to-user\">{to}</span>",
     "success-sub-title": "Delegare completă",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "insufficient-vesting": "Cota de vesting insuficientă {a} VESTS"
   },
   "delegation-list": {
     "empty-list": "Nici un rezultat"
