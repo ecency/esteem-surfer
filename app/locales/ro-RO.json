@@ -270,21 +270,21 @@
     "reply-sort-order-reputation": "Reputație",
     "reply-sort-order-votes": "Voturi",
     "reply-sort-order-created": "Vechime",
-    "reply-body-placeholder": "Write your reply here",
+    "reply-body-placeholder": "Scrie răspunsul tău aici",
     "bookmarked": "Adaugat la bookmarks",
     "bookmarkRemoved": "Mutat de la bookmarks",
     "favorited": "Adăugat la favorite",
     "favoriteRemoved": "Eliminat din favorite",
-    "copy-clipboard": "Copy internal link to clipboard",
+    "copy-clipboard": "Copie link-ul intern in memoria temporară",
     "copied-clipboard": "Copiat",
     "comment-entry-title": "Vizualizezi șirul unui singur comentariu de la: ",
     "comment-entry-go-root": "Vezi contextul complet",
-    "comment-entry-go-parent": "View the direct parent"
+    "comment-entry-go-parent": "Vizualizează postarea principală"
   },
   "navbar": {
     "settings": "Setări",
     "change-theme": "Schimbă tema",
-    "login": "Login to your account",
+    "login": "Autentifică in contul tău",
     "bookmark": "Adaugă la bookmarks",
     "bookmarkRemove": "Mută de la bookmarks",
     "favorite": "Adaugă la favorite",
@@ -293,7 +293,7 @@
     "activities": "Activități",
     "address-enter-url": "Introduce url-ul",
     "address-enter-query": "Introdu obiectul căutării",
-    "unclaimed-reward-notice": "You have unclaimed rewards",
+    "unclaimed-reward-notice": "Ai recompense necolectate",
     "search-no-matches": "Nicio potrivire"
   },
   "search": {
@@ -369,7 +369,7 @@
     "current-proxy": "Proxy-ul actual este: <strong>{n}</strong>",
     "remove-proxy": "Elimină Proxy",
     "proxy-removed": "Proxy eliminat",
-    "proxy-created": "@{n} has set as proxy"
+    "proxy-created": "@{n} a fost setat ca proxy"
   },
   "transfer": {
     "transfer-title": "Transfer către Cont",
