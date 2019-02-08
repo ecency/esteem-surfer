@@ -279,7 +279,8 @@
     "copied-clipboard": "Copiado",
     "comment-entry-title": "Estás viendo los comentarios relacionados de: ",
     "comment-entry-go-root": "Ver todo el contexto",
-    "comment-entry-go-parent": "Ver el comentario relacionado"
+    "comment-entry-go-parent": "Ver el comentario relacionado",
+    "similar-entries": "Similar Posts"
   },
   "navbar": {
     "settings": "Ajustes",
