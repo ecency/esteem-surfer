@@ -279,7 +279,8 @@
     "copied-clipboard": "Copiato",
     "comment-entry-title": "Stai visualizzando il commento singolo di un thread di: ",
     "comment-entry-go-root": "Mostra il testo completo",
-    "comment-entry-go-parent": "Visualizza il collegamento diretto"
+    "comment-entry-go-parent": "Visualizza il collegamento diretto",
+    "similar-entries": "Similar Posts"
   },
   "navbar": {
     "settings": "Impostazioni",
