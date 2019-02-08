@@ -279,7 +279,8 @@
     "copied-clipboard": "Kopioitu",
     "comment-entry-title": "You are viewing a single comment's thread from: ",
     "comment-entry-go-root": "View the full context",
-    "comment-entry-go-parent": "View the direct parent"
+    "comment-entry-go-parent": "View the direct parent",
+    "similar-entries": "Similar Posts"
   },
   "navbar": {
     "settings": "Asetukset",
