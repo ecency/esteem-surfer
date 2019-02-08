@@ -279,7 +279,8 @@
     "copied-clipboard": "E don copy",
     "comment-entry-title": "Na one comment thread you dey look so:",
     "comment-entry-go-root": "Look all the whole tori",
-    "comment-entry-go-parent": "Look the direct tori"
+    "comment-entry-go-parent": "Look the direct tori",
+    "similar-entries": "Similar Posts"
   },
   "navbar": {
     "settings": "Settings",
