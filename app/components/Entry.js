@@ -1125,7 +1125,8 @@ class Entry extends PureComponent {
               <div className="similar-entries-list">
                 <div className="similar-entries-list-header">
                   <div className="list-header-text">
-                    <i className="mi">list</i> Similar Posts
+                    <i className="mi">list</i>{' '}
+                    <FormattedMessage id="entry.similar-entries" />
                   </div>
                   <a
                     role="none"
