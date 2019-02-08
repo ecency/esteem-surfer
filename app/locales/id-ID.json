@@ -279,7 +279,8 @@
     "copied-clipboard": "Disalin",
     "comment-entry-title": "Anda melihat sebuah komentar tunggal dari: ",
     "comment-entry-go-root": "Lihat konteks lengkap",
-    "comment-entry-go-parent": "Lihat sumber utama"
+    "comment-entry-go-parent": "Lihat sumber utama",
+    "similar-entries": "Similar Posts"
   },
   "navbar": {
     "settings": "Pengaturan",
