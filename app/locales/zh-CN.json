@@ -279,7 +279,8 @@
     "copied-clipboard": "已复制",
     "comment-entry-title": "您正在查看以下位置的单个评论线程： ",
     "comment-entry-go-root": "查看完整内容",
-    "comment-entry-go-parent": "查看直接上一级"
+    "comment-entry-go-parent": "查看直接上一级",
+    "similar-entries": "Similar Posts"
   },
   "navbar": {
     "settings": "设置",
