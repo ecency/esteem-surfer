@@ -161,7 +161,7 @@
     "exchange": "Schimb",
     "transactions": "Tranzacții",
     "transaction-curation_reward": "Recompensă de curare",
-    "transaction-author_reward": "Author Reward",
+    "transaction-author_reward": "Recompensă Autor",
     "transaction-comment_benefactor_reward": "Recompensă Pentru Comentariu",
     "transaction-claim_reward_balance": "Colectează recompensele",
     "transaction-transfer": "Transfer",
@@ -213,7 +213,7 @@
     "schedule-picker-select-date": "Selectează data",
     "grant-posting-perm": "Acordă permisiunea de a posta",
     "posting-perm-granted": "Permisiunea de postare acordată",
-    "remove-posting-perm": "Remove Posting Permission",
+    "remove-posting-perm": "Revocare permisiuni de postare",
     "posting-perm-removed": "Permisiunea de postare eliminată",
     "save-draft": "Salvare schiţă",
     "draft-saved": "Schiță salvată",
@@ -221,7 +221,7 @@
     "published": "Post publicat",
     "update": "Actualizare",
     "updated": "Post actualizat",
-    "sync-scroll": "Scroll Sync",
+    "sync-scroll": "Sincronizare scroll",
     "words-count": "{n} cuvinte",
     "no-suggestions": "Fără sugestii",
     "emoji-filter-placeholder": "Filtrează",
@@ -236,20 +236,20 @@
   },
   "drafts": {
     "title": "Schițe",
-    "load-error": "Could not load drafts",
+    "load-error": "Schițele nu au putut fi încărcate",
     "empty-list": "Nici un rezultat",
     "deleted": "Schiță ștearsă"
   },
   "schedules": {
     "title": "Postări Programate",
     "empty-list": "Nici un rezultat",
-    "deleted": "Scheduled post is deleted",
-    "move": "Move to drafts",
-    "moved": "Moved to drafts"
+    "deleted": "Postarea planificată a fost ștearsă",
+    "move": "Mută la schițe",
+    "moved": "Mutat la schițe"
   },
   "bookmarks": {
     "title": "Bookmarks",
-    "load-error": "Could not load bookmarks",
+    "load-error": "Favoritele nu au putut fi încărcate",
     "empty-list": "Nici un rezultat",
     "deleted": "Mutat de la bookmarks",
     "search": "Căutare la bookmarks"
