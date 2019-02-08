@@ -279,7 +279,8 @@
     "copied-clipboard": "Lemásolva",
     "comment-entry-title": "Egy hozzászólásos szál innen: ",
     "comment-entry-go-root": "Teljes kontextus megtekintése",
-    "comment-entry-go-parent": "Direkt felmenő megtekintése"
+    "comment-entry-go-parent": "Direkt felmenő megtekintése",
+    "similar-entries": "Similar Posts"
   },
   "navbar": {
     "settings": "Beállítások",
