@@ -279,7 +279,8 @@
     "copied-clipboard": "Скопировано",
     "comment-entry-title": "Вы просматриваете один комментарий ветки: ",
     "comment-entry-go-root": "Полный контекст",
-    "comment-entry-go-parent": "Прямой родительский комментарий"
+    "comment-entry-go-parent": "Прямой родительский комментарий",
+    "similar-entries": "Similar Posts"
   },
   "navbar": {
     "settings": "Настройки",
