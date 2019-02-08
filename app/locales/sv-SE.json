@@ -279,7 +279,8 @@
     "copied-clipboard": "Kopierad",
     "comment-entry-title": "Du visar en enda kommentar tråd från: ",
     "comment-entry-go-root": "Visa hela sammanhanget",
-    "comment-entry-go-parent": "Visa den direkta överordnat"
+    "comment-entry-go-parent": "Visa den direkta överordnat",
+    "similar-entries": "Similar Posts"
   },
   "navbar": {
     "settings": "Inställningar",
