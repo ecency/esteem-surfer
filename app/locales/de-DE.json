@@ -279,7 +279,8 @@
     "copied-clipboard": "Kopiert",
     "comment-entry-title": "Du siehst den Thread eines einzelnen Kommentars von: ",
     "comment-entry-go-root": "kompletten Inhalt anzeigen",
-    "comment-entry-go-parent": "Übergeordneten Beitrag ansehen"
+    "comment-entry-go-parent": "Übergeordneten Beitrag ansehen",
+    "similar-entries": "Similar Posts"
   },
   "navbar": {
     "settings": "Einstellungen",
