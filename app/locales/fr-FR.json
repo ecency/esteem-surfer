@@ -279,7 +279,8 @@
     "copied-clipboard": "Copié",
     "comment-entry-title": "Vous visualisez le fil de discussion d'un seul commentaire à partir de : ",
     "comment-entry-go-root": "Voir le contexte complet",
-    "comment-entry-go-parent": "Voir le parent direct"
+    "comment-entry-go-parent": "Voir le parent direct",
+    "similar-entries": "Similar Posts"
   },
   "navbar": {
     "settings": "Réglages",
