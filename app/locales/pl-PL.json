@@ -279,7 +279,8 @@
     "copied-clipboard": "Skopiowano",
     "comment-entry-title": "Przeglądasz wątek pojedynczego komentarza z: ",
     "comment-entry-go-root": "Zobacz pełny kontekst",
-    "comment-entry-go-parent": "Zobacz poprzedni komentarz"
+    "comment-entry-go-parent": "Zobacz poprzedni komentarz",
+    "similar-entries": "Similar Posts"
   },
   "navbar": {
     "settings": "Ustawienia",
