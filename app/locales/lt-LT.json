@@ -279,7 +279,8 @@
     "copied-clipboard": "Nukopijuota",
     "comment-entry-title": "Jūs skaitote komentarą iš: ",
     "comment-entry-go-root": "Peržiūrėti visą kontekstą",
-    "comment-entry-go-parent": "Peržiūrėti pirminį"
+    "comment-entry-go-parent": "Peržiūrėti pirminį",
+    "similar-entries": "Similar Posts"
   },
   "navbar": {
     "settings": "Nustatymai",
