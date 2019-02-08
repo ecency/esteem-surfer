@@ -279,7 +279,8 @@
     "copied-clipboard": "Copiat",
     "comment-entry-title": "Vizualizezi șirul unui singur comentariu de la: ",
     "comment-entry-go-root": "Vezi contextul complet",
-    "comment-entry-go-parent": "Vizualizează postarea principală"
+    "comment-entry-go-parent": "Vizualizează postarea principală",
+    "similar-entries": "Similar Posts"
   },
   "navbar": {
     "settings": "Setări",
