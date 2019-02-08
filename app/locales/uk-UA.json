@@ -279,7 +279,8 @@
     "copied-clipboard": "Скопійовано",
     "comment-entry-title": "Ви переглядаєте гілку одного коментарю із: ",
     "comment-entry-go-root": "Переглянути повний контекст",
-    "comment-entry-go-parent": "Прямий батьківський коментар"
+    "comment-entry-go-parent": "Прямий батьківський коментар",
+    "similar-entries": "Similar Posts"
   },
   "navbar": {
     "settings": "Налаштування",
