@@ -21,7 +21,8 @@ import {
   getState,
   getContent,
   getAccount,
-  comment
+  comment,
+  getDiscussions
 } from '../backend/steem-client';
 
 import {
@@ -54,6 +55,7 @@ import markDown2Html from '../utils/markdown-2-html';
 import authorReputation from '../utils/author-reputation';
 import formatChainError from '../utils/format-chain-error';
 import { setEntryRead } from '../helpers/storage';
+import catchEntryImage from '../utils/catch-entry-image';
 
 import EntryLink, { makePath as makePathEntry } from './helpers/EntryLink';
 
@@ -79,6 +81,9 @@ import {
   makeShareUrlTwitter,
   makeShareUrlFacebook
 } from '../utils/url-share';
+
+import fallbackImage from '../img/fallback.png';
+import noImage from '../img/noimage.png';
 
 import { version } from '../../package';
 
@@ -602,7 +607,9 @@ class Entry extends PureComponent {
       replySort: 'trending',
       editorVisible: true,
       bookmarkId: null,
-      clickedAuthor: null
+      clickedAuthor: null,
+      similarEntries: [],
+      similarLoading: false
     };
 
     const { match } = this.props;
@@ -725,6 +732,32 @@ class Entry extends PureComponent {
     return replies;
   };
 
+  fetchSimilar = () => {
+    const { match, activeAccount } = this.props;
+    const { permlink } = match.params;
+    const { entry } = this.state;
+    const activeUsername = activeAccount ? activeAccount.username : null;
+
+    this.setState({ similarLoading: true });
+    return getDiscussions('hot', { tag: entry.parent_permlink, limit: 30 })
+      .then(resp => {
+        const s = resp
+          .filter(r => r.permlink !== permlink)
+          // exclude active user's posts
+          .filter(r => r.author !== activeUsername)
+          // shuffle
+          .map(a => [Math.random(), a])
+          .sort((a, b) => a[0] - b[0])
+          .map(a => a[1]);
+
+        this.setState({ similarEntries: s.slice(0, 3) });
+        return resp;
+      })
+      .finally(() => {
+        this.setState({ similarLoading: false });
+      });
+  };
+
   fetch = async () => {
     this.setState({ replies: [], repliesLoading: true, replySort: 'trending' });
 
@@ -757,6 +790,8 @@ class Entry extends PureComponent {
     const replies = this.compileReplies(theEntry, 'trending');
 
     this.setState({ repliesLoading: false, replies });
+
+    this.fetchSimilar();
   };
 
   refresh = async () => {
@@ -870,7 +905,14 @@ class Entry extends PureComponent {
   };
 
   render() {
-    const { entry, repliesLoading, editorVisible, bookmarkId } = this.state;
+    const {
+      entry,
+      repliesLoading,
+      editorVisible,
+      bookmarkId,
+      similarEntries,
+      similarLoading
+    } = this.state;
     const { intl } = this.props;
 
     let content = null;
@@ -1079,6 +1121,66 @@ class Entry extends PureComponent {
                 </EntryVotes>
               </div>
             </div>
+            {similarEntries.length === 3 && (
+              <div className="similar-entries-list">
+                <div className="similar-entries-list-header">
+                  <div className="list-header-text">
+                    <i className="mi">list</i> Similar Posts
+                  </div>
+                  <a
+                    role="none"
+                    className={`reload-entries ${
+                      similarLoading ? 'reloading' : ''
+                    }`}
+                    onClick={this.fetchSimilar}
+                  >
+                    <i className="mi">refresh</i>
+                  </a>
+                </div>
+                <div className="similar-entries-list-body">
+                  {similarEntries.map(en => {
+                    const enImg = catchEntryImage(en, 300, 200) || noImage;
+                    const enCreated = parseDate(en.created);
+                    return (
+                      <EntryLink
+                        {...this.props}
+                        entry={en}
+                        author={en.author}
+                        permlink={en.permlink}
+                      >
+                        <div className="similar-entries-list-item">
+                          <div className="item-title">{en.title}</div>
+                          <div className="item-image">
+                            <img
+                              src={enImg}
+                              alt=""
+                              onError={e => {
+                                e.target.src = fallbackImage;
+                              }}
+                            />
+                          </div>
+                          <div className="item-footer">
+                            <span className="item-footer-author">
+                              {en.author}
+                            </span>
+                            <span className="item-footer-date">
+                              <FormattedRelative
+                                updateInterval={0}
+                                value={enCreated}
+                                initialNow={Date.now()}
+                              />
+                            </span>
+                            <span className="item-footer-comment-count">
+                              <i className="mi">comment</i> {en.children}
+                            </span>
+                          </div>
+                        </div>
+                      </EntryLink>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
             {repliesLoading && <LinearProgress />}
 
             {editorVisible && (

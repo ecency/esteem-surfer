@@ -386,6 +386,99 @@
       }
     }
 
+    .similar-entries-list {
+      margin: 20px 0 26px 0;
+
+      .similar-entries-list-header {
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+
+        .list-header-text {
+          color: $steel-grey;
+          font-size: 18px;
+          font-weight: 500;
+
+          .mi {
+            opacity: 0.6;
+            vertical-align: -2px;
+          }
+        }
+
+        .reload-entries {
+          font-size: 20px;
+          color: $dark-sky-blue;
+
+          &.reloading {
+            pointer-events: none;
+            opacity: 0.4;
+          }
+        }
+      }
+
+      .similar-entries-list-body {
+        display: flex;
+        justify-content: space-between;
+
+        .similar-entries-list-item {
+          cursor: pointer;
+          width: 32%;
+
+          .item-title {
+            color: $charcoal-grey;
+            display: block;
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 5px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+          }
+
+          .item-image {
+            align-items: center;
+            background: $white-six;
+            cursor: pointer;
+            display: flex;
+            height: 120px;
+            justify-content: center;
+            margin: 6px 0;
+            overflow: hidden;
+            width: 100%;
+
+            img {
+              height: auto;
+              width: 100%;
+            }
+          }
+
+          .item-footer {
+            color: darken($steel-grey, 10);
+            font-size: 12px;
+
+            .item-footer-author {
+              margin-right: 6px;
+
+              &:after {
+                content: '•';
+                padding-left: 6px;
+              }
+            }
+
+            .item-footer-comment-count {
+              float: right;
+
+              .mi {
+                opacity: 0.4;
+                vertical-align: bottom;
+              }
+            }
+          }
+        }
+      }
+    }
+
     .entry-replies {
       margin-bottom: 30px;
       margin-top: 15px;
@@ -617,8 +710,8 @@
       width: 36px;
 
       svg {
-        width: 18px;
         height: 18px;
+        width: 18px;
       }
 
       &.with-sub-menu {
