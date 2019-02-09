@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "Nu există conexiune la internet"
   },
   "g": {
     "compose-entry": "Creează o postare",
