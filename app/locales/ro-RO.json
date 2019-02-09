@@ -32,7 +32,7 @@
     "potential-payout": "Plată probabilă",
     "promoted": "Promovat",
     "author-payout": "Plata Autorului",
-    "curation-payout": "Plata Votanților",
+    "curation-payout": "Plată de curare",
     "payout-date": "Plată"
   },
   "entry-votes": {
@@ -52,7 +52,7 @@
   },
   "settings": {
     "title": "Setări",
-    "currency": "Valuta",
+    "currency": "Monedă",
     "currency-fetch-error": "Nu am putut obține rata de schimb moneda pentru ‘{cur}’",
     "currency-changed": "Monedă Schimbată",
     "locale": "Limbă",
@@ -66,8 +66,8 @@
     "server-custom-address": "Adresă server dedicat",
     "server-list-fetch-error": "Lista de servere inaccesibila",
     "push-notifications": "Notificări",
-    "push-notify-enabled": "Notificări activate",
-    "push-notify-disabled": "Notificări dezactivate"
+    "push-notify-enabled": "Notificările au fost activate",
+    "push-notify-disabled": "Notificările au fost dezactivate"
   },
   "login": {
     "title": "Bine ai revenit!",
