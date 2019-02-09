@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "İnternet bağlantısı yok"
   },
   "g": {
     "compose-entry": "Yazı Oluştur",
