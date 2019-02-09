@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "No Internet Connection"
+  },
   "g": {
     "compose-entry": "Créer une publication",
     "are-you-sure": "Êtes-vous sûr ?",
