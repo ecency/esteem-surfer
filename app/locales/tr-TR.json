@@ -8,14 +8,14 @@
     "cancel": "Vazgeç",
     "ok": "Tamam",
     "edit": "Düzenle",
-    "server-error": "Process could not be completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "server-error": "İşlem sunucu hatası nedeniyle tamamlanamadı",
+    "save": "Kaydet",
+    "done": "Bitti",
+    "select": "Seçiniz"
   },
   "footer": {
-    "faq": "FAQ",
-    "about": "About"
+    "faq": "SSS",
+    "about": "Hakkında"
   },
   "entry-index": {
     "tags": "Popüler Etiketler",
@@ -26,7 +26,7 @@
     "filter-promoted": "Sponsorlu",
     "filter-votes": "Oylara Göre",
     "filter-children": "Yorumlar",
-    "filter-feed": "Feed"
+    "filter-feed": "Akış"
   },
   "entry-payout": {
     "potential-payout": "Tahmini Ödeme",
@@ -44,11 +44,11 @@
     "modal-title": "Oylar ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "{n} tarafından yeniden yayınlandı"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "Yeniden yayınla",
+    "reblogged": "Yeniden yayınlandı"
   },
   "settings": {
     "title": "Ayarlar",
@@ -60,9 +60,9 @@
     "server": "Sunucu",
     "server-invalid-address": "Geçersiz sunucu adresi",
     "server-connecting": "'{server}' sunucusuna bağlanılıyor...",
-    "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
+    "server-connect-error": "'{server}'a bağlanılamadı. İyi bir internet bağlantınız olduğundan emin olun.",
     "server-timeout-error": "'{server}' sunucusu aktif değil",
-    "server-changed": "Server selection changed to {server}",
+    "server-changed": "Sunucu seçimi {server} olarak değiştirildi",
     "server-custom-address": "Özel sunucu adresi",
     "server-list-fetch-error": "Sunucu listesi alınamadı",
     "push-notifications": "Anlık Bildirimler",
@@ -70,7 +70,7 @@
     "push-notify-disabled": "Anlık bildirimler kapatıldı"
   },
   "login": {
-    "title": "Welcome back!",
+    "title": "Tekrar hoş geldiniz!",
     "accounts-title": "Login As",
     "traditional-login-desc": "Sign in with your username and password to continue",
     "username-placeholder": "username",
