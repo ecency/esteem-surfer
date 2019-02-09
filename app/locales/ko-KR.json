@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "인터넷 연결 상태를 확인해주세요"
   },
   "g": {
     "compose-entry": "글 작성하기",
@@ -77,9 +77,9 @@
     "accounts-title": "로그인",
     "traditional-login-desc": "계속 진행하려면 사용자 이름과 비밀번호를 이용해 로그인하세요.",
     "username-placeholder": "사용자 이름",
-    "password-placeholder": "password or WIF",
+    "password-placeholder": "비밀번호 또는 WIF",
     "login": "로그인",
-    "error-fields-required": "Please enter username and password/WIF",
+    "error-fields-required": "사용자 이름과 비밀번호/WIF를 입력하세요",
     "error-public-key": "You entered a public key. Password/WIF required",
     "error-user-fetch": "User data could not be fetched",
     "error-user-not-found": "User does not exist",
