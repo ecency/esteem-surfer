@@ -241,7 +241,7 @@
     "deleted": "Taslak silindi"
   },
   "schedules": {
-    "title": "Scheduled Posts",
+    "title": "Planlanmış gönderi",
     "empty-list": "Nothing here",
     "deleted": "Planlanmış gönderi silindi",
     "move": "Taslaklara taşı",
@@ -352,10 +352,10 @@
     "page-title": "Şahit oylaması",
     "remaining": "<strong>{n}</strong> of {max} votes remaining",
     "witness": "Şahit",
-    "miss": "Miss",
-    "url": "URL",
+    "miss": "Kaçırılmış bloklar",
+    "url": "Adres",
     "fee": "Ücret",
-    "feed": "Feed",
+    "feed": "Akış",
     "block-size": "Blok boyutu",
     "ac-avail": "AC avail",
     "ac-budget": "AC budget",
@@ -412,11 +412,11 @@
   "delegate": {
     "title": "Delegate",
     "sub-title": "Delegate Steem Power",
-    "slider-help": "Drag the slider to adjust the amount",
-    "confirm-title": "Confirm Delegation",
+    "slider-help": "Miktarı ayarlamak için kaydırıcıyı sürükleyin",
+    "confirm-title": "Delegasyonu onayla",
     "confirm-sub-title": "Please, check if everything is correct",
     "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "Delegation completed",
+    "success-sub-title": "Delegasyon tamamlandı",
     "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
   },
   "delegation-list": {
