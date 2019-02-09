@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "No Internet Connection"
+  },
   "g": {
     "compose-entry": "Sukurti Įrašą",
     "are-you-sure": "Ar esate įsitikinę?",
