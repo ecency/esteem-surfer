@@ -249,7 +249,7 @@
   },
   "bookmarks": {
     "title": "Bookmarks",
-    "load-error": "Favoritele nu au putut fi încărcate",
+    "load-error": "Bookmarks nu a putut fi încărcat",
     "empty-list": "Nici un rezultat",
     "deleted": "Mutat de la bookmarks",
     "search": "Căutare la bookmarks"
