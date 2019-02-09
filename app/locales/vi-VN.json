@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "No Internet Connection"
+  },
   "g": {
     "compose-entry": "Viết bài",
     "are-you-sure": "Bạn có chắc không?",
