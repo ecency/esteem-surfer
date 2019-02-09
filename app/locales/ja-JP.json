@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "No Internet Connection"
+  },
   "g": {
     "compose-entry": "投稿を作成",
     "are-you-sure": "本当によろしいですか？",
