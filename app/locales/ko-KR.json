@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "No Internet Connection"
+  },
   "g": {
     "compose-entry": "글 작성하기",
     "are-you-sure": "계속 진행하시겠습니까?",
