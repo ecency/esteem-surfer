@@ -123,7 +123,7 @@
     "following": "Takip ediliyor",
     "section-blog": "Blog",
     "section-comments": "Yorumlar",
-    "section-replies": "Yanıtlar",
+    "section-replies": "Replies",
     "section-wallet": "Cüzdan"
   },
   "follow-controls": {
@@ -139,7 +139,7 @@
     "followers": "Takipçiler",
     "following": "Following",
     "section-blog": "Blog",
-    "section-comments": "Comments",
+    "section-comments": "Yorumlar",
     "section-replies": "Replies",
     "section-wallet": "Wallet",
     "top-posts": "En iyi gönderiler",
@@ -258,7 +258,7 @@
     "title": "Favorites",
     "load-error": "Favoriler yüklenemedi",
     "empty-list": "Nothing here",
-    "search": "Search in favorites"
+    "search": "Favorilerde ara"
   },
   "entry": {
     "reply": "Yanıtla",
@@ -313,11 +313,11 @@
     "restart": "Restart"
   },
   "context-menu": {
-    "cut": "Cut",
-    "copy": "Copy",
-    "paste": "Paste",
-    "open-image-browser": "Open image in browser",
-    "copy-image-url": "Copy image url"
+    "cut": "Kes",
+    "copy": "Kopyala",
+    "paste": "Yapıştır",
+    "open-image-browser": "Resmi tarayıcıda aç",
+    "copy-image-url": "Resmin Url'sini kopyala"
   },
   "notification": {
     "popup-title": "Yeni bir bildiriminiz var",
@@ -330,8 +330,8 @@
   },
   "activities": {
     "type-all": "Tüm Etkinlikler",
-    "type-votes": "Votes",
-    "type-replies": "Replies",
+    "type-votes": "Oylar",
+    "type-replies": "Yanıtlar",
     "type-mentions": "Bahsedilmeler",
     "type-follows": "Follows",
     "type-reblogs": "Reblogs",
