@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "No Internet Connection"
+  },
   "g": {
     "compose-entry": "نوشتن پست جدید",
     "are-you-sure": "آیا مطمئن هستید؟",
