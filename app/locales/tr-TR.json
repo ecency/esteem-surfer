@@ -156,7 +156,7 @@
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Tokenler yaklaşık $1.00 STEEM değerindedir.",
     "savings": "Savings",
-    "savings-description": "Balance subject to 3 day withdraw waiting period.",
+    "savings-description": "Bakiye çekimi 3 gün bekleme süresine tabidir.",
     "next-power-down": "Bir sonraki güç azaltma {time} {amount}",
     "exchange": "Borsa",
     "transactions": "Hareketler",
@@ -309,7 +309,7 @@
     "update": "Güncelle",
     "dismiss": "Yoksay",
     "downloading": "Yeni versiyon indiriliyor...",
-    "download-completed": "Download is completed",
+    "download-completed": "İndirme tamamlandı",
     "restart": "Restart"
   },
   "context-menu": {
@@ -404,20 +404,20 @@
     "back": "Geri",
     "success-title": "Başarılı",
     "success-sub-title": "Aktarım başarılı",
-    "transfer-summary": "Transferred <span class=\"amount\">{amount}</span> From <span class=\"from-user\">{from}</span> to <span class=\"to-user\">{to}</span>",
+    "transfer-summary": "Transfer edildi <span class=\"amount\">{amount}</span> Gönderen <span class=\"from-user\">{from}</span> Alıcı <span class=\"to-user\">{to}</span>",
     "reset": "Başka bir aktarım",
     "finish": "Tamamla",
     "recent-transfers": "Son aktarımlar"
   },
   "delegate": {
     "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
+    "sub-title": "Steem Gücü devret",
     "slider-help": "Miktarı ayarlamak için kaydırıcıyı sürükleyin",
     "confirm-title": "Delegasyonu onayla",
     "confirm-sub-title": "Please, check if everything is correct",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> alıcıya devredildi <span class=\"to-user\">{to}</span>",
     "success-sub-title": "Delegasyon tamamlandı",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "insufficient-vesting": "Yetersiz yatırım paylaşması {a} VESTS"
   },
   "delegation-list": {
     "empty-list": "Nothing here"
