@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "No Internet Connection"
+  },
   "g": {
     "compose-entry": "পোস্ট তৈরি করুন",
     "are-you-sure": "আপনি কি নিশ্চিত?",
