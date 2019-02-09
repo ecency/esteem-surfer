@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "No Internet Connection"
+  },
   "g": {
     "compose-entry": "Yazı Oluştur",
     "are-you-sure": "Emin misiniz?",
