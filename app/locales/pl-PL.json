@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "No Internet Connection"
+  },
   "g": {
     "compose-entry": "Utwórz Post",
     "are-you-sure": "Jesteś pewien?",
