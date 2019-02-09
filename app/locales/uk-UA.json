@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "Немає з'єднання з інтернетом"
   },
   "g": {
     "compose-entry": "Створити пост",
