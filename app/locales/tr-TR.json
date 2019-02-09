@@ -335,7 +335,7 @@
     "type-mentions": "Bahsedilmeler",
     "type-follows": "Follows",
     "type-reblogs": "Reblogs",
-    "vote-str": "{p}% likes your post:",
+    "vote-str": "{p}% gönderinizi beğendi:",
     "reply-str": "gönderini yanıtladı:",
     "mention-str": "senden bahsetti:",
     "followed-str": "takip etti",
