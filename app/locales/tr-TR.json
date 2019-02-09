@@ -163,7 +163,7 @@
     "transaction-curation_reward": "Kürasyon ödülü",
     "transaction-author_reward": "Yazar ödülü",
     "transaction-comment_benefactor_reward": "Comment Benefactor Reward",
-    "transaction-claim_reward_balance": "Claim rewards",
+    "transaction-claim_reward_balance": "Ödülleri al",
     "transaction-transfer": "Transfer",
     "transaction-transfer_to_vesting": "Hak edilene aktar",
     "transaction-withdraw_vesting": "Steem gücünü çek",
@@ -279,7 +279,7 @@
     "copied-clipboard": "Kopyalandı",
     "comment-entry-title": "Tek bir yorum dizisini şuradan görüntülüyorsunuz: ",
     "comment-entry-go-root": "İçeriğin tamamını görüntüle",
-    "comment-entry-go-parent": "View the direct parent",
+    "comment-entry-go-parent": "Doğrudan kaynağı görüntüle",
     "similar-entries": "Benzer gönderiler"
   },
   "navbar": {
@@ -298,7 +298,7 @@
     "search-no-matches": "Eşleşme yok"
   },
   "search": {
-    "n-results-for-q": "{n} results for {q}",
+    "n-results-for-q": "{n} için sonuçlar {q}",
     "sort-by": "Sıralama şekli",
     "sort-popularity": "Popülarite",
     "sort-relevance": "Alaka düzeyi",
@@ -334,7 +334,7 @@
     "type-replies": "Yanıtlar",
     "type-mentions": "Bahsedilmeler",
     "type-follows": "Follows",
-    "type-reblogs": "Reblogs",
+    "type-reblogs": "Yeniden yayınlamalar",
     "vote-str": "{p}% gönderinizi beğendi:",
     "reply-str": "gönderini yanıtladı:",
     "mention-str": "senden bahsetti:",
@@ -360,7 +360,7 @@
     "ac-avail": "AC avail",
     "ac-budget": "AC budget",
     "version": "Versiyon",
-    "voted": "@{n} voted",
+    "voted": "@{n} oyladı",
     "vote-removed": "oy @{n} için silindi",
     "username-placeholder": "kullanıcı adı",
     "extra-witnesses-exp": "<strong>İlk 50’nin</strong> dışındaki bir şahide oy vermek için aşağıya hesap adını girin",
