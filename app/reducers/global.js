@@ -10,7 +10,8 @@ import {
   PUSH_NOTIFY_CHANGED,
   SERVER_CHANGED,
   PIN_EXPOSED,
-  PIN_WIPED
+  PIN_WIPED,
+  SET_INT_CONN
 } from '../actions/global';
 import filters from '../constants/filters.json';
 
@@ -27,7 +28,8 @@ const defaultState = {
   locale: getItem('locale', defaults.locale),
   pushNotify: Number(getItem('push-notify', defaults.pushNotify)),
   server: getItem('server', defaults.server),
-  pin: null
+  pin: null,
+  intConn: navigator.onLine
 };
 
 export default function global(state = defaultState, action) {
@@ -105,6 +107,12 @@ export default function global(state = defaultState, action) {
     case PIN_WIPED: {
       return Object.assign({}, state, {
         pin: null
+      });
+    }
+    case SET_INT_CONN: {
+      const { val } = action.payload;
+      return Object.assign({}, state, {
+        intConn: val
       });
     }
     default:

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 // i18n
-import { addLocaleData, IntlProvider } from 'react-intl';
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import tr from 'react-intl/locale-data/tr';
 
@@ -12,7 +12,7 @@ import { Modal } from 'antd';
 
 import history from '../store/history';
 
-import { exposePin, wipePin } from '../actions/global';
+import { exposePin, wipePin, setIntConn } from '../actions/global';
 import { fetchGlobalProps } from '../actions/dynamic-props';
 import { deleteAccounts, addAccountSc } from '../actions/accounts';
 import { logOut, updateActiveAccount } from '../actions/active-account';
@@ -74,6 +74,10 @@ class App extends React.Component {
     this.refreshMarketData();
     this.marketDataInterval = setInterval(this.refreshMarketData, 70000);
 
+    // Internet connection checkers
+    window.addEventListener('online', this.detectInternetConnection);
+    window.addEventListener('offline', this.detectInternetConnection);
+
     window.addEventListener('user-login', this.onUserLogin);
     window.addEventListener('user-logout', this.onUserLogout);
 
@@ -94,6 +98,9 @@ class App extends React.Component {
     clearInterval(this.scRefreshInterval);
     clearInterval(this.marketDataInterval);
     clearInterval(this.checkInInterval);
+
+    window.removeEventListener('online', this.detectInternetConnection);
+    window.removeEventListener('offline', this.detectInternetConnection);
 
     window.removeEventListener('user-login', this.onUserLogin);
     window.removeEventListener('user-logout', this.onUserLogout);
@@ -173,6 +180,11 @@ class App extends React.Component {
         })
         .catch(() => {});
     });
+  };
+
+  detectInternetConnection = () => {
+    const { actions } = this.props;
+    actions.setIntConn(navigator.onLine);
   };
 
   checkIn = () => {
@@ -291,7 +303,7 @@ class App extends React.Component {
   render() {
     const { pinCreateFlag, pinConfirmFlag } = this.state;
     const { children, global } = this.props;
-    const { locale } = global;
+    const { locale, intConn } = global;
 
     return (
       <IntlProvider
@@ -299,6 +311,12 @@ class App extends React.Component {
         messages={flattenMessages(messages[locale])}
       >
         <React.Fragment>
+          {!intConn && (
+            <div className="offline-indicator">
+              <i className="mi">info</i>
+              <FormattedMessage id="app.no-internet-conn" />
+            </div>
+          )}
           {children}
 
           {pinCreateFlag && (
@@ -351,7 +369,8 @@ App.propTypes = {
   global: PropTypes.shape({
     locale: PropTypes.string.isRequired,
     pushNotify: PropTypes.number.isRequired,
-    pin: PropTypes.string
+    pin: PropTypes.string,
+    intConn: PropTypes.bool
   }).isRequired,
   activeAccount: PropTypes.instanceOf(Object),
   actions: PropTypes.shape({
@@ -363,7 +382,8 @@ App.propTypes = {
     deleteAccounts: PropTypes.func.isRequired,
     addAccountSc: PropTypes.func.isRequired,
     fetchActivities: PropTypes.func.isRequired,
-    fetchMarketData: PropTypes.func.isRequired
+    fetchMarketData: PropTypes.func.isRequired,
+    setIntConn: PropTypes.func.isRequired
   }).isRequired,
   accounts: PropTypes.arrayOf(PropTypes.object)
 };
@@ -386,7 +406,8 @@ function mapDispatchToProps(dispatch) {
       ...bindActionCreators({ fetchGlobalProps }, dispatch),
       ...bindActionCreators({ deleteAccounts, addAccountSc }, dispatch),
       ...bindActionCreators({ fetchActivities }, dispatch),
-      ...bindActionCreators({ fetchMarketData }, dispatch)
+      ...bindActionCreators({ fetchMarketData }, dispatch),
+      ...bindActionCreators({ setIntConn }, dispatch)
     }
   };
 }

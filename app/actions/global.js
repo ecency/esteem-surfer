@@ -12,6 +12,8 @@ export const SERVER_CHANGED = 'global/SERVER_CHANGED';
 export const PIN_EXPOSED = 'global/PIN_EXPOSED';
 export const PIN_WIPED = 'global/PIN_WIPED';
 
+export const SET_INT_CONN = 'global/SET_INT_CONN';
+
 export const changeTheme = () => (dispatch, getState) => {
   const { global } = getState();
 
@@ -74,6 +76,10 @@ export const wipePin = () => dispatch => {
   dispatch(pinWiped());
 };
 
+export const setIntConn = val => dispatch => {
+  dispatch(intConnSet(val));
+};
+
 /* action creators */
 
 export const themeChanged = newTheme => ({
@@ -113,4 +119,9 @@ export const pinExposed = pin => ({
 
 export const pinWiped = () => ({
   type: PIN_WIPED
+});
+
+export const intConnSet = val => ({
+  type: SET_INT_CONN,
+  payload: { val }
 });
