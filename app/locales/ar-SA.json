@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "لا يوجد إتصال بالأنترنت"
   },
   "g": {
     "compose-entry": "إنشاء منشور",
