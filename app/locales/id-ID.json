@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "Tidak Ada Sambungan Internet"
   },
   "g": {
     "compose-entry": "Membuat posting",
@@ -283,7 +283,7 @@
     "comment-entry-title": "Anda melihat sebuah komentar tunggal dari: ",
     "comment-entry-go-root": "Lihat konteks lengkap",
     "comment-entry-go-parent": "Lihat sumber utama",
-    "similar-entries": "Similar Posts"
+    "similar-entries": "Posting yang Mirip"
   },
   "navbar": {
     "settings": "Pengaturan",
@@ -427,6 +427,6 @@
   },
   "friends": {
     "followers-title": "Pengikut ({count})",
-    "following-title": "Following ({count})"
+    "following-title": "Mengikuti ({count})"
   }
 }
