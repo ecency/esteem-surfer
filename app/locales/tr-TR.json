@@ -3,7 +3,7 @@
     "no-internet-conn": "İnternet bağlantısı yok"
   },
   "g": {
-    "compose-entry": "Yazı Oluştur",
+    "compose-entry": "Gönderi Oluştur",
     "are-you-sure": "Emin misiniz?",
     "yes": "Evet",
     "no": "Hayır",
@@ -27,7 +27,7 @@
     "filter-created": "Yeni",
     "filter-active": "Aktif",
     "filter-promoted": "Sponsorlu",
-    "filter-votes": "Oylara Göre",
+    "filter-votes": "Oylar",
     "filter-children": "Yorumlar",
     "filter-feed": "Akış"
   },
@@ -44,7 +44,7 @@
     "reward": "Ödül",
     "percent": "Yüzde",
     "time": "Tarih",
-    "modal-title": "Oylar ({n})"
+    "modal-title": "Oylayanlar ({n})"
   },
   "entry-list-item": {
     "reblogged": "{n} tarafından yeniden yayınlandı"
@@ -123,7 +123,7 @@
     "fetch-error-content": "Gönderiler getirilemedi",
     "post-count": "Gönderi sayısı",
     "followers": "Takipçiler",
-    "following": "Takip ediliyor",
+    "following": "Following",
     "section-blog": "Blog",
     "section-comments": "Yorumlar",
     "section-replies": "Replies",
