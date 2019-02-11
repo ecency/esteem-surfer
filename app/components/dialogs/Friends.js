@@ -67,17 +67,21 @@ class Friends extends Component {
   loadMore = async () => {
     const { data } = this.state;
     const lastItem = [...data].pop();
+    const startUserName = lastItem.name;
 
     this.stateSet({ loading: true });
     let moreData;
 
     try {
-      moreData = await this.loadData(lastItem.name);
+      moreData = await this.loadData(startUserName);
     } catch (e) {
       moreData = [];
     }
 
-    const newData = [...data, ...moreData];
+    const newData = [
+      ...data,
+      ...moreData.filter(a => a.name !== startUserName)
+    ];
 
     this.stateSet({
       data: newData,
