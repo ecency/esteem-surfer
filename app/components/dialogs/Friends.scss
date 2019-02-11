@@ -1,0 +1,49 @@
+@import '../../style/mixins';
+@import '../../style/colors';
+
+.friends-dialog-content {
+  height: 500px;
+  overflow: auto;
+
+  .friends-list {
+    .friends-list-body {
+      display: grid;
+      padding: 10px;
+
+      .friends-list-item {
+        background: $white-six;
+        border-radius: 8px;
+        padding: 8px;
+        text-align: center;
+        cursor: pointer;
+
+        .user-avatar {
+          margin: 0 auto 12px auto;
+        }
+
+        .friend-name {
+          color: $charcoal-grey;
+          font-weight: 500;
+          margin-bottom: 6px;
+
+          &::before {
+            content: '@';
+          }
+        }
+
+        .friend-full-name {
+          color: $steel-grey;
+          font-size: 95%;
+        }
+      }
+      grid-template-columns: repeat(4, 1fr);
+
+      grid-gap: 10px;
+    }
+  }
+
+  .load-more {
+    padding: 20px;
+    text-align: center;
+  }
+}

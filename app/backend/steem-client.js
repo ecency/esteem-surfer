@@ -77,6 +77,19 @@ export const getFollowing = (
     limit
   ]);
 
+export const getFollowers = (
+  following,
+  startFollowing,
+  followType = 'blog',
+  limit = 100
+) =>
+  client.database.call('get_followers', [
+    following,
+    startFollowing,
+    followType,
+    limit
+  ]);
+
 export const getAccountRC = username =>
   client.call('rc_api', 'find_rc_accounts', { accounts: [username] });
 

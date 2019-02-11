@@ -36,6 +36,8 @@ import LinearProgress from './common/LinearProgress';
 import EntryLink from './helpers/EntryLink';
 import DropDown from './common/DropDown';
 
+import FriendsModal from './dialogs/Friends';
+
 import { btc as btcIcon, usd as usdIcon } from '../svg';
 
 import {
@@ -68,6 +70,15 @@ import DeepLinkHandler from './helpers/DeepLinkHandler';
 import noImage from '../img/noimage.png';
 
 class Profile extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      followersModalVisible: false,
+      followingModalVisible: false
+    };
+  }
+
   render() {
     let vPower;
     let vPowerPercentage;
@@ -82,6 +93,7 @@ class Profile extends Component {
     let website;
     let created;
 
+    const { followersModalVisible, followingModalVisible } = this.state;
     const { username, account, activeAccount, intl } = this.props;
 
     if (account) {
@@ -174,6 +186,15 @@ class Profile extends Component {
             </Tooltip>
           </div>
           <div className="account-prop">
+            <FriendsModal
+              count={followerCount}
+              visible={followersModalVisible}
+              mode="followers"
+              username={username}
+              onCancel={() => {
+                this.setState({ followersModalVisible: false });
+              }}
+            />
             <Tooltip
               title={intl.formatMessage({
                 id: 'account.followers'
@@ -182,13 +203,29 @@ class Profile extends Component {
             >
               <i className="mi">people</i>
               {typeof followerCount === 'number' ? (
-                <FormattedNumber value={followerCount} />
+                <span
+                  role="none"
+                  onClick={() => {
+                    this.setState({ followersModalVisible: true });
+                  }}
+                >
+                  <FormattedNumber value={followerCount} />
+                </span>
               ) : (
                 <span>--</span>
               )}
             </Tooltip>
           </div>
           <div className="account-prop">
+            <FriendsModal
+              count={followingCount}
+              visible={followingModalVisible}
+              mode="following"
+              username={username}
+              onCancel={() => {
+                this.setState({ followingModalVisible: false });
+              }}
+            />
             <Tooltip
               title={intl.formatMessage({
                 id: 'account.following'
@@ -197,7 +234,14 @@ class Profile extends Component {
             >
               <i className="mi">person_add</i>
               {typeof followingCount === 'number' ? (
-                <FormattedNumber value={followingCount} />
+                <span
+                  role="none"
+                  onClick={() => {
+                    this.setState({ followingModalVisible: true });
+                  }}
+                >
+                  <FormattedNumber value={followingCount} />
+                </span>
               ) : (
                 <span>--</span>
               )}
