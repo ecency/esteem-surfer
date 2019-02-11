@@ -6,7 +6,7 @@ export const makePath = username => `/@${username}`;
 
 class AccountLink extends Component {
   goProfile = async () => {
-    const { username, history, actions } = this.props;
+    const { username, history, actions, afterClick } = this.props;
     let { accountData } = this.props;
     const { setVisitingAccount } = actions;
 
@@ -23,6 +23,8 @@ class AccountLink extends Component {
     }
 
     history.push(makePath(username));
+
+    afterClick();
   };
 
   render() {
@@ -35,7 +37,8 @@ class AccountLink extends Component {
 }
 
 AccountLink.defaultProps = {
-  accountData: null
+  accountData: null,
+  afterClick: () => {}
 };
 
 AccountLink.propTypes = {
@@ -43,6 +46,7 @@ AccountLink.propTypes = {
   username: PropTypes.string.isRequired,
   history: PropTypes.instanceOf(Object).isRequired,
   accountData: PropTypes.instanceOf(Object),
+  afterClick: PropTypes.func,
   actions: PropTypes.shape({
     setVisitingAccount: PropTypes.func.isRequired
   }).isRequired
