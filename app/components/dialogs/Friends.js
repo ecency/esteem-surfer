@@ -33,11 +33,23 @@ class Friends extends Component {
   }
 
   componentDidMount() {
+    this.mounted = true;
+
     this.loadFirst();
   }
 
+  componentWillUnmount() {
+    this.mounted = false;
+  }
+
+  stateSet = (obj, cb = undefined) => {
+    if (this.mounted) {
+      this.setState(obj, cb);
+    }
+  };
+
   loadFirst = async () => {
-    this.setState({ loading: true });
+    this.stateSet({ loading: true });
     let data;
     try {
       data = await this.loadData();
@@ -45,7 +57,7 @@ class Friends extends Component {
       data = [];
     }
 
-    this.setState({
+    this.stateSet({
       data,
       hasMore: data.length >= this.loadLimit,
       loading: false
@@ -56,7 +68,7 @@ class Friends extends Component {
     const { data } = this.state;
     const lastItem = [...data].pop();
 
-    this.setState({ loading: true });
+    this.stateSet({ loading: true });
     let moreData;
 
     try {
@@ -67,7 +79,7 @@ class Friends extends Component {
 
     const newData = [...data, ...moreData];
 
-    this.setState({
+    this.stateSet({
       data: newData,
       hasMore: moreData.length >= this.loadLimit,
       loading: false
