@@ -424,5 +424,9 @@
   },
   "delegation-list": {
     "empty-list": "Nic tu nie ma"
+  },
+  "friends": {
+    "followers-title": "Followers ({count})",
+    "following-title": "Following ({count})"
   }
 }
