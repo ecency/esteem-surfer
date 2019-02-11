@@ -424,5 +424,9 @@
   },
   "delegation-list": {
     "empty-list": "Ovde nema ništa"
+  },
+  "friends": {
+    "followers-title": "Followers ({count})",
+    "following-title": "Following ({count})"
   }
 }
