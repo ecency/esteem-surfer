@@ -426,7 +426,7 @@
     "empty-list": "Kosong"
   },
   "friends": {
-    "followers-title": "Followers ({count})",
-    "following-title": "Following ({count})"
+    "followers-title": "Pengikut ({count})",
+    "following-title": "Pengikut ({count})"
   }
 }
