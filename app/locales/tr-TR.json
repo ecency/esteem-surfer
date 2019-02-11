@@ -110,7 +110,7 @@
     "drafts": "Taslaklar",
     "schedules": "Programlar",
     "gallery": "Galeri",
-    "login-as": "Login As",
+    "login-as": "Şöyle oturum aç",
     "logout": "Çıkış"
   },
   "login-required": {
@@ -126,7 +126,7 @@
     "following": "Takip ediliyor",
     "section-blog": "Blog",
     "section-comments": "Yorumlar",
-    "section-replies": "Replies",
+    "section-replies": "Yanıtlar",
     "section-wallet": "Cüzdan"
   },
   "follow-controls": {
@@ -137,20 +137,20 @@
   },
   "account": {
     "voting-power": "Oylama gücü",
-    "post-count": "Post Count",
+    "post-count": "Gönderi sayısı",
     "number-of-votes": "Son 24 saat içerisindeki oy sayısı",
     "followers": "Takipçiler",
     "following": "Takip ediliyor",
     "section-blog": "Blog",
     "section-comments": "Yorumlar",
     "section-replies": "Replies",
-    "section-wallet": "Wallet",
+    "section-wallet": "Cüzdan",
     "top-posts": "En iyi gönderiler",
     "unclaimed-rewards": "Talep edilmemiş ödüller",
     "estimated-value": "Tahmini değer 7 günlük ortalama Steem değerine dayanmaktadır.",
     "steem": "Steem",
     "steem-description": "STEEM istediniz zamanda transfer edilebilecek ticari jetonlardır. STEEM, güçlendirme olarak adlandırılan bir süreçte Steem Power'a dönüştürülebilir.",
-    "steem-power": "Steem Power",
+    "steem-power": "Steem Gücü",
     "steem-power-description": "Steem Gücü tokenleri uzun vadede tutarak ve gönderilerde oy kullanarak daha fazla güç kazanır. Steem Gücü ne kadar fazla olursa biri o diğerinin ödüllerini etkileyebilir ve doğru oylama için ödüller kazanabilir.",
     "steem-power-delegated": "Devredilmiş Steem Gücü",
     "steem-power-received": "Alınan Steem Gücü",
@@ -158,7 +158,7 @@
     "steem-power-total": "Toplam Steem Gücü",
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Tokenler yaklaşık $1.00 STEEM değerindedir.",
-    "savings": "Savings",
+    "savings": "Tasarruflar",
     "savings-description": "Bakiye çekimi 3 gün bekleme süresine tabidir.",
     "next-power-down": "Bir sonraki güç azaltma {time} {amount}",
     "exchange": "Borsa",
@@ -167,7 +167,7 @@
     "transaction-author_reward": "Yazar ödülü",
     "transaction-comment_benefactor_reward": "Comment Benefactor Reward",
     "transaction-claim_reward_balance": "Ödülleri al",
-    "transaction-transfer": "Transfer",
+    "transaction-transfer": "Aktar",
     "transaction-transfer_to_vesting": "Hak edilene aktar",
     "transaction-withdraw_vesting": "Steem gücünü çek",
     "transaction-fill_order": "Sipariş emri",
@@ -210,7 +210,7 @@
     "clear": "Hepsini temizle",
     "form-error-message": "Form geçerli değil. Lütfen tüm alanları doldurun",
     "schedule": "Planla",
-    "select-schedule-date": "Select Date",
+    "select-schedule-date": "Tarih seç",
     "schedule-saved": "Gönderi planlandı",
     "schedule-picker-select-time": "Saat seç",
     "schedule-picker-select-date": "Tarih seç",
@@ -229,10 +229,10 @@
     "no-suggestions": "Öneri yok",
     "emoji-filter-placeholder": "Filtre",
     "emoji-filter-no-match": "Eşleşme yok",
-    "emoji-recently-used": "Recently Used"
+    "emoji-recently-used": "En son kullanılan"
   },
   "gallery": {
-    "title": "Gallery",
+    "title": "Galeri",
     "copied": "Panoya kopyalandı",
     "load-error": "Galeri yüklenemedi",
     "empty-list": "Nothing here"
@@ -387,11 +387,11 @@
     "from": "Kimden",
     "from-placeholder": "Kullanıcı seç",
     "to": "Kime",
-    "to-placeholder": "username",
+    "to-placeholder": "kullanıcı adı",
     "to-not-found": "Fon aktarmaya çalıştığınız kullanıcı bulunamadı!",
     "to-bad-actor": "Bu hesaba gönderirken dikkatli olun. Lütfen yazımınızı olası kimlik avı için iki kez kontrol edin.",
     "amount": "Miktar",
-    "amount-placeholder": "amount",
+    "amount-placeholder": "miktar",
     "wrong-amount": "Yanlış miktar değeri",
     "amount-precision-error": "Use only 3 digits of precision",
     "insufficient-funds": "Yetersiz bakiye",
@@ -413,7 +413,7 @@
     "recent-transfers": "Son aktarımlar"
   },
   "delegate": {
-    "title": "Delegate",
+    "title": "Devretme",
     "sub-title": "Steem Gücü devret",
     "slider-help": "Miktarı ayarlamak için kaydırıcıyı sürükleyin",
     "confirm-title": "Delegasyonu onayla",
@@ -423,7 +423,7 @@
     "insufficient-vesting": "Yetersiz yatırım paylaşması {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "Burada bir şey yok"
   },
   "friends": {
     "followers-title": "Followers ({count})",
