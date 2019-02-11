@@ -165,7 +165,7 @@
     "transactions": "Hareketler",
     "transaction-curation_reward": "Kürasyon ödülü",
     "transaction-author_reward": "Yazar ödülü",
-    "transaction-comment_benefactor_reward": "Comment Benefactor Reward",
+    "transaction-comment_benefactor_reward": "Yorum Yararlanıcı Ödülü",
     "transaction-claim_reward_balance": "Ödülleri al",
     "transaction-transfer": "Aktar",
     "transaction-transfer_to_vesting": "Hak edilene aktar",
@@ -336,7 +336,7 @@
     "type-votes": "Oylar",
     "type-replies": "Yanıtlar",
     "type-mentions": "Bahsedilmeler",
-    "type-follows": "Follows",
+    "type-follows": "Takip ediyor",
     "type-reblogs": "Yeniden yayınlamalar",
     "vote-str": "{p}% gönderinizi beğendi:",
     "reply-str": "gönderini yanıtladı:",
@@ -361,7 +361,7 @@
     "feed": "Akış",
     "block-size": "Blok boyutu",
     "ac-avail": "AC avail",
-    "ac-budget": "AC budget",
+    "ac-budget": "AC bütçesi",
     "version": "Versiyon",
     "voted": "@{n} oyladı",
     "vote-removed": "oy @{n} için silindi",
@@ -383,7 +383,7 @@
     "withdraw-saving-title": "Savings Withdraw",
     "withdraw-saving-sub-title": "Gereken 3 günlük bekleme süresinden sonra fonlarınızı çekin",
     "power-up-title": "Steem gücüne dönüştür",
-    "power-up-sub-title": "Influence tokens which give you more control over post payouts and allow you to earn on curation rewards.",
+    "power-up-sub-title": "Etki jetonları, ödemeler sonrası ödemeler üzerinde daha fazla kontrol sahibi olmanıza ve kürasyon ödülleri kazanmanıza olanak tanır.",
     "from": "Kimden",
     "from-placeholder": "Kullanıcı seç",
     "to": "Kime",
@@ -423,10 +423,10 @@
     "insufficient-vesting": "Yetersiz yatırım paylaşması {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Burada bir şey yok"
+    "empty-list": "Nothing here"
   },
   "friends": {
-    "followers-title": "Followers ({count})",
+    "followers-title": "Takip ediliyor ({count})",
     "following-title": "Takip ediliyor ({count})"
   }
 }
