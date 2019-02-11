@@ -24,6 +24,10 @@ body {
   user-select: auto;
 }
 
+.with-pointer {
+  cursor: pointer;
+}
+
 h1,
 h2 {
   @include themify(day) {

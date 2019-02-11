@@ -122,8 +122,8 @@ class Friends extends Component {
         <div className="friends-list">
           <div className="friends-list-body">
             {data.map(item => (
-              <AccountLink {...this.props} username={item.name}>
-                <div key={item.name} className="friends-list-item">
+              <AccountLink {...this.props} username={item.name} key={item.name}>
+                <div className="friends-list-item">
                   <UserAvatar user={item.name} size="large" />
                   <div className="friend-name">{item.name}</div>
                   <div className="friend-full-name">{item.full_name}</div>
@@ -187,13 +187,14 @@ class FriendsModal extends Component {
 }
 
 FriendsModal.defaultProps = {
-  onSelect: null
+  onSelect: null,
+  count: 0
 };
 
 FriendsModal.propTypes = {
+  count: PropTypes.number,
   username: PropTypes.string.isRequired,
   mode: PropTypes.string.isRequired,
-  count: PropTypes.number.isRequired,
   onSelect: PropTypes.func,
   onCancel: PropTypes.func.isRequired,
   visible: PropTypes.bool.isRequired,

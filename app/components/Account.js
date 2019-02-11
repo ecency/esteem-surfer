@@ -194,6 +194,7 @@ class Profile extends Component {
               onCancel={() => {
                 this.setState({ followersModalVisible: false });
               }}
+              {...this.props}
             />
             <Tooltip
               title={intl.formatMessage({
@@ -204,6 +205,7 @@ class Profile extends Component {
               <i className="mi">people</i>
               {typeof followerCount === 'number' ? (
                 <span
+                  className="with-pointer"
                   role="none"
                   onClick={() => {
                     this.setState({ followersModalVisible: true });
@@ -225,6 +227,7 @@ class Profile extends Component {
               onCancel={() => {
                 this.setState({ followingModalVisible: false });
               }}
+              {...this.props}
             />
             <Tooltip
               title={intl.formatMessage({
@@ -235,6 +238,7 @@ class Profile extends Component {
               <i className="mi">person_add</i>
               {typeof followingCount === 'number' ? (
                 <span
+                  className="with-pointer"
                   role="none"
                   onClick={() => {
                     this.setState({ followingModalVisible: true });
