@@ -129,6 +129,7 @@ class Friends extends Component {
   };
 
   render() {
+    const { afterClick } = this.props;
     const { loading, data, hasMore } = this.state;
 
     return (
@@ -138,7 +139,12 @@ class Friends extends Component {
         <div className="friends-list">
           <div className="friends-list-body">
             {data.map(item => (
-              <AccountLink {...this.props} username={item.name} key={item.name}>
+              <AccountLink
+                {...this.props}
+                username={item.name}
+                key={item.name}
+                onClick={afterClick}
+              >
                 <div className="friends-list-item">
                   <UserAvatar user={item.name} size="large" />
                   <div className="friend-name">{item.name}</div>
@@ -171,6 +177,7 @@ Friends.defaultProps = {};
 Friends.propTypes = {
   mode: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
+  afterClick: PropTypes.func.isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
@@ -196,7 +203,7 @@ class FriendsModal extends Component {
           { count: intl.formatNumber(count) }
         )}
       >
-        <Friends {...this.props} />
+        <Friends {...this.props} afterClick={onCancel} />
       </Modal>
     );
   }
