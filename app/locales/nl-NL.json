@@ -86,7 +86,8 @@
     "error-authenticate": "Verkeerde gebruikersnaam of wachtwoord/WIF",
     "create-account-text": "Je hebt geen account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Meld je nu aan!</a>",
     "login-with-sc": "Inloggen met",
-    "divider-text": "OF"
+    "divider-text": "OF",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "PIN-code maken",
