@@ -87,7 +87,7 @@
     "create-account-text": "Hesabın yok mu? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Şimdi kaydol!</a>",
     "login-with-sc": "İle oturum aç",
     "divider-text": "Veya",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "Not: Steemconnect ödül işlemlerinde bazı ücretler alabilir"
   },
   "create-pin-code": {
     "title": "PIN kodu oluştur",
