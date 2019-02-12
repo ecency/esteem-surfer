@@ -86,7 +86,8 @@
     "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "没有账户？<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">立即注册！</a>",
     "login-with-sc": "登录方式",
-    "divider-text": "或"
+    "divider-text": "或",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "创建PIN码",
