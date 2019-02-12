@@ -86,7 +86,8 @@
     "error-authenticate": "Невірне ім'я користувача або пароль/WIF",
     "create-account-text": "Немає акаунту?<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Зареєструйтесь!</a>",
     "login-with-sc": "Увійти через",
-    "divider-text": "АБО"
+    "divider-text": "АБО",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "Задайте PIN-код",
