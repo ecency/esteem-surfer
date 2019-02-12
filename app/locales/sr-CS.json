@@ -86,7 +86,8 @@
     "error-authenticate": "Pogrešno korisničko ime ili lozinka/WIF",
     "create-account-text": "Nemate nalog? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Registrujte se odmah!</a>",
     "login-with-sc": "Prijavite se pomoću",
-    "divider-text": "ILI"
+    "divider-text": "ILI",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "Kreirajte PIN kod",
