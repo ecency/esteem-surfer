@@ -136,7 +136,7 @@ class Transfer extends PureComponent {
 
     // auto fill
     if (['transfer-saving', 'withdraw-saving', 'power-up'].includes(mode)) {
-      this.toChanged({ target: { value: username } });
+      this.toChanged(username);
     }
   };
 
