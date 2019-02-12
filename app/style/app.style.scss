@@ -356,6 +356,10 @@ a[target='_external'],
     color: $red2;
   }
 
+  .text-justify {
+    text-align: justify;
+  }
+
   .pull-left,
   .pull-right {
     max-width: calc(50% - 10px);
