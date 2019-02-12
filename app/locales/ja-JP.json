@@ -86,7 +86,8 @@
     "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "アカウントをお持ちでないですか？<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">今すぐ登録！</a>",
     "login-with-sc": "次のものでログイン",
-    "divider-text": "または"
+    "divider-text": "または",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "PINコードを作成",
