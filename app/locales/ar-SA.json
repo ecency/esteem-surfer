@@ -86,7 +86,8 @@
     "error-authenticate": "اسم المستخدم أو كلمة المرور خاطئة",
     "create-account-text": "ليس لديك حساب <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">سجّل الآن!</a>",
     "login-with-sc": "سجّل بواسطة",
-    "divider-text": "أو"
+    "divider-text": "أو",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "أنشئ رمز PIN",
