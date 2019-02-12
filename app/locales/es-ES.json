@@ -86,7 +86,8 @@
     "error-authenticate": "Nombre de usuario o contraseña incorrectos / WIF",
     "create-account-text": "¿No tienes una cuenta? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\"> ¡Regístrese ahora! </a>",
     "login-with-sc": "Iniciar sesión con",
-    "divider-text": "O"
+    "divider-text": "O",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "Crear código PIN",
