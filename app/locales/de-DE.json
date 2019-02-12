@@ -87,7 +87,7 @@
     "create-account-text": "Noch keinen Account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Jetzt Anmelden!</a>",
     "login-with-sc": "Einloggen mit",
     "divider-text": "oder",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "Hinweis: Steemconnect kann einige Gebühren für Ihre Reward-Transaktionen berechnen"
   },
   "create-pin-code": {
     "title": "Erstelle einen PIN-Code",
@@ -284,7 +284,7 @@
     "comment-entry-title": "Du siehst den Thread eines einzelnen Kommentars von: ",
     "comment-entry-go-root": "kompletten Inhalt anzeigen",
     "comment-entry-go-parent": "Übergeordneten Beitrag ansehen",
-    "similar-entries": "Similar Posts"
+    "similar-entries": "Ähnliche Beiträge"
   },
   "navbar": {
     "settings": "Einstellungen",
