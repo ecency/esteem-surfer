@@ -87,7 +87,7 @@
     "create-account-text": "Nincs fiókod? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">hozd létre most!</a>",
     "login-with-sc": "Bejelentkezés mint",
     "divider-text": "VAGY",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "Megjegyzés: Steemconnect esetleg díjat számolhat fel néhány jutalom-tranzakcióért"
   },
   "create-pin-code": {
     "title": "PIN-kód létrehozása",
