@@ -86,7 +86,8 @@
     "error-authenticate": "The guy-name or password/WIF no dey correct",
     "create-account-text": "You never get account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Oya register quick-quick</a>",
     "login-with-sc": "Login with",
-    "divider-text": "OR"
+    "divider-text": "OR",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "Create PIN Code",
