@@ -281,11 +281,14 @@ class Login extends Component {
           <FormattedMessage id="login.divider-text" />
         </Divider>
         <div className="login-sc" role="none" onClick={this.doScLogin}>
-          <p>
+          <p className="login-title">
             <FormattedMessage id="login.login-with-sc" />
           </p>
           <div className="logo">
             <img src={scLogo} alt="Steem Connect" />
+          </div>
+          <div className="sc-note">
+            <FormattedMessage id="login.sc-note" />
           </div>
         </div>
       </div>

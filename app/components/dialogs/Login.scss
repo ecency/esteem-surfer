@@ -105,17 +105,26 @@
 
   .login-sc {
     cursor: pointer;
-    font-weight: 700;
     margin: auto;
     text-align: center;
-    width: 200px;
+
+    .login-title {
+      font-weight: 700;
+      margin: 0 0 10px 0;
+    }
 
     .logo {
       background: $white-two;
       border-radius: 4px;
-      margin: auto;
+      margin: 0 auto 14px auto;
       padding: 3px;
       width: 190px;
+    }
+
+    .sc-note {
+      font-size: 95%;
+      opacity: 0.5;
+      margin-bottom: 10px;
     }
   }
 }
