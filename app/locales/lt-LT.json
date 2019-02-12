@@ -86,7 +86,8 @@
     "error-authenticate": "Neteisingas prisijungimo vardas arba slaptažodis/WIF",
     "create-account-text": "Neturi paskyros? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Užsiregistruok dabar!</a>",
     "login-with-sc": "Prisijungti su",
-    "divider-text": "AR"
+    "divider-text": "AR",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "Sukurti PIN-kodą",
