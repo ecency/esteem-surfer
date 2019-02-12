@@ -86,7 +86,8 @@
     "error-authenticate": "Nome utente o password sbagliati",
     "create-account-text": "Non hai un account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Registrati ora!</a>",
     "login-with-sc": "Accedi con",
-    "divider-text": "O"
+    "divider-text": "O",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "Crea Il Codice PIN",
