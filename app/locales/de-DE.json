@@ -86,7 +86,8 @@
     "error-authenticate": "Falscher Benutzername oder Passwort/WIF",
     "create-account-text": "Noch keinen Account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Jetzt Anmelden!</a>",
     "login-with-sc": "Einloggen mit",
-    "divider-text": "oder"
+    "divider-text": "oder",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "Erstelle einen PIN-Code",
