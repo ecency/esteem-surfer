@@ -86,7 +86,8 @@
     "error-authenticate": "Неправильное имя пользователя или пароль/ключ",
     "create-account-text": "Нет аккаунта? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Зарегистрируйтесь!</a>",
     "login-with-sc": "Войти через",
-    "divider-text": "или"
+    "divider-text": "или",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "Создайте ПИН код",
