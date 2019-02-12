@@ -426,7 +426,7 @@
     "empty-list": "Nici un rezultat"
   },
   "friends": {
-    "followers-title": "Followers ({count})",
-    "following-title": "Following ({count})"
+    "followers-title": "Urmăritori ({count})",
+    "following-title": "Urmăriți ({count})"
   }
 }
