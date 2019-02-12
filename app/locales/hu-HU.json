@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "Nincs internet kapcsolat"
   },
   "g": {
     "compose-entry": "Bejegyzés létrehozása",
@@ -426,7 +426,7 @@
     "empty-list": "Itt nincs semmi"
   },
   "friends": {
-    "followers-title": "Followers ({count})",
-    "following-title": "Following ({count})"
+    "followers-title": "Követők ({count})",
+    "following-title": "Követés ({count})"
   }
 }
