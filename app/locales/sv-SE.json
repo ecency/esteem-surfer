@@ -86,7 +86,8 @@
     "error-authenticate": "Fel användarnamn eller lösenord/WIF",
     "create-account-text": "Har du inget konto?<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Registrera dig nu!</a>",
     "login-with-sc": "Logga in med",
-    "divider-text": "ELLER"
+    "divider-text": "ELLER",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "Skapa PIN-kod",
