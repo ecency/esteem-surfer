@@ -86,7 +86,8 @@
     "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "Hana akun? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Daftar ilee!</a>",
     "login-with-sc": "Tamong deungon",
-    "divider-text": "Atawa"
+    "divider-text": "Atawa",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "Peugoet Kode PIN",
