@@ -86,7 +86,8 @@
     "error-authenticate": "Helytelen felhasználónév vagy jelszó/WIF",
     "create-account-text": "Nincs fiókod? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">hozd létre most!</a>",
     "login-with-sc": "Bejelentkezés mint",
-    "divider-text": "VAGY"
+    "divider-text": "VAGY",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "PIN-kód létrehozása",
