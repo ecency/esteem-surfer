@@ -86,7 +86,8 @@
     "error-authenticate": "Nama pengguna atau kata laluan salah",
     "create-account-text": "Tiada akaun? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\"> Daftarkan segera! </a>",
     "login-with-sc": "Log masuk dengan",
-    "divider-text": "ATAU"
+    "divider-text": "ATAU",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "Ciptakan kod PIN",
