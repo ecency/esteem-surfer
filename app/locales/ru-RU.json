@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "Нет соединения с интернет"
   },
   "g": {
     "compose-entry": "Создать пост",
@@ -426,7 +426,7 @@
     "empty-list": "Ничего нет"
   },
   "friends": {
-    "followers-title": "Followers ({count})",
-    "following-title": "Following ({count})"
+    "followers-title": "Подписчики ({count})",
+    "following-title": "Подписки ({count})"
   }
 }
