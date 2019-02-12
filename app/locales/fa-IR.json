@@ -86,7 +86,8 @@
     "error-authenticate": "نام کاربری یا رمزعبور اشتباه است",
     "create-account-text": "حساب کاربری ندارید؟ <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">ثبت نام کنید!</a>",
     "login-with-sc": "ورود با",
-    "divider-text": "یا"
+    "divider-text": "یا",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "ایجاد پین کد",
