@@ -86,7 +86,8 @@
     "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "Eikö sinulla ole tiliä? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Rekisteröidy nyt!</a>",
     "login-with-sc": "Kirjaudu käyttäen",
-    "divider-text": "TAI"
+    "divider-text": "TAI",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "Luo PIN-koodi",
