@@ -86,7 +86,8 @@
     "error-authenticate": "Nama pengguna atau kata sandi/WIF salah",
     "create-account-text": "Tidak memiliki akun? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">buat sekarang!</a>",
     "login-with-sc": "Masuk dengan",
-    "divider-text": "Atau"
+    "divider-text": "Atau",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "Buat Kode PIN",
