@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "Nėra Interneto Ryšio"
   },
   "g": {
     "compose-entry": "Sukurti Įrašą",
@@ -426,7 +426,7 @@
     "empty-list": "Nieko nėra"
   },
   "friends": {
-    "followers-title": "Followers ({count})",
-    "following-title": "Following ({count})"
+    "followers-title": "Sekėjai {count}",
+    "following-title": "Sekami ({count})"
   }
 }
