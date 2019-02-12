@@ -86,7 +86,8 @@
     "error-authenticate": "사용자 이름 또는 비밀번호/WIF가 올바르지 않습니다",
     "create-account-text": "계정이 없나요? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">지금 계정을 만드세요!</a>",
     "login-with-sc": "steemconnect를 이용해 로그인하세요",
-    "divider-text": "또는"
+    "divider-text": "또는",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "PIN 코드 만들기",
