@@ -426,7 +426,7 @@
     "empty-list": "اینجا چیزی نیست"
   },
   "friends": {
-    "followers-title": "Followers ({count})",
-    "following-title": "Following ({count})"
+    "followers-title": "فالوور ها ({count})",
+    "following-title": "دنبال شونده ها ({count})"
   }
 }
