@@ -87,7 +87,7 @@
     "create-account-text": "ليس لديك حساب <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">سجّل الآن!</a>",
     "login-with-sc": "سجّل بواسطة",
     "divider-text": "أو",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "ملاحظة: قد تفرض عليك Steemconnect بعض الرسوم من معاملات المكافآت الخاصة بك"
   },
   "create-pin-code": {
     "title": "أنشئ رمز PIN",
