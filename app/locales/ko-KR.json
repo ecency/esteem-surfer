@@ -11,13 +11,13 @@
     "cancel": "취소",
     "ok": "확인",
     "edit": "편집",
-    "server-error": "서버 오류로 인해 프로세스를 완료 할 수 없습니다.",
+    "server-error": "서버 오류로 인해 과정을 완료할 수 없습니다.",
     "save": "저장",
     "done": "완료",
     "select": "선택"
   },
   "footer": {
-    "faq": "자주하는 질문",
+    "faq": "FAQ",
     "about": "소개"
   },
   "entry-index": {
@@ -87,13 +87,13 @@
     "create-account-text": "계정이 없나요? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">지금 계정을 만드세요!</a>",
     "login-with-sc": "steemconnect를 이용해 로그인하세요",
     "divider-text": "또는",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "주의: Steemconnect에서 보상 트랜잭션에 대해 비용을 부과할 수도 있습니다"
   },
   "create-pin-code": {
     "title": "PIN 코드 만들기",
-    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
+    "desc1": "데이터를 암호화하고, 보안을 위한 추가 계층을 활성화하려면 PIN 코드를 설정하세요!",
     "input-placeholder": "PIN 코드를 입력하세요",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
+    "desc2": "앱이 실행될 때와 중요한 트랜잭션이 발생했을때 PIN 코드 입력화면이 나타날 것입니다.",
     "created": "PIN 코드가 생성되었습니다"
   },
   "confirm-pin-code": {
@@ -101,8 +101,8 @@
     "input-placeholder": "계속하려면 PIN 코드를 입력하세요",
     "last-chance": "이번이 마지막 기회입니다",
     "invalidate": "오, 잊어 버렸습니다 ...",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "invalidate-confirm": "정말로 PIN 코드를 비활성화 하시겠습니까?",
+    "invalidated": "PIN 코드가 비활성화되었습니다"
   },
   "user-menu": {
     "profile": "프로필",
@@ -208,8 +208,8 @@
     "reward-sp": "100% 파워 업",
     "reward-dp": "Decline Payout",
     "upvote": "업보트",
-    "clear": "Clear All",
-    "form-error-message": "Form is not valid. Please fill all fields",
+    "clear": "전체 삭제",
+    "form-error-message": "입력한 양식이 올바르지 않습니다. 모든 필드를 입력해주세요",
     "schedule": "일정 관리",
     "select-schedule-date": "날짜 선택",
     "schedule-saved": "일정 설정 완료",
@@ -222,7 +222,7 @@
     "save-draft": "임시보관함에 저장",
     "draft-saved": "임시보관함에 저장했습니다",
     "publish": "Publish",
-    "published": "Post Published",
+    "published": "글이 발행되었습니다",
     "update": "Update",
     "updated": "Post Updated",
     "sync-scroll": "Scroll Sync",
@@ -235,7 +235,7 @@
   "gallery": {
     "title": "갤러리",
     "copied": "클립보드에 복사되었습니다",
-    "load-error": "Could not load gallery",
+    "load-error": "갤러리를 불러올 수 없습니다",
     "empty-list": "Nothing here"
   },
   "drafts": {
@@ -394,7 +394,7 @@
     "amount": "수량",
     "amount-placeholder": "수량",
     "wrong-amount": "Wrong amount value",
-    "amount-precision-error": "Use only 3 digits of precision",
+    "amount-precision-error": "소수점은 셋째 자리까지만 사용할 수 있습니다",
     "insufficient-funds": "Insufficient funds",
     "balance": "잔액",
     "memo": "메모",
