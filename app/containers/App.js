@@ -88,7 +88,7 @@ class App extends React.Component {
     }
 
     this.checkIn();
-    this.checkInInterval = setInterval(this.checkIn, 1000 * 60 * 60 * 6);
+    this.checkInInterval = setInterval(this.checkIn, 1000 * 60 * 15 + 8);
   }
 
   componentWillUnmount() {
