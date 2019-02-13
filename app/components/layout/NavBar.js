@@ -159,20 +159,6 @@ class Address extends Component {
     }
   };
 
-  searchKeyup = e => {
-    if (e.keyCode !== 13) return;
-
-    const q = document.querySelector('#txt-search').value.trim();
-    if (!q) {
-      document.querySelector('#txt-search').focus();
-      return;
-    }
-
-    const { history } = this.props;
-
-    history.push(`/search?q=${encodeURIComponent(q)}&sort=${searchSort}`);
-  };
-
   toggle = () => {
     const { addressType } = this.state;
 
@@ -240,10 +226,13 @@ class Address extends Component {
                 className="url"
                 defaultValue={q}
                 id="txt-search"
-                onKeyUp={this.searchKeyup}
+                onChange={this.addressChanged}
+                onKeyUp={this.addressKeyup}
                 placeholder={intl.formatMessage({
                   id: 'navbar.address-enter-query'
                 })}
+                disabled={inProgress}
+                spellCheck={false}
               />
             </Fragment>
           )}
