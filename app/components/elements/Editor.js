@@ -741,10 +741,18 @@ class Editor extends Component {
     if (activeInput === 'title') {
       const titleEl = document.querySelector('#editor-title');
       if (titleEl) {
-        let { title: editorTitle } = this.state;
-        const pos = titleEl.selectionStart;
-        editorTitle = editorTitle.slice(0, pos) + em + editorTitle.slice(pos);
-        this.setState({ title: editorTitle }, () => {
+        const { title } = this.state;
+
+        let pos = titleEl.selectionStart;
+
+        const chars = [...title];
+        chars.splice(pos, 0, em);
+
+        const newTitle = chars.join('');
+
+        pos += 1;
+
+        this.setState({ title: newTitle }, () => {
           titleEl.selectionStart = pos + 1;
           titleEl.selectionEnd = pos + 2;
           titleEl.focus();
