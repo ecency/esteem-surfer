@@ -219,8 +219,8 @@
           }
 
           .tooltip-handler {
-            display: flex;
             align-items: center;
+            display: flex;
           }
         }
 
@@ -301,16 +301,16 @@
           overflow-y: scroll;
 
           &::-webkit-scrollbar {
-            width: 0;
             background: transparent;
+            width: 0;
           }
 
           .top-posts-list-item {
             border-radius: 8px;
             cursor: pointer;
             height: 120px;
-            width: 130px;
             margin-right: 10px;
+            width: 130px;
 
             @include themify(day) {
               border: 1px solid $white-four;
@@ -339,6 +339,7 @@
               height: 38px;
               justify-content: space-evenly;
               margin-top: 2px;
+              min-width: 130px;
 
               .post-title,
               .post-body {
