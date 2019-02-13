@@ -748,6 +748,7 @@ class Editor extends Component {
           titleEl.selectionStart = pos + 1;
           titleEl.selectionEnd = pos + 2;
           titleEl.focus();
+          this.changed();
         });
         return;
       }
