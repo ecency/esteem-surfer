@@ -1148,6 +1148,7 @@ class Entry extends PureComponent {
                         entry={en}
                         author={en.author}
                         permlink={en.permlink}
+                        key={`${en.author}-${en.permlink}`}
                       >
                         <div className="similar-entries-list-item">
                           <div className="item-title">{en.title}</div>
