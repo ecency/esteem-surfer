@@ -298,7 +298,7 @@ class QuickProfile extends Component {
                 <div className="entries">
                   {entries.map(d => (
                     <EntryListItem
-                      key={d.id}
+                      key={`${d.author}-${d.permlink}`}
                       {...this.props}
                       entry={d}
                       asAuthor={username}
