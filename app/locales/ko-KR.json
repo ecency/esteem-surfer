@@ -306,14 +306,14 @@
     "sort-by": "Sort by",
     "sort-popularity": "Popularity",
     "sort-relevance": "Relevance",
-    "sort-newest": "Date"
+    "sort-newest": "날짜"
   },
   "updater": {
-    "new-version-available": "New version is available",
-    "update": "Update",
+    "new-version-available": "새로운 버전을 이용할 수 있습니다",
+    "update": "업데이트",
     "dismiss": "Dismiss",
     "downloading": "새로운 버전 다운로드 중...",
-    "download-completed": "Download is completed",
+    "download-completed": "다운로드가 완료되었습니다",
     "restart": "재시작"
   },
   "context-menu": {
@@ -353,14 +353,14 @@
     "leaderboard-title": "일별 상위 사용자"
   },
   "witnesses": {
-    "page-title": "Witness Voting",
+    "page-title": "증인 투표",
     "remaining": "<strong>{n}</strong> of {max} votes remaining",
-    "witness": "Witness",
+    "witness": "증인",
     "miss": "Miss",
     "url": "URL",
-    "fee": "Fee",
-    "feed": "Feed",
-    "block-size": "Block size",
+    "fee": "수수료",
+    "feed": "피드",
+    "block-size": "블록 크기",
     "ac-avail": "AC avail",
     "ac-budget": "AC budget",
     "version": "Version",
@@ -410,7 +410,7 @@
     "success-sub-title": "Transfer successful",
     "transfer-summary": "Transferred <span class=\"amount\">{amount}</span> From <span class=\"from-user\">{from}</span> to <span class=\"to-user\">{to}</span>",
     "reset": "Another transfer",
-    "finish": "Finish",
+    "finish": "완료",
     "recent-transfers": "Recent transfers"
   },
   "delegate": {
@@ -427,7 +427,7 @@
     "empty-list": "Nothing here"
   },
   "friends": {
-    "followers-title": "Followers ({count})",
-    "following-title": "Following ({count})"
+    "followers-title": "팔로워 ({count})",
+    "following-title": "팔로잉 ({count})"
   }
 }
