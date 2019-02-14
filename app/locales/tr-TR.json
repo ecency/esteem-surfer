@@ -428,6 +428,7 @@
   },
   "friends": {
     "followers-title": "Takip ediliyor ({count})",
-    "following-title": "Following ({count})"
+    "following-title": "Following ({count})",
+    "load-more": "Load More"
   }
 }
