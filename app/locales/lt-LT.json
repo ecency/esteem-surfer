@@ -428,6 +428,7 @@
   },
   "friends": {
     "followers-title": "Sekėjai {count}",
-    "following-title": "Sekami ({count})"
+    "following-title": "Sekami ({count})",
+    "load-more": "Load More"
   }
 }
