@@ -429,6 +429,6 @@
   "friends": {
     "followers-title": "Seguidores ({count})",
     "following-title": "Seguindo ({count})",
-    "load-more": "Load More"
+    "load-more": "Carregar mais"
   }
 }
