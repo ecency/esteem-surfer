@@ -80,7 +80,7 @@ class Friends extends Component {
 
     const newData = [
       ...data,
-      ...moreData.filter(a => a.name !== startUserName)
+      ...moreData.filter(a => !data.find(b => b.name === a.name))
     ];
 
     this.stateSet({
