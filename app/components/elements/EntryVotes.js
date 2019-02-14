@@ -57,6 +57,7 @@ class EntryVotes extends Component {
     this.state = {
       modalVisible: false,
       enabled: false,
+      hovered: false,
       realVotes: undefined,
       votesRefreshing: false
     };
@@ -64,7 +65,14 @@ class EntryVotes extends Component {
 
   enable = () => {
     this.setState({
-      enabled: true
+      enabled: true,
+      hovered: true
+    });
+  };
+
+  mouseLeave = () => {
+    this.setState({
+      hovered: false
     });
   };
 
@@ -118,7 +126,13 @@ class EntryVotes extends Component {
       return children;
     }
 
-    const { modalVisible, enabled, realVotes, votesRefreshing } = this.state;
+    const {
+      modalVisible,
+      enabled,
+      realVotes,
+      votesRefreshing,
+      hovered
+    } = this.state;
 
     let popoverProps = {};
     let votes = [];
@@ -138,7 +152,8 @@ class EntryVotes extends Component {
 
     const clonedChildren = React.cloneElement(children, {
       onClick: this.showModal,
-      onMouseEnter: this.enable
+      onMouseEnter: this.enable,
+      onMouseLeave: this.mouseLeave
     });
 
     const modalTableColumns = [
@@ -198,7 +213,7 @@ class EntryVotes extends Component {
     ];
 
     return (
-      <Popover {...popoverProps}>
+      <Popover {...popoverProps} visible={hovered && !modalVisible}>
         {clonedChildren}
         <Modal
           visible={modalVisible}
