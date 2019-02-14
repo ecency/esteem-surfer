@@ -13,6 +13,7 @@ import parseDate from '../../utils/parse-date';
 import authorReputation from '../../utils/author-reputation';
 
 import AccountLink from '../helpers/AccountLink';
+import LinearProgress from '../common/LinearProgress';
 
 import { getActiveVotes, getAccounts } from '../../backend/steem-client';
 
@@ -56,7 +57,8 @@ class EntryVotes extends Component {
     this.state = {
       modalVisible: false,
       enabled: false,
-      realVotes: undefined
+      realVotes: undefined,
+      votesRefreshing: false
     };
   }
 
@@ -71,6 +73,7 @@ class EntryVotes extends Component {
       modalVisible: true
     });
 
+    this.setState({ votesRefreshing: true });
     const { entry } = this.props;
     return getActiveVotes(entry.author, entry.permlink)
       .then(votes => {
@@ -90,7 +93,10 @@ class EntryVotes extends Component {
         this.setState({ realVotes: prepareVotes(tempEntry) });
         return votes;
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => {
+        this.setState({ votesRefreshing: false });
+      });
   };
 
   handleModalCancel = () => {
@@ -112,7 +118,7 @@ class EntryVotes extends Component {
       return children;
     }
 
-    const { modalVisible, enabled, realVotes } = this.state;
+    const { modalVisible, enabled, realVotes, votesRefreshing } = this.state;
 
     let popoverProps = {};
     let votes = [];
@@ -206,6 +212,7 @@ class EntryVotes extends Component {
             />
           }
         >
+          {votesRefreshing && <LinearProgress />}
           <Table
             dataSource={votes}
             columns={modalTableColumns}
