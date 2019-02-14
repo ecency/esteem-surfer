@@ -428,6 +428,7 @@
   },
   "friends": {
     "followers-title": "Pengikut ({count})",
-    "following-title": "Mengikuti ({count})"
+    "following-title": "Mengikuti ({count})",
+    "load-more": "Load More"
   }
 }
