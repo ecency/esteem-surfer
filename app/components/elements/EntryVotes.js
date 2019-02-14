@@ -174,7 +174,9 @@ class EntryVotes extends Component {
         width: 150,
         defaultSortOrder: 'descend',
         sorter: (a, b) => a.reward - b.reward,
-        render: text => <FormattedCurrency {...this.props} value={text} />
+        render: text => (
+          <FormattedCurrency {...this.props} value={text} fixAt={3} />
+        )
       },
       {
         title: <FormattedMessage id="entry-votes.percent" />,

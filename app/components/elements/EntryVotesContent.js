@@ -23,7 +23,7 @@ class EntryVotesContent extends Component {
           {'%'}
         </span>
         <span key="reward" className="reward">
-          <FormattedCurrency {...this.props} value={v.reward} />
+          <FormattedCurrency {...this.props} value={v.reward} fixAt={3} />
         </span>
       </p>
     ));
