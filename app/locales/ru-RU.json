@@ -428,6 +428,7 @@
   },
   "friends": {
     "followers-title": "Подписчики ({count})",
-    "following-title": "Подписки ({count})"
+    "following-title": "Подписки ({count})",
+    "load-more": "Load More"
   }
 }
