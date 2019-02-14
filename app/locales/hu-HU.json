@@ -428,6 +428,7 @@
   },
   "friends": {
     "followers-title": "Követők ({count})",
-    "following-title": "Követés ({count})"
+    "following-title": "Követés ({count})",
+    "load-more": "Load More"
   }
 }
