@@ -216,7 +216,7 @@ class EntryVotes extends Component {
           <Table
             dataSource={votes}
             columns={modalTableColumns}
-            scroll={{ y: 300 }}
+            scroll={{ y: 310 }}
             rowKey="voter"
           />
         </Modal>
