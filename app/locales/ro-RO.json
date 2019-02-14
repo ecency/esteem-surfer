@@ -428,6 +428,7 @@
   },
   "friends": {
     "followers-title": "Urmăritori ({count})",
-    "following-title": "Urmăriți ({count})"
+    "following-title": "Urmăriți ({count})",
+    "load-more": "Load More"
   }
 }
