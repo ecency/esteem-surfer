@@ -309,18 +309,6 @@ export default input => {
       }
     }
 
-    // Convert image links using steemitimages proxy
-    if (!f) {
-      if (href.trim().indexOf('https://steemitimages.com/0x0/') === 0) {
-        el.setAttribute('data-href', href);
-        el.removeAttribute('href');
-
-        el.className = 'markdown-img-link';
-        el.innerHTML = `<img src="${href}">`;
-        f = true;
-      }
-    }
-
     // If nothing matched element as external link so it will be opened in external window
     if (!f) {
       el.className = 'markdown-external-link';

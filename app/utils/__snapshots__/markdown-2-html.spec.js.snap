@@ -14,6 +14,11 @@ exports[`Markdown to Html Mark Down -> Html Should catch images in table 1`] = `
 "
 `;
 
+exports[`Markdown to Html Mark Down -> Html Should not convert markdown links 1`] = `
+"<p>lorem <a class=\\"markdown-external-link\\" data-href=\\"https://steemitimages.com/0x0/https://d1vof77qrk4l5q.cloudfront.net/img/5752638e6965247789bc20cef34727263aaa41e1.png\\">this error</a> ipsum</p>
+"
+`;
+
 exports[`Markdown to Html Mark Down -> Html Should replace busy links properly 1`] = `
 "<p><img src=\\"https://steemitimages.com/0x0/https://ipfs.busy.org/ipfs/QmPziJCkx8w62UZCz1TNxAMsgf1uTnPZdVKAYjLBWvMzeD\\" alt=\\"image.png\\"></p>
 <p><a class=\\"markdown-post-link\\" data-tag=\\"busy\\" data-author=\\"muratkbesiroglu\\" data-permlink=\\"sci-fi-novel-underground-city-part-1-2\\">Part 1 - 2</a><br>

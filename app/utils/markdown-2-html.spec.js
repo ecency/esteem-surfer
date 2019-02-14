@@ -189,4 +189,12 @@ describe('Markdown to Html', () => {
       });
     }
   });
+
+  describe('Mark Down -> Html', () => {
+    it('Should not convert markdown links', () => {
+      const input =
+        'lorem [this error](https://steemitimages.com/0x0/https://d1vof77qrk4l5q.cloudfront.net/img/5752638e6965247789bc20cef34727263aaa41e1.png) ipsum';
+      expect(markDown2Html(input)).toMatchSnapshot();
+    });
+  });
 });
