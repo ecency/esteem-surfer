@@ -428,6 +428,7 @@
   },
   "friends": {
     "followers-title": "فالوور ها ({count})",
-    "following-title": "دنبال شونده ها ({count})"
+    "following-title": "دنبال شونده ها ({count})",
+    "load-more": "Load More"
   }
 }
