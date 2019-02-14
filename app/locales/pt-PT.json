@@ -87,7 +87,7 @@
     "create-account-text": "Não tem uma conta? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Cadastre-se agora!</a>",
     "login-with-sc": "Entrar com",
     "divider-text": "OU",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "A conexão Steemconnect pode cobrar algumas taxas de suas transações de recompensa"
   },
   "create-pin-code": {
     "title": "Criar o código PIN",
@@ -428,6 +428,7 @@
   },
   "friends": {
     "followers-title": "Seguidores ({count})",
-    "following-title": "Seguindo ({count})"
+    "following-title": "Seguindo ({count})",
+    "load-more": "Load More"
   }
 }
