@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Modal, Button } from 'antd';
 
-import { injectIntl } from 'react-intl';
+import { injectIntl, FormattedMessage } from 'react-intl';
 
 import LinearProgress from '../common/LinearProgress';
 import UserAvatar from '../elements/UserAvatar';
@@ -162,7 +162,7 @@ class Friends extends Component {
                 disabled={loading || !hasMore}
                 onClick={this.loadMore}
               >
-                Load More
+                <FormattedMessage id="friends.load-more" />
               </Button>
             </div>
           )}
