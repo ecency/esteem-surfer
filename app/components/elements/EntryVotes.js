@@ -14,6 +14,8 @@ import authorReputation from '../../utils/author-reputation';
 
 import AccountLink from '../helpers/AccountLink';
 
+import { getActiveVotes, getAccounts } from '../../backend/steem-client';
+
 export const prepareVotes = entry => {
   const totalPayout =
     parseToken(entry.pending_payout_value) +
@@ -53,7 +55,8 @@ class EntryVotes extends Component {
 
     this.state = {
       modalVisible: false,
-      enabled: false
+      enabled: false,
+      realVotes: undefined
     };
   }
 
@@ -67,6 +70,27 @@ class EntryVotes extends Component {
     this.setState({
       modalVisible: true
     });
+
+    const { entry } = this.props;
+    return getActiveVotes(entry.author, entry.permlink)
+      .then(votes => {
+        const ac = votes.map(a => a.voter);
+        return getAccounts(ac).then(accounts =>
+          votes.map(v => {
+            const account = accounts.find(a => a.name === v.voter);
+            if (account) {
+              return Object.assign({}, v, { reputation: account.reputation });
+            }
+            return v;
+          })
+        );
+      })
+      .then(votes => {
+        const tempEntry = Object.assign({}, entry, { active_votes: votes });
+        this.setState({ realVotes: prepareVotes(tempEntry) });
+        return votes;
+      })
+      .catch(() => {});
   };
 
   handleModalCancel = () => {
@@ -88,13 +112,13 @@ class EntryVotes extends Component {
       return children;
     }
 
-    const { modalVisible, enabled } = this.state;
+    const { modalVisible, enabled, realVotes } = this.state;
 
     let popoverProps = {};
     let votes = [];
 
     if (enabled) {
-      votes = prepareVotes(entry);
+      votes = realVotes || prepareVotes(entry);
 
       if (!modalVisible) {
         const popoverContent = (
