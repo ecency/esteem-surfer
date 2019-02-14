@@ -428,6 +428,7 @@
   },
   "friends": {
     "followers-title": "팔로워 ({count})",
-    "following-title": "팔로잉 ({count})"
+    "following-title": "팔로잉 ({count})",
+    "load-more": "Load More"
   }
 }
