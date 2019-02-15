@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "اتصال به اینترنت برقرار نیست"
   },
   "g": {
     "compose-entry": "نوشتن پست جدید",
@@ -284,7 +284,7 @@
     "comment-entry-title": "شما در حال مشاهده حالت نظرات تکی هستید: ",
     "comment-entry-go-root": "مشاهده متن کامل",
     "comment-entry-go-parent": "مشاهده شاخه اصلی",
-    "similar-entries": "Similar Posts"
+    "similar-entries": "پست های مشابه"
   },
   "navbar": {
     "settings": "تنظیمات",
