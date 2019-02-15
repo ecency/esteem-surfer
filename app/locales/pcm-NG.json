@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "Network no dey"
   },
   "g": {
     "compose-entry": "Write new tori",
@@ -87,7 +87,7 @@
     "create-account-text": "You never get account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Oya register quick-quick</a>",
     "login-with-sc": "Login with",
     "divider-text": "OR",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "Steemconnect fit charge you small from wetin you won transact"
   },
   "create-pin-code": {
     "title": "Create PIN Code",
