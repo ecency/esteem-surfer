@@ -155,7 +155,7 @@
     "steem-power-description": "Steem Power na token wey dey give power and the power go dey plenty join if you hold am for long time and if you dey vote people tori. The plenty the Steem Power wey you dey hold, the plenty your power to affect reward for people tori and the more wey you go dey earn onto say you vote people tori wella. ",
     "steem-power-delegated": "Delegated Steem Power",
     "steem-power-received": "Steem Power wey you Receive",
-    "next-power-down-amount": "Next power down amount",
+    "next-power-down-amount": "Amount of next power down",
     "steem-power-total": "Total Steem Power",
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "The tokens na about $1 of STEEM",
@@ -284,7 +284,7 @@
     "comment-entry-title": "Na one comment thread you dey look so:",
     "comment-entry-go-root": "Look all the whole tori",
     "comment-entry-go-parent": "Look the direct tori",
-    "similar-entries": "Similar Posts"
+    "similar-entries": "Post wey resemble"
   },
   "navbar": {
     "settings": "Settings",
