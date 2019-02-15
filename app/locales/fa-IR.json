@@ -87,7 +87,7 @@
     "create-account-text": "حساب کاربری ندارید؟ <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">ثبت نام کنید!</a>",
     "login-with-sc": "ورود با",
     "divider-text": "یا",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "توجه داشته باشید که: Steemconnect ممکن است مقداری از پاداش شما را به عنوان کارمزد دریافت کند"
   },
   "create-pin-code": {
     "title": "ایجاد پین کد",
@@ -429,6 +429,6 @@
   "friends": {
     "followers-title": "فالوور ها ({count})",
     "following-title": "دنبال شونده ها ({count})",
-    "load-more": "Load More"
+    "load-more": "ادامه"
   }
 }
