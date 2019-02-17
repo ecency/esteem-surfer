@@ -179,13 +179,13 @@
     "power-up": "파워 업",
     "withdraw-steem": "스팀 출금",
     "withdraw-sbd": "스팀 달러 출금",
-    "delegate": "Delegate"
+    "delegate": "임대"
   },
   "composer": {
     "title-placeholder": "제목",
     "tags-placeholder": "Tags. First tag is your main category",
     "max-n-tags": "Max {n} tags",
-    "body-placeholder": "Post Content",
+    "body-placeholder": "글 작성하기",
     "tool-bold": "굵게",
     "tool-italic": "Italic",
     "tool-header": "Heading",
