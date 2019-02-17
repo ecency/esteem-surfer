@@ -161,7 +161,7 @@
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "안전 금고",
     "savings-description": "잔액을 출금하려면 3일간 기다려야 합니다.",
-    "next-power-down": "The next power down is {time} {amount}",
+    "next-power-down": "다음 번 파워 다운은 {time} {amount} 입니다",
     "exchange": "거래소 시세 정보",
     "transactions": "트랜잭션",
     "transaction-curation_reward": "큐레이션 보상",
