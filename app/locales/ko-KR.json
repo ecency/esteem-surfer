@@ -377,7 +377,7 @@
     "proxy-created": "@{n} has set as proxy"
   },
   "transfer": {
-    "transfer-title": "Transfer to Account",
+    "transfer-title": "송금하기",
     "transfer-sub-title": "Move funds to another Steem account",
     "transfer-saving-title": "안전 금고로 송금",
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
@@ -386,10 +386,10 @@
     "power-up-title": "Convert to Steem Power",
     "power-up-sub-title": "Influence tokens which give you more control over post payouts and allow you to earn on curation rewards.",
     "from": "From",
-    "from-placeholder": "Select a user",
+    "from-placeholder": "사용자 선택하기",
     "to": "To",
     "to-placeholder": "사용자 이름",
-    "to-not-found": "The user that you are trying to transfer funds to does not exist!",
+    "to-not-found": "송금 대상으로 입력한 사용자가 존재하지 않습니다.",
     "to-bad-actor": "Use caution sending to this account. Please double check your spelling for possible phishing.",
     "amount": "수량",
     "amount-placeholder": "수량",
@@ -408,18 +408,18 @@
     "back": "뒤로",
     "success-title": "성공",
     "success-sub-title": "Transfer successful",
-    "transfer-summary": "Transferred <span class=\"amount\">{amount}</span> From <span class=\"from-user\">{from}</span> to <span class=\"to-user\">{to}</span>",
+    "transfer-summary": "<span class=\"from-user\">{from}</span>님이 <span class=\"to-user\">{to}</span> 님에게 <span class=\"amount\">{amount}</span>를 송금했습니다.",
     "reset": "Another transfer",
     "finish": "완료",
-    "recent-transfers": "Recent transfers"
+    "recent-transfers": "최근 송금 내역"
   },
   "delegate": {
     "title": "임대",
     "sub-title": "스팀 파워 임대",
     "slider-help": "슬라이드를 드래그해서 수량을 설정할 수 있습니다",
     "confirm-title": "임대 확인",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
+    "confirm-sub-title": "정보가 맞는지 다시 한 번 확인하세요",
+    "delegation-summary": "<span class=\"sp\">{sp}</span>가 <span class=\"to-user\">{to}</span>님에게 임대되었습니다",
     "success-sub-title": "임대 완료",
     "insufficient-vesting": "스팀 파워가 충분하지 않습니다 {a} VESTS"
   },
