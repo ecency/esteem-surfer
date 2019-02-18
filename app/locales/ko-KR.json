@@ -242,7 +242,7 @@
     "title": "임시 보관함",
     "load-error": "임시 저장된 글을 불러올 수 없습니다",
     "empty-list": "빈 목록입니다",
-    "deleted": "Draft is deleted"
+    "deleted": "임시 저장된 글이 삭제되었습니다"
   },
   "schedules": {
     "title": "Scheduled Posts",
@@ -255,7 +255,7 @@
     "title": "즐겨찾기",
     "load-error": "즐겨찾기를 불러올 수 없습니다",
     "empty-list": "빈 목록입니다",
-    "deleted": "Bookmark is removed",
+    "deleted": "즐겨찾기가 삭제되었습니다",
     "search": "즐겨찾기에서 검색"
   },
   "favorites": {
