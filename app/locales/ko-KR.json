@@ -150,7 +150,7 @@
     "unclaimed-rewards": "아직 요청하지 않은 보상",
     "estimated-value": "추정 가치는 7 일간의 스팀 평균 가격을 토대로 산정합니다.",
     "steem": "스팀",
-    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
+    "steem-description": "스팀은 언제든지 송금할 수 있기 때문에 쉽게 거래할 수 있는 토큰입니다. 스팀은 파워 업이라는 과정을 통해 스팀 파워로 전환할 수 있습니다.",
     "steem-power": "스팀 파워",
     "steem-power-description": "Steem Power are influence tokens that earn more power for holding long term and voting on posts. The more Steem Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
     "steem-power-delegated": "임대한 스팀 파워",
@@ -245,9 +245,9 @@
     "deleted": "임시 저장된 글이 삭제되었습니다"
   },
   "schedules": {
-    "title": "Scheduled Posts",
+    "title": "글 발행 일정",
     "empty-list": "Nothing here",
-    "deleted": "Scheduled post is deleted",
+    "deleted": "예약된 글이 삭제되었습니다",
     "move": "임시보관함으로 이동",
     "moved": "임시보관함으로 이동했습니다"
   },
