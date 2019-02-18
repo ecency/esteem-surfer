@@ -170,7 +170,7 @@
     "transaction-claim_reward_balance": "보상 요청",
     "transaction-transfer": "송금",
     "transaction-transfer_to_vesting": "Transfer to vesting",
-    "transaction-withdraw_vesting": "Withdraw vesting",
+    "transaction-withdraw_vesting": "파워 다운",
     "transaction-fill_order": "Fill order",
     "claim-reward-balance": "Claim reward balance",
     "claim-reward-balance-ok": "Reward balance claimed",
