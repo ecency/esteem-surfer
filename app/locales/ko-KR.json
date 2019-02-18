@@ -184,7 +184,7 @@
   "composer": {
     "title-placeholder": "제목",
     "tags-placeholder": "태그를 입력하세요. 첫 번째 태그가  메인 카테고리를 결정합니다",
-    "max-n-tags": "Max {n} tags",
+    "max-n-tags": "최대 {n} 개 설정 가능",
     "body-placeholder": "글 작성하기",
     "tool-bold": "굵게",
     "tool-italic": "이탤릭체",
