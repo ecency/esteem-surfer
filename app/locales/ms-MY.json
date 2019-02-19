@@ -285,7 +285,7 @@
     "comment-entry-go-root": "Lihat konteks lengkap",
     "comment-entry-go-parent": "Lihat sumber utama",
     "similar-entries": "Pos yang menyerupa",
-    "fetch-error": "Server timeout because response size is too big"
+    "fetch-error": "Saiz penyampaian maklumat terlampau besar, server telah berhenti"
   },
   "navbar": {
     "settings": "Tetapan",
