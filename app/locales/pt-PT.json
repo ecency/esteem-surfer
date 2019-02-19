@@ -284,7 +284,8 @@
     "comment-entry-title": "Você está visualizando o segmento da um único comentário desde: ",
     "comment-entry-go-root": "Ver o contexto completo",
     "comment-entry-go-parent": "Ver o comentário relacionado",
-    "similar-entries": "Posts semelhantes"
+    "similar-entries": "Posts semelhantes",
+    "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
     "settings": "Configurações",
