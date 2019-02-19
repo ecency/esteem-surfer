@@ -285,7 +285,7 @@
     "comment-entry-go-root": "İçeriğin tamamını görüntüle",
     "comment-entry-go-parent": "Doğrudan kaynağı görüntüle",
     "similar-entries": "Benzer gönderiler",
-    "fetch-error": "Server timeout because response size is too big"
+    "fetch-error": "Sunucu zaman aşımı çünkü tepki boyutu çok büyük"
   },
   "navbar": {
     "settings": "Ayarlar",
