@@ -284,7 +284,8 @@
     "comment-entry-title": "Вы просматриваете один комментарий ветки: ",
     "comment-entry-go-root": "Полный контекст",
     "comment-entry-go-parent": "Прямой родительский комментарий",
-    "similar-entries": "Похожие посты"
+    "similar-entries": "Похожие посты",
+    "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
     "settings": "Настройки",
