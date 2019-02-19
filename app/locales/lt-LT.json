@@ -284,7 +284,8 @@
     "comment-entry-title": "Jūs skaitote komentarą iš: ",
     "comment-entry-go-root": "Peržiūrėti visą kontekstą",
     "comment-entry-go-parent": "Peržiūrėti pirminį",
-    "similar-entries": "Panašūs Įrašai"
+    "similar-entries": "Panašūs Įrašai",
+    "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
     "settings": "Nustatymai",
