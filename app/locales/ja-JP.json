@@ -284,7 +284,8 @@
     "comment-entry-title": "1つのコメントスレッドを表示しています: ",
     "comment-entry-go-root": "全文を表示",
     "comment-entry-go-parent": "親コメントを表示",
-    "similar-entries": "Similar Posts"
+    "similar-entries": "Similar Posts",
+    "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
     "settings": "設定",
