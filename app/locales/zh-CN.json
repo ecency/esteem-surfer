@@ -284,7 +284,8 @@
     "comment-entry-title": "您正在查看以下位置的单个评论线程： ",
     "comment-entry-go-root": "查看完整内容",
     "comment-entry-go-parent": "查看直接上一级",
-    "similar-entries": "Similar Posts"
+    "similar-entries": "Similar Posts",
+    "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
     "settings": "设置",
