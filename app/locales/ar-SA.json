@@ -285,7 +285,7 @@
     "comment-entry-go-root": "عرض المحتوى الكامل",
     "comment-entry-go-parent": "عرض الرسالة الرئيسية",
     "similar-entries": "منشورات مماثلة",
-    "fetch-error": "Server timeout because response size is too big"
+    "fetch-error": "إنتهت مهلة الخادم لأن حجم الاستجابة كبير جدًا"
   },
   "navbar": {
     "settings": "إعدادات",
