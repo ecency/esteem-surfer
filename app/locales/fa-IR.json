@@ -35,7 +35,7 @@
     "potential-payout": "پرداخت های بالقوه",
     "promoted": "ارتقا داده شده",
     "author-payout": "پاداش نویسنده",
-    "curation-payout": "دستمزد حامیان",
+    "curation-payout": "پاداش مشارکت",
     "payout-date": "پرداخت"
   },
   "entry-votes": {
@@ -164,7 +164,7 @@
     "next-power-down": "{amount}{time} تا کاهش قدرت بعدی",
     "exchange": "تبادل ارز",
     "transactions": "تراکنش ها",
-    "transaction-curation_reward": "پاداش جمع آوری شده",
+    "transaction-curation_reward": "پاداش مشارکت",
     "transaction-author_reward": "پاداش نویسنده",
     "transaction-comment_benefactor_reward": "پاداش متعلق به نویسنده نظر",
     "transaction-claim_reward_balance": "دریافت پاداش",
