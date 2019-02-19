@@ -284,7 +284,8 @@
     "comment-entry-title": "شما در حال مشاهده حالت نظرات تکی هستید: ",
     "comment-entry-go-root": "مشاهده متن کامل",
     "comment-entry-go-parent": "مشاهده شاخه اصلی",
-    "similar-entries": "پست های مشابه"
+    "similar-entries": "پست های مشابه",
+    "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
     "settings": "تنظیمات",
