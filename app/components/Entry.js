@@ -759,6 +759,8 @@ class Entry extends PureComponent {
   };
 
   fetch = async () => {
+    const { intl } = this.props;
+
     this.setState({ replies: [], repliesLoading: true, replySort: 'trending' });
 
     const { match, actions, activeAccount } = this.props;
@@ -783,15 +785,22 @@ class Entry extends PureComponent {
 
     this.setState({ entry });
 
-    this.stateData = await getState(this.statePath);
-
-    const theEntry = this.stateData.content[this.entryPath];
-
-    const replies = this.compileReplies(theEntry, 'trending');
-
-    this.setState({ repliesLoading: false, replies });
-
     this.fetchSimilar();
+
+    try {
+      this.stateData = await getState(this.statePath);
+    } catch (err) {
+      this.stateData = null;
+      message.error(intl.formatMessage({ id: 'entry.fetch-error' }));
+    }
+
+    if (this.stateData) {
+      const theEntry = this.stateData.content[this.entryPath];
+      const replies = this.compileReplies(theEntry, 'trending');
+      this.setState({ replies });
+    }
+
+    this.setState({ repliesLoading: false });
   };
 
   refresh = async () => {
