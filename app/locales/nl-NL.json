@@ -284,7 +284,8 @@
     "comment-entry-title": "Je bekijkt een enkele commentaar-draad van: ",
     "comment-entry-go-root": "Bekijk de volledige context",
     "comment-entry-go-parent": "Bekijk de direct-bovenliggende",
-    "similar-entries": "Similar Posts"
+    "similar-entries": "Similar Posts",
+    "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
     "settings": "Instellingen",
