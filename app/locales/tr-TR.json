@@ -284,7 +284,8 @@
     "comment-entry-title": "Tek bir yorum dizisini şuradan görüntülüyorsunuz: ",
     "comment-entry-go-root": "İçeriğin tamamını görüntüle",
     "comment-entry-go-parent": "Doğrudan kaynağı görüntüle",
-    "similar-entries": "Benzer gönderiler"
+    "similar-entries": "Benzer gönderiler",
+    "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
     "settings": "Ayarlar",
