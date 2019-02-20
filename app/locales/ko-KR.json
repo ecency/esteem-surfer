@@ -282,37 +282,37 @@
     "copy-clipboard": "클립보드에 링크 복사하기",
     "copied-clipboard": "복사됨",
     "comment-entry-title": "You are viewing a single comment's thread from: ",
-    "comment-entry-go-root": "View the full context",
-    "comment-entry-go-parent": "View the direct parent",
+    "comment-entry-go-root": "전체 글 보기",
+    "comment-entry-go-parent": "상위 글 보기",
     "similar-entries": "유사한 글",
-    "fetch-error": "Server timeout because response size is too big"
+    "fetch-error": "응답 파일 크기가 너무 커서 서버 타임아웃이 발생했습니다"
   },
   "navbar": {
     "settings": "설정",
     "change-theme": "테마 변경",
-    "login": "Login to your account",
+    "login": "로그인",
     "bookmark": "즐겨찾기에 추가",
     "bookmarkRemove": "즐겨찾기에서 삭제",
     "favorite": "좋아하는 저자 목록에 추가",
     "favoriteRemove": "좋아하는 저자 목록에서 삭제",
     "wallet": "내 지갑",
     "activities": "활동",
-    "address-enter-url": "Enter url",
-    "address-enter-query": "Enter search query",
-    "unclaimed-reward-notice": "You have unclaimed rewards",
-    "search-no-matches": "No matches"
+    "address-enter-url": "url을 입력하세요",
+    "address-enter-query": "검색어를 입력하세요",
+    "unclaimed-reward-notice": "요청하지 않은 보상이 있습니다",
+    "search-no-matches": "검색 결과가 없습니다"
   },
   "search": {
-    "n-results-for-q": "{n} results for {q}",
+    "n-results-for-q": "{q} 에 대한 검색 결과 {n} 건이 발견되었습니다",
     "sort-by": "정렬 기준",
-    "sort-popularity": "Popularity",
-    "sort-relevance": "Relevance",
+    "sort-popularity": "인기 순",
+    "sort-relevance": "연관성 순",
     "sort-newest": "날짜"
   },
   "updater": {
     "new-version-available": "새로운 버전을 이용할 수 있습니다",
     "update": "업데이트",
-    "dismiss": "Dismiss",
+    "dismiss": "닫기",
     "downloading": "새로운 버전 다운로드 중...",
     "download-completed": "다운로드가 완료되었습니다",
     "restart": "재시작"
@@ -330,8 +330,8 @@
     "mention-post": "{source} 님의 글에서 내가 언급되었습니다",
     "mention-comment": "{source} 님이 댓글에서 나를 언급했습니다",
     "followed": "{source} 님이 팔로우를 시작했습니다",
-    "replied": "{source} replied you",
-    "reblogged": "{source} reblogged your post"
+    "replied": "{source} 님이 댓글을 남겼습니다",
+    "reblogged": "{source} 님이 당신 글을 리블로그했습니다"
   },
   "activities": {
     "type-all": "모든 활동",
@@ -357,7 +357,7 @@
     "page-title": "증인 투표",
     "remaining": "<strong>{n}</strong> of {max} votes remaining",
     "witness": "증인",
-    "miss": "Miss",
+    "miss": "생산 실패",
     "url": "URL",
     "fee": "수수료",
     "feed": "피드",
