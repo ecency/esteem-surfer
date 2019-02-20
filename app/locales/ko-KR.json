@@ -191,7 +191,7 @@
     "tool-header": "제목 양식",
     "tool-code": "코드",
     "tool-quote": "인용",
-    "tool-ul": "정렬되지 않은 목록",
+    "tool-ul": "번호가 없는 목록",
     "tool-ol": "번호가 있는 목록",
     "tool-link": "링크",
     "tool-image": "이미지",
