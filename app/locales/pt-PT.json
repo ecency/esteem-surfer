@@ -285,7 +285,7 @@
     "comment-entry-go-root": "Ver o contexto completo",
     "comment-entry-go-parent": "Ver o comentário relacionado",
     "similar-entries": "Posts semelhantes",
-    "fetch-error": "Server timeout because response size is too big"
+    "fetch-error": "Tempo limite do servidor porque o tamanho da resposta é muito grande"
   },
   "navbar": {
     "settings": "Configurações",
