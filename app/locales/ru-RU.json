@@ -87,7 +87,7 @@
     "create-account-text": "Нет аккаунта? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Зарегистрируйтесь!</a>",
     "login-with-sc": "Войти через",
     "divider-text": "или",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "Примечание: Steemconnect может взимать некоторые сборы из ваших транзакций вознаграждений"
   },
   "create-pin-code": {
     "title": "Создайте ПИН код",
@@ -285,7 +285,7 @@
     "comment-entry-go-root": "Полный контекст",
     "comment-entry-go-parent": "Прямой родительский комментарий",
     "similar-entries": "Похожие посты",
-    "fetch-error": "Server timeout because response size is too big"
+    "fetch-error": "Тайм-аут сервера, потому что размер ответа слишком большой"
   },
   "navbar": {
     "settings": "Настройки",
@@ -430,6 +430,6 @@
   "friends": {
     "followers-title": "Подписчики ({count})",
     "following-title": "Подписки ({count})",
-    "load-more": "Load More"
+    "load-more": "Загрузить ещё"
   }
 }
