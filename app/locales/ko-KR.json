@@ -394,7 +394,7 @@
     "to-bad-actor": "Use caution sending to this account. Please double check your spelling for possible phishing.",
     "amount": "수량",
     "amount-placeholder": "수량",
-    "wrong-amount": "Wrong amount value",
+    "wrong-amount": "수량이 올바르지 않습니다",
     "amount-precision-error": "소수점은 셋째 자리까지만 사용할 수 있습니다",
     "insufficient-funds": "자금이 충분하지 않습니다",
     "balance": "잔액",
