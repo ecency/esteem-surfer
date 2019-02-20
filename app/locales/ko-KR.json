@@ -172,8 +172,8 @@
     "transaction-transfer_to_vesting": "파워 업",
     "transaction-withdraw_vesting": "파워 다운",
     "transaction-fill_order": "체결 주문",
-    "claim-reward-balance": "Claim reward balance",
-    "claim-reward-balance-ok": "Reward balance claimed",
+    "claim-reward-balance": "보상 요청",
+    "claim-reward-balance-ok": "보상을 요청했습니다",
     "transfer": "송금",
     "transfer-to-savings": "안전 금고로 송금",
     "power-up": "파워 업",
@@ -188,7 +188,7 @@
     "body-placeholder": "글 작성하기",
     "tool-bold": "굵게",
     "tool-italic": "이탤릭체",
-    "tool-header": "Heading",
+    "tool-header": "제목 양식",
     "tool-code": "코드",
     "tool-quote": "인용",
     "tool-ul": "정렬되지 않은 목록",
@@ -284,7 +284,7 @@
     "comment-entry-title": "You are viewing a single comment's thread from: ",
     "comment-entry-go-root": "View the full context",
     "comment-entry-go-parent": "View the direct parent",
-    "similar-entries": "Similar Posts",
+    "similar-entries": "유사한 글",
     "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
