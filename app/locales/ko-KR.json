@@ -229,14 +229,14 @@
     "words-count": "{n} words",
     "no-suggestions": "No suggestions",
     "emoji-filter-placeholder": "필터",
-    "emoji-filter-no-match": "No match",
+    "emoji-filter-no-match": "일치하는 항목이 없습니다",
     "emoji-recently-used": "최근 사용한 것"
   },
   "gallery": {
     "title": "갤러리",
     "copied": "클립보드에 복사되었습니다",
     "load-error": "갤러리를 불러올 수 없습니다",
-    "empty-list": "Nothing here"
+    "empty-list": "빈 목록입니다"
   },
   "drafts": {
     "title": "임시 보관함",
@@ -246,7 +246,7 @@
   },
   "schedules": {
     "title": "글 발행 일정",
-    "empty-list": "Nothing here",
+    "empty-list": "빈 목록입니다",
     "deleted": "예약된 글이 삭제되었습니다",
     "move": "임시보관함으로 이동",
     "moved": "임시보관함으로 이동했습니다"
