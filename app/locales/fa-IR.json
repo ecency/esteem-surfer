@@ -285,7 +285,7 @@
     "comment-entry-go-root": "مشاهده متن کامل",
     "comment-entry-go-parent": "مشاهده شاخه اصلی",
     "similar-entries": "پست های مشابه",
-    "fetch-error": "Server timeout because response size is too big"
+    "fetch-error": "به دلیل وقفه طولانی، سرور جوابی دریافت نکرد"
   },
   "navbar": {
     "settings": "تنظیمات",
