@@ -422,7 +422,7 @@
     "confirm-sub-title": "정보가 맞는지 다시 한 번 확인하세요",
     "delegation-summary": "<span class=\"sp\">{sp}</span>가 <span class=\"to-user\">{to}</span>님에게 임대되었습니다",
     "success-sub-title": "임대 완료",
-    "insufficient-vesting": "스팀 파워가 충분하지 않습니다 {a} VESTS"
+    "insufficient-vesting": "스팀 파워가 충분하지 않습니다. {a} VESTS 보유 중"
   },
   "delegation-list": {
     "empty-list": "빈 목록입니다"
