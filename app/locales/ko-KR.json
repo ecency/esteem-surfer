@@ -27,7 +27,7 @@
     "filter-created": "최신 글",
     "filter-active": "활동 순",
     "filter-promoted": "홍보 글",
-    "filter-votes": "투표 순",
+    "filter-votes": "투표 수",
     "filter-children": "댓글 수",
     "filter-feed": "피드"
   },
@@ -47,7 +47,7 @@
     "modal-title": "투표자 ({n})"
   },
   "entry-list-item": {
-    "reblogged": "{n}에 의해 :"
+    "reblogged": "{n} 님이 리블로그했습니다"
   },
   "entry-reblog": {
     "reblog": "리블로그",
@@ -55,8 +55,8 @@
   },
   "settings": {
     "title": "설정",
-    "currency": "화폐 표기",
-    "currency-fetch-error": "'{cur}'에 대한 환율을 조회할 수 없습니다",
+    "currency": "화폐",
+    "currency-fetch-error": "'{cur}' 에 대한 환율을 조회할 수 없습니다",
     "currency-changed": "화폐 설정이 변경되었습니다",
     "locale": "언어",
     "locale-changed": "언어 설정이 변경되었습니다",
@@ -65,7 +65,7 @@
     "server-connecting": "'{server}'에 연결 중...",
     "server-connect-error": "'{server}'에 연결할 수 없습니다. 인터넷 연결 상태를 확인하세요.",
     "server-timeout-error": "'{server}'가 죽은 것 같습니다",
-    "server-changed": "서버 선택이 {server} (으) 로 변경되었습니다.",
+    "server-changed": "서버를 {server} 으로 변경했습니다",
     "server-custom-address": "커스텀 서버 주소",
     "server-list-fetch-error": "서버 목록을 조회할 수 없습니다",
     "push-notifications": "알림",
@@ -87,20 +87,20 @@
     "create-account-text": "계정이 없나요? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">지금 계정을 만드세요!</a>",
     "login-with-sc": "steemconnect를 이용해 로그인하세요",
     "divider-text": "또는",
-    "sc-note": "주의: Steemconnect에서 보상 트랜잭션에 대해 비용을 부과할 수도 있습니다"
+    "sc-note": "주의: Steemconnect에서 당신의 보상 트랜잭션에 대해 일정 수수료를 부과할 수도 있습니다"
   },
   "create-pin-code": {
     "title": "PIN 코드 만들기",
     "desc1": "데이터를 암호화하고, 보안을 위한 추가 계층을 활성화하려면 PIN 코드를 설정하세요!",
     "input-placeholder": "PIN 코드를 입력하세요",
-    "desc2": "앱이 실행될 때와 중요한 트랜잭션이 발생했을때 PIN 코드 입력화면이 나타날 것입니다.",
+    "desc2": "앱을 실행할 때, 그리고 중요한 트랜잭션이 발생했을 때 PIN 코드 입력 화면이 나타날 것입니다.",
     "created": "PIN 코드가 생성되었습니다"
   },
   "confirm-pin-code": {
-    "title": "PIN 코드 입력",
+    "title": "PIN 코드를 입력하세요",
     "input-placeholder": "계속하려면 PIN 코드를 입력하세요",
     "last-chance": "이번이 마지막 기회입니다",
-    "invalidate": "오, 잊어 버렸습니다 ...",
+    "invalidate": "PIN 코드가 기억나지 않습니다...",
     "invalidate-confirm": "정말로 PIN 코드를 비활성화 하시겠습니까?",
     "invalidated": "PIN 코드가 비활성화되었습니다"
   },
