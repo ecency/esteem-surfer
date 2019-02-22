@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "No Internet Connection"
+  },
   "g": {
     "compose-entry": "Créer une publication",
     "are-you-sure": "Êtes-vous sûr ?",
@@ -83,7 +86,8 @@
     "error-authenticate": "Nom utilisateur ou mot de passe/wif incorrect",
     "create-account-text": "Vous ne possédez pas de compte ? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Inscrivez-vous dès maintenant !</a>",
     "login-with-sc": "Se connecter avec",
-    "divider-text": "OU"
+    "divider-text": "OU",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "Créer un code PIN",
@@ -151,6 +155,7 @@
     "steem-power-description": "Les Steem Power sont des jetons d'influence, qui obtiennent plus de puissance en les conservant à long terme et en votant sur les publications. Plus on le conserve, plus on a d'influence sur les récompenses des autres et vous en gagnez pour avoir voté correctement.",
     "steem-power-delegated": "Steem Power délégué",
     "steem-power-received": "Steem Power reçu",
+    "next-power-down-amount": "Prochaine diminution d'influence dans",
     "steem-power-total": "Steem Power total",
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Les jetons valent environ 1.00$ de STEEM.",
@@ -278,7 +283,9 @@
     "copied-clipboard": "Copié",
     "comment-entry-title": "Vous visualisez le fil de discussion d'un seul commentaire à partir de : ",
     "comment-entry-go-root": "Voir le contexte complet",
-    "comment-entry-go-parent": "Voir le parent direct"
+    "comment-entry-go-parent": "Voir le parent direct",
+    "similar-entries": "Similar Posts",
+    "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
     "settings": "Réglages",
@@ -293,7 +300,7 @@
     "address-enter-url": "Saisissez l'url",
     "address-enter-query": "Entrer un critère de recherche",
     "unclaimed-reward-notice": "Vous avez des récompenses non réclamées",
-    "search-no-matches": "No matches"
+    "search-no-matches": "Aucune correspondance"
   },
   "search": {
     "n-results-for-q": "{n} résultats pour {q}",
@@ -403,12 +410,12 @@
     "success-title": "Succés",
     "success-sub-title": "Transfert réussi",
     "transfer-summary": "Transféré <span class=\"amount\">{amount}</span> De <span class=\"from-user\">{from}</span> à <span class=\"to-user\">{to}</span>",
-    "reset": "Another transfer",
+    "reset": "Autre transfert",
     "finish": "Terminer",
     "recent-transfers": "Transferts récents"
   },
   "delegate": {
-    "title": "Delegate",
+    "title": "Déléguer",
     "sub-title": "Delegate Steem Power",
     "slider-help": "Faites glisser le curseur pour ajuster le montant",
     "confirm-title": "Confirmer la délégation",
@@ -419,5 +426,10 @@
   },
   "delegation-list": {
     "empty-list": "Il n'y a rien ici"
+  },
+  "friends": {
+    "followers-title": "Followers ({count})",
+    "following-title": "Following ({count})",
+    "load-more": "Load More"
   }
 }

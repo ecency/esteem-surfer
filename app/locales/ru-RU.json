@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "Нет соединения с интернет"
+  },
   "g": {
     "compose-entry": "Создать пост",
     "are-you-sure": "Вы уверены?",
@@ -83,7 +86,8 @@
     "error-authenticate": "Неправильное имя пользователя или пароль/ключ",
     "create-account-text": "Нет аккаунта? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Зарегистрируйтесь!</a>",
     "login-with-sc": "Войти через",
-    "divider-text": "или"
+    "divider-text": "или",
+    "sc-note": "Примечание: Steemconnect может взимать некоторые сборы из ваших транзакций вознаграждений"
   },
   "create-pin-code": {
     "title": "Создайте ПИН код",
@@ -151,6 +155,7 @@
     "steem-power-description": "Steam Power (Сила) - это токены влияния, которые дают ещё больше силы, если их не выводить и использовать для голосования. Чем больше у вас Steem Power, тем больше ваше влияние на награды других и больше ваш заработок за удачные голосования.",
     "steem-power-delegated": "Делегированная Сила Голоса",
     "steem-power-received": "Полученная Сила Голоса",
+    "next-power-down-amount": "Следующее понижение силы",
     "steem-power-total": "Всего Силы Голоса",
     "steem-dollars": "Доллары Steem",
     "steem-dollars-description": "Токены, стоимостью примерно $1 от токена Steem.",
@@ -278,7 +283,9 @@
     "copied-clipboard": "Скопировано",
     "comment-entry-title": "Вы просматриваете один комментарий ветки: ",
     "comment-entry-go-root": "Полный контекст",
-    "comment-entry-go-parent": "Прямой родительский комментарий"
+    "comment-entry-go-parent": "Прямой родительский комментарий",
+    "similar-entries": "Похожие посты",
+    "fetch-error": "Тайм-аут сервера, потому что размер ответа слишком большой"
   },
   "navbar": {
     "settings": "Настройки",
@@ -419,5 +426,10 @@
   },
   "delegation-list": {
     "empty-list": "Ничего нет"
+  },
+  "friends": {
+    "followers-title": "Подписчики ({count})",
+    "following-title": "Подписки ({count})",
+    "load-more": "Загрузить ещё"
   }
 }

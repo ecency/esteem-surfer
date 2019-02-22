@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "لا يوجد إتصال بالأنترنت"
+  },
   "g": {
     "compose-entry": "إنشاء منشور",
     "are-you-sure": "هل أنت متأكد؟",
@@ -83,7 +86,8 @@
     "error-authenticate": "اسم المستخدم أو كلمة المرور خاطئة",
     "create-account-text": "ليس لديك حساب <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">سجّل الآن!</a>",
     "login-with-sc": "سجّل بواسطة",
-    "divider-text": "أو"
+    "divider-text": "أو",
+    "sc-note": "ملاحظة: قد تفرض عليك Steemconnect بعض الرسوم من معاملات المكافآت الخاصة بك"
   },
   "create-pin-code": {
     "title": "أنشئ رمز PIN",
@@ -151,6 +155,7 @@
     "steem-power-description": "قوة ستيم هي رموز التأثير التي تكسب المزيد من القوة لعقدها على المدى الطويل والتصويت على المشاركات. وكلما زادت قوة ستيم ، كلما كان بإمكان المرء التأثير على مكافآت الآخرين وكسب مكافآت مقابل التصويت الدقيق.",
     "steem-power-delegated": "تفويض قوة ستيم",
     "steem-power-received": "تم إستلام قوة ستيم",
+    "next-power-down-amount": "كمية إنخفاض القوة التالي في",
     "steem-power-total": "مجموع قوة ستيم",
     "steem-dollars": "ستيم دولار",
     "steem-dollars-description": "الرموز التي تبلغ قيمتها حوالي 1.00 دولار من STEEM.",
@@ -278,7 +283,9 @@
     "copied-clipboard": "تم النسخ",
     "comment-entry-title": "أنت تعرض تعليقاً واحدأً من: ",
     "comment-entry-go-root": "عرض المحتوى الكامل",
-    "comment-entry-go-parent": "عرض الرسالة الرئيسية"
+    "comment-entry-go-parent": "عرض الرسالة الرئيسية",
+    "similar-entries": "منشورات مماثلة",
+    "fetch-error": "إنتهت مهلة الخادم لأن حجم الاستجابة كبير جدًا"
   },
   "navbar": {
     "settings": "إعدادات",
@@ -419,5 +426,10 @@
   },
   "delegation-list": {
     "empty-list": "لا شيء هنا"
+  },
+  "friends": {
+    "followers-title": "المتابعون ({count})",
+    "following-title": "المتابعون ({count})",
+    "load-more": "تحميل المزيد"
   }
 }

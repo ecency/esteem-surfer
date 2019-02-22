@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "Tiada sambungan Internet"
+  },
   "g": {
     "compose-entry": "Tulis pos",
     "are-you-sure": "Adakah anda pasti?",
@@ -83,7 +86,8 @@
     "error-authenticate": "Nama pengguna atau kata laluan salah",
     "create-account-text": "Tiada akaun? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\"> Daftarkan segera! </a>",
     "login-with-sc": "Log masuk dengan",
-    "divider-text": "ATAU"
+    "divider-text": "ATAU",
+    "sc-note": "Ambil perhatian: Kegunaan Steemconnect mungkin akan mengenekan bayaran fi dari transaksi ganjaran"
   },
   "create-pin-code": {
     "title": "Ciptakan kod PIN",
@@ -151,6 +155,7 @@
     "steem-power-description": "Steem Power adalah token berkuasa untuk mempengaruhi dan pegangan jangka masa panjang. Seseorang yang memegang lebih Steem Power, maka lebih berkuasa mempengaruhi ganjaran bila dia mengundi.",
     "steem-power-delegated": "Mewakilkan Steem Power",
     "steem-power-received": "Steem Power diterima",
+    "next-power-down-amount": "Power down yang seterusnya akan terjadi pada",
     "steem-power-total": "Jumlah Steem Power",
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Token bernilai kira-kira $1.00 daripada Steem.",
@@ -278,7 +283,9 @@
     "copied-clipboard": "Disalin",
     "comment-entry-title": "Anda melihat sebuah komen tunggal dari: ",
     "comment-entry-go-root": "Lihat konteks lengkap",
-    "comment-entry-go-parent": "Lihat sumber utama"
+    "comment-entry-go-parent": "Lihat sumber utama",
+    "similar-entries": "Pos yang menyerupa",
+    "fetch-error": "Saiz penyampaian maklumat terlampau besar, server telah berhenti"
   },
   "navbar": {
     "settings": "Tetapan",
@@ -419,5 +426,10 @@
   },
   "delegation-list": {
     "empty-list": "Kosong"
+  },
+  "friends": {
+    "followers-title": "Pengikut ({count})",
+    "following-title": "Pengikut ({count})",
+    "load-more": "Lebih kandungan"
   }
 }

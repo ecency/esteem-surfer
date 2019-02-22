@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "Nincs internet kapcsolat"
+  },
   "g": {
     "compose-entry": "Bejegyzés létrehozása",
     "are-you-sure": "Biztos vagy benne?",
@@ -83,7 +86,8 @@
     "error-authenticate": "Helytelen felhasználónév vagy jelszó/WIF",
     "create-account-text": "Nincs fiókod? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">hozd létre most!</a>",
     "login-with-sc": "Bejelentkezés mint",
-    "divider-text": "VAGY"
+    "divider-text": "VAGY",
+    "sc-note": "Megjegyzés: Steemconnect esetleg díjat számolhat fel néhány jutalom-tranzakcióért"
   },
   "create-pin-code": {
     "title": "PIN-kód létrehozása",
@@ -151,6 +155,7 @@
     "steem-power-description": "A Steem Power olyan befolyásos token, amely több erőt bistosít hosszú távú birtoklás esetén és a bejegyzések szavazásakor. Minél több Steem Power-t birtokolsz, annál több befolyásod lehet mások jutalma fölött, és annál tőbb jutalmat biztosít a megfelelő szavazásért.",
     "steem-power-delegated": "Delegált Steem Power",
     "steem-power-received": "Kapott Steem Power",
+    "next-power-down-amount": "A következő power down összeg",
     "steem-power-total": "Össz Steem Power",
     "steem-dollars": "Steem Dollár",
     "steem-dollars-description": "Tokenek, melyek körülbelül $1.00-nyi STEEM-et érnek.",
@@ -278,7 +283,9 @@
     "copied-clipboard": "Lemásolva",
     "comment-entry-title": "Egy hozzászólásos szál innen: ",
     "comment-entry-go-root": "Teljes kontextus megtekintése",
-    "comment-entry-go-parent": "Direkt felmenő megtekintése"
+    "comment-entry-go-parent": "Direkt felmenő megtekintése",
+    "similar-entries": "Hasonló bejegyzések",
+    "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
     "settings": "Beállítások",
@@ -419,5 +426,10 @@
   },
   "delegation-list": {
     "empty-list": "Itt nincs semmi"
+  },
+  "friends": {
+    "followers-title": "Követők ({count})",
+    "following-title": "Követés ({count})",
+    "load-more": "Load More"
   }
 }

@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "Немає з'єднання з інтернетом"
+  },
   "g": {
     "compose-entry": "Створити пост",
     "are-you-sure": "Ви впевнені?",
@@ -83,7 +86,8 @@
     "error-authenticate": "Невірне ім'я користувача або пароль/WIF",
     "create-account-text": "Немає акаунту?<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Зареєструйтесь!</a>",
     "login-with-sc": "Увійти через",
-    "divider-text": "АБО"
+    "divider-text": "АБО",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "Задайте PIN-код",
@@ -151,6 +155,7 @@
     "steem-power-description": "Steem Power - це токени впливу, які надають більше сили при їх довгостроковому збереженні та голосуванні за пости. Чим більше Steem Power ви маєте, тим більший ваш вплив на винагороду за пост, і більша ваша винагорода за влучне голосування.",
     "steem-power-delegated": "Делеговані Steem Power",
     "steem-power-received": "Отримані Steem Power",
+    "next-power-down-amount": "Сума наступного power down",
     "steem-power-total": "Всього Steem Power",
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Токени вартістю близько $1.00 в STEEM.",
@@ -163,14 +168,14 @@
     "transaction-author_reward": "Авторська винагорода",
     "transaction-comment_benefactor_reward": "Винагорода бенефіціару",
     "transaction-claim_reward_balance": "Запит винагороди",
-    "transaction-transfer": "Переказ",
-    "transaction-transfer_to_vesting": "Transfer to vesting",
-    "transaction-withdraw_vesting": "Withdraw vesting",
+    "transaction-transfer": "Передача",
+    "transaction-transfer_to_vesting": "Передача у vesting (Steem Power)",
+    "transaction-withdraw_vesting": "Зняття vesting коштів",
     "transaction-fill_order": "Виконання заявки",
     "claim-reward-balance": "Зарахувати винагороду на баланс",
     "claim-reward-balance-ok": "Винагорода зарахована на баланс",
-    "transfer": "Transfer",
-    "transfer-to-savings": "Переведення до заощаджень",
+    "transfer": "Передача",
+    "transfer-to-savings": "Передача до заощаджень",
     "power-up": "Power Up",
     "withdraw-steem": "Вивести Steem",
     "withdraw-sbd": "Вивести Steem Dollar",
@@ -278,7 +283,9 @@
     "copied-clipboard": "Скопійовано",
     "comment-entry-title": "Ви переглядаєте гілку одного коментарю із: ",
     "comment-entry-go-root": "Переглянути повний контекст",
-    "comment-entry-go-parent": "Прямий батьківський коментар"
+    "comment-entry-go-parent": "Прямий батьківський коментар",
+    "similar-entries": "Схожі пости",
+    "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
     "settings": "Налаштування",
@@ -415,9 +422,14 @@
     "confirm-sub-title": "Будь ласка, перевірте, чи все вірно",
     "delegation-summary": "<span class=\"sp\">{sp}</span> делеговано <span class=\"to-user\">{to}</span>",
     "success-sub-title": "Делегування завершено",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "insufficient-vesting": "Недостатньо vesting коштів {a} VESTS"
   },
   "delegation-list": {
     "empty-list": "Тут порожньо"
+  },
+  "friends": {
+    "followers-title": "Followers ({count})",
+    "following-title": "Following ({count})",
+    "load-more": "Load More"
   }
 }

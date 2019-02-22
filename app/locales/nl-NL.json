@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "No Internet Connection"
+  },
   "g": {
     "compose-entry": "Artikel maken",
     "are-you-sure": "Weet je het zeker?",
@@ -83,7 +86,8 @@
     "error-authenticate": "Verkeerde gebruikersnaam of wachtwoord/WIF",
     "create-account-text": "Je hebt geen account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Meld je nu aan!</a>",
     "login-with-sc": "Inloggen met",
-    "divider-text": "OF"
+    "divider-text": "OF",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "PIN-code maken",
@@ -151,6 +155,7 @@
     "steem-power-description": "Steem Power zijn beïnvloedingstokens die meer kracht krijgen door ze vast te houden op lange termijn en te stemmen op artikelen. Hoe meer Steem Power iemand heeft, hoe meer hij/zij de beloningen van anderen kan beïnvloeden en hoe meer men beloningen kan verdienen voor accuraat stemmen.",
     "steem-power-delegated": "Gedelegeerde Steem Power",
     "steem-power-received": "Ontvangen Steem Power",
+    "next-power-down-amount": "Next power down amount",
     "steem-power-total": "Totale Steem Power",
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Tokens zijn ongeveer $1.00 in STEEM waard.",
@@ -278,7 +283,9 @@
     "copied-clipboard": "Gekopieerd",
     "comment-entry-title": "Je bekijkt een enkele commentaar-draad van: ",
     "comment-entry-go-root": "Bekijk de volledige context",
-    "comment-entry-go-parent": "Bekijk de direct-bovenliggende"
+    "comment-entry-go-parent": "Bekijk de direct-bovenliggende",
+    "similar-entries": "Similar Posts",
+    "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
     "settings": "Instellingen",
@@ -419,5 +426,10 @@
   },
   "delegation-list": {
     "empty-list": "Niets hier"
+  },
+  "friends": {
+    "followers-title": "Followers ({count})",
+    "following-title": "Following ({count})",
+    "load-more": "Load More"
   }
 }

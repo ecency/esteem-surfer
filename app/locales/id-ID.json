@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "Tidak Ada Sambungan Internet"
+  },
   "g": {
     "compose-entry": "Membuat posting",
     "are-you-sure": "Apakah anda yakin?",
@@ -83,7 +86,8 @@
     "error-authenticate": "Nama pengguna atau kata sandi/WIF salah",
     "create-account-text": "Tidak memiliki akun? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">buat sekarang!</a>",
     "login-with-sc": "Masuk dengan",
-    "divider-text": "Atau"
+    "divider-text": "Atau",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "Buat Kode PIN",
@@ -151,6 +155,7 @@
     "steem-power-description": "Steem Power adalah token yang dapat pengaruhi kekuatan sebuah akun dalam memberikan hadiah pada sebuah postingan serta sebagai aset jangka panjang. Semakin besar steem power dimiliki, semakin seseorang dapat mempengaruhi besaran hadiah yang diberikan kepada orang lain, dan juga mempengaruhi besaran hadiah yang di dapat secara akurat dalam memberikan suara.",
     "steem-power-delegated": "Delegasi Kekuatan Steem",
     "steem-power-received": "Menerima Kekuatan STEEM",
+    "next-power-down-amount": "Menurunkan jumlah daya selanjutnya",
     "steem-power-total": "Total kekuatan Steem",
     "steem-dollars": "STEEM Dollars",
     "steem-dollars-description": "Token bernilai sekitar $1.00 dari STEEM.",
@@ -278,7 +283,9 @@
     "copied-clipboard": "Disalin",
     "comment-entry-title": "Anda melihat sebuah komentar tunggal dari: ",
     "comment-entry-go-root": "Lihat konteks lengkap",
-    "comment-entry-go-parent": "Lihat sumber utama"
+    "comment-entry-go-parent": "Lihat sumber utama",
+    "similar-entries": "Posting yang Mirip",
+    "fetch-error": "Waktu habis karena respon ukuran terlalu besar"
   },
   "navbar": {
     "settings": "Pengaturan",
@@ -419,5 +426,10 @@
   },
   "delegation-list": {
     "empty-list": "Kosong"
+  },
+  "friends": {
+    "followers-title": "Pengikut ({count})",
+    "following-title": "Mengikuti ({count})",
+    "load-more": "Load More"
   }
 }

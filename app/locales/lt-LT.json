@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "Nėra Interneto Ryšio"
+  },
   "g": {
     "compose-entry": "Sukurti Įrašą",
     "are-you-sure": "Ar esate įsitikinę?",
@@ -83,7 +86,8 @@
     "error-authenticate": "Neteisingas prisijungimo vardas arba slaptažodis/WIF",
     "create-account-text": "Neturi paskyros? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Užsiregistruok dabar!</a>",
     "login-with-sc": "Prisijungti su",
-    "divider-text": "AR"
+    "divider-text": "AR",
+    "sc-note": "Pastaba: Steemconnect gali nuskaityti nedidelį mokestį nuo jūsų atlygio pavedimų"
   },
   "create-pin-code": {
     "title": "Sukurti PIN-kodą",
@@ -151,6 +155,7 @@
     "steem-power-description": "Steem Power yra įtakingi virtualūs žetonai, kurie įgauna daugiau galios juos kaupiant ir balsuojant. Kuo daugiau Steem Power vartotojas turi, tuo daugiau įtakos jis turi kitų vartotojų atlygiui ir gali pats gauti atlygį už tikslų balsavimą.",
     "steem-power-delegated": "Deleguotas Steem Power",
     "steem-power-received": "Gautas Steem Power",
+    "next-power-down-amount": "Kita galios mažinimo suma",
     "steem-power-total": "Visas Steem Power",
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Žetonai verti apie $1.00 STEEM.",
@@ -278,7 +283,9 @@
     "copied-clipboard": "Nukopijuota",
     "comment-entry-title": "Jūs skaitote komentarą iš: ",
     "comment-entry-go-root": "Peržiūrėti visą kontekstą",
-    "comment-entry-go-parent": "Peržiūrėti pirminį"
+    "comment-entry-go-parent": "Peržiūrėti pirminį",
+    "similar-entries": "Panašūs Įrašai",
+    "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
     "settings": "Nustatymai",
@@ -419,5 +426,10 @@
   },
   "delegation-list": {
     "empty-list": "Nieko nėra"
+  },
+  "friends": {
+    "followers-title": "Sekėjai {count}",
+    "following-title": "Sekami ({count})",
+    "load-more": "Įkelti daugiau"
   }
 }

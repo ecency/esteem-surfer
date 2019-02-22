@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "No Internet Connection"
+  },
   "g": {
     "compose-entry": "Crear Contenido",
     "are-you-sure": "Estás seguro?",
@@ -83,7 +86,8 @@
     "error-authenticate": "Nombre de usuario o contraseña incorrectos / WIF",
     "create-account-text": "¿No tienes una cuenta? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\"> ¡Regístrese ahora! </a>",
     "login-with-sc": "Iniciar sesión con",
-    "divider-text": "O"
+    "divider-text": "O",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "Crear código PIN",
@@ -151,6 +155,7 @@
     "steem-power-description": "Steem Power son fichas de influencia que consiguen más poder por mantenerlas a largo plazo y votar en los posts. Cuántas más tengas, más influencia tendrás en las recompensas que le das al resto de gente y más recompensas obtendrás por tus votos.",
     "steem-power-delegated": "Poder Steem delegado\n",
     "steem-power-received": "Recibió Steem Power",
+    "next-power-down-amount": "Next power down amount",
     "steem-power-total": "Potencia total de Steem",
     "steem-dollars": "Steem Dólares",
     "steem-dollars-description": "Fichas por valor de alrededor de $ 1.00 de STEEM.",
@@ -278,7 +283,9 @@
     "copied-clipboard": "Copiado",
     "comment-entry-title": "Estás viendo los comentarios relacionados de: ",
     "comment-entry-go-root": "Ver todo el contexto",
-    "comment-entry-go-parent": "Ver el comentario relacionado"
+    "comment-entry-go-parent": "Ver el comentario relacionado",
+    "similar-entries": "Similar Posts",
+    "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
     "settings": "Ajustes",
@@ -419,5 +426,10 @@
   },
   "delegation-list": {
     "empty-list": "Nada aquí"
+  },
+  "friends": {
+    "followers-title": "Followers ({count})",
+    "following-title": "Following ({count})",
+    "load-more": "Load More"
   }
 }

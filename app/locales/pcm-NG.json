@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "Network no dey"
+  },
   "g": {
     "compose-entry": "Write new tori",
     "are-you-sure": "You sure?",
@@ -83,7 +86,8 @@
     "error-authenticate": "The guy-name or password/WIF no dey correct",
     "create-account-text": "You never get account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Oya register quick-quick</a>",
     "login-with-sc": "Login with",
-    "divider-text": "OR"
+    "divider-text": "OR",
+    "sc-note": "Steemconnect fit charge you small from wetin you won transact"
   },
   "create-pin-code": {
     "title": "Create PIN Code",
@@ -151,6 +155,7 @@
     "steem-power-description": "Steem Power na token wey dey give power and the power go dey plenty join if you hold am for long time and if you dey vote people tori. The plenty the Steem Power wey you dey hold, the plenty your power to affect reward for people tori and the more wey you go dey earn onto say you vote people tori wella. ",
     "steem-power-delegated": "Delegated Steem Power",
     "steem-power-received": "Steem Power wey you Receive",
+    "next-power-down-amount": "Amount of next power down",
     "steem-power-total": "Total Steem Power",
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "The tokens na about $1 of STEEM",
@@ -278,7 +283,9 @@
     "copied-clipboard": "E don copy",
     "comment-entry-title": "Na one comment thread you dey look so:",
     "comment-entry-go-root": "Look all the whole tori",
-    "comment-entry-go-parent": "Look the direct tori"
+    "comment-entry-go-parent": "Look the direct tori",
+    "similar-entries": "Post wey resemble",
+    "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
     "settings": "Settings",
@@ -419,5 +426,10 @@
   },
   "delegation-list": {
     "empty-list": "Nothing dey here"
+  },
+  "friends": {
+    "followers-title": "Followers ({count})",
+    "following-title": "Following ({count})",
+    "load-more": "Load More"
   }
 }

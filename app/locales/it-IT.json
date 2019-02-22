@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "No Internet Connection"
+  },
   "g": {
     "compose-entry": "Scrivi post",
     "are-you-sure": "Sei sicuro?",
@@ -83,7 +86,8 @@
     "error-authenticate": "Nome utente o password sbagliati",
     "create-account-text": "Non hai un account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Registrati ora!</a>",
     "login-with-sc": "Accedi con",
-    "divider-text": "O"
+    "divider-text": "O",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "Crea Il Codice PIN",
@@ -151,6 +155,7 @@
     "steem-power-description": "Steem Power sono dei token di influenza che guadagnano più potere se tenuti a lungo termine e se usati per votare i post. Più gli Steem Power vengono tenuti, più si possono influenzare i rewards e guadagnare rewards per i voti da curatore.",
     "steem-power-delegated": "Steem Power Delegati",
     "steem-power-received": "Steem Power Ricevuti",
+    "next-power-down-amount": "Il prossimo Power down è tra",
     "steem-power-total": "Steem Power Totali",
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Tokens che valgono circa $1.00 di STEEM.",
@@ -278,7 +283,9 @@
     "copied-clipboard": "Copiato",
     "comment-entry-title": "Stai visualizzando il commento singolo di un thread di: ",
     "comment-entry-go-root": "Mostra il testo completo",
-    "comment-entry-go-parent": "Visualizza il collegamento diretto"
+    "comment-entry-go-parent": "Visualizza il collegamento diretto",
+    "similar-entries": "Similar Posts",
+    "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
     "settings": "Impostazioni",
@@ -419,5 +426,10 @@
   },
   "delegation-list": {
     "empty-list": "Non c'è niente qui"
+  },
+  "friends": {
+    "followers-title": "Followers ({count})",
+    "following-title": "Following ({count})",
+    "load-more": "Load More"
   }
 }

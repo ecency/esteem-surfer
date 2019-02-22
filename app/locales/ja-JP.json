@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "No Internet Connection"
+  },
   "g": {
     "compose-entry": "投稿を作成",
     "are-you-sure": "本当によろしいですか？",
@@ -83,7 +86,8 @@
     "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "アカウントをお持ちでないですか？<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">今すぐ登録！</a>",
     "login-with-sc": "次のものでログイン",
-    "divider-text": "または"
+    "divider-text": "または",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "PINコードを作成",
@@ -151,6 +155,7 @@
     "steem-power-description": "Steem Powerは長期保有や投稿に投票することで、より大きな影響力を得ることができるトークンです。より多くのSteem Powerを保有することで、他の人の報酬に影響を与えることができ、投票による報酬を得ることができます。",
     "steem-power-delegated": "Delegated Steem Power",
     "steem-power-received": "Received Steem Power",
+    "next-power-down-amount": "Next power down amount",
     "steem-power-total": "Total Steem Power",
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
@@ -278,7 +283,9 @@
     "copied-clipboard": "コピーしました",
     "comment-entry-title": "1つのコメントスレッドを表示しています: ",
     "comment-entry-go-root": "全文を表示",
-    "comment-entry-go-parent": "親コメントを表示"
+    "comment-entry-go-parent": "親コメントを表示",
+    "similar-entries": "Similar Posts",
+    "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
     "settings": "設定",
@@ -419,5 +426,10 @@
   },
   "delegation-list": {
     "empty-list": "Nothing here"
+  },
+  "friends": {
+    "followers-title": "Followers ({count})",
+    "following-title": "Following ({count})",
+    "load-more": "Load More"
   }
 }

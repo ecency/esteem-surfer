@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "No Internet Connection"
+  },
   "g": {
     "compose-entry": "創建帖子",
     "are-you-sure": "您確定嗎？",
@@ -83,7 +86,8 @@
     "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "還沒有賬戶？<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">立即註冊！</a>",
     "login-with-sc": "登入方式",
-    "divider-text": "或"
+    "divider-text": "或",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "創建PIN碼",
@@ -151,6 +155,7 @@
     "steem-power-description": "Steem Power 可視為具有影響力的股權，持有可長期增值並對文章投票。持有Steem Power數量越多對於其他人獎勵大小的影響力就越大，也更能從準確的投票行為中獲得獎勵。",
     "steem-power-delegated": "Delegated Steem Power",
     "steem-power-received": "Received Steem Power",
+    "next-power-down-amount": "Next power down amount",
     "steem-power-total": "Total Steem Power",
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
@@ -278,7 +283,9 @@
     "copied-clipboard": "已複製",
     "comment-entry-title": "您正在查看單個評論的線程，來自： ",
     "comment-entry-go-root": "檢視全文",
-    "comment-entry-go-parent": "查看直接的父級"
+    "comment-entry-go-parent": "查看直接的父級",
+    "similar-entries": "Similar Posts",
+    "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
     "settings": "設定",
@@ -419,5 +426,10 @@
   },
   "delegation-list": {
     "empty-list": "Nothing here"
+  },
+  "friends": {
+    "followers-title": "Followers ({count})",
+    "following-title": "Following ({count})",
+    "load-more": "Load More"
   }
 }

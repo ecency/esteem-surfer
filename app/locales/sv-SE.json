@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "No Internet Connection"
+  },
   "g": {
     "compose-entry": "Skapa inlägg",
     "are-you-sure": "Är du säker?",
@@ -83,7 +86,8 @@
     "error-authenticate": "Fel användarnamn eller lösenord/WIF",
     "create-account-text": "Har du inget konto?<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Registrera dig nu!</a>",
     "login-with-sc": "Logga in med",
-    "divider-text": "ELLER"
+    "divider-text": "ELLER",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "Skapa PIN-kod",
@@ -151,6 +155,7 @@
     "steem-power-description": "Steem Power är inflytande-tokens som ger högre rösteffekt för att du sparar dem långsiktigt och röstar på inlägg. Ju mer Steem Power du har, desto mer kan du påverka andras belöningar och du belönas för noggrann röstning.",
     "steem-power-delegated": "Delegerad Steem Power",
     "steem-power-received": "Mottagna Steem Power",
+    "next-power-down-amount": "Next power down amount",
     "steem-power-total": "Totalt Steem Power",
     "steem-dollars": "Steem Dollar",
     "steem-dollars-description": "Tokens värda ca. $1.00 av STEEM.",
@@ -278,7 +283,9 @@
     "copied-clipboard": "Kopierad",
     "comment-entry-title": "Du visar en enda kommentar tråd från: ",
     "comment-entry-go-root": "Visa hela sammanhanget",
-    "comment-entry-go-parent": "Visa den direkta överordnat"
+    "comment-entry-go-parent": "Visa den direkta överordnat",
+    "similar-entries": "Similar Posts",
+    "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
     "settings": "Inställningar",
@@ -419,5 +426,10 @@
   },
   "delegation-list": {
     "empty-list": "Ingenting här"
+  },
+  "friends": {
+    "followers-title": "Followers ({count})",
+    "following-title": "Following ({count})",
+    "load-more": "Load More"
   }
 }

@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "No Internet Connection"
+  },
   "g": {
     "compose-entry": "Napiši post",
     "are-you-sure": "Da li ste sigurni?",
@@ -83,7 +86,8 @@
     "error-authenticate": "Pogrešno korisničko ime ili lozinka/WIF",
     "create-account-text": "Nemate nalog? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Registrujte se odmah!</a>",
     "login-with-sc": "Prijavite se pomoću",
-    "divider-text": "ILI"
+    "divider-text": "ILI",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "Kreirajte PIN kod",
@@ -151,6 +155,7 @@
     "steem-power-description": "Steem Power su tokeni uticaja koji dugoročno dobijaju više snage, kao i glasanjem postova. Što ih više imate to ćete imati više uticaja na nagrade drugih korisnika i više ćete zaraditi na vašim glasovima.",
     "steem-power-delegated": "Delegirani Steem Power",
     "steem-power-received": "Primljena Delegacija Steem Power-a",
+    "next-power-down-amount": "Next power down amount",
     "steem-power-total": "Ukupan Steem Power",
     "steem-dollars": "Steem dolari",
     "steem-dollars-description": "Tokeni vrednosti oko $1.00 u STEEM-u.",
@@ -278,7 +283,9 @@
     "copied-clipboard": "Kopirano",
     "comment-entry-title": "Pregledate komentare u vezi sa: ",
     "comment-entry-go-root": "Pogledaj ceo kontekst",
-    "comment-entry-go-parent": "Pogledaj nadređeni komentar"
+    "comment-entry-go-parent": "Pogledaj nadređeni komentar",
+    "similar-entries": "Similar Posts",
+    "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
     "settings": "Podešavanja",
@@ -419,5 +426,10 @@
   },
   "delegation-list": {
     "empty-list": "Ovde nema ništa"
+  },
+  "friends": {
+    "followers-title": "Followers ({count})",
+    "following-title": "Following ({count})",
+    "load-more": "Load More"
   }
 }

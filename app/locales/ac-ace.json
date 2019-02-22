@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "No Internet Connection"
+  },
   "g": {
     "compose-entry": "Peugeut Tulesan",
     "are-you-sure": "Droen yakin?",
@@ -83,7 +86,8 @@
     "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "Hana akun? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Daftar ilee!</a>",
     "login-with-sc": "Tamong deungon",
-    "divider-text": "Atawa"
+    "divider-text": "Atawa",
+    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "create-pin-code": {
     "title": "Peugoet Kode PIN",
@@ -151,6 +155,7 @@
     "steem-power-description": "{{platformpower}}, token meupengarouh yang meuhasee power leubeh untuk jangka trep dan vote dalam post. Leubeh leu geumat power leubeh leu peungarouh dalam reward ureung laen dan meutumee reward keu voting yang teupat.",
     "steem-power-delegated": "Delegated Steem Power",
     "steem-power-received": "Teurimong Teunaga Steem",
+    "next-power-down-amount": "Next power down amount",
     "steem-power-total": "Total Teunaga Steem",
     "steem-dollars": "Steem Dolar",
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
@@ -278,7 +283,9 @@
     "copied-clipboard": "Ka leuh salen",
     "comment-entry-title": "You are viewing a single comment's thread from: ",
     "comment-entry-go-root": "Kaloen konteks peunoh",
-    "comment-entry-go-parent": "View the direct parent"
+    "comment-entry-go-parent": "View the direct parent",
+    "similar-entries": "Similar Posts",
+    "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
     "settings": "Meu Atoe",
@@ -419,5 +426,10 @@
   },
   "delegation-list": {
     "empty-list": "Nothing here"
+  },
+  "friends": {
+    "followers-title": "Followers ({count})",
+    "following-title": "Following ({count})",
+    "load-more": "Load More"
   }
 }

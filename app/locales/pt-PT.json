@@ -1,4 +1,7 @@
 {
+  "app": {
+    "no-internet-conn": "Sem ligação à Internet"
+  },
   "g": {
     "compose-entry": "Criar Post",
     "are-you-sure": "Tem a certeza?",
@@ -83,7 +86,8 @@
     "error-authenticate": "Usuário errado ou a senha/wif",
     "create-account-text": "Não tem uma conta? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Cadastre-se agora!</a>",
     "login-with-sc": "Entrar com",
-    "divider-text": "OU"
+    "divider-text": "OU",
+    "sc-note": "A conexão Steemconnect pode cobrar algumas taxas de suas transações de recompensa"
   },
   "create-pin-code": {
     "title": "Criar o código PIN",
@@ -151,6 +155,7 @@
     "steem-power-description": "Poder Steem são tokens de influência que ganham mais força para segurar a longo prazo e votar em posts. Quanto mais Poder Steem se detém, quanto mais se pode influenciar outras recompensas e ganhar recompensas por votação exata.",
     "steem-power-delegated": "Poder Steem delegado",
     "steem-power-received": "Poder Steem Recebido",
+    "next-power-down-amount": "Quantia da próxima descarga de Poder Steem",
     "steem-power-total": "Poder Steem total",
     "steem-dollars": "Steem Dólares",
     "steem-dollars-description": "Tokens que valem $1.00 de Steem.",
@@ -278,7 +283,9 @@
     "copied-clipboard": "Copiado",
     "comment-entry-title": "Você está visualizando o segmento da um único comentário desde: ",
     "comment-entry-go-root": "Ver o contexto completo",
-    "comment-entry-go-parent": "Ver o comentário relacionado"
+    "comment-entry-go-parent": "Ver o comentário relacionado",
+    "similar-entries": "Posts semelhantes",
+    "fetch-error": "Tempo limite do servidor porque o tamanho da resposta é muito grande"
   },
   "navbar": {
     "settings": "Configurações",
@@ -419,5 +426,10 @@
   },
   "delegation-list": {
     "empty-list": "Nada aqui"
+  },
+  "friends": {
+    "followers-title": "Seguidores ({count})",
+    "following-title": "Seguindo ({count})",
+    "load-more": "Carregar mais"
   }
 }
