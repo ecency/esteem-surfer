@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "İnternet bağlantısı yok"
+    "no-internet-conn": "İnternet Bağlantısı Yok"
   },
   "g": {
     "compose-entry": "Gönderi Oluştur",
@@ -63,7 +63,7 @@
     "server": "Sunucu",
     "server-invalid-address": "Geçersiz sunucu adresi",
     "server-connecting": "'{server}' sunucusuna bağlanılıyor...",
-    "server-connect-error": "'{server}'a bağlanılamadı. İyi bir internet bağlantınız olduğundan emin olun.",
+    "server-connect-error": "'{server}'a Bağlanılamadı. İyi bir internet bağlantınız olduğundan emin olun.",
     "server-timeout-error": "'{server}' sunucusu aktif değil",
     "server-changed": "Sunucu seçimi {server} olarak değiştirildi",
     "server-custom-address": "Özel sunucu adresi",
