@@ -124,10 +124,10 @@
     "fetch-error-content": "Gönderiler getirilemedi",
     "post-count": "Gönderi sayısı",
     "followers": "Takipçiler",
-    "following": "Following",
+    "following": "Takip Ediliyor",
     "section-blog": "Blog",
     "section-comments": "Yorumlar",
-    "section-replies": "Replies",
+    "section-replies": "Yanıtlar",
     "section-wallet": "Cüzdan"
   },
   "follow-controls": {
@@ -144,7 +144,7 @@
     "following": "Takip ediliyor",
     "section-blog": "Blog",
     "section-comments": "Yorumlar",
-    "section-replies": "Replies",
+    "section-replies": "Yanıtlar",
     "section-wallet": "Cüzdan",
     "top-posts": "En iyi gönderiler",
     "unclaimed-rewards": "Talep edilmemiş ödüller",
@@ -236,17 +236,17 @@
     "title": "Galeri",
     "copied": "Panoya kopyalandı",
     "load-error": "Galeri yüklenemedi",
-    "empty-list": "Nothing here"
+    "empty-list": "Burada hiçbir şey yok"
   },
   "drafts": {
     "title": "Taslaklar",
     "load-error": "Taslaklar yüklenemedi",
-    "empty-list": "Nothing here",
+    "empty-list": "Burada hiçbir şey yok",
     "deleted": "Taslak silindi"
   },
   "schedules": {
     "title": "Planlanmış gönderi",
-    "empty-list": "Nothing here",
+    "empty-list": "Burada hiçbir şey yok",
     "deleted": "Planlanmış gönderi silindi",
     "move": "Taslaklara taşı",
     "moved": "Taslaklara taşındı"
@@ -259,15 +259,15 @@
     "search": "Yer imlerinde ara"
   },
   "favorites": {
-    "title": "Favorites",
+    "title": "Favoriler",
     "load-error": "Favoriler yüklenemedi",
-    "empty-list": "Nothing here",
+    "empty-list": "Burada hiçbir şey yok",
     "search": "Favorilerde ara"
   },
   "entry": {
     "reply": "Yanıtla",
     "reply-preview": "Önizle",
-    "via-app": "via <span class=\"app-name\">{app}</span>",
+    "via-app": "<span class=\"app-name\">{app}</span> üzerinden",
     "n-replies": "{n} yanıtlar",
     "reply-sort-order": "Sıralama düzeni",
     "reply-sort-order-trending": "Öne çıkanlar",
@@ -347,7 +347,7 @@
     "unfollowed-str": "takibi bıraktı",
     "ignored-str": "engelledi",
     "reblog-str": "gönderini yeniden yayınladı:",
-    "empty-list": "Nothing here",
+    "empty-list": "Burada hiçbir şey yok",
     "refresh": "Yenile",
     "mark-all-read": "Tümünü okundu olarak işaretle",
     "leaderboard": "Lider tablosu",
@@ -355,14 +355,14 @@
   },
   "witnesses": {
     "page-title": "Şahit oylaması",
-    "remaining": "<strong>{n}</strong> of {max} votes remaining",
+    "remaining": "{max} oydan <strong>{n}</strong> oy kaldı",
     "witness": "Şahit",
     "miss": "Kaçırılmış bloklar",
     "url": "Adres",
     "fee": "Ücret",
     "feed": "Akış",
     "block-size": "Blok boyutu",
-    "ac-avail": "AC avail",
+    "ac-avail": "AC mevcut",
     "ac-budget": "AC bütçesi",
     "version": "Versiyon",
     "voted": "@{n} oyladı",
@@ -380,7 +380,7 @@
   "transfer": {
     "transfer-title": "Hesaba aktar",
     "transfer-sub-title": "Fonları başka bir Steem hesabına taşı",
-    "transfer-saving-title": "Transfer to Savings",
+    "transfer-saving-title": "Tasarruflara transfer et",
     "transfer-saving-sub-title": "3 günlük geri çekme süresi ile fonlarınızı koruyun",
     "withdraw-saving-title": "Tasarrufları çek",
     "withdraw-saving-sub-title": "Gereken 3 günlük bekleme süresinden sonra fonlarınızı çekin",
@@ -395,7 +395,7 @@
     "amount": "Miktar",
     "amount-placeholder": "miktar",
     "wrong-amount": "Yanlış miktar değeri",
-    "amount-precision-error": "Use only 3 digits of precision",
+    "amount-precision-error": "Sadece 3 haneli rakam kullanın",
     "insufficient-funds": "Yetersiz bakiye",
     "balance": "Bakiye",
     "memo": "Memo",
@@ -419,17 +419,17 @@
     "sub-title": "Steem Gücü devret",
     "slider-help": "Miktarı ayarlamak için kaydırıcıyı sürükleyin",
     "confirm-title": "Delegasyonu onayla",
-    "confirm-sub-title": "Please, check if everything is correct",
+    "confirm-sub-title": "Lütfen her şeyi doğru olup olmadığını kontrol edin",
     "delegation-summary": "<span class=\"sp\">{sp}</span> alıcıya devredildi <span class=\"to-user\">{to}</span>",
     "success-sub-title": "Delegasyon tamamlandı",
     "insufficient-vesting": "Yetersiz yatırım paylaşması {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "Burada hiçbir şey yok"
   },
   "friends": {
     "followers-title": "Takip ediliyor ({count})",
-    "following-title": "Following ({count})",
+    "following-title": "Takip Ediliyor ({count})",
     "load-more": "Daha Fazla Yükle"
   }
 }
