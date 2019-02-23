@@ -428,7 +428,7 @@
     "empty-list": "Burada hiçbir şey yok"
   },
   "friends": {
-    "followers-title": "Takip ediliyor ({count})",
+    "followers-title": "Takipçiler ({count})",
     "following-title": "Takip Ediliyor ({count})",
     "load-more": "Daha Fazla Yükle"
   }
