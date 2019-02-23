@@ -3,3 +3,5 @@
 exports[`Parse token (1) should parse 1`] = `18.494`;
 
 exports[`Parse token (2) should parse 1`] = `0`;
+
+exports[`Parse token (2) should parse number 1`] = `0`;
