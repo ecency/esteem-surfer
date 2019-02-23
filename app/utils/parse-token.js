@@ -1,1 +1,4 @@
-export default strVal => Number(parseFloat(strVal.split(' ')[0]));
+export default strVal =>
+  typeof strVal === 'string'
+    ? Number(parseFloat(strVal.split(' ')[0]))
+    : strVal;

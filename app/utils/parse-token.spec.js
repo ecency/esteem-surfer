@@ -12,4 +12,9 @@ describe('Parse token', () => {
     const input = '0.000 STEEM';
     expect(parseToken(input)).toMatchSnapshot();
   });
+
+  it('(2) should parse number', () => {
+    const input = 0;
+    expect(parseToken(input)).toMatchSnapshot();
+  });
 });
