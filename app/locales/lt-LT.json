@@ -285,7 +285,7 @@
     "comment-entry-go-root": "Peržiūrėti visą kontekstą",
     "comment-entry-go-parent": "Peržiūrėti pirminį",
     "similar-entries": "Panašūs Įrašai",
-    "fetch-error": "Server timeout because response size is too big"
+    "fetch-error": "Serverio laikas baigėsi nes atsakymo laikas yra per didelis"
   },
   "navbar": {
     "settings": "Nustatymai",

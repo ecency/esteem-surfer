@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "Nema Internet konekcije"
   },
   "g": {
     "compose-entry": "Napiši post",
@@ -87,7 +87,7 @@
     "create-account-text": "Nemate nalog? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Registrujte se odmah!</a>",
     "login-with-sc": "Prijavite se pomoću",
     "divider-text": "ILI",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "Napomena: Steemconnect može naplatiti neke naknade od vaših transakcija za nagradu"
   },
   "create-pin-code": {
     "title": "Kreirajte PIN kod",
@@ -155,7 +155,7 @@
     "steem-power-description": "Steem Power su tokeni uticaja koji dugoročno dobijaju više snage, kao i glasanjem postova. Što ih više imate to ćete imati više uticaja na nagrade drugih korisnika i više ćete zaraditi na vašim glasovima.",
     "steem-power-delegated": "Delegirani Steem Power",
     "steem-power-received": "Primljena Delegacija Steem Power-a",
-    "next-power-down-amount": "Next power down amount",
+    "next-power-down-amount": "Sledeći napajanja dole iznos",
     "steem-power-total": "Ukupan Steem Power",
     "steem-dollars": "Steem dolari",
     "steem-dollars-description": "Tokeni vrednosti oko $1.00 u STEEM-u.",
@@ -284,8 +284,8 @@
     "comment-entry-title": "Pregledate komentare u vezi sa: ",
     "comment-entry-go-root": "Pogledaj ceo kontekst",
     "comment-entry-go-parent": "Pogledaj nadređeni komentar",
-    "similar-entries": "Similar Posts",
-    "fetch-error": "Server timeout because response size is too big"
+    "similar-entries": "Slične objave",
+    "fetch-error": "Vremenskog ograničenja servera jer odgovor je preveliki"
   },
   "navbar": {
     "settings": "Podešavanja",
@@ -300,7 +300,7 @@
     "address-enter-url": "Unesite URL adresu",
     "address-enter-query": "Unesite upit za pretragu",
     "unclaimed-reward-notice": "Imate nepotvrđene nagrade",
-    "search-no-matches": "No matches"
+    "search-no-matches": "Nema podudaranja"
   },
   "search": {
     "n-results-for-q": "{n} rezultata za {q}",
@@ -428,7 +428,7 @@
     "empty-list": "Ovde nema ništa"
   },
   "friends": {
-    "followers-title": "Followers ({count})",
+    "followers-title": "Sledbenici ({count})",
     "following-title": "Following ({count})",
     "load-more": "Load More"
   }
