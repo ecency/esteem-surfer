@@ -357,7 +357,7 @@
     "page-title": "증인 투표",
     "remaining": "총 {max} 개의 투표권 중 <strong>{n}</strong> 개가 남았습니다",
     "witness": "증인",
-    "miss": "생산 실패",
+    "miss": "블록 생성 실패",
     "url": "URL",
     "fee": "수수료",
     "feed": "피드",
