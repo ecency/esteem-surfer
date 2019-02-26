@@ -87,7 +87,7 @@
     "create-account-text": "Tidak memiliki akun? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">buat sekarang!</a>",
     "login-with-sc": "Masuk dengan",
     "divider-text": "Atau",
-    "sc-note": "Catatan: Steemconnect dapat membebani beberapa biaya dari transaksi hadiah Anda"
+    "sc-note": "Catatan: Steemconnect dapat membebankan beberapa biaya dari transaksi hadiah Anda"
   },
   "create-pin-code": {
     "title": "Buat Kode PIN",
