@@ -7,6 +7,14 @@ import { bindActionCreators } from 'redux';
 import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import tr from 'react-intl/locale-data/tr';
+import ru from 'react-intl/locale-data/ru';
+import ko from 'react-intl/locale-data/ko';
+import es from 'react-intl/locale-data/es';
+import pt from 'react-intl/locale-data/pt';
+import pl from 'react-intl/locale-data/pl';
+import hu from 'react-intl/locale-data/hu';
+import nl from 'react-intl/locale-data/nl';
+import de from 'react-intl/locale-data/de';
 
 import { Modal } from 'antd';
 
@@ -37,7 +45,18 @@ import { decryptKey } from '../utils/crypto';
 
 import { NWS_ADDRESS } from '../config';
 
-addLocaleData([...en, ...tr]);
+addLocaleData([
+  ...en,
+  ...tr,
+  ...ru,
+  ...ko,
+  ...es,
+  ...pt,
+  ...pl,
+  ...hu,
+  ...nl,
+  ...de
+]);
 
 class App extends React.Component {
   constructor(props) {
