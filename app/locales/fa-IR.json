@@ -153,7 +153,7 @@
     "steem-description": "STEEM ها ژتون هایی هستند که در هر زمانی قابل انتقال هستند. STEEM را میتوان طی فرایندی به نام افزایش قدرت به Steem Power تبدیل کرد. ",
     "steem-power": "استیم پاور",
     "steem-power-description": "استیم پاور نماد قدرت و نفوذ شما بر پست ها و رای هاست که با فعالیت مستمر و یا رای های دریافتی برای پست ها بدست می آید. در اختیار داشتن مقدار بیشتری از آن برابر است با تاثیر گذاری بیشتر آن بر رای های داده شده و پاداش هاست.",
-    "steem-power-delegated": "استیم پاور های سپرده شده به شما",
+    "steem-power-delegated": "Steem Power های اجاره داده شده",
     "steem-power-received": "استیم پاور دریافت شده",
     "next-power-down-amount": "مقدار کاهش قدرت بعدی",
     "steem-power-total": "کل استیم پاور",
@@ -179,7 +179,7 @@
     "power-up": "بالا بردن قدرت",
     "withdraw-steem": "برداشت استیم",
     "withdraw-sbd": "برداشت دلار استیم",
-    "delegate": "محول کردن"
+    "delegate": "اجاره"
   },
   "composer": {
     "title-placeholder": "تیتر",
@@ -415,13 +415,13 @@
     "recent-transfers": "نقل و انتقالات اخیر"
   },
   "delegate": {
-    "title": "محول کردن",
-    "sub-title": "محول کردن استیم پاور",
+    "title": "اجاره",
+    "sub-title": "اجاره Steem Power",
     "slider-help": "کشیدن لغزنده برای تنظیم مقدار",
-    "confirm-title": "تایید محول کردن",
+    "confirm-title": "تایید اجاره",
     "confirm-sub-title": "لطفاً بررسی کنید که همه چیز درست است",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> محول شده به <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "محول کردن انجام شد",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> اجاره داده شده به <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "اجاره دادن انجام شد",
     "insufficient-vesting": "نا کافی بودن سهام برای سرمایه گذاری {a} سهامدار"
   },
   "delegation-list": {
