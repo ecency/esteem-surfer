@@ -420,8 +420,8 @@
     "slider-help": "کشیدن لغزنده برای تنظیم مقدار",
     "confirm-title": "تایید اجاره",
     "confirm-sub-title": "لطفاً بررسی کنید که همه چیز درست است",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> محول شده به <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "محول کردن انجام شد",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> اجاره داده شده به <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "اجاره دادن انجام شد",
     "insufficient-vesting": "نا کافی بودن سهام برای سرمایه گذاری {a} سهامدار"
   },
   "delegation-list": {
