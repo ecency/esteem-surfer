@@ -429,7 +429,7 @@
   },
   "friends": {
     "followers-title": "Sledbenici ({count})",
-    "following-title": "Following ({count})",
-    "load-more": "Load More"
+    "following-title": "Pratim ({count})",
+    "load-more": "Učitaj još"
   }
 }
