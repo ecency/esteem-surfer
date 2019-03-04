@@ -1,71 +1,71 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "אין חיבור לרשת"
   },
   "g": {
-    "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
-    "yes": "Yes",
-    "no": "No",
-    "delete": "Delete",
-    "cancel": "Cancel",
-    "ok": "OK",
-    "edit": "Edit",
-    "server-error": "Process could not be completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "compose-entry": "צור פוסט",
+    "are-you-sure": "האם הינך בטוח?",
+    "yes": "כן",
+    "no": "לא",
+    "delete": "מחק\\י",
+    "cancel": "בטל\\י",
+    "ok": "אישור",
+    "edit": "עריכה",
+    "server-error": "לא היתה אפשרות להשלים תהליך עקב שגיאה בשרת",
+    "save": "שמירה",
+    "done": "בוצע",
+    "select": "בחר\\י"
   },
   "footer": {
-    "faq": "FAQ",
-    "about": "About"
+    "faq": "שאלות נפוצות",
+    "about": "אודות"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
-    "filter-feed": "Feed"
+    "tags": "תיוגים פופולאריים",
+    "filter-trending": "שיווקי",
+    "filter-hot": "חם",
+    "filter-created": "חדש",
+    "filter-active": "פעיל\\ה",
+    "filter-promoted": "קודם",
+    "filter-votes": "הצבעות",
+    "filter-children": "תגובות",
+    "filter-feed": "פיד"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "תשלום אפשרי",
+    "promoted": "קודמו",
+    "author-payout": "תשלום לכותב",
+    "curation-payout": "תשלום מושגח",
+    "payout-date": "תשלום"
   },
   "entry-votes": {
-    "n-more": "{n} more",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
-    "modal-title": "Voters ({n})"
+    "n-more": "{n} עוד",
+    "author": "מחבר",
+    "reward": "תמורה",
+    "percent": "אחוז",
+    "time": "זמן",
+    "modal-title": "{n} מצביעים"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "פורסם מחדש על ידי {n}"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "ריבלוג",
+    "reblogged": "הועלה מחדש"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "Currency",
-    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
-    "currency-changed": "Currency Changed",
-    "locale": "Language",
-    "locale-changed": "Language changed",
-    "server": "Server",
-    "server-invalid-address": "Invalid server address",
-    "server-connecting": "Connecting to '{server}'...",
-    "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
-    "server-timeout-error": "'{server}' looks like not alive",
-    "server-changed": "Server selection changed to {server}",
+    "title": "הגדרות",
+    "currency": "יתרת מטבע",
+    "currency-fetch-error": "לא ניתן לשער את הערך הכספי בעבור {cur}",
+    "currency-changed": "יתרת מטבע השתנתה",
+    "locale": "שפה",
+    "locale-changed": "שפה שונתה",
+    "server": "שרת",
+    "server-invalid-address": "כתובת שרת לא תקינה",
+    "server-connecting": "מתחבר ל {server}...",
+    "server-connect-error": "לא היתה אפשרות להתחבר ל- '{server}'. ודא\\י כי יש לך חיבור תקין לאינטרנט.",
+    "server-timeout-error": "{server} אינו נראה תקף",
+    "server-changed": "אופציית השרת השתנתה ל {server}",
     "server-custom-address": "Custom server address",
     "server-list-fetch-error": "Could not fetch server list",
     "push-notifications": "Push Notifications",
@@ -128,30 +128,30 @@
     "section-blog": "Blog",
     "section-comments": "Comments",
     "section-replies": "Replies",
-    "section-wallet": "Wallet"
+    "section-wallet": "ארנק"
   },
   "follow-controls": {
-    "follow": "Follow",
-    "unFollow": "Unfollow",
-    "mute": "Mute",
-    "unMute": "Unmute"
+    "follow": "עקוב",
+    "unFollow": "תפסיק\\י לעקוב",
+    "mute": "השתק\\י",
+    "unMute": "ביטול השתקה"
   },
   "account": {
-    "voting-power": "Voting Power",
-    "post-count": "Post Count",
-    "number-of-votes": "Number of votes in last 24 hours",
-    "followers": "Followers",
-    "following": "Following",
-    "section-blog": "Blog",
-    "section-comments": "Comments",
-    "section-replies": "Replies",
-    "section-wallet": "Wallet",
-    "top-posts": "Top Posts",
-    "unclaimed-rewards": "Unclaimed rewards",
-    "estimated-value": "The estimated value is based on a 7 day average value of Steem.",
-    "steem": "Steem",
+    "voting-power": "כוח הצבעה",
+    "post-count": "מונה הפוסטים",
+    "number-of-votes": "מספר ההצבעות ב24 השעות האחרונות",
+    "followers": "עוקבים",
+    "following": "עוקב\\ת",
+    "section-blog": "בלוג",
+    "section-comments": "תגובות",
+    "section-replies": "תגובות",
+    "section-wallet": "ארנק",
+    "top-posts": "פוסטים עליונים",
+    "unclaimed-rewards": "תגמולים ללא דורש",
+    "estimated-value": "הערך המשוער מבוסס על ערך הSteem במשך 7 ימים בממוצע.",
+    "steem": "סטים",
     "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
-    "steem-power": "Steem Power",
+    "steem-power": "כח Steem",
     "steem-power-description": "Steem Power are influence tokens that earn more power for holding long term and voting on posts. The more Steem Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
     "steem-power-delegated": "Delegated Steem Power",
     "steem-power-received": "Received Steem Power",
