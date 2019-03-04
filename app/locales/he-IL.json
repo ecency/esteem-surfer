@@ -182,7 +182,7 @@
     "delegate": "Delegate"
   },
   "composer": {
-    "title-placeholder": "Title",
+    "title-placeholder": "כותרת",
     "tags-placeholder": "Tags. First tag is your main category",
     "max-n-tags": "Max {n} tags",
     "body-placeholder": "Post Content",
