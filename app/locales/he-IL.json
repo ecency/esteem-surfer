@@ -10,11 +10,11 @@
     "delete": "מחק\\י",
     "cancel": "בטל\\י",
     "ok": "אישור",
-    "edit": "עריכה",
-    "server-error": "לא היתה אפשרות להשלים תהליך עקב שגיאה בשרת",
+    "edit": "ערוך",
+    "server-error": "לא הייתה אפשרות להשלים תהליך עקב שגיאה בשרת",
     "save": "שמירה",
     "done": "בוצע",
-    "select": "בחר\\י"
+    "select": "בחר"
   },
   "footer": {
     "faq": "שאלות נפוצות",
@@ -26,7 +26,7 @@
     "filter-hot": "חם",
     "filter-created": "חדש",
     "filter-active": "פעיל\\ה",
-    "filter-promoted": "קודם",
+    "filter-promoted": "מקודם",
     "filter-votes": "הצבעות",
     "filter-children": "תגובות",
     "filter-feed": "פיד"
@@ -35,7 +35,7 @@
     "potential-payout": "תשלום אפשרי",
     "promoted": "קודמו",
     "author-payout": "תשלום לכותב",
-    "curation-payout": "תשלום מושגח",
+    "curation-payout": "תשלום על ניהול אוצרות תוכן",
     "payout-date": "תשלום"
   },
   "entry-votes": {
@@ -44,7 +44,7 @@
     "reward": "תמורה",
     "percent": "אחוז",
     "time": "זמן",
-    "modal-title": "{n} מצביעים"
+    "modal-title": "מצביעים ({n})"
   },
   "entry-list-item": {
     "reblogged": "פורסם מחדש על ידי {n}"
@@ -55,20 +55,20 @@
   },
   "settings": {
     "title": "הגדרות",
-    "currency": "יתרת מטבע",
-    "currency-fetch-error": "לא ניתן לשער את הערך הכספי בעבור {cur}",
-    "currency-changed": "יתרת מטבע השתנתה",
+    "currency": "יתרה",
+    "currency-fetch-error": "לא ניתן לשער את תעריף היתרה עבור '{cur}'",
+    "currency-changed": "יתרה השתנתה",
     "locale": "שפה",
     "locale-changed": "שפה שונתה",
     "server": "שרת",
     "server-invalid-address": "כתובת שרת לא תקינה",
-    "server-connecting": "מתחבר ל {server}...",
-    "server-connect-error": "לא היתה אפשרות להתחבר ל- '{server}'. ודא\\י כי יש לך חיבור תקין לאינטרנט.",
-    "server-timeout-error": "{server} אינו נראה תקף",
+    "server-connecting": "מתחבר ל '{server}'...",
+    "server-connect-error": "אי אפשר להתחבר ל- '{server}'. ודא\\י כי יש לך חיבור תקין לאינטרנט.",
+    "server-timeout-error": "'{server}' אינו נראה תקף",
     "server-changed": "אופציית השרת השתנתה ל {server}",
-    "server-custom-address": "כתובת שרת המותאמת אישית",
-    "server-list-fetch-error": "לא היה ניתן לעלות רשימת שרתים",
-    "push-notifications": "התראות דחיפה",
+    "server-custom-address": "כתובת שרת מותאמת אישית",
+    "server-list-fetch-error": "לא ניתן לעלות רשימת שרתים",
+    "push-notifications": "הודעות דחיפה",
     "push-notify-enabled": "התראות דחיפה אינן מופעלות",
     "push-notify-disabled": "התראות דחיפה אינן מופעלות"
   },
