@@ -69,72 +69,72 @@
     "server-custom-address": "כתובת שרת מותאמת אישית",
     "server-list-fetch-error": "לא ניתן לעלות רשימת שרתים",
     "push-notifications": "הודעות דחיפה",
-    "push-notify-enabled": "התראות דחיפה אינן מופעלות",
-    "push-notify-disabled": "התראות דחיפה אינן מופעלות"
+    "push-notify-enabled": "הודעות דחיפה מופעל",
+    "push-notify-disabled": "הודעות דחיפה אינן מופעלות"
   },
   "login": {
-    "title": "ברוך שובך!",
-    "accounts-title": "התחבר למערכת בתור",
-    "traditional-login-desc": "היכנסו בעזרת שם המשתמש והסיסמא על מנת להמשיך",
+    "title": "ברוכים השבים!",
+    "accounts-title": "התחבר/י בתור",
+    "traditional-login-desc": "התחברו עם שם המשתמש והסיסמא שלכם על מנת להמשיך",
     "username-placeholder": "שם משתמש",
     "password-placeholder": "סיסמה או WIF",
     "login": "כניסה",
     "error-fields-required": "אנא הקלידו שם משתמש וסיסמא\\WIF",
-    "error-public-key": "אתה הזנת קוד מפתח ציבורי. נדרש סיסמה\\WIF",
+    "error-public-key": "את/ה הזנת קוד מפתח ציבורי. נדרש סיסמה\\WIF",
     "error-user-fetch": "לא ניתן לעלות את נתוני המשתמש",
     "error-user-not-found": "משתמש אינו קיים",
-    "error-authenticate": "שם משתמש או סיסמה\\WIF שגויים",
-    "create-account-text": "אין לך חשבון? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">הרשם כעת!</a>",
-    "login-with-sc": "התחבר עם",
+    "error-authenticate": "שם משתמש או סיסמה\\WIF שגוי",
+    "create-account-text": "אין לך חשבון? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">הרשם עכשיו!</a>",
+    "login-with-sc": "התחבר/י עם",
     "divider-text": "או",
-    "sc-note": "הערה: Steemconnect עשוי לגבות תשלומים מסוימים מהעברות תגמולותיך"
+    "sc-note": "הערה: Steemconnect עשוי לגבות תשלומים מסוימים מן ההעברות של תגמולותיך"
   },
   "create-pin-code": {
-    "title": "צור PIN קוד",
-    "desc1": "הגדר את קוד הPIN כדי להגן על נתוני המידע, ולתת שכבה נוספת של אבטחה!",
+    "title": "צור קוד PIN",
+    "desc1": "הגדר את קוד הPIN בכדי להגן על נתוני המידע שלך, ועל מנת לספק רשת אבטחה נוספת!",
     "input-placeholder": "הזן קוד PIN",
-    "desc2": "הינך תתבקש\\י להזין את קוד הPIN בעבור הפקדות והוצאות מכריעות, כמו כן גם על כל תפעול של משהו חדש.",
+    "desc2": "הינך תתבקש\\י להזין את קוד הPIN בעבור הפקדות והוצאות חשובות, כמו כן גם על כל תפעול של משהו חדש.",
     "created": "קוד PIN נוצר"
   },
   "confirm-pin-code": {
     "title": "הזן קוד PIN",
-    "input-placeholder": "הזן קוד PIN בכדי להמשיך",
-    "last-chance": "זוהי ההזדמנות האחרונה שלך",
+    "input-placeholder": "הזן קוד PIN כדי להמשיך",
+    "last-chance": "זוהי הזדמנותך האחרונה",
     "invalidate": "אוי, אני שכחתי...",
     "invalidate-confirm": "האם את\\ה באמת רוצה לפסול את הPIN קוד?",
-    "invalidated": "קוד PIN לא תקין"
+    "invalidated": "קוד PIN אינו תקין"
   },
   "user-menu": {
     "profile": "פרופיל",
     "bookmarks": "סימניות",
     "favorites": "מועדפים",
-    "drafts": "טיוטות",
+    "drafts": "טיוטה",
     "schedules": "לוחות זמנים",
     "gallery": "גלריה",
-    "login-as": "התחבר למערכת בתור",
+    "login-as": "התחבר/י בתור",
     "logout": "יציאה מהמערכת"
   },
   "login-required": {
     "default": "פעולה זו דורשת כניסה למערכת",
     "key-required": "פעולה זו מצריכה {key} מפתח או סיסמת מאסטר",
-    "keys-required": "פעולה זו מצריכה {keys} מפתח או סיסמת מאסטר"
+    "keys-required": "פעולה זו מצריכה {keys} מפתחות או סיסמת מאסטר"
   },
   "quick-profile": {
     "fetch-error-profile": "לא ניתן לעלות נתוני מידע של הפרופיל",
-    "fetch-error-content": "לא ניתן לראות פוסטים",
-    "post-count": "מונה הפוסטים",
+    "fetch-error-content": "לא ניתן לעלות פוסטים",
+    "post-count": "מונה פוסטים",
     "followers": "עוקבים",
     "following": "עוקב",
     "section-blog": "בלוג",
     "section-comments": "תגובות",
-    "section-replies": "תגובות",
+    "section-replies": "תשובות",
     "section-wallet": "ארנק"
   },
   "follow-controls": {
     "follow": "עקוב",
     "unFollow": "תפסיק\\י לעקוב",
-    "mute": "השתק\\י",
-    "unMute": "ביטול השתקה"
+    "mute": "השתק",
+    "unMute": "בטל מצב שקט"
   },
   "account": {
     "voting-power": "כוח הצבעה",
