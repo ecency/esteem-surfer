@@ -22,8 +22,8 @@
   },
   "entry-index": {
     "tags": "תיוגים פופולאריים",
-    "filter-trending": "שיווקי",
-    "filter-hot": "חם",
+    "filter-trending": "פופולארי",
+    "filter-hot": "לוהט",
     "filter-created": "חדש",
     "filter-active": "פעיל\\ה",
     "filter-promoted": "מקודם",
@@ -41,7 +41,7 @@
   "entry-votes": {
     "n-more": "{n} עוד",
     "author": "מחבר",
-    "reward": "תמורה",
+    "reward": "תגמול",
     "percent": "אחוז",
     "time": "זמן",
     "modal-title": "מצביעים ({n})"
@@ -50,7 +50,7 @@
     "reblogged": "פורסם מחדש על ידי {n}"
   },
   "entry-reblog": {
-    "reblog": "ריבלוג",
+    "reblog": "שתף/י שוב",
     "reblogged": "הועלה מחדש"
   },
   "settings": {
@@ -63,13 +63,13 @@
     "server": "שרת",
     "server-invalid-address": "כתובת שרת לא תקינה",
     "server-connecting": "מתחבר ל '{server}'...",
-    "server-connect-error": "אי אפשר להתחבר ל- '{server}'. ודא\\י כי יש לך חיבור תקין לאינטרנט.",
+    "server-connect-error": "אי אפשר להתחבר ל- '{server}'. ודא\\י כי יש חיבור האינטרנט שלך תקין.",
     "server-timeout-error": "'{server}' אינו נראה תקף",
     "server-changed": "אופציית השרת השתנתה ל {server}",
     "server-custom-address": "כתובת שרת מותאמת אישית",
     "server-list-fetch-error": "לא ניתן לעלות רשימת שרתים",
     "push-notifications": "הודעות דחיפה",
-    "push-notify-enabled": "הודעות דחיפה מופעל",
+    "push-notify-enabled": "הודעות דחיפה מופעלות",
     "push-notify-disabled": "הודעות דחיפה אינן מופעלות"
   },
   "login": {
@@ -80,18 +80,18 @@
     "password-placeholder": "סיסמה או WIF",
     "login": "כניסה",
     "error-fields-required": "אנא הקלידו שם משתמש וסיסמא\\WIF",
-    "error-public-key": "את/ה הזנת קוד מפתח ציבורי. נדרש סיסמה\\WIF",
+    "error-public-key": "את/ה הזנת קוד מפתח ציבורי ( Public key). נדרש סיסמה\\WIF",
     "error-user-fetch": "לא ניתן לעלות את נתוני המשתמש",
     "error-user-not-found": "משתמש אינו קיים",
     "error-authenticate": "שם משתמש או סיסמה\\WIF שגוי",
     "create-account-text": "אין לך חשבון? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">הרשם עכשיו!</a>",
     "login-with-sc": "התחבר/י עם",
     "divider-text": "או",
-    "sc-note": "הערה: Steemconnect עשוי לגבות תשלומים מסוימים מן ההעברות של תגמולותיך"
+    "sc-note": "Steemconnect עשוי לגבות תשלומים מסוימים מיתרת תגמוליך"
   },
   "create-pin-code": {
     "title": "צור קוד PIN",
-    "desc1": "הגדר את קוד הPIN בכדי להגן על נתוני המידע שלך, ועל מנת לספק רשת אבטחה נוספת!",
+    "desc1": "הגדר את קוד הPIN בכדי להגן על נתוני המידע שלך, ועל מנת לספק רשת נוספת של אבטחה!",
     "input-placeholder": "הזן קוד PIN",
     "desc2": "הינך תתבקש\\י להזין את קוד הPIN בעבור הפקדות והוצאות חשובות, כמו כן גם על כל תפעול של משהו חדש.",
     "created": "קוד PIN נוצר"
@@ -100,19 +100,19 @@
     "title": "הזן קוד PIN",
     "input-placeholder": "הזן קוד PIN כדי להמשיך",
     "last-chance": "זוהי הזדמנותך האחרונה",
-    "invalidate": "אוי, אני שכחתי...",
+    "invalidate": "אוי, אני שכחתי את זה...",
     "invalidate-confirm": "האם את\\ה באמת רוצה לפסול את הPIN קוד?",
-    "invalidated": "קוד PIN אינו תקין"
+    "invalidated": "קוד PIN פסול"
   },
   "user-menu": {
     "profile": "פרופיל",
     "bookmarks": "סימניות",
     "favorites": "מועדפים",
-    "drafts": "טיוטה",
+    "drafts": "טיוטות",
     "schedules": "לוחות זמנים",
     "gallery": "גלריה",
     "login-as": "התחבר/י בתור",
-    "logout": "יציאה מהמערכת"
+    "logout": "התנתק/י"
   },
   "login-required": {
     "default": "פעולה זו דורשת כניסה למערכת",
