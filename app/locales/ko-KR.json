@@ -347,6 +347,7 @@
     "unfollowed-str": "팔로우 취소",
     "ignored-str": "무시",
     "reblog-str": "님이 이 글을 리블로그했습니다:",
+    "transfer-str": "sent you",
     "empty-list": "빈 목록입니다",
     "refresh": "새로고침",
     "mark-all-read": "모두 읽음으로 표시",
