@@ -253,6 +253,28 @@ class ActivityListItem extends Component {
                 </div>
               </div>
             )}
+
+            {/* Transfer */}
+            {activity.type === 'transfer' && (
+              <div className="activity-content">
+                <div className="first-line">
+                  <AccountLink {...this.props} username={activity.source}>
+                    <a className="source-name"> {activity.source}</a>
+                  </AccountLink>
+                  <span className="activity-action">
+                    <FormattedMessage id="activities.transfer-str" />{' '}
+                    <span className="transfer-amount">{activity.amount}</span>
+                  </span>
+                </div>
+                {activity.memo && typeof activity.memo === 'string' && (
+                  <div className="second-line">
+                    <div className="transfer-memo">
+                      {activity.memo.substring(0, 120)}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </Fragment>
@@ -475,14 +497,13 @@ class Activities extends Component {
         </div>
 
         {loading && <LinearProgress />}
-        {!loading &&
-          activities.length === 0 && (
-            <div className="activity-list empty-list">
-              <span className="empty-text">
-                <FormattedMessage id="activities.empty-list" />
-              </span>
-            </div>
-          )}
+        {!loading && activities.length === 0 && (
+          <div className="activity-list empty-list">
+            <span className="empty-text">
+              <FormattedMessage id="activities.empty-list" />
+            </span>
+          </div>
+        )}
         {activities.length > 0 && (
           <div className="activity-list">
             {activities.map(ac => (

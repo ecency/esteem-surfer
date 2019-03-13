@@ -271,8 +271,13 @@
               white-space: nowrap;
             }
 
+            .transfer-amount {
+              font-weight: 500;
+            }
+
             .second-line {
-              .reply-body {
+              .reply-body,
+              .transfer-memo {
                 border-left: 5px solid lighten($steel-grey, 30);
                 color: $steel-grey;
                 cursor: pointer;
