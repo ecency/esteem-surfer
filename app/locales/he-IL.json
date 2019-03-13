@@ -421,9 +421,9 @@
     "slider-help": "גרור את השקופית כדי להתאים את הכמות",
     "confirm-title": "אשר ייפוי כוח",
     "confirm-sub-title": "בבקשה, בדוק אם הכל עובד כראוי",
-    "delegation-summary": "<span class=\"sp\">{sp}</span>מוסמך ל<span class=\"to-user\">{to}</span>",
-    "success-sub-title": "הסמכה הושלמה",
-    "insufficient-vesting": "מניות vesting מועטות {VESTS {a"
+    "delegation-summary": "<span class=\"sp\">{sp}</span> משולח ל<span class=\"to-user\">{to}</span>",
+    "success-sub-title": "משימה הושלמה",
+    "insufficient-vesting": "מניות ה Vesging אינן מספיקות {VESTS {a"
   },
   "delegation-list": {
     "empty-list": "אין כאן מידע"
