@@ -51,19 +51,19 @@
   },
   "entry-reblog": {
     "reblog": "שתף/י שוב",
-    "reblogged": "הועלה מחדש"
+    "reblogged": "שותף"
   },
   "settings": {
     "title": "הגדרות",
     "currency": "יתרה",
-    "currency-fetch-error": "לא ניתן לשער את תעריף היתרה עבור '{cur}'",
+    "currency-fetch-error": "לא ניתן לעלות את תעריף היתרה עבור '{cur}'",
     "currency-changed": "יתרה השתנתה",
     "locale": "שפה",
     "locale-changed": "שפה שונתה",
     "server": "שרת",
     "server-invalid-address": "כתובת שרת לא תקינה",
     "server-connecting": "מתחבר ל '{server}'...",
-    "server-connect-error": "אי אפשר להתחבר ל- '{server}'. ודא\\י כי יש חיבור האינטרנט שלך תקין.",
+    "server-connect-error": "אי אפשר להתחבר ל- '{server}'. ודא\\י כי חיבור האינטרנט שלך תקין.",
     "server-timeout-error": "'{server}' אינו נראה תקף",
     "server-changed": "אופציית השרת השתנתה ל {server}",
     "server-custom-address": "כתובת שרת מותאמת אישית",
@@ -154,7 +154,7 @@
     "steem-power": "כוח Steem",
     "steem-power-description": "כוח Steem הינם מטבעות שכוחם עולה ככל שטווח ההחזקה שלכם בהם ארוך יותר, וככל שאתם מצביעים לפוסטים. יותר כוח Steem אצל משתמש אחד, כך גם יותר השפעה על התגמולים של אחרים וקבלת פרסים על אופן הצבעה מדויק.",
     "steem-power-delegated": "ייפוי כוח Steem",
-    "steem-power-received": "כן Steem התקבל",
+    "steem-power-received": "כח Steem התקבל",
     "next-power-down-amount": "כמות הנזלת היתרה הבאה",
     "steem-power-total": "סך כל כוח הSteem",
     "steem-dollars": "דולר Steem",
@@ -179,7 +179,7 @@
     "power-up": "פאוור-אפ",
     "withdraw-steem": "משיכת Steem",
     "withdraw-sbd": "משיכת דולר Steem",
-    "delegate": "הסמך"
+    "delegate": "ליפות כח"
   },
   "composer": {
     "title-placeholder": "כותרת",
