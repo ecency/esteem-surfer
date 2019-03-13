@@ -347,6 +347,7 @@
     "unfollowed-str": "unfollowed",
     "ignored-str": "ignored",
     "reblog-str": "reblogged your post:",
+    "transfer-str": "sent you",
     "empty-list": "Nothing here",
     "refresh": "Refresh",
     "mark-all-read": "Mark All as Read",
