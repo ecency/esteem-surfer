@@ -425,11 +425,11 @@
     "insufficient-vesting": "מניות vesting מועטות {VESTS {a"
   },
   "delegation-list": {
-    "empty-list": "ריק כאן"
+    "empty-list": "אין כאן מידע"
   },
   "friends": {
     "followers-title": "עוקבים ({count})",
     "following-title": "עוקב\\ת ({count})",
-    "load-more": "טען יותר"
+    "load-more": "טען עוד"
   }
 }
