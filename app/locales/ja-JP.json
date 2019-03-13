@@ -347,6 +347,7 @@
     "unfollowed-str": "フォロー解除済み",
     "ignored-str": "無視",
     "reblog-str": "あなたの投稿をリブログしました",
+    "transfer-str": "sent you",
     "empty-list": "何もありません",
     "refresh": "更新",
     "mark-all-read": "全て既読にする",
