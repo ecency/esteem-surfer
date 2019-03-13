@@ -87,7 +87,7 @@
     "create-account-text": "Немає акаунту?<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Зареєструйтесь!</a>",
     "login-with-sc": "Увійти через",
     "divider-text": "АБО",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "Примітка: Steemconnect може стягувати деяку плату з ваших транзакцій винагород"
   },
   "create-pin-code": {
     "title": "Задайте PIN-код",
@@ -285,7 +285,7 @@
     "comment-entry-go-root": "Переглянути повний контекст",
     "comment-entry-go-parent": "Прямий батьківський коментар",
     "similar-entries": "Схожі пости",
-    "fetch-error": "Server timeout because response size is too big"
+    "fetch-error": "Тайм-аут сервера через завеликий розмір відповіді"
   },
   "navbar": {
     "settings": "Налаштування",
@@ -347,7 +347,7 @@
     "unfollowed-str": "відписався",
     "ignored-str": "ігнорується",
     "reblog-str": "зробив репост вашого посту:",
-    "transfer-str": "sent you",
+    "transfer-str": "відправив вам",
     "empty-list": "Тут порожньо",
     "refresh": "Оновити",
     "mark-all-read": "Позначити всі як прочитані",
@@ -429,8 +429,8 @@
     "empty-list": "Тут порожньо"
   },
   "friends": {
-    "followers-title": "Followers ({count})",
-    "following-title": "Following ({count})",
-    "load-more": "Load More"
+    "followers-title": "Читачі ({count})",
+    "following-title": "Підписки ({count})",
+    "load-more": "Завантажити ще"
   }
 }
