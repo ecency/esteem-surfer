@@ -51,6 +51,7 @@ import badActors from '../data/bad-actors.json';
 import { arrowRight } from '../svg';
 
 import { vestsToSp } from '../utils/conversions';
+import formatVest from '../utils/format-vest';
 
 class DelegateCls extends PureComponent {
   constructor(props) {
@@ -849,17 +850,16 @@ class PowerDownCls extends PureComponent {
 
     const { from, fromData, fromError, amount, inProgress } = this.state;
 
-    let isPoweringDown = false;
+    let poweringDown = false;
     let availableVestingShares = 0;
     let poweringDownVests = 0;
-
     let nextPowerDown = null;
 
     if (fromData) {
-      isPoweringDown = !isEmptyDate(fromData.next_vesting_withdrawal);
+      poweringDown = !isEmptyDate(fromData.next_vesting_withdrawal);
       nextPowerDown = parseDate(fromData.next_vesting_withdrawal);
 
-      if (isPoweringDown) {
+      if (poweringDown) {
         poweringDownVests = parseToken(fromData.vesting_withdraw_rate);
       } else {
         availableVestingShares =
@@ -869,11 +869,11 @@ class PowerDownCls extends PureComponent {
       }
     }
 
-    const sp = vestsToSp(amount, steemPerMVests);
-    const vests = parseFloat(amount)
+    const spCalculated = vestsToSp(amount, steemPerMVests);
+    const vests = parseToken(amount)
       .toLocaleString()
       .replace(',', '.');
-    const steemPerWeek = Math.round((sp / 13) * 1000) / 1000;
+    const steemPerWeek = Math.round((spCalculated / 13) * 1000) / 1000;
 
     const poweringDownSteem = vestsToSp(poweringDownVests, steemPerMVests);
 
@@ -930,7 +930,7 @@ class PowerDownCls extends PureComponent {
                       )}
                     </div>
                   </div>
-                  {!isPoweringDown && (
+                  {!poweringDown && (
                     <Fragment>
                       <div className="form-item" style={{ marginTop: '50px' }}>
                         <div className="form-label">
@@ -964,10 +964,10 @@ class PowerDownCls extends PureComponent {
                       <div className="numbers">
                         <div className="first-row">
                           <div className="sp-num">
-                            {'-'} {sp.toFixed(3)} SP
+                            {'-'} {spCalculated.toFixed(3)} SP
                           </div>
                           <div className="vests-num">
-                            {'-'} {vests} VESTS
+                            {'-'} {formatVest(vests)} VESTS
                           </div>
                         </div>
                         <div className="second-row">
@@ -981,7 +981,11 @@ class PowerDownCls extends PureComponent {
                       </div>
                       <div className="form-controls">
                         <PinRequired {...this.props} onSuccess={this.start}>
-                          <Button type="primary" disabled={!this.canSubmit()}>
+                          <Button
+                            type="primary"
+                            disabled={!this.canSubmit()}
+                            size="large"
+                          >
                             {inProgress && (
                               <Icon
                                 type="loading"
@@ -995,7 +999,7 @@ class PowerDownCls extends PureComponent {
                       </div>
                     </Fragment>
                   )}
-                  {isPoweringDown && (
+                  {poweringDown && (
                     <Fragment>
                       <div className="form-item">
                         <div className="form-label">
@@ -1006,7 +1010,7 @@ class PowerDownCls extends PureComponent {
                             + {poweringDownSteem.toFixed(3)} STEEM
                           </span>
                           <span className="vests">
-                            - {poweringDownVests.toFixed(3)} VESTS
+                            - {formatVest(poweringDownVests)} VESTS
                           </span>
                           <span className="next-date">
                             {'@'}{' '}

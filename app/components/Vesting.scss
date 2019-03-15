@@ -366,4 +366,9 @@
   .form-input {
     width: calc(100% - 140px) !important;
   }
+
+  .form-controls {
+    width: calc(100% - 100px) !important;
+    margin-left: 100px;
+  }
 }
