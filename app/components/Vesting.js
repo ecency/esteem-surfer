@@ -870,12 +870,10 @@ class PowerDownCls extends PureComponent {
     }
 
     const spCalculated = vestsToSp(amount, steemPerMVests);
-    const vests = parseToken(amount)
-      .toLocaleString()
-      .replace(',', '.');
-    const steemPerWeek = Math.round((spCalculated / 13) * 1000) / 1000;
+    const vests = formatVest(parseToken(amount));
+    const fundPerWeek = Math.round((spCalculated / 13) * 1000) / 1000;
 
-    const poweringDownSteem = vestsToSp(poweringDownVests, steemPerMVests);
+    const poweringDownFund = vestsToSp(poweringDownVests, steemPerMVests);
 
     return (
       <div className="wrapper">
@@ -967,12 +965,12 @@ class PowerDownCls extends PureComponent {
                             {'-'} {spCalculated.toFixed(3)} SP
                           </div>
                           <div className="vests-num">
-                            {'-'} {formatVest(vests)} VESTS
+                            {'-'} {vests} VESTS
                           </div>
                         </div>
                         <div className="second-row">
                           <div className="steem-num">
-                            {'+'} {steemPerWeek.toFixed(3)} STEEM
+                            {'+'} {fundPerWeek.toFixed(3)} STEEM
                           </div>
                           <div className="estimated-note">
                             <FormattedMessage id="power-down.estimated-note" />
@@ -1007,7 +1005,7 @@ class PowerDownCls extends PureComponent {
                         </div>
                         <div className="form-input incoming-funds">
                           <span className="steem">
-                            + {poweringDownSteem.toFixed(3)} STEEM
+                            + {poweringDownFund.toFixed(3)} STEEM
                           </span>
                           <span className="vests">
                             - {formatVest(poweringDownVests)} VESTS
@@ -1028,7 +1026,7 @@ class PowerDownCls extends PureComponent {
 
                       <div className="form-controls">
                         <PinRequired {...this.props} onSuccess={this.stop}>
-                          <Button type="danger">
+                          <Button type="danger" size="large">
                             {inProgress && (
                               <Icon
                                 type="loading"

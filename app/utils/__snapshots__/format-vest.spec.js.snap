@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`formatVest format number for vests 1`] = `"58.843"`;
+
+exports[`formatVest format number for vests 2 1`] = `"558.843"`;
+
+exports[`formatVest format number for vests 3 1`] = `"9.999.999"`;
+
+exports[`formatVest format number for vests 4 1`] = `"9.999.999,213"`;

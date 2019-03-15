@@ -1,1 +1,8 @@
-export default x => (typeof x === 'number' ? x.toLocaleString('tr-TR') : x);
+export default x =>
+  typeof x === 'number'
+    ? x
+        .toLocaleString('en-US')
+        .replace(/,/g, '-')
+        .replace(/\./, ',')
+        .replace(/-/g, '.')
+    : x;
