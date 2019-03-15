@@ -700,3 +700,26 @@ export const delegateVestingShares = (
 
 export const getVestingDelegations = (account, from = '', limit = 50) =>
   client.database.call('get_vesting_delegations', [account, from, limit]);
+
+export const withdrawVesting = (account, pin, vestingShares) => {
+  if (account.type === 's') {
+    const key = decryptKey(account.keys.active, pin);
+    const privateKey = PrivateKey.fromString(key);
+
+    const opArray = [
+      [
+        'withdraw_vesting',
+        {
+          account: account.username,
+          vesting_shares: vestingShares
+        }
+      ]
+    ];
+
+    return client.broadcast.sendOperations(opArray, privateKey);
+  }
+
+  if (account.type === 'sc') {
+    // return scDelegateVestingShares(delegator, delegatee, vestingShares);
+  }
+};

@@ -1004,6 +1004,11 @@ export class SectionWallet extends Component {
                 <FormattedMessage id="account.delegate" />
               </Link>
             </Menu.Item>
+            <Menu.Item key="power-down">
+              <Link to={`/@${activeAccount.username}/power-down`}>
+                <FormattedMessage id="account.power-down" />
+              </Link>
+            </Menu.Item>
           </Menu>
         );
 
@@ -1708,10 +1713,9 @@ class Account extends Component {
                 />
               )}
 
-              {section === 'blog' &&
-                topPosts && (
-                  <AccountTopPosts {...this.props} posts={topPosts} />
-                )}
+              {section === 'blog' && topPosts && (
+                <AccountTopPosts {...this.props} posts={topPosts} />
+              )}
 
               {!isWallet && (
                 <Fragment>
@@ -1745,15 +1749,14 @@ class Account extends Component {
                 </Fragment>
               )}
 
-              {isWallet &&
-                account && (
-                  <SectionWallet
-                    {...this.props}
-                    transactions={transactions}
-                    username={username}
-                    account={account}
-                  />
-                )}
+              {isWallet && account && (
+                <SectionWallet
+                  {...this.props}
+                  transactions={transactions}
+                  username={username}
+                  account={account}
+                />
+              )}
             </div>
           </div>
         </div>

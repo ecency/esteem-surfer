@@ -11,11 +11,18 @@ import EntryPage from './containers/EntryPage';
 import SearchPage from './containers/SearchPage';
 import WitnessesPage from './containers/WitnessesPage';
 import TransferPage from './containers/TransferPage';
-import { DelegatePage } from './containers/VestingPage';
+import { DelegatePage, PowerDownPage } from './containers/VestingPage';
 
 export default () => (
   <App>
     <Switch>
+      <Route
+        exact
+        path="/@:username/power-down"
+        component={props => (
+          <PowerDownPage timestamp={new Date().toString()} {...props} />
+        )}
+      />
       <Route
         exact
         path="/@:username/delegate"

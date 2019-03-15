@@ -1,7 +1,8 @@
 @import '../style/mixins';
 @import '../style/colors';
 
-.delegate-page {
+.delegate-page,
+.power-down-page {
   overflow-y: auto;
 
   .transfer-box {
@@ -268,5 +269,97 @@
     @include themify(night) {
       border-top: 1px solid $dusky-blue-two;
     }
+  }
+}
+
+.power-down-page {
+  .numbers {
+    margin: 0 0 40px 100px;
+    padding-bottom: 40px;
+
+    @include themify(day) {
+      border-bottom: 1px solid $white-four;
+    }
+
+    @include themify(night) {
+      border-bottom: 1px solid $dusky-blue-two;
+    }
+
+    .sp-num,
+    .vests-num,
+    .steem-num {
+      border-radius: 8px;
+      color: #fff;
+      display: inline-block;
+      font-size: 20px;
+      padding: 8px;
+      text-align: center;
+      width: 180px;
+    }
+
+    .sp-num {
+      background: lighten($red2, 10);
+      margin-right: 10px;
+    }
+
+    .vests-num {
+      background: lighten($charcoal-grey, 20);
+    }
+
+    .steem-num {
+      background: darken($green1, 10);
+    }
+
+    .first-row,
+    .second-row {
+      text-align: center;
+    }
+
+    .first-row {
+      margin-bottom: 10px;
+    }
+
+    .estimated-note {
+      font-size: 12px;
+      font-weight: 300;
+      margin: 10px 0;
+
+      @include themify(day) {
+        color: $charcoal-grey;
+      }
+
+      @include themify(night) {
+        color: $pinkish-grey;
+      }
+    }
+  }
+
+  .incoming-funds {
+    margin-bottom: 40px;
+
+    .steem {
+      color: darken($green1, 10);
+      display: block;
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .vests {
+      color: lighten($red2, 10);
+      margin-right: 10px;
+    }
+
+    .next-date {
+      color: lighten($charcoal-grey, 20);
+    }
+  }
+
+  .form-label {
+    width: 140px !important;
+  }
+
+  .form-input {
+    width: calc(100% - 140px) !important;
   }
 }

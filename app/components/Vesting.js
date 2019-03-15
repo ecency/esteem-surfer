@@ -7,6 +7,7 @@ import {
   FormattedHTMLMessage,
   FormattedNumber,
   FormattedMessage,
+  FormattedDate,
   injectIntl
 } from 'react-intl';
 
@@ -38,10 +39,12 @@ import {
 import {
   getAccount,
   delegateVestingShares,
-  getVestingDelegations
+  getVestingDelegations,
+  withdrawVesting
 } from '../backend/steem-client';
 import formatChainError from '../utils/format-chain-error';
 import parseToken from '../utils/parse-token';
+import parseDate from '../utils/parse-date';
 import isEmptyDate from '../utils/is-empty-date';
 
 import badActors from '../data/bad-actors.json';
@@ -723,6 +726,347 @@ DelegationListCls.propTypes = {
 const DelegationList = injectIntl(DelegationListCls);
 export { DelegationList };
 
-export class PowerDown extends PureComponent {}
+class PowerDownCls extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = this.resetState();
+  }
+
+  componentDidMount() {
+    this.init();
+
+    window.addEventListener('user-login', this.init);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('user-login', this.init);
+  }
+
+  init = () => {
+    const { match, history, intl } = this.props;
+    const { username } = match.params;
+
+    const { accounts } = this.props;
+    const account = accounts.find(x => x.username === username);
+
+    if (!account) {
+      history.push('/');
+      return;
+    }
+
+    if (account.type === 's' && !account.keys.active) {
+      this.setState({
+        fromError: intl.formatMessage({ id: 'transfer.key-required-err' })
+      });
+    } else {
+      this.setState({ fromError: null });
+    }
+
+    this.setState(
+      {
+        from: username
+      },
+      () => {
+        this.fetchFromData();
+      }
+    );
+  };
+
+  fetchFromData = () => {
+    const { from } = this.state;
+
+    return getAccount(from)
+      .then(resp => {
+        this.setState({ fromData: resp });
+        return resp;
+      })
+      .catch(e => {
+        message.error(formatChainError(e));
+      });
+  };
+
+  resetState = () => {
+    this.recentDb = getRecentTransfers();
+
+    return {
+      step: 1,
+      from: null,
+      fromData: null,
+      fromError: null,
+      amount: 0,
+      inProgress: false
+    };
+  };
+
+  canSubmit = () => {
+    const { fromError, amount, inProgress } = this.state;
+    return !fromError && amount > 0 && !inProgress;
+  };
+
+  amountChanged = amount => {
+    this.setState({ amount });
+  };
+
+  fromChanged = from => {
+    const { history } = this.props;
+    const u = `/@${from}/power-down`;
+    history.push(u);
+  };
+
+  doWithdrawVesting = (pin, fullAmount) => {
+    const { accounts } = this.props;
+    const { from } = this.state;
+
+    const account = accounts.find(x => x.username === from);
+
+    this.setState({ inProgress: true });
+    return withdrawVesting(account, pin, fullAmount)
+      .then(resp => {
+        this.init();
+        return resp;
+      })
+      .catch(err => {
+        message.error(formatChainError(err));
+      })
+      .finally(() => {
+        this.setState({ inProgress: false });
+      });
+  };
+
+  start = pin => {
+    const { amount } = this.state;
+    const fullAmount = `${amount}.000000 VESTS`;
+
+    this.doWithdrawVesting(pin, fullAmount);
+  };
+
+  stop = pin => {
+    const fullAmount = `0.000000 VESTS`;
+
+    this.doWithdrawVesting(pin, fullAmount);
+  };
+
+  render() {
+    const { intl, accounts, dynamicProps } = this.props;
+    const { steemPerMVests } = dynamicProps;
+
+    const { from, fromData, fromError, amount, inProgress } = this.state;
+
+    let isPoweringDown = false;
+    let availableVestingShares = 0;
+    let poweringDownVests = 0;
+
+    let nextPowerDown = null;
+
+    if (fromData) {
+      isPoweringDown = !isEmptyDate(fromData.next_vesting_withdrawal);
+      nextPowerDown = parseDate(fromData.next_vesting_withdrawal);
+
+      if (isPoweringDown) {
+        poweringDownVests = parseToken(fromData.vesting_withdraw_rate);
+      } else {
+        availableVestingShares =
+          parseToken(fromData.vesting_shares) -
+          (Number(fromData.to_withdraw) - Number(fromData.withdrawn)) / 1e6 -
+          parseToken(fromData.delegated_vesting_shares);
+      }
+    }
+
+    const sp = vestsToSp(amount, steemPerMVests);
+    const vests = parseFloat(amount)
+      .toLocaleString()
+      .replace(',', '.');
+    const steemPerWeek = Math.round((sp / 13) * 1000) / 1000;
+
+    const poweringDownSteem = vestsToSp(poweringDownVests, steemPerMVests);
+
+    return (
+      <div className="wrapper">
+        <NavBar
+          {...Object.assign({}, this.props, {
+            reloadFn: () => {
+              this.init();
+            },
+            reloading: false
+          })}
+        />
+        {fromData && (
+          <div className="app-content power-down-page">
+            <div className={`transfer-box ${inProgress ? 'in-progress' : ''}`}>
+              <div className="transfer-box-header">
+                <div className="box-titles">
+                  <div className="main-title">
+                    <FormattedMessage id="power-down.title" />
+                  </div>
+                  <div className="sub-title">
+                    <FormattedMessage id="power-down.sub-title" />
+                  </div>
+                </div>
+              </div>
+              {inProgress && <LinearProgress />}
+              <div className="transfer-box-body">
+                <div className="transfer-form">
+                  <div className={`form-item ${fromError ? 'has-error' : ''}`}>
+                    <div className="form-label">
+                      <FormattedMessage id="power-down.account" />
+                    </div>
+                    <div className="form-input">
+                      <Select
+                        className="select-from"
+                        onChange={this.fromChanged}
+                        defaultValue={from}
+                        value={from}
+                        placeholder={intl.formatMessage({
+                          id: 'transfer.from-placeholder'
+                        })}
+                      >
+                        {accounts.map(i => (
+                          <Select.Option key={i.username} value={i.username}>
+                            {i.username}
+                          </Select.Option>
+                        ))}
+                      </Select>
+
+                      {fromError && (
+                        <div className="input-help">{fromError}</div>
+                      )}
+                    </div>
+                  </div>
+                  {!isPoweringDown && (
+                    <Fragment>
+                      <div className="form-item" style={{ marginTop: '50px' }}>
+                        <div className="form-label">
+                          <FormattedMessage id="transfer.amount" />
+                        </div>
+                        <div className="form-input">
+                          <Slider
+                            step={1}
+                            max={availableVestingShares}
+                            tipFormatter={a => `${a}.000000 VESTS`}
+                            tooltipVisible={availableVestingShares >= 1}
+                            value={amount}
+                            onChange={this.amountChanged}
+                            disabled={availableVestingShares < 1}
+                          />
+                          <div className="input-help">
+                            <FormattedMessage id="delegate.slider-help" />
+                          </div>
+
+                          {availableVestingShares < 1 && (
+                            <Alert
+                              type="error"
+                              message={intl.formatMessage(
+                                { id: 'delegate.insufficient-vesting' },
+                                { a: availableVestingShares }
+                              )}
+                            />
+                          )}
+                        </div>
+                      </div>
+                      <div className="numbers">
+                        <div className="first-row">
+                          <div className="sp-num">
+                            {'-'} {sp.toFixed(3)} SP
+                          </div>
+                          <div className="vests-num">
+                            {'-'} {vests} VESTS
+                          </div>
+                        </div>
+                        <div className="second-row">
+                          <div className="steem-num">
+                            {'+'} {steemPerWeek.toFixed(3)} STEEM
+                          </div>
+                          <div className="estimated-note">Estimated Weekly</div>
+                        </div>
+                      </div>
+                      <div className="form-controls">
+                        <PinRequired {...this.props} onSuccess={this.start}>
+                          <Button type="primary" disabled={!this.canSubmit()}>
+                            {inProgress && (
+                              <Icon
+                                type="loading"
+                                style={{ fontSize: 12 }}
+                                spin
+                              />
+                            )}
+                            <FormattedMessage id="power-down.begin" />
+                          </Button>
+                        </PinRequired>
+                      </div>
+                    </Fragment>
+                  )}
+                  {isPoweringDown && (
+                    <Fragment>
+                      <div className="form-item">
+                        <div className="form-label">
+                          <FormattedMessage id="power-down.incoming-funds" />
+                        </div>
+                        <div className="form-input incoming-funds">
+                          <span className="steem">
+                            + {poweringDownSteem.toFixed(3)} STEEM
+                          </span>
+                          <span className="vests">
+                            - {poweringDownVests.toFixed(3)} VESTS
+                          </span>
+                          <span className="next-date">
+                            {'@'}{' '}
+                            <FormattedDate
+                              month="long"
+                              day="2-digit"
+                              year="numeric"
+                              hour="numeric"
+                              minute="numeric"
+                              value={nextPowerDown}
+                            />
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="form-controls">
+                        <PinRequired {...this.props} onSuccess={this.stop}>
+                          <Button type="danger">
+                            {inProgress && (
+                              <Icon
+                                type="loading"
+                                style={{ fontSize: 12 }}
+                                spin
+                              />
+                            )}
+                            <FormattedMessage id="power-down.stop" />
+                          </Button>
+                        </PinRequired>
+                      </div>
+                    </Fragment>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {!fromData && <div className="app-content power-down-page" />}
+
+        <AppFooter {...this.props} />
+        <DeepLinkHandler {...this.props} />
+      </div>
+    );
+  }
+}
+
+PowerDownCls.defaultProps = {
+  accounts: []
+};
+
+PowerDownCls.propTypes = {
+  dynamicProps: PropTypes.instanceOf(Object).isRequired,
+  accounts: PropTypes.arrayOf(PropTypes.object),
+  history: PropTypes.instanceOf(Object).isRequired,
+  match: PropTypes.instanceOf(Object).isRequired,
+  intl: PropTypes.instanceOf(Object).isRequired
+};
+
+const PowerDown = injectIntl(PowerDownCls);
+export { PowerDown };
 
 export class PowerDownTargetList extends PureComponent {}

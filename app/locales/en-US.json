@@ -179,7 +179,8 @@
     "power-up": "Power up",
     "withdraw-steem": "Withdraw Steem",
     "withdraw-sbd": "Withdraw Steem Dollar",
-    "delegate": "Delegate"
+    "delegate": "Delegate",
+    "power-down": "Power Down"
   },
   "composer": {
     "title-placeholder": "Title",
@@ -427,6 +428,14 @@
   },
   "delegation-list": {
     "empty-list": "Nothing here"
+  },
+  "power-down": {
+    "title": "Power Down",
+    "sub-title": "Power Down Steem Power",
+    "account": "Account",
+    "incoming-funds": "Incoming Funds",
+    "begin": "Begin Power Down",
+    "stop": "Stop"
   },
   "friends": {
     "followers-title": "Followers ({count})",
