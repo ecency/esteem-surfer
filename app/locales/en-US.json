@@ -435,7 +435,8 @@
     "account": "Account",
     "incoming-funds": "Incoming Funds",
     "begin": "Begin Power Down",
-    "stop": "Stop"
+    "stop": "Stop",
+    "estimated-note": "Estimated Weekly"
   },
   "friends": {
     "followers-title": "Followers ({count})",

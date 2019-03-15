@@ -786,18 +786,14 @@ class PowerDownCls extends PureComponent {
       });
   };
 
-  resetState = () => {
-    this.recentDb = getRecentTransfers();
-
-    return {
-      step: 1,
-      from: null,
-      fromData: null,
-      fromError: null,
-      amount: 0,
-      inProgress: false
-    };
-  };
+  resetState = () => ({
+    step: 1,
+    from: null,
+    fromData: null,
+    fromError: null,
+    amount: 0,
+    inProgress: false
+  });
 
   canSubmit = () => {
     const { fromError, amount, inProgress } = this.state;
@@ -886,9 +882,10 @@ class PowerDownCls extends PureComponent {
         <NavBar
           {...Object.assign({}, this.props, {
             reloadFn: () => {
+              this.setState(this.resetState());
               this.init();
             },
-            reloading: false
+            reloading: !fromData
           })}
         />
         {fromData && (
@@ -949,7 +946,7 @@ class PowerDownCls extends PureComponent {
                             onChange={this.amountChanged}
                             disabled={availableVestingShares < 1}
                           />
-                          <div className="input-help">
+                          <div className="input-help slider-note">
                             <FormattedMessage id="delegate.slider-help" />
                           </div>
 
@@ -977,7 +974,9 @@ class PowerDownCls extends PureComponent {
                           <div className="steem-num">
                             {'+'} {steemPerWeek.toFixed(3)} STEEM
                           </div>
-                          <div className="estimated-note">Estimated Weekly</div>
+                          <div className="estimated-note">
+                            <FormattedMessage id="power-down.estimated-note" />
+                          </div>
                         </div>
                       </div>
                       <div className="form-controls">
