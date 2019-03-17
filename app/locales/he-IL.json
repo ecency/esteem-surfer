@@ -64,7 +64,7 @@
     "server-invalid-address": "כתובת שרת לא תקינה",
     "server-connecting": "מתחבר ל '{server}'...",
     "server-connect-error": "אי אפשר להתחבר ל- '{server}'. ודא\\י כי חיבור האינטרנט שלך תקין.",
-    "server-timeout-error": "'{server}' אינו נראה תקף",
+    "server-timeout-error": "'{server}' נראה שאינו פעיל",
     "server-changed": "אופציית השרת השתנתה ל {server}",
     "server-custom-address": "כתובת שרת מותאמת אישית",
     "server-list-fetch-error": "לא ניתן לעלות רשימת שרתים",
