@@ -355,9 +355,9 @@
     "leaderboard-title": "המשתמשים המובילים היום"
   },
   "witnesses": {
-    "page-title": "היה עד להצבעות",
+    "page-title": "הצבעות ל Witness",
     "remaining": "<strong>{n}</strong> של {max} הצבעות נותרות",
-    "witness": "העד",
+    "witness": "Witness",
     "miss": "פספס",
     "url": "URL",
     "fee": "עמלה",
@@ -369,7 +369,7 @@
     "voted": "@{n} הצביע\\ה",
     "vote-removed": "הצבעה הוסרה עבור@{n}",
     "username-placeholder": "שם משתמש",
-    "extra-witnesses-exp": "הקלד שם חשבון למטה כדי להצביע לעד, \nשמחוץ <strong> ל50 המובילים</strong>",
+    "extra-witnesses-exp": "הקלד שם חשבון למטה כדי להצביע ל Witness,\nשמחוץ <strong> ל50 המובילים</strong>",
     "proxy-exp": "בנוסף, את\\ה יכול\\ה לבחור proxy שיצביע לעדים במקומך. פעולה זו תאתחל מחדש את סלקציית העדים העדכנית שלך.",
     "set-proxy": "הגדר proxy",
     "proxy-active-exp": "כעת הגדרת proxy למטרת הצבעה. אם הינך מעוניין לתפעל מחדש את אופציית ההצבעה הידנית, אנא נקה את הproxy שלך.",
@@ -386,13 +386,13 @@
     "withdraw-saving-title": "משיכה מחסכונות",
     "withdraw-saving-sub-title": "משוך כספים לאחר תקופת ההמתנה הנדרשת של 3 ימים",
     "power-up-title": "המר\\י לכוח Steem",
-    "power-up-sub-title": "אסימוני השפעה שותנים לך יותר שליטה על זיכויי פוסטים, וכמו כן מאפשרים לכם להרוויח תגמולים על אוצרות תוכן.",
+    "power-up-sub-title": "אסימוני השפעה שנותנים לך יותר שליטה על זיכויי פוסטים, וכמו כן מאפשרים לכם להרוויח תגמולים על אוצרות תוכן.",
     "from": "מ",
     "from-placeholder": "בחר משתמש",
     "to": "אל",
     "to-placeholder": "שם משתמש",
     "to-not-found": "המשתמש אליו ניסית להעביר כספים אינו קיים!",
-    "to-bad-actor": "היה זהיר בעת שליחה לחשבון הזה. אנא בדק/י פעמיים את האיות שלך לקבלת רמת דיוק גבוהה.",
+    "to-bad-actor": "יש להיזהר בעת שליחה לחשבון הזה. אנא בדוק/י פעמיים את האיות להימנעות מהונאה ו- Phishing.",
     "amount": "כמות",
     "amount-placeholder": "כמות",
     "wrong-amount": "ערך הכמות שגוי",
@@ -418,12 +418,12 @@
   "delegate": {
     "title": "ליפות כח",
     "sub-title": "ייפוי כוח הSteem",
-    "slider-help": "גרור את השקופית כדי להתאים כמות נחוצה",
+    "slider-help": "גרור את המחוון כדי להתאים כמות נחוצה",
     "confirm-title": "אשר ייפוי כוח",
     "confirm-sub-title": "בבקשה, בדוק אם הכל עובד כראוי",
     "delegation-summary": "<span class=\"sp\">{sp}</span> משולח ל<span class=\"to-user\">{to}</span>",
     "success-sub-title": "משימה הושלמה",
-    "insufficient-vesting": "מניות ה Vesging אינן מספיקות {VESTS {a"
+    "insufficient-vesting": "Vesging shares אינו מספיק {VESTS {a"
   },
   "delegation-list": {
     "empty-list": "אין כאן מידע"
