@@ -132,7 +132,7 @@
   },
   "follow-controls": {
     "follow": "עקוב",
-    "unFollow": "תפסיק\\י לעקוב",
+    "unFollow": "הפסק/י לעקוב",
     "mute": "השתק",
     "unMute": "בטל השתקה"
   },
@@ -147,10 +147,10 @@
     "section-replies": "תגובות",
     "section-wallet": "ארנק",
     "top-posts": "פוסטים עליונים",
-    "unclaimed-rewards": "תגמולים ללא דורש",
+    "unclaimed-rewards": "תגמולים שטרם נדרשו",
     "estimated-value": "הערך המשוער מבוסס על ערך ממוצע של Steem במשך 7 ימים.",
     "steem": "סטים",
-    "steem-description": "STEEM הינם מטבעות סחירים, אותם ניתן להעביר כספית בכל עת. STEEM יכול להיות מומר לכוח Steem בתהליך הנקרא פאוור-אפ.",
+    "steem-description": "STEEM הינם מטבעות סחירים, אותם ניתן להעביר בכל עת. STEEM יכול להיות מומר לכוח Steem בתהליך הנקרא פאוור-אפ.",
     "steem-power": "כוח Steem",
     "steem-power-description": "כוח Steem הם מטבעות שכוחם עולה ככל שטווח ההחזקה בהם ארוך יותר, וככל שאתם מצביעים לפוסטים. יותר כוח Steem אצל משתמש אחד, כך גם יותר השפעה על התגמולים של אחרים, וקבלת פרסים על אופן הצבעה מדויק.",
     "steem-power-delegated": "כוח Steem מיופה",
@@ -167,7 +167,7 @@
     "transaction-curation_reward": "תגמול אוצרות תוכן",
     "transaction-author_reward": "תגמול הסופר",
     "transaction-comment_benefactor_reward": "תגמולי תגובות המיטיב",
-    "transaction-claim_reward_balance": "דרש/י תגמולים",
+    "transaction-claim_reward_balance": "קבלת תמלוגים",
     "transaction-transfer": "העברה",
     "transaction-transfer_to_vesting": "העבר לvesting",
     "transaction-withdraw_vesting": "משיכת vesting",
@@ -285,7 +285,7 @@
     "comment-entry-go-root": "ראה את ההקשר המלא",
     "comment-entry-go-parent": "ראה את ההורה הישיר",
     "similar-entries": "פוסטים דומים",
-    "fetch-error": "פסק זמן בשרת נובע מכך שתגובה גדולה מדי"
+    "fetch-error": "פסק זמן בשרת נובע מכך שזמן תגובה גדול מדי"
   },
   "navbar": {
     "settings": "הגדרות",
