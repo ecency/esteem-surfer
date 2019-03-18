@@ -80,8 +80,8 @@
     "password-placeholder": "סיסמה או WIF",
     "login": "כניסה",
     "error-fields-required": "אנא הקלידו שם משתמש וסיסמא\\WIF",
-    "error-public-key": "את/ה הזנת קוד מפתח ציבורי ( Public key). נדרש סיסמה\\WIF",
-    "error-user-fetch": "לא ניתן לעלות את נתוני המשתמש",
+    "error-public-key": "את/ה הכנסת קוד מפתח ציבורי ( Public key). נדרש סיסמה\\WIF",
+    "error-user-fetch": "לא ניתן להציג את נתוני המשתמש",
     "error-user-not-found": "משתמש אינו קיים",
     "error-authenticate": "שם משתמש או סיסמה\\WIF שגוי",
     "create-account-text": "אין לך חשבון? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">הרשם עכשיו!</a>",
@@ -120,7 +120,7 @@
     "keys-required": "פעולה זו מצריכה {keys} מפתחות או סיסמת מאסטר"
   },
   "quick-profile": {
-    "fetch-error-profile": "לא ניתן לעלות נתוני מידע של הפרופיל",
+    "fetch-error-profile": "לא ניתן להציג את נתוני המידע של הפרופיל",
     "fetch-error-content": "לא ניתן לעלות פוסטים",
     "post-count": "מונה פוסטים",
     "followers": "עוקבים",
@@ -153,8 +153,8 @@
     "steem-description": "STEEM הינם מטבעות סחירים, אותם ניתן להעביר כספית בכל עת. STEEM יכול להיות מומר לכוח Steem בתהליך הנקרא פאוור-אפ.",
     "steem-power": "כוח Steem",
     "steem-power-description": "כוח Steem הם מטבעות שכוחם עולה ככל שטווח ההחזקה בהם ארוך יותר, וככל שאתם מצביעים לפוסטים. יותר כוח Steem אצל משתמש אחד, כך גם יותר השפעה על התגמולים של אחרים, וקבלת פרסים על אופן הצבעה מדויק.",
-    "steem-power-delegated": "ייפוי כוח Steem",
-    "steem-power-received": "כח Steem התקבל",
+    "steem-power-delegated": "כוח Steem מיופה",
+    "steem-power-received": "כח Steem שהתקבל",
     "next-power-down-amount": "כמות הנזלת היתרה הבאה",
     "steem-power-total": "סך כל כוח הSteem",
     "steem-dollars": "דולר Steem",
@@ -167,7 +167,7 @@
     "transaction-curation_reward": "תגמול אוצרות תוכן",
     "transaction-author_reward": "תגמול הסופר",
     "transaction-comment_benefactor_reward": "תגמולים על תגובות המיטיב",
-    "transaction-claim_reward_balance": "תביעת תגמולים",
+    "transaction-claim_reward_balance": "דרש/י תגמולים",
     "transaction-transfer": "העברה",
     "transaction-transfer_to_vesting": "העבר לvesting",
     "transaction-withdraw_vesting": "משיכת vesting",
@@ -239,7 +239,7 @@
     "empty-list": "ריק כאן"
   },
   "drafts": {
-    "title": "טיוטה",
+    "title": "טיוטות",
     "load-error": "לא ניתן לעלות טיוטה",
     "empty-list": "אין כאן מידע",
     "deleted": "טיוטה נמחקה"
@@ -248,13 +248,13 @@
     "title": "פוסטים מתוכננים",
     "empty-list": "אין כאן מידע",
     "deleted": "פוסט מתוכנן נמחק",
-    "move": "העבר\\י לטיוטה",
-    "moved": "הועבר לטיוטה"
+    "move": "העבר\\י לטיוטות",
+    "moved": "הועבר לטיוטות"
   },
   "bookmarks": {
     "title": "סימניות",
     "load-error": "לא ניתן לעלות סימניות",
-    "empty-list": "ריק כאן",
+    "empty-list": "אין כאן מידע",
     "deleted": "סימניה הוסרה",
     "search": "חפש בסימניות"
   },
