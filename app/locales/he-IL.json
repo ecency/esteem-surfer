@@ -35,7 +35,7 @@
     "potential-payout": "תשלום אפשרי",
     "promoted": "קודמו",
     "author-payout": "תשלום לכותב",
-    "curation-payout": "תשלום על ניהול אוצרות תוכן",
+    "curation-payout": "תשלום על אוצרות תוכן",
     "payout-date": "תשלום"
   },
   "entry-votes": {
@@ -50,14 +50,14 @@
     "reblogged": "שותף על ידי {n}"
   },
   "entry-reblog": {
-    "reblog": "שתף/י שוב",
+    "reblog": "שתף/י",
     "reblogged": "שותף"
   },
   "settings": {
     "title": "הגדרות",
-    "currency": "יתרה",
-    "currency-fetch-error": "לא ניתן לעלות את תעריף היתרה עבור '{cur}'",
-    "currency-changed": "יתרה השתנתה",
+    "currency": "מטבע",
+    "currency-fetch-error": "לא ניתן להשיג את שער המטבע עבור '{cur}'",
+    "currency-changed": "מטבע השתנה",
     "locale": "שפה",
     "locale-changed": "שפה שונתה",
     "server": "שרת",
@@ -67,10 +67,10 @@
     "server-timeout-error": "'{server}' נראה שאינו פעיל",
     "server-changed": "אופציית השרת השתנתה ל {server}",
     "server-custom-address": "כתובת שרת מותאמת אישית",
-    "server-list-fetch-error": "לא ניתן לעלות רשימת שרתים",
-    "push-notifications": "הודעות דחיפה",
-    "push-notify-enabled": "הודעות דחיפה מופעלות",
-    "push-notify-disabled": "הודעות דחיפה אינן מופעלות"
+    "server-list-fetch-error": "לא ניתן להציג רשימת שרתים",
+    "push-notifications": "התראות דחיפה",
+    "push-notify-enabled": "התראות דחיפה אינן מופעלות",
+    "push-notify-disabled": "התראות דחיפה אינן מופעלות"
   },
   "login": {
     "title": "ברוכים השבים!",
