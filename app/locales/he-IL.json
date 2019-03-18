@@ -166,7 +166,7 @@
     "transactions": "העברות",
     "transaction-curation_reward": "תגמול אוצרות תוכן",
     "transaction-author_reward": "תגמול הסופר",
-    "transaction-comment_benefactor_reward": "תגמולים על תגובות המיטיב",
+    "transaction-comment_benefactor_reward": "תגמולי תגובות המיטיב",
     "transaction-claim_reward_balance": "דרש/י תגמולים",
     "transaction-transfer": "העברה",
     "transaction-transfer_to_vesting": "העבר לvesting",
@@ -175,7 +175,7 @@
     "claim-reward-balance": "קבל תגמולי יתרה",
     "claim-reward-balance-ok": "תגמול יתרה נתקבלה",
     "transfer": "העבר",
-    "transfer-to-savings": "תעביר\\י לחסכונות",
+    "transfer-to-savings": "העבר/י לחסכונות",
     "power-up": "פאוור-אפ",
     "withdraw-steem": "משיכת Steem",
     "withdraw-sbd": "משיכת דולר Steem",
@@ -191,7 +191,7 @@
     "tool-header": "כותרת",
     "tool-code": "קוד",
     "tool-quote": "ציטוט",
-    "tool-ul": "רשימה לא מסודרת",
+    "tool-ul": "רשימה לא ממוינת",
     "tool-ol": "רשימה ממוינת",
     "tool-link": "קישור",
     "tool-image": "תמונה",
@@ -219,7 +219,7 @@
     "posting-perm-granted": "הוענק אישור להעלאת פוסטים",
     "remove-posting-perm": "הסר הרשאה להעלאת פוסטים",
     "posting-perm-removed": "אישור להעלאת פוסטים הוסרה",
-    "save-draft": "שמר/י טיוטה",
+    "save-draft": "שמור/י טיוטה",
     "draft-saved": "טיוטה נשמרה",
     "publish": "פרסם\\י",
     "published": "פוסט פורסם",
@@ -240,7 +240,7 @@
   },
   "drafts": {
     "title": "טיוטות",
-    "load-error": "לא ניתן לעלות טיוטה",
+    "load-error": "לא ניתן לעלות טיוטות",
     "empty-list": "אין כאן מידע",
     "deleted": "טיוטה נמחקה"
   },
@@ -379,7 +379,7 @@
     "proxy-created": "@{n} הוגדר כ proxy"
   },
   "transfer": {
-    "transfer-title": "תעביר\\י לחשבון",
+    "transfer-title": "העבר/י לחשבון",
     "transfer-sub-title": "העבר כספים לחשבון Steem אחר",
     "transfer-saving-title": "תעביר\\י לחסכונות",
     "transfer-saving-sub-title": "הגן\\י על הכספים שלך על ידי דרישת תקופת המתנה של 3 ימים מעת בקשת המשיכה",
