@@ -179,7 +179,8 @@
     "power-up": "Power Up",
     "withdraw-steem": "Ta ut Steem",
     "withdraw-sbd": "Ta ut Steem Dollar",
-    "delegate": "Delegera"
+    "delegate": "Delegera",
+    "power-down": "Power Down"
   },
   "composer": {
     "title-placeholder": "Titel",
@@ -427,6 +428,24 @@
   },
   "delegation-list": {
     "empty-list": "Ingenting här"
+  },
+  "power-down": {
+    "title": "Power Down",
+    "sub-title": "Power Down Steem Power",
+    "account": "Account",
+    "incoming-funds": "Incoming Funds",
+    "begin": "Begin Power Down",
+    "stop": "Stop",
+    "estimated-note": "Estimated Weekly",
+    "withdraw-accounts": "Destination Account(s)",
+    "add-withdraw-account": "Add withdraw account"
+  },
+  "withdraw-route": {
+    "title": "Add withdraw account",
+    "to": "Account",
+    "percentage": "Percentage",
+    "slider-help": "Percentage of Power Down to this account",
+    "auto-power-down": "Automatically power up the target account"
   },
   "friends": {
     "followers-title": "Followers ({count})",
