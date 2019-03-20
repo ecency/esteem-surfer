@@ -180,3 +180,10 @@ export const scDelegateVestingShares = (delegator, delegatee, vestingShares) =>
       vestingShares
     )}`
   );
+
+export const scWithdrawVesting = (account, vestingShares) =>
+  standardScWindow(
+    `sign/withdraw-vesting?account=${account}&vesting_shares=${encodeURIComponent(
+      vestingShares
+    )}`
+  );

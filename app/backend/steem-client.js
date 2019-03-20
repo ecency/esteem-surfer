@@ -15,7 +15,8 @@ import {
   scTransferToSavings,
   scTransferFromSavings,
   scTransferToVesting,
-  scDelegateVestingShares
+  scDelegateVestingShares,
+  scWithdrawVesting
 } from '../helpers/sc';
 
 import { decryptKey } from '../utils/crypto';
@@ -720,7 +721,7 @@ export const withdrawVesting = (account, pin, vestingShares) => {
   }
 
   if (account.type === 'sc') {
-    // return scDelegateVestingShares(delegator, delegatee, vestingShares);
+    return scWithdrawVesting(account.username, vestingShares);
   }
 };
 
@@ -751,5 +752,11 @@ export const setWithdrawVestingRoute = (
     ];
 
     return client.broadcast.sendOperations(opArray, privateKey);
+  }
+
+  if (account.type === 'sc') {
+    return Promise.reject(
+      new Error('Steem connect setWithdrawVestingRoute not implemented yet.')
+    );
   }
 };
