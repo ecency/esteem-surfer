@@ -31,6 +31,8 @@ import LinearProgress from './common/LinearProgress';
 import DeepLinkHandler from './helpers/DeepLinkHandler';
 import AccountLink from './helpers/AccountLink';
 
+import WithdrawRouteModal from './dialogs/WithdrawRoute';
+
 import {
   getRecentTransfers,
   appendToRecentTransfers
@@ -40,7 +42,9 @@ import {
   getAccount,
   delegateVestingShares,
   getVestingDelegations,
-  withdrawVesting
+  withdrawVesting,
+  setWithdrawVestingRoute,
+  getWithdrawRoutes
 } from '../backend/steem-client';
 import formatChainError from '../utils/format-chain-error';
 import parseToken from '../utils/parse-token';
@@ -48,10 +52,11 @@ import parseDate from '../utils/parse-date';
 import isEmptyDate from '../utils/is-empty-date';
 
 import badActors from '../data/bad-actors.json';
-import { arrowRight } from '../svg';
+import { arrowRight, arrowDown } from '../svg';
 
 import { vestsToSp } from '../utils/conversions';
 import formatVest from '../utils/format-vest';
+import SliderTooltip from './elements/SliderTooltip';
 
 class DelegateCls extends PureComponent {
   constructor(props) {
@@ -770,6 +775,7 @@ class PowerDownCls extends PureComponent {
       },
       () => {
         this.fetchFromData();
+        this.fetchRoutes();
       }
     );
   };
@@ -787,13 +793,28 @@ class PowerDownCls extends PureComponent {
       });
   };
 
+  fetchRoutes = () => {
+    const { from } = this.state;
+
+    return getWithdrawRoutes(from)
+      .then(resp => {
+        this.setState({ routes: resp });
+        return resp;
+      })
+      .catch(e => {
+        message.error(formatChainError(e));
+      });
+  };
+
   resetState = () => ({
     step: 1,
     from: null,
     fromData: null,
     fromError: null,
     amount: 0,
-    inProgress: false
+    routes: [],
+    inProgress: false,
+    accountWindowVisible: false
   });
 
   canSubmit = () => {
@@ -844,11 +865,41 @@ class PowerDownCls extends PureComponent {
     this.doWithdrawVesting(pin, fullAmount);
   };
 
+  toggleWithdrawAccountWindow = () => {
+    const { accountWindowVisible } = this.state;
+    this.setState({ accountWindowVisible: !accountWindowVisible });
+  };
+
+  deleteRoute = (pin, to) => {
+    const { accounts } = this.props;
+    const { from } = this.state;
+
+    const account = accounts.find(x => x.username === from);
+
+    this.setState({ inProgress: true });
+    return setWithdrawVestingRoute(account, pin, to, 0, false)
+      .then(() => this.fetchRoutes())
+      .catch(err => {
+        message.error(formatChainError(err));
+      })
+      .finally(() => {
+        this.setState({ inProgress: false });
+      });
+  };
+
   render() {
     const { intl, accounts, dynamicProps } = this.props;
     const { steemPerMVests } = dynamicProps;
 
-    const { from, fromData, fromError, amount, inProgress } = this.state;
+    const {
+      from,
+      fromData,
+      fromError,
+      amount,
+      routes,
+      inProgress,
+      accountWindowVisible
+    } = this.state;
 
     let poweringDown = false;
     let availableVestingShares = 0;
@@ -874,6 +925,45 @@ class PowerDownCls extends PureComponent {
     const fundPerWeek = Math.round((spCalculated / 13) * 1000) / 1000;
 
     const poweringDownFund = vestsToSp(poweringDownVests, steemPerMVests);
+
+    const routeTableColumns = [
+      {
+        title: 'Account',
+        dataIndex: 'to_account',
+        key: 'to_account'
+      },
+      {
+        title: 'Percent',
+        dataIndex: 'percent',
+        key: 'percent',
+        render: x => `${x / 100}%`
+      },
+      {
+        title: 'Auto Vest',
+        dataIndex: 'auto_vest',
+        key: 'auto_vest',
+        render: x => (x.auto_vest ? 'VEST' : 'STEEM')
+      },
+      {
+        render: (x, rec) => (
+          <PinRequired
+            {...this.props}
+            onSuccess={pin => {
+              this.deleteRoute(pin, rec.to_account);
+            }}
+          >
+            <Button
+              disabled={inProgress}
+              type="danger"
+              size="small"
+              icon="delete"
+            />
+          </PinRequired>
+        )
+      }
+    ];
+
+    const sliderPerc = Math.ceil((amount / availableVestingShares) * 100);
 
     return (
       <div className="wrapper">
@@ -928,6 +1018,44 @@ class PowerDownCls extends PureComponent {
                       )}
                     </div>
                   </div>
+
+                  <div className="form-item">
+                    <div className="form-label">
+                      <FormattedMessage id="power-down.withdraw-accounts" />
+                    </div>
+                    <div className="form-input">
+                      {routes.length > 0 && (
+                        <Table
+                          className="routes-table"
+                          dataSource={routes}
+                          columns={routeTableColumns}
+                          showHeader={false}
+                          pagination={false}
+                        />
+                      )}
+
+                      <Button
+                        type="primary"
+                        onClick={this.toggleWithdrawAccountWindow}
+                      >
+                        <FormattedMessage id="power-down.add-withdraw-account" />
+                      </Button>
+                    </div>
+                  </div>
+
+                  <WithdrawRouteModal
+                    {...this.props}
+                    from={from}
+                    visible={accountWindowVisible}
+                    onSuccess={() => {
+                      this.toggleWithdrawAccountWindow();
+                      this.fetchRoutes();
+                    }}
+                    onCancel={() => {
+                      this.toggleWithdrawAccountWindow();
+                    }}
+                  />
+
                   {!poweringDown && (
                     <Fragment>
                       <div className="form-item" style={{ marginTop: '50px' }}>
@@ -935,11 +1063,16 @@ class PowerDownCls extends PureComponent {
                           <FormattedMessage id="transfer.amount" />
                         </div>
                         <div className="form-input">
+                          <SliderTooltip
+                            percentage={sliderPerc}
+                            value={`${amount}.000000 VESTS`}
+                          />
+
                           <Slider
                             step={1}
                             max={availableVestingShares}
                             tipFormatter={a => `${a}.000000 VESTS`}
-                            tooltipVisible={availableVestingShares >= 1}
+                            tooltipVisible={false}
                             value={amount}
                             onChange={this.amountChanged}
                             disabled={availableVestingShares < 1}
@@ -968,6 +1101,7 @@ class PowerDownCls extends PureComponent {
                             {'-'} {vests} VESTS
                           </div>
                         </div>
+                        <div className="arrow-row">{arrowDown}</div>
                         <div className="second-row">
                           <div className="steem-num">
                             {'+'} {fundPerWeek.toFixed(3)} STEEM
@@ -1069,5 +1203,3 @@ PowerDownCls.propTypes = {
 
 const PowerDown = injectIntl(PowerDownCls);
 export { PowerDown };
-
-export class PowerDownTargetList extends PureComponent {}

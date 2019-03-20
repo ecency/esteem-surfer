@@ -1,0 +1,13 @@
+.withdraw-route-dialog-content {
+  padding: 20px;
+
+  .transfer-form {
+    @include transfer-form;
+
+    .form-item.percentage {
+      .form-label {
+        padding-top: 2.3em;
+      }
+    }
+  }
+}

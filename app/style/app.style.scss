@@ -178,6 +178,8 @@ a[target='_external'],
 @import '../components/elements/UserAvatar';
 @import '../components/elements/ListSwitch';
 
+@import '../components/elements/SliderTooltip';
+
 @import '../components/dialogs/Settings';
 @import '../components/dialogs/Login';
 @import '../components/dialogs/PinCreate';
@@ -190,6 +192,7 @@ a[target='_external'],
 @import '../components/dialogs/Gallery';
 @import '../components/dialogs/Schedules';
 @import '../components/dialogs/Friends';
+@import '../components/dialogs/WithdrawRoute';
 
 @import '../components/helpers/QuickProfile';
 @import '../components/helpers/Updater';

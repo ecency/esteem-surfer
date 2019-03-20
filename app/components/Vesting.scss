@@ -1,6 +1,80 @@
 @import '../style/mixins';
 @import '../style/colors';
 
+@mixin transfer-form {
+  .form-item {
+    @include clearfix();
+    margin-bottom: 16px;
+
+    .form-label {
+      float: left;
+      padding-top: 0.6em;
+      width: 100px;
+
+      @include themify(day) {
+        color: $steel-grey;
+      }
+
+      @include themify(night) {
+        color: $silver;
+      }
+    }
+
+    .form-input {
+      float: left;
+      width: calc(100% - 100px);
+
+      .input-help {
+        font-weight: 300;
+        margin: 12px 0;
+
+        @include themify(day) {
+          color: $charcoal-grey;
+        }
+
+        @include themify(night) {
+          color: $pinkish-grey;
+        }
+      }
+
+      .ant-slider {
+        padding-top: 0;
+      }
+    }
+
+    &.has-error {
+      .form-input {
+        input[type='text'] {
+          border-color: $red2;
+        }
+
+        .input-help {
+          color: $red2;
+        }
+      }
+    }
+
+    .select-from,
+    .to-input {
+      width: 100%;
+    }
+  }
+
+  .form-controls {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    .btn-back {
+      color: $silver;
+      margin-right: 10px;
+      &:hover {
+        color: $charcoal-grey;
+      }
+    }
+  }
+}
+
 .delegate-page,
 .power-down-page {
   overflow-y: auto;
@@ -72,63 +146,7 @@
       }
 
       .transfer-form {
-        .form-item {
-          @include clearfix();
-          margin-bottom: 16px;
-
-          .form-label {
-            float: left;
-            padding-top: 0.6em;
-            width: 100px;
-
-            @include themify(day) {
-              color: $steel-grey;
-            }
-
-            @include themify(night) {
-              color: $silver;
-            }
-          }
-
-          .form-input {
-            float: left;
-            width: calc(100% - 100px);
-
-            .input-help {
-              font-weight: 300;
-              margin: 12px 0;
-
-              @include themify(day) {
-                color: $charcoal-grey;
-              }
-
-              @include themify(night) {
-                color: $pinkish-grey;
-              }
-            }
-
-            .ant-slider {
-              padding-top: 0;
-            }
-          }
-
-          &.has-error {
-            .form-input {
-              input[type='text'] {
-                border-color: $red2;
-              }
-
-              .input-help {
-                color: $red2;
-              }
-            }
-          }
-
-          .select-from,
-          .to-input {
-            width: 100%;
-          }
-        }
+        @include transfer-form;
 
         .steem-power {
           color: $dark-sky-blue;
@@ -137,20 +155,6 @@
           height: 1em;
           margin-bottom: 30px;
           text-align: center;
-        }
-
-        .form-controls {
-          align-items: center;
-          display: flex;
-          justify-content: center;
-
-          .btn-back {
-            color: $silver;
-            margin-right: 10px;
-            &:hover {
-              color: $charcoal-grey;
-            }
-          }
         }
       }
 
@@ -277,6 +281,28 @@
     text-align: center;
   }
 
+  .routes-table {
+    margin: 8px 0;
+
+    tr:nth-child(odd) {
+      @include themify(day) {
+        background-color: lighten($duck-egg-blue, 3);
+      }
+
+      @include themify(night) {
+        background-color: darken($dark-grey-blue, 4);
+      }
+    }
+
+    td {
+      padding: 8px;
+
+      @include themify(day) {
+        color: $gunmetal;
+      }
+    }
+  }
+
   .numbers {
     margin: 0 0 40px 100px;
     padding-bottom: 40px;
@@ -319,8 +345,15 @@
       text-align: center;
     }
 
-    .first-row {
-      margin-bottom: 10px;
+    .arrow-row {
+      text-align: center;
+      margin: 20px 0;
+      svg {
+        width: 26px;
+        height: 26px;
+        color: lighten($charcoal-grey, 40);
+        opacity: 0.7;
+      }
     }
 
     .estimated-note {
@@ -359,16 +392,18 @@
     }
   }
 
-  .form-label {
-    width: 140px !important;
-  }
+  .transfer-form {
+    .form-label {
+      width: 140px !important;
+    }
 
-  .form-input {
-    width: calc(100% - 140px) !important;
-  }
+    .form-input {
+      width: calc(100% - 140px) !important;
+    }
 
-  .form-controls {
-    width: calc(100% - 100px) !important;
-    margin-left: 100px;
+    .form-controls {
+      width: calc(100% - 100px) !important;
+      margin-left: 100px;
+    }
   }
 }

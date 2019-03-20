@@ -723,3 +723,33 @@ export const withdrawVesting = (account, pin, vestingShares) => {
     // return scDelegateVestingShares(delegator, delegatee, vestingShares);
   }
 };
+
+export const getWithdrawRoutes = account =>
+  client.database.call('get_withdraw_routes', [account, 'outgoing']);
+
+export const setWithdrawVestingRoute = (
+  account,
+  pin,
+  to,
+  percent,
+  autoVest
+) => {
+  if (account.type === 's') {
+    const key = decryptKey(account.keys.active, pin);
+    const privateKey = PrivateKey.fromString(key);
+
+    const opArray = [
+      [
+        'set_withdraw_vesting_route',
+        {
+          from_account: account.username,
+          to_account: to,
+          percent,
+          auto_vest: autoVest
+        }
+      ]
+    ];
+
+    return client.broadcast.sendOperations(opArray, privateKey);
+  }
+};

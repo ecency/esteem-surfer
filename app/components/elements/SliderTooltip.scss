@@ -1,0 +1,11 @@
+.slider-tooltip-holder {
+  position: relative;
+  height: 2em;
+
+  .slider-tooltip {
+    position: absolute;
+    top: 0;
+    color: $dark-sky-blue;
+    font-size: 1.8em;
+  }
+}
