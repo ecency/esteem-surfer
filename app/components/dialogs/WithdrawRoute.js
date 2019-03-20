@@ -18,7 +18,10 @@ import {
   getAccount,
   setWithdrawVestingRoute
 } from '../../backend/steem-client';
-import { getRecentTransfers } from '../../helpers/storage';
+import {
+  appendToRecentTransfers,
+  getRecentTransfers
+} from '../../helpers/storage';
 
 import formatChainError from '../../utils/format-chain-error';
 
@@ -115,6 +118,9 @@ class WithdrawRouteDialog extends PureComponent {
     this.setState({ inProgress: true });
     return setWithdrawVestingRoute(account, pin, to, percentage * 100, autoVest)
       .then(resp => {
+        // Add target account to recent transfers
+        appendToRecentTransfers(to);
+
         const { onSuccess } = this.props;
         onSuccess();
         return resp;
