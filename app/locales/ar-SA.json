@@ -445,7 +445,7 @@
     "to": "حساب",
     "percentage": "النسبة المئوية",
     "slider-help": "النسبة المئوية لسحب الطاقة لهذا الحساب",
-    "auto-power-down": "Automatically power up the target account"
+    "auto-power-down": "رفع الطاقة تلقائيا للحساب المستهدف"
   },
   "friends": {
     "followers-title": "المتابعون ({count})",
