@@ -445,7 +445,7 @@
     "to": "Akaun",
     "percentage": "Peratusan",
     "slider-help": "Peratusan daripada Power Down masuk akaun ini",
-    "auto-power-down": "Automatically power up the target account"
+    "auto-power-down": "Power up kepada akaun secara otomatik"
   },
   "friends": {
     "followers-title": "Pengikut ({count})",
