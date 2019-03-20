@@ -179,7 +179,8 @@
     "power-up": "رفع الطاقة",
     "withdraw-steem": "سحب ستيم",
     "withdraw-sbd": "سحب ستيم دولار",
-    "delegate": "تفويض"
+    "delegate": "تفويض",
+    "power-down": "Power Down"
   },
   "composer": {
     "title-placeholder": "العنوان",
@@ -427,6 +428,24 @@
   },
   "delegation-list": {
     "empty-list": "لا شيء هنا"
+  },
+  "power-down": {
+    "title": "Power Down",
+    "sub-title": "Power Down Steem Power",
+    "account": "Account",
+    "incoming-funds": "Incoming Funds",
+    "begin": "Begin Power Down",
+    "stop": "Stop",
+    "estimated-note": "Estimated Weekly",
+    "withdraw-accounts": "Destination Account(s)",
+    "add-withdraw-account": "Add withdraw account"
+  },
+  "withdraw-route": {
+    "title": "Add withdraw account",
+    "to": "Account",
+    "percentage": "Percentage",
+    "slider-help": "Percentage of Power Down to this account",
+    "auto-power-down": "Automatically power up the target account"
   },
   "friends": {
     "followers-title": "المتابعون ({count})",
