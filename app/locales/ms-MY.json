@@ -432,19 +432,19 @@
   "power-down": {
     "title": "Power Down",
     "sub-title": "Power Down Steem Power",
-    "account": "Account",
-    "incoming-funds": "Incoming Funds",
-    "begin": "Begin Power Down",
-    "stop": "Stop",
-    "estimated-note": "Estimated Weekly",
-    "withdraw-accounts": "Destination Account(s)",
-    "add-withdraw-account": "Add withdraw account"
+    "account": "Akaun",
+    "incoming-funds": "Wang masuk",
+    "begin": "Power Down Dimulakan",
+    "stop": "Berhenti",
+    "estimated-note": "Anggaran Mingguan",
+    "withdraw-accounts": "Kepada Akaun",
+    "add-withdraw-account": "Masuk baki kepada akaun"
   },
   "withdraw-route": {
-    "title": "Add withdraw account",
-    "to": "Account",
-    "percentage": "Percentage",
-    "slider-help": "Percentage of Power Down to this account",
+    "title": "Masuk baki kepada akaun",
+    "to": "Akaun",
+    "percentage": "Peratusan",
+    "slider-help": "Peratusan daripada Power Down masuk akaun ini",
     "auto-power-down": "Automatically power up the target account"
   },
   "friends": {
