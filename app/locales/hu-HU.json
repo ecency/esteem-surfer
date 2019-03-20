@@ -435,7 +435,7 @@
     "account": "Account",
     "incoming-funds": "Incoming Funds",
     "begin": "Begin Power Down",
-    "stop": "Stop",
+    "stop": "Megállítás",
     "estimated-note": "Estimated Weekly",
     "withdraw-accounts": "Destination Account(s)",
     "add-withdraw-account": "Add withdraw account"
@@ -443,7 +443,7 @@
   "withdraw-route": {
     "title": "Add withdraw account",
     "to": "Account",
-    "percentage": "Percentage",
+    "percentage": "Százalék",
     "slider-help": "Percentage of Power Down to this account",
     "auto-power-down": "Automatically power up the target account"
   },
