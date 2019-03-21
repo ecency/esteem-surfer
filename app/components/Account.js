@@ -5,7 +5,7 @@ eslint-disable react/no-multi-comp,react/style-prop-object
 import React, { Component, Fragment } from 'react';
 
 import PropTypes from 'prop-types';
-import { message, Menu, Modal } from 'antd';
+import { message, Menu } from 'antd';
 import {
   FormattedNumber,
   FormattedDate,
@@ -26,7 +26,8 @@ import UserAvatar from './elements/UserAvatar';
 import FollowControls from './elements/FollowControls';
 import EntryListLoadingItem from './elements/EntryListLoadingItem';
 import EntryListItem from './elements/EntryListItem';
-import { DelegationList } from './Vesting';
+
+import DelegationListModal from './dialogs/DelegatedList';
 
 import ScrollReplace from './helpers/ScrollReplace';
 import ListSwitch from './elements/ListSwitch';
@@ -1383,19 +1384,14 @@ export class SectionWallet extends Component {
             </div>
           </div>
 
-          <Modal
+          <DelegationListModal
+            {...this.props}
+            username={username}
             visible={delegationModalOpen}
-            footer={false}
-            width="550px"
             onCancel={() => {
               this.setState({ delegationModalOpen: false });
             }}
-            destroyOnClose
-            centered
-            title={intl.formatMessage({ id: 'account.steem-power-delegated' })}
-          >
-            <DelegationList {...this.props} username={username} />
-          </Modal>
+          />
         </div>
       );
     }
