@@ -1,0 +1,29 @@
+.delegate-modal-table {
+  height: 400px;
+  overflow-y: auto;
+
+  .btn-delete {
+    cursor: pointer;
+    font-size: 18px;
+
+    @include themify(day) {
+      color: $silver;
+    }
+
+    @include themify(night) {
+      color: $gunmetal;
+    }
+  }
+
+  .empty-list {
+    padding: 10px;
+
+    @include themify(day) {
+      border-top: 1px solid $white-four;
+    }
+
+    @include themify(night) {
+      border-top: 1px solid $dusky-blue-two;
+    }
+  }
+}
