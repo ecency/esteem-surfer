@@ -451,5 +451,11 @@
     "followers-title": "Читачі ({count})",
     "following-title": "Підписки ({count})",
     "load-more": "Завантажити ще"
+  },
+  "delegated-list": {
+    "title": "Delegated steem power from @{n}"
+  },
+  "delegatee-list": {
+    "title": "Delegated steem power to @{n}"
   }
 }
