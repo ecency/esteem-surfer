@@ -185,7 +185,7 @@ DelegationList.propTypes = {
 
 export default class DelegationListModal extends PureComponent {
   render() {
-    const { intl, visible, onCancel } = this.props;
+    const { intl, username, visible, onCancel } = this.props;
 
     return (
       <Modal
@@ -195,7 +195,10 @@ export default class DelegationListModal extends PureComponent {
         onCancel={onCancel}
         destroyOnClose
         centered
-        title={intl.formatMessage({ id: 'account.steem-power-delegated' })}
+        title={intl.formatMessage(
+          { id: 'delegated-list.title' },
+          { n: username }
+        )}
       >
         <DelegationList {...this.props} />
       </Modal>

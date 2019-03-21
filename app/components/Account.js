@@ -853,7 +853,7 @@ export class SectionWallet extends Component {
     this.state = {
       account,
       claiming: false,
-      delegationModalOpen: false
+      delegatedModalOpen: false
     };
   }
 
@@ -905,8 +905,9 @@ export class SectionWallet extends Component {
       });
   };
 
-  delegationClicked = () => {
-    this.setState({ delegationModalOpen: true });
+  toggleDelegatedModal = () => {
+    const { delegatedModalOpen } = this.state;
+    this.setState({ delegatedModalOpen: !delegatedModalOpen });
   };
 
   render() {
@@ -919,7 +920,7 @@ export class SectionWallet extends Component {
       username,
       location
     } = this.props;
-    const { account, claiming, delegationModalOpen } = this.state;
+    const { account, claiming, delegatedModalOpen } = this.state;
 
     if (account) {
       const { steemPerMVests, base, quote } = dynamicProps;
@@ -1175,7 +1176,7 @@ export class SectionWallet extends Component {
                         <span
                           className="btn-delegated"
                           role="none"
-                          onClick={this.delegationClicked}
+                          onClick={this.toggleDelegatedModal}
                         >
                           {'-'}{' '}
                           <FormattedNumber
@@ -1387,10 +1388,8 @@ export class SectionWallet extends Component {
           <DelegationListModal
             {...this.props}
             username={username}
-            visible={delegationModalOpen}
-            onCancel={() => {
-              this.setState({ delegationModalOpen: false });
-            }}
+            visible={delegatedModalOpen}
+            onCancel={this.toggleDelegatedModal}
           />
         </div>
       );
