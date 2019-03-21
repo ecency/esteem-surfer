@@ -451,5 +451,11 @@
     "followers-title": "Takipçiler ({count})",
     "following-title": "Takip Ediliyor ({count})",
     "load-more": "Daha Fazla Yükle"
+  },
+  "delegated-list": {
+    "title": "Delegated steem power from @{n}"
+  },
+  "delegatee-list": {
+    "title": "Delegated steem power to @{n}"
   }
 }
