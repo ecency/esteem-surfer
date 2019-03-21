@@ -180,7 +180,7 @@
     "withdraw-steem": "برداشت استیم",
     "withdraw-sbd": "برداشت دلار استیم",
     "delegate": "اجاره",
-    "power-down": "Power Down"
+    "power-down": "کم کردن قدرت"
   },
   "composer": {
     "title-placeholder": "تیتر",
@@ -430,22 +430,22 @@
     "empty-list": "اینجا چیزی نیست"
   },
   "power-down": {
-    "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
-    "account": "Account",
-    "incoming-funds": "Incoming Funds",
-    "begin": "Begin Power Down",
-    "stop": "Stop",
-    "estimated-note": "Estimated Weekly",
-    "withdraw-accounts": "Destination Account(s)",
-    "add-withdraw-account": "Add withdraw account"
+    "title": "کم کردن قدرت",
+    "sub-title": "کم کردن قدرت استیم",
+    "account": "حساب کاربری",
+    "incoming-funds": "وجوه دریافتی",
+    "begin": "شروع کاهش قدرت",
+    "stop": "توقف",
+    "estimated-note": "برآورد هفتگی",
+    "withdraw-accounts": "اکانت(های) مقصد",
+    "add-withdraw-account": "یک حساب پرداختی اضافه کنید"
   },
   "withdraw-route": {
-    "title": "Add withdraw account",
-    "to": "Account",
-    "percentage": "Percentage",
-    "slider-help": "Percentage of Power Down to this account",
-    "auto-power-down": "Automatically power up the target account"
+    "title": "یک حساب پرداختی اضافه کنید",
+    "to": "حساب کاربری",
+    "percentage": "درصد",
+    "slider-help": "درصد کاهش قدرت برای این حساب کاربری",
+    "auto-power-down": "باعث افزایش قدرت اتوماتیک حساب کاربری انتخاب شده میشود"
   },
   "friends": {
     "followers-title": "فالوور ها ({count})",
@@ -453,9 +453,9 @@
     "load-more": "ادامه"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "Steem power محول شده (قرض داده شده) توسط @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "محول کردن(قرض دادن) steem power به @{n}"
   }
 }
