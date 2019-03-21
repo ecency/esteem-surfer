@@ -432,24 +432,24 @@
   "power-down": {
     "title": "Power Down",
     "sub-title": "Power Down Steem Power",
-    "account": "Account",
+    "account": "Konto",
     "incoming-funds": "Incoming Funds",
     "begin": "Begin Power Down",
     "stop": "Stop",
     "estimated-note": "Estimated Weekly",
-    "withdraw-accounts": "Destination Account(s)",
+    "withdraw-accounts": "Ziel-Konto/Konten",
     "add-withdraw-account": "Add withdraw account"
   },
   "withdraw-route": {
     "title": "Add withdraw account",
-    "to": "Account",
-    "percentage": "Percentage",
+    "to": "Konto",
+    "percentage": "Prozentsatz",
     "slider-help": "Percentage of Power Down to this account",
     "auto-power-down": "Automatically power up the target account"
   },
   "friends": {
     "followers-title": "Followers ({count})",
     "following-title": "Following ({count})",
-    "load-more": "Load More"
+    "load-more": "Mehr laden"
   }
 }
