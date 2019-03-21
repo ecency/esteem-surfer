@@ -451,5 +451,11 @@
     "followers-title": "팔로워 ({count})",
     "following-title": "팔로잉 ({count})",
     "load-more": "더 보기"
+  },
+  "delegated-list": {
+    "title": "Delegated steem power from @{n}"
+  },
+  "delegatee-list": {
+    "title": "Delegated steem power to @{n}"
   }
 }
