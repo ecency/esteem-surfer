@@ -180,7 +180,7 @@
     "withdraw-steem": "משיכת Steem",
     "withdraw-sbd": "משיכת דולר Steem",
     "delegate": "ליפות כח",
-    "power-down": "Power Down"
+    "power-down": "המרת כוח הסטים ליתרה נזילה"
   },
   "composer": {
     "title-placeholder": "כותרת",
@@ -430,22 +430,22 @@
     "empty-list": "אין כאן מידע"
   },
   "power-down": {
-    "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
-    "account": "Account",
-    "incoming-funds": "Incoming Funds",
-    "begin": "Begin Power Down",
-    "stop": "Stop",
-    "estimated-note": "Estimated Weekly",
-    "withdraw-accounts": "Destination Account(s)",
-    "add-withdraw-account": "Add withdraw account"
+    "title": "המרת כוח הסטים ליתרה נזילה",
+    "sub-title": "המר יתרה נזילה לכוח Steem",
+    "account": "חשבון",
+    "incoming-funds": "כספים נכנסים",
+    "begin": "התחל המרת כוח ליתרה נזילה",
+    "stop": "עצור",
+    "estimated-note": "אומדן שבועי",
+    "withdraw-accounts": "חשבון(ות) יעד",
+    "add-withdraw-account": "הוסף/י משיכת חשבון"
   },
   "withdraw-route": {
-    "title": "Add withdraw account",
-    "to": "Account",
-    "percentage": "Percentage",
-    "slider-help": "Percentage of Power Down to this account",
-    "auto-power-down": "Automatically power up the target account"
+    "title": "הוסף/י משיכת חשבון",
+    "to": "חשבון",
+    "percentage": "אחוזים",
+    "slider-help": "אחוזי המרת הכוח ליתרה נזילה, של חשבון זה",
+    "auto-power-down": "עשה/י פאוור אפ אוטומטית לחשבון היעד"
   },
   "friends": {
     "followers-title": "עוקבים ({count})",
@@ -453,9 +453,9 @@
     "load-more": "טען עוד"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "כוח Steem מיופה מ @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "כוח Steem מיופה ל @{n}"
   }
 }
