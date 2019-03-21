@@ -922,7 +922,7 @@ export class SectionWallet extends Component {
 
     if (account) {
       const { steemPerMVests, base, quote } = dynamicProps;
-      const { currency, currencyRate } = global;
+      const { currency } = global;
 
       const rewardSteemBalance = parseToken(account.reward_steem_balance);
       const rewardSbdBalance = parseToken(account.reward_sbd_balance);
@@ -944,11 +944,14 @@ export class SectionWallet extends Component {
       const savingBalance = parseToken(account.savings_balance);
       const savingBalanceSbd = parseToken(account.savings_sbd_balance);
 
-      const estimatedValue =
-        (vestsToSp(vestingShares, steemPerMVests) * (base / quote) +
-          balance * (base / quote) +
-          sbdBalance) *
-        currencyRate;
+      const pricePerSteem = base / quote;
+
+      const totalSteem =
+        vestsToSp(vestingShares, steemPerMVests) + balance + savingBalance;
+
+      const totalSbd = sbdBalance + savingBalanceSbd;
+
+      const estimatedValue = totalSteem * pricePerSteem + totalSbd;
 
       const showPowerDown =
         account.next_vesting_withdrawal !== '1969-12-31T23:59:59';
@@ -1416,7 +1419,6 @@ SectionWallet.propTypes = {
     base: PropTypes.number.isRequired
   }).isRequired,
   global: PropTypes.shape({
-    currencyRate: PropTypes.number.isRequired,
     currencySymbol: PropTypes.string.isRequired,
     pin: PropTypes.string.isRequired
   }).isRequired,
