@@ -451,5 +451,11 @@
     "followers-title": "Sledbenici ({count})",
     "following-title": "Pratim ({count})",
     "load-more": "Učitaj još"
+  },
+  "delegated-list": {
+    "title": "Delegated steem power from @{n}"
+  },
+  "delegatee-list": {
+    "title": "Delegated steem power to @{n}"
   }
 }
