@@ -249,6 +249,11 @@ export const marActivityAsRead = (user, id = null) => {
 export const getLeaderboard = () =>
   axios.get(`${BACKEND_URL}/api/leaderboard`).then(resp => resp.data);
 
+export const getDelgateeVestingShares = user =>
+  axios
+    .get(`${BACKEND_URL}/api/delegatee_vesting_shares/${user}`)
+    .then(resp => resp.data);
+
 export const scTokenRenew = code =>
   axios
     .post(`${BACKEND_URL}/api/sc-token-refresh`, {

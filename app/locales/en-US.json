@@ -454,5 +454,8 @@
   },
   "delegated-list": {
     "title": "Delegated steem power from @{n}"
+  },
+  "delegatee-list": {
+    "title": "Delegated steem power to @{n}"
   }
 }

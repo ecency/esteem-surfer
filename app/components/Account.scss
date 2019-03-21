@@ -553,7 +553,8 @@
                     font-weight: 700;
                   }
 
-                  .btn-delegated {
+                  .btn-delegated,
+                  .btn-delegatee {
                     border-bottom: 1px dashed $steel-grey;
                     cursor: pointer;
                   }

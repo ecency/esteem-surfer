@@ -28,6 +28,7 @@ import EntryListLoadingItem from './elements/EntryListLoadingItem';
 import EntryListItem from './elements/EntryListItem';
 
 import DelegationListModal from './dialogs/DelegatedList';
+import DelegateeListModal from './dialogs/DelegateeList';
 
 import ScrollReplace from './helpers/ScrollReplace';
 import ListSwitch from './elements/ListSwitch';
@@ -853,7 +854,8 @@ export class SectionWallet extends Component {
     this.state = {
       account,
       claiming: false,
-      delegatedModalOpen: false
+      delegatedModalOpen: false,
+      delegateeModalOpen: false
     };
   }
 
@@ -910,6 +912,11 @@ export class SectionWallet extends Component {
     this.setState({ delegatedModalOpen: !delegatedModalOpen });
   };
 
+  toggleDelegateeModal = () => {
+    const { delegateeModalOpen } = this.state;
+    this.setState({ delegateeModalOpen: !delegateeModalOpen });
+  };
+
   render() {
     const {
       transactions,
@@ -920,7 +927,12 @@ export class SectionWallet extends Component {
       username,
       location
     } = this.props;
-    const { account, claiming, delegatedModalOpen } = this.state;
+    const {
+      account,
+      claiming,
+      delegatedModalOpen,
+      delegateeModalOpen
+    } = this.state;
 
     if (account) {
       const { steemPerMVests, base, quote } = dynamicProps;
@@ -1202,15 +1214,21 @@ export class SectionWallet extends Component {
                           id: 'account.steem-power-received'
                         })}
                       >
-                        {'+'}{' '}
-                        <FormattedNumber
-                          value={vestsToSp(
-                            vestingSharesReceived,
-                            steemPerMVests
-                          )}
-                          minimumFractionDigits={3}
-                        />{' '}
-                        {'SP'}
+                        <span
+                          className="btn-delegatee"
+                          role="none"
+                          onClick={this.toggleDelegateeModal}
+                        >
+                          {'+'}{' '}
+                          <FormattedNumber
+                            value={vestsToSp(
+                              vestingSharesReceived,
+                              steemPerMVests
+                            )}
+                            minimumFractionDigits={3}
+                          />{' '}
+                          {'SP'}
+                        </span>
                       </Tooltip>
                     </div>
                     <div className="fund-action" />
@@ -1390,6 +1408,13 @@ export class SectionWallet extends Component {
             username={username}
             visible={delegatedModalOpen}
             onCancel={this.toggleDelegatedModal}
+          />
+
+          <DelegateeListModal
+            {...this.props}
+            username={username}
+            visible={delegateeModalOpen}
+            onCancel={this.toggleDelegateeModal}
           />
         </div>
       );
