@@ -453,9 +453,9 @@
     "load-more": "Carregar mais"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "Poder Steem delegado por @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "Poder Steem delegado a @{n}"
   }
 }
