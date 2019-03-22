@@ -180,7 +180,7 @@
     "withdraw-steem": "Menarik Uang",
     "withdraw-sbd": "Menarik Uang Dollar",
     "delegate": "Melimpahkan",
-    "power-down": "Power Down"
+    "power-down": "Menurunkan daya"
   },
   "composer": {
     "title-placeholder": "Judul",
@@ -430,22 +430,22 @@
     "empty-list": "Kosong"
   },
   "power-down": {
-    "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
-    "account": "Account",
-    "incoming-funds": "Incoming Funds",
-    "begin": "Begin Power Down",
-    "stop": "Stop",
-    "estimated-note": "Estimated Weekly",
-    "withdraw-accounts": "Destination Account(s)",
-    "add-withdraw-account": "Add withdraw account"
+    "title": "Menurunkan daya",
+    "sub-title": "Menurunkan Daya Steem Power",
+    "account": "Akun",
+    "incoming-funds": "Dana masuk",
+    "begin": "Memulai Menurunkan Daya",
+    "stop": "Berhenti",
+    "estimated-note": "Estimasi Mingguan",
+    "withdraw-accounts": "Akun tujuan",
+    "add-withdraw-account": "Tambahkan akun penarikan"
   },
   "withdraw-route": {
-    "title": "Add withdraw account",
-    "to": "Account",
-    "percentage": "Percentage",
-    "slider-help": "Percentage of Power Down to this account",
-    "auto-power-down": "Automatically power up the target account"
+    "title": "Tambahkan akun penarikan",
+    "to": "Akun",
+    "percentage": "Persentase",
+    "slider-help": "Persentase Penurunan Daya ke Akun ini",
+    "auto-power-down": "Secara otomatis target menaikkan daya akun"
   },
   "friends": {
     "followers-title": "Pengikut ({count})",
@@ -453,9 +453,9 @@
     "load-more": "Muat Lebih Banyak"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "Daya steem yang di delegasikan dari @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "Daya steem yang di delegasikan ke @{n}"
   }
 }
