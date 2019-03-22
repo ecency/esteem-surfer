@@ -453,9 +453,9 @@
     "load-more": "Lebih kandungan"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "Steem power delegasi daripada @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "Steem power delegasi leads @{n}"
   }
 }
