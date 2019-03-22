@@ -180,7 +180,7 @@
     "withdraw-steem": "Levantar o Steem",
     "withdraw-sbd": "Retirar Steem dólar",
     "delegate": "Delegar",
-    "power-down": "Power Down"
+    "power-down": "Decarregar Poder"
   },
   "composer": {
     "title-placeholder": "Título",
@@ -430,22 +430,22 @@
     "empty-list": "Nada aqui"
   },
   "power-down": {
-    "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
-    "account": "Account",
-    "incoming-funds": "Incoming Funds",
-    "begin": "Begin Power Down",
-    "stop": "Stop",
-    "estimated-note": "Estimated Weekly",
-    "withdraw-accounts": "Destination Account(s)",
-    "add-withdraw-account": "Add withdraw account"
+    "title": "Descarregar poder Steem",
+    "sub-title": "Descarregar Poder Steem",
+    "account": "Conta",
+    "incoming-funds": "Fundos recebidos",
+    "begin": "Iniciar Descarregamento",
+    "stop": "Parar",
+    "estimated-note": "Estimado Semanalmente",
+    "withdraw-accounts": "Conta(s) de destino",
+    "add-withdraw-account": "Adicionar conta retirada"
   },
   "withdraw-route": {
-    "title": "Add withdraw account",
-    "to": "Account",
-    "percentage": "Percentage",
-    "slider-help": "Percentage of Power Down to this account",
-    "auto-power-down": "Automatically power up the target account"
+    "title": "Adicionar conta de retirada",
+    "to": "Conta",
+    "percentage": "Percentagem",
+    "slider-help": "Percentagem de Descarga de Poder para esta conta",
+    "auto-power-down": "Carregar Poder automaticamente para a conta alvo"
   },
   "friends": {
     "followers-title": "Seguidores ({count})",
