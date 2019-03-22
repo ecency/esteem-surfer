@@ -453,9 +453,9 @@
     "load-more": "تحميل المزيد"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "تفويض قوة steem من @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "تفويض قوة steem إلى @{n}"
   }
 }
