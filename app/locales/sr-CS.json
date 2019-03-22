@@ -437,14 +437,14 @@
     "begin": "Započnite Power Down",
     "stop": "Zaustavi",
     "estimated-note": "Procenjeno nedeljno",
-    "withdraw-accounts": "Na raučun(e)",
+    "withdraw-accounts": "Na račun(e)",
     "add-withdraw-account": "Dodajte nalog za povlačenje sredstava"
   },
   "withdraw-route": {
-    "title": "Add withdraw account",
-    "to": "Account",
-    "percentage": "Percentage",
-    "slider-help": "Percentage of Power Down to this account",
+    "title": "Dodajte nalog za povlačenje sredstava",
+    "to": "Nalog",
+    "percentage": "Procenat",
+    "slider-help": "Procenat Power Down-a ovog naloga",
     "auto-power-down": "Automatski uložite u steem power na ciljani nalog"
   },
   "friends": {
@@ -453,9 +453,9 @@
     "load-more": "Učitaj još"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "Steem power delegiran od strane @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "Steem power delegiran @{n}"
   }
 }
