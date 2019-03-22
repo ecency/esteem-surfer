@@ -435,16 +435,16 @@
     "account": "계정",
     "incoming-funds": "Incoming Funds",
     "begin": "파워 다운 시작",
-    "stop": "Stop",
+    "stop": "중지",
     "estimated-note": "Estimated Weekly",
     "withdraw-accounts": "Destination Account(s)",
     "add-withdraw-account": "Add withdraw account"
   },
   "withdraw-route": {
     "title": "Add withdraw account",
-    "to": "Account",
-    "percentage": "Percentage",
-    "slider-help": "Percentage of Power Down to this account",
+    "to": "계정",
+    "percentage": "비율",
+    "slider-help": "이 계정의 파워 다운 비율",
     "auto-power-down": "Automatically power up the target account"
   },
   "friends": {
