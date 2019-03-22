@@ -11,20 +11,34 @@
       padding: 10px;
 
       .friends-list-item {
-        background: $white-six;
         border-radius: 8px;
         padding: 8px;
         text-align: center;
         cursor: pointer;
+
+        @include themify(day) {
+          background: $white-six;
+        }
+
+        @include themify(night) {
+          background: lighten($dark-six, 1);
+        }
 
         .user-avatar {
           margin: 0 auto 12px auto;
         }
 
         .friend-name {
-          color: $charcoal-grey;
           font-weight: 500;
           margin-bottom: 6px;
+
+          @include themify(day) {
+            color: $charcoal-grey;
+          }
+
+          @include themify(night) {
+            color: $pinkish-grey;
+          }
 
           &::before {
             content: '@';
@@ -32,8 +46,15 @@
         }
 
         .friend-full-name {
-          color: $steel-grey;
           font-size: 95%;
+
+          @include themify(day) {
+            color: $steel-grey;
+          }
+
+          @include themify(night) {
+            color: $powder-blue;
+          }
         }
       }
       grid-template-columns: repeat(4, 1fr);
