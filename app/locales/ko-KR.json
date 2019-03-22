@@ -180,7 +180,7 @@
     "withdraw-steem": "스팀 출금",
     "withdraw-sbd": "스팀 달러 출금",
     "delegate": "임대",
-    "power-down": "Power Down"
+    "power-down": "파워 다운"
   },
   "composer": {
     "title-placeholder": "제목",
@@ -430,11 +430,11 @@
     "empty-list": "빈 목록입니다"
   },
   "power-down": {
-    "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
-    "account": "Account",
+    "title": "파워 다운",
+    "sub-title": "스팀 파워에 대한 파워 다운",
+    "account": "계정",
     "incoming-funds": "Incoming Funds",
-    "begin": "Begin Power Down",
+    "begin": "파워 다운 시작",
     "stop": "Stop",
     "estimated-note": "Estimated Weekly",
     "withdraw-accounts": "Destination Account(s)",
@@ -453,9 +453,9 @@
     "load-more": "더 보기"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "@{n} 님이 임대해 준 스팀 파워"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "@{n} 님에게 임대한 스팀 파워"
   }
 }
