@@ -155,7 +155,7 @@
     "steem-power-description": "Steem Power su tokeni uticaja koji dugoročno dobijaju više snage, kao i glasanjem postova. Što ih više imate to ćete imati više uticaja na nagrade drugih korisnika i više ćete zaraditi na vašim glasovima.",
     "steem-power-delegated": "Delegirani Steem Power",
     "steem-power-received": "Primljena Delegacija Steem Power-a",
-    "next-power-down-amount": "Sledeći napajanja dole iznos",
+    "next-power-down-amount": "Sledeći iznos power down-a je",
     "steem-power-total": "Ukupan Steem Power",
     "steem-dollars": "Steem dolari",
     "steem-dollars-description": "Tokeni vrednosti oko $1.00 u STEEM-u.",
@@ -432,20 +432,20 @@
   "power-down": {
     "title": "Power Down",
     "sub-title": "Power Down Steem Power",
-    "account": "Account",
-    "incoming-funds": "Incoming Funds",
-    "begin": "Begin Power Down",
-    "stop": "Stop",
-    "estimated-note": "Estimated Weekly",
-    "withdraw-accounts": "Destination Account(s)",
-    "add-withdraw-account": "Add withdraw account"
+    "account": "Nalog",
+    "incoming-funds": "Dolazeća sredstva",
+    "begin": "Započnite Power Down",
+    "stop": "Zaustavi",
+    "estimated-note": "Procenjeno nedeljno",
+    "withdraw-accounts": "Na raučun(e)",
+    "add-withdraw-account": "Dodajte nalog za povlačenje sredstava"
   },
   "withdraw-route": {
     "title": "Add withdraw account",
     "to": "Account",
     "percentage": "Percentage",
     "slider-help": "Percentage of Power Down to this account",
-    "auto-power-down": "Automatically power up the target account"
+    "auto-power-down": "Automatski uložite u steem power na ciljani nalog"
   },
   "friends": {
     "followers-title": "Sledbenici ({count})",
