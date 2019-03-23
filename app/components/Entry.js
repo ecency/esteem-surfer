@@ -280,9 +280,30 @@ class ReplyListItem extends PureComponent {
     this.state = {
       reply,
       editorMode: null,
-      editorVisible: false
+      editorVisible: false,
+      deleting: false,
+      deleted: false
     };
   }
+
+  delete = () => {
+    const { activeAccount, global } = this.props;
+    const { reply } = this.state;
+
+    this.setState({ deleting: true });
+
+    return deleteComment(activeAccount, global.pin, reply.permlink)
+      .then(resp => {
+        this.setState({ deleted: true });
+        return resp;
+      })
+      .catch(err => {
+        message.error(formatChainError(err));
+      })
+      .finally(() => {
+        this.setState({ deleting: false });
+      });
+  };
 
   afterVote = newObj => {
     const { reply } = this.state;
@@ -326,7 +347,7 @@ class ReplyListItem extends PureComponent {
 
   render() {
     const { activeAccount, intl } = this.props;
-    const { reply, editorVisible, editorMode } = this.state;
+    const { reply, editorVisible, editorMode, deleted, deleting } = this.state;
 
     const reputation = authorReputation(reply.author_reputation);
     const created = parseDate(reply.created);
@@ -344,6 +365,10 @@ class ReplyListItem extends PureComponent {
       minute: '2-digit',
       second: '2-digit'
     });
+
+    if (deleted) {
+      return null;
+    }
 
     return (
       <div className="reply-list-item">
@@ -425,6 +450,26 @@ class ReplyListItem extends PureComponent {
                 </span>
               </Fragment>
             )}
+            {canEdit && (
+              <Fragment>
+                <span className="separator" />
+                <Popconfirm
+                  title={intl.formatMessage({ id: 'g.are-you-sure' })}
+                  okText={intl.formatMessage({ id: 'g.ok' })}
+                  cancelText={intl.formatMessage({ id: 'g.cancel' })}
+                  onConfirm={() => {
+                    this.delete();
+                  }}
+                >
+                  <span
+                    className={`delete-btn ${deleting ? 'deleting' : ''}`}
+                    role="none"
+                  >
+                    <i className="mi">delete</i>
+                  </span>
+                </Popconfirm>
+              </Fragment>
+            )}
           </div>
         </div>
 
@@ -446,13 +491,19 @@ class ReplyListItem extends PureComponent {
 }
 
 ReplyListItem.defaultProps = {
-  activeAccount: null
+  activeAccount: null,
+  global: {
+    pin: null
+  }
 };
 
 ReplyListItem.propTypes = {
   reply: PropTypes.instanceOf(Object).isRequired,
   activeAccount: PropTypes.instanceOf(Object),
-  intl: PropTypes.instanceOf(Object).isRequired
+  intl: PropTypes.instanceOf(Object).isRequired,
+  global: PropTypes.shape({
+    pin: PropTypes.string
+  })
 };
 
 class ReplyList extends PureComponent {

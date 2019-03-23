@@ -662,11 +662,16 @@
                 }
 
                 .reply-btn,
-                .edit-btn {
+                .edit-btn,
+                .delete-btn {
                   align-items: center;
                   color: lighten($steel-grey, 10);
                   cursor: pointer;
                   display: flex;
+                }
+
+                .delete-btn.deleting {
+                  pointer-events: none;
                 }
               }
             }
