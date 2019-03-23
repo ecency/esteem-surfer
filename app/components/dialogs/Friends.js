@@ -163,7 +163,7 @@ class Friends extends Component {
   };
 
   render() {
-    const { afterClick } = this.props;
+    const { intl, afterClick } = this.props;
     const { loading, data, hasMore, search } = this.state;
 
     return (
@@ -175,7 +175,9 @@ class Friends extends Component {
             <Input.Search
               value={search}
               disabled={loading}
-              placeholder="Search users"
+              placeholder={intl.formatMessage({
+                id: 'friends.search-placeholder'
+              })}
               onChange={this.searchChanged}
               onSearch={this.onSearch}
             />
