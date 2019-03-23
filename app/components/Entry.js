@@ -13,7 +13,7 @@ import {
   injectIntl
 } from 'react-intl';
 
-import { Select, Button, message } from 'antd';
+import { Select, Button, Popconfirm, message } from 'antd';
 
 import Tooltip from './common/Tooltip';
 
@@ -22,7 +22,8 @@ import {
   getContent,
   getAccount,
   comment,
-  getDiscussions
+  getDiscussions,
+  deleteComment
 } from '../backend/steem-client';
 
 import {
@@ -436,10 +437,9 @@ class ReplyListItem extends PureComponent {
             mode={editorMode}
           />
         )}
-        {reply.replies &&
-          reply.replies.length > 0 && (
-            <ReplyList {...this.props} replies={reply.replies} />
-          )}
+        {reply.replies && reply.replies.length > 0 && (
+          <ReplyList {...this.props} replies={reply.replies} />
+        )}
       </div>
     );
   }
@@ -609,7 +609,8 @@ class Entry extends PureComponent {
       bookmarkId: null,
       clickedAuthor: null,
       similarEntries: [],
-      similarLoading: false
+      similarLoading: false,
+      deleting: false
     };
 
     const { match } = this.props;
@@ -866,6 +867,25 @@ class Entry extends PureComponent {
     history.push(`/edit/@${author}/${permlink}`);
   };
 
+  delete = () => {
+    const { activeAccount, global, history } = this.props;
+    const { entry } = this.state;
+
+    this.setState({ deleting: true });
+
+    return deleteComment(activeAccount, global.pin, entry.permlink)
+      .then(resp => {
+        history.push(`@${activeAccount.username}/feed`);
+        return resp;
+      })
+      .catch(err => {
+        message.error(formatChainError(err));
+      })
+      .finally(() => {
+        this.setState({ deleting: false });
+      });
+  };
+
   onNewReply = newReply => {
     const { replies } = this.state;
     const newReplies = [newReply, ...replies];
@@ -928,7 +948,7 @@ class Entry extends PureComponent {
     if (entry) {
       const { children } = entry;
 
-      const { replies, replySort, clickedAuthor } = this.state;
+      const { replies, replySort, clickedAuthor, deleting } = this.state;
 
       const reputation = authorReputation(entry.author_reputation);
       const created = parseDate(entry.created);
@@ -953,6 +973,9 @@ class Entry extends PureComponent {
 
       const editable =
         activeAccount && !isComment && activeAccount.username === entry.author;
+
+      const deletable =
+        activeAccount && activeAccount.username === entry.author;
 
       const hideParentLink = !entry.parent_permlink.startsWith('re-');
 
@@ -1101,6 +1124,27 @@ class Entry extends PureComponent {
                       >
                         <FormattedMessage id="g.edit" />
                       </span>
+                    </Fragment>
+                  )}
+
+                  {deletable && (
+                    <Fragment>
+                      <span className="separator" />
+                      <Popconfirm
+                        title={intl.formatMessage({ id: 'g.are-you-sure' })}
+                        okText={intl.formatMessage({ id: 'g.ok' })}
+                        cancelText={intl.formatMessage({ id: 'g.cancel' })}
+                        onConfirm={() => {
+                          this.delete();
+                        }}
+                      >
+                        <span
+                          className={`delete-btn ${deleting ? 'deleting' : ''}`}
+                          role="none"
+                        >
+                          <FormattedMessage id="g.delete" />
+                        </span>
+                      </Popconfirm>
                     </Fragment>
                   )}
                 </div>

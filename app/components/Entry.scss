@@ -338,8 +338,13 @@
           }
 
           .reply-btn,
-          .edit-btn {
+          .edit-btn,
+          .delete-btn {
             cursor: pointer;
+          }
+
+          .delete-btn.deleting {
+            pointer-events: none;
           }
         }
       }

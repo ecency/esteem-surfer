@@ -304,6 +304,43 @@ export const grantPostingPermission = (account, pin) => {
   }
 };
 
+export const deleteComment = (account, pin, permlink) => {
+  const { username: author } = account;
+
+  if (account.type === 's') {
+    const opArray = [
+      [
+        'delete_comment',
+        {
+          author,
+          permlink
+        }
+      ]
+    ];
+
+    const key = decryptKey(account.keys.posting, pin);
+    const privateKey = PrivateKey.fromString(key);
+
+    return client.broadcast.sendOperations(opArray, privateKey);
+  }
+
+  if (account.type === 'sc') {
+    const token = decryptKey(account.accessToken, pin);
+    const api = sc2.Initialize({
+      accessToken: token
+    });
+
+    const params = {
+      author,
+      permlink
+    };
+
+    const opArray = [['delete_comment', params]];
+
+    return api.broadcast(opArray).then(resp => resp.result);
+  }
+};
+
 const _comment = (
   account,
   pin,
