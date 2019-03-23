@@ -6,6 +6,12 @@
   overflow: auto;
 
   .friends-list {
+    .friend-search-box {
+      padding: 10px 0;
+      max-width: 300px;
+      margin: auto;
+    }
+
     .friends-list-body {
       display: grid;
       padding: 10px;
@@ -60,6 +66,16 @@
       grid-template-columns: repeat(4, 1fr);
 
       grid-gap: 10px;
+
+      .empty-list {
+        @include themify(day) {
+          color: $gunmetal;
+        }
+
+        @include themify(night) {
+          color: $silver;
+        }
+      }
     }
   }
 

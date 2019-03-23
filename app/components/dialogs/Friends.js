@@ -5,7 +5,7 @@ eslint-disable react/no-multi-comp
 import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
-import { Modal, Button } from 'antd';
+import { Modal, Button, Input } from 'antd';
 
 import { injectIntl, FormattedMessage } from 'react-intl';
 
@@ -26,7 +26,8 @@ class Friends extends Component {
     this.state = {
       data: [],
       loading: true,
-      hasMore: false
+      hasMore: false,
+      search: ''
     };
 
     this.loadLimit = 80;
@@ -49,7 +50,7 @@ class Friends extends Component {
   };
 
   loadFirst = async () => {
-    this.stateSet({ loading: true });
+    this.stateSet({ loading: true, data: [], hasMore: false });
     let data;
     try {
       data = await this.loadData();
@@ -96,16 +97,49 @@ class Friends extends Component {
     return mode === 'following' ? getFollowing : getFollowers;
   };
 
+  searchChanged = e => {
+    const { loading } = this.state;
+    if (loading) {
+      return;
+    }
+
+    const val = e.target.value.trim();
+    this.stateSet({ search: val });
+  };
+
+  onSearch = async () => {
+    const { search } = this.state;
+
+    if (!search) {
+      return this.loadFirst();
+    }
+
+    this.stateSet({ loading: true, data: [], hasMore: false });
+
+    let data;
+    try {
+      data = await this.loadData(search, 1);
+    } catch (e) {
+      data = [];
+    }
+
+    this.stateSet({
+      data,
+      hasMore: false,
+      loading: false
+    });
+  };
+
   kKey = () => {
     const { mode } = this.props;
 
     return mode === 'following' ? 'following' : 'follower';
   };
 
-  loadData = async (start = undefined) => {
+  loadData = async (start = undefined, limit = this.loadLimit) => {
     const { username } = this.props;
 
-    return this.loadFn()(username, start, 'blog', this.loadLimit)
+    return this.loadFn()(username, start, 'blog', limit)
       .then(resp => {
         const accountNames = resp.map(e => e[this.kKey()]);
         return getAccounts(accountNames).then(resp2 => resp2);
@@ -130,14 +164,28 @@ class Friends extends Component {
 
   render() {
     const { afterClick } = this.props;
-    const { loading, data, hasMore } = this.state;
+    const { loading, data, hasMore, search } = this.state;
 
     return (
       <div className="friends-dialog-content">
         {loading && <LinearProgress />}
 
         <div className="friends-list">
+          <div className="friend-search-box">
+            <Input.Search
+              value={search}
+              disabled={loading}
+              placeholder="Search users"
+              onChange={this.searchChanged}
+              onSearch={this.onSearch}
+            />
+          </div>
+
           <div className="friends-list-body">
+            {!loading && data.length === 0 && (
+              <div className="empty-list">Nothing here</div>
+            )}
+
             {data.map(item => (
               <AccountLink
                 {...this.props}
@@ -154,7 +202,7 @@ class Friends extends Component {
             ))}
           </div>
 
-          {data.length > 0 && (
+          {data.length > 1 && !search && (
             <div className="load-more">
               <Button
                 type="primary"

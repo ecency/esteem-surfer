@@ -450,7 +450,8 @@
   "friends": {
     "followers-title": "Followers ({count})",
     "following-title": "Following ({count})",
-    "load-more": "Load More"
+    "load-more": "Load More",
+    "empty-list": "Nothing here"
   },
   "delegated-list": {
     "title": "Delegated steem power from @{n}"
