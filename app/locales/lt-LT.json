@@ -450,7 +450,9 @@
   "friends": {
     "followers-title": "Sekėjai {count}",
     "following-title": "Sekami ({count})",
-    "load-more": "Įkelti daugiau"
+    "load-more": "Įkelti daugiau",
+    "empty-list": "Nothing here",
+    "search-placeholder": "Search users"
   },
   "delegated-list": {
     "title": "Delegated steem power from @{n}"
