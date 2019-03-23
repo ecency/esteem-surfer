@@ -450,7 +450,9 @@
   "friends": {
     "followers-title": "팔로워 ({count})",
     "following-title": "팔로잉 ({count})",
-    "load-more": "더 보기"
+    "load-more": "더 보기",
+    "empty-list": "Nothing here",
+    "search-placeholder": "Search users"
   },
   "delegated-list": {
     "title": "@{n} 님이 임대해 준 스팀 파워"
