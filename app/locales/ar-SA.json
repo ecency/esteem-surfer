@@ -450,7 +450,9 @@
   "friends": {
     "followers-title": "المتابعون ({count})",
     "following-title": "المتابعون ({count})",
-    "load-more": "تحميل المزيد"
+    "load-more": "تحميل المزيد",
+    "empty-list": "Nothing here",
+    "search-placeholder": "Search users"
   },
   "delegated-list": {
     "title": "تفويض قوة steem من @{n}"
