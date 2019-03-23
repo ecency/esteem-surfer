@@ -450,7 +450,9 @@
   "friends": {
     "followers-title": "Sledbenici ({count})",
     "following-title": "Pratim ({count})",
-    "load-more": "Učitaj još"
+    "load-more": "Učitaj još",
+    "empty-list": "Nothing here",
+    "search-placeholder": "Search users"
   },
   "delegated-list": {
     "title": "Steem power delegiran od strane @{n}"
