@@ -451,8 +451,8 @@
     "followers-title": "팔로워 ({count})",
     "following-title": "팔로잉 ({count})",
     "load-more": "더 보기",
-    "empty-list": "Nothing here",
-    "search-placeholder": "Search users"
+    "empty-list": "빈 목록입니다",
+    "search-placeholder": "검색하고 싶은 사용자 이름을 입력하세요"
   },
   "delegated-list": {
     "title": "@{n} 님이 임대해 준 스팀 파워"
