@@ -450,7 +450,9 @@
   "friends": {
     "followers-title": "Pengikut ({count})",
     "following-title": "Pengikut ({count})",
-    "load-more": "Lebih kandungan"
+    "load-more": "Lebih kandungan",
+    "empty-list": "Nothing here",
+    "search-placeholder": "Search users"
   },
   "delegated-list": {
     "title": "Steem power delegasi daripada @{n}"
