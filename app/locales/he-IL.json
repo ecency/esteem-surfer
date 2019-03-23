@@ -450,7 +450,9 @@
   "friends": {
     "followers-title": "עוקבים ({count})",
     "following-title": "עוקב\\ת ({count})",
-    "load-more": "טען עוד"
+    "load-more": "טען עוד",
+    "empty-list": "Nothing here",
+    "search-placeholder": "Search users"
   },
   "delegated-list": {
     "title": "כוח Steem מיופה מ @{n}"
