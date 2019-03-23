@@ -99,18 +99,9 @@ class ReplyEditor extends Component {
   }
 
   editorChanged = newValues => {
-    if (this.changeTimer !== null) {
-      clearTimeout(this.changeTimer);
-      this.changeTimer = null;
-    }
-
-    this.changeTimer = setTimeout(() => {
-      this.setState({
-        replyText: newValues.body.trim()
-      });
-
-      this.changeTimer = null;
-    }, 500);
+    this.setState({
+      replyText: newValues.body.trim()
+    });
   };
 
   cancel = () => {

@@ -194,7 +194,6 @@ class Compose extends Component {
     };
 
     this.editor = React.createRef();
-    this.changeTimer = null;
   }
 
   async componentDidMount() {
@@ -335,25 +334,19 @@ class Compose extends Component {
   };
 
   editorChanged = newValues => {
-    if (this.changeTimer) {
-      clearTimeout(this.changeTimer);
+    const { editMode } = this.state;
+
+    if (!editMode) {
+      setItem('compose-title', newValues.title);
+      setItem('compose-tags', newValues.tags);
+      setItem('compose-body', newValues.body);
     }
 
-    this.changeTimer = setTimeout(() => {
-      const { editMode } = this.state;
-
-      if (!editMode) {
-        setItem('compose-title', newValues.title);
-        setItem('compose-tags', newValues.tags);
-        setItem('compose-body', newValues.body);
-      }
-
-      this.setState({
-        title: newValues.title,
-        tags: newValues.tags,
-        body: newValues.body
-      });
-    }, 300);
+    this.setState({
+      title: newValues.title,
+      tags: newValues.tags,
+      body: newValues.body
+    });
   };
 
   saveDraft = () => {

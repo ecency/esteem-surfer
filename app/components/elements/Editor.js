@@ -253,7 +253,13 @@ class Editor extends Component {
   };
 
   bodyChanged = (editor, data, value) => {
-    this.setState({ body: value }, () => this.changed());
+    if (this.changeTimer) {
+      clearTimeout(this.changeTimer);
+    }
+
+    this.changeTimer = setTimeout(() => {
+      this.setState({ body: value }, () => this.changed());
+    }, 500);
 
     // If last line editing, scroll snyc element to bottom
     const { syncWith } = this.props;
@@ -456,8 +462,8 @@ class Editor extends Component {
     }
 
     const files = [...event.clipboardData.items]
-      .map(
-        item => (item.type.indexOf('image') !== -1 ? item.getAsFile() : null)
+      .map(item =>
+        item.type.indexOf('image') !== -1 ? item.getAsFile() : null
       )
       .filter(i => i);
 
