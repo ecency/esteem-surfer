@@ -450,7 +450,9 @@
   "friends": {
     "followers-title": "Takipçiler ({count})",
     "following-title": "Takip Ediliyor ({count})",
-    "load-more": "Daha Fazla Yükle"
+    "load-more": "Daha Fazla Yükle",
+    "empty-list": "Nothing here",
+    "search-placeholder": "Search users"
   },
   "delegated-list": {
     "title": "Delegated steem power from @{n}"
