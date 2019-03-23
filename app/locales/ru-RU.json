@@ -450,7 +450,9 @@
   "friends": {
     "followers-title": "Подписчики ({count})",
     "following-title": "Подписки ({count})",
-    "load-more": "Загрузить ещё"
+    "load-more": "Загрузить ещё",
+    "empty-list": "Nothing here",
+    "search-placeholder": "Search users"
   },
   "delegated-list": {
     "title": "Delegated steem power from @{n}"
