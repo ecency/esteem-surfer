@@ -100,8 +100,8 @@ class ReplyEditor extends Component {
 
   editorChanged = newValues => {
     if (this.changeTimer !== null) {
-      this.changeTimer = null;
       clearTimeout(this.changeTimer);
+      this.changeTimer = null;
     }
 
     this.changeTimer = setTimeout(() => {
@@ -110,7 +110,7 @@ class ReplyEditor extends Component {
       });
 
       this.changeTimer = null;
-    }, 300);
+    }, 500);
   };
 
   cancel = () => {
