@@ -341,6 +341,7 @@
     "type-mentions": "Упоминания",
     "type-follows": "Подписки",
     "type-reblogs": "Репосты",
+    "type-transfers": "Transfers",
     "vote-str": "на {p}% нравится ваш пост:",
     "reply-str": "ответил на ваш пост:",
     "mention-str": "упомянул вас в:",
