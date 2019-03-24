@@ -627,11 +627,11 @@ export class TransactionRow extends Component {
         </span>
       );
 
-      details = (
+      details = acc ? (
         <span>
           <strong>@{acc}</strong>
         </span>
-      );
+      ) : null;
     }
 
     if (opName === 'fill_order') {
