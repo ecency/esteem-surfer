@@ -341,6 +341,7 @@
     "type-mentions": "Menções",
     "type-follows": "Segue",
     "type-reblogs": "Reblogs",
+    "type-transfers": "Transfers",
     "vote-str": "{p}% votou no seu post:",
     "reply-str": "respondeu ao seu post:",
     "mention-str": "falou de você em:",
