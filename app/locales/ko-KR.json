@@ -341,6 +341,7 @@
     "type-mentions": "언급",
     "type-follows": "팔로우",
     "type-reblogs": "리블로그",
+    "type-transfers": "Transfers",
     "vote-str": "님이 {p}% 비율로 보팅하셨습니다:",
     "reply-str": "님이 이 글에 댓글을 남겼습니다:",
     "mention-str": "님이 이 글에서 당신을 언급했습니다:",
