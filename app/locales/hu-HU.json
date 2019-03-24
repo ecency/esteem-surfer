@@ -341,6 +341,7 @@
     "type-mentions": "Említések",
     "type-follows": "Követések",
     "type-reblogs": "Megosztások",
+    "type-transfers": "Transfers",
     "vote-str": "{p}% nak tetszik a bejegyzésed:",
     "reply-str": "válaszolt a bejegyzésedre:",
     "mention-str": "megemlített téged itt:",
