@@ -341,6 +341,7 @@
     "type-mentions": "Spominjanja",
     "type-follows": "Pratioci",
     "type-reblogs": "Deljenja",
+    "type-transfers": "Transfers",
     "vote-str": "{p}% se sviđa vaš post:",
     "reply-str": "odgovorio na vaš post:",
     "mention-str": "spomenuo vas je u:",
