@@ -451,8 +451,8 @@
     "followers-title": "المتابعون ({count})",
     "following-title": "المتابعون ({count})",
     "load-more": "تحميل المزيد",
-    "empty-list": "Nothing here",
-    "search-placeholder": "Search users"
+    "empty-list": "لا شيء هنا",
+    "search-placeholder": "البحث عن مستخدمين"
   },
   "delegated-list": {
     "title": "تفويض قوة steem من @{n}"
