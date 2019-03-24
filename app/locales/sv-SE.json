@@ -341,6 +341,7 @@
     "type-mentions": "Omnämningar",
     "type-follows": "Följer",
     "type-reblogs": "Återblogga",
+    "type-transfers": "Transfers",
     "vote-str": "{p}% gillar ditt inlägg:",
     "reply-str": "svarade ditt inlägg:",
     "mention-str": "nämnt dig i:",
