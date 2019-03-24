@@ -341,6 +341,7 @@
     "type-mentions": "Menționări",
     "type-follows": "Urmăriri",
     "type-reblogs": "Reblogs",
+    "type-transfers": "Transfers",
     "vote-str": "{p}% a votat postul tău:",
     "reply-str": "a răspuns la postul tău:",
     "mention-str": "te-a menționat in:",
