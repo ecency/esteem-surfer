@@ -341,6 +341,7 @@
     "type-mentions": "Vermeldingen",
     "type-follows": "Volgt",
     "type-reblogs": "Deelt",
+    "type-transfers": "Transfers",
     "vote-str": "{p}% vindt je artikel leuk:",
     "reply-str": "heeft op je bericht gereageerd:",
     "mention-str": "noemde je in:",
