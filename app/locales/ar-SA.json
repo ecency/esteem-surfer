@@ -341,6 +341,7 @@
     "type-mentions": "الإشارات",
     "type-follows": "المتابعات",
     "type-reblogs": "إعادة التدوين",
+    "type-transfers": "Transfers",
     "vote-str": "{p}% الإعجابات على منشورك:",
     "reply-str": "رد على مشاركتك:",
     "mention-str": "أشارك إليك في:",
