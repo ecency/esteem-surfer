@@ -341,6 +341,7 @@
     "type-mentions": "Згадування",
     "type-follows": "Підписки",
     "type-reblogs": "Репости",
+    "type-transfers": "Transfers",
     "vote-str": "на {p}% подобається ваш пост:",
     "reply-str": "відповів на ваш пост:",
     "mention-str": "згадав вас у:",
