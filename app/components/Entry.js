@@ -754,6 +754,11 @@ class Entry extends PureComponent {
       }
     };
 
+    // It might be undefined if newly created.
+    if (!parent.replies) {
+      return [];
+    }
+
     const replies = [];
 
     parent.replies.forEach(k => {
