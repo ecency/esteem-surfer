@@ -341,6 +341,7 @@
     "type-mentions": "خطاب ها",
     "type-follows": "دنبال می کند",
     "type-reblogs": "اشتراک گذاری ها",
+    "type-transfers": "Transfers",
     "vote-str": "{p} مطلب شما را پسند کرد:",
     "reply-str": "به پست شما پاسخ داد:",
     "mention-str": "نام شما را ذکر کرد در:",
