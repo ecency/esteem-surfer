@@ -341,6 +341,7 @@
     "type-mentions": "Menyebutkan",
     "type-follows": "Ikuti",
     "type-reblogs": "Menampilkan kembali",
+    "type-transfers": "Transfers",
     "vote-str": "{p}% menyukai postingan anda:",
     "reply-str": "membalas postingan anda:",
     "mention-str": "menyebut anda dalam:",
