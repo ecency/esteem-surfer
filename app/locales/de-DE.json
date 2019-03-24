@@ -452,8 +452,8 @@
     "followers-title": "Followers ({count})",
     "following-title": "Following ({count})",
     "load-more": "Mehr laden",
-    "empty-list": "Nothing here",
-    "search-placeholder": "Search users"
+    "empty-list": "Hier ist nichts zu sehen",
+    "search-placeholder": "Benutzer suchen"
   },
   "delegated-list": {
     "title": "Delegated steem power from @{n}"
