@@ -341,6 +341,7 @@
     "type-mentions": "All holla",
     "type-follows": "Follows",
     "type-reblogs": "Reblogs",
+    "type-transfers": "Transfers",
     "vote-str": "{p}% like your tori:",
     "reply-str": "reply your tori:",
     "mention-str": "holla you for:",
