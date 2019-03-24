@@ -341,6 +341,7 @@
     "type-mentions": "Wzmianki",
     "type-follows": "Obserwacje",
     "type-reblogs": "Resteemy",
+    "type-transfers": "Transfers",
     "vote-str": "{p}% lubi twój post:",
     "reply-str": "odpowiedział na twój post:",
     "mention-str": "wspomniał o Tobie w:",
