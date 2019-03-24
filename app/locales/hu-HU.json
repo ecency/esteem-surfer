@@ -450,9 +450,9 @@
   "friends": {
     "followers-title": "Követők ({count})",
     "following-title": "Követés ({count})",
-    "load-more": "Load More",
-    "empty-list": "Nothing here",
-    "search-placeholder": "Search users"
+    "load-more": "További betöltés",
+    "empty-list": "Itt nincs semmi",
+    "search-placeholder": "Tagok keresése"
   },
   "delegated-list": {
     "title": "Delegated steem power from @{n}"
