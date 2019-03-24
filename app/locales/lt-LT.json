@@ -341,6 +341,7 @@
     "type-mentions": "Paminėjimai",
     "type-follows": "Sekėjai",
     "type-reblogs": "Pasidalinimai",
+    "type-transfers": "Transfers",
     "vote-str": "{p} mėgsta jūsų įrašą:",
     "reply-str": "atsakė į jūsų įrašą:",
     "mention-str": "paminėjo jus:",
