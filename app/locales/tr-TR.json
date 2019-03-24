@@ -341,6 +341,7 @@
     "type-mentions": "Bahsedilmeler",
     "type-follows": "Takip ediyor",
     "type-reblogs": "Yeniden yayınlamalar",
+    "type-transfers": "Transfers",
     "vote-str": "{p}% gönderinizi beğendi:",
     "reply-str": "gönderini yanıtladı:",
     "mention-str": "senden bahsetti:",
