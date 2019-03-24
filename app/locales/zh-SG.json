@@ -341,6 +341,7 @@
     "type-mentions": "提及",
     "type-follows": "关注",
     "type-reblogs": "转发",
+    "type-transfers": "Transfers",
     "vote-str": "{p}% 人点赞了您的帖子:",
     "reply-str": "replied to your post:",
     "mention-str": "提到了您:",
