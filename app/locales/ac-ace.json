@@ -341,6 +341,7 @@
     "type-mentions": "Seubot",
     "type-follows": "Ikot",
     "type-reblogs": "Reblogs",
+    "type-transfers": "Transfers",
     "vote-str": "{p}% galak post dröen:",
     "reply-str": "replied to your post:",
     "mention-str": "seubut dröen:",
