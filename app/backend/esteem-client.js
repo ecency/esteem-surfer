@@ -237,6 +237,15 @@ export const getMyReblogs = (user, since = null) => {
   return axios.get(u).then(resp => resp.data);
 };
 
+export const getMyTransfers = (user, since = null) => {
+  let u = `${BACKEND_URL}/api/transfers/${user}`;
+  if (since) {
+    u += `?since=${since}`;
+  }
+
+  return axios.get(u).then(resp => resp.data);
+};
+
 export const marActivityAsRead = (user, id = null) => {
   const d = {};
   if (id) {

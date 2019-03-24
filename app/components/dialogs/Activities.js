@@ -25,6 +25,7 @@ import {
   getMyReblogs,
   getActivities,
   marActivityAsRead,
+  getMyTransfers,
   getLeaderboard
 } from '../../backend/esteem-client';
 import UserAvatar from '../elements/UserAvatar';
@@ -435,6 +436,9 @@ class Activities extends Component {
       case 'reblogs':
         prms = getMyReblogs(username, since);
         break;
+      case 'transfers':
+        prms = getMyTransfers(username, since);
+        break;
       default:
         prms = getActivities(username, since);
     }
@@ -663,6 +667,11 @@ class ActivitiesWrapper extends Component {
         <Menu.Item key="reblogs">
           <a>
             <FormattedMessage id="activities.type-reblogs" />
+          </a>
+        </Menu.Item>
+        <Menu.Item key="transfers">
+          <a>
+            <FormattedMessage id="activities.type-transfers" />
           </a>
         </Menu.Item>
       </Menu>
