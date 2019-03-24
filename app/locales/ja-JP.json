@@ -341,6 +341,7 @@
     "type-mentions": "メンション",
     "type-follows": "フォロー",
     "type-reblogs": "リブログ",
+    "type-transfers": "Transfers",
     "vote-str": "{p}%のいいねをもらいました:",
     "reply-str": "replied to your post:",
     "mention-str": "あなたを話題にしました:",
