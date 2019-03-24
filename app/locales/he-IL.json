@@ -341,6 +341,7 @@
     "type-mentions": "איזכורים",
     "type-follows": "עוקב/ת",
     "type-reblogs": "שיתופים",
+    "type-transfers": "Transfers",
     "vote-str": "{p}% אוהב\\ת את הפוסט שלך:",
     "reply-str": "הגיב\\ה לפוסט שלך:",
     "mention-str": "הזכיר\\ה אותך ב:",
