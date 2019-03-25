@@ -452,8 +452,8 @@
     "followers-title": "Подписчики ({count})",
     "following-title": "Подписки ({count})",
     "load-more": "Загрузить ещё",
-    "empty-list": "Nothing here",
-    "search-placeholder": "Search users"
+    "empty-list": "Здесь пусто",
+    "search-placeholder": "Поиск пользователей"
   },
   "delegated-list": {
     "title": "Delegated steem power from @{n}"
