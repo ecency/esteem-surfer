@@ -180,7 +180,7 @@
     "withdraw-steem": "Снять Steem",
     "withdraw-sbd": "Снять Steem Dollar",
     "delegate": "Делегировать",
-    "power-down": "Power Down"
+    "power-down": "Понижение Силы"
   },
   "composer": {
     "title-placeholder": "Заголовок",
@@ -341,7 +341,7 @@
     "type-mentions": "Упоминания",
     "type-follows": "Подписки",
     "type-reblogs": "Репосты",
-    "type-transfers": "Transfers",
+    "type-transfers": "Переводы",
     "vote-str": "на {p}% нравится ваш пост:",
     "reply-str": "ответил на ваш пост:",
     "mention-str": "упомянул вас в:",
@@ -349,7 +349,7 @@
     "unfollowed-str": "отписан",
     "ignored-str": "игнор",
     "reblog-str": "сделал репост вашего поста:",
-    "transfer-str": "sent you",
+    "transfer-str": "перевел(а) вам",
     "empty-list": "Здесь пусто",
     "refresh": "Обновить",
     "mark-all-read": "Пометить всё как прочитанное",
@@ -431,12 +431,12 @@
     "empty-list": "Ничего нет"
   },
   "power-down": {
-    "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
-    "account": "Account",
-    "incoming-funds": "Incoming Funds",
-    "begin": "Begin Power Down",
-    "stop": "Stop",
+    "title": "Понижение Силы",
+    "sub-title": "Перевод Силы Steem в токены Steem",
+    "account": "Aккаунт",
+    "incoming-funds": "Входящие средства",
+    "begin": "Начать понижение Силы",
+    "stop": "Остановить",
     "estimated-note": "Estimated Weekly",
     "withdraw-accounts": "Destination Account(s)",
     "add-withdraw-account": "Add withdraw account"
@@ -444,9 +444,9 @@
   "withdraw-route": {
     "title": "Add withdraw account",
     "to": "Account",
-    "percentage": "Percentage",
-    "slider-help": "Percentage of Power Down to this account",
-    "auto-power-down": "Automatically power up the target account"
+    "percentage": "Процент",
+    "slider-help": "Процент понижения Силы в этот аккаунт",
+    "auto-power-down": "Автоматически переводить в Силу на целевой аккаунт"
   },
   "friends": {
     "followers-title": "Подписчики ({count})",
