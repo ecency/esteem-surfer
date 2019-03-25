@@ -341,7 +341,7 @@
     "type-mentions": "Menções",
     "type-follows": "Segue",
     "type-reblogs": "Reblogs",
-    "type-transfers": "Transfers",
+    "type-transfers": "Transferências",
     "vote-str": "{p}% votou no seu post:",
     "reply-str": "respondeu ao seu post:",
     "mention-str": "falou de você em:",
@@ -452,8 +452,8 @@
     "followers-title": "Seguidores ({count})",
     "following-title": "Seguindo ({count})",
     "load-more": "Carregar mais",
-    "empty-list": "Nothing here",
-    "search-placeholder": "Search users"
+    "empty-list": "Nada aqui",
+    "search-placeholder": "Procurar utilizadores"
   },
   "delegated-list": {
     "title": "Poder Steem delegado por @{n}"
