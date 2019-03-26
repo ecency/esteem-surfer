@@ -295,6 +295,8 @@ class DelegateCls extends PureComponent {
       }
     }
 
+    const sliderPerc = Math.ceil((amount / availableVestingShares) * 100);
+
     return (
       <div className="wrapper">
         <NavBar
@@ -383,11 +385,14 @@ class DelegateCls extends PureComponent {
                         <FormattedMessage id="transfer.amount" />
                       </div>
                       <div className="form-input">
+                        <SliderTooltip
+                          percentage={sliderPerc}
+                          value={`${amount}.000000 VESTS`}
+                        />
                         <Slider
                           step={1}
                           max={availableVestingShares}
-                          tipFormatter={a => `${a}.000000 VESTS`}
-                          tooltipVisible={availableVestingShares >= 1}
+                          tooltipVisible={false}
                           value={amount}
                           onChange={this.amountChanged}
                           disabled={availableVestingShares < 1}
@@ -910,7 +915,6 @@ class PowerDownCls extends PureComponent {
                           <Slider
                             step={1}
                             max={availableVestingShares}
-                            tipFormatter={a => `${a}.000000 VESTS`}
                             tooltipVisible={false}
                             value={amount}
                             onChange={this.amountChanged}
