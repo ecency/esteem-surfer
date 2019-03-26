@@ -456,9 +456,9 @@
     "search-placeholder": "Ieškoti narių"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "Deleguota Steem Power nuo @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "Deleguota Steem Power vartotojui @{n}"
   }
 }
