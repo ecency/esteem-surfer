@@ -105,7 +105,7 @@ class BtnWitnessVote extends PureComponent {
     if (voted) {
       return (
         <LoginRequired {...this.props} requiredKeys={['active']}>
-          <a className={btnCls} role="none">
+          <a className={btnCls} role="none" onClick={this.clicked}>
             {chevronUp}
           </a>
         </LoginRequired>
@@ -610,43 +610,39 @@ class Witnesses extends PureComponent {
             <div className="main-title">
               <FormattedMessage id="witnesses.page-title" />
             </div>
-            {!loading &&
-              !proxy &&
-              activeAccount && (
-                <div className="remaining">
-                  <FormattedHTMLMessage
-                    id="witnesses.remaining"
-                    values={{ n: 30 - witnessVotes.length, max: 30 }}
-                  />
-                </div>
-              )}
+            {!loading && !proxy && activeAccount && (
+              <div className="remaining">
+                <FormattedHTMLMessage
+                  id="witnesses.remaining"
+                  values={{ n: 30 - witnessVotes.length, max: 30 }}
+                />
+              </div>
+            )}
           </div>
           {loading && <LinearProgress />}
-          {!loading &&
-            !proxy && (
-              <Fragment>
-                <div className="witnesses-table">
-                  <Table columns={columns} dataSource={witnesses} />
-                </div>
-                <div className="extra-funcs">
-                  <ExtraWitnesses
-                    {...this.props}
-                    list={extraWitnesses}
-                    onChange={this.fetchVotedWitnesses}
-                  />
-                  <Proxy {...this.props} onChange={() => this.load()} />
-                </div>
-              </Fragment>
-            )}
+          {!loading && !proxy && (
+            <Fragment>
+              <div className="witnesses-table">
+                <Table columns={columns} dataSource={witnesses} />
+              </div>
+              <div className="extra-funcs">
+                <ExtraWitnesses
+                  {...this.props}
+                  list={extraWitnesses}
+                  onChange={this.fetchVotedWitnesses}
+                />
+                <Proxy {...this.props} onChange={() => this.load()} />
+              </div>
+            </Fragment>
+          )}
 
-          {!loading &&
-            proxy && (
-              <ProxyActive
-                {...this.props}
-                username={proxy}
-                onChange={() => this.load()}
-              />
-            )}
+          {!loading && proxy && (
+            <ProxyActive
+              {...this.props}
+              username={proxy}
+              onChange={() => this.load()}
+            />
+          )}
         </div>
         <AppFooter {...this.props} />
         <DeepLinkHandler {...this.props} />
