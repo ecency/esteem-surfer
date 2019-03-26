@@ -42,6 +42,10 @@ class SearchListItem extends PureComponent {
     const img = catchEntryImage(entry, 130, 80) || noImage;
     const summary = entryBodySummary(entry.body, 200);
 
+    const { global } = this.props;
+    const { currencyRate, currencySymbol } = global;
+
+    const valInCurrency = entry.payout * currencyRate || 0;
     return (
       <div className="search-list-item">
         <div className="item-header">
@@ -111,7 +115,11 @@ class SearchListItem extends PureComponent {
 
           <div className="item-controls">
             <a className="total-payout">
-              {'$ '} <FormattedNumber value={entry.payout.toFixed(2)} />
+              {currencySymbol}{' '}
+              <FormattedNumber
+                value={valInCurrency}
+                maximumFractionDigits={2}
+              />
             </a>
             <a className="voters">
               <i className="mi">people</i>
@@ -138,6 +146,10 @@ SearchListItem.propTypes = {
     body: PropTypes.string.isRequired,
     created_at: PropTypes.string.isRequired,
     total_votes: PropTypes.number.isRequired
+  }).isRequired,
+  global: PropTypes.shape({
+    currencyRate: PropTypes.number.isRequired,
+    currencySymbol: PropTypes.string.isRequired
   }).isRequired
 };
 
