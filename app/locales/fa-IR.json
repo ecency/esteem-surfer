@@ -341,7 +341,7 @@
     "type-mentions": "خطاب ها",
     "type-follows": "دنبال می کند",
     "type-reblogs": "اشتراک گذاری ها",
-    "type-transfers": "Transfers",
+    "type-transfers": "تراکنش ها",
     "vote-str": "{p} مطلب شما را پسند کرد:",
     "reply-str": "به پست شما پاسخ داد:",
     "mention-str": "نام شما را ذکر کرد در:",
@@ -452,8 +452,8 @@
     "followers-title": "فالوور ها ({count})",
     "following-title": "دنبال شونده ها ({count})",
     "load-more": "ادامه",
-    "empty-list": "Nothing here",
-    "search-placeholder": "Search users"
+    "empty-list": "اینجا چیزی نیست",
+    "search-placeholder": "جستجوی کاربران"
   },
   "delegated-list": {
     "title": "Steem power محول شده (قرض داده شده) توسط @{n}"
