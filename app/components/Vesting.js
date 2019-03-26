@@ -380,7 +380,7 @@ class DelegateCls extends PureComponent {
                         {toError && <div className="input-help">{toError}</div>}
                       </div>
                     </div>
-                    <div className="form-item" style={{ marginTop: '50px' }}>
+                    <div className="form-item vesting-amount">
                       <div className="form-label">
                         <FormattedMessage id="transfer.amount" />
                       </div>
@@ -902,7 +902,7 @@ class PowerDownCls extends PureComponent {
 
                   {!poweringDown && (
                     <Fragment>
-                      <div className="form-item" style={{ marginTop: '50px' }}>
+                      <div className="form-item vesting-amount">
                         <div className="form-label">
                           <FormattedMessage id="transfer.amount" />
                         </div>
