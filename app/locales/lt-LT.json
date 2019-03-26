@@ -180,7 +180,7 @@
     "withdraw-steem": "Išsiimti Steem",
     "withdraw-sbd": "Išsiimti Steem Dollar",
     "delegate": "Deleguoti",
-    "power-down": "Power Down"
+    "power-down": "Mažinti Galią"
   },
   "composer": {
     "title-placeholder": "Pavadinimas",
@@ -341,7 +341,7 @@
     "type-mentions": "Paminėjimai",
     "type-follows": "Sekėjai",
     "type-reblogs": "Pasidalinimai",
-    "type-transfers": "Transfers",
+    "type-transfers": "Pervedimai",
     "vote-str": "{p} mėgsta jūsų įrašą:",
     "reply-str": "atsakė į jūsų įrašą:",
     "mention-str": "paminėjo jus:",
@@ -349,7 +349,7 @@
     "unfollowed-str": "nebeseka",
     "ignored-str": "ignoruojami",
     "reblog-str": "pasidalino jūsų įrašu:",
-    "transfer-str": "sent you",
+    "transfer-str": "atsiuntė jums",
     "empty-list": "Nieko nėra",
     "refresh": "Atnaujinti",
     "mark-all-read": "Žymėti visus kaip skaitytus",
@@ -431,29 +431,29 @@
     "empty-list": "Nieko nėra"
   },
   "power-down": {
-    "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
-    "account": "Account",
-    "incoming-funds": "Incoming Funds",
-    "begin": "Begin Power Down",
-    "stop": "Stop",
-    "estimated-note": "Estimated Weekly",
-    "withdraw-accounts": "Destination Account(s)",
-    "add-withdraw-account": "Add withdraw account"
+    "title": "Mažinti Galią",
+    "sub-title": "Mažinti Steem Power",
+    "account": "Paskyra",
+    "incoming-funds": "Gausimos Lėšos",
+    "begin": "Pradėti Galios Mažinimą",
+    "stop": "Sustabdyti",
+    "estimated-note": "Vidutiniškai Per Savaitę",
+    "withdraw-accounts": "Gavėjo Paskyra(os)",
+    "add-withdraw-account": "Pridėti gavimo paskyrą"
   },
   "withdraw-route": {
-    "title": "Add withdraw account",
-    "to": "Account",
-    "percentage": "Percentage",
-    "slider-help": "Percentage of Power Down to this account",
-    "auto-power-down": "Automatically power up the target account"
+    "title": "Pridėti gavimo paskyrą",
+    "to": "Paskyra",
+    "percentage": "Procentai",
+    "slider-help": "Galios mažinimo procentinė dalis šiai paskyrai",
+    "auto-power-down": "Automatiškai pakelti galią nurodytai paskyrai"
   },
   "friends": {
     "followers-title": "Sekėjai {count}",
     "following-title": "Sekami ({count})",
     "load-more": "Įkelti daugiau",
-    "empty-list": "Nothing here",
-    "search-placeholder": "Search users"
+    "empty-list": "Nieko nėra",
+    "search-placeholder": "Ieškoti narių"
   },
   "delegated-list": {
     "title": "Delegated steem power from @{n}"
