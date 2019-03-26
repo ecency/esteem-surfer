@@ -305,7 +305,7 @@ class DelegateCls extends PureComponent {
               this.setState(this.resetState());
               this.init();
             },
-            reloading: !fromData
+            reloading: !fromData || inProgress
           })}
         />
 
@@ -789,7 +789,7 @@ class PowerDownCls extends PureComponent {
         title: 'Auto Vest',
         dataIndex: 'auto_vest',
         key: 'auto_vest',
-        render: x => (x.auto_vest ? 'VEST' : 'STEEM')
+        render: (x, rec) => (rec.auto_vest ? 'VEST' : 'STEEM')
       },
       {
         render: (x, rec) => (
@@ -820,7 +820,7 @@ class PowerDownCls extends PureComponent {
               this.setState(this.resetState());
               this.init();
             },
-            reloading: !fromData
+            reloading: !fromData || inProgress
           })}
         />
         {fromData && (
