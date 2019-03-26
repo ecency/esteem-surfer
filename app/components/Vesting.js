@@ -301,8 +301,11 @@ class DelegateCls extends PureComponent {
       <div className="wrapper">
         <NavBar
           {...Object.assign({}, this.props, {
-            reloadFn: () => {},
-            reloading: false
+            reloadFn: () => {
+              this.setState(this.resetState());
+              this.init();
+            },
+            reloading: !fromData
           })}
         />
 
