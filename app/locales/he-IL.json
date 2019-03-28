@@ -341,7 +341,7 @@
     "type-mentions": "איזכורים",
     "type-follows": "עוקב/ת",
     "type-reblogs": "שיתופים",
-    "type-transfers": "Transfers",
+    "type-transfers": "העברות",
     "vote-str": "{p}% אוהב\\ת את הפוסט שלך:",
     "reply-str": "הגיב\\ה לפוסט שלך:",
     "mention-str": "הזכיר\\ה אותך ב:",
@@ -452,8 +452,8 @@
     "followers-title": "עוקבים ({count})",
     "following-title": "עוקב\\ת ({count})",
     "load-more": "טען עוד",
-    "empty-list": "Nothing here",
-    "search-placeholder": "Search users"
+    "empty-list": "אין כאן מידע",
+    "search-placeholder": "חפש/י משתמשים"
   },
   "delegated-list": {
     "title": "כוח Steem מיופה מ @{n}"
