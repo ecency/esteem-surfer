@@ -135,6 +135,15 @@
           window.dispatchEvent(ev);
           return false;
         }
+
+        if (el.classList.contains('markdown-video-link')) {
+          const embedSrc = el.getAttribute('data-embed-src');
+          if (embedSrc) {
+            el.innerHTML = `<iframe frameborder='0' allowfullscreen src='${embedSrc}'></iframe>`;
+            return;
+          }
+        }
+        //
       });
 
       window.protocolHandler = function(url) {

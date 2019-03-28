@@ -44,7 +44,8 @@ export const sanitizeNode = node => {
     'BR',
     'IMG',
     'DEL',
-    'INS'
+    'INS',
+    'SPAN'
   ];
 
   const ALLOWED_ATTRS = [
@@ -52,6 +53,7 @@ export const sanitizeNode = node => {
     'data-tag',
     'data-author',
     'data-href',
+    'data-embed-src',
     'class',
     'src',
     'alt',
@@ -103,7 +105,9 @@ const img = node => {
 
   const src = node.getAttribute('src');
 
-  node.setAttribute('src', proxifyImageSrc(src));
+  if (node.className.indexOf('no-replace') === -1) {
+    node.setAttribute('src', proxifyImageSrc(src));
+  }
 };
 
 const linkifyNode = node => {
@@ -249,8 +253,13 @@ export default input => {
           el.removeAttribute('href');
 
           const vid = e[1];
-          const embedSrc = `https://www.youtube.com/embed/${vid}`;
-          el.innerHTML = `<iframe frameborder='0' allowfullscreen src='${embedSrc}'></iframe>`;
+          const thumbnail = `https://img.youtube.com/vi/${vid}/hqdefault.jpg`;
+          const embedSrc = `https://www.youtube.com/embed/${vid}?autoplay=1`;
+
+          el.setAttribute('data-embed-src', embedSrc);
+
+          el.innerHTML = `<img class="no-replace video-thumbnail" src='${thumbnail}' /><span class="markdown-video-play" />`;
+
           f = true;
         }
       }
