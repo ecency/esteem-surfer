@@ -142,8 +142,14 @@
             el.innerHTML = `<iframe frameborder='0' allowfullscreen src='${embedSrc}'></iframe>`;
             return;
           }
+
+          const videoHref = el.getAttribute('data-video-href');
+          if (videoHref) {
+            shell.openExternal(videoHref);
+            event.preventDefault();
+            return false;
+          }
         }
-        //
       });
 
       window.protocolHandler = function(url) {

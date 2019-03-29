@@ -54,6 +54,7 @@ export const sanitizeNode = node => {
     'data-author',
     'data-href',
     'data-embed-src',
+    'data-video-href',
     'class',
     'src',
     'alt',
@@ -287,15 +288,19 @@ export default input => {
       if (match) {
         // Only d.tube links contains an image
         const imgEls = el.querySelectorAll('img');
-        if (el.textContent === href || imgEls.length === 1) {
+        if (imgEls.length === 1) {
           const e = dTubeRegex.exec(href);
           // e[2] = username, e[3] object id
           if (e[2] && e[3]) {
             el.className = 'markdown-video-link markdown-video-link-dtube';
             el.removeAttribute('href');
 
-            const embedSrc = `https://emb.d.tube/#!/${e[2]}/${e[3]}`;
-            el.innerHTML = `<iframe frameborder='0' allowfullscreen src='${embedSrc}'></iframe>`;
+            const thumbnail = imgEls[0].getAttribute('src');
+            const videoHref = `https://d.tube/#!/v/${e[2]}/${e[3]}`;
+
+            el.setAttribute('data-video-href', videoHref);
+
+            el.innerHTML = `<img class="no-replace video-thumbnail" src='${thumbnail}' /><span class="markdown-video-play"></span><span class="open-external mi">open_in_new</span>`;
             f = true;
           }
         }
