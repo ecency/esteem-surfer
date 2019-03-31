@@ -298,7 +298,7 @@
     "favoriteRemove": "Removed from favorites",
     "wallet": "My Wallet",
     "activities": "Activities",
-    "address-enter-url": "Enter url",
+    "address-enter-url": "Tẹ url",
     "address-enter-query": "Enter search query",
     "unclaimed-reward-notice": "You have unclaimed rewards",
     "search-no-matches": "No matches"
@@ -320,10 +320,10 @@
   },
   "context-menu": {
     "cut": "Gé",
-    "copy": "Copy",
+    "copy": "Ṣàdàkọ",
     "paste": "Paste",
     "open-image-browser": "Open image in browser",
-    "copy-image-url": "Copy image url"
+    "copy-image-url": "Ṣàdàkọ url àwòrán"
   },
   "notification": {
     "popup-title": "You have a new notification",
@@ -370,7 +370,7 @@
     "version": "Version",
     "voted": "@{n} voted",
     "vote-removed": "vote removed for @{n}",
-    "username-placeholder": "username",
+    "username-placeholder": "orúkọ aṣàmúlò",
     "extra-witnesses-exp": "Enter account name below to vote for a witness outside of <strong>Top 50</strong>",
     "proxy-exp": "You can also choose a proxy that will vote for witnesses for you. This will reset your current witness selection.",
     "set-proxy": "Set Proxy",
