@@ -444,21 +444,21 @@
   "withdraw-route": {
     "title": "Add withdraw account",
     "to": "Account",
-    "percentage": "Percentage",
+    "percentage": "Ìdá nínú ọgọ́rùn-ún",
     "slider-help": "Percentage of Power Down to this account",
     "auto-power-down": "Automatically power up the target account"
   },
   "friends": {
-    "followers-title": "Followers ({count})",
-    "following-title": "Following ({count})",
-    "load-more": "Load More",
-    "empty-list": "Nothing here",
-    "search-placeholder": "Search users"
+    "followers-title": "Àwọn tó tẹ̀lé ẹ ({count})",
+    "following-title": "Àwọn tí o tẹ̀lé ({count})",
+    "load-more": "Gbé Àfikún si",
+    "empty-list": "Kò sí nnkan kan níbí",
+    "search-placeholder": "Ṣàwárí àwọn aṣàmúlò"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "Steem power tí a fi ránṣẹ́ láti @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "Steem power tí a fi ránṣẹ́ sí @{n}"
   }
 }
