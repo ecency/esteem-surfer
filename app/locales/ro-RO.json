@@ -180,7 +180,7 @@
     "withdraw-steem": "Retrage Steem",
     "withdraw-sbd": "Retrage Steem Dolar",
     "delegate": "Delegare",
-    "power-down": "Power Down"
+    "power-down": "Putere Scăzută"
   },
   "composer": {
     "title-placeholder": "Titlu",
@@ -286,7 +286,7 @@
     "comment-entry-go-root": "Vezi contextul complet",
     "comment-entry-go-parent": "Vizualizează postarea principală",
     "similar-entries": "Postări Similare",
-    "fetch-error": "Server timeout because response size is too big"
+    "fetch-error": "Serverului a expirat pentru că dimensiunea răspunsului este prea mare"
   },
   "navbar": {
     "settings": "Setări",
@@ -431,11 +431,11 @@
     "empty-list": "Nici un rezultat"
   },
   "power-down": {
-    "title": "Power Down",
+    "title": "Putere Scăzută",
     "sub-title": "Power Down Steem Power",
     "account": "Cont",
-    "incoming-funds": "Incoming Funds",
-    "begin": "Begin Power Down",
+    "incoming-funds": "Fondurile Primite",
+    "begin": "Începe Putere Scăzută",
     "stop": "Oprește",
     "estimated-note": "Estimat Săptămânal",
     "withdraw-accounts": "Cont(uri) de Destinație",
@@ -445,7 +445,7 @@
     "title": "Add withdraw account",
     "to": "Cont",
     "percentage": "Procentaj",
-    "slider-help": "Percentage of Power Down to this account",
+    "slider-help": "Procentul de putere scăzută la acest cont",
     "auto-power-down": "Automatically power up the target account"
   },
   "friends": {
