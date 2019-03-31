@@ -10,11 +10,11 @@
     "delete": "Delete",
     "cancel": "Cancel",
     "ok": "OK",
-    "edit": "Edit",
+    "edit": "Ṣàtúnṣe",
     "server-error": "Process could not be completed due to server error",
     "save": "Save",
     "done": "Done",
-    "select": "Select"
+    "select": "Yan"
   },
   "footer": {
     "faq": "FAQ",
@@ -212,10 +212,10 @@
     "clear": "Clear All",
     "form-error-message": "Form is not valid. Please fill all fields",
     "schedule": "Schedule",
-    "select-schedule-date": "Select Date",
+    "select-schedule-date": "Yan Ọjọ́",
     "schedule-saved": "Post scheduled",
-    "schedule-picker-select-time": "Select Time",
-    "schedule-picker-select-date": "Select Date",
+    "schedule-picker-select-time": "Yan Àkókò",
+    "schedule-picker-select-date": "Yan Ọjọ́",
     "grant-posting-perm": "Grant Posting Permission",
     "posting-perm-granted": "Posting permission granted",
     "remove-posting-perm": "Remove Posting Permission",
@@ -235,8 +235,8 @@
   },
   "gallery": {
     "title": "Gbàgede",
-    "copied": "Copied to clipboard",
-    "load-error": "Could not load gallery",
+    "copied": "Gba dídàkọ sí ààyè ìtọ́jú",
+    "load-error": "Kò lè gbé gbàgede",
     "empty-list": "Kò sí nnkan kan níbí"
   },
   "drafts": {
@@ -404,7 +404,7 @@
     "memo": "Memo",
     "memo-placeholder": "tẹ àwọn àkọsílẹ̀ rẹ síbí",
     "memo-help": "This memo is public",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "key-required-err": "Kọ́kọ́rọ́ ìṣiṣẹ́ kò ṣé ṣàwarí fún account tí o yàn. Jọ̀wọ́ ri dájú pé o wọlé pẹ̀lú àwọn ohun-ẹ̀rí tó tọ́.",
     "next": "Next",
     "confirm-title": "Jẹrìí sí Ìfiránṣẹ́ rẹ",
     "confirm-sub-title": "Jọ̀wọ́, ṣàyẹ̀wò tí gbogbo nnkan bá dára",
