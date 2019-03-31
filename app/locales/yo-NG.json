@@ -11,7 +11,7 @@
     "cancel": "Cancel",
     "ok": "OK",
     "edit": "Ṣàtúnṣe",
-    "server-error": "Process could not be completed due to server error",
+    "server-error": "Ìgbésẹ̀ kò lè ṣé parí nítorí àṣìṣe apèsè",
     "save": "Save",
     "done": "Done",
     "select": "Yan"
@@ -66,7 +66,7 @@
     "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
     "server-timeout-error": "'{server}' looks like not alive",
     "server-changed": "Àṣàyàn apèsè yípadà sí {server}",
-    "server-custom-address": "Custom server address",
+    "server-custom-address": "Àkànṣe àdírẹ́ẹ̀sì apèsè",
     "server-list-fetch-error": "Could not fetch server list",
     "push-notifications": "Push Notifications",
     "push-notify-enabled": "Push notifications enabled",
