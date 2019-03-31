@@ -4,8 +4,8 @@
   },
   "g": {
     "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
-    "yes": "Yes",
+    "are-you-sure": "Ṣó dá ọ lójú?",
+    "yes": "Bẹ́ẹ̀ ni",
     "no": "No",
     "delete": "Delete",
     "cancel": "Cancel",
@@ -110,7 +110,7 @@
     "favorites": "Favorites",
     "drafts": "Drafts",
     "schedules": "Schedules",
-    "gallery": "Gallery",
+    "gallery": "Gbàgede",
     "login-as": "Login As",
     "logout": "Logout"
   },
@@ -201,7 +201,7 @@
     "tool-table-2-col": "2 columns",
     "tool-table-1-col": "1 column",
     "tool-upload": "Upload",
-    "tool-gallery": "Gallery",
+    "tool-gallery": "Gbàgede",
     "tool-emoji": "Emoji",
     "preview": "Preview",
     "reward": "Reward",
@@ -234,10 +234,10 @@
     "emoji-recently-used": "Recently Used"
   },
   "gallery": {
-    "title": "Gallery",
+    "title": "Gbàgede",
     "copied": "Copied to clipboard",
     "load-error": "Could not load gallery",
-    "empty-list": "Nothing here"
+    "empty-list": "Kò sí nnkan kan níbí"
   },
   "drafts": {
     "title": "Drafts",
