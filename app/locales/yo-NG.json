@@ -153,7 +153,7 @@
     "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
     "steem-power": "Steem Power",
     "steem-power-description": "Steem Power are influence tokens that earn more power for holding long term and voting on posts. The more Steem Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
-    "steem-power-delegated": "Delegated Steem Power",
+    "steem-power-delegated": "Steem Power tí a fi ránṣẹ́",
     "steem-power-received": "Received Steem Power",
     "next-power-down-amount": "Next power down amount",
     "steem-power-total": "Total Steem Power",
@@ -177,8 +177,8 @@
     "transfer": "Transfer",
     "transfer-to-savings": "Transfer to savings",
     "power-up": "Power up",
-    "withdraw-steem": "Withdraw Steem",
-    "withdraw-sbd": "Withdraw Steem Dollar",
+    "withdraw-steem": "Gba Steem",
+    "withdraw-sbd": "Gba Steem Dollar",
     "delegate": "Fi ránṣẹ́",
     "power-down": "Power Down"
   },
@@ -421,10 +421,10 @@
     "title": "Fi ránṣẹ́",
     "sub-title": "Fi Steem Power ránṣẹ́",
     "slider-help": "Drag the slider to adjust the amount",
-    "confirm-title": "Confirm Delegation",
-    "confirm-sub-title": "Please, check if everything is correct",
+    "confirm-title": "Jẹrìí sí Ìfiránṣẹ́",
+    "confirm-sub-title": "Jọ̀wọ́, ṣàyẹ̀wò tí gbogbo nnkan bá dára",
     "delegation-summary": "<span class=\"sp\">{sp}</span> tí a fi ránṣẹ́ sí <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "Delegation completed",
+    "success-sub-title": "Ìfiránṣẹ́ ti parí",
     "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
   },
   "delegation-list": {
