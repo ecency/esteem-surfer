@@ -389,10 +389,10 @@
     "withdraw-saving-sub-title": "Withdraw funds after the required 3 day waiting period",
     "power-up-title": "Convert to Steem Power",
     "power-up-sub-title": "Influence tokens which give you more control over post payouts and allow you to earn on curation rewards.",
-    "from": "From",
-    "from-placeholder": "Select a user",
-    "to": "To",
-    "to-placeholder": "username",
+    "from": "Láti",
+    "from-placeholder": "Yan aṣàmúlò kan",
+    "to": "Sí",
+    "to-placeholder": "orúkọ aṣàmúlò",
     "to-not-found": "The user that you are trying to transfer funds to does not exist!",
     "to-bad-actor": "Use caution sending to this account. Please double check your spelling for possible phishing.",
     "amount": "Amount",
@@ -434,19 +434,19 @@
     "title": "Power Down",
     "sub-title": "Power Down Steem Power",
     "account": "Account",
-    "incoming-funds": "Incoming Funds",
+    "incoming-funds": "Àwọn Owó tó ń bọ̀",
     "begin": "Bẹ̀rẹ̀ Power Down",
     "stop": "Dáwọ́ dúró",
     "estimated-note": "Estimated Weekly",
-    "withdraw-accounts": "Destination Account(s)",
+    "withdraw-accounts": "(Àwọn) Account Èbúté",
     "add-withdraw-account": "Add withdraw account"
   },
   "withdraw-route": {
     "title": "Add withdraw account",
     "to": "Account",
     "percentage": "Ìdá nínú ọgọ́rùn-ún",
-    "slider-help": "Percentage of Power Down to this account",
-    "auto-power-down": "Automatically power up the target account"
+    "slider-help": "Ìdá nínú ọgọ́rùn-ún láti Power Down sí account yìí",
+    "auto-power-down": "Power up account àfojúsùn náà fúnra rẹ̀"
   },
   "friends": {
     "followers-title": "Àwọn tó tẹ̀lé ẹ ({count})",
