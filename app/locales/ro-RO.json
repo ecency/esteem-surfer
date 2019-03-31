@@ -87,7 +87,7 @@
     "create-account-text": "Nu ai cont? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Înscrie-te acum!</a>",
     "login-with-sc": "Autentificare cu",
     "divider-text": "SAU",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "Note: Steemconnect poate percepe anumite taxe la tranzacțiile tale de recompensă"
   },
   "create-pin-code": {
     "title": "Creează cod PIN",
@@ -341,7 +341,7 @@
     "type-mentions": "Menționări",
     "type-follows": "Urmăriri",
     "type-reblogs": "Reblogs",
-    "type-transfers": "Transfers",
+    "type-transfers": "Transferuri",
     "vote-str": "{p}% a votat postul tău:",
     "reply-str": "a răspuns la postul tău:",
     "mention-str": "te-a menționat in:",
@@ -349,7 +349,7 @@
     "unfollowed-str": "urmărire anulată",
     "ignored-str": "ignorat",
     "reblog-str": "a redistribuit postarea ta:",
-    "transfer-str": "sent you",
+    "transfer-str": "te-a trimis",
     "empty-list": "Nici un rezultat",
     "refresh": "Actualizează",
     "mark-all-read": "Marchează toate ca citite",
@@ -433,27 +433,27 @@
   "power-down": {
     "title": "Power Down",
     "sub-title": "Power Down Steem Power",
-    "account": "Account",
+    "account": "Cont",
     "incoming-funds": "Incoming Funds",
     "begin": "Begin Power Down",
-    "stop": "Stop",
-    "estimated-note": "Estimated Weekly",
-    "withdraw-accounts": "Destination Account(s)",
+    "stop": "Oprește",
+    "estimated-note": "Estimat Săptămânal",
+    "withdraw-accounts": "Cont(uri) de Destinație",
     "add-withdraw-account": "Add withdraw account"
   },
   "withdraw-route": {
     "title": "Add withdraw account",
-    "to": "Account",
-    "percentage": "Percentage",
+    "to": "Cont",
+    "percentage": "Procentaj",
     "slider-help": "Percentage of Power Down to this account",
     "auto-power-down": "Automatically power up the target account"
   },
   "friends": {
     "followers-title": "Urmăritori ({count})",
     "following-title": "Urmăriți ({count})",
-    "load-more": "Load More",
-    "empty-list": "Nothing here",
-    "search-placeholder": "Search users"
+    "load-more": "Încărcați mai Mult",
+    "empty-list": "Nici un rezultat",
+    "search-placeholder": "Caută utilizatori"
   },
   "delegated-list": {
     "title": "Delegated steem power from @{n}"
