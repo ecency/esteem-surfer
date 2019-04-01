@@ -17,18 +17,18 @@
     "select": "Yan"
   },
   "footer": {
-    "faq": "FAQ",
-    "about": "About"
+    "faq": "Àwọn Ìbéèrè Tí Àwọn Èèyàn Sábà Máa Ń Béèrè",
+    "about": "Nípa"
   },
   "entry-index": {
     "tags": "Popular Tags",
     "filter-trending": "Trending",
     "filter-hot": "Hot",
-    "filter-created": "New",
+    "filter-created": "Tuntun",
     "filter-active": "Active",
     "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
+    "filter-votes": "Àwọn ìbò",
+    "filter-children": "Àwọn ìdáásí",
     "filter-feed": "Feed"
   },
   "entry-payout": {
