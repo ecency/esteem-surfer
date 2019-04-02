@@ -55,9 +55,9 @@
   },
   "settings": {
     "title": "Settings",
-    "currency": "Currency",
+    "currency": "Owó",
     "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
-    "currency-changed": "Currency Changed",
+    "currency-changed": "Owó Yípadà",
     "locale": "Èdè",
     "locale-changed": "Èdè ti yípadà",
     "server": "Apèsè",
