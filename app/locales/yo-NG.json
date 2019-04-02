@@ -3,7 +3,7 @@
     "no-internet-conn": "No Internet Connection"
   },
   "g": {
-    "compose-entry": "Create Post",
+    "compose-entry": "Ṣẹ̀dá Àròkọ",
     "are-you-sure": "Ṣó dá ọ lójú?",
     "yes": "Bẹ́ẹ̀ ni",
     "no": "Rárá",
@@ -131,7 +131,7 @@
     "section-wallet": "Wallet"
   },
   "follow-controls": {
-    "follow": "Follow",
+    "follow": "Tẹ̀lé",
     "unFollow": "Unfollow",
     "mute": "Mute",
     "unMute": "Unmute"
@@ -143,7 +143,7 @@
     "followers": "Followers",
     "following": "Following",
     "section-blog": "Blog",
-    "section-comments": "Comments",
+    "section-comments": "Àwọn ìdáásí",
     "section-replies": "Replies",
     "section-wallet": "Wallet",
     "top-posts": "Top Posts",
@@ -186,7 +186,7 @@
     "title-placeholder": "Title",
     "tags-placeholder": "Tags. First tag is your main category",
     "max-n-tags": "Max {n} tags",
-    "body-placeholder": "Post Content",
+    "body-placeholder": "Àkóónú Àròkọ",
     "tool-bold": "Bold",
     "tool-italic": "Italic",
     "tool-header": "Heading",
@@ -283,8 +283,8 @@
     "copy-clipboard": "Ṣàdàkọ ìtọ́kasí abẹ́nú sí ààyè ìtọ́jú",
     "copied-clipboard": "Copied",
     "comment-entry-title": "You are viewing a single comment's thread from: ",
-    "comment-entry-go-root": "View the full context",
-    "comment-entry-go-parent": "View the direct parent",
+    "comment-entry-go-root": "Wo àkóónú kíkún náà",
+    "comment-entry-go-parent": "Wo òbí tààrà náà",
     "similar-entries": "Similar Posts",
     "fetch-error": "Server timeout because response size is too big"
   },
@@ -328,8 +328,8 @@
   "notification": {
     "popup-title": "You have a new notification",
     "voted": "{source} voted your post",
-    "mention-post": "{source} mentioned you in a post",
-    "mention-comment": "{source} mentioned you in a comment",
+    "mention-post": "{source} dárúkọ rẹ nínú àròkọ kan",
+    "mention-comment": "{source} dárúkọ rẹ nínú ìdáásí kan",
     "followed": "{source} followed you",
     "replied": "{source} replied you",
     "reblogged": "{source} reblogged your post"
@@ -342,9 +342,9 @@
     "type-follows": "Follows",
     "type-reblogs": "Reblogs",
     "type-transfers": "Transfers",
-    "vote-str": "{p}% likes your post:",
-    "reply-str": "replied to your post:",
-    "mention-str": "mentioned you in:",
+    "vote-str": "{p}% fẹ́ràn àròkọ rẹ:",
+    "reply-str": "fèsì sí àròkọ rẹ:",
+    "mention-str": "dárúkọ rẹ nínú:",
     "followed-str": "followed",
     "unfollowed-str": "unfollowed",
     "ignored-str": "ignored",
