@@ -116,17 +116,17 @@
   },
   "login-required": {
     "default": "This action requires login",
-    "key-required": "This action requires {key} key or master password",
-    "keys-required": "This action requires {keys} keys or master password"
+    "key-required": "Iṣẹ́ yìí nílò kọ́kọ́rọ́ {key} tàbí ọ̀rọ̀ aṣínà ọ̀gá",
+    "keys-required": "Iṣẹ́ yìí nílò àwọn kọ́kọ́rọ́ {keys} tàbí ọ̀rọ̀ aṣínà ọ̀gá"
   },
   "quick-profile": {
     "fetch-error-profile": "Could not fetch profile data",
     "fetch-error-content": "Could not fetch posts",
     "post-count": "Post Count",
-    "followers": "Followers",
-    "following": "Following",
+    "followers": "Àwọn tó tẹ̀lé ẹ",
+    "following": "Àwọn tí o tẹ̀lé",
     "section-blog": "Blog",
-    "section-comments": "Comments",
+    "section-comments": "Àwọn ìdáásí",
     "section-replies": "Replies",
     "section-wallet": "Wallet"
   },
