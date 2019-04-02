@@ -10,7 +10,6 @@ const imgRegex = /(https?:\/\/.*\.(?:tiff?|jpe?g|gif|png|svg|ico))(.*)/gim;
 const postRegex = /^https?:\/\/(.*)\/(.*)\/(@[\w.\d-]+)\/(.*)/i;
 const copiedPostRegex = /\/(.*)\/(@[\w.\d-]+)\/(.*)/i;
 const youTubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([^& \n<]+)(?:[^ \n<]+)?/g;
-const youTubeEmbedRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/embed\/)([^& \n<]+)(?:[^ \n<]+)?/g;
 const vimeoRegex = /(https?:\/\/)?(www\.)?(?:vimeo)\.com.*(?:videos|video|channels|)\/([\d]+)/i;
 const dTubeRegex = /(https?:\/\/d.tube.#!\/v\/)(\w+)\/(\w+)/g;
 
@@ -117,16 +116,36 @@ const iframe = el => {
     return;
   }
 
-  if (src.match(youTubeEmbedRegex)) {
-    const e = youTubeEmbedRegex.exec(src);
-    if (e[1]) {
-      return true;
-    }
+  // Youtube
+  if (src.match(/^(https?:)?\/\/www.youtube.com\/embed\/.*/i)) {
+    const s = src.replace(/\?.+$/, ''); // strip query string (yt: autoplay=1,controls=0,showinfo=0, etc)
+    el.setAttribute('src', s);
+    return true;
   }
 
-  if (src.match(vimeoRegex)) {
-    const e = vimeoRegex.exec(src);
-    if (e[3]) {
+  // Vimeo
+  const m = src.match(/https:\/\/player\.vimeo\.com\/video\/([0-9]+)/);
+  if (m && m.length === 2) {
+    const s = `https://player.vimeo.com/video/${m[1]}`;
+    el.setAttribute('src', s);
+    return true;
+  }
+
+  // Twitch
+  if (src.match(/^(https?:)?\/\/player.twitch.tv\/.*/i)) {
+    const s = `${src}&autoplay=false`;
+    el.setAttribute('src', s);
+    return true;
+  }
+
+  // Soundcloud
+  if (src.match(/^https:\/\/w.soundcloud.com\/player\/.*/i)) {
+    const match = src.match(/url=(.+?)&/);
+    if (match && match.length === 2) {
+      const s = `https://w.soundcloud.com/player/?url=${
+        match[1]
+      }&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&visual=true`;
+      el.setAttribute('src', s);
       return true;
     }
   }
