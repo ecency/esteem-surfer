@@ -100,7 +100,7 @@
     "title": "Tẹ Kóòdù PIN",
     "input-placeholder": "Tẹ kóòdù PIN láti tẹ̀síwájú",
     "last-chance": "This is your last chance",
-    "invalidate": "Oh, I forgot it...",
+    "invalidate": "Óò, Mo ti gbàgbé rẹ̀...",
     "invalidate-confirm": "Do you really want to invalidate PIN code?",
     "invalidated": "PIN code is invalidated"
   },
@@ -111,11 +111,11 @@
     "drafts": "Drafts",
     "schedules": "Schedules",
     "gallery": "Gbàgede",
-    "login-as": "Login As",
+    "login-as": "Wọlé Gẹ́gẹ́ bí",
     "logout": "Jáde síta"
   },
   "login-required": {
-    "default": "This action requires login",
+    "default": "Iṣẹ́ yìí nílò kí o wọlé",
     "key-required": "Iṣẹ́ yìí nílò kọ́kọ́rọ́ {key} tàbí ọ̀rọ̀ aṣínà ọ̀gá",
     "keys-required": "Iṣẹ́ yìí nílò àwọn kọ́kọ́rọ́ {keys} tàbí ọ̀rọ̀ aṣínà ọ̀gá"
   },
