@@ -496,5 +496,10 @@ a[target='_external'],
     }
   }
 
+  .unsupported-iframe {
+    font-style: italic;
+    margin: 10px 0;
+  }
+
   overflow-wrap: break-word;
 }

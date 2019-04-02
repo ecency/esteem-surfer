@@ -3,7 +3,16 @@ eslint-disable no-param-reassign
 */
 
 import { JSDOM } from 'jsdom';
+
 import proxifyImageSrc from './proxify-image-src';
+
+const imgRegex = /(https?:\/\/.*\.(?:tiff?|jpe?g|gif|png|svg|ico))(.*)/gim;
+const postRegex = /^https?:\/\/(.*)\/(.*)\/(@[\w.\d-]+)\/(.*)/i;
+const copiedPostRegex = /\/(.*)\/(@[\w.\d-]+)\/(.*)/i;
+const youTubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([^& \n<]+)(?:[^ \n<]+)?/g;
+const youTubeEmbedRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/embed\/)([^& \n<]+)(?:[^ \n<]+)?/g;
+const vimeoRegex = /(https?:\/\/)?(www\.)?(?:vimeo)\.com.*(?:videos|video|channels|)\/([\d]+)/i;
+const dTubeRegex = /(https?:\/\/d.tube.#!\/v\/)(\w+)\/(\w+)/g;
 
 const Remarkable = require('remarkable');
 
@@ -93,11 +102,40 @@ const traverse = (node, depth = 0) => {
   if (!node || !node.childNodes) return;
 
   node.childNodes.forEach(child => {
+    if (child.nodeName === 'IFRAME') iframe(child);
     if (child.nodeName === '#text') linkifyNode(child);
     if (child.nodeName === 'IMG') img(child);
 
     traverse(child, depth + 1);
   });
+};
+
+const iframe = el => {
+  const src = el.getAttribute('src');
+  if (!src) {
+    el.parentNode.removeChild(el);
+    return;
+  }
+
+  if (src.match(youTubeEmbedRegex)) {
+    const e = youTubeEmbedRegex.exec(src);
+    if (e[1]) {
+      return true;
+    }
+  }
+
+  if (src.match(vimeoRegex)) {
+    const e = vimeoRegex.exec(src);
+    if (e[3]) {
+      return true;
+    }
+  }
+
+  const replaceNode = el.ownerDocument.createElement('div');
+  replaceNode.className = 'unsupported-iframe';
+  replaceNode.innerHTML = `(Unsupported ${src})`;
+  el.parentNode.insertBefore(replaceNode, el);
+  el.parentNode.removeChild(el);
 };
 
 const img = node => {
@@ -155,13 +193,6 @@ export default input => {
   }
 
   let output = md.render(input);
-
-  const imgRegex = /(https?:\/\/.*\.(?:tiff?|jpe?g|gif|png|svg|ico))(.*)/gim;
-  const postRegex = /^https?:\/\/(.*)\/(.*)\/(@[\w.\d-]+)\/(.*)/i;
-  const copiedPostRegex = /\/(.*)\/(@[\w.\d-]+)\/(.*)/i;
-  const youTubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([^& \n<]+)(?:[^ \n<]+)?/g;
-  const vimeoRegex = /(https?:\/\/)?(www\.)?(?:vimeo)\.com.*(?:videos|video|channels|)\/([\d]+)/i;
-  const dTubeRegex = /(https?:\/\/d.tube.#!\/v\/)(\w+)\/(\w+)/g;
 
   // Create temporary document to manipulate html
   const dom = new JSDOM(output, {
