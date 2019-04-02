@@ -345,7 +345,7 @@ export default input => {
             el.className = 'markdown-video-link markdown-video-link-dtube';
             el.removeAttribute('href');
 
-            const thumbnail = imgEls[0].getAttribute('src');
+            const thumbnail = proxifyImageSrc(imgEls[0].getAttribute('src'));
             const videoHref = `https://d.tube/#!/v/${e[2]}/${e[3]}`;
 
             el.setAttribute('data-video-href', videoHref);
