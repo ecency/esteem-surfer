@@ -43,7 +43,7 @@
     "author": "Author",
     "reward": "Reward",
     "percent": "Percent",
-    "time": "Time",
+    "time": "Àkókò",
     "modal-title": "Voters ({n})"
   },
   "entry-list-item": {
@@ -73,9 +73,9 @@
     "push-notify-disabled": "Push notifications disabled"
   },
   "login": {
-    "title": "Welcome back!",
-    "accounts-title": "Login As",
-    "traditional-login-desc": "Sign in with your username and password to continue",
+    "title": "Káàbọ̀ padà!",
+    "accounts-title": "Wọlé Gẹ́gẹ́ bí",
+    "traditional-login-desc": "Wọlé pẹ̀lú orúkọ aṣàmúlò àti ọ̀rọ̀ aṣínà rẹ láti tẹ síwájú",
     "username-placeholder": "username",
     "password-placeholder": "password or WIF",
     "login": "Login",
