@@ -39,9 +39,9 @@
     "payout-date": "Payout"
   },
   "entry-votes": {
-    "n-more": "{n} more",
+    "n-more": "{n} láfikún si",
     "author": "Olùdásílẹ̀",
-    "reward": "Reward",
+    "reward": "Ẹ̀san",
     "percent": "Ìdá Ọgọ́rùn ún",
     "time": "Àkókò",
     "modal-title": "Àwọn olùdìbò ({n})"
@@ -208,7 +208,7 @@
     "reward-default": "Default 50% / 50%",
     "reward-sp": "Power Up 100%",
     "reward-dp": "Decline Payout",
-    "upvote": "Upvote",
+    "upvote": "Dìbò fún",
     "clear": "Clear All",
     "form-error-message": "Form is not valid. Please fill all fields",
     "schedule": "Schedule",
@@ -371,7 +371,7 @@
     "voted": "@{n} ti dìbò",
     "vote-removed": "ìbò ti jẹ́ yíyọ kúrò fún @{n}",
     "username-placeholder": "orúkọ aṣàmúlò",
-    "extra-witnesses-exp": "Enter account name below to vote for a witness outside of <strong>Top 50</strong>",
+    "extra-witnesses-exp": "Tẹ orúkọ account sí ìsàlẹ̀ láti dìbò fún ẹlẹrìí kan tí kò sí lára àwọn <strong>50 Òkè</strong>",
     "proxy-exp": "O tún lè yan aṣojú kan tí yíò dìbò fún àwọn ẹlẹrìí fún ẹ. Èyí yíò ṣàtúntò àṣàyàn ẹlẹrìí rẹ lọ́wọ́lọ́wọ́.",
     "set-proxy": "Set Proxy",
     "proxy-active-exp": "You have set a voting proxy. If you would like to re-enable manual voting, please clear your proxy.",
