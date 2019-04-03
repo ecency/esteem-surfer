@@ -42,9 +42,9 @@
     "n-more": "{n} more",
     "author": "Olùdásílẹ̀",
     "reward": "Reward",
-    "percent": "Percent",
+    "percent": "Ìdá Ọgọ́rùn ún",
     "time": "Àkókò",
-    "modal-title": "Voters ({n})"
+    "modal-title": "Àwọn olùdìbò ({n})"
   },
   "entry-list-item": {
     "reblogged": "reblogged by {n}"
@@ -273,7 +273,7 @@
     "reply-sort-order": "Sort Order",
     "reply-sort-order-trending": "Trending",
     "reply-sort-order-reputation": "Reputation",
-    "reply-sort-order-votes": "Votes",
+    "reply-sort-order-votes": "Àwọn ìbò",
     "reply-sort-order-created": "Age",
     "reply-body-placeholder": "Write your reply here",
     "bookmarked": "Added to bookmarks",
@@ -327,7 +327,7 @@
   },
   "notification": {
     "popup-title": "You have a new notification",
-    "voted": "{source} voted your post",
+    "voted": "{source} dìbò fún àròkọ rẹ",
     "mention-post": "{source} dárúkọ rẹ nínú àròkọ kan",
     "mention-comment": "{source} dárúkọ rẹ nínú ìdáásí kan",
     "followed": "{source} followed you",
@@ -336,7 +336,7 @@
   },
   "activities": {
     "type-all": "All Activities",
-    "type-votes": "Votes",
+    "type-votes": "Àwọn ìbò",
     "type-replies": "Replies",
     "type-mentions": "Mentions",
     "type-follows": "Follows",
@@ -358,7 +358,7 @@
   },
   "witnesses": {
     "page-title": "Witness Voting",
-    "remaining": "<strong>{n}</strong> of {max} votes remaining",
+    "remaining": "<strong>{n}</strong> ti {max} àwọn ìbò tó kù",
     "witness": "Witness",
     "miss": "Miss",
     "url": "URL",
@@ -368,8 +368,8 @@
     "ac-avail": "AC avail",
     "ac-budget": "AC budget",
     "version": "Version",
-    "voted": "@{n} voted",
-    "vote-removed": "vote removed for @{n}",
+    "voted": "@{n} ti dìbò",
+    "vote-removed": "ìbò ti jẹ́ yíyọ kúrò fún @{n}",
     "username-placeholder": "orúkọ aṣàmúlò",
     "extra-witnesses-exp": "Enter account name below to vote for a witness outside of <strong>Top 50</strong>",
     "proxy-exp": "O tún lè yan aṣojú kan tí yíò dìbò fún àwọn ẹlẹrìí fún ẹ. Èyí yíò ṣàtúntò àṣàyàn ẹlẹrìí rẹ lọ́wọ́lọ́wọ́.",
