@@ -56,7 +56,7 @@
   "settings": {
     "title": "Settings",
     "currency": "Owó",
-    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
+    "currency-fetch-error": "Kò lè gba iye owó fún '{cur}'",
     "currency-changed": "Owó Yípadà",
     "locale": "Èdè",
     "locale-changed": "Èdè ti yípadà",
@@ -67,7 +67,7 @@
     "server-timeout-error": "'{server}' looks like not alive",
     "server-changed": "Àṣàyàn apèsè yípadà sí {server}",
     "server-custom-address": "Àkànṣe àdírẹ́ẹ̀sì apèsè",
-    "server-list-fetch-error": "Could not fetch server list",
+    "server-list-fetch-error": "Kò lè gba àkójọ apèsè",
     "push-notifications": "Push Notifications",
     "push-notify-enabled": "Push notifications enabled",
     "push-notify-disabled": "Push notifications disabled"
@@ -105,7 +105,7 @@
     "invalidated": "PIN code is invalidated"
   },
   "user-menu": {
-    "profile": "Profile",
+    "profile": "Aṣàpèjúwé",
     "bookmarks": "Bookmarks",
     "favorites": "Favorites",
     "drafts": "Drafts",
@@ -122,7 +122,7 @@
   "quick-profile": {
     "fetch-error-profile": "Kò lè gba data aṣàpèjúwé",
     "fetch-error-content": "Kò lè gba àwọn àròkọ",
-    "post-count": "Post Count",
+    "post-count": "Òǹkà Àròkọ",
     "followers": "Àwọn tó tẹ̀lé ẹ",
     "following": "Àwọn tí o tẹ̀lé",
     "section-blog": "Blog",
@@ -230,7 +230,7 @@
     "words-count": "{n} words",
     "no-suggestions": "No suggestions",
     "emoji-filter-placeholder": "Filter",
-    "emoji-filter-no-match": "No match",
+    "emoji-filter-no-match": "Kò sí ìbámu",
     "emoji-recently-used": "Recently Used"
   },
   "gallery": {
@@ -301,7 +301,7 @@
     "address-enter-url": "Tẹ url",
     "address-enter-query": "Enter search query",
     "unclaimed-reward-notice": "You have unclaimed rewards",
-    "search-no-matches": "No matches"
+    "search-no-matches": "Kò sí àwọn ìbámu"
   },
   "search": {
     "n-results-for-q": "{n} results for {q}",
