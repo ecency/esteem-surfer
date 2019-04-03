@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "Kò sí Ìsomọ́ Íntánẹ́ẹ̀tì"
   },
   "g": {
     "compose-entry": "Ṣẹ̀dá Àròkọ",
@@ -9,7 +9,7 @@
     "no": "Rárá",
     "delete": "Yọ kúrò",
     "cancel": "Fagi lé",
-    "ok": "OK",
+    "ok": "Ó dáa",
     "edit": "Ṣàtúnṣe",
     "server-error": "Ìgbésẹ̀ kò lè ṣé parí nítorí àṣìṣe apèsè",
     "save": "Tọ́jú",
