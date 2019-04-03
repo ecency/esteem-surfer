@@ -20,7 +20,7 @@
     "lint-styles": "stylelint app/*.css app/components/*.css --syntax scss",
     "lint-styles-fix": "stylefmt -r app/*.css app/components/*.css",
     "package": "yarn build && electron-builder build --publish never",
-    "package-all": "electron-builder build -wml --publish always",
+    "package-all": "yarn build && electron-builder build -wml --publish always",
     "package-linux": "yarn build && electron-builder build --linux",
     "package-win": "yarn build && electron-builder build --win --publish never",
     "publish-all": "electron-builder build -wml --publish always",
