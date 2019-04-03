@@ -81,7 +81,7 @@
     "login": "Wọlé",
     "error-fields-required": "Jọ̀wọ́ tẹ orúkọ aṣàmúlò àti ọ̀rọ̀ aṣínà/WIF",
     "error-public-key": "O tẹ kọ́kọ́rọ́ gbangba kan. Ọ̀rọ̀ aṣínà/WIF la nílò",
-    "error-user-fetch": "User data could not be fetched",
+    "error-user-fetch": "Data aṣàmúlò kò lè jẹ́ gbígbà",
     "error-user-not-found": "Aṣàmúlò náà kò sí",
     "error-authenticate": "Wrong username or password/WIF",
     "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>",
@@ -120,8 +120,8 @@
     "keys-required": "Iṣẹ́ yìí nílò àwọn kọ́kọ́rọ́ {keys} tàbí ọ̀rọ̀ aṣínà ọ̀gá"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
-    "fetch-error-content": "Could not fetch posts",
+    "fetch-error-profile": "Kò lè gba data aṣàpèjúwé",
+    "fetch-error-content": "Kò lè gba àwọn àròkọ",
     "post-count": "Post Count",
     "followers": "Àwọn tó tẹ̀lé ẹ",
     "following": "Àwọn tí o tẹ̀lé",
@@ -166,7 +166,7 @@
     "transactions": "Transactions",
     "transaction-curation_reward": "Curation Reward",
     "transaction-author_reward": "Ẹ̀san Olùdásílẹ̀",
-    "transaction-comment_benefactor_reward": "Comment Benefactor Reward",
+    "transaction-comment_benefactor_reward": "Ẹ̀san Olóore Ìdáásí",
     "transaction-claim_reward_balance": "Gba àwọn ẹ̀san",
     "transaction-transfer": "Ìfiránṣẹ́",
     "transaction-transfer_to_vesting": "Transfer to vesting",
