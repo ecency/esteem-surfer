@@ -196,7 +196,7 @@
     "tool-ol": "Ordered List",
     "tool-link": "Ìtọ́kasí",
     "tool-image": "Àwòrán",
-    "tool-table": "Table",
+    "tool-table": "Tábìlì",
     "tool-table-3-col": "Ìlà òòró 3",
     "tool-table-2-col": "Ìlà òòró 2",
     "tool-table-1-col": "Ìlà òòró 1",
@@ -224,11 +224,11 @@
     "draft-saved": "Draft saved",
     "publish": "Publish",
     "published": "Post Published",
-    "update": "Update",
-    "updated": "Post Updated",
+    "update": "Ṣe ìmúdójúìwọ̀n",
+    "updated": "Àròkọ ti gba ìmúdójúìwọ̀n",
     "sync-scroll": "Scroll Sync",
-    "words-count": "{n} words",
-    "no-suggestions": "No suggestions",
+    "words-count": "àwọn ọ̀rọ̀ {n}",
+    "no-suggestions": "Kò sí àwọn ìmọ̀ràn",
     "emoji-filter-placeholder": "Filter",
     "emoji-filter-no-match": "Kò sí ìbámu",
     "emoji-recently-used": "Recently Used"
@@ -242,7 +242,7 @@
   "drafts": {
     "title": "Drafts",
     "load-error": "Could not load drafts",
-    "empty-list": "Nothing here",
+    "empty-list": "Kò sí nnkan kan níbí",
     "deleted": "Draft is deleted"
   },
   "schedules": {
@@ -260,13 +260,13 @@
     "search": "Search in bookmarks"
   },
   "favorites": {
-    "title": "Favorites",
-    "load-error": "Could not load favorites",
-    "empty-list": "Nothing here",
-    "search": "Search in favorites"
+    "title": "Àwọn ààyò",
+    "load-error": "Kò lè gbé àwọn ààyò",
+    "empty-list": "Kò sí nnkan kan níbí",
+    "search": "Ṣàwárí nínú àwọn ààyò"
   },
   "entry": {
-    "reply": "Reply",
+    "reply": "Fèsì",
     "reply-preview": "Àpẹẹrẹ",
     "via-app": "nípasẹ̀ <span class=\"app-name\">{app}</span>",
     "n-replies": "{n} Àwọn èsì",
@@ -331,13 +331,13 @@
     "mention-post": "{source} dárúkọ rẹ nínú àròkọ kan",
     "mention-comment": "{source} dárúkọ rẹ nínú ìdáásí kan",
     "followed": "{source} tẹ̀lé ẹ",
-    "replied": "{source} replied you",
+    "replied": "{source} fèsì sí ẹ",
     "reblogged": "{source} reblogged your post"
   },
   "activities": {
-    "type-all": "All Activities",
+    "type-all": "Gbogbo àwọn iṣẹ́",
     "type-votes": "Àwọn ìbò",
-    "type-replies": "Replies",
+    "type-replies": "Àwọn èsì",
     "type-mentions": "Mentions",
     "type-follows": "Follows",
     "type-reblogs": "Reblogs",
@@ -349,17 +349,17 @@
     "unfollowed-str": "unfollowed",
     "ignored-str": "ignored",
     "reblog-str": "reblogged your post:",
-    "transfer-str": "sent you",
-    "empty-list": "Nothing here",
-    "refresh": "Refresh",
+    "transfer-str": "fi ránṣẹ́ sí ẹ",
+    "empty-list": "Kò sí nnkan kan níbí",
+    "refresh": "Sọdọ̀tun",
     "mark-all-read": "Mark All as Read",
     "leaderboard": "Leaderboard",
     "leaderboard-title": "Daily Top users"
   },
   "witnesses": {
-    "page-title": "Witness Voting",
+    "page-title": "Ìdìbò Ẹlẹrìí",
     "remaining": "<strong>{n}</strong> ti {max} àwọn ìbò tó kù",
-    "witness": "Witness",
+    "witness": "Ẹlẹrìí",
     "miss": "Miss",
     "url": "URL",
     "fee": "Fee",
@@ -367,7 +367,7 @@
     "block-size": "Block size",
     "ac-avail": "AC avail",
     "ac-budget": "AC budget",
-    "version": "Version",
+    "version": "Ẹyà",
     "voted": "@{n} ti dìbò",
     "vote-removed": "ìbò ti jẹ́ yíyọ kúrò fún @{n}",
     "username-placeholder": "orúkọ aṣàmúlò",
