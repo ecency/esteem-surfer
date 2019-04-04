@@ -255,7 +255,7 @@
   "bookmarks": {
     "title": "Bookmarks",
     "load-error": "Could not load bookmarks",
-    "empty-list": "Nothing here",
+    "empty-list": "Kò sí nnkan kan níbí",
     "deleted": "Bookmark is removed",
     "search": "Search in bookmarks"
   },
@@ -278,8 +278,8 @@
     "reply-body-placeholder": "Kọ èsì rẹ síbí",
     "bookmarked": "Added to bookmarks",
     "bookmarkRemoved": "Removed from bookmarks",
-    "favorited": "Added to favorites",
-    "favoriteRemoved": "Removed from favorites",
+    "favorited": "A ti ṣàfikún rẹ̀ sí àwọn ààyò",
+    "favoriteRemoved": "A ti yọ kúrò lára àwọn ààyò",
     "copy-clipboard": "Ṣàdàkọ ìtọ́kasí abẹ́nú sí ààyè ìtọ́jú",
     "copied-clipboard": "Copied",
     "comment-entry-title": "You are viewing a single comment's thread from: ",
@@ -291,7 +291,7 @@
   "navbar": {
     "settings": "Settings",
     "change-theme": "Change Theme",
-    "login": "Login to your account",
+    "login": "Wọlé sí account rẹ",
     "bookmark": "Add to bookmarks",
     "bookmarkRemove": "Remove from bookmarks",
     "favorite": "Ṣàfikún sí àwọn ààyò",
