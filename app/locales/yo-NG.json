@@ -63,7 +63,7 @@
     "server": "Apèsè",
     "server-invalid-address": "Àdírẹ́ẹ̀sì apèsè tí kò wúlò",
     "server-connecting": "N sopọ̀ mọ́ '{server}'...",
-    "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
+    "server-connect-error": "Kò lè sopọ̀ mọ́ '{server}'. Ri dájú pé o ní ìsomọ́ íntánẹ́ẹ̀tì tó dára kan.",
     "server-timeout-error": "'{server}' looks like not alive",
     "server-changed": "Àṣàyàn apèsè yípadà sí {server}",
     "server-custom-address": "Àkànṣe àdírẹ́ẹ̀sì apèsè",
