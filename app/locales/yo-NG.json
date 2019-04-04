@@ -84,10 +84,10 @@
     "error-user-fetch": "Data aṣàmúlò kò lè jẹ́ gbígbà",
     "error-user-not-found": "Aṣàmúlò náà kò sí",
     "error-authenticate": "Orúkọ aṣàmúlò tàbí ọ̀rọ̀ aṣínà/WIF tí kò tọ́",
-    "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>",
+    "create-account-text": "Kò ní account kan? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Forúkọ sílẹ̀ ní báyìí!</a>",
     "login-with-sc": "Wọlé pẹ̀lú",
     "divider-text": "TÀBÍ",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "Àkíyèsí: Steemconnect le gba àwọn owó kan lára àwọn ìdúnàádúrà ẹ̀san rẹ"
   },
   "create-pin-code": {
     "title": "Ṣẹ̀dá kóòdù PIN",
