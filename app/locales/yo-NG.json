@@ -54,7 +54,7 @@
     "reblogged": "Reblogged"
   },
   "settings": {
-    "title": "Settings",
+    "title": "Àwọn ètò",
     "currency": "Owó",
     "currency-fetch-error": "Kò lè gba iye owó fún '{cur}'",
     "currency-changed": "Owó Yípadà",
@@ -62,7 +62,7 @@
     "locale-changed": "Èdè ti yípadà",
     "server": "Apèsè",
     "server-invalid-address": "Àdírẹ́ẹ̀sì apèsè tí kò wúlò",
-    "server-connecting": "Connecting to '{server}'...",
+    "server-connecting": "N sopọ̀ mọ́ '{server}'...",
     "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
     "server-timeout-error": "'{server}' looks like not alive",
     "server-changed": "Àṣàyàn apèsè yípadà sí {server}",
