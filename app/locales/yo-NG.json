@@ -83,7 +83,7 @@
     "error-public-key": "O tẹ kọ́kọ́rọ́ gbangba kan. Ọ̀rọ̀ aṣínà/WIF la nílò",
     "error-user-fetch": "Data aṣàmúlò kò lè jẹ́ gbígbà",
     "error-user-not-found": "Aṣàmúlò náà kò sí",
-    "error-authenticate": "Wrong username or password/WIF",
+    "error-authenticate": "Orúkọ aṣàmúlò tàbí ọ̀rọ̀ aṣínà/WIF tí kò tọ́",
     "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>",
     "login-with-sc": "Wọlé pẹ̀lú",
     "divider-text": "TÀBÍ",
