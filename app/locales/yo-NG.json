@@ -35,8 +35,8 @@
     "potential-payout": "Potential Payout",
     "promoted": "Tó gba ìgbéga",
     "author-payout": "Ìsanwó Olùdásílẹ̀",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "curation-payout": "Ìsanwó Alábòójútó",
+    "payout-date": "Ìsanwó"
   },
   "entry-votes": {
     "n-more": "{n} láfikún si",
@@ -107,8 +107,8 @@
   "user-menu": {
     "profile": "Aṣàpèjúwé",
     "bookmarks": "Àwọn àmì-ìwé",
-    "favorites": "Favorites",
-    "drafts": "Drafts",
+    "favorites": "Àwọn ààyò",
+    "drafts": "Àwọn ẹ̀dà kíkọ",
     "schedules": "Schedules",
     "gallery": "Gbàgede",
     "login-as": "Wọlé Gẹ́gẹ́ bí",
