@@ -220,8 +220,8 @@
     "posting-perm-granted": "Posting permission granted",
     "remove-posting-perm": "Remove Posting Permission",
     "posting-perm-removed": "Posting permission removed",
-    "save-draft": "Save Draft",
-    "draft-saved": "Draft saved",
+    "save-draft": "Tọ́jú Ẹ̀dà kíkọ",
+    "draft-saved": "A ti tọ́jú ẹ̀dà kíkọ",
     "publish": "Publish",
     "published": "Post Published",
     "update": "Ṣe ìmúdójúìwọ̀n",
@@ -231,7 +231,7 @@
     "no-suggestions": "Kò sí àwọn ìmọ̀ràn",
     "emoji-filter-placeholder": "Filter",
     "emoji-filter-no-match": "Kò sí ìbámu",
-    "emoji-recently-used": "Recently Used"
+    "emoji-recently-used": "Jẹ́ lílò láìpẹ́ yìí"
   },
   "gallery": {
     "title": "Gbàgede",
@@ -240,17 +240,17 @@
     "empty-list": "Kò sí nnkan kan níbí"
   },
   "drafts": {
-    "title": "Drafts",
-    "load-error": "Could not load drafts",
+    "title": "Àwọn ẹ̀dà kíkọ",
+    "load-error": "Kò lè gbé àwọn ẹ̀dà kíkọ",
     "empty-list": "Kò sí nnkan kan níbí",
-    "deleted": "Draft is deleted"
+    "deleted": "A ti yọ ẹ̀dà kíkọ kúrò"
   },
   "schedules": {
-    "title": "Scheduled Posts",
-    "empty-list": "Nothing here",
-    "deleted": "Scheduled post is deleted",
-    "move": "Move to drafts",
-    "moved": "Moved to drafts"
+    "title": "Ìtòlẹ́sẹẹsẹ Àwọn Àròkọ",
+    "empty-list": "Kò sí nnkan kan níbí",
+    "deleted": "A ti yọ ìtòlẹ́sẹẹsẹ àròkọ kúrò",
+    "move": "Gbé sí àwọn ẹ̀dà kíkọ",
+    "moved": "A ti gbe sí ẹ̀dà kíkọ"
   },
   "bookmarks": {
     "title": "Bookmarks",
