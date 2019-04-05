@@ -428,7 +428,7 @@
     "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "Kò sí nnkan kan níbí"
   },
   "power-down": {
     "title": "Power Down",
@@ -437,12 +437,12 @@
     "incoming-funds": "Àwọn Owó tó ń bọ̀",
     "begin": "Bẹ̀rẹ̀ Power Down",
     "stop": "Dáwọ́ dúró",
-    "estimated-note": "Estimated Weekly",
+    "estimated-note": "Fojú díwọ̀n lọ́sọ̀ọ̀sẹ̀",
     "withdraw-accounts": "(Àwọn) Account Èbúté",
-    "add-withdraw-account": "Add withdraw account"
+    "add-withdraw-account": "Ṣàfikún account fún gbígbà"
   },
   "withdraw-route": {
-    "title": "Add withdraw account",
+    "title": "Ṣàfikún account fún gbígbà",
     "to": "Account",
     "percentage": "Ìdá nínú ọgọ́rùn-ún",
     "slider-help": "Ìdá nínú ọgọ́rùn-ún láti Power Down sí account yìí",
