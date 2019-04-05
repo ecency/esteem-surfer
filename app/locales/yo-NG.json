@@ -311,8 +311,8 @@
     "sort-newest": "Date"
   },
   "updater": {
-    "new-version-available": "New version is available",
-    "update": "Update",
+    "new-version-available": "Ẹyà tuntun ti wà",
+    "update": "Ṣe ìmúdójúìwọ̀n",
     "dismiss": "Dismiss",
     "downloading": "N gba ẹyà tuntun...",
     "download-completed": "Gbígbà ti parí",
@@ -405,7 +405,7 @@
     "memo-placeholder": "tẹ àwọn àkọsílẹ̀ rẹ síbí",
     "memo-help": "Àkọsílẹ̀ yìí wà ní gbangba",
     "key-required-err": "Kọ́kọ́rọ́ ìṣiṣẹ́ kò ṣé ṣàwarí fún account tí o yàn. Jọ̀wọ́ ri dájú pé o wọlé pẹ̀lú àwọn ohun-ẹ̀rí tó tọ́.",
-    "next": "Next",
+    "next": "Èyí tó kàn",
     "confirm-title": "Jẹrìí sí Ìfiránṣẹ́ rẹ",
     "confirm-sub-title": "Jọ̀wọ́, ṣàyẹ̀wò tí gbogbo nnkan bá dára",
     "confirm": "Jẹrìí sí",
@@ -420,7 +420,7 @@
   "delegate": {
     "title": "Fi ránṣẹ́",
     "sub-title": "Fi Steem Power ránṣẹ́",
-    "slider-help": "Drag the slider to adjust the amount",
+    "slider-help": "Wọ́ slider náà láti ṣàtúnṣe iye náà",
     "confirm-title": "Jẹrìí sí Ìfiránṣẹ́",
     "confirm-sub-title": "Jọ̀wọ́, ṣàyẹ̀wò tí gbogbo nnkan bá dára",
     "delegation-summary": "<span class=\"sp\">{sp}</span> tí a fi ránṣẹ́ sí <span class=\"to-user\">{to}</span>",
