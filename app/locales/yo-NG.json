@@ -378,7 +378,7 @@
     "current-proxy": "Your current proxy is: <strong>{n}</strong>",
     "remove-proxy": "Clear Proxy",
     "proxy-removed": "Proxy is cleared",
-    "proxy-created": "@{n} has set as proxy"
+    "proxy-created": "@{n} ti ṣètò bíi aṣojú"
   },
   "transfer": {
     "transfer-title": "Fi ránṣẹ́ sí Account",
@@ -400,7 +400,7 @@
     "wrong-amount": "Ìwọ̀n iye tí kò tọ́",
     "amount-precision-error": "Use only 3 digits of precision",
     "insufficient-funds": "Àwọn owó tí kò tó",
-    "balance": "Balance",
+    "balance": "Ìyókù",
     "memo": "Àkọsílẹ̀",
     "memo-placeholder": "tẹ àwọn àkọsílẹ̀ rẹ síbí",
     "memo-help": "Àkọsílẹ̀ yìí wà ní gbangba",
