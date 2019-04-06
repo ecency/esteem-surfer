@@ -439,10 +439,10 @@
     "stop": "Oprește",
     "estimated-note": "Estimat Săptămânal",
     "withdraw-accounts": "Cont(uri) de Destinație",
-    "add-withdraw-account": "Add withdraw account"
+    "add-withdraw-account": "Adaugă cont de retragere"
   },
   "withdraw-route": {
-    "title": "Add withdraw account",
+    "title": "Adaugă cont de retragere",
     "to": "Cont",
     "percentage": "Procentaj",
     "slider-help": "Procentul de putere scăzută la acest cont",
