@@ -47,11 +47,11 @@
     "modal-title": "Àwọn olùdìbò ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "a tún ṣàtẹ̀jáde nípasẹ̀ {n}"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "Tún ṣàtẹ̀jáde",
+    "reblogged": "A ti tún ṣàtẹ̀jáde"
   },
   "settings": {
     "title": "Àwọn ètò",
