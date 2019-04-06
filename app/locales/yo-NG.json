@@ -68,9 +68,9 @@
     "server-changed": "Àṣàyàn apèsè yípadà sí {server}",
     "server-custom-address": "Àkànṣe àdírẹ́ẹ̀sì apèsè",
     "server-list-fetch-error": "Kò lè gba àkójọ apèsè",
-    "push-notifications": "Push Notifications",
-    "push-notify-enabled": "Push notifications enabled",
-    "push-notify-disabled": "Push notifications disabled"
+    "push-notifications": "Ètò àwọn ìpàkíyèsí",
+    "push-notify-enabled": "Ètò àwọn ìpàkíyèsí ní ààyè láti ṣiṣẹ́",
+    "push-notify-disabled": "Ètò àwọn ìpàkíyèsí kò ní ààyè láti ṣiṣẹ́"
   },
   "login": {
     "title": "Káàbọ̀ padà!",
