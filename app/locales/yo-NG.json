@@ -299,7 +299,7 @@
     "wallet": "Àpamọ́wọ́ Mi",
     "activities": "Àwọn iṣẹ́",
     "address-enter-url": "Tẹ url",
-    "address-enter-query": "Enter search query",
+    "address-enter-query": "Tẹ ìbéèrè ìṣàwárí",
     "unclaimed-reward-notice": "O ní àwọn ẹ̀san tí ìwọ kò tíì gbà",
     "search-no-matches": "Kò sí àwọn ìbámu"
   },
@@ -332,7 +332,7 @@
     "mention-comment": "{source} dárúkọ rẹ nínú ìdáásí kan",
     "followed": "{source} tẹ̀lé ẹ",
     "replied": "{source} fèsì sí ẹ",
-    "reblogged": "{source} reblogged your post"
+    "reblogged": "{source} ti tún ṣàtẹ̀jáde àròkọ rẹ"
   },
   "activities": {
     "type-all": "Gbogbo àwọn iṣẹ́",
@@ -347,23 +347,23 @@
     "mention-str": "dárúkọ rẹ nínú:",
     "followed-str": "ti tẹ̀lé",
     "unfollowed-str": "kò tẹ̀lé mọ́",
-    "ignored-str": "ignored",
-    "reblog-str": "reblogged your post:",
+    "ignored-str": "tí a paátì",
+    "reblog-str": "ti tún ṣàtẹ̀jáde àròkọ rẹ:",
     "transfer-str": "fi ránṣẹ́ sí ẹ",
     "empty-list": "Kò sí nnkan kan níbí",
     "refresh": "Sọdọ̀tun",
     "mark-all-read": "Ṣe ààmì sí gbogbo ẹ̀ gẹ́gẹ́ bí èyí tó jẹ́ kíkà",
     "leaderboard": "Leaderboard",
-    "leaderboard-title": "Daily Top users"
+    "leaderboard-title": "Àwọn aṣàmúlò tó wà lókè lójoojúmó"
   },
   "witnesses": {
     "page-title": "Ìdìbò Ẹlẹrìí",
     "remaining": "<strong>{n}</strong> ti {max} àwọn ìbò tó kù",
     "witness": "Ẹlẹrìí",
-    "miss": "Miss",
+    "miss": "Ìkùnà búlọ́ọ̀kù",
     "url": "URL",
-    "fee": "Fee",
-    "feed": "Feed",
+    "fee": "Owó",
+    "feed": "Ìsọníṣókí àkóónú",
     "block-size": "Ìwọ̀n búlọ́ọ̀kù",
     "ac-avail": "AC wà",
     "ac-budget": "Ètò ìnáwó AC",
