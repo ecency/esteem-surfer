@@ -99,7 +99,7 @@
   "confirm-pin-code": {
     "title": "Tẹ Kóòdù PIN",
     "input-placeholder": "Tẹ kóòdù PIN láti tẹ̀síwájú",
-    "last-chance": "This is your last chance",
+    "last-chance": "Èyí ni anfààní kẹhìn rẹ",
     "invalidate": "Óò, Mo ti gbàgbé rẹ̀...",
     "invalidate-confirm": "Do you really want to invalidate PIN code?",
     "invalidated": "PIN code is invalidated"
