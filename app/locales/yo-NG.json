@@ -109,7 +109,7 @@
     "bookmarks": "Àwọn àmì-ìwé",
     "favorites": "Àwọn ààyò",
     "drafts": "Àwọn ẹ̀dà kíkọ",
-    "schedules": "Schedules",
+    "schedules": "Àwọn ìtòlẹ́sẹẹsẹ",
     "gallery": "Gbàgede",
     "login-as": "Wọlé Gẹ́gẹ́ bí",
     "logout": "Jáde síta"
@@ -132,7 +132,7 @@
   },
   "follow-controls": {
     "follow": "Tẹ̀lé",
-    "unFollow": "Unfollow",
+    "unFollow": "Má tẹ̀lé",
     "mute": "Dákẹ́",
     "unMute": "Unmute"
   },
