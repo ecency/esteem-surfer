@@ -1,6 +1,12 @@
+import { JSDOM } from 'jsdom';
+
 import proxifyImageSrc from './proxify-image-src';
 
-export default (entry, width = 0, height = 0) => {
+import markdown2html from './markdown-2-html';
+
+const cache = {};
+
+const image = (entry, width = 0, height = 0) => {
   // return from json metadata if exists
   let meta;
 
@@ -16,26 +22,32 @@ export default (entry, width = 0, height = 0) => {
     }
   }
 
-  // try to extract images by regex
-  const imgReg2 = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpe?g|gif|png)/gim;
-  const m = entry.body.match(imgReg2);
-  if (m) {
-    return proxifyImageSrc(m[0], width, height);
-  }
+  // try to find first image from entry body
+  const html = markdown2html(entry.body);
+  const dom = new JSDOM(html, {
+    ProcessExternalResources: false
+  });
 
-  // If no image specified in json metadata, try extract first image href from entry body
-  let imgReg = /<img.+src=(?:"|')(.+?)(?:"|')(.*)>/;
-  let bodyMatch = entry.body.match(imgReg);
-  if (bodyMatch) {
-    return proxifyImageSrc(bodyMatch[1], width, height);
-  }
+  const img = dom.window.document.body.querySelector('img');
 
-  // If there is no <img> tag, check from markdown img tag ![](image.png)
-  imgReg = /(?:!\[(.*?)\]\((.*?)\))/;
-  bodyMatch = imgReg.exec(entry.body);
-  if (bodyMatch) {
-    return proxifyImageSrc(bodyMatch[2], width, height);
+  if (img) {
+    const src = img.getAttribute('src');
+    return proxifyImageSrc(src, width, height);
   }
 
   return null;
+};
+
+export default (entry, width = 0, height = 0) => {
+  const key = `${entry.author}-${entry.permlink}`;
+
+  if (cache[key] !== undefined) {
+    return cache[key];
+  }
+
+  const res = image(entry, width, height);
+
+  cache[key] = res;
+
+  return res;
 };
