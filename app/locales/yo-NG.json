@@ -21,7 +21,7 @@
     "about": "Nípa"
   },
   "entry-index": {
-    "tags": "Popular Tags",
+    "tags": "Àwọn ìsàmì tó gbajúmọ̀",
     "filter-trending": "Tó ń gbilẹ̀",
     "filter-hot": "Tó ń gbóná",
     "filter-created": "Tuntun",
@@ -29,7 +29,7 @@
     "filter-promoted": "Tó gba ìgbéga",
     "filter-votes": "Àwọn ìbò",
     "filter-children": "Àwọn ìdáásí",
-    "filter-feed": "Feed"
+    "filter-feed": "Ìsọníṣókí àkóónú"
   },
   "entry-payout": {
     "potential-payout": "Potential Payout",
