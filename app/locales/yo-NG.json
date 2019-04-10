@@ -93,7 +93,7 @@
     "title": "Ṣẹ̀dá kóòdù PIN",
     "desc1": "Ṣètò kóòdù PIN láti pàroko data rẹ àti pèsè ìpele ààbò láfikún!",
     "input-placeholder": "Tẹ kóòdù PIN",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
+    "desc2": "Ìwọ yóò rí ìṣítí láti tẹ kóòdù PIN fún àwọn ìdúnàádúrà pàtàkì àti lórí gbogbo ìfilọ́lẹ̀.",
     "created": "A ti ṣẹ̀dá kóòdù PIN"
   },
   "confirm-pin-code": {
@@ -164,7 +164,7 @@
     "next-power-down": "Power down tó kàn náà jẹ́ {time} {amount}",
     "exchange": "Pàṣípààrọ̀",
     "transactions": "Àwọn ìdúnàádúrà",
-    "transaction-curation_reward": "Curation Reward",
+    "transaction-curation_reward": "Ẹ̀san Alábòójútó",
     "transaction-author_reward": "Ẹ̀san Olùdásílẹ̀",
     "transaction-comment_benefactor_reward": "Ẹ̀san Olóore Ìdáásí",
     "transaction-claim_reward_balance": "Gba àwọn ẹ̀san",
