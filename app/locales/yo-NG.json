@@ -101,8 +101,8 @@
     "input-placeholder": "Tẹ kóòdù PIN láti tẹ̀síwájú",
     "last-chance": "Èyí ni anfààní kẹhìn rẹ",
     "invalidate": "Óò, Mo ti gbàgbé rẹ̀...",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "invalidate-confirm": "Ṣé òótọ́ lo fẹ́ mú kóòdù PIN láti má wúlò mọ?",
+    "invalidated": "Kóòdù PIN kò wúlò mọ"
   },
   "user-menu": {
     "profile": "Aṣàpèjúwé",
@@ -134,7 +134,7 @@
     "follow": "Tẹ̀lé",
     "unFollow": "Má tẹ̀lé",
     "mute": "Dákẹ́",
-    "unMute": "Unmute"
+    "unMute": "Sọ̀rọ̀"
   },
   "account": {
     "voting-power": "Agbára Ìdìbò",
