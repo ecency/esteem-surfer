@@ -270,8 +270,8 @@
     "reply-preview": "Àpẹẹrẹ",
     "via-app": "nípasẹ̀ <span class=\"app-name\">{app}</span>",
     "n-replies": "{n} Àwọn èsì",
-    "reply-sort-order": "Sort Order",
-    "reply-sort-order-trending": "Trending",
+    "reply-sort-order": "Ètò Ẹlẹ́sẹẹsẹ",
+    "reply-sort-order-trending": "Tó ń gbilẹ̀",
     "reply-sort-order-reputation": "Orúkọ",
     "reply-sort-order-votes": "Àwọn ìbò",
     "reply-sort-order-created": "Ọjọ́ orí",
@@ -306,8 +306,8 @@
   "search": {
     "n-results-for-q": "àwọn èsì {n} fún {q}",
     "sort-by": "Ṣètò nípasẹ̀",
-    "sort-popularity": "Popularity",
-    "sort-relevance": "Relevance",
+    "sort-popularity": "Jíjẹ́ gbajúmọ̀",
+    "sort-relevance": "Ṣíṣe pàtàkì",
     "sort-newest": "Ọjọ́"
   },
   "updater": {
