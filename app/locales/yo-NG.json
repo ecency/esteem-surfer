@@ -160,7 +160,7 @@
     "steem-dollars": "Steem Dollars",
     "steem-dollars-description": "Àwọn Token tí iye wọn tó $1.00 ti STEEM.",
     "savings": "Àwọn Owó tí o tọ́jú",
-    "savings-description": "Balance subject to 3 day withdraw waiting period.",
+    "savings-description": "Owó ìyókù ní àkókò ìdádúró ọjọ́ 3 kí o tó lè gba.",
     "next-power-down": "Power down tó kàn náà jẹ́ {time} {amount}",
     "exchange": "Pàṣípààrọ̀",
     "transactions": "Àwọn ìdúnàádúrà",
@@ -192,7 +192,7 @@
     "tool-header": "Àkọsórí",
     "tool-code": "Kóòdù",
     "tool-quote": "Àyọlò",
-    "tool-ul": "Unordered List",
+    "tool-ul": "Àkójọ tí kò ní ètò",
     "tool-ol": "Ordered List",
     "tool-link": "Ìtọ́kasí",
     "tool-image": "Àwòrán",
@@ -313,7 +313,7 @@
   "updater": {
     "new-version-available": "Ẹyà tuntun ti wà",
     "update": "Ṣe ìmúdójúìwọ̀n",
-    "dismiss": "Dismiss",
+    "dismiss": "Mú kúrò",
     "downloading": "N gba ẹyà tuntun...",
     "download-completed": "Gbígbà ti parí",
     "restart": "Tun bẹ̀rẹ̀"
