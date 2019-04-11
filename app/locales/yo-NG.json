@@ -169,8 +169,8 @@
     "transaction-comment_benefactor_reward": "Ẹ̀san Olóore Ìdáásí",
     "transaction-claim_reward_balance": "Gba àwọn ẹ̀san",
     "transaction-transfer": "Ìfiránṣẹ́",
-    "transaction-transfer_to_vesting": "Transfer to vesting",
-    "transaction-withdraw_vesting": "Withdraw vesting",
+    "transaction-transfer_to_vesting": "Ìfiránṣẹ́ sí vesting",
+    "transaction-withdraw_vesting": "Gba vesting",
     "transaction-fill_order": "Fill order",
     "claim-reward-balance": "Gba ẹ̀san ìyókù",
     "claim-reward-balance-ok": "A ti gba ẹ̀san ìyókù",
@@ -394,7 +394,7 @@
     "to": "Sí",
     "to-placeholder": "orúkọ aṣàmúlò",
     "to-not-found": "Aṣàmúlò tí ìwọ n gbìyànjú láti fi àwọn owó ránṣẹ́ sí kò sí!",
-    "to-bad-actor": "Use caution sending to this account. Please double check your spelling for possible phishing.",
+    "to-bad-actor": "Ṣọ́ra láti fi ránṣẹ́ sí account yìí. Jọ̀wọ́ ṣàyẹ̀wò kíkọ rẹ lẹ́ẹ̀mejì fún ète ìtànjẹ tó lè wáyé.",
     "amount": "Iye",
     "amount-placeholder": "iye",
     "wrong-amount": "Ìwọ̀n iye tí kò tọ́",
@@ -425,7 +425,7 @@
     "confirm-sub-title": "Jọ̀wọ́, ṣàyẹ̀wò tí gbogbo nnkan bá dára",
     "delegation-summary": "<span class=\"sp\">{sp}</span> tí a fi ránṣẹ́ sí <span class=\"to-user\">{to}</span>",
     "success-sub-title": "Ìfiránṣẹ́ ti parí",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "insufficient-vesting": "Vesting shares tí kò tó {a} VESTS"
   },
   "delegation-list": {
     "empty-list": "Kò sí nnkan kan níbí"
