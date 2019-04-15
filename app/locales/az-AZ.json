@@ -12,72 +12,72 @@
     "ok": "Oldu",
     "edit": "Düzəliş et",
     "server-error": "Process could not be completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "save": "Saxla",
+    "done": "Hazırdır",
+    "select": "Seç"
   },
   "footer": {
-    "faq": "FAQ",
-    "about": "About"
+    "faq": "TSS",
+    "about": "Haqqında"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
-    "filter-feed": "Feed"
+    "tags": "Məşhur Etiketlər",
+    "filter-trending": "Trend",
+    "filter-hot": "Gündəmdəkilər",
+    "filter-created": "Yeni",
+    "filter-active": "Aktiv",
+    "filter-promoted": "Tanıdılan",
+    "filter-votes": "Səslər",
+    "filter-children": "Rəylər",
+    "filter-feed": "Axın"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "Mümkün Ola Biləcək Ödəniş",
+    "promoted": "Tanıdılan",
+    "author-payout": "Müəllif Ödənişi",
+    "curation-payout": "Kurator Ödənişi",
+    "payout-date": "Ödəmə"
   },
   "entry-votes": {
-    "n-more": "{n} more",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
-    "modal-title": "Voters ({n})"
+    "n-more": "{n} dənə",
+    "author": "Müəllif",
+    "reward": "Mükafat",
+    "percent": "Faiz",
+    "time": "Vaxt",
+    "modal-title": "Səsverənlər ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "{n} təkrar paylaşdı"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "Təkrar paylaş",
+    "reblogged": "Təkrar paylaşıldı"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "Currency",
+    "title": "Tənzimləmələr",
+    "currency": "Pul vahidi",
     "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
-    "currency-changed": "Currency Changed",
-    "locale": "Language",
-    "locale-changed": "Language changed",
+    "currency-changed": "Pul Vahidi Dəyişdirildi",
+    "locale": "Dil",
+    "locale-changed": "Dil dəyişdirildi",
     "server": "Server",
-    "server-invalid-address": "Invalid server address",
-    "server-connecting": "Connecting to '{server}'...",
-    "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
+    "server-invalid-address": "Etibarsız server ünvanı",
+    "server-connecting": "'{server}' ilə bağlantı qurulur...",
+    "server-connect-error": "'{server}' ilə bağlantı qurula bilmədi. İnternet bağlantınızın yaxşı olduğundan əmin olun.",
     "server-timeout-error": "'{server}' looks like not alive",
-    "server-changed": "Server selection changed to {server}",
-    "server-custom-address": "Custom server address",
-    "server-list-fetch-error": "Could not fetch server list",
-    "push-notifications": "Push Notifications",
-    "push-notify-enabled": "Push notifications enabled",
-    "push-notify-disabled": "Push notifications disabled"
+    "server-changed": "Server seçimi {server} olaraq dəyişdirildi",
+    "server-custom-address": "Özəl server ünvanı",
+    "server-list-fetch-error": "Server siyahısı yüklənə bilmədi",
+    "push-notifications": "Ani Bildirişlər",
+    "push-notify-enabled": "Ani bildirişlər fəallaşdırıldı",
+    "push-notify-disabled": "Ani bildirişlər sıradan çıxarıldı"
   },
   "login": {
-    "title": "Welcome back!",
-    "accounts-title": "Login As",
-    "traditional-login-desc": "Sign in with your username and password to continue",
-    "username-placeholder": "username",
-    "password-placeholder": "password or WIF",
+    "title": "Yenidən Xoş Gəldiniz!",
+    "accounts-title": "Giriş et",
+    "traditional-login-desc": "Davam etmək üçün istifadəçi adı və şifrənizlə daxil olun",
+    "username-placeholder": "istifadəçi adı",
+    "password-placeholder": "şifrə və ya WIF",
     "login": "Login",
     "error-fields-required": "Please enter username and password/WIF",
     "error-public-key": "You entered a public key. Password/WIF required",
