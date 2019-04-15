@@ -1,16 +1,16 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "İnternet Bağlantısı Yoxdur"
   },
   "g": {
-    "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
-    "yes": "Yes",
-    "no": "No",
-    "delete": "Delete",
-    "cancel": "Cancel",
-    "ok": "OK",
-    "edit": "Edit",
+    "compose-entry": "Göndəriş Yarat",
+    "are-you-sure": "Əminsiniz?",
+    "yes": "Bəli",
+    "no": "Xeyr",
+    "delete": "Sil",
+    "cancel": "İmtina",
+    "ok": "Oldu",
+    "edit": "Düzəliş et",
     "server-error": "Process could not be completed due to server error",
     "save": "Save",
     "done": "Done",
