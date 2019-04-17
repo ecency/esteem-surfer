@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "Pas de connexion internet"
   },
   "g": {
     "compose-entry": "Créer une publication",
@@ -161,7 +161,7 @@
     "steem-dollars-description": "Les jetons valent environ 1.00$ de STEEM.",
     "savings": "Économies",
     "savings-description": "Votre solde est sujet à une période de 3 jours d'attente pour les retraits.",
-    "next-power-down": "The next power down is {time} {amount}",
+    "next-power-down": "Le prochain Power Down est dans {time} {amount}",
     "exchange": "Echange",
     "transactions": "Transactions",
     "transaction-curation_reward": "Gains de curation",
@@ -285,7 +285,7 @@
     "comment-entry-title": "Vous visualisez le fil de discussion d'un seul commentaire à partir de : ",
     "comment-entry-go-root": "Voir le contexte complet",
     "comment-entry-go-parent": "Voir le parent direct",
-    "similar-entries": "Similar Posts",
+    "similar-entries": "Publications similaires",
     "fetch-error": "Server timeout because response size is too big"
   },
   "navbar": {
@@ -341,7 +341,7 @@
     "type-mentions": "Mentions",
     "type-follows": "Suit",
     "type-reblogs": "Reblogs",
-    "type-transfers": "Transfers",
+    "type-transfers": "Transferts",
     "vote-str": "{p}% ont aimés votre post:",
     "reply-str": "a répondu à votre post:",
     "mention-str": "vous a mentionné sur:",
@@ -349,7 +349,7 @@
     "unfollowed-str": "ne vous suit plus",
     "ignored-str": "ignoré",
     "reblog-str": "a reblogué votre publication:",
-    "transfer-str": "sent you",
+    "transfer-str": "vous a envoyé",
     "empty-list": "Il n'y a rien ici",
     "refresh": "Rafraichir",
     "mark-all-read": "Tout marquer comme lu",
@@ -363,7 +363,7 @@
     "miss": "Manqué",
     "url": "URL",
     "fee": "Frais",
-    "feed": "Feed",
+    "feed": "Fil d'actualités",
     "block-size": "Taille des blocs",
     "ac-avail": "AC avail",
     "ac-budget": "Budget de l’AC",
@@ -433,27 +433,27 @@
   "power-down": {
     "title": "Power Down",
     "sub-title": "Power Down Steem Power",
-    "account": "Account",
-    "incoming-funds": "Incoming Funds",
+    "account": "Compte",
+    "incoming-funds": "Fonds entrants",
     "begin": "Begin Power Down",
-    "stop": "Stop",
-    "estimated-note": "Estimated Weekly",
-    "withdraw-accounts": "Destination Account(s)",
-    "add-withdraw-account": "Add withdraw account"
+    "stop": "Arrêter",
+    "estimated-note": "Évalué chaque semaine",
+    "withdraw-accounts": "Compte(s) destinataire",
+    "add-withdraw-account": "Ajouter un compte de retrait"
   },
   "withdraw-route": {
-    "title": "Add withdraw account",
-    "to": "Account",
-    "percentage": "Percentage",
+    "title": "Ajouter un compte de retrait",
+    "to": "Compte",
+    "percentage": "Pourcentage",
     "slider-help": "Percentage of Power Down to this account",
     "auto-power-down": "Automatically power up the target account"
   },
   "friends": {
-    "followers-title": "Followers ({count})",
-    "following-title": "Following ({count})",
-    "load-more": "Load More",
-    "empty-list": "Nothing here",
-    "search-placeholder": "Search users"
+    "followers-title": "Abonnés ({count})",
+    "following-title": "Abonnements ({count})",
+    "load-more": "Charger Plus",
+    "empty-list": "Rien ici",
+    "search-placeholder": "Rechercher des utilisateurs"
   },
   "delegated-list": {
     "title": "Delegated steem power from @{n}"
