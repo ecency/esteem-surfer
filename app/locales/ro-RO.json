@@ -456,9 +456,9 @@
     "search-placeholder": "Caută utilizatori"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "Steem power delegat de la @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "Steem power delegat pentru @{n}"
   }
 }
