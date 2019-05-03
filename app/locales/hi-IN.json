@@ -73,7 +73,7 @@
     "push-notify-disabled": "संभर सूचनाएं निसक्रीय हुवा"
   },
   "login": {
-    "title": "Welcome back!",
+    "title": "वापसी पर स्वागत है!",
     "accounts-title": "Login As",
     "traditional-login-desc": "Sign in with your username and password to continue",
     "username-placeholder": "username",
