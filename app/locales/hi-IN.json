@@ -93,23 +93,23 @@
     "title": "पिने कोड बनाएँ",
     "desc1": "अतिरिक्त सुरक्षा सक्रीय और आंकड़ा एन्क्रिप्ट करने के लिए पीन सेट करें!",
     "input-placeholder": "पीन कोड डालें",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
-    "created": "PIN code created"
+    "desc2": "आपको पीन कोड डालने के लिए अनुबोधन किया जायेगा प्रत्येक लॉगिन या महत्वपूर्ण लेंन-देंन के समय|",
+    "created": "पीन कोड तैयार हुवा"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
-    "input-placeholder": "Enter PIN code to continue",
-    "last-chance": "This is your last chance",
-    "invalidate": "Oh, I forgot it...",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "title": "पीन कोड डालें",
+    "input-placeholder": "जारी रखने के लिए पीन कोड डालें",
+    "last-chance": "ये आपकी अंतिम अवसर है",
+    "invalidate": "ओह! मैं इसे भूल गया...",
+    "invalidate-confirm": "क्या आप वास्तव में पिन कोड को अमान्य करना चाहते हैं?",
+    "invalidated": "पीन कोड अमान्य हुवा"
   },
   "user-menu": {
-    "profile": "Profile",
-    "bookmarks": "Bookmarks",
-    "favorites": "Favorites",
-    "drafts": "Drafts",
-    "schedules": "Schedules",
+    "profile": "रुपरेखा",
+    "bookmarks": "पृष्ठस्मृतियाँ",
+    "favorites": "पसंदीदा",
+    "drafts": "प्रारूप",
+    "schedules": "योजनाबध",
     "gallery": "Gallery",
     "login-as": "Login As",
     "logout": "Logout"
