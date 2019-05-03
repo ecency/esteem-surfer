@@ -10,10 +10,10 @@
     "delete": "मिटा दें",
     "cancel": "रद्द करें",
     "ok": "ठीक है",
-    "edit": "Edit",
-    "server-error": "Process could not be completed due to server error",
-    "save": "Save",
-    "done": "Done",
+    "edit": "सम्पादित करें",
+    "server-error": "सर्वर में त्रुटि के कारन प्रक्रिया पूरी हो न सकी",
+    "save": "रक्षित करें",
+    "done": "पूर्ण हुवा",
     "select": "Select"
   },
   "footer": {
