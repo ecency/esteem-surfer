@@ -67,10 +67,10 @@
     "server-timeout-error": "ऐसा लगता है '{server}' कारगर नहीं है",
     "server-changed": "सर्वर बदल गया {server} में",
     "server-custom-address": "तदनुकूल सर्वर पता",
-    "server-list-fetch-error": "Could not fetch server list",
-    "push-notifications": "Push Notifications",
-    "push-notify-enabled": "Push notifications enabled",
-    "push-notify-disabled": "Push notifications disabled"
+    "server-list-fetch-error": "सर्वर सूची प्राप्त न कर सका",
+    "push-notifications": "संभर सूचनाएं",
+    "push-notify-enabled": "संभर सूचनाएं सक्रीय हुवा",
+    "push-notify-disabled": "संभर सूचनाएं निसक्रीय हुवा"
   },
   "login": {
     "title": "Welcome back!",
