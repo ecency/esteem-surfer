@@ -125,15 +125,15 @@
     "post-count": "लेखन गिनती",
     "followers": "प्रशंसकों",
     "following": "अनुचर",
-    "section-blog": "Blog",
-    "section-comments": "Comments",
-    "section-replies": "Replies",
-    "section-wallet": "Wallet"
+    "section-blog": "वेबदैनिकी",
+    "section-comments": "टिप्पणियाँ",
+    "section-replies": "जबाबें",
+    "section-wallet": "वटुवा"
   },
   "follow-controls": {
-    "follow": "Follow",
-    "unFollow": "Unfollow",
-    "mute": "Mute",
+    "follow": "पीछा करो",
+    "unFollow": "पीछा करना छोड़ें",
+    "mute": "शांत कर दें",
     "unMute": "Unmute"
   },
   "account": {
