@@ -110,21 +110,21 @@
     "favorites": "पसंदीदा",
     "drafts": "प्रारूप",
     "schedules": "योजनाबध",
-    "gallery": "Gallery",
-    "login-as": "Login As",
-    "logout": "Logout"
+    "gallery": "गलियारा",
+    "login-as": "लॉगिन से",
+    "logout": "बहार जाएँ"
   },
   "login-required": {
-    "default": "This action requires login",
-    "key-required": "This action requires {key} key or master password",
-    "keys-required": "This action requires {keys} keys or master password"
+    "default": "इस क्रिया के लिए लॉगिन करें",
+    "key-required": "इस क्रिया को जरुरत है {key} कुंजी या मास्टर पासवर्ड",
+    "keys-required": "इस क्रिया को जरुरत है {keys} कुंजियाँ या मास्टर पासवर्ड"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
-    "fetch-error-content": "Could not fetch posts",
-    "post-count": "Post Count",
-    "followers": "Followers",
-    "following": "Following",
+    "fetch-error-profile": "रुपरेखा आंकड़ा ला न सका",
+    "fetch-error-content": "लेखन ला न सका",
+    "post-count": "लेखन गिनती",
+    "followers": "प्रशंसकों",
+    "following": "अनुचर",
     "section-blog": "Blog",
     "section-comments": "Comments",
     "section-replies": "Replies",
