@@ -14,20 +14,20 @@
     "server-error": "सर्वर में त्रुटि के कारन प्रक्रिया पूरी हो न सकी",
     "save": "रक्षित करें",
     "done": "पूर्ण हुवा",
-    "select": "Select"
+    "select": "चुनें"
   },
   "footer": {
-    "faq": "FAQ",
-    "about": "About"
+    "faq": "अक्सर पूछे जाने वाले प्रश्न",
+    "about": "के बारे में"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
+    "tags": "प्रचलित उपनामें",
+    "filter-trending": "चर्चित",
+    "filter-hot": "लोकप्रीय",
+    "filter-created": "नया",
+    "filter-active": "सक्रिय",
+    "filter-promoted": "पदोन्नत",
+    "filter-votes": "आपकी अपवोटें",
     "filter-children": "Comments",
     "filter-feed": "Feed"
   },
