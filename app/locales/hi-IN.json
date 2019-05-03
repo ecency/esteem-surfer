@@ -33,34 +33,34 @@
   },
   "entry-payout": {
     "potential-payout": "संभावित भुगतान",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "promoted": "पद्दोन्नत",
+    "author-payout": "लेखक भुगतान",
+    "curation-payout": "अध्यक्ष्ता भुगतान",
+    "payout-date": "भुगतान"
   },
   "entry-votes": {
-    "n-more": "{n} more",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
-    "modal-title": "Voters ({n})"
+    "n-more": "{n} अधीक",
+    "author": "लेखक",
+    "reward": "इनाम",
+    "percent": "प्रतिशत",
+    "time": "समय",
+    "modal-title": "मतदाताएँ ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "{n} द्वारा रीब्लॉग"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "रीब्लॉग",
+    "reblogged": "रीब्लॉग हुवा"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "Currency",
-    "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
-    "currency-changed": "Currency Changed",
-    "locale": "Language",
-    "locale-changed": "Language changed",
-    "server": "Server",
+    "title": "समायोजन कक्ष",
+    "currency": "मुद्रा",
+    "currency-fetch-error": "मुद्रा दर नहीं ला सका '{cur}' के लिए",
+    "currency-changed": "मुद्रा बदल गया",
+    "locale": "भाषा",
+    "locale-changed": "भाषा बदल गया",
+    "server": "सर्वर",
     "server-invalid-address": "Invalid server address",
     "server-connecting": "Connecting to '{server}'...",
     "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
