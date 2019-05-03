@@ -1,10 +1,10 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "इंटरनेट संपर्क नहीं है"
   },
   "g": {
-    "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
+    "compose-entry": "पोस्ट बनाएँ",
+    "are-you-sure": "क्या आप आस्वस्त हैं?",
     "yes": "Yes",
     "no": "No",
     "delete": "Delete",
