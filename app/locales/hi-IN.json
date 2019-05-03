@@ -84,15 +84,15 @@
     "error-user-fetch": "उपयोगकर्ता का आंकड़ा ला न सका",
     "error-user-not-found": "उपयोगकर्ता उपलब्ध नहीं है",
     "error-authenticate": "गलत प्रयोक्ता नाम या पासवर्ड/डब्लूएआईएफ",
-    "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>",
-    "login-with-sc": "Login with",
-    "divider-text": "OR",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "create-account-text": "खाता नहीं है क्या? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">अभी शामिल होयें!</a>",
+    "login-with-sc": "से प्रवेश करें",
+    "divider-text": "या",
+    "sc-note": "नोट: स्टीमकनेक्ट कुछ फी ले सकता है आपके इनाम लेंन-देंन से"
   },
   "create-pin-code": {
-    "title": "Create PIN Code",
-    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter PIN code",
+    "title": "पिने कोड बनाएँ",
+    "desc1": "अतिरिक्त सुरक्षा सक्रीय और आंकड़ा एन्क्रिप्ट करने के लिए पीन सेट करें!",
+    "input-placeholder": "पीन कोड डालें",
     "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
     "created": "PIN code created"
   },
