@@ -28,11 +28,11 @@
     "filter-active": "सक्रिय",
     "filter-promoted": "पदोन्नत",
     "filter-votes": "आपकी अपवोटें",
-    "filter-children": "Comments",
-    "filter-feed": "Feed"
+    "filter-children": "विवेचनाएं",
+    "filter-feed": "संभरण"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
+    "potential-payout": "संभावित भुगतान",
     "promoted": "Promoted",
     "author-payout": "Author Payout",
     "curation-payout": "Curation Payout",
