@@ -459,6 +459,6 @@
     "title": "Delegated steem power from @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "Делегированная Сила голоса к @{n}"
   }
 }
