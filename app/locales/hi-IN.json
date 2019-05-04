@@ -229,25 +229,25 @@
     "sync-scroll": "Scroll Sync",
     "words-count": "{n} शब्दें",
     "no-suggestions": "कोई संकेत नहीं",
-    "emoji-filter-placeholder": "Filter",
-    "emoji-filter-no-match": "No match",
-    "emoji-recently-used": "Recently Used"
+    "emoji-filter-placeholder": "फिलटर करें",
+    "emoji-filter-no-match": "मेल नहीं करता",
+    "emoji-recently-used": "अभी-अभी उपयोग हुवा"
   },
   "gallery": {
-    "title": "Gallery",
-    "copied": "Copied to clipboard",
-    "load-error": "Could not load gallery",
-    "empty-list": "Nothing here"
+    "title": "चित्रशाला",
+    "copied": "क्लिपबोर्ड में रक्षित हुवा",
+    "load-error": "चित्रशाला अपलोड नहीं हुवा",
+    "empty-list": "कुछ नहीं है यहाँ"
   },
   "drafts": {
-    "title": "Drafts",
-    "load-error": "Could not load drafts",
-    "empty-list": "Nothing here",
-    "deleted": "Draft is deleted"
+    "title": "प्रारूप",
+    "load-error": "प्रारूप भर न सका",
+    "empty-list": "कुछ नहीं है",
+    "deleted": "प्रारूप मिट चूका है"
   },
   "schedules": {
-    "title": "Scheduled Posts",
-    "empty-list": "Nothing here",
+    "title": "सूचीबद्ध किया गया लेखें",
+    "empty-list": "कुछ नहीं है यहाँ",
     "deleted": "Scheduled post is deleted",
     "move": "Move to drafts",
     "moved": "Moved to drafts"
