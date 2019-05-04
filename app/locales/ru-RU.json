@@ -456,7 +456,7 @@
     "search-placeholder": "Поиск пользователей"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "Делегированная Сила голоса от @{n}"
   },
   "delegatee-list": {
     "title": "Делегированная Сила голоса к @{n}"
