@@ -437,13 +437,13 @@
     "incoming-funds": "Входящие средства",
     "begin": "Начать понижение Силы",
     "stop": "Остановить",
-    "estimated-note": "Estimated Weekly",
-    "withdraw-accounts": "Destination Account(s)",
-    "add-withdraw-account": "Add withdraw account"
+    "estimated-note": "Примерно в неделю",
+    "withdraw-accounts": "Аккаунт(ы) получателя",
+    "add-withdraw-account": "Добавить аккаунт для вывода средств"
   },
   "withdraw-route": {
-    "title": "Add withdraw account",
-    "to": "Account",
+    "title": "Аккаунт для вывода",
+    "to": "Aккаунт",
     "percentage": "Процент",
     "slider-help": "Процент понижения Силы в этот аккаунт",
     "auto-power-down": "Автоматически переводить в Силу на целевой аккаунт"
