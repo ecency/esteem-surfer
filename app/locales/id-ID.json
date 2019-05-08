@@ -341,7 +341,7 @@
     "type-mentions": "Menyebutkan",
     "type-follows": "Ikuti",
     "type-reblogs": "Menampilkan kembali",
-    "type-transfers": "Transfers",
+    "type-transfers": "Transfer",
     "vote-str": "{p}% menyukai postingan anda:",
     "reply-str": "membalas postingan anda:",
     "mention-str": "menyebut anda dalam:",
@@ -452,8 +452,8 @@
     "followers-title": "Pengikut ({count})",
     "following-title": "Mengikuti ({count})",
     "load-more": "Muat Lebih Banyak",
-    "empty-list": "Nothing here",
-    "search-placeholder": "Search users"
+    "empty-list": "Disini belum ada apa-apa",
+    "search-placeholder": "Cari pengguna"
   },
   "delegated-list": {
     "title": "Daya steem yang di delegasikan dari @{n}"
