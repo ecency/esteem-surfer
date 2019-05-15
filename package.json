@@ -231,7 +231,7 @@
     "yarn": "^1.9.2"
   },
   "dependencies": {
-    "@esteemapp/esteem-render-helpers": "^1.0.8",
+    "@esteemapp/esteem-render-helpers": "^1.0.9",
     "@fortawesome/fontawesome-free": "^5.2.0",
     "antd": "^3.12.3",
     "axios": "^0.18.0",

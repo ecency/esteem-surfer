@@ -12,6 +12,11 @@ import {
   FormattedMessage
 } from 'react-intl';
 
+import {
+  catchPostImage,
+  postBodySummary
+} from '@esteemapp/esteem-render-helpers';
+
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
 
@@ -23,8 +28,6 @@ import TagLink from './helpers/TagLink';
 import EntryLink from './helpers/EntryLink';
 import LinearProgress from './common/LinearProgress';
 
-import entryBodySummary from '../utils/entry-body-summary';
-import catchEntryImage from '../utils/catch-entry-image';
 import ScrollReplace from './helpers/ScrollReplace';
 
 import qsParse from '../utils/qs';
@@ -39,8 +42,8 @@ import { searchSort } from '../constants/defaults';
 class SearchListItem extends PureComponent {
   render() {
     const { result: entry } = this.props;
-    const img = catchEntryImage(entry, 130, 80) || noImage;
-    const summary = entryBodySummary(entry.body, 200);
+    const img = catchPostImage(entry.body, 130, 80) || noImage;
+    const summary = postBodySummary(entry.body, 200);
 
     const { global } = this.props;
     const { currencyRate, currencySymbol } = global;

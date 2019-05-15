@@ -15,6 +15,11 @@ import {
 
 import { Select, Button, Popconfirm, message } from 'antd';
 
+import {
+  renderPostBody,
+  catchPostImage
+} from '@esteemapp/esteem-render-helpers';
+
 import Tooltip from './common/Tooltip';
 
 import {
@@ -52,11 +57,9 @@ import parseDate from '../utils/parse-date';
 import parseToken from '../utils/parse-token';
 import sumTotal from '../utils/sum-total';
 import appName from '../utils/app-name';
-import markDown2Html from '../utils/markdown-2-html';
 import authorReputation from '../utils/author-reputation';
 import formatChainError from '../utils/format-chain-error';
 import { setEntryRead } from '../helpers/storage';
-import catchEntryImage from '../utils/catch-entry-image';
 
 import EntryLink, { makePath as makePathEntry } from './helpers/EntryLink';
 
@@ -234,7 +237,7 @@ class ReplyEditor extends Component {
             </div>
             <div
               className="markdown-view mini-markdown user-selectable no-click-event"
-              dangerouslySetInnerHTML={{ __html: markDown2Html(replyText) }}
+              dangerouslySetInnerHTML={{ __html: renderPostBody(replyText) }}
             />
           </div>
         )}
@@ -342,7 +345,7 @@ class ReplyListItem extends PureComponent {
 
     const reputation = authorReputation(reply.author_reputation);
     const created = parseDate(reply.created);
-    const renderedBody = { __html: markDown2Html(reply.body) };
+    const renderedBody = { __html: renderPostBody(reply) };
     const isPayoutDeclined = parseToken(reply.max_accepted_payout) === 0;
     const totalPayout = sumTotal(reply);
     const voteCount = reply.active_votes.length;
@@ -999,7 +1002,7 @@ class Entry extends PureComponent {
 
       const reputation = authorReputation(entry.author_reputation);
       const created = parseDate(entry.created);
-      const renderedBody = { __html: markDown2Html(entry.body) };
+      const renderedBody = { __html: renderPostBody(entry) };
 
       let jsonMeta;
       try {
@@ -1240,7 +1243,7 @@ class Entry extends PureComponent {
                 </div>
                 <div className="similar-entries-list-body">
                   {similarEntries.map(en => {
-                    const enImg = catchEntryImage(en, 300, 200) || noImage;
+                    const enImg = catchPostImage(en, 300, 200) || noImage;
                     const enCreated = parseDate(en.created);
                     return (
                       <EntryLink

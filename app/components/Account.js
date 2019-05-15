@@ -16,6 +16,12 @@ import {
 
 import { Link } from 'react-router-dom';
 
+import {
+  catchPostImage,
+  postBodySummary,
+  proxifyImageSrc
+} from '@esteemapp/esteem-render-helpers';
+
 import Tooltip from './common/Tooltip';
 
 import NavBar from './layout/NavBar';
@@ -60,12 +66,9 @@ import { makeGroupKeyForEntries } from '../actions/entries';
 
 import authorReputation from '../utils/author-reputation';
 import { votingPower } from '../utils/manabar';
-import proxifyImageSrc from '../utils/proxify-image-src';
 import parseToken from '../utils/parse-token';
 import { vestsToSp } from '../utils/conversions';
 import parseDate from '../utils/parse-date';
-import catchEntryImage from '../utils/catch-entry-image';
-import entryBodySummary from '../utils/entry-body-summary';
 import formatChainError from '../utils/format-chain-error';
 import DeepLinkHandler from './helpers/DeepLinkHandler';
 
@@ -441,13 +444,11 @@ export class AccountTopPosts extends Component {
             >
               <div className="top-posts-list-item" role="none">
                 <div className="post-image">
-                  <img alt="" src={catchEntryImage(p, 130, 80) || noImage} />
+                  <img alt="" src={catchPostImage(p, 130, 80) || noImage} />
                 </div>
                 <div className="post-content">
                   <div className="post-title">{p.title}</div>
-                  <div className="post-body">
-                    {entryBodySummary(p.body, 40)}
-                  </div>
+                  <div className="post-body">{postBodySummary(p.body, 40)}</div>
                 </div>
               </div>
             </EntryLink>

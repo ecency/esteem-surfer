@@ -8,14 +8,17 @@ import PropTypes from 'prop-types';
 import { message, Modal, Popconfirm } from 'antd';
 import { FormattedMessage, injectIntl, FormattedRelative } from 'react-intl';
 
+import {
+  catchPostImage,
+  postBodySummary
+} from '@esteemapp/esteem-render-helpers';
+
 import Tooltip from '../common/Tooltip';
 
 import LinearProgress from '../common/LinearProgress';
 import UserAvatar from '../elements/UserAvatar';
 
 import authorReputation from '../../utils/author-reputation';
-import catchEntryImage from '../../utils/catch-entry-image';
-import entryBodySummary from '../../utils/entry-body-summary';
 
 import { getDrafts, removeDraft } from '../../backend/esteem-client';
 
@@ -44,8 +47,8 @@ class DraftListItem extends Component {
     const { author, reputation, item, intl } = this.props;
     const tags = item.tags ? item.tags.split(/[ ,]+/) : [];
     const tag = tags[0] || '';
-    const img = catchEntryImage(item) || noImage;
-    const summary = entryBodySummary(item.body, 200);
+    const img = catchPostImage(item.body) || noImage;
+    const summary = postBodySummary(item.body, 200);
 
     return (
       <div className="drafts-list-item">
@@ -208,12 +211,11 @@ class Drafts extends Component {
             </div>
           </div>
         )}
-        {!loading &&
-          data.length < 1 && (
-            <div className="drafts-list">
-              <FormattedMessage id="drafts.empty-list" />
-            </div>
-          )}
+        {!loading && data.length < 1 && (
+          <div className="drafts-list">
+            <FormattedMessage id="drafts.empty-list" />
+          </div>
+        )}
       </div>
     );
   }
