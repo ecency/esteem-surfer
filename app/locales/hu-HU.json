@@ -315,7 +315,7 @@
     "update": "Frissítés",
     "dismiss": "Elvetés",
     "downloading": "Új verzió letöltése...",
-    "download-completed": "A letöltés befejeződött",
+    "download-completed": "Letöltés kész",
     "restart": "Újraindítás"
   },
   "context-menu": {
