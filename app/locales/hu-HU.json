@@ -446,7 +446,7 @@
     "to": "Fiók",
     "percentage": "Százalék",
     "slider-help": "Power Down százaléka ennek a fióknak",
-    "auto-power-down": "Automatically power up the target account"
+    "auto-power-down": "Automatikus power up a megadott fióknak"
   },
   "friends": {
     "followers-title": "Követők ({count})",
