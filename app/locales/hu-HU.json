@@ -445,7 +445,7 @@
     "title": "Add withdraw account",
     "to": "Fiók",
     "percentage": "Százalék",
-    "slider-help": "Percentage of Power Down to this account",
+    "slider-help": "Power Down százaléka ennek a fióknak",
     "auto-power-down": "Automatically power up the target account"
   },
   "friends": {
@@ -456,7 +456,7 @@
     "search-placeholder": "Tagok keresése"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "Delegált steem power tőle @{n}"
   },
   "delegatee-list": {
     "title": "Delegált steem power neki @{n}"
