@@ -84,7 +84,7 @@
     "error-user-fetch": "A felhasználó adatait nem sikerült betölteni",
     "error-user-not-found": "A felhasználó nem létezik",
     "error-authenticate": "Helytelen felhasználónév vagy jelszó/WIF",
-    "create-account-text": "Nincs fiókod? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">hozd létre most!</a>",
+    "create-account-text": "Nincs fiókod? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Hozd létre most!</a>",
     "login-with-sc": "Bejelentkezés mint",
     "divider-text": "VAGY",
     "sc-note": "Megjegyzés: Steemconnect esetleg díjat számolhat fel néhány jutalom-tranzakcióért"
