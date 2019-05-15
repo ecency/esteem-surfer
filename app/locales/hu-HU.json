@@ -274,15 +274,15 @@
     "reply-sort-order-trending": "Népszerű",
     "reply-sort-order-reputation": "Reputáció",
     "reply-sort-order-votes": "Szavazatok",
-    "reply-sort-order-created": "Életkor",
+    "reply-sort-order-created": "Régiség",
     "reply-body-placeholder": "Ide írd a választ",
     "bookmarked": "Hozzáadva a könyvjelzőkhöz",
     "bookmarkRemoved": "Eltávolítva a könyvjelzőkből",
     "favorited": "Hozzáadva a kedvencekhez",
     "favoriteRemoved": "Eltávolítva a kedvencek közül",
     "copy-clipboard": "Másold a belső linket a vágólapra",
-    "copied-clipboard": "Lemásolva",
-    "comment-entry-title": "Egy hozzászólásos szál innen: ",
+    "copied-clipboard": "Másolva",
+    "comment-entry-title": "Egy hozzászólásos vonal innen: ",
     "comment-entry-go-root": "Teljes kontextus megtekintése",
     "comment-entry-go-parent": "Direkt felmenő megtekintése",
     "similar-entries": "Hasonló bejegyzések",
@@ -459,6 +459,6 @@
     "title": "Delegated steem power from @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "Delegált steem power neki @{n}"
   }
 }
