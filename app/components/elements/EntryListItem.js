@@ -8,6 +8,11 @@ import PropTypes from 'prop-types';
 
 import { FormattedRelative, FormattedMessage, injectIntl } from 'react-intl';
 
+import {
+  catchPostImage,
+  postBodySummary
+} from '@esteemapp/esteem-render-helpers';
+
 import UserAvatar from './UserAvatar';
 import EntryPayout from './EntryPayout';
 import EntryVotes from './EntryVotes';
@@ -19,10 +24,8 @@ import AccountLink from '../helpers/AccountLink';
 import EntryLink from '../helpers/EntryLink';
 import TagLink from '../helpers/TagLink';
 
-import catchEntryImage from '../../utils/catch-entry-image';
 import authorReputation from '../../utils/author-reputation';
 import parseDate from '../../utils/parse-date';
-import entryBodySummary from '../../utils/entry-body-summary';
 import sumTotal from '../../utils/sum-total';
 import appName from '../../utils/app-name';
 import parseToken from '../../utils/parse-token';
@@ -31,19 +34,18 @@ import { isEntryRead } from '../../helpers/storage';
 import fallbackImage from '../../img/fallback.png';
 import noImage from '../../img/noimage.png';
 
-
 class EntryListItem extends Component {
   render() {
     const { entry, inDrawer, asAuthor, global, intl } = this.props;
 
     const img =
       (global.listStyle === 'grid'
-        ? catchEntryImage(entry, 600, 500)
-        : catchEntryImage(entry, 200, 120)) || noImage;
+        ? catchPostImage(entry, 600, 500)
+        : catchPostImage(entry, 200, 120)) || noImage;
 
     const reputation = authorReputation(entry.author_reputation);
     const created = parseDate(entry.created);
-    const summary = entryBodySummary(entry.body, 200);
+    const summary = postBodySummary(entry, 200);
 
     const voteCount = entry.active_votes.length;
     const contentCount = entry.children;
@@ -91,7 +93,7 @@ class EntryListItem extends Component {
             <AccountLink {...this.props} username={entry.author}>
               <div className="author-part">
                 <div className="author-avatar">
-                  <UserAvatar user={entry.author} size="small"/>
+                  <UserAvatar user={entry.author} size="small" />
                 </div>
                 <div className="author">
                   {entry.author}{' '}
@@ -109,7 +111,7 @@ class EntryListItem extends Component {
             >
               <div className="author-part">
                 <div className="author-avatar">
-                  <UserAvatar user={entry.author} size="small"/>
+                  <UserAvatar user={entry.author} size="small" />
                 </div>
                 <div className="author">
                   {entry.author}{' '}
@@ -123,7 +125,7 @@ class EntryListItem extends Component {
               {entry.category}
             </a>
           </TagLink>
-          {!isVisited && <span className="read-mark"/>}
+          {!isVisited && <span className="read-mark" />}
           <span className="date" title={toolTipDate}>
             <FormattedRelative
               updateInterval={0}
@@ -178,15 +180,15 @@ class EntryListItem extends Component {
           </div>
           <div className="item-controls">
             <div className="voting">
-              <EntryVoteBtn {...this.props} entry={entry}/>
+              <EntryVoteBtn {...this.props} entry={entry} />
             </div>
             <EntryPayout {...this.props} entry={entry}>
               <a
                 className={`total-payout ${
                   isPayoutDeclined ? 'payout-declined' : ''
-                  }`}
+                }`}
               >
-                <FormattedCurrency {...this.props} value={totalPayout}/>
+                <FormattedCurrency {...this.props} value={totalPayout} />
               </a>
             </EntryPayout>
             <EntryVotes {...this.props} entry={entry}>
@@ -207,7 +209,7 @@ class EntryListItem extends Component {
                 {contentCount}
               </a>
             </EntryLink>
-            <EntryReblogBtn {...this.props} entry={entry}/>
+            <EntryReblogBtn {...this.props} entry={entry} />
             <div className="app">{app}</div>
           </div>
         </div>
