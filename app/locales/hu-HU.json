@@ -249,8 +249,8 @@
     "title": "Beütemezett Bejegyzések",
     "empty-list": "Itt nincs semmi",
     "deleted": "A beütemezett bejegyzés törölve",
-    "move": "Áthelyezés a vázlatokhoz",
-    "moved": "Áthelyezve a vázlatokhoz"
+    "move": "Áthelyezés a piszkozatokhoz",
+    "moved": "Áthelyezve a piszkozatokhoz"
   },
   "bookmarks": {
     "title": "Könyvjelzők",
@@ -433,17 +433,17 @@
   "power-down": {
     "title": "Power Down",
     "sub-title": "Power Down Steem Power",
-    "account": "Account",
+    "account": "Fiók",
     "incoming-funds": "Bejövő tőke",
     "begin": "Power Down Elkezdése",
     "stop": "Megállítás",
     "estimated-note": "Estimated Weekly",
-    "withdraw-accounts": "Destination Account(s)",
+    "withdraw-accounts": "Cél Fiók(ok)",
     "add-withdraw-account": "Add withdraw account"
   },
   "withdraw-route": {
     "title": "Add withdraw account",
-    "to": "Account",
+    "to": "Fiók",
     "percentage": "Százalék",
     "slider-help": "Percentage of Power Down to this account",
     "auto-power-down": "Automatically power up the target account"
