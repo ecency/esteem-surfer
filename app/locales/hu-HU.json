@@ -91,7 +91,7 @@
   },
   "create-pin-code": {
     "title": "PIN-kód létrehozása",
-    "desc1": "Állítsd be a PIN kódot az adatok titkosításához és egy további biztonsági réteg létrehozásához!",
+    "desc1": "Hozz létre egy PIN kódot az adatok titkosításához és egy további biztonsági réteg létrehozásához!",
     "input-placeholder": "PIN kód megadása",
     "desc2": "Át leszel irányítva a PIN kód beírásához a fontos tranzakciók és minden indítás esetén.",
     "created": "PIN kód létrehozva"
