@@ -20,6 +20,8 @@ import {
   message
 } from 'antd';
 
+import { renderPostBody } from '@esteemapp/esteem-render-helpers';
+
 import Tooltip from './common/Tooltip';
 
 import NavBar from './layout/NavBar';
@@ -31,7 +33,6 @@ import Editor from './elements/Editor';
 import DeepLinkHandler from './helpers/DeepLinkHandler';
 
 import { getItem, setItem } from '../helpers/storage';
-import markDown2Html from '../utils/markdown-2-html';
 import formatChainError from '../utils/format-chain-error';
 import { makePath as makePathEntry } from './helpers/EntryLink';
 
@@ -559,7 +560,7 @@ class Compose extends Component {
       editMode
     } = this.state;
 
-    const renderedBody = { __html: markDown2Html(body) };
+    const renderedBody = { __html: renderPostBody(body) };
 
     let hasPostingPerm = false;
 

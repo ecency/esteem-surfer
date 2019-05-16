@@ -9,6 +9,8 @@ import PropTypes from 'prop-types';
 import { UnControlled as CodeMirror } from 'react-codemirror2';
 import { Input, Select, message } from 'antd';
 
+import { renderPostBody } from '@esteemapp/esteem-render-helpers';
+
 import Tooltip from '../common/Tooltip';
 
 import GalleryModal from '../dialogs/Gallery';
@@ -16,8 +18,6 @@ import GalleryModal from '../dialogs/Gallery';
 import { uploadImage, addMyImage } from '../../backend/esteem-client';
 
 import { getItem, setItem } from '../../helpers/storage';
-
-import markDown2Html from '../../utils/markdown-2-html';
 
 import emojiData from '../../data/emoji';
 
@@ -582,7 +582,7 @@ class Editor extends Component {
         return;
       }
 
-      const lineHtml = markDown2Html(lineVal);
+      const lineHtml = renderPostBody(lineVal);
 
       // Real wrapper
       const wrapper = document.createElement('div');
