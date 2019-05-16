@@ -7,6 +7,8 @@ import PropTypes from 'prop-types';
 import { Drawer, message } from 'antd';
 import { FormattedMessage, FormattedNumber, injectIntl } from 'react-intl';
 
+import { proxifyImageSrc } from '@esteemapp/esteem-render-helpers';
+
 import Tooltip from '../common/Tooltip';
 
 import {
@@ -22,7 +24,6 @@ import LinearProgress from '../common/LinearProgress';
 import EntryListItem from '../elements/EntryListItem';
 import FollowControls from '../elements/FollowControls';
 import AccountLink from './AccountLink';
-import proxifyImageSrc from '../../utils/proxify-image-src';
 import coverFallbackDay from '../../img/cover-fallback-day.png';
 import coverFallbackNight from '../../img/cover-fallback-night.png';
 

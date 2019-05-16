@@ -9,13 +9,13 @@ import { Menu, message } from 'antd';
 
 import { FormattedMessage, injectIntl } from 'react-intl';
 
+import { postBodySummary } from '@esteemapp/esteem-render-helpers';
+
 import Tooltip from '../common/Tooltip';
 import DropDown from '../common/DropDown';
 import AccountLink from '../helpers/AccountLink';
 import EntryLink from '../helpers/EntryLink';
 import LinearProgress from '../common/LinearProgress';
-
-import entryBodySummary from '../../utils/entry-body-summary';
 
 import {
   getMyVotes,
@@ -174,7 +174,7 @@ class ActivityListItem extends Component {
                     permlink={activity.permlink}
                   >
                     <div className="markdown-view mini-markdown reply-body">
-                      {entryBodySummary(activity.body, 100)}
+                      {postBodySummary(activity.body, 100)}
                     </div>
                   </EntryLink>
                 </div>
