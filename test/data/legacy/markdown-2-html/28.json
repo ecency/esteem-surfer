@@ -1,5 +1,0 @@
-{
-  "id": 28,
-  "input": "<TABLE BACKGROUND=\"javascript:alert('XSS')\"> <TABLE><TD BACKGROUND=\"javascript:alert('XSS')\">",
-  "result": "<table> </table><table><tbody><tr><td></td></tr></tbody></table>"
-}

@@ -1,5 +1,0 @@
-{
-  "id": 29,
-  "input": "<DIV STYLE=\"background-image: url(javascript:alert('XSS'))\">foo</DIV><DIV STYLE=\"background-image: url(&#1;javascript:alert('XSS'))\">bar</DIV>",
-  "result": "<div>foo</div><div>bar</div>"
-}

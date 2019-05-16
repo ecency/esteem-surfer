@@ -1,5 +1,0 @@
-{
-  "id": 21,
-  "input": "javascript:/*--></title></style></textarea></script></xmp><svg/onload='+/\"/+/onmouseover=1/+/[*/[]/+alert(1)//'>\n\n<IMG SRC=\"javascript:alert('XSS');\"><img src=\"javascript:alert('XSS');\">\n\n<IMG SRC=javascript:alert('XSS')> <img src=javascript:alert('XSS')>",
-  "result": "<p>javascript:/<em>--&gt;&lt;svg/onload='+/\"/+/onmouseover=1/+/[</em>/[]/+alert(1)//'&gt;</p>\n<p><img src=\"\"><img src=\"\"></p>\n<p>&lt;IMG SRC=javascript:alert('XSS')&gt; &lt;img src=javascript:alert('XSS')&gt;</p>\n"
-}

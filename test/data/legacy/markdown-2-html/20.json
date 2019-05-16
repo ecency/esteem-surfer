@@ -1,5 +1,0 @@
-{
-  "id": 20,
-  "input": "<SCRIPT SRC=http://xss.rocks/xss.js></SCRIPT> foo <script src=\"http://xss.rocks/xss.js\"></script>",
-  "result": "foo <span></span>"
-}

@@ -1,5 +1,0 @@
-{
-  "id": 24,
-  "input": "<SCRIPT/XSS SRC=\"http://xss.rocks/xss.js\"></SCRIPT> <BODY onload=alert(\"XSS\")><SCRIPT/SRC=\"http://xss.rocks/xss.js\"></SCRIPT> <<SCRIPT>alert(\"XSS\");//<</SCRIPT> <SCRIPT SRC=http://xss.rocks/xss.js?< B >",
-  "result": "<span></span> &lt;<span>alert(\"XSS\");//&lt;</span> <span></span>"
-}

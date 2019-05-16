@@ -1,5 +1,0 @@
-{
-  "id": 25,
-  "input": "<IMG SRC=\"javascript:alert('XSS')\" </TITLE><SCRIPT>alert(\"XSS\");</SCRIPT>\n\n<INPUT TYPE=\"IMAGE\" SRC=\"javascript:alert('XSS');\">\n\n<BODY BACKGROUND=\"javascript:alert('XSS')\">",
-  "result": "<p>&lt;IMG SRC=\"javascript:alert('XSS')\" <span>alert(\"XSS\");</span></p>\n<p><span></span></p>\n"
-}

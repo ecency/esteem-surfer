@@ -1,5 +1,0 @@
-{
-  "id": 2112524,
-  "input": "What do you think ? With <3 Steemers\n\n![GitHub Logo](https://freerubens.com/ShowReel-2017.jpg)\n\n<iframe src=\"https://player.vimeo.com/video/207439341\" width=\"640\" height=\"360\" frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>\n<p><a href=\"https://vimeo.com/207439341\">ShowReel 2017</a> from <a href=\"https://vimeo.com/freerubens\">Rubens Ben</a> on <a href=\"https://vimeo.com\">Vimeo</a>.</p>",
-  "result": "<p>What do you think ? With &lt;3 Steemers</p>\n<p><img src=\"https://steemitimages.com/0x0/https://freerubens.com/ShowReel-2017.jpg\" alt=\"GitHub Logo\"></p>\n<iframe src=\"https://player.vimeo.com/video/207439341\" width=\"640\" height=\"360\" frameborder=\"0\" webkitallowfullscreen=\"\" mozallowfullscreen=\"\" allowfullscreen=\"\"></iframe>\n<p><a class=\"markdown-external-link\" data-href=\"https://vimeo.com/207439341\">ShowReel 2017</a> from <a class=\"markdown-external-link\" data-href=\"https://vimeo.com/freerubens\">Rubens Ben</a> on <a class=\"markdown-external-link\" data-href=\"https://vimeo.com\">Vimeo</a>.</p>"
-}

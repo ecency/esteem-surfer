@@ -1,5 +1,0 @@
-{
-  "id": 22,
-  "input": "<IMG SRC=JaVaScRiPt:alert('XSS')> <IMG SRC=javascript:alert(&quot;XSS&quot;)>\n<IMG SRC=`javascript:alert(\"RSnake says, 'XSS'\")`>\n<a onmouseover=\"alert(document.cookie)\">xxs link</a><a onmouseover=alert(document.cookie)>xxs link</a>\n<IMG \"\"\"><SCRIPT>alert(\"XSS\")</SCRIPT>\"><IMG SRC=javascript:alert(String.fromCharCode(88,83,83))>\n<IMG SRC=# onmouseover=\"alert('xxs')\"> <IMG SRC= onmouseover=\"alert('xxs')\">",
-  "result": "<p>&lt;IMG SRC=JaVaScRiPt:alert('XSS')&gt; <img src=\"\"><br>\n&lt;IMG SRC=<code>javascript:alert(\"RSnake says, 'XSS'\")</code>&gt;<br>\n<a>xxs link</a><a>xxs link</a><br>\n&lt;IMG \"\"\"&gt;<span>alert(\"XSS\")</span>\"&gt;<img src=\"\"><br>\n<img src=\"https://steemitimages.com/0x0/#\"> &lt;IMG SRC= onmouseover=\"alert('xxs')\"&gt;</p>\n"
-}
