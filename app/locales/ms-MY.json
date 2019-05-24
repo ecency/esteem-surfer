@@ -193,11 +193,11 @@
     "points-post-list-desc": "Mata ganjaran pos",
     "points-comment-list-desc": "Mata ganjaran komen",
     "points-vote-list-desc": "Mata ganjaran vote",
-    "points-reblog-list-desc": "Points for reblog",
-    "points-login-list-desc": "Points for login",
-    "points-checkin-list-desc": "Points for usage",
-    "points-checkin-extra-list-desc": "Usage bonus",
-    "points-claim-ok": "Points claimed"
+    "points-reblog-list-desc": "Mata ganjaran ulang siar",
+    "points-login-list-desc": "Mata ganjaran log masuk",
+    "points-checkin-list-desc": "Mata ganjaran mengguna",
+    "points-checkin-extra-list-desc": "Bonus untuk pengguna",
+    "points-claim-ok": "Mata ganjaran dituntut"
   },
   "composer": {
     "title-placeholder": "Tajuk",
@@ -314,12 +314,12 @@
     "favorite": "Tambah ke kegemaran",
     "favoriteRemove": "Dibuang dari kegemaran",
     "wallet": "Wallet saya",
-    "points": "My Points",
+    "points": "Mata ganjaran saya",
     "activities": "Aktiviti-aktiviti",
     "address-enter-url": "Masukkan url",
     "address-enter-query": "Masukkan pencarian",
     "unclaimed-reward-notice": "Anda mempunyai ganjaran yang tidak dituntut",
-    "unclaimed-points-notice": "You have unclaimed points",
+    "unclaimed-points-notice": "Ada mata ganjaran yang belum dituntut",
     "search-no-matches": "Tiada yang berpadanan"
   },
   "search": {
