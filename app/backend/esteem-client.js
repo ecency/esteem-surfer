@@ -285,3 +285,16 @@ export const usrActivity = (us, ty, bl = '', tx = '') => {
     .post(`${BACKEND_URL}/api/usr-activity`, params)
     .then(resp => resp.data);
 };
+
+export const getPoints = user =>
+  axios.get(`${BACKEND_URL}/api/users/${user}`).then(resp => resp.data);
+
+export const getPointList = user =>
+  axios
+    .get(`${BACKEND_URL}/api/users/${user}/points?size=50`)
+    .then(resp => resp.data);
+
+export const claimPoints = user =>
+  axios.put(`${BACKEND_URL}/api/claim`, {
+    us: user
+  });

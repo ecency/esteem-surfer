@@ -59,10 +59,7 @@ import {
   getTopPosts,
   isFavorite,
   addFavorite,
-  removeFavoriteUser,
-  getPoints,
-  getPointList,
-  claimPoints
+  removeFavoriteUser
 } from '../backend/esteem-client';
 
 import { makeGroupKeyForEntries } from '../actions/entries';
@@ -354,15 +351,6 @@ export class AccountMenu extends Component {
             }}
           >
             <FormattedMessage id="account.section-replies" />
-          </a>
-          <a
-            role="none"
-            className={`menu-item ${section === 'points' && 'selected-item'}`}
-            onClick={() => {
-              this.goSection('points');
-            }}
-          >
-            <FormattedMessage id="account.section-points" />
           </a>
           <a
             role="none"
@@ -1460,240 +1448,6 @@ SectionWallet.propTypes = {
   activeAccount: PropTypes.instanceOf(Object)
 };
 
-export class SectionPoints extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      claiming: false
-    };
-  }
-
-  claim = () => {
-    const { afterClaim, activeAccount, intl } = this.props;
-
-    this.setState({ claiming: true });
-
-    return claimPoints(activeAccount.username)
-      .then(r => {
-        message.success(
-          intl.formatMessage({
-            id: 'account.points-claim-ok'
-          })
-        );
-
-        setTimeout(() => {
-          afterClaim();
-        }, 500);
-
-        return r;
-      })
-      .catch(() => {
-        message.error(intl.formatMessage({ id: 'g.server-error' }));
-      })
-      .finally(() => {
-        this.setState({ claiming: false });
-      });
-  };
-
-  render() {
-    const {
-      points,
-      uPoints,
-      pointList,
-      username,
-      activeAccount,
-      intl
-    } = this.props;
-    const { claiming } = this.state;
-
-    const iconPost = 'edit';
-    const iconComment = 'comment';
-    const iconVote = 'keyboard_arrow_up';
-    const iconReblog = 'repeat';
-    const iconCheckin = 'star_border';
-    const iconLogin = 'person_outline';
-    const iconCheckinExtra = 'done_all';
-
-    const isMyPage = activeAccount && activeAccount.username === username;
-
-    return (
-      <div className="points-section">
-        <div className="points">
-          <div className="points-val">{points}</div>
-          <div className="point-name">eSteem Points</div>
-          {uPoints !== '0.000' && (
-            <div className={`unclaimed ${isMyPage ? 'can-claim' : ''}`}>
-              <div className="val">{uPoints}</div>
-
-              {isMyPage && (
-                <a
-                  className={`claim-btn ${claiming ? 'in-progress' : ''}`}
-                  onClick={() => {
-                    this.claim();
-                  }}
-                  role="none"
-                >
-                  <i className="mi">add_circle</i>
-                </a>
-              )}
-            </div>
-          )}
-        </div>
-
-        <div className="point-reward-types">
-          <Tooltip
-            title={intl.formatMessage({ id: 'account.points-post-desc' })}
-            placement="bottom"
-          >
-            <div className="point-reward-type">
-              <i className="mi">{iconPost}</i>
-              <span className="reward-num">15</span>
-            </div>
-          </Tooltip>
-          <Tooltip
-            title={intl.formatMessage({ id: 'account.points-comment-desc' })}
-            placement="bottom"
-          >
-            <div className="point-reward-type">
-              <i className="mi">{iconComment}</i>
-              <span className="reward-num">5</span>
-            </div>
-          </Tooltip>
-          <Tooltip
-            title={intl.formatMessage({ id: 'account.points-vote-desc' })}
-            placement="bottom"
-          >
-            <div className="point-reward-type">
-              <i className="mi">{iconVote}</i>
-              <span className="reward-num">0.3</span>
-            </div>
-          </Tooltip>
-          <Tooltip
-            title={intl.formatMessage({ id: 'account.points-reblog-desc' })}
-            placement="bottom"
-          >
-            <div className="point-reward-type">
-              <i className="mi">{iconReblog}</i>
-              <span className="reward-num">1</span>
-            </div>
-          </Tooltip>
-          <Tooltip
-            title={intl.formatMessage({ id: 'account.points-checkin-desc' })}
-            placement="bottom"
-          >
-            <div className="point-reward-type">
-              <i className="mi">{iconCheckin}</i>
-              <span className="reward-num">0.25</span>
-            </div>
-          </Tooltip>
-          <Tooltip
-            title={intl.formatMessage({ id: 'account.points-login-desc' })}
-            placement="bottom"
-          >
-            <div className="point-reward-type">
-              <i className="mi">{iconLogin}</i>
-              <span className="reward-num">99+</span>
-            </div>
-          </Tooltip>
-          <Tooltip
-            title={intl.formatMessage({
-              id: 'account.points-checkin-extra-desc'
-            })}
-            placement="bottom"
-          >
-            <div className="point-reward-type">
-              <i className="mi">{iconCheckinExtra}</i>
-              <span className="reward-num">10</span>
-            </div>
-          </Tooltip>
-        </div>
-
-        {pointList && pointList.length > 0 && (
-          <div className="transaction-list">
-            <div className="transaction-list-header">
-              <h2>
-                <FormattedMessage id="account.point-history" />
-              </h2>
-            </div>
-            <div className="transaction-list-body">
-              {pointList.map(item => {
-                let icon = '';
-                let lKey = '';
-
-                switch (item.type) {
-                  case 10:
-                    icon = iconCheckin;
-                    lKey = 'checkin';
-                    break;
-                  case 20:
-                    icon = iconLogin;
-                    lKey = 'login';
-                    break;
-                  case 30:
-                    icon = iconCheckinExtra;
-                    lKey = 'checkin-extra';
-                    break;
-                  case 100:
-                    icon = iconPost;
-                    lKey = 'post';
-                    break;
-                  case 110:
-                    icon = iconComment;
-                    lKey = 'comment';
-                    break;
-                  case 120:
-                    icon = iconVote;
-                    lKey = 'vote';
-                    break;
-                  case 130:
-                    icon = iconReblog;
-                    lKey = 'reblog';
-                    break;
-                  default:
-                }
-
-                return (
-                  <div className="transaction-list-item" key={item.id}>
-                    <div className="transaction-icon">
-                      <i className="mi">{icon}</i>
-                    </div>
-                    <div className="transaction-title">
-                      <div className="transaction-name">
-                        <FormattedMessage
-                          id={`account.points-${lKey}-list-desc`}
-                        />
-                      </div>
-                      <div className="transaction-date">
-                        <FormattedRelative value={item.created} />
-                      </div>
-                    </div>
-                    <div className="transaction-numbers">{item.amount}</div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  }
-}
-
-SectionPoints.defaultProps = {
-  activeAccount: null
-};
-
-SectionPoints.propTypes = {
-  username: PropTypes.string.isRequired,
-  pointList: PropTypes.arrayOf(Object).isRequired,
-  points: PropTypes.string.isRequired,
-  uPoints: PropTypes.string.isRequired,
-  intl: PropTypes.instanceOf(Object).isRequired,
-  activeAccount: PropTypes.instanceOf(Object),
-  afterClaim: PropTypes.func.isRequired
-};
-
 class Account extends Component {
   constructor(props) {
     super(props);
@@ -1703,11 +1457,7 @@ class Account extends Component {
       topPosts: null,
       transactions: null,
       transactionsLoading: true,
-      favorite: false,
-      points: '0.000',
-      uPoints: '0.000',
-      pointList: [],
-      pointsLoading: true
+      favorite: false
     };
   }
 
@@ -1787,7 +1537,7 @@ class Account extends Component {
     }
 
     // Transactions
-    getState(`/@${username}/transfers`)
+    return getState(`/@${username}/transfers`)
       .then(state => {
         const { accounts } = state;
         const { transfer_history: transferHistory } = accounts[username];
@@ -1810,24 +1560,6 @@ class Account extends Component {
         this.setState({
           transactionsLoading: false
         });
-      })
-      .catch(() => {});
-
-    // Points
-    return getPoints(username)
-      .then(r => {
-        this.setState({ points: r.points, uPoints: r.unclaimed_points });
-        return getPointList(username);
-      })
-      .then(r => {
-        this.setState({ pointList: r });
-        return r;
-      })
-      .catch(() => {
-        console.log('err');
-      })
-      .finally(() => {
-        this.setState({ pointsLoading: false });
       });
   };
 
@@ -1947,31 +1679,23 @@ class Account extends Component {
     const { entries, global, match } = this.props;
     const { account, favorite } = this.state;
     const { username, section = 'blog' } = match.params;
-    const isEntryList = !['wallet', 'points'].includes(section);
+    const isWallet = section === 'wallet';
 
     let entryList;
     let loading = false;
 
-    if (isEntryList) {
+    if (!isWallet) {
       const groupKey = makeGroupKeyForEntries(section, `@${username}`);
       const data = entries.get(groupKey);
       entryList = data.get('entries');
       loading = data.get('loading');
     } else {
-      if (section === 'wallet') {
-        const { transactionsLoading } = this.state;
-        loading = transactionsLoading;
-      }
-
-      if (section === 'points') {
-        const { pointsLoading } = this.state;
-        loading = pointsLoading;
-      }
+      const { transactionsLoading } = this.state;
+      loading = transactionsLoading;
     }
 
     const { topPosts } = this.state;
     const { transactions } = this.state;
-    const { points, uPoints, pointList } = this.state;
 
     return (
       <div className="wrapper">
@@ -2004,7 +1728,7 @@ class Account extends Component {
             </div>
 
             <div className="right-side">
-              {isEntryList && (
+              {!isWallet && (
                 <AccountCover
                   {...this.props}
                   account={account}
@@ -2016,7 +1740,7 @@ class Account extends Component {
                 <AccountTopPosts {...this.props} posts={topPosts} />
               )}
 
-              {isEntryList && (
+              {!isWallet && (
                 <Fragment>
                   <div className={`entry-list ${loading ? 'loading' : ''}`}>
                     <div
@@ -2048,25 +1772,12 @@ class Account extends Component {
                 </Fragment>
               )}
 
-              {section === 'wallet' && account && (
+              {isWallet && account && (
                 <SectionWallet
                   {...this.props}
                   transactions={transactions}
                   username={username}
                   account={account}
-                />
-              )}
-
-              {section === 'points' && account && (
-                <SectionPoints
-                  {...this.props}
-                  points={points}
-                  uPoints={uPoints}
-                  pointList={pointList}
-                  username={username}
-                  afterClaim={() => {
-                    this.fetchData();
-                  }}
                 />
               )}
             </div>

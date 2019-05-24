@@ -396,6 +396,12 @@ class NavBar extends Component {
     history.push(u);
   };
 
+  pointsClicked = () => {
+    const { activeAccount, history } = this.props;
+    const u = `/@${activeAccount.username}/points`;
+    history.push(u);
+  };
+
   activitiesClicked = () => {
     this.setState({
       activitiesVisible: true
@@ -442,6 +448,7 @@ class NavBar extends Component {
     const { unread: unreadActivity } = activities;
 
     let hasUnclaimedRewards = false;
+    let hasUnclaimedPoints = false;
     if (activeAccount) {
       const { accountData: account } = activeAccount;
 
@@ -453,6 +460,9 @@ class NavBar extends Component {
           rewardSteemBalance > 0 ||
           rewardSbdBalance > 0 ||
           rewardVestingSteem > 0;
+
+        hasUnclaimedPoints =
+          account.unclaimed_points && parseToken(account.unclaimed_points) > 0;
       }
     }
 
@@ -608,6 +618,24 @@ class NavBar extends Component {
 
             {activeAccount && (
               <Fragment>
+                <Tooltip
+                  mouseEnterDelay={1}
+                  onClick={this.pointsClicked}
+                  title={
+                    hasUnclaimedPoints
+                      ? intl.formatMessage({
+                          id: 'navbar.unclaimed-points-notice'
+                        })
+                      : intl.formatMessage({ id: 'navbar.points' })
+                  }
+                  placement="left"
+                >
+                  <a role="none" className="points">
+                    {hasUnclaimedPoints && <span className="reward-badge" />}
+                    <i className="mi">card_giftcard</i>
+                  </a>
+                </Tooltip>
+
                 <Tooltip
                   title={
                     hasUnclaimedRewards

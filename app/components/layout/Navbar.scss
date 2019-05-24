@@ -255,13 +255,15 @@
       }
 
       .wallet,
-      .activities {
+      .activities,
+      .points {
         color: $white;
         display: flex;
         font-size: 18px;
       }
 
-      .wallet {
+      .wallet,
+      .points {
         position: relative;
 
         .reward-badge {
@@ -299,7 +301,7 @@
       &.logged-in {
         justify-content: space-between;
         padding: 0 12px 0 20px;
-        width: 140px;
+        width: 170px;
       }
     }
   }

@@ -700,109 +700,220 @@
             }
           }
         }
+      }
 
-        .transaction-list {
-          margin: 0 29px 20px 0;
+      .points-section {
+        padding-top: 40px;
 
-          .transaction-list-header {
-            h2 {
-              font-size: 18px;
-              margin-bottom: 16px;
+        .points {
+          margin-bottom: 30px;
+          text-align: center;
+
+          .points-val {
+            color: $dark-sky-blue;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+          }
+
+          .point-name {
+            color: $silver;
+            font-size: 12px;
+
+            @include themify(day) {
+              color: $silver;
+            }
+
+            @include themify(night) {
+              color: $metallic-blue;
             }
           }
 
-          .transaction-list-item {
-            border-radius: 8px;
-            box-sizing: content-box;
+          .unclaimed {
+            align-items: center;
+            background-color: $dark-sky-blue;
+            border-radius: 25px;
+            color: $white;
+            display: inline-flex;
+            height: 51px;
+            margin-top: 20px;
+            padding: 0 24px;
+
+            .val {
+              font-size: 18px;
+              font-weight: 500;
+            }
+
+            .claim-btn {
+              color: $white;
+
+              .mi {
+                font-size: 30px;
+              }
+
+              &:hover {
+                color: lighten($dark-sky-blue, 30);
+              }
+
+              &.in-progress {
+                animation: claiming-color-change 5s infinite;
+                pointer-events: none;
+              }
+            }
+
+            &.can-claim {
+              .val {
+                margin-right: 10px;
+              }
+            }
+          }
+        }
+
+        .point-reward-types {
+          margin-bottom: 30px;
+          text-align: center;
+          cursor: default;
+
+          .point-reward-type {
+            align-items: center;
+
+            border-radius: 50%;
+            display: inline-flex;
+            height: 40px;
+            justify-content: center;
+            width: 40px;
+            color: $warm-grey;
+            font-size: 18px;
+            position: relative;
+
+            @include themify(day) {
+              background: $white-three;
+              color: $steel-grey;
+            }
+
+            @include themify(night) {
+              background: $metallic-blue;
+              color: lighten($metallic-blue, 40);
+            }
+
+            &:not(:last-child) {
+              margin-right: 30px;
+            }
+
+            .reward-num {
+              background: $dark-sky-blue;
+              position: absolute;
+              right: -30%;
+              bottom: 0;
+              color: $white;
+              font-size: 10px;
+              border-radius: 24px;
+              width: 24px;
+              padding: 1px 0;
+            }
+          }
+        }
+      }
+
+      .transaction-list {
+        margin: 0 29px 20px 0;
+
+        .transaction-list-header {
+          h2 {
+            font-size: 18px;
+            margin-bottom: 16px;
+          }
+        }
+
+        .transaction-list-item {
+          border-radius: 8px;
+          box-sizing: content-box;
+          display: flex;
+          padding: 16px;
+
+          .transaction-icon {
+            align-items: center;
+            border-radius: 50%;
             display: flex;
-            padding: 16px;
+            font-size: 16px;
+            height: 32px;
+            justify-content: center;
+            margin-right: 10px;
+            width: 32px;
 
-            .transaction-icon {
-              align-items: center;
+            @include themify(day) {
+              background: $white;
+              color: $steel-grey;
+            }
 
-              border-radius: 50%;
+            @include themify(night) {
+              background: $metallic-blue;
+              color: lighten($metallic-blue, 40);
+            }
+          }
 
-              display: flex;
-              font-size: 16px;
-              height: 32px;
-              justify-content: center;
-              margin-right: 10px;
-              width: 32px;
+          .transaction-title {
+            display: flex;
+            flex-direction: column;
+            font-weight: 500;
+            width: 30%;
 
+            .transaction-name {
               @include themify(day) {
-                background: $white;
                 color: $steel-grey;
               }
 
               @include themify(night) {
-                background: $metallic-blue;
-                color: lighten($metallic-blue, 40);
+                color: $metallic-blue;
               }
             }
 
-            .transaction-title {
-              display: flex;
-              flex-direction: column;
-              font-weight: 500;
-              width: 30%;
+            .transaction-date {
+              font-size: 12px;
 
-              .transaction-name {
-                @include themify(day) {
-                  color: $steel-grey;
-                }
-
-                @include themify(night) {
-                  color: $metallic-blue;
-                }
-              }
-
-              .transaction-date {
-                font-size: 12px;
-
-                @include themify(day) {
-                  color: $silver;
-                }
-
-                @include themify(night) {
-                  color: $warm-grey;
-                }
-              }
-            }
-
-            .transaction-numbers {
-              color: $dark-sky-blue;
-              flex-grow: 1;
-
-              font-weight: 500;
-              margin-right: 30px;
-              text-align: right;
-
-              .number {
-                margin-right: 4px;
-              }
-            }
-
-            .transaction-details {
-              color: $steel-grey;
-              width: 30%;
-              word-break: break-all;
-            }
-
-            &:nth-child(odd) {
               @include themify(day) {
-                background: $white-three;
+                color: $silver;
               }
 
               @include themify(night) {
-                background: lighten($dark-six, 4);
+                color: $warm-grey;
               }
             }
+          }
 
+          .transaction-numbers {
+            color: $dark-sky-blue;
+            flex-grow: 1;
+
+            font-weight: 500;
+            margin-right: 30px;
+            text-align: right;
+
+            .number {
+              margin-right: 4px;
+            }
+          }
+
+          .transaction-details {
+            color: $steel-grey;
+            width: 30%;
+            word-break: break-all;
+          }
+
+          &:nth-child(odd) {
             @include themify(day) {
-              &:nth-child(even) {
-                .transaction-icon {
-                  background-color: $white-three;
-                }
+              background: $white-three;
+            }
+
+            @include themify(night) {
+              background: lighten($dark-six, 4);
+            }
+          }
+
+          @include themify(day) {
+            &:nth-child(even) {
+              .transaction-icon {
+                background-color: $white-three;
               }
             }
           }

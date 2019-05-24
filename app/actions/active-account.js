@@ -9,6 +9,8 @@ import {
   getDiscussions
 } from '../backend/steem-client';
 
+import { getPoints } from '../backend/esteem-client';
+
 export const LOGGED_IN = 'active-account/LOGGED_IN';
 export const LOGGED_OUT = 'active-account/LOGGED_OUT';
 export const UPDATED = 'active-account/UPDATED';
@@ -77,6 +79,16 @@ export const updateActiveAccount = () => (dispatch, getState) => {
       dispatch(updated(username, resp));
       return resp;
     })
+    .catch(() => {})
+    .then(account =>
+      getPoints(username).then(p => {
+        const o = Object.assign({}, account, {
+          unclaimed_points: p.unclaimed_points
+        });
+        dispatch(updated(username, o));
+        return o;
+      })
+    )
     .catch(() => {});
 };
 
