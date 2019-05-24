@@ -34,7 +34,9 @@ export default inp => {
 
     if (
       filter &&
-      ['blog', 'comments', 'replies', 'wallet', 'feed'].includes(filter)
+      ['blog', 'comments', 'replies', 'wallet', 'points', 'feed'].includes(
+        filter
+      )
     ) {
       return {
         type: 'author',
