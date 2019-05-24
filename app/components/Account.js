@@ -1819,12 +1819,15 @@ class Account extends Component {
         this.setState({ points: r.points, uPoints: r.unclaimed_points });
         return getPointList(username);
       })
+      .catch(() => {
+        this.setState({ points: '0.000', uPoints: '0.000' });
+      })
       .then(r => {
         this.setState({ pointList: r });
         return r;
       })
       .catch(() => {
-        console.log('err');
+        this.setState({ pointList: [] });
       })
       .finally(() => {
         this.setState({ pointsLoading: false });
