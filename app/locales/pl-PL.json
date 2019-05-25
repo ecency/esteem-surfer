@@ -267,7 +267,9 @@
     "empty-list": "Nic tu nie ma",
     "deleted": "Zaplanowany post został usunięty",
     "move": "Przenieś do wersji roboczych",
-    "moved": "Przeniesiono do wersji roboczych"
+    "moved": "Przeniesiono do wersji roboczych",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Zakładki",
