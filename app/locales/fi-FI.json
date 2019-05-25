@@ -267,7 +267,9 @@
     "empty-list": "Täällä ei ole mitään",
     "deleted": "Ajastettu julkaisu poistettu",
     "move": "Siirrä luonnoksiin",
-    "moved": "Siirretty luonnoksiin"
+    "moved": "Siirretty luonnoksiin",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Kirjanmerkit",
