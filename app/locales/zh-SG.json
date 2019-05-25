@@ -267,7 +267,9 @@
     "empty-list": "暂无内容！",
     "deleted": "Scheduled post is deleted",
     "move": "移到草稿",
-    "moved": "已移到草稿"
+    "moved": "已移到草稿",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "书签",
