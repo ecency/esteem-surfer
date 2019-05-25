@@ -42,9 +42,13 @@ class EntryReblogBtn extends Component {
     if (!activeAccount.accountData) {
       return false;
     }
+
     const { blog } = activeAccount.accountData;
 
-    if (blog.some(e => e.author === author && e.permlink === permlink)) {
+    if (
+      blog &&
+      blog.some(e => e.author === author && e.permlink === permlink)
+    ) {
       return true;
     }
 
