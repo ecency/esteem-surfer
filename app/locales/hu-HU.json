@@ -267,7 +267,9 @@
     "empty-list": "Itt nincs semmi",
     "deleted": "A beütemezett bejegyzés törölve",
     "move": "Áthelyezés a piszkozatokhoz",
-    "moved": "Áthelyezve a piszkozatokhoz"
+    "moved": "Áthelyezve a piszkozatokhoz",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Könyvjelzők",
