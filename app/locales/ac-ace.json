@@ -267,7 +267,9 @@
     "empty-list": "Hana sapëuna",
     "deleted": "Scheduled post is deleted",
     "move": "Pinah lam konsep",
-    "moved": "Kalheuh pinah lam konsep"
+    "moved": "Kalheuh pinah lam konsep",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Pëunanda",
