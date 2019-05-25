@@ -269,7 +269,7 @@
     "move": "Mover para Rascunhos",
     "moved": "Movido para Rascunhos",
     "success-message": "Published successfully.",
-    "error-message": "Could not publish due to a server error."
+    "error-message": "Não foi possível publicar devido a um erro no servidor."
   },
   "bookmarks": {
     "title": "Marcadores",
