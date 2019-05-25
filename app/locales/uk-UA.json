@@ -267,7 +267,9 @@
     "empty-list": "Тут порожньо",
     "deleted": "Запланований пост видалено",
     "move": "Перемістити до чернеток",
-    "moved": "Переміщено до чернеток"
+    "moved": "Переміщено до чернеток",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Закладки",
