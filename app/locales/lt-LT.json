@@ -267,7 +267,9 @@
     "empty-list": "Nieko nėra",
     "deleted": "Suplanuotas įrašas panaikintas",
     "move": "Perkelti į ruošinius",
-    "moved": "Perkelta į ruošinius"
+    "moved": "Perkelta į ruošinius",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Žymės",
