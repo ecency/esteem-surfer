@@ -267,7 +267,9 @@
     "empty-list": "Ovde nema ništa",
     "deleted": "Planirani post je izbrisan",
     "move": "Premesti u radne verzije",
-    "moved": "Premešteno u radne verzije"
+    "moved": "Premešteno u radne verzije",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Obeleživači",
