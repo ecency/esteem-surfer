@@ -267,7 +267,9 @@
     "empty-list": "Rien ici",
     "deleted": "Publication planifiée supprimée",
     "move": "Déplacer vers brouillons",
-    "moved": "Déplacé vers brouillons"
+    "moved": "Déplacé vers brouillons",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Signets",
