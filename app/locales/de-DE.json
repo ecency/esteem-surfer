@@ -267,7 +267,9 @@
     "empty-list": "Hier ist nichts zu sehen",
     "deleted": "geplanter Beitrag wurde gelöscht",
     "move": "In Entwürfe verschieben",
-    "moved": "Erfolgreich in Entwürfe verschoben"
+    "moved": "Erfolgreich in Entwürfe verschoben",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Lesezeichen",
