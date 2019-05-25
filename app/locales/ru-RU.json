@@ -267,7 +267,9 @@
     "empty-list": "Здесь пусто",
     "deleted": "Отложенный пост удалён",
     "move": "Переместить в черновики",
-    "moved": "Перемещён в черновики"
+    "moved": "Перемещён в черновики",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Закладки",
