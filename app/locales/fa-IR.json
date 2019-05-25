@@ -267,7 +267,9 @@
     "empty-list": "اینجا چیزی نیست",
     "deleted": "مطلب های برنامه ریزی شده حذف شدند",
     "move": "انتقال به پیشنویس",
-    "moved": "به پیشنویس ها منتقل شده"
+    "moved": "به پیشنویس ها منتقل شده",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "نشانک ها",
