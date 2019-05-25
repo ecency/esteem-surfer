@@ -268,7 +268,7 @@
     "deleted": "Post agendado é excluído",
     "move": "Mover para Rascunhos",
     "moved": "Movido para Rascunhos",
-    "success-message": "Published successfully.",
+    "success-message": "Publicado com sucesso.",
     "error-message": "Não foi possível publicar devido a um erro no servidor."
   },
   "bookmarks": {
