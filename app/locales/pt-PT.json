@@ -267,7 +267,9 @@
     "empty-list": "Nada aqui",
     "deleted": "Post agendado é excluído",
     "move": "Mover para Rascunhos",
-    "moved": "Movido para Rascunhos"
+    "moved": "Movido para Rascunhos",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Marcadores",
