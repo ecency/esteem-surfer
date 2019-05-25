@@ -268,7 +268,7 @@
     "deleted": "Postarea planificată a fost ștearsă",
     "move": "Mută la schițe",
     "moved": "Mutat la schițe",
-    "success-message": "Published successfully.",
+    "success-message": "Publicat cu succes.",
     "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
