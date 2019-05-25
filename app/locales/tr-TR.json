@@ -267,7 +267,9 @@
     "empty-list": "Burada hiçbir şey yok",
     "deleted": "Planlanmış gönderi silindi",
     "move": "Taslaklara taşı",
-    "moved": "Taslaklara taşındı"
+    "moved": "Taslaklara taşındı",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Yer imleri",
