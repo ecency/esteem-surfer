@@ -8,6 +8,8 @@ import PropTypes from 'prop-types';
 import { message, Modal, Popconfirm } from 'antd';
 import { FormattedMessage, injectIntl, FormattedDate } from 'react-intl';
 
+import moment from 'moment';
+
 import {
   catchPostImage,
   postBodySummary
@@ -62,6 +64,14 @@ class ScheduleListItem extends Component {
     const tag = tags[0] || '';
     const img = catchPostImage(item.body) || noImage;
     const summary = postBodySummary(item.body, 200);
+
+    const itemDate = moment(item.schedule).toDate();
+    const compareDate = moment()
+      .add(60, 'seconds')
+      .toDate();
+
+    const publishSuccess = compareDate > itemDate && item.published;
+    const publishError = compareDate > itemDate && !item.published;
 
     return (
       <div className="schedules-list-item">
@@ -135,6 +145,29 @@ class ScheduleListItem extends Component {
                 <i className="mi">insert_drive_file</i>
               </span>
             </Tooltip>
+
+            <div className="item-status">
+              {publishSuccess && (
+                <Tooltip
+                  title={intl.formatMessage({
+                    id: 'schedules.success-message'
+                  })}
+                >
+                  <span className="status-success">
+                    <i className="mi">done_all</i>
+                  </span>
+                </Tooltip>
+              )}
+              {publishError && (
+                <Tooltip
+                  title={intl.formatMessage({ id: 'schedules.error-message' })}
+                >
+                  <span className="status-error">
+                    <i className="mi">error</i>
+                  </span>
+                </Tooltip>
+              )}
+            </div>
           </div>
         </div>
       </div>

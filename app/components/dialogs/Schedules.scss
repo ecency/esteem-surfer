@@ -156,7 +156,7 @@
             align-items: center;
             display: flex;
             justify-content: space-between;
-            width: 60px;
+            width: 140px;
 
             .btn-delete,
             .btn-edit {
@@ -169,6 +169,19 @@
 
               @include themify(night) {
                 color: $gunmetal;
+              }
+            }
+
+            .item-status {
+              margin-left: 50px;
+              width: 30px;
+              cursor: pointer;
+
+              .status-success {
+                color: $green1;
+              }
+              .status-error {
+                color: $red2;
               }
             }
           }
