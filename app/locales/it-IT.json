@@ -267,7 +267,9 @@
     "empty-list": "Non c'è niente qui",
     "deleted": "Pianificazione post eliminata",
     "move": "Sposta in bozze",
-    "moved": "Spostata in bozze"
+    "moved": "Spostata in bozze",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Segnalibri",
