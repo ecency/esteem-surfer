@@ -267,7 +267,9 @@
     "empty-list": "لاشيء هنا",
     "deleted": "تم مسح المشاركة المجدولة",
     "move": "نقل إلى قسم المسودات",
-    "moved": "تم النقل إلى قسم المسودات"
+    "moved": "تم النقل إلى قسم المسودات",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "إشارات مرجعية",
