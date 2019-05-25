@@ -276,6 +276,12 @@ export const grantPostingPermission = (account, pin) => {
 
     const { accountData } = account;
 
+    if (!accountData) {
+      return Promise.reject(
+        new Error("Please wait while your account's data loading...")
+      );
+    }
+
     const newPosting = Object.assign(
       {},
       { ...accountData.posting },
