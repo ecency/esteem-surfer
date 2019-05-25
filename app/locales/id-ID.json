@@ -267,7 +267,9 @@
     "empty-list": "Kosong",
     "deleted": "Jadwal post di hapus",
     "move": "Pindahkan ke konsep",
-    "moved": "Pindahkan ke konsep"
+    "moved": "Pindahkan ke konsep",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Tandai",
