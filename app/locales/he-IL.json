@@ -267,7 +267,9 @@
     "empty-list": "אין כאן מידע",
     "deleted": "פוסט מתוכנן נמחק",
     "move": "העבר\\י לטיוטות",
-    "moved": "הועבר לטיוטות"
+    "moved": "הועבר לטיוטות",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "סימניות",
