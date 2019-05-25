@@ -267,7 +267,9 @@
     "empty-list": "何もありません",
     "deleted": "Scheduled post is deleted",
     "move": "下書きへ移動",
-    "moved": "下書きへ移動しました"
+    "moved": "下書きへ移動しました",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "ブックマーク",
