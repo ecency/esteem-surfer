@@ -267,7 +267,9 @@
     "empty-list": "Ingenting här",
     "deleted": "Schemalagt inlägg raderat",
     "move": "Flytta till utkast",
-    "moved": "Flyttad till utkast"
+    "moved": "Flyttad till utkast",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Bokmärken",
