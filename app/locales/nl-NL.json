@@ -267,7 +267,9 @@
     "empty-list": "Niets hier",
     "deleted": "Gepland artikel is verwijderd",
     "move": "Verplaats naar concepten",
-    "moved": "Verplaatst naar concepten"
+    "moved": "Verplaatst naar concepten",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Bladwijzers",
