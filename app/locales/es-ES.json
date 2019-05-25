@@ -267,7 +267,9 @@
     "empty-list": "Nada aquí",
     "deleted": "Se borra la publicación programada",
     "move": "Mover a borradores",
-    "moved": "Movido a borradores"
+    "moved": "Movido a borradores",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Marcadores",
