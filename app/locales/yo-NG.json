@@ -267,7 +267,9 @@
     "empty-list": "Kò sí nnkan kan níbí",
     "deleted": "A ti yọ ìtòlẹ́sẹẹsẹ àròkọ kúrò",
     "move": "Gbé sí àwọn ẹ̀dà kíkọ",
-    "moved": "A ti gbe sí ẹ̀dà kíkọ"
+    "moved": "A ti gbe sí ẹ̀dà kíkọ",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Àwọn àmì-ìwé",
