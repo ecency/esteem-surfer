@@ -267,7 +267,9 @@
     "empty-list": "Nici un rezultat",
     "deleted": "Postarea planificată a fost ștearsă",
     "move": "Mută la schițe",
-    "moved": "Mutat la schițe"
+    "moved": "Mutat la schițe",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Bookmarks",
