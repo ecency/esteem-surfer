@@ -81,7 +81,7 @@ class App extends React.Component {
 
     // Refresh active account data
     this.refreshActiveAccount();
-    this.activeAccountInterval = setInterval(this.refreshActiveAccount, 15000);
+    this.activeAccountInterval = setInterval(this.refreshActiveAccount, 30000);
 
     // Refresh steem connect tokens
     this.scRefreshInterval = setInterval(

@@ -34,10 +34,13 @@ class AppFooter extends Component {
     if (activeAccount) {
       const { accountData } = activeAccount;
       if (accountData) {
-        vp = votingPower(accountData).toFixed(2);
-        rc = rcPower(accountData).toFixed(2);
-
-        showPower = true;
+        try {
+          vp = votingPower(accountData).toFixed(2);
+          rc = rcPower(accountData).toFixed(2);
+          showPower = true;
+        } catch (e) {
+          showPower = false;
+        }
       }
     }
 
