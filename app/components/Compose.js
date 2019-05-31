@@ -565,7 +565,11 @@ class Compose extends Component {
     let hasPostingPerm = false;
 
     const { activeAccount } = this.props;
-    if (activeAccount && activeAccount.accountData) {
+    if (
+      activeAccount &&
+      activeAccount.accountData &&
+      activeAccount.accountData.posting
+    ) {
       hasPostingPerm =
         activeAccount.accountData.posting.account_auths.filter(
           x => x[0] === 'esteemapp'
