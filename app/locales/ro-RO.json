@@ -269,7 +269,7 @@
     "move": "Mută la schițe",
     "moved": "Mutat la schițe",
     "success-message": "Publicat cu succes.",
-    "error-message": "Could not publish due to a server error."
+    "error-message": "Nu a putut fi publicată datorită unei erori de server."
   },
   "bookmarks": {
     "title": "Bookmarks",
