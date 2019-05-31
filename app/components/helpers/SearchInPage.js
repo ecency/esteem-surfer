@@ -73,7 +73,7 @@ class SearchInPage extends PureComponent {
     }
 
     // ctrl + f
-    if (e.keyCode === 70 && e.metaKey) {
+    if (e.keyCode === 70 && (e.ctrlKey || e.metaKey)) {
       this.toggle();
     }
   };
