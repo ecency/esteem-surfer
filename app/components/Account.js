@@ -949,7 +949,7 @@ export class SectionWallet extends Component {
 
     if (account) {
       const { steemPerMVests, base, quote } = dynamicProps;
-      const { currency } = global;
+      const { currencyRate, currency } = global;
 
       const rewardSteemBalance = parseToken(account.reward_steem_balance);
       const rewardSbdBalance = parseToken(account.reward_sbd_balance);
@@ -979,6 +979,9 @@ export class SectionWallet extends Component {
       const totalSbd = sbdBalance + savingBalanceSbd;
 
       const estimatedValue = totalSteem * pricePerSteem + totalSbd;
+      const estimatedValueInCur = estimatedValue
+        ? estimatedValue * currencyRate
+        : 0;
 
       const showPowerDown =
         account.next_vesting_withdrawal !== '1969-12-31T23:59:59';
@@ -1129,7 +1132,7 @@ export class SectionWallet extends Component {
                     style="currency"
                     currencyDisplay="symbol"
                     minimumFractionDigits={3}
-                    value={estimatedValue}
+                    value={estimatedValueInCur}
                   />
                 </span>
               </Tooltip>
