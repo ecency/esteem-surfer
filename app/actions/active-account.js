@@ -3,11 +3,7 @@ eslint-disable camelcase
  */
 
 import { setItem, removeItem } from '../helpers/storage';
-import {
-  getAccounts,
-  getAccountRC,
-  getDiscussions
-} from '../backend/steem-client';
+import { getAccounts, getAccountRC } from '../backend/steem-client';
 
 import { getPoints } from '../backend/esteem-client';
 
@@ -45,15 +41,9 @@ const update = (username, dispatch, getState) => {
         return account;
       });
     })
-    .then(account =>
-      // for reblog detection. see components/elements/EntryReblogBtn.js:43
-      getDiscussions('blog', {
-        tag: username,
-        limit: 40,
-        start_author: undefined,
-        start_permlink: undefined
-      }).then(blog => Object.assign({}, account, { blog }))
-    )
+    // Synchronising user's blog for reblog detection causes big amount of data usage. disabled.
+    // See components/elements/EntryReblogBtn.js:43
+    .then(account => Object.assign({}, account, { blog: [] }))
     .catch(() => {})
     .then(account =>
       getPoints(username).then(p => {
@@ -68,7 +58,6 @@ const update = (username, dispatch, getState) => {
         if (a && u === username) {
           dispatch(updated(username, o));
         }
-
         return o;
       })
     )
