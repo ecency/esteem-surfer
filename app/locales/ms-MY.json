@@ -268,8 +268,8 @@
     "deleted": "Jadual pos telah dipadamkan",
     "move": "Memindah ke draf",
     "moved": "Dipindah ke draf",
-    "success-message": "Published successfully.",
-    "error-message": "Could not publish due to a server error."
+    "success-message": "Berjaya dipaparkan.",
+    "error-message": "Post tidak dipaparkan kerana server error."
   },
   "bookmarks": {
     "title": "Tanda halaman",
