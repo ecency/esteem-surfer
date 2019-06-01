@@ -467,7 +467,7 @@
     "to": "Cont",
     "percentage": "Procentaj",
     "slider-help": "Procentul de putere scăzută la acest cont",
-    "auto-power-down": "Automatically power up the target account"
+    "auto-power-down": "Power up automat contul ţintă"
   },
   "friends": {
     "followers-title": "Urmăritori ({count})",
