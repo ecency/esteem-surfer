@@ -466,8 +466,8 @@
     "title": "Auszahlungskonto hinzufügen",
     "to": "Konto",
     "percentage": "Prozentsatz",
-    "slider-help": "Percentage of Power Down to this account",
-    "auto-power-down": "Automatically power up the target account"
+    "slider-help": "Prozentsatz des Power-Down auf dieses Konto",
+    "auto-power-down": "Automatisches Power-Up des Zielkontos"
   },
   "friends": {
     "followers-title": "Followers ({count})",
@@ -477,9 +477,9 @@
     "search-placeholder": "Benutzer suchen"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "Delegierte Steem-Power von @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "Delegierte Steem-Power nach @{n}"
   }
 }
