@@ -1517,6 +1517,7 @@ export class SectionPoints extends Component {
     const iconCheckin = 'star_border';
     const iconLogin = 'person_outline';
     const iconCheckinExtra = 'done_all';
+    const iconTransfer = 'compare_arrows';
 
     const isMyPage = activeAccount && activeAccount.username === username;
 
@@ -1623,6 +1624,7 @@ export class SectionPoints extends Component {
               {pointList.map(item => {
                 let icon = '';
                 let lKey = '';
+                const lArgs = {};
 
                 switch (item.type) {
                   case 10:
@@ -1653,6 +1655,16 @@ export class SectionPoints extends Component {
                     icon = iconReblog;
                     lKey = 'reblog';
                     break;
+                  case 998:
+                    icon = iconTransfer;
+                    lKey = 'transfer-sent';
+                    lArgs.n = item.receiver;
+                    break;
+                  case 999:
+                    icon = iconTransfer;
+                    lKey = 'transfer-incoming';
+                    lArgs.n = item.sender;
+                    break;
                   default:
                 }
 
@@ -1665,12 +1677,17 @@ export class SectionPoints extends Component {
                       <div className="transaction-name">
                         <FormattedMessage
                           id={`account.points-${lKey}-list-desc`}
+                          values={lArgs}
                         />
                       </div>
                       <div className="transaction-date">
                         <FormattedRelative value={item.created} />
                       </div>
                     </div>
+
+                    {item.memo && (
+                      <div className="transaction-details">{item.memo}</div>
+                    )}
                     <div className="transaction-numbers">{item.amount}</div>
                   </div>
                 );
