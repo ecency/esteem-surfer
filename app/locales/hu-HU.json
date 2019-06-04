@@ -197,6 +197,8 @@
     "points-login-list-desc": "Bejelentkezés pontok",
     "points-checkin-list-desc": "Használati pontok",
     "points-checkin-extra-list-desc": "Használati bónusz",
+    "points-transfer-sent-list-desc": "Transfer to {n}",
+    "points-transfer-incoming-list-desc": "Transfer from {n}",
     "points-claim-ok": "Pontok átvéve"
   },
   "composer": {
