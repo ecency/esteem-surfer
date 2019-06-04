@@ -197,7 +197,7 @@
     "points-login-list-desc": "Mata ganjaran log masuk",
     "points-checkin-list-desc": "Mata ganjaran mengguna",
     "points-checkin-extra-list-desc": "Bonus untuk pengguna",
-    "points-transfer-sent-list-desc": "Transfer to {n}",
+    "points-transfer-sent-list-desc": "Pindah kepada {n}",
     "points-transfer-incoming-list-desc": "Transfer from {n}",
     "points-claim-ok": "Mata ganjaran dituntut"
   },
