@@ -197,6 +197,8 @@
     "points-login-list-desc": "Очки за логин",
     "points-checkin-list-desc": "Очки за пользование",
     "points-checkin-extra-list-desc": "Бонус за использование",
+    "points-transfer-sent-list-desc": "Transfer to {n}",
+    "points-transfer-incoming-list-desc": "Transfer from {n}",
     "points-claim-ok": "Очки зачислены"
   },
   "composer": {
