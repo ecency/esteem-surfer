@@ -197,6 +197,8 @@
     "points-login-list-desc": "Points for login",
     "points-checkin-list-desc": "Points for usage",
     "points-checkin-extra-list-desc": "Usage bonus",
+    "points-transfer-sent-list-desc": "Transfer to {n}",
+    "points-transfer-incoming-list-desc": "Transfer from {n}",
     "points-claim-ok": "Points claimed"
   },
   "composer": {
