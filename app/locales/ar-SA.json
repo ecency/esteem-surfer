@@ -323,7 +323,7 @@
     "address-enter-url": "أدخل رابط URL",
     "address-enter-query": "أدخل إستعلام البحث",
     "unclaimed-reward-notice": "أنت لم تقم بمطالبة المافأة",
-    "unclaimed-points-notice": "You have unclaimed points",
+    "unclaimed-points-notice": "لديك نقاط لم تطالب بها",
     "search-no-matches": "ليس هناك أي مطابقات"
   },
   "search": {
