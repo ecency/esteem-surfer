@@ -199,6 +199,7 @@
     "points-checkin-extra-list-desc": "Bonus untuk pengguna",
     "points-transfer-sent-list-desc": "Pindah kepada {n}",
     "points-transfer-incoming-list-desc": "Pindah daripada {n}",
+    "points-delegation-list-desc": "Delegation reward",
     "points-claim-ok": "Mata ganjaran dituntut"
   },
   "composer": {
