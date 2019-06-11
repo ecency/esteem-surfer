@@ -1612,6 +1612,17 @@ export class SectionPoints extends Component {
               <span className="reward-num">10</span>
             </div>
           </Tooltip>
+          <Tooltip
+            title={intl.formatMessage({
+              id: 'account.points-delegation-desc'
+            })}
+            placement="bottom"
+          >
+            <div className="point-reward-type">
+              <i className="mi">{iconReward}</i>
+              <span className="reward-num">1</span>
+            </div>
+          </Tooltip>
         </div>
 
         {pointList && pointList.length > 0 && (
