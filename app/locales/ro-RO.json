@@ -197,9 +197,9 @@
     "points-login-list-desc": "Puncte pentru autentificare",
     "points-checkin-list-desc": "Puncte pentru utilizare",
     "points-checkin-extra-list-desc": "Bonus de utilizare",
-    "points-transfer-sent-list-desc": "Transfer to {n}",
-    "points-transfer-incoming-list-desc": "Transfer from {n}",
-    "points-delegation-list-desc": "Delegation reward",
+    "points-transfer-sent-list-desc": "Transfer către {n}",
+    "points-transfer-incoming-list-desc": "Transfer de la {n}",
+    "points-delegation-list-desc": "Recompensă delegare",
     "points-claim-ok": "Puncte colectate"
   },
   "composer": {
