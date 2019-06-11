@@ -199,6 +199,7 @@
     "points-checkin-extra-list-desc": "Bonus de utilizare",
     "points-transfer-sent-list-desc": "Transfer to {n}",
     "points-transfer-incoming-list-desc": "Transfer from {n}",
+    "points-delegation-list-desc": "Delegation reward",
     "points-claim-ok": "Puncte colectate"
   },
   "composer": {
