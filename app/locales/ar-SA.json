@@ -199,6 +199,7 @@
     "points-checkin-extra-list-desc": "مكافأة الاستخدام",
     "points-transfer-sent-list-desc": "تحويل إلى {n}",
     "points-transfer-incoming-list-desc": "تحويل من {n}",
+    "points-delegation-list-desc": "Delegation reward",
     "points-claim-ok": "تمت المطالبة بالنقاط"
   },
   "composer": {
