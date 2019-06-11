@@ -176,7 +176,7 @@ class UserMenu extends Component {
             role="none"
             onClick={this.bookmarksClicked}
           >
-            <i className="mi">star_border</i>
+            <i className="mi">bookmark</i>
             <FormattedMessage id="user-menu.bookmarks" />
           </a>
           <a
