@@ -1,15 +1,19 @@
 /* eslint-disable */
 
+import merge from 'deepmerge';
+
+const enUs = require('./en-US.json');
+
 export default {
-  'en-US': require('./en-US.json'),
-  'ru-RU': require('./ru-RU.json'),
-  'es-ES': require('./es-ES.json'),
-  'pt-PT': require('./pt-PT.json'),
-  'pl-PL': require('./pl-PL.json'),
-  'hu-HU': require('./hu-HU.json'),
-  'nl-NL': require('./nl-NL.json'),
-  'ko-KR': require('./ko-KR.json'),
-  'de-DE': require('./de-DE.json')
+  'en-US': enUs,
+  'ru-RU': merge.all([enUs, require('./ru-RU.json')]),
+  'es-ES': merge.all([enUs, require('./es-ES.json')]),
+  'pt-PT': merge.all([enUs, require('./pt-PT.json')]),
+  'pl-PL': merge.all([enUs, require('./pl-PL.json')]),
+  'hu-HU': merge.all([enUs, require('./hu-HU.json')]),
+  'nl-NL': merge.all([enUs, require('./nl-NL.json')]),
+  'ko-KR': merge.all([enUs, require('./ko-KR.json')]),
+  'de-DE': merge.all([enUs, require('./de-DE.json')])
 };
 
 export const locales = [
@@ -23,3 +27,26 @@ export const locales = [
   { id: 'ko-KR', name: 'Korean' },
   { id: 'de-DE', name: 'German' }
 ];
+
+export const intlLocale = l => {
+  switch (l) {
+    case 'ru-RU':
+      return 'ru';
+    case 'es-ES':
+      return 'es';
+    case 'pt-PT':
+      return 'pt';
+    case 'pl-PL':
+      return 'pl';
+    case 'hu-HU':
+      return 'hu';
+    case 'nl-NL':
+      return 'nl';
+    case 'ko-KR':
+      return 'ko';
+    case 'de-DE':
+      return 'de';
+    default:
+      return 'en-US';
+  }
+};

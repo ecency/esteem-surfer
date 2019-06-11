@@ -36,7 +36,7 @@ import formatMessage from '../utils/format-message';
 import notificationBody from '../utils/notification-body';
 import { flattenMessages } from '../utils';
 
-import messages from '../locales';
+import messages, { intlLocale } from '../locales';
 
 import { getItem, setItem } from '../helpers/storage';
 
@@ -326,7 +326,7 @@ class App extends React.Component {
 
     return (
       <IntlProvider
-        locale={locale}
+        locale={intlLocale(locale)}
         messages={flattenMessages(messages[locale])}
       >
         <React.Fragment>

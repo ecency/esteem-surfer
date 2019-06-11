@@ -2,21 +2,43 @@ import { addLocaleData, IntlProvider } from 'react-intl';
 
 import en from 'react-intl/locale-data/en';
 import tr from 'react-intl/locale-data/tr';
+import ru from 'react-intl/locale-data/ru';
+import ko from 'react-intl/locale-data/ko';
+import es from 'react-intl/locale-data/es';
+import pt from 'react-intl/locale-data/pt';
+import pl from 'react-intl/locale-data/pl';
+import hu from 'react-intl/locale-data/hu';
+import nl from 'react-intl/locale-data/nl';
+import de from 'react-intl/locale-data/de';
 
 import { getItem } from '../helpers/storage';
 import { flattenMessages } from './index';
-import messages from '../locales';
+import messages, { intlLocale } from '../locales';
 
-addLocaleData([...en, ...tr]);
+addLocaleData([
+  ...en,
+  ...tr,
+  ...ru,
+  ...ko,
+  ...es,
+  ...pt,
+  ...pl,
+  ...hu,
+  ...nl,
+  ...de
+]);
 
 let locale;
 let intl;
 
 const setupIntl = () => {
-  ({ intl } = new IntlProvider({
-    locale,
-    messages: flattenMessages(messages[locale])
-  }, {}).getChildContext());
+  ({ intl } = new IntlProvider(
+    {
+      locale: intlLocale(locale),
+      messages: flattenMessages(messages[locale])
+    },
+    {}
+  ).getChildContext());
 };
 
 const watchLocale = () => {
@@ -31,6 +53,4 @@ const watchLocale = () => {
 
 watchLocale();
 
-export default (key, values = {}) => {
-  return intl.formatMessage({ id: key }, values);
-}
+export default (key, values = {}) => intl.formatMessage({ id: key }, values);
