@@ -187,3 +187,10 @@ export const scWithdrawVesting = (account, vestingShares) =>
       vestingShares
     )}`
   );
+
+export const sctTransferPoint = (account, json) =>
+  standardScWindow(
+    `sign/custom-json?required_auths=%5B%22${account}%22%5D&required_posting_auths=%5B%5D&id=esteem_point_transfer&json=${encodeURIComponent(
+      json
+    )}`
+  );

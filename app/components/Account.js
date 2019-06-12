@@ -1506,8 +1506,10 @@ export class SectionPoints extends Component {
       pointList,
       username,
       activeAccount,
+      location,
       intl
     } = this.props;
+
     const { claiming } = this.state;
 
     const iconPost = 'edit';
@@ -1522,10 +1524,29 @@ export class SectionPoints extends Component {
 
     const isMyPage = activeAccount && activeAccount.username === username;
 
+    let actionListPoint;
+
+    if (isMyPage) {
+      actionListPoint = (
+        <Menu className="surfer-dropdown-menu">
+          <Menu.Item key="transfer">
+            <Link to={`/@${activeAccount.username}/transfer/point`}>
+              <FormattedMessage id="account.transfer" />
+            </Link>
+          </Menu.Item>
+        </Menu>
+      );
+    }
+
     return (
       <div className="points-section">
         <div className="points">
-          <div className="points-val">{points}</div>
+          <div className="points-val">
+            <div className="val">{points}</div>
+            {isMyPage && (
+              <DropDown menu={actionListPoint} location={location} />
+            )}
+          </div>
           <div className="point-name">eSteem Points</div>
           {uPoints !== '0.000' && (
             <div className={`unclaimed ${isMyPage ? 'can-claim' : ''}`}>
@@ -1726,6 +1747,7 @@ SectionPoints.propTypes = {
   points: PropTypes.string.isRequired,
   uPoints: PropTypes.string.isRequired,
   intl: PropTypes.instanceOf(Object).isRequired,
+  location: PropTypes.instanceOf(Object).isRequired,
   activeAccount: PropTypes.instanceOf(Object),
   afterClaim: PropTypes.func.isRequired
 };

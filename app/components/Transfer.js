@@ -25,8 +25,12 @@ import {
   transfer,
   transferToSavings,
   transferFromSavings,
-  transferToVesting
+  transferToVesting,
+  transferPoint
 } from '../backend/steem-client';
+
+import { getPoints } from '../backend/esteem-client';
+
 import formatChainError from '../utils/format-chain-error';
 import parseToken from '../utils/parse-token';
 import amountFormatCheck from '../utils/amount-format-check';
@@ -69,6 +73,13 @@ class AssetSwitch extends PureComponent {
           className={`asset ${selected === 'SBD' ? 'selected' : ''}`}
         >
           SBD
+        </a>
+        <a
+          onClick={() => this.clicked('POINT')}
+          role="none"
+          className={`asset ${selected === 'POINT' ? 'selected' : ''}`}
+        >
+          POINT
         </a>
       </div>
     );
@@ -144,11 +155,17 @@ class Transfer extends PureComponent {
     const { from } = this.state;
 
     return getAccount(from)
-      .then(resp => {
-        this.setState({ fromData: resp }, () => {
+      .then(account =>
+        getPoints(from).then(r =>
+          Object.assign({}, account, { points: r.points })
+        )
+      )
+      .then(account => {
+        this.setState({ fromData: account }, () => {
           this.checkAmount();
         });
-        return resp;
+
+        return account;
       })
       .catch(e => {
         message.error(formatChainError(e));
@@ -190,13 +207,13 @@ class Transfer extends PureComponent {
     let u = '/';
     switch (mode) {
       case 'transfer':
-        u = `/@${from}/transfer/${asset}`;
+        u = `/@${from}/transfer/${asset.toLowerCase()}`;
         break;
       case 'transfer-saving':
-        u = `/@${from}/transfer-saving/${asset}`;
+        u = `/@${from}/transfer-saving/${asset.toLowerCase()}`;
         break;
       case 'withdraw-saving':
-        u = `/@${from}/withdraw-saving/${asset}`;
+        u = `/@${from}/withdraw-saving/${asset.toLowerCase()}`;
         break;
       case 'power-up':
         u = `/@${from}/withdraw-saving`;
@@ -319,6 +336,10 @@ class Transfer extends PureComponent {
       return null;
     }
 
+    if (asset === 'POINT') {
+      return parseToken(fromData.points);
+    }
+
     if (mode === 'withdraw-saving') {
       const k = asset === 'STEEM' ? 'savings_balance' : 'savings_sbd_balance';
       return parseToken(fromData[k]);
@@ -351,7 +372,11 @@ class Transfer extends PureComponent {
     let args = [account, pin, to, fullAmount, memo];
     switch (mode) {
       case 'transfer':
-        fn = transfer;
+        if (asset === 'POINT') {
+          fn = transferPoint;
+        } else {
+          fn = transfer;
+        }
         break;
       case 'transfer-saving':
         fn = transferToSavings;

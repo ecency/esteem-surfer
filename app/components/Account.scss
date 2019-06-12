@@ -711,9 +711,21 @@
 
           .points-val {
             color: $dark-sky-blue;
-            font-size: 28px;
-            font-weight: 700;
+            display: inline-flex;
             margin-bottom: 10px;
+            cursor: default;
+            position: relative;
+
+            .val {
+              font-size: 28px;
+              font-weight: 700;
+            }
+
+            .drop-down-caret {
+              position: absolute;
+              right: -40px;
+              top: 0;
+            }
           }
 
           .point-name {

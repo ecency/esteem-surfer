@@ -16,7 +16,8 @@ import {
   scTransferFromSavings,
   scTransferToVesting,
   scDelegateVestingShares,
-  scWithdrawVesting
+  scWithdrawVesting,
+  sctTransferPoint
 } from '../helpers/sc';
 
 import { decryptKey } from '../utils/crypto';
@@ -801,5 +802,34 @@ export const setWithdrawVestingRoute = (
     return Promise.reject(
       new Error('Steem connect setWithdrawVestingRoute not implemented yet.')
     );
+  }
+};
+
+export const transferPoint = (account, pin, to, amount, memo) => {
+  const { username: from } = account;
+
+  const json = JSON.stringify({
+    sender: from,
+    receiver: to,
+    amount,
+    memo
+  });
+
+  if (account.type === 's') {
+    const key = decryptKey(account.keys.active, pin);
+    const privateKey = PrivateKey.fromString(key);
+
+    const op = {
+      id: 'esteem_point_transfer',
+      json,
+      required_auths: [from],
+      required_posting_auths: []
+    };
+
+    return client.broadcast.json(op, privateKey);
+  }
+
+  if (account.type === 'sc') {
+    return sctTransferPoint(from, json);
   }
 };
