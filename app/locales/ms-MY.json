@@ -190,7 +190,7 @@
     "points-reblog-desc": "Mengulang siar post yang anda sukai kepada kawan, anda juga memgumpul 1 mata.",
     "points-login-desc": "Apabila anda log masuk eSteem, anda akan diberi 100 mata secara otomatik.",
     "points-checkin-extra-desc": "Pengguna app dengan konsisten, anda mungkin akan dapat 10 mata secara percuma. Lebih memgguna, lebih ganjaran.",
-    "points-delegation-desc": "You can earn 1 point per day for each 100SP delegation.",
+    "points-delegation-desc": "Bagi delegasi setiap 100SP anda akan menerima 1 mata ganjaran setiap hari.",
     "points-post-list-desc": "Mata ganjaran pos",
     "points-comment-list-desc": "Mata ganjaran komen",
     "points-vote-list-desc": "Mata ganjaran vote",
@@ -200,7 +200,7 @@
     "points-checkin-extra-list-desc": "Bonus untuk pengguna",
     "points-transfer-sent-list-desc": "Pindah kepada {n}",
     "points-transfer-incoming-list-desc": "Pindah daripada {n}",
-    "points-delegation-list-desc": "Delegation reward",
+    "points-delegation-list-desc": "Ganjaran delegasi",
     "points-claim-ok": "Mata ganjaran dituntut"
   },
   "composer": {
