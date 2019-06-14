@@ -196,12 +196,12 @@
     "points-vote-list-desc": "Pontos para votar",
     "points-reblog-list-desc": "Pontos para reblog",
     "points-login-list-desc": "Pontos por Login",
-    "points-checkin-list-desc": "Points for usage",
-    "points-checkin-extra-list-desc": "Usage bonus",
-    "points-transfer-sent-list-desc": "Transfer to {n}",
-    "points-transfer-incoming-list-desc": "Transfer from {n}",
-    "points-delegation-list-desc": "Delegation reward",
-    "points-claim-ok": "Points claimed"
+    "points-checkin-list-desc": "Pontos para uso",
+    "points-checkin-extra-list-desc": "Uso do Bonús",
+    "points-transfer-sent-list-desc": "Transferir para {n}",
+    "points-transfer-incoming-list-desc": "Transferido po {n}",
+    "points-delegation-list-desc": "Recompensa da Delegação",
+    "points-claim-ok": "Pontos reivindicados"
   },
   "composer": {
     "title-placeholder": "Título",
@@ -320,7 +320,7 @@
     "favorite": "Adicionar aos favoritos",
     "favoriteRemove": "Removido dos favoritos",
     "wallet": "A minha Carteira",
-    "points": "My Points",
+    "points": "Os meus pontos",
     "activities": "Actividades",
     "address-enter-url": "Inserir url",
     "address-enter-query": "Inserir Termo de Pesquisa",
