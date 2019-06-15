@@ -1880,14 +1880,13 @@ class Account extends Component {
         return getPointList(username);
       })
       .catch(() => {
-        this.setState({ points: '0.000', uPoints: '0.000' });
+        this.setState({ points: '0.000', uPoints: '0.000', pointList: [] });
       })
-      .then(r => {
-        this.setState({ pointList: r });
-        return r;
-      })
-      .catch(() => {
-        this.setState({ pointList: [] });
+      .then(pointList => {
+        if (pointList) {
+          this.setState({ pointList });
+        }
+        return pointList;
       })
       .finally(() => {
         this.setState({ pointsLoading: false });
