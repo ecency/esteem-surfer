@@ -278,6 +278,15 @@ class QuickProfile extends Component {
                     role="none"
                     className="menu-item"
                     onClick={() => {
+                      this.goSection('points');
+                    }}
+                  >
+                    <FormattedMessage id="quick-profile.section-points" />
+                  </a>
+                  <a
+                    role="none"
+                    className="menu-item"
+                    onClick={() => {
                       this.goSection('wallet');
                     }}
                   >
