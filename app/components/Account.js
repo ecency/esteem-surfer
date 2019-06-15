@@ -375,7 +375,9 @@ export class AccountMenu extends Component {
           </a>
         </div>
         <div className="page-tools">
-          {section !== 'wallet' && <ListSwitch {...this.props} />}
+          {['blog', 'comments', 'replies'].includes(section) && (
+            <ListSwitch {...this.props} />
+          )}
         </div>
       </div>
     );
