@@ -185,7 +185,7 @@ class UserMenu extends Component {
             role="none"
             onClick={this.favoritesClicked}
           >
-            <i className="mi">favorite_border</i>
+            <i className="mi">star</i>
             <FormattedMessage id="user-menu.favorites" />
           </a>
           <a
