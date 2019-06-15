@@ -76,7 +76,7 @@ class Favorites extends Component {
         {realData.length > 0 && (
           <div className="favorites-filter">
             <Input
-              placeHolder={intl.formatMessage({ id: 'favorites.search' })}
+              placeholder={intl.formatMessage({ id: 'favorites.search' })}
               onChange={this.onSearchChange}
             />
           </div>
@@ -100,12 +100,11 @@ class Favorites extends Component {
             </div>
           </div>
         )}
-        {!loading &&
-          data.length < 1 && (
-            <div className="favorites-list">
-              <FormattedMessage id="favorites.empty-list" />
-            </div>
-          )}
+        {!loading && data.length < 1 && (
+          <div className="favorites-list">
+            <FormattedMessage id="favorites.empty-list" />
+          </div>
+        )}
       </div>
     );
   }
