@@ -192,17 +192,17 @@
     "points-login-desc": "When you login into eSteem app you are entitled to earn 100 points automatically.",
     "points-checkin-extra-desc": "Consistent use of app gives you extra chances to earn more 10 points, be more active and earn more.",
     "points-delegation-desc": "You can earn 1 point per day for each 100SP delegation.",
-    "points-post-list-desc": "Points for post",
-    "points-comment-list-desc": "Points for comment",
-    "points-vote-list-desc": "Points for vote",
-    "points-reblog-list-desc": "Points for reblog",
-    "points-login-list-desc": "Points for login",
-    "points-checkin-list-desc": "Points for usage",
-    "points-checkin-extra-list-desc": "Usage bonus",
+    "points-post-list-desc": "Бали за пост",
+    "points-comment-list-desc": "Бали за коментар",
+    "points-vote-list-desc": "Бали за голос",
+    "points-reblog-list-desc": "Бали за репост",
+    "points-login-list-desc": "Бали за авторизацію",
+    "points-checkin-list-desc": "Бали за користування",
+    "points-checkin-extra-list-desc": "Бонус за користування",
     "points-transfer-sent-list-desc": "Transfer to {n}",
     "points-transfer-incoming-list-desc": "Transfer from {n}",
     "points-delegation-list-desc": "Delegation reward",
-    "points-claim-ok": "Points claimed"
+    "points-claim-ok": "Бали зараховані"
   },
   "composer": {
     "title-placeholder": "Заголовок",
@@ -273,8 +273,8 @@
     "deleted": "Запланований пост видалено",
     "move": "Перемістити до чернеток",
     "moved": "Переміщено до чернеток",
-    "success-message": "Published successfully.",
-    "error-message": "Could not publish due to a server error."
+    "success-message": "Опубліковано успішно.",
+    "error-message": "Не вдалось опублікувати через помилку сервера."
   },
   "bookmarks": {
     "title": "Закладки",
@@ -321,12 +321,12 @@
     "favorite": "Додати до обраного",
     "favoriteRemove": "Видалено з обраного",
     "wallet": "Мій гаманець",
-    "points": "My Points",
+    "points": "Мої бали",
     "activities": "Активність",
     "address-enter-url": "Введіть url",
     "address-enter-query": "Введіть пошуковий запит",
     "unclaimed-reward-notice": "У вас є не зараховані винагороди",
-    "unclaimed-points-notice": "You have unclaimed points",
+    "unclaimed-points-notice": "У вас є не зараховані бали",
     "search-no-matches": "Немає збігів"
   },
   "search": {
