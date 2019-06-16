@@ -186,7 +186,7 @@
     "point-history": "Історія",
     "points-post-desc": "  Діліться з друзями постами, що вам подобаються, та отримуйте 1 бал.",
     "points-comment-desc": "Кожен зроблений коментар допомагає нарощувати аудиторію, зав'язує дружбу та приносить вам 5 балів.",
-    "points-checkin-desc": "Checking in on eSteem app gives you 0.25 points and helps you stay connected with your friends.",
+    "points-checkin-desc": "Вхід до eSteem додатку дає вам 0,25 балів та допомагає залишатися на зв'язку з друзями.",
     "points-vote-desc": "Голосуючи, ви винагороджуєте інших авторів і показуєте своє схвалення, а також отримуєте бали у кількості 0,01 x Сила голосу.",
     "points-reblog-desc": "  Діліться з друзями постами, що вам подобаються, та отримуйте 1 бал.",
     "points-login-desc": "При авторизації в додатку eSteem вам автоматично нараховується 100 балів.",
@@ -464,7 +464,7 @@
     "begin": "Почати Power Down",
     "stop": "Зупинити",
     "estimated-note": "Приблизно на тиждень",
-    "withdraw-accounts": "Destination Account(s)",
+    "withdraw-accounts": "Акаунт(и)-одержувач(і)",
     "add-withdraw-account": "Додати акаунт для виводу коштів"
   },
   "withdraw-route": {
