@@ -485,6 +485,6 @@
     "title": "Делеговані steem power від @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "Steem power делеговані @{n}"
   }
 }
