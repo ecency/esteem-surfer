@@ -201,7 +201,7 @@
     "points-checkin-extra-list-desc": "Бонус за користування",
     "points-transfer-sent-list-desc": "Transfer to {n}",
     "points-transfer-incoming-list-desc": "Transfer from {n}",
-    "points-delegation-list-desc": "Delegation reward",
+    "points-delegation-list-desc": "Винагорода за делегацію",
     "points-claim-ok": "Бали зараховані"
   },
   "composer": {
@@ -460,7 +460,7 @@
     "title": "Power Down",
     "sub-title": "Power Down Steem Power",
     "account": "Акаунт",
-    "incoming-funds": "Incoming Funds",
+    "incoming-funds": "Надходження коштів",
     "begin": "Почати Power Down",
     "stop": "Зупинити",
     "estimated-note": "Приблизно на тиждень",
@@ -471,8 +471,8 @@
     "title": "Додати акаунт для виводу коштів",
     "to": "Акаунт",
     "percentage": "Відсоток",
-    "slider-help": "Percentage of Power Down to this account",
-    "auto-power-down": "Automatically power up the target account"
+    "slider-help": "Відсоток Power Down-у для цього акаунту",
+    "auto-power-down": "Автоматично робити power up на вказаний акаунт"
   },
   "friends": {
     "followers-title": "Читачі ({count})",
