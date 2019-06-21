@@ -33,6 +33,7 @@ class Friends extends Component {
     };
 
     this.loadLimit = 80;
+    this.timer = null;
   }
 
   componentDidMount() {
@@ -94,39 +95,44 @@ class Friends extends Component {
   };
 
   searchChanged = e => {
+    const { username, mode } = this.props;
     const { loading } = this.state;
+
+    const search = e.target.value.trim();
+    this.stateSet({ search });
+
     if (loading) {
       return;
     }
 
-    const val = e.target.value.trim();
-    this.stateSet({ search: val });
-  };
-
-  onSearch = async () => {
-    const { search } = this.state;
-    const { username, mode } = this.props;
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
 
     if (!search) {
       return this.loadFirst();
     }
 
-    this.stateSet({ loading: true, data: [], hasMore: false });
+    this.timer = setTimeout(() => {
+      this.stateSet({ loading: true, data: [], hasMore: false });
 
-    const searchFn = mode === 'following' ? searchFollowing : searchFollower;
+      const searchFn = mode === 'following' ? searchFollowing : searchFollower;
 
-    let data;
-    try {
-      data = await searchFn(username, search);
-    } catch (e) {
-      data = [];
-    }
+      return searchFn(username, search)
+        .then(data => {
+          this.stateSet({
+            data
+          });
 
-    this.stateSet({
-      data,
-      hasMore: false,
-      loading: false
-    });
+          return data;
+        })
+        .finally(() => {
+          this.stateSet({
+            hasMore: false,
+            loading: false
+          });
+        });
+    }, 500);
   };
 
   kKey = () => {
@@ -173,14 +179,12 @@ class Friends extends Component {
 
         <div className="friends-list">
           <div className="friend-search-box">
-            <Input.Search
+            <Input
               value={search}
-              disabled={loading}
               placeholder={intl.formatMessage({
                 id: 'friends.search-placeholder'
               })}
               onChange={this.searchChanged}
-              onSearch={this.onSearch}
             />
           </div>
 
