@@ -19,6 +19,8 @@ import {
   getAccounts
 } from '../../backend/steem-client';
 
+import { searchFollowing, searchFollower } from '../../backend/esteem-client';
+
 class Friends extends Component {
   constructor(props) {
     super(props);
@@ -91,12 +93,6 @@ class Friends extends Component {
     });
   };
 
-  loadFn = () => {
-    const { mode } = this.props;
-
-    return mode === 'following' ? getFollowing : getFollowers;
-  };
-
   searchChanged = e => {
     const { loading } = this.state;
     if (loading) {
@@ -109,6 +105,7 @@ class Friends extends Component {
 
   onSearch = async () => {
     const { search } = this.state;
+    const { username, mode } = this.props;
 
     if (!search) {
       return this.loadFirst();
@@ -116,9 +113,11 @@ class Friends extends Component {
 
     this.stateSet({ loading: true, data: [], hasMore: false });
 
+    const searchFn = mode === 'following' ? searchFollowing : searchFollower;
+
     let data;
     try {
-      data = await this.loadData(search, 1);
+      data = await searchFn(username, search);
     } catch (e) {
       data = [];
     }
@@ -137,9 +136,11 @@ class Friends extends Component {
   };
 
   loadData = async (start = undefined, limit = this.loadLimit) => {
-    const { username } = this.props;
+    const { username, mode } = this.props;
 
-    return this.loadFn()(username, start, 'blog', limit)
+    const loadFn = mode === 'following' ? getFollowing : getFollowers;
+
+    return loadFn()(username, start, 'blog', limit)
       .then(resp => {
         const accountNames = resp.map(e => e[this.kKey()]);
         return getAccounts(accountNames).then(resp2 => resp2);

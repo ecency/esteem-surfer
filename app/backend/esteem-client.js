@@ -3,7 +3,7 @@ import { BACKEND_URL, SEARCH_API_URL, SEARCH_API_TOKEN } from '../config';
 
 export const search = (q, sort, scrollId) =>
   axios.post(
-    SEARCH_API_URL,
+    `${SEARCH_API_URL}/search`,
     {
       q,
       sort,
@@ -15,6 +15,36 @@ export const search = (q, sort, scrollId) =>
       }
     }
   );
+
+export const searchFollower = (following, q) =>
+  axios
+    .post(
+      `${SEARCH_API_URL}/search-follower/${following}`,
+      {
+        q
+      },
+      {
+        headers: {
+          Authorization: SEARCH_API_TOKEN
+        }
+      }
+    )
+    .then(resp => resp.data);
+
+export const searchFollowing = (follower, q) =>
+  axios
+    .post(
+      `${SEARCH_API_URL}/search-following/${follower}`,
+      {
+        q
+      },
+      {
+        headers: {
+          Authorization: SEARCH_API_TOKEN
+        }
+      }
+    )
+    .then(resp => resp.data);
 
 export const getCurrencyRate = cur =>
   axios
