@@ -140,7 +140,7 @@ class Friends extends Component {
 
     const loadFn = mode === 'following' ? getFollowing : getFollowers;
 
-    return loadFn()(username, start, 'blog', limit)
+    return loadFn(username, start, 'blog', limit)
       .then(resp => {
         const accountNames = resp.map(e => e[this.kKey()]);
         return getAccounts(accountNames).then(resp2 => resp2);
