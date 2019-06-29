@@ -326,7 +326,7 @@
     "address-enter-url": "url을 입력하세요",
     "address-enter-query": "검색어를 입력하세요",
     "unclaimed-reward-notice": "요청하지 않은 보상이 있습니다",
-    "unclaimed-points-notice": "You have unclaimed points",
+    "unclaimed-points-notice": "아직 요청하지 않은 포인트가 있습니다",
     "search-no-matches": "검색 결과가 없습니다"
   },
   "search": {
@@ -464,7 +464,7 @@
     "begin": "파워 다운 시작",
     "stop": "중지",
     "estimated-note": "Estimated Weekly",
-    "withdraw-accounts": "Destination Account(s)",
+    "withdraw-accounts": "대상 계정",
     "add-withdraw-account": "Add withdraw account"
   },
   "withdraw-route": {
