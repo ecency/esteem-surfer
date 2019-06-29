@@ -197,12 +197,12 @@
     "points-vote-list-desc": "투표 포인트",
     "points-reblog-list-desc": "리블로그 포인트",
     "points-login-list-desc": "로그인 포인트",
-    "points-checkin-list-desc": "Points for usage",
-    "points-checkin-extra-list-desc": "Usage bonus",
+    "points-checkin-list-desc": "체크인 포인트",
+    "points-checkin-extra-list-desc": "체크인 보너스",
     "points-transfer-sent-list-desc": "Transfer to {n}",
     "points-transfer-incoming-list-desc": "Transfer from {n}",
     "points-delegation-list-desc": "Delegation reward",
-    "points-claim-ok": "Points claimed"
+    "points-claim-ok": "포인트 획득 완료"
   },
   "composer": {
     "title-placeholder": "제목",
@@ -273,7 +273,7 @@
     "deleted": "예약된 글이 삭제되었습니다",
     "move": "임시 보관함으로 이동",
     "moved": "임시 보관함으로 이동했습니다",
-    "success-message": "Published successfully.",
+    "success-message": "성공적으로 발행되었습니다",
     "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
