@@ -128,7 +128,7 @@
     "section-blog": "블로그",
     "section-comments": "작성한 댓글",
     "section-replies": "받은 댓글",
-    "section-points": "Points",
+    "section-points": "포인트",
     "section-wallet": "지갑"
   },
   "follow-controls": {
@@ -147,7 +147,7 @@
     "section-comments": "작성한 댓글",
     "section-replies": "받은 댓글",
     "section-wallet": "지갑",
-    "section-points": "Points",
+    "section-points": "포인트",
     "top-posts": "인기 글",
     "unclaimed-rewards": "아직 요청하지 않은 보상",
     "estimated-value": "추정 가치는 7 일 간의 스팀 평균 가격을 토대로 산정합니다.",
@@ -183,8 +183,8 @@
     "withdraw-sbd": "스팀 달러 출금",
     "delegate": "임대",
     "power-down": "파워 다운",
-    "point-history": "History",
-    "points-post-desc": "  Share what post you like with your friends and earn 1 points.",
+    "point-history": "내역",
+    "points-post-desc": "좋아하는 글을 친구에게 공유하고 1 포인트를 획득하세요.",
     "points-comment-desc": "Each comment you make helps you to grow your audience and make friendship but also earns you 5 points.",
     "points-checkin-desc": "Checking in on eSteem app gives you 0.25 points and helps you stay connected with your friends.",
     "points-vote-desc": "By voting you give reward to other creators and show your appreciation but also earn 0.01 x vote weight points.",
