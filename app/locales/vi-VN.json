@@ -91,40 +91,40 @@
   },
   "create-pin-code": {
     "title": "Tạo mã PIN",
-    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter PIN code",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
-    "created": "PIN code created"
+    "desc1": "Đặt mã PIN để mã hóa dữ liệu của bạn và kích hoạt thêm lớp bảo mật!",
+    "input-placeholder": "Nhập mã PIN",
+    "desc2": "Bạn sẽ được nhắc để nhập mã PIN cho các giao dịch quan trọng cũng như mỗi lần khởi chạy.",
+    "created": "Mã PIN đã được tạo"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
-    "input-placeholder": "Enter PIN code to continue",
-    "last-chance": "This is your last chance",
-    "invalidate": "Oh, I forgot it...",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "title": "Nhập mã PIN",
+    "input-placeholder": "Nhập mã PIN để tiếp tục",
+    "last-chance": "Đây là cơ hội cuối của bạn",
+    "invalidate": "Ôi, tôi đã quên mất...",
+    "invalidate-confirm": "Bạn có thực sự muốn làm mất hiệu lực mã PIN?",
+    "invalidated": "Mã PIN đã mất hiệu lực"
   },
   "user-menu": {
-    "profile": "Profile",
-    "bookmarks": "Bookmarks",
-    "favorites": "Favorites",
-    "drafts": "Drafts",
-    "schedules": "Schedules",
-    "gallery": "Gallery",
-    "login-as": "Login As",
-    "logout": "Logout"
+    "profile": "Hồ sơ",
+    "bookmarks": "Các trang đánh dấu",
+    "favorites": "Những mục được yêu thích",
+    "drafts": "Những bản dự thảo",
+    "schedules": "Những lịch trình",
+    "gallery": "Thư viện",
+    "login-as": "Đăng nhập với tên",
+    "logout": "Đăng xuất"
   },
   "login-required": {
-    "default": "This action requires login",
-    "key-required": "This action requires {key} key or master password",
-    "keys-required": "This action requires {keys} keys or master password"
+    "default": "Hành động này yêu cầu đăng nhập lại",
+    "key-required": "Hành động này yêu cầu khóa {key} hoặc mật khẩu chính",
+    "keys-required": "Hành động này yêu cầu các khóa {keys} hoặc mật khẩu chính"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
-    "fetch-error-content": "Could not fetch posts",
-    "post-count": "Post Count",
-    "followers": "Followers",
-    "following": "Following",
+    "fetch-error-profile": "Không thể tìm nạp dữ liệu hồ sơ",
+    "fetch-error-content": "Không thể tìm nạp các bài viết",
+    "post-count": "Số lượng bài đăng",
+    "followers": "Những người theo dõi",
+    "following": "Theo dõi",
     "section-blog": "Blog",
     "section-comments": "Comments",
     "section-replies": "Replies",
