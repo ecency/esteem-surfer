@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "Không có kết nối Internet"
   },
   "g": {
     "compose-entry": "Viết bài",
@@ -67,7 +67,7 @@
     "server-timeout-error": "Dường như địa chỉ máy chủ '{server}' không còn tồn tại",
     "server-changed": "Lựa chọn máy chủ đã được thay đổi thành {server}",
     "server-custom-address": "Địa chỉ máy chủ tùy chỉnh",
-    "server-list-fetch-error": "Could not fetch server list",
+    "server-list-fetch-error": "Không thể lấy danh sách máy chủ",
     "push-notifications": "Push Notifications",
     "push-notify-enabled": "Push notifications enabled",
     "push-notify-disabled": "Push notifications disabled"
