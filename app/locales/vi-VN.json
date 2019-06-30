@@ -462,29 +462,29 @@
     "account": "Tài khoản",
     "incoming-funds": "Các quỹ sắp có",
     "begin": "Bắt đầu giảm xuống",
-    "stop": "Stop",
-    "estimated-note": "Estimated Weekly",
-    "withdraw-accounts": "Destination Account(s)",
-    "add-withdraw-account": "Add withdraw account"
+    "stop": "Dừng lại",
+    "estimated-note": "Dự kiến hàng tuần",
+    "withdraw-accounts": "(Những) tài khoản mục tiêu",
+    "add-withdraw-account": "Thêm tài khoản rút tiền"
   },
   "withdraw-route": {
-    "title": "Add withdraw account",
-    "to": "Account",
-    "percentage": "Percentage",
-    "slider-help": "Percentage of Power Down to this account",
-    "auto-power-down": "Automatically power up the target account"
+    "title": "Thêm tài khoản rút tiền",
+    "to": "Tài khoản",
+    "percentage": "Tỷ lệ phần trăm",
+    "slider-help": "Tỷ lệ phần trăm sự giảm nguồn tiền của tài khoản này",
+    "auto-power-down": "Tự động tăng nguồn tiền cho tài khoản đích"
   },
   "friends": {
-    "followers-title": "Followers ({count})",
-    "following-title": "Following ({count})",
-    "load-more": "Load More",
-    "empty-list": "Nothing here",
-    "search-placeholder": "Search users"
+    "followers-title": "({count}) người theo dõi",
+    "following-title": "({count}) đang theo dõi",
+    "load-more": "Tải thêm",
+    "empty-list": "Không có gì ở đây",
+    "search-placeholder": "Tìm kiếm những người dùng"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "Ủy thác steem quyền lực từ @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "Ủy thác steem quyền lực đến @{n}"
   }
 }
