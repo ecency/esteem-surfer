@@ -201,7 +201,7 @@
     "points-checkin-extra-list-desc": "체크인 보너스",
     "points-transfer-sent-list-desc": "Transfer to {n}",
     "points-transfer-incoming-list-desc": "Transfer from {n}",
-    "points-delegation-list-desc": "Delegation reward",
+    "points-delegation-list-desc": "임대 보상",
     "points-claim-ok": "포인트 획득 완료"
   },
   "composer": {
@@ -274,7 +274,7 @@
     "move": "임시 보관함으로 이동",
     "moved": "임시 보관함으로 이동했습니다",
     "success-message": "성공적으로 발행되었습니다",
-    "error-message": "Could not publish due to a server error."
+    "error-message": "서버 오류로 인해 글을 발행하지 못했습니다."
   },
   "bookmarks": {
     "title": "즐겨찾기",
@@ -463,16 +463,16 @@
     "incoming-funds": "Incoming Funds",
     "begin": "파워 다운 시작",
     "stop": "중지",
-    "estimated-note": "Estimated Weekly",
+    "estimated-note": "주간 예상 수량",
     "withdraw-accounts": "대상 계정",
-    "add-withdraw-account": "Add withdraw account"
+    "add-withdraw-account": "파워 다운 출금 계정 추가"
   },
   "withdraw-route": {
-    "title": "Add withdraw account",
+    "title": "파워 다운 출금 계정 추가",
     "to": "계정",
     "percentage": "비율",
-    "slider-help": "이 계정의 파워 다운 비율",
-    "auto-power-down": "Automatically power up the target account"
+    "slider-help": "이 계정에 대한 파워 다운 출금 비율",
+    "auto-power-down": "대상 계정에 자동으로 파워 업 하기"
   },
   "friends": {
     "followers-title": "팔로워 ({count})",
