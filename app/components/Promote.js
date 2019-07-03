@@ -72,7 +72,9 @@ class Transfer extends PureComponent {
             return getPoints(username);
           })
           .then(r => {
-            this.setState({ userPoints: r.points });
+            this.setState({ userPoints: r.points }, () => {
+              this.checkFunds();
+            });
             return r;
           })
           .catch(() => {
@@ -132,15 +134,17 @@ class Transfer extends PureComponent {
   };
 
   durationChanged = v => {
-    this.setState({ duration: v });
-    this.checkFunds(v);
+    this.setState({ duration: v }, () => {
+      this.checkFunds();
+    });
   };
 
-  checkFunds = d => {
+  checkFunds = () => {
     const { intl } = this.props;
+    const { duration } = this.state;
 
     const { priceList, userPoints } = this.state;
-    const { price } = priceList.find(x => x.duration === d);
+    const { price } = priceList.find(x => x.duration === duration);
 
     const r = parseFloat(userPoints) < price;
     this.setState({
