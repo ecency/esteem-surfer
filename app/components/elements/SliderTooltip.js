@@ -64,5 +64,5 @@ SliderTooltip.defaultProps = {
 
 SliderTooltip.propTypes = {
   percentage: PropTypes.number.isRequired,
-  value: PropTypes.string
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
 };

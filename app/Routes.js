@@ -11,6 +11,7 @@ import EntryPage from './containers/EntryPage';
 import SearchPage from './containers/SearchPage';
 import WitnessesPage from './containers/WitnessesPage';
 import TransferPage from './containers/TransferPage';
+import PromotePage from './containers/PromotePage';
 import { DelegatePage, PowerDownPage } from './containers/VestingPage';
 
 export default () => (
@@ -72,6 +73,13 @@ export default () => (
             {...props}
             mode="power-up"
           />
+        )}
+      />
+      <Route
+        exact
+        path="/@:username/promote"
+        component={props => (
+          <PromotePage timestamp={new Date().toString()} {...props} />
         )}
       />
       <Route

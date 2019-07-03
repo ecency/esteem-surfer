@@ -16,6 +16,21 @@ export const search = (q, sort, scrollId) =>
     }
   );
 
+export const searchPath = q =>
+  axios
+    .post(
+      `${SEARCH_API_URL}/search-path`,
+      {
+        q
+      },
+      {
+        headers: {
+          Authorization: SEARCH_API_TOKEN
+        }
+      }
+    )
+    .then(resp => resp.data);
+
 export const searchFollower = (following, q) =>
   axios
     .post(
@@ -328,3 +343,6 @@ export const claimPoints = user =>
   axios.put(`${BACKEND_URL}/api/claim`, {
     us: user
   });
+
+export const getPromotePrice = () =>
+  axios.get(`${BACKEND_URL}/api/promote-price`).then(resp => resp.data);

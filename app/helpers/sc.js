@@ -194,3 +194,10 @@ export const sctTransferPoint = (account, json) =>
       json
     )}`
   );
+
+export const scPromote = (account, json) =>
+  standardScWindow(
+    `sign/custom-json?required_auths=%5B%22${account}%22%5D&required_posting_auths=%5B%5D&id=esteem_promote&json=${encodeURIComponent(
+      json
+    )}`
+  );
