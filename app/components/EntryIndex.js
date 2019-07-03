@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -26,7 +26,18 @@ import DeepLinkHandler from './helpers/DeepLinkHandler';
 
 import formatChainError from '../utils/format-chain-error';
 
+import { getPromotedPosts } from '../backend/esteem-client';
+import { getContent } from '../backend/steem-client';
+
 class EntryIndex extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      promoted: []
+    };
+  }
+
   componentDidMount() {
     this.startFetch();
 
@@ -64,6 +75,29 @@ class EntryIndex extends PureComponent {
 
     actions.fetchEntries(selectedFilter, selectedTag, more);
     actions.fetchTrendingTags();
+
+    this.fetchPromoted();
+  };
+
+  fetchPromoted = () => {
+    this.setState({ promoted: [] });
+
+    const { global } = this.props;
+    const { selectedFilter } = global;
+
+    if (selectedFilter !== 'feed') {
+      return;
+    }
+
+    return getPromotedPosts()
+      .then(resp => {
+        const prms = resp.map(x => getContent(x.author, x.permlink));
+        return Promise.all(prms);
+      })
+      .then(posts => {
+        this.setState({ promoted: posts });
+        return posts;
+      });
   };
 
   makeFilterMenu = active => {
@@ -127,12 +161,14 @@ class EntryIndex extends PureComponent {
     actions.fetchEntries(selectedFilter, selectedTag, false);
 
     this.scrollEl.scrollTop = 0;
+
+    this.fetchPromoted();
   }
 
   render() {
     const { entries, trendingTags, location, global } = this.props;
-
     const { selectedFilter, selectedTag } = global;
+    const { promoted } = this.state;
 
     const filterMenu = this.makeFilterMenu(selectedFilter);
     const groupKey = makeGroupKeyForEntries(selectedFilter, selectedTag);
@@ -206,12 +242,36 @@ class EntryIndex extends PureComponent {
                   ) : (
                     ''
                   )}
-                  {entryList.valueSeq().map(d => (
-                    <EntryListItem
-                      key={`${d.author}-${d.permlink}`}
-                      {...Object.assign({}, this.props, { entry: d })}
-                    />
-                  ))}
+                  {entryList.valueSeq().map((d, i) => {
+                    const e = [];
+                    if ([3, 6, 9].includes(i)) {
+                      const ix = i / 3 - 1;
+                      if (promoted[ix] !== undefined) {
+                        const p = promoted[ix];
+
+                        e.push(
+                          <EntryListItem
+                            key={`${p.author}-${p.permlink}-prom`}
+                            {...Object.assign({}, this.props, { entry: p })}
+                            promoted
+                          />
+                        );
+                      }
+                    }
+
+                    e.push(
+                      <EntryListItem
+                        key={`${d.author}-${d.permlink}`}
+                        {...Object.assign({}, this.props, { entry: d })}
+                      />
+                    );
+
+                    return (
+                      <Fragment key={`${d.author}-${d.permlink}`}>
+                        {[...e]}
+                      </Fragment>
+                    );
+                  })}
                 </div>
               </div>
               {loading && entryList.size > 0 ? <LinearProgress /> : ''}

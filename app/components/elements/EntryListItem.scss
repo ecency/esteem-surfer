@@ -3,9 +3,10 @@
 
 .entry-list-item {
   border-bottom: 1px solid #e7e7e7;
-  margin-top: 20px;
+
   padding-bottom: 16px;
   padding-right: 38px;
+  padding-top: 20px;
 
   @include themify(day) {
     border-bottom: 1px solid $white-four;
@@ -116,6 +117,22 @@
 
       .mi {
         margin-right: 4px;
+      }
+    }
+
+    .space {
+      flex-grow: 1;
+    }
+
+    .promoted {
+      font-size: 90%;
+
+      @include themify(day) {
+        color: $silver;
+      }
+
+      @include themify(night) {
+        color: $gunmetal;
       }
     }
   }
@@ -229,6 +246,18 @@
           color: $gunmetal;
         }
       }
+    }
+  }
+
+  &.promoted-item {
+    padding-left: 10px;
+
+    @include themify(day) {
+      background: #fffee8;
+    }
+
+    @include themify(night) {
+      background: $dark;
     }
   }
 }

@@ -346,3 +346,6 @@ export const claimPoints = user =>
 
 export const getPromotePrice = () =>
   axios.get(`${BACKEND_URL}/api/promote-price`).then(resp => resp.data);
+
+export const getPromotedPosts = () =>
+  axios.get(`${BACKEND_URL}/api/promoted-posts`).then(resp => resp.data);

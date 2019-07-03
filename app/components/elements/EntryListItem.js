@@ -2,7 +2,7 @@
 eslint-disable import/no-cycle
 */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -36,7 +36,7 @@ import noImage from '../../img/noimage.png';
 
 class EntryListItem extends Component {
   render() {
-    const { entry, inDrawer, asAuthor, global, intl } = this.props;
+    const { entry, inDrawer, asAuthor, global, promoted, intl } = this.props;
 
     const img =
       (global.listStyle === 'grid'
@@ -87,7 +87,7 @@ class EntryListItem extends Component {
     });
 
     return (
-      <div className="entry-list-item">
+      <div className={`entry-list-item ${promoted ? 'promoted-item' : ''}`}>
         <div className="item-header">
           {inDrawer && (
             <AccountLink {...this.props} username={entry.author}>
@@ -141,6 +141,13 @@ class EntryListItem extends Component {
                 values={{ n: reBlogged }}
               />
             </span>
+          )}
+
+          {promoted && (
+            <Fragment>
+              <span className="space" />
+              <div className="promoted">promoted</div>
+            </Fragment>
           )}
         </div>
         <div className="item-body">
@@ -220,7 +227,8 @@ class EntryListItem extends Component {
 
 EntryListItem.defaultProps = {
   inDrawer: false,
-  asAuthor: null
+  asAuthor: null,
+  promoted: false
 };
 
 EntryListItem.propTypes = {
@@ -243,6 +251,7 @@ EntryListItem.propTypes = {
   location: PropTypes.shape({}).isRequired,
   inDrawer: PropTypes.bool,
   asAuthor: PropTypes.string,
+  promoted: PropTypes.bool,
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
