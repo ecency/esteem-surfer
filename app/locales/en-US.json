@@ -47,7 +47,8 @@
     "modal-title": "Voters ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "reblogged by {n}",
+    "promoted": "sponsored"
   },
   "entry-reblog": {
     "reblog": "Reblog",

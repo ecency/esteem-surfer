@@ -250,15 +250,6 @@
   }
 
   &.promoted-item {
-    padding-left: 10px;
-
-    @include themify(day) {
-      background: #fffee8;
-    }
-
-    @include themify(night) {
-      background: $dark;
-    }
   }
 }
 

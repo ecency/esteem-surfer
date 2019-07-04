@@ -82,13 +82,6 @@ class EntryIndex extends PureComponent {
   fetchPromoted = () => {
     this.setState({ promoted: [] });
 
-    const { global } = this.props;
-    const { selectedFilter } = global;
-
-    if (selectedFilter !== 'feed') {
-      return;
-    }
-
     return getPromotedPosts()
       .then(resp => {
         const prms = resp.map(x => getContent(x.author, x.permlink));

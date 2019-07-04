@@ -146,7 +146,9 @@ class EntryListItem extends Component {
           {promoted && (
             <Fragment>
               <span className="space" />
-              <div className="promoted">promoted</div>
+              <div className="promoted">
+                <FormattedMessage id="entry-list-item.promoted" />
+              </div>
             </Fragment>
           )}
         </div>
