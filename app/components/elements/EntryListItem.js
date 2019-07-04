@@ -1,5 +1,5 @@
 /*
-eslint-disable import/no-cycle
+eslint-disable import/no-cycle, jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
 */
 
 import React, { Component, Fragment } from 'react';
@@ -35,8 +35,25 @@ import fallbackImage from '../../img/fallback.png';
 import noImage from '../../img/noimage.png';
 
 class EntryListItem extends Component {
+  promoteClicked = () => {
+    const { history, entry, activeAccount } = this.props;
+    const u = `/@${activeAccount.username}/promote/${entry.author}/${
+      entry.permlink
+    }`;
+
+    history.push(u);
+  };
+
   render() {
-    const { entry, inDrawer, asAuthor, global, promoted, intl } = this.props;
+    const {
+      entry,
+      inDrawer,
+      asAuthor,
+      global,
+      promoted,
+      activeAccount,
+      intl
+    } = this.props;
 
     const img =
       (global.listStyle === 'grid'
@@ -151,6 +168,15 @@ class EntryListItem extends Component {
               </div>
             </Fragment>
           )}
+
+          {!promoted && !isChild && entry.author === activeAccount.username && (
+            <Fragment>
+              <span className="space" />
+              <a className="promote" onClick={this.promoteClicked}>
+                <FormattedMessage id="entry-list-item.promote" />
+              </a>
+            </Fragment>
+          )}
         </div>
         <div className="item-body">
           <div className="item-image">
@@ -228,6 +254,7 @@ class EntryListItem extends Component {
 }
 
 EntryListItem.defaultProps = {
+  activeAccount: null,
   inDrawer: false,
   asAuthor: null,
   promoted: false
@@ -249,6 +276,7 @@ EntryListItem.propTypes = {
     body: PropTypes.string.isRequired,
     created: PropTypes.string.isRequired
   }).isRequired,
+  activeAccount: PropTypes.instanceOf(Object),
   history: PropTypes.shape({}).isRequired,
   location: PropTypes.shape({}).isRequired,
   inDrawer: PropTypes.bool,

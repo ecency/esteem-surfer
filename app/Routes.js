@@ -84,6 +84,13 @@ export default () => (
       />
       <Route
         exact
+        path="/@:username/promote/:author/:permlink"
+        component={props => (
+          <PromotePage timestamp={new Date().toString()} {...props} />
+        )}
+      />
+      <Route
+        exact
         path="/witnesses"
         component={props => (
           <WitnessesPage timestamp={new Date().toString()} {...props} />

@@ -48,7 +48,8 @@
   },
   "entry-list-item": {
     "reblogged": "reblogged by {n}",
-    "promoted": "sponsored"
+    "promoted": "sponsored",
+    "promote": "promote"
   },
   "entry-reblog": {
     "reblog": "Reblog",

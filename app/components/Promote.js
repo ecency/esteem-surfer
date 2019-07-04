@@ -87,6 +87,10 @@ class Transfer extends PureComponent {
             this.setState({ loading: false });
           })
     );
+
+    if (match.params.author && match.params.permlink) {
+      this.postChanged(`${match.params.author}/${match.params.permlink}`);
+    }
   };
 
   resetState = () => ({
