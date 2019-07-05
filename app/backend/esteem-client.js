@@ -349,3 +349,8 @@ export const getPromotePrice = () =>
 
 export const getPromotedPosts = () =>
   axios.get(`${BACKEND_URL}/api/promoted-posts`).then(resp => resp.data);
+
+export const getUserPromotedPosts = user =>
+  axios
+    .get(`${BACKEND_URL}/api/users/promoted-posts/${user}`)
+    .then(resp => resp.data);
