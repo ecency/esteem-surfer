@@ -11,6 +11,7 @@ import visitingEntry from './visiting-entry';
 import searchResults from './search-results';
 import activities from './activities';
 import marketData from './market-data';
+import promotedEntries from './promoted-entries';
 
 const rootReducer = combineReducers({
   entries,
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   searchResults,
   activities,
   marketData,
+  promotedEntries,
   router
 });
 

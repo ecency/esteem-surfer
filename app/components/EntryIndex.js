@@ -7,6 +7,7 @@ import { Menu, message } from 'antd';
 import { FormattedMessage } from 'react-intl';
 
 import { makeGroupKeyForEntries } from '../actions/entries';
+
 import filters from '../constants/filters.json';
 
 import NavBar from './layout/NavBar';
@@ -26,18 +27,7 @@ import DeepLinkHandler from './helpers/DeepLinkHandler';
 
 import formatChainError from '../utils/format-chain-error';
 
-import { getPromotedPosts } from '../backend/esteem-client';
-import { getContent } from '../backend/steem-client';
-
 class EntryIndex extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      promoted: []
-    };
-  }
-
   componentDidMount() {
     this.startFetch();
 
@@ -75,22 +65,7 @@ class EntryIndex extends PureComponent {
 
     actions.fetchEntries(selectedFilter, selectedTag, more);
     actions.fetchTrendingTags();
-
-    this.fetchPromoted();
-  };
-
-  fetchPromoted = () => {
-    this.setState({ promoted: [] });
-
-    return getPromotedPosts()
-      .then(resp => {
-        const prms = resp.map(x => getContent(x.author, x.permlink));
-        return Promise.all(prms);
-      })
-      .then(posts => {
-        this.setState({ promoted: posts });
-        return posts;
-      });
+    actions.fetchPromotedEntries();
   };
 
   makeFilterMenu = active => {
@@ -152,16 +127,21 @@ class EntryIndex extends PureComponent {
 
     actions.invalidateEntries(selectedFilter, selectedTag);
     actions.fetchEntries(selectedFilter, selectedTag, false);
+    actions.fetchPromotedEntries();
 
     this.scrollEl.scrollTop = 0;
-
-    this.fetchPromoted();
   }
 
   render() {
-    const { entries, trendingTags, location, global } = this.props;
+    const {
+      entries,
+      promotedEntries,
+      trendingTags,
+      location,
+      global
+    } = this.props;
     const { selectedFilter, selectedTag } = global;
-    const { promoted } = this.state;
+    const promoted = promotedEntries.get('entries').toArray();
 
     const filterMenu = this.makeFilterMenu(selectedFilter);
     const groupKey = makeGroupKeyForEntries(selectedFilter, selectedTag);
@@ -286,6 +266,7 @@ EntryIndex.defaultProps = {
 EntryIndex.propTypes = {
   actions: PropTypes.shape({
     fetchEntries: PropTypes.func.isRequired,
+    fetchPromotedEntries: PropTypes.func.isRequired,
     invalidateEntries: PropTypes.func.isRequired,
     fetchTrendingTags: PropTypes.func.isRequired,
     changeTheme: PropTypes.func.isRequired,
@@ -297,6 +278,7 @@ EntryIndex.propTypes = {
     listStyle: PropTypes.string.isRequired
   }).isRequired,
   entries: PropTypes.shape({}).isRequired,
+  promotedEntries: PropTypes.shape({}).isRequired,
   trendingTags: PropTypes.shape({
     list: PropTypes.array.isRequired
   }).isRequired,

@@ -6,6 +6,7 @@ import {
   invalidateEntries,
   updateEntry
 } from '../actions/entries';
+import { fetchPromotedEntries } from '../actions/promoted-entries';
 import { fetchTrendingTags } from '../actions/trending-tags';
 import {
   changeTheme,
@@ -29,6 +30,7 @@ import { fetchActivities, resetActivities } from '../actions/activities';
 const mapStateToProps = state => ({
   global: state.global,
   entries: state.entries,
+  promotedEntries: state.promotedEntries,
   trendingTags: state.trendingTags,
   accounts: state.accounts,
   activeAccount: state.activeAccount,
@@ -42,6 +44,7 @@ const mapDispatchToProps = dispatch => ({
       { fetchEntries, invalidateEntries, updateEntry },
       dispatch
     ),
+    ...bindActionCreators({ fetchPromotedEntries }, dispatch),
     ...bindActionCreators({ fetchTrendingTags }, dispatch),
     ...bindActionCreators(
       {
