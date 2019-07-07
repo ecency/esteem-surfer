@@ -47,7 +47,9 @@
     "modal-title": "Bầu chọn ({n})"
   },
   "entry-list-item": {
-    "reblogged": "đã được {n} đăng lại bài viết"
+    "reblogged": "đã được {n} đăng lại bài viết",
+    "promoted": "sponsored",
+    "promote": "promote"
   },
   "entry-reblog": {
     "reblog": "Đăng lại bài viết",
@@ -202,7 +204,27 @@
     "points-transfer-sent-list-desc": "Chuyển tiền đến {n}",
     "points-transfer-incoming-list-desc": "Chuyển tiền từ {n}",
     "points-delegation-list-desc": "Phần thưởng cho việc ủy thác",
-    "points-claim-ok": "Các điểm thưởng được yêu cầu"
+    "points-claim-ok": "Các điểm thưởng được yêu cầu",
+    "points-promote": "Promote"
+  },
+  "promote": {
+    "page-title": "Promote",
+    "user-label": "User",
+    "user-help-text": "Available Funds",
+    "post-label": "Post to promote",
+    "post-input-placeholder": "author/permlink",
+    "post-input-title": "Suggestions",
+    "duration-label": "Duration",
+    "duration-help": "Drag the slider to change the duration",
+    "day": "day",
+    "days": "days",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "post-error": "Not a valid post address",
+    "post-error-exists": "The post is already promoted",
+    "funds-error": "Insufficient funds",
+    "success-message": "Your request submitted. It will be activated in a couple minutes.",
+    "submit": "Submit",
+    "go-back": "Go Back"
   },
   "composer": {
     "title-placeholder": "Tiêu đề",
