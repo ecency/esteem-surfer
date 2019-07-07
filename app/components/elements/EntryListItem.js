@@ -169,14 +169,17 @@ class EntryListItem extends Component {
             </Fragment>
           )}
 
-          {!promoted && !isChild && entry.author === activeAccount.username && (
-            <Fragment>
-              <span className="space" />
-              <a className="promote" onClick={this.promoteClicked}>
-                <FormattedMessage id="entry-list-item.promote" />
-              </a>
-            </Fragment>
-          )}
+          {activeAccount &&
+            !promoted &&
+            !isChild &&
+            entry.author === activeAccount.username && (
+              <Fragment>
+                <span className="space" />
+                <a className="promote" onClick={this.promoteClicked}>
+                  <FormattedMessage id="entry-list-item.promote" />
+                </a>
+              </Fragment>
+            )}
         </div>
         <div className="item-body">
           <div className="item-image">
