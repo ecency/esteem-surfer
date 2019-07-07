@@ -15,7 +15,8 @@ import { getContent, promote } from '../backend/steem-client';
 import {
   getPoints,
   getPromotePrice,
-  searchPath
+  searchPath,
+  getPromotedPost
 } from '../backend/esteem-client';
 import formatChainError from '../utils/format-chain-error';
 
@@ -179,6 +180,7 @@ class Transfer extends PureComponent {
 
     this.setState({ inProgress: true });
 
+    // Check if post is valid
     let content;
     try {
       content = await getContent(author, permlink);
@@ -189,6 +191,16 @@ class Transfer extends PureComponent {
     if (content.id === 0) {
       this.setState({
         postError: intl.formatMessage({ id: 'promote.post-error' })
+      });
+      this.setState({ inProgress: false });
+      return;
+    }
+
+    // Check if the post already promoted
+    const c = await getPromotedPost(author, permlink);
+    if (c) {
+      this.setState({
+        postError: intl.formatMessage({ id: 'promote.post-error-exists' })
       });
       this.setState({ inProgress: false });
       return;
