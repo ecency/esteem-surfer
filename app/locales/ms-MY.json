@@ -48,8 +48,8 @@
   },
   "entry-list-item": {
     "reblogged": "ulang siar oleh {n}",
-    "promoted": "sponsored",
-    "promote": "promote"
+    "promoted": "ditaja",
+    "promote": "digalakkan"
   },
   "entry-reblog": {
     "reblog": "Ulang siar",
@@ -205,16 +205,16 @@
     "points-transfer-incoming-list-desc": "Pindah daripada {n}",
     "points-delegation-list-desc": "Ganjaran delegasi",
     "points-claim-ok": "Mata ganjaran dituntut",
-    "points-promote": "Promote"
+    "points-promote": "Digalakkan"
   },
   "promote": {
-    "page-title": "Promote",
-    "user-label": "User",
-    "user-help-text": "Available Funds",
-    "post-label": "Post to promote",
-    "post-input-placeholder": "author/permlink",
-    "post-input-title": "Suggestions",
-    "duration-label": "Duration",
+    "page-title": "Digalakkan",
+    "user-label": "Pengguna",
+    "user-help-text": "Sedia ada",
+    "post-label": "Post until promosi",
+    "post-input-placeholder": "pengarang/permlink",
+    "post-input-title": "Cadangan",
+    "duration-label": "Tempoh",
     "duration-help": "Drag the slider to change the duration",
     "day": "day",
     "days": "days",
