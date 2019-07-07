@@ -47,7 +47,9 @@
     "modal-title": "Votanți ({n})"
   },
   "entry-list-item": {
-    "reblogged": "redistribuit de {n}"
+    "reblogged": "redistribuit de {n}",
+    "promoted": "sponsored",
+    "promote": "promote"
   },
   "entry-reblog": {
     "reblog": "Redistribuire",
@@ -202,7 +204,27 @@
     "points-transfer-sent-list-desc": "Transfer către {n}",
     "points-transfer-incoming-list-desc": "Transfer de la {n}",
     "points-delegation-list-desc": "Recompensă delegare",
-    "points-claim-ok": "Puncte colectate"
+    "points-claim-ok": "Puncte colectate",
+    "points-promote": "Promote"
+  },
+  "promote": {
+    "page-title": "Promote",
+    "user-label": "User",
+    "user-help-text": "Available Funds",
+    "post-label": "Post to promote",
+    "post-input-placeholder": "author/permlink",
+    "post-input-title": "Suggestions",
+    "duration-label": "Duration",
+    "duration-help": "Drag the slider to change the duration",
+    "day": "day",
+    "days": "days",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "post-error": "Not a valid post address",
+    "post-error-exists": "The post is already promoted",
+    "funds-error": "Insufficient funds",
+    "success-message": "Your request submitted. It will be activated in a couple minutes.",
+    "submit": "Submit",
+    "go-back": "Go Back"
   },
   "composer": {
     "title-placeholder": "Titlu",
