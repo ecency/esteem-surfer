@@ -48,8 +48,8 @@
   },
   "entry-list-item": {
     "reblogged": "redistribuit de {n}",
-    "promoted": "sponsored",
-    "promote": "promote"
+    "promoted": "sponsorizat",
+    "promote": "promovează"
   },
   "entry-reblog": {
     "reblog": "Redistribuire",
@@ -205,26 +205,26 @@
     "points-transfer-incoming-list-desc": "Transfer de la {n}",
     "points-delegation-list-desc": "Recompensă delegare",
     "points-claim-ok": "Puncte colectate",
-    "points-promote": "Promote"
+    "points-promote": "Promovează"
   },
   "promote": {
-    "page-title": "Promote",
-    "user-label": "User",
-    "user-help-text": "Available Funds",
-    "post-label": "Post to promote",
-    "post-input-placeholder": "author/permlink",
-    "post-input-title": "Suggestions",
-    "duration-label": "Duration",
-    "duration-help": "Drag the slider to change the duration",
-    "day": "day",
-    "days": "days",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
-    "post-error": "Not a valid post address",
-    "post-error-exists": "The post is already promoted",
-    "funds-error": "Insufficient funds",
-    "success-message": "Your request submitted. It will be activated in a couple minutes.",
-    "submit": "Submit",
-    "go-back": "Go Back"
+    "page-title": "Promovează",
+    "user-label": "Utilizator",
+    "user-help-text": "Fonduri Disponibile",
+    "post-label": "Postare pentru promovat",
+    "post-input-placeholder": "autor/permlink",
+    "post-input-title": "Sugestii",
+    "duration-label": "Durată",
+    "duration-help": "Trage cursorul pentru a schimba durata",
+    "day": "zi",
+    "days": "zile",
+    "key-required-err": "Parola activă incorectă pentru acest cont. Asigură-te că esti conectat cu credențialele corecte.",
+    "post-error": "Nu este o adresă de postare validă",
+    "post-error-exists": "Postarea a fost deja promovată",
+    "funds-error": "Fonduri insuficiente",
+    "success-message": "Cererea a fost trimisă. Va fi activat în câteva minute.",
+    "submit": "Trimite",
+    "go-back": "Inapoi"
   },
   "composer": {
     "title-placeholder": "Titlu",
