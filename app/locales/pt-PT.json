@@ -48,8 +48,8 @@
   },
   "entry-list-item": {
     "reblogged": "repostado por {n}",
-    "promoted": "sponsored",
-    "promote": "promote"
+    "promoted": "patrocinado",
+    "promote": "promover"
   },
   "entry-reblog": {
     "reblog": "Reblogar",
@@ -205,26 +205,26 @@
     "points-transfer-incoming-list-desc": "Transferido po {n}",
     "points-delegation-list-desc": "Recompensa da Delegação",
     "points-claim-ok": "Pontos reivindicados",
-    "points-promote": "Promote"
+    "points-promote": "Promover"
   },
   "promote": {
-    "page-title": "Promote",
-    "user-label": "User",
-    "user-help-text": "Available Funds",
-    "post-label": "Post to promote",
-    "post-input-placeholder": "author/permlink",
-    "post-input-title": "Suggestions",
-    "duration-label": "Duration",
-    "duration-help": "Drag the slider to change the duration",
-    "day": "day",
-    "days": "days",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
-    "post-error": "Not a valid post address",
-    "post-error-exists": "The post is already promoted",
-    "funds-error": "Insufficient funds",
-    "success-message": "Your request submitted. It will be activated in a couple minutes.",
-    "submit": "Submit",
-    "go-back": "Go Back"
+    "page-title": "Promover",
+    "user-label": "Utilizador",
+    "user-help-text": "Fundos disponíveis",
+    "post-label": "Post a promover",
+    "post-input-placeholder": "autor/permlink",
+    "post-input-title": "Sugestões",
+    "duration-label": "Duração",
+    "duration-help": "Arraste o controle deslizante para alterar a duração",
+    "day": "dia",
+    "days": "dias",
+    "key-required-err": "A chave ativa não foi encontrada para a conta selecionada. Verifique que se liga com as credencias corretas.",
+    "post-error": "Endereço do post não é valido",
+    "post-error-exists": "O post já foi promovido",
+    "funds-error": "Fundos insuficientes",
+    "success-message": "Seu pedido foi enviado. Ele será ativado em alguns minutos.",
+    "submit": "Submeter",
+    "go-back": "Voltar"
   },
   "composer": {
     "title-placeholder": "Título",
