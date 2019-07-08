@@ -49,7 +49,7 @@
   "entry-list-item": {
     "reblogged": "{n} 님이 리블로그했습니다",
     "promoted": "sponsored",
-    "promote": "promote"
+    "promote": "홍보"
   },
   "entry-reblog": {
     "reblog": "리블로그",
@@ -205,26 +205,26 @@
     "points-transfer-incoming-list-desc": "{n} 님으로부터 받음",
     "points-delegation-list-desc": "임대 보상",
     "points-claim-ok": "포인트 획득 완료",
-    "points-promote": "Promote"
+    "points-promote": "홍보"
   },
   "promote": {
-    "page-title": "Promote",
+    "page-title": "홍보",
     "user-label": "사용자",
     "user-help-text": "이용 가능 잔액",
     "post-label": "홍보 대상 글",
     "post-input-placeholder": "계정이름/permlink",
     "post-input-title": "Suggestions",
-    "duration-label": "Duration",
-    "duration-help": "Drag the slider to change the duration",
-    "day": "day",
-    "days": "days",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
-    "post-error": "Not a valid post address",
-    "post-error-exists": "The post is already promoted",
-    "funds-error": "Insufficient funds",
-    "success-message": "Your request submitted. It will be activated in a couple minutes.",
-    "submit": "Submit",
-    "go-back": "Go Back"
+    "duration-label": "기간",
+    "duration-help": "슬라이드를 드래그해서 기간을 변경할 수 있습니다",
+    "day": "일",
+    "days": "일",
+    "key-required-err": "선택한 계정에 대한 액티브 키를 찾을 수 없습니다. 올바른 키를 사용해 로그인했는지 확인해주세요.",
+    "post-error": "올바르지 않은 글 주소입니다.",
+    "post-error-exists": "이미 홍보된 글입니다",
+    "funds-error": "잔액이 충분하지 않습니다",
+    "success-message": "요청이 제출되었으며 몇 분 안에 활성화될 것입니다.",
+    "submit": "제출하기",
+    "go-back": "뒤로"
   },
   "composer": {
     "title-placeholder": "제목",
