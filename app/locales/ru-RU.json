@@ -48,8 +48,8 @@
   },
   "entry-list-item": {
     "reblogged": "репост {n}",
-    "promoted": "sponsored",
-    "promote": "promote"
+    "promoted": " реклама",
+    "promote": "продвинуть"
   },
   "entry-reblog": {
     "reblog": "Репост",
