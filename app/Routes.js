@@ -12,6 +12,7 @@ import SearchPage from './containers/SearchPage';
 import WitnessesPage from './containers/WitnessesPage';
 import TransferPage from './containers/TransferPage';
 import PromotePage from './containers/PromotePage';
+import BoostPage from './containers/BoostPage';
 import { DelegatePage, PowerDownPage } from './containers/VestingPage';
 
 export default () => (
@@ -87,6 +88,20 @@ export default () => (
         path="/@:username/promote/:author/:permlink"
         component={props => (
           <PromotePage timestamp={new Date().toString()} {...props} />
+        )}
+      />
+      <Route
+        exact
+        path="/@:username/boost"
+        component={props => (
+          <BoostPage timestamp={new Date().toString()} {...props} />
+        )}
+      />
+      <Route
+        exact
+        path="/@:username/boost/:author/:permlink"
+        component={props => (
+          <BoostPage timestamp={new Date().toString()} {...props} />
         )}
       />
       <Route

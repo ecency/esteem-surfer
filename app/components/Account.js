@@ -1536,10 +1536,14 @@ export class SectionPoints extends Component {
               <FormattedMessage id="account.transfer" />
             </Link>
           </Menu.Item>
-
           <Menu.Item key="promote">
             <Link to={`/@${activeAccount.username}/promote`}>
               <FormattedMessage id="account.points-promote" />
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="boost">
+            <Link to={`/@${activeAccount.username}/boost`}>
+              <FormattedMessage id="account.points-boost" />
             </Link>
           </Menu.Item>
         </Menu>
