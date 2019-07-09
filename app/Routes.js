@@ -11,8 +11,9 @@ import EntryPage from './containers/EntryPage';
 import SearchPage from './containers/SearchPage';
 import WitnessesPage from './containers/WitnessesPage';
 import TransferPage from './containers/TransferPage';
-import PromotePage from './containers/PromotePage';
-import BoostPage from './containers/BoostPage';
+// import PromotePage from './containers/PromotePage';
+// import BoostPage from './containers/BoostPage';
+import { PromotePage, BoostPage } from './containers/RedeemPage';
 import { DelegatePage, PowerDownPage } from './containers/VestingPage';
 
 export default () => (

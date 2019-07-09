@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Boost from '../components/Boost';
+import { Promote, Boost } from '../components/Redeem';
 
 import { updateEntry } from '../actions/entries';
 
@@ -70,7 +70,12 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-export default connect(
+export const PromotePage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Promote);
+
+export const BoostPage = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Boost);
