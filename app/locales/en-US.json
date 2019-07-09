@@ -233,7 +233,7 @@
     "page-title": "Boost",
     "amount-label": "Amount",
     "amount-help": "Drag the slider to change the amount",
-    "success-message": "Your request submitted. It will be activated in a couple minutes."
+    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
     "title-placeholder": "Title",
