@@ -60,7 +60,7 @@ class PromoteCls extends PureComponent {
 
     if (account.type === 's' && !account.keys.active) {
       this.setState({
-        userError: intl.formatMessage({ id: 'promote.key-required-err' })
+        userError: intl.formatMessage({ id: 'redeem.key-required-err' })
       });
     } else {
       this.setState({ userError: null });
@@ -159,7 +159,7 @@ class PromoteCls extends PureComponent {
 
     const r = parseFloat(userPoints) < price;
     this.setState({
-      fundsError: r ? intl.formatMessage({ id: 'promote.funds-error' }) : null
+      fundsError: r ? intl.formatMessage({ id: 'redeem.funds-error' }) : null
     });
   };
 
@@ -196,7 +196,7 @@ class PromoteCls extends PureComponent {
 
     if (content.id === 0) {
       this.setState({
-        postError: intl.formatMessage({ id: 'promote.post-error' })
+        postError: intl.formatMessage({ id: 'redeem.post-error' })
       });
       this.setState({ inProgress: false });
       return;
@@ -206,7 +206,7 @@ class PromoteCls extends PureComponent {
     const c = await getPromotedPost(author, permlink);
     if (c) {
       this.setState({
-        postError: intl.formatMessage({ id: 'promote.post-error-exists' })
+        postError: intl.formatMessage({ id: 'redeem.post-error-exists' })
       });
       this.setState({ inProgress: false });
       return;
@@ -227,6 +227,7 @@ class PromoteCls extends PureComponent {
 
   render() {
     const { intl, accounts } = this.props;
+
     const {
       user,
       userError,
@@ -268,7 +269,7 @@ class PromoteCls extends PureComponent {
             <AutoComplete.OptGroup
               key="user-posts"
               label={intl.formatMessage({
-                id: 'promote.post-input-title'
+                id: 'redeem.post-input-title'
               })}
             >
               {postList.map(i => (
@@ -297,7 +298,7 @@ class PromoteCls extends PureComponent {
         <div className="app-content redeem-page">
           <div className={`page-header ${loading ? 'loading' : ''}`}>
             <div className="main-title">
-              <FormattedMessage id="promote.page-title" />
+              <FormattedMessage id="redeem-promote.page-title" />
             </div>
           </div>
           {loading && <LinearProgress />}
@@ -306,7 +307,7 @@ class PromoteCls extends PureComponent {
             <div className="success">
               <p className="message">
                 <i className="mi">check</i>{' '}
-                <FormattedMessage id="promote.success-message" />
+                <FormattedMessage id="redeem-promote.success-message" />
               </p>
               <p>
                 <Button
@@ -316,7 +317,7 @@ class PromoteCls extends PureComponent {
                     history.push(`/@${user}/points`);
                   }}
                 >
-                  <FormattedMessage id="promote.go-back" />
+                  <FormattedMessage id="redeem.go-back" />
                 </Button>
               </p>
             </div>
@@ -331,7 +332,7 @@ class PromoteCls extends PureComponent {
                   }`}
                 >
                   <div className="form-label">
-                    <FormattedMessage id="promote.user-label" />
+                    <FormattedMessage id="redeem.user-label" />
                   </div>
                   <div className="form-input">
                     <Select
@@ -349,7 +350,7 @@ class PromoteCls extends PureComponent {
                     <div
                       className="input-help available-funds"
                       title={intl.formatMessage({
-                        id: 'promote.user-help-text'
+                        id: 'redeem.user-help-text'
                       })}
                     >
                       {userPoints} eSteem Points
@@ -359,7 +360,7 @@ class PromoteCls extends PureComponent {
                 </div>
                 <div className={`form-item ${postError ? 'has-error' : ''}`}>
                   <div className="form-label">
-                    <FormattedMessage id="promote.post-label" />
+                    <FormattedMessage id="redeem.post-label" />
                   </div>
                   <div className="form-input">
                     <AutoComplete
@@ -368,7 +369,7 @@ class PromoteCls extends PureComponent {
                       onSelect={this.postChanged}
                       value={post}
                       placeholder={intl.formatMessage({
-                        id: 'promote.post-input-placeholder'
+                        id: 'redeem.post-input-placeholder'
                       })}
                       spellCheck={false}
                       dataSource={postOptions}
@@ -383,7 +384,7 @@ class PromoteCls extends PureComponent {
                   }`}
                 >
                   <div className="form-label">
-                    <FormattedMessage id="promote.duration-label" />
+                    <FormattedMessage id="redeem-promote.duration-label" />
                   </div>
                   <div className="form-input">
                     <SliderTooltip
@@ -392,7 +393,9 @@ class PromoteCls extends PureComponent {
                         <Fragment>
                           {duration}&nbsp;
                           <FormattedMessage
-                            id={`promote.${duration === 1 ? 'day' : 'days'}`}
+                            id={`redeem-promote.${
+                              duration === 1 ? 'day' : 'days'
+                            }`}
                           />
                           <span className="slider-price">
                             &nbsp; {selectedPrice} eSteem points
@@ -412,7 +415,7 @@ class PromoteCls extends PureComponent {
                     />
                     {!fundsError && (
                       <div className="input-help">
-                        <FormattedMessage id="promote.duration-help" />
+                        <FormattedMessage id="redeem-promote.duration-help" />
                       </div>
                     )}
                     {fundsError && (
@@ -431,7 +434,7 @@ class PromoteCls extends PureComponent {
                         {inProgress && (
                           <Icon type="loading" style={{ fontSize: 12 }} spin />
                         )}
-                        <FormattedMessage id="promote.submit" />
+                        <FormattedMessage id="redeem.submit" />
                       </Button>
                     </PinRequired>
                   </div>
@@ -498,7 +501,7 @@ class BoostCls extends PureComponent {
 
     if (account.type === 's' && !account.keys.active) {
       this.setState({
-        userError: intl.formatMessage({ id: 'boost.key-required-err' })
+        userError: intl.formatMessage({ id: 'redeem.key-required-err' })
       });
     } else {
       this.setState({ userError: null });
@@ -593,7 +596,7 @@ class BoostCls extends PureComponent {
 
     const r = parseFloat(userPoints) < amount;
     this.setState({
-      fundsError: r ? intl.formatMessage({ id: 'boost.funds-error' }) : null
+      fundsError: r ? intl.formatMessage({ id: 'redeem.funds-error' }) : null
     });
   };
 
@@ -630,7 +633,7 @@ class BoostCls extends PureComponent {
 
     if (content.id === 0) {
       this.setState({
-        postError: intl.formatMessage({ id: 'boost.post-error' })
+        postError: intl.formatMessage({ id: 'redeem.post-error' })
       });
       this.setState({ inProgress: false });
       return;
@@ -640,7 +643,7 @@ class BoostCls extends PureComponent {
     const c = await getPromotedPost(author, permlink);
     if (c) {
       this.setState({
-        postError: intl.formatMessage({ id: 'boost.post-error-exists' })
+        postError: intl.formatMessage({ id: 'redeem.post-error-exists' })
       });
       this.setState({ inProgress: false });
       return;
@@ -727,7 +730,7 @@ class BoostCls extends PureComponent {
         <div className="app-content redeem-page">
           <div className={`page-header ${loading ? 'loading' : ''}`}>
             <div className="main-title">
-              <FormattedMessage id="boost.page-title" />
+              <FormattedMessage id="redeem-boost.page-title" />
             </div>
           </div>
           {loading && <LinearProgress />}
@@ -736,7 +739,7 @@ class BoostCls extends PureComponent {
             <div className="success">
               <p className="message">
                 <i className="mi">check</i>{' '}
-                <FormattedMessage id="boost.success-message" />
+                <FormattedMessage id="redeem-boost.success-message" />
               </p>
               <p>
                 <Button
@@ -746,7 +749,7 @@ class BoostCls extends PureComponent {
                     history.push(`/@${user}/points`);
                   }}
                 >
-                  <FormattedMessage id="boost.go-back" />
+                  <FormattedMessage id="redeem.go-back" />
                 </Button>
               </p>
             </div>
@@ -761,7 +764,7 @@ class BoostCls extends PureComponent {
                   }`}
                 >
                   <div className="form-label">
-                    <FormattedMessage id="boost.user-label" />
+                    <FormattedMessage id="redeem.user-label" />
                   </div>
                   <div className="form-input">
                     <Select
@@ -779,7 +782,7 @@ class BoostCls extends PureComponent {
                     <div
                       className="input-help available-funds"
                       title={intl.formatMessage({
-                        id: 'boost.user-help-text'
+                        id: 'redeem.user-help-text'
                       })}
                     >
                       {userPoints} eSteem Points
@@ -789,7 +792,7 @@ class BoostCls extends PureComponent {
                 </div>
                 <div className={`form-item ${postError ? 'has-error' : ''}`}>
                   <div className="form-label">
-                    <FormattedMessage id="boost.post-label" />
+                    <FormattedMessage id="redeem.post-label" />
                   </div>
                   <div className="form-input">
                     <AutoComplete
@@ -798,7 +801,7 @@ class BoostCls extends PureComponent {
                       onSelect={this.postChanged}
                       value={post}
                       placeholder={intl.formatMessage({
-                        id: 'boost.post-input-placeholder'
+                        id: 'redeem.post-input-placeholder'
                       })}
                       spellCheck={false}
                       dataSource={postOptions}
@@ -813,7 +816,7 @@ class BoostCls extends PureComponent {
                   }`}
                 >
                   <div className="form-label">
-                    <FormattedMessage id="boost.amount-label" />
+                    <FormattedMessage id="redeem-boost.amount-label" />
                   </div>
                   <div className="form-input">
                     <SliderTooltip
@@ -840,7 +843,7 @@ class BoostCls extends PureComponent {
                     />
                     {!fundsError && (
                       <div className="input-help">
-                        <FormattedMessage id="boost.amount-help" />
+                        <FormattedMessage id="redeem-boost.amount-help" />
                       </div>
                     )}
                     {fundsError && (
@@ -859,7 +862,7 @@ class BoostCls extends PureComponent {
                         {inProgress && (
                           <Icon type="loading" style={{ fontSize: 12 }} spin />
                         )}
-                        <FormattedMessage id="boost.submit" />
+                        <FormattedMessage id="redeem.submit" />
                       </Button>
                     </PinRequired>
                   </div>
