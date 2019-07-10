@@ -48,8 +48,8 @@
   },
   "entry-list-item": {
     "reblogged": "geteilt von {n}",
-    "promoted": "sponsored",
-    "promote": "promote"
+    "promoted": "Gesponsert",
+    "promote": "Promoted"
   },
   "entry-reblog": {
     "reblog": "Teilen",
@@ -130,7 +130,7 @@
     "section-blog": "Blog",
     "section-comments": "Kommentare",
     "section-replies": "Antworten",
-    "section-points": "Points",
+    "section-points": "Punkte",
     "section-wallet": "Geldbörse"
   },
   "follow-controls": {
@@ -193,7 +193,7 @@
     "points-reblog-desc": "Teile einen Beitrag, den du magst mit deinen Freunden und erhalte 1 eSteem Punkt.",
     "points-login-desc": "Wenn du dich bei der eSteem App anmeldest, hast du Anspruch darauf, dass du automatisch 100 eSteem Punkte erhältst.",
     "points-checkin-extra-desc": "Die konsequente Nutzung der eSteem App gibt dir zusätzliche Chancen, weitere 10 eSteem Punkte zu verdienen. Sei aktiv und verdiene mehr Punkte.",
-    "points-delegation-desc": "You can earn 1 point per day for each 100SP delegation.",
+    "points-delegation-desc": "Du kannst 1 Punkt pro Tag für jede 100SP Delegation verdienen",
     "points-post-list-desc": "Punkte für einen Beitrag",
     "points-comment-list-desc": "Punkte für einen Kommentar",
     "points-vote-list-desc": "Punkte für einen Vote",
@@ -203,13 +203,13 @@
     "points-checkin-extra-list-desc": "Nutzungs-Bonus",
     "points-transfer-sent-list-desc": "Transfer nach {n}",
     "points-transfer-incoming-list-desc": "Transfer von {n}",
-    "points-delegation-list-desc": "Delegation reward",
+    "points-delegation-list-desc": "Delegations-Belohnung",
     "points-claim-ok": "Punkte eingesammelt",
-    "points-promote": "Promote"
+    "points-promote": "Bewerben"
   },
   "promote": {
-    "page-title": "Promote",
-    "user-label": "User",
+    "page-title": "Bewerben",
+    "user-label": "Benutzer",
     "user-help-text": "Available Funds",
     "post-label": "Post to promote",
     "post-input-placeholder": "author/permlink",
