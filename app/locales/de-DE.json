@@ -49,7 +49,8 @@
   "entry-list-item": {
     "reblogged": "geteilt von {n}",
     "promoted": "Gesponsert",
-    "promote": "Promoted"
+    "promote": "Promoted",
+    "boost": "boost"
   },
   "entry-reblog": {
     "reblog": "Teilen",
