@@ -355,5 +355,10 @@ export const getPromotedPost = (author, permlink) =>
     .get(`${BACKEND_URL}/api/promoted-posts/${author}/${permlink}`)
     .then(resp => resp.data);
 
+export const getBoostedPost = (author, permlink) =>
+  axios
+    .get(`${BACKEND_URL}/api/boosted-posts/${author}/${permlink}`)
+    .then(resp => resp.data);
+
 export const getBoostOptions = () =>
   axios.get(`${BACKEND_URL}/api/boost-options`).then(resp => resp.data);

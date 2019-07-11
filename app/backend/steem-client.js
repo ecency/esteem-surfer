@@ -18,7 +18,8 @@ import {
   scDelegateVestingShares,
   scWithdrawVesting,
   sctTransferPoint,
-  scPromote
+  scPromote,
+  scBoost
 } from '../helpers/sc';
 
 import { decryptKey } from '../utils/crypto';
@@ -861,5 +862,34 @@ export const promote = (account, pin, user, author, permlink, duration) => {
 
   if (account.type === 'sc') {
     return scPromote(from, json);
+  }
+};
+
+export const boost = (account, pin, user, author, permlink, amount) => {
+  const { username: from } = account;
+
+  const json = JSON.stringify({
+    user,
+    author,
+    permlink,
+    amount
+  });
+
+  if (account.type === 's') {
+    const key = decryptKey(account.keys.active, pin);
+    const privateKey = PrivateKey.fromString(key);
+
+    const op = {
+      id: 'esteem_boost',
+      json,
+      required_auths: [from],
+      required_posting_auths: []
+    };
+
+    return client.broadcast.json(op, privateKey);
+  }
+
+  if (account.type === 'sc') {
+    return scBoost(from, json);
   }
 };

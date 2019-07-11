@@ -15,13 +15,14 @@ import SliderTooltip from './elements/SliderTooltip';
 import LinearProgress from './common/LinearProgress';
 import DeepLinkHandler from './helpers/DeepLinkHandler';
 
-import { getContent, promote } from '../backend/steem-client';
+import { getContent, promote, boost } from '../backend/steem-client';
 import {
   getPoints,
   getPromotePrice,
   searchPath,
   getPromotedPost,
-  getBoostOptions
+  getBoostOptions,
+  getBoostedPost
 } from '../backend/esteem-client';
 
 import formatChainError from '../utils/format-chain-error';
@@ -616,7 +617,7 @@ class BoostCls extends PureComponent {
 
   confirm = async pin => {
     const { accounts, intl } = this.props;
-    const { user, post, duration } = this.state;
+    const { user, post, amount } = this.state;
     const account = accounts.find(x => x.username === user);
 
     const { author, permlink } = this.postComponents(post);
@@ -640,7 +641,7 @@ class BoostCls extends PureComponent {
     }
 
     // Check if the post already promoted
-    const c = await getPromotedPost(author, permlink);
+    const c = await getBoostedPost(author, permlink);
     if (c) {
       this.setState({
         postError: intl.formatMessage({ id: 'redeem.post-error-exists' })
@@ -649,8 +650,9 @@ class BoostCls extends PureComponent {
       return;
     }
 
-    return promote(account, pin, user, author, permlink, duration)
+    return boost(account, pin, user, author, permlink, `${amount}.000`)
       .then(resp => {
+        console.log(resp);
         this.setState({ success: true });
         return resp;
       })
@@ -701,7 +703,7 @@ class BoostCls extends PureComponent {
             <AutoComplete.OptGroup
               key="user-posts"
               label={intl.formatMessage({
-                id: 'boost.post-input-title'
+                id: 'redeem.post-input-title'
               })}
             >
               {postList.map(i => (
