@@ -205,26 +205,35 @@
     "points-transfer-incoming-list-desc": "Pindah daripada {n}",
     "points-delegation-list-desc": "Ganjaran delegasi",
     "points-claim-ok": "Mata ganjaran dituntut",
-    "points-promote": "Digalakkan"
+    "points-promote": "Digalakkan",
+    "points-boost": "Boost"
   },
-  "promote": {
-    "page-title": "Digalakkan",
-    "user-label": "Pengguna",
-    "user-help-text": "Sedia ada",
-    "post-label": "Post until promosi",
-    "post-input-placeholder": "pengarang/permlink",
-    "post-input-title": "Cadangan",
-    "duration-label": "Tempoh",
-    "duration-help": "Mengalih slider untuk menukar tempoh",
-    "day": "hari",
-    "days": "hari",
-    "key-required-err": "Kunci aktif tidak dapat ditemui untuk akaun yang dipilih. Pastikan anda log masuk dengan kredensi sulit yang tepat.",
-    "post-error": "Bukan alamat post yang sah",
-    "post-error-exists": "Post pernah dipromote",
-    "funds-error": "Dana tidak mencukupi",
-    "success-message": "Permintaan kamu telah disampaikan. Ia akan dihidupkan sementara lagi.",
-    "submit": "Hantarkan",
-    "go-back": "Kembali"
+  "redeem": {
+    "user-label": "User",
+    "user-help-text": "Available Funds",
+    "post-label": "Post",
+    "post-input-placeholder": "author/permlink",
+    "post-input-title": "Suggestions",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "post-error": "Not a valid post address",
+    "post-error-exists": "The post is already promoted",
+    "funds-error": "Insufficient funds",
+    "submit": "Submit",
+    "go-back": "Go Back"
+  },
+  "redeem-promote": {
+    "page-title": "Promote",
+    "duration-label": "Duration",
+    "duration-help": "Drag the slider to change the duration",
+    "day": "day",
+    "days": "days",
+    "success-message": "Your request submitted. It will be activated in a couple minutes."
+  },
+  "redeem-boost": {
+    "page-title": "Boost",
+    "amount-label": "Amount",
+    "amount-help": "Drag the slider to change the amount",
+    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
     "title-placeholder": "Tajuk",
