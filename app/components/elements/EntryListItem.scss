@@ -136,8 +136,29 @@
       }
     }
 
-    .promote {
-      font-size: 90%;
+    .redeem {
+      .promote,
+      .boost {
+        font-size: 90%;
+        opacity: 0.6;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      .promote {
+        margin-right: 6px;
+        padding-right: 6px;
+
+        @include themify(day) {
+          border-right: 1px solid $duck-egg-blue;
+        }
+
+        @include themify(night) {
+          border-right: 1px solid $gunmetal;
+        }
+      }
     }
   }
 
@@ -196,10 +217,10 @@
 
     .item-controls {
       align-items: center;
+      cursor: default;
       display: flex;
       float: right;
       width: calc(100% - 147px);
-      cursor: default;
 
       .voting {
         margin-right: 10px;

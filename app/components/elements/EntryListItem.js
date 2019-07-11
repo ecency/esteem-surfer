@@ -44,6 +44,15 @@ class EntryListItem extends Component {
     history.push(u);
   };
 
+  boostClicked = () => {
+    const { history, entry, activeAccount } = this.props;
+    const u = `/@${activeAccount.username}/boost/${entry.author}/${
+      entry.permlink
+    }`;
+
+    history.push(u);
+  };
+
   render() {
     const {
       entry,
@@ -175,9 +184,14 @@ class EntryListItem extends Component {
             entry.author === activeAccount.username && (
               <Fragment>
                 <span className="space" />
-                <a className="promote" onClick={this.promoteClicked}>
-                  <FormattedMessage id="entry-list-item.promote" />
-                </a>
+                <div className="redeem">
+                  <a className="promote" onClick={this.promoteClicked}>
+                    <FormattedMessage id="entry-list-item.promote" />
+                  </a>
+                  <a className="boost" onClick={this.boostClicked}>
+                    <FormattedMessage id="entry-list-item.boost" />
+                  </a>
+                </div>
               </Fragment>
             )}
         </div>
