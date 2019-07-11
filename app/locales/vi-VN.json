@@ -49,7 +49,8 @@
   "entry-list-item": {
     "reblogged": "đã được {n} đăng lại bài viết",
     "promoted": "sponsored",
-    "promote": "promote"
+    "promote": "promote",
+    "boost": "boost"
   },
   "entry-reblog": {
     "reblog": "Đăng lại bài viết",
