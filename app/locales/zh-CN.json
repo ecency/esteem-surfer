@@ -205,26 +205,35 @@
     "points-transfer-incoming-list-desc": "Transfer from {n}",
     "points-delegation-list-desc": "Delegation reward",
     "points-claim-ok": "Points claimed",
-    "points-promote": "Promote"
+    "points-promote": "Promote",
+    "points-boost": "Boost"
   },
-  "promote": {
-    "page-title": "Promote",
+  "redeem": {
     "user-label": "User",
     "user-help-text": "Available Funds",
-    "post-label": "Post to promote",
+    "post-label": "Post",
     "post-input-placeholder": "author/permlink",
     "post-input-title": "Suggestions",
-    "duration-label": "Duration",
-    "duration-help": "Drag the slider to change the duration",
-    "day": "day",
-    "days": "days",
     "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
     "post-error": "Not a valid post address",
     "post-error-exists": "The post is already promoted",
     "funds-error": "Insufficient funds",
-    "success-message": "Your request submitted. It will be activated in a couple minutes.",
     "submit": "Submit",
     "go-back": "Go Back"
+  },
+  "redeem-promote": {
+    "page-title": "Promote",
+    "duration-label": "Duration",
+    "duration-help": "Drag the slider to change the duration",
+    "day": "day",
+    "days": "days",
+    "success-message": "Your request submitted. It will be activated in a couple minutes."
+  },
+  "redeem-boost": {
+    "page-title": "Boost",
+    "amount-label": "Amount",
+    "amount-help": "Drag the slider to change the amount",
+    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
     "title-placeholder": "标题",
