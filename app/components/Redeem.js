@@ -823,7 +823,7 @@ class BoostCls extends PureComponent {
                       percentage={sliderPercentage}
                       value={
                         <Fragment>
-                          {this.pointsToSbd(amount).toFixed(2)} $
+                          {this.pointsToSbd(amount).toFixed(3)} $
                           <span className="slider-price">
                             &nbsp; {amount} eSteem points
                           </span>
