@@ -223,7 +223,7 @@
     "post-error-exists": "The post is already promoted",
     "funds-error": "Insufficient funds",
     "success-message": "Your request submitted. It will be activated in a couple minutes.",
-    "submit": "Submit",
+    "submit": "Senden",
     "go-back": "Go Back"
   },
   "composer": {
