@@ -49,7 +49,8 @@
   "entry-list-item": {
     "reblogged": "репост {n}",
     "promoted": " реклама",
-    "promote": "продвинуть"
+    "promote": "продвинуть",
+    "boost": "boost"
   },
   "entry-reblog": {
     "reblog": "Репост",
