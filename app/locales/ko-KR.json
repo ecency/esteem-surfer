@@ -49,7 +49,8 @@
   "entry-list-item": {
     "reblogged": "{n} 님이 리블로그했습니다",
     "promoted": "sponsored",
-    "promote": "홍보"
+    "promote": "홍보",
+    "boost": "boost"
   },
   "entry-reblog": {
     "reblog": "리블로그",
