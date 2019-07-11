@@ -117,9 +117,13 @@ class PromoteCls extends PureComponent {
   });
 
   userChanged = user => {
-    const { history } = this.props;
+    const { history, match } = this.props;
+    let u = `/@${user}/promote`;
 
-    const u = `/@${user}/promote`;
+    if (match.params.author && match.params.permlink) {
+      u = `/@${user}/promote/${match.params.author}/${match.params.permlink}`;
+    }
+
     history.push(u);
   };
 
@@ -557,9 +561,14 @@ class BoostCls extends PureComponent {
   });
 
   userChanged = user => {
-    const { history } = this.props;
+    const { history, match } = this.props;
 
-    const u = `/@${user}/boost`;
+    let u = `/@${user}/boost`;
+
+    if (match.params.author && match.params.permlink) {
+      u = `/@${user}/boost/${match.params.author}/${match.params.permlink}`;
+    }
+
     history.push(u);
   };
 
