@@ -207,13 +207,13 @@
     "points-delegation-list-desc": "Ganjaran delegasi",
     "points-claim-ok": "Mata ganjaran dituntut",
     "points-promote": "Digalakkan",
-    "points-boost": "Boost"
+    "points-boost": "Pecutkan"
   },
   "redeem": {
-    "user-label": "User",
-    "user-help-text": "Available Funds",
-    "post-label": "Post",
-    "post-input-placeholder": "author/permlink",
+    "user-label": "Pengguna",
+    "user-help-text": "Sedia ada",
+    "post-label": "Hantar",
+    "post-input-placeholder": "pengarang/permlink",
     "post-input-title": "Suggestions",
     "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
     "post-error": "Not a valid post address",
