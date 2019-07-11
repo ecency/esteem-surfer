@@ -49,7 +49,8 @@
   "entry-list-item": {
     "reblogged": "轉發 {n}",
     "promoted": "sponsored",
-    "promote": "promote"
+    "promote": "promote",
+    "boost": "boost"
   },
   "entry-reblog": {
     "reblog": "轉發",
