@@ -50,7 +50,7 @@
     "reblogged": "repostado por {n}",
     "promoted": "patrocinado",
     "promote": "promover",
-    "boost": "boost"
+    "boost": "reforço"
   },
   "entry-reblog": {
     "reblog": "Reblogar",
@@ -207,34 +207,34 @@
     "points-delegation-list-desc": "Recompensa da Delegação",
     "points-claim-ok": "Pontos reivindicados",
     "points-promote": "Promover",
-    "points-boost": "Boost"
+    "points-boost": "Reforço"
   },
   "redeem": {
-    "user-label": "User",
-    "user-help-text": "Available Funds",
-    "post-label": "Post",
-    "post-input-placeholder": "author/permlink",
-    "post-input-title": "Suggestions",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
-    "post-error": "Not a valid post address",
-    "post-error-exists": "The post is already promoted",
-    "funds-error": "Insufficient funds",
-    "submit": "Submit",
-    "go-back": "Go Back"
+    "user-label": "Utilizador",
+    "user-help-text": "Fundos disponíveis",
+    "post-label": "Publicar",
+    "post-input-placeholder": "autor/permlink",
+    "post-input-title": "Sugestões",
+    "key-required-err": "A chave ativa não foi encontrada para a conta selecionada. Verifique que se liga com as credencias corretas.",
+    "post-error": "Endereço do post não é valido",
+    "post-error-exists": "O post já foi promovido",
+    "funds-error": "Fundos insuficientes",
+    "submit": "Submeter",
+    "go-back": "Voltar"
   },
   "redeem-promote": {
-    "page-title": "Promote",
-    "duration-label": "Duration",
-    "duration-help": "Drag the slider to change the duration",
-    "day": "day",
-    "days": "days",
-    "success-message": "Your request submitted. It will be activated in a couple minutes."
+    "page-title": "Promover",
+    "duration-label": "Duração",
+    "duration-help": "Arraste o controle deslizante para alterar a duração",
+    "day": "dia",
+    "days": "dias",
+    "success-message": "Seu pedido foi enviado. Ele será ativado em alguns minutos."
   },
   "redeem-boost": {
-    "page-title": "Boost",
-    "amount-label": "Amount",
-    "amount-help": "Drag the slider to change the amount",
-    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
+    "page-title": "Reforço",
+    "amount-label": "Quantia",
+    "amount-help": "Arraste o controle deslizante para ajustar a quantia",
+    "success-message": "Sua postagem foi submetida para a fila de reforço, irá receber um reforço na sua publicação através de votos em breve"
   },
   "composer": {
     "title-placeholder": "Título",
