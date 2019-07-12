@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "Không có kết nối Internet"
+    "no-internet-conn": "Không có kết nối mạng"
   },
   "g": {
     "compose-entry": "Viết bài",
@@ -48,9 +48,9 @@
   },
   "entry-list-item": {
     "reblogged": "đã được {n} đăng lại bài viết",
-    "promoted": "sponsored",
+    "promoted": "được tài trợ",
     "promote": "promote",
-    "boost": "boost"
+    "boost": "tăng tốc"
   },
   "entry-reblog": {
     "reblog": "Đăng lại bài viết",
