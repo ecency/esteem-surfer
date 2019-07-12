@@ -342,7 +342,9 @@
     "comment-entry-go-root": "Ver o contexto completo",
     "comment-entry-go-parent": "Ver o comentário relacionado",
     "similar-entries": "Posts semelhantes",
-    "fetch-error": "Tempo limite do servidor porque o tamanho da resposta é muito grande"
+    "fetch-error": "Tempo limite do servidor porque o tamanho da resposta é muito grande",
+    "promote": "promote",
+    "boost": "boost"
   },
   "navbar": {
     "settings": "Configurações",
