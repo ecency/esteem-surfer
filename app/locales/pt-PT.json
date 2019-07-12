@@ -343,8 +343,8 @@
     "comment-entry-go-parent": "Ver o comentário relacionado",
     "similar-entries": "Posts semelhantes",
     "fetch-error": "Tempo limite do servidor porque o tamanho da resposta é muito grande",
-    "promote": "promote",
-    "boost": "boost"
+    "promote": "promover",
+    "boost": "reforçar"
   },
   "navbar": {
     "settings": "Configurações",
