@@ -342,7 +342,9 @@
     "comment-entry-go-root": "Lihat konteks lengkap",
     "comment-entry-go-parent": "Lihat sumber utama",
     "similar-entries": "Pos yang menyerupa",
-    "fetch-error": "Saiz penyampaian maklumat terlampau besar, server telah berhenti"
+    "fetch-error": "Saiz penyampaian maklumat terlampau besar, server telah berhenti",
+    "promote": "promote",
+    "boost": "boost"
   },
   "navbar": {
     "settings": "Tetapan",
