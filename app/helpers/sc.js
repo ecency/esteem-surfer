@@ -8,11 +8,11 @@ const REDIR_URL = 'http://127.0.0.1:3415/';
 const windowSettings = {
   center: true,
   width: 800,
-  height: 600,
+  height: 700,
   minWidth: 800,
-  minHeight: 600,
+  minHeight: 700,
   maxWidth: 800,
-  maxHeight: 600,
+  maxHeight: 700,
   maximizable: false,
   alwaysOnTop: true,
   webPreferences: {
@@ -70,8 +70,9 @@ const createWindowView = redirectUrl => {
 export const scLogin = () =>
   new Promise((resolve, reject) => {
     const win = new remote.BrowserWindow(windowSettings);
+    win.webContents.setUserAgent(`Chrome/77.0.3835.0`);
 
-    const authUrl = `https://v2.steemconnect.com/oauth2/authorize?client_id=${APP_NAME}&redirect_uri=${encodeURIComponent(
+    const authUrl = `https://steemconnect.com/oauth2/authorize?client_id=${APP_NAME}&redirect_uri=${encodeURIComponent(
       REDIR_URL
     )}&response_type=code&scope=${encodeURIComponent(SCOPE)}`;
 
@@ -106,6 +107,8 @@ export const scLogin = () =>
 const standardScWindow = path =>
   new Promise((resolve, reject) => {
     const win = new remote.BrowserWindow(windowSettings);
+    win.webContents.setUserAgent(`Chrome/77.0.3835.0`);
+
     const authUrl = `https://steemconnect.com/${path}`;
 
     win.loadURL(createWindowView(authUrl));
@@ -122,7 +125,7 @@ const standardScWindow = path =>
         return;
       }
 
-      if (result.includes('<h2><span>Congratulations</span></h2>')) {
+      if (result.includes('Your transaction is on the way!')) {
         resolve();
         clearInterval(windowInt);
         win.close();
@@ -190,21 +193,21 @@ export const scWithdrawVesting = (account, vestingShares) =>
 
 export const sctTransferPoint = (account, json) =>
   standardScWindow(
-    `sign/custom-json?required_auths=%5B%22${account}%22%5D&required_posting_auths=%5B%5D&id=esteem_point_transfer&json=${encodeURIComponent(
+    `sign/custom-json?authority=active&required_auths=%5B%22${account}%22%5D&required_posting_auths=%5B%5D&id=esteem_point_transfer&json=${encodeURIComponent(
       json
     )}`
   );
 
 export const scPromote = (account, json) =>
   standardScWindow(
-    `sign/custom-json?required_auths=%5B%22${account}%22%5D&required_posting_auths=%5B%5D&id=esteem_promote&json=${encodeURIComponent(
+    `sign/custom-json?authority=active&required_auths=%5B%22${account}%22%5D&required_posting_auths=%5B%5D&id=esteem_promote&json=${encodeURIComponent(
       json
     )}`
   );
 
 export const scBoost = (account, json) =>
   standardScWindow(
-    `sign/custom-json?required_auths=%5B%22${account}%22%5D&required_posting_auths=%5B%5D&id=esteem_boost&json=${encodeURIComponent(
+    `sign/custom-json?authority=active&required_auths=%5B%22${account}%22%5D&required_posting_auths=%5B%5D&id=esteem_boost&json=${encodeURIComponent(
       json
     )}`
   );
