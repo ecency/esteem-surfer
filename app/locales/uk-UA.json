@@ -342,7 +342,9 @@
     "comment-entry-go-root": "Переглянути повний контекст",
     "comment-entry-go-parent": "Прямий батьківський коментар",
     "similar-entries": "Схожі пости",
-    "fetch-error": "Тайм-аут сервера через завеликий розмір відповіді"
+    "fetch-error": "Тайм-аут сервера через завеликий розмір відповіді",
+    "promote": "promote",
+    "boost": "boost"
   },
   "navbar": {
     "settings": "Налаштування",
