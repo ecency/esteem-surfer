@@ -342,7 +342,9 @@
     "comment-entry-go-root": "Wo àkóónú kíkún náà",
     "comment-entry-go-parent": "Wo òbí tààrà náà",
     "similar-entries": "Àwọn àròkọ tó jọra",
-    "fetch-error": "Àkókò apèsè ti parí nítorí ìwọ̀n ìdáhùn ti tóbi jù"
+    "fetch-error": "Àkókò apèsè ti parí nítorí ìwọ̀n ìdáhùn ti tóbi jù",
+    "promote": "promote",
+    "boost": "boost"
   },
   "navbar": {
     "settings": "Àwọn ètò",
