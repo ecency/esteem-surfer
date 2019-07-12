@@ -342,7 +342,9 @@
     "comment-entry-go-root": "Look all the whole tori",
     "comment-entry-go-parent": "Look the direct tori",
     "similar-entries": "Post wey resemble",
-    "fetch-error": "Server timeout because response size is too big"
+    "fetch-error": "Server timeout because response size is too big",
+    "promote": "promote",
+    "boost": "boost"
   },
   "navbar": {
     "settings": "Settings",
