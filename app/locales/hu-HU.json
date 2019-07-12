@@ -342,7 +342,9 @@
     "comment-entry-go-root": "Teljes kontextus megtekintése",
     "comment-entry-go-parent": "Direkt felmenő megtekintése",
     "similar-entries": "Hasonló bejegyzések",
-    "fetch-error": "A szerver nem elérhető mert a válasz mérete túl nagy"
+    "fetch-error": "A szerver nem elérhető mert a válasz mérete túl nagy",
+    "promote": "promote",
+    "boost": "boost"
   },
   "navbar": {
     "settings": "Beállítások",
