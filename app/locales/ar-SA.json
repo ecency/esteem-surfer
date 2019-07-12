@@ -342,7 +342,9 @@
     "comment-entry-go-root": "عرض المحتوى الكامل",
     "comment-entry-go-parent": "عرض الرسالة الرئيسية",
     "similar-entries": "منشورات مماثلة",
-    "fetch-error": "إنتهت مهلة الخادم لأن حجم الاستجابة كبير جدًا"
+    "fetch-error": "إنتهت مهلة الخادم لأن حجم الاستجابة كبير جدًا",
+    "promote": "promote",
+    "boost": "boost"
   },
   "navbar": {
     "settings": "إعدادات",
