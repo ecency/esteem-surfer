@@ -342,7 +342,9 @@
     "comment-entry-go-root": "İçeriğin tamamını görüntüle",
     "comment-entry-go-parent": "Doğrudan kaynağı görüntüle",
     "similar-entries": "Benzer gönderiler",
-    "fetch-error": "Sunucu zaman aşımı çünkü tepki boyutu çok büyük"
+    "fetch-error": "Sunucu zaman aşımı çünkü tepki boyutu çok büyük",
+    "promote": "promote",
+    "boost": "boost"
   },
   "navbar": {
     "settings": "Ayarlar",
