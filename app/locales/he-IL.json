@@ -342,7 +342,9 @@
     "comment-entry-go-root": "ראה את ההקשר המלא",
     "comment-entry-go-parent": "ראה את ההורה הישיר",
     "similar-entries": "פוסטים דומים",
-    "fetch-error": "פסק זמן בשרת נובע מכך שזמן תגובה גדול מדי"
+    "fetch-error": "פסק זמן בשרת נובע מכך שזמן תגובה גדול מדי",
+    "promote": "promote",
+    "boost": "boost"
   },
   "navbar": {
     "settings": "הגדרות",
