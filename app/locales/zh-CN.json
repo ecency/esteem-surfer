@@ -342,7 +342,9 @@
     "comment-entry-go-root": "查看完整内容",
     "comment-entry-go-parent": "查看直接上一级",
     "similar-entries": "Similar Posts",
-    "fetch-error": "Server timeout because response size is too big"
+    "fetch-error": "Server timeout because response size is too big",
+    "promote": "promote",
+    "boost": "boost"
   },
   "navbar": {
     "settings": "设置",
