@@ -342,7 +342,9 @@
     "comment-entry-go-root": "Полный контекст",
     "comment-entry-go-parent": "Прямой родительский комментарий",
     "similar-entries": "Похожие посты",
-    "fetch-error": "Тайм-аут сервера, потому что размер ответа слишком большой"
+    "fetch-error": "Тайм-аут сервера, потому что размер ответа слишком большой",
+    "promote": "promote",
+    "boost": "boost"
   },
   "navbar": {
     "settings": "Настройки",
