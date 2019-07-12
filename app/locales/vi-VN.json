@@ -49,7 +49,7 @@
   "entry-list-item": {
     "reblogged": "đã được {n} đăng lại bài viết",
     "promoted": "được tài trợ",
-    "promote": "promote",
+    "promote": "quảng bá",
     "boost": "tăng tốc"
   },
   "entry-reblog": {
@@ -206,34 +206,34 @@
     "points-transfer-incoming-list-desc": "Chuyển tiền từ {n}",
     "points-delegation-list-desc": "Phần thưởng cho việc ủy thác",
     "points-claim-ok": "Các điểm thưởng được yêu cầu",
-    "points-promote": "Promote",
-    "points-boost": "Boost"
+    "points-promote": "Quảng bá",
+    "points-boost": "Tăng tốc"
   },
   "redeem": {
-    "user-label": "User",
+    "user-label": "Người dùng",
     "user-help-text": "Available Funds",
-    "post-label": "Post",
+    "post-label": "Bài đăng",
     "post-input-placeholder": "author/permlink",
-    "post-input-title": "Suggestions",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
-    "post-error": "Not a valid post address",
+    "post-input-title": "Những đề xuất",
+    "key-required-err": "Không thể tìm thấy khóa kích hoạt cho tài khoản đã chọn. Xin vui lòng đảm bảo rằng bạn đã đăng nhập với thông tin xác thực.",
+    "post-error": "Không phải là một địa chỉ bài đăng hợp lệ",
     "post-error-exists": "The post is already promoted",
     "funds-error": "Insufficient funds",
-    "submit": "Submit",
-    "go-back": "Go Back"
+    "submit": "Đệ trình",
+    "go-back": "Quay lại"
   },
   "redeem-promote": {
-    "page-title": "Promote",
-    "duration-label": "Duration",
-    "duration-help": "Drag the slider to change the duration",
-    "day": "day",
-    "days": "days",
+    "page-title": "Quảng bá",
+    "duration-label": "Thời lượng",
+    "duration-help": "Kéo thanh trượt để điều chỉnh thời lượng",
+    "day": "ngày",
+    "days": "những ngày",
     "success-message": "Your request submitted. It will be activated in a couple minutes."
   },
   "redeem-boost": {
-    "page-title": "Boost",
-    "amount-label": "Amount",
-    "amount-help": "Drag the slider to change the amount",
+    "page-title": "Tăng tốc",
+    "amount-label": "Số lượng",
+    "amount-help": "Kéo thanh trượt để điều chỉnh số lượng",
     "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
