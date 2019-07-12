@@ -342,7 +342,9 @@
     "comment-entry-go-root": "kompletten Inhalt anzeigen",
     "comment-entry-go-parent": "Übergeordneten Beitrag ansehen",
     "similar-entries": "Ähnliche Beiträge",
-    "fetch-error": "Server Timeout, weil die Antwortgröße zu groß ist"
+    "fetch-error": "Server Timeout, weil die Antwortgröße zu groß ist",
+    "promote": "promote",
+    "boost": "boost"
   },
   "navbar": {
     "settings": "Einstellungen",
