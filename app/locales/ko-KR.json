@@ -342,7 +342,9 @@
     "comment-entry-go-root": "전체 글 보기",
     "comment-entry-go-parent": "상위 글 보기",
     "similar-entries": "유사한 글",
-    "fetch-error": "응답 파일 크기가 너무 커서 서버 타임아웃이 발생했습니다"
+    "fetch-error": "응답 파일 크기가 너무 커서 서버 타임아웃이 발생했습니다",
+    "promote": "promote",
+    "boost": "boost"
   },
   "navbar": {
     "settings": "설정",
