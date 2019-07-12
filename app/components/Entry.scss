@@ -388,6 +388,20 @@
             opacity: 0.5;
           }
         }
+
+        .space {
+          flex-grow: 1;
+        }
+
+        .redeem {
+          display: flex;
+          justify-content: flex-end;
+          width: 200px;
+
+          .promote {
+            margin-right: 10px;
+          }
+        }
       }
     }
 

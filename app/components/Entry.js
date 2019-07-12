@@ -983,6 +983,26 @@ class Entry extends PureComponent {
     scrollEl.scrollTop = replyWrapper.offsetTop;
   };
 
+  promoteClicked = () => {
+    const { history, activeAccount } = this.props;
+    const { entry } = this.state;
+    const u = `/@${activeAccount.username}/promote/${entry.author}/${
+      entry.permlink
+    }`;
+
+    history.push(u);
+  };
+
+  boostClicked = () => {
+    const { history, activeAccount } = this.props;
+    const { entry } = this.state;
+    const u = `/@${activeAccount.username}/boost/${entry.author}/${
+      entry.permlink
+    }`;
+
+    history.push(u);
+  };
+
   render() {
     const {
       entry,
@@ -1026,6 +1046,9 @@ class Entry extends PureComponent {
 
       const deletable =
         activeAccount && activeAccount.username === entry.author;
+
+      const canRedeem =
+        !isComment && activeAccount && activeAccount.username === entry.author;
 
       const hideParentLink = !entry.parent_permlink.startsWith('re-');
 
@@ -1222,6 +1245,32 @@ class Entry extends PureComponent {
                     {voteCount}
                   </a>
                 </EntryVotes>
+
+                {canRedeem && (
+                  <Fragment>
+                    <div className="space" />
+                    <div className="redeem">
+                      <div className="promote">
+                        <Button
+                          size="small"
+                          type="primary"
+                          onClick={this.promoteClicked}
+                        >
+                          <FormattedMessage id="entry.promote" />
+                        </Button>
+                      </div>
+                      <div className="boost">
+                        <Button
+                          size="small"
+                          type="primary"
+                          onClick={this.boostClicked}
+                        >
+                          <FormattedMessage id="entry.boost" />
+                        </Button>
+                      </div>
+                    </div>
+                  </Fragment>
+                )}
               </div>
             </div>
             {similarEntries.length === 3 && (
