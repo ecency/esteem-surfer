@@ -342,7 +342,9 @@
     "comment-entry-go-root": "مشاهده متن کامل",
     "comment-entry-go-parent": "مشاهده شاخه اصلی",
     "similar-entries": "پست های مشابه",
-    "fetch-error": "به دلیل وقفه طولانی، سرور جوابی دریافت نکرد"
+    "fetch-error": "به دلیل وقفه طولانی، سرور جوابی دریافت نکرد",
+    "promote": "promote",
+    "boost": "boost"
   },
   "navbar": {
     "settings": "تنظیمات",
