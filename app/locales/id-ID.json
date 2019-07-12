@@ -342,7 +342,9 @@
     "comment-entry-go-root": "Lihat konteks lengkap",
     "comment-entry-go-parent": "Lihat sumber utama",
     "similar-entries": "Posting yang Mirip",
-    "fetch-error": "Waktu habis karena respon ukuran terlalu besar"
+    "fetch-error": "Waktu habis karena respon ukuran terlalu besar",
+    "promote": "promote",
+    "boost": "boost"
   },
   "navbar": {
     "settings": "Pengaturan",
