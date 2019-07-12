@@ -342,7 +342,9 @@
     "comment-entry-go-root": "Peržiūrėti visą kontekstą",
     "comment-entry-go-parent": "Peržiūrėti pirminį",
     "similar-entries": "Panašūs Įrašai",
-    "fetch-error": "Serverio laikas baigėsi nes atsakymo laikas yra per didelis"
+    "fetch-error": "Serverio laikas baigėsi nes atsakymo laikas yra per didelis",
+    "promote": "promote",
+    "boost": "boost"
   },
   "navbar": {
     "settings": "Nustatymai",
