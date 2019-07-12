@@ -1,6 +1,6 @@
 import { remote } from 'electron';
 
-const APP_NAME = 'esteem-app';
+const APP_NAME = 'esteemapp';
 const SCOPE =
   'vote,comment,delete_comment,comment_options,custom_json,claim_reward_balance,offline';
 const REDIR_URL = 'http://127.0.0.1:3415/';
