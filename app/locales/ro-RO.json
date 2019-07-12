@@ -342,7 +342,9 @@
     "comment-entry-go-root": "Vezi contextul complet",
     "comment-entry-go-parent": "Vizualizează postarea principală",
     "similar-entries": "Postări Similare",
-    "fetch-error": "Serverului a expirat pentru că dimensiunea răspunsului este prea mare"
+    "fetch-error": "Serverului a expirat pentru că dimensiunea răspunsului este prea mare",
+    "promote": "promote",
+    "boost": "boost"
   },
   "navbar": {
     "settings": "Setări",
