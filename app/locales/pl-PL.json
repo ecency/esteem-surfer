@@ -342,7 +342,9 @@
     "comment-entry-go-root": "Zobacz pełny kontekst",
     "comment-entry-go-parent": "Zobacz poprzedni komentarz",
     "similar-entries": "Similar Posts",
-    "fetch-error": "Server timeout because response size is too big"
+    "fetch-error": "Server timeout because response size is too big",
+    "promote": "promote",
+    "boost": "boost"
   },
   "navbar": {
     "settings": "Ustawienia",
