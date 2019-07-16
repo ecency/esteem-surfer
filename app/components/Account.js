@@ -1559,7 +1559,7 @@ export class SectionPoints extends Component {
               <DropDown menu={actionListPoint} location={location} />
             )}
           </div>
-          <div className="point-name">eSteem Points</div>
+          <div className="point-name">ESTM</div>
           {uPoints !== '0.000' && (
             <div className={`unclaimed ${isMyPage ? 'can-claim' : ''}`}>
               <div className="val">{uPoints}</div>

@@ -358,7 +358,7 @@ class PromoteCls extends PureComponent {
                         id: 'redeem.user-help-text'
                       })}
                     >
-                      {userPoints} eSteem Points
+                      {userPoints} ESTM
                     </div>
                     {userError && <div className="input-help">{userError}</div>}
                   </div>
@@ -796,7 +796,7 @@ class BoostCls extends PureComponent {
                         id: 'redeem.user-help-text'
                       })}
                     >
-                      {userPoints} eSteem Points
+                      {userPoints} ESTM
                     </div>
                     {userError && <div className="input-help">{userError}</div>}
                   </div>

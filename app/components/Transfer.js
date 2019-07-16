@@ -75,11 +75,11 @@ class AssetSwitch extends PureComponent {
           SBD
         </a>
         <a
-          onClick={() => this.clicked('POINT')}
+          onClick={() => this.clicked('ESTM')}
           role="none"
-          className={`asset ${selected === 'POINT' ? 'selected' : ''}`}
+          className={`asset ${selected === 'ESTM' ? 'selected' : ''}`}
         >
-          POINT
+          ESTM
         </a>
       </div>
     );
@@ -336,7 +336,7 @@ class Transfer extends PureComponent {
       return null;
     }
 
-    if (asset === 'POINT') {
+    if (asset === 'ESTM') {
       return parseToken(fromData.points);
     }
 
@@ -372,7 +372,7 @@ class Transfer extends PureComponent {
     let args = [account, pin, to, fullAmount, memo];
     switch (mode) {
       case 'transfer':
-        if (asset === 'POINT') {
+        if (asset === 'ESTM') {
           fn = transferPoint;
         } else {
           fn = transfer;
