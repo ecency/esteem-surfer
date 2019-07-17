@@ -615,7 +615,7 @@ export class TransactionRow extends Component {
       const { amount, memo, from, to } = opData;
       details = (
         <span>
-          {memo} <br />
+          <span className="user-selectable">{memo}</span> <br />
           <br /> <strong>@{from}</strong> -&gt; <strong>@{to}</strong>
         </span>
       );
@@ -1735,7 +1735,9 @@ export class SectionPoints extends Component {
                     </div>
 
                     {item.memo && (
-                      <div className="transaction-details">{item.memo}</div>
+                      <div className="transaction-details user-selectable">
+                        {item.memo}
+                      </div>
                     )}
                     <div className="transaction-numbers">{item.amount}</div>
                   </div>
