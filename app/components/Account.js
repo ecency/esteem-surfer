@@ -1532,7 +1532,7 @@ export class SectionPoints extends Component {
       actionListPoint = (
         <Menu className="surfer-dropdown-menu">
           <Menu.Item key="transfer">
-            <Link to={`/@${activeAccount.username}/transfer/point`}>
+            <Link to={`/@${activeAccount.username}/transfer/estm`}>
               <FormattedMessage id="account.transfer" />
             </Link>
           </Menu.Item>
