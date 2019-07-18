@@ -210,12 +210,12 @@
     "points-boost": "Boost"
   },
   "redeem": {
-    "user-label": "User",
-    "user-help-text": "Available Funds",
+    "user-label": "Benutzer",
+    "user-help-text": "Verfügbares Guthaben",
     "post-label": "Post",
     "post-input-placeholder": "author/permlink",
-    "post-input-title": "Suggestions",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "post-input-title": "Vorschläge",
+    "key-required-err": "Der Active-Key wurde für den ausgewählten Account nicht gefunden. Bitte stelle sicher, dass du mit den richtigen Zugangsdaten angemeldet bist.",
     "post-error": "Not a valid post address",
     "post-error-exists": "Dieser Beitrag wurde bereits beworben",
     "funds-error": "Nicht genügend Guthaben",
@@ -228,12 +228,12 @@
     "duration-help": "Verschiebe den Slider, um die Dauer zu ändern",
     "day": "Tag",
     "days": "Tage",
-    "success-message": "Your request submitted. It will be activated in a couple minutes."
+    "success-message": "Deine Anfrage wurde eingereicht. Sie wird in Kürze aktiviert."
   },
   "redeem-boost": {
     "page-title": "Boost",
-    "amount-label": "Amount",
-    "amount-help": "Drag the slider to change the amount",
+    "amount-label": "Betrag",
+    "amount-help": "Ziehe den Slider, um den Wert zu definieren",
     "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
@@ -343,8 +343,8 @@
     "comment-entry-go-parent": "Übergeordneten Beitrag ansehen",
     "similar-entries": "Ähnliche Beiträge",
     "fetch-error": "Server Timeout, weil die Antwortgröße zu groß ist",
-    "promote": "promote",
-    "boost": "boost"
+    "promote": "Promote",
+    "boost": "Boost"
   },
   "navbar": {
     "settings": "Einstellungen",
