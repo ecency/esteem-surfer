@@ -217,17 +217,17 @@
     "post-input-title": "Suggestions",
     "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
     "post-error": "Not a valid post address",
-    "post-error-exists": "The post is already promoted",
-    "funds-error": "Insufficient funds",
-    "submit": "Submit",
-    "go-back": "Go Back"
+    "post-error-exists": "Dieser Beitrag wurde bereits beworben",
+    "funds-error": "Nicht genügend Guthaben",
+    "submit": "Absenden",
+    "go-back": "Zurück"
   },
   "redeem-promote": {
-    "page-title": "Promote",
-    "duration-label": "Duration",
-    "duration-help": "Drag the slider to change the duration",
-    "day": "day",
-    "days": "days",
+    "page-title": "Bewerben",
+    "duration-label": "Dauer",
+    "duration-help": "Verschiebe den Slider, um die Dauer zu ändern",
+    "day": "Tag",
+    "days": "Tage",
     "success-message": "Your request submitted. It will be activated in a couple minutes."
   },
   "redeem-boost": {
