@@ -216,7 +216,7 @@
     "post-input-placeholder": "author/permlink",
     "post-input-title": "Vorschläge",
     "key-required-err": "Der Active-Key wurde für den ausgewählten Account nicht gefunden. Bitte stelle sicher, dass du mit den richtigen Zugangsdaten angemeldet bist.",
-    "post-error": "Not a valid post address",
+    "post-error": "Keine gültige Post Adresse",
     "post-error-exists": "Dieser Beitrag wurde bereits beworben",
     "funds-error": "Nicht genügend Guthaben",
     "submit": "Absenden",
