@@ -703,7 +703,7 @@
       }
 
       .points-section {
-        padding-top: 40px;
+        padding-top: 20px;
 
         .points {
           margin-bottom: 30px;
@@ -718,7 +718,7 @@
 
             .val {
               font-size: 28px;
-              font-weight: 700;
+              font-weight: 500;
             }
 
             .drop-down-caret {
@@ -729,11 +729,11 @@
           }
 
           .point-name {
-            color: $silver;
-            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 10px;
 
             @include themify(day) {
-              color: $silver;
+              color: darken($silver, 10);
             }
 
             @include themify(night) {
@@ -748,7 +748,7 @@
             color: $white;
             display: inline-flex;
             height: 51px;
-            margin-top: 20px;
+            margin-top: 10px;
             padding: 0 24px;
 
             .val {

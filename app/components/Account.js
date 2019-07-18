@@ -1553,13 +1553,15 @@ export class SectionPoints extends Component {
     return (
       <div className="points-section">
         <div className="points">
+          <div className="point-name">eSteem Points</div>
           <div className="points-val">
-            <div className="val">{points}</div>
+            <div className="val">{points} ESTM</div>
             {isMyPage && (
               <DropDown menu={actionListPoint} location={location} />
             )}
           </div>
-          <div className="point-name">ESTM</div>
+          <div className="clearfix" />
+
           {uPoints !== '0.000' && (
             <div className={`unclaimed ${isMyPage ? 'can-claim' : ''}`}>
               <div className="val">{uPoints}</div>
