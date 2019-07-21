@@ -48,7 +48,7 @@
   },
   "entry-list-item": {
     "reblogged": "megosztva {n} által",
-    "promoted": "sponsored",
+    "promoted": "szponzorált",
     "promote": "promote",
     "boost": "boost"
   },
@@ -131,7 +131,7 @@
     "section-blog": "Bejegyzés",
     "section-comments": "Hozzászólások",
     "section-replies": "Válaszok",
-    "section-points": "Points",
+    "section-points": "Pontok",
     "section-wallet": "Tárca"
   },
   "follow-controls": {
@@ -194,7 +194,7 @@
     "points-reblog-desc": "  Ossz meg a barátaiddal bármilyen bejegyzést, ami tetszik és nyerj 1 pontot.",
     "points-login-desc": "Minden eSteem bejelentkezés alkalmával automatikusan 100 pontra vagy jogosult.",
     "points-checkin-extra-desc": "Az alkalmazás következetes használata extra esélyt kínál arra, hogy több 10 pontot nyerj, légy aktívabb és nyerj többet.",
-    "points-delegation-desc": "You can earn 1 point per day for each 100SP delegation.",
+    "points-delegation-desc": "Minen 100sp delegálásért napi 1 pontot kaphatsz.",
     "points-post-list-desc": "Bejegyzés pontok",
     "points-comment-list-desc": "Hozzászólás pontok",
     "points-vote-list-desc": "Szavazási pontok",
@@ -202,38 +202,38 @@
     "points-login-list-desc": "Bejelentkezés pontok",
     "points-checkin-list-desc": "Használati pontok",
     "points-checkin-extra-list-desc": "Használati bónusz",
-    "points-transfer-sent-list-desc": "Transfer to {n}",
-    "points-transfer-incoming-list-desc": "Transfer from {n}",
-    "points-delegation-list-desc": "Delegation reward",
+    "points-transfer-sent-list-desc": "Átutalás ide {n}",
+    "points-transfer-incoming-list-desc": "Átutalás innen {n}",
+    "points-delegation-list-desc": "Delegálási jutalom",
     "points-claim-ok": "Pontok átvéve",
     "points-promote": "Promote",
     "points-boost": "Boost"
   },
   "redeem": {
-    "user-label": "User",
+    "user-label": "Felhasználó",
     "user-help-text": "Available Funds",
-    "post-label": "Post",
+    "post-label": "Bejegyzés",
     "post-input-placeholder": "author/permlink",
-    "post-input-title": "Suggestions",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "post-input-title": "Javaslatok",
+    "key-required-err": "Az aktív kulcs nem található a kijelölt fiókhoz. Kérjük, győződj meg arról, hogy a megfelelő hitelesítő adatokkal jelentkeztél be.",
     "post-error": "Not a valid post address",
     "post-error-exists": "The post is already promoted",
-    "funds-error": "Insufficient funds",
+    "funds-error": "Nincs elegendő fedezet",
     "submit": "Submit",
-    "go-back": "Go Back"
+    "go-back": "Vissza"
   },
   "redeem-promote": {
     "page-title": "Promote",
-    "duration-label": "Duration",
+    "duration-label": "Időtartam",
     "duration-help": "Drag the slider to change the duration",
-    "day": "day",
-    "days": "days",
+    "day": "nap",
+    "days": "nap",
     "success-message": "Your request submitted. It will be activated in a couple minutes."
   },
   "redeem-boost": {
     "page-title": "Boost",
-    "amount-label": "Amount",
-    "amount-help": "Drag the slider to change the amount",
+    "amount-label": "Összeg",
+    "amount-help": "A csúszka húzásával állítsd be a mennyiséget",
     "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
