@@ -210,29 +210,29 @@
     "points-boost": "Boost"
   },
   "redeem": {
-    "user-label": "User",
-    "user-help-text": "Available Funds",
-    "post-label": "Post",
-    "post-input-placeholder": "author/permlink",
-    "post-input-title": "Suggestions",
+    "user-label": "Utilizator",
+    "user-help-text": "Fonduri Disponibile",
+    "post-label": "Postare",
+    "post-input-placeholder": "autor/permlink",
+    "post-input-title": "Sugestii",
     "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
     "post-error": "Not a valid post address",
-    "post-error-exists": "The post is already promoted",
-    "funds-error": "Insufficient funds",
-    "submit": "Submit",
-    "go-back": "Go Back"
+    "post-error-exists": "Postarea a fost deja promovată",
+    "funds-error": "Fonduri insuficiente",
+    "submit": "Trimite",
+    "go-back": "Înapoi"
   },
   "redeem-promote": {
-    "page-title": "Promote",
-    "duration-label": "Duration",
-    "duration-help": "Drag the slider to change the duration",
-    "day": "day",
-    "days": "days",
-    "success-message": "Your request submitted. It will be activated in a couple minutes."
+    "page-title": "Promovează",
+    "duration-label": "Durată",
+    "duration-help": "Trage cursorul pentru a schimba durata",
+    "day": "zi",
+    "days": "zile",
+    "success-message": "Cererea a fost trimisă. Va fi activată în câteva minute."
   },
   "redeem-boost": {
     "page-title": "Boost",
-    "amount-label": "Amount",
+    "amount-label": "Sumă",
     "amount-help": "Drag the slider to change the amount",
     "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
@@ -343,7 +343,7 @@
     "comment-entry-go-parent": "Vizualizează postarea principală",
     "similar-entries": "Postări Similare",
     "fetch-error": "Serverului a expirat pentru că dimensiunea răspunsului este prea mare",
-    "promote": "promote",
+    "promote": "promovează",
     "boost": "boost"
   },
   "navbar": {
