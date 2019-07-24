@@ -336,6 +336,7 @@
     "bookmarkRemoved": "Hapus dari yang ditandai",
     "favorited": "Ditambahkan ke favorit",
     "favoriteRemoved": "Hapus dari favorit",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Salin tautan internal ke clipboard",
     "copied-clipboard": "Disalin",
     "comment-entry-title": "Anda melihat sebuah komentar tunggal dari: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Daya steem yang di delegasikan ke @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
