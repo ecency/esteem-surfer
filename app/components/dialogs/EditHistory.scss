@@ -1,0 +1,111 @@
+@import '../../style/colors';
+
+.edit-history-dialog-content {
+  height: 500px;
+
+  .version-list,
+  .version-detail {
+    height: 100%;
+    overflow-x: auto;
+    float: left;
+  }
+
+  .version-list {
+    width: 220px;
+
+    @include themify(day) {
+      background: $white-three;
+    }
+
+    .diff-select {
+      padding-left: 40px;
+      margin: 20px 0;
+    }
+
+    .version-list-item {
+      display: grid;
+      margin-bottom: 4px;
+      grid-template-columns: 40px auto;
+      grid-template-rows: 24px 24px;
+      cursor: pointer;
+      padding: 10px 0;
+
+      &.selected {
+        .item-title {
+          font-weight: 700;
+        }
+
+        @include themify(day) {
+          background: $duck-egg-blue;
+        }
+
+        @include themify(night) {
+          background: $dusky-blue-two;
+        }
+      }
+
+      .item-icon,
+      .item-title,
+      .item-date {
+        align-items: center;
+        display: flex;
+      }
+
+      .item-icon {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 1;
+        grid-row-end: 4;
+        justify-content: center;
+        color: lighten($steel-grey, 10);
+
+        .mi {
+          font-size: 20px;
+        }
+      }
+
+      .item-title {
+        grid-column-start: 2;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        font-weight: 400;
+      }
+
+      .item-date {
+        grid-column-start: 2;
+        grid-column-end: 2;
+        grid-row-start: 2;
+        grid-row-end: 3;
+      }
+    }
+  }
+
+  .version-detail {
+    width: calc(100% - 220px);
+    padding: 20px;
+    .entry-title {
+      font-size: 32px;
+      margin: 0 0 22px 0;
+
+      @include themify(day) {
+        color: $charcoal-grey;
+      }
+
+      @include themify(night) {
+        color: $pinkish-grey;
+      }
+    }
+
+    .entry-tags {
+      margin-bottom: 22px;
+      color: $steel-grey;
+      display: flex;
+      align-items: center;
+
+      .mi {
+        margin-right: 6px;
+      }
+    }
+  }
+}

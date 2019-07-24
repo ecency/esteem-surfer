@@ -362,3 +362,12 @@ export const getBoostedPost = (author, permlink) =>
 
 export const getBoostOptions = () =>
   axios.get(`${BACKEND_URL}/api/boost-options`).then(resp => resp.data);
+
+export const getCommentHistory = (author, permlink, onlyMeta = false) => {
+  let u = `${BACKEND_URL}/api/comment-history/${author}/${permlink}`;
+  if (onlyMeta) {
+    u += '?only_meta=1';
+  }
+
+  return axios.get(u).then(resp => resp.data);
+};

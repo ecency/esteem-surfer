@@ -34,7 +34,8 @@ import {
 import {
   addBookmark,
   getBookmarks,
-  removeBookmark
+  removeBookmark,
+  getCommentHistory
 } from '../backend/esteem-client';
 
 import NavBar from './layout/NavBar';
@@ -52,6 +53,7 @@ import Editor from './elements/Editor';
 import LoginRequired from './helpers/LoginRequired';
 import DeepLinkHandler from './helpers/DeepLinkHandler';
 import EntryReblogBtn from './elements/EntryReblogBtn';
+import EditHistoryModal from './dialogs/EditHistory';
 
 import parseDate from '../utils/parse-date';
 import parseToken from '../utils/parse-token';
@@ -525,6 +527,24 @@ ReplyList.propTypes = {
 };
 
 class EntryFloatingMenu extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      editHistoryVisible: false,
+      editHistoryActive: false
+    };
+  }
+
+  componentDidMount() {
+    const { entry } = this.props;
+
+    return getCommentHistory(entry.author, entry.permlink, true).then(resp => {
+      this.setState({ editHistoryVisible: resp.meta.count > 1 });
+      return resp;
+    });
+  }
+
   copyClipboard = () => {
     const { entry, intl } = this.props;
     const s = makeCopyAddress(
@@ -569,8 +589,14 @@ class EntryFloatingMenu extends PureComponent {
     window.openInBrowser(u);
   };
 
+  toggleEditHistory = () => {
+    const { editHistoryActive } = this.state;
+    this.setState({ editHistoryActive: !editHistoryActive });
+  };
+
   render() {
     const { entry, intl } = this.props;
+    const { editHistoryVisible, editHistoryActive } = this.state;
 
     const steemitUrl = makeSteemitUrl(
       entry.category,
@@ -582,6 +608,22 @@ class EntryFloatingMenu extends PureComponent {
     return (
       <div className="entry-floating-menu">
         <EntryReblogBtn {...this.props} entry={entry} />
+
+        {editHistoryVisible && (
+          <Tooltip
+            title={intl.formatMessage({ id: 'entry.show-edit-history' })}
+            mouseEnterDelay={1}
+            placement="right"
+          >
+            <a
+              className="menu-item copy-btn"
+              onClick={this.toggleEditHistory}
+              role="none"
+            >
+              <i className="mi">history</i>
+            </a>
+          </Tooltip>
+        )}
 
         <div className="menu-item with-sub-menu share-btn">
           <i className="mi">open_in_new</i>
@@ -629,6 +671,13 @@ class EntryFloatingMenu extends PureComponent {
             </a>
           </div>
         </div>
+        {editHistoryActive && (
+          <EditHistoryModal
+            {...this.props}
+            onCancel={this.toggleEditHistory}
+            visible
+          />
+        )}
       </div>
     );
   }
