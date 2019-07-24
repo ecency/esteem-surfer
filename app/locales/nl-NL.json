@@ -336,6 +336,7 @@
     "bookmarkRemoved": "Verwijderd van bladwijzers",
     "favorited": "Aan favorieten toegevoegd",
     "favoriteRemoved": "Verwijderd uit favorieten",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Kopieer interne link naar klembord",
     "copied-clipboard": "Gekopieerd",
     "comment-entry-title": "Je bekijkt een enkele commentaar-draad van: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Delegated steem power to @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
