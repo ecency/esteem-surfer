@@ -524,7 +524,7 @@
   },
   "edit-history": {
     "title": "Edit History",
-    "show-diff": "Show Difference",
-    "version": "Version {n}"
+    "show-diff": "Arată diferența",
+    "version": "Versiunea {n}"
   }
 }
