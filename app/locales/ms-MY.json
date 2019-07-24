@@ -336,6 +336,7 @@
     "bookmarkRemoved": "Dikeluarkan dari tanda halaman",
     "favorited": "Ditambah ke kegemaran",
     "favoriteRemoved": "Dibuang dari kegemaran",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Salin pautan dalaman ke papan keratan",
     "copied-clipboard": "Disalin",
     "comment-entry-title": "Anda melihat sebuah komen tunggal dari: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Steem power delegasi leads @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
