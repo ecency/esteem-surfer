@@ -76,10 +76,23 @@ class EditHistory extends Component {
   loadData = () => {
     const { entry } = this.props;
 
-    return getCommentHistory(entry.author, entry.permlink).then(resp => {
-      this.setState({ history: this.buildList(resp.list), loading: false });
-      return resp;
-    });
+    return getCommentHistory(entry.author, entry.permlink)
+      .then(resp => {
+        this.setState({ history: this.buildList(resp.list), loading: false });
+        return resp;
+      })
+      .then(r => {
+        setTimeout(() => {
+          const el = document.getElementById('edit-history-body');
+          if (el) el.addEventListener('click', this.bodyClicked);
+        }, 400);
+
+        return r;
+      });
+  };
+
+  bodyClicked = e => {
+    e.stopImmediatePropagation();
   };
 
   itemClicked = i => {
@@ -167,7 +180,8 @@ class EditHistory extends Component {
                   <span dangerouslySetInnerHTML={tags} />
                 </div>
                 <div
-                  className="entry-body markdown-view"
+                  id="edit-history-body"
+                  className="entry-body markdown-view user-selectable"
                   dangerouslySetInnerHTML={body}
                 />
               </div>
