@@ -336,6 +336,7 @@
     "bookmarkRemoved": "즐겨찾기에서 삭제했습니다",
     "favorited": "좋아하는 저자 목록에 추가했습니다",
     "favoriteRemoved": "좋아하는 저자 목록에서 삭제되었습니다",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "클립보드에 링크 복사하기",
     "copied-clipboard": "복사됨",
     "comment-entry-title": "단일 댓글 스레드 화면을 보고 있습니다: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "@{n} 님에게 임대한 스팀 파워"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
