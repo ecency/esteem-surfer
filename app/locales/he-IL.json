@@ -336,6 +336,7 @@
     "bookmarkRemoved": "הוסר מסימניות",
     "favorited": "התווסף למועדפים",
     "favoriteRemoved": "הוסר ממועדפים",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "העתק קישור פנימי אל הלוח",
     "copied-clipboard": "הועתק",
     "comment-entry-title": "אתה צופה כעת בשרשור תגובה אחת מאת: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "כוח Steem מיופה ל @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
