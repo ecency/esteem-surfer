@@ -336,6 +336,7 @@
     "bookmarkRemoved": "Bị loại khỏi phần đánh dấu trang",
     "favorited": "Đã thêm vào mục ưa thích",
     "favoriteRemoved": "Đã loại bỏ khỏi mục ưa thích",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Sao chép liên kết nội bộ vào vùng lưu trữ",
     "copied-clipboard": "Đã sao chép",
     "comment-entry-title": "Bạn đang xem một câu bình luận đơn từ nguồn dẫn sau: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Ủy thác steem quyền lực đến @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
