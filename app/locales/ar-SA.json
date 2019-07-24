@@ -336,6 +336,7 @@
     "bookmarkRemoved": "تمت إزالته من الإشارات المرجعية",
     "favorited": "تم الإضافة إلى المفضلات",
     "favoriteRemoved": "تمت الإزالة من المفضلات",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "نسخ الرابط الداخلي إلى الحافظة",
     "copied-clipboard": "تم النسخ",
     "comment-entry-title": "أنت تعرض تعليقاً واحدأً من: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "تفويض قوة steem إلى @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
