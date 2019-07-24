@@ -336,6 +336,7 @@
     "bookmarkRemoved": "Removido dos marcadores",
     "favorited": "Adicionado aos favoritos",
     "favoriteRemoved": "Removido dos favoritos",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Copiar Link da Página para a Área de Transferência",
     "copied-clipboard": "Copiado",
     "comment-entry-title": "Você está visualizando o segmento da um único comentário desde: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Poder Steem delegado a @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
