@@ -336,6 +336,7 @@
     "bookmarkRemoved": "Eltávolítva a könyvjelzőkből",
     "favorited": "Hozzáadva a kedvencekhez",
     "favoriteRemoved": "Eltávolítva a kedvencek közül",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Másold a belső linket a vágólapra",
     "copied-clipboard": "Másolva",
     "comment-entry-title": "Egy hozzászólásos vonal innen: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Delegált steem power neki @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
