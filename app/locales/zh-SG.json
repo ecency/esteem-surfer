@@ -336,6 +336,7 @@
     "bookmarkRemoved": "已从书签中移除",
     "favorited": "已添加到收藏夹",
     "favoriteRemoved": "已从收藏夹移除",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "复制内部链接到剪贴板",
     "copied-clipboard": "已复制",
     "comment-entry-title": "您正在查看来自以下位置的单个评论线程： ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Delegated steem power to @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
