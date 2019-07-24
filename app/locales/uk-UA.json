@@ -336,6 +336,7 @@
     "bookmarkRemoved": "Видалено із закладок",
     "favorited": "Додано до обраного",
     "favoriteRemoved": "Видалено з обраного",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Скопіювати внутрішнє посилання до буферу обміну",
     "copied-clipboard": "Скопійовано",
     "comment-entry-title": "Ви переглядаєте гілку одного коментарю із: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Steem power делеговані @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
