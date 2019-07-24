@@ -336,6 +336,7 @@
     "bookmarkRemoved": "ブックマークから削除しました",
     "favorited": "お気に入りに追加しました",
     "favoriteRemoved": "お気に入りから削除しました",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "クリップボードに内部リンクをコピー",
     "copied-clipboard": "コピーしました",
     "comment-entry-title": "1つのコメントスレッドを表示しています: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Delegated steem power to @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
