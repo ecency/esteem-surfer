@@ -336,6 +336,7 @@
     "bookmarkRemoved": "Yer imlerinden kaldırıldı",
     "favorited": "Favorilere eklendi",
     "favoriteRemoved": "Favorilerden kaldırıldı",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Dahili bağlantıyı panoya kopyala",
     "copied-clipboard": "Kopyalandı",
     "comment-entry-title": "Tek bir yorum dizisini şuradan görüntülüyorsunuz: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Delegated steem power to @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
