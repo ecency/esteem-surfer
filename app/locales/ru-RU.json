@@ -336,6 +336,7 @@
     "bookmarkRemoved": "Удалено из закладок",
     "favorited": "Добавлен в избранное",
     "favoriteRemoved": "Удалён из избранного",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Скопировать внутреннюю ссылку в буфер обмена",
     "copied-clipboard": "Скопировано",
     "comment-entry-title": "Вы просматриваете один комментарий ветки: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Делегированная Сила голоса к @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
