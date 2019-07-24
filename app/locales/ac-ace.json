@@ -336,6 +336,7 @@
     "bookmarkRemoved": "Post ka di sampouh dari peutanda",
     "favorited": "Tamah bak geugalak",
     "favoriteRemoved": "Meusampoh bak geugalak",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Copy internal link to clipboard",
     "copied-clipboard": "Ka leuh salen",
     "comment-entry-title": "You are viewing a single comment's thread from: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Delegated steem power to @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
