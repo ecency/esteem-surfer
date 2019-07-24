@@ -336,6 +336,7 @@
     "bookmarkRemoved": "Uklonjeno iz obeleživača",
     "favorited": "Dodato u omiljeno",
     "favoriteRemoved": "Uklonjeno iz omiljeno",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Kopiraj interni link u međuspremnik",
     "copied-clipboard": "Kopirano",
     "comment-entry-title": "Pregledate komentare u vezi sa: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Steem power delegiran @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
