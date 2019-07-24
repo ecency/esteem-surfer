@@ -336,6 +336,7 @@
     "bookmarkRemoved": "A ti yọ kúrò lára àwọn àmì-ìwé",
     "favorited": "A ti ṣàfikún rẹ̀ sí àwọn ààyò",
     "favoriteRemoved": "A ti yọ kúrò lára àwọn ààyò",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Ṣàdàkọ ìtọ́kasí abẹ́nú sí ààyè ìtọ́jú",
     "copied-clipboard": "Gba dídàkọ",
     "comment-entry-title": "Ìwọ n wo àkójọ ti ìdáásí kan ṣoṣo láti: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Steem power tí a fi ránṣẹ́ sí @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
