@@ -336,6 +336,7 @@
     "bookmarkRemoved": "Borttaget från bokmärken",
     "favorited": "Lagt till i favoriter",
     "favoriteRemoved": "Borttagen från favoriter",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Kopiera länk till Urklipp",
     "copied-clipboard": "Kopierad",
     "comment-entry-title": "Du visar en enda kommentar tråd från: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Delegated steem power to @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
