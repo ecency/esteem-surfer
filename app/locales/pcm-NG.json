@@ -336,6 +336,7 @@
     "bookmarkRemoved": "E don remove from bookmark",
     "favorited": "Add am to favorite",
     "favoriteRemoved": "Remove am from favourite",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Copy inside link go clipboard",
     "copied-clipboard": "E don copy",
     "comment-entry-title": "Na one comment thread you dey look so:",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Delegated steem power to @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
