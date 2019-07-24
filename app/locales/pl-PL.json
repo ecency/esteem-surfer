@@ -336,6 +336,7 @@
     "bookmarkRemoved": "Usunięto z zakładek",
     "favorited": "Dodano do ulubionych",
     "favoriteRemoved": "Usunięto z ulubionych",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Skopiuj wewnętrzny link do schowka",
     "copied-clipboard": "Skopiowano",
     "comment-entry-title": "Przeglądasz wątek pojedynczego komentarza z: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Delegated steem power to @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
