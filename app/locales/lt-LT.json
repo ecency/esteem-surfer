@@ -336,6 +336,7 @@
     "bookmarkRemoved": "Pašalinta iš žymų",
     "favorited": "Pridėta prie mėgstamiausių",
     "favoriteRemoved": "Pašalinta iš mėgstamiausių",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Kopijuoti nuorodą į iškarpinę",
     "copied-clipboard": "Nukopijuota",
     "comment-entry-title": "Jūs skaitote komentarą iš: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Deleguota Steem Power vartotojui @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
