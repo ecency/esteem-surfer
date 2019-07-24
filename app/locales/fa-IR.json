@@ -336,6 +336,7 @@
     "bookmarkRemoved": "از صفحات مورد علاقه حذف شد",
     "favorited": "به علاقه مندی ها افزوده شد",
     "favoriteRemoved": "از علاقه مندی ها حذف شد",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "کپی لینک داخلی به حافظه موقت",
     "copied-clipboard": "کپی انجام شد",
     "comment-entry-title": "شما در حال مشاهده حالت نظرات تکی هستید: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "محول کردن(قرض دادن) steem power به @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
