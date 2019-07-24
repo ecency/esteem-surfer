@@ -336,6 +336,7 @@
     "bookmarkRemoved": "Supprimé des signets",
     "favorited": "Ajouté aux favoris",
     "favoriteRemoved": "Supprimer des favoris",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Copier le lien interne dans le presse-papiers",
     "copied-clipboard": "Copié",
     "comment-entry-title": "Vous visualisez le fil de discussion d'un seul commentaire à partir de : ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Delegated steem power to @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
