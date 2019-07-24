@@ -336,6 +336,7 @@
     "bookmarkRemoved": "Eliminado de marcadores",
     "favorited": "Añadido a favoritos",
     "favoriteRemoved": "Eliminado de los favoritos",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Copiar el enlace al portapapeles",
     "copied-clipboard": "Copiado",
     "comment-entry-title": "Estás viendo los comentarios relacionados de: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Delegated steem power to @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
