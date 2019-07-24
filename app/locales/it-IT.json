@@ -336,6 +336,7 @@
     "bookmarkRemoved": "Rimosso dai segnalibri",
     "favorited": "Aggiunto ai preferiti",
     "favoriteRemoved": "Rimosso dai preferiti",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Copia link negli appunti",
     "copied-clipboard": "Copiato",
     "comment-entry-title": "Stai visualizzando il commento singolo di un thread di: ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Delegated steem power to @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
