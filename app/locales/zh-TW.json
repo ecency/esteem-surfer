@@ -336,6 +336,7 @@
     "bookmarkRemoved": "已從書簽中刪除",
     "favorited": "已加到「我的最愛」",
     "favoriteRemoved": "已從「我的最愛」中刪除",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "將內部連結複製到剪貼簿",
     "copied-clipboard": "已複製",
     "comment-entry-title": "您正在查看單個評論的線程，來自： ",
@@ -520,5 +521,10 @@
   },
   "delegatee-list": {
     "title": "Delegated steem power to @{n}"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
   }
 }
