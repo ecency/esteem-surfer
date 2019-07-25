@@ -336,7 +336,7 @@
     "bookmarkRemoved": "Von deinen Lesezeichen entfernt",
     "favorited": "Zu deinen Favoriten hinzugefügt",
     "favoriteRemoved": "Von deinen Favoriten entfernt",
-    "show-edit-history": "Show edit history",
+    "show-edit-history": "Bearbeitungsverlauf ansehen",
     "copy-clipboard": "Link in die Zwischenablage kopieren",
     "copied-clipboard": "Kopiert",
     "comment-entry-title": "Du siehst den Thread eines einzelnen Kommentars von: ",
@@ -523,7 +523,7 @@
     "title": "Delegierte Steem-Power nach @{n}"
   },
   "edit-history": {
-    "title": "Edit History",
+    "title": "Verlauf bearbeiten",
     "show-diff": "Show Difference",
     "version": "Version {n}"
   }
