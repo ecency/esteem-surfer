@@ -72,7 +72,7 @@
     "server-custom-address": "Địa chỉ máy chủ tùy chỉnh",
     "server-list-fetch-error": "Không thể lấy danh sách máy chủ",
     "push-notifications": "Đưa ra những thông báo",
-    "push-notify-enabled": "Có khả năng đưa ra những thông báo",
+    "push-notify-enabled": "Kích hoạt việc đưa ra những thông báo",
     "push-notify-disabled": "Không có khả năng đưa ra những thông báo"
   },
   "login": {
