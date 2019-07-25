@@ -48,9 +48,9 @@
   },
   "entry-list-item": {
     "reblogged": "{n} 님이 리블로그했습니다",
-    "promoted": "sponsored",
+    "promoted": "후원받은",
     "promote": "홍보",
-    "boost": "boost"
+    "boost": "후원"
   },
   "entry-reblog": {
     "reblog": "리블로그",
@@ -207,20 +207,20 @@
     "points-delegation-list-desc": "임대 보상",
     "points-claim-ok": "포인트 획득 완료",
     "points-promote": "홍보",
-    "points-boost": "Boost"
+    "points-boost": "후원"
   },
   "redeem": {
-    "user-label": "User",
-    "user-help-text": "Available Funds",
-    "post-label": "Post",
-    "post-input-placeholder": "author/permlink",
-    "post-input-title": "Suggestions",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
-    "post-error": "Not a valid post address",
-    "post-error-exists": "The post is already promoted",
-    "funds-error": "Insufficient funds",
-    "submit": "Submit",
-    "go-back": "Go Back"
+    "user-label": "사용자",
+    "user-help-text": "이용 가능 잔액",
+    "post-label": "글",
+    "post-input-placeholder": "계정이름/permlink",
+    "post-input-title": "제안",
+    "key-required-err": "선택한 계정의 액티브 키를 찾을 수 없습니다. 올바른 키를 사용해 로그인되어 있는지 확인해주세요.",
+    "post-error": "글 주소가 올바르지 않습니다.",
+    "post-error-exists": "이미 홍보된 글입니다",
+    "funds-error": "잔액이 충분하지 않습니다",
+    "submit": "제출하기",
+    "go-back": "뒤로"
   },
   "redeem-promote": {
     "page-title": "홍보",
@@ -231,10 +231,10 @@
     "success-message": "요청이 제출되었으며 몇 분 안에 활성화될 것입니다."
   },
   "redeem-boost": {
-    "page-title": "Boost",
+    "page-title": "후원",
     "amount-label": "수량",
     "amount-help": "슬라이드를 드래그해서 수량을 설정할 수 있습니다",
-    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
+    "success-message": "후원 대기열에 당신의 글이 제출되었습니다. 잠시 후 당신의 글은 보팅을 통해 후원받을 것입니다."
   },
   "composer": {
     "title-placeholder": "제목",
@@ -344,8 +344,8 @@
     "comment-entry-go-parent": "상위 글 보기",
     "similar-entries": "유사한 글",
     "fetch-error": "응답 파일 크기가 너무 커서 서버 타임아웃이 발생했습니다",
-    "promote": "promote",
-    "boost": "boost"
+    "promote": "홍보",
+    "boost": "후원"
   },
   "navbar": {
     "settings": "설정",
