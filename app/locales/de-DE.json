@@ -234,7 +234,7 @@
     "page-title": "Boost",
     "amount-label": "Betrag",
     "amount-help": "Ziehe den Slider, um den Wert zu definieren",
-    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
+    "success-message": "Dein Beitrag wurde eingereicht und befindet sich in der Boost-Warteschlange. Der Boost mit Votes erfolgt in Kürze."
   },
   "composer": {
     "title-placeholder": "Titel",
