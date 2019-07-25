@@ -524,7 +524,7 @@
   },
   "edit-history": {
     "title": "Verlauf bearbeiten",
-    "show-diff": "Show Difference",
-    "version": "Version {n}"
+    "show-diff": "Unterschiede anzeigen",
+    "version": "Version: {n}"
   }
 }
