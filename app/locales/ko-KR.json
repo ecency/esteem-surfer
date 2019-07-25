@@ -223,17 +223,17 @@
     "go-back": "Go Back"
   },
   "redeem-promote": {
-    "page-title": "Promote",
-    "duration-label": "Duration",
-    "duration-help": "Drag the slider to change the duration",
-    "day": "day",
-    "days": "days",
-    "success-message": "Your request submitted. It will be activated in a couple minutes."
+    "page-title": "홍보",
+    "duration-label": "기간",
+    "duration-help": "슬라이드를 드래그해서 기간을 변경할 수 있습니다",
+    "day": "일",
+    "days": "일",
+    "success-message": "요청이 제출되었으며 몇 분 안에 활성화될 것입니다."
   },
   "redeem-boost": {
     "page-title": "Boost",
-    "amount-label": "Amount",
-    "amount-help": "Drag the slider to change the amount",
+    "amount-label": "수량",
+    "amount-help": "슬라이드를 드래그해서 수량을 설정할 수 있습니다",
     "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
@@ -336,7 +336,7 @@
     "bookmarkRemoved": "즐겨찾기에서 삭제했습니다",
     "favorited": "좋아하는 저자 목록에 추가했습니다",
     "favoriteRemoved": "좋아하는 저자 목록에서 삭제되었습니다",
-    "show-edit-history": "Show edit history",
+    "show-edit-history": "편집 내역 보기",
     "copy-clipboard": "클립보드에 링크 복사하기",
     "copied-clipboard": "복사됨",
     "comment-entry-title": "단일 댓글 스레드 화면을 보고 있습니다: ",
@@ -523,8 +523,8 @@
     "title": "@{n} 님에게 임대한 스팀 파워"
   },
   "edit-history": {
-    "title": "Edit History",
-    "show-diff": "Show Difference",
-    "version": "Version {n}"
+    "title": "편집 내역",
+    "show-diff": "변경 사항 보기",
+    "version": "버전 {n}"
   }
 }
