@@ -13,7 +13,7 @@
   }
 }
 
-.CodeMirror-SpellMenu {
+.CodeMirror-ContextMenu {
   position: absolute;
   left: 0;
   top: 0;
@@ -24,15 +24,19 @@
   width: auto;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
 
-  .SpellMenu-Item,
-  .SpellMenu-Item-No-Suggestion {
+  .ContextMenu-Item,
+  .ContextMenu-Item-No-Suggestion {
     padding: 6px 12px;
     border-radius: 8px;
     font-weight: 500;
     color: $charcoal-grey;
   }
 
-  .SpellMenu-Item {
+  .ContextMenu-Item-No-Suggestion {
+    opacity: 0.2;
+  }
+
+  .ContextMenu-Item {
     cursor: pointer;
 
     &:not(:last-child) {
@@ -43,6 +47,18 @@
       background: $dark-sky-blue;
       color: $white;
     }
+
+    &.disabled {
+      opacity: 0.2;
+      pointer-events: none;
+    }
+  }
+
+  .ContextMenu-Separator {
+    height: 1px;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(196, 196, 196, 0.2);
+    margin: 10px 0;
   }
 }
 

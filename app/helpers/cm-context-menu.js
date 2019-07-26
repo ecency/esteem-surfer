@@ -15,7 +15,7 @@
     noSuggestText: 'No suggestions...'
   };
 
-  CodeMirror.defineOption('spellChecker', false, function(cm, val, old) {
+  CodeMirror.defineOption('cmContextMenu', false, function(cm, val, old) {
     if (val) {
       options = Object.assign({}, options, val);
 
@@ -25,33 +25,120 @@
 
       cm.on('contextmenu', (cm, event) => {
         event.preventDefault();
-
-        if (event.target.className.indexOf('CodeMirror-misspelled') !== -1) {
-          if (menuVisible) {
-            return;
-          }
-          createContentMenu(cm, event);
+        if (menuVisible) {
+          return;
         }
+
+        const suggest =
+          event.target.className.indexOf('CodeMirror-misspelled') !== -1;
+        createContextMenu(cm, event, suggest);
       });
 
       cm.on('mousedown', () => {
-        removeContentMenu();
+        removeContextMenu();
       });
     }
   });
 
-  function createContentMenu(cm, event) {
+  function createMenuItem(label, onClick = null) {
+    const item = document.createElement('div');
+    item.classList.add('ContextMenu-Item');
+    item.innerText = label;
+
+    if (onClick) item.onclick = onClick;
+
+    return item;
+  }
+
+  function createContextMenu(cm, event, suggest) {
     const { target } = event;
-    const word = target.innerText.trim();
+
     menuVisible = true;
+
+    const selection = cm.getSelection();
+
+    const contextEl = document.createElement('div');
+    const elLeft = event.clientX;
+    const elTop = event.clientY;
+
+    contextEl.setAttribute('id', 'cm-context-menu');
+    contextEl.classList.add('CodeMirror-ContextMenu');
+    contextEl.style.left = `${elLeft}px`;
+    contextEl.style.top = `${elTop}px`;
+
+    // contextItems.forEach(x => contextEl.appendChild(x));
+    document.querySelector(options.appendTo).appendChild(contextEl);
+
+    // Check and reposition if context menu height exceeds window height
+    const { bottom: cBottom } = contextEl.getBoundingClientRect();
+    const { bottom: bBottom } = document.body.getBoundingClientRect();
+
+    if (cBottom > bBottom) {
+      const newTop = elTop - (cBottom - bBottom);
+      contextEl.style.top = `${newTop}px`;
+    }
+
+    // Cut menu item
+    const cutItem = createMenuItem('Cut', () => {
+      const i = document.createElement('input');
+      document.body.appendChild(i);
+      i.value = selection;
+      i.select();
+      document.execCommand('copy');
+      i.parentNode.removeChild(i);
+
+      cm.replaceSelection('');
+      removeContextMenu();
+      cm.focus();
+    });
+
+    contextEl.appendChild(cutItem);
+
+    // Copy menu item
+    const copyItem = createMenuItem('Copy', () => {
+      document.execCommand('copy');
+      removeContextMenu();
+      cm.focus();
+    });
+
+    contextEl.appendChild(copyItem);
+
+    // Paste menu item
+    contextEl.appendChild(
+      createMenuItem('Paste', () => {
+        document.execCommand('paste');
+        removeContextMenu();
+        cm.focus();
+      })
+    );
+
+    if (selection.length === 0) {
+      cutItem.classList.add('disabled');
+      copyItem.classList.add('disabled');
+    }
+
+    if (!suggest) {
+      return;
+    }
+
+    // It must be only one word
+    if (selection.indexOf(' ') !== -1) {
+      return;
+    }
+
+    const word = target.innerText.trim();
+
+    const sep = document.createElement('div');
+    sep.classList.add('ContextMenu-Separator');
+    contextEl.appendChild(sep);
 
     window
       .getSpellingCorrections(word)
       .then(suggestions => {
         if (suggestions && suggestions.length) {
-          return suggestions.slice(0, 10).map(suggestion => {
+          return suggestions.slice(0, 7).map(suggestion => {
             const item = document.createElement('div');
-            item.classList.add('SpellMenu-Item');
+            item.classList.add('ContextMenu-Item');
             item.innerText = suggestion;
             item.onclick = () => {
               const from = {
@@ -66,28 +153,18 @@
 
               cm.replaceRange(suggestion, from, to);
 
-              removeContentMenu();
+              removeContextMenu();
             };
             return item;
           });
         }
 
         const item = document.createElement('div');
-        item.classList.add('SpellMenu-Item-No-Suggestion');
+        item.classList.add('ContextMenu-Item-No-Suggestion');
         item.innerText = options.noSuggestText;
         return [item];
       })
       .then(contextItems => {
-        const contextEl = document.createElement('div');
-
-        const elLeft = event.clientX;
-        const elTop = event.clientY;
-
-        contextEl.setAttribute('id', 'spell-context-menu');
-        contextEl.classList.add('CodeMirror-SpellMenu');
-        contextEl.style.left = `${elLeft}px`;
-        contextEl.style.top = `${elTop}px`;
-
         contextItems.forEach(x => contextEl.appendChild(x));
         document.querySelector(options.appendTo).appendChild(contextEl);
 
@@ -102,8 +179,8 @@
       });
   }
 
-  function removeContentMenu() {
-    const contextMenu = document.querySelector('#spell-context-menu');
+  function removeContextMenu() {
+    const contextMenu = document.querySelector('#cm-context-menu');
     if (contextMenu) contextMenu.parentNode.removeChild(contextMenu);
     menuVisible = false;
   }

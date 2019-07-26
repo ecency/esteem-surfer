@@ -70,19 +70,12 @@ const imgMenu = () => {
 document.addEventListener(
   'contextmenu',
   event => {
-    // Exception for spell checker menu on code mirror
-    if (event.target.className.indexOf('CodeMirror-misspelled') !== -1) {
-      return;
-    }
-
-    // If clicked on code mirror instance
+    // Code mirror instances have their own context menu
     if (
       event.path.some(
         e => e.className && e.className.indexOf('CodeMirror') !== -1
       )
     ) {
-      event.preventDefault();
-      textEditMenu().popup(remote.getCurrentWindow());
       return;
     }
 

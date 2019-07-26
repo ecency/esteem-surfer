@@ -25,7 +25,7 @@ require('codemirror/addon/display/placeholder.js');
 require('codemirror/addon/search/searchcursor.js');
 require('codemirror/addon/search/match-highlighter.js');
 require('codemirror/mode/markdown/markdown');
-require('../../helpers/codemirror-spell-checker.js');
+require('../../helpers/cm-context-menu.js');
 
 const emojiFilterCache = Object.keys(emojiData.emojis).map(e => {
   const em = emojiData.emojis[e];
@@ -965,7 +965,7 @@ class Editor extends Component {
       dragDrop: true,
       placeholder: bodyPlaceHolder,
       highlightSelectionMatches: { wordsOnly: true },
-      spellChecker: {
+      cmContextMenu: {
         appendTo: '#root .wrapper',
         noSuggestText: intl.formatMessage({ id: 'composer.no-suggestions' })
       }
