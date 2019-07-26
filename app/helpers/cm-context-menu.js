@@ -12,6 +12,9 @@
 
   let options = {
     appendTo: 'body',
+    cutText: 'Cut',
+    copyText: 'Copy',
+    pasteText: 'Paste',
     noSuggestText: 'No suggestions...'
   };
 
@@ -79,7 +82,7 @@
     }
 
     // Cut menu item
-    const cutItem = createMenuItem('Cut', () => {
+    const cutItem = createMenuItem(options.cutText, () => {
       const i = document.createElement('input');
       document.body.appendChild(i);
       i.value = selection;
@@ -95,7 +98,7 @@
     contextEl.appendChild(cutItem);
 
     // Copy menu item
-    const copyItem = createMenuItem('Copy', () => {
+    const copyItem = createMenuItem(options.copyText, () => {
       document.execCommand('copy');
       removeContextMenu();
       cm.focus();
@@ -105,7 +108,7 @@
 
     // Paste menu item
     contextEl.appendChild(
-      createMenuItem('Paste', () => {
+      createMenuItem(options.pasteText, () => {
         document.execCommand('paste');
         removeContextMenu();
         cm.focus();
@@ -137,10 +140,7 @@
       .then(suggestions => {
         if (suggestions && suggestions.length) {
           return suggestions.slice(0, 7).map(suggestion => {
-            const item = document.createElement('div');
-            item.classList.add('ContextMenu-Item');
-            item.innerText = suggestion;
-            item.onclick = () => {
+            return createMenuItem(suggestion, () => {
               const from = {
                 line: parseInt(target.getAttribute('data-from-line'), 10),
                 ch: parseInt(target.getAttribute('data-from-ch'), 10)
@@ -154,8 +154,7 @@
               cm.replaceRange(suggestion, from, to);
 
               removeContextMenu();
-            };
-            return item;
+            });
           });
         }
 

@@ -967,6 +967,9 @@ class Editor extends Component {
       highlightSelectionMatches: { wordsOnly: true },
       cmContextMenu: {
         appendTo: '#root .wrapper',
+        cutText: intl.formatMessage({ id: 'context-menu.cut' }),
+        copyText: intl.formatMessage({ id: 'context-menu.copy' }),
+        pasteText: intl.formatMessage({ id: 'context-menu.paste' }),
         noSuggestText: intl.formatMessage({ id: 'composer.no-suggestions' })
       }
       // cursorScrollMargin: 400
