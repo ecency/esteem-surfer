@@ -415,7 +415,10 @@
     "refresh": "Segarkan",
     "mark-all-read": "Tandai semua yang telah dibaca",
     "leaderboard": "Papan Peringkat",
-    "leaderboard-title": "Pengguna harian teratas"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "Memilih saksi",
