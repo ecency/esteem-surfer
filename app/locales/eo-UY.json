@@ -415,7 +415,10 @@
     "refresh": "Refresh",
     "mark-all-read": "Mark All as Read",
     "leaderboard": "Leaderboard",
-    "leaderboard-title": "Daily Top users"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "Witness Voting",
