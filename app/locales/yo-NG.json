@@ -415,7 +415,10 @@
     "refresh": "Sọdọ̀tun",
     "mark-all-read": "Ṣe ààmì sí gbogbo ẹ̀ gẹ́gẹ́ bí èyí tó jẹ́ kíkà",
     "leaderboard": "Pẹpẹ-ìṣàfihàn-ipò",
-    "leaderboard-title": "Àwọn aṣàmúlò tó wà lókè lójoojúmó"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "Ìdìbò Ẹlẹrìí",
