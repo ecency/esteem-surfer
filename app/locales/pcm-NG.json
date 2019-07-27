@@ -415,7 +415,10 @@
     "refresh": "Refresh am",
     "mark-all-read": "Mark everytin say u don read dem",
     "leaderboard": "Leaderboard",
-    "leaderboard-title": "People Wey Dey Top Today"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "Witness Voting",
