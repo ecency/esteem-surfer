@@ -415,7 +415,10 @@
     "refresh": "更新",
     "mark-all-read": "全て既読にする",
     "leaderboard": "リーダーボード",
-    "leaderboard-title": "デイリートップユーザー"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "Witness投票",
