@@ -415,7 +415,10 @@
     "refresh": "Vernieuwen",
     "mark-all-read": "Markeer alles als gelezen",
     "leaderboard": "Scorebord",
-    "leaderboard-title": "Dagelijkse Topgebruikers"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "Getuigen stemmen",
