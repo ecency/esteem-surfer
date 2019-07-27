@@ -415,7 +415,10 @@
     "refresh": "刷新",
     "mark-all-read": "將全部標記為已讀",
     "leaderboard": "排行榜",
-    "leaderboard-title": "每日最高排名用戶"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "見證人投票",
