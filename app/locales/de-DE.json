@@ -415,7 +415,10 @@
     "refresh": "Aktualisieren",
     "mark-all-read": "Alle als gelesen markieren",
     "leaderboard": "Rangliste",
-    "leaderboard-title": "Täglich aktivste User"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "Witness-Voting",
