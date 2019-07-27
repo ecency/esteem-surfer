@@ -415,7 +415,10 @@
     "refresh": "새로고침",
     "mark-all-read": "모두 읽음으로 표시",
     "leaderboard": "순위표",
-    "leaderboard-title": "일별 상위 사용자"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "증인 투표",
