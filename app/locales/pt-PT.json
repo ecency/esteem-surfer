@@ -415,7 +415,10 @@
     "refresh": "Refrescar",
     "mark-all-read": "Marcar todas como lidas",
     "leaderboard": "Quadro de Liderança",
-    "leaderboard-title": "Usuários no Top Diário"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "Votos nas Testemunhas",
