@@ -415,7 +415,10 @@
     "refresh": "Atnaujinti",
     "mark-all-read": "Žymėti visus kaip skaitytus",
     "leaderboard": "Lyderiai",
-    "leaderboard-title": "Dienos Top vartotojai"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "Liudytojų Balsavimas",
