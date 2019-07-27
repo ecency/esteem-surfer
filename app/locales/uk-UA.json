@@ -415,7 +415,10 @@
     "refresh": "Оновити",
     "mark-all-read": "Позначити всі як прочитані",
     "leaderboard": "Дошка лідерів",
-    "leaderboard-title": "Щоденний Топ користувачів"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "Голосування за делегатів",
