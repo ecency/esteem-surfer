@@ -415,7 +415,10 @@
     "refresh": "Ricarica",
     "mark-all-read": "Segna tutti come letti",
     "leaderboard": "Classifica",
-    "leaderboard-title": "Top Utenti Giornalieri"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "Testimonianza di Voto",
