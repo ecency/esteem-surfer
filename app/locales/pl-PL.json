@@ -415,7 +415,10 @@
     "refresh": "Odśwież",
     "mark-all-read": "Oznacz Wszystkie jako Przeczytane",
     "leaderboard": "Ranking",
-    "leaderboard-title": "Najlepsi codzienni użytkownicy"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "Głosowanie na Delegata",
