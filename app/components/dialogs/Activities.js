@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import moment from 'moment';
 
-import { Menu, message } from 'antd';
+import { Menu, message, Select } from 'antd';
 
 import { FormattedMessage, injectIntl } from 'react-intl';
 
@@ -536,7 +536,8 @@ class LeaderBoard extends Component {
 
     this.state = {
       list: [],
-      loading: true
+      loading: true,
+      duration: 'day'
     };
   }
 
@@ -546,9 +547,11 @@ class LeaderBoard extends Component {
 
   loadData = () => {
     const { intl } = this.props;
-    this.setState({ loading: true });
+    const { duration } = this.state;
 
-    return getLeaderboard()
+    this.setState({ loading: true, list: [] });
+
+    return getLeaderboard(duration)
       .then(list => {
         this.setState({ list });
         return list;
@@ -561,14 +564,38 @@ class LeaderBoard extends Component {
       });
   };
 
+  durationChanged = duration => {
+    this.setState({ duration }, () => {
+      this.loadData();
+    });
+  };
+
   render() {
-    const { loading, list } = this.state;
+    const { loading, list, duration } = this.state;
     return (
       <div className={`dialog-content ${loading ? 'loading' : ''}`}>
         {loading && <LinearProgress />}
         <div className="notification-list">
           <div className="list-title">
             <FormattedMessage id="activities.leaderboard-title" />
+            <div className="duration-select">
+              <Select
+                defaultValue="day"
+                value={duration}
+                onChange={this.durationChanged}
+                size="small"
+              >
+                <Select.Option value="day">
+                  <FormattedMessage id="activities.leaderboard-daily" />
+                </Select.Option>
+                <Select.Option value="week">
+                  <FormattedMessage id="activities.leaderboard-weekly" />
+                </Select.Option>
+                <Select.Option value="month">
+                  <FormattedMessage id="activities.leaderboard-monthly" />
+                </Select.Option>
+              </Select>
+            </div>
           </div>
           {list.map((item, index) => (
             <div className="list-item" key={item._id}>
@@ -582,6 +609,9 @@ class LeaderBoard extends Component {
                 <div className="username">{item._id}</div>
               </AccountLink>
               <div className="score">{item.count}</div>
+              <div className="points">
+                {item.points !== '0.000' && `${item.points} ESTM`}
+              </div>
             </div>
           ))}
         </div>

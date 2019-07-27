@@ -71,6 +71,9 @@
         font-size: 16px;
         font-weight: 700;
         padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
         @include themify(day) {
           color: $steel-grey;
@@ -78,6 +81,14 @@
 
         @include themify(night) {
           color: $powder-blue;
+        }
+
+        .duration-select {
+          width: 200px;
+
+          .ant-select {
+            width: 100%;
+          }
         }
       }
 
@@ -113,13 +124,20 @@
         }
 
         .username,
-        .score {
+        .score,
+        .points {
           font-weight: 700;
         }
 
         .score {
           flex-grow: 1;
           text-align: right;
+        }
+
+        .points {
+          width: 130px;
+          text-align: right;
+          color: $dark-sky-blue;
         }
 
         &:nth-child(odd) {

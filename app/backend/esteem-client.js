@@ -300,8 +300,10 @@ export const marActivityAsRead = (user, id = null) => {
   return axios.put(`${BACKEND_URL}/api/activities/${user}`, d);
 };
 
-export const getLeaderboard = () =>
-  axios.get(`${BACKEND_URL}/api/leaderboard`).then(resp => resp.data);
+export const getLeaderboard = (duration = 'day') =>
+  axios
+    .get(`${BACKEND_URL}/api/leaderboard?duration=${duration}`)
+    .then(resp => resp.data);
 
 export const getDelgateeVestingShares = user =>
   axios
