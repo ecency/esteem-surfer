@@ -415,7 +415,10 @@
     "refresh": "Обновить",
     "mark-all-read": "Пометить всё как прочитанное",
     "leaderboard": "Доска Лидерства",
-    "leaderboard-title": "Ежедневный Топ пользователей"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "Голосование за делегатов",
