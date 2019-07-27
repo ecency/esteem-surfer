@@ -415,7 +415,10 @@
     "refresh": "Yenile",
     "mark-all-read": "Tümünü Okundu olarak İşaretle",
     "leaderboard": "Lider Tablosu",
-    "leaderboard-title": "Günlük En İyi Kullanıcılar"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "Şahit Oylaması",
