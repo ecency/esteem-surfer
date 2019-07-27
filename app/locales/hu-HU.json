@@ -415,7 +415,10 @@
     "refresh": "Frissítés",
     "mark-all-read": "Összes Megjelölése Olvasottként",
     "leaderboard": "Ranglista",
-    "leaderboard-title": "Napi Top felhasználók"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "Tanú szavazás",
