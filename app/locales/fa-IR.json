@@ -415,7 +415,10 @@
     "refresh": "بازخوانی",
     "mark-all-read": "علامت زدن همه به عنوان خوانده شده",
     "leaderboard": "جدول رده بندی",
-    "leaderboard-title": "کاربران برتر روز"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "Witness Voting",
