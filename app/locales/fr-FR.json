@@ -415,7 +415,10 @@
     "refresh": "Rafraichir",
     "mark-all-read": "Tout marquer comme lu",
     "leaderboard": "Classements",
-    "leaderboard-title": "Top des utilisateurs du jour"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "Vote de témoin",
