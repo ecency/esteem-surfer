@@ -415,7 +415,10 @@
     "refresh": "Actualizează",
     "mark-all-read": "Marchează toate ca citite",
     "leaderboard": "Clasament",
-    "leaderboard-title": "Utilizatori de Top Zilnic"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "Votare Witness",
