@@ -415,7 +415,10 @@
     "refresh": "Osveži",
     "mark-all-read": "Označi svе kao pročitano",
     "leaderboard": "Rang lista",
-    "leaderboard-title": "Najbolji korisnici na dnevnom nivou"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "Glasanje svedoka (witness)",
