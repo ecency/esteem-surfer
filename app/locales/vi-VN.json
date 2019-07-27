@@ -415,7 +415,10 @@
     "refresh": "Làm mới lại",
     "mark-all-read": "Đánh dấu tất cả là đã đọc",
     "leaderboard": "Bảng dẫn đầu",
-    "leaderboard-title": "Người dùng tiêu biểu hàng ngày"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "Bình chọn nhân chứng",
