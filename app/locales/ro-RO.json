@@ -415,10 +415,10 @@
     "refresh": "Actualizează",
     "mark-all-read": "Marchează toate ca citite",
     "leaderboard": "Clasament",
-    "leaderboard-title": "Top users",
-    "leaderboard-daily": "Daily",
-    "leaderboard-weekly": "Weekly",
-    "leaderboard-monthly": "Monthly"
+    "leaderboard-title": "Top utilizatori",
+    "leaderboard-daily": "Zilnice",
+    "leaderboard-weekly": "Săptămânale",
+    "leaderboard-monthly": "Lunare"
   },
   "witnesses": {
     "page-title": "Votare Witness",
