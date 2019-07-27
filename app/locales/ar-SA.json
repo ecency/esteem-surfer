@@ -415,7 +415,10 @@
     "refresh": "تحديث الصفحة",
     "mark-all-read": "وضع علامة مقروء على الكل",
     "leaderboard": "المتصدرين",
-    "leaderboard-title": "أفضل مستخدم يومي"
+    "leaderboard-title": "Top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly"
   },
   "witnesses": {
     "page-title": "التصويت للشاهد",
