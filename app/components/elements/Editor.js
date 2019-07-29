@@ -1032,7 +1032,9 @@ class Editor extends Component {
               this.editorInstance = editor;
 
               const { autoFocus2Body } = this.props;
-              if (autoFocus2Body) {
+
+              // Don't focus on editor if pin dialog is active
+              if (autoFocus2Body && !document.querySelector('#pin-input')) {
                 editor.focus();
               }
             }}

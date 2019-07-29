@@ -28,8 +28,8 @@ class PinConfirm extends Component {
   }
 
   docClicked = e => {
-    if (!e.target.classList.contains('pin-input')) {
-      document.querySelector('.pin-input').focus();
+    if (e.target.id !== 'pin-input') {
+      document.querySelector('#pin-input').focus();
     }
   };
 
@@ -92,7 +92,7 @@ class PinConfirm extends Component {
                 <Input
                   autoFocus
                   type="password"
-                  className="pin-input"
+                  id="pin-input"
                   maxLength={20}
                   placeholder={intl.formatMessage({
                     id: 'confirm-pin-code.input-placeholder'
