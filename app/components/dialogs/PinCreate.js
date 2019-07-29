@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Button, Col, Input, message } from 'antd';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
-import {pinHasher} from '../../utils/crypto';
+import { pinHasher } from '../../utils/crypto';
 import logo from '../../img/logo-big.png';
 import defaults from '../../constants/defaults';
 
@@ -16,6 +16,20 @@ class PinCreate extends Component {
       value: ''
     };
   }
+
+  componentDidMount() {
+    document.addEventListener('click', this.docClicked);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.docClicked);
+  }
+
+  docClicked = e => {
+    if (!e.target.classList.contains('pin-input')) {
+      document.querySelector('.pin-input').focus();
+    }
+  };
 
   handleChange = e => {
     this.setState({ value: e.target.value });
@@ -55,6 +69,7 @@ class PinCreate extends Component {
                 <Input
                   autoFocus
                   type="password"
+                  className="pin-input"
                   maxLength={20}
                   placeholder={intl.formatMessage({
                     id: 'create-pin-code.input-placeholder'

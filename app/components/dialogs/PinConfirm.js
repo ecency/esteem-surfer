@@ -19,6 +19,20 @@ class PinConfirm extends Component {
     };
   }
 
+  componentDidMount() {
+    document.addEventListener('click', this.docClicked);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.docClicked);
+  }
+
+  docClicked = e => {
+    if (!e.target.classList.contains('pin-input')) {
+      document.querySelector('.pin-input').focus();
+    }
+  };
+
   handleChange = event => {
     this.setState({ value: event.target.value });
   };
@@ -78,6 +92,7 @@ class PinConfirm extends Component {
                 <Input
                   autoFocus
                   type="password"
+                  className="pin-input"
                   maxLength={20}
                   placeholder={intl.formatMessage({
                     id: 'confirm-pin-code.input-placeholder'
