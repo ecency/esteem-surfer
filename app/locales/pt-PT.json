@@ -415,10 +415,15 @@
     "refresh": "Refrescar",
     "mark-all-read": "Marcar todas como lidas",
     "leaderboard": "Quadro de Liderança",
-    "leaderboard-title": "Top Usuários",
+    "leaderboard-title-daily": "Daily top users",
+    "leaderboard-title-weekly": "Weekly top users",
+    "leaderboard-title-monthly": "Monthly top users",
     "leaderboard-daily": "Diário",
     "leaderboard-weekly": "Semanal",
-    "leaderboard-monthly": "Mensal"
+    "leaderboard-monthly": "Mensal",
+    "leaderboard-header-score": "Activities",
+    "leaderboard-header-score-tip": "Post + comment count made by the user during the period",
+    "leaderboard-header-reward": "Activity Reward"
   },
   "witnesses": {
     "page-title": "Votos nas Testemunhas",
