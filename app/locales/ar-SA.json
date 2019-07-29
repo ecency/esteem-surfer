@@ -415,10 +415,15 @@
     "refresh": "تحديث الصفحة",
     "mark-all-read": "وضع علامة مقروء على الكل",
     "leaderboard": "المتصدرين",
-    "leaderboard-title": "Top users",
+    "leaderboard-title-daily": "Daily top users",
+    "leaderboard-title-weekly": "Weekly top users",
+    "leaderboard-title-monthly": "Monthly top users",
     "leaderboard-daily": "Daily",
     "leaderboard-weekly": "Weekly",
-    "leaderboard-monthly": "Monthly"
+    "leaderboard-monthly": "Monthly",
+    "leaderboard-header-score": "Activities",
+    "leaderboard-header-score-tip": "Post + comment count made by the user during the period",
+    "leaderboard-header-reward": "Activity Reward"
   },
   "witnesses": {
     "page-title": "التصويت للشاهد",
