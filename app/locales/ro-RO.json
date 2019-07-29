@@ -415,10 +415,15 @@
     "refresh": "Actualizează",
     "mark-all-read": "Marchează toate ca citite",
     "leaderboard": "Clasament",
-    "leaderboard-title": "Top utilizatori",
+    "leaderboard-title-daily": "Daily top users",
+    "leaderboard-title-weekly": "Weekly top users",
+    "leaderboard-title-monthly": "Monthly top users",
     "leaderboard-daily": "Zilnice",
     "leaderboard-weekly": "Săptămânale",
-    "leaderboard-monthly": "Lunare"
+    "leaderboard-monthly": "Lunare",
+    "leaderboard-header-score": "Activities",
+    "leaderboard-header-score-tip": "Post + comment count made by the user during the period",
+    "leaderboard-header-reward": "Activity Reward"
   },
   "witnesses": {
     "page-title": "Votare Witness",
