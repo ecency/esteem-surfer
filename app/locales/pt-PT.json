@@ -422,8 +422,8 @@
     "leaderboard-weekly": "Semanal",
     "leaderboard-monthly": "Mensal",
     "leaderboard-header-score": "Actividades",
-    "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
-    "leaderboard-header-reward": "Reward"
+    "leaderboard-header-score-tip": "Postar + comentários feitos por um usuário para o período selecionado",
+    "leaderboard-header-reward": "Recompensa"
   },
   "witnesses": {
     "page-title": "Votos nas Testemunhas",
