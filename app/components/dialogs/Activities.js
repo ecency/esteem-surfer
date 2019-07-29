@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import moment from 'moment';
 
-import { Menu, message, Select } from 'antd';
+import { Menu, message, Row, Col } from 'antd';
 
 import { FormattedMessage, injectIntl } from 'react-intl';
 
@@ -536,8 +536,7 @@ class LeaderBoard extends Component {
 
     this.state = {
       list: [],
-      loading: true,
-      duration: 'day'
+      loading: true
     };
   }
 
@@ -545,9 +544,16 @@ class LeaderBoard extends Component {
     this.loadData();
   }
 
+  componentDidUpdate(prevProps) {
+    const { duration } = this.props;
+
+    if (prevProps.duration !== duration) {
+      this.loadData();
+    }
+  }
+
   loadData = () => {
-    const { intl } = this.props;
-    const { duration } = this.state;
+    const { intl, duration } = this.props;
 
     this.setState({ loading: true, list: [] });
 
@@ -564,64 +570,93 @@ class LeaderBoard extends Component {
       });
   };
 
-  durationChanged = duration => {
-    this.setState({ duration }, () => {
-      this.loadData();
-    });
-  };
-
   render() {
-    const { loading, list, duration } = this.state;
+    const { intl, duration } = this.props;
+    const { loading, list } = this.state;
+
+    let title = '';
+    switch (duration) {
+      case 'day':
+        title = intl.formatMessage({
+          id: 'activities.leaderboard-title-daily'
+        });
+        break;
+      case 'week':
+        title = intl.formatMessage({
+          id: 'activities.leaderboard-title-weekly'
+        });
+        break;
+      case 'month':
+        title = intl.formatMessage({
+          id: 'activities.leaderboard-title-monthly'
+        });
+        break;
+      default:
+        title = '';
+    }
+
     return (
       <div className={`dialog-content ${loading ? 'loading' : ''}`}>
         {loading && <LinearProgress />}
-        <div className="notification-list">
-          <div className="list-title">
-            <FormattedMessage id="activities.leaderboard-title" />
-            <div className="duration-select">
-              <Select
-                defaultValue="day"
-                value={duration}
-                onChange={this.durationChanged}
-                size="small"
+        {!loading && (
+          <div className="score-list">
+            <div className="list-title">{title}</div>
+            <Row type="flex" className="list-header">
+              <Col offset={10} span={6} className="score">
+                <Tooltip
+                  title={intl.formatMessage({
+                    id: 'activities.leaderboard-header-score-tip'
+                  })}
+                >
+                  {' '}
+                  <i className="mi">info</i>{' '}
+                </Tooltip>{' '}
+                <FormattedMessage id="activities.leaderboard-header-score" />
+              </Col>
+              <Col offset={1} span={7} className="points">
+                <FormattedMessage id="activities.leaderboard-header-reward" />
+              </Col>
+            </Row>
+            {list.map((item, index) => (
+              <Row
+                type="flex"
+                align="middle"
+                className="list-item"
+                key={item._id}
               >
-                <Select.Option value="day">
-                  <FormattedMessage id="activities.leaderboard-daily" />
-                </Select.Option>
-                <Select.Option value="week">
-                  <FormattedMessage id="activities.leaderboard-weekly" />
-                </Select.Option>
-                <Select.Option value="month">
-                  <FormattedMessage id="activities.leaderboard-monthly" />
-                </Select.Option>
-              </Select>
-            </div>
+                <Col span={2} className="item-index">
+                  {index + 1}
+                </Col>
+                <Col span={3}>
+                  <AccountLink {...this.props} username={item._id}>
+                    <div className="avatar">
+                      <UserAvatar user={item._id} size="medium" />
+                    </div>
+                  </AccountLink>
+                </Col>
+                <Col span={5}>
+                  <AccountLink {...this.props} username={item._id}>
+                    <div className="username">{item._id}</div>
+                  </AccountLink>
+                </Col>
+                <Col span={6} className="score">
+                  {item.count}
+                </Col>
+                <Col offset={1} span={7} className="points">
+                  {item.points !== '0.000' && `${item.points} ESTM`}
+                </Col>
+              </Row>
+            ))}
           </div>
-          {list.map((item, index) => (
-            <div className="list-item" key={item._id}>
-              <div className="item-index">{index + 1}</div>
-              <AccountLink {...this.props} username={item._id}>
-                <div className="avatar">
-                  <UserAvatar user={item._id} size="medium" />
-                </div>
-              </AccountLink>
-              <AccountLink {...this.props} username={item._id}>
-                <div className="username">{item._id}</div>
-              </AccountLink>
-              <div className="score">{item.count}</div>
-              <div className="points">
-                {item.points !== '0.000' && `${item.points} ESTM`}
-              </div>
-            </div>
-          ))}
-        </div>
+        )}
       </div>
     );
   }
 }
 
 LeaderBoard.propTypes = {
-  intl: PropTypes.instanceOf(Object).isRequired
+  intl: PropTypes.instanceOf(Object).isRequired,
+  duration: PropTypes.string.isRequired
 };
 
 class ActivitiesWrapper extends Component {
@@ -630,7 +665,8 @@ class ActivitiesWrapper extends Component {
 
     this.state = {
       selected: 'activities',
-      activityType: 'all'
+      activityType: 'all',
+      duration: 'day'
     };
   }
 
@@ -648,6 +684,10 @@ class ActivitiesWrapper extends Component {
     this.setState({ activityType: item.key }, () => {});
   };
 
+  durationChanged = item => {
+    this.setState({ duration: item.key });
+  };
+
   switchActivities = () => {
     const { selected } = this.state;
     if (selected === 'activities') return;
@@ -661,7 +701,7 @@ class ActivitiesWrapper extends Component {
   };
 
   render() {
-    const { selected, activityType } = this.state;
+    const { selected, activityType, duration } = this.state;
 
     const filterMenu = (
       <Menu
@@ -707,6 +747,30 @@ class ActivitiesWrapper extends Component {
       </Menu>
     );
 
+    const filterMenu2 = (
+      <Menu
+        selectedKeys={[duration]}
+        className="surfer-dropdown-menu"
+        onClick={this.durationChanged}
+      >
+        <Menu.Item key="day">
+          <a>
+            <FormattedMessage id="activities.leaderboard-daily" />
+          </a>
+        </Menu.Item>
+        <Menu.Item key="week">
+          <a>
+            <FormattedMessage id="activities.leaderboard-weekly" />
+          </a>
+        </Menu.Item>
+        <Menu.Item key="month">
+          <a>
+            <FormattedMessage id="activities.leaderboard-monthly" />
+          </a>
+        </Menu.Item>
+      </Menu>
+    );
+
     return (
       <div className="activities-dialog-content" id="activities-content">
         <div className="dialog-header">
@@ -738,6 +802,11 @@ class ActivitiesWrapper extends Component {
                 }}
               >
                 <FormattedMessage id="activities.leaderboard" />
+                {selected === 'leaderboard' && (
+                  <div className="type-selection">
+                    <DropDown menu={filterMenu2} {...this.props} />
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -747,7 +816,9 @@ class ActivitiesWrapper extends Component {
           <Activities activityType={activityType} {...this.props} />
         )}
 
-        {selected === 'leaderboard' && <LeaderBoard {...this.props} />}
+        {selected === 'leaderboard' && (
+          <LeaderBoard duration={duration} {...this.props} />
+        )}
       </div>
     );
   }

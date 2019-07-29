@@ -64,16 +64,17 @@
       }
     }
 
-    .notification-list {
+    .score-list {
       padding: 10px 36px;
 
       .list-title {
+        align-items: center;
+        display: flex;
         font-size: 16px;
         font-weight: 700;
-        padding: 10px;
-        display: flex;
         justify-content: space-between;
-        align-items: center;
+        margin-bottom: 10px;
+        padding: 10px;
 
         @include themify(day) {
           color: $steel-grey;
@@ -82,22 +83,30 @@
         @include themify(night) {
           color: $powder-blue;
         }
+      }
 
-        .duration-select {
-          width: 200px;
+      .list-header {
+        padding: 8px 16px;
 
-          .ant-select {
-            width: 100%;
+        .score {
+          text-align: right;
+
+          .mi {
+            color: $silver;
+            margin-right: 3px;
+            cursor: default;
           }
+        }
+
+        .points {
+          color: $dark-sky-blue;
+          text-align: right;
         }
       }
 
       .list-item {
-        align-items: center;
         border-radius: 8px;
-        display: flex;
         padding: 8px 16px;
-        width: 100%;
 
         @include themify(day) {
           color: $charcoal-grey;
@@ -111,7 +120,6 @@
           color: $silver;
           font-size: 13px;
           font-weight: 500;
-          width: 30px;
         }
 
         .avatar {
@@ -130,14 +138,12 @@
         }
 
         .score {
-          flex-grow: 1;
           text-align: right;
         }
 
         .points {
-          width: 130px;
-          text-align: right;
           color: $dark-sky-blue;
+          text-align: right;
         }
 
         &:nth-child(odd) {
