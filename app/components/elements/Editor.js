@@ -244,7 +244,15 @@ class Editor extends Component {
   };
 
   titleChanged = e => {
-    this.setState({ title: e.target.value }, () => this.changed());
+    this.setState({ title: e.target.value });
+
+    if (this.changeTimer) {
+      clearTimeout(this.changeTimer);
+    }
+
+    this.changeTimer = setTimeout(() => {
+      this.changed();
+    }, 500);
   };
 
   tagsChanged = e => {
