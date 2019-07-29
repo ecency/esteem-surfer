@@ -422,8 +422,8 @@
     "leaderboard-weekly": "Weekly",
     "leaderboard-monthly": "Monthly",
     "leaderboard-header-score": "Activities",
-    "leaderboard-header-score-tip": "Post + comment count made by the user during the period",
-    "leaderboard-header-reward": "Activity Reward"
+    "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
+    "leaderboard-header-reward": "Reward"
   },
   "witnesses": {
     "page-title": "见证人投票",
