@@ -58,14 +58,8 @@ export const addAccountSc = (
   }
 };
 
-export const deleteAccount = username => (dispatch, getState) => {
+export const deleteAccount = username => dispatch => {
   removeItem(`account_${username}`);
-
-  const { accounts } = getState();
-
-  if (accounts.active === username) {
-    setItem(`active_account`, null);
-  }
 
   dispatch(accountDeleted(username));
 };

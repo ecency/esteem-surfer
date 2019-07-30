@@ -56,14 +56,12 @@ const mapDispatchToProps = dispatch => ({
       {
         addAccount,
         addAccountSc,
-        deleteAccount
+        deleteAccount,
+        deleteAccounts
       },
       dispatch
     ),
-    ...bindActionCreators(
-      { logIn, logOut, updateActiveAccount, deleteAccounts },
-      dispatch
-    ),
+    ...bindActionCreators({ logIn, logOut, updateActiveAccount }, dispatch),
     ...bindActionCreators({ setVisitingEntry }, dispatch),
     ...bindActionCreators({ setVisitingAccount }, dispatch),
     ...bindActionCreators({ fetchActivities, resetActivities }, dispatch)

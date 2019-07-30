@@ -7,6 +7,8 @@ import { PrivateKey, PublicKey } from 'dsteem';
 import { Button, Divider, Input, Alert, message } from 'antd';
 import { FormattedHTMLMessage, FormattedMessage, injectIntl } from 'react-intl';
 
+import Tooltip from '../common/Tooltip';
+
 import scLogo from '../../img/steem-connect.svg';
 import logo from '../../img/logo-big.png';
 
@@ -16,6 +18,7 @@ import { scLogin } from '../../helpers/sc';
 import UserAvatar from '../elements/UserAvatar';
 
 import { scTokenRenew, usrActivity } from '../../backend/esteem-client';
+import PinRequired from '../helpers/PinRequired';
 
 class Login extends Component {
   constructor(props) {
@@ -59,6 +62,20 @@ class Login extends Component {
     actions.logIn(resp.username);
     onSuccess(resp.username);
     this.afterLogin(resp.username);
+  };
+
+  deleteAccount = username => {
+    const { activeAccount, actions } = this.props;
+
+    if (activeAccount && activeAccount.username === username) {
+      actions.logOut();
+    }
+
+    actions.deleteAccount(username);
+
+    window.dispatchEvent(
+      new CustomEvent('account-deleted', { detail: { username } })
+    );
   };
 
   doLogin = async () => {
@@ -217,15 +234,40 @@ class Login extends Component {
                     activeUsername === account.username ? 'active' : ''
                   }`}
                   role="none"
-                  onClick={() => {
-                    this.switchToAccount(account.username);
-                  }}
                 >
                   <UserAvatar user={account.username} size="normal" />{' '}
                   <span className="username">@{account.username}</span>
                   {activeUsername === account.username && (
                     <div className="check-mark" />
                   )}
+                  <div className="space" />
+                  {activeUsername !== account.username && (
+                    <div
+                      role="none"
+                      className="btn-login"
+                      onClick={() => {
+                        this.switchToAccount(account.username);
+                      }}
+                    >
+                      <Tooltip
+                        title={intl.formatMessage({ id: 'login.login' })}
+                      >
+                        <i className="mi">check</i>
+                      </Tooltip>
+                    </div>
+                  )}
+                  <PinRequired
+                    {...this.props}
+                    onSuccess={() => {
+                      this.deleteAccount(account.username);
+                    }}
+                  >
+                    <div className="btn-delete">
+                      <Tooltip title={intl.formatMessage({ id: 'g.delete' })}>
+                        <i className="mi">delete_forever</i>
+                      </Tooltip>
+                    </div>
+                  </PinRequired>
                 </div>
               ))}
             </div>
@@ -307,7 +349,9 @@ Login.propTypes = {
     addAccount: PropTypes.func.isRequired,
     addAccountSc: PropTypes.func.isRequired,
     logIn: PropTypes.func.isRequired,
-    updateActiveAccount: PropTypes.func.isRequired
+    logOut: PropTypes.func.isRequired,
+    updateActiveAccount: PropTypes.func.isRequired,
+    deleteAccount: PropTypes.func.isRequired
   }).isRequired,
   onSuccess: PropTypes.func.isRequired,
   accounts: PropTypes.arrayOf(PropTypes.object),

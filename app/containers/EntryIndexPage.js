@@ -14,10 +14,16 @@ import {
   changeCurrency,
   changeLocale,
   changePushNotify,
-  changeServer
+  changeServer,
+  wipePin
 } from '../actions/global';
 
-import { addAccount, addAccountSc, deleteAccount } from '../actions/accounts';
+import {
+  addAccount,
+  addAccountSc,
+  deleteAccount,
+  deleteAccounts
+} from '../actions/accounts';
 
 import { logIn, logOut, updateActiveAccount } from '../actions/active-account';
 
@@ -57,11 +63,13 @@ const mapDispatchToProps = dispatch => ({
       },
       dispatch
     ),
+    ...bindActionCreators({ wipePin }, dispatch),
     ...bindActionCreators(
       {
         addAccount,
         addAccountSc,
-        deleteAccount
+        deleteAccount,
+        deleteAccounts
       },
       dispatch
     ),

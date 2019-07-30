@@ -45,7 +45,7 @@
       .account-list-item {
         align-items: center;
         border-radius: 25px;
-        cursor: pointer;
+
         display: flex;
         font-size: 16px;
         line-height: 16px;
@@ -82,6 +82,10 @@
           font-weight: 500;
         }
 
+        .space {
+          flex-grow: 1;
+        }
+
         .check-mark {
           background: $dark-sky-blue;
           border-radius: 50%;
@@ -90,6 +94,82 @@
           position: absolute;
           top: calc(50% - 2.5px);
           width: 5px;
+        }
+
+        .btn-login {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 16px;
+          cursor: pointer;
+
+          .mi {
+            color: $white;
+            font-size: 16px;
+          }
+
+          @include themify(day) {
+            background: lighten(
+              $dark-sky-blue,
+              6
+            ); // darken($duck-egg-blue, 20);
+
+            &:hover {
+              background: $duck-egg-blue;
+
+              .mi {
+                color: $dark-sky-blue;
+              }
+            }
+          }
+
+          @include themify(night) {
+            background: darken($metallic-blue, 10);
+
+            &:hover {
+              background: $metallic-blue;
+            }
+          }
+        }
+
+        .btn-delete {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+
+          .mi {
+            color: $white;
+            font-size: 16px;
+          }
+
+          &:hover {
+            .mi {
+              color: lighten($red2, 10);
+            }
+          }
+
+          @include themify(day) {
+            background: darken($duck-egg-blue, 20);
+
+            &:hover {
+              background: $duck-egg-blue;
+            }
+          }
+
+          @include themify(night) {
+            background: darken($metallic-blue, 3);
+
+            &:hover {
+              background: $metallic-blue;
+            }
+          }
         }
       }
     }
