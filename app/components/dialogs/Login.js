@@ -73,9 +73,11 @@ class Login extends Component {
 
     actions.deleteAccount(username);
 
-    window.dispatchEvent(
-      new CustomEvent('account-deleted', { detail: { username } })
-    );
+    setTimeout(() => {
+      window.dispatchEvent(
+        new CustomEvent('account-deleted', { detail: { username } })
+      );
+    }, 300);
   };
 
   doLogin = async () => {

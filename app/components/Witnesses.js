@@ -407,11 +407,13 @@ class Witnesses extends PureComponent {
 
     window.addEventListener('user-login', this.accountAction);
     window.addEventListener('user-logout', this.accountAction);
+    window.addEventListener('account-deleted', this.accountAction);
   }
 
   componentWillUnmount() {
     window.removeEventListener('user-login', this.accountAction);
     window.removeEventListener('user-logout', this.accountAction);
+    window.removeEventListener('account-deleted', this.accountAction);
   }
 
   accountAction = () => {
