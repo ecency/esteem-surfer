@@ -53,7 +53,9 @@ class PinConfirm extends Component {
     }, 100);
   };
 
-  submitForm = () => {
+  submitForm = e => {
+    if (e) e.stopPropagation();
+
     const { onSuccess } = this.props;
     const { value, trys } = this.state;
 

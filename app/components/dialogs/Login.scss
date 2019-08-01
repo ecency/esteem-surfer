@@ -45,7 +45,7 @@
       .account-list-item {
         align-items: center;
         border-radius: 25px;
-
+        cursor: pointer;
         display: flex;
         font-size: 16px;
         line-height: 16px;
@@ -96,53 +96,14 @@
           width: 5px;
         }
 
-        .btn-login {
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-right: 16px;
-          cursor: pointer;
-
-          .mi {
-            color: $white;
-            font-size: 16px;
-          }
-
-          @include themify(day) {
-            background: lighten(
-              $dark-sky-blue,
-              6
-            ); // darken($duck-egg-blue, 20);
-
-            &:hover {
-              background: $duck-egg-blue;
-
-              .mi {
-                color: $dark-sky-blue;
-              }
-            }
-          }
-
-          @include themify(night) {
-            background: darken($metallic-blue, 10);
-
-            &:hover {
-              background: $metallic-blue;
-            }
-          }
-        }
-
         .btn-delete {
-          width: 24px;
-          height: 24px;
-          border-radius: 50%;
-          display: flex;
           align-items: center;
-          justify-content: center;
+          border-radius: 50%;
           cursor: pointer;
+          display: none;
+          height: 24px;
+          justify-content: center;
+          width: 24px;
 
           .mi {
             color: $white;
@@ -169,6 +130,12 @@
             &:hover {
               background: $metallic-blue;
             }
+          }
+        }
+
+        &:hover {
+          .btn-delete {
+            display: flex;
           }
         }
       }
@@ -203,8 +170,8 @@
 
     .sc-note {
       font-size: 95%;
-      opacity: 0.5;
       margin-bottom: 10px;
+      opacity: 0.5;
     }
   }
 }

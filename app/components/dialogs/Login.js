@@ -1,24 +1,150 @@
+/*
+eslint-disable react/no-multi-comp
+*/
+
 import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 
 import { PrivateKey, PublicKey } from 'dsteem';
 
-import { Button, Divider, Input, Alert, message } from 'antd';
+import {
+  Button,
+  Divider,
+  Input,
+  Alert,
+  message,
+  Popconfirm,
+  Modal
+} from 'antd';
+
 import { FormattedHTMLMessage, FormattedMessage, injectIntl } from 'react-intl';
 
 import Tooltip from '../common/Tooltip';
 
-import scLogo from '../../img/steem-connect.svg';
-import logo from '../../img/logo-big.png';
+import UserAvatar from '../elements/UserAvatar';
+
+import PinConfirm from './PinConfirm';
 
 import { getAccounts } from '../../backend/steem-client';
 
-import { scLogin } from '../../helpers/sc';
-import UserAvatar from '../elements/UserAvatar';
-
 import { scTokenRenew, usrActivity } from '../../backend/esteem-client';
-import PinRequired from '../helpers/PinRequired';
+
+import { scLogin } from '../../helpers/sc';
+
+import scLogo from '../../img/steem-connect.svg';
+
+import logo from '../../img/logo-big.png';
+
+class AccountItem extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      del: false
+    };
+  }
+
+  deleteAccount = () => {
+    const { activeAccount, actions, account } = this.props;
+    const { username } = account;
+
+    if (activeAccount && activeAccount.username === username) {
+      actions.logOut();
+    }
+
+    actions.deleteAccount(username);
+
+    setTimeout(() => {
+      window.dispatchEvent(
+        new CustomEvent('account-deleted', { detail: { username } })
+      );
+    }, 300);
+  };
+
+  render() {
+    const { account, intl, activeAccount, onSelect } = this.props;
+    const { del } = this.state;
+
+    const activeUsername = activeAccount ? activeAccount.username : null;
+
+    return (
+      <div
+        key={account.username}
+        className={`account-list-item ${
+          activeUsername === account.username ? 'active' : ''
+        }`}
+        onClick={() => {
+          onSelect(account.username);
+        }}
+        role="none"
+      >
+        <UserAvatar user={account.username} size="normal" />{' '}
+        <span className="username">@{account.username}</span>
+        {activeUsername === account.username && <div className="check-mark" />}
+        <div className="space" />
+        <Popconfirm
+          title={intl.formatMessage({ id: 'g.are-you-sure' })}
+          okText={intl.formatMessage({ id: 'g.ok' })}
+          cancelText={intl.formatMessage({ id: 'g.cancel' })}
+          onCancel={e => {
+            e.stopPropagation();
+            this.setState({ del: false });
+          }}
+          onConfirm={e => {
+            e.stopPropagation();
+            this.setState({ del: true });
+          }}
+        >
+          <div
+            role="none"
+            className="btn-delete"
+            onClick={e => {
+              e.stopPropagation();
+            }}
+          >
+            <Tooltip title={intl.formatMessage({ id: 'g.delete' })}>
+              <i className="mi">delete_forever</i>
+            </Tooltip>
+          </div>
+        </Popconfirm>
+        {del && (
+          <Modal
+            footer={null}
+            closable
+            onCancel={e => {
+              this.setState({ del: false });
+              e.stopPropagation();
+            }}
+            keyboard
+            visible
+            width="500px"
+            centered
+            destroyOnClose
+            maskClosable={false}
+          >
+            <PinConfirm {...this.props} onSuccess={this.deleteAccount} />
+          </Modal>
+        )}
+      </div>
+    );
+  }
+}
+
+AccountItem.defaultProps = {
+  activeAccount: null
+};
+
+AccountItem.propTypes = {
+  actions: PropTypes.shape({
+    logOut: PropTypes.func.isRequired,
+    deleteAccount: PropTypes.func.isRequired
+  }).isRequired,
+  onSelect: PropTypes.func.isRequired,
+  account: PropTypes.instanceOf(Object).isRequired,
+  activeAccount: PropTypes.instanceOf(Object),
+  intl: PropTypes.instanceOf(Object).isRequired
+};
 
 class Login extends Component {
   constructor(props) {
@@ -62,22 +188,6 @@ class Login extends Component {
     actions.logIn(resp.username);
     onSuccess(resp.username);
     this.afterLogin(resp.username);
-  };
-
-  deleteAccount = username => {
-    const { activeAccount, actions } = this.props;
-
-    if (activeAccount && activeAccount.username === username) {
-      actions.logOut();
-    }
-
-    actions.deleteAccount(username);
-
-    setTimeout(() => {
-      window.dispatchEvent(
-        new CustomEvent('account-deleted', { detail: { username } })
-      );
-    }, 300);
   };
 
   doLogin = async () => {
@@ -201,10 +311,8 @@ class Login extends Component {
   };
 
   render() {
-    const { accounts, loginMsg, intl, activeAccount } = this.props;
+    const { accounts, loginMsg, intl } = this.props;
     const { processing } = this.state;
-
-    const activeUsername = activeAccount ? activeAccount.username : null;
 
     return (
       <div className="login-dialog-content">
@@ -230,47 +338,12 @@ class Login extends Component {
             </div>
             <div className="account-list-body">
               {accounts.map(account => (
-                <div
+                <AccountItem
                   key={account.username}
-                  className={`account-list-item ${
-                    activeUsername === account.username ? 'active' : ''
-                  }`}
-                  role="none"
-                >
-                  <UserAvatar user={account.username} size="normal" />{' '}
-                  <span className="username">@{account.username}</span>
-                  {activeUsername === account.username && (
-                    <div className="check-mark" />
-                  )}
-                  <div className="space" />
-                  {activeUsername !== account.username && (
-                    <div
-                      role="none"
-                      className="btn-login"
-                      onClick={() => {
-                        this.switchToAccount(account.username);
-                      }}
-                    >
-                      <Tooltip
-                        title={intl.formatMessage({ id: 'login.login' })}
-                      >
-                        <i className="mi">check</i>
-                      </Tooltip>
-                    </div>
-                  )}
-                  <PinRequired
-                    {...this.props}
-                    onSuccess={() => {
-                      this.deleteAccount(account.username);
-                    }}
-                  >
-                    <div className="btn-delete">
-                      <Tooltip title={intl.formatMessage({ id: 'g.delete' })}>
-                        <i className="mi">delete_forever</i>
-                      </Tooltip>
-                    </div>
-                  </PinRequired>
-                </div>
+                  account={account}
+                  onSelect={this.switchToAccount}
+                  {...this.props}
+                />
               ))}
             </div>
           </div>
@@ -342,8 +415,7 @@ class Login extends Component {
 
 Login.defaultProps = {
   loginMsg: null,
-  accounts: [],
-  activeAccount: null
+  accounts: []
 };
 
 Login.propTypes = {
@@ -351,14 +423,11 @@ Login.propTypes = {
     addAccount: PropTypes.func.isRequired,
     addAccountSc: PropTypes.func.isRequired,
     logIn: PropTypes.func.isRequired,
-    logOut: PropTypes.func.isRequired,
-    updateActiveAccount: PropTypes.func.isRequired,
-    deleteAccount: PropTypes.func.isRequired
+    updateActiveAccount: PropTypes.func.isRequired
   }).isRequired,
   onSuccess: PropTypes.func.isRequired,
   accounts: PropTypes.arrayOf(PropTypes.object),
   loginMsg: PropTypes.element,
-  activeAccount: PropTypes.instanceOf(Object),
   intl: PropTypes.instanceOf(Object).isRequired
 };
 

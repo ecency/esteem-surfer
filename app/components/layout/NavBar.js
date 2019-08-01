@@ -725,9 +725,10 @@ class NavBar extends Component {
           onCancel={this.onLoginModalCancel}
           footer={false}
           width="500px"
-          closable={false}
+          closable
           destroyOnClose
           centered
+          maskClosable={false}
         >
           <Login {...this.props} onSuccess={this.onLoginSuccess} />
         </Modal>
