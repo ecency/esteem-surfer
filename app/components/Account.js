@@ -1523,6 +1523,7 @@ export class SectionPoints extends Component {
     const iconCheckinExtra = 'done_all';
     const iconTransfer = 'compare_arrows';
     const iconReward = 'local_activity';
+    const iconMoney = 'monetization_on';
 
     const isMyPage = activeAccount && activeAccount.username === username;
 
@@ -1716,6 +1717,9 @@ export class SectionPoints extends Component {
                     lKey = 'transfer-incoming';
                     lArgs.n = item.sender;
                     break;
+                  case 991:
+                    icon = iconMoney;
+                    break;
                   default:
                 }
 
@@ -1726,10 +1730,13 @@ export class SectionPoints extends Component {
                     </div>
                     <div className="transaction-title">
                       <div className="transaction-name">
-                        <FormattedMessage
-                          id={`account.points-${lKey}-list-desc`}
-                          values={lArgs}
-                        />
+                        {lKey && (
+                          <FormattedMessage
+                            id={`account.points-${lKey}-list-desc`}
+                            values={lArgs}
+                          />
+                        )}
+                        {!lKey && <span>&nbsp;</span>}
                       </div>
                       <div className="transaction-date">
                         <FormattedRelative value={item.created} />
