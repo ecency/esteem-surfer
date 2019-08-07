@@ -54,7 +54,9 @@
   },
   "entry-reblog": {
     "reblog": "Təkrar paylaş",
-    "reblogged": "Təkrar paylaşıldı"
+    "reblogged": "Təkrar paylaşıldı",
+    "modal-title": "Rebloggers ({n})",
+    "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
     "title": "Tənzimləmələr",
