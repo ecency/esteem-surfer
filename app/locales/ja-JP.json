@@ -209,7 +209,8 @@
     "points-delegation-list-desc": "Delegation reward",
     "points-claim-ok": "Points claimed",
     "points-promote": "Promote",
-    "points-boost": "Boost"
+    "points-boost": "Boost",
+    "points-transfer": "Gift to Account"
   },
   "redeem": {
     "user-label": "User",
@@ -453,6 +454,7 @@
   },
   "transfer": {
     "transfer-title": "アカウントに送金",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "別のSteemアカウントに資金を移動します",
     "transfer-saving-title": "貯蓄口座に送る",
     "transfer-saving-sub-title": "引き出しに3日間の待ち時間を設けて資金を守ります",
