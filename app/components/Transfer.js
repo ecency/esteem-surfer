@@ -489,7 +489,13 @@ class Transfer extends PureComponent {
                   <div className="box-titles">
                     <div className="main-title">
                       {mode === 'transfer' && (
-                        <FormattedMessage id="transfer.transfer-title" />
+                        <FormattedMessage
+                          id={
+                            asset === 'ESTM'
+                              ? 'transfer.transfer-estm-title'
+                              : 'transfer.transfer-title'
+                          }
+                        />
                       )}
                       {mode === 'transfer-saving' && (
                         <FormattedMessage id="transfer.transfer-saving-title" />
