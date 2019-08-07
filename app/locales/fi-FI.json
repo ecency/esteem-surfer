@@ -209,7 +209,8 @@
     "points-delegation-list-desc": "Delegation reward",
     "points-claim-ok": "Points claimed",
     "points-promote": "Promote",
-    "points-boost": "Boost"
+    "points-boost": "Boost",
+    "points-transfer": "Gift to Account"
   },
   "redeem": {
     "user-label": "User",
@@ -453,6 +454,7 @@
   },
   "transfer": {
     "transfer-title": "Siirrä tilille",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Move funds to another Steem account",
     "transfer-saving-title": "Siirrä säästöihin",
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
