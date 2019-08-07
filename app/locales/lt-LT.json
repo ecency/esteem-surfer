@@ -209,7 +209,8 @@
     "points-delegation-list-desc": "Delegation reward",
     "points-claim-ok": "Points claimed",
     "points-promote": "Promote",
-    "points-boost": "Boost"
+    "points-boost": "Boost",
+    "points-transfer": "Gift to Account"
   },
   "redeem": {
     "user-label": "User",
@@ -453,6 +454,7 @@
   },
   "transfer": {
     "transfer-title": "Pervesti į Paskyrą",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Perkelti lėšas į kitą Steem paskyrą",
     "transfer-saving-title": "Pervesti į Santaupas",
     "transfer-saving-sub-title": "Apsaugoti lėšas reikalaujant 3 dienų atsiėmimui",
