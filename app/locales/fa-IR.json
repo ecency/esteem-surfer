@@ -54,7 +54,9 @@
   },
   "entry-reblog": {
     "reblog": "اشتراک گذاری",
-    "reblogged": "اشتراک گذاری شده"
+    "reblogged": "اشتراک گذاری شده",
+    "modal-title": "Rebloggers ({n})",
+    "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
     "title": "تنظیمات",
