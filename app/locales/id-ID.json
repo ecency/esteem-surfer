@@ -54,7 +54,9 @@
   },
   "entry-reblog": {
     "reblog": "Menampilkan kembali",
-    "reblogged": "Menampilkan kembali"
+    "reblogged": "Menampilkan kembali",
+    "modal-title": "Rebloggers ({n})",
+    "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
     "title": "Pengaturan",
