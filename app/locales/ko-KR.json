@@ -209,7 +209,8 @@
     "points-delegation-list-desc": "임대 보상",
     "points-claim-ok": "포인트 획득 완료",
     "points-promote": "홍보",
-    "points-boost": "후원"
+    "points-boost": "후원",
+    "points-transfer": "Gift to Account"
   },
   "redeem": {
     "user-label": "사용자",
@@ -453,6 +454,7 @@
   },
   "transfer": {
     "transfer-title": "송금하기",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "다른 스팀 계정으로 자금 보내기",
     "transfer-saving-title": "안전 금고로 송금",
     "transfer-saving-sub-title": "3일 간의 출금 대기 기간이 설정된 안전금고를 이용해 자금을 보호하세요",
