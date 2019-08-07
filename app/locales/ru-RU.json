@@ -54,7 +54,9 @@
   },
   "entry-reblog": {
     "reblog": "Репост",
-    "reblogged": "Репостнуто"
+    "reblogged": "Репостнуто",
+    "modal-title": "Rebloggers ({n})",
+    "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
     "title": "Настройки",
