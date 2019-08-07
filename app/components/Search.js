@@ -260,6 +260,7 @@ class Search extends PureComponent {
     return (
       <div className="wrapper">
         <NavBar
+          postBtnActive
           {...Object.assign({}, this.props, {
             reloadFn: () => {
               this.refresh();

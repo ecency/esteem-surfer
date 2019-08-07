@@ -302,6 +302,7 @@ class DelegateCls extends PureComponent {
     return (
       <div className="wrapper">
         <NavBar
+          postBtnActive
           {...Object.assign({}, this.props, {
             reloadFn: () => {
               this.setState(this.resetState());
@@ -817,6 +818,7 @@ class PowerDownCls extends PureComponent {
     return (
       <div className="wrapper">
         <NavBar
+          postBtnActive
           {...Object.assign({}, this.props, {
             reloadFn: () => {
               this.setState(this.resetState());
