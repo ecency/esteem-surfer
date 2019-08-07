@@ -209,7 +209,8 @@
     "points-delegation-list-desc": "Ganjaran delegasi",
     "points-claim-ok": "Mata ganjaran dituntut",
     "points-promote": "Digalakkan",
-    "points-boost": "Pecutkan"
+    "points-boost": "Pecutkan",
+    "points-transfer": "Gift to Account"
   },
   "redeem": {
     "user-label": "Pengguna",
@@ -453,6 +454,7 @@
   },
   "transfer": {
     "transfer-title": "Transfer ke akaun",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Pindahkan dana ke akaun steem lain",
     "transfer-saving-title": "Pindah kepada simpanan",
     "transfer-saving-sub-title": "Melindungi dana dengan masa tunggu 3 hari bila ingin dikeluarkan",
