@@ -209,7 +209,8 @@
     "points-delegation-list-desc": "Delegation reward",
     "points-claim-ok": "Points claimed",
     "points-promote": "Promote",
-    "points-boost": "Boost"
+    "points-boost": "Boost",
+    "points-transfer": "Gift to Account"
   },
   "redeem": {
     "user-label": "User",
@@ -453,6 +454,7 @@
   },
   "transfer": {
     "transfer-title": "Transférer vers un compte",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Transférer des fonds vers un autre compte Steem",
     "transfer-saving-title": "Transférer vers mes Économies",
     "transfer-saving-sub-title": "Protéger les fonds en imposant une période d'attente de 3 jours pour les retraits",
