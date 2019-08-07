@@ -209,7 +209,8 @@
     "points-delegation-list-desc": "Delegation reward",
     "points-claim-ok": "Points claimed",
     "points-promote": "Promote",
-    "points-boost": "Boost"
+    "points-boost": "Boost",
+    "points-transfer": "Gift to Account"
   },
   "redeem": {
     "user-label": "User",
@@ -453,6 +454,7 @@
   },
   "transfer": {
     "transfer-title": "Överför till konto",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Flytta medel till ett annat Steem konto",
     "transfer-saving-title": "För över till Sparkonto",
     "transfer-saving-sub-title": "Skydda medel genom att kräva en 3 dagars uttag väntetid",
