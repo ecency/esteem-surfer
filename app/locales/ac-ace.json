@@ -54,7 +54,9 @@
   },
   "entry-reblog": {
     "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblogged": "Reblogged",
+    "modal-title": "Rebloggers ({n})",
+    "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
     "title": "Meu Atoe",
