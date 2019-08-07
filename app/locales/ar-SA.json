@@ -209,7 +209,8 @@
     "points-delegation-list-desc": "Delegation reward",
     "points-claim-ok": "تمت المطالبة بالنقاط",
     "points-promote": "Promote",
-    "points-boost": "Boost"
+    "points-boost": "Boost",
+    "points-transfer": "Gift to Account"
   },
   "redeem": {
     "user-label": "User",
@@ -453,6 +454,7 @@
   },
   "transfer": {
     "transfer-title": "التحويل إلى الحساب",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "نقل الأموال إلى حساب Steem آخر",
     "transfer-saving-title": "التحويل إلى المدخرات",
     "transfer-saving-sub-title": "حماية الأموال بالمطالبة بفترة 3 أيام للسحب",
