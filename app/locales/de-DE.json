@@ -209,7 +209,8 @@
     "points-delegation-list-desc": "Delegations-Belohnung",
     "points-claim-ok": "Punkte eingesammelt",
     "points-promote": "Bewerben",
-    "points-boost": "Boost"
+    "points-boost": "Boost",
+    "points-transfer": "Gift to Account"
   },
   "redeem": {
     "user-label": "Benutzer",
@@ -453,6 +454,7 @@
   },
   "transfer": {
     "transfer-title": "Zum Benutzerkonto transferieren",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Geld auf ein anderes Steem-Konto verschieben",
     "transfer-saving-title": "In den Tresor transferieren",
     "transfer-saving-sub-title": "Guthaben wird durch eine 3-tägige Wartezeit geschützt",
