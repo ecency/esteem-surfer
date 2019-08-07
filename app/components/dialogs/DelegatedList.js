@@ -130,7 +130,7 @@ class DelegationList extends PureComponent {
         dataIndex: 'undelegate',
         key: 'undelegate',
         render: (value, record) => {
-          if (activeAccount.username === username) {
+          if (activeAccount && activeAccount.username === username) {
             return (
               <PinRequired
                 {...this.props}
