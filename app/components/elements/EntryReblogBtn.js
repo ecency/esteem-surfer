@@ -75,7 +75,10 @@ class ReBloggersModal extends Component {
         centered
         showHeader={false}
         title={
-          <FormattedMessage id="entry-reblog.modal-title" values={{ n: 11 }} />
+          <FormattedMessage
+            id="entry-reblog.modal-title"
+            values={{ n: reblogs.length }}
+          />
         }
       >
         <Table
