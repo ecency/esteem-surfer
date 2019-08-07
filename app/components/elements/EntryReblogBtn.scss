@@ -20,21 +20,6 @@
 }
 
 .reblog-btn {
-  color: $steel-grey;
-
-  &:hover {
-    color: $dark-sky-blue;
-  }
-
-  &.reblogged {
-    color: $dark-sky-blue !important;
-    pointer-events: none;
-
-    .mi {
-      opacity: 1 !important;
-    }
-  }
-
   &.processing {
     animation: reblogging-color-change 5s infinite;
     pointer-events: none;

@@ -1,5 +1,5 @@
 /*
-eslint-disable react/no-multi-comp, no-underscore-dangle
+eslint-disable react/no-multi-comp, no-underscore-dangle, react/no-danger
 */
 
 import React, { Component, PureComponent, Fragment } from 'react';
@@ -607,7 +607,7 @@ class EntryFloatingMenu extends PureComponent {
 
     return (
       <div className="entry-floating-menu">
-        <EntryReblogBtn {...this.props} entry={entry} />
+        <EntryReblogBtn {...this.props} entry={entry} showDetail />
 
         {editHistoryVisible && (
           <Tooltip

@@ -246,7 +246,7 @@
         align-items: center;
         color: $steel-grey;
         display: flex;
-        font-size: 14px;
+
         margin-right: 25px;
 
         @include themify(night) {
@@ -256,6 +256,35 @@
         .mi {
           margin-right: 5px;
           opacity: 0.5;
+        }
+      }
+
+      .reblog-btn {
+        .inner-btn {
+          align-items: center;
+          color: $steel-grey;
+          display: flex;
+        }
+
+        &:hover {
+          .inner-btn {
+            color: $dark-sky-blue;
+          }
+        }
+
+        &.reblogged-btn {
+          .reblog-count,
+          .inner-btn {
+            color: $dark-sky-blue !important;
+          }
+
+          .inner-btn {
+            pointer-events: none;
+
+            .mi {
+              opacity: 1 !important;
+            }
+          }
         }
       }
 

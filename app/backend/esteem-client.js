@@ -373,3 +373,13 @@ export const getCommentHistory = (author, permlink, onlyMeta = false) => {
 
   return axios.get(u).then(resp => resp.data);
 };
+
+export const getPostReblogs = (author, permlink) =>
+  axios
+    .get(`${BACKEND_URL}/api/post-reblogs/${author}/${permlink}`)
+    .then(resp => resp.data);
+
+export const getPostReblogCount = (author, permlink) =>
+  axios
+    .get(`${BACKEND_URL}/api/post-reblog-count/${author}/${permlink}`)
+    .then(resp => resp.data);

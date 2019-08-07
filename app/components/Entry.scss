@@ -715,29 +715,66 @@
     }
 
     .reblog-btn {
-      align-items: center;
       border-radius: 50%;
-      display: flex;
       height: 50px;
-      justify-content: center;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
       width: 50px;
+      position: relative;
+
+      .inner-btn {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+          @include themify(day) {
+            background: $duck-egg-blue;
+          }
+
+          @include themify(night) {
+            background: darken($metallic-blue, 16);
+            color: $powder-blue;
+          }
+        }
+      }
+
+      &.reblogged-btn {
+        .inner-btn {
+          pointer-events: none;
+
+          @include themify(day) {
+            background: $duck-egg-blue;
+          }
+
+          @include themify(night) {
+            background: darken($metallic-blue, 16);
+            color: $powder-blue;
+          }
+        }
+      }
+
+      .reblog-count {
+        position: absolute;
+        left: 12px;
+        bottom: -16px;
+        width: 26px;
+        font-size: 13px;
+        text-align: center;
+        z-index: 10;
+        font-weight: 300;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
 
       .mi {
         font-size: 36px;
         font-weight: 700;
-      }
-
-      &:hover,
-      &.reblogged {
-        @include themify(day) {
-          background: $duck-egg-blue;
-        }
-
-        @include themify(night) {
-          background: darken($metallic-blue, 16);
-          color: $powder-blue;
-        }
       }
     }
 
