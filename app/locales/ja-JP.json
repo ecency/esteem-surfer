@@ -54,7 +54,9 @@
   },
   "entry-reblog": {
     "reblog": "リブログ",
-    "reblogged": "リブログ済み"
+    "reblogged": "リブログ済み",
+    "modal-title": "Rebloggers ({n})",
+    "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
     "title": "設定",
