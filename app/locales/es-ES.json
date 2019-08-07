@@ -54,7 +54,9 @@
   },
   "entry-reblog": {
     "reblog": "Rebloguear",
-    "reblogged": "Reblogueado"
+    "reblogged": "Reblogueado",
+    "modal-title": "Rebloggers ({n})",
+    "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
     "title": "Ajustes",
