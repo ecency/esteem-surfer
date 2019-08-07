@@ -209,7 +209,8 @@
     "points-delegation-list-desc": "Recompensă delegare",
     "points-claim-ok": "Puncte colectate",
     "points-promote": "Promovează",
-    "points-boost": "Boost"
+    "points-boost": "Boost",
+    "points-transfer": "Gift to Account"
   },
   "redeem": {
     "user-label": "Utilizator",
@@ -453,6 +454,7 @@
   },
   "transfer": {
     "transfer-title": "Transfer către Cont",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Tranferă fonduri către un alt cont Steem",
     "transfer-saving-title": "Transfer la Economii",
     "transfer-saving-sub-title": "Protejează fondurile cerând o perioadă de așteptare de 3 zile",
