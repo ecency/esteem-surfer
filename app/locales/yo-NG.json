@@ -209,7 +209,8 @@
     "points-delegation-list-desc": "Delegation reward",
     "points-claim-ok": "Points claimed",
     "points-promote": "Promote",
-    "points-boost": "Boost"
+    "points-boost": "Boost",
+    "points-transfer": "Gift to Account"
   },
   "redeem": {
     "user-label": "User",
@@ -453,6 +454,7 @@
   },
   "transfer": {
     "transfer-title": "Fi ránṣẹ́ sí Account",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Gbé àwọn owó sí account Steem òmíràn",
     "transfer-saving-title": "Ìfiránṣẹ́ sí Ààyè-ìtọ́jú",
     "transfer-saving-sub-title": "Dáàbòbo àwọn owó nípasẹ̀ lílo àkókò ìdádúró ọjọ́ 3 fún gbígbà kan",
