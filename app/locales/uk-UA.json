@@ -209,7 +209,8 @@
     "points-delegation-list-desc": "Винагорода за делегацію",
     "points-claim-ok": "Бали зараховані",
     "points-promote": "Promote",
-    "points-boost": "Boost"
+    "points-boost": "Boost",
+    "points-transfer": "Gift to Account"
   },
   "redeem": {
     "user-label": "User",
@@ -453,6 +454,7 @@
   },
   "transfer": {
     "transfer-title": "Переведення на акаунт",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Переведення коштів на інший Steem акаунт",
     "transfer-saving-title": "Переведення до Заощаджень",
     "transfer-saving-sub-title": "Захищає кошти від зняття 3-денним періодом очікування",
