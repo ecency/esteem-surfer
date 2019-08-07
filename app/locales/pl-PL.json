@@ -54,7 +54,9 @@
   },
   "entry-reblog": {
     "reblog": "Resteemuj",
-    "reblogged": "Resteemowany"
+    "reblogged": "Resteemowany",
+    "modal-title": "Rebloggers ({n})",
+    "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
     "title": "Ustawienia",
