@@ -54,7 +54,9 @@
   },
   "entry-reblog": {
     "reblog": "إعادة تدوين",
-    "reblogged": "أعيد تدوينه"
+    "reblogged": "أعيد تدوينه",
+    "modal-title": "Rebloggers ({n})",
+    "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
     "title": "إعدادات",
