@@ -54,7 +54,9 @@
   },
   "entry-reblog": {
     "reblog": "리블로그",
-    "reblogged": "리블로그 완료"
+    "reblogged": "리블로그 완료",
+    "modal-title": "Rebloggers ({n})",
+    "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
     "title": "설정",
