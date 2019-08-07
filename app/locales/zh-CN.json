@@ -209,7 +209,8 @@
     "points-delegation-list-desc": "Delegation reward",
     "points-claim-ok": "Points claimed",
     "points-promote": "Promote",
-    "points-boost": "Boost"
+    "points-boost": "Boost",
+    "points-transfer": "Gift to Account"
   },
   "redeem": {
     "user-label": "User",
@@ -453,6 +454,7 @@
   },
   "transfer": {
     "transfer-title": "转到账户",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "把资金转移到另一个 Steem 账户",
     "transfer-saving-title": "转入储蓄",
     "transfer-saving-sub-title": "提款必须等待 3 天以保护资金。",
