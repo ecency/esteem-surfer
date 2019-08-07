@@ -209,7 +209,8 @@
     "points-delegation-list-desc": "Delegation reward",
     "points-claim-ok": "Points claimed",
     "points-promote": "Promote",
-    "points-boost": "Boost"
+    "points-boost": "Boost",
+    "points-transfer": "Gift to Account"
   },
   "redeem": {
     "user-label": "User",
@@ -453,6 +454,7 @@
   },
   "transfer": {
     "transfer-title": "انتقال به حساب",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "انتقال وجوه به حساب کاربری دیگر",
     "transfer-saving-title": "انتقال به پس انداز",
     "transfer-saving-sub-title": "محافظت از سرمایه با ایجاد وقفه 3 روزه تا برداشت وجه",
