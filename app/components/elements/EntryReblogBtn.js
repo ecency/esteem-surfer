@@ -83,7 +83,7 @@ class ReBloggersModal extends Component {
           columns={modalTableColumns}
           scroll={{ y: 310 }}
           showHeader={false}
-          rowKey="id"
+          rowKey="account"
         />
       </Modal>
     );
