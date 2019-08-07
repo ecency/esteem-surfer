@@ -209,7 +209,8 @@
     "points-delegation-list-desc": "Hadiah delegasi",
     "points-claim-ok": "Poin di klaim",
     "points-promote": "Promote",
-    "points-boost": "Boost"
+    "points-boost": "Boost",
+    "points-transfer": "Gift to Account"
   },
   "redeem": {
     "user-label": "User",
@@ -453,6 +454,7 @@
   },
   "transfer": {
     "transfer-title": "Transfer ke akun",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Pindahkan dana ke akun steem lain",
     "transfer-saving-title": "Transfer ke Tabungan",
     "transfer-saving-sub-title": "Lindungi dana dengan meminta masa tunggu penarikan 3 hari",
