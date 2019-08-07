@@ -55,7 +55,7 @@
   "entry-reblog": {
     "reblog": "Reblogar",
     "reblogged": "Reblogado",
-    "modal-title": "Rebloggers ({n})",
+    "modal-title": "Re-postadores ({n})",
     "more-reblogs": "... +{n} mais reposts"
   },
   "settings": {
