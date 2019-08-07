@@ -209,7 +209,8 @@
     "points-delegation-list-desc": "Delegation reward",
     "points-claim-ok": "Points claimed",
     "points-promote": "Promote",
-    "points-boost": "Boost"
+    "points-boost": "Boost",
+    "points-transfer": "Gift to Account"
   },
   "redeem": {
     "user-label": "User",
@@ -453,6 +454,7 @@
   },
   "transfer": {
     "transfer-title": "Hesaba aktar",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Fonları başka bir Steem hesabına taşı",
     "transfer-saving-title": "Tasarruflara transfer et",
     "transfer-saving-sub-title": "3 günlük geri çekme süresi ile fonlarınızı koruyun",
