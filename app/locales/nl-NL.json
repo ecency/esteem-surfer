@@ -54,7 +54,9 @@
   },
   "entry-reblog": {
     "reblog": "Delen",
-    "reblogged": "Gedeeld"
+    "reblogged": "Gedeeld",
+    "modal-title": "Rebloggers ({n})",
+    "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
     "title": "Instellingen",
