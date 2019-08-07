@@ -210,7 +210,7 @@
     "points-claim-ok": "Pontos reivindicados",
     "points-promote": "Promover",
     "points-boost": "Reforço",
-    "points-transfer": "Gift to Account"
+    "points-transfer": "Presente à Conta"
   },
   "redeem": {
     "user-label": "Utilizador",
@@ -454,7 +454,7 @@
   },
   "transfer": {
     "transfer-title": "Transferir para a conta",
-    "transfer-estm-title": "Gift to Account",
+    "transfer-estm-title": "Presente à Conta",
     "transfer-sub-title": "Mover os fundos para outra conta do Steem",
     "transfer-saving-title": "Transferir para Poupanças",
     "transfer-saving-sub-title": "Proteger os fundos, requerendo 3 dias para retirar como período de espera",
