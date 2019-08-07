@@ -209,7 +209,8 @@
     "points-delegation-list-desc": "Phần thưởng cho việc ủy thác",
     "points-claim-ok": "Các điểm thưởng được yêu cầu",
     "points-promote": "Quảng bá",
-    "points-boost": "Tăng tốc"
+    "points-boost": "Tăng tốc",
+    "points-transfer": "Gift to Account"
   },
   "redeem": {
     "user-label": "Người dùng",
@@ -453,6 +454,7 @@
   },
   "transfer": {
     "transfer-title": "Chuyển khoản đến tài khoản",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Chuyển các quỹ sang tài khoản Steem khác",
     "transfer-saving-title": "Chuyển đến những phần tiết kiệm",
     "transfer-saving-sub-title": "Bảo vệ các quỹ bằng cách yêu cầu thời gian chờ rút tiền trong 3 ngày",
