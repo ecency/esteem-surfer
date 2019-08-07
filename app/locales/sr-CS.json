@@ -209,7 +209,8 @@
     "points-delegation-list-desc": "Delegation reward",
     "points-claim-ok": "Points claimed",
     "points-promote": "Promote",
-    "points-boost": "Boost"
+    "points-boost": "Boost",
+    "points-transfer": "Gift to Account"
   },
   "redeem": {
     "user-label": "User",
@@ -453,6 +454,7 @@
   },
   "transfer": {
     "transfer-title": "Transfer na korisnički nalog",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Prebaci sredstva na drugi Steem nalog",
     "transfer-saving-title": "Premestite u ušteđevinu",
     "transfer-saving-sub-title": "Zaštitite sredstva tako što ćete zatražiti period čekanja od 3 dana za povlačenje sredstava",
