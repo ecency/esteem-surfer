@@ -237,7 +237,7 @@
     "page-title": "Menaikkan",
     "amount-label": "Jumlah",
     "amount-help": "Seret penggeser untuk mengubah jumlahnya",
-    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
+    "success-message": "Posting Anda telah dikirim dalam antrian peningkatan, Melalui votes anda akan segera menerima peningkatan pada posting Anda"
   },
   "composer": {
     "title-placeholder": "Judul",
@@ -339,7 +339,7 @@
     "bookmarkRemoved": "Hapus dari yang ditandai",
     "favorited": "Ditambahkan ke favorit",
     "favoriteRemoved": "Hapus dari favorit",
-    "show-edit-history": "Show edit history",
+    "show-edit-history": "Tampilkan riwayat edit",
     "copy-clipboard": "Salin tautan internal ke clipboard",
     "copied-clipboard": "Disalin",
     "comment-entry-title": "Anda melihat sebuah komentar tunggal dari: ",
@@ -347,8 +347,8 @@
     "comment-entry-go-parent": "Lihat sumber utama",
     "similar-entries": "Posting yang Mirip",
     "fetch-error": "Waktu habis karena respon ukuran terlalu besar",
-    "promote": "promote",
-    "boost": "boost"
+    "promote": "promosikan",
+    "boost": "menaikkan"
   },
   "navbar": {
     "settings": "Pengaturan",
@@ -418,15 +418,15 @@
     "refresh": "Segarkan",
     "mark-all-read": "Tandai semua yang telah dibaca",
     "leaderboard": "Papan Peringkat",
-    "leaderboard-title-daily": "Daily top users",
-    "leaderboard-title-weekly": "Weekly top users",
-    "leaderboard-title-monthly": "Monthly top users",
-    "leaderboard-daily": "Daily",
-    "leaderboard-weekly": "Weekly",
-    "leaderboard-monthly": "Monthly",
-    "leaderboard-header-score": "Activities",
-    "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
-    "leaderboard-header-reward": "Reward"
+    "leaderboard-title-daily": "Pengguna teratas harian",
+    "leaderboard-title-weekly": "Pengguna teratas mingguan",
+    "leaderboard-title-monthly": "Pengguna teratas bulanan",
+    "leaderboard-daily": "Harian",
+    "leaderboard-weekly": "Mingguan",
+    "leaderboard-monthly": "Bulanan",
+    "leaderboard-header-score": "Aktifitas",
+    "leaderboard-header-score-tip": "Posting + komentar yang dibuat oleh pengguna untuk periode yang dipilih",
+    "leaderboard-header-reward": "Imbalan"
   },
   "witnesses": {
     "page-title": "Memilih saksi",
@@ -454,7 +454,7 @@
   },
   "transfer": {
     "transfer-title": "Transfer ke akun",
-    "transfer-estm-title": "Gift to Account",
+    "transfer-estm-title": "Hadiah ke Akun",
     "transfer-sub-title": "Pindahkan dana ke akun steem lain",
     "transfer-saving-title": "Transfer ke Tabungan",
     "transfer-saving-sub-title": "Lindungi dana dengan meminta masa tunggu penarikan 3 hari",
@@ -535,8 +535,8 @@
     "title": "Daya steem yang di delegasikan ke @{n}"
   },
   "edit-history": {
-    "title": "Edit History",
-    "show-diff": "Show Difference",
-    "version": "Version {n}"
+    "title": "Edit Riwayat",
+    "show-diff": "Tampilkan Perbedaan",
+    "version": "Versi {n}"
   }
 }
