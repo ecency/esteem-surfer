@@ -152,8 +152,7 @@ class EntryReblogBtn extends Component {
             const account = accounts.find(a => a.name === v.account);
             if (account) {
               return Object.assign({}, v, {
-                reputation: authorReputation(account.reputation),
-                rep: account.rep
+                reputation: authorReputation(account.reputation)
               });
             }
             return v;
@@ -163,8 +162,8 @@ class EntryReblogBtn extends Component {
       .then(reblogs =>
         reblogs.sort((a, b) => {
           // Sort data by reputation
-          const keyA = b.rep;
-          const keyB = a.rep;
+          const keyA = a.reputation;
+          const keyB = b.reputation;
 
           if (keyA > keyB) return -1;
           if (keyA < keyB) return 1;
