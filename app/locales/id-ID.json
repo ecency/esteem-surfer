@@ -49,14 +49,14 @@
   "entry-list-item": {
     "reblogged": "ditampilkan kembali oleh {n}",
     "promoted": "disponsori",
-    "promote": "promote",
-    "boost": "boost"
+    "promote": "promosikan",
+    "boost": "menaikkan"
   },
   "entry-reblog": {
     "reblog": "Menampilkan kembali",
     "reblogged": "Menampilkan kembali",
     "modal-title": "Rebloggers ({n})",
-    "more-reblogs": "... +{n} more reblogs"
+    "more-reblogs": "... +{n} lebih banyak reblog"
   },
   "settings": {
     "title": "Pengaturan",
@@ -208,12 +208,12 @@
     "points-transfer-incoming-list-desc": "Transfer dari {n}",
     "points-delegation-list-desc": "Hadiah delegasi",
     "points-claim-ok": "Poin di klaim",
-    "points-promote": "Promote",
-    "points-boost": "Boost",
-    "points-transfer": "Gift to Account"
+    "points-promote": "Promosikan",
+    "points-boost": "Menaikkan",
+    "points-transfer": "Hadiah ke Akun"
   },
   "redeem": {
-    "user-label": "User",
+    "user-label": "Pengguna",
     "user-help-text": "Available Funds",
     "post-label": "Post",
     "post-input-placeholder": "author/permlink",
