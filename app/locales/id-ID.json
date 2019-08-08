@@ -230,13 +230,13 @@
     "duration-label": "Durasi",
     "duration-help": "Seret penggeser untuk mengubah durasinya",
     "day": "hari",
-    "days": "days",
-    "success-message": "Your request submitted. It will be activated in a couple minutes."
+    "days": "hari",
+    "success-message": "Permintaan Anda diajukan. Ini akan diaktifkan dalam beberapa menit."
   },
   "redeem-boost": {
-    "page-title": "Boost",
-    "amount-label": "Amount",
-    "amount-help": "Drag the slider to change the amount",
+    "page-title": "Menaikkan",
+    "amount-label": "Jumlah",
+    "amount-help": "Seret penggeser untuk mengubah jumlahnya",
     "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
