@@ -602,7 +602,7 @@ class LeaderBoard extends Component {
           <div className="score-list">
             <div className="list-title">{title}</div>
             <Row type="flex" className="list-header">
-              <Col offset={10} span={6} className="score">
+              <Col offset={11} span={5} className="score">
                 <Tooltip
                   title={intl.formatMessage({
                     id: 'activities.leaderboard-header-score-tip'
@@ -634,12 +634,12 @@ class LeaderBoard extends Component {
                     </div>
                   </AccountLink>
                 </Col>
-                <Col span={5}>
+                <Col span={6}>
                   <AccountLink {...this.props} username={item._id}>
                     <div className="username">{item._id}</div>
                   </AccountLink>
                 </Col>
-                <Col span={6} className="score">
+                <Col span={5} className="score">
                   {item.count}
                 </Col>
                 <Col offset={1} span={7} className="points">
