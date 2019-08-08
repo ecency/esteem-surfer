@@ -55,8 +55,8 @@
   "entry-reblog": {
     "reblog": "리블로그",
     "reblogged": "리블로그 완료",
-    "modal-title": "Rebloggers ({n})",
-    "more-reblogs": "... +{n} more reblogs"
+    "modal-title": "리블로거 ({n}) 명",
+    "more-reblogs": "... +{n} 명이 추가로 리블로그함"
   },
   "settings": {
     "title": "설정",
@@ -210,7 +210,7 @@
     "points-claim-ok": "포인트 획득 완료",
     "points-promote": "홍보",
     "points-boost": "후원",
-    "points-transfer": "Gift to Account"
+    "points-transfer": "선물하기"
   },
   "redeem": {
     "user-label": "사용자",
@@ -418,15 +418,15 @@
     "refresh": "새로고침",
     "mark-all-read": "모두 읽음으로 표시",
     "leaderboard": "순위표",
-    "leaderboard-title-daily": "Daily top users",
-    "leaderboard-title-weekly": "Weekly top users",
-    "leaderboard-title-monthly": "Monthly top users",
-    "leaderboard-daily": "Daily",
-    "leaderboard-weekly": "Weekly",
-    "leaderboard-monthly": "Monthly",
-    "leaderboard-header-score": "Activities",
-    "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
-    "leaderboard-header-reward": "Reward"
+    "leaderboard-title-daily": "일간 사용자 순위",
+    "leaderboard-title-weekly": "주간 사용자 순위",
+    "leaderboard-title-monthly": "월간 사용자 순위",
+    "leaderboard-daily": "일간",
+    "leaderboard-weekly": "주간",
+    "leaderboard-monthly": "월간",
+    "leaderboard-header-score": "활동",
+    "leaderboard-header-score-tip": "특정 기간 동안 사용자가 올린 글이나 댓글 수로 선정",
+    "leaderboard-header-reward": "보상"
   },
   "witnesses": {
     "page-title": "증인 투표",
@@ -454,7 +454,7 @@
   },
   "transfer": {
     "transfer-title": "송금하기",
-    "transfer-estm-title": "Gift to Account",
+    "transfer-estm-title": "선물하기",
     "transfer-sub-title": "다른 스팀 계정으로 자금 보내기",
     "transfer-saving-title": "안전 금고로 송금",
     "transfer-saving-sub-title": "3일 간의 출금 대기 기간이 설정된 안전금고를 이용해 자금을 보호하세요",
