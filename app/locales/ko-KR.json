@@ -50,7 +50,7 @@
     "reblogged": "{n} 님이 리블로그했습니다",
     "promoted": "후원받은",
     "promote": "홍보",
-    "boost": "후원"
+    "boost": "보팅 후원"
   },
   "entry-reblog": {
     "reblog": "리블로그",
@@ -209,7 +209,7 @@
     "points-delegation-list-desc": "임대 보상",
     "points-claim-ok": "포인트 획득 완료",
     "points-promote": "홍보",
-    "points-boost": "후원",
+    "points-boost": "보팅 후원",
     "points-transfer": "선물하기"
   },
   "redeem": {
@@ -234,10 +234,10 @@
     "success-message": "요청이 제출되었으며 몇 분 안에 활성화될 것입니다."
   },
   "redeem-boost": {
-    "page-title": "후원",
+    "page-title": "보팅 후원",
     "amount-label": "수량",
     "amount-help": "슬라이드를 드래그해서 수량을 설정할 수 있습니다",
-    "success-message": "후원 대기열에 당신의 글이 제출되었습니다. 잠시 후 당신의 글은 보팅을 통해 후원받을 것입니다."
+    "success-message": "보팅 후원 대기열에 당신의 글이 제출되었습니다. 잠시 후 당신의 글은 보팅 후원을 받을 것입니다."
   },
   "composer": {
     "title-placeholder": "제목",
@@ -348,7 +348,7 @@
     "similar-entries": "유사한 글",
     "fetch-error": "응답 파일 크기가 너무 커서 서버 타임아웃이 발생했습니다",
     "promote": "홍보",
-    "boost": "후원"
+    "boost": "보팅 후원"
   },
   "navbar": {
     "settings": "설정",
