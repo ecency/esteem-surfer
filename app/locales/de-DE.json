@@ -55,8 +55,8 @@
   "entry-reblog": {
     "reblog": "Teilen",
     "reblogged": "Geteilt",
-    "modal-title": "Rebloggers ({n})",
-    "more-reblogs": "... +{n} more reblogs"
+    "modal-title": "Reblogger ({n})",
+    "more-reblogs": "... +{n} weitere Relogs"
   },
   "settings": {
     "title": "Einstellungen",
@@ -210,7 +210,7 @@
     "points-claim-ok": "Punkte eingesammelt",
     "points-promote": "Bewerben",
     "points-boost": "Boost",
-    "points-transfer": "Gift to Account"
+    "points-transfer": "Geschenk an Konto"
   },
   "redeem": {
     "user-label": "Benutzer",
@@ -454,7 +454,7 @@
   },
   "transfer": {
     "transfer-title": "Zum Benutzerkonto transferieren",
-    "transfer-estm-title": "Gift to Account",
+    "transfer-estm-title": "Geschenk an Konto",
     "transfer-sub-title": "Geld auf ein anderes Steem-Konto verschieben",
     "transfer-saving-title": "In den Tresor transferieren",
     "transfer-saving-sub-title": "Guthaben wird durch eine 3-tägige Wartezeit geschützt",
