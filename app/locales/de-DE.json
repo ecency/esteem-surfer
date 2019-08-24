@@ -418,15 +418,15 @@
     "refresh": "Aktualisieren",
     "mark-all-read": "Alle als gelesen markieren",
     "leaderboard": "Rangliste",
-    "leaderboard-title-daily": "Daily top users",
-    "leaderboard-title-weekly": "Weekly top users",
-    "leaderboard-title-monthly": "Monthly top users",
+    "leaderboard-title-daily": "Tägliche Top-User",
+    "leaderboard-title-weekly": "Wöchentliche Top-Benutzer",
+    "leaderboard-title-monthly": "Monatliche Top-Benutzer",
     "leaderboard-daily": "Täglich",
     "leaderboard-weekly": "Wöchentlich",
     "leaderboard-monthly": "Monatlich",
-    "leaderboard-header-score": "Activities",
-    "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
-    "leaderboard-header-reward": "Reward"
+    "leaderboard-header-score": "Aktivitäten",
+    "leaderboard-header-score-tip": "Post + Kommentare von einem Benutzer für den ausgewählten Zeitraum",
+    "leaderboard-header-reward": "Belohnung"
   },
   "witnesses": {
     "page-title": "Witness-Voting",
