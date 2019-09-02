@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "لا يوجد إتصال بالأنترنت"
+    "no-internet-conn": "لا يوجد إتصال بالإنترنت"
   },
   "g": {
     "compose-entry": "إنشاء منشور",
@@ -17,7 +17,7 @@
     "select": "حدّد"
   },
   "footer": {
-    "faq": "الأسئلة الشائعة",
+    "faq": "الأسئلة الأكثر شيوعاً",
     "about": "حول"
   },
   "entry-index": {
@@ -49,7 +49,7 @@
   "entry-list-item": {
     "reblogged": "تمت مشاركته من طرف {n}",
     "promoted": "sponsored",
-    "promote": "promote",
+    "promote": "قم بالترويج لمقالك",
     "boost": "boost"
   },
   "entry-reblog": {
@@ -133,7 +133,7 @@
     "section-blog": "المدونة",
     "section-comments": "التعليقات",
     "section-replies": "الردود",
-    "section-points": "Points",
+    "section-points": "نقاط",
     "section-wallet": "المحفظة"
   },
   "follow-controls": {
@@ -196,7 +196,7 @@
     "points-reblog-desc": "  شارك ما تنشره مع أصدقائك واربح 1 نقطة.",
     "points-login-desc": "عند تسجيل الدخول إلى تطبيق eSteem ، يحق لك كسب 100 نقطة تلقائيًا.",
     "points-checkin-extra-desc": "يمنحك الاستخدام المستمر للتطبيق فرصًا إضافية لكسب 10 نقاط إضافية ، وتكون أكثر نشاطًا وكسب المزيد.",
-    "points-delegation-desc": "You can earn 1 point per day for each 100SP delegation.",
+    "points-delegation-desc": "يمكنك ربح نقطة واحدة عن كل 100 طاقة ستيم تقوم بتفويضها.",
     "points-post-list-desc": "نقاط للنشر",
     "points-comment-list-desc": "نقاط للتعليق",
     "points-vote-list-desc": "نقاط للتصويت",
@@ -210,15 +210,15 @@
     "points-claim-ok": "تمت المطالبة بالنقاط",
     "points-promote": "Promote",
     "points-boost": "Boost",
-    "points-transfer": "Gift to Account"
+    "points-transfer": "إرسال هدية إلى حساب معين"
   },
   "redeem": {
-    "user-label": "User",
-    "user-help-text": "Available Funds",
+    "user-label": "المستخدم",
+    "user-help-text": "الرصيد المتوفر",
     "post-label": "Post",
     "post-input-placeholder": "author/permlink",
-    "post-input-title": "Suggestions",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "post-input-title": "الإقتراحات",
+    "key-required-err": "تعذر العثور على المفتاح النشط للحساب المحدد. يرجى التأكد من تسجيل الدخول بإستخدام بيانات الإعتماد المناسبة.",
     "post-error": "Not a valid post address",
     "post-error-exists": "The post is already promoted",
     "funds-error": "Insufficient funds",
@@ -421,10 +421,10 @@
     "leaderboard-title-daily": "Daily top users",
     "leaderboard-title-weekly": "Weekly top users",
     "leaderboard-title-monthly": "Monthly top users",
-    "leaderboard-daily": "Daily",
-    "leaderboard-weekly": "Weekly",
-    "leaderboard-monthly": "Monthly",
-    "leaderboard-header-score": "Activities",
+    "leaderboard-daily": "يومياً",
+    "leaderboard-weekly": "أسبوعياً",
+    "leaderboard-monthly": "شهرياً",
+    "leaderboard-header-score": "الأنشطة والمستجدّات",
     "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
     "leaderboard-header-reward": "Reward"
   },
@@ -454,7 +454,7 @@
   },
   "transfer": {
     "transfer-title": "التحويل إلى الحساب",
-    "transfer-estm-title": "Gift to Account",
+    "transfer-estm-title": "إرسال هدية إلى حساب معين",
     "transfer-sub-title": "نقل الأموال إلى حساب Steem آخر",
     "transfer-saving-title": "التحويل إلى المدخرات",
     "transfer-saving-sub-title": "حماية الأموال بالمطالبة بفترة 3 أيام للسحب",
@@ -536,7 +536,7 @@
   },
   "edit-history": {
     "title": "Edit History",
-    "show-diff": "Show Difference",
-    "version": "Version {n}"
+    "show-diff": "إظهار الفرق",
+    "version": "الإصدار {n}"
   }
 }
