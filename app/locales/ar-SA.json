@@ -80,8 +80,8 @@
   "login": {
     "title": "مرحباً بعودتك!",
     "accounts-title": "تسجيل الدخول كـ",
-    "traditional-login-desc": "سجّل الدخول بإسم المستخدم الخاص بك وكلمة المرور من أجل المتابعة",
-    "username-placeholder": "اسم المستخدم",
+    "traditional-login-desc": "سجّل بإستخدام إسم المستخدم الخاص بك وكلمة المرور من أجل المتابعة",
+    "username-placeholder": "إسم المستخدم",
     "password-placeholder": "كلمة المرور أو WIF",
     "login": "تسجيل الدخول",
     "error-fields-required": "الرجاء إدخال اسم المستخدم وكلمة المرور",
@@ -105,7 +105,7 @@
     "title": "قم بإدخال رمز PIN",
     "input-placeholder": "قم بإدخال رمز PIN للمواصلة",
     "last-chance": "هذه فرصتك الأخيرة",
-    "invalidate": "أوه، لقد نسيتها...",
+    "invalidate": "أوه، لقد نسيت ذلك...",
     "invalidate-confirm": "هل تريد حقًا إبطال رمز PIN؟",
     "invalidated": "تم إبطال رمز PIN"
   },
@@ -127,7 +127,7 @@
   "quick-profile": {
     "fetch-error-profile": "لا يمكن إحضار بيانات الملف الشخصي",
     "fetch-error-content": "لا يمكن إحضار المشاركات",
-    "post-count": "عدد المشاركات",
+    "post-count": "عدد المنشورات",
     "followers": "المتابعون",
     "following": "الذين اتبعهم",
     "section-blog": "المدونة",
@@ -351,14 +351,14 @@
     "boost": "boost"
   },
   "navbar": {
-    "settings": "إعدادات",
-    "change-theme": "تغيير الخلفية",
+    "settings": "الإعدادات",
+    "change-theme": "تغيير المظهر",
     "login": "تسجيل الدخول إلى حسابك",
     "bookmark": "إظافة إلى الإشارات المرجعية",
     "bookmarkRemove": "إزالة من الإشارات المرجعية",
     "favorite": "الإضافة إلى المفضلة",
     "favoriteRemove": "تمت الإزالة من المفضلات",
-    "wallet": "المحفظة الخاصة بي",
+    "wallet": "محفظتى",
     "points": "النقاط الخاصة بي",
     "activities": "الأنشطة",
     "address-enter-url": "أدخل رابط URL",
