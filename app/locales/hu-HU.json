@@ -50,7 +50,7 @@
     "reblogged": "megosztva {n} által",
     "promoted": "szponzorált",
     "promote": "promote",
-    "boost": "boost"
+    "boost": "kiemelés"
   },
   "entry-reblog": {
     "reblog": "Megosztás",
@@ -209,7 +209,7 @@
     "points-delegation-list-desc": "Delegálási jutalom",
     "points-claim-ok": "Pontok átvéve",
     "points-promote": "Promote",
-    "points-boost": "Boost",
+    "points-boost": "Kiemelés",
     "points-transfer": "Gift to Account"
   },
   "redeem": {
@@ -234,7 +234,7 @@
     "success-message": "Your request submitted. It will be activated in a couple minutes."
   },
   "redeem-boost": {
-    "page-title": "Boost",
+    "page-title": "Kiemelés",
     "amount-label": "Összeg",
     "amount-help": "A csúszka húzásával állítsd be a mennyiséget",
     "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
@@ -348,7 +348,7 @@
     "similar-entries": "Hasonló bejegyzések",
     "fetch-error": "A szerver nem elérhető mert a válasz mérete túl nagy",
     "promote": "promote",
-    "boost": "boost"
+    "boost": "kiemelés"
   },
   "navbar": {
     "settings": "Beállítások",
@@ -418,15 +418,15 @@
     "refresh": "Frissítés",
     "mark-all-read": "Összes Megjelölése Olvasottként",
     "leaderboard": "Ranglista",
-    "leaderboard-title-daily": "Daily top users",
-    "leaderboard-title-weekly": "Weekly top users",
+    "leaderboard-title-daily": "Napi top felhasználók",
+    "leaderboard-title-weekly": "Heti op felhasználók",
     "leaderboard-title-monthly": "Monthly top users",
-    "leaderboard-daily": "Daily",
-    "leaderboard-weekly": "Weekly",
-    "leaderboard-monthly": "Monthly",
-    "leaderboard-header-score": "Activities",
+    "leaderboard-daily": "Napi",
+    "leaderboard-weekly": "Heti",
+    "leaderboard-monthly": "Havi",
+    "leaderboard-header-score": "Tevékenységek",
     "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
-    "leaderboard-header-reward": "Reward"
+    "leaderboard-header-reward": "Jutalom"
   },
   "witnesses": {
     "page-title": "Tanú szavazás",
@@ -537,6 +537,6 @@
   "edit-history": {
     "title": "Edit History",
     "show-diff": "Show Difference",
-    "version": "Version {n}"
+    "version": "{n} Verzió"
   }
 }
