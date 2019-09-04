@@ -49,14 +49,14 @@
   "entry-list-item": {
     "reblogged": "megosztva {n} által",
     "promoted": "szponzorált",
-    "promote": "promote",
+    "promote": "promoválás",
     "boost": "kiemelés"
   },
   "entry-reblog": {
     "reblog": "Megosztás",
     "reblogged": "Megosztva",
     "modal-title": "Rebloggers ({n})",
-    "more-reblogs": "... +{n} more reblogs"
+    "more-reblogs": "... +{n} megosztás"
   },
   "settings": {
     "title": "Beállítások",
@@ -222,7 +222,7 @@
     "post-error": "Nem érvényes e-mail cím",
     "post-error-exists": "The post is already promoted",
     "funds-error": "Nincs elegendő fedezet",
-    "submit": "Submit",
+    "submit": "Küldés",
     "go-back": "Vissza"
   },
   "redeem-promote": {
@@ -347,7 +347,7 @@
     "comment-entry-go-parent": "Direkt felmenő megtekintése",
     "similar-entries": "Hasonló bejegyzések",
     "fetch-error": "A szerver nem elérhető mert a válasz mérete túl nagy",
-    "promote": "promote",
+    "promote": "promoválás",
     "boost": "kiemelés"
   },
   "navbar": {
@@ -536,7 +536,7 @@
   },
   "edit-history": {
     "title": "Edit History",
-    "show-diff": "Show Difference",
+    "show-diff": "Különbség megjelenítése",
     "version": "{n} Verzió"
   }
 }
