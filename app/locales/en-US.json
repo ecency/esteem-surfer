@@ -453,7 +453,14 @@
     "proxy-created": "@{n} has set as proxy"
   },
   "sps": {
-    "page-title": "Proposals Voting"
+    "page-title": "Proposals Voting",
+    "duration": "Duration",
+    "requested": "Requested",
+    "total-votes": "Total Votes",
+    "status-active": "active",
+    "status-expired": "expired",
+    "status-inactive": "upcoming",
+    "duration-days": "{n} days"
   },
   "transfer": {
     "transfer-title": "Transfer to Account",

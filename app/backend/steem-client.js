@@ -282,7 +282,7 @@ export const grantPostingPermission = (account, pin) => {
 
     if (!accountData) {
       return Promise.reject(
-        new Error("Please wait while your account's data loading...")
+        new Error('Please wait while your account\'s data loading...')
       );
     }
 
@@ -895,24 +895,20 @@ export const boost = (account, pin, user, author, permlink, amount) => {
   }
 };
 
-export const getProposals = () => {
-  const headers = {
-    'Content-Type': 'application/json'
-  };
-  const body = {
-    jsonrpc: '2.0',
-    method: 'database_api.list_proposals',
-    id: 2,
-    params: {
-      start: [-1],
-      limit: 100,
-      order: 'by_total_votes',
-      order_direction: 'descending',
-      status: 'all'
-    }
-  };
-  return axios
-    .post(getItem('server', 'https://api.steemit.com'), body, headers)
-    .then(resp => resp.data.result.proposals)
-    .catch(() => []);
-};
+export const getProposals = () => client.call('database_api', 'list_proposals', {
+  start: [-1],
+  limit: 100,
+  order: 'by_total_votes',
+  order_direction: 'descending',
+  status: 'all'
+})
+  .then(resp => resp.proposals.filter(x => x.receiver !== 'steem.dao'))
+  .catch(() => []);
+
+
+export const getProposalVoters = (proposalId) => client.call('condenser_api', 'list_proposal_votes',
+  [[proposalId, ''], 200, 'by_proposal_voter']
+)
+  .then(resp => resp.map(x => ({ id: x.id, voter: x.voter })))
+  .catch(() => []);
+

@@ -1,3 +1,76 @@
+@keyframes proposal-voting-color-change {
+  0% {
+    background: $dark-sky-blue;
+
+    svg {
+      fill: $white;
+    }
+  }
+  25% {
+    background: transparent;
+
+    svg {
+      fill: $dark-sky-blue;
+    }
+  }
+  50% {
+    background: $dark-sky-blue;
+    svg {
+      fill: $white;
+    }
+  }
+  75% {
+    background: transparent;
+    svg {
+      fill: $dark-sky-blue;
+    }
+  }
+  100% {
+    background: $dark-sky-blue;
+    svg {
+      fill: $white;
+    }
+  }
+}
+
+.btn-proposal-vote {
+  align-items: center;
+  border: 1px solid $dark-sky-blue;
+  border-radius: 50%;
+  color: $dark-sky-blue;
+  display: flex;
+  height: 22px;
+  justify-content: center;
+  text-decoration: none;
+  width: 22px;
+
+  svg {
+    height: 16px;
+    width: 16px;
+  }
+
+  &:focus {
+    text-decoration: none;
+  }
+
+  &:hover,
+  &.voted {
+    background-color: $dark-sky-blue;
+    color: $white;
+  }
+
+  &.in-progress {
+    animation: proposal-voting-color-change 5s infinite;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
 .sps-page {
   overflow-y: auto;
   padding: 0 30px;
@@ -31,66 +104,71 @@
   .sps-table {
     margin-bottom: 30px;
 
-    .sps-column-title {
-      padding-left: 60px;
-    }
-
-    .index-num {
-      font-size: 16px;
-
-      @include themify(day) {
-        color: $silver;
-      }
-    }
-
     .description {
-      display: flex;
-      align-items: flex-start;
-      width: 500px;
+      .post-title {
+        font-weight: 500;
+        margin-bottom: 16px;
+        cursor: pointer;
 
-      .receiver {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .users {
+        font-size: 14px;
         align-items: center;
         display: flex;
-        width: 210px;
+        margin-bottom: 16px;
 
-        .account-card {
+        .to {
+          margin-right: 10px;
+          font-weight: 300;
+        }
+
+        .user {
           align-items: center;
           cursor: pointer;
           display: flex;
+          margin-right: 10px;
 
           .user-avatar {
-            height: 40px !important;
-            margin-right: 10px;
-            width: 40px !important;
+            height: 24px !important;
+            margin-right: 6px;
+            width: 24px !important;
           }
 
           .username {
             cursor: pointer;
-            font-weight: 700;
+            font-weight: 400;
           }
         }
       }
 
-      .post {
-        width: 290px;
+      .status {
+        color: $white;
+        border-radius: 12px;
+        padding: 1px 4px;
+        font-size: 13px;
+        font-weight: 300;
 
-        .post-title {
-          font-weight: 500;
-          margin-bottom: 6px;
-          cursor: pointer;
-
-          &:hover {
-            text-decoration: underline;
-          }
+        &.active {
+          background-color: $green1;
         }
 
-        .users {
-          font-size: 14px;
-
-          .user {
-            cursor: pointer;
-          }
+        &.expired {
+          background-color: lighten($red, 20);
         }
+
+        &.inactive {
+          background-color: lighten($orange, 10);
+        }
+      }
+    }
+
+    .requested {
+      .daily {
+        margin-bottom: 6px;
       }
     }
   }

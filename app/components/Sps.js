@@ -6,6 +6,8 @@ import React, { Fragment, PureComponent } from 'react';
 
 import PropTypes from 'prop-types';
 
+import moment from 'moment';
+
 import { injectIntl, FormattedMessage, FormattedNumber } from 'react-intl';
 
 import { Table } from 'antd';
@@ -20,18 +22,83 @@ import QuickProfile from './helpers/QuickProfile';
 import EntryLink from './helpers/EntryLink';
 import UserAvatar from './elements/UserAvatar';
 
-import { getProposals } from '../backend/steem-client';
+import { getProposals, getProposalVoters } from '../backend/steem-client';
+import LoginRequired from './helpers/LoginRequired';
+import { chevronUp } from '../svg';
 
 const duration = (date1, date2) => {
-  const dt2 = new Date(date2);
-  const dt1 = new Date(date1);
-  const oneDay = 1000 * 60 * 60 * 24;
-  return Math.round(
-    (Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) -
-      Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate())) /
-      oneDay
-  );
+  const a = moment(date1);
+  const b = moment(date2);
+  return b.diff(a, 'days');
 };
+
+
+class BtnVote extends PureComponent {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      votes: [],
+      voted: false,
+      loading: false
+    };
+  }
+
+  componentDidMount() {
+
+    const { proposalId } = this.props;
+
+    this.setState({ loading: true });
+
+    getProposalVoters(proposalId).then(resp => {
+      const votes = resp.map(x => ({ id: x.id, voter: x.voter }));
+      this.setState({ votes, loading: false });
+      return resp;
+    }).catch(() => {
+      this.setState({ loading: false });
+    });
+  }
+
+  render() {
+    const { voting, voted, loading } = this.state;
+    const { activeAccount } = this.props;
+
+    const btnCls = `btn-witness-vote ${voting ? 'in-progress' : ''} ${
+      voted ? 'voted' : ''
+    } ${loading ? 'disabled' : ''}`;
+
+    if (voted) {
+      return (
+        <LoginRequired {...this.props} requiredKeys={['active']}>
+          <a className={btnCls} role="none" onClick={this.clicked}>
+            {chevronUp}
+          </a>
+        </LoginRequired>
+      );
+    }
+
+    return (
+      <LoginRequired {...this.props} requiredKeys={['active']}>
+        <a className={btnCls} role="none" onClick={this.clicked}>
+          {chevronUp}
+        </a>
+      </LoginRequired>
+    );
+  }
+}
+
+
+BtnVote.defaultProps = {
+  activeAccount: null
+};
+
+BtnVote.propTypes = {
+  proposalId: PropTypes.number.isRequired,
+  activeAccount: PropTypes.instanceOf(Object),
+  intl: PropTypes.instanceOf(Object).isRequired
+};
+
 
 class Sps extends PureComponent {
   constructor(props) {
@@ -82,7 +149,8 @@ class Sps extends PureComponent {
 
         return proposals;
       })
-      .catch(() => {})
+      .catch(() => {
+      })
       .finally(() => {
         this.setState({ loading: false });
       });
@@ -96,47 +164,17 @@ class Sps extends PureComponent {
     const columns = [
       {
         title: '',
-        width: 50,
         dataIndex: 'key',
-
-        render: text => <span className="index-num">{text}</span>
+        render: (text, record) => <BtnVote {...this.props} proposalId={record.proposal_id}/>
       },
-
-      /*
-      {
-        title: (
-          <span className="sps-column-title">
-            <FormattedMessage id="sps.creator"/>
-          </span>
-        ),
-        width: 240,
-        dataIndex: 'creator',
-        render: text => (
-          <QuickProfile {...this.props} username={text} reputation={0}>
-            <div className="account-card">
-              <UserAvatar user={text} size="large"/>
-              <span className="username">{text}</span>
-            </div>
-          </QuickProfile>
-        )
-      },
-      */
 
       {
         title: '',
-
+        className: 'first-col',
         dataIndex: 'receiver',
         render: (text, record) => (
           <div className="description">
-            <div className="receiver">
-              <QuickProfile {...this.props} username={text} reputation={0}>
-                <div className="account-card">
-                  <UserAvatar user={text} size="large" />
-                  <span className="username">{text}</span>
-                </div>
-              </QuickProfile>
-            </div>
-            <div className="post">
+            <div className="post-title">
               <EntryLink
                 {...this.props}
                 author={record.creator}
@@ -144,51 +182,41 @@ class Sps extends PureComponent {
               >
                 <div className="post-title">{record.subject}</div>
               </EntryLink>
-              {record.creator === record.receiver && (
-                <div className="users">
-                  by{' '}
-                  <QuickProfile
-                    {...this.props}
-                    username={record.creator}
-                    reputation={0}
-                  >
-                    <span className="user">@{record.creator}</span>
-                  </QuickProfile>
+            </div>
+            <div className="users">
+              <QuickProfile
+                {...this.props}
+                username={record.creator}
+                reputation={0}
+              >
+                <div className="user">
+                  <UserAvatar user={record.creator} size="large"/>
+                  <span className="username">{record.creator}</span>
                 </div>
-              )}
+              </QuickProfile>
               {record.creator !== record.receiver && (
-                <div className="users">
-                  by{' '}
-                  <QuickProfile
-                    {...this.props}
-                    username={record.creator}
-                    reputation={0}
-                  >
-                    <span className="user">@{record.creator}</span>
-                  </QuickProfile>{' '}
-                  to{' '}
+                <Fragment>
+                  <span className="to">{'>'}</span>
                   <QuickProfile
                     {...this.props}
                     username={record.receiver}
-                    reputation={0}
-                  >
-                    <span className="user">@{record.receiver}</span>
+                    reputation={0}>
+                    <div className="user">
+                      <UserAvatar user={record.receiver} size="large"/>
+                      <span className="username">{record.receiver}</span>
+                    </div>
                   </QuickProfile>
-                </div>
+                </Fragment>
               )}
             </div>
+            <span className={`status ${record.status}`}><FormattedMessage id={`sps.status-${record.status}`}/></span>
           </div>
         )
       },
-      {
-        title: 'Status',
 
-        dataIndex: 'status',
-        render: text => <span>{text}</span>
-      },
       {
-        title: 'Duration',
-        width: 180,
+        title: <FormattedMessage id="sps.duration"/>,
+        width: 130,
         dataIndex: 'start_date',
         render: (text, record) => {
           const date1 = new Date(record.start_date);
@@ -205,15 +233,45 @@ class Sps extends PureComponent {
           return (
             <div className="duration">
               <div className="days" title={title}>
-                {duration(date1, date2)} days
+                <FormattedMessage id="sps.duration-days" values={{ n: duration(date1, date2) }}/>
               </div>
             </div>
           );
         }
       },
       {
-        title: 'Total Votes',
+        title: <FormattedMessage id="sps.requested"/>,
+        width: 130,
+        dataIndex: '',
+        render: record => {
+          const date1 = new Date(record.start_date);
+          const date2 = new Date(record.end_date);
 
+          const daily = record.daily_pay.amount / 1000;
+          const all = daily * duration(date1, date2);
+
+          return <div className="requested">
+            <div className="daily">
+              <FormattedNumber
+                value={daily}
+                minimumFractionDigits={0}
+                maximumFractionDigits={1}
+              /> {'SBD'}
+            </div>
+            <div className="all">
+              <FormattedNumber
+                value={all}
+                minimumFractionDigits={0}
+                maximumFractionDigits={1}
+              /> {'SBD'}
+            </div>
+          </div>;
+        }
+      },
+      {
+        title: <FormattedMessage id="sps.total-votes"/>,
+        className: 'last-col',
+        width: 220,
         dataIndex: 'total_votes',
         render: text => (
           <Fragment>
@@ -242,15 +300,15 @@ class Sps extends PureComponent {
         <div className="app-content sps-page">
           <div className={`page-header ${loading ? 'loading' : ''}`}>
             <div className="main-title">
-              <FormattedMessage id="sps.page-title" />
+              <FormattedMessage id="sps.page-title"/>
             </div>
           </div>
-          {loading && <LinearProgress />}
+          {loading && <LinearProgress/>}
 
           {!loading && (
             <Fragment>
               <div className="sps-table">
-                <Table columns={columns} dataSource={proposals} />
+                <Table columns={columns} dataSource={proposals}/>
               </div>
             </Fragment>
           )}
