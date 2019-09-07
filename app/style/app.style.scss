@@ -130,6 +130,7 @@ h2 {
 a[target='_external'],
 .markdown-external-link {
   cursor: pointer;
+
   &::after {
     font-family: 'Material Icons';
     content: 'open_in_new';
@@ -162,6 +163,7 @@ a[target='_external'],
 @import '../components/Compose.scss';
 @import '../components/Search';
 @import '../components/Witnesses';
+@import '../components/Sps';
 @import '../components/Transfer';
 @import '../components/Vesting';
 @import '../components/Redeem';
@@ -207,6 +209,7 @@ a[target='_external'],
 
   font-size: 18px;
   word-wrap: break-word;
+
   br {
     font-size: 100%;
   }
@@ -461,6 +464,7 @@ a[target='_external'],
 
     p {
       margin: 0 0 0.6rem 0;
+
       &:last-child {
         margin-bottom: 0.2rem;
       }
@@ -504,4 +508,66 @@ a[target='_external'],
   }
 
   overflow-wrap: break-word;
+}
+
+.sps-page .sps-table,
+.witnesses-page .witnesses-table {
+  @include themify(night) {
+    table {
+      background: $dark-six;
+    }
+  }
+
+  // Antd table overrides
+  .ant-table-thead,
+  .ant-table-tbody {
+    th,
+    td {
+      border: 0;
+      font-size: 16px;
+
+      @include themify(day) {
+        background: transparent !important;
+        color: $steel-grey;
+      }
+    }
+
+    th {
+      font-weight: 700;
+    }
+  }
+
+  .ant-table-row:nth-child(odd) {
+    @include themify(day) {
+      background: $white-three;
+    }
+
+    @include themify(night) {
+      background: lighten($dark-six, 4);
+    }
+  }
+
+  .ant-table-fixed-left {
+    .ant-table-row {
+      td:first-child {
+        border-top-left-radius: 10px;
+      }
+
+      td:first-child {
+        border-bottom-left-radius: 10px;
+      }
+    }
+  }
+
+  .ant-table-fixed-right {
+    .ant-table-row {
+      td:first-child {
+        border-top-right-radius: 10px;
+      }
+
+      td:first-child {
+        border-bottom-right-radius: 10px;
+      }
+    }
+  }
 }

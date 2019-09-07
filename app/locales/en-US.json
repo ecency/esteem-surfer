@@ -452,6 +452,9 @@
     "proxy-removed": "Proxy is cleared",
     "proxy-created": "@{n} has set as proxy"
   },
+  "sps": {
+    "page-title": "Proposals Voting"
+  },
   "transfer": {
     "transfer-title": "Transfer to Account",
     "transfer-estm-title": "Gift to Account",

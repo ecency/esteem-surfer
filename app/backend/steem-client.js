@@ -2,6 +2,7 @@
 eslint-disable no-underscore-dangle
 */
 
+import axios from 'axios';
 import { Client, PrivateKey } from 'dsteem';
 
 import sc2 from 'sc2-sdk';
@@ -892,4 +893,26 @@ export const boost = (account, pin, user, author, permlink, amount) => {
   if (account.type === 'sc') {
     return scBoost(from, json);
   }
+};
+
+export const getProposals = () => {
+  const headers = {
+    'Content-Type': 'application/json'
+  };
+  const body = {
+    jsonrpc: '2.0',
+    method: 'database_api.list_proposals',
+    id: 2,
+    params: {
+      start: [-1],
+      limit: 100,
+      order: 'by_total_votes',
+      order_direction: 'descending',
+      status: 'all'
+    }
+  };
+  return axios
+    .post(getItem('server', 'https://api.steemit.com'), body, headers)
+    .then(resp => resp.data.result.proposals)
+    .catch(() => []);
 };

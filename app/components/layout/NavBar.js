@@ -141,6 +141,12 @@ class Address extends Component {
         return;
       }
 
+      if (a === 'sps') {
+        const p = `/sps`;
+        history.push(p);
+        return;
+      }
+
       if (a === 'transfer' && activeAccount) {
         const p = `/@${activeAccount.username}/transfer/steem`;
         history.push(p);

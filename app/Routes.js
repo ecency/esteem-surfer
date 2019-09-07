@@ -10,6 +10,7 @@ import ComposePage from './containers/ComposePage';
 import EntryPage from './containers/EntryPage';
 import SearchPage from './containers/SearchPage';
 import WitnessesPage from './containers/WitnessesPage';
+import SpsPage from './containers/SpsPage';
 import TransferPage from './containers/TransferPage';
 // import PromotePage from './containers/PromotePage';
 // import BoostPage from './containers/BoostPage';
@@ -110,6 +111,13 @@ export default () => (
         path="/witnesses"
         component={props => (
           <WitnessesPage timestamp={new Date().toString()} {...props} />
+        )}
+      />
+      <Route
+        exact
+        path="/sps"
+        component={props => (
+          <SpsPage timestamp={new Date().toString()} {...props} />
         )}
       />
       <Route

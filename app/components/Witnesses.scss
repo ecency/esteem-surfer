@@ -201,61 +201,6 @@
     .version-num {
       background: $dark-sky-blue;
     }
-
-    @include themify(night) {
-      table {
-        background: $dark-six;
-      }
-    }
-    // Antd table overrides
-    .ant-table-thead,
-    .ant-table-tbody {
-      th,
-      td {
-        border: 0;
-        font-size: 16px;
-
-        @include themify(day) {
-          background: transparent !important;
-          color: $steel-grey;
-        }
-      }
-      th {
-        font-weight: 700;
-      }
-    }
-
-    .ant-table-row:nth-child(odd) {
-      @include themify(day) {
-        background: $white-three;
-      }
-
-      @include themify(night) {
-        background: lighten($dark-six, 4);
-      }
-    }
-
-    .ant-table-fixed-left {
-      .ant-table-row {
-        td:first-child {
-          border-top-left-radius: 10px;
-        }
-        td:first-child {
-          border-bottom-left-radius: 10px;
-        }
-      }
-    }
-
-    .ant-table-fixed-right {
-      .ant-table-row {
-        td:first-child {
-          border-top-right-radius: 10px;
-        }
-        td:first-child {
-          border-bottom-right-radius: 10px;
-        }
-      }
-    }
   }
 
   .extra-funcs {
