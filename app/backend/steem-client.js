@@ -907,8 +907,9 @@ export const getProposals = () => client.call('database_api', 'list_proposals', 
 
 
 export const getProposalVoters = (proposalId) => client.call('condenser_api', 'list_proposal_votes',
-  [[proposalId, ''], 200, 'by_proposal_voter']
+  [[proposalId, ''], 300, 'by_proposal_voter']
 )
-  .then(resp => resp.map(x => ({ id: x.id, voter: x.voter })))
+  .then(resp => resp.filter(x => x.proposal.id === proposalId))
+  .then(resp => resp.map(x => x.voter))
   .catch(() => []);
 

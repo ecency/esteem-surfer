@@ -460,7 +460,8 @@
     "status-active": "active",
     "status-expired": "expired",
     "status-inactive": "upcoming",
-    "duration-days": "{n} days"
+    "duration-days": "{n} days",
+    "voters": "Proposal Voters"
   },
   "transfer": {
     "transfer-title": "Transfer to Account",
