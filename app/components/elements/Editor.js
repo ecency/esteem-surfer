@@ -1010,12 +1010,12 @@ class Editor extends Component {
                 placeholder={intl.formatMessage({
                   id: 'composer.tags-placeholder'
                 })}
-                maxTagCount={5}
+                maxTagCount={7}
                 maxTagPlaceholder={
                   <span style={{ color: 'red' }}>
                     <FormattedMessage
                       id="composer.max-n-tags"
-                      values={{ n: 5 }}
+                      values={{ n: 7 }}
                     />
                   </span>
                 }
