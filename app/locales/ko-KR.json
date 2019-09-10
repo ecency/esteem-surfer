@@ -452,6 +452,23 @@
     "proxy-removed": "프록시가 삭제되었습니다",
     "proxy-created": "@{n} 님을 프록시로 설정했습니다"
   },
+  "sps": {
+    "page-title": "Proposals Voting",
+    "duration": "Duration",
+    "requested": "Requested",
+    "total-votes": "Total Votes",
+    "status-active": "active",
+    "status-expired": "expired",
+    "status-inactive": "upcoming",
+    "duration-days": "{n} days",
+    "voters": "Proposal Voters",
+    "voter": "Voter",
+    "voter-sp": "SP",
+    "voter-proxy-sp": "Proxy SP",
+    "voter-total-sp": "Total SP",
+    "voted": "Proposal #{n} voted",
+    "vote-removed": "Vote removed for proposal #{n}"
+  },
   "transfer": {
     "transfer-title": "송금하기",
     "transfer-estm-title": "선물하기",
