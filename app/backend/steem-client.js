@@ -19,7 +19,8 @@ import {
   scWithdrawVesting,
   sctTransferPoint,
   scPromote,
-  scBoost
+  scBoost,
+  scVoteProposal
 } from '../helpers/sc';
 
 import { decryptKey } from '../utils/crypto';
@@ -937,5 +938,9 @@ export const voteProposal = (account, pin, proposalId, approve) => {
     ];
 
     return client.broadcast.sendOperations(opArray, privateKey);
+  }
+
+  if (account.type === 'sc') {
+    return scVoteProposal(account.username, proposalId, approve);
   }
 };

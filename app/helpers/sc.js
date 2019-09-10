@@ -211,3 +211,10 @@ export const scBoost = (account, json) =>
       json
     )}`
   );
+
+export const scVoteProposal = (account, proposalId, approve) =>
+  standardScWindow(
+    `sign/update-proposal-votes?account=${account}&proposal_ids=${JSON.stringify(
+      [proposalId]
+    )}&approve=${approve}`
+  );
