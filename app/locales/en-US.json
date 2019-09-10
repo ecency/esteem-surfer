@@ -461,7 +461,11 @@
     "status-expired": "expired",
     "status-inactive": "upcoming",
     "duration-days": "{n} days",
-    "voters": "Proposal Voters"
+    "voters": "Proposal Voters",
+    "voter": "Voter",
+    "voter-sp": "SP",
+    "voter-proxy-sp": "Proxy SP",
+    "voter-total-sp": "Total SP"
   },
   "transfer": {
     "transfer-title": "Transfer to Account",

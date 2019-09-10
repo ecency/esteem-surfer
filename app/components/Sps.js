@@ -6,28 +6,28 @@ import React, { Fragment, PureComponent } from 'react';
 
 import PropTypes from 'prop-types';
 
-import moment from 'moment';
-
 import { injectIntl, FormattedMessage, FormattedNumber } from 'react-intl';
 
 import { Modal, Table, Row, Col, Badge } from 'antd';
 
+import moment from 'moment';
+
 import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
-
+import UserAvatar from './elements/UserAvatar';
 import LinearProgress from './common/LinearProgress';
-
+import LoginRequired from './helpers/LoginRequired';
 import QuickProfile from './helpers/QuickProfile';
 import EntryLink from './helpers/EntryLink';
-import UserAvatar from './elements/UserAvatar';
-
-import { getProposals, getProposalVoters, getAccounts } from '../backend/steem-client';
-import LoginRequired from './helpers/LoginRequired';
-import { chevronUp } from '../svg';
+import AccountLink from './helpers/AccountLink';
 
 import parseToken from '../utils/parse-token';
-import AccountLink from './helpers/AccountLink';
 import authorReputation from '../utils/author-reputation';
+
+import { getProposals, getProposalVoters, getAccounts } from '../backend/steem-client';
+
+import { chevronUp } from '../svg';
+
 
 const duration = (date1, date2) => {
   const a = moment(date1);
@@ -75,10 +75,9 @@ class SpsVotersModal extends PureComponent {
     const { loading, accounts } = this.state;
     const { intl, onCancel } = this.props;
 
-
     const columns = [
       {
-        title: 'Voter',
+        title: <FormattedMessage id="sps.voter" />,
         dataIndex: 'name',
         width: 210,
         render: (text, record) => <span>
@@ -98,7 +97,7 @@ class SpsVotersModal extends PureComponent {
           </span>
       },
       {
-        title: 'SP',
+        title: <FormattedMessage id="sps.voter-sp" />,
         dataIndex: 'sp',
         width: 200,
         render: text => <FormattedNumber
@@ -108,7 +107,7 @@ class SpsVotersModal extends PureComponent {
         />
       },
       {
-        title: 'Proxy SP',
+        title: <FormattedMessage id="sps.voter-proxy-sp" />,
         dataIndex: 'proxySP',
         width: 200,
         render: text => text > 0 ? <FormattedNumber
@@ -118,7 +117,7 @@ class SpsVotersModal extends PureComponent {
         /> : ''
       },
       {
-        title: 'Total SP',
+        title: <FormattedMessage id="sps.voter-total-sp" />,
         dataIndex: 'totalSP',
         width: 200,
         render: text => text > 0 ? <FormattedNumber
