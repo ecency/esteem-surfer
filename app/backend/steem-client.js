@@ -2,7 +2,6 @@
 eslint-disable no-underscore-dangle
 */
 
-import axios from 'axios';
 import { Client, PrivateKey } from 'dsteem';
 
 import sc2 from 'sc2-sdk';

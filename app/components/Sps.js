@@ -80,6 +80,7 @@ class SpsVotersModal extends PureComponent {
       {
         title: 'Voter',
         dataIndex: 'name',
+        width: 210,
         render: (text, record) => <span>
             <AccountLink {...this.props} username={text}>
               <span style={{ cursor: 'pointer', fontWeight: 'bold' }}>
@@ -99,6 +100,7 @@ class SpsVotersModal extends PureComponent {
       {
         title: 'SP',
         dataIndex: 'sp',
+        width: 200,
         render: text => <FormattedNumber
           value={text}
           minimumFractionDigits={0}
@@ -108,6 +110,7 @@ class SpsVotersModal extends PureComponent {
       {
         title: 'Proxy SP',
         dataIndex: 'proxySP',
+        width: 200,
         render: text => text > 0 ? <FormattedNumber
           value={text}
           minimumFractionDigits={0}
@@ -117,6 +120,7 @@ class SpsVotersModal extends PureComponent {
       {
         title: 'Total SP',
         dataIndex: 'totalSP',
+        width: 200,
         render: text => text > 0 ? <FormattedNumber
           value={text}
           minimumFractionDigits={0}
@@ -128,19 +132,14 @@ class SpsVotersModal extends PureComponent {
     return <Modal
       visible
       footer={false}
-      width="550px"
+      width="750px"
       destroyOnClose
       onCancel={onCancel}
       centered
       title={intl.formatMessage({ id: 'sps.voters' })}
     >
       <div className="sps-voters-dialog-content">
-        {loading &&
-        <span>loading</span>
-        }
-        {!loading &&
-        <Table columns={columns} dataSource={accounts}/>
-        }
+        <Table loading={loading} columns={columns} dataSource={accounts} scroll={{ y: 310 }}/>
       </div>
     </Modal>;
   }
