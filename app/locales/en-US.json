@@ -202,7 +202,7 @@
     "points-vote-list-desc": "Points for vote",
     "points-reblog-list-desc": "Points for reblog",
     "points-login-list-desc": "Points for login",
-    "points-checkin-list-desc": "Points for usage",
+    "points-checkin-list-desc": "Points for heartbeat",
     "points-checkin-extra-list-desc": "Usage bonus",
     "points-transfer-sent-list-desc": "Transfer to {n}",
     "points-transfer-incoming-list-desc": "Transfer from {n}",
