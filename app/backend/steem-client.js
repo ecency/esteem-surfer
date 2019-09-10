@@ -281,7 +281,7 @@ export const grantPostingPermission = (account, pin) => {
 
     if (!accountData) {
       return Promise.reject(
-        new Error('Please wait while your account\'s data loading...')
+        new Error("Please wait while your account's data loading...")
       );
     }
 
@@ -894,21 +894,48 @@ export const boost = (account, pin, user, author, permlink, amount) => {
   }
 };
 
-export const getProposals = () => client.call('database_api', 'list_proposals', {
-  start: [-1],
-  limit: 100,
-  order: 'by_total_votes',
-  order_direction: 'descending',
-  status: 'all'
-})
-  .then(resp => resp.proposals.filter(x => x.receiver !== 'steem.dao'))
-  .catch(() => []);
+export const getProposals = () =>
+  client
+    .call('database_api', 'list_proposals', {
+      start: [-1],
+      limit: 100,
+      order: 'by_total_votes',
+      order_direction: 'descending',
+      status: 'all'
+    })
+    .then(resp => resp.proposals.filter(x => x.receiver !== 'steem.dao'))
+    .catch(() => []);
 
+export const getProposalVoters = proposalId =>
+  client
+    .call('condenser_api', 'list_proposal_votes', [
+      [proposalId, ''],
+      300,
+      'by_proposal_voter'
+    ])
+    .then(resp => resp.filter(x => x.proposal.id === proposalId))
+    .then(resp => resp.map(x => x.voter))
+    .catch(() => []);
 
-export const getProposalVoters = (proposalId) => client.call('condenser_api', 'list_proposal_votes',
-  [[proposalId, ''], 300, 'by_proposal_voter']
-)
-  .then(resp => resp.filter(x => x.proposal.id === proposalId))
-  .then(resp => resp.map(x => x.voter))
-  .catch(() => []);
+export const voteProposal = (account, pin, proposalId, approve) => {
+  const { username: voter } = account;
 
+  if (account.type === 's') {
+    const key = decryptKey(account.keys.active, pin);
+    const privateKey = PrivateKey.fromString(key);
+
+    const opArray = [
+      [
+        'update_proposal_votes',
+        {
+          voter,
+          proposal_ids: [proposalId],
+          approve,
+          extensions: []
+        }
+      ]
+    ];
+
+    return client.broadcast.sendOperations(opArray, privateKey);
+  }
+};

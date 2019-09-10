@@ -142,9 +142,20 @@
         }
       }
 
-      .description {
+      .voting,
+      .description,
+      .duration,
+      .requested,
+      .total-votes {
         padding-right: 3px;
+      }
 
+      .voting {
+        display: flex;
+        justify-content: center;
+      }
+
+      .description {
         .post-title {
           font-weight: 500;
           margin-bottom: 16px;
@@ -206,13 +217,7 @@
         }
       }
 
-      .duration {
-        padding-right: 3px;
-      }
-
       .requested {
-        padding-right: 3px;
-
         .daily {
           margin-bottom: 6px;
         }
@@ -220,7 +225,6 @@
 
       .total-votes {
         cursor: pointer;
-        padding-right: 3px;
       }
     }
   }
