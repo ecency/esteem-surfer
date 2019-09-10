@@ -496,6 +496,7 @@ class Witnesses extends PureComponent {
         title: '',
         width: 50,
         dataIndex: 'key',
+        className: 'first-col',
         render: text => <span className="index-num">{text}</span>
       },
       {
@@ -593,6 +594,7 @@ class Witnesses extends PureComponent {
         title: <FormattedMessage id="witnesses.version" />,
         dataIndex: 'version',
         width: 140,
+        className: 'last-col',
         render: text => <span className="version-num">{text}</span>
       }
     ];
