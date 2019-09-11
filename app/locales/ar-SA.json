@@ -202,7 +202,7 @@
     "points-vote-list-desc": "نقاط للتصويت",
     "points-reblog-list-desc": "نقاط لإعادة النشر",
     "points-login-list-desc": "نقاط لتسجيل الدخول",
-    "points-checkin-list-desc": "نقاط للاستخدام",
+    "points-checkin-list-desc": "Points for heartbeat",
     "points-checkin-extra-list-desc": "مكافأة الاستخدام",
     "points-transfer-sent-list-desc": "تحويل إلى {n}",
     "points-transfer-incoming-list-desc": "تحويل من {n}",
@@ -210,7 +210,7 @@
     "points-claim-ok": "تمت المطالبة بالنقاط",
     "points-promote": "Promote",
     "points-boost": "Boost",
-    "points-transfer": "إرسال هدية إلى حساب معين"
+    "points-transfer": "Gift to someone"
   },
   "redeem": {
     "user-label": "المستخدم",
@@ -348,7 +348,8 @@
     "similar-entries": "منشورات مماثلة",
     "fetch-error": "إنتهت مهلة الخادم لأن حجم الاستجابة كبير جدًا",
     "promote": "promote",
-    "boost": "boost"
+    "boost": "boost",
+    "more-replies": "show more replies"
   },
   "navbar": {
     "settings": "الإعدادات",
