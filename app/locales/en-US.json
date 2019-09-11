@@ -348,7 +348,8 @@
     "similar-entries": "Similar Posts",
     "fetch-error": "Server timeout because response size is too big",
     "promote": "promote",
-    "boost": "boost"
+    "boost": "boost",
+    "more-replies": "show more replies"
   },
   "navbar": {
     "settings": "Settings",

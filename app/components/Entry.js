@@ -342,7 +342,7 @@ class ReplyListItem extends PureComponent {
   };
 
   render() {
-    const { activeAccount, intl } = this.props;
+    const { depth, activeAccount, intl } = this.props;
     const { reply, editorVisible, editorMode, deleted, deleting } = this.state;
 
     const reputation = authorReputation(reply.author_reputation);
@@ -478,9 +478,34 @@ class ReplyListItem extends PureComponent {
             mode={editorMode}
           />
         )}
-        {reply.replies && reply.replies.length > 0 && (
-          <ReplyList {...this.props} replies={reply.replies} />
-        )}
+
+        {(() => {
+          if (reply.replies && reply.replies.length > 0) {
+            if (depth >= 8) {
+              return (
+                <div className="item-show-more">
+                  <EntryLink
+                    {...this.props}
+                    author={reply.author}
+                    permlink={reply.permlink}
+                  >
+                    <a>
+                      <FormattedMessage id="entry.more-replies" />
+                    </a>
+                  </EntryLink>
+                </div>
+              );
+            }
+
+            return (
+              <ReplyList
+                {...this.props}
+                replies={reply.replies}
+                depth={depth + 1}
+              />
+            );
+          }
+        })()}
       </div>
     );
   }
@@ -494,6 +519,7 @@ ReplyListItem.defaultProps = {
 };
 
 ReplyListItem.propTypes = {
+  depth: PropTypes.number.isRequired,
   reply: PropTypes.instanceOf(Object).isRequired,
   activeAccount: PropTypes.instanceOf(Object),
   intl: PropTypes.instanceOf(Object).isRequired,
@@ -504,7 +530,7 @@ ReplyListItem.propTypes = {
 
 class ReplyList extends PureComponent {
   render() {
-    const { replies } = this.props;
+    const { replies, depth } = this.props;
 
     return (
       <div className="entry-reply-list">
@@ -513,6 +539,7 @@ class ReplyList extends PureComponent {
             {...this.props}
             reply={reply}
             key={`${reply.author}-${reply.permlink}`}
+            depth={depth}
           />
         ))}
       </div>
@@ -523,6 +550,7 @@ class ReplyList extends PureComponent {
 ReplyList.defaultProps = {};
 
 ReplyList.propTypes = {
+  depth: PropTypes.number.isRequired,
   replies: PropTypes.arrayOf(Object).isRequired
 };
 
@@ -1438,7 +1466,7 @@ class Entry extends PureComponent {
               </div>
 
               <div className="entry-replies-body">
-                <ReplyList {...this.props} replies={replies} />
+                <ReplyList {...this.props} replies={replies} depth={1} />
               </div>
             </div>
           </div>

@@ -74,8 +74,10 @@
       .comment-entry-opts {
         margin: 10px 0 0 14px;
         padding: 0;
+
         li {
           margin-bottom: 6px;
+
           a {
             font-size: 16px;
             font-weight: 700;
@@ -690,9 +692,14 @@
               }
             }
 
+            .item-show-more {
+              margin-left: 50px;
+              margin-bottom: 10px;
+            }
+
             .entry-reply-list {
               @include clearfix();
-              margin-left: 30px;
+              margin-left: 50px;
             }
           }
         }
@@ -844,6 +851,7 @@
           cursor: pointer;
           display: flex;
           height: 100%;
+
           &:not(:last-child) {
             margin-right: 16px;
           }
