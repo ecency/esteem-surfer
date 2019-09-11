@@ -202,7 +202,7 @@
     "points-vote-list-desc": "Points for vote",
     "points-reblog-list-desc": "Points for reblog",
     "points-login-list-desc": "Points for login",
-    "points-checkin-list-desc": "Points for usage",
+    "points-checkin-list-desc": "Points for heartbeat",
     "points-checkin-extra-list-desc": "Usage bonus",
     "points-transfer-sent-list-desc": "Transfer to {n}",
     "points-transfer-incoming-list-desc": "Transfer from {n}",
@@ -210,7 +210,7 @@
     "points-claim-ok": "Points claimed",
     "points-promote": "Promote",
     "points-boost": "Boost",
-    "points-transfer": "Gift to Account"
+    "points-transfer": "Gift to someone"
   },
   "redeem": {
     "user-label": "User",
@@ -348,7 +348,8 @@
     "similar-entries": "Publications similaires",
     "fetch-error": "Server timeout because response size is too big",
     "promote": "promote",
-    "boost": "boost"
+    "boost": "boost",
+    "more-replies": "show more replies"
   },
   "navbar": {
     "settings": "Réglages",
