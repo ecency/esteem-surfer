@@ -55,7 +55,7 @@
   "entry-reblog": {
     "reblog": "Megosztás",
     "reblogged": "Megosztva",
-    "modal-title": "Rebloggers ({n})",
+    "modal-title": "Megosztók ({n})",
     "more-reblogs": "... +{n} megosztás"
   },
   "settings": {
@@ -210,7 +210,7 @@
     "points-claim-ok": "Pontok átvéve",
     "points-promote": "Promote",
     "points-boost": "Kiemelés",
-    "points-transfer": "Gift to someone"
+    "points-transfer": "Ajándékozz meg valakit"
   },
   "redeem": {
     "user-label": "Felhasználó",
@@ -455,11 +455,11 @@
   },
   "sps": {
     "page-title": "Proposals Voting",
-    "duration": "Duration",
+    "duration": "Időtartam",
     "requested": "Requested",
-    "total-votes": "Total Votes",
-    "status-active": "active",
-    "status-expired": "expired",
+    "total-votes": "Összes szavazat",
+    "status-active": "aktív",
+    "status-expired": "lejárt",
     "status-inactive": "upcoming",
     "duration-days": "{n} days",
     "voters": "Proposal Voters",
