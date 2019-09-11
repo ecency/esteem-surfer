@@ -44,7 +44,7 @@ import UserAvatar from './elements/UserAvatar';
 import QuickProfile from './helpers/QuickProfile';
 import TagLink, { makePath as makePathTag } from './helpers/TagLink';
 import ScrollReplace from './helpers/ScrollReplace';
-import EntryVoteBtn from './elements/EntryVoteBtn';
+import EntryUpVoteBtn from './elements/EntryUpVoteBtn';
 import EntryPayout from './elements/EntryPayout';
 import FormattedCurrency from './elements/FormattedCurrency';
 import EntryVotes from './elements/EntryVotes';
@@ -400,7 +400,7 @@ class ReplyListItem extends PureComponent {
           />
           <div className="item-controls">
             <div className="voting">
-              <EntryVoteBtn
+              <EntryUpVoteBtn
                 {...this.props}
                 entry={reply}
                 afterVote={this.afterVote}
@@ -1301,7 +1301,7 @@ class Entry extends PureComponent {
               </div>
               <div className="entry-controls">
                 <div className="voting">
-                  <EntryVoteBtn
+                  <EntryUpVoteBtn
                     {...this.props}
                     entry={entry}
                     afterVote={this.afterVote}
