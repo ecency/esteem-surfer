@@ -202,7 +202,7 @@
     "points-vote-list-desc": "Punkte für einen Vote",
     "points-reblog-list-desc": "Punkte für einen ReBlog",
     "points-login-list-desc": "Punkte für den Login",
-    "points-checkin-list-desc": "Punkte für die Nutzung",
+    "points-checkin-list-desc": "Points for heartbeat",
     "points-checkin-extra-list-desc": "Nutzungs-Bonus",
     "points-transfer-sent-list-desc": "Transfer nach {n}",
     "points-transfer-incoming-list-desc": "Transfer von {n}",
@@ -210,7 +210,7 @@
     "points-claim-ok": "Punkte eingesammelt",
     "points-promote": "Bewerben",
     "points-boost": "Boost",
-    "points-transfer": "Geschenk an Konto"
+    "points-transfer": "Gift to someone"
   },
   "redeem": {
     "user-label": "Benutzer",
@@ -348,7 +348,8 @@
     "similar-entries": "Ähnliche Beiträge",
     "fetch-error": "Server Timeout, weil die Antwortgröße zu groß ist",
     "promote": "Promote",
-    "boost": "Boost"
+    "boost": "Boost",
+    "more-replies": "show more replies"
   },
   "navbar": {
     "settings": "Einstellungen",
