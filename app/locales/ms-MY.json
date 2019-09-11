@@ -202,7 +202,7 @@
     "points-vote-list-desc": "Mata ganjaran vote",
     "points-reblog-list-desc": "Mata ganjaran ulang siar",
     "points-login-list-desc": "Mata ganjaran log masuk",
-    "points-checkin-list-desc": "Mata ganjaran mengguna",
+    "points-checkin-list-desc": "Points for heartbeat",
     "points-checkin-extra-list-desc": "Bonus untuk pengguna",
     "points-transfer-sent-list-desc": "Pindah kepada {n}",
     "points-transfer-incoming-list-desc": "Pindah daripada {n}",
@@ -210,7 +210,7 @@
     "points-claim-ok": "Mata ganjaran dituntut",
     "points-promote": "Digalakkan",
     "points-boost": "Pecutkan",
-    "points-transfer": "Gift to Account"
+    "points-transfer": "Gift to someone"
   },
   "redeem": {
     "user-label": "Pengguna",
@@ -348,7 +348,8 @@
     "similar-entries": "Pos yang menyerupa",
     "fetch-error": "Saiz penyampaian maklumat terlampau besar, server telah berhenti",
     "promote": "promote",
-    "boost": "boost"
+    "boost": "boost",
+    "more-replies": "show more replies"
   },
   "navbar": {
     "settings": "Tetapan",
