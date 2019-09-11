@@ -202,7 +202,7 @@
     "points-vote-list-desc": "Các điểm cho bình chọn",
     "points-reblog-list-desc": "Các điểm cho đăng lại bài viết",
     "points-login-list-desc": "Các điểm thưởng cho đăng nhập",
-    "points-checkin-list-desc": "Các điểm thưởng cho việc sử dụng",
+    "points-checkin-list-desc": "Points for heartbeat",
     "points-checkin-extra-list-desc": "Phần thưởng cho việc sử dụng",
     "points-transfer-sent-list-desc": "Chuyển tiền đến {n}",
     "points-transfer-incoming-list-desc": "Chuyển tiền từ {n}",
@@ -210,7 +210,7 @@
     "points-claim-ok": "Các điểm thưởng được yêu cầu",
     "points-promote": "Quảng bá",
     "points-boost": "Tăng tốc",
-    "points-transfer": "Gift to Account"
+    "points-transfer": "Gift to someone"
   },
   "redeem": {
     "user-label": "Người dùng",
@@ -348,7 +348,8 @@
     "similar-entries": "Những bài viết tương tự",
     "fetch-error": "Hết thời gian chờ của máy chủ vì khối lượng phản hồi quá lớn",
     "promote": "quảng bá",
-    "boost": "tăng tốc"
+    "boost": "tăng tốc",
+    "more-replies": "show more replies"
   },
   "navbar": {
     "settings": "Các cài đặt",
