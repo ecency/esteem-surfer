@@ -202,7 +202,7 @@
     "points-vote-list-desc": "Puncte pentru vot",
     "points-reblog-list-desc": "Puncte pentru redistribuire",
     "points-login-list-desc": "Puncte pentru autentificare",
-    "points-checkin-list-desc": "Puncte pentru utilizare",
+    "points-checkin-list-desc": "Points for heartbeat",
     "points-checkin-extra-list-desc": "Bonus de utilizare",
     "points-transfer-sent-list-desc": "Transfer către {n}",
     "points-transfer-incoming-list-desc": "Transfer de la {n}",
@@ -210,7 +210,7 @@
     "points-claim-ok": "Puncte colectate",
     "points-promote": "Promovează",
     "points-boost": "Boost",
-    "points-transfer": "Gift to Account"
+    "points-transfer": "Gift to someone"
   },
   "redeem": {
     "user-label": "Utilizator",
@@ -348,7 +348,8 @@
     "similar-entries": "Postări Similare",
     "fetch-error": "Serverului a expirat pentru că dimensiunea răspunsului este prea mare",
     "promote": "promovează",
-    "boost": "boost"
+    "boost": "boost",
+    "more-replies": "show more replies"
   },
   "navbar": {
     "settings": "Setări",
