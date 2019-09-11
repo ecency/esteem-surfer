@@ -202,7 +202,7 @@
     "points-vote-list-desc": "Pontos para votar",
     "points-reblog-list-desc": "Pontos para reblog",
     "points-login-list-desc": "Pontos por Login",
-    "points-checkin-list-desc": "Pontos para uso",
+    "points-checkin-list-desc": "Points for heartbeat",
     "points-checkin-extra-list-desc": "Uso do Bonús",
     "points-transfer-sent-list-desc": "Transferir para {n}",
     "points-transfer-incoming-list-desc": "Transferido po {n}",
@@ -210,7 +210,7 @@
     "points-claim-ok": "Pontos reivindicados",
     "points-promote": "Promover",
     "points-boost": "Reforço",
-    "points-transfer": "Presente à Conta"
+    "points-transfer": "Gift to someone"
   },
   "redeem": {
     "user-label": "Utilizador",
@@ -348,7 +348,8 @@
     "similar-entries": "Posts semelhantes",
     "fetch-error": "Tempo limite do servidor porque o tamanho da resposta é muito grande",
     "promote": "promover",
-    "boost": "reforçar"
+    "boost": "reforçar",
+    "more-replies": "show more replies"
   },
   "navbar": {
     "settings": "Configurações",
