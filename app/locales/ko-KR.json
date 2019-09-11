@@ -202,7 +202,7 @@
     "points-vote-list-desc": "투표 포인트",
     "points-reblog-list-desc": "리블로그 포인트",
     "points-login-list-desc": "로그인 포인트",
-    "points-checkin-list-desc": "체크인 포인트",
+    "points-checkin-list-desc": "Points for heartbeat",
     "points-checkin-extra-list-desc": "체크인 보너스",
     "points-transfer-sent-list-desc": "{n} 님에게 송금",
     "points-transfer-incoming-list-desc": "{n} 님으로부터 받음",
@@ -210,7 +210,7 @@
     "points-claim-ok": "포인트 획득 완료",
     "points-promote": "홍보",
     "points-boost": "보팅 후원",
-    "points-transfer": "선물하기"
+    "points-transfer": "Gift to someone"
   },
   "redeem": {
     "user-label": "사용자",
@@ -348,7 +348,8 @@
     "similar-entries": "유사한 글",
     "fetch-error": "응답 파일 크기가 너무 커서 서버 타임아웃이 발생했습니다",
     "promote": "홍보",
-    "boost": "보팅 후원"
+    "boost": "보팅 후원",
+    "more-replies": "show more replies"
   },
   "navbar": {
     "settings": "설정",
