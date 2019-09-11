@@ -202,7 +202,7 @@
     "points-vote-list-desc": "Очки за голос",
     "points-reblog-list-desc": "Очки за репост",
     "points-login-list-desc": "Очки за логин",
-    "points-checkin-list-desc": "Очки за пользование",
+    "points-checkin-list-desc": "Points for heartbeat",
     "points-checkin-extra-list-desc": "Бонус за использование",
     "points-transfer-sent-list-desc": "Получатель {n}",
     "points-transfer-incoming-list-desc": "Отправитель {n}",
@@ -210,7 +210,7 @@
     "points-claim-ok": "Очки зачислены",
     "points-promote": "Продвижение",
     "points-boost": "Boost",
-    "points-transfer": "Gift to Account"
+    "points-transfer": "Gift to someone"
   },
   "redeem": {
     "user-label": "User",
@@ -348,7 +348,8 @@
     "similar-entries": "Похожие посты",
     "fetch-error": "Тайм-аут сервера, потому что размер ответа слишком большой",
     "promote": "promote",
-    "boost": "boost"
+    "boost": "boost",
+    "more-replies": "show more replies"
   },
   "navbar": {
     "settings": "Настройки",
