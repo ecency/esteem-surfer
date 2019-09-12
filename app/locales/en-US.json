@@ -210,7 +210,9 @@
     "points-claim-ok": "Points claimed",
     "points-promote": "Promote",
     "points-boost": "Boost",
-    "points-transfer": "Gift to someone"
+    "points-transfer": "Gift to someone",
+    "witness-voting": "Witnesses",
+    "sps-voting": "SPS Voting"
   },
   "redeem": {
     "user-label": "User",

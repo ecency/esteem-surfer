@@ -246,9 +246,14 @@
           }
         }
 
-        .witnesses {
+        .voting-services {
           a {
             color: $dark-sky-blue;
+          }
+
+          .separator {
+            color: $white-five;
+            margin: 0 4px;
           }
         }
       }

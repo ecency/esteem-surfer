@@ -293,8 +293,14 @@ class Profile extends Component {
         {showWitnesses && (
           <Fragment>
             <div className="divider" />
-            <div className="witnesses">
-              <Link to="/witnesses">Witnesses</Link>
+            <div className="voting-services">
+              <Link to="/witnesses">
+                <FormattedMessage id="account.witness-voting" />
+              </Link>
+              <span className="separator">|</span>
+              <Link to="/sps">
+                <FormattedMessage id="account.sps-voting" />
+              </Link>
             </div>
           </Fragment>
         )}
