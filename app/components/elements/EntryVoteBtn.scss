@@ -61,12 +61,6 @@
     text-decoration: none;
   }
 
-  &:hover,
-  &.voted {
-    background-color: $dark-sky-blue;
-    color: $white;
-  }
-
   &.in-progress {
     animation: up-voting-color-change 5s infinite;
     opacity: 0.5;
@@ -87,11 +81,23 @@
   border: 1px solid $dark-sky-blue;
   color: $dark-sky-blue;
   margin-right: 4px;
+
+  &:hover,
+  &.voted {
+    background-color: $dark-sky-blue;
+    color: $white;
+  }
 }
 
 .btn-down-vote {
   border: 1px solid $red2;
   color: $red2;
+
+  &:hover,
+  &.voted {
+    background-color: $dark-sky-blue;
+    color: $white;
+  }
 
   svg {
     transform: rotate(180deg);
