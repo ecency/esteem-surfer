@@ -110,6 +110,10 @@
       .words-count {
         color: lighten($steel-grey, 10);
         margin-right: 20px;
+
+        .words {
+          margin-right: 10px;
+        }
       }
 
       .sync {
@@ -201,6 +205,7 @@
     button {
       font-size: 16px;
     }
+
     .clean-button {
       background: transparent;
       border: none;

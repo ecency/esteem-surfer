@@ -92,6 +92,7 @@ import fallbackImage from '../img/fallback.png';
 import noImage from '../img/noimage.png';
 
 import { version } from '../../package';
+import WordCount from './helpers/WordCount';
 
 class ReplyEditor extends Component {
   constructor(props) {
@@ -1212,6 +1213,8 @@ class Entry extends PureComponent {
                 <span className="date" title={toolTipDate}>
                   {intl.formatRelative(created)}
                 </span>
+                <span className="h-space" />
+                <WordCount selector=".entry-body" />
               </div>
             </div>
             <div

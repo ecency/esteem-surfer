@@ -11,7 +11,8 @@ class WordCount extends Component {
     super(props);
 
     this.state = {
-      wordsCount: 0
+      count: 0,
+      time: 0
     };
   }
 
@@ -39,16 +40,35 @@ class WordCount extends Component {
     }
     const val = el.innerText.trim();
     const { words } = wordCounter(val);
-    this.setState({ wordsCount: words });
+    const wordsPerSec = 140;
+    const time = words / wordsPerSec;
+
+    this.setState({ count: words, time });
   };
 
   render() {
-    const { wordsCount } = this.state;
+    const { count, time } = this.state;
 
-    if (wordsCount > 0) {
+    let timeEl = null;
+
+    if (time <= 0.8) {
+      timeEl = <FormattedMessage id="word-count.read-time-less-1-min" />;
+    } else {
+      timeEl = (
+        <FormattedMessage
+          id="word-count.read-time-n-min"
+          values={{ n: Math.ceil(time) }}
+        />
+      );
+    }
+
+    if (count > 0) {
       return (
         <div className="words-count">
-          <FormattedMessage id="word-count.label" values={{ n: wordsCount }} />
+          <span className="words">
+            <FormattedMessage id="word-count.label" values={{ n: count }} />
+          </span>
+          <span className="time"> {timeEl} </span>
         </div>
       );
     }

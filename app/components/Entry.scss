@@ -197,6 +197,18 @@
 
         .date {
         }
+
+        .h-space {
+          flex-grow: 1;
+        }
+
+        .words-count {
+          color: lighten($steel-grey, 10);
+
+          .words {
+            margin-right: 10px;
+          }
+        }
       }
     }
 
