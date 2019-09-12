@@ -1,7 +1,7 @@
 @import '../../style/mixins';
 @import '../../style/colors';
 
-@keyframes voting-color-change {
+@keyframes up-voting-color-change {
   0% {
     background: $dark-sky-blue;
 
@@ -18,34 +18,39 @@
   }
   50% {
     background: $dark-sky-blue;
+
     svg {
       fill: $white;
     }
   }
   75% {
     background: transparent;
+
     svg {
       fill: $dark-sky-blue;
     }
   }
   100% {
     background: $dark-sky-blue;
+
     svg {
       fill: $white;
     }
   }
 }
 
-.btn-vote {
+.btn-up-vote,
+.btn-down-vote {
   align-items: center;
-  border: 1px solid $dark-sky-blue;
+
   border-radius: 50%;
-  color: $dark-sky-blue;
+
   display: flex;
   height: 18px;
   justify-content: center;
   text-decoration: none;
   width: 18px;
+  opacity: 0.8;
 
   svg {
     width: 14px;
@@ -63,7 +68,12 @@
   }
 
   &.in-progress {
-    animation: voting-color-change 5s infinite;
+    animation: up-voting-color-change 5s infinite;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &.disabled {
     opacity: 0.5;
     pointer-events: none;
   }
@@ -71,6 +81,25 @@
   .btn-inner {
     display: flex;
   }
+}
+
+.btn-up-vote {
+  border: 1px solid $dark-sky-blue;
+  color: $dark-sky-blue;
+  margin-right: 4px;
+}
+
+.btn-down-vote {
+  border: 1px solid $red2;
+  color: $red2;
+
+  svg {
+    transform: rotate(180deg);
+  }
+}
+
+.vote-btns {
+  display: flex;
 }
 
 .vote-slider-content {

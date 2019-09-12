@@ -32,6 +32,13 @@ export const setVotingPercentage = (username, val) => {
   setItem(`voting_percentage_${username}`, val);
 };
 
+export const getVotingPercentageNeg = username =>
+  getItem(`voting_percentage_neg_${username}`, 100);
+
+export const setVotingPercentageNeg = (username, val) => {
+  setItem(`voting_percentage_neg_${username}`, val);
+};
+
 export const isEntryRead = (author, permlink) =>
   getItem(`read_flag_${author}_${permlink}`, false);
 

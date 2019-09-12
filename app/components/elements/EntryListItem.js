@@ -16,7 +16,7 @@ import {
 import UserAvatar from './UserAvatar';
 import EntryPayout from './EntryPayout';
 import EntryVotes from './EntryVotes';
-import EntryUpVoteBtn from './EntryUpVoteBtn';
+import EntryVoteBtn from './EntryVoteBtn';
 import EntryReblogBtn from './EntryReblogBtn';
 import QuickProfile from '../helpers/QuickProfile';
 import FormattedCurrency from './FormattedCurrency';
@@ -232,7 +232,7 @@ class EntryListItem extends Component {
           </div>
           <div className="item-controls">
             <div className="voting">
-              <EntryUpVoteBtn {...this.props} entry={entry} />
+              <EntryVoteBtn {...this.props} entry={entry} />
             </div>
             <EntryPayout {...this.props} entry={entry}>
               <a
