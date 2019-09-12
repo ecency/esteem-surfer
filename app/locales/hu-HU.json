@@ -208,7 +208,7 @@
     "points-transfer-incoming-list-desc": "Átutalás innen {n}",
     "points-delegation-list-desc": "Delegálási jutalom",
     "points-claim-ok": "Pontok átvéve",
-    "points-promote": "Promote",
+    "points-promote": "Promoválás",
     "points-boost": "Kiemelés",
     "points-transfer": "Ajándékozz meg valakit"
   },
@@ -220,18 +220,18 @@
     "post-input-title": "Javaslatok",
     "key-required-err": "Az aktív kulcs nem található a kijelölt fiókhoz. Kérjük, győződj meg arról, hogy a megfelelő hitelesítő adatokkal jelentkeztél be.",
     "post-error": "Nem érvényes e-mail cím",
-    "post-error-exists": "The post is already promoted",
+    "post-error-exists": "A bejegyzés már promovált",
     "funds-error": "Nincs elegendő fedezet",
     "submit": "Küldés",
     "go-back": "Vissza"
   },
   "redeem-promote": {
-    "page-title": "Promote",
+    "page-title": "Promoválás",
     "duration-label": "Időtartam",
     "duration-help": "A csúszka húzásával állítsd be a mennyiséget",
     "day": "nap",
     "days": "nap",
-    "success-message": "Your request submitted. It will be activated in a couple minutes."
+    "success-message": "Kérésed rögzítve. Néhány perc múlva aktiválódik."
   },
   "redeem-boost": {
     "page-title": "Kiemelés",
@@ -339,7 +339,7 @@
     "bookmarkRemoved": "Eltávolítva a könyvjelzőkből",
     "favorited": "Hozzáadva a kedvencekhez",
     "favoriteRemoved": "Eltávolítva a kedvencek közül",
-    "show-edit-history": "Show edit history",
+    "show-edit-history": "Előzmények megjelenítése",
     "copy-clipboard": "Másold a belső linket a vágólapra",
     "copied-clipboard": "Másolva",
     "comment-entry-title": "Egy hozzászólásos vonal innen: ",
@@ -553,7 +553,7 @@
     "title": "Delegált steem power neki @{n}"
   },
   "edit-history": {
-    "title": "Edit History",
+    "title": "Szerkesztési előzmények",
     "show-diff": "Különbség megjelenítése",
     "version": "{n} Verzió"
   }
