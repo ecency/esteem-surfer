@@ -39,6 +39,44 @@
   }
 }
 
+@keyframes down-voting-color-change {
+  0% {
+    background: $red2;
+
+    svg {
+      fill: $white;
+    }
+  }
+  25% {
+    background: transparent;
+
+    svg {
+      fill: $red2;
+    }
+  }
+  50% {
+    background: $red2;
+
+    svg {
+      fill: $white;
+    }
+  }
+  75% {
+    background: transparent;
+
+    svg {
+      fill: $red2;
+    }
+  }
+  100% {
+    background: $red2;
+
+    svg {
+      fill: $white;
+    }
+  }
+}
+
 .btn-up-vote,
 .btn-down-vote {
   align-items: center;
@@ -92,6 +130,10 @@
   &.voted {
     background-color: $red2;
     color: $white;
+  }
+
+  &.in-progress {
+    animation: down-voting-color-change 5s infinite;
   }
 
   svg {
