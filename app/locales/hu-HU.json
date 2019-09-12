@@ -349,7 +349,7 @@
     "fetch-error": "A szerver nem elérhető mert a válasz mérete túl nagy",
     "promote": "promoválás",
     "boost": "kiemelés",
-    "more-replies": "show more replies"
+    "more-replies": "további hozzászólások betöltése"
   },
   "navbar": {
     "settings": "Beállítások",
@@ -460,10 +460,10 @@
     "total-votes": "Összes szavazat",
     "status-active": "aktív",
     "status-expired": "lejárt",
-    "status-inactive": "upcoming",
-    "duration-days": "{n} days",
+    "status-inactive": "következik",
+    "duration-days": "{n} nap",
     "voters": "Proposal Voters",
-    "voter": "Voter",
+    "voter": "Szavazó",
     "voter-sp": "SP",
     "voter-proxy-sp": "Proxy SP",
     "voter-total-sp": "Össz SP",
