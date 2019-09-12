@@ -1,5 +1,5 @@
 /*
-eslint-disable react/no-multi-comp
+eslint-disable react/no-multi-comp, jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
 */
 
 import React, { Component } from 'react';
@@ -263,7 +263,13 @@ class EntryVoteBtn extends Component {
     }
 
     const popoverContentUpVote = (
-      <div className="vote-slider-content">
+      <div
+        className="vote-slider-content"
+        onClick={e => {
+          e.preventDefault();
+          e.stopPropagation();
+        }}
+      >
         <div className="estimated">{estimated.toFixed(5)} $</div>
         <div className="percentage">{sliderVal} %</div>
         <Slider
@@ -283,7 +289,13 @@ class EntryVoteBtn extends Component {
     );
 
     const popoverContentDownVote = (
-      <div className="vote-slider-content">
+      <div
+        className="vote-slider-content"
+        onClick={e => {
+          e.preventDefault();
+          e.stopPropagation();
+        }}
+      >
         <div className="estimated">-{estimated.toFixed(5)} $</div>
         <div className="percentage">-{sliderVal} %</div>
         <Slider
