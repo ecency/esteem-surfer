@@ -466,7 +466,7 @@
     "voter": "Voter",
     "voter-sp": "SP",
     "voter-proxy-sp": "Proxy SP",
-    "voter-total-sp": "Total SP",
+    "voter-total-sp": "Össz SP",
     "voted": "Proposal #{n} voted",
     "vote-removed": "Vote removed for proposal #{n}"
   },
