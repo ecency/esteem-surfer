@@ -196,7 +196,7 @@
     "points-reblog-desc": "  Ossz meg a barátaiddal bármilyen bejegyzést, ami tetszik és nyerj 1 pontot.",
     "points-login-desc": "Minden eSteem bejelentkezés alkalmával automatikusan 100 pontra vagy jogosult.",
     "points-checkin-extra-desc": "Az alkalmazás következetes használata extra esélyt kínál arra, hogy több 10 pontot nyerj, légy aktívabb és nyerj többet.",
-    "points-delegation-desc": "Minen 100sp delegálásért napi 1 pontot kaphatsz.",
+    "points-delegation-desc": "Minen 100SP delegálásért napi 1 pontot kaphatsz.",
     "points-post-list-desc": "Bejegyzés pontok",
     "points-comment-list-desc": "Hozzászólás pontok",
     "points-vote-list-desc": "Szavazási pontok",
@@ -426,7 +426,7 @@
     "leaderboard-weekly": "Heti",
     "leaderboard-monthly": "Havi",
     "leaderboard-header-score": "Tevékenységek",
-    "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
+    "leaderboard-header-score-tip": "A felhasználó bejegyzései + hozzászólásai a kiválasztott periódusban",
     "leaderboard-header-reward": "Jutalom"
   },
   "witnesses": {
