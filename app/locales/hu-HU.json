@@ -214,7 +214,7 @@
   },
   "redeem": {
     "user-label": "Felhasználó",
-    "user-help-text": "Available Funds",
+    "user-help-text": "Elérhető tőke",
     "post-label": "Bejegyzés",
     "post-input-placeholder": "szerző/permlink",
     "post-input-title": "Javaslatok",
@@ -456,7 +456,7 @@
   "sps": {
     "page-title": "Proposals Voting",
     "duration": "Időtartam",
-    "requested": "Requested",
+    "requested": "Kért",
     "total-votes": "Összes szavazat",
     "status-active": "aktív",
     "status-expired": "lejárt",
