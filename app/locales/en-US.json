@@ -286,7 +286,6 @@
     "update": "Update",
     "updated": "Post Updated",
     "sync-scroll": "Scroll Sync",
-    "words-count": "{n} words",
     "no-suggestions": "No suggestions",
     "emoji-filter-placeholder": "Filter",
     "emoji-filter-no-match": "No match",
@@ -558,5 +557,8 @@
     "title": "Edit History",
     "show-diff": "Show Difference",
     "version": "Version {n}"
+  },
+  "word-count": {
+    "label": "{n} words"
   }
 }

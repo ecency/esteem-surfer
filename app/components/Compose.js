@@ -1,5 +1,5 @@
 /*
-eslint-disable react/no-multi-comp, no-underscore-dangle, no-named-as-default
+eslint-disable react/no-multi-comp, no-underscore-dangle, no-named-as-default, react/no-danger
 */
 
 import React, { Component } from 'react';
@@ -28,6 +28,7 @@ import NavBar from './layout/NavBar';
 import AppFooter from './layout/AppFooter';
 
 import LoginRequired from './helpers/LoginRequired';
+import WordCount from './helpers/WordCount';
 import Editor from './elements/Editor';
 
 import DeepLinkHandler from './helpers/DeepLinkHandler';
@@ -35,8 +36,6 @@ import DeepLinkHandler from './helpers/DeepLinkHandler';
 import { getItem, setItem } from '../helpers/storage';
 import formatChainError from '../utils/format-chain-error';
 import { makePath as makePathEntry } from './helpers/EntryLink';
-
-import wordCounter from '../utils/word-counter';
 
 import {
   getDrafts,
@@ -62,32 +61,6 @@ import {
 import { version } from '../../package.json';
 
 export class Preview extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      wordsCount: 0
-    };
-  }
-
-  componentDidMount() {
-    this.countTimer = setInterval(this.countWords, 1000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.countTimer);
-  }
-
-  countWords = () => {
-    const el = document.querySelector('#preview-content-body .markdown-view');
-    if (!el) {
-      return;
-    }
-    const val = el.innerText.trim();
-    const { words } = wordCounter(val);
-    this.setState({ wordsCount: words });
-  };
-
   setSync = () => {
     const s = getItem('compose-sync', false);
     setItem('compose-sync', !s);
@@ -96,7 +69,6 @@ export class Preview extends Component {
 
   render() {
     const { title, tags, body, intl } = this.props;
-    const { wordsCount } = this.state;
 
     const syncActive = getItem('compose-sync', false);
     return (
@@ -105,16 +77,7 @@ export class Preview extends Component {
           <h2>
             <FormattedMessage id="composer.preview" />
           </h2>
-
-          {wordsCount > 0 && (
-            <div className="words-count">
-              <FormattedMessage
-                id="composer.words-count"
-                values={{ n: wordsCount }}
-              />
-            </div>
-          )}
-
+          <WordCount selector="#preview-content-body .markdown-view" watch />
           <Tooltip
             mouseEnterDelay={2}
             placement="right"
