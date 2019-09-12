@@ -42,15 +42,12 @@
 .btn-up-vote,
 .btn-down-vote {
   align-items: center;
-
   border-radius: 50%;
-
   display: flex;
   height: 18px;
   justify-content: center;
   text-decoration: none;
   width: 18px;
-  opacity: 0.8;
 
   svg {
     width: 14px;
@@ -63,12 +60,10 @@
 
   &.in-progress {
     animation: up-voting-color-change 5s infinite;
-    opacity: 0.5;
     pointer-events: none;
   }
 
   &.disabled {
-    opacity: 0.5;
     pointer-events: none;
   }
 
@@ -78,8 +73,8 @@
 }
 
 .btn-up-vote {
-  border: 1px solid $dark-sky-blue;
-  color: $dark-sky-blue;
+  border: 1px solid rgba($dark-sky-blue, 0.8);
+  color: rgba($dark-sky-blue, 0.8);
   margin-right: 4px;
 
   &:hover,
@@ -90,12 +85,12 @@
 }
 
 .btn-down-vote {
-  border: 1px solid $red2;
-  color: $red2;
+  border: 1px solid rgba($red2, 0.8);
+  color: rgba($red2, 0.8);
 
   &:hover,
   &.voted {
-    background-color: $dark-sky-blue;
+    background-color: $red2;
     color: $white;
   }
 
