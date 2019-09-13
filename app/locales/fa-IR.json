@@ -210,7 +210,9 @@
     "points-claim-ok": "Points claimed",
     "points-promote": "Promote",
     "points-boost": "Boost",
-    "points-transfer": "Gift to someone"
+    "points-transfer": "Gift to someone",
+    "witness-voting": "Witnesses",
+    "sps-voting": "SPS Voting"
   },
   "redeem": {
     "user-label": "User",
@@ -284,7 +286,6 @@
     "update": "به‌روزآوری",
     "updated": "پست به روز رسانی شد",
     "sync-scroll": "پیماش همگام سازی ها",
-    "words-count": "{n} کلمه",
     "no-suggestions": "بدون پیشنهاد",
     "emoji-filter-placeholder": "فیلتر",
     "emoji-filter-no-match": "مورد مشابهی یافت نشد",
@@ -556,5 +557,10 @@
     "title": "Edit History",
     "show-diff": "Show Difference",
     "version": "Version {n}"
+  },
+  "word-count": {
+    "label": "{n} words",
+    "read-time-less-1-min": "< 1 min read",
+    "read-time-n-min": "~ {n} min read"
   }
 }
