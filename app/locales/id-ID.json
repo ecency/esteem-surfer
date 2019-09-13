@@ -210,7 +210,9 @@
     "points-claim-ok": "Poin di klaim",
     "points-promote": "Promosikan",
     "points-boost": "Menaikkan",
-    "points-transfer": "Gift to someone"
+    "points-transfer": "Gift to someone",
+    "witness-voting": "Witnesses",
+    "sps-voting": "SPS Voting"
   },
   "redeem": {
     "user-label": "Pengguna",
@@ -284,7 +286,6 @@
     "update": "Pembaruan",
     "updated": "Post diperbarui",
     "sync-scroll": "Gulir sinkronisasi",
-    "words-count": "{n} jumlah kata",
     "no-suggestions": "Tidak ada saran",
     "emoji-filter-placeholder": "Penyaring",
     "emoji-filter-no-match": "Tidak cocok",
@@ -556,5 +557,10 @@
     "title": "Edit Riwayat",
     "show-diff": "Tampilkan Perbedaan",
     "version": "Versi {n}"
+  },
+  "word-count": {
+    "label": "{n} words",
+    "read-time-less-1-min": "< 1 min read",
+    "read-time-n-min": "~ {n} min read"
   }
 }
