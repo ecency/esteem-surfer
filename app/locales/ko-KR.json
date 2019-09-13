@@ -210,7 +210,9 @@
     "points-claim-ok": "포인트 획득 완료",
     "points-promote": "홍보",
     "points-boost": "보팅 후원",
-    "points-transfer": "Gift to someone"
+    "points-transfer": "Gift to someone",
+    "witness-voting": "Witnesses",
+    "sps-voting": "SPS Voting"
   },
   "redeem": {
     "user-label": "사용자",
@@ -284,7 +286,6 @@
     "update": "업데이트",
     "updated": "글이 수정되었습니다",
     "sync-scroll": "스크롤 위치 동기화",
-    "words-count": "단어 수: {n}",
     "no-suggestions": "제안할 단어가 없습니다",
     "emoji-filter-placeholder": "필터",
     "emoji-filter-no-match": "일치하는 항목이 없습니다",
@@ -556,5 +557,10 @@
     "title": "편집 내역",
     "show-diff": "변경 사항 보기",
     "version": "버전 {n}"
+  },
+  "word-count": {
+    "label": "{n} words",
+    "read-time-less-1-min": "< 1 min read",
+    "read-time-n-min": "~ {n} min read"
   }
 }
