@@ -210,9 +210,9 @@
     "points-claim-ok": "Pontos reivindicados",
     "points-promote": "Promover",
     "points-boost": "Reforço",
-    "points-transfer": "Gift to someone",
-    "witness-voting": "Witnesses",
-    "sps-voting": "SPS Voting"
+    "points-transfer": "Presente a alguém",
+    "witness-voting": "Testemunha",
+    "sps-voting": "Votação SPS"
   },
   "redeem": {
     "user-label": "Utilizador",
@@ -350,7 +350,7 @@
     "fetch-error": "Tempo limite do servidor porque o tamanho da resposta é muito grande",
     "promote": "promover",
     "boost": "reforçar",
-    "more-replies": "show more replies"
+    "more-replies": "mostrar mais respostas"
   },
   "navbar": {
     "settings": "Configurações",
@@ -455,21 +455,21 @@
     "proxy-created": "@{n} estabeleceu como proxy"
   },
   "sps": {
-    "page-title": "Proposals Voting",
-    "duration": "Duration",
-    "requested": "Requested",
-    "total-votes": "Total Votes",
-    "status-active": "active",
-    "status-expired": "expired",
-    "status-inactive": "upcoming",
-    "duration-days": "{n} days",
-    "voters": "Proposal Voters",
-    "voter": "Voter",
+    "page-title": "Votação de Propostas",
+    "duration": "Duração",
+    "requested": "Pedido",
+    "total-votes": "Votos totais",
+    "status-active": "ativo",
+    "status-expired": "expirou",
+    "status-inactive": "brevemente",
+    "duration-days": "{n} dias",
+    "voters": "Votantes de propostas",
+    "voter": "Votante",
     "voter-sp": "SP",
     "voter-proxy-sp": "Proxy SP",
-    "voter-total-sp": "Total SP",
-    "voted": "Proposal #{n} voted",
-    "vote-removed": "Vote removed for proposal #{n}"
+    "voter-total-sp": "SP Total",
+    "voted": "Proposta #{n} votada",
+    "vote-removed": "Voto removido para a proposta #{n}"
   },
   "transfer": {
     "transfer-title": "Transferir para a conta",
@@ -559,8 +559,8 @@
     "version": "Versão {n}"
   },
   "word-count": {
-    "label": "{n} words",
-    "read-time-less-1-min": "< 1 min read",
-    "read-time-n-min": "~ {n} min read"
+    "label": "{n} palavras",
+    "read-time-less-1-min": "1 minuto de leitura",
+    "read-time-n-min": "~ {n} min de leitura"
   }
 }
