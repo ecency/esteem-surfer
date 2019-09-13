@@ -210,7 +210,9 @@
     "points-claim-ok": "Pontok átvéve",
     "points-promote": "Promoválás",
     "points-boost": "Kiemelés",
-    "points-transfer": "Ajándékozz meg valakit"
+    "points-transfer": "Ajándékozz meg valakit",
+    "witness-voting": "Witnesses",
+    "sps-voting": "SPS Voting"
   },
   "redeem": {
     "user-label": "Felhasználó",
@@ -284,7 +286,6 @@
     "update": "Frissítés",
     "updated": "Bejegyzés Frissítve",
     "sync-scroll": "Görgetés Szinkron",
-    "words-count": "{n} szó",
     "no-suggestions": "Nincs javaslat",
     "emoji-filter-placeholder": "Szűrés",
     "emoji-filter-no-match": "Nincs találat",
@@ -556,5 +557,10 @@
     "title": "Szerkesztési előzmények",
     "show-diff": "Különbség megjelenítése",
     "version": "{n} Verzió"
+  },
+  "word-count": {
+    "label": "{n} words",
+    "read-time-less-1-min": "< 1 min read",
+    "read-time-n-min": "~ {n} min read"
   }
 }
