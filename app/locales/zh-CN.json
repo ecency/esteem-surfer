@@ -210,7 +210,9 @@
     "points-claim-ok": "Points claimed",
     "points-promote": "Promote",
     "points-boost": "Boost",
-    "points-transfer": "Gift to someone"
+    "points-transfer": "Gift to someone",
+    "witness-voting": "Witnesses",
+    "sps-voting": "SPS Voting"
   },
   "redeem": {
     "user-label": "User",
@@ -284,7 +286,6 @@
     "update": "更新",
     "updated": "内容已更新",
     "sync-scroll": "滚动同步",
-    "words-count": "{n} 个字",
     "no-suggestions": "无建议",
     "emoji-filter-placeholder": "筛选器",
     "emoji-filter-no-match": "无匹配",
@@ -556,5 +557,10 @@
     "title": "Edit History",
     "show-diff": "Show Difference",
     "version": "Version {n}"
+  },
+  "word-count": {
+    "label": "{n} words",
+    "read-time-less-1-min": "< 1 min read",
+    "read-time-n-min": "~ {n} min read"
   }
 }
