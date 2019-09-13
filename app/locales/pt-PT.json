@@ -210,7 +210,9 @@
     "points-claim-ok": "Pontos reivindicados",
     "points-promote": "Promover",
     "points-boost": "Reforço",
-    "points-transfer": "Gift to someone"
+    "points-transfer": "Gift to someone",
+    "witness-voting": "Witnesses",
+    "sps-voting": "SPS Voting"
   },
   "redeem": {
     "user-label": "Utilizador",
@@ -284,7 +286,6 @@
     "update": "Atualizar",
     "updated": "Post atualizado",
     "sync-scroll": "Sincronização de rolagem",
-    "words-count": "{n} palavras",
     "no-suggestions": "Sem sugestões",
     "emoji-filter-placeholder": "Filtro",
     "emoji-filter-no-match": "Sem correspondência",
@@ -556,5 +557,10 @@
     "title": "Editar Histórico",
     "show-diff": "Mostrar Diferença",
     "version": "Versão {n}"
+  },
+  "word-count": {
+    "label": "{n} words",
+    "read-time-less-1-min": "< 1 min read",
+    "read-time-n-min": "~ {n} min read"
   }
 }
