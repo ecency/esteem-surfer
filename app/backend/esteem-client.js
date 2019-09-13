@@ -351,7 +351,7 @@ export const getPromotePrice = () =>
 
 export const getPromotedPosts = () =>
   axios
-    .get(`${BACKEND_URL}/api/promoted-posts?limit=40`)
+    .get(`${BACKEND_URL}/api/promoted-posts?limit=10`)
     .then(resp => resp.data);
 
 export const getPromotedPost = (author, permlink) =>

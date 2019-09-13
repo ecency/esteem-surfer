@@ -24,15 +24,13 @@ export default function promotedEntries(state = defaultState, action) {
     case FETCH_OK: {
       const { data: newEntries } = action.payload;
 
-      let newState = state.set('loading', false);
+      let newState = state.set('loading', false).set('entries', OrderedMap({}));
 
       newEntries.forEach(entry => {
-        if (!newState.hasIn(['entries', `${entry.author}-${entry.permlink}`])) {
-          newState = newState.setIn(
-            ['entries', `${entry.author}-${entry.permlink}`],
-            entry
-          );
-        }
+        newState = newState.setIn(
+          ['entries', `${entry.author}-${entry.permlink}`],
+          entry
+        );
       });
 
       return newState;
