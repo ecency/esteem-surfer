@@ -210,7 +210,9 @@
     "points-claim-ok": "Punkte eingesammelt",
     "points-promote": "Bewerben",
     "points-boost": "Boost",
-    "points-transfer": "Gift to someone"
+    "points-transfer": "Gift to someone",
+    "witness-voting": "Witnesses",
+    "sps-voting": "SPS Voting"
   },
   "redeem": {
     "user-label": "Benutzer",
@@ -284,7 +286,6 @@
     "update": "Aktualisieren",
     "updated": "Beitrag aktualisiert",
     "sync-scroll": "Scroll-Synchronität",
-    "words-count": "{n} Wörter",
     "no-suggestions": "Keine Vorschläge",
     "emoji-filter-placeholder": "Filter",
     "emoji-filter-no-match": "Keine passenden Emojis gefunden",
@@ -556,5 +557,10 @@
     "title": "Verlauf bearbeiten",
     "show-diff": "Unterschiede anzeigen",
     "version": "Version: {n}"
+  },
+  "word-count": {
+    "label": "{n} words",
+    "read-time-less-1-min": "< 1 min read",
+    "read-time-n-min": "~ {n} min read"
   }
 }
