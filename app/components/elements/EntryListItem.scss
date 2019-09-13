@@ -126,14 +126,19 @@
 
     .promoted {
       font-size: 90%;
+      background: $dark-sky-blue;
+      color: $white;
+      padding: 2px 6px;
+      border-radius: 12px;
 
+      /*
       @include themify(day) {
         color: $silver;
       }
 
       @include themify(night) {
         color: $gunmetal;
-      }
+      }*/
     }
 
     .redeem {

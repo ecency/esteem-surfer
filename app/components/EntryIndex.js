@@ -217,7 +217,7 @@ class EntryIndex extends PureComponent {
                   )}
                   {entryList.valueSeq().map((d, i) => {
                     const e = [];
-                    if ([3, 6, 9].includes(i)) {
+                    if (i % 3 === 0) {
                       const ix = i / 3 - 1;
                       if (promoted[ix] !== undefined) {
                         const p = promoted[ix];
