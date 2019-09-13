@@ -210,7 +210,9 @@
     "points-claim-ok": "Mata ganjaran dituntut",
     "points-promote": "Digalakkan",
     "points-boost": "Pecutkan",
-    "points-transfer": "Gift to someone"
+    "points-transfer": "Gift to someone",
+    "witness-voting": "Witnesses",
+    "sps-voting": "SPS Voting"
   },
   "redeem": {
     "user-label": "Pengguna",
@@ -284,7 +286,6 @@
     "update": "Mengemaskini",
     "updated": "Post telah dikemaskini",
     "sync-scroll": "Skrol segerak",
-    "words-count": "{n} bilangan kata",
     "no-suggestions": "Tiada cadangan",
     "emoji-filter-placeholder": "Penapis",
     "emoji-filter-no-match": "Tiada padanan",
@@ -556,5 +557,10 @@
     "title": "Edit History",
     "show-diff": "Show Difference",
     "version": "Version {n}"
+  },
+  "word-count": {
+    "label": "{n} words",
+    "read-time-less-1-min": "< 1 min read",
+    "read-time-n-min": "~ {n} min read"
   }
 }
