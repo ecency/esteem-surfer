@@ -455,7 +455,7 @@
     "proxy-created": "@{n} proxy-ként beállítva"
   },
   "sps": {
-    "page-title": "Proposals Voting",
+    "page-title": "Javaslatok megszavazása",
     "duration": "Időtartam",
     "requested": "Kért",
     "total-votes": "Össz szavazat",
@@ -468,7 +468,7 @@
     "voter-sp": "SP",
     "voter-proxy-sp": "Proxy SP",
     "voter-total-sp": "Össz SP",
-    "voted": "Proposal #{n} voted",
+    "voted": "Javaslatra #{n} szavazott",
     "vote-removed": "Szavazat visszavonva #{n} javaslatra"
   },
   "transfer": {
