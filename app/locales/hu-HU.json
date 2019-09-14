@@ -211,8 +211,8 @@
     "points-promote": "Promoválás",
     "points-boost": "Kiemelés",
     "points-transfer": "Ajándékozz meg valakit",
-    "witness-voting": "Witnesses",
-    "sps-voting": "SPS Voting"
+    "witness-voting": "Tanúk",
+    "sps-voting": "SPS szavazás"
   },
   "redeem": {
     "user-label": "Felhasználó",
@@ -463,13 +463,13 @@
     "status-expired": "lejárt",
     "status-inactive": "közelgő",
     "duration-days": "{n} nap",
-    "voters": "Proposal Voters",
+    "voters": "Javaslatot megszavazók",
     "voter": "Szavazó",
     "voter-sp": "SP",
     "voter-proxy-sp": "Proxy SP",
     "voter-total-sp": "Össz SP",
     "voted": "Proposal #{n} voted",
-    "vote-removed": "Vote removed for proposal #{n}"
+    "vote-removed": "Szavazat visszavonva #{n} javaslatra"
   },
   "transfer": {
     "transfer-title": "Átutalás más fiókba",
@@ -559,8 +559,8 @@
     "version": "{n} Verzió"
   },
   "word-count": {
-    "label": "{n} words",
-    "read-time-less-1-min": "< 1 min read",
-    "read-time-n-min": "~ {n} min read"
+    "label": "{n} szó",
+    "read-time-less-1-min": "< 1 perc olvasás",
+    "read-time-n-min": "~ {n} perc olvasás"
   }
 }
