@@ -560,7 +560,7 @@
   },
   "word-count": {
     "label": "{n} jumlah kata",
-    "read-time-less-1-min": "< 1 menit dibaca",
-    "read-time-n-min": "~ {n} min read"
+    "read-time-less-1-min": "< 1 menit baca",
+    "read-time-n-min": "~ {n} menit baca"
   }
 }
