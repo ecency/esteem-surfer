@@ -211,8 +211,8 @@
     "points-promote": "Promosikan",
     "points-boost": "Menaikkan",
     "points-transfer": "Gift to someone",
-    "witness-voting": "Witnesses",
-    "sps-voting": "SPS Voting"
+    "witness-voting": "Saksi-saksi",
+    "sps-voting": "Voting SPS"
   },
   "redeem": {
     "user-label": "Pengguna",
@@ -559,8 +559,8 @@
     "version": "Versi {n}"
   },
   "word-count": {
-    "label": "{n} words",
-    "read-time-less-1-min": "< 1 min read",
+    "label": "{n} jumlah kata",
+    "read-time-less-1-min": "< 1 menit dibaca",
     "read-time-n-min": "~ {n} min read"
   }
 }
