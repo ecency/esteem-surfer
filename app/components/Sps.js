@@ -254,7 +254,7 @@ class BtnVote extends PureComponent {
     } ${disabled ? 'disabled' : ''}`;
 
     return (
-      <LoginRequired {...this.props} requiredKeys={['posting', 'active']}>
+      <LoginRequired {...this.props} requiredKeys={['active']}>
         <a className={btnCls} role="none" onClick={this.clicked}>
           {chevronUp}
         </a>
