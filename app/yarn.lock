@@ -101,9 +101,10 @@ drbg.js@^1.0.1:
     create-hash "^1.1.2"
     create-hmac "^1.1.4"
 
-dsteem@^0.11.2:
-  version "0.11.2"
-  resolved "https://registry.yarnpkg.com/dsteem/-/dsteem-0.11.2.tgz#1c3b4185999c804a234475738e00a49b55112fed"
+dsteem@^0.11.3:
+  version "0.11.3"
+  resolved "https://registry.yarnpkg.com/dsteem/-/dsteem-0.11.3.tgz#91b62cf71ef8ed4f936a1a663bd7e1f4fc021bd2"
+  integrity sha512-b7GkqHrWkTUiorlMaIBSi5DLTjUd8UuxK8HQeO4QMwDtuMiEOKH4tKd7vME5g/ktMNIKexvRoZ1fc6JYjPTHBA==
   dependencies:
     bs58 "^4.0.1"
     bytebuffer "^5.0.1"
