@@ -212,7 +212,7 @@
     "points-boost": "Boost",
     "points-transfer": "Gift to someone",
     "witness-voting": "Martori",
-    "sps-voting": "SPS Voting"
+    "sps-voting": "Votare SPS"
   },
   "redeem": {
     "user-label": "Utilizator",
@@ -220,7 +220,7 @@
     "post-label": "Postare",
     "post-input-placeholder": "autor/permlink",
     "post-input-title": "Sugestii",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "key-required-err": "Parola activă nu a fost găsită pentru contul selectat. Asigură-te că ești conectat cu credențialele corecte.",
     "post-error": "Nu este o adresă de postare validă",
     "post-error-exists": "Postarea a fost deja promovată",
     "funds-error": "Fonduri insuficiente",
@@ -238,7 +238,7 @@
   "redeem-boost": {
     "page-title": "Boost",
     "amount-label": "Sumă",
-    "amount-help": "Drag the slider to change the amount",
+    "amount-help": "Trage glisorul pentru a modifica suma",
     "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
@@ -456,7 +456,7 @@
   },
   "sps": {
     "page-title": "Proposals Voting",
-    "duration": "Duration",
+    "duration": "Durată",
     "requested": "Requested",
     "total-votes": "Voturi Totale",
     "status-active": "activ",
