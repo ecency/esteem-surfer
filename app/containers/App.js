@@ -16,6 +16,7 @@ import hu from 'react-intl/locale-data/hu';
 import nl from 'react-intl/locale-data/nl';
 import de from 'react-intl/locale-data/de';
 import ro from 'react-intl/locale-data/ro';
+import ms from 'react-intl/locale-data/ms';
 
 import { Modal } from 'antd';
 
@@ -57,7 +58,8 @@ addLocaleData([
   ...hu,
   ...nl,
   ...de,
-  ...ro
+  ...ro,
+  ...ms
 ]);
 
 class App extends React.Component {

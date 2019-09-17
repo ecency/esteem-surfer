@@ -14,7 +14,8 @@ export default {
   'nl-NL': merge.all([enUs, require('./nl-NL.json')]),
   'ko-KR': merge.all([enUs, require('./ko-KR.json')]),
   'de-DE': merge.all([enUs, require('./de-DE.json')]),
-  'ro-RO': merge.all([enUs, require('./ro-RO.json')])
+  'ro-RO': merge.all([enUs, require('./ro-RO.json')]),
+  'ms-MY': merge.all([enUs, require('./ms-MY.json')])
 };
 
 export const locales = [
@@ -27,7 +28,8 @@ export const locales = [
   { id: 'nl-NL', name: 'Dutch' },
   { id: 'ko-KR', name: 'Korean' },
   { id: 'de-DE', name: 'German' },
-  { id: 'ro-RO', name: 'Romanian' }
+  { id: 'ro-RO', name: 'Romanian' },
+  { id: 'ms-MY', name: 'Malay' }
 ];
 
 export const intlLocale = l => {
@@ -50,6 +52,8 @@ export const intlLocale = l => {
       return 'de';
     case 'ro-RO':
       return 'ro';
+    case 'ms-MY':
+      return 'ms';
     default:
       return 'en-US';
   }
