@@ -426,9 +426,9 @@
     "leaderboard-daily": "Zilnice",
     "leaderboard-weekly": "Săptămânale",
     "leaderboard-monthly": "Lunare",
-    "leaderboard-header-score": "Activities",
+    "leaderboard-header-score": "Activități",
     "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
-    "leaderboard-header-reward": "Reward"
+    "leaderboard-header-reward": "Recompensă"
   },
   "witnesses": {
     "page-title": "Votare Witness",
