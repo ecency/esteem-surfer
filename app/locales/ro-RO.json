@@ -340,7 +340,7 @@
     "bookmarkRemoved": "Mutat de la bookmarks",
     "favorited": "Adăugat la favorite",
     "favoriteRemoved": "Eliminat din favorite",
-    "show-edit-history": "Show edit history",
+    "show-edit-history": "Arată istoria modificărilor",
     "copy-clipboard": "Copie link-ul intern in memoria temporară",
     "copied-clipboard": "Copiat",
     "comment-entry-title": "Vizualizezi șirul unui singur comentariu de la: ",
@@ -554,7 +554,7 @@
     "title": "Steem power delegat pentru @{n}"
   },
   "edit-history": {
-    "title": "Edit History",
+    "title": "Istorie modificări",
     "show-diff": "Arată diferența",
     "version": "Versiunea {n}"
   },
