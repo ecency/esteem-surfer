@@ -26,7 +26,7 @@
     "filter-hot": "Forró",
     "filter-created": "Új",
     "filter-active": "Aktív",
-    "filter-promoted": "Támogatott",
+    "filter-promoted": "Hirdetett",
     "filter-votes": "Szavazatok",
     "filter-children": "Hozzászólások",
     "filter-feed": "Hírfolyam"
@@ -48,9 +48,9 @@
   },
   "entry-list-item": {
     "reblogged": "megosztva {n} által",
-    "promoted": "szponzorált",
-    "promote": "kiemelés",
-    "boost": "támogatás"
+    "promoted": "támogatott",
+    "promote": "hirdetés",
+    "boost": "felpörgetés"
   },
   "entry-reblog": {
     "reblog": "Megosztás",
@@ -208,8 +208,8 @@
     "points-transfer-incoming-list-desc": "Átutalás innen {n}",
     "points-delegation-list-desc": "Delegálási jutalom",
     "points-claim-ok": "Pontok átvéve",
-    "points-promote": "Kiemelés",
-    "points-boost": "Támogatás",
+    "points-promote": "Hirdetés",
+    "points-boost": "Felpörgetés",
     "points-transfer": "Ajándékozz meg valakit",
     "witness-voting": "Tanúk",
     "sps-voting": "SPS szavazás"
@@ -222,13 +222,13 @@
     "post-input-title": "Javaslatok",
     "key-required-err": "Az aktív kulcs nem található a kijelölt fiókhoz. Kérjük, győződj meg arról, hogy a megfelelő hitelesítő adatokkal jelentkeztél be.",
     "post-error": "Nem érvényes bejegyzés cím",
-    "post-error-exists": "A bejegyzés már kemelt",
+    "post-error-exists": "A bejegyzés már hirdetett",
     "funds-error": "Nincs elegendő fedezet",
     "submit": "Küldés",
     "go-back": "Vissza"
   },
   "redeem-promote": {
-    "page-title": "Kiemelés",
+    "page-title": "Hirdetés",
     "duration-label": "Időtartam",
     "duration-help": "A csúszka húzásával állítsd be a mennyiséget",
     "day": "nap",
@@ -236,10 +236,10 @@
     "success-message": "Kérésed rögzítve. Néhány perc múlva aktiválódik."
   },
   "redeem-boost": {
-    "page-title": "Támogatás",
+    "page-title": "Felpörgetés",
     "amount-label": "Összeg",
     "amount-help": "A csúszka húzásával állítsd be a mennyiséget",
-    "success-message": "A bejegyzésed támogatás céljából beküldve, hamarosan megkapod a támogatást szavazat formájában"
+    "success-message": "A bejegyzésed felpörgetés céljából beküldve, hamarosan megkapod a felpörgetést szavazat formájában"
   },
   "composer": {
     "title-placeholder": "Cím",
@@ -348,8 +348,8 @@
     "comment-entry-go-parent": "Direkt felmenő megtekintése",
     "similar-entries": "Hasonló bejegyzések",
     "fetch-error": "A szerver nem elérhető mert a válasz mérete túl nagy",
-    "promote": "kiemelés",
-    "boost": "támogatás",
+    "promote": "hirdetés",
+    "boost": "felpörgetés",
     "more-replies": "további hozzászólások betöltése"
   },
   "navbar": {
