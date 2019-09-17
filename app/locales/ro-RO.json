@@ -459,15 +459,15 @@
     "duration": "Duration",
     "requested": "Requested",
     "total-votes": "Total Votes",
-    "status-active": "active",
-    "status-expired": "expired",
+    "status-active": "activ",
+    "status-expired": "expirat",
     "status-inactive": "upcoming",
     "duration-days": "{n} days",
     "voters": "Proposal Voters",
     "voter": "Voter",
     "voter-sp": "SP",
     "voter-proxy-sp": "Proxy SP",
-    "voter-total-sp": "Total SP",
+    "voter-total-sp": "SP Total",
     "voted": "Proposal #{n} voted",
     "vote-removed": "Vote removed for proposal #{n}"
   },
@@ -559,7 +559,7 @@
     "version": "Versiunea {n}"
   },
   "word-count": {
-    "label": "{n} words",
+    "label": "{n} cuvinte",
     "read-time-less-1-min": "< 1 min read",
     "read-time-n-min": "~ {n} min read"
   }
