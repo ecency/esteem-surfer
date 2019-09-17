@@ -189,7 +189,7 @@
     "delegate": "Delegare",
     "power-down": "Power Down",
     "point-history": "Istoric",
-    "points-post-desc": "You can earn point by posting regularly. Posting gives you 15 points.",
+    "points-post-desc": "Poți câștiga puncte postând regulat. Fiecare postare îți aduce 15 puncte.",
     "points-comment-desc": "Fiecare comentariu te ajută să îți crești audiența și să iti faci prieteni. De asemenea, câștigi 5 puncte.",
     "points-checkin-desc": "Autentificarea prin aplicația eSteem îți aduce 0.25 puncte și te ajută să rămâi conectat cu prietenii tăi și comunitatea.",
     "points-vote-desc": "Votând oferi recompense altor creatori de conținut și le arăți aprecierea ta. De asemenea, câștigi 0.01 din valoarea votului în puncte.",
@@ -202,7 +202,7 @@
     "points-vote-list-desc": "Puncte pentru vot",
     "points-reblog-list-desc": "Puncte pentru redistribuire",
     "points-login-list-desc": "Puncte pentru autentificare",
-    "points-checkin-list-desc": "Points for heartbeat",
+    "points-checkin-list-desc": "Puncte pentru prezență",
     "points-checkin-extra-list-desc": "Bonus de utilizare",
     "points-transfer-sent-list-desc": "Transfer către {n}",
     "points-transfer-incoming-list-desc": "Transfer de la {n}",
@@ -211,7 +211,7 @@
     "points-promote": "Promovează",
     "points-boost": "Boost",
     "points-transfer": "Gift to someone",
-    "witness-voting": "Witnesses",
+    "witness-voting": "Martori",
     "sps-voting": "SPS Voting"
   },
   "redeem": {
@@ -221,7 +221,7 @@
     "post-input-placeholder": "autor/permlink",
     "post-input-title": "Sugestii",
     "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
-    "post-error": "Not a valid post address",
+    "post-error": "Nu este o adresă de postare validă",
     "post-error-exists": "Postarea a fost deja promovată",
     "funds-error": "Fonduri insuficiente",
     "submit": "Trimite",
@@ -350,7 +350,7 @@
     "fetch-error": "Serverului a expirat pentru că dimensiunea răspunsului este prea mare",
     "promote": "promovează",
     "boost": "boost",
-    "more-replies": "show more replies"
+    "more-replies": "vezi mai multe răspunsuri"
   },
   "navbar": {
     "settings": "Setări",
@@ -420,9 +420,9 @@
     "refresh": "Actualizează",
     "mark-all-read": "Marchează toate ca citite",
     "leaderboard": "Clasament",
-    "leaderboard-title-daily": "Daily top users",
-    "leaderboard-title-weekly": "Weekly top users",
-    "leaderboard-title-monthly": "Monthly top users",
+    "leaderboard-title-daily": "Utilizatori de top zilnic",
+    "leaderboard-title-weekly": "Utilizatori de top săptămânal",
+    "leaderboard-title-monthly": "Utilizatori de top lunar",
     "leaderboard-daily": "Zilnice",
     "leaderboard-weekly": "Săptămânale",
     "leaderboard-monthly": "Lunare",
@@ -458,18 +458,18 @@
     "page-title": "Proposals Voting",
     "duration": "Duration",
     "requested": "Requested",
-    "total-votes": "Total Votes",
+    "total-votes": "Voturi Totale",
     "status-active": "activ",
     "status-expired": "expirat",
-    "status-inactive": "upcoming",
-    "duration-days": "{n} days",
+    "status-inactive": "urmează",
+    "duration-days": "{n} zile",
     "voters": "Proposal Voters",
-    "voter": "Voter",
+    "voter": "Votant",
     "voter-sp": "SP",
     "voter-proxy-sp": "Proxy SP",
     "voter-total-sp": "SP Total",
     "voted": "Proposal #{n} voted",
-    "vote-removed": "Vote removed for proposal #{n}"
+    "vote-removed": "Vot revocat pentru propunerea #{n}"
   },
   "transfer": {
     "transfer-title": "Transfer către Cont",
@@ -560,7 +560,7 @@
   },
   "word-count": {
     "label": "{n} cuvinte",
-    "read-time-less-1-min": "< 1 min read",
-    "read-time-n-min": "~ {n} min read"
+    "read-time-less-1-min": "timp de citire < 1",
+    "read-time-n-min": "timp de citire ~ {n}"
   }
 }
