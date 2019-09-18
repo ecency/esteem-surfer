@@ -35,7 +35,7 @@ export const prepareVotes = entry => {
 
       return Object.assign({}, a, {
         reputation: authorReputation(a.reputation),
-        reward: rew,
+        reward: Number.isNaN(rew) ? 0 : rew,
         time: parseDate(a.time),
         percent: a.percent / 100
       });
