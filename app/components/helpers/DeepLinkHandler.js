@@ -32,7 +32,17 @@ export const deepLink2Obj = url => {
     return { type: 'account', account: parts[0].replace('@', '') };
   }
 
-  // post
+  // post without tag
+  if (parts.length === 2 && parts[0].startsWith('@')) {
+    return {
+      type: 'post',
+      cat: 'esteem',
+      author: parts[0].replace('@', ''),
+      permlink: parts[1]
+    };
+  }
+
+  // post with tag
   if (parts.length === 3 && parts[1].startsWith('@')) {
     return {
       type: 'post',
