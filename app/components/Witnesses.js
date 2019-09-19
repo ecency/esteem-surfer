@@ -367,7 +367,12 @@ class ProxyActive extends PureComponent {
             />
           </div>
           <LoginRequired {...this.props} requiredKeys={['active']}>
-            <Button type="primary" size="large" disabled={inProgress}>
+            <Button
+              type="primary"
+              size="large"
+              disabled={inProgress}
+              onClick={this.clicked}
+            >
               {inProgress && (
                 <Icon type="loading" style={{ fontSize: 12 }} spin />
               )}
