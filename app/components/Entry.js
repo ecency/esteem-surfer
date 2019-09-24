@@ -80,8 +80,7 @@ import {
 
 import writeClipboard from '../helpers/clipboard';
 import {
-  makeSteemitUrl,
-  makeBusyUrl,
+  makeEsteemUrl,
   makeCopyAddress,
   makeShareUrlReddit,
   makeShareUrlTwitter,
@@ -627,12 +626,11 @@ class EntryFloatingMenu extends PureComponent {
     const { entry, intl } = this.props;
     const { editHistoryVisible, editHistoryActive } = this.state;
 
-    const steemitUrl = makeSteemitUrl(
+    const eSteemUrl = makeEsteemUrl(
       entry.category,
       entry.author,
       entry.permlink
     );
-    const busyUrl = makeBusyUrl(entry.author, entry.permlink);
 
     return (
       <div className="entry-floating-menu">
@@ -653,18 +651,13 @@ class EntryFloatingMenu extends PureComponent {
             </a>
           </Tooltip>
         )}
-
-        <div className="menu-item with-sub-menu share-btn">
+        <a
+          className="menu-item share-btn no-ex-icon"
+          target="_external"
+          href={eSteemUrl}
+        >
           <i className="mi">open_in_new</i>
-          <div className="sub-menu">
-            <a className="sub-menu-item" target="_external" href={steemitUrl}>
-              steemit
-            </a>
-            <a className="sub-menu-item" target="_external" href={busyUrl}>
-              busy
-            </a>
-          </div>
-        </div>
+        </a>
         <Tooltip
           title={intl.formatMessage({ id: 'entry.copy-clipboard' })}
           mouseEnterDelay={1}

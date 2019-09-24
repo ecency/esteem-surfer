@@ -797,6 +797,10 @@
       }
     }
 
+    .share-btn {
+      text-decoration: none;
+    }
+
     .menu-item {
       align-items: center;
       border-radius: 50%;
@@ -875,9 +879,6 @@
           display: flex;
         }
       }
-    }
-
-    .share-btn {
     }
   }
 

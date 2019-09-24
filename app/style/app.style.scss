@@ -127,7 +127,7 @@ h2 {
   font-feature-settings: 'liga';
 }
 
-a[target='_external'],
+a[target='_external']:not(.no-ex-icon),
 .markdown-external-link {
   cursor: pointer;
 
