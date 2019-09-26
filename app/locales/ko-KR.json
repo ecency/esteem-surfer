@@ -468,8 +468,8 @@
     "voter-sp": "SP",
     "voter-proxy-sp": "프록시 SP",
     "voter-total-sp": "총 SP",
-    "voted": "Proposal #{n} voted",
-    "vote-removed": "Vote removed for proposal #{n}"
+    "voted": "제안서 #{n} 에 투표했습니다",
+    "vote-removed": "제안서 #{n} 대한 투표가 취소되었습니다"
   },
   "transfer": {
     "transfer-title": "송금하기",
