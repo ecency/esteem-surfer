@@ -189,7 +189,7 @@
     "delegate": "임대",
     "power-down": "파워 다운",
     "point-history": "내역",
-    "points-post-desc": "You can earn point by posting regularly. Posting gives you 15 points.",
+    "points-post-desc": "주기적으로 포스팅하면 포인트를 획득할 수 있습니다. 포스팅 당 15 포인트가 지급됩니다.",
     "points-comment-desc": "댓글을 남기시면 새로운 친구를 늘릴 수 있고 독자와의 소통에도 도움이 될 것이며, 5 포인트도 획득할 수 있습니다",
     "points-checkin-desc": "eSteem 앱에 로그인하면 친구들과 지속적인 관계를 유지할 수 있으며, 0.25 포인트도 획득할 수 있습니다.",
     "points-vote-desc": "보팅을 통해 글 작성자에게 보상을 제공하고 감사 표시를 할 수 있습니다. 또한, 보팅 시 보팅 가중치에 0.01을 곱한 포인트가 지급됩니다.",
@@ -202,7 +202,7 @@
     "points-vote-list-desc": "투표 포인트",
     "points-reblog-list-desc": "리블로그 포인트",
     "points-login-list-desc": "로그인 포인트",
-    "points-checkin-list-desc": "Points for heartbeat",
+    "points-checkin-list-desc": "체크인 포인트",
     "points-checkin-extra-list-desc": "체크인 보너스",
     "points-transfer-sent-list-desc": "{n} 님에게 송금",
     "points-transfer-incoming-list-desc": "{n} 님으로부터 받음",
@@ -210,9 +210,9 @@
     "points-claim-ok": "포인트 획득 완료",
     "points-promote": "홍보",
     "points-boost": "보팅 후원",
-    "points-transfer": "Gift to someone",
-    "witness-voting": "Witnesses",
-    "sps-voting": "SPS Voting"
+    "points-transfer": "포인트 선물하기",
+    "witness-voting": "증인",
+    "sps-voting": "SPS 투표"
   },
   "redeem": {
     "user-label": "사용자",
@@ -350,7 +350,7 @@
     "fetch-error": "응답 파일 크기가 너무 커서 서버 타임아웃이 발생했습니다",
     "promote": "홍보",
     "boost": "보팅 후원",
-    "more-replies": "show more replies"
+    "more-replies": "댓글 더 보기"
   },
   "navbar": {
     "settings": "설정",
@@ -455,19 +455,19 @@
     "proxy-created": "@{n} 님을 프록시로 설정했습니다"
   },
   "sps": {
-    "page-title": "Proposals Voting",
-    "duration": "Duration",
-    "requested": "Requested",
-    "total-votes": "Total Votes",
-    "status-active": "active",
-    "status-expired": "expired",
-    "status-inactive": "upcoming",
-    "duration-days": "{n} days",
-    "voters": "Proposal Voters",
-    "voter": "Voter",
+    "page-title": "제안 투표하기",
+    "duration": "기간",
+    "requested": "요청 자금",
+    "total-votes": "총 투표 수",
+    "status-active": "진행 중",
+    "status-expired": "만료됨",
+    "status-inactive": "예정",
+    "duration-days": "{n} 일",
+    "voters": "투표한 사용자",
+    "voter": "투표자",
     "voter-sp": "SP",
-    "voter-proxy-sp": "Proxy SP",
-    "voter-total-sp": "Total SP",
+    "voter-proxy-sp": "프록시 SP",
+    "voter-total-sp": "총 SP",
     "voted": "Proposal #{n} voted",
     "vote-removed": "Vote removed for proposal #{n}"
   },
@@ -559,7 +559,7 @@
     "version": "버전 {n}"
   },
   "word-count": {
-    "label": "{n} words",
+    "label": "단어 수: {n}",
     "read-time-less-1-min": "< 1 min read",
     "read-time-n-min": "~ {n} min read"
   }
