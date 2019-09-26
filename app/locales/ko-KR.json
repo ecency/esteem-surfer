@@ -560,7 +560,7 @@
   },
   "word-count": {
     "label": "단어 수: {n}",
-    "read-time-less-1-min": "< 1 min read",
-    "read-time-n-min": "~ {n} min read"
+    "read-time-less-1-min": "1 분 미만 분량",
+    "read-time-n-min": "~ {n} 분 이상 분량"
   }
 }
