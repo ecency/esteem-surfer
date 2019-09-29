@@ -212,7 +212,7 @@
     "points-boost": "Boost",
     "points-transfer": "Gift to someone",
     "witness-voting": "Witnesses",
-    "sps-voting": "SPS Voting"
+    "sps-voting": "SPS-Abstimmung"
   },
   "redeem": {
     "user-label": "Benutzer",
@@ -350,7 +350,7 @@
     "fetch-error": "Server Timeout, weil die Antwortgröße zu groß ist",
     "promote": "Promote",
     "boost": "Boost",
-    "more-replies": "show more replies"
+    "more-replies": "weitere Antworten anzeigen"
   },
   "navbar": {
     "settings": "Einstellungen",
@@ -462,14 +462,14 @@
     "status-active": "active",
     "status-expired": "expired",
     "status-inactive": "upcoming",
-    "duration-days": "{n} days",
-    "voters": "Proposal Voters",
+    "duration-days": "{n} Tage",
+    "voters": "Vorschlag-Voter",
     "voter": "Voter",
     "voter-sp": "SP",
     "voter-proxy-sp": "Proxy SP",
-    "voter-total-sp": "Total SP",
-    "voted": "Proposal #{n} voted",
-    "vote-removed": "Vote removed for proposal #{n}"
+    "voter-total-sp": "Gesamt SP",
+    "voted": "Vorschlag #{n} gevoted",
+    "vote-removed": "Vote entfernt für Vorschlag #{n}"
   },
   "transfer": {
     "transfer-title": "Zum Benutzerkonto transferieren",
@@ -559,8 +559,8 @@
     "version": "Version: {n}"
   },
   "word-count": {
-    "label": "{n} words",
-    "read-time-less-1-min": "< 1 min read",
-    "read-time-n-min": "~ {n} min read"
+    "label": "{n} Wörter",
+    "read-time-less-1-min": "< 1 min. Lesezeit",
+    "read-time-n-min": "~ {n} min. Lesezeit"
   }
 }
