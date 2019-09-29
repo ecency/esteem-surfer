@@ -455,7 +455,7 @@
     "proxy-created": "@{n} wurde als Proxy gesetzt"
   },
   "sps": {
-    "page-title": "Proposals Voting",
+    "page-title": "Für Vorschläge abstimmen",
     "duration": "Dauer",
     "requested": "Angefordert",
     "total-votes": "Stimmen insgesamt",
