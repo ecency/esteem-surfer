@@ -1,5 +1,5 @@
 export default url => {
-  const parseSteemit = u => {
+  const parseCatAuthorPermlink = u => {
     const r = /^https?:\/\/(.*)\/(.*)\/(@[\w.\d-]+)\/(.*)/i;
     const match = u.match(r);
     if (match && match.length === 5) {
@@ -12,7 +12,7 @@ export default url => {
     return null;
   };
 
-  const parseBusy = u => {
+  const parseAuthorPermlink = u => {
     const r = /^https?:\/\/(.*)\/(@[\w.\d-]+)\/(.*)/i;
     const match = u.match(r);
     if (match && match.length === 4) {
@@ -26,15 +26,17 @@ export default url => {
   };
 
   if (
-    ['https://steemit.com', 'https://steempeak.com'].some(x =>
-      url.startsWith(x)
+    ['https://esteem.app', 'https://steemit.com', 'https://steempeak.com'].some(
+      x => url.startsWith(x)
     )
   ) {
-    return parseSteemit(url);
+    return parseCatAuthorPermlink(url);
   }
 
-  if (url.startsWith('https://busy.org')) {
-    return parseBusy(url);
+  if (
+    ['https://busy.org', 'https://steemhunt.com'].some(x => url.startsWith(x))
+  ) {
+    return parseAuthorPermlink(url);
   }
 
   // For non urls like @good-karma/esteem-london-presentation-e3105ba6637ed
