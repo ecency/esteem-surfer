@@ -91,7 +91,7 @@ Object {
         "beneficiaries": Array [
           Object {
             "account": "esteemapp",
-            "weight": 1000,
+            "weight": 300,
           },
         ],
       },
@@ -115,7 +115,7 @@ Object {
         "beneficiaries": Array [
           Object {
             "account": "esteemapp",
-            "weight": 1000,
+            "weight": 300,
           },
         ],
       },
@@ -139,7 +139,7 @@ Object {
         "beneficiaries": Array [
           Object {
             "account": "esteemapp",
-            "weight": 1000,
+            "weight": 300,
           },
         ],
       },

@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Proxify image src (1) should proxify image src 1`] = `"https://steemitimages.com/0x0/https://i.imgur.com/muESb0B.png"`;
-
-exports[`Proxify image src (2) should not proxify if already proxified 1`] = `"https://steemitimages.com/0x0/https://steemitimages.com/DQmWK9ACVoywHPBJQdoTuJpoTSoaubBSKSAdZaJtw1cfLb9/adsactlywitness.gif"`;
