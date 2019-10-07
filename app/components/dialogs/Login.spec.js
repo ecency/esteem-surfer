@@ -15,6 +15,8 @@ describe('Login', () => {
         addAccount: () => {},
         addAccountSc: () => {},
         logIn: () => {},
+        logOut: () => {},
+        deleteAccount: () => {},
         updateActiveAccount: () => {}
       },
       onSuccess: () => {},
@@ -31,6 +33,8 @@ describe('Login', () => {
         addAccount: () => {},
         addAccountSc: () => {},
         logIn: () => {},
+        logOut: () => {},
+        deleteAccount: () => {},
         updateActiveAccount: () => {}
       },
       onSuccess: () => {},
