@@ -25,7 +25,11 @@ export default url => {
     return null;
   };
 
-  if (url.startsWith('https://steemit.com')) {
+  if (
+    ['https://steemit.com', 'https://steempeak.com'].some(x =>
+      url.startsWith(x)
+    )
+  ) {
     return parseSteemit(url);
   }
 
@@ -33,7 +37,7 @@ export default url => {
     return parseBusy(url);
   }
 
-  // For non url's like @good-karma/esteem-london-presentation-e3105ba6637ed
+  // For non urls like @good-karma/esteem-london-presentation-e3105ba6637ed
   let match = url.match(/^[/]?(@[\w.\d-]+)\/(.*)/);
   if (match && match.length === 3) {
     return {
@@ -42,7 +46,7 @@ export default url => {
     };
   }
 
-  // For non url's with category like esteem/@good-karma/esteem-london-presentation-e3105ba6637ed
+  // For non urls with category like esteem/@good-karma/esteem-london-presentation-e3105ba6637ed
   match = url.match(/^[/]?([\w.\d-]+)\/(@[\w.\d-]+)\/(.*)/);
   if (match && match.length === 4) {
     return {
