@@ -553,6 +553,10 @@
   "delegatee-list": {
     "title": "Steem power delegat pentru @{n}"
   },
+  "estm-purchase": {
+    "title": "ESTM purchase",
+    "purchase": "Purchase"
+  },
   "edit-history": {
     "title": "Istorie modificări",
     "show-diff": "Arată diferența",
