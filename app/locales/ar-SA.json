@@ -553,6 +553,10 @@
   "delegatee-list": {
     "title": "تفويض قوة steem إلى @{n}"
   },
+  "estm-purchase": {
+    "title": "ESTM purchase",
+    "purchase": "Purchase"
+  },
   "edit-history": {
     "title": "Edit History",
     "show-diff": "إظهار الفرق",
