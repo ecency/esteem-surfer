@@ -553,6 +553,10 @@
   "delegatee-list": {
     "title": "Delegált steem power neki @{n}"
   },
+  "estm-purchase": {
+    "title": "ESTM purchase",
+    "purchase": "Purchase"
+  },
   "edit-history": {
     "title": "Szerkesztési előzmények",
     "show-diff": "Különbség megjelenítése",
