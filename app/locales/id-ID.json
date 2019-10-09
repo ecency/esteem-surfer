@@ -553,6 +553,10 @@
   "delegatee-list": {
     "title": "Daya steem yang di delegasikan ke @{n}"
   },
+  "estm-purchase": {
+    "title": "ESTM purchase",
+    "purchase": "Purchase"
+  },
   "edit-history": {
     "title": "Edit Riwayat",
     "show-diff": "Tampilkan Perbedaan",
