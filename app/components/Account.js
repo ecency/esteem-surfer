@@ -35,6 +35,7 @@ import EntryListItem from './elements/EntryListItem';
 
 import DelegationListModal from './dialogs/DelegatedList';
 import DelegateeListModal from './dialogs/DelegateeList';
+import EstmPurchaseModal from './dialogs/EstmPurchase';
 
 import ScrollReplace from './helpers/ScrollReplace';
 import ListSwitch from './elements/ListSwitch';
@@ -1476,7 +1477,8 @@ export class SectionPoints extends Component {
     super(props);
 
     this.state = {
-      claiming: false
+      claiming: false,
+      purchasing: false
     };
   }
 
@@ -1507,6 +1509,11 @@ export class SectionPoints extends Component {
       });
   };
 
+  togglePurchase = () => {
+    const { purchasing } = this.state;
+    this.setState({ purchasing: !purchasing });
+  };
+
   render() {
     const {
       points,
@@ -1518,7 +1525,7 @@ export class SectionPoints extends Component {
       intl
     } = this.props;
 
-    const { claiming } = this.state;
+    const { claiming, purchasing } = this.state;
 
     const iconPost = 'edit';
     const iconComment = 'comment';
@@ -1569,23 +1576,43 @@ export class SectionPoints extends Component {
           </div>
           <div className="clearfix" />
 
-          {uPoints !== '0.000' && (
-            <div className={`unclaimed ${isMyPage ? 'can-claim' : ''}`}>
-              <div className="val">{uPoints}</div>
+          {(() => {
+            if (isMyPage) {
+              return (
+                <div className={`unclaimed ${isMyPage ? 'can-claim' : ''}`}>
+                  <div className="val">
+                    {uPoints !== '0.000' && (
+                      <div className="val">{uPoints}</div>
+                    )}
+                    {uPoints === '0.000' && <div className="val">GET ESTM</div>}
+                  </div>
+                  {isMyPage && (
+                    <a
+                      className={`claim-btn ${claiming ? 'in-progress' : ''}`}
+                      onClick={() => {
+                        if (uPoints !== '0.000') {
+                          this.claim();
+                          return;
+                        }
+                        this.togglePurchase();
+                      }}
+                      role="none"
+                    >
+                      <i className="mi">add_circle</i>
+                    </a>
+                  )}
+                </div>
+              );
+            }
 
-              {isMyPage && (
-                <a
-                  className={`claim-btn ${claiming ? 'in-progress' : ''}`}
-                  onClick={() => {
-                    this.claim();
-                  }}
-                  role="none"
-                >
-                  <i className="mi">add_circle</i>
-                </a>
-              )}
-            </div>
-          )}
+            if (uPoints !== '0.000') {
+              return (
+                <div className="unclaimed">
+                  <div className="val">{uPoints}</div>
+                </div>
+              );
+            }
+          })()}
         </div>
 
         <div className="point-reward-types">
@@ -1761,6 +1788,13 @@ export class SectionPoints extends Component {
             </div>
           </div>
         )}
+
+        <EstmPurchaseModal
+          username={username}
+          {...this.props}
+          visible={purchasing}
+          onCancel={this.togglePurchase}
+        />
       </div>
     );
   }
