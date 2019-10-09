@@ -553,6 +553,10 @@
   "delegatee-list": {
     "title": "Delegierte Steem-Power nach @{n}"
   },
+  "estm-purchase": {
+    "title": "ESTM purchase",
+    "purchase": "Purchase"
+  },
   "edit-history": {
     "title": "Verlauf bearbeiten",
     "show-diff": "Unterschiede anzeigen",
