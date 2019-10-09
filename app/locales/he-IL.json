@@ -553,6 +553,10 @@
   "delegatee-list": {
     "title": "כוח Steem מיופה ל @{n}"
   },
+  "estm-purchase": {
+    "title": "ESTM purchase",
+    "purchase": "Purchase"
+  },
   "edit-history": {
     "title": "Edit History",
     "show-diff": "Show Difference",
