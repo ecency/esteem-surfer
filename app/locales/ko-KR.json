@@ -553,6 +553,10 @@
   "delegatee-list": {
     "title": "@{n} 님에게 임대한 스팀 파워"
   },
+  "estm-purchase": {
+    "title": "ESTM purchase",
+    "purchase": "Purchase"
+  },
   "edit-history": {
     "title": "편집 내역",
     "show-diff": "변경 사항 보기",
