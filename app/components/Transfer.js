@@ -112,7 +112,7 @@ class Transfer extends PureComponent {
   }
 
   init = () => {
-    const { match, history, intl } = this.props;
+    const { match, history, intl, temp, actions } = this.props;
     const { username } = match.params;
     let { asset } = match.params;
     const { mode } = this.props;
@@ -135,6 +135,17 @@ class Transfer extends PureComponent {
       });
     } else {
       this.setState({ fromError: null });
+    }
+
+    if (temp && temp.type && temp.type === 'transfer') {
+      ({ asset } = temp);
+
+      const { amount, to, memo } = temp;
+
+      this.toChanged(to);
+      this.amountChanged({ target: { value: `${amount}.000` } });
+      this.memoChanged({ target: { value: memo } });
+      actions.tempReset();
     }
 
     this.setState(
@@ -771,7 +782,8 @@ class Transfer extends PureComponent {
 
 Transfer.defaultProps = {
   accounts: [],
-  activeAccount: null
+  activeAccount: null,
+  temp: null
 };
 
 Transfer.propTypes = {
@@ -780,7 +792,11 @@ Transfer.propTypes = {
   accounts: PropTypes.arrayOf(PropTypes.object),
   history: PropTypes.instanceOf(Object).isRequired,
   match: PropTypes.instanceOf(Object).isRequired,
-  intl: PropTypes.instanceOf(Object).isRequired
+  intl: PropTypes.instanceOf(Object).isRequired,
+  actions: PropTypes.shape({
+    tempReset: PropTypes.func.isRequired
+  }).isRequired,
+  temp: PropTypes.instanceOf(Object)
 };
 
 export default injectIntl(Transfer);

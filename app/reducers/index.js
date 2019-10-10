@@ -12,6 +12,7 @@ import searchResults from './search-results';
 import activities from './activities';
 import marketData from './market-data';
 import promotedEntries from './promoted-entries';
+import temp from './temp';
 
 const rootReducer = combineReducers({
   entries,
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   activities,
   marketData,
   promotedEntries,
+  temp,
   router
 });
 

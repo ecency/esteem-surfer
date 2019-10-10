@@ -30,6 +30,22 @@ class EstmPurchase extends PureComponent {
     this.setState({ curr });
   };
 
+  go = () => {
+    const { history, username, actions } = this.props;
+    const { curr, amount } = this.state;
+
+    actions.tempSet({
+      type: 'transfer',
+      asset: curr,
+      amount,
+      to: 'esteem.app',
+      memo: 'estm-purchase'
+    });
+
+    const newLoc = `/@${username}/transfer/${curr}`;
+    history.push(newLoc);
+  };
+
   render() {
     const sliderMin = 10;
     const sliderMax = 10000;
@@ -115,7 +131,7 @@ class EstmPurchase extends PureComponent {
             <FormattedNumber value={estmAmount} /> {'ESTM'}
           </div>
           <div className="purchase-button">
-            <Button type="primary" onClick={() => {}}>
+            <Button type="primary" onClick={this.go}>
               <FormattedMessage id="estm-purchase.purchase" />
             </Button>
           </div>
@@ -137,7 +153,11 @@ EstmPurchase.propTypes = {
   }).isRequired,
   marketData: PropTypes.instanceOf(Object),
   activeAccount: PropTypes.instanceOf(Object),
-  intl: PropTypes.instanceOf(Object).isRequired
+  intl: PropTypes.instanceOf(Object).isRequired,
+  history: PropTypes.instanceOf(Object).isRequired,
+  actions: PropTypes.shape({
+    tempSet: PropTypes.func.isRequired
+  }).isRequired
 };
 
 export default class EstmPurchaseModal extends PureComponent {
