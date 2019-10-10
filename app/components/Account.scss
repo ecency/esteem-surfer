@@ -673,6 +673,7 @@
                 .price-btc {
                   align-items: center;
                   display: flex;
+
                   svg {
                     height: 16px;
                     width: 16px;
@@ -783,6 +784,10 @@
                 margin-right: 10px;
               }
             }
+          }
+
+          .get-estm {
+            margin: 10px 0;
           }
         }
 

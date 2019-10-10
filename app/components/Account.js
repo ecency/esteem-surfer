@@ -1579,18 +1579,18 @@ export class SectionPoints extends Component {
           {(() => {
             if (isMyPage) {
               return (
-                <div className={`unclaimed ${isMyPage ? 'can-claim' : ''}`}>
-                  <div className="val">
-                    {uPoints !== '0.000' && (
-                      <div className="val">{uPoints}</div>
-                    )}
-                    {uPoints === '0.000' && (
-                      <div className="val">
-                        <FormattedMessage id="account.points-get" />
-                      </div>
-                    )}
-                  </div>
-                  {isMyPage && (
+                <Fragment>
+                  <div className={`unclaimed ${isMyPage ? 'can-claim' : ''}`}>
+                    <div className="val">
+                      {uPoints !== '0.000' && (
+                        <div className="val">{uPoints}</div>
+                      )}
+                      {uPoints === '0.000' && (
+                        <div className="val">
+                          <FormattedMessage id="account.points-get" />
+                        </div>
+                      )}
+                    </div>
                     <a
                       className={`claim-btn ${claiming ? 'in-progress' : ''}`}
                       onClick={() => {
@@ -1604,8 +1604,19 @@ export class SectionPoints extends Component {
                     >
                       <i className="mi">add_circle</i>
                     </a>
+                  </div>
+
+                  {uPoints !== '0.000' && (
+                    <Fragment>
+                      <div className="clearfix" />
+                      <div className="get-estm">
+                        <a role="none" onClick={this.togglePurchase}>
+                          <FormattedMessage id="account.points-get" />
+                        </a>
+                      </div>
+                    </Fragment>
                   )}
-                </div>
+                </Fragment>
               );
             }
 
