@@ -1584,7 +1584,11 @@ export class SectionPoints extends Component {
                     {uPoints !== '0.000' && (
                       <div className="val">{uPoints}</div>
                     )}
-                    {uPoints === '0.000' && <div className="val">GET ESTM</div>}
+                    {uPoints === '0.000' && (
+                      <div className="val">
+                        <FormattedMessage id="account.points-get" />
+                      </div>
+                    )}
                   </div>
                   {isMyPage && (
                     <a

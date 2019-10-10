@@ -116,7 +116,7 @@ class EstmPurchase extends PureComponent {
           </div>
           <div className="purchase-button">
             <Button type="primary" onClick={() => {}}>
-              <FormattedMessage values="estm-purchase.purchase" />
+              <FormattedMessage id="estm-purchase.purchase" />
             </Button>
           </div>
         </div>
