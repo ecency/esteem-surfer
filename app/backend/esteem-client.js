@@ -385,3 +385,8 @@ export const getPostReblogCount = (author, permlink) =>
   axios
     .get(`${BACKEND_URL}/api/post-reblog-count/${author}/${permlink}`)
     .then(resp => resp.data);
+
+export const estmCalc = (username, amount) =>
+  axios
+    .get(`${BACKEND_URL}/api/estm-calc?username=${username}&amount=${amount}`)
+    .then(resp => resp.data);

@@ -12,22 +12,47 @@ import { Modal, Slider, Button } from 'antd';
 
 import SliderTooltip from '../elements/SliderTooltip';
 
+import { estmCalc } from '../../backend/esteem-client';
+
 class EstmPurchase extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
       curr: 'STEEM',
-      amount: 250
+      amount: 250,
+      estm: 0,
+      usd: 0
     };
   }
 
+  componentDidMount() {
+    return this.calc();
+  }
+
+  timer = null;
+
+  calc = () => {
+    const { username } = this.props;
+    const { curr, amount } = this.state;
+    const sAmount = `${amount}.000 ${curr}`;
+
+    console.log(sAmount);
+
+    return estmCalc(username, sAmount).then(resp => {
+      this.setState({ usd: resp.usd, estm: resp.estm });
+      return resp;
+    });
+  };
+
   amountChanged = amount => {
     this.setState({ amount });
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => this.calc().then(), 500);
   };
 
   selectCurr = curr => {
-    this.setState({ curr });
+    this.setState({ curr }, () => this.calc());
   };
 
   go = () => {
@@ -49,12 +74,7 @@ class EstmPurchase extends PureComponent {
   render() {
     const sliderMin = 10;
     const sliderMax = 10000;
-    const { marketData } = this.props;
-    const { amount, curr } = this.state;
-
-    if (!marketData) {
-      return;
-    }
+    const { amount, curr, estm, usd } = this.state;
 
     const sliderMarks = {
       10: '10',
@@ -71,16 +91,8 @@ class EstmPurchase extends PureComponent {
       10000: '10000'
     };
 
-    const rates = {
-      SBD: marketData.sbd.quotes.usd.price,
-      STEEM: marketData.steem.quotes.usd.price
-    };
-
     const sliderPercentage =
       amount === sliderMin ? 0 : Math.ceil((amount / sliderMax) * 100);
-    const rate = rates[curr];
-    const usdAmount = amount * rate;
-    const estmAmount = usdAmount / 0.002;
 
     return (
       <div className="estm-purchase-dialog-content">
@@ -112,7 +124,7 @@ class EstmPurchase extends PureComponent {
               <Fragment>
                 {amount} {curr}
                 <span className="slider-price">
-                  &nbsp; {usdAmount.toFixed(3)} {'$'}
+                  &nbsp; {usd.toFixed(3)} {'$'}
                 </span>
               </Fragment>
             }
@@ -128,7 +140,7 @@ class EstmPurchase extends PureComponent {
           />
           <div className="clearfix" />
           <div className="estm-amount">
-            <FormattedNumber value={estmAmount} /> {'ESTM'}
+            <FormattedNumber value={estm} /> {'ESTM'}
           </div>
           <div className="purchase-button">
             <Button type="primary" onClick={this.go}>
@@ -142,8 +154,7 @@ class EstmPurchase extends PureComponent {
 }
 
 EstmPurchase.defaultProps = {
-  activeAccount: null,
-  marketData: null
+  activeAccount: null
 };
 
 EstmPurchase.propTypes = {
@@ -151,7 +162,6 @@ EstmPurchase.propTypes = {
   dynamicProps: PropTypes.shape({
     steemPerMVests: PropTypes.number.isRequired
   }).isRequired,
-  marketData: PropTypes.instanceOf(Object),
   activeAccount: PropTypes.instanceOf(Object),
   intl: PropTypes.instanceOf(Object).isRequired,
   history: PropTypes.instanceOf(Object).isRequired,
