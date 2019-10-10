@@ -555,8 +555,8 @@
     "title": "Poder Steem delegado a @{n}"
   },
   "estm-purchase": {
-    "title": "ESTM purchase",
-    "purchase": "Purchase"
+    "title": "Compra de ESTM",
+    "purchase": "Compra"
   },
   "edit-history": {
     "title": "Editar Histórico",
