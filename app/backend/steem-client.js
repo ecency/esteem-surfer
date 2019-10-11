@@ -904,7 +904,7 @@ export const getProposals = () =>
       order_direction: 'descending',
       status: 'all'
     })
-    .then(resp => resp.proposals.filter(x => x.receiver !== 'steem.dao'))
+    .then(resp => resp.proposals)
     .catch(() => []);
 
 export const getProposalVoters = proposalId =>
