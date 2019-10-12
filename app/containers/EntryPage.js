@@ -24,6 +24,7 @@ import { updateEntry } from '../actions/entries';
 import { setVisitingAccount } from '../actions/visiting-account';
 import { setVisitingEntry } from '../actions/visiting-entry';
 import { fetchActivities, resetActivities } from '../actions/activities';
+import { tempSet } from '../actions/temp';
 
 const mapStateToProps = state => ({
   global: state.global,
@@ -62,7 +63,8 @@ const mapDispatchToProps = dispatch => ({
     ...bindActionCreators({ logIn, logOut, updateActiveAccount }, dispatch),
     ...bindActionCreators({ setVisitingAccount }, dispatch),
     ...bindActionCreators({ setVisitingEntry }, dispatch),
-    ...bindActionCreators({ fetchActivities, resetActivities }, dispatch)
+    ...bindActionCreators({ fetchActivities, resetActivities }, dispatch),
+    ...bindActionCreators({ tempSet }, dispatch)
   }
 });
 

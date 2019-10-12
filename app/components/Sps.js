@@ -352,7 +352,7 @@ class SpsListItem extends PureComponent {
 
     return (
       <Fragment>
-        <Row className="sps-list-item">
+        <Row className="sps-list-item" id={`pr-${proposal.id}`}>
           <Col span={1}>
             <div className="voting">
               <BtnVote
@@ -522,6 +522,24 @@ class Sps extends PureComponent {
         return proposals;
       })
       .catch(() => {})
+      .then(r => {
+        const { temp, actions } = this.props;
+
+        if (temp && temp.type && temp.type === 'sps') {
+          const { proposal } = temp;
+          setTimeout(() => {
+            const e = document.querySelector(`#pr-${proposal}`);
+            console.log(e);
+            if (e) {
+              e.classList.add('highlighted');
+              e.scrollIntoView();
+            }
+          });
+
+          actions.tempReset();
+        }
+        return r;
+      })
       .finally(() => {
         this.setState({ loading: false });
       });
@@ -581,7 +599,8 @@ class Sps extends PureComponent {
 }
 
 Sps.defaultProps = {
-  activeAccount: null
+  activeAccount: null,
+  temp: null
 };
 
 Sps.propTypes = {
@@ -589,7 +608,11 @@ Sps.propTypes = {
     steemPerMVests: PropTypes.number.isRequired
   }).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired,
-  activeAccount: PropTypes.instanceOf(Object)
+  activeAccount: PropTypes.instanceOf(Object),
+  actions: PropTypes.shape({
+    tempReset: PropTypes.func.isRequired
+  }).isRequired,
+  temp: PropTypes.instanceOf(Object)
 };
 
 export default injectIntl(Sps);

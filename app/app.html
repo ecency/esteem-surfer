@@ -136,6 +136,16 @@
           return false;
         }
 
+        if (el.classList.contains('markdown-proposal-link')) {
+          event.preventDefault();
+
+          let proposal = el.getAttribute('data-proposal');
+
+          const ev = new CustomEvent('md-proposal-clicked', { detail: { proposal } });
+          window.dispatchEvent(ev);
+          return false;
+        }
+
         if (el.classList.contains('markdown-video-link')) {
           const embedSrc = el.getAttribute('data-embed-src');
           if (embedSrc) {

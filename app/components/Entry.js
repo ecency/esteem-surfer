@@ -753,6 +753,7 @@ class Entry extends PureComponent {
     window.addEventListener('md-post-clicked', this.mdEntryClicked);
     window.addEventListener('md-tag-clicked', this.mdTagClicked);
     window.addEventListener('md-witnesses-clicked', this.mdWitnessesClicked);
+    window.addEventListener('md-proposal-clicked', this.mdProposalClicked);
   }
 
   componentWillUnmount() {
@@ -760,6 +761,7 @@ class Entry extends PureComponent {
     window.removeEventListener('md-post-clicked', this.mdEntryClicked);
     window.removeEventListener('md-tag-clicked', this.mdTagClicked);
     window.removeEventListener('md-witnesses-clicked', this.mdWitnessesClicked);
+    window.removeEventListener('md-proposal-clicked', this.mdProposalClicked);
   }
 
   compileReplies = (parent, sortOrder) => {
@@ -971,6 +973,19 @@ class Entry extends PureComponent {
   mdWitnessesClicked = () => {
     const { history } = this.props;
     const newLoc = '/witnesses';
+    history.push(newLoc);
+  };
+
+  mdProposalClicked = e => {
+    const { actions, history } = this.props;
+    const { proposal } = e.detail;
+
+    actions.tempSet({
+      type: 'sps',
+      proposal
+    });
+
+    const newLoc = '/sps';
     history.push(newLoc);
   };
 
@@ -1520,7 +1535,8 @@ Entry.propTypes = {
     selectedFilter: PropTypes.string.isRequired
   }).isRequired,
   actions: PropTypes.shape({
-    setVisitingEntry: PropTypes.func.isRequired
+    setVisitingEntry: PropTypes.func.isRequired,
+    tempSet: PropTypes.func.isRequired
   }).isRequired,
   intl: PropTypes.instanceOf(Object).isRequired
 };
