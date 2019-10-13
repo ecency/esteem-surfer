@@ -17,6 +17,16 @@ export const deepLink2Obj = url => {
 
   const parts = urlPart.split('/');
 
+  // witnesses
+  if (parts.length === 1 && parts[0] === 'witnesses') {
+    return { type: 'witnesses' };
+  }
+
+  // sps
+  if (parts.length === 1 && parts[0] === 'sps') {
+    return { type: 'sps' };
+  }
+
   // filter
   if (parts.length === 1 && filters.includes(parts[0])) {
     return { type: 'filter', filter: parts[0] };
@@ -84,6 +94,9 @@ class DeepLinkHandler extends React.Component {
         break;
       case 'sps':
         path = `/sps`;
+        break;
+      case 'witnesses':
+        path = `/witnesses`;
         break;
       default:
         path = null;
