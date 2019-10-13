@@ -208,10 +208,10 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@esteemapp/esteem-render-helpers@^1.2.5":
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/@esteemapp/esteem-render-helpers/-/esteem-render-helpers-1.2.5.tgz#6ce47aee1b90b01022bf91fd4a809948d7fa2d8d"
-  integrity sha512-QOkDF3bqXBsrlNBRdnfGiOC9kck0uRdM4pH0cLjqmE0cGgbLzG/fyyXUdkCmlKfVrxq6PG/OEHurb77CDQ/IVw==
+"@esteemapp/esteem-render-helpers@^1.2.6":
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/@esteemapp/esteem-render-helpers/-/esteem-render-helpers-1.2.6.tgz#fbad07801e0b836b95211ae4f41921a3058da803"
+  integrity sha512-UyfFalRgLIoOhFyrMDvaKsaSox2QPrRFUCHeHCeBK2tEDcp8+R8y28hxQFnziCft5nJjIV5hNCj1BngILSXcwA==
   dependencies:
     he "^1.2.0"
     path "^0.12.7"

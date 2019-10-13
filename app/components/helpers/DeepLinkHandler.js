@@ -82,6 +82,9 @@ class DeepLinkHandler extends React.Component {
       case 'post':
         path = makePathEntry(obj.cat, obj.author, obj.permlink);
         break;
+      case 'sps':
+        path = `/sps`;
+        break;
       default:
         path = null;
         break;
