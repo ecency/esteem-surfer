@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { BACKEND_URL, SEARCH_API_URL, SEARCH_API_TOKEN } from '../config';
+import {
+  BACKEND_URL,
+  SEARCH_API_URL,
+  SEARCH_API_TOKEN,
+  IMAGE_URL
+} from '../config';
 
 export const search = (q, sort, scrollId) =>
   axios.post(
@@ -111,9 +116,9 @@ export const getMarketData = () =>
 
 export const uploadImage = file => {
   const fData = new FormData();
-  fData.append('postimage', file);
+  fData.append('file', file);
 
-  return axios.post('https://img.esteem.ws/backend.php', fData, {
+  return axios.post(`${IMAGE_URL}`, fData, {
     headers: {
       'Content-Type': 'multipart/form-data'
     }
