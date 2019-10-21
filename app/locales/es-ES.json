@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "Sin conexión a internet"
   },
   "g": {
     "compose-entry": "Crear Contenido",
@@ -48,9 +48,9 @@
   },
   "entry-list-item": {
     "reblogged": "resteemeado por {n}",
-    "promoted": "sponsored",
-    "promote": "promote",
-    "boost": "boost"
+    "promoted": "patrocinado",
+    "promote": "promocionar",
+    "boost": "impulsar"
   },
   "entry-reblog": {
     "reblog": "Rebloguear",
@@ -92,7 +92,7 @@
     "create-account-text": "¿No tienes una cuenta? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\"> ¡Regístrese ahora! </a>",
     "login-with-sc": "Iniciar sesión con",
     "divider-text": "O",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "Nota: Steemconnect puede cobrar algunas comisiones de las transacciones de tus recompensas"
   },
   "create-pin-code": {
     "title": "Crear código PIN",
@@ -133,7 +133,7 @@
     "section-blog": "Blog",
     "section-comments": "Comentarios",
     "section-replies": "Respuestas",
-    "section-points": "Points",
+    "section-points": "Puntos",
     "section-wallet": "Monedero"
   },
   "follow-controls": {
@@ -152,7 +152,7 @@
     "section-comments": "Comentarios",
     "section-replies": "Respuestas",
     "section-wallet": "Monedero",
-    "section-points": "Points",
+    "section-points": "Puntos",
     "top-posts": "Top Posts",
     "unclaimed-rewards": "Recompensas no reclamadas",
     "estimated-value": "El valor estimado se basa en el promedio de 7 días de Steem.",
