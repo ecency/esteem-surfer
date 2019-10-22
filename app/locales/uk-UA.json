@@ -48,8 +48,8 @@
   },
   "entry-list-item": {
     "reblogged": "репост {n}",
-    "promoted": "sponsored",
-    "promote": "promote",
+    "promoted": "за підтримки",
+    "promote": "просувати",
     "boost": "boost"
   },
   "entry-reblog": {
@@ -460,9 +460,9 @@
     "duration": "Тривалість",
     "requested": "Запитано",
     "total-votes": "Всього голосів",
-    "status-active": "active",
-    "status-expired": "expired",
-    "status-inactive": "Незабаром",
+    "status-active": "активний",
+    "status-expired": "термін дії закінчився",
+    "status-inactive": "незабаром",
     "duration-days": "{n} Днів",
     "voters": "Пропозиція Учасників голосування",
     "voter": "Проголосували",
