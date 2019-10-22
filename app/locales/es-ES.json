@@ -468,13 +468,13 @@
     "voter": "Votante",
     "voter-sp": "SP",
     "voter-proxy-sp": "Proxy SP",
-    "voter-total-sp": "Total SP",
-    "voted": "Proposal #{n} voted",
-    "vote-removed": "Vote removed for proposal #{n}"
+    "voter-total-sp": "SP Total",
+    "voted": "Propuesta #{n} votada",
+    "vote-removed": "Voto eliminado para la propuesta #{n}"
   },
   "transfer": {
     "transfer-title": "Transferir a Cuenta",
-    "transfer-estm-title": "Gift to Account",
+    "transfer-estm-title": "Regalo a la cuenta",
     "transfer-sub-title": "Mover fondos a otra cuenta de Steem",
     "transfer-saving-title": "Transferir a ahorros",
     "transfer-saving-sub-title": "Protege los fondos al pedir la retirada con un periodo de 3 días de espera",
