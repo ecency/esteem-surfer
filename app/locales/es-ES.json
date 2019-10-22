@@ -55,7 +55,7 @@
   "entry-reblog": {
     "reblog": "Rebloguear",
     "reblogged": "Reblogueado",
-    "modal-title": "Rebloggers ({n})",
+    "modal-title": "Compartidos ({n})",
     "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
@@ -217,30 +217,30 @@
   },
   "redeem": {
     "user-label": "Usuario",
-    "user-help-text": "Available Funds",
-    "post-label": "Post",
-    "post-input-placeholder": "author/permlink",
-    "post-input-title": "Suggestions",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
-    "post-error": "Not a valid post address",
-    "post-error-exists": "The post is already promoted",
-    "funds-error": "Insufficient funds",
-    "submit": "Submit",
-    "go-back": "Go Back"
+    "user-help-text": "Fondos disponibles",
+    "post-label": "Publicar",
+    "post-input-placeholder": "autor/permalink",
+    "post-input-title": "Sugerencias",
+    "key-required-err": "No se pudo encontrar la llave activa para la cuenta seleccionada. Por favor asegúrese de haber iniciado sesión con las credenciales adecuadas.",
+    "post-error": "No es una dirección de una publicación válida",
+    "post-error-exists": "El post ya ha sido promocionado",
+    "funds-error": "Fondos insuficientes",
+    "submit": "Enviar",
+    "go-back": "Regresar"
   },
   "redeem-promote": {
-    "page-title": "Promote",
-    "duration-label": "Duration",
-    "duration-help": "Drag the slider to change the duration",
-    "day": "day",
-    "days": "days",
-    "success-message": "Your request submitted. It will be activated in a couple minutes."
+    "page-title": "Promocionar",
+    "duration-label": "Duración",
+    "duration-help": "Arrastra el deslizador para cambiar la duración",
+    "day": "día",
+    "days": "días",
+    "success-message": "Tu solicitud enviada. Será activada en un par de minutos."
   },
   "redeem-boost": {
-    "page-title": "Boost",
-    "amount-label": "Amount",
-    "amount-help": "Drag the slider to change the amount",
-    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
+    "page-title": "Impulsar",
+    "amount-label": "Cantidad",
+    "amount-help": "Arrastra el deslizador para cambiar la cantidad",
+    "success-message": "Tu publicación ha sido enviada a la cola de impulso, recibirás un impulso en tu publicación a través de votos pronto"
   },
   "composer": {
     "title-placeholder": "Título",
@@ -310,8 +310,8 @@
     "deleted": "Se borra la publicación programada",
     "move": "Mover a borradores",
     "moved": "Movido a borradores",
-    "success-message": "Published successfully.",
-    "error-message": "Could not publish due to a server error."
+    "success-message": "Publicado con éxito.",
+    "error-message": "No se pudo publicar debido a un error del servidor."
   },
   "bookmarks": {
     "title": "Marcadores",
@@ -341,15 +341,15 @@
     "bookmarkRemoved": "Eliminado de marcadores",
     "favorited": "Añadido a favoritos",
     "favoriteRemoved": "Eliminado de los favoritos",
-    "show-edit-history": "Show edit history",
+    "show-edit-history": "Mostrar historial de ediciones",
     "copy-clipboard": "Copiar el enlace al portapapeles",
     "copied-clipboard": "Copiado",
     "comment-entry-title": "Estás viendo los comentarios relacionados de: ",
     "comment-entry-go-root": "Ver todo el contexto",
     "comment-entry-go-parent": "Ver el comentario relacionado",
-    "similar-entries": "Similar Posts",
-    "fetch-error": "Server timeout because response size is too big",
-    "promote": "promote",
+    "similar-entries": "Publicaciones Similares",
+    "fetch-error": "Tiempo de espera del servidor terminado porque el tamaño de la respuesta es demasiado grande",
+    "promote": "promocionar",
     "boost": "boost",
     "more-replies": "show more replies"
   },
@@ -545,27 +545,27 @@
     "followers-title": "Followers ({count})",
     "following-title": "Following ({count})",
     "load-more": "Load More",
-    "empty-list": "Nothing here",
-    "search-placeholder": "Search users"
+    "empty-list": "Nada aquí",
+    "search-placeholder": "Buscar usuarios"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "Steem power delegado de @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "Steem power delegado a @{n}"
   },
   "estm-purchase": {
-    "title": "ESTM purchase",
-    "purchase": "Purchase"
+    "title": "Compra de ESTM",
+    "purchase": "Comprar"
   },
   "edit-history": {
-    "title": "Edit History",
-    "show-diff": "Show Difference",
-    "version": "Version {n}"
+    "title": "Editar historial",
+    "show-diff": "Mostrar diferencia",
+    "version": "Versión {n}"
   },
   "word-count": {
-    "label": "{n} words",
-    "read-time-less-1-min": "< 1 min read",
-    "read-time-n-min": "~ {n} min read"
+    "label": "{n} palabras",
+    "read-time-less-1-min": "< 1 min de lectura",
+    "read-time-n-min": "~ {n} minutos de lectura"
   }
 }
