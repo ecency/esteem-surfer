@@ -561,7 +561,7 @@
   "edit-history": {
     "title": "Edit History",
     "show-diff": "Show Difference",
-    "version": "Version {n}"
+    "version": "Версія {n}"
   },
   "word-count": {
     "label": "{n} words",
