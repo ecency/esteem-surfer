@@ -50,13 +50,13 @@
     "reblogged": "репост {n}",
     "promoted": "за підтримки",
     "promote": "просувати",
-    "boost": "boost"
+    "boost": "підсилити"
   },
   "entry-reblog": {
     "reblog": "Репост",
     "reblogged": "Репостнуто",
-    "modal-title": "Rebloggers ({n})",
-    "more-reblogs": "... +{n} more reblogs"
+    "modal-title": "Реблогери ({n})",
+    "more-reblogs": "... +{n} більше реблогів"
   },
   "settings": {
     "title": "Налаштування",
@@ -189,7 +189,7 @@
     "delegate": "Делегувати",
     "power-down": "Power Down",
     "point-history": "Історія",
-    "points-post-desc": "You can earn point by posting regularly. Posting gives you 15 points.",
+    "points-post-desc": "Ви можете заробити очки, регулярно публікуючи повідомлення. Повідомлення дає 15 балів.",
     "points-comment-desc": "Кожен зроблений коментар допомагає нарощувати аудиторію, зав'язує дружбу та приносить вам 5 балів.",
     "points-checkin-desc": "Вхід до eSteem додатку дає вам 0,25 балів та допомагає залишатися на зв'язку з друзями.",
     "points-vote-desc": "Голосуючи, ви винагороджуєте інших авторів і показуєте своє схвалення, а також отримуєте бали у кількості 0,01 x Сила голосу.",
@@ -202,16 +202,16 @@
     "points-vote-list-desc": "Бали за голос",
     "points-reblog-list-desc": "Бали за репост",
     "points-login-list-desc": "Бали за авторизацію",
-    "points-checkin-list-desc": "Points for heartbeat",
+    "points-checkin-list-desc": "Бали за серцебиття",
     "points-checkin-extra-list-desc": "Бонус за користування",
-    "points-transfer-sent-list-desc": "Transfer to {n}",
-    "points-transfer-incoming-list-desc": "Transfer from {n}",
+    "points-transfer-sent-list-desc": "Відправити до {n}",
+    "points-transfer-incoming-list-desc": "Відправити від {n}",
     "points-delegation-list-desc": "Винагорода за делегацію",
     "points-claim-ok": "Бали зараховані",
-    "points-promote": "Promote",
-    "points-boost": "Boost",
-    "points-transfer": "Gift to someone",
-    "points-get": "GET ESTM",
+    "points-promote": "Просувати",
+    "points-boost": "Підсилити",
+    "points-transfer": "Подарувати комусь",
+    "points-get": "Отримати ESTM",
     "witness-voting": "Witnesses",
     "sps-voting": "SPS Voting"
   },
