@@ -559,13 +559,13 @@
     "purchase": "Purchase"
   },
   "edit-history": {
-    "title": "Edit History",
-    "show-diff": "Show Difference",
+    "title": "Виправити заголовок",
+    "show-diff": "Показати лише різницю",
     "version": "Версія {n}"
   },
   "word-count": {
-    "label": "{n} words",
-    "read-time-less-1-min": "< 1 min read",
-    "read-time-n-min": "~ {n} min read"
+    "label": "{n} слів",
+    "read-time-less-1-min": "< 1 хв. прочитано",
+    "read-time-n-min": "~ {n} хв. прочитано"
   }
 }
