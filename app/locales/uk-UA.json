@@ -457,24 +457,24 @@
   },
   "sps": {
     "page-title": "Proposals Voting",
-    "duration": "Duration",
-    "requested": "Requested",
-    "total-votes": "Total Votes",
+    "duration": "Тривалість",
+    "requested": "Запитано",
+    "total-votes": "Всього голосів",
     "status-active": "active",
     "status-expired": "expired",
-    "status-inactive": "upcoming",
-    "duration-days": "{n} days",
-    "voters": "Proposal Voters",
-    "voter": "Voter",
+    "status-inactive": "Незабаром",
+    "duration-days": "{n} Днів",
+    "voters": "Пропозиція Учасників голосування",
+    "voter": "Проголосували",
     "voter-sp": "SP",
-    "voter-proxy-sp": "Proxy SP",
-    "voter-total-sp": "Total SP",
-    "voted": "Proposal #{n} voted",
-    "vote-removed": "Vote removed for proposal #{n}"
+    "voter-proxy-sp": "Проксі SP",
+    "voter-total-sp": "Всього SP",
+    "voted": "Пропозиція #{n} проголосована",
+    "vote-removed": "Голосування видалено за пропозицію #{n}"
   },
   "transfer": {
     "transfer-title": "Переведення на акаунт",
-    "transfer-estm-title": "Gift to Account",
+    "transfer-estm-title": "Перемістити на рахунок",
     "transfer-sub-title": "Переведення коштів на інший Steem акаунт",
     "transfer-saving-title": "Переведення до Заощаджень",
     "transfer-saving-sub-title": "Захищає кошти від зняття 3-денним періодом очікування",
@@ -555,8 +555,8 @@
     "title": "Steem power делеговані @{n}"
   },
   "estm-purchase": {
-    "title": "ESTM purchase",
-    "purchase": "Purchase"
+    "title": "Закупівля ESTM",
+    "purchase": "Придбати"
   },
   "edit-history": {
     "title": "Виправити заголовок",
