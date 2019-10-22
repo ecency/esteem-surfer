@@ -525,26 +525,26 @@
   },
   "power-down": {
     "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
-    "account": "Account",
-    "incoming-funds": "Incoming Funds",
-    "begin": "Begin Power Down",
-    "stop": "Stop",
-    "estimated-note": "Estimated Weekly",
-    "withdraw-accounts": "Destination Account(s)",
-    "add-withdraw-account": "Add withdraw account"
+    "sub-title": "Hacer Power Down de Steem Power",
+    "account": "Cuenta",
+    "incoming-funds": "Fondos a recibir",
+    "begin": "Iniciar Power Down",
+    "stop": "Detener",
+    "estimated-note": "Estimado semanal",
+    "withdraw-accounts": "Cuenta(s) Destino",
+    "add-withdraw-account": "Añadir cuenta de retiro"
   },
   "withdraw-route": {
-    "title": "Add withdraw account",
-    "to": "Account",
-    "percentage": "Percentage",
-    "slider-help": "Percentage of Power Down to this account",
-    "auto-power-down": "Automatically power up the target account"
+    "title": "Añadir cuenta de retiro",
+    "to": "Cuenta",
+    "percentage": "Porcentaje",
+    "slider-help": "Porcentaje de Power Down de esta cuenta",
+    "auto-power-down": "Hacer power up automáticamente en la cuenta destino"
   },
   "friends": {
-    "followers-title": "Followers ({count})",
-    "following-title": "Following ({count})",
-    "load-more": "Load More",
+    "followers-title": "Seguidores {count}",
+    "following-title": "Siguiendo ({count})",
+    "load-more": "Cargar más",
     "empty-list": "Nada aquí",
     "search-placeholder": "Buscar usuarios"
   },
