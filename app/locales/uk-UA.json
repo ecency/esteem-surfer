@@ -234,13 +234,13 @@
     "duration-help": "Перетягніть повзунок, щоб змінити тривалість",
     "day": "день",
     "days": "днів",
-    "success-message": "Your request submitted. It will be activated in a couple minutes."
+    "success-message": "Ваш запит надіслано. Він активується через декілька хвилин."
   },
   "redeem-boost": {
-    "page-title": "Boost",
-    "amount-label": "Amount",
-    "amount-help": "Drag the slider to change the amount",
-    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
+    "page-title": "Підсилити",
+    "amount-label": "Сума",
+    "amount-help": "Перетягніть повзунок, щоб змінити суму",
+    "success-message": "Ваше повідомлення було надіслано до черги підсилення, незабаром ви отримаєте поштовх на ваш допис"
   },
   "composer": {
     "title-placeholder": "Заголовок",
@@ -341,7 +341,7 @@
     "bookmarkRemoved": "Видалено із закладок",
     "favorited": "Додано до обраного",
     "favoriteRemoved": "Видалено з обраного",
-    "show-edit-history": "Show edit history",
+    "show-edit-history": "Показати історію редагування",
     "copy-clipboard": "Скопіювати внутрішнє посилання до буферу обміну",
     "copied-clipboard": "Скопійовано",
     "comment-entry-title": "Ви переглядаєте гілку одного коментарю із: ",
@@ -349,9 +349,9 @@
     "comment-entry-go-parent": "Прямий батьківський коментар",
     "similar-entries": "Схожі пости",
     "fetch-error": "Тайм-аут сервера через завеликий розмір відповіді",
-    "promote": "promote",
-    "boost": "boost",
-    "more-replies": "show more replies"
+    "promote": "просувати",
+    "boost": "підсилити",
+    "more-replies": "показати більше відповідей"
   },
   "navbar": {
     "settings": "Налаштування",
@@ -421,15 +421,15 @@
     "refresh": "Оновити",
     "mark-all-read": "Позначити всі як прочитані",
     "leaderboard": "Дошка лідерів",
-    "leaderboard-title-daily": "Daily top users",
-    "leaderboard-title-weekly": "Weekly top users",
-    "leaderboard-title-monthly": "Monthly top users",
-    "leaderboard-daily": "Daily",
-    "leaderboard-weekly": "Weekly",
-    "leaderboard-monthly": "Monthly",
-    "leaderboard-header-score": "Activities",
-    "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
-    "leaderboard-header-reward": "Reward"
+    "leaderboard-title-daily": "Щоденний топ користувачів",
+    "leaderboard-title-weekly": "Щотижневий топ користувачів",
+    "leaderboard-title-monthly": "Щомісячний топ користувачів",
+    "leaderboard-daily": "Щодня",
+    "leaderboard-weekly": "Щотижня",
+    "leaderboard-monthly": "Щомісяця",
+    "leaderboard-header-score": "Події",
+    "leaderboard-header-score-tip": "Публікація + коментарі, зроблені користувачем протягом вибраного періоду",
+    "leaderboard-header-reward": "Винагорода"
   },
   "witnesses": {
     "page-title": "Голосування за делегатів",
@@ -456,7 +456,7 @@
     "proxy-created": "@{n} встановлено в якості proxy"
   },
   "sps": {
-    "page-title": "Proposals Voting",
+    "page-title": "Пропозиції голосування",
     "duration": "Тривалість",
     "requested": "Запитано",
     "total-votes": "Всього голосів",
