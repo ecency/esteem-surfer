@@ -213,10 +213,10 @@
     "points-transfer": "Regalar a alguien",
     "points-get": "OBTENER ESTM",
     "witness-voting": "Testigos",
-    "sps-voting": "SPS Voting"
+    "sps-voting": "Votación SPS"
   },
   "redeem": {
-    "user-label": "User",
+    "user-label": "Usuario",
     "user-help-text": "Available Funds",
     "post-label": "Post",
     "post-input-placeholder": "author/permlink",
