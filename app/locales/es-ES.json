@@ -4,8 +4,8 @@
   },
   "g": {
     "compose-entry": "Crear Contenido",
-    "are-you-sure": "Estás seguro?",
-    "yes": "Si",
+    "are-you-sure": "¿Estás seguro?",
+    "yes": "Sí",
     "no": "No",
     "delete": "Borrar",
     "cancel": "Cancelar",
@@ -47,7 +47,7 @@
     "modal-title": "Votantes ({n})"
   },
   "entry-list-item": {
-    "reblogged": "resteemeado por {n}",
+    "reblogged": "reblogueado por {n}",
     "promoted": "patrocinado",
     "promote": "promocionar",
     "boost": "impulsar"
@@ -55,7 +55,7 @@
   "entry-reblog": {
     "reblog": "Rebloguear",
     "reblogged": "Reblogueado",
-    "modal-title": "Compartidos ({n})",
+    "modal-title": "Reblogueados ({n})",
     "more-reblogs": "... +{n} más reblogs"
   },
   "settings": {
@@ -200,7 +200,7 @@
     "points-post-list-desc": "Puntos por publicar",
     "points-comment-list-desc": "Puntos por comentar",
     "points-vote-list-desc": "Puntos por votar",
-    "points-reblog-list-desc": "Puntos por compartir",
+    "points-reblog-list-desc": "Puntos por rebloguear",
     "points-login-list-desc": "Puntos por iniciar sesión",
     "points-checkin-list-desc": "Puntos por latido",
     "points-checkin-extra-list-desc": "Bono de uso",
