@@ -202,7 +202,7 @@
     "points-vote-list-desc": "Бали за голос",
     "points-reblog-list-desc": "Бали за репост",
     "points-login-list-desc": "Бали за авторизацію",
-    "points-checkin-list-desc": "Бали за серцебиття",
+    "points-checkin-list-desc": "Бали за вподобайки",
     "points-checkin-extra-list-desc": "Бонус за користування",
     "points-transfer-sent-list-desc": "Відправити до {n}",
     "points-transfer-incoming-list-desc": "Відправити від {n}",
