@@ -6,7 +6,18 @@ export const TT_FETCH_ERROR = 'TT_FETCH_ERROR';
 
 const client = new Client('https://api.steemit.com');
 
-export function fetchTrendingTags(afterTag = '', limit = 50) {
+const shuffle = arr => {
+  const arry = arr;
+  for (let i = arry.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = arry[i];
+    arry[i] = arry[j];
+    arry[j] = temp;
+  }
+  return arry;
+};
+
+export function fetchTrendingTags(afterTag = '', limit = 100) {
   return (dispatch, getState) => {
     const { trendingTags } = getState();
 
@@ -19,9 +30,11 @@ export function fetchTrendingTags(afterTag = '', limit = 50) {
     client.database
       .call('get_trending_tags', [afterTag, limit])
       .then(resp => {
-        dispatch(fetchOk(resp));
+        const sresp = shuffle(resp);
 
-        return resp;
+        dispatch(fetchOk(sresp));
+
+        return sresp;
       })
       .catch(() => {
         dispatch(fetchError());
