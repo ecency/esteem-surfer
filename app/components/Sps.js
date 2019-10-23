@@ -20,6 +20,7 @@ import LoginRequired from './helpers/LoginRequired';
 import QuickProfile from './helpers/QuickProfile';
 import EntryLink from './helpers/EntryLink';
 import AccountLink from './helpers/AccountLink';
+import DeepLinkHandler from './helpers/DeepLinkHandler';
 
 import parseToken from '../utils/parse-token';
 import authorReputation from '../utils/author-reputation';
@@ -593,6 +594,7 @@ class Sps extends PureComponent {
           )}
         </div>
         <AppFooter {...this.props} />
+        <DeepLinkHandler {...this.props} />
       </div>
     );
   }
