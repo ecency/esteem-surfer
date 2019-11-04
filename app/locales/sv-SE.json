@@ -544,9 +544,9 @@
   "friends": {
     "followers-title": "Följare ({count})",
     "following-title": "Följer ({count})",
-    "load-more": "Load More",
-    "empty-list": "Nothing here",
-    "search-placeholder": "Search users"
+    "load-more": "Ladda mer",
+    "empty-list": "Ingenting här",
+    "search-placeholder": "Sök användare"
   },
   "delegated-list": {
     "title": "Delegated steem power from @{n}"
