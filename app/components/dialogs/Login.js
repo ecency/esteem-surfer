@@ -1,8 +1,8 @@
 /*
-eslint-disable react/no-multi-comp
+eslint-disable react/no-multi-comp, jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
 */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -18,7 +18,7 @@ import {
   Modal
 } from 'antd';
 
-import { FormattedHTMLMessage, FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Tooltip from '../common/Tooltip';
 
@@ -28,7 +28,11 @@ import PinConfirm from './PinConfirm';
 
 import { getAccounts } from '../../backend/steem-client';
 
-import { scTokenRenew, usrActivity } from '../../backend/esteem-client';
+import {
+  scTokenRenew,
+  usrActivity,
+  signUp as signUpFn
+} from '../../backend/esteem-client';
 
 import { scLogin } from '../../helpers/sc';
 
@@ -146,12 +150,172 @@ AccountItem.propTypes = {
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
+class SignUp extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      processing: false,
+      username: '',
+      email: '',
+      refCode: '',
+      done: false
+    };
+  }
+
+  doSignUp = () => {
+    const { username, email, refCode } = this.state;
+    this.setState({ processing: true });
+
+    return signUpFn(username, email, refCode)
+      .then(resp => {
+        this.setState({ done: true });
+        return resp;
+      })
+      .catch(err => {
+        if (err.response && err.response.data && err.response.data.message) {
+          message.error(err.response.data.message);
+        }
+      })
+      .finally(() => {
+        this.setState({ processing: false });
+      });
+  };
+
+  usernameChanged = e => {
+    this.setState({ username: e.target.value });
+  };
+
+  emailChanged = e => {
+    this.setState({ email: e.target.value });
+  };
+
+  refCodeChanged = e => {
+    this.setState({ refCode: e.target.value });
+  };
+
+  login = () => {
+    const { backFn } = this.props;
+    backFn();
+  };
+
+  render() {
+    const { intl } = this.props;
+    const { processing, username, email, refCode, done } = this.state;
+
+    return (
+      <div className="sign-up-dialog-content">
+        <div className="dialog-header">
+          <div className="logo">
+            <img src={logo} alt="logo" />
+          </div>
+          <div className="dialog-header-text">
+            <FormattedMessage id="sign-up.title" />
+          </div>
+        </div>
+        <div className="dialog-form">
+          {(() => {
+            if (done) {
+              return (
+                <div className="sign-up-success">
+                  <p>
+                    <i className="mi">check</i>
+                    <FormattedMessage
+                      id="sign-up.success-message-1"
+                      values={{ email }}
+                    />
+                  </p>
+                  <p>
+                    <FormattedMessage id="sign-up.success-message-2" />
+                  </p>
+                  <p>
+                    <Button
+                      size="large"
+                      htmlType="button"
+                      type="primary"
+                      block
+                      onClick={this.login}
+                    >
+                      <FormattedMessage id="sign-up.login-btn-label" />
+                    </Button>
+                  </p>
+                </div>
+              );
+            }
+
+            return (
+              <Fragment>
+                <p>
+                  <Input
+                    type="text"
+                    autoFocus
+                    value={username}
+                    onChange={this.usernameChanged}
+                    placeholder={intl.formatMessage({
+                      id: 'sign-up.username-placeholder'
+                    })}
+                  />
+                </p>
+                <p>
+                  <Input
+                    type="email"
+                    value={email}
+                    onChange={this.emailChanged}
+                    placeholder={intl.formatMessage({
+                      id: 'sign-up.email-placeholder'
+                    })}
+                  />
+                </p>
+                <p>
+                  <Input
+                    type="text"
+                    value={refCode}
+                    onChange={this.refCodeChanged}
+                    placeholder={intl.formatMessage({
+                      id: 'sign-up.ref-code'
+                    })}
+                  />
+                </p>
+                <p>
+                  <Button
+                    size="large"
+                    htmlType="button"
+                    type="primary"
+                    block
+                    disabled={processing}
+                    onClick={this.doSignUp}
+                  >
+                    <FormattedMessage id="sign-up.sign-up" />
+                  </Button>
+                </p>
+                <p>
+                  <FormattedMessage id="sign-up.login-1" />
+                  &nbsp;
+                  <a onClick={this.login}>
+                    <FormattedMessage id="sign-up.login-2" />
+                  </a>
+                </p>
+              </Fragment>
+            );
+          })()}
+        </div>
+      </div>
+    );
+  }
+}
+
+SignUp.propTypes = {
+  intl: PropTypes.instanceOf(Object).isRequired,
+  backFn: PropTypes.func.isRequired
+};
+
 class Login extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      processing: false
+      processing: false,
+      signUp: false
     };
   }
 
@@ -310,17 +474,29 @@ class Login extends Component {
     this.afterLogin(username);
   };
 
+  toggleSignUp = () => {
+    const { signUp, processing } = this.state;
+    if (processing) {
+      return;
+    }
+    this.setState({ signUp: !signUp });
+  };
+
   render() {
     const { accounts, loginMsg, intl } = this.props;
-    const { processing } = this.state;
+    const { processing, signUp } = this.state;
+
+    if (signUp) {
+      return <SignUp {...this.props} backFn={this.toggleSignUp} />;
+    }
 
     return (
       <div className="login-dialog-content">
-        <div className="login-header">
+        <div className="dialog-header">
           <div className="logo">
             <img src={logo} alt="logo" />
           </div>
-          <div className="login-header-text">
+          <div className="dialog-header-text">
             <FormattedMessage id="login.title" />
           </div>
         </div>
@@ -355,7 +531,7 @@ class Login extends Component {
           </Divider>
         )}
 
-        <div className="login-form">
+        <div className="dialog-form">
           <p className="form-text">
             <FormattedMessage id="login.traditional-login-desc" />
           </p>
@@ -391,7 +567,11 @@ class Login extends Component {
             </Button>
           </p>
           <p>
-            <FormattedHTMLMessage id="login.create-account-text" />
+            <FormattedMessage id="login.create-account-text-1" />
+            &nbsp;
+            <a onClick={this.toggleSignUp}>
+              <FormattedMessage id="login.create-account-text-2" />
+            </a>
           </p>
         </div>
         <Divider>

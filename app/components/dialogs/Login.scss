@@ -1,25 +1,4 @@
 .login-dialog-content {
-  margin: auto;
-  padding: 20px;
-  width: 80%;
-
-  .login-header {
-    .logo {
-      margin: 0 auto 10px auto;
-      width: 100px;
-      img {
-        width: 100%;
-      }
-    }
-
-    .login-header-text {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-  }
-
   .login-msg {
     margin-bottom: 10px;
   }
@@ -142,14 +121,6 @@
     }
   }
 
-  .login-form {
-    p {
-      color: $steel-grey;
-      margin-bottom: 14px;
-      text-align: center;
-    }
-  }
-
   .login-sc {
     cursor: pointer;
     margin: auto;
@@ -172,6 +143,63 @@
       font-size: 95%;
       margin-bottom: 10px;
       opacity: 0.5;
+    }
+  }
+}
+
+.login-dialog-content,
+.sign-up-dialog-content {
+  margin: auto;
+  padding: 20px;
+  width: 80%;
+
+  .dialog-header {
+    .logo {
+      margin: 0 auto 10px auto;
+      width: 100px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .dialog-header-text {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+  }
+
+  .dialog-form {
+    p {
+      color: $steel-grey;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+  }
+}
+
+.sign-up-dialog-content {
+  .dialog-header {
+    .dialog-header-text {
+      margin-bottom: 20px;
+    }
+  }
+
+  .sign-up-success {
+    font-size: 16px;
+
+    p {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .mi {
+        font-size: 24px;
+        margin-right: 10px;
+        color: $green1;
+      }
     }
   }
 }
