@@ -133,7 +133,7 @@
     "section-blog": "Blogg",
     "section-comments": "Kommentarer",
     "section-replies": "Svar",
-    "section-points": "Points",
+    "section-points": "Poäng",
     "section-wallet": "Plånbok"
   },
   "follow-controls": {
@@ -152,7 +152,7 @@
     "section-comments": "Kommentarer",
     "section-replies": "Svar",
     "section-wallet": "Plånbok",
-    "section-points": "Points",
+    "section-points": "Poäng",
     "top-posts": "Topp inlägg",
     "unclaimed-rewards": "Outbetald belöning",
     "estimated-value": "Det uppskattade värdet är baserat på ett 7 dagars genomsnittlig värde av Steem.",
@@ -232,8 +232,8 @@
     "page-title": "Promote",
     "duration-label": "Längd",
     "duration-help": "Drag the slider to change the duration",
-    "day": "day",
-    "days": "days",
+    "day": "dag",
+    "days": "dagar",
     "success-message": "Your request submitted. It will be activated in a couple minutes."
   },
   "redeem-boost": {
@@ -351,7 +351,7 @@
     "fetch-error": "Server timeout because response size is too big",
     "promote": "promote",
     "boost": "boost",
-    "more-replies": "show more replies"
+    "more-replies": "visa fler svar"
   },
   "navbar": {
     "settings": "Inställningar",
@@ -362,7 +362,7 @@
     "favorite": "Lägg till i favoriter",
     "favoriteRemove": "Borttagen från favoriter",
     "wallet": "Min plånbok",
-    "points": "My Points",
+    "points": "Mina Poäng",
     "activities": "Aktiviteter",
     "address-enter-url": "Ange url",
     "address-enter-query": "Ange sökord",
@@ -416,7 +416,7 @@
     "unfollowed-str": "sluta följa",
     "ignored-str": "ignorerade",
     "reblog-str": "återbloggade ditt inlägg:",
-    "transfer-str": "sent you",
+    "transfer-str": "skickade dig",
     "empty-list": "Ingenting här",
     "refresh": "Ladda om",
     "mark-all-read": "Markera alla som lästa",
