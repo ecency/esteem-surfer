@@ -49,14 +49,14 @@
   "entry-list-item": {
     "reblogged": "reblogué par {n}",
     "promoted": "sponsored",
-    "promote": "promote",
+    "promote": "promouvoir",
     "boost": "boost"
   },
   "entry-reblog": {
     "reblog": "Rebloguer",
     "reblogged": "Reblogué",
-    "modal-title": "Rebloggers ({n})",
-    "more-reblogs": "... +{n} more reblogs"
+    "modal-title": "Réblogueurs ({n})",
+    "more-reblogs": "... +{n} réblogs de plus"
   },
   "settings": {
     "title": "Réglages",
@@ -89,23 +89,23 @@
     "error-user-fetch": "Les données utilisateur n'ont pas pu être récupérés",
     "error-user-not-found": "L'utilisateur n'existe pas",
     "error-authenticate": "Nom utilisateur ou mot de passe/wif incorrect",
-    "create-account-text-1": "Don't have an account?",
-    "create-account-text-2": "Sign up now!",
+    "create-account-text-1": "Pas encore de compte ?",
+    "create-account-text-2": "Enregistrez-vous maintenant !",
     "login-with-sc": "Se connecter avec",
     "divider-text": "OU",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "Note: Steemconnect peut facturer des frais sur vos transactions de récompense"
   },
   "sign-up": {
     "title": "Sign Up",
-    "username-placeholder": "pick a username",
-    "email-placeholder": "enter your email address",
+    "username-placeholder": "choisissez un nom d’utilisateur",
+    "email-placeholder": "entrez votre adresse mail",
     "sign-up": "Sign Up",
     "ref-code": "reference code (optional)",
-    "success-message-1": "We've sent an email to {email}.",
-    "success-message-2": "Follow instructions to complete signup process.",
-    "login-1": "Already a member?",
-    "login-2": "Login",
-    "login-btn-label": "Back to Login"
+    "success-message-1": "Nous avons envoyé un email à {email}.",
+    "success-message-2": "Suivez les instructions pour terminer le processus d'inscription.",
+    "login-1": "Déjà membre ?",
+    "login-2": "Connexion",
+    "login-btn-label": "Retour à la page de connexion"
   },
   "create-pin-code": {
     "title": "Créer un code PIN",
@@ -203,7 +203,7 @@
     "power-down": "Power Down",
     "point-history": "Historique",
     "points-post-desc": "Vous pouvez gagner des points en publiant régulièrement. Publier vous donne 15 points.",
-    "points-comment-desc": "Each comment you make helps you to grow your audience and make friendship but also earns you 5 points.",
+    "points-comment-desc": "Chaque commentaire que vous faites vous aide à agrandir votre audience et à créer de l'amitié, mais vous donne également 5 points.",
     "points-checkin-desc": "Checking in on eSteem app gives you 0.25 points and helps you stay connected with your friends.",
     "points-vote-desc": "By voting you give reward to other creators and show your appreciation but also earn 0.01 x vote weight points.",
     "points-reblog-desc": "  Partagez les publication que vous aimez avec vos amis et gagnez 1 point.",
@@ -230,7 +230,7 @@
     "profile-editor": "Profile Editor"
   },
   "redeem": {
-    "user-label": "User",
+    "user-label": "Utilisateur",
     "user-help-text": "Available Funds",
     "post-label": "Post",
     "post-input-placeholder": "author/permlink",
@@ -324,7 +324,7 @@
     "deleted": "Publication planifiée supprimée",
     "move": "Déplacer vers brouillons",
     "moved": "Déplacé vers brouillons",
-    "success-message": "Published successfully.",
+    "success-message": "Publié avec succès.",
     "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
@@ -363,9 +363,9 @@
     "comment-entry-go-parent": "Voir le parent direct",
     "similar-entries": "Publications similaires",
     "fetch-error": "Server timeout because response size is too big",
-    "promote": "promote",
+    "promote": "promouvoir",
     "boost": "boost",
-    "more-replies": "show more replies"
+    "more-replies": "afficher plus de réponses"
   },
   "navbar": {
     "settings": "Réglages",
@@ -376,12 +376,12 @@
     "favorite": "Ajouter aux favoris",
     "favoriteRemove": "Retiré des favoris",
     "wallet": "Mon portefeuille",
-    "points": "My Points",
+    "points": "Mes Points",
     "activities": "Activités",
     "address-enter-url": "Saisissez l'url",
     "address-enter-query": "Entrer un critère de recherche",
     "unclaimed-reward-notice": "Vous avez des récompenses non réclamées",
-    "unclaimed-points-notice": "You have unclaimed points",
+    "unclaimed-points-notice": "Vous avez des récompenses non réclamées",
     "search-no-matches": "Aucune correspondance"
   },
   "search": {
@@ -435,15 +435,15 @@
     "refresh": "Rafraichir",
     "mark-all-read": "Tout marquer comme lu",
     "leaderboard": "Classements",
-    "leaderboard-title-daily": "Daily top users",
-    "leaderboard-title-weekly": "Weekly top users",
-    "leaderboard-title-monthly": "Monthly top users",
+    "leaderboard-title-daily": "Top des utilisateurs du jour",
+    "leaderboard-title-weekly": "Meilleurs utilisateurs hebdomadaires",
+    "leaderboard-title-monthly": "Meilleurs utilisateurs mensuels",
     "leaderboard-daily": "Quotidien",
     "leaderboard-weekly": "Hebdomadaire",
-    "leaderboard-monthly": "Monthly",
-    "leaderboard-header-score": "Activities",
+    "leaderboard-monthly": "Mensuel",
+    "leaderboard-header-score": "Activités",
     "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
-    "leaderboard-header-reward": "Reward"
+    "leaderboard-header-reward": "Récompense"
   },
   "witnesses": {
     "page-title": "Vote de témoin",
@@ -471,15 +471,15 @@
   },
   "sps": {
     "page-title": "Proposals Voting",
-    "duration": "Duration",
-    "requested": "Requested",
-    "total-votes": "Total Votes",
+    "duration": "Durée",
+    "requested": "Demandé",
+    "total-votes": "Total des votes",
     "status-active": "active",
-    "status-expired": "expired",
-    "status-inactive": "upcoming",
-    "duration-days": "{n} days",
+    "status-expired": "expiré",
+    "status-inactive": "à venir",
+    "duration-days": "{n} jours",
     "voters": "Proposal Voters",
-    "voter": "Voter",
+    "voter": "Votants",
     "voter-sp": "SP",
     "voter-proxy-sp": "Proxy SP",
     "voter-total-sp": "Total SP",
