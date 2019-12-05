@@ -89,10 +89,23 @@
     "error-user-fetch": "Dados de usuário não foram encontrados",
     "error-user-not-found": "Usuário não existe",
     "error-authenticate": "Usuário errado ou a senha/wif",
-    "create-account-text": "Não tem uma conta? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Cadastre-se agora!</a>",
+    "create-account-text-1": "Don't have an account?",
+    "create-account-text-2": "Sign up now!",
     "login-with-sc": "Entrar com",
     "divider-text": "OU",
     "sc-note": "A conexão Steemconnect pode cobrar algumas taxas de suas transações de recompensa"
+  },
+  "sign-up": {
+    "title": "Sign Up",
+    "username-placeholder": "pick a username",
+    "email-placeholder": "enter your email address",
+    "sign-up": "Sign Up",
+    "ref-code": "reference code (optional)",
+    "success-message-1": "We've sent an email to {email}.",
+    "success-message-2": "Follow instructions to complete signup process.",
+    "login-1": "Already a member?",
+    "login-2": "Login",
+    "login-btn-label": "Back to Login"
   },
   "create-pin-code": {
     "title": "Criar o código PIN",
@@ -213,7 +226,8 @@
     "points-transfer": "Presente a alguém",
     "points-get": "OBTER ESTM",
     "witness-voting": "Testemunha",
-    "sps-voting": "Votação SPS"
+    "sps-voting": "Votação SPS",
+    "profile-editor": "Profile Editor"
   },
   "redeem": {
     "user-label": "Utilizador",
@@ -567,5 +581,15 @@
     "label": "{n} palavras",
     "read-time-less-1-min": "1 minuto de leitura",
     "read-time-n-min": "~ {n} min de leitura"
+  },
+  "profile-edit": {
+    "title": "Profile Editor",
+    "name": "Display Name",
+    "about": "About",
+    "cover-image": "Cover Image",
+    "profile-image": "Profile Image",
+    "website": "Website",
+    "location": "Location",
+    "updated": "Profile updated"
   }
 }
