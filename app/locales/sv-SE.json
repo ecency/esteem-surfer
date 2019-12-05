@@ -89,22 +89,22 @@
     "error-user-fetch": "Användardata kunde inte hämtas",
     "error-user-not-found": "Användare finns inte",
     "error-authenticate": "Fel användarnamn eller lösenord/WIF",
-    "create-account-text-1": "Don't have an account?",
-    "create-account-text-2": "Sign up now!",
+    "create-account-text-1": "Har du inget konto?",
+    "create-account-text-2": "Registrera dig nu!",
     "login-with-sc": "Logga in med",
     "divider-text": "ELLER",
     "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "sign-up": {
-    "title": "Sign Up",
-    "username-placeholder": "pick a username",
-    "email-placeholder": "enter your email address",
-    "sign-up": "Sign Up",
+    "title": "Registrera dig",
+    "username-placeholder": "välj ett användarnamn",
+    "email-placeholder": "ange din e-postadress",
+    "sign-up": "Registrera dig",
     "ref-code": "reference code (optional)",
-    "success-message-1": "We've sent an email to {email}.",
+    "success-message-1": "Vi har skickat ett mail till {email}.",
     "success-message-2": "Follow instructions to complete signup process.",
-    "login-1": "Already a member?",
-    "login-2": "Login",
+    "login-1": "Redan medlem?",
+    "login-2": "Logga in",
     "login-btn-label": "Back to Login"
   },
   "create-pin-code": {
@@ -584,11 +584,11 @@
   },
   "profile-edit": {
     "title": "Profile Editor",
-    "name": "Display Name",
-    "about": "About",
+    "name": "Visningsnamn",
+    "about": "Om",
     "cover-image": "Cover Image",
-    "profile-image": "Profile Image",
-    "website": "Website",
+    "profile-image": "Profilbild",
+    "website": "Webbsida",
     "location": "Location",
     "updated": "Profile updated"
   }
