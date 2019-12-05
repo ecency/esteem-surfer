@@ -314,6 +314,33 @@ export const grantPostingPermission = (account, pin) => {
   }
 };
 
+export const updateProfile = (account, pin, newProfile) => {
+  if (account.type === 's') {
+    const key = decryptKey(account.keys.active, pin);
+    const privateKey = PrivateKey.fromString(key);
+
+    const { accountData } = account;
+
+    const curJsonMeta = JSON.parse(accountData.json_metadata);
+    const newJsonMeta = Object.assign({}, curJsonMeta, newProfile);
+
+    return client.broadcast.updateAccount(
+      {
+        account: account.username,
+        memo_key: accountData.memo_key,
+        json_metadata: JSON.stringify(newJsonMeta)
+      },
+      privateKey
+    );
+  }
+
+  if (account.type === 'sc') {
+    return Promise.reject(
+      new Error('Steem connect profile update not implemented yet.')
+    );
+  }
+};
+
 export const deleteComment = (account, pin, permlink) => {
   const { username: author } = account;
 

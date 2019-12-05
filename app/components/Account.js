@@ -5,7 +5,7 @@ eslint-disable react/no-multi-comp,react/style-prop-object
 import React, { Component, Fragment } from 'react';
 
 import PropTypes from 'prop-types';
-import { message, Menu } from 'antd';
+import { message, Menu, Button } from 'antd';
 import {
   FormattedNumber,
   FormattedDate,
@@ -36,6 +36,7 @@ import EntryListItem from './elements/EntryListItem';
 import DelegationListModal from './dialogs/DelegatedList';
 import DelegateeListModal from './dialogs/DelegateeList';
 import EstmPurchaseModal from './dialogs/EstmPurchase';
+import ProfileEditModal from './dialogs/ProfileEdit';
 
 import ScrollReplace from './helpers/ScrollReplace';
 import ListSwitch from './elements/ListSwitch';
@@ -84,7 +85,8 @@ class Profile extends Component {
 
     this.state = {
       followersModalVisible: false,
-      followingModalVisible: false
+      followingModalVisible: false,
+      profileEditModalVisible: false
     };
   }
 
@@ -102,7 +104,11 @@ class Profile extends Component {
     let website;
     let created;
 
-    const { followersModalVisible, followingModalVisible } = this.state;
+    const {
+      followersModalVisible,
+      followingModalVisible,
+      profileEditModalVisible
+    } = this.state;
     const { username, account, activeAccount, intl } = this.props;
 
     if (account) {
@@ -125,7 +131,7 @@ class Profile extends Component {
       created = new Date(account.created);
     }
 
-    const showWitnesses = activeAccount && activeAccount.username === username;
+    const isMyProfile = activeAccount && activeAccount.username === username;
 
     return (
       <div className="profile-area">
@@ -291,7 +297,41 @@ class Profile extends Component {
           </div>
         )}
 
-        {showWitnesses && (
+        {account && isMyProfile && (
+          <Fragment>
+            <div className="divider" />
+            <div className="account-prop">
+              <Button
+                type="primary"
+                onClick={() => {
+                  this.setState({ profileEditModalVisible: true });
+                }}
+              >
+                <i className="mi" style={{ color: 'white' }}>
+                  account_box
+                </i>
+                <FormattedMessage id="account.profile-editor" />
+              </Button>
+            </div>
+
+            {profileEditModalVisible && (
+              <ProfileEditModal
+                {...this.props}
+                visible={profileEditModalVisible}
+                onCancel={() => {
+                  this.setState({ profileEditModalVisible: false });
+                }}
+                onUpdate={() => {
+                  const { onUpdate } = this.props;
+                  onUpdate();
+                  this.setState({ profileEditModalVisible: false });
+                }}
+              />
+            )}
+          </Fragment>
+        )}
+
+        {account && isMyProfile && (
           <Fragment>
             <div className="divider" />
             <div className="voting-services">
@@ -319,7 +359,8 @@ Profile.propTypes = {
   username: PropTypes.string.isRequired,
   account: PropTypes.instanceOf(Object),
   intl: PropTypes.instanceOf(Object).isRequired,
-  activeAccount: PropTypes.instanceOf(Object)
+  activeAccount: PropTypes.instanceOf(Object),
+  onUpdate: PropTypes.func.isRequired
 };
 
 export class AccountMenu extends Component {
@@ -2138,7 +2179,14 @@ class Account extends Component {
           </div>
           <div className="page-inner" id="app-content">
             <div className="left-side">
-              <Profile {...this.props} username={username} account={account} />
+              <Profile
+                {...this.props}
+                username={username}
+                account={account}
+                onUpdate={() => {
+                  this.refresh();
+                }}
+              />
             </div>
 
             <div className="right-side">

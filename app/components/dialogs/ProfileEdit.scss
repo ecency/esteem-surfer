@@ -1,0 +1,32 @@
+.profile-edit-dialog {
+  padding: 20px;
+
+  .profile-edit-form {
+    .form-item {
+      margin-bottom: 16px;
+
+      .form-label {
+        display: block;
+        margin-bottom: 4px;
+        font-weight: 500;
+
+        @include themify(day) {
+          color: $steel-grey;
+        }
+
+        @include themify(night) {
+          color: $silver;
+        }
+      }
+
+      .form-input {
+        display: flex;
+        justify-content: flex-end;
+
+        .button-control {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}
