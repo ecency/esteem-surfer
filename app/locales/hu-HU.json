@@ -89,10 +89,23 @@
     "error-user-fetch": "A felhasználó adatait nem sikerült betölteni",
     "error-user-not-found": "A felhasználó nem létezik",
     "error-authenticate": "Helytelen felhasználónév vagy jelszó/WIF",
-    "create-account-text": "Nincs fiókod? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Hozd létre most!</a>",
+    "create-account-text-1": "Don't have an account?",
+    "create-account-text-2": "Sign up now!",
     "login-with-sc": "Bejelentkezés mint",
     "divider-text": "VAGY",
     "sc-note": "Megjegyzés: Steemconnect díjat számolhat fel néhány jutalom-tranzakcióért"
+  },
+  "sign-up": {
+    "title": "Sign Up",
+    "username-placeholder": "pick a username",
+    "email-placeholder": "enter your email address",
+    "sign-up": "Sign Up",
+    "ref-code": "reference code (optional)",
+    "success-message-1": "We've sent an email to {email}.",
+    "success-message-2": "Follow instructions to complete signup process.",
+    "login-1": "Already a member?",
+    "login-2": "Login",
+    "login-btn-label": "Back to Login"
   },
   "create-pin-code": {
     "title": "PIN-kód létrehozása",
@@ -213,7 +226,8 @@
     "points-transfer": "Ajándékozz meg valakit",
     "points-get": "GET ESTM",
     "witness-voting": "Tanúk",
-    "sps-voting": "SPS szavazás"
+    "sps-voting": "SPS szavazás",
+    "profile-editor": "Profile Editor"
   },
   "redeem": {
     "user-label": "Felhasználó",
@@ -567,5 +581,15 @@
     "label": "{n} szó",
     "read-time-less-1-min": "< 1 perc olvasás",
     "read-time-n-min": "~ {n} perc olvasás"
+  },
+  "profile-edit": {
+    "title": "Profile Editor",
+    "name": "Display Name",
+    "about": "About",
+    "cover-image": "Cover Image",
+    "profile-image": "Profile Image",
+    "website": "Website",
+    "location": "Location",
+    "updated": "Profile updated"
   }
 }
