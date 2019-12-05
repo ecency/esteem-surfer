@@ -89,10 +89,23 @@
     "error-user-fetch": "사용자 데이터를 조회할 수 없습니다",
     "error-user-not-found": "존재하지 않는 사용자입니다",
     "error-authenticate": "사용자 이름 또는 비밀번호/WIF가 올바르지 않습니다",
-    "create-account-text": "계정이 없나요? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">지금 계정을 만드세요!</a>",
+    "create-account-text-1": "Don't have an account?",
+    "create-account-text-2": "Sign up now!",
     "login-with-sc": "steemconnect를 이용해 로그인하세요",
     "divider-text": "또는",
     "sc-note": "주의: Steemconnect에서 당신의 보상 트랜잭션에 대해 일정 수수료를 부과할 수도 있습니다"
+  },
+  "sign-up": {
+    "title": "Sign Up",
+    "username-placeholder": "pick a username",
+    "email-placeholder": "enter your email address",
+    "sign-up": "Sign Up",
+    "ref-code": "reference code (optional)",
+    "success-message-1": "We've sent an email to {email}.",
+    "success-message-2": "Follow instructions to complete signup process.",
+    "login-1": "Already a member?",
+    "login-2": "Login",
+    "login-btn-label": "Back to Login"
   },
   "create-pin-code": {
     "title": "PIN 코드 만들기",
@@ -213,7 +226,8 @@
     "points-transfer": "포인트 선물하기",
     "points-get": "GET ESTM",
     "witness-voting": "증인",
-    "sps-voting": "SPS 투표"
+    "sps-voting": "SPS 투표",
+    "profile-editor": "Profile Editor"
   },
   "redeem": {
     "user-label": "사용자",
@@ -567,5 +581,15 @@
     "label": "단어 수: {n}",
     "read-time-less-1-min": "1 분 미만 분량",
     "read-time-n-min": "~ {n} 분 이상 분량"
+  },
+  "profile-edit": {
+    "title": "Profile Editor",
+    "name": "Display Name",
+    "about": "About",
+    "cover-image": "Cover Image",
+    "profile-image": "Profile Image",
+    "website": "Website",
+    "location": "Location",
+    "updated": "Profile updated"
   }
 }
