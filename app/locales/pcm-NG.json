@@ -89,10 +89,23 @@
     "error-user-fetch": "E no locate the person informate",
     "error-user-not-found": "The person no dey exist",
     "error-authenticate": "The guy-name or password/WIF no dey correct",
-    "create-account-text": "You never get account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Oya register quick-quick</a>",
+    "create-account-text-1": "Don't have an account?",
+    "create-account-text-2": "Sign up now!",
     "login-with-sc": "Login with",
     "divider-text": "OR",
     "sc-note": "Steemconnect fit charge you small from wetin you won transact"
+  },
+  "sign-up": {
+    "title": "Sign Up",
+    "username-placeholder": "pick a username",
+    "email-placeholder": "enter your email address",
+    "sign-up": "Sign Up",
+    "ref-code": "reference code (optional)",
+    "success-message-1": "We've sent an email to {email}.",
+    "success-message-2": "Follow instructions to complete signup process.",
+    "login-1": "Already a member?",
+    "login-2": "Login",
+    "login-btn-label": "Back to Login"
   },
   "create-pin-code": {
     "title": "Create PIN Code",
@@ -213,7 +226,8 @@
     "points-transfer": "Gift to someone",
     "points-get": "GET ESTM",
     "witness-voting": "Witnesses",
-    "sps-voting": "SPS Voting"
+    "sps-voting": "SPS Voting",
+    "profile-editor": "Profile Editor"
   },
   "redeem": {
     "user-label": "User",
@@ -567,5 +581,15 @@
     "label": "{n} words",
     "read-time-less-1-min": "< 1 min read",
     "read-time-n-min": "~ {n} min read"
+  },
+  "profile-edit": {
+    "title": "Profile Editor",
+    "name": "Display Name",
+    "about": "About",
+    "cover-image": "Cover Image",
+    "profile-image": "Profile Image",
+    "website": "Website",
+    "location": "Location",
+    "updated": "Profile updated"
   }
 }
