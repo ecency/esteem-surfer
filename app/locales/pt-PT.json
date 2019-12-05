@@ -89,23 +89,23 @@
     "error-user-fetch": "Dados de usuário não foram encontrados",
     "error-user-not-found": "Usuário não existe",
     "error-authenticate": "Usuário errado ou a senha/wif",
-    "create-account-text-1": "Don't have an account?",
-    "create-account-text-2": "Sign up now!",
+    "create-account-text-1": "Não tem uma conta?",
+    "create-account-text-2": "Registe-se agora!",
     "login-with-sc": "Entrar com",
     "divider-text": "OU",
     "sc-note": "A conexão Steemconnect pode cobrar algumas taxas de suas transações de recompensa"
   },
   "sign-up": {
-    "title": "Sign Up",
-    "username-placeholder": "pick a username",
-    "email-placeholder": "enter your email address",
-    "sign-up": "Sign Up",
-    "ref-code": "reference code (optional)",
-    "success-message-1": "We've sent an email to {email}.",
-    "success-message-2": "Follow instructions to complete signup process.",
-    "login-1": "Already a member?",
-    "login-2": "Login",
-    "login-btn-label": "Back to Login"
+    "title": "Registar",
+    "username-placeholder": "escolha um nome de utilizador",
+    "email-placeholder": "digite o seu endereço de email",
+    "sign-up": "Registar-se",
+    "ref-code": "código de referência (opcional)",
+    "success-message-1": "Enviamos um e-mail para {email}.",
+    "success-message-2": "Siga as instruções para concluir o processo de inscrição.",
+    "login-1": "Já é membro?",
+    "login-2": "Entrar",
+    "login-btn-label": "Voltar à autenticação"
   },
   "create-pin-code": {
     "title": "Criar o código PIN",
@@ -227,7 +227,7 @@
     "points-get": "OBTER ESTM",
     "witness-voting": "Testemunha",
     "sps-voting": "Votação SPS",
-    "profile-editor": "Profile Editor"
+    "profile-editor": "Perfil do Editor"
   },
   "redeem": {
     "user-label": "Utilizador",
@@ -583,11 +583,11 @@
     "read-time-n-min": "~ {n} min de leitura"
   },
   "profile-edit": {
-    "title": "Profile Editor",
-    "name": "Display Name",
-    "about": "About",
-    "cover-image": "Cover Image",
-    "profile-image": "Profile Image",
+    "title": "Perfil do Editor",
+    "name": "Nome a Exibir",
+    "about": "Sobre",
+    "cover-image": "Imagem de capa",
+    "profile-image": "Imagem do Perfil",
     "website": "Website",
     "location": "Location",
     "updated": "Profile updated"
