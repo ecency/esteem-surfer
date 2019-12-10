@@ -15,7 +15,7 @@
     "save": "Guardar",
     "done": "Feito",
     "select": "Selecionar",
-    "update": "Update"
+    "update": "Atualizar"
   },
   "footer": {
     "faq": "Perguntas frequentes",
@@ -229,7 +229,7 @@
     "witness-voting": "Testemunha",
     "sps-voting": "Votação SPS",
     "profile-editor": "Perfil do Editor",
-    "password": "Password"
+    "password": "Senha"
   },
   "redeem": {
     "user-label": "Utilizador",
@@ -592,16 +592,16 @@
     "profile-image": "Imagem do Perfil",
     "website": "Website",
     "location": "Localização",
-    "updated": "Profile updated successfully!"
+    "updated": "Perfil atualizado com sucesso!"
   },
   "password-update": {
-    "title": "Password",
-    "cur-pass": "Current password",
-    "new-pass": "New password",
-    "new-pass2": "Confirm new password",
-    "error-current": "Enter current password",
-    "error-new": "Enter new password",
-    "error-new2": "Passwords must be same",
-    "updated": "Password updated successfully!"
+    "title": "Senha",
+    "cur-pass": "Senha atual",
+    "new-pass": "Nova senha",
+    "new-pass2": "Confirmar nova senha",
+    "error-current": "Digite a senha atual",
+    "error-new": "Inserir nova senha",
+    "error-new2": "As senhas devem ser iguais",
+    "updated": "Senha alterada com sucesso!"
   }
 }
