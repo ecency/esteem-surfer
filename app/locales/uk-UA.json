@@ -102,11 +102,11 @@
     "email-placeholder": "enter your email address",
     "sign-up": "Sign Up",
     "ref-code": "reference code (optional)",
-    "success-message-1": "We've sent an email to {email}.",
-    "success-message-2": "Follow instructions to complete signup process.",
-    "login-1": "Already a member?",
-    "login-2": "Login",
-    "login-btn-label": "Back to Login"
+    "success-message-1": "Ми надіслали лист на {email}.",
+    "success-message-2": "Дотримуйтесь інструкцій для завершення процесу реєстрації.",
+    "login-1": "Вже зареєстровані?",
+    "login-2": "Увійти",
+    "login-btn-label": "Повернутися на сторінку входу"
   },
   "create-pin-code": {
     "title": "Задайте PIN-код",
@@ -228,8 +228,8 @@
     "points-get": "Отримати ESTM",
     "witness-voting": "Свідки",
     "sps-voting": "SPS Голосування",
-    "profile-editor": "Profile Editor",
-    "password": "Password"
+    "profile-editor": "Редактор профілів",
+    "password": "Пароль"
   },
   "redeem": {
     "user-label": "Користувач",
@@ -585,7 +585,7 @@
     "read-time-n-min": "~ {n} хв. прочитано"
   },
   "profile-edit": {
-    "title": "Profile Editor",
+    "title": "Редактор профілів",
     "name": "Display Name",
     "about": "About",
     "cover-image": "Обкладинка",
