@@ -14,7 +14,8 @@
     "server-error": "Process could not be completed due to server error",
     "save": "儲存",
     "done": "完成",
-    "select": "選擇"
+    "select": "選擇",
+    "update": "Update"
   },
   "footer": {
     "faq": "常見問題與解答",
@@ -227,7 +228,8 @@
     "points-get": "GET ESTM",
     "witness-voting": "Witnesses",
     "sps-voting": "SPS Voting",
-    "profile-editor": "Profile Editor"
+    "profile-editor": "Profile Editor",
+    "password": "Password"
   },
   "redeem": {
     "user-label": "User",
@@ -590,6 +592,16 @@
     "profile-image": "Profile Image",
     "website": "Website",
     "location": "Location",
-    "updated": "Profile updated"
+    "updated": "Profile updated successfully!"
+  },
+  "password-update": {
+    "title": "Password",
+    "cur-pass": "Current password",
+    "new-pass": "New password",
+    "new-pass2": "Confirm new password",
+    "error-current": "Enter current password",
+    "error-new": "Enter new password",
+    "error-new2": "Passwords must be same",
+    "updated": "Password updated successfully!"
   }
 }
