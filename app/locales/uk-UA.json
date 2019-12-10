@@ -595,13 +595,13 @@
     "updated": "Profile updated successfully!"
   },
   "password-update": {
-    "title": "Password",
-    "cur-pass": "Current password",
-    "new-pass": "New password",
-    "new-pass2": "Confirm new password",
-    "error-current": "Enter current password",
-    "error-new": "Enter new password",
-    "error-new2": "Passwords must be same",
+    "title": "Пароль",
+    "cur-pass": "Поточний пароль",
+    "new-pass": "Новий пароль",
+    "new-pass2": "Підтвердіть новий пароль",
+    "error-current": "Уведіть поточний пароль",
+    "error-new": "Введіть новий пароль",
+    "error-new2": "Паролі мають співпадати",
     "updated": "Password updated successfully!"
   }
 }
