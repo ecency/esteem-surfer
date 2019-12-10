@@ -14,7 +14,8 @@
     "server-error": "Processo não foi concluído devido a um erro de servidor",
     "save": "Guardar",
     "done": "Feito",
-    "select": "Selecionar"
+    "select": "Selecionar",
+    "update": "Update"
   },
   "footer": {
     "faq": "Perguntas frequentes",
@@ -227,7 +228,8 @@
     "points-get": "OBTER ESTM",
     "witness-voting": "Testemunha",
     "sps-voting": "Votação SPS",
-    "profile-editor": "Perfil do Editor"
+    "profile-editor": "Perfil do Editor",
+    "password": "Password"
   },
   "redeem": {
     "user-label": "Utilizador",
@@ -590,6 +592,16 @@
     "profile-image": "Imagem do Perfil",
     "website": "Website",
     "location": "Localização",
-    "updated": "Perfil atualizado"
+    "updated": "Profile updated successfully!"
+  },
+  "password-update": {
+    "title": "Password",
+    "cur-pass": "Current password",
+    "new-pass": "New password",
+    "new-pass2": "Confirm new password",
+    "error-current": "Enter current password",
+    "error-new": "Enter new password",
+    "error-new2": "Passwords must be same",
+    "updated": "Password updated successfully!"
   }
 }
