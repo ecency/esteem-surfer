@@ -14,7 +14,8 @@
     "server-error": "Processen kunde inte slutföras på grund av ett serverfel",
     "save": "Spara",
     "done": "Klart",
-    "select": "Välj"
+    "select": "Välj",
+    "update": "Update"
   },
   "footer": {
     "faq": "FAQ",
@@ -227,7 +228,8 @@
     "points-get": "GET ESTM",
     "witness-voting": "Witnesses",
     "sps-voting": "SPS Voting",
-    "profile-editor": "Profile Editor"
+    "profile-editor": "Profile Editor",
+    "password": "Password"
   },
   "redeem": {
     "user-label": "Användare",
@@ -590,6 +592,16 @@
     "profile-image": "Profilbild",
     "website": "Webbsida",
     "location": "Location",
-    "updated": "Profil uppdaterad"
+    "updated": "Profile updated successfully!"
+  },
+  "password-update": {
+    "title": "Password",
+    "cur-pass": "Current password",
+    "new-pass": "New password",
+    "new-pass2": "Confirm new password",
+    "error-current": "Enter current password",
+    "error-new": "Enter new password",
+    "error-new2": "Passwords must be same",
+    "updated": "Password updated successfully!"
   }
 }
