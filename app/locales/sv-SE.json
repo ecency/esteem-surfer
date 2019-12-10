@@ -15,7 +15,7 @@
     "save": "Spara",
     "done": "Klart",
     "select": "Välj",
-    "update": "Update"
+    "update": "Uppdatera"
   },
   "footer": {
     "faq": "FAQ",
@@ -229,7 +229,7 @@
     "witness-voting": "Witnesses",
     "sps-voting": "SPS Voting",
     "profile-editor": "Profile Editor",
-    "password": "Password"
+    "password": "Lösenord"
   },
   "redeem": {
     "user-label": "Användare",
@@ -592,16 +592,16 @@
     "profile-image": "Profilbild",
     "website": "Webbsida",
     "location": "Location",
-    "updated": "Profile updated successfully!"
+    "updated": "Profilen har uppdaterats!"
   },
   "password-update": {
-    "title": "Password",
-    "cur-pass": "Current password",
-    "new-pass": "New password",
-    "new-pass2": "Confirm new password",
-    "error-current": "Enter current password",
-    "error-new": "Enter new password",
-    "error-new2": "Passwords must be same",
-    "updated": "Password updated successfully!"
+    "title": "Lösenord",
+    "cur-pass": "Nuvarande lösenord",
+    "new-pass": "Nytt lösenord",
+    "new-pass2": "Bekräfta nytt lösenord",
+    "error-current": "Ange nuvarande lösenord",
+    "error-new": "Ange nytt lösenord",
+    "error-new2": "Lösenorden måste matcha",
+    "updated": "Lösenordet har uppdaterats!"
   }
 }
