@@ -592,7 +592,7 @@
     "profile-image": "Profile Image",
     "website": "Website",
     "location": "Location",
-    "updated": "Profile updated successfully!"
+    "updated": "Профіль успішно оновлено!"
   },
   "password-update": {
     "title": "Пароль",
@@ -602,6 +602,6 @@
     "error-current": "Уведіть поточний пароль",
     "error-new": "Введіть новий пароль",
     "error-new2": "Паролі мають співпадати",
-    "updated": "Password updated successfully!"
+    "updated": "Пароль успішно змінено!"
   }
 }
