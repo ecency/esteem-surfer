@@ -588,10 +588,10 @@
     "title": "Profile Editor",
     "name": "Display Name",
     "about": "About",
-    "cover-image": "Cover Image",
-    "profile-image": "Profile Image",
-    "website": "Website",
-    "location": "Location",
+    "cover-image": "Обкладинка",
+    "profile-image": "Зображення профілю",
+    "website": "Веб-сторінка",
+    "location": "Місцезнаходження",
     "updated": "Профіль успішно оновлено!"
   },
   "password-update": {
