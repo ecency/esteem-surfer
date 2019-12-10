@@ -14,7 +14,8 @@
     "server-error": "El proceso no se pudo completar debido a un error del servidor",
     "save": "Salvar",
     "done": "Hecho",
-    "select": "Seleccionar"
+    "select": "Seleccionar",
+    "update": "Update"
   },
   "footer": {
     "faq": "Preguntas más frecuentes",
@@ -227,7 +228,8 @@
     "points-get": "OBTENER ESTM",
     "witness-voting": "Testigos",
     "sps-voting": "Votación SPS",
-    "profile-editor": "Profile Editor"
+    "profile-editor": "Profile Editor",
+    "password": "Password"
   },
   "redeem": {
     "user-label": "Usuario",
@@ -590,6 +592,16 @@
     "profile-image": "Profile Image",
     "website": "Website",
     "location": "Location",
-    "updated": "Profile updated"
+    "updated": "Profile updated successfully!"
+  },
+  "password-update": {
+    "title": "Password",
+    "cur-pass": "Current password",
+    "new-pass": "New password",
+    "new-pass2": "Confirm new password",
+    "error-current": "Enter current password",
+    "error-new": "Enter new password",
+    "error-new2": "Passwords must be same",
+    "updated": "Password updated successfully!"
   }
 }
