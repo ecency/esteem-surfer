@@ -341,6 +341,37 @@ export const updateProfile = (account, pin, newProfile) => {
   }
 };
 
+export const updatePassword = (account, ownerKey, newPublicKeys) => {
+  if (account.type === 's') {
+    const { accountData } = account;
+
+    const update = {
+      account: account.username,
+      json_metadata: accountData.json_metadata,
+      owner: Object.assign({}, accountData.owner, {
+        key_auths: [[newPublicKeys.owner, 1]]
+      }),
+      active: Object.assign({}, accountData.active, {
+        key_auths: [[newPublicKeys.active, 1]]
+      }),
+      posting: Object.assign({}, accountData.posting, {
+        key_auths: [[newPublicKeys.posting, 1]]
+      }),
+      memo_key: newPublicKeys.memo
+    };
+
+    const privateKey = PrivateKey.fromString(ownerKey);
+
+    return client.broadcast.updateAccount(update, privateKey);
+  }
+
+  if (account.type === 'sc') {
+    return Promise.reject(
+      new Error('Steem connect password update not implemented yet.')
+    );
+  }
+};
+
 export const deleteComment = (account, pin, permlink) => {
   const { username: author } = account;
 

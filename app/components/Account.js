@@ -37,6 +37,7 @@ import DelegationListModal from './dialogs/DelegatedList';
 import DelegateeListModal from './dialogs/DelegateeList';
 import EstmPurchaseModal from './dialogs/EstmPurchase';
 import ProfileEditModal from './dialogs/ProfileEdit';
+import PasswordModal from './dialogs/Password';
 
 import ScrollReplace from './helpers/ScrollReplace';
 import ListSwitch from './elements/ListSwitch';
@@ -86,7 +87,8 @@ class Profile extends Component {
     this.state = {
       followersModalVisible: false,
       followingModalVisible: false,
-      profileEditModalVisible: false
+      profileEditModalVisible: false,
+      passwordModalVisible: false
     };
   }
 
@@ -107,7 +109,8 @@ class Profile extends Component {
     const {
       followersModalVisible,
       followingModalVisible,
-      profileEditModalVisible
+      profileEditModalVisible,
+      passwordModalVisible
     } = this.state;
     const { username, account, activeAccount, intl } = this.props;
 
@@ -314,6 +317,20 @@ class Profile extends Component {
               </Button>
             </div>
 
+            <div className="account-prop">
+              <Button
+                type="primary"
+                onClick={() => {
+                  this.setState({ passwordModalVisible: true });
+                }}
+              >
+                <i className="mi" style={{ color: 'white' }}>
+                  vpn_key
+                </i>
+                <FormattedMessage id="account.password" />
+              </Button>
+            </div>
+
             {profileEditModalVisible && (
               <ProfileEditModal
                 {...this.props}
@@ -325,6 +342,19 @@ class Profile extends Component {
                   const { onUpdate } = this.props;
                   onUpdate();
                   this.setState({ profileEditModalVisible: false });
+                }}
+              />
+            )}
+
+            {passwordModalVisible && (
+              <PasswordModal
+                {...this.props}
+                visible={passwordModalVisible}
+                onCancel={() => {
+                  this.setState({ passwordModalVisible: false });
+                }}
+                onUpdate={() => {
+                  this.setState({ passwordModalVisible: false });
                 }}
               />
             )}
