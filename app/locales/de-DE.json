@@ -14,7 +14,8 @@
     "server-error": "Der Vorgang konnte aufgrund eines Server-Fehlers nicht durchgeführt werden",
     "save": "Speichern",
     "done": "Fertig!",
-    "select": "Auswählen"
+    "select": "Auswählen",
+    "update": "Update"
   },
   "footer": {
     "faq": "FAQ",
@@ -227,7 +228,8 @@
     "points-get": "GET ESTM",
     "witness-voting": "Witnesses",
     "sps-voting": "SPS-Abstimmung",
-    "profile-editor": "Profile Editor"
+    "profile-editor": "Profile Editor",
+    "password": "Password"
   },
   "redeem": {
     "user-label": "Benutzer",
@@ -590,6 +592,16 @@
     "profile-image": "Profile Image",
     "website": "Website",
     "location": "Location",
-    "updated": "Profile updated"
+    "updated": "Profile updated successfully!"
+  },
+  "password-update": {
+    "title": "Password",
+    "cur-pass": "Current password",
+    "new-pass": "New password",
+    "new-pass2": "Confirm new password",
+    "error-current": "Enter current password",
+    "error-new": "Enter new password",
+    "error-new2": "Passwords must be same",
+    "updated": "Password updated successfully!"
   }
 }
