@@ -14,7 +14,8 @@
     "server-error": "Le processus n'a pas pu être complété en raison d'une erreur du serveur",
     "save": "Sauvegarder",
     "done": "Terminé",
-    "select": "Sélectionner"
+    "select": "Sélectionner",
+    "update": "Update"
   },
   "footer": {
     "faq": "FAQ",
@@ -227,7 +228,8 @@
     "points-get": "GET ESTM",
     "witness-voting": "Témoins",
     "sps-voting": "SPS Voting",
-    "profile-editor": "Editeur de profil"
+    "profile-editor": "Editeur de profil",
+    "password": "Password"
   },
   "redeem": {
     "user-label": "Utilisateur",
@@ -590,6 +592,16 @@
     "profile-image": "Image de profil",
     "website": "Site Web",
     "location": "Localisation",
-    "updated": "Profil mis à jour"
+    "updated": "Profile updated successfully!"
+  },
+  "password-update": {
+    "title": "Password",
+    "cur-pass": "Current password",
+    "new-pass": "New password",
+    "new-pass2": "Confirm new password",
+    "error-current": "Enter current password",
+    "error-new": "Enter new password",
+    "error-new2": "Passwords must be same",
+    "updated": "Password updated successfully!"
   }
 }
