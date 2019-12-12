@@ -11,7 +11,9 @@ class UserAvatar extends Component {
     let v = '0';
     if (activeAccount && user === activeAccount.username) {
       const { accountData } = activeAccount;
-      v = accountData.last_account_update;
+      if (accountData) {
+        v = accountData.last_account_update;
+      }
     }
 
     return (
