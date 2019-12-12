@@ -145,7 +145,7 @@ class Profile extends Component {
 
         <div className="username">{username}</div>
 
-        {vPowerPercentage && (
+        {vPower > 0 && (
           <div className="vpower-line">
             <div
               className="vpower-line-inner"
@@ -154,7 +154,7 @@ class Profile extends Component {
           </div>
         )}
 
-        {vPower && (
+        {vPower > 0 && (
           <div className="vpower-percentage">
             <Tooltip
               title={intl.formatMessage({
