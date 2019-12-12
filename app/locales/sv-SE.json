@@ -101,7 +101,7 @@
     "username-placeholder": "välj ett användarnamn",
     "email-placeholder": "ange din e-postadress",
     "sign-up": "Registrera dig",
-    "ref-code": "referral user (optional)",
+    "ref-code": "hänvisningsanvändare (valfritt)",
     "success-message-1": "Vi har skickat ett mail till {email}.",
     "success-message-2": "Follow instructions to complete signup process.",
     "login-1": "Redan medlem?",
