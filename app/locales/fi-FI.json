@@ -101,7 +101,7 @@
     "username-placeholder": "pick a username",
     "email-placeholder": "enter your email address",
     "sign-up": "Sign Up",
-    "ref-code": "reference code (optional)",
+    "ref-code": "referral user (optional)",
     "success-message-1": "We've sent an email to {email}.",
     "success-message-2": "Follow instructions to complete signup process.",
     "login-1": "Already a member?",
