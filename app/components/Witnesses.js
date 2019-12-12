@@ -541,7 +541,7 @@ class Witnesses extends PureComponent {
         render: text => (
           <QuickProfile {...this.props} username={text} reputation={0}>
             <div className="witness-card">
-              <UserAvatar user={text} size="large" />
+              <UserAvatar {...this.props} user={text} size="large" />
               <span className="username">{text}</span>
             </div>
           </QuickProfile>

@@ -383,7 +383,11 @@ class SpsListItem extends PureComponent {
                   reputation={0}
                 >
                   <div className="user">
-                    <UserAvatar user={proposal.creator} size="large" />
+                    <UserAvatar
+                      {...this.props}
+                      user={proposal.creator}
+                      size="large"
+                    />
                     <span className="username">{proposal.creator}</span>
                   </div>
                 </QuickProfile>
@@ -396,7 +400,11 @@ class SpsListItem extends PureComponent {
                       reputation={0}
                     >
                       <div className="user">
-                        <UserAvatar user={proposal.receiver} size="large" />
+                        <UserAvatar
+                          {...this.props}
+                          user={proposal.receiver}
+                          size="large"
+                        />
                         <span className="username">{proposal.receiver}</span>
                       </div>
                     </QuickProfile>

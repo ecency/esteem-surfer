@@ -193,7 +193,7 @@ class QuickProfile extends Component {
                   style={{ backgroundImage: `url('${bgImage}')` }}
                 >
                   <div className="profile-avatar">
-                    <UserAvatar user={username} size="large" />
+                    <UserAvatar {...this.props} user={username} size="large" />
                     <div className="reputation">
                       {authorReputation(reputation)}
                     </div>

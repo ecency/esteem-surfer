@@ -683,7 +683,11 @@ class NavBar extends Component {
                   className="user-menu-trigger"
                   onClick={this.toggleMenu}
                 >
-                  <UserAvatar user={activeAccount.username} size="normal" />
+                  <UserAvatar
+                    {...this.props}
+                    user={activeAccount.username}
+                    size="normal"
+                  />
                 </a>
               </Fragment>
             )}

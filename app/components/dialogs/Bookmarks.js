@@ -91,7 +91,11 @@ class Bookmarks extends Component {
                   key={item._id}
                 >
                   <div className="bookmarks-list-item" role="none">
-                    <UserAvatar user={item.author} size="medium" />
+                    <UserAvatar
+                      {...this.props}
+                      user={item.author}
+                      size="medium"
+                    />
                     <div className="entry-link">
                       <span className="author">{item.author}</span>
                       <span className="permlink">{item.permlink}</span>
@@ -102,12 +106,11 @@ class Bookmarks extends Component {
             </div>
           </div>
         )}
-        {!loading &&
-          data.length < 1 && (
-            <div className="bookmarks-list">
-              <FormattedMessage id="bookmarks.empty-list" />
-            </div>
-          )}
+        {!loading && data.length < 1 && (
+          <div className="bookmarks-list">
+            <FormattedMessage id="bookmarks.empty-list" />
+          </div>
+        )}
       </div>
     );
   }

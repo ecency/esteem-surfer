@@ -78,7 +78,7 @@ class ScheduleListItem extends Component {
         <div className="item-header">
           <div className="author-part">
             <div className="author-avatar">
-              <UserAvatar user={author} size="small" />
+              <UserAvatar {...this.props} user={author} size="small" />
             </div>
             <div className="author">
               {author}{' '}

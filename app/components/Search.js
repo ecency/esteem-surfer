@@ -59,7 +59,7 @@ class SearchListItem extends PureComponent {
           >
             <div className="author-part">
               <div className="author-avatar">
-                <UserAvatar user={entry.author} size="small" />
+                <UserAvatar {...this.props} user={entry.author} size="small" />
               </div>
               <div className="author">
                 {entry.author}{' '}

@@ -377,7 +377,11 @@ class ReplyListItem extends PureComponent {
             >
               <div className="author-part">
                 <div className="author-avatar">
-                  <UserAvatar user={reply.author} size="medium" />
+                  <UserAvatar
+                    {...this.props}
+                    user={reply.author}
+                    size="medium"
+                  />
                 </div>
                 <div className="author">
                   <span className="author-name">{reply.author}</span>
@@ -1204,7 +1208,11 @@ class Entry extends PureComponent {
                 >
                   <div className="author-part">
                     <div className="author-avatar">
-                      <UserAvatar user={entry.author} size="medium" />
+                      <UserAvatar
+                        {...this.props}
+                        user={entry.author}
+                        size="medium"
+                      />
                     </div>
                     <div className="author">
                       <span className="author-name">{entry.author}</span>

@@ -139,7 +139,7 @@ class Profile extends Component {
     return (
       <div className="profile-area">
         <div className="account-avatar">
-          <UserAvatar user={username} size="xLarge" />
+          <UserAvatar {...this.props} user={username} size="xLarge" />
           {reputation && <div className="reputation">{reputation}</div>}
         </div>
 
@@ -339,8 +339,9 @@ class Profile extends Component {
                   this.setState({ profileEditModalVisible: false });
                 }}
                 onUpdate={() => {
-                  const { onUpdate } = this.props;
+                  const { onUpdate, actions } = this.props;
                   onUpdate();
+                  actions.updateActiveAccount();
                   this.setState({ profileEditModalVisible: false });
                 }}
               />
@@ -390,7 +391,10 @@ Profile.propTypes = {
   account: PropTypes.instanceOf(Object),
   intl: PropTypes.instanceOf(Object).isRequired,
   activeAccount: PropTypes.instanceOf(Object),
-  onUpdate: PropTypes.func.isRequired
+  onUpdate: PropTypes.func.isRequired,
+  actions: PropTypes.shape({
+    updateActiveAccount: PropTypes.func.isRequired
+  }).isRequired
 };
 
 export class AccountMenu extends Component {

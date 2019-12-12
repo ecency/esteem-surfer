@@ -118,7 +118,11 @@ class ActivityListItem extends Component {
 
             <div className="source">
               <AccountLink {...this.props} username={activity.source}>
-                <UserAvatar user={activity.source} size="medium" />
+                <UserAvatar
+                  {...this.props}
+                  user={activity.source}
+                  size="medium"
+                />
               </AccountLink>
             </div>
 
@@ -630,7 +634,11 @@ class LeaderBoard extends Component {
                 <Col span={3}>
                   <AccountLink {...this.props} username={item._id}>
                     <div className="avatar">
-                      <UserAvatar user={item._id} size="medium" />
+                      <UserAvatar
+                        {...this.props}
+                        user={item._id}
+                        size="medium"
+                      />
                     </div>
                   </AccountLink>
                 </Col>

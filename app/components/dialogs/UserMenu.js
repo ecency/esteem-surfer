@@ -158,7 +158,7 @@ class UserMenu extends Component {
       <div className="user-menu-content">
         <div className="menu-header">
           <span className="display-name">{displayName}</span>
-          <UserAvatar user={username} size="normal" />
+          <UserAvatar {...this.props} user={username} size="normal" />
         </div>
         <div className="user-menu-items">
           <a

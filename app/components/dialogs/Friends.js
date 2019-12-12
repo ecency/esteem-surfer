@@ -201,7 +201,7 @@ class Friends extends Component {
                 onClick={afterClick}
               >
                 <div className="friends-list-item">
-                  <UserAvatar user={item.name} size="large" />
+                  <UserAvatar {...this.props} user={item.name} size="large" />
                   <div className="friend-name">{item.name}</div>
                   <div className="friend-full-name">{item.full_name}</div>
                 </div>

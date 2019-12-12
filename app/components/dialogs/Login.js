@@ -83,7 +83,7 @@ class AccountItem extends Component {
         }}
         role="none"
       >
-        <UserAvatar user={account.username} size="normal" />{' '}
+        <UserAvatar {...this.props} user={account.username} size="normal" />{' '}
         <span className="username">@{account.username}</span>
         {activeUsername === account.username && <div className="check-mark" />}
         <div className="space" />

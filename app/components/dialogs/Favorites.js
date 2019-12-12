@@ -93,7 +93,11 @@ class Favorites extends Component {
                     this.accountClicked(item);
                   }}
                 >
-                  <UserAvatar user={item.account} size="medium" />
+                  <UserAvatar
+                    {...this.props}
+                    user={item.account}
+                    size="medium"
+                  />
                   <span className="account">{item.account}</span>
                 </div>
               ))}

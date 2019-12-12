@@ -465,7 +465,11 @@ class DelegateCls extends PureComponent {
                         username={from}
                       >
                         <div className="from-user">
-                          <UserAvatar user={from} size="xLarge" />
+                          <UserAvatar
+                            {...this.props}
+                            user={from}
+                            size="xLarge"
+                          />
                         </div>
                       </QuickProfile>
                       <div className="arrow">{arrowRight}</div>
@@ -475,7 +479,7 @@ class DelegateCls extends PureComponent {
                         username={to}
                       >
                         <div className="to-user">
-                          <UserAvatar user={to} size="xLarge" />
+                          <UserAvatar {...this.props} user={to} size="xLarge" />
                         </div>
                       </QuickProfile>
                     </div>

@@ -119,7 +119,11 @@ class EntryListItem extends Component {
             <AccountLink {...this.props} username={entry.author}>
               <div className="author-part">
                 <div className="author-avatar">
-                  <UserAvatar user={entry.author} size="small" />
+                  <UserAvatar
+                    {...this.props}
+                    user={entry.author}
+                    size="small"
+                  />
                 </div>
                 <div className="author">
                   {entry.author}{' '}
@@ -137,7 +141,11 @@ class EntryListItem extends Component {
             >
               <div className="author-part">
                 <div className="author-avatar">
-                  <UserAvatar user={entry.author} size="small" />
+                  <UserAvatar
+                    {...this.props}
+                    user={entry.author}
+                    size="small"
+                  />
                 </div>
                 <div className="author">
                   {entry.author}{' '}
