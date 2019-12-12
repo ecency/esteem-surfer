@@ -396,11 +396,11 @@ export const estmCalc = (username, amount) =>
     .get(`${BACKEND_URL}/api/estm-calc?username=${username}&amount=${amount}`)
     .then(resp => resp.data);
 
-export const signUp = (username, email, refCode) =>
+export const signUp = (username, email, referral) =>
   axios
     .post(`${BACKEND_URL}/api/signup/account-create`, {
       username,
       email,
-      ref_code: refCode
+      referral
     })
     .then(resp => resp.data);
