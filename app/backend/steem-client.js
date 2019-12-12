@@ -321,7 +321,13 @@ export const updateProfile = (account, pin, newProfile) => {
 
     const { accountData } = account;
 
-    const curJsonMeta = JSON.parse(accountData.json_metadata);
+    let curJsonMeta;
+    try {
+      curJsonMeta = JSON.parse(accountData.json_metadata);
+    } catch (e) {
+      curJsonMeta = {};
+    }
+
     const newJsonMeta = Object.assign({}, curJsonMeta, newProfile);
 
     return client.broadcast.updateAccount(

@@ -144,7 +144,12 @@ class ProfileEdit extends PureComponent {
       profileImage
     } = this.state;
 
-    const curJsonMeta = JSON.parse(account.json_metadata);
+    let curJsonMeta;
+    try {
+      curJsonMeta = JSON.parse(account.json_metadata);
+    } catch (e) {
+      curJsonMeta = {};
+    }
 
     const newProfile = {
       name,
