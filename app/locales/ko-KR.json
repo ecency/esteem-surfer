@@ -15,7 +15,7 @@
     "save": "저장",
     "done": "완료",
     "select": "선택하기",
-    "update": "Update"
+    "update": "업데이트"
   },
   "footer": {
     "faq": "FAQ",
@@ -90,14 +90,14 @@
     "error-user-fetch": "사용자 데이터를 조회할 수 없습니다",
     "error-user-not-found": "존재하지 않는 사용자입니다",
     "error-authenticate": "사용자 이름 또는 비밀번호/WIF가 올바르지 않습니다",
-    "create-account-text-1": "Don't have an account?",
+    "create-account-text-1": "계정이 없으신가요?",
     "create-account-text-2": "Sign up now!",
     "login-with-sc": "steemconnect를 이용해 로그인하세요",
     "divider-text": "또는",
     "sc-note": "주의: Steemconnect에서 당신의 보상 트랜잭션에 대해 일정 수수료를 부과할 수도 있습니다"
   },
   "sign-up": {
-    "title": "Sign Up",
+    "title": "회원 가입",
     "username-placeholder": "pick a username",
     "email-placeholder": "enter your email address",
     "sign-up": "Sign Up",
@@ -105,7 +105,7 @@
     "success-message-1": "We've sent an email to {email}.",
     "success-message-2": "Follow instructions to complete signup process.",
     "login-1": "Already a member?",
-    "login-2": "Login",
+    "login-2": "로그인",
     "login-btn-label": "Back to Login"
   },
   "create-pin-code": {
@@ -228,8 +228,8 @@
     "points-get": "GET ESTM",
     "witness-voting": "증인",
     "sps-voting": "SPS 투표",
-    "profile-editor": "Profile Editor",
-    "password": "Password"
+    "profile-editor": "프로필 편집기",
+    "password": "비밀번호"
   },
   "redeem": {
     "user-label": "사용자",
@@ -571,8 +571,8 @@
     "title": "@{n} 님에게 임대한 스팀 파워"
   },
   "estm-purchase": {
-    "title": "ESTM purchase",
-    "purchase": "Purchase"
+    "title": "ESTM 구매",
+    "purchase": "구매"
   },
   "edit-history": {
     "title": "편집 내역",
@@ -585,23 +585,23 @@
     "read-time-n-min": "~ {n} 분 이상 분량"
   },
   "profile-edit": {
-    "title": "Profile Editor",
-    "name": "Display Name",
-    "about": "About",
-    "cover-image": "Cover Image",
-    "profile-image": "Profile Image",
-    "website": "Website",
-    "location": "Location",
-    "updated": "Profile updated successfully!"
+    "title": "프로필 편집기",
+    "name": "이름",
+    "about": "소개",
+    "cover-image": "커버 사진",
+    "profile-image": "프로필 사진",
+    "website": "웹사이트",
+    "location": "위치",
+    "updated": "프로필이 업데이트되었습니다!"
   },
   "password-update": {
-    "title": "Password",
-    "cur-pass": "Current password",
-    "new-pass": "New password",
-    "new-pass2": "Confirm new password",
-    "error-current": "Enter current password",
-    "error-new": "Enter new password",
-    "error-new2": "Passwords must be same",
-    "updated": "Password updated successfully!"
+    "title": "비밀번호",
+    "cur-pass": "기존 비밀번호",
+    "new-pass": "새로운 비밀번호",
+    "new-pass2": "새로운 비밀번호 확인",
+    "error-current": "기존 비밀번호를 입력하세요",
+    "error-new": "새로운 비밀번호를 입력하세요",
+    "error-new2": "비밀번호는 같아야 합니다.",
+    "updated": "비밀번호가 업데이트되었습니다!"
   }
 }
