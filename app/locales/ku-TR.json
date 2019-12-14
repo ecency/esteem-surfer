@@ -22,29 +22,29 @@
     "about": "Derbar"
   },
   "entry-index": {
-    "tags": "Popular Tags",
+    "tags": "Tagên Populer",
     "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
-    "filter-feed": "Feed"
+    "filter-hot": "Germ",
+    "filter-created": "Nû",
+    "filter-active": "Çalak",
+    "filter-promoted": "Sponsorkirî",
+    "filter-votes": "Deng",
+    "filter-children": "Şîrove",
+    "filter-feed": "Herik"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
+    "potential-payout": "Peredayîna Texmînî",
     "promoted": "Promoted",
     "author-payout": "Author Payout",
     "curation-payout": "Curation Payout",
     "payout-date": "Payout"
   },
   "entry-votes": {
-    "n-more": "{n} more",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
+    "n-more": "{n} hebê din",
+    "author": "Nivîskar",
+    "reward": "Xelat",
+    "percent": "Sede",
+    "time": "Dem",
     "modal-title": "Voters ({n})"
   },
   "entry-list-item": {
@@ -60,12 +60,12 @@
     "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
-    "title": "Settings",
+    "title": "Sazkarî",
     "currency": "Currency",
     "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
     "currency-changed": "Currency Changed",
-    "locale": "Language",
-    "locale-changed": "Language changed",
+    "locale": "Ziman",
+    "locale-changed": "Ziman hate guhertin",
     "server": "Server",
     "server-invalid-address": "Invalid server address",
     "server-connecting": "Connecting to '{server}'...",
