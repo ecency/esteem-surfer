@@ -101,7 +101,7 @@
     "username-placeholder": "оберіть ім'я користувача",
     "email-placeholder": "введіть свою електронну пошту",
     "sign-up": "Зареєструватися",
-    "ref-code": "referral user (optional)",
+    "ref-code": "реферал (необов'язково)",
     "success-message-1": "Ми надіслали лист на {email}.",
     "success-message-2": "Дотримуйтесь інструкцій для завершення процесу реєстрації.",
     "login-1": "Вже зареєстровані?",
