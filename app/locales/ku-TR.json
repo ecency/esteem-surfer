@@ -1,25 +1,25 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "Girêdana Înternetê Nîn e"
   },
   "g": {
-    "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
-    "yes": "Yes",
-    "no": "No",
-    "delete": "Delete",
-    "cancel": "Cancel",
-    "ok": "OK",
-    "edit": "Edit",
+    "compose-entry": "Şandî Biafirîne",
+    "are-you-sure": "Tu bawer î?",
+    "yes": "Erê",
+    "no": "Na",
+    "delete": "Jê bibe",
+    "cancel": "Betal",
+    "ok": "BAŞ e",
+    "edit": "Serrast bike",
     "server-error": "Process could not be completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select",
-    "update": "Update"
+    "save": "Tomar bike",
+    "done": "Qediya",
+    "select": "Hilbijêre",
+    "update": "Hildemîne"
   },
   "footer": {
-    "faq": "FAQ",
-    "about": "About"
+    "faq": "PPP",
+    "about": "Derbar"
   },
   "entry-index": {
     "tags": "Popular Tags",
