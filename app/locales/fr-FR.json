@@ -15,7 +15,7 @@
     "save": "Sauvegarder",
     "done": "Terminé",
     "select": "Sélectionner",
-    "update": "Update"
+    "update": "Mettre à jour"
   },
   "footer": {
     "faq": "FAQ",
@@ -51,7 +51,7 @@
     "reblogged": "reblogué par {n}",
     "promoted": "sponsorisé",
     "promote": "promouvoir",
-    "boost": "boost"
+    "boost": "accélérer"
   },
   "entry-reblog": {
     "reblog": "Rebloguer",
@@ -229,7 +229,7 @@
     "witness-voting": "Témoins",
     "sps-voting": "SPS Voting",
     "profile-editor": "Editeur de profil",
-    "password": "Password"
+    "password": "Mot de passe"
   },
   "redeem": {
     "user-label": "Utilisateur",
@@ -247,15 +247,15 @@
   "redeem-promote": {
     "page-title": "Promouvoir",
     "duration-label": "Durée",
-    "duration-help": "Drag the slider to change the duration",
+    "duration-help": "Faites glisser le curseur pour modifier la durée",
     "day": "jour",
     "days": "jours",
-    "success-message": "Your request submitted. It will be activated in a couple minutes."
+    "success-message": "Votre demande a été soumise. Elle sera activée dans quelques minutes."
   },
   "redeem-boost": {
-    "page-title": "Boost",
+    "page-title": "Accélérer",
     "amount-label": "Montant",
-    "amount-help": "Drag the slider to change the amount",
+    "amount-help": "Faites glisser le curseur pour ajuster le montant",
     "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
@@ -366,7 +366,7 @@
     "similar-entries": "Publications similaires",
     "fetch-error": "Server timeout because response size is too big",
     "promote": "promouvoir",
-    "boost": "boost",
+    "boost": "accélérer",
     "more-replies": "afficher plus de réponses"
   },
   "navbar": {
@@ -592,16 +592,16 @@
     "profile-image": "Image de profil",
     "website": "Site Web",
     "location": "Localisation",
-    "updated": "Profile updated successfully!"
+    "updated": "Profil mis à jour avec succès !"
   },
   "password-update": {
-    "title": "Password",
-    "cur-pass": "Current password",
-    "new-pass": "New password",
-    "new-pass2": "Confirm new password",
-    "error-current": "Enter current password",
-    "error-new": "Enter new password",
-    "error-new2": "Passwords must be same",
-    "updated": "Password updated successfully!"
+    "title": "Mot de passe",
+    "cur-pass": "Mot de passe actuel",
+    "new-pass": "Nouveau mot de passe",
+    "new-pass2": "Confirmer le nouveau mot de passe",
+    "error-current": "Saisissez le mot de passe actuel",
+    "error-new": "Saisissez le nouveau mot de passe",
+    "error-new2": "Les mots de passe doivent être identiques",
+    "updated": "Le mot de passe a été mise à jour avec succès !"
   }
 }
