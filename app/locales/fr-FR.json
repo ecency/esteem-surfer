@@ -237,7 +237,7 @@
     "post-label": "Post",
     "post-input-placeholder": "author/permlink",
     "post-input-title": "Suggestions",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "key-required-err": "La clé active n'a pas pu être trouvée pour le compte sélectionné. Veuillez vous assurer que vous êtes connecté avec les informations d'identification appropriées.",
     "post-error": "Adresse de publication invalide",
     "post-error-exists": "La publication est déjà promue",
     "funds-error": "Fonds insuffisants",
@@ -327,7 +327,7 @@
     "move": "Déplacer vers brouillons",
     "moved": "Déplacé vers brouillons",
     "success-message": "Publié avec succès.",
-    "error-message": "Could not publish due to a server error."
+    "error-message": "Impossible de publier en raison d'une erreur de serveur."
   },
   "bookmarks": {
     "title": "Signets",
@@ -486,7 +486,7 @@
     "voter-proxy-sp": "Proxy SP",
     "voter-total-sp": "Total SP",
     "voted": "Proposal #{n} voted",
-    "vote-removed": "Vote removed for proposal #{n}"
+    "vote-removed": "Vote supprimé pour la proposition #{n}"
   },
   "transfer": {
     "transfer-title": "Transférer vers un compte",
@@ -528,7 +528,7 @@
   },
   "delegate": {
     "title": "Déléguer",
-    "sub-title": "Delegate Steem Power",
+    "sub-title": "Steem Power délégué",
     "slider-help": "Faites glisser le curseur pour ajuster le montant",
     "confirm-title": "Confirmer la délégation",
     "confirm-sub-title": "S'il vous plaît, vérifiez si tout est correct",
@@ -540,7 +540,7 @@
     "empty-list": "Il n'y a rien ici"
   },
   "power-down": {
-    "title": "Power Down",
+    "title": "Diminuer son influence",
     "sub-title": "Power Down Steem Power",
     "account": "Compte",
     "incoming-funds": "Fonds entrants",
