@@ -1612,6 +1612,7 @@ export class SectionPoints extends Component {
     const iconTransfer = 'compare_arrows';
     const iconReward = 'local_activity';
     const iconMoney = 'monetization_on';
+    const iconReferral = 'gps_fixed';
 
     const isMyPage = activeAccount && activeAccount.username === username;
 
@@ -1829,6 +1830,10 @@ export class SectionPoints extends Component {
                   case 150:
                     icon = iconReward;
                     lKey = 'delegation';
+                    break;
+                  case 160:
+                    icon = iconReferral;
+                    lKey = 'referral';
                     break;
                   case 998:
                     icon = iconTransfer;
