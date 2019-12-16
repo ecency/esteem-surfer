@@ -102,7 +102,7 @@
     "email-placeholder": "add meg az e-mail címed",
     "sign-up": "Regisztráció",
     "ref-code": "referral user (optional)",
-    "success-message-1": "We've sent an email to {email}.",
+    "success-message-1": "Küldtünk egy e-mailt ide {email}.",
     "success-message-2": "Follow instructions to complete signup process.",
     "login-1": "Már tag vagy?",
     "login-2": "Bejelentkezés",
@@ -591,7 +591,7 @@
     "cover-image": "Cover Image",
     "profile-image": "Profil kép",
     "website": "Weboldal",
-    "location": "Location",
+    "location": "Tartózkodási hely",
     "updated": "Profil frissítése sikeresen megtörtént!"
   },
   "password-update": {
