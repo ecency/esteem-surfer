@@ -104,9 +104,9 @@
     "ref-code": "referral user (optional)",
     "success-message-1": "We've sent an email to {email}.",
     "success-message-2": "Follow instructions to complete signup process.",
-    "login-1": "Already a member?",
+    "login-1": "Már tag vagy?",
     "login-2": "Bejelentkezés",
-    "login-btn-label": "Back to Login"
+    "login-btn-label": "Vissza a belépéshez"
   },
   "create-pin-code": {
     "title": "PIN-kód létrehozása",
@@ -228,7 +228,7 @@
     "points-get": "Vásárolj ESTM-t",
     "witness-voting": "Tanúk",
     "sps-voting": "SPS szavazás",
-    "profile-editor": "Profile Editor",
+    "profile-editor": "Profil szerkesztés",
     "password": "Jelszó"
   },
   "redeem": {
@@ -571,7 +571,7 @@
     "title": "Delegált steem power neki @{n}"
   },
   "estm-purchase": {
-    "title": "ESTM purchase",
+    "title": "ESTM vásárlás",
     "purchase": "Vásárlás"
   },
   "edit-history": {
@@ -585,19 +585,19 @@
     "read-time-n-min": "~ {n} perc olvasás"
   },
   "profile-edit": {
-    "title": "Profile Editor",
+    "title": "Profil szerkesztés",
     "name": "Megjelenítendő név",
-    "about": "About",
+    "about": "Rólunk",
     "cover-image": "Cover Image",
     "profile-image": "Profil kép",
-    "website": "Website",
+    "website": "Weboldal",
     "location": "Location",
     "updated": "Profil frissítése sikeresen megtörtént!"
   },
   "password-update": {
     "title": "Jelszó",
     "cur-pass": "Jelenlegi jelszó",
-    "new-pass": "New password",
+    "new-pass": "Új jelszó",
     "new-pass2": "Új jelszó megerősítése",
     "error-current": "Add meg aktuális jelszavad",
     "error-new": "Add meg az új jelszavadat",
