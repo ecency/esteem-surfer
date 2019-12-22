@@ -91,22 +91,22 @@
     "error-user-not-found": "Utilizatorul nu există",
     "error-authenticate": "Nume de utilizator sau parolă/WIF greșită",
     "create-account-text-1": "Don't have an account?",
-    "create-account-text-2": "Sign up now!",
+    "create-account-text-2": "Inregistrează-te acum!",
     "login-with-sc": "Autentificare cu",
     "divider-text": "SAU",
     "sc-note": "Note: Steemconnect poate percepe anumite taxe la tranzacțiile tale de recompensă"
   },
   "sign-up": {
-    "title": "Sign Up",
+    "title": "Înregistrează-te",
     "username-placeholder": "pick a username",
-    "email-placeholder": "enter your email address",
-    "sign-up": "Sign Up",
+    "email-placeholder": "introdu adresa de e-mail",
+    "sign-up": "Înregistrează-te",
     "ref-code": "referral user (optional)",
     "success-message-1": "We've sent an email to {email}.",
     "success-message-2": "Follow instructions to complete signup process.",
     "login-1": "Already a member?",
-    "login-2": "Login",
-    "login-btn-label": "Back to Login"
+    "login-2": "Autentificare",
+    "login-btn-label": "Inapoi la autentificare"
   },
   "create-pin-code": {
     "title": "Creează cod PIN",
