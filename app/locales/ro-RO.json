@@ -15,7 +15,7 @@
     "save": "Salvează",
     "done": "Efectuat",
     "select": "Selectează",
-    "update": "Update"
+    "update": "Actualizare"
   },
   "footer": {
     "faq": "Întrebări frecvente",
@@ -90,7 +90,7 @@
     "error-user-fetch": "Date utilizator nu au putut fi încărcate",
     "error-user-not-found": "Utilizatorul nu există",
     "error-authenticate": "Nume de utilizator sau parolă/WIF greșită",
-    "create-account-text-1": "Don't have an account?",
+    "create-account-text-1": "Nu ai un cont incă?",
     "create-account-text-2": "Inregistrează-te acum!",
     "login-with-sc": "Autentificare cu",
     "divider-text": "SAU",
@@ -98,13 +98,13 @@
   },
   "sign-up": {
     "title": "Înregistrează-te",
-    "username-placeholder": "pick a username",
+    "username-placeholder": "alege username",
     "email-placeholder": "introdu adresa de e-mail",
     "sign-up": "Înregistrează-te",
     "ref-code": "referral user (optional)",
-    "success-message-1": "We've sent an email to {email}.",
-    "success-message-2": "Follow instructions to complete signup process.",
-    "login-1": "Already a member?",
+    "success-message-1": "Ți-am trimis un e-mail la {email}.",
+    "success-message-2": "Urmează instrucțiunile pentru a finaliza procesul de înscriere.",
+    "login-1": "Ești deja membru?",
     "login-2": "Autentificare",
     "login-btn-label": "Inapoi la autentificare"
   },
@@ -225,11 +225,11 @@
     "points-promote": "Promovează",
     "points-boost": "Boost",
     "points-transfer": "Gift to someone",
-    "points-get": "GET ESTM",
+    "points-get": "OBȚINE ESTM",
     "witness-voting": "Martori",
     "sps-voting": "Votare SPS",
-    "profile-editor": "Profile Editor",
-    "password": "Password"
+    "profile-editor": "Editare profil",
+    "password": "Parolă"
   },
   "redeem": {
     "user-label": "Utilizator",
@@ -571,8 +571,8 @@
     "title": "Steem power delegat pentru @{n}"
   },
   "estm-purchase": {
-    "title": "ESTM purchase",
-    "purchase": "Purchase"
+    "title": "Cumpără ESTM",
+    "purchase": "Cumpărare"
   },
   "edit-history": {
     "title": "Istorie modificări",
@@ -585,23 +585,23 @@
     "read-time-n-min": "timp de citire ~ {n}"
   },
   "profile-edit": {
-    "title": "Profile Editor",
-    "name": "Display Name",
-    "about": "About",
+    "title": "Editare profil",
+    "name": "Numele afișat",
+    "about": "Despre",
     "cover-image": "Cover Image",
-    "profile-image": "Profile Image",
+    "profile-image": "Imaginea de profil",
     "website": "Website",
-    "location": "Location",
-    "updated": "Profile updated successfully!"
+    "location": "Locație",
+    "updated": "Profilul a fost actualizat cu succes!"
   },
   "password-update": {
-    "title": "Password",
-    "cur-pass": "Current password",
-    "new-pass": "New password",
-    "new-pass2": "Confirm new password",
-    "error-current": "Enter current password",
-    "error-new": "Enter new password",
-    "error-new2": "Passwords must be same",
-    "updated": "Password updated successfully!"
+    "title": "Parolă",
+    "cur-pass": "Parola curentă",
+    "new-pass": "Parolă nouă",
+    "new-pass2": "Confirmare parolă nouă",
+    "error-current": "Introdu parola curentă",
+    "error-new": "Introdu noua parolă",
+    "error-new2": "Parolele trebuie să fie identice",
+    "updated": "Parola a fost actualizată cu succes!"
   }
 }
