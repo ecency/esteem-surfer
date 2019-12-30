@@ -49,14 +49,14 @@
   },
   "entry-list-item": {
     "reblogged": "{n} によってリブログされました",
-    "promoted": "sponsored",
-    "promote": "promote",
-    "boost": "boost"
+    "promoted": "スポンサー",
+    "promote": "プロモート",
+    "boost": "ブースト"
   },
   "entry-reblog": {
     "reblog": "リブログ",
     "reblogged": "リブログ済み",
-    "modal-title": "Rebloggers ({n})",
+    "modal-title": "リブログ数 ({n})",
     "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
@@ -71,7 +71,7 @@
     "server-connecting": "{server} に接続しています...",
     "server-connect-error": "'{server}' に接続できませんでした。インターネット接続を確認してください。",
     "server-timeout-error": "'{server}'は動いていないようです",
-    "server-changed": "Server selection changed to {server}",
+    "server-changed": "選択されたサーバーが{server} に変更されました",
     "server-custom-address": "カスタムサーバーアドレス",
     "server-list-fetch-error": "サーバーリストを取得できませんでした",
     "push-notifications": "プッシュ通知",
@@ -83,7 +83,7 @@
     "accounts-title": "次のユーザーとしてログイン",
     "traditional-login-desc": "ユーザー名とパスワードでサインインしてください",
     "username-placeholder": "ユーザー名",
-    "password-placeholder": "password or WIF",
+    "password-placeholder": "パスワードまたはWIF",
     "login": "ログイン",
     "error-fields-required": "Please enter username and password/WIF",
     "error-public-key": "You entered a public key. Password/WIF required",
