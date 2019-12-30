@@ -110,8 +110,8 @@
   },
   "create-pin-code": {
     "title": "PINコードを作成",
-    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter PIN code",
+    "desc1": "あなたのデータを暗号化し、セキュリティを強化するためにPINコードを設定してください！",
+    "input-placeholder": "PINコードを入力",
     "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
     "created": "PIN code created"
   },
