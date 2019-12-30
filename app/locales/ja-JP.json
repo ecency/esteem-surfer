@@ -382,9 +382,9 @@
     "activities": "アクティビティ",
     "address-enter-url": "URLを入力",
     "address-enter-query": "検索クエリを入力",
-    "unclaimed-reward-notice": "You have unclaimed rewards",
-    "unclaimed-points-notice": "You have unclaimed points",
-    "search-no-matches": "No matches"
+    "unclaimed-reward-notice": "未請求の報酬があります",
+    "unclaimed-points-notice": "未請求のポイントがあります",
+    "search-no-matches": "該当なし"
   },
   "search": {
     "n-results-for-q": "{q} の検索結果の内{n} 件",
@@ -394,11 +394,11 @@
     "sort-newest": "日付"
   },
   "updater": {
-    "new-version-available": "New version is available",
+    "new-version-available": "新しいバージョンが利用可能です。",
     "update": "アップデート",
     "dismiss": "中止",
     "downloading": "新しいバージョンをダウンロードしています...",
-    "download-completed": "Download is completed",
+    "download-completed": "ダウンロードが完了",
     "restart": "再起動"
   },
   "context-menu": {
@@ -426,7 +426,7 @@
     "type-reblogs": "リブログ",
     "type-transfers": "送金",
     "vote-str": "{p}%のいいねをもらいました:",
-    "reply-str": "replied to your post:",
+    "reply-str": "あなたの投稿に返信されました:",
     "mention-str": "あなたを話題にしました:",
     "followed-str": "フォロー済み",
     "unfollowed-str": "フォロー解除済み",
