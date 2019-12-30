@@ -326,14 +326,14 @@
     "deleted": "Scheduled post is deleted",
     "move": "下書きへ移動",
     "moved": "下書きへ移動しました",
-    "success-message": "Published successfully.",
-    "error-message": "Could not publish due to a server error."
+    "success-message": "正常に投稿されました。",
+    "error-message": "サーバーエラーにより投稿できませんでした。"
   },
   "bookmarks": {
     "title": "ブックマーク",
     "load-error": "ブックマークをロードできませんでした",
     "empty-list": "何もありません",
-    "deleted": "Bookmark is removed",
+    "deleted": "ブックマークを削除しました",
     "search": "ブックマークを検索"
   },
   "favorites": {
@@ -357,16 +357,16 @@
     "bookmarkRemoved": "ブックマークから削除しました",
     "favorited": "お気に入りに追加しました",
     "favoriteRemoved": "お気に入りから削除しました",
-    "show-edit-history": "Show edit history",
+    "show-edit-history": "変更履歴を表示",
     "copy-clipboard": "クリップボードに内部リンクをコピー",
     "copied-clipboard": "コピーしました",
     "comment-entry-title": "1つのコメントスレッドを表示しています: ",
     "comment-entry-go-root": "全文を表示",
     "comment-entry-go-parent": "親コメントを表示",
-    "similar-entries": "Similar Posts",
-    "fetch-error": "Server timeout because response size is too big",
-    "promote": "promote",
-    "boost": "boost",
+    "similar-entries": "似ている投稿",
+    "fetch-error": "レスポンスサイズが大きすぎるためサーバータイムアウト",
+    "promote": "プロモート",
+    "boost": "ブースト",
     "more-replies": "show more replies"
   },
   "navbar": {
@@ -424,7 +424,7 @@
     "type-mentions": "メンション",
     "type-follows": "フォロー",
     "type-reblogs": "リブログ",
-    "type-transfers": "Transfers",
+    "type-transfers": "送金",
     "vote-str": "{p}%のいいねをもらいました:",
     "reply-str": "replied to your post:",
     "mention-str": "あなたを話題にしました:",
