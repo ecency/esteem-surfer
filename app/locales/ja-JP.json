@@ -367,18 +367,18 @@
     "fetch-error": "レスポンスサイズが大きすぎるためサーバータイムアウト",
     "promote": "プロモート",
     "boost": "ブースト",
-    "more-replies": "show more replies"
+    "more-replies": "返信を表示"
   },
   "navbar": {
     "settings": "設定",
     "change-theme": "テーマ変更",
-    "login": "Login to your account",
+    "login": "アカウントにログイン",
     "bookmark": "ブックマークに追加",
     "bookmarkRemove": "ブックマークから削除",
     "favorite": "お気に入りに追加",
     "favoriteRemove": "お気に入りから削除しました",
     "wallet": "マイウォレット",
-    "points": "My Points",
+    "points": "マイポイント",
     "activities": "アクティビティ",
     "address-enter-url": "URLを入力",
     "address-enter-query": "検索クエリを入力",
