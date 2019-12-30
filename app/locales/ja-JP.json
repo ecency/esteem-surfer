@@ -94,19 +94,19 @@
     "create-account-text-2": "今すぐ登録！",
     "login-with-sc": "次のものでログイン",
     "divider-text": "または",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "注意: Steemconnectはあなたの報酬から多少の手数料を徴収するかもしれません"
   },
   "sign-up": {
-    "title": "Sign Up",
-    "username-placeholder": "pick a username",
-    "email-placeholder": "enter your email address",
-    "sign-up": "Sign Up",
-    "ref-code": "referral user (optional)",
-    "success-message-1": "We've sent an email to {email}.",
+    "title": "サインアップ",
+    "username-placeholder": "ユーザー名を選択",
+    "email-placeholder": "メールアドレスを入力してください",
+    "sign-up": "サインアップ",
+    "ref-code": "紹介ユーザー (任意)",
+    "success-message-1": "{email} にメールを送信しました。",
     "success-message-2": "Follow instructions to complete signup process.",
-    "login-1": "Already a member?",
-    "login-2": "Login",
-    "login-btn-label": "Back to Login"
+    "login-1": "すでに会員の方はこちら",
+    "login-2": "ログイン",
+    "login-btn-label": "ログインに戻る"
   },
   "create-pin-code": {
     "title": "PINコードを作成",
