@@ -110,18 +110,18 @@
   },
   "create-pin-code": {
     "title": "PINコードを作成",
-    "desc1": "あなたのデータを暗号化し、セキュリティを強化するためにPINコードを設定してください！",
-    "input-placeholder": "PINコードを入力",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
-    "created": "PIN code created"
+    "desc1": "あなたのデータを暗号化し、セキュリティを強化するために暗証番号を設定してください！",
+    "input-placeholder": "暗証番号を入力",
+    "desc2": "重要な取引だけではなく、毎回の起動時に暗証番号を入力するよう促されます。",
+    "created": "暗証番号が作成されました"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
-    "input-placeholder": "Enter PIN code to continue",
+    "title": "暗証番号を入力",
+    "input-placeholder": "続行するには暗証番号を入力してください",
     "last-chance": "これが最後のチャンスです",
     "invalidate": "ああ、私はそれを忘れてしまいました...",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "invalidate-confirm": "暗証番号を本当に無効にしてよろしいですか？",
+    "invalidated": "暗証番号が無効化されました"
   },
   "user-menu": {
     "profile": "プロフィール",
@@ -147,7 +147,7 @@
     "section-blog": "ブログ",
     "section-comments": "コメント",
     "section-replies": "返信",
-    "section-points": "Points",
+    "section-points": "ポイント",
     "section-wallet": "ウォレット"
   },
   "follow-controls": {
@@ -166,15 +166,15 @@
     "section-comments": "コメント",
     "section-replies": "返信",
     "section-wallet": "ウォレット",
-    "section-points": "Points",
+    "section-points": "ポイント",
     "top-posts": "トップ記事",
     "unclaimed-rewards": "未請求の報酬",
     "estimated-value": "推定価格は、Steemの7日間の平均価格に基づいています。",
     "steem": "Steem",
-    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
+    "steem-description": "STEEMはいつでも送金や取引が可能なトークンです。STEEMはパワーアップと呼ばれるプロセスで、STEEMパワーに変換することができます。",
     "steem-power": "Steem Power",
     "steem-power-description": "Steem Powerは長期保有や投稿に投票することで、より大きな影響力を得ることができるトークンです。より多くのSteem Powerを保有することで、他の人の報酬に影響を与えることができ、投票による報酬を得ることができます。",
-    "steem-power-delegated": "Delegated Steem Power",
+    "steem-power-delegated": "委託されたSTEEMパワー",
     "steem-power-received": "Received Steem Power",
     "next-power-down-amount": "Next power down amount",
     "steem-power-total": "Total Steem Power",
