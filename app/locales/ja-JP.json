@@ -249,7 +249,7 @@
     "duration-label": "期間",
     "duration-help": "スライダーをドラッグして期間を変更",
     "day": "日",
-    "days": "日",
+    "days": "日間",
     "success-message": "あなたの要請は送信されました。数分内に有効化されます。"
   },
   "redeem-boost": {
@@ -484,7 +484,7 @@
     "voter": "投票者",
     "voter-sp": "SP",
     "voter-proxy-sp": "プロクシSP",
-    "voter-total-sp": "Total SP",
+    "voter-total-sp": "SP合計",
     "voted": "Proposal #{n} voted",
     "vote-removed": "Vote removed for proposal #{n}"
   },
@@ -527,8 +527,8 @@
     "recent-transfers": "最近の送金"
   },
   "delegate": {
-    "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
+    "title": "委託",
+    "sub-title": "Steemパワーを委託",
     "slider-help": "Drag the slider to adjust the amount",
     "confirm-title": "Confirm Delegation",
     "confirm-sub-title": "Please, check if everything is correct",
@@ -580,12 +580,12 @@
     "version": "Version {n}"
   },
   "word-count": {
-    "label": "{n} words",
-    "read-time-less-1-min": "< 1 min read",
-    "read-time-n-min": "~ {n} min read"
+    "label": "{n} 文字",
+    "read-time-less-1-min": "< 1分 読み時間",
+    "read-time-n-min": "~ {n} 分 読み時間"
   },
   "profile-edit": {
-    "title": "Profile Editor",
+    "title": "プロフィール編集",
     "name": "表示名",
     "about": "概要",
     "cover-image": "カバー画像",
