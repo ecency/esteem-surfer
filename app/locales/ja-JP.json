@@ -172,7 +172,7 @@
     "estimated-value": "推定価格は、Steemの7日間の平均価格に基づいています。",
     "steem": "Steem",
     "steem-description": "STEEMはいつでも送金や取引が可能なトークンです。STEEMはパワーアップと呼ばれるプロセスで、STEEMパワーに変換することができます。",
-    "steem-power": "Steem Power",
+    "steem-power": "Steemパワー",
     "steem-power-description": "Steem Powerは長期保有や投稿に投票することで、より大きな影響力を得ることができるトークンです。より多くのSteem Powerを保有することで、他の人の報酬に影響を与えることができ、投票による報酬を得ることができます。",
     "steem-power-delegated": "委託されたSTEEMパワー",
     "steem-power-received": "受領したSTEEMパワー",
@@ -534,18 +534,18 @@
     "confirm-sub-title": "すべて正しいか確認してください",
     "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
     "success-sub-title": "委託が完了しました",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "insufficient-vesting": "Vesting sharesが不十分です{a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "何もありません"
   },
   "power-down": {
     "title": "パワーダウン",
-    "sub-title": "Power Down Steem Power",
-    "account": "Account",
+    "sub-title": "Steemパワーをパワーダウン",
+    "account": "アカウント",
     "incoming-funds": "Incoming Funds",
     "begin": "Begin Power Down",
-    "stop": "Stop",
+    "stop": "中止",
     "estimated-note": "Estimated Weekly",
     "withdraw-accounts": "Destination Account(s)",
     "add-withdraw-account": "Add withdraw account"
@@ -577,7 +577,7 @@
   "edit-history": {
     "title": "Edit History",
     "show-diff": "Show Difference",
-    "version": "Version {n}"
+    "version": "バージョン {n}"
   },
   "word-count": {
     "label": "{n} 文字",
