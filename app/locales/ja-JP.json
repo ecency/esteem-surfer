@@ -239,17 +239,17 @@
     "post-input-title": "候補",
     "key-required-err": "選択されたアカウントのアクティブキーが見つかりませんでした。適切な認証情報でログインしていることを確認してください。",
     "post-error": "有効な投稿アドレスではありません",
-    "post-error-exists": "The post is already promoted",
-    "funds-error": "Insufficient funds",
-    "submit": "Submit",
-    "go-back": "Go Back"
+    "post-error-exists": "この投稿は既にプロモートされています",
+    "funds-error": "資金不足",
+    "submit": "送信",
+    "go-back": "戻る"
   },
   "redeem-promote": {
-    "page-title": "Promote",
-    "duration-label": "Duration",
-    "duration-help": "Drag the slider to change the duration",
-    "day": "day",
-    "days": "days",
+    "page-title": "プロモート",
+    "duration-label": "期間",
+    "duration-help": "スライダーをドラッグして期間を変更",
+    "day": "日",
+    "days": "日",
     "success-message": "Your request submitted. It will be activated in a couple minutes."
   },
   "redeem-boost": {
