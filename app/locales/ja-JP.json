@@ -228,7 +228,7 @@
     "points-get": "ESTMを購入",
     "witness-voting": "Witness",
     "sps-voting": "SPS投票",
-    "profile-editor": "プロファイル編集",
+    "profile-editor": "プロフィール編集",
     "password": "パスワード"
   },
   "redeem": {
@@ -588,20 +588,20 @@
     "title": "Profile Editor",
     "name": "表示名",
     "about": "概要",
-    "cover-image": "Cover Image",
-    "profile-image": "Profile Image",
-    "website": "Website",
-    "location": "Location",
-    "updated": "Profile updated successfully!"
+    "cover-image": "カバー画像",
+    "profile-image": "プロフィール画像",
+    "website": "ウェブサイト",
+    "location": "場所",
+    "updated": "プロフィールを保存しました！"
   },
   "password-update": {
-    "title": "Password",
-    "cur-pass": "Current password",
-    "new-pass": "New password",
-    "new-pass2": "Confirm new password",
-    "error-current": "Enter current password",
-    "error-new": "Enter new password",
-    "error-new2": "Passwords must be same",
+    "title": "パスワード",
+    "cur-pass": "現在のパスワード",
+    "new-pass": "新しいパスワード",
+    "new-pass2": "新しいパスワードの確認",
+    "error-current": "現在のパスワードを入力",
+    "error-new": "新しいパスワードを入力",
+    "error-new2": "パスワードが一致していません",
     "updated": "Password updated successfully!"
   }
 }
