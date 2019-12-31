@@ -485,12 +485,12 @@
     "voter-sp": "SP",
     "voter-proxy-sp": "プロクシSP",
     "voter-total-sp": "SP合計",
-    "voted": "Proposal #{n} voted",
+    "voted": "提案 #{n} 投票済",
     "vote-removed": "Vote removed for proposal #{n}"
   },
   "transfer": {
     "transfer-title": "アカウントに送金",
-    "transfer-estm-title": "Gift to Account",
+    "transfer-estm-title": "アカウントへ贈る",
     "transfer-sub-title": "別のSteemアカウントに資金を移動します",
     "transfer-saving-title": "貯蓄口座に送る",
     "transfer-saving-sub-title": "引き出しに3日間の待ち時間を設けて資金を守ります",
@@ -513,7 +513,7 @@
     "memo": "メモ",
     "memo-placeholder": "ここにメモを入力してください",
     "memo-help": "このメモは公開されます",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "key-required-err": "選択されたアカウントのアクティブキーが見つかりませんでした。適切な認証情報でログインしていることを確認してください。",
     "next": "次",
     "confirm-title": "送金確認",
     "confirm-sub-title": "すべて正しいか確認してください",
@@ -529,18 +529,18 @@
   "delegate": {
     "title": "委託",
     "sub-title": "Steemパワーを委託",
-    "slider-help": "Drag the slider to adjust the amount",
-    "confirm-title": "Confirm Delegation",
-    "confirm-sub-title": "Please, check if everything is correct",
+    "slider-help": "スライダーをドラッグして金額を調整",
+    "confirm-title": "委託の確認",
+    "confirm-sub-title": "すべて正しいか確認してください",
     "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "Delegation completed",
+    "success-sub-title": "委託が完了しました",
     "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
   },
   "delegation-list": {
     "empty-list": "Nothing here"
   },
   "power-down": {
-    "title": "Power Down",
+    "title": "パワーダウン",
     "sub-title": "Power Down Steem Power",
     "account": "Account",
     "incoming-funds": "Incoming Funds",
