@@ -56,7 +56,7 @@
   "entry-reblog": {
     "reblog": "Återblogga",
     "reblogged": "Återbloggat",
-    "modal-title": "Rebloggers ({n})",
+    "modal-title": "Återbloggare ({n})",
     "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
@@ -106,7 +106,7 @@
     "success-message-2": "Follow instructions to complete signup process.",
     "login-1": "Redan medlem?",
     "login-2": "Logga in",
-    "login-btn-label": "Back to Login"
+    "login-btn-label": "Tillbaka till inloggning"
   },
   "create-pin-code": {
     "title": "Skapa PIN-kod",
@@ -424,7 +424,7 @@
     "type-mentions": "Omnämningar",
     "type-follows": "Följer",
     "type-reblogs": "Återblogga",
-    "type-transfers": "Transfers",
+    "type-transfers": "Överföringar",
     "vote-str": "{p}% gillar ditt inlägg:",
     "reply-str": "svarade ditt inlägg:",
     "mention-str": "nämnt dig i:",
