@@ -483,7 +483,7 @@
     "voters": "提案への投票者",
     "voter": "投票者",
     "voter-sp": "SP",
-    "voter-proxy-sp": "Proxy SP",
+    "voter-proxy-sp": "プロクシSP",
     "voter-total-sp": "Total SP",
     "voted": "Proposal #{n} voted",
     "vote-removed": "Vote removed for proposal #{n}"
@@ -602,6 +602,6 @@
     "error-current": "現在のパスワードを入力",
     "error-new": "新しいパスワードを入力",
     "error-new2": "パスワードが一致していません",
-    "updated": "Password updated successfully!"
+    "updated": "パスワードが変更されました！"
   }
 }
