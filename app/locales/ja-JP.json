@@ -103,7 +103,7 @@
     "sign-up": "サインアップ",
     "ref-code": "紹介ユーザー (任意)",
     "success-message-1": "{email} にメールを送信しました。",
-    "success-message-2": "Follow instructions to complete signup process.",
+    "success-message-2": "手順に従って登録の手続きを完了しましょう。",
     "login-1": "すでに会員の方はこちら",
     "login-2": "ログイン",
     "login-btn-label": "ログインに戻る"
@@ -486,7 +486,7 @@
     "voter-proxy-sp": "プロクシSP",
     "voter-total-sp": "SP合計",
     "voted": "提案 #{n} 投票済",
-    "vote-removed": "Vote removed for proposal #{n}"
+    "vote-removed": "提案への投票は削除されました #{n}"
   },
   "transfer": {
     "transfer-title": "アカウントに送金",
@@ -532,7 +532,7 @@
     "slider-help": "スライダーをドラッグして金額を調整",
     "confirm-title": "委託の確認",
     "confirm-sub-title": "すべて正しいか確認してください",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> 委託する <span class=\"to-user\">{to}</span>",
     "success-sub-title": "委託が完了しました",
     "insufficient-vesting": "Vesting sharesが不十分です{a} VESTS"
   },
@@ -554,7 +554,7 @@
     "title": "引出口座を追加",
     "to": "アカウント",
     "percentage": "パーセンテージ",
-    "slider-help": "Percentage of Power Down to this account",
+    "slider-help": "このアカウントのパワーダウンパーセンテージ",
     "auto-power-down": "対象のアカウントを自動的にパワーアップ"
   },
   "friends": {
