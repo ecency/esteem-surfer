@@ -543,19 +543,19 @@
     "title": "パワーダウン",
     "sub-title": "Steemパワーをパワーダウン",
     "account": "アカウント",
-    "incoming-funds": "Incoming Funds",
-    "begin": "Begin Power Down",
+    "incoming-funds": "入ってくる資金",
+    "begin": "パワーダウン開始",
     "stop": "中止",
-    "estimated-note": "Estimated Weekly",
-    "withdraw-accounts": "Destination Account(s)",
-    "add-withdraw-account": "Add withdraw account"
+    "estimated-note": "毎週推定される",
+    "withdraw-accounts": "送金先口座",
+    "add-withdraw-account": "引出口座を追加"
   },
   "withdraw-route": {
-    "title": "Add withdraw account",
-    "to": "Account",
-    "percentage": "Percentage",
+    "title": "引出口座を追加",
+    "to": "アカウント",
+    "percentage": "パーセンテージ",
     "slider-help": "Percentage of Power Down to this account",
-    "auto-power-down": "Automatically power up the target account"
+    "auto-power-down": "対象のアカウントを自動的にパワーアップ"
   },
   "friends": {
     "followers-title": "フォローされている ({count})",
