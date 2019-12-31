@@ -558,25 +558,25 @@
     "auto-power-down": "Automatically power up the target account"
   },
   "friends": {
-    "followers-title": "Followers ({count})",
-    "following-title": "Following ({count})",
-    "load-more": "Load More",
-    "empty-list": "Nothing here",
-    "search-placeholder": "Search users"
+    "followers-title": "フォローされている ({count})",
+    "following-title": "フォローしている ({count})",
+    "load-more": "もっと表示",
+    "empty-list": "何もありません",
+    "search-placeholder": "ユーザーを検索"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "委託されたsteemパワー @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "委託したsteemパワー @{n}"
   },
   "estm-purchase": {
-    "title": "ESTM purchase",
-    "purchase": "Purchase"
+    "title": "ESTM購入",
+    "purchase": "購入"
   },
   "edit-history": {
-    "title": "Edit History",
-    "show-diff": "Show Difference",
+    "title": "編集履歴",
+    "show-diff": "相違箇所を表示",
     "version": "バージョン {n}"
   },
   "word-count": {
