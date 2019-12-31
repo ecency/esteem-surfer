@@ -444,7 +444,7 @@
     "leaderboard-weekly": "週間",
     "leaderboard-monthly": "月間",
     "leaderboard-header-score": "アクティビティ",
-    "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
+    "leaderboard-header-score-tip": "選択期間内のユーザーによる投稿 + コメント",
     "leaderboard-header-reward": "報酬"
   },
   "witnesses": {
