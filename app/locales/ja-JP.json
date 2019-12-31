@@ -256,7 +256,7 @@
     "page-title": "ブースト",
     "amount-label": "金額",
     "amount-help": "スライダーをドラッグして金額を変更",
-    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
+    "success-message": "あなたの投稿はブースト待ちに送信されています。直に投稿への投票が行われ、あなたの投稿がブーストされます。"
   },
   "composer": {
     "title-placeholder": "タイトル",
@@ -318,12 +318,12 @@
     "title": "下書き",
     "load-error": "下書きをロードできませんでした",
     "empty-list": "何もありません",
-    "deleted": "Draft is deleted"
+    "deleted": "下書きを削除しました"
   },
   "schedules": {
     "title": "予定された投稿",
     "empty-list": "何もありません",
-    "deleted": "Scheduled post is deleted",
+    "deleted": "予約投稿を削除しました",
     "move": "下書きへ移動",
     "moved": "下書きへ移動しました",
     "success-message": "正常に投稿されました。",
@@ -586,8 +586,8 @@
   },
   "profile-edit": {
     "title": "Profile Editor",
-    "name": "Display Name",
-    "about": "About",
+    "name": "表示名",
+    "about": "概要",
     "cover-image": "Cover Image",
     "profile-image": "Profile Image",
     "website": "Website",
