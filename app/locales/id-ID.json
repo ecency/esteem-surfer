@@ -101,11 +101,11 @@
     "username-placeholder": "pilih nama pengguna",
     "email-placeholder": "masukkan alamat email anda",
     "sign-up": "Daftar",
-    "ref-code": "referral user (optional)",
-    "success-message-1": "We've sent an email to {email}.",
-    "success-message-2": "Follow instructions to complete signup process.",
-    "login-1": "Already a member?",
-    "login-2": "Login",
+    "ref-code": "pengguna rujukan (opsional)",
+    "success-message-1": "Kami telah mengirim email ke {email}.",
+    "success-message-2": "Ikuti instruksi untuk menyelesaikan proses pendaftaran.",
+    "login-1": "Sudah menjadi anggota?",
+    "login-2": "Masuk",
     "login-btn-label": "Back to Login"
   },
   "create-pin-code": {
