@@ -203,7 +203,7 @@
     "delegate": "Melimpahkan",
     "power-down": "Menurunkan daya",
     "point-history": "Riwayat",
-    "points-post-desc": "You can earn point by posting regularly. Posting gives you 15 points.",
+    "points-post-desc": "Anda bisa mendapatkan poin dengan memposting secara teratur. Posting memberi Anda 15 poin.",
     "points-comment-desc": "Setiap komentar yang Anda buat membantu Anda untuk menumbuhkan audiens Anda dan menjalin persahabatan tetapi juga memberi Anda 5 poin.",
     "points-checkin-desc": "Memeriksa aplikasi eSteem memberi Anda 0,25 poin dan membantu Anda tetap terhubung dengan teman-teman Anda.",
     "points-vote-desc": "Dengan memberikan suara Anda memberikan hadiah kepada penulis lain dan menunjukkan penghargaan Anda, tetapi juga mendapatkan 0,01 poin suara.",
@@ -225,11 +225,11 @@
     "points-promote": "Promosikan",
     "points-boost": "Menaikkan",
     "points-transfer": "Hadiah untuk seseorang",
-    "points-get": "GET ESTM",
+    "points-get": "DAPATKAN ESTM",
     "witness-voting": "Saksi-saksi",
     "sps-voting": "Voting SPS",
-    "profile-editor": "Profile Editor",
-    "password": "Password"
+    "profile-editor": "Editor Profil",
+    "password": "Kata Sandi"
   },
   "redeem": {
     "user-label": "Pengguna",
@@ -474,19 +474,19 @@
   "sps": {
     "page-title": "Proposal Voting",
     "duration": "Durasi",
-    "requested": "Requested",
+    "requested": "Diminta",
     "total-votes": "Total Votes",
-    "status-active": "active",
-    "status-expired": "expired",
-    "status-inactive": "upcoming",
-    "duration-days": "{n} days",
-    "voters": "Proposal Voters",
-    "voter": "Voter",
+    "status-active": "aktif",
+    "status-expired": "kadaluarsa",
+    "status-inactive": "mendatang",
+    "duration-days": "{n} hari",
+    "voters": "Proposal Pemilih",
+    "voter": "Pemilih",
     "voter-sp": "SP",
     "voter-proxy-sp": "Proxy SP",
     "voter-total-sp": "Total SP",
-    "voted": "Proposal #{n} voted",
-    "vote-removed": "Vote removed for proposal #{n}"
+    "voted": "Proposal #{n} terpilih",
+    "vote-removed": "Vote dihapus untuk proposal #{n}"
   },
   "transfer": {
     "transfer-title": "Transfer ke akun",
@@ -571,8 +571,8 @@
     "title": "Daya steem yang di delegasikan ke @{n}"
   },
   "estm-purchase": {
-    "title": "ESTM purchase",
-    "purchase": "Purchase"
+    "title": "Pembelian ESTM",
+    "purchase": "Pembelian"
   },
   "edit-history": {
     "title": "Edit Riwayat",
@@ -585,23 +585,23 @@
     "read-time-n-min": "~ {n} menit baca"
   },
   "profile-edit": {
-    "title": "Profile Editor",
-    "name": "Display Name",
-    "about": "About",
-    "cover-image": "Cover Image",
-    "profile-image": "Profile Image",
+    "title": "Editor Profil",
+    "name": "Nama Tampilan",
+    "about": "Tentang",
+    "cover-image": "Gambar Sampul",
+    "profile-image": "Gambar Profil",
     "website": "Website",
-    "location": "Location",
-    "updated": "Profile updated successfully!"
+    "location": "Lokasi",
+    "updated": "Profil berhasil diperbarui!"
   },
   "password-update": {
-    "title": "Password",
-    "cur-pass": "Current password",
-    "new-pass": "New password",
-    "new-pass2": "Confirm new password",
-    "error-current": "Enter current password",
-    "error-new": "Enter new password",
-    "error-new2": "Passwords must be same",
-    "updated": "Password updated successfully!"
+    "title": "Kata Sandi",
+    "cur-pass": "Kata Sandi Sekarang",
+    "new-pass": "Kata sandi baru",
+    "new-pass2": "Konfirmasi kata sandi baru",
+    "error-current": "Masukkan kata sandi saat ini",
+    "error-new": "Masukkan sandi baru",
+    "error-new2": "Kata sandi harus sama",
+    "updated": "Kata Sandi berhasil diperbaharui!"
   }
 }
