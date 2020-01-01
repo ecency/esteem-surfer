@@ -15,7 +15,7 @@
     "save": "Simpan",
     "done": "Selesai",
     "select": "Pilih",
-    "update": "Update"
+    "update": "Pembaruan"
   },
   "footer": {
     "faq": "PERTANYAAN YANG SERING DITANYAKAN",
@@ -90,17 +90,17 @@
     "error-user-fetch": "Data pengguna tidak dapat diambil",
     "error-user-not-found": "Pengguna tidak ada",
     "error-authenticate": "Nama pengguna atau kata sandi/WIF salah",
-    "create-account-text-1": "Don't have an account?",
-    "create-account-text-2": "Sign up now!",
+    "create-account-text-1": "Tidak memiliki akun?",
+    "create-account-text-2": "Daftar sekarang!",
     "login-with-sc": "Masuk dengan",
     "divider-text": "Atau",
     "sc-note": "Catatan: Steemconnect dapat membebankan beberapa biaya dari transaksi hadiah Anda"
   },
   "sign-up": {
-    "title": "Sign Up",
-    "username-placeholder": "pick a username",
-    "email-placeholder": "enter your email address",
-    "sign-up": "Sign Up",
+    "title": "Daftar",
+    "username-placeholder": "pilih nama pengguna",
+    "email-placeholder": "masukkan alamat email anda",
+    "sign-up": "Daftar",
     "ref-code": "referral user (optional)",
     "success-message-1": "We've sent an email to {email}.",
     "success-message-2": "Follow instructions to complete signup process.",
