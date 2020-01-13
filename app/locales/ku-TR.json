@@ -82,9 +82,9 @@
     "title": "Welcome back!",
     "accounts-title": "Login As",
     "traditional-login-desc": "Sign in with your username and password to continue",
-    "username-placeholder": "username",
-    "password-placeholder": "password or WIF",
-    "login": "Login",
+    "username-placeholder": "navê bikarhêner",
+    "password-placeholder": "pêborîn an WIF",
+    "login": "Têketin",
     "error-fields-required": "Please enter username and password/WIF",
     "error-public-key": "You entered a public key. Password/WIF required",
     "error-user-fetch": "User data could not be fetched",
@@ -105,7 +105,7 @@
     "success-message-1": "We've sent an email to {email}.",
     "success-message-2": "Follow instructions to complete signup process.",
     "login-1": "Already a member?",
-    "login-2": "Login",
+    "login-2": "Têketin",
     "login-btn-label": "Back to Login"
   },
   "create-pin-code": {
@@ -124,14 +124,14 @@
     "invalidated": "PIN code is invalidated"
   },
   "user-menu": {
-    "profile": "Profile",
-    "bookmarks": "Bookmarks",
-    "favorites": "Favorites",
-    "drafts": "Drafts",
+    "profile": "Profîl",
+    "bookmarks": "Cîhnîşan",
+    "favorites": "Bijardeyên min",
+    "drafts": "Reşnivîs",
     "schedules": "Schedules",
-    "gallery": "Gallery",
+    "gallery": "Pêşangeh",
     "login-as": "Login As",
-    "logout": "Logout"
+    "logout": "Derkeve"
   },
   "login-required": {
     "default": "This action requires login",
@@ -145,13 +145,13 @@
     "followers": "Followers",
     "following": "Following",
     "section-blog": "Blog",
-    "section-comments": "Comments",
-    "section-replies": "Replies",
-    "section-points": "Points",
-    "section-wallet": "Wallet"
+    "section-comments": "Şîrove",
+    "section-replies": "Bersiv",
+    "section-points": "Puan",
+    "section-wallet": "Cizdan"
   },
   "follow-controls": {
-    "follow": "Follow",
+    "follow": "Bişopîne",
     "unFollow": "Unfollow",
     "mute": "Mute",
     "unMute": "Unmute"
@@ -163,10 +163,10 @@
     "followers": "Followers",
     "following": "Following",
     "section-blog": "Blog",
-    "section-comments": "Comments",
-    "section-replies": "Replies",
-    "section-wallet": "Wallet",
-    "section-points": "Points",
+    "section-comments": "Şîrove",
+    "section-replies": "Bersiv",
+    "section-wallet": "Cizdan",
+    "section-points": "Puan",
     "top-posts": "Top Posts",
     "unclaimed-rewards": "Unclaimed rewards",
     "estimated-value": "The estimated value is based on a 7 day average value of Steem.",
