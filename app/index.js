@@ -1,10 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
+import { setCacheSize } from '@esteemapp/esteem-render-helpers/src';
+
 import Root from './containers/Root';
 import { configureStore, history } from './store/configureStore';
 
 import './style/app.style.scss';
+
+// set render helpers cache size
+setCacheSize(200);
 
 require('./context-menu');
 require('./spell-checker');

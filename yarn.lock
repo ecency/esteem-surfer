@@ -209,12 +209,13 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@esteemapp/esteem-render-helpers@^1.2.6":
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/@esteemapp/esteem-render-helpers/-/esteem-render-helpers-1.2.6.tgz#fbad07801e0b836b95211ae4f41921a3058da803"
-  integrity sha512-UyfFalRgLIoOhFyrMDvaKsaSox2QPrRFUCHeHCeBK2tEDcp8+R8y28hxQFnziCft5nJjIV5hNCj1BngILSXcwA==
+"@esteemapp/esteem-render-helpers@^1.3.5":
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/@esteemapp/esteem-render-helpers/-/esteem-render-helpers-1.3.5.tgz#85cac7e1d1622ea45f2f41b3ae4de8f768d0e1a6"
+  integrity sha512-mhRoFPjtSDjwxvCUgM6y+8WfibVVwkWUSNBK7PhUHkL3PQYy+IthL89b7QIWHkSQo6A9yGhJxXwWM3n6ZQ/xnA==
   dependencies:
     he "^1.2.0"
+    lru-cache "^5.1.1"
     path "^0.12.7"
     remarkable "^1.7.3"
     sanitize-html "^1.20.1"
