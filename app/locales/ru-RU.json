@@ -572,15 +572,15 @@
   },
   "estm-purchase": {
     "title": "ESTM purchase",
-    "purchase": "Purchase"
+    "purchase": "Купить"
   },
   "edit-history": {
-    "title": "Edit History",
-    "show-diff": "Show Difference",
-    "version": "Version {n}"
+    "title": "История изменений",
+    "show-diff": "Показать различия",
+    "version": "Версия {n}"
   },
   "word-count": {
-    "label": "{n} words",
+    "label": "{n} слов",
     "read-time-less-1-min": "< 1 min read",
     "read-time-n-min": "~ {n} min read"
   },
