@@ -57,7 +57,7 @@
     "reblog": "Репост",
     "reblogged": "Репостнуто",
     "modal-title": "Rebloggers ({n})",
-    "more-reblogs": "... +{n} more reblogs"
+    "more-reblogs": "... +еще {n} репостов"
   },
   "settings": {
     "title": "Настройки",
@@ -103,10 +103,10 @@
     "sign-up": "Зарегистрироваться",
     "ref-code": "реферал (необязательно)",
     "success-message-1": "Мы отправили письмо на {email}.",
-    "success-message-2": "Follow instructions to complete signup process.",
-    "login-1": "Already a member?",
-    "login-2": "Login",
-    "login-btn-label": "Back to Login"
+    "success-message-2": "Для завершения процесса регистрации следуйте инструкции.",
+    "login-1": "Уже зарегистрированы?",
+    "login-2": "Войти",
+    "login-btn-label": "Вернуться на страницу входа"
   },
   "create-pin-code": {
     "title": "Создайте ПИН код",
