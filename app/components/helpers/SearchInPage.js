@@ -26,6 +26,8 @@ class SearchInPage extends PureComponent {
   }
 
   componentDidMount() {
+    this.mounted = true;
+
     window.addEventListener('keydown', this.onWindowKeyDown);
     markInstance = new Mark('#app-content');
 
@@ -38,10 +40,19 @@ class SearchInPage extends PureComponent {
   componentWillUnmount() {
     window.removeEventListener('keydown', this.onWindowKeyDown);
     markInstance = null;
+    this.mounted = false;
   }
 
+  mounted = false;
+
+  stateSet = (obj, cb = undefined) => {
+    if (this.mounted) {
+      this.setState(obj, cb);
+    }
+  };
+
   close = () => {
-    this.setState(
+    this.stateSet(
       { visible: false, keyword: '', matches: 0, cursor: 0, active: false },
       () => {
         markInstance.unmark({});
@@ -60,7 +71,7 @@ class SearchInPage extends PureComponent {
 
       this.close();
     } else {
-      this.setState({ visible: true });
+      this.stateSet({ visible: true });
     }
   };
 
@@ -108,7 +119,7 @@ class SearchInPage extends PureComponent {
     }
 
     const newCursor = cursor + 1;
-    this.setState({ cursor: newCursor }, () => {
+    this.stateSet({ cursor: newCursor }, () => {
       this.focusElem(newCursor);
     });
   };
@@ -125,7 +136,7 @@ class SearchInPage extends PureComponent {
 
     const newCursor = cursor - 1;
 
-    this.setState({ cursor: newCursor }, () => {
+    this.stateSet({ cursor: newCursor }, () => {
       this.focusElem(newCursor);
     });
   };
@@ -144,7 +155,7 @@ class SearchInPage extends PureComponent {
     const { keyword } = this.state;
 
     if (keyword.trim() === '') {
-      this.setState({ matches: 0, cursor: 0, active: false });
+      this.stateSet({ matches: 0, cursor: 0, active: false });
       return;
     }
 
@@ -153,10 +164,10 @@ class SearchInPage extends PureComponent {
       separateWordSearch: false,
       exclude: ['.mi', '.CodeMirror *', '.ant-select *', 'input', 'button *'],
       done: c => {
-        this.setState({ matches: c, active: true });
+        this.stateSet({ matches: c, active: true });
 
         if (c > 0) {
-          this.setState({ cursor: 1 }, () => {
+          this.stateSet({ cursor: 1 }, () => {
             this.focusElem(1);
           });
         }
@@ -173,7 +184,7 @@ class SearchInPage extends PureComponent {
       clearTimeout(this.timer);
     }
 
-    this.setState({ keyword }, () => {
+    this.stateSet({ keyword }, () => {
       this.timer = setTimeout(this.search, 200);
     });
   };
@@ -195,10 +206,10 @@ class SearchInPage extends PureComponent {
                 onChange={this.keywordChanged}
                 onKeyDown={this.onKeyDown}
                 onFocus={() => {
-                  this.setState({ focus: true });
+                  this.stateSet({ focus: true });
                 }}
                 onBlur={() => {
-                  this.setState({ focus: false });
+                  this.stateSet({ focus: false });
                 }}
               />
               <div className="control-separator" />
