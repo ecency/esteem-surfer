@@ -118,8 +118,22 @@ class EntryReblogBtn extends Component {
   }
 
   componentDidMount() {
+    this.mounted = true;
+
     this.fetchReblogStuff();
   }
+
+  componentWillUnmount() {
+    this.mounted = false;
+  }
+
+  mounted = false;
+
+  stateSet = (obj, cb = undefined) => {
+    if (this.mounted) {
+      this.setState(obj, cb);
+    }
+  };
 
   fetchReblogStuff = () => {
     const { showDetail } = this.props;
@@ -135,7 +149,7 @@ class EntryReblogBtn extends Component {
     const { entry } = this.props;
 
     return getPostReblogCount(entry.author, entry.permlink).then(r => {
-      this.setState({ reblogCount: r });
+      this.stateSet({ reblogCount: r });
       return r;
     });
   };
@@ -170,11 +184,11 @@ class EntryReblogBtn extends Component {
           return 0;
         })
       )
-      .then(reblogs => this.setState({ reblogs }));
+      .then(reblogs => this.stateSet({ reblogs }));
   };
 
   countClicked = () => {
-    this.setState({ reblogModal: true });
+    this.stateSet({ reblogModal: true });
   };
 
   markAsReblogged = () => {
@@ -214,7 +228,7 @@ class EntryReblogBtn extends Component {
   doReblog = () => {
     const { activeAccount, global, entry, intl } = this.props;
 
-    this.setState({ processing: true });
+    this.stateSet({ processing: true });
 
     return reblog(activeAccount, global.pin, entry.author, entry.permlink)
       .then(resp => {
@@ -234,7 +248,7 @@ class EntryReblogBtn extends Component {
         }
       })
       .finally(() => {
-        this.setState({ processing: false });
+        this.stateSet({ processing: false });
       });
   };
 
@@ -294,7 +308,7 @@ class EntryReblogBtn extends Component {
           key="modal"
           {...this.props}
           reblogs={reblogs}
-          onCancel={() => this.setState({ reblogModal: false })}
+          onCancel={() => this.stateSet({ reblogModal: false })}
         />
       );
     }
