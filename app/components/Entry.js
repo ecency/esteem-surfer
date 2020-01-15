@@ -742,6 +742,8 @@ class Entry extends PureComponent {
   }
 
   async componentDidMount() {
+    this.mounted = true;
+
     await this.fetch();
 
     const { match, location } = this.props;
@@ -766,7 +768,17 @@ class Entry extends PureComponent {
     window.removeEventListener('md-tag-clicked', this.mdTagClicked);
     window.removeEventListener('md-witnesses-clicked', this.mdWitnessesClicked);
     window.removeEventListener('md-proposal-clicked', this.mdProposalClicked);
+
+    this.mounted = false;
   }
+
+  mounted = false;
+
+  stateSet = (obj, cb = undefined) => {
+    if (this.mounted) {
+      this.setState(obj, cb);
+    }
+  };
 
   compileReplies = (parent, sortOrder) => {
     const { match } = this.props;
@@ -866,7 +878,7 @@ class Entry extends PureComponent {
     const { entry } = this.state;
     const activeUsername = activeAccount ? activeAccount.username : null;
 
-    this.setState({ similarLoading: true });
+    this.stateSet({ similarLoading: true });
     return getDiscussions('hot', { tag: entry.parent_permlink, limit: 30 })
       .then(resp => {
         const s = resp
@@ -878,18 +890,18 @@ class Entry extends PureComponent {
           .sort((a, b) => a[0] - b[0])
           .map(a => a[1]);
 
-        this.setState({ similarEntries: s.slice(0, 3) });
+        this.stateSet({ similarEntries: s.slice(0, 3) });
         return resp;
       })
       .finally(() => {
-        this.setState({ similarLoading: false });
+        this.stateSet({ similarLoading: false });
       });
   };
 
   fetch = async () => {
     const { intl } = this.props;
 
-    this.setState({ replies: [], repliesLoading: true, replySort: 'trending' });
+    this.stateSet({ replies: [], repliesLoading: true, replySort: 'trending' });
 
     const { match, actions, activeAccount } = this.props;
     const { username, permlink } = match.params;
@@ -901,7 +913,7 @@ class Entry extends PureComponent {
             x => x.author === username && x.permlink === permlink
           );
 
-          this.setState({ bookmarkId: b.length ? b[0]._id : null });
+          this.stateSet({ bookmarkId: b.length ? b[0]._id : null });
           return bookmarks;
         })
         .catch(() => {});
@@ -911,7 +923,7 @@ class Entry extends PureComponent {
 
     actions.setVisitingEntry(entry);
 
-    this.setState({ entry });
+    this.stateSet({ entry });
 
     this.fetchSimilar();
 
@@ -925,10 +937,10 @@ class Entry extends PureComponent {
     if (this.stateData) {
       const theEntry = this.stateData.content[this.entryPath];
       const replies = this.compileReplies(theEntry, 'trending');
-      this.setState({ replies });
+      this.stateSet({ replies });
     }
 
-    this.setState({ repliesLoading: false });
+    this.stateSet({ repliesLoading: false });
   };
 
   refresh = async () => {
@@ -936,11 +948,11 @@ class Entry extends PureComponent {
   };
 
   replySortOrderChanged = value => {
-    this.setState({ replySort: value });
+    this.stateSet({ replySort: value });
 
     const theEntry = this.stateData.content[this.entryPath];
     const replies = this.compileReplies(theEntry, value);
-    this.setState({ replies });
+    this.stateSet({ replies });
   };
 
   mdAuthorClicked = async e => {
@@ -948,7 +960,7 @@ class Entry extends PureComponent {
 
     const data = await getAccount(author);
 
-    this.setState({ clickedAuthor: data }, () => {
+    this.stateSet({ clickedAuthor: data }, () => {
       setTimeout(() => {
         document.querySelector('#clicked-author').click();
       }, 10);
@@ -995,7 +1007,7 @@ class Entry extends PureComponent {
 
   toggleReplyForm = () => {
     const { editorVisible } = this.state;
-    this.setState({ editorVisible: !editorVisible });
+    this.stateSet({ editorVisible: !editorVisible });
   };
 
   edit = () => {
@@ -1011,7 +1023,7 @@ class Entry extends PureComponent {
     const { activeAccount, global, history } = this.props;
     const { entry } = this.state;
 
-    this.setState({ deleting: true });
+    this.stateSet({ deleting: true });
 
     return deleteComment(activeAccount, global.pin, entry.permlink)
       .then(resp => {
@@ -1022,18 +1034,18 @@ class Entry extends PureComponent {
         message.error(formatChainError(err));
       })
       .finally(() => {
-        this.setState({ deleting: false });
+        this.stateSet({ deleting: false });
       });
   };
 
   onNewReply = newReply => {
     const { replies } = this.state;
     const newReplies = [newReply, ...replies];
-    this.setState({ replies: newReplies });
+    this.stateSet({ replies: newReplies });
   };
 
   afterVote = entry => {
-    this.setState({ entry });
+    this.stateSet({ entry });
   };
 
   bookmarkFn = () => {
@@ -1043,7 +1055,7 @@ class Entry extends PureComponent {
 
     if (bookmarkId) {
       return removeBookmark(bookmarkId, activeAccount.username).then(resp => {
-        this.setState({ bookmarkId: null });
+        this.stateSet({ bookmarkId: null });
         message.info(intl.formatMessage({ id: 'entry.bookmarkRemoved' }));
         return resp;
       });
@@ -1055,7 +1067,7 @@ class Entry extends PureComponent {
         const b = bookmarks.filter(
           x => x.author === username && x.permlink === permlink
         );
-        this.setState({ bookmarkId: b.length ? b[0]._id : null });
+        this.stateSet({ bookmarkId: b.length ? b[0]._id : null });
         message.success(intl.formatMessage({ id: 'entry.bookmarked' }));
         return resp;
       }
