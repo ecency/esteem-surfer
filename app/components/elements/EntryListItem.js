@@ -13,6 +13,8 @@ import {
   postBodySummary
 } from '@esteemapp/esteem-render-helpers';
 
+import isEqual from 'react-fast-compare';
+
 import UserAvatar from './UserAvatar';
 import EntryPayout from './EntryPayout';
 import EntryVotes from './EntryVotes';
@@ -35,6 +37,11 @@ import fallbackImage from '../../img/fallback.png';
 import noImage from '../../img/noimage.png';
 
 class EntryListItem extends Component {
+  shouldComponentUpdate(nextProps) {
+    const { entry } = this.props;
+    return !isEqual(entry, nextProps.entry);
+  }
+
   promoteClicked = () => {
     const { history, entry, activeAccount } = this.props;
     const u = `/@${activeAccount.username}/promote/${entry.author}/${

@@ -5,6 +5,8 @@ import { Tooltip } from 'antd';
 
 import { FormattedMessage } from 'react-intl';
 
+import isEqual from 'react-fast-compare';
+
 import { releasePost, version } from '../../../package.json';
 
 import { votingPower, rcPower } from '../../utils/manabar';
@@ -24,6 +26,12 @@ export const powerImg = power => {
 };
 
 class AppFooter extends Component {
+  shouldComponentUpdate(nextProps) {
+    const { activeAccount } = this.props;
+
+    return !isEqual(activeAccount, nextProps.activeAccount);
+  }
+
   render() {
     const { activeAccount } = this.props;
 

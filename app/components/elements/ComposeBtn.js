@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
+
 import { FormattedMessage } from 'react-intl';
 
 class ComposeBtn extends Component {
+  shouldComponentUpdate() {
+    return false;
+  }
+
   clicked = () => {
     const { history } = this.props;
 

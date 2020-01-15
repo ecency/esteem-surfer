@@ -253,6 +253,7 @@
     "react": "^16.4.1",
     "react-codemirror2": "^5.1.0",
     "react-dom": "^16.4.1",
+    "react-fast-compare": "^2.0.4",
     "react-hot-loader": "^4.3.4",
     "react-intl": "^2.4.0",
     "react-markdown": "^4.0.3",

@@ -1,10 +1,14 @@
-import React, { Fragment, PureComponent } from 'react';
+/* eslint-disable react/no-multi-comp */
+
+import React, { Fragment, Component, PureComponent } from 'react';
 
 import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 import { Menu, message } from 'antd';
 import { FormattedMessage } from 'react-intl';
+
+import isEqual from 'react-fast-compare';
 
 import { makeGroupKeyForEntries } from '../actions/entries';
 
@@ -26,6 +30,51 @@ import LinearProgress from './common/LinearProgress';
 import DeepLinkHandler from './helpers/DeepLinkHandler';
 
 import formatChainError from '../utils/format-chain-error';
+
+class TagList extends Component {
+  shouldComponentUpdate(nextProps) {
+    const { trendingTags, global } = this.props;
+
+    return (
+      global.selectedTag !== nextProps.global.selectedTag ||
+      !isEqual(trendingTags, nextProps.trendingTags)
+    );
+  }
+
+  render() {
+    const { trendingTags, global } = this.props;
+
+    const { selectedTag } = global;
+
+    return (
+      <div className="tag-list">
+        <h2 className="tag-list-header">
+          <FormattedMessage id="entry-index.tags" />
+        </h2>
+        {trendingTags.list.map(t => {
+          const cls = `tag-list-item ${
+            selectedTag === t ? 'selected-item' : ''
+          }`;
+
+          return (
+            <TagLink {...this.props} tag={t} key={t}>
+              <a className={cls}>{t}</a>
+            </TagLink>
+          );
+        })}
+      </div>
+    );
+  }
+}
+
+TagList.propTypes = {
+  global: PropTypes.shape({
+    selectedTag: PropTypes.string.isRequired
+  }).isRequired,
+  trendingTags: PropTypes.shape({
+    list: PropTypes.array.isRequired
+  }).isRequired
+};
 
 class EntryIndex extends PureComponent {
   componentDidMount() {
@@ -133,13 +182,7 @@ class EntryIndex extends PureComponent {
   }
 
   render() {
-    const {
-      entries,
-      promotedEntries,
-      trendingTags,
-      location,
-      global
-    } = this.props;
+    const { entries, promotedEntries, location, global } = this.props;
     const { selectedFilter, selectedTag } = global;
     const promoted = promotedEntries.get('entries').toArray();
 
@@ -182,27 +225,10 @@ class EntryIndex extends PureComponent {
               {loading && entryList.size === 0 ? <LinearProgress /> : ''}
             </div>
           </div>
-
           <div className="page-inner" id="app-content">
             <div className="left-side">
-              <div className="tag-list">
-                <h2 className="tag-list-header">
-                  <FormattedMessage id="entry-index.tags" />
-                </h2>
-                {trendingTags.list.map(t => {
-                  const cls = `tag-list-item ${
-                    selectedTag === t ? 'selected-item' : ''
-                  }`;
-
-                  return (
-                    <TagLink {...this.props} tag={t} key={t}>
-                      <a className={cls}>{t}</a>
-                    </TagLink>
-                  );
-                })}
-              </div>
+              <TagList {...this.props} />
             </div>
-
             <div className="right-side">
               <div className={`entry-list ${loading ? 'loading' : ''}`}>
                 <div

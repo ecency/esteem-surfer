@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import isEqual from 'react-fast-compare';
 
 class ListSwitch extends Component {
+  shouldComponentUpdate(nextProps) {
+    const { global } = this.props;
+    return !isEqual(global.listStyle, nextProps.global.listStyle);
+  }
+
   changeStyle = () => {
     const { actions } = this.props;
 
