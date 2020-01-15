@@ -245,11 +245,11 @@
     "go-back": "Назад"
   },
   "redeem-promote": {
-    "page-title": "Promote",
-    "duration-label": "Duration",
-    "duration-help": "Drag the slider to change the duration",
-    "day": "day",
-    "days": "days",
+    "page-title": "Продвинуть",
+    "duration-label": "Длительность",
+    "duration-help": "Перетащите ползунок, чтобы изменить длительность",
+    "day": "день",
+    "days": "дня(ей)",
     "success-message": "Your request submitted. It will be activated in a couple minutes."
   },
   "redeem-boost": {
