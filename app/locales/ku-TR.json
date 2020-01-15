@@ -396,15 +396,15 @@
   "updater": {
     "new-version-available": "Guhertoya nû li berdest e",
     "update": "Hildemîne",
-    "dismiss": "Dismiss",
-    "downloading": "Downloading new version...",
-    "download-completed": "Download is completed",
+    "dismiss": "Veşêre",
+    "downloading": "Guhertoya nû tê daxistin...",
+    "download-completed": "Daxistin qediya",
     "restart": "Restart"
   },
   "context-menu": {
-    "cut": "Cut",
-    "copy": "Copy",
-    "paste": "Paste",
+    "cut": "Jê bike",
+    "copy": "Kopî",
+    "paste": "Bizeliqîne",
     "open-image-browser": "Open image in browser",
     "copy-image-url": "Copy image url"
   },
@@ -418,7 +418,7 @@
     "reblogged": "{source} reblogged your post"
   },
   "activities": {
-    "type-all": "All Activities",
+    "type-all": "Hemû Çalakî",
     "type-votes": "Votes",
     "type-replies": "Replies",
     "type-mentions": "Mentions",
