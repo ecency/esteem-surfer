@@ -70,7 +70,7 @@
     "server-invalid-address": "Неправильный адрес сервера",
     "server-connecting": "Соединение с '{server}'...",
     "server-connect-error": "Невозможно соединиться с '{server}'. Пожалуйста, проверьте подключение интернет.",
-    "server-timeout-error": "'{server}' не похож на живой",
+    "server-timeout-error": "'{server}' вероятно отключен",
     "server-changed": "Сервер изменён на {server}",
     "server-custom-address": "Впишите адрес сервера",
     "server-list-fetch-error": "Невозможно получить список серверов",
