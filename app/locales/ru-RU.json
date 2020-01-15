@@ -483,7 +483,7 @@
     "voters": "Проголосовавшие за предложение",
     "voter": "Voter",
     "voter-sp": "SP",
-    "voter-proxy-sp": "Proxy SP",
+    "voter-proxy-sp": "Прокси SP",
     "voter-total-sp": "Total SP",
     "voted": "Proposal #{n} voted",
     "vote-removed": "Vote removed for proposal #{n}"
@@ -585,9 +585,9 @@
     "read-time-n-min": "~ {n} min read"
   },
   "profile-edit": {
-    "title": "Profile Editor",
-    "name": "Display Name",
-    "about": "About",
+    "title": "Редактор профиля",
+    "name": "Отображаемое имя",
+    "about": "О себе",
     "cover-image": "Cover Image",
     "profile-image": "Profile Image",
     "website": "Website",
