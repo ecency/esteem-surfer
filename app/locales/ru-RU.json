@@ -56,7 +56,7 @@
   "entry-reblog": {
     "reblog": "Репост",
     "reblogged": "Репостнуто",
-    "modal-title": "Rebloggers ({n})",
+    "modal-title": "Репосты ({n})",
     "more-reblogs": "... +еще {n} репостов"
   },
   "settings": {
@@ -226,9 +226,9 @@
     "points-boost": "Boost",
     "points-transfer": "Gift to someone",
     "points-get": "GET ESTM",
-    "witness-voting": "Witnesses",
+    "witness-voting": "Делегаты",
     "sps-voting": "SPS Voting",
-    "profile-editor": "Profile Editor",
+    "profile-editor": "Редактор профиля",
     "password": "Password"
   },
   "redeem": {
