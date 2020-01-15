@@ -92,21 +92,21 @@
     "error-authenticate": "Wrong username or password/WIF",
     "create-account-text-1": "Don't have an account?",
     "create-account-text-2": "Sign up now!",
-    "login-with-sc": "Login with",
-    "divider-text": "OR",
+    "login-with-sc": "Têkevê bi",
+    "divider-text": "AN JÎ",
     "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
   },
   "sign-up": {
-    "title": "Sign Up",
+    "title": "Tomar Bibe",
     "username-placeholder": "pick a username",
     "email-placeholder": "enter your email address",
-    "sign-up": "Sign Up",
+    "sign-up": "Tomar Bibe",
     "ref-code": "referral user (optional)",
     "success-message-1": "We've sent an email to {email}.",
     "success-message-2": "Follow instructions to complete signup process.",
-    "login-1": "Already a member?",
+    "login-1": "Jixwe tu endam e?",
     "login-2": "Têketin",
-    "login-btn-label": "Back to Login"
+    "login-btn-label": "Vegere Têketinê"
   },
   "create-pin-code": {
     "title": "Create PIN Code",
@@ -229,12 +229,12 @@
     "witness-voting": "Witnesses",
     "sps-voting": "SPS Voting",
     "profile-editor": "Profile Editor",
-    "password": "Password"
+    "password": "Pêborîn"
   },
   "redeem": {
-    "user-label": "User",
+    "user-label": "Bikarhêner",
     "user-help-text": "Available Funds",
-    "post-label": "Post",
+    "post-label": "Şandî",
     "post-input-placeholder": "author/permlink",
     "post-input-title": "Suggestions",
     "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
@@ -242,10 +242,10 @@
     "post-error-exists": "The post is already promoted",
     "funds-error": "Insufficient funds",
     "submit": "Submit",
-    "go-back": "Go Back"
+    "go-back": "Vegere"
   },
   "redeem-promote": {
-    "page-title": "Promote",
+    "page-title": "Reklam",
     "duration-label": "Duration",
     "duration-help": "Drag the slider to change the duration",
     "day": "roj",
@@ -288,10 +288,10 @@
     "clear": "Hemûyan Paqij Bike",
     "form-error-message": "Form is not valid. Please fill all fields",
     "schedule": "Schedule",
-    "select-schedule-date": "Select Date",
+    "select-schedule-date": "Dîrokê Hilbijêre",
     "schedule-saved": "Post scheduled",
-    "schedule-picker-select-time": "Select Time",
-    "schedule-picker-select-date": "Select Date",
+    "schedule-picker-select-time": "Demê Hilbijêre",
+    "schedule-picker-select-date": "Dîrokê Hilbijêre",
     "grant-posting-perm": "Grant Posting Permission",
     "posting-perm-granted": "Posting permission granted",
     "remove-posting-perm": "Remove Posting Permission",
@@ -300,8 +300,8 @@
     "draft-saved": "Reşnivîs hate tomarkirin",
     "publish": "Biweşîne",
     "published": "Post Published",
-    "update": "Update",
-    "updated": "Post Updated",
+    "update": "Hildemîne",
+    "updated": "Şandî Hate Hildemandin",
     "sync-scroll": "Scroll Sync",
     "no-suggestions": "No suggestions",
     "emoji-filter-placeholder": "Filter",
@@ -309,20 +309,20 @@
     "emoji-recently-used": "Recently Used"
   },
   "gallery": {
-    "title": "Gallery",
+    "title": "Pêşangeh",
     "copied": "Copied to clipboard",
     "load-error": "Could not load gallery",
     "empty-list": "Nothing here"
   },
   "drafts": {
-    "title": "Drafts",
+    "title": "Reşnivîs",
     "load-error": "Could not load drafts",
-    "empty-list": "Nothing here",
-    "deleted": "Draft is deleted"
+    "empty-list": "Li vir ti tişt tine ye",
+    "deleted": "Reşnivîs hate jêbirin"
   },
   "schedules": {
     "title": "Scheduled Posts",
-    "empty-list": "Nothing here",
+    "empty-list": "Li vir ti tişt tine ye",
     "deleted": "Scheduled post is deleted",
     "move": "Move to drafts",
     "moved": "Moved to drafts",
@@ -359,7 +359,7 @@
     "favoriteRemoved": "Removed from favorites",
     "show-edit-history": "Show edit history",
     "copy-clipboard": "Copy internal link to clipboard",
-    "copied-clipboard": "Copied",
+    "copied-clipboard": "Kopî bû",
     "comment-entry-title": "You are viewing a single comment's thread from: ",
     "comment-entry-go-root": "View the full context",
     "comment-entry-go-parent": "View the direct parent",
@@ -389,13 +389,13 @@
   "search": {
     "n-results-for-q": "{n} results for {q}",
     "sort-by": "Sort by",
-    "sort-popularity": "Popularity",
+    "sort-popularity": "Popularîte",
     "sort-relevance": "Relevance",
-    "sort-newest": "Date"
+    "sort-newest": "Dîrok"
   },
   "updater": {
-    "new-version-available": "New version is available",
-    "update": "Update",
+    "new-version-available": "Guhertoya nû li berdest e",
+    "update": "Hildemîne",
     "dismiss": "Dismiss",
     "downloading": "Downloading new version...",
     "download-completed": "Download is completed",
@@ -599,8 +599,8 @@
     "cur-pass": "Pêborîna niha",
     "new-pass": "Pêborîna nû",
     "new-pass2": "Pêborîna nû bipejirîne",
-    "error-current": "Enter current password",
-    "error-new": "Enter new password",
+    "error-current": "Pêborîna niha têxîne",
+    "error-new": "Pêborîna nû têxîne",
     "error-new2": "Passwords must be same",
     "updated": "Password updated successfully!"
   }
