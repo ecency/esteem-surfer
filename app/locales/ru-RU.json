@@ -237,7 +237,7 @@
     "post-label": "Post",
     "post-input-placeholder": "author/permlink",
     "post-input-title": "Предложения",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "key-required-err": "Не найден Активный ключ для выбранного аккаунта. Пожалуйста, убедитесь, что вы вошли с помощью соответствующего ключа.",
     "post-error": "Not a valid post address",
     "post-error-exists": "The post is already promoted",
     "funds-error": "Недостаточно средств",
