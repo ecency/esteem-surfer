@@ -484,13 +484,13 @@
     "voter": "Voter",
     "voter-sp": "SP",
     "voter-proxy-sp": "Прокси SP",
-    "voter-total-sp": "Total SP",
-    "voted": "Proposal #{n} voted",
-    "vote-removed": "Vote removed for proposal #{n}"
+    "voter-total-sp": "Всего SP",
+    "voted": "Предложение #{n} проголосовано",
+    "vote-removed": "Голос за предложение #{n} удален"
   },
   "transfer": {
     "transfer-title": "Перевод на аккаунт",
-    "transfer-estm-title": "Gift to Account",
+    "transfer-estm-title": "Подарить аккаунту",
     "transfer-sub-title": "Перевод средств на другой аккаунт Steem",
     "transfer-saving-title": "Перевод в сейф",
     "transfer-saving-sub-title": "Защита средства от вывода трёхдневным периодом ожидания",
@@ -571,7 +571,7 @@
     "title": "Делегированная Сила голоса к @{n}"
   },
   "estm-purchase": {
-    "title": "ESTM purchase",
+    "title": "Покупка ESTM",
     "purchase": "Купить"
   },
   "edit-history": {
@@ -588,20 +588,20 @@
     "title": "Редактор профиля",
     "name": "Отображаемое имя",
     "about": "О себе",
-    "cover-image": "Cover Image",
-    "profile-image": "Profile Image",
-    "website": "Website",
-    "location": "Location",
-    "updated": "Profile updated successfully!"
+    "cover-image": "Изображение для обложки",
+    "profile-image": "Изображение для профиля",
+    "website": "Веб-сайт",
+    "location": "Местоположение",
+    "updated": "Профиль успешно обновлен!"
   },
   "password-update": {
-    "title": "Password",
-    "cur-pass": "Current password",
-    "new-pass": "New password",
-    "new-pass2": "Confirm new password",
-    "error-current": "Enter current password",
-    "error-new": "Enter new password",
-    "error-new2": "Passwords must be same",
-    "updated": "Password updated successfully!"
+    "title": "Пароль",
+    "cur-pass": "Текущий пароль",
+    "new-pass": "Новый пароль",
+    "new-pass2": "Подтвердите новый пароль",
+    "error-current": "Введите текущий пароль",
+    "error-new": "Введите новый пароль",
+    "error-new2": "Пароли должны совпадать",
+    "updated": "Пароль успешно обновлен!"
   }
 }
