@@ -225,24 +225,24 @@
     "points-promote": "Продвижение",
     "points-boost": "Boost",
     "points-transfer": "Gift to someone",
-    "points-get": "GET ESTM",
+    "points-get": "ПОЛУЧИТЬ ESTM",
     "witness-voting": "Делегаты",
     "sps-voting": "SPS Voting",
     "profile-editor": "Редактор профиля",
-    "password": "Password"
+    "password": "Пароль"
   },
   "redeem": {
-    "user-label": "User",
-    "user-help-text": "Available Funds",
+    "user-label": "Пользователь",
+    "user-help-text": "Доступные средства",
     "post-label": "Post",
     "post-input-placeholder": "author/permlink",
-    "post-input-title": "Suggestions",
+    "post-input-title": "Предложения",
     "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
     "post-error": "Not a valid post address",
     "post-error-exists": "The post is already promoted",
-    "funds-error": "Insufficient funds",
+    "funds-error": "Недостаточно средств",
     "submit": "Submit",
-    "go-back": "Go Back"
+    "go-back": "Назад"
   },
   "redeem-promote": {
     "page-title": "Promote",
