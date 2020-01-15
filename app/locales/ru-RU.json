@@ -235,7 +235,7 @@
     "user-label": "Пользователь",
     "user-help-text": "Доступные средства",
     "post-label": "Post",
-    "post-input-placeholder": "author/permlink",
+    "post-input-placeholder": "автор/постоянная ссылка",
     "post-input-title": "Предложения",
     "key-required-err": "Не найден Активный ключ для выбранного аккаунта. Пожалуйста, убедитесь, что вы вошли с помощью соответствующего ключа.",
     "post-error": "Not a valid post address",
