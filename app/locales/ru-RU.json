@@ -444,8 +444,8 @@
     "leaderboard-weekly": "За неделю",
     "leaderboard-monthly": "За месяц",
     "leaderboard-header-score": "Действия",
-    "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
-    "leaderboard-header-reward": "Reward"
+    "leaderboard-header-score-tip": "Посты + комментарии, сделанные пользователем за выбранный период",
+    "leaderboard-header-reward": "Награда"
   },
   "witnesses": {
     "page-title": "Голосование за делегатов",
@@ -472,7 +472,7 @@
     "proxy-created": "@{n} ваш доверенный"
   },
   "sps": {
-    "page-title": "Proposals Voting",
+    "page-title": "Голосование за предложения",
     "duration": "Duration",
     "requested": "Requested",
     "total-votes": "Total Votes",
