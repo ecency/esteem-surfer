@@ -221,6 +221,7 @@
     "points-transfer-sent-list-desc": "Transfer către {n}",
     "points-transfer-incoming-list-desc": "Transfer de la {n}",
     "points-delegation-list-desc": "Recompensă delegare",
+    "points-referral-list-desc": "Referral reward",
     "points-claim-ok": "Puncte colectate",
     "points-promote": "Promovează",
     "points-boost": "Boost",
