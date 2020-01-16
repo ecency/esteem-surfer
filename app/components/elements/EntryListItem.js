@@ -6,7 +6,7 @@ import React, { Component, Fragment } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { FormattedRelative, FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedRelative, FormattedMessage } from 'react-intl';
 
 import {
   catchPostImage,
@@ -317,4 +317,4 @@ EntryListItem.propTypes = {
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
-export default injectIntl(EntryListItem);
+export default EntryListItem;

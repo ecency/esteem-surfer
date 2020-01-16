@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { FormattedMessage, FormattedRelative, injectIntl } from 'react-intl';
+import { FormattedMessage, FormattedRelative } from 'react-intl';
 
 import { Popconfirm, Popover, message, Table, Modal, Badge } from 'antd';
 
@@ -408,4 +408,4 @@ EntryReblogBtn.propTypes = {
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
-export default injectIntl(EntryReblogBtn);
+export default EntryReblogBtn;

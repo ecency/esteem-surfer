@@ -5,7 +5,7 @@ eslint-disable react/no-multi-comp, no-underscore-dangle
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { message, Modal, Input } from 'antd';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import LinearProgress from '../common/LinearProgress';
 import UserAvatar from '../elements/UserAvatar';
@@ -150,4 +150,4 @@ BookmarksModal.propTypes = {
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
-export default injectIntl(BookmarksModal);
+export default BookmarksModal;

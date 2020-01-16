@@ -4,7 +4,7 @@ eslint-disable camelcase, prefer-destructuring, no-param-reassign, new-cap, reac
 
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedDate, FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedDate, FormattedMessage } from 'react-intl';
 
 import { Modal, Checkbox } from 'antd';
 
@@ -228,4 +228,4 @@ EditHistoryModal.propTypes = {
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
-export default injectIntl(EditHistoryModal);
+export default EditHistoryModal;

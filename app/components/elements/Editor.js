@@ -3,7 +3,7 @@ eslint-disable react/no-multi-comp, no-underscore-dangle
 */
 
 import React, { Component, Fragment } from 'react';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import { UnControlled as CodeMirror } from 'react-codemirror2';
@@ -1115,4 +1115,4 @@ Editor.propTypes = {
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
-export default injectIntl(Editor, { withRef: true });
+export default Editor;

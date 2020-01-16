@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Modal, Button, Input } from 'antd';
 
-import { injectIntl, FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import LinearProgress from '../common/LinearProgress';
 import UserAvatar from '../elements/UserAvatar';
@@ -279,4 +279,4 @@ FriendsModal.propTypes = {
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
-export default injectIntl(FriendsModal);
+export default FriendsModal;

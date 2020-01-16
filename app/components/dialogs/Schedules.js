@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { message, Modal, Popconfirm } from 'antd';
-import { FormattedMessage, injectIntl, FormattedDate } from 'react-intl';
+import { FormattedMessage, FormattedDate } from 'react-intl';
 
 import moment from 'moment';
 
@@ -304,4 +304,4 @@ SchedulesModal.propTypes = {
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
-export default injectIntl(SchedulesModal);
+export default SchedulesModal;

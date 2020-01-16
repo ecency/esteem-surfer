@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { message, Modal, Popconfirm } from 'antd';
-import { FormattedMessage, injectIntl, FormattedRelative } from 'react-intl';
+import { FormattedMessage, FormattedRelative } from 'react-intl';
 
 import {
   catchPostImage,
@@ -262,4 +262,4 @@ DraftsModal.propTypes = {
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
-export default injectIntl(DraftsModal);
+export default DraftsModal;

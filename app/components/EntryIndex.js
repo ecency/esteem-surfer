@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 import { Menu, message } from 'antd';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import isEqual from 'react-fast-compare';
 
@@ -313,4 +313,4 @@ EntryIndex.propTypes = {
   activeAccount: PropTypes.instanceOf(Object)
 };
 
-export default EntryIndex;
+export default injectIntl(EntryIndex);

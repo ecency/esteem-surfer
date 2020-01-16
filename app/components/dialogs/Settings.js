@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { Row, Col, Select, Switch, Input, Button, message } from 'antd';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import { Client } from 'dsteem';
 
@@ -296,4 +296,4 @@ Settings.propTypes = {
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
-export default injectIntl(Settings);
+export default Settings;

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 import { Modal, Drawer, Icon } from 'antd';
 
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import isEqual from 'react-fast-compare';
 
@@ -894,4 +894,4 @@ NavBar.propTypes = {
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
-export default injectIntl(NavBar);
+export default NavBar;

@@ -7,7 +7,7 @@ import moment from 'moment';
 
 import { Menu, message, Row, Col } from 'antd';
 
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import { postBodySummary } from '@esteemapp/esteem-render-helpers';
 
@@ -832,4 +832,4 @@ class ActivitiesWrapper extends Component {
   }
 }
 
-export default injectIntl(ActivitiesWrapper);
+export default ActivitiesWrapper;

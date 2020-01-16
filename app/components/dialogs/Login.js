@@ -18,7 +18,7 @@ import {
   Modal
 } from 'antd';
 
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import Tooltip from '../common/Tooltip';
 
@@ -611,4 +611,4 @@ Login.propTypes = {
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
-export default injectIntl(Login);
+export default Login;

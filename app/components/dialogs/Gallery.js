@@ -5,7 +5,7 @@ eslint-disable react/no-multi-comp, no-underscore-dangle
 import React, { Component } from 'react';
 import { Modal, Popconfirm, message } from 'antd';
 
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import PropTypes from 'prop-types';
 
@@ -133,12 +133,11 @@ class Gallery extends Component {
           </div>
         )}
 
-        {!loading &&
-          data.length < 1 && (
-            <div className="gallery-list">
-              <FormattedMessage id="gallery.empty-list" />
-            </div>
-          )}
+        {!loading && data.length < 1 && (
+          <div className="gallery-list">
+            <FormattedMessage id="gallery.empty-list" />
+          </div>
+        )}
       </div>
     );
   }
@@ -185,4 +184,4 @@ GalleryModal.propTypes = {
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
-export default injectIntl(GalleryModal);
+export default GalleryModal;

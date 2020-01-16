@@ -9,7 +9,8 @@ import { Select, message } from 'antd';
 import {
   FormattedRelative,
   FormattedNumber,
-  FormattedMessage
+  FormattedMessage,
+  injectIntl
 } from 'react-intl';
 
 import {
@@ -331,4 +332,4 @@ Search.propTypes = {
   searchResults: PropTypes.instanceOf(Object).isRequired
 };
 
-export default Search;
+export default injectIntl(Search);

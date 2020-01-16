@@ -5,7 +5,7 @@ eslint-disable import/no-cycle
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Drawer, message } from 'antd';
-import { FormattedMessage, FormattedNumber, injectIntl } from 'react-intl';
+import { FormattedMessage, FormattedNumber } from 'react-intl';
 
 import { proxifyImageSrc } from '@esteemapp/esteem-render-helpers';
 
@@ -339,4 +339,4 @@ QuickProfile.propTypes = {
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
-export default injectIntl(QuickProfile);
+export default QuickProfile;
