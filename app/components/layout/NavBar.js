@@ -394,6 +394,104 @@ Address.propTypes = {
   intl: PropTypes.instanceOf(Object).isRequired
 };
 
+class ExtraTools extends Component {
+  shouldComponentUpdate(nextProps) {
+    const { favoriteFn, favoriteFlag, bookmarkFn, bookmarkFlag } = this.props;
+
+    return (
+      favoriteFlag !== nextProps.favoriteFlag ||
+      bookmarkFlag !== nextProps.bookmarkFlag ||
+      !isEqual(favoriteFn, nextProps.favoriteFn) ||
+      !isEqual(bookmarkFn, nextProps.bookmarkFn)
+    );
+  }
+
+  favorite = () => {
+    const { favoriteFn } = this.props;
+
+    if (favoriteFn) favoriteFn();
+  };
+
+  bookmark = () => {
+    const { bookmarkFn } = this.props;
+
+    if (bookmarkFn) bookmarkFn();
+  };
+
+  render() {
+    const {
+      favoriteFn,
+      favoriteFlag,
+      bookmarkFn,
+      bookmarkFlag,
+      intl
+    } = this.props;
+
+    if (favoriteFn) {
+      return (
+        <LoginRequired {...this.props}>
+          <a
+            className={`post-add-on ${favoriteFlag ? 'checked' : ''}`}
+            onClick={() => this.favorite()}
+            role="none"
+          >
+            <Tooltip
+              title={
+                favoriteFlag
+                  ? intl.formatMessage({ id: 'navbar.favoriteRemove' })
+                  : intl.formatMessage({ id: 'navbar.favorite' })
+              }
+              mouseEnterDelay={2}
+            >
+              <i className="mi">star</i>
+            </Tooltip>
+          </a>
+        </LoginRequired>
+      );
+    }
+
+    if (bookmarkFn) {
+      return (
+        <LoginRequired {...this.props}>
+          <a
+            className={`post-add-on ${bookmarkFlag ? 'checked' : ''}`}
+            onClick={() => this.bookmark()}
+            role="none"
+          >
+            <Tooltip
+              title={
+                bookmarkFlag
+                  ? intl.formatMessage({ id: 'navbar.bookmarkRemove' })
+                  : intl.formatMessage({ id: 'navbar.bookmark' })
+              }
+              mouseEnterDelay={2}
+            >
+              <i className="mi">bookmark</i>
+            </Tooltip>
+          </a>
+        </LoginRequired>
+      );
+    }
+
+    return null;
+  }
+}
+
+ExtraTools.defaultProps = {
+  favoriteFn: undefined,
+  favoriteFlag: false,
+  bookmarkFn: undefined,
+  bookmarkFlag: false
+};
+
+ExtraTools.propTypes = {
+  favoriteFn: PropTypes.func,
+  favoriteFlag: PropTypes.bool,
+  bookmarkFn: PropTypes.func,
+  bookmarkFlag: PropTypes.bool,
+  intl: PropTypes.instanceOf(Object).isRequired
+};
+
 class AltControls extends Component {
   constructor(props) {
     super(props);
@@ -760,18 +858,6 @@ UserSide.propTypes = {
 };
 
 class NavBar extends Component {
-  favorite = () => {
-    const { favoriteFn } = this.props;
-
-    if (favoriteFn) favoriteFn();
-  };
-
-  bookmark = () => {
-    const { bookmarkFn } = this.props;
-
-    if (bookmarkFn) bookmarkFn();
-  };
-
   logoClicked = () => {
     const { location, activeAccount } = this.props;
 
@@ -789,14 +875,7 @@ class NavBar extends Component {
   };
 
   render() {
-    const {
-      favoriteFn,
-      favoriteFlag,
-      bookmarkFn,
-      bookmarkFlag,
-      postBtnActive,
-      intl
-    } = this.props;
+    const { postBtnActive } = this.props;
 
     return (
       <div className="nav-bar">
@@ -814,50 +893,7 @@ class NavBar extends Component {
           <div className="address-bar">
             <SearchInPage {...this.props} />
             <Address {...this.props} />
-            {favoriteFn ? (
-              <LoginRequired {...this.props}>
-                <a
-                  className={`post-add-on ${favoriteFlag ? 'checked' : ''}`}
-                  onClick={() => this.favorite()}
-                  role="none"
-                >
-                  <Tooltip
-                    title={
-                      favoriteFlag
-                        ? intl.formatMessage({ id: 'navbar.favoriteRemove' })
-                        : intl.formatMessage({ id: 'navbar.favorite' })
-                    }
-                    mouseEnterDelay={2}
-                  >
-                    <i className="mi">star</i>
-                  </Tooltip>
-                </a>
-              </LoginRequired>
-            ) : (
-              ''
-            )}
-            {bookmarkFn ? (
-              <LoginRequired {...this.props}>
-                <a
-                  className={`post-add-on ${bookmarkFlag ? 'checked' : ''}`}
-                  onClick={() => this.bookmark()}
-                  role="none"
-                >
-                  <Tooltip
-                    title={
-                      bookmarkFlag
-                        ? intl.formatMessage({ id: 'navbar.bookmarkRemove' })
-                        : intl.formatMessage({ id: 'navbar.bookmark' })
-                    }
-                    mouseEnterDelay={2}
-                  >
-                    <i className="mi">bookmark</i>
-                  </Tooltip>
-                </a>
-              </LoginRequired>
-            ) : (
-              ''
-            )}
+            <ExtraTools {...this.props} />
           </div>
           <AltControls {...this.props} />
           <UserSide {...this.props} />
@@ -869,10 +905,6 @@ class NavBar extends Component {
 
 NavBar.defaultProps = {
   activeAccount: null,
-  favoriteFn: undefined,
-  favoriteFlag: false,
-  bookmarkFn: undefined,
-  bookmarkFlag: false,
   postBtnActive: false
 };
 
@@ -884,14 +916,7 @@ NavBar.propTypes = {
     pathname: PropTypes.string.isRequired
   }).isRequired,
   activeAccount: PropTypes.instanceOf(Object),
-  reloadFn: PropTypes.func.isRequired,
-  reloading: PropTypes.bool.isRequired,
-  favoriteFn: PropTypes.func,
-  favoriteFlag: PropTypes.bool,
-  bookmarkFn: PropTypes.func,
-  bookmarkFlag: PropTypes.bool,
-  postBtnActive: PropTypes.bool,
-  intl: PropTypes.instanceOf(Object).isRequired
+  postBtnActive: PropTypes.bool
 };
 
 export default NavBar;
