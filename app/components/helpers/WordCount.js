@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import { FormattedMessage } from 'react-intl';
 
+import isEqual from 'react-fast-compare';
+
 import wordCounter from '../../utils/word-counter';
 
 class WordCount extends Component {
@@ -26,6 +28,10 @@ class WordCount extends Component {
         this.countWords();
       }, 1000);
     }
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return !isEqual(this.state, nextState);
   }
 
   componentWillUnmount() {
