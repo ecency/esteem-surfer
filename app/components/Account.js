@@ -16,6 +16,8 @@ import {
 
 import { Link } from 'react-router-dom';
 
+import isEqual from 'react-fast-compare';
+
 import {
   catchPostImage,
   postBodySummary,
@@ -90,6 +92,17 @@ class Profile extends Component {
       profileEditModalVisible: false,
       passwordModalVisible: false
     };
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    const { username, account, activeAccount } = this.props;
+
+    return (
+      !isEqual(this.state, nextState) ||
+      username !== nextProps.username ||
+      !isEqual(account, nextProps.account) ||
+      !isEqual(activeAccount, nextProps.activeAccount)
+    );
   }
 
   render() {
@@ -398,6 +411,16 @@ Profile.propTypes = {
 };
 
 export class AccountMenu extends Component {
+  shouldComponentUpdate(nextProps) {
+    const { username, section, history } = this.props;
+
+    return (
+      username !== nextProps.username ||
+      section !== nextProps.section ||
+      !isEqual(history, nextProps.history)
+    );
+  }
+
   goSection = section => {
     const { history, username } = this.props;
     const u = section ? `/@${username}/${section}` : `/@${username}`;
@@ -473,6 +496,17 @@ AccountMenu.propTypes = {
 };
 
 export class AccountCover extends Component {
+  shouldComponentUpdate(nextProps) {
+    const { account, username, global, activeAccount } = this.props;
+
+    return (
+      global.theme !== nextProps.global.theme ||
+      username !== nextProps.username ||
+      !isEqual(account, nextProps.account) ||
+      !isEqual(activeAccount, nextProps.activeAccount)
+    );
+  }
+
   render() {
     let coverImage;
 
@@ -522,6 +556,14 @@ AccountCover.propTypes = {
 };
 
 export class AccountTopPosts extends Component {
+  shouldComponentUpdate(nextProps) {
+    const { history, posts } = this.props;
+
+    return (
+      !isEqual(posts, nextProps.posts) || !isEqual(history, nextProps.history)
+    );
+  }
+
   render() {
     const { posts } = this.props;
 
@@ -774,6 +816,12 @@ TransactionRow.propTypes = {
 };
 
 export class Exchange extends Component {
+  shouldComponentUpdate(nextProps) {
+    const { marketData } = this.props;
+
+    return !isEqual(marketData, nextProps.marketData);
+  }
+
   render() {
     const { marketData } = this.props;
 
