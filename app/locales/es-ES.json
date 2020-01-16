@@ -221,6 +221,7 @@
     "points-transfer-sent-list-desc": "Transferir a {n}",
     "points-transfer-incoming-list-desc": "Transferencia de {n}",
     "points-delegation-list-desc": "Recompensa de delegación",
+    "points-referral-list-desc": "Referral reward",
     "points-claim-ok": "Puntos reclamados",
     "points-promote": "Promocionar",
     "points-boost": "Impulsar",
