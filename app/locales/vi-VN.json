@@ -221,6 +221,7 @@
     "points-transfer-sent-list-desc": "Chuyển tiền đến {n}",
     "points-transfer-incoming-list-desc": "Chuyển tiền từ {n}",
     "points-delegation-list-desc": "Phần thưởng cho việc ủy thác",
+    "points-referral-list-desc": "Referral reward",
     "points-claim-ok": "Các điểm thưởng được yêu cầu",
     "points-promote": "Quảng bá",
     "points-boost": "Tăng tốc",
