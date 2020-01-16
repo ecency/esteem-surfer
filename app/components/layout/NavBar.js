@@ -502,7 +502,11 @@ class AltControls extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return !isEqual(this.state, nextState);
+    const { global } = this.props;
+    return (
+      !isEqual(this.state, nextState) ||
+      !isEqual(global.server, nextProps.global.server)
+    );
   }
 
   showSettingsModal = () => {
@@ -577,6 +581,9 @@ class AltControls extends Component {
 }
 
 AltControls.propTypes = {
+  global: PropTypes.shape({
+    server: PropTypes.string.isRequired
+  }).isRequired,
   actions: PropTypes.shape({
     changeTheme: PropTypes.func.isRequired
   }).isRequired,
