@@ -221,6 +221,7 @@
     "points-transfer-sent-list-desc": "{n} へ送金",
     "points-transfer-incoming-list-desc": "{n} からの送金",
     "points-delegation-list-desc": "デリゲーション報酬",
+    "points-referral-list-desc": "Referral reward",
     "points-claim-ok": "ポイント要求済",
     "points-promote": "プロモート",
     "points-boost": "ブースト",
