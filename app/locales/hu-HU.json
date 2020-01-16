@@ -221,6 +221,7 @@
     "points-transfer-sent-list-desc": "Átutalás ide {n}",
     "points-transfer-incoming-list-desc": "Átutalás innen {n}",
     "points-delegation-list-desc": "Delegálási jutalom",
+    "points-referral-list-desc": "Referral reward",
     "points-claim-ok": "Pontok átvéve",
     "points-promote": "Hirdetés",
     "points-boost": "Felpörgetés",
