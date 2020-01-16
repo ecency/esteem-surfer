@@ -412,11 +412,12 @@ Profile.propTypes = {
 
 export class AccountMenu extends Component {
   shouldComponentUpdate(nextProps) {
-    const { username, section, history } = this.props;
+    const { username, section, global, history } = this.props;
 
     return (
       username !== nextProps.username ||
       section !== nextProps.section ||
+      global.listStyle !== nextProps.global.listStyle ||
       !isEqual(history, nextProps.history)
     );
   }
@@ -492,6 +493,9 @@ export class AccountMenu extends Component {
 AccountMenu.propTypes = {
   username: PropTypes.string.isRequired,
   section: PropTypes.string.isRequired,
+  global: PropTypes.shape({
+    listStyle: PropTypes.string.isRequired
+  }).isRequired,
   history: PropTypes.instanceOf(Object).isRequired
 };
 
