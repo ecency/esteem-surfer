@@ -2,11 +2,11 @@
   "name": "esteem-surfer",
   "productName": "eSteem Surfer",
   "description": "eSteem desktop application reimagined for Windows, Mac, Linux users, start earning cryptocurrency!",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "releasePost": "esteem/@esteemapp/esteem-surfer-changelog",
   "private": true,
   "author": "eSteem <info@esteem.app>",
-  "copyright": "© 2019, eSteem",
+  "copyright": "© 2020, eSteem",
   "homepage": "https://esteem.app",
   "scripts": {
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
@@ -92,8 +92,7 @@
         {
           "target": "nsis",
           "arch": [
-            "x64",
-            "ia32"
+            "x64"
           ]
         }
       ]
@@ -178,7 +177,7 @@
     "deep-freeze": "^0.0.1",
     "detect-port": "^1.2.3",
     "electron": "^2.0.6",
-    "electron-builder": "^20.31.2",
+    "electron-builder": "^22.2.0",
     "electron-devtools-installer": "^2.2.4",
     "electron-rebuild": "^1.8.2",
     "enzyme": "^3.4.0",
