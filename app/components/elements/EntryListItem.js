@@ -38,8 +38,13 @@ import noImage from '../../img/noimage.png';
 
 class EntryListItem extends Component {
   shouldComponentUpdate(nextProps) {
-    const { entry } = this.props;
-    return !isEqual(entry, nextProps.entry);
+    const { entry, global } = this.props;
+    const { currencySymbol } = global;
+
+    return (
+      !isEqual(entry, nextProps.entry) ||
+      currencySymbol !== nextProps.global.currencySymbol
+    );
   }
 
   promoteClicked = () => {
@@ -294,7 +299,8 @@ EntryListItem.defaultProps = {
 
 EntryListItem.propTypes = {
   global: PropTypes.shape({
-    selectedFilter: PropTypes.string.isRequired
+    selectedFilter: PropTypes.string.isRequired,
+    currencySymbol: PropTypes.string.isRequired
   }).isRequired,
   entry: PropTypes.shape({
     title: PropTypes.string.isRequired,
