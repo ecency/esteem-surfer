@@ -191,7 +191,7 @@ class Compose extends Component {
           tags = [];
         }
 
-        const editor = this.editor.current.getWrappedInstance();
+        const editor = this.editor.current;
 
         editor.setState({ title, body, tags });
         editor.editorInstance.setValue(body);
@@ -231,7 +231,7 @@ class Compose extends Component {
 
       const tags = [...new Set(jsonMeta.tags)];
 
-      const editor = this.editor.current.getWrappedInstance();
+      const editor = this.editor.current;
       editor.setState({ title, body, tags });
       editor.editorInstance.setValue(body);
       editor.changed();
@@ -241,7 +241,7 @@ class Compose extends Component {
   };
 
   clear = (preventDraftRedir = false) => {
-    const editor = this.editor.current.getWrappedInstance();
+    const editor = this.editor.current;
 
     editor.clear(() => {
       if (preventDraftRedir) return;
