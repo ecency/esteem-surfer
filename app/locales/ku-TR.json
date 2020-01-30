@@ -89,17 +89,17 @@
     "error-public-key": "You entered a public key. Password/WIF required",
     "error-user-fetch": "User data could not be fetched",
     "error-user-not-found": "Bikarhêner tune ye",
-    "error-authenticate": "Wrong username or password/WIF",
+    "error-authenticate": "Navê bikarhêneriyê an jî pêborîn/WIF xelet e",
     "create-account-text-1": "Don't have an account?",
     "create-account-text-2": "Sign up now!",
     "login-with-sc": "Têkevê bi",
     "divider-text": "AN JÎ",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "Not: Dibe ku Steemconnect ji dayîna xelatan hinek pereyan bîstine"
   },
   "sign-up": {
     "title": "Tomar Bibe",
     "username-placeholder": "pick a username",
-    "email-placeholder": "enter your email address",
+    "email-placeholder": "navnîşana epeyama xwe bikevê",
     "sign-up": "Tomar Bibe",
     "ref-code": "referral user (optional)",
     "success-message-1": "We've sent an email to {email}.",
@@ -109,17 +109,17 @@
     "login-btn-label": "Vegere Têketinê"
   },
   "create-pin-code": {
-    "title": "Create PIN Code",
+    "title": "Pînkodê Biafirîne",
     "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter PIN code",
+    "input-placeholder": "Pînkodê bikevê",
     "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
-    "created": "PIN code created"
+    "created": "Pînkod hate afirandin"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
-    "input-placeholder": "Enter PIN code to continue",
-    "last-chance": "This is your last chance",
-    "invalidate": "Oh, I forgot it...",
+    "title": "Pînkodê bikevê",
+    "input-placeholder": "Ji bo domandinê Pînkodê bikevê",
+    "last-chance": "Ev şansa te ya dawîn e",
+    "invalidate": "Wey, Min ji bîr kiriye...",
     "invalidate-confirm": "Do you really want to invalidate PIN code?",
     "invalidated": "PIN code is invalidated"
   },
@@ -142,8 +142,8 @@
     "fetch-error-profile": "Could not fetch profile data",
     "fetch-error-content": "Could not fetch posts",
     "post-count": "Post Count",
-    "followers": "Followers",
-    "following": "Following",
+    "followers": "Şopîner",
+    "following": "Şopandin",
     "section-blog": "Blog",
     "section-comments": "Şîrove",
     "section-replies": "Bersiv",
@@ -152,13 +152,13 @@
   },
   "follow-controls": {
     "follow": "Bişopîne",
-    "unFollow": "Unfollow",
-    "mute": "Mute",
-    "unMute": "Unmute"
+    "unFollow": "Ji şopê derkeve",
+    "mute": "Bêdeng bike",
+    "unMute": "Bêdengiyê rake"
   },
   "account": {
-    "voting-power": "Voting Power",
-    "post-count": "Post Count",
+    "voting-power": "Hêza dengdanê",
+    "post-count": "Hejmara Şandiyan",
     "number-of-votes": "Number of votes in last 24 hours",
     "followers": "Followers",
     "following": "Following",
@@ -177,8 +177,8 @@
     "steem-power-delegated": "Delegated Steem Power",
     "steem-power-received": "Received Steem Power",
     "next-power-down-amount": "Next power down amount",
-    "steem-power-total": "Total Steem Power",
-    "steem-dollars": "Steem Dollars",
+    "steem-power-total": "Tevahiya Hêza Steemê",
+    "steem-dollars": "Dolarên Steemê",
     "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
     "savings": "Savings",
     "savings-description": "Balance subject to 3 day withdraw waiting period.",
@@ -186,7 +186,7 @@
     "exchange": "Exchange",
     "transactions": "Transactions",
     "transaction-curation_reward": "Curation Reward",
-    "transaction-author_reward": "Author Reward",
+    "transaction-author_reward": "Xelata Nivîskariyê",
     "transaction-comment_benefactor_reward": "Comment Benefactor Reward",
     "transaction-claim_reward_balance": "Claim rewards",
     "transaction-transfer": "Transfer",
@@ -254,14 +254,14 @@
     "success-message": "Your request submitted. It will be activated in a couple minutes."
   },
   "redeem-boost": {
-    "page-title": "Boost",
-    "amount-label": "Amount",
+    "page-title": "Zêde bike",
+    "amount-label": "Mîqdar",
     "amount-help": "Drag the slider to change the amount",
     "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
     "title-placeholder": "Sernav",
-    "tags-placeholder": "Tags. First tag is your main category",
+    "tags-placeholder": "Etîket, Etîketa yekem kategoriya te ya sereke ye",
     "max-n-tags": "Max {n} tags",
     "body-placeholder": "Post Content",
     "tool-bold": "Qalind",
@@ -284,7 +284,7 @@
     "reward": "Xelat",
     "reward-default": "Default 50% / 50%",
     "reward-sp": "Power Up 100%",
-    "reward-dp": "Decline Payout",
+    "reward-dp": "Peredanê red bike",
     "upvote": "Upvote",
     "clear": "Hemûyan Paqij Bike",
     "form-error-message": "Form is not valid. Please fill all fields",
@@ -300,20 +300,20 @@
     "save-draft": "Reşnivîsê Tomar Bike",
     "draft-saved": "Reşnivîs hate tomarkirin",
     "publish": "Biweşîne",
-    "published": "Post Published",
+    "published": "Şandî Hate Weşandin",
     "update": "Hildemîne",
     "updated": "Şandî Hate Hildemandin",
     "sync-scroll": "Scroll Sync",
-    "no-suggestions": "No suggestions",
-    "emoji-filter-placeholder": "Filter",
+    "no-suggestions": "Pêşniyar tune ne",
+    "emoji-filter-placeholder": "Parzûn",
     "emoji-filter-no-match": "No match",
     "emoji-recently-used": "Recently Used"
   },
   "gallery": {
     "title": "Pêşangeh",
-    "copied": "Copied to clipboard",
-    "load-error": "Could not load gallery",
-    "empty-list": "Nothing here"
+    "copied": "Li rûnûsgehê hate kopîkirin",
+    "load-error": "Pêşangeh nehate barkirin",
+    "empty-list": "Li vir ti tişt tune ye"
   },
   "drafts": {
     "title": "Reşnivîs",
@@ -561,8 +561,8 @@
   "friends": {
     "followers-title": "Followers ({count})",
     "following-title": "Following ({count})",
-    "load-more": "Load More",
-    "empty-list": "Nothing here",
+    "load-more": "Zêdetir Bar Bike",
+    "empty-list": "Li vir ti tişt tune ye",
     "search-placeholder": "Search users"
   },
   "delegated-list": {
