@@ -35,9 +35,9 @@
   "entry-payout": {
     "potential-payout": "Peredayîna Texmînî",
     "promoted": "Peredana Sponsoriyê",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "author-payout": "Peredana Nivîskêr",
+    "curation-payout": "Peredana Kuratorê",
+    "payout-date": "Peredan"
   },
   "entry-votes": {
     "n-more": "{n} hebê din",
