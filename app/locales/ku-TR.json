@@ -45,41 +45,41 @@
     "reward": "Xelat",
     "percent": "Sede",
     "time": "Dem",
-    "modal-title": "Voters ({n})"
+    "modal-title": "Dengdêrên şandiyê ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}",
-    "promoted": "sponsored",
+    "reblogged": "ji aliyê {n} ve dîsa hate weşandin",
+    "promoted": "sponsorkirî",
     "promote": "promote",
-    "boost": "boost"
+    "boost": "zêde bike"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged",
+    "reblog": "Dîsweşandin",
+    "reblogged": "Dîsa hate weşandin",
     "modal-title": "Rebloggers ({n})",
     "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
     "title": "Sazkarî",
-    "currency": "Currency",
+    "currency": "Dirav-Pere",
     "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
-    "currency-changed": "Currency Changed",
+    "currency-changed": "Pere-Dirav Hate Guhertin",
     "locale": "Ziman",
     "locale-changed": "Ziman hate guhertin",
     "server": "Server",
-    "server-invalid-address": "Invalid server address",
-    "server-connecting": "Connecting to '{server}'...",
+    "server-invalid-address": "Navnîşana rajekarê nederbasdar e",
+    "server-connecting": "Li '{server}'ê tê girêdan...",
     "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
     "server-timeout-error": "'{server}' looks like not alive",
     "server-changed": "Server selection changed to {server}",
-    "server-custom-address": "Custom server address",
-    "server-list-fetch-error": "Could not fetch server list",
+    "server-custom-address": "Navnîşana rajekarê ya taybet",
+    "server-list-fetch-error": "Lîsteya rajekarê nehate stendin",
     "push-notifications": "Push Notifications",
     "push-notify-enabled": "Push notifications enabled",
     "push-notify-disabled": "Push notifications disabled"
   },
   "login": {
-    "title": "Welcome back!",
+    "title": "Dîsa bi xêr hatî!",
     "accounts-title": "Login As",
     "traditional-login-desc": "Sign in with your username and password to continue",
     "username-placeholder": "navê bikarhêner",
