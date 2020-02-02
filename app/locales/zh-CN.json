@@ -522,58 +522,58 @@
     "back": "返回",
     "success-title": "成功",
     "success-sub-title": "转账成功",
-    "transfer-summary": "从 <span class=\"from-user\">{from}</span> 到 <span class=\"to-user\">{to}</span> 已转账 <span class=\"amount\">{amount}</span>",
+    "transfer-summary": "已从 <span class=\"from-user\">{from}</span> 账号转账 <span class=\"amount\">{amount}</span> 到 <span class=\"to-user\">{to}</span> 账号",
     "reset": "其他转账",
     "finish": "完成",
     "recent-transfers": "最近转账"
   },
   "delegate": {
-    "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
-    "slider-help": "Drag the slider to adjust the amount",
-    "confirm-title": "Confirm Delegation",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "Delegation completed",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "title": "委托",
+    "sub-title": "委托 Steem Power(SP)",
+    "slider-help": "拖动滑块来调整数量",
+    "confirm-title": "确认委托",
+    "confirm-sub-title": "请检查是否一切正确。",
+    "delegation-summary": "委托 <span class=\"sp\">{sp}</span> 给 <span class=\"to-user\">{to}</span>账户",
+    "success-sub-title": "委托完成",
+    "insufficient-vesting": "Steem Power(vesting shares)不足 {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "此处无内容"
   },
   "power-down": {
-    "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
-    "account": "Account",
-    "incoming-funds": "Incoming Funds",
-    "begin": "Begin Power Down",
-    "stop": "Stop",
-    "estimated-note": "Estimated Weekly",
-    "withdraw-accounts": "Destination Account(s)",
-    "add-withdraw-account": "Add withdraw account"
+    "title": "释放 Steem Power",
+    "sub-title": "释放 Steem Power",
+    "account": "账户",
+    "incoming-funds": "转入资金",
+    "begin": "开始释放 Steem Power",
+    "stop": "停止",
+    "estimated-note": "每周估计",
+    "withdraw-accounts": "目标帐户",
+    "add-withdraw-account": "添加提现帐户"
   },
   "withdraw-route": {
-    "title": "Add withdraw account",
-    "to": "Account",
-    "percentage": "Percentage",
-    "slider-help": "Percentage of Power Down to this account",
-    "auto-power-down": "Automatically power up the target account"
+    "title": "添加提现帐户",
+    "to": "账户",
+    "percentage": "百分比",
+    "slider-help": "释放 Steem Power到此账号的百分比",
+    "auto-power-down": "自动转 Steem Power的目标账户"
   },
   "friends": {
-    "followers-title": "Followers ({count})",
-    "following-title": "Following ({count})",
-    "load-more": "Load More",
-    "empty-list": "Nothing here",
-    "search-placeholder": "Search users"
+    "followers-title": "粉丝 ({count})",
+    "following-title": "关注 ({count})",
+    "load-more": "加载更多",
+    "empty-list": "此处无内容",
+    "search-placeholder": "搜索用户"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "来自 @{n} 的Steem Power(SP) 授权"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "委托 Steem Power 给 @{n}"
   },
   "estm-purchase": {
-    "title": "ESTM purchase",
-    "purchase": "Purchase"
+    "title": "购买 ESTM",
+    "purchase": "购买"
   },
   "edit-history": {
     "title": "Edit History",
