@@ -358,34 +358,34 @@
     "bookmarkRemoved": "已从书签中移除",
     "favorited": "已添加到收藏夹",
     "favoriteRemoved": "已从收藏夹移除",
-    "show-edit-history": "Show edit history",
+    "show-edit-history": "显示编辑历史",
     "copy-clipboard": "复制内部链接到剪贴板",
     "copied-clipboard": "已复制",
-    "comment-entry-title": "您正在查看以下位置的单个评论线程： ",
+    "comment-entry-title": "您正在查看的评论来自： ",
     "comment-entry-go-root": "查看完整内容",
-    "comment-entry-go-parent": "查看直接上一级",
-    "similar-entries": "Similar Posts",
-    "fetch-error": "Server timeout because response size is too big",
-    "promote": "promote",
-    "boost": "boost",
-    "more-replies": "show more replies"
+    "comment-entry-go-parent": "查看直接上级",
+    "similar-entries": "相似文章",
+    "fetch-error": "因为返回数据太大，服务器超时",
+    "promote": "推广",
+    "boost": "推荐",
+    "more-replies": "显示更多回复"
   },
   "navbar": {
     "settings": "设置",
     "change-theme": "更改主题",
-    "login": "Login to your account",
+    "login": "登录到您的帐户",
     "bookmark": "添加到书签",
     "bookmarkRemove": "从书签中删除",
     "favorite": "添加到收藏夹",
     "favoriteRemove": "已从收藏夹移除",
     "wallet": "我的钱包",
-    "points": "My Points",
+    "points": "我的点数",
     "activities": "活动",
     "address-enter-url": "输入网址",
     "address-enter-query": "输入搜索查询",
-    "unclaimed-reward-notice": "You have unclaimed rewards",
-    "unclaimed-points-notice": "You have unclaimed points",
-    "search-no-matches": "No matches"
+    "unclaimed-reward-notice": "您有未领奖励",
+    "unclaimed-points-notice": "您有未领点数",
+    "search-no-matches": "无匹配"
   },
   "search": {
     "n-results-for-q": "{q} 有 {n} 个结果",
@@ -395,19 +395,19 @@
     "sort-newest": "日期"
   },
   "updater": {
-    "new-version-available": "New version is available",
+    "new-version-available": "有新版本可用！",
     "update": "更新",
-    "dismiss": "关闭",
+    "dismiss": "略过",
     "downloading": "正在下载新版本......",
-    "download-completed": "Download is completed",
-    "restart": "重新启动"
+    "download-completed": "下载完成",
+    "restart": "重启"
   },
   "context-menu": {
     "cut": "剪切",
     "copy": "复制",
     "paste": "粘帖",
-    "open-image-browser": "在浏览器中打开图像",
-    "copy-image-url": "复制图像网址"
+    "open-image-browser": "在浏览器中打开图片",
+    "copy-image-url": "复制图片网址"
   },
   "notification": {
     "popup-title": "您有一条新通知",
