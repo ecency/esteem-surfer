@@ -238,7 +238,7 @@
     "post-label": "文章",
     "post-input-placeholder": "author/permlink",
     "post-input-title": "建议",
-    "key-required-err": "所选账户未发现有效密钥。请确认已使用适当的凭证登录。",
+    "key-required-err": "所选账户未发现有效 Active 密钥。请确认您用适当密钥登录。",
     "post-error": "文章地址无效",
     "post-error-exists": "文章已被推广",
     "funds-error": "金额不足",
@@ -576,33 +576,33 @@
     "purchase": "购买"
   },
   "edit-history": {
-    "title": "Edit History",
-    "show-diff": "Show Difference",
-    "version": "Version {n}"
+    "title": "编辑历史",
+    "show-diff": "显示差异",
+    "version": "版本 {n}"
   },
   "word-count": {
-    "label": "{n} words",
-    "read-time-less-1-min": "< 1 min read",
-    "read-time-n-min": "~ {n} min read"
+    "label": "{n} 个字",
+    "read-time-less-1-min": "< 1 分钟阅读",
+    "read-time-n-min": "~ {n} 分钟阅读"
   },
   "profile-edit": {
-    "title": "Profile Editor",
-    "name": "Display Name",
-    "about": "About",
-    "cover-image": "Cover Image",
-    "profile-image": "Profile Image",
-    "website": "Website",
-    "location": "Location",
-    "updated": "Profile updated successfully!"
+    "title": "个人资料编辑",
+    "name": "显示名",
+    "about": "关于",
+    "cover-image": "封面图片",
+    "profile-image": "个人资料图片",
+    "website": "网站",
+    "location": "位置",
+    "updated": "个人资料更新成功"
   },
   "password-update": {
-    "title": "Password",
-    "cur-pass": "Current password",
-    "new-pass": "New password",
-    "new-pass2": "Confirm new password",
-    "error-current": "Enter current password",
-    "error-new": "Enter new password",
-    "error-new2": "Passwords must be same",
-    "updated": "Password updated successfully!"
+    "title": "密码",
+    "cur-pass": "当前密码",
+    "new-pass": "新密码",
+    "new-pass2": "确认新密码",
+    "error-current": "输入当前密码",
+    "error-new": "输入新密码",
+    "error-new2": "密码必须相同",
+    "updated": "密码更新成功！"
   }
 }
