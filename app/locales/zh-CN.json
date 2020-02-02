@@ -92,43 +92,43 @@
     "error-authenticate": "错误的用户名或密码/WIF",
     "create-account-text-1": "还没有账户？",
     "create-account-text-2": "立即注册!",
-    "login-with-sc": "登录途径",
+    "login-with-sc": "登录通过",
     "divider-text": "或",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "注意：SteemConnect 可能会从您的奖励交易中收取一些费用"
   },
   "sign-up": {
-    "title": "Sign Up",
-    "username-placeholder": "pick a username",
-    "email-placeholder": "enter your email address",
-    "sign-up": "Sign Up",
-    "ref-code": "referral user (optional)",
-    "success-message-1": "We've sent an email to {email}.",
-    "success-message-2": "Follow instructions to complete signup process.",
-    "login-1": "Already a member?",
-    "login-2": "Login",
-    "login-btn-label": "Back to Login"
+    "title": "注册",
+    "username-placeholder": "选择用户名",
+    "email-placeholder": "输入您的电子邮件地址",
+    "sign-up": "注册",
+    "ref-code": "邀请用户 (可选)",
+    "success-message-1": "我们已经向 {email} 发送了一封电子邮件。",
+    "success-message-2": "按照说明完成注册过程。",
+    "login-1": "已经是成员？",
+    "login-2": "登录",
+    "login-btn-label": "返回登录"
   },
   "create-pin-code": {
     "title": "创建 PIN 码",
-    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter PIN code",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
-    "created": "PIN code created"
+    "desc1": "设置 PIN 码来加密您的数据，并启用额外的一层安全！",
+    "input-placeholder": "输入 PIN 码",
+    "desc2": "每次启动 esteem 和进行关键交易时，将提示您输入 PIN 码。",
+    "created": "已创建 PIN 码"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
-    "input-placeholder": "Enter PIN code to continue",
+    "title": "输入 PIN 码",
+    "input-placeholder": "输入 PIN 码后继续",
     "last-chance": "这是您的最后机会",
     "invalidate": "哦，我忘记了......",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "invalidate-confirm": "您确定要作废 PIN 码？",
+    "invalidated": "PIN 码已作废"
   },
   "user-menu": {
     "profile": "个人资料",
     "bookmarks": "书签",
     "favorites": "收藏夹",
     "drafts": "草稿",
-    "schedules": "计划",
+    "schedules": "定时发布",
     "gallery": "图库",
     "login-as": "登录为",
     "logout": "注销"
