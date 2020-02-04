@@ -480,7 +480,7 @@
     "status-active": "active",
     "status-expired": "expired",
     "status-inactive": "upcoming",
-    "duration-days": "{n} days",
+    "duration-days": "{n} roj",
     "voters": "Proposal Voters",
     "voter": "Voter",
     "voter-sp": "SP",
@@ -510,8 +510,8 @@
     "wrong-amount": "Wrong amount value",
     "amount-precision-error": "Use only 3 digits of precision",
     "insufficient-funds": "Insufficient funds",
-    "balance": "Balance",
-    "memo": "Memo",
+    "balance": "Bermayî",
+    "memo": "Bîrname",
     "memo-placeholder": "enter your notes here",
     "memo-help": "This memo is public",
     "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
@@ -528,7 +528,7 @@
     "recent-transfers": "Transferên dawîn"
   },
   "delegate": {
-    "title": "Delegate",
+    "title": "Şande",
     "sub-title": "Delegate Steem Power",
     "slider-help": "Drag the slider to adjust the amount",
     "confirm-title": "Confirm Delegation",
@@ -541,7 +541,7 @@
     "empty-list": "Li vir ti tişt tine ye"
   },
   "power-down": {
-    "title": "Power Down",
+    "title": "Ji Hêz Bixe",
     "sub-title": "Power Down Steem Power",
     "account": "Ajimêr",
     "incoming-funds": "Incoming Funds",
@@ -559,11 +559,11 @@
     "auto-power-down": "Automatically power up the target account"
   },
   "friends": {
-    "followers-title": "Followers ({count})",
-    "following-title": "Following ({count})",
+    "followers-title": "Şopîner ({count})",
+    "following-title": "Şopandin ({count})",
     "load-more": "Zêdetir Bar Bike",
     "empty-list": "Li vir ti tişt tune ye",
-    "search-placeholder": "Search users"
+    "search-placeholder": "Li bikarhêneran bigere"
   },
   "delegated-list": {
     "title": "Delegated steem power from @{n}"
@@ -578,7 +578,7 @@
   "edit-history": {
     "title": "Edit History",
     "show-diff": "Show Difference",
-    "version": "Version {n}"
+    "version": "Guherto {n}"
   },
   "word-count": {
     "label": "{n} words",
@@ -587,7 +587,7 @@
   },
   "profile-edit": {
     "title": "Profile Editor",
-    "name": "Display Name",
+    "name": "Navê Xuyangê",
     "about": "Derbar",
     "cover-image": "Cover Image",
     "profile-image": "Wêneya Profîlê",
