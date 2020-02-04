@@ -11,11 +11,11 @@
     "cancel": "İmtina",
     "ok": "Oldu",
     "edit": "Düzəliş et",
-    "server-error": "Process could not be completed due to server error",
+    "server-error": "Server xətasına görə proses tamamlana bilmədi",
     "save": "Saxla",
     "done": "Hazırdır",
     "select": "Seç",
-    "update": "Update"
+    "update": "Yenilə"
   },
   "footer": {
     "faq": "TSS",
@@ -49,9 +49,9 @@
   },
   "entry-list-item": {
     "reblogged": "{n} təkrar paylaşdı",
-    "promoted": "sponsored",
-    "promote": "promote",
-    "boost": "boost"
+    "promoted": "sponsorlu",
+    "promote": "tanıtım",
+    "boost": "gücləndir"
   },
   "entry-reblog": {
     "reblog": "Təkrar paylaş",
@@ -124,14 +124,14 @@
     "invalidated": "PIN code is invalidated"
   },
   "user-menu": {
-    "profile": "Profile",
-    "bookmarks": "Bookmarks",
-    "favorites": "Favorites",
-    "drafts": "Drafts",
-    "schedules": "Schedules",
-    "gallery": "Gallery",
-    "login-as": "Login As",
-    "logout": "Logout"
+    "profile": "Profil",
+    "bookmarks": "Əlfəcinlər",
+    "favorites": "Sevimlilər",
+    "drafts": "Qaralamalar",
+    "schedules": "Cədvəllər",
+    "gallery": "Qalereya",
+    "login-as": "Giriş et",
+    "logout": "Çıxış"
   },
   "login-required": {
     "default": "This action requires login",
