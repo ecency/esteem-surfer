@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import defaults from '../../constants/defaults';
 
+import comTag from '../../helpers/com-tag';
+
 export const makePath = (filter, tag) => {
   if (filter === 'feed') {
     return `/${defaults.filter}/${tag}`;
@@ -13,6 +15,27 @@ export const makePath = (filter, tag) => {
 };
 
 class TagLink extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      label: ''
+    };
+  }
+
+  componentDidMount() {
+    const { tag } = this.props;
+
+    if (tag.startsWith('hive-')) {
+      comTag(tag)
+        .then(r => {
+          this.setState({ label: r });
+          return r;
+        })
+        .catch(() => {});
+    }
+  }
+
   clicked = () => {
     const { tag, global, location, history } = this.props;
     const { selectedFilter } = global;
@@ -29,10 +52,17 @@ class TagLink extends Component {
 
   render() {
     const { children } = this.props;
+    const { label } = this.state;
 
-    const clonedChildren = React.cloneElement(children, {
+    const props = {
       onClick: this.clicked
-    });
+    };
+
+    if (label) {
+      props.children = label;
+    }
+
+    const clonedChildren = React.cloneElement(children, props);
 
     return clonedChildren;
   }
