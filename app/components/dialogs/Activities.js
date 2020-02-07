@@ -280,6 +280,48 @@ class ActivityListItem extends Component {
                 )}
               </div>
             )}
+
+            {/* Spin */}
+            {activity.type === 'spin' && (
+              <div className="activity-content">
+                <div className="first-line">
+                  <AccountLink {...this.props} username={activity.source}>
+                    <a className="source-name"> {activity.source}</a>
+                  </AccountLink>
+                  <span className="activity-action">
+                    <FormattedMessage id="activities.spin-str" />
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {/* Inactive */}
+            {activity.type === 'inactive' && (
+              <div className="activity-content">
+                <div className="first-line">
+                  <AccountLink {...this.props} username={activity.source}>
+                    <a className="source-name"> {activity.source}</a>
+                  </AccountLink>
+                  <span className="activity-action">
+                    <FormattedMessage id="activities.inactive-str" />
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {/* Referral */}
+            {activity.type === 'referral' && (
+              <div className="activity-content">
+                <div className="first-line">
+                  <AccountLink {...this.props} username={activity.source}>
+                    <a className="source-name"> {activity.source}</a>
+                  </AccountLink>
+                  <span className="activity-action">
+                    <FormattedMessage id="activities.referral-str" />
+                  </span>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </Fragment>

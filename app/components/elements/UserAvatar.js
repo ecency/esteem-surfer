@@ -23,7 +23,7 @@ class UserAvatar extends Component {
         key="user-avatar-image"
         className={cls}
         style={{
-          backgroundImage: `url('https://steemitimages.com/u/${user}/avatar/${imgSize}?v=${v}')`
+          backgroundImage: `url('https://avatars.esteem.app/u/${user}/avatar/${imgSize}?v=${v}')`
         }}
       />
     );
