@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "沒有網路連線"
   },
   "g": {
     "compose-entry": "創建帖子",
@@ -11,11 +11,11 @@
     "cancel": "取消",
     "ok": "好",
     "edit": "編輯",
-    "server-error": "Process could not be completed due to server error",
+    "server-error": "由於伺服器錯誤, 進程無法完成",
     "save": "儲存",
     "done": "完成",
     "select": "選擇",
-    "update": "Update"
+    "update": "更新"
   },
   "footer": {
     "faq": "常見問題與解答",
@@ -49,15 +49,15 @@
   },
   "entry-list-item": {
     "reblogged": "轉發 {n}",
-    "promoted": "sponsored",
-    "promote": "promote",
-    "boost": "boost"
+    "promoted": "\n贊助",
+    "promote": "推廣",
+    "boost": "推薦"
   },
   "entry-reblog": {
     "reblog": "轉發",
     "reblogged": "已轉發！",
-    "modal-title": "Rebloggers ({n})",
-    "more-reblogs": "... +{n} more reblogs"
+    "modal-title": "轉發者 ({n})",
+    "more-reblogs": "... +{n} 更多轉發"
   },
   "settings": {
     "title": "設定",
@@ -71,7 +71,7 @@
     "server-connecting": "連接到 \"{server}\"...",
     "server-connect-error": "無法連接到 \"{server}\"。請確保您有良好的網際網路連接。",
     "server-timeout-error": "'{server}' 似乎不存在",
-    "server-changed": "Server selection changed to {server}",
+    "server-changed": "伺服器更改為 {server}",
     "server-custom-address": "自訂伺服器位址",
     "server-list-fetch-error": "無法取得伺服器列表",
     "push-notifications": "推送通知",
@@ -83,25 +83,25 @@
     "accounts-title": "登錄為",
     "traditional-login-desc": "請以您的使用者賬號與密碼登入",
     "username-placeholder": "使用者名稱",
-    "password-placeholder": "password or WIF",
+    "password-placeholder": "密碼或WIF",
     "login": "登入",
-    "error-fields-required": "Please enter username and password/WIF",
-    "error-public-key": "You entered a public key. Password/WIF required",
-    "error-user-fetch": "User data could not be fetched",
-    "error-user-not-found": "User does not exist",
-    "error-authenticate": "Wrong username or password/WIF",
-    "create-account-text-1": "Don't have an account?",
-    "create-account-text-2": "Sign up now!",
+    "error-fields-required": "請輸入使用者名稱和密碼/WIF",
+    "error-public-key": "您輸入了公開秘鑰，必須輸入密碼/WIF",
+    "error-user-fetch": "無法獲取用戶資料",
+    "error-user-not-found": "使用者不存在",
+    "error-authenticate": "錯誤的使用者名稱或密碼/WIF",
+    "create-account-text-1": "還沒有帳號嗎？",
+    "create-account-text-2": "立刻註冊!",
     "login-with-sc": "登入方式",
     "divider-text": "或",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "注意：SteemConnect 可能會從您的獎勵交易中收取一些費用"
   },
   "sign-up": {
-    "title": "Sign Up",
-    "username-placeholder": "pick a username",
-    "email-placeholder": "enter your email address",
-    "sign-up": "Sign Up",
-    "ref-code": "referral user (optional)",
+    "title": "註冊",
+    "username-placeholder": "選擇用戶名",
+    "email-placeholder": "輸入您的電子郵件地址",
+    "sign-up": "註冊",
+    "ref-code": "邀请用户 (可选)",
     "success-message-1": "We've sent an email to {email}.",
     "success-message-2": "Follow instructions to complete signup process.",
     "login-1": "Already a member?",
