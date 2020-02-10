@@ -101,27 +101,27 @@
     "username-placeholder": "選擇用戶名",
     "email-placeholder": "輸入您的電子郵件地址",
     "sign-up": "註冊",
-    "ref-code": "邀请用户 (可选)",
-    "success-message-1": "We've sent an email to {email}.",
-    "success-message-2": "Follow instructions to complete signup process.",
-    "login-1": "Already a member?",
-    "login-2": "Login",
-    "login-btn-label": "Back to Login"
+    "ref-code": "邀請用戶（可選）",
+    "success-message-1": "我們已經向 {email} 發送了一封電子郵件。",
+    "success-message-2": "按照說明完成注册過程。",
+    "login-1": "已經是會員?",
+    "login-2": "登錄",
+    "login-btn-label": "返回登入"
   },
   "create-pin-code": {
     "title": "創建PIN碼",
-    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter PIN code",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
-    "created": "PIN code created"
+    "desc1": "設置PIN碼來加密您的資料，並啟用額外的安全保護！",
+    "input-placeholder": "輸入 PIN 碼",
+    "desc2": "每次啟動和進行重要交易時，將提示您輸入PIN碼。",
+    "created": "已創建PIN碼"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
-    "input-placeholder": "Enter PIN code to continue",
+    "title": "輸入 PIN 碼",
+    "input-placeholder": "輸入PIN碼以繼續",
     "last-chance": "這是您的最後一次機會",
     "invalidate": "哦，我忘記了......",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "invalidate-confirm": "您確定要作廢PIN碼？",
+    "invalidated": "PIN碼已作廢"
   },
   "user-menu": {
     "profile": "個人檔案",
@@ -147,7 +147,7 @@
     "section-blog": "部落格",
     "section-comments": "評論",
     "section-replies": "回覆",
-    "section-points": "Points",
+    "section-points": "點數",
     "section-wallet": "錢包"
   },
   "follow-controls": {
@@ -166,12 +166,12 @@
     "section-comments": "評論",
     "section-replies": "回覆",
     "section-wallet": "錢包",
-    "section-points": "Points",
+    "section-points": "點數",
     "top-posts": "熱門帖子",
     "unclaimed-rewards": "未領取的報酬",
     "estimated-value": "概估價值是以Steem7天之平均價為基礎",
     "steem": "Steem",
-    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
+    "steem-description": "STEEM是可以隨時轉帳的可交易數位貨幣。STEEM可通過名為“Power Up”的過程將STEEM轉換為Steem Power（SP）。",
     "steem-power": "Steem Power",
     "steem-power-description": "Steem Power 可視為具有影響力的股權，持有可長期增值並對文章投票。持有Steem Power數量越多對於其他人獎勵大小的影響力就越大，也更能從準確的投票行為中獲得獎勵。",
     "steem-power-delegated": "Delegated Steem Power",
