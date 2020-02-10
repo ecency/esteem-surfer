@@ -174,7 +174,7 @@
     "steem-description": "STEEM是可以隨時轉帳的可交易數位貨幣。STEEM可通過名為“Power Up”的過程將STEEM轉換為Steem Power（SP）。",
     "steem-power": "Steem Power",
     "steem-power-description": "Steem Power 可視為具有影響力的股權，持有可長期增值並對文章投票。持有Steem Power數量越多對於其他人獎勵大小的影響力就越大，也更能從準確的投票行為中獲得獎勵。",
-    "steem-power-delegated": "Delegated Steem Power",
+    "steem-power-delegated": "已委託的 Steem Power(SP)",
     "steem-power-received": "Received Steem Power",
     "next-power-down-amount": "Next power down amount",
     "steem-power-total": "Total Steem Power",
