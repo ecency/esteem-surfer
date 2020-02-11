@@ -558,18 +558,18 @@
     "title": "添加提現帳戶",
     "to": "帳戶",
     "percentage": "百分比",
-    "slider-help": "Percentage of Power Down to this account",
-    "auto-power-down": "Automatically power up the target account"
+    "slider-help": "釋放 Steem Power 到此帳號的百分比",
+    "auto-power-down": "自動轉 Steem Power 的目標帳戶"
   },
   "friends": {
-    "followers-title": "Followers ({count})",
-    "following-title": "Following ({count})",
-    "load-more": "Load More",
-    "empty-list": "Nothing here",
-    "search-placeholder": "Search users"
+    "followers-title": "粉絲 ({count})",
+    "following-title": "關注 ({count})",
+    "load-more": "加載更多",
+    "empty-list": "此處無內容",
+    "search-placeholder": "檢索用戶"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "來自 @{n} 的Steem Power（SP）授權"
   },
   "delegatee-list": {
     "title": "Delegated steem power to @{n}"
