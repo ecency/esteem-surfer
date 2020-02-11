@@ -319,22 +319,22 @@
     "title": "草稿",
     "load-error": "無法載入草稿",
     "empty-list": "暫無內容！",
-    "deleted": "Draft is deleted"
+    "deleted": "草稿已删"
   },
   "schedules": {
     "title": "計劃的帖子",
     "empty-list": "暫無內容！",
-    "deleted": "Scheduled post is deleted",
+    "deleted": "定時發佈的文章已删除",
     "move": "儲存為草稿",
     "moved": "已儲存為草稿",
-    "success-message": "Published successfully.",
-    "error-message": "Could not publish due to a server error."
+    "success-message": "發佈成功",
+    "error-message": "由於服務器錯誤無法發佈。"
   },
   "bookmarks": {
     "title": "書籤",
     "load-error": "無法載入書籤",
     "empty-list": "暫無內容！",
-    "deleted": "Bookmark is removed",
+    "deleted": "書簽已移除",
     "search": "搜尋書籤"
   },
   "favorites": {
@@ -358,16 +358,16 @@
     "bookmarkRemoved": "已從書簽中刪除",
     "favorited": "已加到「我的最愛」",
     "favoriteRemoved": "已從「我的最愛」中刪除",
-    "show-edit-history": "Show edit history",
+    "show-edit-history": "顯示編輯歷史",
     "copy-clipboard": "將內部連結複製到剪貼簿",
     "copied-clipboard": "已複製",
     "comment-entry-title": "您正在查看單個評論的線程，來自： ",
     "comment-entry-go-root": "檢視全文",
     "comment-entry-go-parent": "查看直接的父級",
-    "similar-entries": "Similar Posts",
-    "fetch-error": "Server timeout because response size is too big",
-    "promote": "promote",
-    "boost": "boost",
+    "similar-entries": "相似文章",
+    "fetch-error": "因為返回數據太大，服務器超時",
+    "promote": "推廣",
+    "boost": "推薦",
     "more-replies": "show more replies"
   },
   "navbar": {
