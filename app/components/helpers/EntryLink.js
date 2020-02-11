@@ -9,7 +9,11 @@ export const makePath = (category, author, permlink, toReplies = false) =>
 class EntryLink extends Component {
   goEntry = async () => {
     let { entry } = this.props;
-    const { history, actions, toReplies } = this.props;
+    const { history, actions, toReplies, markAsRead } = this.props;
+
+    if (markAsRead) {
+      markAsRead();
+    }
 
     if (!entry) {
       const { author, permlink } = this.props;
@@ -34,7 +38,8 @@ class EntryLink extends Component {
 
 EntryLink.defaultProps = {
   entry: null,
-  toReplies: false
+  toReplies: false,
+  markAsRead: null
 };
 
 EntryLink.propTypes = {
@@ -50,7 +55,8 @@ EntryLink.propTypes = {
   toReplies: PropTypes.bool,
   actions: PropTypes.shape({
     setVisitingEntry: PropTypes.func.isRequired
-  }).isRequired
+  }).isRequired,
+  markAsRead: PropTypes.func
 };
 
 export default EntryLink;

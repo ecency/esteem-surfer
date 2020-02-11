@@ -24,7 +24,7 @@ import {
   getMyFollows,
   getMyReblogs,
   getActivities,
-  marActivityAsRead,
+  markActivityAsRead,
   getMyTransfers,
   getLeaderboard
 } from '../../backend/esteem-client';
@@ -80,7 +80,7 @@ class ActivityListItem extends Component {
 
     const { username } = activeAccount;
 
-    return marActivityAsRead(username, activity.id)
+    return markActivityAsRead(username, activity.id)
       .then(resp => {
         actions.fetchActivities(username);
 
@@ -145,6 +145,7 @@ class ActivityListItem extends Component {
                     {...this.props}
                     author={activity.author}
                     permlink={activity.permlink}
+                    markAsRead={this.markAsRead}
                   >
                     <a className="post-link">{activity.permlink}</a>
                   </EntryLink>
@@ -167,6 +168,7 @@ class ActivityListItem extends Component {
                     {...this.props}
                     author={activity.parent_author}
                     permlink={activity.parent_permlink}
+                    markAsRead={this.markAsRead}
                   >
                     <a className="post-link">{activity.parent_permlink}</a>
                   </EntryLink>
@@ -176,6 +178,7 @@ class ActivityListItem extends Component {
                     {...this.props}
                     author={activity.author}
                     permlink={activity.permlink}
+                    markAsRead={this.markAsRead}
                   >
                     <div className="markdown-view mini-markdown reply-body">
                       {postBodySummary(activity.body, 100)}
@@ -201,6 +204,7 @@ class ActivityListItem extends Component {
                     {...this.props}
                     author={activity.author}
                     permlink={activity.permlink}
+                    markAsRead={this.markAsRead}
                   >
                     <a className="post-link">{activity.permlink}</a>
                   </EntryLink>
@@ -252,6 +256,7 @@ class ActivityListItem extends Component {
                     {...this.props}
                     author={activity.author}
                     permlink={activity.permlink}
+                    markAsRead={this.markAsRead}
                   >
                     <a className="post-link">{activity.permlink}</a>
                   </EntryLink>
@@ -429,7 +434,7 @@ class Activities extends Component {
 
     this.setState({ marking: true });
 
-    return marActivityAsRead(username)
+    return markActivityAsRead(username)
       .then(resp => {
         actions.fetchActivities(username);
 

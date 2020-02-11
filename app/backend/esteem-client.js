@@ -296,7 +296,7 @@ export const getMyTransfers = (user, since = null) => {
   return axios.get(u).then(resp => resp.data);
 };
 
-export const marActivityAsRead = (user, id = null) => {
+export const markActivityAsRead = (user, id = null) => {
   const d = {};
   if (id) {
     d.id = id;
