@@ -228,36 +228,36 @@
     "points-transfer": "贈送給他人",
     "points-get": "獲取 ESTM",
     "witness-voting": "見證人",
-    "sps-voting": "SPS Voting",
-    "profile-editor": "Profile Editor",
-    "password": "Password"
+    "sps-voting": "SPS 投票",
+    "profile-editor": "編輯個人資料",
+    "password": "密碼"
   },
   "redeem": {
-    "user-label": "User",
-    "user-help-text": "Available Funds",
-    "post-label": "Post",
+    "user-label": "用戶",
+    "user-help-text": "可用資金",
+    "post-label": "文章",
     "post-input-placeholder": "author/permlink",
-    "post-input-title": "Suggestions",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
-    "post-error": "Not a valid post address",
-    "post-error-exists": "The post is already promoted",
-    "funds-error": "Insufficient funds",
-    "submit": "Submit",
-    "go-back": "Go Back"
+    "post-input-title": "建議",
+    "key-required-err": "所選帳戶未發現有效 Active 金鑰。請確認您用適當金鑰登入。",
+    "post-error": "文章地址無效",
+    "post-error-exists": "文章已被推廣",
+    "funds-error": "金額不足",
+    "submit": "提交",
+    "go-back": "返回"
   },
   "redeem-promote": {
-    "page-title": "Promote",
-    "duration-label": "Duration",
-    "duration-help": "Drag the slider to change the duration",
-    "day": "day",
-    "days": "days",
-    "success-message": "Your request submitted. It will be activated in a couple minutes."
+    "page-title": "推廣",
+    "duration-label": "持續時間",
+    "duration-help": "拖動滑塊以更改持續時間",
+    "day": "天",
+    "days": "天",
+    "success-message": "您的請求已提交。它將在幾分鐘後啟動。"
   },
   "redeem-boost": {
-    "page-title": "Boost",
-    "amount-label": "Amount",
-    "amount-help": "Drag the slider to change the amount",
-    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
+    "page-title": "推薦",
+    "amount-label": "數量",
+    "amount-help": "拖動滑塊來調整數量",
+    "success-message": "您的帖子已經被提交到推薦隊列，您將很快通過投票獲得推薦"
   },
   "composer": {
     "title-placeholder": "標題",
@@ -500,7 +500,7 @@
     "transfer-saving-sub-title": "提款要求3天的取款等待期來保護資金",
     "withdraw-saving-title": "儲蓄提款",
     "withdraw-saving-sub-title": "必須在規定的3天等待期後提取資金",
-    "power-up-title": "Convert to Steem Power",
+    "power-up-title": "轉為 Steem Power(SP)",
     "power-up-sub-title": "有影響力的代幣，讓您對帖子的收益有更多的控制權，並讓您可以獲得審查獎勵。",
     "from": "從",
     "from-placeholder": "選擇使用者",
@@ -517,7 +517,7 @@
     "memo": "備註",
     "memo-placeholder": "在此處輸入您的附言",
     "memo-help": "這份備忘錄是公開的",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "key-required-err": "所選帳戶未發現有效Active金鑰。請確認您是用適當金鑰登入。",
     "next": "繼續",
     "confirm-title": "確認您的轉賬",
     "confirm-sub-title": "請檢查一切是否正確",
@@ -531,12 +531,12 @@
     "recent-transfers": "最近的轉賬"
   },
   "delegate": {
-    "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
-    "slider-help": "Drag the slider to adjust the amount",
-    "confirm-title": "Confirm Delegation",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
+    "title": "委託",
+    "sub-title": "委託 Steem Power(SP)",
+    "slider-help": "拖動滑塊來調整數量",
+    "confirm-title": "確認委託",
+    "confirm-sub-title": "請檢查是否一切正確。",
+    "delegation-summary": "委託 <span class=\"sp\">{sp}</span> 給 <span class=\"to-user\">{to}</span>帳戶",
     "success-sub-title": "Delegation completed",
     "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
   },
