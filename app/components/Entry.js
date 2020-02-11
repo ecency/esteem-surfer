@@ -847,7 +847,7 @@ class Entry extends PureComponent {
     };
 
     // It might be undefined if newly created.
-    if (!parent.replies) {
+    if (!parent || !parent.replies) {
       return [];
     }
 
