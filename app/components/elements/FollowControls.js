@@ -28,17 +28,29 @@ class FollowControls extends Component {
   }
 
   async componentDidMount() {
+    this.mounted = true;
+
     const { activeAccount } = this.props;
 
     if (!activeAccount) {
-      this.setState({ fetching: false });
+      this.stateSet({ fetching: false });
       return;
     }
 
     await this.fetchStatus();
 
-    this.setState({ fetching: false });
+    this.stateSet({ fetching: false });
   }
+
+  componentWillUnmount() {
+    this.mounted = false;
+  }
+
+  stateSet = (obj, cb = undefined) => {
+    if (this.mounted) {
+      this.setState(obj, cb);
+    }
+  };
 
   isFollowing = async () => {
     const { activeAccount, targetUsername } = this.props;
@@ -92,21 +104,21 @@ class FollowControls extends Component {
     // No need to check if muted when already following
     const muted = following ? false : await this.isMuted();
 
-    this.setState({ following, muted });
+    this.stateSet({ following, muted });
   };
 
   follow = async () => {
     const { activeAccount, targetUsername, global } = this.props;
     const { pin } = global;
 
-    this.setState({ processing: true });
+    this.stateSet({ processing: true });
     try {
       await follow(activeAccount, pin, targetUsername);
+      this.stateSet({ following: true, muted: false });
     } catch (err) {
       message.error(formatChainError(err));
     } finally {
-      await this.fetchStatus();
-      this.setState({ processing: false });
+      this.stateSet({ processing: false });
     }
   };
 
@@ -114,14 +126,14 @@ class FollowControls extends Component {
     const { activeAccount, targetUsername, global } = this.props;
     const { pin } = global;
 
-    this.setState({ processing: true });
+    this.stateSet({ processing: true });
     try {
       await unFollow(activeAccount, pin, targetUsername);
+      this.stateSet({ following: false, muted: false });
     } catch (err) {
       message.error(formatChainError(err));
     } finally {
-      await this.fetchStatus();
-      this.setState({ processing: false });
+      this.stateSet({ processing: false });
     }
   };
 
@@ -129,14 +141,14 @@ class FollowControls extends Component {
     const { activeAccount, targetUsername, global } = this.props;
     const { pin } = global;
 
-    this.setState({ processing: true });
+    this.stateSet({ processing: true });
     try {
       await ignore(activeAccount, pin, targetUsername);
+      this.stateSet({ following: false, muted: true });
     } catch (err) {
       message.error(formatChainError(err));
     } finally {
-      await this.fetchStatus();
-      this.setState({ processing: false });
+      this.stateSet({ processing: false });
     }
   };
 
