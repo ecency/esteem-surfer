@@ -572,40 +572,40 @@
     "title": "來自 @{n} 的Steem Power（SP）授權"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "委託 Steem Power 給 @{n} "
   },
   "estm-purchase": {
-    "title": "ESTM purchase",
-    "purchase": "Purchase"
+    "title": "購買 ESTM",
+    "purchase": "購買"
   },
   "edit-history": {
-    "title": "Edit History",
-    "show-diff": "Show Difference",
-    "version": "Version {n}"
+    "title": "編輯歷史",
+    "show-diff": "顯示差异",
+    "version": "版本 {n}"
   },
   "word-count": {
-    "label": "{n} words",
-    "read-time-less-1-min": "< 1 min read",
-    "read-time-n-min": "~ {n} min read"
+    "label": "{n} 個字",
+    "read-time-less-1-min": "< 1 分鐘閱讀",
+    "read-time-n-min": "~ {n} 分鐘閱讀"
   },
   "profile-edit": {
-    "title": "Profile Editor",
-    "name": "Display Name",
-    "about": "About",
-    "cover-image": "Cover Image",
-    "profile-image": "Profile Image",
-    "website": "Website",
-    "location": "Location",
-    "updated": "Profile updated successfully!"
+    "title": "個人資料編輯",
+    "name": "顯示名",
+    "about": "關於",
+    "cover-image": "封面圖片",
+    "profile-image": "個人資料圖片",
+    "website": "網站",
+    "location": "位置",
+    "updated": "個人資料更新成功"
   },
   "password-update": {
-    "title": "Password",
-    "cur-pass": "Current password",
-    "new-pass": "New password",
-    "new-pass2": "Confirm new password",
-    "error-current": "Enter current password",
-    "error-new": "Enter new password",
-    "error-new2": "Passwords must be same",
-    "updated": "Password updated successfully!"
+    "title": "密碼",
+    "cur-pass": "當前密碼",
+    "new-pass": "新密碼",
+    "new-pass2": "確認新密碼",
+    "error-current": "輸入當前密碼",
+    "error-new": "輸入新密碼",
+    "error-new2": "密碼必須相同",
+    "updated": "密碼更新成功！"
   }
 }
