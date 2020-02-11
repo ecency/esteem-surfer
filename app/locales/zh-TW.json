@@ -48,7 +48,7 @@
     "modal-title": "點讚 ({n})"
   },
   "entry-list-item": {
-    "reblogged": "轉發 {n}",
+    "reblogged": "由 {n} 轉發",
     "promoted": "\n贊助",
     "promote": "推廣",
     "boost": "推薦"
@@ -56,13 +56,13 @@
   "entry-reblog": {
     "reblog": "轉發",
     "reblogged": "已轉發！",
-    "modal-title": "轉發者 ({n})",
+    "modal-title": "轉發 ({n})",
     "more-reblogs": "... +{n} 更多轉發"
   },
   "settings": {
     "title": "設定",
     "currency": "幣種",
-    "currency-fetch-error": "無法獲取 \"{cur}\" 的幣種匯率",
+    "currency-fetch-error": "無法獲取 \"{cur}\" 的匯率",
     "currency-changed": "幣種已更改",
     "locale": "語言",
     "locale-changed": "語言已變更",
@@ -537,27 +537,27 @@
     "confirm-title": "確認委託",
     "confirm-sub-title": "請檢查是否一切正確。",
     "delegation-summary": "委託 <span class=\"sp\">{sp}</span> 給 <span class=\"to-user\">{to}</span>帳戶",
-    "success-sub-title": "Delegation completed",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "success-sub-title": "委託完成",
+    "insufficient-vesting": "SP(vesting shares)不足 {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "此處無內容"
   },
   "power-down": {
-    "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
-    "account": "Account",
-    "incoming-funds": "Incoming Funds",
-    "begin": "Begin Power Down",
-    "stop": "Stop",
-    "estimated-note": "Estimated Weekly",
-    "withdraw-accounts": "Destination Account(s)",
-    "add-withdraw-account": "Add withdraw account"
+    "title": "釋放 Steem Power",
+    "sub-title": "釋放 Steem Power",
+    "account": "帳戶",
+    "incoming-funds": "轉入資金",
+    "begin": "開始釋放 Steem Power",
+    "stop": "停止",
+    "estimated-note": "每週估計",
+    "withdraw-accounts": "目標帳戶",
+    "add-withdraw-account": "添加提現帳戶"
   },
   "withdraw-route": {
-    "title": "Add withdraw account",
-    "to": "Account",
-    "percentage": "Percentage",
+    "title": "添加提現帳戶",
+    "to": "帳戶",
+    "percentage": "百分比",
     "slider-help": "Percentage of Power Down to this account",
     "auto-power-down": "Automatically power up the target account"
   },
