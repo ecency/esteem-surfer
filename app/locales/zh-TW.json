@@ -18,26 +18,26 @@
     "update": "更新"
   },
   "footer": {
-    "faq": "常見問題與解答",
+    "faq": "常見問題 (FAQ)",
     "about": "關於"
   },
   "entry-index": {
     "tags": "熱門標籤",
-    "filter-trending": "焦點",
+    "filter-trending": "流行",
     "filter-hot": "熱門",
     "filter-created": "最新",
     "filter-active": "活動",
-    "filter-promoted": "贊助",
-    "filter-votes": "票數",
+    "filter-promoted": "推廣",
+    "filter-votes": "投票",
     "filter-children": "評論",
-    "filter-feed": "動態消息"
+    "filter-feed": "朋友圈"
   },
   "entry-payout": {
-    "potential-payout": "潛在收益",
-    "promoted": "贊助",
+    "potential-payout": "預期收益",
+    "promoted": "推廣",
     "author-payout": "作者收益",
-    "curation-payout": "投票收益",
-    "payout-date": "收益时间"
+    "curation-payout": "審查收益",
+    "payout-date": "收益"
   },
   "entry-votes": {
     "n-more": "{n} 更多",
@@ -487,14 +487,14 @@
     "voters": "提案投票者",
     "voter": "投票者",
     "voter-sp": "SP",
-    "voter-proxy-sp": "Proxy SP",
-    "voter-total-sp": "Total SP",
-    "voted": "Proposal #{n} voted",
-    "vote-removed": "Vote removed for proposal #{n}"
+    "voter-proxy-sp": "代理 SP",
+    "voter-total-sp": "SP 總額",
+    "voted": "已投票 #{n} 提案",
+    "vote-removed": "已移除對 #{n} 提案的投票"
   },
   "transfer": {
     "transfer-title": "轉入賬戶",
-    "transfer-estm-title": "Gift to Account",
+    "transfer-estm-title": "贈給帳戶",
     "transfer-sub-title": "將資金移動到另一個 Steem 賬戶",
     "transfer-saving-title": "轉到儲蓄",
     "transfer-saving-sub-title": "提款要求3天的取款等待期來保護資金",
