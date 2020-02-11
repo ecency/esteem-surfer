@@ -183,11 +183,17 @@
     max-height: calc(100% - 240px - 44px);
     overflow: auto;
     margin: 0 0 0 6px;
+
+    .entry-list-item .app,
+    .entry-list-loading-item .app {
+      display: none;
+    }
   }
 
   &.loading {
     .account-menu {
       border-bottom-color: transparent;
+
       .account-menu-items {
         .menu-item {
           pointer-events: none;
