@@ -364,6 +364,7 @@
     "comment-entry-title": "您正在查看的评论来自： ",
     "comment-entry-go-root": "查看完整内容",
     "comment-entry-go-parent": "查看直接上级",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "相似文章",
     "fetch-error": "因为返回数据太大，服务器超时",
     "promote": "推广",
