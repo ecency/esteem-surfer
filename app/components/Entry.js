@@ -278,7 +278,8 @@ class ReplyListItem extends PureComponent {
       editorMode: null,
       editorVisible: false,
       deleting: false,
-      deleted: false
+      deleted: false,
+      revealComment: authorReputation(reply.author_reputation) > 0
     };
   }
 
@@ -330,6 +331,10 @@ class ReplyListItem extends PureComponent {
     this.setState({ editorVisible: false, editorMode: null });
   };
 
+  onReveal = () => {
+    this.setState({ revealComment: true });
+  };
+
   openEditor = mode => {
     const { editorVisible, editorMode } = this.state;
     if (editorVisible && editorMode === mode) return;
@@ -343,7 +348,14 @@ class ReplyListItem extends PureComponent {
 
   render() {
     const { depth, activeAccount, intl } = this.props;
-    const { reply, editorVisible, editorMode, deleted, deleting } = this.state;
+    const {
+      reply,
+      editorVisible,
+      editorMode,
+      deleted,
+      deleting,
+      revealComment
+    } = this.state;
 
     const reputation = authorReputation(reply.author_reputation);
     const created = parseDate(reply.created);
@@ -398,10 +410,18 @@ class ReplyListItem extends PureComponent {
               />
             </span>
           </div>
-          <div
-            className="item-body markdown-view mini-markdown user-selectable"
-            dangerouslySetInnerHTML={renderedBody}
-          />
+          {revealComment ? (
+            <div
+              className="item-body markdown-view mini-markdown user-selectable"
+              dangerouslySetInnerHTML={renderedBody}
+            />
+          ) : (
+            <div className="clear item-body">
+              <Button className="clean-button" onClick={this.onReveal}>
+                <FormattedMessage id="entry.comment-reveal" />
+              </Button>
+            </div>
+          )}
           <div className="item-controls">
             <div className="voting">
               <EntryVoteBtn
