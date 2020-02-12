@@ -364,6 +364,7 @@
     "comment-entry-title": "Du siehst den Thread eines einzelnen Kommentars von: ",
     "comment-entry-go-root": "kompletten Inhalt anzeigen",
     "comment-entry-go-parent": "Übergeordneten Beitrag ansehen",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Ähnliche Beiträge",
     "fetch-error": "Server Timeout, weil die Antwortgröße zu groß ist",
     "promote": "Promote",
