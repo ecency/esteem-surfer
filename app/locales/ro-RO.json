@@ -364,6 +364,7 @@
     "comment-entry-title": "Vizualizezi șirul unui singur comentariu de la: ",
     "comment-entry-go-root": "Vezi contextul complet",
     "comment-entry-go-parent": "Vizualizează postarea principală",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Postări Similare",
     "fetch-error": "Serverului a expirat pentru că dimensiunea răspunsului este prea mare",
     "promote": "promovează",
