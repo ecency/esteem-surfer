@@ -78,6 +78,10 @@ class ActivityListItem extends Component {
     const { activeAccount, actions, intl } = this.props;
     const { activity } = this.state;
 
+    if (activity.read) {
+      return;
+    }
+
     const { username } = activeAccount;
 
     return markActivityAsRead(username, activity.id)
