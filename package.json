@@ -88,6 +88,7 @@
       ]
     },
     "win": {
+      "publisherName": "eSteem",
       "target": [
         {
           "target": "nsis",
@@ -102,8 +103,7 @@
         "deb",
         "tar.gz",
         "AppImage",
-        "rpm",
-        "snap"
+        "rpm"
       ],
       "category": "Development"
     },
