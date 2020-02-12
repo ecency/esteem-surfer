@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "لا يوجد إتصال بالأنترنت"
+    "no-internet-conn": "لا يوجد إتصال بالإنترنت"
   },
   "g": {
     "compose-entry": "إنشاء منشور",
@@ -14,10 +14,11 @@
     "server-error": "تعذر إكمال المعالجة بسبب خطأ في الخادم",
     "save": "حفظ",
     "done": "تم",
-    "select": "حدّد"
+    "select": "حدّد",
+    "update": "Update"
   },
   "footer": {
-    "faq": "الأسئلة الشائعة",
+    "faq": "الأسئلة الأكثر شيوعاً",
     "about": "حول"
   },
   "entry-index": {
@@ -47,11 +48,16 @@
     "modal-title": "المصوّتون ({n})"
   },
   "entry-list-item": {
-    "reblogged": "تمت مشاركته من طرف {n}"
+    "reblogged": "تمت مشاركته من طرف {n}",
+    "promoted": "sponsored",
+    "promote": "قم بالترويج لمقالك",
+    "boost": "boost"
   },
   "entry-reblog": {
     "reblog": "إعادة تدوين",
-    "reblogged": "أعيد تدوينه"
+    "reblogged": "أعيد تدوينه",
+    "modal-title": "Rebloggers ({n})",
+    "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
     "title": "إعدادات",
@@ -59,14 +65,14 @@
     "currency-fetch-error": "تعذر جلب سعر العملة ل '{cur}'",
     "currency-changed": "العملة تغيرت",
     "locale": "اللغة",
-    "locale-changed": "تغيرت اللغة",
-    "server": "الخادم",
-    "server-invalid-address": "عنوان الخادم غير صالح",
+    "locale-changed": "تم تغيير اللغة",
+    "server": "السيرفر",
+    "server-invalid-address": "عنوان السيرفر غير صالح",
     "server-connecting": "يتم الآن الإتصال بـ'{server}'...",
-    "server-connect-error": "لم يستطع الإتصال بـ'{server}'. تأكد من إتصالك بالإنترنت.",
-    "server-timeout-error": "الخادم '{server}' لا يبدو موجوداً",
+    "server-connect-error": "تعذر الإتصال بـ'{server}'. تأكد من إتصالك بالإنترنت.",
+    "server-timeout-error": "يبدو أن السيرفر '{server}' غير موجود",
     "server-changed": "تم تغيير اختيار الخادم إلى {server}",
-    "server-custom-address": "عنوان الخادم المخصص",
+    "server-custom-address": "عنوان السيرفر المخصص",
     "server-list-fetch-error": "لا يمكن جلب قائمة الخادم",
     "push-notifications": "إشعارات الدفع",
     "push-notify-enabled": "تمكين إشعارات الدفع",
@@ -75,8 +81,8 @@
   "login": {
     "title": "مرحباً بعودتك!",
     "accounts-title": "تسجيل الدخول كـ",
-    "traditional-login-desc": "سجّل باسمك وكلمة السر للمتابعة",
-    "username-placeholder": "اسم المستخدم",
+    "traditional-login-desc": "سجّل بإستخدام إسم المستخدم الخاص بك وكلمة المرور من أجل المتابعة",
+    "username-placeholder": "إسم المستخدم",
     "password-placeholder": "كلمة المرور أو WIF",
     "login": "تسجيل الدخول",
     "error-fields-required": "الرجاء إدخال اسم المستخدم وكلمة المرور",
@@ -84,10 +90,23 @@
     "error-user-fetch": "لا يمكن جلب بيانات المستخدم",
     "error-user-not-found": "المستخدم غير موجود",
     "error-authenticate": "اسم المستخدم أو كلمة المرور خاطئة",
-    "create-account-text": "ليس لديك حساب <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">سجّل الآن!</a>",
+    "create-account-text-1": "Don't have an account?",
+    "create-account-text-2": "Sign up now!",
     "login-with-sc": "سجّل بواسطة",
     "divider-text": "أو",
     "sc-note": "ملاحظة: قد تفرض عليك Steemconnect بعض الرسوم من معاملات المكافآت الخاصة بك"
+  },
+  "sign-up": {
+    "title": "Sign Up",
+    "username-placeholder": "pick a username",
+    "email-placeholder": "enter your email address",
+    "sign-up": "Sign Up",
+    "ref-code": "referral user (optional)",
+    "success-message-1": "We've sent an email to {email}.",
+    "success-message-2": "Follow instructions to complete signup process.",
+    "login-1": "Already a member?",
+    "login-2": "Login",
+    "login-btn-label": "Back to Login"
   },
   "create-pin-code": {
     "title": "أنشئ رمز PIN",
@@ -100,7 +119,7 @@
     "title": "قم بإدخال رمز PIN",
     "input-placeholder": "قم بإدخال رمز PIN للمواصلة",
     "last-chance": "هذه فرصتك الأخيرة",
-    "invalidate": "أوه، لقد نسيتها...",
+    "invalidate": "أوه، لقد نسيت ذلك...",
     "invalidate-confirm": "هل تريد حقًا إبطال رمز PIN؟",
     "invalidated": "تم إبطال رمز PIN"
   },
@@ -122,12 +141,13 @@
   "quick-profile": {
     "fetch-error-profile": "لا يمكن إحضار بيانات الملف الشخصي",
     "fetch-error-content": "لا يمكن إحضار المشاركات",
-    "post-count": "عدد المشاركات",
+    "post-count": "عدد المنشورات",
     "followers": "المتابعون",
     "following": "الذين اتبعهم",
     "section-blog": "المدونة",
     "section-comments": "التعليقات",
     "section-replies": "الردود",
+    "section-points": "نقاط",
     "section-wallet": "المحفظة"
   },
   "follow-controls": {
@@ -146,12 +166,13 @@
     "section-comments": "التعليقات",
     "section-replies": "الردود",
     "section-wallet": "المحفظة",
+    "section-points": "نقاط",
     "top-posts": "أفضل المشاركات",
     "unclaimed-rewards": "المكافآت غير المطالب بها",
     "estimated-value": "تستند القيمة المقدرة على متوسط ​​قيمة 7 أيام لـ Steem.",
     "steem": "ستيم",
     "steem-description": "STEEM هي رموز قابلة للتداول والتي يمكن نقلها في أي وقت. يمكن تحويل STEEM إلى Steem Power في عملية تسمى التقوية.",
-    "steem-power": "قوة ستيم",
+    "steem-power": "طاقة ستيم",
     "steem-power-description": "قوة ستيم هي رموز التأثير التي تكسب المزيد من القوة لعقدها على المدى الطويل والتصويت على المشاركات. وكلما زادت قوة ستيم ، كلما كان بإمكان المرء التأثير على مكافآت الآخرين وكسب مكافآت مقابل التصويت الدقيق.",
     "steem-power-delegated": "تفويض قوة ستيم",
     "steem-power-received": "تم إستلام قوة ستيم",
@@ -179,7 +200,64 @@
     "power-up": "رفع الطاقة",
     "withdraw-steem": "سحب ستيم",
     "withdraw-sbd": "سحب ستيم دولار",
-    "delegate": "تفويض"
+    "delegate": "تفويض",
+    "power-down": "سحب الطاقة",
+    "point-history": "التاريخ",
+    "points-post-desc": "You can earn point by posting regularly. Posting gives you 15 points.",
+    "points-comment-desc": "يساعدك كل تعليق تدلي به على تنمية جمهورك وتكوين صداقات ، ولكنه يكسبك أيضًا 5 نقاط.",
+    "points-checkin-desc": "يمنحك تسجيل الوصول على تطبيق eSteem 0.25 نقطة ويساعدك على البقاء على اتصال مع أصدقائك.",
+    "points-vote-desc": "بالتصويت ، تمنح مكافأة للمبدعين الآخرين وتُظهر تقديرك لكنك أيضًا تكسب نقاط وزن التصويت 0.01 ×.",
+    "points-reblog-desc": "  شارك ما تنشره مع أصدقائك واربح 1 نقطة.",
+    "points-login-desc": "عند تسجيل الدخول إلى تطبيق eSteem ، يحق لك كسب 100 نقطة تلقائيًا.",
+    "points-checkin-extra-desc": "يمنحك الاستخدام المستمر للتطبيق فرصًا إضافية لكسب 10 نقاط إضافية ، وتكون أكثر نشاطًا وكسب المزيد.",
+    "points-delegation-desc": "يمكنك ربح نقطة واحدة عن كل 100 طاقة ستيم تقوم بتفويضها.",
+    "points-post-list-desc": "نقاط للنشر",
+    "points-comment-list-desc": "نقاط للتعليق",
+    "points-vote-list-desc": "نقاط للتصويت",
+    "points-reblog-list-desc": "نقاط لإعادة النشر",
+    "points-login-list-desc": "نقاط لتسجيل الدخول",
+    "points-checkin-list-desc": "Points for heartbeat",
+    "points-checkin-extra-list-desc": "مكافأة الاستخدام",
+    "points-transfer-sent-list-desc": "تحويل إلى {n}",
+    "points-transfer-incoming-list-desc": "تحويل من {n}",
+    "points-delegation-list-desc": "Delegation reward",
+    "points-referral-list-desc": "Referral reward",
+    "points-claim-ok": "تمت المطالبة بالنقاط",
+    "points-promote": "Promote",
+    "points-boost": "Boost",
+    "points-transfer": "Gift to someone",
+    "points-get": "GET ESTM",
+    "witness-voting": "Witnesses",
+    "sps-voting": "SPS Voting",
+    "profile-editor": "Profile Editor",
+    "password": "Password"
+  },
+  "redeem": {
+    "user-label": "المستخدم",
+    "user-help-text": "الرصيد المتوفر",
+    "post-label": "Post",
+    "post-input-placeholder": "author/permlink",
+    "post-input-title": "الإقتراحات",
+    "key-required-err": "تعذر العثور على المفتاح النشط للحساب المحدد. يرجى التأكد من تسجيل الدخول بإستخدام بيانات الإعتماد المناسبة.",
+    "post-error": "Not a valid post address",
+    "post-error-exists": "The post is already promoted",
+    "funds-error": "Insufficient funds",
+    "submit": "Submit",
+    "go-back": "Go Back"
+  },
+  "redeem-promote": {
+    "page-title": "Promote",
+    "duration-label": "Duration",
+    "duration-help": "Drag the slider to change the duration",
+    "day": "day",
+    "days": "days",
+    "success-message": "Your request submitted. It will be activated in a couple minutes."
+  },
+  "redeem-boost": {
+    "page-title": "Boost",
+    "amount-label": "Amount",
+    "amount-help": "Drag the slider to change the amount",
+    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
     "title-placeholder": "العنوان",
@@ -226,7 +304,6 @@
     "update": "تحديث",
     "updated": "تم تحديث المشاركة",
     "sync-scroll": "مزامنة التمرير",
-    "words-count": "الكلمات {n}",
     "no-suggestions": "لا توجد اقتراحات",
     "emoji-filter-placeholder": "فلتر",
     "emoji-filter-no-match": "لا يوجد تطابق",
@@ -249,7 +326,9 @@
     "empty-list": "لاشيء هنا",
     "deleted": "تم مسح المشاركة المجدولة",
     "move": "نقل إلى قسم المسودات",
-    "moved": "تم النقل إلى قسم المسودات"
+    "moved": "تم النقل إلى قسم المسودات",
+    "success-message": "تم النشر بنجاح.",
+    "error-message": "لا يمكن النشر بسبب خطأ في الخادم."
   },
   "bookmarks": {
     "title": "إشارات مرجعية",
@@ -279,27 +358,34 @@
     "bookmarkRemoved": "تمت إزالته من الإشارات المرجعية",
     "favorited": "تم الإضافة إلى المفضلات",
     "favoriteRemoved": "تمت الإزالة من المفضلات",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "نسخ الرابط الداخلي إلى الحافظة",
     "copied-clipboard": "تم النسخ",
     "comment-entry-title": "أنت تعرض تعليقاً واحدأً من: ",
     "comment-entry-go-root": "عرض المحتوى الكامل",
     "comment-entry-go-parent": "عرض الرسالة الرئيسية",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "منشورات مماثلة",
-    "fetch-error": "إنتهت مهلة الخادم لأن حجم الاستجابة كبير جدًا"
+    "fetch-error": "إنتهت مهلة الخادم لأن حجم الاستجابة كبير جدًا",
+    "promote": "promote",
+    "boost": "boost",
+    "more-replies": "show more replies"
   },
   "navbar": {
-    "settings": "إعدادات",
-    "change-theme": "تغيير الخلفية",
+    "settings": "الإعدادات",
+    "change-theme": "تغيير المظهر",
     "login": "تسجيل الدخول إلى حسابك",
     "bookmark": "إظافة إلى الإشارات المرجعية",
     "bookmarkRemove": "إزالة من الإشارات المرجعية",
     "favorite": "الإضافة إلى المفضلة",
     "favoriteRemove": "تمت الإزالة من المفضلات",
-    "wallet": "المحفظة الخاصة بي",
+    "wallet": "محفظتى",
+    "points": "النقاط الخاصة بي",
     "activities": "الأنشطة",
     "address-enter-url": "أدخل رابط URL",
     "address-enter-query": "أدخل إستعلام البحث",
     "unclaimed-reward-notice": "أنت لم تقم بمطالبة المافأة",
+    "unclaimed-points-notice": "لديك نقاط لم تطالب بها",
     "search-no-matches": "ليس هناك أي مطابقات"
   },
   "search": {
@@ -340,6 +426,7 @@
     "type-mentions": "الإشارات",
     "type-follows": "المتابعات",
     "type-reblogs": "إعادة التدوين",
+    "type-transfers": "التحويلات",
     "vote-str": "{p}% الإعجابات على منشورك:",
     "reply-str": "رد على مشاركتك:",
     "mention-str": "أشارك إليك في:",
@@ -347,11 +434,23 @@
     "unfollowed-str": "إلغاء المتابعة",
     "ignored-str": "تجاهل",
     "reblog-str": "أعاد تدوين مشاركتك:",
+    "transfer-str": "أرسل لك",
+    "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
+    "inactive-str": "Be active! Write a post, continue earning",
+    "referral-str": "joined with your referral, welcome them",
     "empty-list": "لاشيء هنا",
     "refresh": "تحديث الصفحة",
     "mark-all-read": "وضع علامة مقروء على الكل",
     "leaderboard": "المتصدرين",
-    "leaderboard-title": "أفضل مستخدم يومي"
+    "leaderboard-title-daily": "Daily top users",
+    "leaderboard-title-weekly": "Weekly top users",
+    "leaderboard-title-monthly": "Monthly top users",
+    "leaderboard-daily": "يومياً",
+    "leaderboard-weekly": "أسبوعياً",
+    "leaderboard-monthly": "شهرياً",
+    "leaderboard-header-score": "الأنشطة والمستجدّات",
+    "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
+    "leaderboard-header-reward": "Reward"
   },
   "witnesses": {
     "page-title": "التصويت للشاهد",
@@ -377,8 +476,26 @@
     "proxy-removed": "تم مسح الوكيل",
     "proxy-created": "تم إختيار الوكيل @{n}"
   },
+  "sps": {
+    "page-title": "Proposals Voting",
+    "duration": "Duration",
+    "requested": "Requested",
+    "total-votes": "Total Votes",
+    "status-active": "active",
+    "status-expired": "expired",
+    "status-inactive": "upcoming",
+    "duration-days": "{n} days",
+    "voters": "Proposal Voters",
+    "voter": "Voter",
+    "voter-sp": "SP",
+    "voter-proxy-sp": "Proxy SP",
+    "voter-total-sp": "Total SP",
+    "voted": "Proposal #{n} voted",
+    "vote-removed": "Vote removed for proposal #{n}"
+  },
   "transfer": {
     "transfer-title": "التحويل إلى الحساب",
+    "transfer-estm-title": "إرسال هدية إلى حساب معين",
     "transfer-sub-title": "نقل الأموال إلى حساب Steem آخر",
     "transfer-saving-title": "التحويل إلى المدخرات",
     "transfer-saving-sub-title": "حماية الأموال بالمطالبة بفترة 3 أيام للسحب",
@@ -427,9 +544,69 @@
   "delegation-list": {
     "empty-list": "لا شيء هنا"
   },
+  "power-down": {
+    "title": "سحب الطاقة",
+    "sub-title": "سحب الطاقة Steem power",
+    "account": "حساب",
+    "incoming-funds": "الأموال الواردة",
+    "begin": "تبدأ سحب الطاقة",
+    "stop": "توقف",
+    "estimated-note": "المقدرة الأسبوعيا",
+    "withdraw-accounts": "حساب الوجهة",
+    "add-withdraw-account": "إضافة حساب السحب"
+  },
+  "withdraw-route": {
+    "title": "إضافة حساب السحب",
+    "to": "حساب",
+    "percentage": "النسبة المئوية",
+    "slider-help": "النسبة المئوية لسحب الطاقة لهذا الحساب",
+    "auto-power-down": "رفع الطاقة تلقائيا للحساب المستهدف"
+  },
   "friends": {
     "followers-title": "المتابعون ({count})",
     "following-title": "المتابعون ({count})",
-    "load-more": "تحميل المزيد"
+    "load-more": "تحميل المزيد",
+    "empty-list": "لا شيء هنا",
+    "search-placeholder": "البحث عن مستخدمين"
+  },
+  "delegated-list": {
+    "title": "تفويض قوة steem من @{n}"
+  },
+  "delegatee-list": {
+    "title": "تفويض قوة steem إلى @{n}"
+  },
+  "estm-purchase": {
+    "title": "ESTM purchase",
+    "purchase": "Purchase"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "إظهار الفرق",
+    "version": "الإصدار {n}"
+  },
+  "word-count": {
+    "label": "{n} words",
+    "read-time-less-1-min": "< 1 min read",
+    "read-time-n-min": "~ {n} min read"
+  },
+  "profile-edit": {
+    "title": "Profile Editor",
+    "name": "Display Name",
+    "about": "About",
+    "cover-image": "Cover Image",
+    "profile-image": "Profile Image",
+    "website": "Website",
+    "location": "Location",
+    "updated": "Profile updated successfully!"
+  },
+  "password-update": {
+    "title": "Password",
+    "cur-pass": "Current password",
+    "new-pass": "New password",
+    "new-pass2": "Confirm new password",
+    "error-current": "Enter current password",
+    "error-new": "Enter new password",
+    "error-new2": "Passwords must be same",
+    "updated": "Password updated successfully!"
   }
 }

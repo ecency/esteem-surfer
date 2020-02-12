@@ -14,7 +14,8 @@
     "server-error": "서버 오류로 인해 과정을 완료할 수 없습니다.",
     "save": "저장",
     "done": "완료",
-    "select": "선택하기"
+    "select": "선택하기",
+    "update": "업데이트"
   },
   "footer": {
     "faq": "FAQ",
@@ -47,11 +48,16 @@
     "modal-title": "투표자 ({n})"
   },
   "entry-list-item": {
-    "reblogged": "{n} 님이 리블로그했습니다"
+    "reblogged": "{n} 님이 리블로그했습니다",
+    "promoted": "후원받은",
+    "promote": "홍보",
+    "boost": "보팅 후원"
   },
   "entry-reblog": {
     "reblog": "리블로그",
-    "reblogged": "리블로그 완료"
+    "reblogged": "리블로그 완료",
+    "modal-title": "리블로거 ({n}) 명",
+    "more-reblogs": "... +{n} 명이 추가로 리블로그함"
   },
   "settings": {
     "title": "설정",
@@ -84,10 +90,23 @@
     "error-user-fetch": "사용자 데이터를 조회할 수 없습니다",
     "error-user-not-found": "존재하지 않는 사용자입니다",
     "error-authenticate": "사용자 이름 또는 비밀번호/WIF가 올바르지 않습니다",
-    "create-account-text": "계정이 없나요? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">지금 계정을 만드세요!</a>",
+    "create-account-text-1": "계정이 없으신가요?",
+    "create-account-text-2": "Sign up now!",
     "login-with-sc": "steemconnect를 이용해 로그인하세요",
     "divider-text": "또는",
     "sc-note": "주의: Steemconnect에서 당신의 보상 트랜잭션에 대해 일정 수수료를 부과할 수도 있습니다"
+  },
+  "sign-up": {
+    "title": "회원 가입",
+    "username-placeholder": "pick a username",
+    "email-placeholder": "enter your email address",
+    "sign-up": "Sign Up",
+    "ref-code": "referral user (optional)",
+    "success-message-1": "We've sent an email to {email}.",
+    "success-message-2": "Follow instructions to complete signup process.",
+    "login-1": "Already a member?",
+    "login-2": "로그인",
+    "login-btn-label": "Back to Login"
   },
   "create-pin-code": {
     "title": "PIN 코드 만들기",
@@ -128,6 +147,7 @@
     "section-blog": "블로그",
     "section-comments": "작성한 댓글",
     "section-replies": "받은 댓글",
+    "section-points": "포인트",
     "section-wallet": "지갑"
   },
   "follow-controls": {
@@ -146,6 +166,7 @@
     "section-comments": "작성한 댓글",
     "section-replies": "받은 댓글",
     "section-wallet": "지갑",
+    "section-points": "포인트",
     "top-posts": "인기 글",
     "unclaimed-rewards": "아직 요청하지 않은 보상",
     "estimated-value": "추정 가치는 7 일 간의 스팀 평균 가격을 토대로 산정합니다.",
@@ -179,7 +200,64 @@
     "power-up": "파워 업",
     "withdraw-steem": "스팀 출금",
     "withdraw-sbd": "스팀 달러 출금",
-    "delegate": "임대"
+    "delegate": "임대",
+    "power-down": "파워 다운",
+    "point-history": "내역",
+    "points-post-desc": "주기적으로 포스팅하면 포인트를 획득할 수 있습니다. 포스팅 당 15 포인트가 지급됩니다.",
+    "points-comment-desc": "댓글을 남기시면 새로운 친구를 늘릴 수 있고 독자와의 소통에도 도움이 될 것이며, 5 포인트도 획득할 수 있습니다",
+    "points-checkin-desc": "eSteem 앱에 로그인하면 친구들과 지속적인 관계를 유지할 수 있으며, 0.25 포인트도 획득할 수 있습니다.",
+    "points-vote-desc": "보팅을 통해 글 작성자에게 보상을 제공하고 감사 표시를 할 수 있습니다. 또한, 보팅 시 보팅 가중치에 0.01을 곱한 포인트가 지급됩니다.",
+    "points-reblog-desc": "좋아하는 글을 친구에게 공유하고 1 포인트를 획득하세요.",
+    "points-login-desc": "eSteem 앱에 최초 로그인 시 100 포인트가 자동 지급됩니다.",
+    "points-checkin-extra-desc": "꾸준히 앱을 이용한 사용자는 10 포인트 이상의 추가 포인트를 획득할 수 있는 기회가 제공되며 더 열심히 이용할수록 더 많은 포인트를 획득할 수 있습니다.",
+    "points-delegation-desc": "100 SP 임대 당 1 포인트가 매일 지급됩니다.",
+    "points-post-list-desc": "포스팅 포인트",
+    "points-comment-list-desc": "댓글 포인트",
+    "points-vote-list-desc": "투표 포인트",
+    "points-reblog-list-desc": "리블로그 포인트",
+    "points-login-list-desc": "로그인 포인트",
+    "points-checkin-list-desc": "체크인 포인트",
+    "points-checkin-extra-list-desc": "체크인 보너스",
+    "points-transfer-sent-list-desc": "{n} 님에게 송금",
+    "points-transfer-incoming-list-desc": "{n} 님으로부터 받음",
+    "points-delegation-list-desc": "임대 보상",
+    "points-referral-list-desc": "Referral reward",
+    "points-claim-ok": "포인트 획득 완료",
+    "points-promote": "홍보",
+    "points-boost": "보팅 후원",
+    "points-transfer": "포인트 선물하기",
+    "points-get": "GET ESTM",
+    "witness-voting": "증인",
+    "sps-voting": "SPS 투표",
+    "profile-editor": "프로필 편집기",
+    "password": "비밀번호"
+  },
+  "redeem": {
+    "user-label": "사용자",
+    "user-help-text": "이용 가능 잔액",
+    "post-label": "글",
+    "post-input-placeholder": "계정이름/permlink",
+    "post-input-title": "제안",
+    "key-required-err": "선택한 계정의 액티브 키를 찾을 수 없습니다. 올바른 키를 사용해 로그인되어 있는지 확인해주세요.",
+    "post-error": "글 주소가 올바르지 않습니다.",
+    "post-error-exists": "이미 홍보된 글입니다",
+    "funds-error": "잔액이 충분하지 않습니다",
+    "submit": "제출하기",
+    "go-back": "뒤로"
+  },
+  "redeem-promote": {
+    "page-title": "홍보",
+    "duration-label": "기간",
+    "duration-help": "슬라이드를 드래그해서 기간을 변경할 수 있습니다",
+    "day": "일",
+    "days": "일",
+    "success-message": "요청이 제출되었으며 몇 분 안에 활성화될 것입니다."
+  },
+  "redeem-boost": {
+    "page-title": "보팅 후원",
+    "amount-label": "수량",
+    "amount-help": "슬라이드를 드래그해서 수량을 설정할 수 있습니다",
+    "success-message": "보팅 후원 대기열에 당신의 글이 제출되었습니다. 잠시 후 당신의 글은 보팅 후원을 받을 것입니다."
   },
   "composer": {
     "title-placeholder": "제목",
@@ -226,7 +304,6 @@
     "update": "업데이트",
     "updated": "글이 수정되었습니다",
     "sync-scroll": "스크롤 위치 동기화",
-    "words-count": "단어 수: {n}",
     "no-suggestions": "제안할 단어가 없습니다",
     "emoji-filter-placeholder": "필터",
     "emoji-filter-no-match": "일치하는 항목이 없습니다",
@@ -249,7 +326,9 @@
     "empty-list": "빈 목록입니다",
     "deleted": "예약된 글이 삭제되었습니다",
     "move": "임시 보관함으로 이동",
-    "moved": "임시 보관함으로 이동했습니다"
+    "moved": "임시 보관함으로 이동했습니다",
+    "success-message": "성공적으로 발행되었습니다",
+    "error-message": "서버 오류로 인해 글을 발행하지 못했습니다."
   },
   "bookmarks": {
     "title": "즐겨찾기",
@@ -279,13 +358,18 @@
     "bookmarkRemoved": "즐겨찾기에서 삭제했습니다",
     "favorited": "좋아하는 저자 목록에 추가했습니다",
     "favoriteRemoved": "좋아하는 저자 목록에서 삭제되었습니다",
+    "show-edit-history": "편집 내역 보기",
     "copy-clipboard": "클립보드에 링크 복사하기",
     "copied-clipboard": "복사됨",
     "comment-entry-title": "단일 댓글 스레드 화면을 보고 있습니다: ",
     "comment-entry-go-root": "전체 글 보기",
     "comment-entry-go-parent": "상위 글 보기",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "유사한 글",
-    "fetch-error": "응답 파일 크기가 너무 커서 서버 타임아웃이 발생했습니다"
+    "fetch-error": "응답 파일 크기가 너무 커서 서버 타임아웃이 발생했습니다",
+    "promote": "홍보",
+    "boost": "보팅 후원",
+    "more-replies": "댓글 더 보기"
   },
   "navbar": {
     "settings": "설정",
@@ -296,10 +380,12 @@
     "favorite": "좋아하는 저자 목록에 추가",
     "favoriteRemove": "좋아하는 저자 목록에서 삭제",
     "wallet": "내 지갑",
+    "points": "내 포인트",
     "activities": "활동",
     "address-enter-url": "url을 입력하세요",
     "address-enter-query": "검색어를 입력하세요",
     "unclaimed-reward-notice": "요청하지 않은 보상이 있습니다",
+    "unclaimed-points-notice": "아직 요청하지 않은 포인트가 있습니다",
     "search-no-matches": "검색 결과가 없습니다"
   },
   "search": {
@@ -340,6 +426,7 @@
     "type-mentions": "언급",
     "type-follows": "팔로우",
     "type-reblogs": "리블로그",
+    "type-transfers": "받은 금액",
     "vote-str": "님이 {p}% 비율로 보팅하셨습니다:",
     "reply-str": "님이 이 글에 댓글을 남겼습니다:",
     "mention-str": "님이 이 글에서 당신을 언급했습니다:",
@@ -347,11 +434,23 @@
     "unfollowed-str": "팔로우 취소",
     "ignored-str": "무시",
     "reblog-str": "님이 이 글을 리블로그했습니다:",
+    "transfer-str": "님에게 받은 금액:",
+    "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
+    "inactive-str": "Be active! Write a post, continue earning",
+    "referral-str": "joined with your referral, welcome them",
     "empty-list": "빈 목록입니다",
     "refresh": "새로고침",
     "mark-all-read": "모두 읽음으로 표시",
     "leaderboard": "순위표",
-    "leaderboard-title": "일별 상위 사용자"
+    "leaderboard-title-daily": "일간 사용자 순위",
+    "leaderboard-title-weekly": "주간 사용자 순위",
+    "leaderboard-title-monthly": "월간 사용자 순위",
+    "leaderboard-daily": "일간",
+    "leaderboard-weekly": "주간",
+    "leaderboard-monthly": "월간",
+    "leaderboard-header-score": "활동",
+    "leaderboard-header-score-tip": "특정 기간 동안 사용자가 올린 글이나 댓글 수로 선정",
+    "leaderboard-header-reward": "보상"
   },
   "witnesses": {
     "page-title": "증인 투표",
@@ -377,8 +476,26 @@
     "proxy-removed": "프록시가 삭제되었습니다",
     "proxy-created": "@{n} 님을 프록시로 설정했습니다"
   },
+  "sps": {
+    "page-title": "제안 투표하기",
+    "duration": "기간",
+    "requested": "요청 자금",
+    "total-votes": "총 투표 수",
+    "status-active": "진행 중",
+    "status-expired": "만료됨",
+    "status-inactive": "예정",
+    "duration-days": "{n} 일",
+    "voters": "투표한 사용자",
+    "voter": "투표자",
+    "voter-sp": "SP",
+    "voter-proxy-sp": "프록시 SP",
+    "voter-total-sp": "총 SP",
+    "voted": "제안서 #{n} 에 투표했습니다",
+    "vote-removed": "제안서 #{n} 대한 투표가 취소되었습니다"
+  },
   "transfer": {
     "transfer-title": "송금하기",
+    "transfer-estm-title": "선물하기",
     "transfer-sub-title": "다른 스팀 계정으로 자금 보내기",
     "transfer-saving-title": "안전 금고로 송금",
     "transfer-saving-sub-title": "3일 간의 출금 대기 기간이 설정된 안전금고를 이용해 자금을 보호하세요",
@@ -427,9 +544,69 @@
   "delegation-list": {
     "empty-list": "빈 목록입니다"
   },
+  "power-down": {
+    "title": "파워 다운",
+    "sub-title": "SP 파워 다운",
+    "account": "계정",
+    "incoming-funds": "입금 예정 스팀",
+    "begin": "파워 다운 시작",
+    "stop": "중지",
+    "estimated-note": "주간 예상 수량",
+    "withdraw-accounts": "대상 계정",
+    "add-withdraw-account": "파워 다운 출금 계정 추가"
+  },
+  "withdraw-route": {
+    "title": "파워 다운 출금 계정 추가",
+    "to": "계정",
+    "percentage": "비율",
+    "slider-help": "이 계정에 대한 파워 다운 출금 비율",
+    "auto-power-down": "대상 계정에 자동으로 파워 업 하기"
+  },
   "friends": {
     "followers-title": "팔로워 ({count})",
     "following-title": "팔로잉 ({count})",
-    "load-more": "더 보기"
+    "load-more": "더 보기",
+    "empty-list": "빈 목록입니다",
+    "search-placeholder": "검색하고 싶은 사용자 이름을 입력하세요"
+  },
+  "delegated-list": {
+    "title": "@{n} 님이 임대해 준 스팀 파워"
+  },
+  "delegatee-list": {
+    "title": "@{n} 님에게 임대한 스팀 파워"
+  },
+  "estm-purchase": {
+    "title": "ESTM 구매",
+    "purchase": "구매"
+  },
+  "edit-history": {
+    "title": "편집 내역",
+    "show-diff": "변경 사항 보기",
+    "version": "버전 {n}"
+  },
+  "word-count": {
+    "label": "단어 수: {n}",
+    "read-time-less-1-min": "1 분 미만 분량",
+    "read-time-n-min": "~ {n} 분 이상 분량"
+  },
+  "profile-edit": {
+    "title": "프로필 편집기",
+    "name": "이름",
+    "about": "소개",
+    "cover-image": "커버 사진",
+    "profile-image": "프로필 사진",
+    "website": "웹사이트",
+    "location": "위치",
+    "updated": "프로필이 업데이트되었습니다!"
+  },
+  "password-update": {
+    "title": "비밀번호",
+    "cur-pass": "기존 비밀번호",
+    "new-pass": "새로운 비밀번호",
+    "new-pass2": "새로운 비밀번호 확인",
+    "error-current": "기존 비밀번호를 입력하세요",
+    "error-new": "새로운 비밀번호를 입력하세요",
+    "error-new2": "비밀번호는 같아야 합니다.",
+    "updated": "비밀번호가 업데이트되었습니다!"
   }
 }

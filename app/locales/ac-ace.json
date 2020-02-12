@@ -14,7 +14,8 @@
     "server-error": "Proses han jeut seuleusoe, na masalah bak server",
     "save": "Ka meukeubah",
     "done": "Seulesoe",
-    "select": "Pileh"
+    "select": "Pileh",
+    "update": "Update"
   },
   "footer": {
     "faq": "Tanyong Jaweub",
@@ -47,11 +48,16 @@
     "modal-title": "Nyang Galak ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "reblogged by {n}",
+    "promoted": "sponsored",
+    "promote": "promote",
+    "boost": "boost"
   },
   "entry-reblog": {
     "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblogged": "Reblogged",
+    "modal-title": "Rebloggers ({n})",
+    "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
     "title": "Meu Atoe",
@@ -84,10 +90,23 @@
     "error-user-fetch": "Han jeut cok data pengguna",
     "error-user-not-found": "Hana pengguna",
     "error-authenticate": "Wrong username or password/WIF",
-    "create-account-text": "Hana akun? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Daftar ilee!</a>",
+    "create-account-text-1": "Don't have an account?",
+    "create-account-text-2": "Sign up now!",
     "login-with-sc": "Tamong deungon",
     "divider-text": "Atawa",
     "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+  },
+  "sign-up": {
+    "title": "Sign Up",
+    "username-placeholder": "pick a username",
+    "email-placeholder": "enter your email address",
+    "sign-up": "Sign Up",
+    "ref-code": "referral user (optional)",
+    "success-message-1": "We've sent an email to {email}.",
+    "success-message-2": "Follow instructions to complete signup process.",
+    "login-1": "Already a member?",
+    "login-2": "Login",
+    "login-btn-label": "Back to Login"
   },
   "create-pin-code": {
     "title": "Peugoet Kode PIN",
@@ -128,6 +147,7 @@
     "section-blog": "Blog",
     "section-comments": "Komentar",
     "section-replies": "Balah",
+    "section-points": "Points",
     "section-wallet": "Balum"
   },
   "follow-controls": {
@@ -146,6 +166,7 @@
     "section-comments": "Komentar",
     "section-replies": "Balah",
     "section-wallet": "Balum",
+    "section-points": "Points",
     "top-posts": "Teunuléh paleng ateuh",
     "unclaimed-rewards": "Upah Galoem Cöek",
     "estimated-value": "Nilai yang ka dikira-kira meudasar nibak 7 uroe yuem rata-rata dari {}.",
@@ -179,7 +200,64 @@
     "power-up": "Tamah Teunaga",
     "withdraw-steem": "Tarek Steem",
     "withdraw-sbd": "Tarek Steem Dolar",
-    "delegate": "Delegate"
+    "delegate": "Delegate",
+    "power-down": "Power Down",
+    "point-history": "History",
+    "points-post-desc": "You can earn point by posting regularly. Posting gives you 15 points.",
+    "points-comment-desc": "Each comment you make helps you to grow your audience and make friendship but also earns you 5 points.",
+    "points-checkin-desc": "Checking in on eSteem app gives you 0.25 points and helps you stay connected with your friends.",
+    "points-vote-desc": "By voting you give reward to other creators and show your appreciation but also earn 0.01 x vote weight points.",
+    "points-reblog-desc": "  Share what post you like with your friends and earn 1 points.",
+    "points-login-desc": "When you login into eSteem app you are entitled to earn 100 points automatically.",
+    "points-checkin-extra-desc": "Consistent use of app gives you extra chances to earn more 10 points, be more active and earn more.",
+    "points-delegation-desc": "You can earn 1 point per day for each 100SP delegation.",
+    "points-post-list-desc": "Points for post",
+    "points-comment-list-desc": "Points for comment",
+    "points-vote-list-desc": "Points for vote",
+    "points-reblog-list-desc": "Points for reblog",
+    "points-login-list-desc": "Points for login",
+    "points-checkin-list-desc": "Points for heartbeat",
+    "points-checkin-extra-list-desc": "Usage bonus",
+    "points-transfer-sent-list-desc": "Transfer to {n}",
+    "points-transfer-incoming-list-desc": "Transfer from {n}",
+    "points-delegation-list-desc": "Delegation reward",
+    "points-referral-list-desc": "Referral reward",
+    "points-claim-ok": "Points claimed",
+    "points-promote": "Promote",
+    "points-boost": "Boost",
+    "points-transfer": "Gift to someone",
+    "points-get": "GET ESTM",
+    "witness-voting": "Witnesses",
+    "sps-voting": "SPS Voting",
+    "profile-editor": "Profile Editor",
+    "password": "Password"
+  },
+  "redeem": {
+    "user-label": "User",
+    "user-help-text": "Available Funds",
+    "post-label": "Post",
+    "post-input-placeholder": "author/permlink",
+    "post-input-title": "Suggestions",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "post-error": "Not a valid post address",
+    "post-error-exists": "The post is already promoted",
+    "funds-error": "Insufficient funds",
+    "submit": "Submit",
+    "go-back": "Go Back"
+  },
+  "redeem-promote": {
+    "page-title": "Promote",
+    "duration-label": "Duration",
+    "duration-help": "Drag the slider to change the duration",
+    "day": "day",
+    "days": "days",
+    "success-message": "Your request submitted. It will be activated in a couple minutes."
+  },
+  "redeem-boost": {
+    "page-title": "Boost",
+    "amount-label": "Amount",
+    "amount-help": "Drag the slider to change the amount",
+    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
     "title-placeholder": "Judul",
@@ -226,7 +304,6 @@
     "update": "Peubarô",
     "updated": "Neupeubaroe Tulesan",
     "sync-scroll": "Scroll Sync",
-    "words-count": "{n} words",
     "no-suggestions": "Hana peunapat",
     "emoji-filter-placeholder": "Neu sareng",
     "emoji-filter-no-match": "Hana cocok",
@@ -249,7 +326,9 @@
     "empty-list": "Hana sapëuna",
     "deleted": "Scheduled post is deleted",
     "move": "Pinah lam konsep",
-    "moved": "Kalheuh pinah lam konsep"
+    "moved": "Kalheuh pinah lam konsep",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Pëunanda",
@@ -279,13 +358,18 @@
     "bookmarkRemoved": "Post ka di sampouh dari peutanda",
     "favorited": "Tamah bak geugalak",
     "favoriteRemoved": "Meusampoh bak geugalak",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Copy internal link to clipboard",
     "copied-clipboard": "Ka leuh salen",
     "comment-entry-title": "You are viewing a single comment's thread from: ",
     "comment-entry-go-root": "Kaloen konteks peunoh",
     "comment-entry-go-parent": "View the direct parent",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Similar Posts",
-    "fetch-error": "Server timeout because response size is too big"
+    "fetch-error": "Server timeout because response size is too big",
+    "promote": "promote",
+    "boost": "boost",
+    "more-replies": "show more replies"
   },
   "navbar": {
     "settings": "Meu Atoe",
@@ -296,10 +380,12 @@
     "favorite": "Tamah bak geugalak",
     "favoriteRemove": "Meusampoh bak geugalak",
     "wallet": "Dumpet loen",
+    "points": "My Points",
     "activities": "Peukateun",
     "address-enter-url": "Peutamong Url",
     "address-enter-query": "Enter search query",
     "unclaimed-reward-notice": "You have unclaimed rewards",
+    "unclaimed-points-notice": "You have unclaimed points",
     "search-no-matches": "No matches"
   },
   "search": {
@@ -340,6 +426,7 @@
     "type-mentions": "Seubot",
     "type-follows": "Ikot",
     "type-reblogs": "Reblogs",
+    "type-transfers": "Transfers",
     "vote-str": "{p}% galak post dröen:",
     "reply-str": "replied to your post:",
     "mention-str": "seubut dröen:",
@@ -347,11 +434,23 @@
     "unfollowed-str": "bek seutot lee",
     "ignored-str": "bek neu open lee",
     "reblog-str": "reblogged your post:",
+    "transfer-str": "sent you",
+    "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
+    "inactive-str": "Be active! Write a post, continue earning",
+    "referral-str": "joined with your referral, welcome them",
     "empty-list": "Hana sapëuna",
     "refresh": "Refresh",
     "mark-all-read": "Peutanda mandum ka i baca",
     "leaderboard": "Papeun Rangking",
-    "leaderboard-title": "Ureung Palèng Lè pakek"
+    "leaderboard-title-daily": "Daily top users",
+    "leaderboard-title-weekly": "Weekly top users",
+    "leaderboard-title-monthly": "Monthly top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly",
+    "leaderboard-header-score": "Activities",
+    "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
+    "leaderboard-header-reward": "Reward"
   },
   "witnesses": {
     "page-title": "Su Sa'si",
@@ -377,8 +476,26 @@
     "proxy-removed": "Proxy is cleared",
     "proxy-created": "@{n} ka lheuh set keu proxy"
   },
+  "sps": {
+    "page-title": "Proposals Voting",
+    "duration": "Duration",
+    "requested": "Requested",
+    "total-votes": "Total Votes",
+    "status-active": "active",
+    "status-expired": "expired",
+    "status-inactive": "upcoming",
+    "duration-days": "{n} days",
+    "voters": "Proposal Voters",
+    "voter": "Voter",
+    "voter-sp": "SP",
+    "voter-proxy-sp": "Proxy SP",
+    "voter-total-sp": "Total SP",
+    "voted": "Proposal #{n} voted",
+    "vote-removed": "Vote removed for proposal #{n}"
+  },
   "transfer": {
     "transfer-title": "Kirem keu akun",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Pinah peng keu akun Steem laen",
     "transfer-saving-title": "Keubah Peng",
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
@@ -427,9 +544,69 @@
   "delegation-list": {
     "empty-list": "Nothing here"
   },
+  "power-down": {
+    "title": "Power Down",
+    "sub-title": "Power Down Steem Power",
+    "account": "Account",
+    "incoming-funds": "Incoming Funds",
+    "begin": "Begin Power Down",
+    "stop": "Stop",
+    "estimated-note": "Estimated Weekly",
+    "withdraw-accounts": "Destination Account(s)",
+    "add-withdraw-account": "Add withdraw account"
+  },
+  "withdraw-route": {
+    "title": "Add withdraw account",
+    "to": "Account",
+    "percentage": "Percentage",
+    "slider-help": "Percentage of Power Down to this account",
+    "auto-power-down": "Automatically power up the target account"
+  },
   "friends": {
     "followers-title": "Followers ({count})",
     "following-title": "Following ({count})",
-    "load-more": "Load More"
+    "load-more": "Load More",
+    "empty-list": "Hana sapëuna",
+    "search-placeholder": "Search users"
+  },
+  "delegated-list": {
+    "title": "Delegated steem power from @{n}"
+  },
+  "delegatee-list": {
+    "title": "Delegated steem power to @{n}"
+  },
+  "estm-purchase": {
+    "title": "ESTM purchase",
+    "purchase": "Purchase"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
+  },
+  "word-count": {
+    "label": "{n} words",
+    "read-time-less-1-min": "< 1 min read",
+    "read-time-n-min": "~ {n} min read"
+  },
+  "profile-edit": {
+    "title": "Profile Editor",
+    "name": "Display Name",
+    "about": "About",
+    "cover-image": "Cover Image",
+    "profile-image": "Profile Image",
+    "website": "Website",
+    "location": "Location",
+    "updated": "Profile updated successfully!"
+  },
+  "password-update": {
+    "title": "Password",
+    "cur-pass": "Current password",
+    "new-pass": "New password",
+    "new-pass2": "Confirm new password",
+    "error-current": "Enter current password",
+    "error-new": "Enter new password",
+    "error-new2": "Passwords must be same",
+    "updated": "Password updated successfully!"
   }
 }

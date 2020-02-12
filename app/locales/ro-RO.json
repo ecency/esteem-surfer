@@ -14,7 +14,8 @@
     "server-error": "Acțiunea nu a putut fi completată datorită unei erori de server",
     "save": "Salvează",
     "done": "Efectuat",
-    "select": "Selectează"
+    "select": "Selectează",
+    "update": "Actualizare"
   },
   "footer": {
     "faq": "Întrebări frecvente",
@@ -47,11 +48,16 @@
     "modal-title": "Votanți ({n})"
   },
   "entry-list-item": {
-    "reblogged": "redistribuit de {n}"
+    "reblogged": "redistribuit de {n}",
+    "promoted": "sponsorizat",
+    "promote": "promovează",
+    "boost": "boost"
   },
   "entry-reblog": {
     "reblog": "Redistribuire",
-    "reblogged": "Redistribuit"
+    "reblogged": "Redistribuit",
+    "modal-title": "Redistribuit de ({n})",
+    "more-reblogs": "... +{n} redistribuiri"
   },
   "settings": {
     "title": "Setări",
@@ -84,10 +90,23 @@
     "error-user-fetch": "Date utilizator nu au putut fi încărcate",
     "error-user-not-found": "Utilizatorul nu există",
     "error-authenticate": "Nume de utilizator sau parolă/WIF greșită",
-    "create-account-text": "Nu ai cont? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Înscrie-te acum!</a>",
+    "create-account-text-1": "Nu ai un cont incă?",
+    "create-account-text-2": "Inregistrează-te acum!",
     "login-with-sc": "Autentificare cu",
     "divider-text": "SAU",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "Note: Steemconnect poate percepe anumite taxe la tranzacțiile tale de recompensă"
+  },
+  "sign-up": {
+    "title": "Înregistrează-te",
+    "username-placeholder": "alege username",
+    "email-placeholder": "introdu adresa de e-mail",
+    "sign-up": "Înregistrează-te",
+    "ref-code": "referral user (optional)",
+    "success-message-1": "Ți-am trimis un e-mail la {email}.",
+    "success-message-2": "Urmează instrucțiunile pentru a finaliza procesul de înscriere.",
+    "login-1": "Ești deja membru?",
+    "login-2": "Autentificare",
+    "login-btn-label": "Inapoi la autentificare"
   },
   "create-pin-code": {
     "title": "Creează cod PIN",
@@ -128,6 +147,7 @@
     "section-blog": "Blog",
     "section-comments": "Comentarii",
     "section-replies": "Răspunsuri",
+    "section-points": "Puncte",
     "section-wallet": "Portofel"
   },
   "follow-controls": {
@@ -146,6 +166,7 @@
     "section-comments": "Comentarii",
     "section-replies": "Răspunsuri",
     "section-wallet": "Portofel",
+    "section-points": "Puncte",
     "top-posts": "Top Postări",
     "unclaimed-rewards": "Recompense nerevendicate",
     "estimated-value": "Valoarea estimată se bazează pe o medie de 7 zile a valorii Steem.",
@@ -179,7 +200,64 @@
     "power-up": "Power Up",
     "withdraw-steem": "Retrage Steem",
     "withdraw-sbd": "Retrage Steem Dolar",
-    "delegate": "Delegare"
+    "delegate": "Delegare",
+    "power-down": "Power Down",
+    "point-history": "Istoric",
+    "points-post-desc": "Poți câștiga puncte postând regulat. Fiecare postare îți aduce 15 puncte.",
+    "points-comment-desc": "Fiecare comentariu te ajută să îți crești audiența și să iti faci prieteni. De asemenea, câștigi 5 puncte.",
+    "points-checkin-desc": "Autentificarea prin aplicația eSteem îți aduce 0.25 puncte și te ajută să rămâi conectat cu prietenii tăi și comunitatea.",
+    "points-vote-desc": "Votând oferi recompense altor creatori de conținut și le arăți aprecierea ta. De asemenea, câștigi 0.01 din valoarea votului în puncte.",
+    "points-reblog-desc": "  Distribuie postările care îți plac pentru prietenii tăi și câștigă 1 punct.",
+    "points-login-desc": "Când te autentifici în aplicația eSteem câștigi 100 de puncte automat.",
+    "points-checkin-extra-desc": "Utilizarea constantă a aplicației îți oferă șanse în plus pentru câștigarea a 10 puncte. Fii cât mai activ și câștigă mai mult.",
+    "points-delegation-desc": "Poți câștiga 1 punct zilnic pentru fiecare 100SP delegat.",
+    "points-post-list-desc": "Puncte pentru postare",
+    "points-comment-list-desc": "Puncte pentru comentariu",
+    "points-vote-list-desc": "Puncte pentru vot",
+    "points-reblog-list-desc": "Puncte pentru redistribuire",
+    "points-login-list-desc": "Puncte pentru autentificare",
+    "points-checkin-list-desc": "Puncte pentru prezență",
+    "points-checkin-extra-list-desc": "Bonus de utilizare",
+    "points-transfer-sent-list-desc": "Transfer către {n}",
+    "points-transfer-incoming-list-desc": "Transfer de la {n}",
+    "points-delegation-list-desc": "Recompensă delegare",
+    "points-referral-list-desc": "Referral reward",
+    "points-claim-ok": "Puncte colectate",
+    "points-promote": "Promovează",
+    "points-boost": "Boost",
+    "points-transfer": "Gift to someone",
+    "points-get": "OBȚINE ESTM",
+    "witness-voting": "Martori",
+    "sps-voting": "Votare SPS",
+    "profile-editor": "Editare profil",
+    "password": "Parolă"
+  },
+  "redeem": {
+    "user-label": "Utilizator",
+    "user-help-text": "Fonduri Disponibile",
+    "post-label": "Postare",
+    "post-input-placeholder": "autor/permlink",
+    "post-input-title": "Sugestii",
+    "key-required-err": "Parola activă nu a fost găsită pentru contul selectat. Asigură-te că ești conectat cu credențialele corecte.",
+    "post-error": "Nu este o adresă de postare validă",
+    "post-error-exists": "Postarea a fost deja promovată",
+    "funds-error": "Fonduri insuficiente",
+    "submit": "Trimite",
+    "go-back": "Înapoi"
+  },
+  "redeem-promote": {
+    "page-title": "Promovează",
+    "duration-label": "Durată",
+    "duration-help": "Trage cursorul pentru a schimba durata",
+    "day": "zi",
+    "days": "zile",
+    "success-message": "Cererea a fost trimisă. Va fi activată în câteva minute."
+  },
+  "redeem-boost": {
+    "page-title": "Boost",
+    "amount-label": "Sumă",
+    "amount-help": "Trage glisorul pentru a modifica suma",
+    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
     "title-placeholder": "Titlu",
@@ -226,7 +304,6 @@
     "update": "Actualizare",
     "updated": "Post actualizat",
     "sync-scroll": "Sincronizare scroll",
-    "words-count": "{n} cuvinte",
     "no-suggestions": "Fără sugestii",
     "emoji-filter-placeholder": "Filtrează",
     "emoji-filter-no-match": "Nicio potrivire",
@@ -249,7 +326,9 @@
     "empty-list": "Nici un rezultat",
     "deleted": "Postarea planificată a fost ștearsă",
     "move": "Mută la schițe",
-    "moved": "Mutat la schițe"
+    "moved": "Mutat la schițe",
+    "success-message": "Publicat cu succes.",
+    "error-message": "Nu a putut fi publicată datorită unei erori de server."
   },
   "bookmarks": {
     "title": "Bookmarks",
@@ -279,13 +358,18 @@
     "bookmarkRemoved": "Mutat de la bookmarks",
     "favorited": "Adăugat la favorite",
     "favoriteRemoved": "Eliminat din favorite",
+    "show-edit-history": "Arată istoria modificărilor",
     "copy-clipboard": "Copie link-ul intern in memoria temporară",
     "copied-clipboard": "Copiat",
     "comment-entry-title": "Vizualizezi șirul unui singur comentariu de la: ",
     "comment-entry-go-root": "Vezi contextul complet",
     "comment-entry-go-parent": "Vizualizează postarea principală",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Postări Similare",
-    "fetch-error": "Server timeout because response size is too big"
+    "fetch-error": "Serverului a expirat pentru că dimensiunea răspunsului este prea mare",
+    "promote": "promovează",
+    "boost": "boost",
+    "more-replies": "vezi mai multe răspunsuri"
   },
   "navbar": {
     "settings": "Setări",
@@ -296,10 +380,12 @@
     "favorite": "Adaugă la favorite",
     "favoriteRemove": "Eliminat din favorite",
     "wallet": "Portofelul meu",
+    "points": "Punctele mele",
     "activities": "Activități",
     "address-enter-url": "Introdu url",
     "address-enter-query": "Introdu obiectul căutării",
     "unclaimed-reward-notice": "Ai recompense necolectate",
+    "unclaimed-points-notice": "Ai recompense necolectate",
     "search-no-matches": "Nicio potrivire"
   },
   "search": {
@@ -340,6 +426,7 @@
     "type-mentions": "Menționări",
     "type-follows": "Urmăriri",
     "type-reblogs": "Reblogs",
+    "type-transfers": "Transferuri",
     "vote-str": "{p}% a votat postul tău:",
     "reply-str": "a răspuns la postul tău:",
     "mention-str": "te-a menționat in:",
@@ -347,11 +434,23 @@
     "unfollowed-str": "urmărire anulată",
     "ignored-str": "ignorat",
     "reblog-str": "a redistribuit postarea ta:",
+    "transfer-str": "te-a trimis",
+    "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
+    "inactive-str": "Be active! Write a post, continue earning",
+    "referral-str": "joined with your referral, welcome them",
     "empty-list": "Nici un rezultat",
     "refresh": "Actualizează",
     "mark-all-read": "Marchează toate ca citite",
     "leaderboard": "Clasament",
-    "leaderboard-title": "Utilizatori de Top Zilnic"
+    "leaderboard-title-daily": "Utilizatori de top zilnic",
+    "leaderboard-title-weekly": "Utilizatori de top săptămânal",
+    "leaderboard-title-monthly": "Utilizatori de top lunar",
+    "leaderboard-daily": "Zilnice",
+    "leaderboard-weekly": "Săptămânale",
+    "leaderboard-monthly": "Lunare",
+    "leaderboard-header-score": "Activități",
+    "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
+    "leaderboard-header-reward": "Recompensă"
   },
   "witnesses": {
     "page-title": "Votare Witness",
@@ -377,8 +476,26 @@
     "proxy-removed": "Proxy eliminat",
     "proxy-created": "@{n} a fost setat ca proxy"
   },
+  "sps": {
+    "page-title": "Proposals Voting",
+    "duration": "Durată",
+    "requested": "Solicitat",
+    "total-votes": "Voturi Totale",
+    "status-active": "activ",
+    "status-expired": "expirat",
+    "status-inactive": "urmează",
+    "duration-days": "{n} zile",
+    "voters": "Proposal Voters",
+    "voter": "Votant",
+    "voter-sp": "SP",
+    "voter-proxy-sp": "Proxy SP",
+    "voter-total-sp": "SP Total",
+    "voted": "Proposal #{n} voted",
+    "vote-removed": "Vot revocat pentru propunerea #{n}"
+  },
   "transfer": {
     "transfer-title": "Transfer către Cont",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Tranferă fonduri către un alt cont Steem",
     "transfer-saving-title": "Transfer la Economii",
     "transfer-saving-sub-title": "Protejează fondurile cerând o perioadă de așteptare de 3 zile",
@@ -427,9 +544,69 @@
   "delegation-list": {
     "empty-list": "Nici un rezultat"
   },
+  "power-down": {
+    "title": "Putere Scăzută",
+    "sub-title": "Power Down Steem Power",
+    "account": "Cont",
+    "incoming-funds": "Fondurile Primite",
+    "begin": "Începe Putere Scăzută",
+    "stop": "Oprește",
+    "estimated-note": "Estimat Săptămânal",
+    "withdraw-accounts": "Cont(uri) de Destinație",
+    "add-withdraw-account": "Adaugă cont de retragere"
+  },
+  "withdraw-route": {
+    "title": "Adaugă cont de retragere",
+    "to": "Cont",
+    "percentage": "Procentaj",
+    "slider-help": "Procentul de putere scăzută la acest cont",
+    "auto-power-down": "Power up automat contul ţintă"
+  },
   "friends": {
     "followers-title": "Urmăritori ({count})",
     "following-title": "Urmăriți ({count})",
-    "load-more": "Load More"
+    "load-more": "Încărcați mai Mult",
+    "empty-list": "Nici un rezultat",
+    "search-placeholder": "Caută utilizatori"
+  },
+  "delegated-list": {
+    "title": "Steem power delegat de la @{n}"
+  },
+  "delegatee-list": {
+    "title": "Steem power delegat pentru @{n}"
+  },
+  "estm-purchase": {
+    "title": "Cumpără ESTM",
+    "purchase": "Cumpărare"
+  },
+  "edit-history": {
+    "title": "Istorie modificări",
+    "show-diff": "Arată diferența",
+    "version": "Versiunea {n}"
+  },
+  "word-count": {
+    "label": "{n} cuvinte",
+    "read-time-less-1-min": "timp de citire < 1",
+    "read-time-n-min": "timp de citire ~ {n}"
+  },
+  "profile-edit": {
+    "title": "Editare profil",
+    "name": "Numele afișat",
+    "about": "Despre",
+    "cover-image": "Imagine copertă",
+    "profile-image": "Imaginea de profil",
+    "website": "Website",
+    "location": "Locație",
+    "updated": "Profilul a fost actualizat cu succes!"
+  },
+  "password-update": {
+    "title": "Parolă",
+    "cur-pass": "Parola curentă",
+    "new-pass": "Parolă nouă",
+    "new-pass2": "Confirmare parolă nouă",
+    "error-current": "Introdu parola curentă",
+    "error-new": "Introdu noua parolă",
+    "error-new2": "Parolele trebuie să fie identice",
+    "updated": "Parola a fost actualizată cu succes!"
   }
 }

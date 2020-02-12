@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "Pas de connexion internet"
   },
   "g": {
     "compose-entry": "Créer une publication",
@@ -14,7 +14,8 @@
     "server-error": "Le processus n'a pas pu être complété en raison d'une erreur du serveur",
     "save": "Sauvegarder",
     "done": "Terminé",
-    "select": "Sélectionner"
+    "select": "Sélectionner",
+    "update": "Mettre à jour"
   },
   "footer": {
     "faq": "FAQ",
@@ -47,11 +48,16 @@
     "modal-title": "Votants ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogué par {n}"
+    "reblogged": "reblogué par {n}",
+    "promoted": "sponsorisé",
+    "promote": "promouvoir",
+    "boost": "accélérer"
   },
   "entry-reblog": {
     "reblog": "Rebloguer",
-    "reblogged": "Reblogué"
+    "reblogged": "Reblogué",
+    "modal-title": "Réblogueurs ({n})",
+    "more-reblogs": "... +{n} réblogs de plus"
   },
   "settings": {
     "title": "Réglages",
@@ -84,10 +90,23 @@
     "error-user-fetch": "Les données utilisateur n'ont pas pu être récupérés",
     "error-user-not-found": "L'utilisateur n'existe pas",
     "error-authenticate": "Nom utilisateur ou mot de passe/wif incorrect",
-    "create-account-text": "Vous ne possédez pas de compte ? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Inscrivez-vous dès maintenant !</a>",
+    "create-account-text-1": "Pas encore de compte ?",
+    "create-account-text-2": "Enregistrez-vous maintenant !",
     "login-with-sc": "Se connecter avec",
     "divider-text": "OU",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "Note: Steemconnect peut facturer des frais sur vos transactions de récompense"
+  },
+  "sign-up": {
+    "title": "Sign Up",
+    "username-placeholder": "choisissez un nom d’utilisateur",
+    "email-placeholder": "entrez votre adresse mail",
+    "sign-up": "Sign Up",
+    "ref-code": "referral user (optional)",
+    "success-message-1": "Nous avons envoyé un email à {email}.",
+    "success-message-2": "Suivez les instructions pour terminer le processus d'inscription.",
+    "login-1": "Déjà membre ?",
+    "login-2": "Connexion",
+    "login-btn-label": "Retour à la page de connexion"
   },
   "create-pin-code": {
     "title": "Créer un code PIN",
@@ -128,6 +147,7 @@
     "section-blog": "Blog",
     "section-comments": "Commentaires",
     "section-replies": "Réponses",
+    "section-points": "Points",
     "section-wallet": "Portefeuille"
   },
   "follow-controls": {
@@ -146,6 +166,7 @@
     "section-comments": "Commentaires",
     "section-replies": "Réponses",
     "section-wallet": "Portefeuille",
+    "section-points": "Points",
     "top-posts": "Top des Publications",
     "unclaimed-rewards": "Récompenses non réclamées",
     "estimated-value": "La valeur estimée est basée sur une valeur moyenne de Steem de 7 jours.",
@@ -161,15 +182,15 @@
     "steem-dollars-description": "Les jetons valent environ 1.00$ de STEEM.",
     "savings": "Économies",
     "savings-description": "Votre solde est sujet à une période de 3 jours d'attente pour les retraits.",
-    "next-power-down": "The next power down is {time} {amount}",
+    "next-power-down": "Le prochain Power Down est dans {time} {amount}",
     "exchange": "Echange",
     "transactions": "Transactions",
     "transaction-curation_reward": "Gains de curation",
     "transaction-author_reward": "Gain de l'Auteur",
-    "transaction-comment_benefactor_reward": "Comment Benefactor Reward",
+    "transaction-comment_benefactor_reward": "Récompense pour Commentaire bienfaiteur",
     "transaction-claim_reward_balance": "Réclamer mes récompenses",
     "transaction-transfer": "Transférer",
-    "transaction-transfer_to_vesting": "Transfer to vesting",
+    "transaction-transfer_to_vesting": "Transférer vers mes Économies",
     "transaction-withdraw_vesting": "Withdraw vesting",
     "transaction-fill_order": "Remplir l’ordre",
     "claim-reward-balance": "Réclamer le solde de récompenses",
@@ -179,7 +200,64 @@
     "power-up": "Augmenter son influence",
     "withdraw-steem": "Retirer des Steem",
     "withdraw-sbd": "Retirer des Steem Dollar",
-    "delegate": "Delegate"
+    "delegate": "Déléguer",
+    "power-down": "Power Down",
+    "point-history": "Historique",
+    "points-post-desc": "Vous pouvez gagner des points en publiant régulièrement. Publier vous donne 15 points.",
+    "points-comment-desc": "Chaque commentaire que vous faites vous aide à agrandir votre audience et à créer de l'amitié, mais vous donne également 5 points.",
+    "points-checkin-desc": "Checking in on eSteem app gives you 0.25 points and helps you stay connected with your friends.",
+    "points-vote-desc": "En votant, vous donnez une récompense aux autres créateurs et montrez votre appréciation et vous donne également 0,01 x points de poids.",
+    "points-reblog-desc": "  Partagez les publication que vous aimez avec vos amis et gagnez 1 point.",
+    "points-login-desc": "Lorsque vous vous connectez sur l'application eSteem, vous avez le droit de gagner 100 points automatiquement.",
+    "points-checkin-extra-desc": "Une utilisation regulière de l'application vous donne des chances supplémentaires de gagner plus de 10 points, soyez plus actif et gagnez plus.",
+    "points-delegation-desc": "Vous pouvez gagner 1 point par jour pour chaque délégation de 100SP.",
+    "points-post-list-desc": "Points pour vos publications",
+    "points-comment-list-desc": "Points pour vos commentaires",
+    "points-vote-list-desc": "Points pour vos votes",
+    "points-reblog-list-desc": "Points pour vos reblog",
+    "points-login-list-desc": "Points pour vos connexions",
+    "points-checkin-list-desc": "Points for heartbeat",
+    "points-checkin-extra-list-desc": "Bonus d'utilisation",
+    "points-transfer-sent-list-desc": "Transférer à {n}",
+    "points-transfer-incoming-list-desc": "Transférer depuis {n}",
+    "points-delegation-list-desc": "Récompense de délégation",
+    "points-referral-list-desc": "Referral reward",
+    "points-claim-ok": "Points réclamés",
+    "points-promote": "Promouvoir",
+    "points-boost": "Accélérer",
+    "points-transfer": "Envoyez en cadeau à quelqu'un",
+    "points-get": "GET ESTM",
+    "witness-voting": "Témoins",
+    "sps-voting": "SPS Voting",
+    "profile-editor": "Editeur de profil",
+    "password": "Mot de passe"
+  },
+  "redeem": {
+    "user-label": "Utilisateur",
+    "user-help-text": "Fonds disponibles",
+    "post-label": "Post",
+    "post-input-placeholder": "author/permlink",
+    "post-input-title": "Suggestions",
+    "key-required-err": "La clé active n'a pas pu être trouvée pour le compte sélectionné. Veuillez vous assurer que vous êtes connecté avec les informations d'identification appropriées.",
+    "post-error": "Adresse de publication invalide",
+    "post-error-exists": "La publication est déjà promue",
+    "funds-error": "Fonds insuffisants",
+    "submit": "Envoyer",
+    "go-back": "Retour"
+  },
+  "redeem-promote": {
+    "page-title": "Promouvoir",
+    "duration-label": "Durée",
+    "duration-help": "Faites glisser le curseur pour modifier la durée",
+    "day": "jour",
+    "days": "jours",
+    "success-message": "Votre demande a été soumise. Elle sera activée dans quelques minutes."
+  },
+  "redeem-boost": {
+    "page-title": "Accélérer",
+    "amount-label": "Montant",
+    "amount-help": "Faites glisser le curseur pour ajuster le montant",
+    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
     "title-placeholder": "Titre",
@@ -226,7 +304,6 @@
     "update": "Mettre à jour",
     "updated": "Post modifié",
     "sync-scroll": "Synchroniser le défilement",
-    "words-count": "{n} mots",
     "no-suggestions": "Aucune suggestions",
     "emoji-filter-placeholder": "Flitrer",
     "emoji-filter-no-match": "Aucun résultat",
@@ -249,7 +326,9 @@
     "empty-list": "Rien ici",
     "deleted": "Publication planifiée supprimée",
     "move": "Déplacer vers brouillons",
-    "moved": "Déplacé vers brouillons"
+    "moved": "Déplacé vers brouillons",
+    "success-message": "Publié avec succès.",
+    "error-message": "Impossible de publier en raison d'une erreur de serveur."
   },
   "bookmarks": {
     "title": "Signets",
@@ -279,13 +358,18 @@
     "bookmarkRemoved": "Supprimé des signets",
     "favorited": "Ajouté aux favoris",
     "favoriteRemoved": "Supprimer des favoris",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Copier le lien interne dans le presse-papiers",
     "copied-clipboard": "Copié",
     "comment-entry-title": "Vous visualisez le fil de discussion d'un seul commentaire à partir de : ",
     "comment-entry-go-root": "Voir le contexte complet",
     "comment-entry-go-parent": "Voir le parent direct",
-    "similar-entries": "Similar Posts",
-    "fetch-error": "Server timeout because response size is too big"
+    "comment-reveal": "Reveal comment",
+    "similar-entries": "Publications similaires",
+    "fetch-error": "Server timeout because response size is too big",
+    "promote": "promouvoir",
+    "boost": "accélérer",
+    "more-replies": "afficher plus de réponses"
   },
   "navbar": {
     "settings": "Réglages",
@@ -296,10 +380,12 @@
     "favorite": "Ajouter aux favoris",
     "favoriteRemove": "Retiré des favoris",
     "wallet": "Mon portefeuille",
+    "points": "Mes Points",
     "activities": "Activités",
     "address-enter-url": "Saisissez l'url",
     "address-enter-query": "Entrer un critère de recherche",
     "unclaimed-reward-notice": "Vous avez des récompenses non réclamées",
+    "unclaimed-points-notice": "Vous avez des récompenses non réclamées",
     "search-no-matches": "Aucune correspondance"
   },
   "search": {
@@ -340,6 +426,7 @@
     "type-mentions": "Mentions",
     "type-follows": "Suit",
     "type-reblogs": "Reblogs",
+    "type-transfers": "Transferts",
     "vote-str": "{p}% ont aimés votre post:",
     "reply-str": "a répondu à votre post:",
     "mention-str": "vous a mentionné sur:",
@@ -347,11 +434,23 @@
     "unfollowed-str": "ne vous suit plus",
     "ignored-str": "ignoré",
     "reblog-str": "a reblogué votre publication:",
+    "transfer-str": "vous a envoyé",
+    "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
+    "inactive-str": "Be active! Write a post, continue earning",
+    "referral-str": "joined with your referral, welcome them",
     "empty-list": "Il n'y a rien ici",
     "refresh": "Rafraichir",
     "mark-all-read": "Tout marquer comme lu",
     "leaderboard": "Classements",
-    "leaderboard-title": "Top des utilisateurs du jour"
+    "leaderboard-title-daily": "Top des utilisateurs du jour",
+    "leaderboard-title-weekly": "Meilleurs utilisateurs hebdomadaires",
+    "leaderboard-title-monthly": "Meilleurs utilisateurs mensuels",
+    "leaderboard-daily": "Quotidien",
+    "leaderboard-weekly": "Hebdomadaire",
+    "leaderboard-monthly": "Mensuel",
+    "leaderboard-header-score": "Activités",
+    "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
+    "leaderboard-header-reward": "Récompense"
   },
   "witnesses": {
     "page-title": "Vote de témoin",
@@ -360,7 +459,7 @@
     "miss": "Manqué",
     "url": "URL",
     "fee": "Frais",
-    "feed": "Feed",
+    "feed": "Fil d'actualités",
     "block-size": "Taille des blocs",
     "ac-avail": "AC avail",
     "ac-budget": "Budget de l’AC",
@@ -377,8 +476,26 @@
     "proxy-removed": "Mandataire effacé",
     "proxy-created": "@{n} a été défini comme mandataire"
   },
+  "sps": {
+    "page-title": "Proposals Voting",
+    "duration": "Durée",
+    "requested": "Demandé",
+    "total-votes": "Total des votes",
+    "status-active": "actif",
+    "status-expired": "expiré",
+    "status-inactive": "à venir",
+    "duration-days": "{n} jours",
+    "voters": "Proposal Voters",
+    "voter": "Votants",
+    "voter-sp": "SP",
+    "voter-proxy-sp": "Proxy SP",
+    "voter-total-sp": "Total SP",
+    "voted": "Proposal #{n} voted",
+    "vote-removed": "Vote supprimé pour la proposition #{n}"
+  },
   "transfer": {
     "transfer-title": "Transférer vers un compte",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Transférer des fonds vers un autre compte Steem",
     "transfer-saving-title": "Transférer vers mes Économies",
     "transfer-saving-sub-title": "Protéger les fonds en imposant une période d'attente de 3 jours pour les retraits",
@@ -416,7 +533,7 @@
   },
   "delegate": {
     "title": "Déléguer",
-    "sub-title": "Delegate Steem Power",
+    "sub-title": "Steem Power délégué",
     "slider-help": "Faites glisser le curseur pour ajuster le montant",
     "confirm-title": "Confirmer la délégation",
     "confirm-sub-title": "S'il vous plaît, vérifiez si tout est correct",
@@ -427,9 +544,69 @@
   "delegation-list": {
     "empty-list": "Il n'y a rien ici"
   },
+  "power-down": {
+    "title": "Diminuer son influence",
+    "sub-title": "Power Down Steem Power",
+    "account": "Compte",
+    "incoming-funds": "Fonds entrants",
+    "begin": "Begin Power Down",
+    "stop": "Arrêter",
+    "estimated-note": "Évalué chaque semaine",
+    "withdraw-accounts": "Compte(s) destinataire",
+    "add-withdraw-account": "Ajouter un compte de retrait"
+  },
+  "withdraw-route": {
+    "title": "Ajouter un compte de retrait",
+    "to": "Compte",
+    "percentage": "Pourcentage",
+    "slider-help": "Percentage of Power Down to this account",
+    "auto-power-down": "Automatically power up the target account"
+  },
   "friends": {
-    "followers-title": "Followers ({count})",
-    "following-title": "Following ({count})",
-    "load-more": "Load More"
+    "followers-title": "Abonnés ({count})",
+    "following-title": "Abonnements ({count})",
+    "load-more": "Charger Plus",
+    "empty-list": "Rien ici",
+    "search-placeholder": "Rechercher des utilisateurs"
+  },
+  "delegated-list": {
+    "title": "Delegated steem power from @{n}"
+  },
+  "delegatee-list": {
+    "title": "Delegated steem power to @{n}"
+  },
+  "estm-purchase": {
+    "title": "ESTM purchase",
+    "purchase": "Acheter"
+  },
+  "edit-history": {
+    "title": "Modifier l'historique",
+    "show-diff": "Afficher les différences",
+    "version": "Version {n}"
+  },
+  "word-count": {
+    "label": "{n} mots",
+    "read-time-less-1-min": "< 1 min de lecture",
+    "read-time-n-min": "~ {n} min de lecture"
+  },
+  "profile-edit": {
+    "title": "Editeur de profil",
+    "name": "Nom d'affichage",
+    "about": "À propos",
+    "cover-image": "Image de couverture",
+    "profile-image": "Image de profil",
+    "website": "Site Web",
+    "location": "Localisation",
+    "updated": "Profil mis à jour avec succès !"
+  },
+  "password-update": {
+    "title": "Mot de passe",
+    "cur-pass": "Mot de passe actuel",
+    "new-pass": "Nouveau mot de passe",
+    "new-pass2": "Confirmer le nouveau mot de passe",
+    "error-current": "Saisissez le mot de passe actuel",
+    "error-new": "Saisissez le nouveau mot de passe",
+    "error-new2": "Les mots de passe doivent être identiques",
+    "updated": "Le mot de passe a été mise à jour avec succès !"
   }
 }

@@ -14,7 +14,8 @@
     "server-error": "Proses tidak dapat diselesaikan kerana gangguan server",
     "save": "Simpan Perubahan",
     "done": "Selesai",
-    "select": "Pilih"
+    "select": "Pilih",
+    "update": "Update"
   },
   "footer": {
     "faq": "SOALAN-SOALAN LAZIM",
@@ -47,11 +48,16 @@
     "modal-title": "Pengundi ({n})"
   },
   "entry-list-item": {
-    "reblogged": "ulang siar oleh {n}"
+    "reblogged": "ulang siar oleh {n}",
+    "promoted": "ditaja",
+    "promote": "digalakkan",
+    "boost": "boost"
   },
   "entry-reblog": {
     "reblog": "Ulang siar",
-    "reblogged": "Diulang siar"
+    "reblogged": "Diulang siar",
+    "modal-title": "Rebloggers ({n})",
+    "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
     "title": "Tetapan",
@@ -84,10 +90,23 @@
     "error-user-fetch": "Data pengguna tidak dapat diambil",
     "error-user-not-found": "Pengguna tidak wujud",
     "error-authenticate": "Nama pengguna atau kata laluan salah",
-    "create-account-text": "Tiada akaun? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\"> Daftarkan segera! </a>",
+    "create-account-text-1": "Don't have an account?",
+    "create-account-text-2": "Sign up now!",
     "login-with-sc": "Log masuk dengan",
     "divider-text": "ATAU",
     "sc-note": "Ambil perhatian: Kegunaan Steemconnect mungkin akan mengenekan bayaran fi dari transaksi ganjaran"
+  },
+  "sign-up": {
+    "title": "Sign Up",
+    "username-placeholder": "pick a username",
+    "email-placeholder": "enter your email address",
+    "sign-up": "Sign Up",
+    "ref-code": "referral user (optional)",
+    "success-message-1": "We've sent an email to {email}.",
+    "success-message-2": "Follow instructions to complete signup process.",
+    "login-1": "Already a member?",
+    "login-2": "Login",
+    "login-btn-label": "Back to Login"
   },
   "create-pin-code": {
     "title": "Ciptakan kod PIN",
@@ -128,6 +147,7 @@
     "section-blog": "Blog",
     "section-comments": "Komen-komen",
     "section-replies": "Balasan",
+    "section-points": "Mata ganjaran",
     "section-wallet": "Wallet"
   },
   "follow-controls": {
@@ -146,6 +166,7 @@
     "section-comments": "Komen-komen",
     "section-replies": "Balasan",
     "section-wallet": "Wallet",
+    "section-points": "Mata ganjaran",
     "top-posts": "Pos-pos Paling Terkenal",
     "unclaimed-rewards": "Ganjaran yang belum dituntut",
     "estimated-value": "Nilai anggaran ini adalah berdasarkan kepada nilai Steem purata 7 hari {}.",
@@ -179,7 +200,64 @@
     "power-up": "Power Up",
     "withdraw-steem": "Keluarkan Steem",
     "withdraw-sbd": "Keluarkan Steem Dollar",
-    "delegate": "Perwakilan"
+    "delegate": "Perwakilan",
+    "power-down": "Power Down",
+    "point-history": "Sejarah",
+    "points-post-desc": "You can earn point by posting regularly. Posting gives you 15 points.",
+    "points-comment-desc": "Setiap komen yang anda membuat membantu anda untuk mengembangkan pengikut anda dan menjadikan sahabat, di samping juga mendapat 5 mata.",
+    "points-checkin-desc": "Dengan check in eSteem app, anda akan mendapati 0.25 mata dan anda akan berhubung dengan para pengguna.",
+    "points-vote-desc": "Dengan memberi vote kepada para pengarang, anda akan dihargai oleh mereka dan juga mengumpul 0.01 x nisbah tambahan vote.",
+    "points-reblog-desc": "Mengulang siar post yang anda sukai kepada kawan, anda juga memgumpul 1 mata.",
+    "points-login-desc": "Apabila anda log masuk eSteem, anda akan diberi 100 mata secara otomatik.",
+    "points-checkin-extra-desc": "Pengguna app dengan konsisten, anda mungkin akan dapat 10 mata secara percuma. Lebih memgguna, lebih ganjaran.",
+    "points-delegation-desc": "Bagi delegasi setiap 100SP anda akan menerima 1 mata ganjaran setiap hari.",
+    "points-post-list-desc": "Mata ganjaran pos",
+    "points-comment-list-desc": "Mata ganjaran komen",
+    "points-vote-list-desc": "Mata ganjaran vote",
+    "points-reblog-list-desc": "Mata ganjaran ulang siar",
+    "points-login-list-desc": "Mata ganjaran log masuk",
+    "points-checkin-list-desc": "Points for heartbeat",
+    "points-checkin-extra-list-desc": "Bonus untuk pengguna",
+    "points-transfer-sent-list-desc": "Pindah kepada {n}",
+    "points-transfer-incoming-list-desc": "Pindah daripada {n}",
+    "points-delegation-list-desc": "Ganjaran delegasi",
+    "points-referral-list-desc": "Referral reward",
+    "points-claim-ok": "Mata ganjaran dituntut",
+    "points-promote": "Digalakkan",
+    "points-boost": "Pecutkan",
+    "points-transfer": "Gift to someone",
+    "points-get": "GET ESTM",
+    "witness-voting": "Witnesses",
+    "sps-voting": "SPS Voting",
+    "profile-editor": "Profile Editor",
+    "password": "Password"
+  },
+  "redeem": {
+    "user-label": "Pengguna",
+    "user-help-text": "Sedia ada",
+    "post-label": "Hantar",
+    "post-input-placeholder": "pengarang/permlink",
+    "post-input-title": "Suggestions",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "post-error": "Not a valid post address",
+    "post-error-exists": "The post is already promoted",
+    "funds-error": "Insufficient funds",
+    "submit": "Submit",
+    "go-back": "Go Back"
+  },
+  "redeem-promote": {
+    "page-title": "Promote",
+    "duration-label": "Duration",
+    "duration-help": "Drag the slider to change the duration",
+    "day": "day",
+    "days": "days",
+    "success-message": "Your request submitted. It will be activated in a couple minutes."
+  },
+  "redeem-boost": {
+    "page-title": "Boost",
+    "amount-label": "Amount",
+    "amount-help": "Drag the slider to change the amount",
+    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
     "title-placeholder": "Tajuk",
@@ -226,7 +304,6 @@
     "update": "Mengemaskini",
     "updated": "Post telah dikemaskini",
     "sync-scroll": "Skrol segerak",
-    "words-count": "{n} bilangan kata",
     "no-suggestions": "Tiada cadangan",
     "emoji-filter-placeholder": "Penapis",
     "emoji-filter-no-match": "Tiada padanan",
@@ -249,7 +326,9 @@
     "empty-list": "Kosong",
     "deleted": "Jadual pos telah dipadamkan",
     "move": "Memindah ke draf",
-    "moved": "Dipindah ke draf"
+    "moved": "Dipindah ke draf",
+    "success-message": "Berjaya dipaparkan.",
+    "error-message": "Post tidak dipaparkan kerana server error."
   },
   "bookmarks": {
     "title": "Tanda halaman",
@@ -279,13 +358,18 @@
     "bookmarkRemoved": "Dikeluarkan dari tanda halaman",
     "favorited": "Ditambah ke kegemaran",
     "favoriteRemoved": "Dibuang dari kegemaran",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Salin pautan dalaman ke papan keratan",
     "copied-clipboard": "Disalin",
     "comment-entry-title": "Anda melihat sebuah komen tunggal dari: ",
     "comment-entry-go-root": "Lihat konteks lengkap",
     "comment-entry-go-parent": "Lihat sumber utama",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Pos yang menyerupa",
-    "fetch-error": "Saiz penyampaian maklumat terlampau besar, server telah berhenti"
+    "fetch-error": "Saiz penyampaian maklumat terlampau besar, server telah berhenti",
+    "promote": "promote",
+    "boost": "boost",
+    "more-replies": "show more replies"
   },
   "navbar": {
     "settings": "Tetapan",
@@ -296,10 +380,12 @@
     "favorite": "Tambah ke kegemaran",
     "favoriteRemove": "Dibuang dari kegemaran",
     "wallet": "Wallet saya",
+    "points": "Mata ganjaran saya",
     "activities": "Aktiviti-aktiviti",
     "address-enter-url": "Masukkan url",
     "address-enter-query": "Masukkan pencarian",
     "unclaimed-reward-notice": "Anda mempunyai ganjaran yang tidak dituntut",
+    "unclaimed-points-notice": "Ada mata ganjaran yang belum dituntut",
     "search-no-matches": "Tiada yang berpadanan"
   },
   "search": {
@@ -340,6 +426,7 @@
     "type-mentions": "Menyebutkan",
     "type-follows": "Ikuti",
     "type-reblogs": "Ulang siar",
+    "type-transfers": "Pindah",
     "vote-str": "{p}% menyukai pos anda:",
     "reply-str": "balas pos anda:",
     "mention-str": "menyebut anda dalam:",
@@ -347,11 +434,23 @@
     "unfollowed-str": "berhenti mengikuti",
     "ignored-str": "diabaikan",
     "reblog-str": "ulang siar pos anda:",
+    "transfer-str": "kirimkan anda",
+    "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
+    "inactive-str": "Be active! Write a post, continue earning",
+    "referral-str": "joined with your referral, welcome them",
     "empty-list": "Kosong",
     "refresh": "Kemaskini",
     "mark-all-read": "Tandakan semua sebagai sudah dibaca",
     "leaderboard": "Papan Pendahulu",
-    "leaderboard-title": "Pengguna tertinggi harian"
+    "leaderboard-title-daily": "Daily top users",
+    "leaderboard-title-weekly": "Weekly top users",
+    "leaderboard-title-monthly": "Monthly top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly",
+    "leaderboard-header-score": "Activities",
+    "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
+    "leaderboard-header-reward": "Reward"
   },
   "witnesses": {
     "page-title": "Memilih saksi",
@@ -377,8 +476,26 @@
     "proxy-removed": "Proxy telah dipadamkan",
     "proxy-created": "@{n} telah ditetapkan sebagai proxy"
   },
+  "sps": {
+    "page-title": "Proposals Voting",
+    "duration": "Duration",
+    "requested": "Requested",
+    "total-votes": "Total Votes",
+    "status-active": "active",
+    "status-expired": "expired",
+    "status-inactive": "upcoming",
+    "duration-days": "{n} days",
+    "voters": "Proposal Voters",
+    "voter": "Voter",
+    "voter-sp": "SP",
+    "voter-proxy-sp": "Proxy SP",
+    "voter-total-sp": "Total SP",
+    "voted": "Proposal #{n} voted",
+    "vote-removed": "Vote removed for proposal #{n}"
+  },
   "transfer": {
     "transfer-title": "Transfer ke akaun",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Pindahkan dana ke akaun steem lain",
     "transfer-saving-title": "Pindah kepada simpanan",
     "transfer-saving-sub-title": "Melindungi dana dengan masa tunggu 3 hari bila ingin dikeluarkan",
@@ -427,9 +544,69 @@
   "delegation-list": {
     "empty-list": "Kosong"
   },
+  "power-down": {
+    "title": "Power Down",
+    "sub-title": "Power Down Steem Power",
+    "account": "Akaun",
+    "incoming-funds": "Wang masuk",
+    "begin": "Power Down Dimulakan",
+    "stop": "Berhenti",
+    "estimated-note": "Anggaran Mingguan",
+    "withdraw-accounts": "Kepada Akaun",
+    "add-withdraw-account": "Masuk baki kepada akaun"
+  },
+  "withdraw-route": {
+    "title": "Masuk baki kepada akaun",
+    "to": "Akaun",
+    "percentage": "Peratusan",
+    "slider-help": "Peratusan daripada Power Down masuk akaun ini",
+    "auto-power-down": "Power up kepada akaun secara otomatik"
+  },
   "friends": {
     "followers-title": "Pengikut ({count})",
     "following-title": "Pengikut ({count})",
-    "load-more": "Lebih kandungan"
+    "load-more": "Lebih kandungan",
+    "empty-list": "Kosong",
+    "search-placeholder": "Cari pengguna"
+  },
+  "delegated-list": {
+    "title": "Steem power delegasi daripada @{n}"
+  },
+  "delegatee-list": {
+    "title": "Steem power delegasi leads @{n}"
+  },
+  "estm-purchase": {
+    "title": "ESTM purchase",
+    "purchase": "Purchase"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
+  },
+  "word-count": {
+    "label": "{n} words",
+    "read-time-less-1-min": "< 1 min read",
+    "read-time-n-min": "~ {n} min read"
+  },
+  "profile-edit": {
+    "title": "Profile Editor",
+    "name": "Display Name",
+    "about": "About",
+    "cover-image": "Cover Image",
+    "profile-image": "Profile Image",
+    "website": "Website",
+    "location": "Location",
+    "updated": "Profile updated successfully!"
+  },
+  "password-update": {
+    "title": "Password",
+    "cur-pass": "Current password",
+    "new-pass": "New password",
+    "new-pass2": "Confirm new password",
+    "error-current": "Enter current password",
+    "error-new": "Enter new password",
+    "error-new2": "Passwords must be same",
+    "updated": "Password updated successfully!"
   }
 }

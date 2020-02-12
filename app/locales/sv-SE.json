@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "Ingen internetanslutning"
   },
   "g": {
     "compose-entry": "Skapa inlägg",
@@ -14,7 +14,8 @@
     "server-error": "Processen kunde inte slutföras på grund av ett serverfel",
     "save": "Spara",
     "done": "Klart",
-    "select": "Välj"
+    "select": "Välj",
+    "update": "Uppdatera"
   },
   "footer": {
     "faq": "FAQ",
@@ -47,11 +48,16 @@
     "modal-title": "Röster ({n})"
   },
   "entry-list-item": {
-    "reblogged": "återbloggat av {n}"
+    "reblogged": "återbloggat av {n}",
+    "promoted": "sponsrad",
+    "promote": "marknadsför",
+    "boost": "boost"
   },
   "entry-reblog": {
     "reblog": "Återblogga",
-    "reblogged": "Återbloggat"
+    "reblogged": "Återbloggat",
+    "modal-title": "Återbloggare ({n})",
+    "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
     "title": "Inställningar",
@@ -84,10 +90,23 @@
     "error-user-fetch": "Användardata kunde inte hämtas",
     "error-user-not-found": "Användare finns inte",
     "error-authenticate": "Fel användarnamn eller lösenord/WIF",
-    "create-account-text": "Har du inget konto?<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Registrera dig nu!</a>",
+    "create-account-text-1": "Har du inget konto?",
+    "create-account-text-2": "Registrera dig nu!",
     "login-with-sc": "Logga in med",
     "divider-text": "ELLER",
     "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+  },
+  "sign-up": {
+    "title": "Registrera dig",
+    "username-placeholder": "välj ett användarnamn",
+    "email-placeholder": "ange din e-postadress",
+    "sign-up": "Registrera dig",
+    "ref-code": "hänvisningsanvändare (valfritt)",
+    "success-message-1": "Vi har skickat ett mail till {email}.",
+    "success-message-2": "Follow instructions to complete signup process.",
+    "login-1": "Redan medlem?",
+    "login-2": "Logga in",
+    "login-btn-label": "Tillbaka till inloggning"
   },
   "create-pin-code": {
     "title": "Skapa PIN-kod",
@@ -128,6 +147,7 @@
     "section-blog": "Blogg",
     "section-comments": "Kommentarer",
     "section-replies": "Svar",
+    "section-points": "Poäng",
     "section-wallet": "Plånbok"
   },
   "follow-controls": {
@@ -146,6 +166,7 @@
     "section-comments": "Kommentarer",
     "section-replies": "Svar",
     "section-wallet": "Plånbok",
+    "section-points": "Poäng",
     "top-posts": "Topp inlägg",
     "unclaimed-rewards": "Outbetald belöning",
     "estimated-value": "Det uppskattade värdet är baserat på ett 7 dagars genomsnittlig värde av Steem.",
@@ -179,7 +200,64 @@
     "power-up": "Power Up",
     "withdraw-steem": "Ta ut Steem",
     "withdraw-sbd": "Ta ut Steem Dollar",
-    "delegate": "Delegera"
+    "delegate": "Delegera",
+    "power-down": "Power Down",
+    "point-history": "Historik",
+    "points-post-desc": "Du kan tjäna poäng genom att göra inlägg ofta. Att göra inlägg ger dig 15 poäng.",
+    "points-comment-desc": "Varje kommentar hjälper dig att växa din publik och skaffa vänner, men det ger dig också 5 poäng.",
+    "points-checkin-desc": "Checking in on eSteem app gives you 0.25 points and helps you stay connected with your friends.",
+    "points-vote-desc": "By voting you give reward to other creators and show your appreciation but also earn 0.01 x vote weight points.",
+    "points-reblog-desc": "  Share what post you like with your friends and earn 1 points.",
+    "points-login-desc": "When you login into eSteem app you are entitled to earn 100 points automatically.",
+    "points-checkin-extra-desc": "Consistent use of app gives you extra chances to earn more 10 points, be more active and earn more.",
+    "points-delegation-desc": "You can earn 1 point per day for each 100SP delegation.",
+    "points-post-list-desc": "Poäng för inlägg",
+    "points-comment-list-desc": "Poäng för kommentar",
+    "points-vote-list-desc": "Poäng för röst",
+    "points-reblog-list-desc": "Points for reblog",
+    "points-login-list-desc": "Poäng för inloggning",
+    "points-checkin-list-desc": "Points for heartbeat",
+    "points-checkin-extra-list-desc": "Usage bonus",
+    "points-transfer-sent-list-desc": "Flytta till {n}",
+    "points-transfer-incoming-list-desc": "Flytta från {n}",
+    "points-delegation-list-desc": "Delegation reward",
+    "points-referral-list-desc": "Referral reward",
+    "points-claim-ok": "Points claimed",
+    "points-promote": "Promote",
+    "points-boost": "Boost",
+    "points-transfer": "Ge till någon",
+    "points-get": "GET ESTM",
+    "witness-voting": "Witnesses",
+    "sps-voting": "SPS Voting",
+    "profile-editor": "Profile Editor",
+    "password": "Lösenord"
+  },
+  "redeem": {
+    "user-label": "Användare",
+    "user-help-text": "Available Funds",
+    "post-label": "Inlägg",
+    "post-input-placeholder": "author/permlink",
+    "post-input-title": "Förslag",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "post-error": "Ej giltig adress",
+    "post-error-exists": "The post is already promoted",
+    "funds-error": "Otillräckligt saldo",
+    "submit": "Skicka",
+    "go-back": "Gå tillbaka"
+  },
+  "redeem-promote": {
+    "page-title": "Promote",
+    "duration-label": "Längd",
+    "duration-help": "Drag the slider to change the duration",
+    "day": "dag",
+    "days": "dagar",
+    "success-message": "Your request submitted. It will be activated in a couple minutes."
+  },
+  "redeem-boost": {
+    "page-title": "Boost",
+    "amount-label": "Amount",
+    "amount-help": "Drag the slider to change the amount",
+    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
     "title-placeholder": "Titel",
@@ -226,7 +304,6 @@
     "update": "Uppdatera",
     "updated": "Inlägg Uppdaterat",
     "sync-scroll": "Scroll Sync",
-    "words-count": "{n} ord",
     "no-suggestions": "Inga förslag",
     "emoji-filter-placeholder": "Filter",
     "emoji-filter-no-match": "Ingen träff",
@@ -249,7 +326,9 @@
     "empty-list": "Ingenting här",
     "deleted": "Schemalagt inlägg raderat",
     "move": "Flytta till utkast",
-    "moved": "Flyttad till utkast"
+    "moved": "Flyttad till utkast",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Bokmärken",
@@ -279,13 +358,18 @@
     "bookmarkRemoved": "Borttaget från bokmärken",
     "favorited": "Lagt till i favoriter",
     "favoriteRemoved": "Borttagen från favoriter",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Kopiera länk till Urklipp",
     "copied-clipboard": "Kopierad",
     "comment-entry-title": "Du visar en enda kommentar tråd från: ",
     "comment-entry-go-root": "Visa hela sammanhanget",
     "comment-entry-go-parent": "Visa den direkta överordnat",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Similar Posts",
-    "fetch-error": "Server timeout because response size is too big"
+    "fetch-error": "Server timeout because response size is too big",
+    "promote": "promote",
+    "boost": "boost",
+    "more-replies": "visa fler svar"
   },
   "navbar": {
     "settings": "Inställningar",
@@ -296,10 +380,12 @@
     "favorite": "Lägg till i favoriter",
     "favoriteRemove": "Borttagen från favoriter",
     "wallet": "Min plånbok",
+    "points": "Mina Poäng",
     "activities": "Aktiviteter",
     "address-enter-url": "Ange url",
     "address-enter-query": "Ange sökord",
     "unclaimed-reward-notice": "Du har outtagen belöning",
+    "unclaimed-points-notice": "You have unclaimed points",
     "search-no-matches": "No matches"
   },
   "search": {
@@ -340,6 +426,7 @@
     "type-mentions": "Omnämningar",
     "type-follows": "Följer",
     "type-reblogs": "Återblogga",
+    "type-transfers": "Överföringar",
     "vote-str": "{p}% gillar ditt inlägg:",
     "reply-str": "svarade ditt inlägg:",
     "mention-str": "nämnt dig i:",
@@ -347,11 +434,23 @@
     "unfollowed-str": "sluta följa",
     "ignored-str": "ignorerade",
     "reblog-str": "återbloggade ditt inlägg:",
+    "transfer-str": "skickade dig",
+    "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
+    "inactive-str": "Be active! Write a post, continue earning",
+    "referral-str": "joined with your referral, welcome them",
     "empty-list": "Ingenting här",
     "refresh": "Ladda om",
     "mark-all-read": "Markera alla som lästa",
     "leaderboard": "Topplista",
-    "leaderboard-title": "Dagliga Toppanvändare"
+    "leaderboard-title-daily": "Daglig Topp-användare",
+    "leaderboard-title-weekly": "Weekly top users",
+    "leaderboard-title-monthly": "Monthly top users",
+    "leaderboard-daily": "Daglig",
+    "leaderboard-weekly": "Veckolig",
+    "leaderboard-monthly": "Månatlig",
+    "leaderboard-header-score": "Aktiviteter",
+    "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
+    "leaderboard-header-reward": "Reward"
   },
   "witnesses": {
     "page-title": "Vittne Omröstning",
@@ -377,8 +476,26 @@
     "proxy-removed": "Proxy borttaget",
     "proxy-created": "@{n} valt som proxy"
   },
+  "sps": {
+    "page-title": "Proposals Voting",
+    "duration": "Längd",
+    "requested": "Begärt",
+    "total-votes": "Totala röster",
+    "status-active": "aktiv",
+    "status-expired": "utgången",
+    "status-inactive": "kommande",
+    "duration-days": "{n} dagar",
+    "voters": "Proposal Voters",
+    "voter": "Voter",
+    "voter-sp": "SP",
+    "voter-proxy-sp": "Proxy SP",
+    "voter-total-sp": "Total SP",
+    "voted": "Proposal #{n} voted",
+    "vote-removed": "Vote removed for proposal #{n}"
+  },
   "transfer": {
     "transfer-title": "Överför till konto",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Flytta medel till ett annat Steem konto",
     "transfer-saving-title": "För över till Sparkonto",
     "transfer-saving-sub-title": "Skydda medel genom att kräva en 3 dagars uttag väntetid",
@@ -427,9 +544,69 @@
   "delegation-list": {
     "empty-list": "Ingenting här"
   },
+  "power-down": {
+    "title": "Power Down",
+    "sub-title": "Power Down Steem Power",
+    "account": "Konto",
+    "incoming-funds": "Incoming Funds",
+    "begin": "Begin Power Down",
+    "stop": "Stop",
+    "estimated-note": "Estimated Weekly",
+    "withdraw-accounts": "Destination Account(s)",
+    "add-withdraw-account": "Add withdraw account"
+  },
+  "withdraw-route": {
+    "title": "Add withdraw account",
+    "to": "Konto",
+    "percentage": "Procentandel",
+    "slider-help": "Percentage of Power Down to this account",
+    "auto-power-down": "Automatically power up the target account"
+  },
   "friends": {
-    "followers-title": "Followers ({count})",
-    "following-title": "Following ({count})",
-    "load-more": "Load More"
+    "followers-title": "Följare ({count})",
+    "following-title": "Följer ({count})",
+    "load-more": "Ladda mer",
+    "empty-list": "Ingenting här",
+    "search-placeholder": "Sök användare"
+  },
+  "delegated-list": {
+    "title": "Delegated steem power from @{n}"
+  },
+  "delegatee-list": {
+    "title": "Delegated steem power to @{n}"
+  },
+  "estm-purchase": {
+    "title": "ESTM purchase",
+    "purchase": "Purchase"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
+  },
+  "word-count": {
+    "label": "{n} words",
+    "read-time-less-1-min": "< 1 min read",
+    "read-time-n-min": "~ {n} min read"
+  },
+  "profile-edit": {
+    "title": "Profile Editor",
+    "name": "Visningsnamn",
+    "about": "Om",
+    "cover-image": "Cover Image",
+    "profile-image": "Profilbild",
+    "website": "Webbsida",
+    "location": "Location",
+    "updated": "Profilen har uppdaterats!"
+  },
+  "password-update": {
+    "title": "Lösenord",
+    "cur-pass": "Nuvarande lösenord",
+    "new-pass": "Nytt lösenord",
+    "new-pass2": "Bekräfta nytt lösenord",
+    "error-current": "Ange nuvarande lösenord",
+    "error-new": "Ange nytt lösenord",
+    "error-new2": "Lösenorden måste matcha",
+    "updated": "Lösenordet har uppdaterats!"
   }
 }

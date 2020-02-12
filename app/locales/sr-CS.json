@@ -14,7 +14,8 @@
     "server-error": "Proces nije završen zbog greške na serveru",
     "save": "Sačuvaj",
     "done": "Gotovo",
-    "select": "Izaberi"
+    "select": "Izaberi",
+    "update": "Update"
   },
   "footer": {
     "faq": "Čеsto postavljana pitanja",
@@ -47,11 +48,16 @@
     "modal-title": "Glasača ({n})"
   },
   "entry-list-item": {
-    "reblogged": "podelilo je {n}"
+    "reblogged": "podelilo je {n}",
+    "promoted": "sponsored",
+    "promote": "promote",
+    "boost": "boost"
   },
   "entry-reblog": {
     "reblog": "Podeli",
-    "reblogged": "Podeljeno"
+    "reblogged": "Podeljeno",
+    "modal-title": "Rebloggers ({n})",
+    "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
     "title": "Podešavanja",
@@ -84,10 +90,23 @@
     "error-user-fetch": "Nemoguće je dobiti korisničke podatke",
     "error-user-not-found": "Korisnik ne postoji",
     "error-authenticate": "Pogrešno korisničko ime ili lozinka/WIF",
-    "create-account-text": "Nemate nalog? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Registrujte se odmah!</a>",
+    "create-account-text-1": "Don't have an account?",
+    "create-account-text-2": "Sign up now!",
     "login-with-sc": "Prijavite se pomoću",
     "divider-text": "ILI",
     "sc-note": "Napomena: Steemconnect može naplatiti neke naknade od vaših transakcija za nagradu"
+  },
+  "sign-up": {
+    "title": "Sign Up",
+    "username-placeholder": "pick a username",
+    "email-placeholder": "enter your email address",
+    "sign-up": "Sign Up",
+    "ref-code": "referral user (optional)",
+    "success-message-1": "We've sent an email to {email}.",
+    "success-message-2": "Follow instructions to complete signup process.",
+    "login-1": "Already a member?",
+    "login-2": "Login",
+    "login-btn-label": "Back to Login"
   },
   "create-pin-code": {
     "title": "Kreirajte PIN kod",
@@ -128,6 +147,7 @@
     "section-blog": "Blog",
     "section-comments": "Komentari",
     "section-replies": "Odgovori",
+    "section-points": "Points",
     "section-wallet": "Novčanik"
   },
   "follow-controls": {
@@ -146,6 +166,7 @@
     "section-comments": "Komentari",
     "section-replies": "Odgovori",
     "section-wallet": "Novčanik",
+    "section-points": "Points",
     "top-posts": "Najbolji postovi",
     "unclaimed-rewards": "Nepotvrđene nagrade",
     "estimated-value": "Procenjena vrednost se zasniva na prosečnoj vrednosti STEEM-a u periodu od 7 dana.",
@@ -155,7 +176,7 @@
     "steem-power-description": "Steem Power su tokeni uticaja koji dugoročno dobijaju više snage, kao i glasanjem postova. Što ih više imate to ćete imati više uticaja na nagrade drugih korisnika i više ćete zaraditi na vašim glasovima.",
     "steem-power-delegated": "Delegirani Steem Power",
     "steem-power-received": "Primljena Delegacija Steem Power-a",
-    "next-power-down-amount": "Sledeći napajanja dole iznos",
+    "next-power-down-amount": "Sledeći iznos power down-a je",
     "steem-power-total": "Ukupan Steem Power",
     "steem-dollars": "Steem dolari",
     "steem-dollars-description": "Tokeni vrednosti oko $1.00 u STEEM-u.",
@@ -179,7 +200,64 @@
     "power-up": "Uložite u Steem Power",
     "withdraw-steem": "Povucite Steem",
     "withdraw-sbd": "Povucite Steem dolar",
-    "delegate": "Delegiraj"
+    "delegate": "Delegiraj",
+    "power-down": "Power Down",
+    "point-history": "History",
+    "points-post-desc": "You can earn point by posting regularly. Posting gives you 15 points.",
+    "points-comment-desc": "Each comment you make helps you to grow your audience and make friendship but also earns you 5 points.",
+    "points-checkin-desc": "Checking in on eSteem app gives you 0.25 points and helps you stay connected with your friends.",
+    "points-vote-desc": "By voting you give reward to other creators and show your appreciation but also earn 0.01 x vote weight points.",
+    "points-reblog-desc": "  Share what post you like with your friends and earn 1 points.",
+    "points-login-desc": "When you login into eSteem app you are entitled to earn 100 points automatically.",
+    "points-checkin-extra-desc": "Consistent use of app gives you extra chances to earn more 10 points, be more active and earn more.",
+    "points-delegation-desc": "You can earn 1 point per day for each 100SP delegation.",
+    "points-post-list-desc": "Points for post",
+    "points-comment-list-desc": "Points for comment",
+    "points-vote-list-desc": "Points for vote",
+    "points-reblog-list-desc": "Points for reblog",
+    "points-login-list-desc": "Points for login",
+    "points-checkin-list-desc": "Points for heartbeat",
+    "points-checkin-extra-list-desc": "Usage bonus",
+    "points-transfer-sent-list-desc": "Transfer to {n}",
+    "points-transfer-incoming-list-desc": "Transfer from {n}",
+    "points-delegation-list-desc": "Delegation reward",
+    "points-referral-list-desc": "Referral reward",
+    "points-claim-ok": "Points claimed",
+    "points-promote": "Promote",
+    "points-boost": "Boost",
+    "points-transfer": "Gift to someone",
+    "points-get": "GET ESTM",
+    "witness-voting": "Witnesses",
+    "sps-voting": "SPS Voting",
+    "profile-editor": "Profile Editor",
+    "password": "Password"
+  },
+  "redeem": {
+    "user-label": "User",
+    "user-help-text": "Available Funds",
+    "post-label": "Post",
+    "post-input-placeholder": "author/permlink",
+    "post-input-title": "Suggestions",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "post-error": "Not a valid post address",
+    "post-error-exists": "The post is already promoted",
+    "funds-error": "Insufficient funds",
+    "submit": "Submit",
+    "go-back": "Go Back"
+  },
+  "redeem-promote": {
+    "page-title": "Promote",
+    "duration-label": "Duration",
+    "duration-help": "Drag the slider to change the duration",
+    "day": "day",
+    "days": "days",
+    "success-message": "Your request submitted. It will be activated in a couple minutes."
+  },
+  "redeem-boost": {
+    "page-title": "Boost",
+    "amount-label": "Amount",
+    "amount-help": "Drag the slider to change the amount",
+    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
     "title-placeholder": "Naslov",
@@ -226,7 +304,6 @@
     "update": "Ažuriraj",
     "updated": "Post je ažuriran",
     "sync-scroll": "Sinhronizovano skrolovanje",
-    "words-count": "{n} reči",
     "no-suggestions": "Bez predloga",
     "emoji-filter-placeholder": "Filter",
     "emoji-filter-no-match": "Nema podudaranja",
@@ -249,7 +326,9 @@
     "empty-list": "Ovde nema ništa",
     "deleted": "Planirani post je izbrisan",
     "move": "Premesti u radne verzije",
-    "moved": "Premešteno u radne verzije"
+    "moved": "Premešteno u radne verzije",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Obeleživači",
@@ -279,13 +358,18 @@
     "bookmarkRemoved": "Uklonjeno iz obeleživača",
     "favorited": "Dodato u omiljeno",
     "favoriteRemoved": "Uklonjeno iz omiljeno",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Kopiraj interni link u međuspremnik",
     "copied-clipboard": "Kopirano",
     "comment-entry-title": "Pregledate komentare u vezi sa: ",
     "comment-entry-go-root": "Pogledaj ceo kontekst",
     "comment-entry-go-parent": "Pogledaj nadređeni komentar",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Slične objave",
-    "fetch-error": "Vremenskog ograničenja servera jer odgovor je preveliki"
+    "fetch-error": "Vremenskog ograničenja servera jer odgovor je preveliki",
+    "promote": "promote",
+    "boost": "boost",
+    "more-replies": "show more replies"
   },
   "navbar": {
     "settings": "Podešavanja",
@@ -296,10 +380,12 @@
     "favorite": "Dodaj u omiljeno",
     "favoriteRemove": "Uklonjeno iz omiljeno",
     "wallet": "Moj novčanik",
+    "points": "My Points",
     "activities": "Aktivnosti",
     "address-enter-url": "Unesite URL adresu",
     "address-enter-query": "Unesite upit za pretragu",
     "unclaimed-reward-notice": "Imate nepotvrđene nagrade",
+    "unclaimed-points-notice": "You have unclaimed points",
     "search-no-matches": "Nema podudaranja"
   },
   "search": {
@@ -340,6 +426,7 @@
     "type-mentions": "Spominjanja",
     "type-follows": "Pratioci",
     "type-reblogs": "Deljenja",
+    "type-transfers": "Transfers",
     "vote-str": "{p}% se sviđa vaš post:",
     "reply-str": "odgovorio na vaš post:",
     "mention-str": "spomenuo vas je u:",
@@ -347,11 +434,23 @@
     "unfollowed-str": "ne pratim",
     "ignored-str": "ignorisan",
     "reblog-str": "podelio vaš post:",
+    "transfer-str": "vam je poslao",
+    "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
+    "inactive-str": "Be active! Write a post, continue earning",
+    "referral-str": "joined with your referral, welcome them",
     "empty-list": "Ovde nema ništa",
     "refresh": "Osveži",
     "mark-all-read": "Označi svе kao pročitano",
     "leaderboard": "Rang lista",
-    "leaderboard-title": "Najbolji korisnici na dnevnom nivou"
+    "leaderboard-title-daily": "Daily top users",
+    "leaderboard-title-weekly": "Weekly top users",
+    "leaderboard-title-monthly": "Monthly top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly",
+    "leaderboard-header-score": "Activities",
+    "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
+    "leaderboard-header-reward": "Reward"
   },
   "witnesses": {
     "page-title": "Glasanje svedoka (witness)",
@@ -377,8 +476,26 @@
     "proxy-removed": "Proxy je uklonjen",
     "proxy-created": "@{n} je postavljen kao proxy"
   },
+  "sps": {
+    "page-title": "Proposals Voting",
+    "duration": "Duration",
+    "requested": "Requested",
+    "total-votes": "Total Votes",
+    "status-active": "active",
+    "status-expired": "expired",
+    "status-inactive": "upcoming",
+    "duration-days": "{n} days",
+    "voters": "Proposal Voters",
+    "voter": "Voter",
+    "voter-sp": "SP",
+    "voter-proxy-sp": "Proxy SP",
+    "voter-total-sp": "Total SP",
+    "voted": "Proposal #{n} voted",
+    "vote-removed": "Vote removed for proposal #{n}"
+  },
   "transfer": {
     "transfer-title": "Transfer na korisnički nalog",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Prebaci sredstva na drugi Steem nalog",
     "transfer-saving-title": "Premestite u ušteđevinu",
     "transfer-saving-sub-title": "Zaštitite sredstva tako što ćete zatražiti period čekanja od 3 dana za povlačenje sredstava",
@@ -427,9 +544,69 @@
   "delegation-list": {
     "empty-list": "Ovde nema ništa"
   },
+  "power-down": {
+    "title": "Power Down",
+    "sub-title": "Power Down Steem Power",
+    "account": "Nalog",
+    "incoming-funds": "Dolazeća sredstva",
+    "begin": "Započnite Power Down",
+    "stop": "Zaustavi",
+    "estimated-note": "Procenjeno na nedeljnom nivou",
+    "withdraw-accounts": "Na račun(e)",
+    "add-withdraw-account": "Dodajte nalog za povlačenje sredstava"
+  },
+  "withdraw-route": {
+    "title": "Dodajte nalog za povlačenje sredstava",
+    "to": "Nalog",
+    "percentage": "Procenat",
+    "slider-help": "Procenat Power Down-a ovog naloga",
+    "auto-power-down": "Automatski uložite u steem power na ciljani nalog"
+  },
   "friends": {
     "followers-title": "Sledbenici ({count})",
-    "following-title": "Following ({count})",
-    "load-more": "Load More"
+    "following-title": "Pratim ({count})",
+    "load-more": "Učitaj još",
+    "empty-list": "Nothing here",
+    "search-placeholder": "Search users"
+  },
+  "delegated-list": {
+    "title": "Steem power delegiran od strane @{n}"
+  },
+  "delegatee-list": {
+    "title": "Steem power delegiran @{n}"
+  },
+  "estm-purchase": {
+    "title": "ESTM purchase",
+    "purchase": "Purchase"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
+  },
+  "word-count": {
+    "label": "{n} words",
+    "read-time-less-1-min": "< 1 min read",
+    "read-time-n-min": "~ {n} min read"
+  },
+  "profile-edit": {
+    "title": "Profile Editor",
+    "name": "Display Name",
+    "about": "About",
+    "cover-image": "Cover Image",
+    "profile-image": "Profile Image",
+    "website": "Website",
+    "location": "Location",
+    "updated": "Profile updated successfully!"
+  },
+  "password-update": {
+    "title": "Password",
+    "cur-pass": "Current password",
+    "new-pass": "New password",
+    "new-pass2": "Confirm new password",
+    "error-current": "Enter current password",
+    "error-new": "Enter new password",
+    "error-new2": "Passwords must be same",
+    "updated": "Password updated successfully!"
   }
 }

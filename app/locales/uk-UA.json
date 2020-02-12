@@ -14,7 +14,8 @@
     "server-error": "Не вдається завершити процес через помилку сервера",
     "save": "Зберегти",
     "done": "Готово",
-    "select": "Вибрати"
+    "select": "Вибрати",
+    "update": "Оновити"
   },
   "footer": {
     "faq": "FAQ",
@@ -47,11 +48,16 @@
     "modal-title": "Проголосували ({n})"
   },
   "entry-list-item": {
-    "reblogged": "репост {n}"
+    "reblogged": "репост {n}",
+    "promoted": "за підтримки",
+    "promote": "просувати",
+    "boost": "підсилити"
   },
   "entry-reblog": {
     "reblog": "Репост",
-    "reblogged": "Репостнуто"
+    "reblogged": "Репостнуто",
+    "modal-title": "Реблогери ({n})",
+    "more-reblogs": "... +{n} більше реблогів"
   },
   "settings": {
     "title": "Налаштування",
@@ -84,16 +90,29 @@
     "error-user-fetch": "Не вдається отримати дані користувача",
     "error-user-not-found": "Користувач не існує",
     "error-authenticate": "Невірне ім'я користувача або пароль/WIF",
-    "create-account-text": "Немає акаунту?<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Зареєструйтесь!</a>",
+    "create-account-text-1": "Ще не зареєстровані?",
+    "create-account-text-2": "Зареєструйтеся зараз!",
     "login-with-sc": "Увійти через",
     "divider-text": "АБО",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "Примітка: Steemconnect може стягувати деяку плату з ваших транзакцій винагород"
+  },
+  "sign-up": {
+    "title": "Зареєструватися",
+    "username-placeholder": "оберіть ім'я користувача",
+    "email-placeholder": "введіть свою електронну пошту",
+    "sign-up": "Зареєструватися",
+    "ref-code": "реферал (необов'язково)",
+    "success-message-1": "Ми надіслали лист на {email}.",
+    "success-message-2": "Дотримуйтесь інструкцій для завершення процесу реєстрації.",
+    "login-1": "Вже зареєстровані?",
+    "login-2": "Увійти",
+    "login-btn-label": "Повернутися на сторінку входу"
   },
   "create-pin-code": {
     "title": "Задайте PIN-код",
     "desc1": "Встановіть ПІН-код для шифрування даних та додаткового рівня безпеки!",
     "input-placeholder": "Введіть ПІН-код",
-    "desc2": "Вам потрібно буде ввести ПІН-код для критичних транзакцій, а також при кожному запуску.",
+    "desc2": "Вам буде запропоновано ввести ПІН-код для критичних транзакцій, а також при кожному запуску.",
     "created": "ПІН-код задано"
   },
   "confirm-pin-code": {
@@ -128,6 +147,7 @@
     "section-blog": "Блог",
     "section-comments": "Коментарі",
     "section-replies": "Відповіді",
+    "section-points": "Бали",
     "section-wallet": "Гаманець"
   },
   "follow-controls": {
@@ -146,6 +166,7 @@
     "section-comments": "Коментарі",
     "section-replies": "Відповіді",
     "section-wallet": "Гаманець",
+    "section-points": "Бали",
     "top-posts": "Топ пости",
     "unclaimed-rewards": "Не отримана винагорода",
     "estimated-value": "Оціночна вартість базується на 7-денній середній вартості STEEM.",
@@ -179,7 +200,64 @@
     "power-up": "Power Up",
     "withdraw-steem": "Вивести Steem",
     "withdraw-sbd": "Вивести Steem Dollar",
-    "delegate": "Делегувати"
+    "delegate": "Делегувати",
+    "power-down": "Зменшення Сили Голосу",
+    "point-history": "Історія",
+    "points-post-desc": "Ви можете заробити очки, регулярно публікуючи повідомлення. Повідомлення дає 15 балів.",
+    "points-comment-desc": "Кожен зроблений коментар допомагає нарощувати аудиторію, зав'язує дружбу та приносить вам 5 балів.",
+    "points-checkin-desc": "Вхід до eSteem додатку дає вам 0,25 балів та допомагає залишатися на зв'язку з друзями.",
+    "points-vote-desc": "Голосуючи, ви винагороджуєте інших авторів і показуєте своє схвалення, а також отримуєте бали у кількості 0,01 x Сила голосу.",
+    "points-reblog-desc": "  Діліться з друзями постами, що вам подобаються, та отримуйте 1 бал.",
+    "points-login-desc": "При авторизації в додатку eSteem вам автоматично нараховується 100 балів.",
+    "points-checkin-extra-desc": "Регулярне використання додатку дає вам шанс отримати ще 10 бонусних балів. Більше активності - більше винагород.",
+    "points-delegation-desc": "За кожні делеговані 100SP ви можете отримувати 1 бал за день.",
+    "points-post-list-desc": "Бали за пост",
+    "points-comment-list-desc": "Бали за коментар",
+    "points-vote-list-desc": "Бали за голос",
+    "points-reblog-list-desc": "Бали за репост",
+    "points-login-list-desc": "Бали за авторизацію",
+    "points-checkin-list-desc": "Бали за регулярний вхід",
+    "points-checkin-extra-list-desc": "Бонус за користування",
+    "points-transfer-sent-list-desc": "Відправити до {n}",
+    "points-transfer-incoming-list-desc": "Відправити від {n}",
+    "points-delegation-list-desc": "Винагорода за делегацію",
+    "points-referral-list-desc": "Реферальна винагорода",
+    "points-claim-ok": "Бали зараховані",
+    "points-promote": "Просувати",
+    "points-boost": "Підсилити",
+    "points-transfer": "Подарувати комусь",
+    "points-get": "Отримати ESTM",
+    "witness-voting": "Делегати",
+    "sps-voting": "Голосування за SPS",
+    "profile-editor": "Редактор профілів",
+    "password": "Пароль"
+  },
+  "redeem": {
+    "user-label": "Користувач",
+    "user-help-text": "Доступні кошти",
+    "post-label": "Пост",
+    "post-input-placeholder": "автор/постійне посилання",
+    "post-input-title": "Пропозиції",
+    "key-required-err": "Не вдалося знайти активний ключ для вибраного облікового запису. Будь ласка, переконайтеся, що ви ввійшли в систему за допомогою належних облікових даних.",
+    "post-error": "Посилання на пост не дійсне",
+    "post-error-exists": "Допис вже просувають",
+    "funds-error": "Недостатньо коштів",
+    "submit": "Надіслати",
+    "go-back": "Повернутися назад"
+  },
+  "redeem-promote": {
+    "page-title": "Просувати",
+    "duration-label": "Тривалість",
+    "duration-help": "Перетягніть повзунок, щоб змінити тривалість",
+    "day": "день",
+    "days": "днів",
+    "success-message": "Ваш запит надіслано. Він активується через декілька хвилин."
+  },
+  "redeem-boost": {
+    "page-title": "Підсилити",
+    "amount-label": "Сума",
+    "amount-help": "Перетягніть повзунок, щоб змінити суму",
+    "success-message": "Ваше повідомлення було надіслано до черги підсилення, незабаром ви отримаєте поштовх на ваш допис"
   },
   "composer": {
     "title-placeholder": "Заголовок",
@@ -226,7 +304,6 @@
     "update": "Оновити",
     "updated": "Пост оновлено",
     "sync-scroll": "Автопрокрутка",
-    "words-count": "{n} слів",
     "no-suggestions": "Немає пропозицій",
     "emoji-filter-placeholder": "Фільтр",
     "emoji-filter-no-match": "Немає збігів",
@@ -249,7 +326,9 @@
     "empty-list": "Тут порожньо",
     "deleted": "Запланований пост видалено",
     "move": "Перемістити до чернеток",
-    "moved": "Переміщено до чернеток"
+    "moved": "Переміщено до чернеток",
+    "success-message": "Опубліковано успішно.",
+    "error-message": "Не вдалось опублікувати через помилку сервера."
   },
   "bookmarks": {
     "title": "Закладки",
@@ -279,13 +358,18 @@
     "bookmarkRemoved": "Видалено із закладок",
     "favorited": "Додано до обраного",
     "favoriteRemoved": "Видалено з обраного",
+    "show-edit-history": "Показати історію редагування",
     "copy-clipboard": "Скопіювати внутрішнє посилання до буферу обміну",
     "copied-clipboard": "Скопійовано",
     "comment-entry-title": "Ви переглядаєте гілку одного коментарю із: ",
     "comment-entry-go-root": "Переглянути повний контекст",
     "comment-entry-go-parent": "Прямий батьківський коментар",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Схожі пости",
-    "fetch-error": "Server timeout because response size is too big"
+    "fetch-error": "Тайм-аут сервера через завеликий розмір відповіді",
+    "promote": "просувати",
+    "boost": "підсилити",
+    "more-replies": "показати більше відповідей"
   },
   "navbar": {
     "settings": "Налаштування",
@@ -296,10 +380,12 @@
     "favorite": "Додати до обраного",
     "favoriteRemove": "Видалено з обраного",
     "wallet": "Мій гаманець",
+    "points": "Мої бали",
     "activities": "Активність",
     "address-enter-url": "Введіть url",
     "address-enter-query": "Введіть пошуковий запит",
     "unclaimed-reward-notice": "У вас є не зараховані винагороди",
+    "unclaimed-points-notice": "У вас є не зараховані бали",
     "search-no-matches": "Немає збігів"
   },
   "search": {
@@ -340,6 +426,7 @@
     "type-mentions": "Згадування",
     "type-follows": "Підписки",
     "type-reblogs": "Репости",
+    "type-transfers": "Перекази",
     "vote-str": "на {p}% подобається ваш пост:",
     "reply-str": "відповів на ваш пост:",
     "mention-str": "згадав вас у:",
@@ -347,11 +434,23 @@
     "unfollowed-str": "відписався",
     "ignored-str": "ігнорується",
     "reblog-str": "зробив репост вашого посту:",
+    "transfer-str": "відправив вам",
+    "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
+    "inactive-str": "Be active! Write a post, continue earning",
+    "referral-str": "joined with your referral, welcome them",
     "empty-list": "Тут порожньо",
     "refresh": "Оновити",
     "mark-all-read": "Позначити всі як прочитані",
     "leaderboard": "Дошка лідерів",
-    "leaderboard-title": "Щоденний Топ користувачів"
+    "leaderboard-title-daily": "Щоденний топ користувачів",
+    "leaderboard-title-weekly": "Щотижневий топ користувачів",
+    "leaderboard-title-monthly": "Щомісячний топ користувачів",
+    "leaderboard-daily": "Щодня",
+    "leaderboard-weekly": "Щотижня",
+    "leaderboard-monthly": "Щомісяця",
+    "leaderboard-header-score": "Події",
+    "leaderboard-header-score-tip": "Публікація + коментарі, зроблені користувачем протягом вибраного періоду",
+    "leaderboard-header-reward": "Винагорода"
   },
   "witnesses": {
     "page-title": "Голосування за делегатів",
@@ -377,8 +476,26 @@
     "proxy-removed": "Proxy знято",
     "proxy-created": "@{n} встановлено в якості proxy"
   },
+  "sps": {
+    "page-title": "Пропозиції голосування",
+    "duration": "Тривалість",
+    "requested": "Запитано",
+    "total-votes": "Всього голосів",
+    "status-active": "активний",
+    "status-expired": "термін дії закінчився",
+    "status-inactive": "незабаром",
+    "duration-days": "{n} Днів",
+    "voters": "Пропозиція Учасників голосування",
+    "voter": "Проголосували",
+    "voter-sp": "SP",
+    "voter-proxy-sp": "Проксі SP",
+    "voter-total-sp": "Всього SP",
+    "voted": "Пропозиція #{n} проголосована",
+    "vote-removed": "Голосування видалено за пропозицію #{n}"
+  },
   "transfer": {
     "transfer-title": "Переведення на акаунт",
+    "transfer-estm-title": "Перемістити на рахунок",
     "transfer-sub-title": "Переведення коштів на інший Steem акаунт",
     "transfer-saving-title": "Переведення до Заощаджень",
     "transfer-saving-sub-title": "Захищає кошти від зняття 3-денним періодом очікування",
@@ -427,9 +544,69 @@
   "delegation-list": {
     "empty-list": "Тут порожньо"
   },
+  "power-down": {
+    "title": "Power Down",
+    "sub-title": "Power Down Steem Power",
+    "account": "Акаунт",
+    "incoming-funds": "Надходження коштів",
+    "begin": "Почати Power Down",
+    "stop": "Зупинити",
+    "estimated-note": "Приблизно на тиждень",
+    "withdraw-accounts": "Акаунт(и)-одержувач(і)",
+    "add-withdraw-account": "Додати акаунт для виводу коштів"
+  },
+  "withdraw-route": {
+    "title": "Додати акаунт для виводу коштів",
+    "to": "Акаунт",
+    "percentage": "Відсоток",
+    "slider-help": "Відсоток Power Down-у для цього акаунту",
+    "auto-power-down": "Автоматично робити power up на вказаний акаунт"
+  },
   "friends": {
-    "followers-title": "Followers ({count})",
-    "following-title": "Following ({count})",
-    "load-more": "Load More"
+    "followers-title": "Читачі ({count})",
+    "following-title": "Підписки ({count})",
+    "load-more": "Завантажити ще",
+    "empty-list": "Тут порожньо",
+    "search-placeholder": "Пошук користувачів"
+  },
+  "delegated-list": {
+    "title": "Делеговані steem power від @{n}"
+  },
+  "delegatee-list": {
+    "title": "Steem power делеговані @{n}"
+  },
+  "estm-purchase": {
+    "title": "Закупівля ESTM",
+    "purchase": "Придбати"
+  },
+  "edit-history": {
+    "title": "Виправити заголовок",
+    "show-diff": "Показати лише різницю",
+    "version": "Версія {n}"
+  },
+  "word-count": {
+    "label": "{n} слів",
+    "read-time-less-1-min": "< 1 хв. прочитано",
+    "read-time-n-min": "~ {n} хв. прочитано"
+  },
+  "profile-edit": {
+    "title": "Редактор профілів",
+    "name": "Відображуване ім'я",
+    "about": "Про себе",
+    "cover-image": "Обкладинка",
+    "profile-image": "Зображення профілю",
+    "website": "Веб-сторінка",
+    "location": "Місцезнаходження",
+    "updated": "Профіль успішно оновлено!"
+  },
+  "password-update": {
+    "title": "Пароль",
+    "cur-pass": "Поточний пароль",
+    "new-pass": "Новий пароль",
+    "new-pass2": "Підтвердіть новий пароль",
+    "error-current": "Уведіть поточний пароль",
+    "error-new": "Введіть новий пароль",
+    "error-new2": "Паролі мають співпадати",
+    "updated": "Пароль успішно змінено!"
   }
 }
