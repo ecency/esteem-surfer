@@ -364,6 +364,7 @@
     "comment-entry-title": "Você está visualizando o segmento da um único comentário desde: ",
     "comment-entry-go-root": "Ver o contexto completo",
     "comment-entry-go-parent": "Ver o comentário relacionado",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Posts semelhantes",
     "fetch-error": "Tempo limite do servidor porque o tamanho da resposta é muito grande",
     "promote": "promover",
