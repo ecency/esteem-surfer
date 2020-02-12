@@ -364,6 +364,7 @@
     "comment-entry-title": "단일 댓글 스레드 화면을 보고 있습니다: ",
     "comment-entry-go-root": "전체 글 보기",
     "comment-entry-go-parent": "상위 글 보기",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "유사한 글",
     "fetch-error": "응답 파일 크기가 너무 커서 서버 타임아웃이 발생했습니다",
     "promote": "홍보",
