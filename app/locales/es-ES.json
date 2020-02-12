@@ -364,6 +364,7 @@
     "comment-entry-title": "Estás viendo los comentarios relacionados de: ",
     "comment-entry-go-root": "Ver todo el contexto",
     "comment-entry-go-parent": "Ver el comentario relacionado",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Publicaciones Similares",
     "fetch-error": "Tiempo de espera del servidor terminado porque el tamaño de la respuesta es demasiado grande",
     "promote": "promocionar",
