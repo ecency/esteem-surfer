@@ -364,6 +364,7 @@
     "comment-entry-title": "Vous visualisez le fil de discussion d'un seul commentaire à partir de : ",
     "comment-entry-go-root": "Voir le contexte complet",
     "comment-entry-go-parent": "Voir le parent direct",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Publications similaires",
     "fetch-error": "Server timeout because response size is too big",
     "promote": "promouvoir",
