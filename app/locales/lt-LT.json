@@ -364,6 +364,7 @@
     "comment-entry-title": "Jūs skaitote komentarą iš: ",
     "comment-entry-go-root": "Peržiūrėti visą kontekstą",
     "comment-entry-go-parent": "Peržiūrėti pirminį",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Panašūs Įrašai",
     "fetch-error": "Serverio laikas baigėsi nes atsakymo laikas yra per didelis",
     "promote": "promote",
