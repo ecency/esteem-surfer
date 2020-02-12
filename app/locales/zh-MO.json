@@ -364,6 +364,7 @@
     "comment-entry-title": "您正在查看單個評論的線程，來自： ",
     "comment-entry-go-root": "檢視全文",
     "comment-entry-go-parent": "查看直接的父級",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Similar Posts",
     "fetch-error": "Server timeout because response size is too big",
     "promote": "promote",
