@@ -38,11 +38,12 @@ import noImage from '../../img/noimage.png';
 
 class EntryListItem extends Component {
   shouldComponentUpdate(nextProps) {
-    const { entry, global } = this.props;
+    const { entry, global, activeAccount } = this.props;
     const { currencySymbol } = global;
 
     return (
       !isEqual(entry, nextProps.entry) ||
+      !isEqual(activeAccount, nextProps.activeAccount) ||
       currencySymbol !== nextProps.global.currencySymbol
     );
   }
