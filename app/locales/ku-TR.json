@@ -364,6 +364,7 @@
     "comment-entry-title": "You are viewing a single comment's thread from: ",
     "comment-entry-go-root": "View the full context",
     "comment-entry-go-parent": "View the direct parent",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Similar Posts",
     "fetch-error": "Server timeout because response size is too big",
     "promote": "reklam",
