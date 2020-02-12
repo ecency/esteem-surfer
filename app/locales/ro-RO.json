@@ -225,7 +225,7 @@
     "points-claim-ok": "Puncte colectate",
     "points-promote": "Promovează",
     "points-boost": "Boost",
-    "points-transfer": "Gift to someone",
+    "points-transfer": "Dăruiește cuiva",
     "points-get": "OBȚINE ESTM",
     "witness-voting": "Martori",
     "sps-voting": "Votare SPS",
@@ -477,7 +477,7 @@
     "proxy-created": "@{n} a fost setat ca proxy"
   },
   "sps": {
-    "page-title": "Votare Propunere",
+    "page-title": "Proposals Voting",
     "duration": "Durată",
     "requested": "Solicitat",
     "total-votes": "Voturi Totale",
