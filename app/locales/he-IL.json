@@ -15,7 +15,7 @@
     "save": "שמירה",
     "done": "בוצע",
     "select": "בחר",
-    "update": "Update"
+    "update": "עדכן"
   },
   "footer": {
     "faq": "שאלות נפוצות",
@@ -50,8 +50,8 @@
   "entry-list-item": {
     "reblogged": "שותף על ידי {n}",
     "promoted": "sponsored",
-    "promote": "promote",
-    "boost": "boost"
+    "promote": "מקודם",
+    "boost": "האץ"
   },
   "entry-reblog": {
     "reblog": "שתף/י",
