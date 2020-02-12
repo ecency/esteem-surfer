@@ -364,6 +364,7 @@
     "comment-entry-title": "Na one comment thread you dey look so:",
     "comment-entry-go-root": "Look all the whole tori",
     "comment-entry-go-parent": "Look the direct tori",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Post wey resemble",
     "fetch-error": "Server timeout because response size is too big",
     "promote": "promote",
