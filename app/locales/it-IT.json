@@ -364,6 +364,7 @@
     "comment-entry-title": "Stai visualizzando il commento singolo di un thread di: ",
     "comment-entry-go-root": "Mostra il testo completo",
     "comment-entry-go-parent": "Visualizza il collegamento diretto",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Similar Posts",
     "fetch-error": "Server timeout because response size is too big",
     "promote": "promote",
