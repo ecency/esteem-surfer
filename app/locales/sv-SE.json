@@ -364,6 +364,7 @@
     "comment-entry-title": "Du visar en enda kommentar tråd från: ",
     "comment-entry-go-root": "Visa hela sammanhanget",
     "comment-entry-go-parent": "Visa den direkta överordnat",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Similar Posts",
     "fetch-error": "Server timeout because response size is too big",
     "promote": "promote",
