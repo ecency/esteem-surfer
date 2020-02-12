@@ -364,7 +364,7 @@
     "comment-entry-title": "Vizualizezi șirul unui singur comentariu de la: ",
     "comment-entry-go-root": "Vezi contextul complet",
     "comment-entry-go-parent": "Vizualizează postarea principală",
-    "comment-reveal": "Reveal comment",
+    "comment-reveal": "Arată comentariul",
     "similar-entries": "Postări Similare",
     "fetch-error": "Serverului a expirat pentru că dimensiunea răspunsului este prea mare",
     "promote": "promovează",
@@ -477,7 +477,7 @@
     "proxy-created": "@{n} a fost setat ca proxy"
   },
   "sps": {
-    "page-title": "Proposals Voting",
+    "page-title": "Votare Propunere",
     "duration": "Durată",
     "requested": "Solicitat",
     "total-votes": "Voturi Totale",
@@ -490,7 +490,7 @@
     "voter-sp": "SP",
     "voter-proxy-sp": "Proxy SP",
     "voter-total-sp": "SP Total",
-    "voted": "Proposal #{n} voted",
+    "voted": "Propunerea #{n} votată",
     "vote-removed": "Vot revocat pentru propunerea #{n}"
   },
   "transfer": {
