@@ -364,6 +364,7 @@
     "comment-entry-title": "Вы просматриваете один комментарий ветки: ",
     "comment-entry-go-root": "Полный контекст",
     "comment-entry-go-parent": "Прямой родительский комментарий",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Похожие посты",
     "fetch-error": "Тайм-аут сервера, потому что размер ответа слишком большой",
     "promote": "продвинуть",
