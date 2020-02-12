@@ -225,7 +225,7 @@
     "points-claim-ok": "Puncte colectate",
     "points-promote": "Promovează",
     "points-boost": "Boost",
-    "points-transfer": "Gift to someone",
+    "points-transfer": "Dăruiește cuiva",
     "points-get": "OBȚINE ESTM",
     "witness-voting": "Martori",
     "sps-voting": "Votare SPS",
@@ -364,7 +364,7 @@
     "comment-entry-title": "Vizualizezi șirul unui singur comentariu de la: ",
     "comment-entry-go-root": "Vezi contextul complet",
     "comment-entry-go-parent": "Vizualizează postarea principală",
-    "comment-reveal": "Reveal comment",
+    "comment-reveal": "Arată comentariul",
     "similar-entries": "Postări Similare",
     "fetch-error": "Serverului a expirat pentru că dimensiunea răspunsului este prea mare",
     "promote": "promovează",
@@ -490,7 +490,7 @@
     "voter-sp": "SP",
     "voter-proxy-sp": "Proxy SP",
     "voter-total-sp": "SP Total",
-    "voted": "Proposal #{n} voted",
+    "voted": "Propunerea #{n} votată",
     "vote-removed": "Vot revocat pentru propunerea #{n}"
   },
   "transfer": {
