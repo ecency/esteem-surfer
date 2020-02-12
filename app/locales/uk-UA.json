@@ -364,6 +364,7 @@
     "comment-entry-title": "Ви переглядаєте гілку одного коментарю із: ",
     "comment-entry-go-root": "Переглянути повний контекст",
     "comment-entry-go-parent": "Прямий батьківський коментар",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Схожі пости",
     "fetch-error": "Тайм-аут сервера через завеликий розмір відповіді",
     "promote": "просувати",
