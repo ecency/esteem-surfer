@@ -364,6 +364,7 @@
     "comment-entry-title": "Egy hozzászólásos vonal innen: ",
     "comment-entry-go-root": "Teljes kontextus megtekintése",
     "comment-entry-go-parent": "Direkt felmenő megtekintése",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Hasonló bejegyzések",
     "fetch-error": "A szerver nem elérhető mert a válasz mérete túl nagy",
     "promote": "hirdetés",
