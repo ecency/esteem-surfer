@@ -364,6 +364,7 @@
     "comment-entry-title": "Pregledate komentare u vezi sa: ",
     "comment-entry-go-root": "Pogledaj ceo kontekst",
     "comment-entry-go-parent": "Pogledaj nadređeni komentar",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Slične objave",
     "fetch-error": "Vremenskog ograničenja servera jer odgovor je preveliki",
     "promote": "promote",
