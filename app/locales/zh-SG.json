@@ -14,7 +14,8 @@
     "server-error": "Process could not be completed due to server error",
     "save": "保存",
     "done": "完成",
-    "select": "选择"
+    "select": "选择",
+    "update": "Update"
   },
   "footer": {
     "faq": "常见问题与解答",
@@ -47,11 +48,16 @@
     "modal-title": "投票者 ({n})"
   },
   "entry-list-item": {
-    "reblogged": "转发 {n}"
+    "reblogged": "转发 {n}",
+    "promoted": "sponsored",
+    "promote": "promote",
+    "boost": "boost"
   },
   "entry-reblog": {
     "reblog": "转发",
-    "reblogged": "已转发！"
+    "reblogged": "已转发！",
+    "modal-title": "Rebloggers ({n})",
+    "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
     "title": "设置",
@@ -84,10 +90,23 @@
     "error-user-fetch": "User data could not be fetched",
     "error-user-not-found": "User does not exist",
     "error-authenticate": "Wrong username or password/WIF",
-    "create-account-text": "没有账户？<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">立即注册！</a>",
+    "create-account-text-1": "Don't have an account?",
+    "create-account-text-2": "Sign up now!",
     "login-with-sc": "登录方式",
     "divider-text": "或",
     "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+  },
+  "sign-up": {
+    "title": "Sign Up",
+    "username-placeholder": "pick a username",
+    "email-placeholder": "enter your email address",
+    "sign-up": "Sign Up",
+    "ref-code": "referral user (optional)",
+    "success-message-1": "We've sent an email to {email}.",
+    "success-message-2": "Follow instructions to complete signup process.",
+    "login-1": "Already a member?",
+    "login-2": "Login",
+    "login-btn-label": "Back to Login"
   },
   "create-pin-code": {
     "title": "创建PIN码",
@@ -128,6 +147,7 @@
     "section-blog": "博客",
     "section-comments": "评论",
     "section-replies": "回复",
+    "section-points": "Points",
     "section-wallet": "钱包"
   },
   "follow-controls": {
@@ -146,6 +166,7 @@
     "section-comments": "评论",
     "section-replies": "回复",
     "section-wallet": "钱包",
+    "section-points": "Points",
     "top-posts": "热门帖子",
     "unclaimed-rewards": "未领取奖励",
     "estimated-value": "预估价值基于 Steem 的 7 日平均价。",
@@ -179,7 +200,64 @@
     "power-up": "Power Up",
     "withdraw-steem": "取出Steem",
     "withdraw-sbd": "取出Steem Dollar",
-    "delegate": "Delegate"
+    "delegate": "Delegate",
+    "power-down": "Power Down",
+    "point-history": "History",
+    "points-post-desc": "You can earn point by posting regularly. Posting gives you 15 points.",
+    "points-comment-desc": "Each comment you make helps you to grow your audience and make friendship but also earns you 5 points.",
+    "points-checkin-desc": "Checking in on eSteem app gives you 0.25 points and helps you stay connected with your friends.",
+    "points-vote-desc": "By voting you give reward to other creators and show your appreciation but also earn 0.01 x vote weight points.",
+    "points-reblog-desc": "  Share what post you like with your friends and earn 1 points.",
+    "points-login-desc": "When you login into eSteem app you are entitled to earn 100 points automatically.",
+    "points-checkin-extra-desc": "Consistent use of app gives you extra chances to earn more 10 points, be more active and earn more.",
+    "points-delegation-desc": "You can earn 1 point per day for each 100SP delegation.",
+    "points-post-list-desc": "Points for post",
+    "points-comment-list-desc": "Points for comment",
+    "points-vote-list-desc": "Points for vote",
+    "points-reblog-list-desc": "Points for reblog",
+    "points-login-list-desc": "Points for login",
+    "points-checkin-list-desc": "Points for heartbeat",
+    "points-checkin-extra-list-desc": "Usage bonus",
+    "points-transfer-sent-list-desc": "Transfer to {n}",
+    "points-transfer-incoming-list-desc": "Transfer from {n}",
+    "points-delegation-list-desc": "Delegation reward",
+    "points-referral-list-desc": "Referral reward",
+    "points-claim-ok": "Points claimed",
+    "points-promote": "Promote",
+    "points-boost": "Boost",
+    "points-transfer": "Gift to someone",
+    "points-get": "GET ESTM",
+    "witness-voting": "Witnesses",
+    "sps-voting": "SPS Voting",
+    "profile-editor": "Profile Editor",
+    "password": "Password"
+  },
+  "redeem": {
+    "user-label": "User",
+    "user-help-text": "Available Funds",
+    "post-label": "Post",
+    "post-input-placeholder": "author/permlink",
+    "post-input-title": "Suggestions",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "post-error": "Not a valid post address",
+    "post-error-exists": "The post is already promoted",
+    "funds-error": "Insufficient funds",
+    "submit": "Submit",
+    "go-back": "Go Back"
+  },
+  "redeem-promote": {
+    "page-title": "Promote",
+    "duration-label": "Duration",
+    "duration-help": "Drag the slider to change the duration",
+    "day": "day",
+    "days": "days",
+    "success-message": "Your request submitted. It will be activated in a couple minutes."
+  },
+  "redeem-boost": {
+    "page-title": "Boost",
+    "amount-label": "Amount",
+    "amount-help": "Drag the slider to change the amount",
+    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
     "title-placeholder": "标题",
@@ -226,7 +304,6 @@
     "update": "更新",
     "updated": "帖子已更新",
     "sync-scroll": "滚动同步",
-    "words-count": "{n} 字",
     "no-suggestions": "没有建议",
     "emoji-filter-placeholder": "筛选",
     "emoji-filter-no-match": "没有符合的结果",
@@ -249,7 +326,9 @@
     "empty-list": "暂无内容！",
     "deleted": "Scheduled post is deleted",
     "move": "移到草稿",
-    "moved": "已移到草稿"
+    "moved": "已移到草稿",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "书签",
@@ -279,13 +358,18 @@
     "bookmarkRemoved": "已从书签中移除",
     "favorited": "已添加到收藏夹",
     "favoriteRemoved": "已从收藏夹移除",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "复制内部链接到剪贴板",
     "copied-clipboard": "已复制",
     "comment-entry-title": "您正在查看来自以下位置的单个评论线程： ",
     "comment-entry-go-root": "查看完整内容",
     "comment-entry-go-parent": "查看上一级内容",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Similar Posts",
-    "fetch-error": "Server timeout because response size is too big"
+    "fetch-error": "Server timeout because response size is too big",
+    "promote": "promote",
+    "boost": "boost",
+    "more-replies": "show more replies"
   },
   "navbar": {
     "settings": "设置",
@@ -296,10 +380,12 @@
     "favorite": "添加到收藏夹",
     "favoriteRemove": "已从收藏夹移除",
     "wallet": "我的钱包",
+    "points": "My Points",
     "activities": "活动",
     "address-enter-url": "输入网址",
     "address-enter-query": "输入搜索查询",
     "unclaimed-reward-notice": "You have unclaimed rewards",
+    "unclaimed-points-notice": "You have unclaimed points",
     "search-no-matches": "No matches"
   },
   "search": {
@@ -340,6 +426,7 @@
     "type-mentions": "提及",
     "type-follows": "关注",
     "type-reblogs": "转发",
+    "type-transfers": "Transfers",
     "vote-str": "{p}% 人点赞了您的帖子:",
     "reply-str": "replied to your post:",
     "mention-str": "提到了您:",
@@ -347,11 +434,23 @@
     "unfollowed-str": "取消关注",
     "ignored-str": "已忽略",
     "reblog-str": "转发了您的帖子:",
+    "transfer-str": "sent you",
+    "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
+    "inactive-str": "Be active! Write a post, continue earning",
+    "referral-str": "joined with your referral, welcome them",
     "empty-list": "暂无内容！",
     "refresh": "刷新",
     "mark-all-read": "将全部标记为已读",
     "leaderboard": "排行榜",
-    "leaderboard-title": "每日最高排名用户"
+    "leaderboard-title-daily": "Daily top users",
+    "leaderboard-title-weekly": "Weekly top users",
+    "leaderboard-title-monthly": "Monthly top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly",
+    "leaderboard-header-score": "Activities",
+    "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
+    "leaderboard-header-reward": "Reward"
   },
   "witnesses": {
     "page-title": "见证人投票",
@@ -377,8 +476,26 @@
     "proxy-removed": "Proxy is cleared",
     "proxy-created": "已把 @{n} 设为代理"
   },
+  "sps": {
+    "page-title": "Proposals Voting",
+    "duration": "Duration",
+    "requested": "Requested",
+    "total-votes": "Total Votes",
+    "status-active": "active",
+    "status-expired": "expired",
+    "status-inactive": "upcoming",
+    "duration-days": "{n} days",
+    "voters": "Proposal Voters",
+    "voter": "Voter",
+    "voter-sp": "SP",
+    "voter-proxy-sp": "Proxy SP",
+    "voter-total-sp": "Total SP",
+    "voted": "Proposal #{n} voted",
+    "vote-removed": "Vote removed for proposal #{n}"
+  },
   "transfer": {
     "transfer-title": "转到账户",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "把资金转移到另一个 Steem 账户",
     "transfer-saving-title": "转入储蓄",
     "transfer-saving-sub-title": "提款必须等待3天以保护资金。",
@@ -427,9 +544,69 @@
   "delegation-list": {
     "empty-list": "Nothing here"
   },
+  "power-down": {
+    "title": "Power Down",
+    "sub-title": "Power Down Steem Power",
+    "account": "Account",
+    "incoming-funds": "Incoming Funds",
+    "begin": "Begin Power Down",
+    "stop": "Stop",
+    "estimated-note": "Estimated Weekly",
+    "withdraw-accounts": "Destination Account(s)",
+    "add-withdraw-account": "Add withdraw account"
+  },
+  "withdraw-route": {
+    "title": "Add withdraw account",
+    "to": "Account",
+    "percentage": "Percentage",
+    "slider-help": "Percentage of Power Down to this account",
+    "auto-power-down": "Automatically power up the target account"
+  },
   "friends": {
     "followers-title": "Followers ({count})",
     "following-title": "Following ({count})",
-    "load-more": "Load More"
+    "load-more": "Load More",
+    "empty-list": "Nothing here",
+    "search-placeholder": "Search users"
+  },
+  "delegated-list": {
+    "title": "Delegated steem power from @{n}"
+  },
+  "delegatee-list": {
+    "title": "Delegated steem power to @{n}"
+  },
+  "estm-purchase": {
+    "title": "ESTM purchase",
+    "purchase": "Purchase"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
+  },
+  "word-count": {
+    "label": "{n} words",
+    "read-time-less-1-min": "< 1 min read",
+    "read-time-n-min": "~ {n} min read"
+  },
+  "profile-edit": {
+    "title": "Profile Editor",
+    "name": "Display Name",
+    "about": "About",
+    "cover-image": "Cover Image",
+    "profile-image": "Profile Image",
+    "website": "Website",
+    "location": "Location",
+    "updated": "Profile updated successfully!"
+  },
+  "password-update": {
+    "title": "Password",
+    "cur-pass": "Current password",
+    "new-pass": "New password",
+    "new-pass2": "Confirm new password",
+    "error-current": "Enter current password",
+    "error-new": "Enter new password",
+    "error-new2": "Passwords must be same",
+    "updated": "Password updated successfully!"
   }
 }

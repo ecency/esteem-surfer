@@ -1,42 +1,43 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "沒有網路連線"
   },
   "g": {
-    "compose-entry": "創建帖子",
+    "compose-entry": "創建文章",
     "are-you-sure": "您確定嗎？",
     "yes": "是",
     "no": "否",
     "delete": "刪除",
     "cancel": "取消",
-    "ok": "好",
+    "ok": "確定",
     "edit": "編輯",
-    "server-error": "Process could not be completed due to server error",
+    "server-error": "由於伺服器錯誤, 進程無法完成",
     "save": "儲存",
     "done": "完成",
-    "select": "選擇"
+    "select": "選擇",
+    "update": "更新"
   },
   "footer": {
-    "faq": "常見問題與解答",
+    "faq": "常見問題 (FAQ)",
     "about": "關於"
   },
   "entry-index": {
     "tags": "熱門標籤",
-    "filter-trending": "焦點",
+    "filter-trending": "流行",
     "filter-hot": "熱門",
     "filter-created": "最新",
     "filter-active": "活動",
-    "filter-promoted": "贊助",
-    "filter-votes": "票數",
+    "filter-promoted": "推廣",
+    "filter-votes": "投票",
     "filter-children": "評論",
-    "filter-feed": "動態消息"
+    "filter-feed": "朋友圈"
   },
   "entry-payout": {
-    "potential-payout": "潛在收益",
-    "promoted": "贊助",
+    "potential-payout": "預期收益",
+    "promoted": "推廣",
     "author-payout": "作者收益",
-    "curation-payout": "投票收益",
-    "payout-date": "收益时间"
+    "curation-payout": "審查收益",
+    "payout-date": "收益"
   },
   "entry-votes": {
     "n-more": "{n} 更多",
@@ -47,16 +48,21 @@
     "modal-title": "點讚 ({n})"
   },
   "entry-list-item": {
-    "reblogged": "轉發 {n}"
+    "reblogged": "由 {n} 轉發",
+    "promoted": "\n贊助",
+    "promote": "推廣",
+    "boost": "推薦"
   },
   "entry-reblog": {
     "reblog": "轉發",
-    "reblogged": "已轉發！"
+    "reblogged": "已轉發！",
+    "modal-title": "轉發 ({n})",
+    "more-reblogs": "... +{n} 更多轉發"
   },
   "settings": {
     "title": "設定",
     "currency": "幣種",
-    "currency-fetch-error": "無法獲取 \"{cur}\" 的幣種匯率",
+    "currency-fetch-error": "無法獲取 \"{cur}\" 的匯率",
     "currency-changed": "幣種已更改",
     "locale": "語言",
     "locale-changed": "語言已變更",
@@ -65,7 +71,7 @@
     "server-connecting": "連接到 \"{server}\"...",
     "server-connect-error": "無法連接到 \"{server}\"。請確保您有良好的網際網路連接。",
     "server-timeout-error": "'{server}' 似乎不存在",
-    "server-changed": "Server selection changed to {server}",
+    "server-changed": "伺服器更改為 {server}",
     "server-custom-address": "自訂伺服器位址",
     "server-list-fetch-error": "無法取得伺服器列表",
     "push-notifications": "推送通知",
@@ -77,32 +83,45 @@
     "accounts-title": "登錄為",
     "traditional-login-desc": "請以您的使用者賬號與密碼登入",
     "username-placeholder": "使用者名稱",
-    "password-placeholder": "password or WIF",
+    "password-placeholder": "密碼或WIF",
     "login": "登入",
-    "error-fields-required": "Please enter username and password/WIF",
-    "error-public-key": "You entered a public key. Password/WIF required",
-    "error-user-fetch": "User data could not be fetched",
-    "error-user-not-found": "User does not exist",
-    "error-authenticate": "Wrong username or password/WIF",
-    "create-account-text": "還沒有賬戶？<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">立即註冊！</a>",
+    "error-fields-required": "請輸入使用者名稱和密碼/WIF",
+    "error-public-key": "您輸入了公開秘鑰，必須輸入密碼/WIF",
+    "error-user-fetch": "無法獲取用戶資料",
+    "error-user-not-found": "使用者不存在",
+    "error-authenticate": "錯誤的使用者名稱或密碼/WIF",
+    "create-account-text-1": "還沒有帳號嗎？",
+    "create-account-text-2": "立刻註冊!",
     "login-with-sc": "登入方式",
     "divider-text": "或",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "注意：SteemConnect 可能會從您的獎勵交易中收取一些費用"
+  },
+  "sign-up": {
+    "title": "註冊",
+    "username-placeholder": "選擇用戶名",
+    "email-placeholder": "輸入您的電子郵件地址",
+    "sign-up": "註冊",
+    "ref-code": "邀請用戶（可選）",
+    "success-message-1": "我們已經向 {email} 發送了一封電子郵件。",
+    "success-message-2": "按照說明完成注册過程。",
+    "login-1": "已經是會員?",
+    "login-2": "登錄",
+    "login-btn-label": "返回登入"
   },
   "create-pin-code": {
     "title": "創建PIN碼",
-    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter PIN code",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
-    "created": "PIN code created"
+    "desc1": "設置PIN碼來加密您的資料，並啟用額外的安全保護！",
+    "input-placeholder": "輸入 PIN 碼",
+    "desc2": "每次啟動和進行重要交易時，將提示您輸入PIN碼。",
+    "created": "已創建PIN碼"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
-    "input-placeholder": "Enter PIN code to continue",
+    "title": "輸入 PIN 碼",
+    "input-placeholder": "輸入PIN碼以繼續",
     "last-chance": "這是您的最後一次機會",
     "invalidate": "哦，我忘記了......",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "invalidate-confirm": "您確定要作廢PIN碼？",
+    "invalidated": "PIN碼已作廢"
   },
   "user-menu": {
     "profile": "個人檔案",
@@ -128,6 +147,7 @@
     "section-blog": "部落格",
     "section-comments": "評論",
     "section-replies": "回覆",
+    "section-points": "點數",
     "section-wallet": "錢包"
   },
   "follow-controls": {
@@ -141,27 +161,28 @@
     "post-count": "帖子數",
     "number-of-votes": "過去24小時內的點讚數",
     "followers": "跟隨者",
-    "following": "正在跟隨",
+    "following": "關注",
     "section-blog": "部落格",
     "section-comments": "評論",
     "section-replies": "回覆",
     "section-wallet": "錢包",
+    "section-points": "點數",
     "top-posts": "熱門帖子",
     "unclaimed-rewards": "未領取的報酬",
     "estimated-value": "概估價值是以Steem7天之平均價為基礎",
     "steem": "Steem",
-    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
+    "steem-description": "STEEM是可以隨時轉帳的可交易數位貨幣。STEEM可通過名為“Power Up”的過程將STEEM轉換為Steem Power（SP）。",
     "steem-power": "Steem Power",
     "steem-power-description": "Steem Power 可視為具有影響力的股權，持有可長期增值並對文章投票。持有Steem Power數量越多對於其他人獎勵大小的影響力就越大，也更能從準確的投票行為中獲得獎勵。",
-    "steem-power-delegated": "Delegated Steem Power",
-    "steem-power-received": "Received Steem Power",
-    "next-power-down-amount": "Next power down amount",
-    "steem-power-total": "Total Steem Power",
+    "steem-power-delegated": "已委託的 Steem Power(SP)",
+    "steem-power-received": "已接收的 Steem Power(SP)",
+    "next-power-down-amount": "下次釋放 Steem Power 數量",
+    "steem-power-total": "Steem Power(SP)總量",
     "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
+    "steem-dollars-description": "價值約1美元STEEM的代幣。",
     "savings": "儲蓄",
     "savings-description": "餘額有3天的取款等待期。",
-    "next-power-down": "The next power down is {time} {amount}",
+    "next-power-down": "下次釋放 {amount} SP (Steem Power) 是在 {time}",
     "exchange": "交易所",
     "transactions": "交易",
     "transaction-curation_reward": "點贊獎勵",
@@ -179,7 +200,64 @@
     "power-up": "Power Up",
     "withdraw-steem": "取出Steem",
     "withdraw-sbd": "取出Steem Dollar",
-    "delegate": "Delegate"
+    "delegate": "委託",
+    "power-down": "釋放 Steem Power",
+    "point-history": "歷史",
+    "points-post-desc": "您可以通過定期發佈來賺取點數。定期發佈獎勵您 15 ESTM。",
+    "points-comment-desc": "您的每一條評論，都有助於你新增受眾和建立友誼，也能幫您賺取 5 ESTM。",
+    "points-checkin-desc": "在eSteem App上簽到，會獎勵您 0.25 ESTM，並幫助您保持與朋友的聯系。",
+    "points-vote-desc": "通過投票，您給予其他創作者獎勵並顯示你的讚賞，同時，也賺取投票權重0.01倍的 ESTM。",
+    "points-reblog-desc": "分享您喜歡的帖子給您的朋友，能賺取 1 ESTM。",
+    "points-login-desc": "您每次登入 eSteem App，您能自動獲得 100 ESTM 獎勵。",
+    "points-checkin-extra-desc": "持續使用 eSteem App，您就有更多的機會賺得 10 個以上 ESTM，越活躍，賺得越多",
+    "points-delegation-desc": "每委託100 SP，您每天可獲得 1 ESTM。",
+    "points-post-list-desc": "發文的點數",
+    "points-comment-list-desc": "發文的點數",
+    "points-vote-list-desc": "投票的點數",
+    "points-reblog-list-desc": "轉發的點數",
+    "points-login-list-desc": "登入的點數",
+    "points-checkin-list-desc": "線上的點數",
+    "points-checkin-extra-list-desc": "使用的獎金",
+    "points-transfer-sent-list-desc": "發到 {n} 的轉帳",
+    "points-transfer-incoming-list-desc": "來自 {n} 的轉帳",
+    "points-delegation-list-desc": "委託獎勵",
+    "points-referral-list-desc": "邀請獎勵",
+    "points-claim-ok": "已領點數",
+    "points-promote": "推廣",
+    "points-boost": "推薦",
+    "points-transfer": "贈送給他人",
+    "points-get": "獲取 ESTM",
+    "witness-voting": "見證人",
+    "sps-voting": "SPS 投票",
+    "profile-editor": "編輯個人資料",
+    "password": "密碼"
+  },
+  "redeem": {
+    "user-label": "用戶",
+    "user-help-text": "可用資金",
+    "post-label": "文章",
+    "post-input-placeholder": "author/permlink",
+    "post-input-title": "建議",
+    "key-required-err": "所選帳戶未發現有效 Active 金鑰。請確認您用適當金鑰登入。",
+    "post-error": "文章地址無效",
+    "post-error-exists": "文章已被推廣",
+    "funds-error": "金額不足",
+    "submit": "提交",
+    "go-back": "返回"
+  },
+  "redeem-promote": {
+    "page-title": "推廣",
+    "duration-label": "持續時間",
+    "duration-help": "拖動滑塊以更改持續時間",
+    "day": "天",
+    "days": "天",
+    "success-message": "您的請求已提交。它將在幾分鐘後啟動。"
+  },
+  "redeem-boost": {
+    "page-title": "推薦",
+    "amount-label": "數量",
+    "amount-help": "拖動滑塊來調整數量",
+    "success-message": "您的帖子已經被提交到推薦隊列，您將很快通過投票獲得推薦"
   },
   "composer": {
     "title-placeholder": "標題",
@@ -226,7 +304,6 @@
     "update": "更新",
     "updated": "帖子已更新",
     "sync-scroll": "滾動同步",
-    "words-count": "{n} 字",
     "no-suggestions": "沒有建議",
     "emoji-filter-placeholder": "篩選",
     "emoji-filter-no-match": "沒有符合的結果",
@@ -242,20 +319,22 @@
     "title": "草稿",
     "load-error": "無法載入草稿",
     "empty-list": "暫無內容！",
-    "deleted": "Draft is deleted"
+    "deleted": "草稿已删"
   },
   "schedules": {
     "title": "計劃的帖子",
     "empty-list": "暫無內容！",
-    "deleted": "Scheduled post is deleted",
+    "deleted": "定時發佈的文章已删除",
     "move": "儲存為草稿",
-    "moved": "已儲存為草稿"
+    "moved": "已儲存為草稿",
+    "success-message": "發佈成功",
+    "error-message": "由於服務器錯誤無法發佈。"
   },
   "bookmarks": {
     "title": "書籤",
     "load-error": "無法載入書籤",
     "empty-list": "暫無內容！",
-    "deleted": "Bookmark is removed",
+    "deleted": "書簽已移除",
     "search": "搜尋書籤"
   },
   "favorites": {
@@ -279,28 +358,35 @@
     "bookmarkRemoved": "已從書簽中刪除",
     "favorited": "已加到「我的最愛」",
     "favoriteRemoved": "已從「我的最愛」中刪除",
+    "show-edit-history": "顯示編輯歷史",
     "copy-clipboard": "將內部連結複製到剪貼簿",
     "copied-clipboard": "已複製",
     "comment-entry-title": "您正在查看單個評論的線程，來自： ",
     "comment-entry-go-root": "檢視全文",
     "comment-entry-go-parent": "查看直接的父級",
-    "similar-entries": "Similar Posts",
-    "fetch-error": "Server timeout because response size is too big"
+    "comment-reveal": "Reveal comment",
+    "similar-entries": "相似文章",
+    "fetch-error": "因為返回數據太大，服務器超時",
+    "promote": "推廣",
+    "boost": "推薦",
+    "more-replies": "顯示更多回復"
   },
   "navbar": {
     "settings": "設定",
     "change-theme": "變更主題",
-    "login": "Login to your account",
+    "login": "登入到您的帳戶",
     "bookmark": "添加到書簽",
     "bookmarkRemove": "從書簽中刪除",
     "favorite": "添加到「我的最愛」",
     "favoriteRemove": "已從「我的最愛」中刪除",
     "wallet": "我的錢包",
+    "points": "我的點數",
     "activities": "活動",
     "address-enter-url": "輸入網址",
     "address-enter-query": "輸入搜尋字串 ",
-    "unclaimed-reward-notice": "You have unclaimed rewards",
-    "search-no-matches": "No matches"
+    "unclaimed-reward-notice": "您有未領獎勵",
+    "unclaimed-points-notice": "您有未領 ESTM",
+    "search-no-matches": "無匹配"
   },
   "search": {
     "n-results-for-q": "{q} 有 {n} 個結果",
@@ -310,11 +396,11 @@
     "sort-newest": "日期"
   },
   "updater": {
-    "new-version-available": "New version is available",
+    "new-version-available": "有新版本可用！",
     "update": "更新",
     "dismiss": "忽略",
     "downloading": "正在下載新版本...",
-    "download-completed": "Download is completed",
+    "download-completed": "下載完成",
     "restart": "重新啟動"
   },
   "context-menu": {
@@ -340,18 +426,31 @@
     "type-mentions": "提及",
     "type-follows": "跟隨",
     "type-reblogs": "轉發",
+    "type-transfers": "轉帳",
     "vote-str": "{p}% 人點贊了您的帖子:",
-    "reply-str": "replied to your post:",
+    "reply-str": "回復了您的文章:",
     "mention-str": "提到了您:",
     "followed-str": "已跟隨",
     "unfollowed-str": "取消跟隨",
     "ignored-str": "已忽略",
     "reblog-str": "轉發了您的帖子:",
+    "transfer-str": "發送給你",
+    "spin-str": "是登入eSteem手機應用，參加轉盤抽獎，賺取更多 ESTM 的時間了",
+    "inactive-str": "啟動！寫文章，繼續賺",
+    "referral-str": "去歡迎您邀請的新用戶吧！",
     "empty-list": "暫無內容！",
     "refresh": "刷新",
     "mark-all-read": "將全部標記為已讀",
     "leaderboard": "排行榜",
-    "leaderboard-title": "每日最高排名用戶"
+    "leaderboard-title-daily": "每日用戶排行",
+    "leaderboard-title-weekly": "每週用戶排行",
+    "leaderboard-title-monthly": "每月用戶排行",
+    "leaderboard-daily": "每天",
+    "leaderboard-weekly": "每週",
+    "leaderboard-monthly": "每月",
+    "leaderboard-header-score": "活動",
+    "leaderboard-header-score-tip": "選定時間內用戶發表的文章+評論",
+    "leaderboard-header-reward": "獎勵"
   },
   "witnesses": {
     "page-title": "見證人投票",
@@ -374,17 +473,35 @@
     "proxy-active-exp": "您已經設置了一個投票代理。如果您想重新啟用手動投票，請清除您的代理。",
     "current-proxy": "您當前的代理是: <strong>{n}</strong>",
     "remove-proxy": "清除代理",
-    "proxy-removed": "Proxy is cleared",
+    "proxy-removed": "代理已清除",
     "proxy-created": "@{n} 已設置為代理"
+  },
+  "sps": {
+    "page-title": "提案投票",
+    "duration": "持續時間",
+    "requested": "已申請",
+    "total-votes": "投票總數",
+    "status-active": "活躍",
+    "status-expired": "已過期",
+    "status-inactive": "即將開始",
+    "duration-days": "{n} 天",
+    "voters": "提案投票者",
+    "voter": "投票者",
+    "voter-sp": "SP",
+    "voter-proxy-sp": "代理 SP",
+    "voter-total-sp": "SP 總額",
+    "voted": "已投票 #{n} 提案",
+    "vote-removed": "已移除對 #{n} 提案的投票"
   },
   "transfer": {
     "transfer-title": "轉入賬戶",
+    "transfer-estm-title": "贈給帳戶",
     "transfer-sub-title": "將資金移動到另一個 Steem 賬戶",
     "transfer-saving-title": "轉到儲蓄",
     "transfer-saving-sub-title": "提款要求3天的取款等待期來保護資金",
     "withdraw-saving-title": "儲蓄提款",
     "withdraw-saving-sub-title": "必須在規定的3天等待期後提取資金",
-    "power-up-title": "Convert to Steem Power",
+    "power-up-title": "轉為 Steem Power(SP)",
     "power-up-sub-title": "有影響力的代幣，讓您對帖子的收益有更多的控制權，並讓您可以獲得審查獎勵。",
     "from": "從",
     "from-placeholder": "選擇使用者",
@@ -401,7 +518,7 @@
     "memo": "備註",
     "memo-placeholder": "在此處輸入您的附言",
     "memo-help": "這份備忘錄是公開的",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "key-required-err": "所選帳戶未發現有效Active金鑰。請確認您是用適當金鑰登入。",
     "next": "繼續",
     "confirm-title": "確認您的轉賬",
     "confirm-sub-title": "請檢查一切是否正確",
@@ -415,21 +532,81 @@
     "recent-transfers": "最近的轉賬"
   },
   "delegate": {
-    "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
-    "slider-help": "Drag the slider to adjust the amount",
-    "confirm-title": "Confirm Delegation",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "Delegation completed",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "title": "委託",
+    "sub-title": "委託 Steem Power(SP)",
+    "slider-help": "拖動滑塊來調整數量",
+    "confirm-title": "確認委託",
+    "confirm-sub-title": "請檢查是否一切正確。",
+    "delegation-summary": "委託 <span class=\"sp\">{sp}</span> 給 <span class=\"to-user\">{to}</span>帳戶",
+    "success-sub-title": "委託完成",
+    "insufficient-vesting": "SP(vesting shares)不足 {a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "此處無內容"
+  },
+  "power-down": {
+    "title": "釋放 Steem Power",
+    "sub-title": "釋放 Steem Power",
+    "account": "帳戶",
+    "incoming-funds": "轉入資金",
+    "begin": "開始釋放 Steem Power",
+    "stop": "停止",
+    "estimated-note": "每週估計",
+    "withdraw-accounts": "目標帳戶",
+    "add-withdraw-account": "添加提現帳戶"
+  },
+  "withdraw-route": {
+    "title": "添加提現帳戶",
+    "to": "帳戶",
+    "percentage": "百分比",
+    "slider-help": "釋放 Steem Power 到此帳號的百分比",
+    "auto-power-down": "自動轉 Steem Power 的目標帳戶"
   },
   "friends": {
-    "followers-title": "Followers ({count})",
-    "following-title": "Following ({count})",
-    "load-more": "Load More"
+    "followers-title": "粉絲 ({count})",
+    "following-title": "關注 ({count})",
+    "load-more": "加載更多",
+    "empty-list": "此處無內容",
+    "search-placeholder": "檢索用戶"
+  },
+  "delegated-list": {
+    "title": "來自 @{n} 的Steem Power（SP）授權"
+  },
+  "delegatee-list": {
+    "title": "委託 Steem Power 給 @{n} "
+  },
+  "estm-purchase": {
+    "title": "購買 ESTM",
+    "purchase": "購買"
+  },
+  "edit-history": {
+    "title": "編輯歷史",
+    "show-diff": "顯示差异",
+    "version": "版本 {n}"
+  },
+  "word-count": {
+    "label": "{n} 個字",
+    "read-time-less-1-min": "< 1 分鐘閱讀",
+    "read-time-n-min": "~ {n} 分鐘閱讀"
+  },
+  "profile-edit": {
+    "title": "個人資料編輯",
+    "name": "顯示名",
+    "about": "關於",
+    "cover-image": "封面圖片",
+    "profile-image": "個人資料圖片",
+    "website": "網站",
+    "location": "位置",
+    "updated": "個人資料更新成功"
+  },
+  "password-update": {
+    "title": "密碼",
+    "cur-pass": "當前密碼",
+    "new-pass": "新密碼",
+    "new-pass2": "確認新密碼",
+    "error-current": "輸入當前密碼",
+    "error-new": "輸入新密碼",
+    "error-new2": "密碼必須相同",
+    "updated": "密碼更新成功！"
   }
 }

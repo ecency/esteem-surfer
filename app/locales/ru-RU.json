@@ -14,7 +14,8 @@
     "server-error": "Невозможно завершить процесс из-за ошибки сервера",
     "save": "Сохранить",
     "done": "Готово",
-    "select": "Выбрать"
+    "select": "Выбрать",
+    "update": "Обновить"
   },
   "footer": {
     "faq": "ЧАВО",
@@ -47,11 +48,16 @@
     "modal-title": "Всего голосов {n}"
   },
   "entry-list-item": {
-    "reblogged": "репост {n}"
+    "reblogged": "репост {n}",
+    "promoted": " реклама",
+    "promote": "продвинуть",
+    "boost": "boost"
   },
   "entry-reblog": {
     "reblog": "Репост",
-    "reblogged": "Репостнуто"
+    "reblogged": "Репостнуто",
+    "modal-title": "Репосты ({n})",
+    "more-reblogs": "... +еще {n} репостов"
   },
   "settings": {
     "title": "Настройки",
@@ -64,7 +70,7 @@
     "server-invalid-address": "Неправильный адрес сервера",
     "server-connecting": "Соединение с '{server}'...",
     "server-connect-error": "Невозможно соединиться с '{server}'. Пожалуйста, проверьте подключение интернет.",
-    "server-timeout-error": "'{server}' не похож на живой",
+    "server-timeout-error": "'{server}' вероятно отключен",
     "server-changed": "Сервер изменён на {server}",
     "server-custom-address": "Впишите адрес сервера",
     "server-list-fetch-error": "Невозможно получить список серверов",
@@ -84,10 +90,23 @@
     "error-user-fetch": "Невозможно получить данные пользователя",
     "error-user-not-found": "Пользователь не существует",
     "error-authenticate": "Неправильное имя пользователя или пароль/ключ",
-    "create-account-text": "Нет аккаунта? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Зарегистрируйтесь!</a>",
+    "create-account-text-1": "Еще нет аккаунта?",
+    "create-account-text-2": "Зарегистрируйтесь сейчас!",
     "login-with-sc": "Войти через",
     "divider-text": "или",
     "sc-note": "Примечание: Steemconnect может взимать некоторые сборы из ваших транзакций вознаграждений"
+  },
+  "sign-up": {
+    "title": "Регистрация",
+    "username-placeholder": "выберите имя пользователя",
+    "email-placeholder": "введите свой email адрес",
+    "sign-up": "Зарегистрироваться",
+    "ref-code": "реферал (необязательно)",
+    "success-message-1": "Мы отправили письмо на {email}.",
+    "success-message-2": "Для завершения процесса регистрации следуйте инструкции.",
+    "login-1": "Уже зарегистрированы?",
+    "login-2": "Войти",
+    "login-btn-label": "Вернуться на страницу входа"
   },
   "create-pin-code": {
     "title": "Создайте ПИН код",
@@ -128,6 +147,7 @@
     "section-blog": "Блог",
     "section-comments": "Комментарии",
     "section-replies": "Ответы",
+    "section-points": "Баллы",
     "section-wallet": "Кошелёк"
   },
   "follow-controls": {
@@ -146,6 +166,7 @@
     "section-comments": "Комментарии",
     "section-replies": "Ответы",
     "section-wallet": "Кошелёк",
+    "section-points": "Очки",
     "top-posts": "Лучшее",
     "unclaimed-rewards": "Зачислить награду",
     "estimated-value": "Предполагаемая стоимость. Основана на средней стоимости Steem последние 7 дней.",
@@ -179,7 +200,64 @@
     "power-up": "Повысить Силу",
     "withdraw-steem": "Снять Steem",
     "withdraw-sbd": "Снять Steem Dollar",
-    "delegate": "Делегировать"
+    "delegate": "Делегировать",
+    "power-down": "Понижение Силы",
+    "point-history": "История",
+    "points-post-desc": "You can earn point by posting regularly. Posting gives you 15 points.",
+    "points-comment-desc": "Каждый коммент помогает набирать аудиторию, завязывает дружбу и приносит 5 очков.",
+    "points-checkin-desc": "Чекин в приложении eSteem даёт 0.25 очков и помогает оставаться на связи с друзьями.",
+    "points-vote-desc": "Голосуя вы награждаете других и высказываете своё уважение, а также получаете 0.01 х сила голоса.",
+    "points-reblog-desc": "Делитесь постами с друзьями и получайте по 1 очку.",
+    "points-login-desc": "Когда вы логинитесь в приложения eSteem, вы автоматически получаете 100 очков.",
+    "points-checkin-extra-desc": "Активное использование приложения даёт вам дополнительный шанс получить 10 очков. Чем больше активности, тем больше очков.",
+    "points-delegation-desc": "За каждые делегированные 100SP вы будете получать 1 очко в день.",
+    "points-post-list-desc": "Очки за пост",
+    "points-comment-list-desc": "Очки за комментарий",
+    "points-vote-list-desc": "Очки за голос",
+    "points-reblog-list-desc": "Очки за репост",
+    "points-login-list-desc": "Очки за логин",
+    "points-checkin-list-desc": "Points for heartbeat",
+    "points-checkin-extra-list-desc": "Бонус за использование",
+    "points-transfer-sent-list-desc": "Получатель {n}",
+    "points-transfer-incoming-list-desc": "Отправитель {n}",
+    "points-delegation-list-desc": "Награда за делегирование",
+    "points-referral-list-desc": "Referral reward",
+    "points-claim-ok": "Очки зачислены",
+    "points-promote": "Продвижение",
+    "points-boost": "Boost",
+    "points-transfer": "Подарить кому-то",
+    "points-get": "ПОЛУЧИТЬ ESTM",
+    "witness-voting": "Делегаты",
+    "sps-voting": "Голосование за SPS",
+    "profile-editor": "Редактор профиля",
+    "password": "Пароль"
+  },
+  "redeem": {
+    "user-label": "Пользователь",
+    "user-help-text": "Доступные средства",
+    "post-label": "Пост",
+    "post-input-placeholder": "автор/постоянная ссылка",
+    "post-input-title": "Предложения",
+    "key-required-err": "Не найден Активный ключ для выбранного аккаунта. Пожалуйста, убедитесь, что вы вошли с помощью соответствующего ключа.",
+    "post-error": "Ссылка на пост не действительна",
+    "post-error-exists": "Этот пост уже продвигается",
+    "funds-error": "Недостаточно средств",
+    "submit": "Отправить",
+    "go-back": "Назад"
+  },
+  "redeem-promote": {
+    "page-title": "Продвинуть",
+    "duration-label": "Длительность",
+    "duration-help": "Перетащите ползунок, чтобы изменить длительность",
+    "day": "день",
+    "days": "дня(ей)",
+    "success-message": "Ваш запрос отправлен. Он будет выполнен через пару минут."
+  },
+  "redeem-boost": {
+    "page-title": "Boost",
+    "amount-label": "Amount",
+    "amount-help": "Drag the slider to change the amount",
+    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
     "title-placeholder": "Заголовок",
@@ -226,7 +304,6 @@
     "update": "Обновить",
     "updated": "Пост обновлён",
     "sync-scroll": "Автопрокрутка",
-    "words-count": "{n} слов",
     "no-suggestions": "Нет предложений",
     "emoji-filter-placeholder": "Отфильтровать",
     "emoji-filter-no-match": "Нет совпадений",
@@ -249,7 +326,9 @@
     "empty-list": "Здесь пусто",
     "deleted": "Отложенный пост удалён",
     "move": "Переместить в черновики",
-    "moved": "Перемещён в черновики"
+    "moved": "Перемещён в черновики",
+    "success-message": "Опубликовано успешно.",
+    "error-message": "Не удалось опубликовать из-за ошибки сервера."
   },
   "bookmarks": {
     "title": "Закладки",
@@ -279,13 +358,18 @@
     "bookmarkRemoved": "Удалено из закладок",
     "favorited": "Добавлен в избранное",
     "favoriteRemoved": "Удалён из избранного",
+    "show-edit-history": "Показать историю изменений",
     "copy-clipboard": "Скопировать внутреннюю ссылку в буфер обмена",
     "copied-clipboard": "Скопировано",
     "comment-entry-title": "Вы просматриваете один комментарий ветки: ",
     "comment-entry-go-root": "Полный контекст",
     "comment-entry-go-parent": "Прямой родительский комментарий",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Похожие посты",
-    "fetch-error": "Тайм-аут сервера, потому что размер ответа слишком большой"
+    "fetch-error": "Тайм-аут сервера, потому что размер ответа слишком большой",
+    "promote": "продвинуть",
+    "boost": "boost",
+    "more-replies": "показать еще ответы"
   },
   "navbar": {
     "settings": "Настройки",
@@ -296,10 +380,12 @@
     "favorite": "Добавить в избранное",
     "favoriteRemove": "Убрать из избранного",
     "wallet": "Мой кошелёк",
+    "points": "Мои очки",
     "activities": "Активности",
     "address-enter-url": "Введите url",
     "address-enter-query": "Введите поисковой запрос",
     "unclaimed-reward-notice": "Есть незачисленные награды",
+    "unclaimed-points-notice": "Есть незачисленные награды",
     "search-no-matches": "Нет совпадений"
   },
   "search": {
@@ -340,6 +426,7 @@
     "type-mentions": "Упоминания",
     "type-follows": "Подписки",
     "type-reblogs": "Репосты",
+    "type-transfers": "Переводы",
     "vote-str": "на {p}% нравится ваш пост:",
     "reply-str": "ответил на ваш пост:",
     "mention-str": "упомянул вас в:",
@@ -347,11 +434,23 @@
     "unfollowed-str": "отписан",
     "ignored-str": "игнор",
     "reblog-str": "сделал репост вашего поста:",
+    "transfer-str": "перевел(а) вам",
+    "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
+    "inactive-str": "Be active! Write a post, continue earning",
+    "referral-str": "joined with your referral, welcome them",
     "empty-list": "Здесь пусто",
     "refresh": "Обновить",
     "mark-all-read": "Пометить всё как прочитанное",
     "leaderboard": "Доска Лидерства",
-    "leaderboard-title": "Ежедневный Топ пользователей"
+    "leaderboard-title-daily": "Ежедневный топ пользователей",
+    "leaderboard-title-weekly": "Еженедельный топ пользователей",
+    "leaderboard-title-monthly": "Ежемесячный топ пользователей",
+    "leaderboard-daily": "За день",
+    "leaderboard-weekly": "За неделю",
+    "leaderboard-monthly": "За месяц",
+    "leaderboard-header-score": "Действия",
+    "leaderboard-header-score-tip": "Посты + комментарии, сделанные пользователем за выбранный период",
+    "leaderboard-header-reward": "Награда"
   },
   "witnesses": {
     "page-title": "Голосование за делегатов",
@@ -377,8 +476,26 @@
     "proxy-removed": "Доверенный снят",
     "proxy-created": "@{n} ваш доверенный"
   },
+  "sps": {
+    "page-title": "Голосование за предложения",
+    "duration": "Длительность",
+    "requested": "Запрошено",
+    "total-votes": "Всего голосов",
+    "status-active": "активное",
+    "status-expired": "истекло",
+    "status-inactive": "предстоящее",
+    "duration-days": "{n} дня(ей)",
+    "voters": "Проголосовавшие за предложение",
+    "voter": "Voter",
+    "voter-sp": "SP",
+    "voter-proxy-sp": "Прокси SP",
+    "voter-total-sp": "Всего SP",
+    "voted": "Предложение #{n} проголосовано",
+    "vote-removed": "Голос за предложение #{n} удален"
+  },
   "transfer": {
     "transfer-title": "Перевод на аккаунт",
+    "transfer-estm-title": "Подарить аккаунту",
     "transfer-sub-title": "Перевод средств на другой аккаунт Steem",
     "transfer-saving-title": "Перевод в сейф",
     "transfer-saving-sub-title": "Защита средства от вывода трёхдневным периодом ожидания",
@@ -427,9 +544,69 @@
   "delegation-list": {
     "empty-list": "Ничего нет"
   },
+  "power-down": {
+    "title": "Понижение Силы",
+    "sub-title": "Перевод Силы Steem в токены Steem",
+    "account": "Aккаунт",
+    "incoming-funds": "Входящие средства",
+    "begin": "Начать понижение Силы",
+    "stop": "Остановить",
+    "estimated-note": "Примерно в неделю",
+    "withdraw-accounts": "Аккаунт(ы) получателя",
+    "add-withdraw-account": "Добавить аккаунт для вывода средств"
+  },
+  "withdraw-route": {
+    "title": "Аккаунт для вывода",
+    "to": "Aккаунт",
+    "percentage": "Процент",
+    "slider-help": "Процент понижения Силы в этот аккаунт",
+    "auto-power-down": "Автоматически переводить в Силу на целевой аккаунт"
+  },
   "friends": {
     "followers-title": "Подписчики ({count})",
     "following-title": "Подписки ({count})",
-    "load-more": "Загрузить ещё"
+    "load-more": "Загрузить ещё",
+    "empty-list": "Здесь пусто",
+    "search-placeholder": "Поиск пользователей"
+  },
+  "delegated-list": {
+    "title": "Делегированная Сила голоса от @{n}"
+  },
+  "delegatee-list": {
+    "title": "Делегированная Сила голоса к @{n}"
+  },
+  "estm-purchase": {
+    "title": "Покупка ESTM",
+    "purchase": "Купить"
+  },
+  "edit-history": {
+    "title": "История изменений",
+    "show-diff": "Показать различия",
+    "version": "Версия {n}"
+  },
+  "word-count": {
+    "label": "{n} слов",
+    "read-time-less-1-min": "< 1 min read",
+    "read-time-n-min": "~ {n} min read"
+  },
+  "profile-edit": {
+    "title": "Редактор профиля",
+    "name": "Отображаемое имя",
+    "about": "О себе",
+    "cover-image": "Изображение для обложки",
+    "profile-image": "Изображение для профиля",
+    "website": "Веб-сайт",
+    "location": "Местоположение",
+    "updated": "Профиль успешно обновлен!"
+  },
+  "password-update": {
+    "title": "Пароль",
+    "cur-pass": "Текущий пароль",
+    "new-pass": "Новый пароль",
+    "new-pass2": "Подтвердите новый пароль",
+    "error-current": "Введите текущий пароль",
+    "error-new": "Введите новый пароль",
+    "error-new2": "Пароли должны совпадать",
+    "updated": "Пароль успешно обновлен!"
   }
 }

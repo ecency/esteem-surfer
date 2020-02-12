@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "インターネット接続がありません"
   },
   "g": {
     "compose-entry": "投稿を作成",
@@ -11,10 +11,11 @@
     "cancel": "キャンセル",
     "ok": "OK",
     "edit": "編集",
-    "server-error": "Process could not be completed due to server error",
+    "server-error": "サーバーエラーによりプロセスを完了できませんでした",
     "save": "保存",
     "done": "完了",
-    "select": "選択"
+    "select": "選択",
+    "update": "更新"
   },
   "footer": {
     "faq": "FAQ",
@@ -47,11 +48,16 @@
     "modal-title": "投票者 ({n})"
   },
   "entry-list-item": {
-    "reblogged": "{n} によってリブログされました"
+    "reblogged": "{n} によってリブログされました",
+    "promoted": "スポンサー",
+    "promote": "プロモート",
+    "boost": "ブースト"
   },
   "entry-reblog": {
     "reblog": "リブログ",
-    "reblogged": "リブログ済み"
+    "reblogged": "リブログ済み",
+    "modal-title": "リブログ数 ({n})",
+    "more-reblogs": "... +{n} さらにリグログ"
   },
   "settings": {
     "title": "設定",
@@ -65,7 +71,7 @@
     "server-connecting": "{server} に接続しています...",
     "server-connect-error": "'{server}' に接続できませんでした。インターネット接続を確認してください。",
     "server-timeout-error": "'{server}'は動いていないようです",
-    "server-changed": "Server selection changed to {server}",
+    "server-changed": "選択されたサーバーが{server} に変更されました",
     "server-custom-address": "カスタムサーバーアドレス",
     "server-list-fetch-error": "サーバーリストを取得できませんでした",
     "push-notifications": "プッシュ通知",
@@ -77,32 +83,45 @@
     "accounts-title": "次のユーザーとしてログイン",
     "traditional-login-desc": "ユーザー名とパスワードでサインインしてください",
     "username-placeholder": "ユーザー名",
-    "password-placeholder": "password or WIF",
+    "password-placeholder": "パスワードまたはWIF",
     "login": "ログイン",
-    "error-fields-required": "Please enter username and password/WIF",
-    "error-public-key": "You entered a public key. Password/WIF required",
-    "error-user-fetch": "User data could not be fetched",
-    "error-user-not-found": "User does not exist",
-    "error-authenticate": "Wrong username or password/WIF",
-    "create-account-text": "アカウントをお持ちでないですか？<a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">今すぐ登録！</a>",
+    "error-fields-required": "ユーザー名とパスワード/WIFを入力してください",
+    "error-public-key": "公開鍵が入力されました。パスワード/WIFが必要です",
+    "error-user-fetch": "ユーザーデータを取得できませんでした",
+    "error-user-not-found": "ユーザーが存在しません",
+    "error-authenticate": "ユーザー名またはパスワード/WIFが間違っています",
+    "create-account-text-1": "アカウントがありませんか？",
+    "create-account-text-2": "今すぐ登録！",
     "login-with-sc": "次のものでログイン",
     "divider-text": "または",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "sc-note": "注意: Steemconnectはあなたの報酬から多少の手数料を徴収するかもしれません"
+  },
+  "sign-up": {
+    "title": "サインアップ",
+    "username-placeholder": "ユーザー名を選択",
+    "email-placeholder": "メールアドレスを入力してください",
+    "sign-up": "サインアップ",
+    "ref-code": "紹介ユーザー (任意)",
+    "success-message-1": "{email} にメールを送信しました。",
+    "success-message-2": "手順に従って登録の手続きを完了しましょう。",
+    "login-1": "すでに会員の方はこちら",
+    "login-2": "ログイン",
+    "login-btn-label": "ログインに戻る"
   },
   "create-pin-code": {
     "title": "PINコードを作成",
-    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter PIN code",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
-    "created": "PIN code created"
+    "desc1": "あなたのデータを暗号化し、セキュリティを強化するために暗証番号を設定してください！",
+    "input-placeholder": "暗証番号を入力",
+    "desc2": "重要な取引だけではなく、毎回の起動時に暗証番号を入力するよう促されます。",
+    "created": "暗証番号が作成されました"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
-    "input-placeholder": "Enter PIN code to continue",
+    "title": "暗証番号を入力",
+    "input-placeholder": "続行するには暗証番号を入力してください",
     "last-chance": "これが最後のチャンスです",
     "invalidate": "ああ、私はそれを忘れてしまいました...",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "invalidate-confirm": "暗証番号を本当に無効にしてよろしいですか？",
+    "invalidated": "暗証番号が無効化されました"
   },
   "user-menu": {
     "profile": "プロフィール",
@@ -128,6 +147,7 @@
     "section-blog": "ブログ",
     "section-comments": "コメント",
     "section-replies": "返信",
+    "section-points": "ポイント",
     "section-wallet": "ウォレット"
   },
   "follow-controls": {
@@ -146,22 +166,23 @@
     "section-comments": "コメント",
     "section-replies": "返信",
     "section-wallet": "ウォレット",
+    "section-points": "ポイント",
     "top-posts": "トップ記事",
     "unclaimed-rewards": "未請求の報酬",
     "estimated-value": "推定価格は、Steemの7日間の平均価格に基づいています。",
     "steem": "Steem",
-    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
-    "steem-power": "Steem Power",
+    "steem-description": "STEEMはいつでも送金や取引が可能なトークンです。STEEMはパワーアップと呼ばれるプロセスで、STEEMパワーに変換することができます。",
+    "steem-power": "Steemパワー",
     "steem-power-description": "Steem Powerは長期保有や投稿に投票することで、より大きな影響力を得ることができるトークンです。より多くのSteem Powerを保有することで、他の人の報酬に影響を与えることができ、投票による報酬を得ることができます。",
-    "steem-power-delegated": "Delegated Steem Power",
-    "steem-power-received": "Received Steem Power",
-    "next-power-down-amount": "Next power down amount",
-    "steem-power-total": "Total Steem Power",
+    "steem-power-delegated": "委託されたSTEEMパワー",
+    "steem-power-received": "受領したSTEEMパワー",
+    "next-power-down-amount": "次のパワーダウン額",
+    "steem-power-total": "Steemパワーの合計",
     "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
+    "steem-dollars-description": "約1ドル相当のSTEEMと同じ価値を持つトークンです。",
     "savings": "貯蓄口座",
     "savings-description": "引き出しに3日間の待ち時間が必要となる貯蓄口座です。",
-    "next-power-down": "The next power down is {time} {amount}",
+    "next-power-down": "次のパワーダウンは{time} {amount}",
     "exchange": "取引所",
     "transactions": "トランザクション",
     "transaction-curation_reward": "キュレーション報酬",
@@ -179,7 +200,64 @@
     "power-up": "パワーアップ",
     "withdraw-steem": "Steemを引き出す",
     "withdraw-sbd": "Steem Dollarを引き出す",
-    "delegate": "Delegate"
+    "delegate": "委託",
+    "power-down": "パワーダウン",
+    "point-history": "履歴",
+    "points-post-desc": "定期的に投稿することでポイントを獲得できます。投稿すると最高で15ポイントもらえます。",
+    "points-comment-desc": "コメントをすることで支持層が増え、交友関係を広げられるだけでなく、さらに最高5ポイント貰えます。",
+    "points-checkin-desc": "eSteemアプリにチェックインすると0.25ポイントがもらえ、友人とのつながりにも役立ちます。",
+    "points-vote-desc": "投票することは投稿者に好意を示し報酬を与えるだけでなく、最大で投票比重の0.01倍のポイントを獲得できます。",
+    "points-reblog-desc": "  あなたの好きな投稿を友達と共有することで、1ポイント獲得できます。",
+    "points-login-desc": "eSteemアプリにログインすると、自動的に100ポイント獲得できるようになります。",
+    "points-checkin-extra-desc": "アプリを一貫して使用し続けると、さらに10ポイントを獲得するチャンスがあります。積極的に使用してもっとポイントを貰おう。",
+    "points-delegation-desc": "100SPを委託するごとに毎日1ポイントが獲得できます.",
+    "points-post-list-desc": "投稿によるポイント",
+    "points-comment-list-desc": "コメントによるポイント",
+    "points-vote-list-desc": "投票によるポイント",
+    "points-reblog-list-desc": "リブログによるポイント",
+    "points-login-list-desc": "ログインによるポイント",
+    "points-checkin-list-desc": "ハートビートによるポイント",
+    "points-checkin-extra-list-desc": "利用頻度ボーナス",
+    "points-transfer-sent-list-desc": "{n} へ送金",
+    "points-transfer-incoming-list-desc": "{n} からの送金",
+    "points-delegation-list-desc": "デリゲーション報酬",
+    "points-referral-list-desc": "紹介の報酬",
+    "points-claim-ok": "ポイント要求済",
+    "points-promote": "プロモート",
+    "points-boost": "ブースト",
+    "points-transfer": "ポイントを贈る",
+    "points-get": "ESTMを購入",
+    "witness-voting": "Witness",
+    "sps-voting": "SPS投票",
+    "profile-editor": "プロフィール編集",
+    "password": "パスワード"
+  },
+  "redeem": {
+    "user-label": "ユーザー",
+    "user-help-text": "利用可能な資金",
+    "post-label": "投稿",
+    "post-input-placeholder": "投稿者/パーマリンク",
+    "post-input-title": "候補",
+    "key-required-err": "選択されたアカウントのアクティブキーが見つかりませんでした。適切な認証情報でログインしていることを確認してください。",
+    "post-error": "有効な投稿アドレスではありません",
+    "post-error-exists": "この投稿は既にプロモートされています",
+    "funds-error": "資金不足",
+    "submit": "送信",
+    "go-back": "戻る"
+  },
+  "redeem-promote": {
+    "page-title": "プロモート",
+    "duration-label": "期間",
+    "duration-help": "スライダーをドラッグして期間を変更",
+    "day": "日",
+    "days": "日間",
+    "success-message": "あなたの要請は送信されました。数分内に有効化されます。"
+  },
+  "redeem-boost": {
+    "page-title": "ブースト",
+    "amount-label": "金額",
+    "amount-help": "スライダーをドラッグして金額を変更",
+    "success-message": "あなたの投稿はブースト待ちに送信されています。直に投稿への投票が行われ、あなたの投稿がブーストされます。"
   },
   "composer": {
     "title-placeholder": "タイトル",
@@ -226,7 +304,6 @@
     "update": "アップデート",
     "updated": "投稿を更新しました",
     "sync-scroll": "スクロールの同期",
-    "words-count": "{n} 語",
     "no-suggestions": "候補はありません",
     "emoji-filter-placeholder": "フィルター",
     "emoji-filter-no-match": "一致なし",
@@ -242,20 +319,22 @@
     "title": "下書き",
     "load-error": "下書きをロードできませんでした",
     "empty-list": "何もありません",
-    "deleted": "Draft is deleted"
+    "deleted": "下書きを削除しました"
   },
   "schedules": {
     "title": "予定された投稿",
     "empty-list": "何もありません",
-    "deleted": "Scheduled post is deleted",
+    "deleted": "予約投稿を削除しました",
     "move": "下書きへ移動",
-    "moved": "下書きへ移動しました"
+    "moved": "下書きへ移動しました",
+    "success-message": "正常に投稿されました。",
+    "error-message": "サーバーエラーにより投稿できませんでした。"
   },
   "bookmarks": {
     "title": "ブックマーク",
     "load-error": "ブックマークをロードできませんでした",
     "empty-list": "何もありません",
-    "deleted": "Bookmark is removed",
+    "deleted": "ブックマークを削除しました",
     "search": "ブックマークを検索"
   },
   "favorites": {
@@ -279,28 +358,35 @@
     "bookmarkRemoved": "ブックマークから削除しました",
     "favorited": "お気に入りに追加しました",
     "favoriteRemoved": "お気に入りから削除しました",
+    "show-edit-history": "変更履歴を表示",
     "copy-clipboard": "クリップボードに内部リンクをコピー",
     "copied-clipboard": "コピーしました",
     "comment-entry-title": "1つのコメントスレッドを表示しています: ",
     "comment-entry-go-root": "全文を表示",
     "comment-entry-go-parent": "親コメントを表示",
-    "similar-entries": "Similar Posts",
-    "fetch-error": "Server timeout because response size is too big"
+    "comment-reveal": "Reveal comment",
+    "similar-entries": "似ている投稿",
+    "fetch-error": "レスポンスサイズが大きすぎるためサーバータイムアウト",
+    "promote": "プロモート",
+    "boost": "ブースト",
+    "more-replies": "返信を表示"
   },
   "navbar": {
     "settings": "設定",
     "change-theme": "テーマ変更",
-    "login": "Login to your account",
+    "login": "アカウントにログイン",
     "bookmark": "ブックマークに追加",
     "bookmarkRemove": "ブックマークから削除",
     "favorite": "お気に入りに追加",
     "favoriteRemove": "お気に入りから削除しました",
     "wallet": "マイウォレット",
+    "points": "マイポイント",
     "activities": "アクティビティ",
     "address-enter-url": "URLを入力",
     "address-enter-query": "検索クエリを入力",
-    "unclaimed-reward-notice": "You have unclaimed rewards",
-    "search-no-matches": "No matches"
+    "unclaimed-reward-notice": "未請求の報酬があります",
+    "unclaimed-points-notice": "未請求のポイントがあります",
+    "search-no-matches": "該当なし"
   },
   "search": {
     "n-results-for-q": "{q} の検索結果の内{n} 件",
@@ -310,11 +396,11 @@
     "sort-newest": "日付"
   },
   "updater": {
-    "new-version-available": "New version is available",
+    "new-version-available": "新しいバージョンが利用可能です。",
     "update": "アップデート",
     "dismiss": "中止",
     "downloading": "新しいバージョンをダウンロードしています...",
-    "download-completed": "Download is completed",
+    "download-completed": "ダウンロードが完了",
     "restart": "再起動"
   },
   "context-menu": {
@@ -340,18 +426,31 @@
     "type-mentions": "メンション",
     "type-follows": "フォロー",
     "type-reblogs": "リブログ",
+    "type-transfers": "送金",
     "vote-str": "{p}%のいいねをもらいました:",
-    "reply-str": "replied to your post:",
+    "reply-str": "あなたの投稿に返信されました:",
     "mention-str": "あなたを話題にしました:",
     "followed-str": "フォロー済み",
     "unfollowed-str": "フォロー解除済み",
     "ignored-str": "無視",
     "reblog-str": "あなたの投稿をリブログしました",
+    "transfer-str": "送りました",
+    "spin-str": "ESTMが貰える時間です、eSteem Mobileでスピンをしてみよう",
+    "inactive-str": "まめに投稿！ブログを書くと、もっと稼げる",
+    "referral-str": "あなた紹介されて参加されました、歓迎しましょう",
     "empty-list": "何もありません",
     "refresh": "更新",
     "mark-all-read": "全て既読にする",
     "leaderboard": "リーダーボード",
-    "leaderboard-title": "デイリートップユーザー"
+    "leaderboard-title-daily": "デイリートップユーザー",
+    "leaderboard-title-weekly": "ウィークリートップユーザー",
+    "leaderboard-title-monthly": "マンスリートップユーザー",
+    "leaderboard-daily": "日間",
+    "leaderboard-weekly": "週間",
+    "leaderboard-monthly": "月間",
+    "leaderboard-header-score": "アクティビティ",
+    "leaderboard-header-score-tip": "選択期間内のユーザーによる投稿 + コメント",
+    "leaderboard-header-reward": "報酬"
   },
   "witnesses": {
     "page-title": "Witness投票",
@@ -374,17 +473,35 @@
     "proxy-active-exp": "あなたは投票プロキシを設定しています。もし手動投票を再度有効にしたい場合は、プロキシをクリアしてください。",
     "current-proxy": "現在の代理人:<strong>{n}</strong>",
     "remove-proxy": "プロキシをクリア",
-    "proxy-removed": "Proxy is cleared",
+    "proxy-removed": "プロキシをクリアしました",
     "proxy-created": "@{n} さんが代理人として設定しました"
+  },
+  "sps": {
+    "page-title": "提案への投票",
+    "duration": "期間",
+    "requested": "要求済み",
+    "total-votes": "全投票数",
+    "status-active": "アクティブ",
+    "status-expired": "期限切れ",
+    "status-inactive": "今後の",
+    "duration-days": "{n} 日",
+    "voters": "提案への投票者",
+    "voter": "投票者",
+    "voter-sp": "SP",
+    "voter-proxy-sp": "プロクシSP",
+    "voter-total-sp": "SP合計",
+    "voted": "提案 #{n} 投票済",
+    "vote-removed": "提案への投票は削除されました #{n}"
   },
   "transfer": {
     "transfer-title": "アカウントに送金",
+    "transfer-estm-title": "アカウントへ贈る",
     "transfer-sub-title": "別のSteemアカウントに資金を移動します",
     "transfer-saving-title": "貯蓄口座に送る",
     "transfer-saving-sub-title": "引き出しに3日間の待ち時間を設けて資金を守ります",
     "withdraw-saving-title": "貯蓄を引き出す",
     "withdraw-saving-sub-title": "3日間の待ち時間の後に資金を引き出す",
-    "power-up-title": "Convert to Steem Power",
+    "power-up-title": "Steemパワーに変換",
     "power-up-sub-title": "投稿への支払額の制御権を持ち、キュレーション報酬を得ることが可能になる、影響力を持つトークンです。",
     "from": "From",
     "from-placeholder": "ユーザーを選択",
@@ -401,7 +518,7 @@
     "memo": "メモ",
     "memo-placeholder": "ここにメモを入力してください",
     "memo-help": "このメモは公開されます",
-    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "key-required-err": "選択されたアカウントのアクティブキーが見つかりませんでした。適切な認証情報でログインしていることを確認してください。",
     "next": "次",
     "confirm-title": "送金確認",
     "confirm-sub-title": "すべて正しいか確認してください",
@@ -415,21 +532,81 @@
     "recent-transfers": "最近の送金"
   },
   "delegate": {
-    "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
-    "slider-help": "Drag the slider to adjust the amount",
-    "confirm-title": "Confirm Delegation",
-    "confirm-sub-title": "Please, check if everything is correct",
-    "delegation-summary": "<span class=\"sp\">{sp}</span> delegated to <span class=\"to-user\">{to}</span>",
-    "success-sub-title": "Delegation completed",
-    "insufficient-vesting": "Insufficient vesting shares {a} VESTS"
+    "title": "委託",
+    "sub-title": "Steemパワーを委託",
+    "slider-help": "スライダーをドラッグして金額を調整",
+    "confirm-title": "委託の確認",
+    "confirm-sub-title": "すべて正しいか確認してください",
+    "delegation-summary": "<span class=\"sp\">{sp}</span> 委託する <span class=\"to-user\">{to}</span>",
+    "success-sub-title": "委託が完了しました",
+    "insufficient-vesting": "Vesting sharesが不十分です{a} VESTS"
   },
   "delegation-list": {
-    "empty-list": "Nothing here"
+    "empty-list": "何もありません"
+  },
+  "power-down": {
+    "title": "パワーダウン",
+    "sub-title": "Steemパワーをパワーダウン",
+    "account": "アカウント",
+    "incoming-funds": "入ってくる資金",
+    "begin": "パワーダウン開始",
+    "stop": "中止",
+    "estimated-note": "毎週推定される",
+    "withdraw-accounts": "送金先口座",
+    "add-withdraw-account": "引出口座を追加"
+  },
+  "withdraw-route": {
+    "title": "引出口座を追加",
+    "to": "アカウント",
+    "percentage": "パーセンテージ",
+    "slider-help": "このアカウントのパワーダウンパーセンテージ",
+    "auto-power-down": "対象のアカウントを自動的にパワーアップ"
   },
   "friends": {
-    "followers-title": "Followers ({count})",
-    "following-title": "Following ({count})",
-    "load-more": "Load More"
+    "followers-title": "フォローされている ({count})",
+    "following-title": "フォローしている ({count})",
+    "load-more": "もっと表示",
+    "empty-list": "何もありません",
+    "search-placeholder": "ユーザーを検索"
+  },
+  "delegated-list": {
+    "title": "委託されたsteemパワー @{n}"
+  },
+  "delegatee-list": {
+    "title": "委託したsteemパワー @{n}"
+  },
+  "estm-purchase": {
+    "title": "ESTM購入",
+    "purchase": "購入"
+  },
+  "edit-history": {
+    "title": "編集履歴",
+    "show-diff": "相違箇所を表示",
+    "version": "バージョン {n}"
+  },
+  "word-count": {
+    "label": "{n} 文字",
+    "read-time-less-1-min": "< 1分 読み時間",
+    "read-time-n-min": "~ {n} 分 読み時間"
+  },
+  "profile-edit": {
+    "title": "プロフィール編集",
+    "name": "表示名",
+    "about": "概要",
+    "cover-image": "カバー画像",
+    "profile-image": "プロフィール画像",
+    "website": "ウェブサイト",
+    "location": "場所",
+    "updated": "プロフィールを保存しました！"
+  },
+  "password-update": {
+    "title": "パスワード",
+    "cur-pass": "現在のパスワード",
+    "new-pass": "新しいパスワード",
+    "new-pass2": "新しいパスワードの確認",
+    "error-current": "現在のパスワードを入力",
+    "error-new": "新しいパスワードを入力",
+    "error-new2": "パスワードが一致していません",
+    "updated": "パスワードが変更されました！"
   }
 }

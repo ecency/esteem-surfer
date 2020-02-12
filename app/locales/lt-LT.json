@@ -14,7 +14,8 @@
     "server-error": "Procesas nepavyko dėl serverio klaidos",
     "save": "Išsaugoti",
     "done": "Atlikta",
-    "select": "Pasirinkti"
+    "select": "Pasirinkti",
+    "update": "Update"
   },
   "footer": {
     "faq": "D.U.K",
@@ -47,11 +48,16 @@
     "modal-title": "Balsuotuojai ({n})"
   },
   "entry-list-item": {
-    "reblogged": "pasidalinta"
+    "reblogged": "pasidalinta",
+    "promoted": "sponsored",
+    "promote": "promote",
+    "boost": "boost"
   },
   "entry-reblog": {
     "reblog": "Pasidalinti",
-    "reblogged": "Pasidalinta"
+    "reblogged": "Pasidalinta",
+    "modal-title": "Rebloggers ({n})",
+    "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
     "title": "Nustatymai",
@@ -84,10 +90,23 @@
     "error-user-fetch": "Nepavyko pakrauti vartotojo duomenų",
     "error-user-not-found": "Vartotojas neegzistuoja",
     "error-authenticate": "Neteisingas prisijungimo vardas arba slaptažodis/WIF",
-    "create-account-text": "Neturi paskyros? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Užsiregistruok dabar!</a>",
+    "create-account-text-1": "Don't have an account?",
+    "create-account-text-2": "Sign up now!",
     "login-with-sc": "Prisijungti su",
     "divider-text": "AR",
     "sc-note": "Pastaba: Steemconnect gali nuskaityti nedidelį mokestį nuo jūsų atlygio pavedimų"
+  },
+  "sign-up": {
+    "title": "Sign Up",
+    "username-placeholder": "pick a username",
+    "email-placeholder": "enter your email address",
+    "sign-up": "Sign Up",
+    "ref-code": "referral user (optional)",
+    "success-message-1": "We've sent an email to {email}.",
+    "success-message-2": "Follow instructions to complete signup process.",
+    "login-1": "Already a member?",
+    "login-2": "Login",
+    "login-btn-label": "Back to Login"
   },
   "create-pin-code": {
     "title": "Sukurti PIN-kodą",
@@ -128,6 +147,7 @@
     "section-blog": "Blog'as",
     "section-comments": "Komentarai",
     "section-replies": "Atsakymai",
+    "section-points": "Points",
     "section-wallet": "Piniginė"
   },
   "follow-controls": {
@@ -146,6 +166,7 @@
     "section-comments": "Komentarai",
     "section-replies": "Atsakymai",
     "section-wallet": "Piniginė",
+    "section-points": "Points",
     "top-posts": "TOP Įrašai",
     "unclaimed-rewards": "Neatsiimtas atlygis",
     "estimated-value": "Apskaičiuota vertė yra pagrįsta 7 dienų vidutinei Steem vertei.",
@@ -179,7 +200,64 @@
     "power-up": "Galios kėlimas",
     "withdraw-steem": "Išsiimti Steem",
     "withdraw-sbd": "Išsiimti Steem Dollar",
-    "delegate": "Deleguoti"
+    "delegate": "Deleguoti",
+    "power-down": "Mažinti Galią",
+    "point-history": "History",
+    "points-post-desc": "You can earn point by posting regularly. Posting gives you 15 points.",
+    "points-comment-desc": "Each comment you make helps you to grow your audience and make friendship but also earns you 5 points.",
+    "points-checkin-desc": "Checking in on eSteem app gives you 0.25 points and helps you stay connected with your friends.",
+    "points-vote-desc": "By voting you give reward to other creators and show your appreciation but also earn 0.01 x vote weight points.",
+    "points-reblog-desc": "  Share what post you like with your friends and earn 1 points.",
+    "points-login-desc": "When you login into eSteem app you are entitled to earn 100 points automatically.",
+    "points-checkin-extra-desc": "Consistent use of app gives you extra chances to earn more 10 points, be more active and earn more.",
+    "points-delegation-desc": "You can earn 1 point per day for each 100SP delegation.",
+    "points-post-list-desc": "Points for post",
+    "points-comment-list-desc": "Points for comment",
+    "points-vote-list-desc": "Points for vote",
+    "points-reblog-list-desc": "Points for reblog",
+    "points-login-list-desc": "Points for login",
+    "points-checkin-list-desc": "Points for heartbeat",
+    "points-checkin-extra-list-desc": "Usage bonus",
+    "points-transfer-sent-list-desc": "Transfer to {n}",
+    "points-transfer-incoming-list-desc": "Transfer from {n}",
+    "points-delegation-list-desc": "Delegation reward",
+    "points-referral-list-desc": "Referral reward",
+    "points-claim-ok": "Points claimed",
+    "points-promote": "Promote",
+    "points-boost": "Boost",
+    "points-transfer": "Gift to someone",
+    "points-get": "GET ESTM",
+    "witness-voting": "Witnesses",
+    "sps-voting": "SPS Voting",
+    "profile-editor": "Profile Editor",
+    "password": "Password"
+  },
+  "redeem": {
+    "user-label": "User",
+    "user-help-text": "Available Funds",
+    "post-label": "Post",
+    "post-input-placeholder": "author/permlink",
+    "post-input-title": "Suggestions",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "post-error": "Not a valid post address",
+    "post-error-exists": "The post is already promoted",
+    "funds-error": "Insufficient funds",
+    "submit": "Submit",
+    "go-back": "Go Back"
+  },
+  "redeem-promote": {
+    "page-title": "Promote",
+    "duration-label": "Duration",
+    "duration-help": "Drag the slider to change the duration",
+    "day": "day",
+    "days": "days",
+    "success-message": "Your request submitted. It will be activated in a couple minutes."
+  },
+  "redeem-boost": {
+    "page-title": "Boost",
+    "amount-label": "Amount",
+    "amount-help": "Drag the slider to change the amount",
+    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
     "title-placeholder": "Pavadinimas",
@@ -226,7 +304,6 @@
     "update": "Atnaujinti",
     "updated": "Įrašas Atnaujintas",
     "sync-scroll": "Sinchronizuoti Slinkimą",
-    "words-count": "{n} žodžių",
     "no-suggestions": "Jokių pasiūlymų",
     "emoji-filter-placeholder": "Filtras",
     "emoji-filter-no-match": "Atitikmenų nėra",
@@ -249,7 +326,9 @@
     "empty-list": "Nieko nėra",
     "deleted": "Suplanuotas įrašas panaikintas",
     "move": "Perkelti į ruošinius",
-    "moved": "Perkelta į ruošinius"
+    "moved": "Perkelta į ruošinius",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Žymės",
@@ -279,13 +358,18 @@
     "bookmarkRemoved": "Pašalinta iš žymų",
     "favorited": "Pridėta prie mėgstamiausių",
     "favoriteRemoved": "Pašalinta iš mėgstamiausių",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Kopijuoti nuorodą į iškarpinę",
     "copied-clipboard": "Nukopijuota",
     "comment-entry-title": "Jūs skaitote komentarą iš: ",
     "comment-entry-go-root": "Peržiūrėti visą kontekstą",
     "comment-entry-go-parent": "Peržiūrėti pirminį",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Panašūs Įrašai",
-    "fetch-error": "Serverio laikas baigėsi nes atsakymo laikas yra per didelis"
+    "fetch-error": "Serverio laikas baigėsi nes atsakymo laikas yra per didelis",
+    "promote": "promote",
+    "boost": "boost",
+    "more-replies": "show more replies"
   },
   "navbar": {
     "settings": "Nustatymai",
@@ -296,10 +380,12 @@
     "favorite": "Pridėti prie mėgstamiausių",
     "favoriteRemove": "Pašalinta iš mėgstamiausių",
     "wallet": "Mano Piniginė",
+    "points": "My Points",
     "activities": "Veikla",
     "address-enter-url": "Įveskite url",
     "address-enter-query": "Įveskite paieškos užklausą",
     "unclaimed-reward-notice": "Jūs turite neatsiimtą atlygį",
+    "unclaimed-points-notice": "You have unclaimed points",
     "search-no-matches": "Rezultatų nėra"
   },
   "search": {
@@ -340,6 +426,7 @@
     "type-mentions": "Paminėjimai",
     "type-follows": "Sekėjai",
     "type-reblogs": "Pasidalinimai",
+    "type-transfers": "Pervedimai",
     "vote-str": "{p} mėgsta jūsų įrašą:",
     "reply-str": "atsakė į jūsų įrašą:",
     "mention-str": "paminėjo jus:",
@@ -347,11 +434,23 @@
     "unfollowed-str": "nebeseka",
     "ignored-str": "ignoruojami",
     "reblog-str": "pasidalino jūsų įrašu:",
+    "transfer-str": "atsiuntė jums",
+    "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
+    "inactive-str": "Be active! Write a post, continue earning",
+    "referral-str": "joined with your referral, welcome them",
     "empty-list": "Nieko nėra",
     "refresh": "Atnaujinti",
     "mark-all-read": "Žymėti visus kaip skaitytus",
     "leaderboard": "Lyderiai",
-    "leaderboard-title": "Dienos Top vartotojai"
+    "leaderboard-title-daily": "Daily top users",
+    "leaderboard-title-weekly": "Weekly top users",
+    "leaderboard-title-monthly": "Monthly top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly",
+    "leaderboard-header-score": "Activities",
+    "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
+    "leaderboard-header-reward": "Reward"
   },
   "witnesses": {
     "page-title": "Liudytojų Balsavimas",
@@ -377,8 +476,26 @@
     "proxy-removed": "Proxy panaikintas",
     "proxy-created": "@{n} nustatė kaip proxy"
   },
+  "sps": {
+    "page-title": "Proposals Voting",
+    "duration": "Duration",
+    "requested": "Requested",
+    "total-votes": "Total Votes",
+    "status-active": "active",
+    "status-expired": "expired",
+    "status-inactive": "upcoming",
+    "duration-days": "{n} days",
+    "voters": "Proposal Voters",
+    "voter": "Voter",
+    "voter-sp": "SP",
+    "voter-proxy-sp": "Proxy SP",
+    "voter-total-sp": "Total SP",
+    "voted": "Proposal #{n} voted",
+    "vote-removed": "Vote removed for proposal #{n}"
+  },
   "transfer": {
     "transfer-title": "Pervesti į Paskyrą",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Perkelti lėšas į kitą Steem paskyrą",
     "transfer-saving-title": "Pervesti į Santaupas",
     "transfer-saving-sub-title": "Apsaugoti lėšas reikalaujant 3 dienų atsiėmimui",
@@ -427,9 +544,69 @@
   "delegation-list": {
     "empty-list": "Nieko nėra"
   },
+  "power-down": {
+    "title": "Mažinti Galią",
+    "sub-title": "Mažinti Steem Power",
+    "account": "Paskyra",
+    "incoming-funds": "Gausimos Lėšos",
+    "begin": "Pradėti Galios Mažinimą",
+    "stop": "Sustabdyti",
+    "estimated-note": "Vidutiniškai Per Savaitę",
+    "withdraw-accounts": "Gavėjo Paskyra(os)",
+    "add-withdraw-account": "Pridėti gavimo paskyrą"
+  },
+  "withdraw-route": {
+    "title": "Pridėti gavimo paskyrą",
+    "to": "Paskyra",
+    "percentage": "Procentai",
+    "slider-help": "Galios mažinimo procentinė dalis šiai paskyrai",
+    "auto-power-down": "Automatiškai pakelti galią nurodytai paskyrai"
+  },
   "friends": {
     "followers-title": "Sekėjai {count}",
     "following-title": "Sekami ({count})",
-    "load-more": "Įkelti daugiau"
+    "load-more": "Įkelti daugiau",
+    "empty-list": "Nieko nėra",
+    "search-placeholder": "Ieškoti narių"
+  },
+  "delegated-list": {
+    "title": "Deleguota Steem Power nuo @{n}"
+  },
+  "delegatee-list": {
+    "title": "Deleguota Steem Power vartotojui @{n}"
+  },
+  "estm-purchase": {
+    "title": "ESTM purchase",
+    "purchase": "Purchase"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
+  },
+  "word-count": {
+    "label": "{n} words",
+    "read-time-less-1-min": "< 1 min read",
+    "read-time-n-min": "~ {n} min read"
+  },
+  "profile-edit": {
+    "title": "Profile Editor",
+    "name": "Display Name",
+    "about": "About",
+    "cover-image": "Cover Image",
+    "profile-image": "Profile Image",
+    "website": "Website",
+    "location": "Location",
+    "updated": "Profile updated successfully!"
+  },
+  "password-update": {
+    "title": "Password",
+    "cur-pass": "Current password",
+    "new-pass": "New password",
+    "new-pass2": "Confirm new password",
+    "error-current": "Enter current password",
+    "error-new": "Enter new password",
+    "error-new2": "Passwords must be same",
+    "updated": "Password updated successfully!"
   }
 }

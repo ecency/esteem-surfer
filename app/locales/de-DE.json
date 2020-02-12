@@ -14,7 +14,8 @@
     "server-error": "Der Vorgang konnte aufgrund eines Server-Fehlers nicht durchgeführt werden",
     "save": "Speichern",
     "done": "Fertig!",
-    "select": "Auswählen"
+    "select": "Auswählen",
+    "update": "Update"
   },
   "footer": {
     "faq": "FAQ",
@@ -47,11 +48,16 @@
     "modal-title": "Voters ({n})"
   },
   "entry-list-item": {
-    "reblogged": "geteilt von {n}"
+    "reblogged": "geteilt von {n}",
+    "promoted": "Gesponsert",
+    "promote": "Promoted",
+    "boost": "boost"
   },
   "entry-reblog": {
     "reblog": "Teilen",
-    "reblogged": "Geteilt"
+    "reblogged": "Geteilt",
+    "modal-title": "Reblogger ({n})",
+    "more-reblogs": "... +{n} weitere Relogs"
   },
   "settings": {
     "title": "Einstellungen",
@@ -84,10 +90,23 @@
     "error-user-fetch": "Benutzerdaten konnten nicht abgerufen werden",
     "error-user-not-found": "Benutzer existiert nicht",
     "error-authenticate": "Falscher Benutzername oder Passwort/WIF",
-    "create-account-text": "Noch keinen Account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Jetzt Anmelden!</a>",
+    "create-account-text-1": "Don't have an account?",
+    "create-account-text-2": "Sign up now!",
     "login-with-sc": "Einloggen mit",
     "divider-text": "oder",
     "sc-note": "Hinweis: Steemconnect kann einige Gebühren für Ihre Reward-Transaktionen berechnen"
+  },
+  "sign-up": {
+    "title": "Sign Up",
+    "username-placeholder": "pick a username",
+    "email-placeholder": "enter your email address",
+    "sign-up": "Sign Up",
+    "ref-code": "referral user (optional)",
+    "success-message-1": "We've sent an email to {email}.",
+    "success-message-2": "Follow instructions to complete signup process.",
+    "login-1": "Already a member?",
+    "login-2": "Login",
+    "login-btn-label": "Back to Login"
   },
   "create-pin-code": {
     "title": "Erstelle einen PIN-Code",
@@ -128,6 +147,7 @@
     "section-blog": "Blog",
     "section-comments": "Kommentare",
     "section-replies": "Antworten",
+    "section-points": "Punkte",
     "section-wallet": "Geldbörse"
   },
   "follow-controls": {
@@ -146,6 +166,7 @@
     "section-comments": "Kommentare",
     "section-replies": "Antworten",
     "section-wallet": "Geldbörse",
+    "section-points": "eSteem Punkte",
     "top-posts": "die besten Beiträge",
     "unclaimed-rewards": "Nicht abgeholte Belohnungen",
     "estimated-value": "Der erwartete Wert basiert auf einem 7-Tage-Durchschnittswert vom Steem.",
@@ -179,7 +200,64 @@
     "power-up": "In Steem-Power umwandeln",
     "withdraw-steem": "Steem auszahlen",
     "withdraw-sbd": "Steem-Dollar auszahlen",
-    "delegate": "Delegieren"
+    "delegate": "Delegieren",
+    "power-down": "Power-Down",
+    "point-history": "Historie",
+    "points-post-desc": "Du kannst eSteem Punkte für das regelmäßige Posten erhalten. Posten bringt dir 15 eSteem Punkte.",
+    "points-comment-desc": "Jeder Kommentar, den du machst, hilft dir, dein Publikum zu vergrößern und Freundschaften zu schließen. Dies bringt dir auch 5 eSteem Punkte ein.",
+    "points-checkin-desc": "Wenn du dich in der eSteem-App anmeldest, bekommst du 0,25 eSteem Punkte und bleibst mit deinen Freunden in Kontakt.",
+    "points-vote-desc": "Mit dem Voting belohnst du andere Blogger und zeigst Ihnen deine Anerkennung, verdienst aber auch 0,01x eSteem Punkte für dein Stimm-Gewicht.\n",
+    "points-reblog-desc": "Teile einen Beitrag, den du magst mit deinen Freunden und erhalte 1 eSteem Punkt.",
+    "points-login-desc": "Wenn du dich bei der eSteem App anmeldest, hast du Anspruch darauf, dass du automatisch 100 eSteem Punkte erhältst.",
+    "points-checkin-extra-desc": "Die konsequente Nutzung der eSteem App gibt dir zusätzliche Chancen, weitere 10 eSteem Punkte zu verdienen. Sei aktiv und verdiene mehr Punkte.",
+    "points-delegation-desc": "Du kannst 1 Punkt pro Tag für jede 100SP Delegation verdienen",
+    "points-post-list-desc": "Punkte für einen Beitrag",
+    "points-comment-list-desc": "Punkte für einen Kommentar",
+    "points-vote-list-desc": "Punkte für einen Vote",
+    "points-reblog-list-desc": "Punkte für einen ReBlog",
+    "points-login-list-desc": "Punkte für den Login",
+    "points-checkin-list-desc": "Punkte für den Herzschlag",
+    "points-checkin-extra-list-desc": "Nutzungs-Bonus",
+    "points-transfer-sent-list-desc": "Transfer nach {n}",
+    "points-transfer-incoming-list-desc": "Transfer von {n}",
+    "points-delegation-list-desc": "Delegations-Belohnung",
+    "points-referral-list-desc": "Referral reward",
+    "points-claim-ok": "Punkte eingesammelt",
+    "points-promote": "Bewerben",
+    "points-boost": "Boost",
+    "points-transfer": "Geschenk an jemanden",
+    "points-get": "GET ESTM",
+    "witness-voting": "Witnesses",
+    "sps-voting": "SPS-Abstimmung",
+    "profile-editor": "Profile Editor",
+    "password": "Password"
+  },
+  "redeem": {
+    "user-label": "Benutzer",
+    "user-help-text": "Verfügbares Guthaben",
+    "post-label": "Post",
+    "post-input-placeholder": "author/permlink",
+    "post-input-title": "Vorschläge",
+    "key-required-err": "Der Active-Key wurde für den ausgewählten Account nicht gefunden. Bitte stelle sicher, dass du mit den richtigen Zugangsdaten angemeldet bist.",
+    "post-error": "Keine gültige Post Adresse",
+    "post-error-exists": "Dieser Beitrag wurde bereits beworben",
+    "funds-error": "Nicht genügend Guthaben",
+    "submit": "Absenden",
+    "go-back": "Zurück"
+  },
+  "redeem-promote": {
+    "page-title": "Bewerben",
+    "duration-label": "Dauer",
+    "duration-help": "Verschiebe den Slider, um die Dauer zu ändern",
+    "day": "Tag",
+    "days": "Tage",
+    "success-message": "Deine Anfrage wurde eingereicht. Sie wird in Kürze aktiviert."
+  },
+  "redeem-boost": {
+    "page-title": "Boost",
+    "amount-label": "Betrag",
+    "amount-help": "Ziehe den Slider, um den Wert zu definieren",
+    "success-message": "Dein Beitrag wurde eingereicht und befindet sich in der Boost-Warteschlange. Der Boost mit Votes erfolgt in Kürze."
   },
   "composer": {
     "title-placeholder": "Titel",
@@ -226,7 +304,6 @@
     "update": "Aktualisieren",
     "updated": "Beitrag aktualisiert",
     "sync-scroll": "Scroll-Synchronität",
-    "words-count": "{n} Wörter",
     "no-suggestions": "Keine Vorschläge",
     "emoji-filter-placeholder": "Filter",
     "emoji-filter-no-match": "Keine passenden Emojis gefunden",
@@ -249,7 +326,9 @@
     "empty-list": "Hier ist nichts zu sehen",
     "deleted": "geplanter Beitrag wurde gelöscht",
     "move": "In Entwürfe verschieben",
-    "moved": "Erfolgreich in Entwürfe verschoben"
+    "moved": "Erfolgreich in Entwürfe verschoben",
+    "success-message": "Erfolgreich Veröffentlicht",
+    "error-message": "Konnte aufgrund eines Server-Fehlers nicht veröffentlicht werden."
   },
   "bookmarks": {
     "title": "Lesezeichen",
@@ -279,13 +358,18 @@
     "bookmarkRemoved": "Von deinen Lesezeichen entfernt",
     "favorited": "Zu deinen Favoriten hinzugefügt",
     "favoriteRemoved": "Von deinen Favoriten entfernt",
+    "show-edit-history": "Bearbeitungsverlauf ansehen",
     "copy-clipboard": "Link in die Zwischenablage kopieren",
     "copied-clipboard": "Kopiert",
     "comment-entry-title": "Du siehst den Thread eines einzelnen Kommentars von: ",
     "comment-entry-go-root": "kompletten Inhalt anzeigen",
     "comment-entry-go-parent": "Übergeordneten Beitrag ansehen",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Ähnliche Beiträge",
-    "fetch-error": "Server Timeout, weil die Antwortgröße zu groß ist"
+    "fetch-error": "Server Timeout, weil die Antwortgröße zu groß ist",
+    "promote": "Promote",
+    "boost": "Boost",
+    "more-replies": "weitere Antworten anzeigen"
   },
   "navbar": {
     "settings": "Einstellungen",
@@ -296,10 +380,12 @@
     "favorite": "Zu deinen Favoriten hinzufügen",
     "favoriteRemove": "Von deinen Favoriten entfernt",
     "wallet": "Meine Wallet",
+    "points": "Meine Punkte",
     "activities": "Aktivitäten",
     "address-enter-url": "Adresse eingeben",
     "address-enter-query": "Suchbegriff eingeben",
     "unclaimed-reward-notice": "Du hast nicht abgeholte Belohnungen",
+    "unclaimed-points-notice": "Du hast noch nicht abgeholte Punkte",
     "search-no-matches": "keine Ergebnisse gefunden"
   },
   "search": {
@@ -340,6 +426,7 @@
     "type-mentions": "Erwähnungen",
     "type-follows": "Folgen dir",
     "type-reblogs": "Reblogs",
+    "type-transfers": "Überweisungen",
     "vote-str": "{p}% gefällt deinen Beitrag:",
     "reply-str": "antwortete auf deinen Beitrag:",
     "mention-str": "erwähnte dich in:",
@@ -347,11 +434,23 @@
     "unfollowed-str": "entfolgt",
     "ignored-str": "ignoriert",
     "reblog-str": "teilte deinen Beitrag:",
+    "transfer-str": "sendete dir",
+    "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
+    "inactive-str": "Be active! Write a post, continue earning",
+    "referral-str": "joined with your referral, welcome them",
     "empty-list": "Hier ist nichts zu sehen.",
     "refresh": "Aktualisieren",
     "mark-all-read": "Alle als gelesen markieren",
     "leaderboard": "Rangliste",
-    "leaderboard-title": "Täglich aktivste User"
+    "leaderboard-title-daily": "Tägliche Top-User",
+    "leaderboard-title-weekly": "Wöchentliche Top-Benutzer",
+    "leaderboard-title-monthly": "Monatliche Top-Benutzer",
+    "leaderboard-daily": "Täglich",
+    "leaderboard-weekly": "Wöchentlich",
+    "leaderboard-monthly": "Monatlich",
+    "leaderboard-header-score": "Aktivitäten",
+    "leaderboard-header-score-tip": "Post + Kommentare von einem Benutzer für den ausgewählten Zeitraum",
+    "leaderboard-header-reward": "Belohnung"
   },
   "witnesses": {
     "page-title": "Witness-Voting",
@@ -377,8 +476,26 @@
     "proxy-removed": "Proxy wurde gelöscht",
     "proxy-created": "@{n} wurde als Proxy gesetzt"
   },
+  "sps": {
+    "page-title": "Für Vorschläge abstimmen",
+    "duration": "Dauer",
+    "requested": "Angefordert",
+    "total-votes": "Stimmen insgesamt",
+    "status-active": "aktiv",
+    "status-expired": "Abgelaufen",
+    "status-inactive": "Bald verfügbar",
+    "duration-days": "{n} Tage",
+    "voters": "Vorschlag-Voter",
+    "voter": "Voter",
+    "voter-sp": "SP",
+    "voter-proxy-sp": "Proxy SP",
+    "voter-total-sp": "Gesamt SP",
+    "voted": "Vorschlag #{n} gevoted",
+    "vote-removed": "Vote entfernt für Vorschlag #{n}"
+  },
   "transfer": {
     "transfer-title": "Zum Benutzerkonto transferieren",
+    "transfer-estm-title": "Geschenk an Konto",
     "transfer-sub-title": "Geld auf ein anderes Steem-Konto verschieben",
     "transfer-saving-title": "In den Tresor transferieren",
     "transfer-saving-sub-title": "Guthaben wird durch eine 3-tägige Wartezeit geschützt",
@@ -427,9 +544,69 @@
   "delegation-list": {
     "empty-list": "Hier ist nichts zu sehen"
   },
+  "power-down": {
+    "title": "Power-Down",
+    "sub-title": "Power-Down Steem-Power",
+    "account": "Konto",
+    "incoming-funds": "Eingehend",
+    "begin": "Power-Down beginnen",
+    "stop": "Stop",
+    "estimated-note": "Geschätzt wöchentlich",
+    "withdraw-accounts": "Ziel-Konto/Konten",
+    "add-withdraw-account": "Auszahlungskonto hinzufügen"
+  },
+  "withdraw-route": {
+    "title": "Auszahlungskonto hinzufügen",
+    "to": "Konto",
+    "percentage": "Prozentsatz",
+    "slider-help": "Prozentsatz des Power-Down auf dieses Konto",
+    "auto-power-down": "Automatisches Power-Up des Zielkontos"
+  },
   "friends": {
     "followers-title": "Followers ({count})",
     "following-title": "Following ({count})",
-    "load-more": "Load More"
+    "load-more": "Mehr laden",
+    "empty-list": "Hier ist nichts zu sehen",
+    "search-placeholder": "Benutzer suchen"
+  },
+  "delegated-list": {
+    "title": "Delegierte Steem-Power von @{n}"
+  },
+  "delegatee-list": {
+    "title": "Delegierte Steem-Power nach @{n}"
+  },
+  "estm-purchase": {
+    "title": "ESTM purchase",
+    "purchase": "Purchase"
+  },
+  "edit-history": {
+    "title": "Verlauf bearbeiten",
+    "show-diff": "Unterschiede anzeigen",
+    "version": "Version: {n}"
+  },
+  "word-count": {
+    "label": "{n} Wörter",
+    "read-time-less-1-min": "< 1 min. Lesezeit",
+    "read-time-n-min": "~ {n} min. Lesezeit"
+  },
+  "profile-edit": {
+    "title": "Profile Editor",
+    "name": "Display Name",
+    "about": "About",
+    "cover-image": "Cover Image",
+    "profile-image": "Profile Image",
+    "website": "Website",
+    "location": "Location",
+    "updated": "Profile updated successfully!"
+  },
+  "password-update": {
+    "title": "Password",
+    "cur-pass": "Current password",
+    "new-pass": "New password",
+    "new-pass2": "Confirm new password",
+    "error-current": "Enter current password",
+    "error-new": "Enter new password",
+    "error-new2": "Passwords must be same",
+    "updated": "Password updated successfully!"
   }
 }

@@ -14,7 +14,8 @@
     "server-error": "Proses tidak dapat di selesaikan karena kesalahan server",
     "save": "Simpan",
     "done": "Selesai",
-    "select": "Pilih"
+    "select": "Pilih",
+    "update": "Pembaruan"
   },
   "footer": {
     "faq": "PERTANYAAN YANG SERING DITANYAKAN",
@@ -47,11 +48,16 @@
     "modal-title": "Pemberi suara ({n})"
   },
   "entry-list-item": {
-    "reblogged": "ditampilkan kembali oleh {n}"
+    "reblogged": "ditampilkan kembali oleh {n}",
+    "promoted": "disponsori",
+    "promote": "promosikan",
+    "boost": "menaikkan"
   },
   "entry-reblog": {
     "reblog": "Menampilkan kembali",
-    "reblogged": "Menampilkan kembali"
+    "reblogged": "Menampilkan kembali",
+    "modal-title": "Rebloggers ({n})",
+    "more-reblogs": "... +{n} lebih banyak reblog"
   },
   "settings": {
     "title": "Pengaturan",
@@ -84,10 +90,23 @@
     "error-user-fetch": "Data pengguna tidak dapat diambil",
     "error-user-not-found": "Pengguna tidak ada",
     "error-authenticate": "Nama pengguna atau kata sandi/WIF salah",
-    "create-account-text": "Tidak memiliki akun? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">buat sekarang!</a>",
+    "create-account-text-1": "Tidak memiliki akun?",
+    "create-account-text-2": "Daftar sekarang!",
     "login-with-sc": "Masuk dengan",
     "divider-text": "Atau",
     "sc-note": "Catatan: Steemconnect dapat membebankan beberapa biaya dari transaksi hadiah Anda"
+  },
+  "sign-up": {
+    "title": "Daftar",
+    "username-placeholder": "pilih nama pengguna",
+    "email-placeholder": "masukkan alamat email anda",
+    "sign-up": "Daftar",
+    "ref-code": "pengguna rujukan (opsional)",
+    "success-message-1": "Kami telah mengirim email ke {email}.",
+    "success-message-2": "Ikuti instruksi untuk menyelesaikan proses pendaftaran.",
+    "login-1": "Sudah menjadi anggota?",
+    "login-2": "Masuk",
+    "login-btn-label": "Kembali untuk masuk"
   },
   "create-pin-code": {
     "title": "Buat Kode PIN",
@@ -128,6 +147,7 @@
     "section-blog": "Situs",
     "section-comments": "Komentar",
     "section-replies": "Balasan",
+    "section-points": "Poin",
     "section-wallet": "Dompet"
   },
   "follow-controls": {
@@ -146,6 +166,7 @@
     "section-comments": "Komentar",
     "section-replies": "Balasan",
     "section-wallet": "Dompet",
+    "section-points": "Poin",
     "top-posts": "Top Posting",
     "unclaimed-rewards": "Hadiah yang belum di klaim",
     "estimated-value": "Hitungan Steem berdasarkan pada nilai rata-rata selama 7 hari.",
@@ -179,7 +200,64 @@
     "power-up": "Tingkatkan kekuatan",
     "withdraw-steem": "Menarik Uang",
     "withdraw-sbd": "Menarik Uang Dollar",
-    "delegate": "Melimpahkan"
+    "delegate": "Melimpahkan",
+    "power-down": "Menurunkan daya",
+    "point-history": "Riwayat",
+    "points-post-desc": "Anda bisa mendapatkan poin dengan memposting secara teratur. Posting memberi Anda 15 poin.",
+    "points-comment-desc": "Setiap komentar yang Anda buat membantu Anda untuk menumbuhkan audiens Anda dan menjalin persahabatan tetapi juga memberi Anda 5 poin.",
+    "points-checkin-desc": "Memeriksa aplikasi eSteem memberi Anda 0,25 poin dan membantu Anda tetap terhubung dengan teman-teman Anda.",
+    "points-vote-desc": "Dengan memberikan suara Anda memberikan hadiah kepada penulis lain dan menunjukkan penghargaan Anda, tetapi juga mendapatkan 0,01 poin suara.",
+    "points-reblog-desc": "  Bagikan pos yang Anda sukai dengan teman dan dapatkan 1 poin.",
+    "points-login-desc": "Saat Anda masuk ke aplikasi eSteem, Anda berhak mendapatkan 100 poin secara otomatis.",
+    "points-checkin-extra-desc": "Penggunaan aplikasi yang konsisten memberi Anda peluang ekstra untuk mendapatkan lebih banyak 10 poin, menjadi lebih aktif dan menghasilkan lebih banyak.",
+    "points-delegation-desc": "Anda bisa mendapatkan 1 poin per hari untuk setiap delegasi 100SP.",
+    "points-post-list-desc": "Poin untuk pos",
+    "points-comment-list-desc": "Poin untuk komentar",
+    "points-vote-list-desc": "Poin untuk suara",
+    "points-reblog-list-desc": "Poin untuk reblog",
+    "points-login-list-desc": "Poin untuk masuk",
+    "points-checkin-list-desc": "Points for heartbeat",
+    "points-checkin-extra-list-desc": "Bonus penggunaan",
+    "points-transfer-sent-list-desc": "Transfer kepada {n}",
+    "points-transfer-incoming-list-desc": "Transfer dari {n}",
+    "points-delegation-list-desc": "Hadiah delegasi",
+    "points-referral-list-desc": "Referral reward",
+    "points-claim-ok": "Poin di klaim",
+    "points-promote": "Promosikan",
+    "points-boost": "Menaikkan",
+    "points-transfer": "Hadiah untuk seseorang",
+    "points-get": "DAPATKAN ESTM",
+    "witness-voting": "Saksi-saksi",
+    "sps-voting": "Voting SPS",
+    "profile-editor": "Editor Profil",
+    "password": "Kata Sandi"
+  },
+  "redeem": {
+    "user-label": "Pengguna",
+    "user-help-text": "Dana yang tersedia",
+    "post-label": "Kiriman",
+    "post-input-placeholder": "penulis/tautkan",
+    "post-input-title": "Saran",
+    "key-required-err": "Kunci aktif tidak dapat ditemukan untuk akun yang dipilih. Pastikan Anda masuk dengan kredensial yang tepat.",
+    "post-error": "Bukan alamat kiriman yang valid",
+    "post-error-exists": "Kiriman sudah dipromosikan",
+    "funds-error": "Dana tidak mencukupi",
+    "submit": "Menyerahkan",
+    "go-back": "Kembali"
+  },
+  "redeem-promote": {
+    "page-title": "Promosikan",
+    "duration-label": "Durasi",
+    "duration-help": "Seret penggeser untuk mengubah durasinya",
+    "day": "hari",
+    "days": "hari",
+    "success-message": "Permintaan Anda diajukan. Ini akan diaktifkan dalam beberapa menit."
+  },
+  "redeem-boost": {
+    "page-title": "Menaikkan",
+    "amount-label": "Jumlah",
+    "amount-help": "Seret penggeser untuk mengubah jumlahnya",
+    "success-message": "Posting Anda telah dikirim dalam antrian peningkatan, Melalui votes anda akan segera menerima peningkatan pada posting Anda"
   },
   "composer": {
     "title-placeholder": "Judul",
@@ -226,7 +304,6 @@
     "update": "Pembaruan",
     "updated": "Post diperbarui",
     "sync-scroll": "Gulir sinkronisasi",
-    "words-count": "{n} jumlah kata",
     "no-suggestions": "Tidak ada saran",
     "emoji-filter-placeholder": "Penyaring",
     "emoji-filter-no-match": "Tidak cocok",
@@ -249,7 +326,9 @@
     "empty-list": "Kosong",
     "deleted": "Jadwal post di hapus",
     "move": "Pindahkan ke konsep",
-    "moved": "Pindahkan ke konsep"
+    "moved": "Pindahkan ke konsep",
+    "success-message": "Berhasil di publikasikan.",
+    "error-message": "Tidak dapat mempublikasikan karena server error."
   },
   "bookmarks": {
     "title": "Tandai",
@@ -279,13 +358,18 @@
     "bookmarkRemoved": "Hapus dari yang ditandai",
     "favorited": "Ditambahkan ke favorit",
     "favoriteRemoved": "Hapus dari favorit",
+    "show-edit-history": "Tampilkan riwayat edit",
     "copy-clipboard": "Salin tautan internal ke clipboard",
     "copied-clipboard": "Disalin",
     "comment-entry-title": "Anda melihat sebuah komentar tunggal dari: ",
     "comment-entry-go-root": "Lihat konteks lengkap",
     "comment-entry-go-parent": "Lihat sumber utama",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Posting yang Mirip",
-    "fetch-error": "Waktu habis karena respon ukuran terlalu besar"
+    "fetch-error": "Waktu habis karena respon ukuran terlalu besar",
+    "promote": "promosikan",
+    "boost": "menaikkan",
+    "more-replies": "tampilkan lebih banyak balasan"
   },
   "navbar": {
     "settings": "Pengaturan",
@@ -296,10 +380,12 @@
     "favorite": "Tambahkan ke Favorit",
     "favoriteRemove": "Hapus dari favorit",
     "wallet": "Dompet saya",
+    "points": "Poin Saya",
     "activities": "Aktifitas",
     "address-enter-url": "Masukkan url",
     "address-enter-query": "Masukkan permintaan pencarian",
     "unclaimed-reward-notice": "Anda memiliki hadiah yang tidak di klaim",
+    "unclaimed-points-notice": "Anda memiliki poin yang tidak di klaim",
     "search-no-matches": "Tidak ada yang cocok"
   },
   "search": {
@@ -340,6 +426,7 @@
     "type-mentions": "Menyebutkan",
     "type-follows": "Ikuti",
     "type-reblogs": "Menampilkan kembali",
+    "type-transfers": "Transfer",
     "vote-str": "{p}% menyukai postingan anda:",
     "reply-str": "membalas postingan anda:",
     "mention-str": "menyebut anda dalam:",
@@ -347,11 +434,23 @@
     "unfollowed-str": "berhenti diikuti",
     "ignored-str": "diabaikan",
     "reblog-str": "menampilkan kembali post anda:",
+    "transfer-str": "mengirimi Anda",
+    "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
+    "inactive-str": "Be active! Write a post, continue earning",
+    "referral-str": "joined with your referral, welcome them",
     "empty-list": "Kosong",
     "refresh": "Segarkan",
     "mark-all-read": "Tandai semua yang telah dibaca",
     "leaderboard": "Papan Peringkat",
-    "leaderboard-title": "Pengguna harian teratas"
+    "leaderboard-title-daily": "Pengguna teratas harian",
+    "leaderboard-title-weekly": "Pengguna teratas mingguan",
+    "leaderboard-title-monthly": "Pengguna teratas bulanan",
+    "leaderboard-daily": "Harian",
+    "leaderboard-weekly": "Mingguan",
+    "leaderboard-monthly": "Bulanan",
+    "leaderboard-header-score": "Aktifitas",
+    "leaderboard-header-score-tip": "Posting + komentar yang dibuat oleh pengguna untuk periode yang dipilih",
+    "leaderboard-header-reward": "Imbalan"
   },
   "witnesses": {
     "page-title": "Memilih saksi",
@@ -377,8 +476,26 @@
     "proxy-removed": "Proxy di hapus",
     "proxy-created": "@{n} telah ditetapkan sebagai proxy"
   },
+  "sps": {
+    "page-title": "Proposal Voting",
+    "duration": "Durasi",
+    "requested": "Diminta",
+    "total-votes": "Total Votes",
+    "status-active": "aktif",
+    "status-expired": "kadaluarsa",
+    "status-inactive": "mendatang",
+    "duration-days": "{n} hari",
+    "voters": "Proposal Pemilih",
+    "voter": "Pemilih",
+    "voter-sp": "SP",
+    "voter-proxy-sp": "Proxy SP",
+    "voter-total-sp": "Total SP",
+    "voted": "Proposal #{n} terpilih",
+    "vote-removed": "Vote dihapus untuk proposal #{n}"
+  },
   "transfer": {
     "transfer-title": "Transfer ke akun",
+    "transfer-estm-title": "Hadiah ke Akun",
     "transfer-sub-title": "Pindahkan dana ke akun steem lain",
     "transfer-saving-title": "Transfer ke Tabungan",
     "transfer-saving-sub-title": "Lindungi dana dengan meminta masa tunggu penarikan 3 hari",
@@ -427,9 +544,69 @@
   "delegation-list": {
     "empty-list": "Kosong"
   },
+  "power-down": {
+    "title": "Menurunkan daya",
+    "sub-title": "Menurunkan Daya Steem Power",
+    "account": "Akun",
+    "incoming-funds": "Dana masuk",
+    "begin": "Memulai Menurunkan Daya",
+    "stop": "Berhenti",
+    "estimated-note": "Estimasi Mingguan",
+    "withdraw-accounts": "Akun tujuan",
+    "add-withdraw-account": "Tambahkan akun penarikan"
+  },
+  "withdraw-route": {
+    "title": "Tambahkan akun penarikan",
+    "to": "Akun",
+    "percentage": "Persentase",
+    "slider-help": "Persentase Penurunan Daya ke Akun ini",
+    "auto-power-down": "Secara otomatis target menaikkan daya akun"
+  },
   "friends": {
     "followers-title": "Pengikut ({count})",
     "following-title": "Mengikuti ({count})",
-    "load-more": "Muat Lebih Banyak"
+    "load-more": "Muat Lebih Banyak",
+    "empty-list": "Disini belum ada apa-apa",
+    "search-placeholder": "Cari pengguna"
+  },
+  "delegated-list": {
+    "title": "Daya steem yang di delegasikan dari @{n}"
+  },
+  "delegatee-list": {
+    "title": "Daya steem yang di delegasikan ke @{n}"
+  },
+  "estm-purchase": {
+    "title": "Pembelian ESTM",
+    "purchase": "Pembelian"
+  },
+  "edit-history": {
+    "title": "Edit Riwayat",
+    "show-diff": "Tampilkan Perbedaan",
+    "version": "Versi {n}"
+  },
+  "word-count": {
+    "label": "{n} jumlah kata",
+    "read-time-less-1-min": "< 1 menit baca",
+    "read-time-n-min": "~ {n} menit baca"
+  },
+  "profile-edit": {
+    "title": "Editor Profil",
+    "name": "Nama Tampilan",
+    "about": "Tentang",
+    "cover-image": "Gambar Sampul",
+    "profile-image": "Gambar Profil",
+    "website": "Website",
+    "location": "Lokasi",
+    "updated": "Profil berhasil diperbarui!"
+  },
+  "password-update": {
+    "title": "Kata Sandi",
+    "cur-pass": "Kata Sandi Sekarang",
+    "new-pass": "Kata sandi baru",
+    "new-pass2": "Konfirmasi kata sandi baru",
+    "error-current": "Masukkan kata sandi saat ini",
+    "error-new": "Masukkan sandi baru",
+    "error-new2": "Kata sandi harus sama",
+    "updated": "Kata Sandi berhasil diperbaharui!"
   }
 }

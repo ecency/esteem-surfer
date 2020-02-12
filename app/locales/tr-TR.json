@@ -14,7 +14,8 @@
     "server-error": "İşlem sunucu hatası nedeniyle tamamlanamadı",
     "save": "Kaydet",
     "done": "Bitti",
-    "select": "Seçiniz"
+    "select": "Seçiniz",
+    "update": "Update"
   },
   "footer": {
     "faq": "SSS",
@@ -47,11 +48,16 @@
     "modal-title": "Oylayanlar ({n})"
   },
   "entry-list-item": {
-    "reblogged": "{n} tarafından yeniden yayınlandı"
+    "reblogged": "{n} tarafından yeniden yayınlandı",
+    "promoted": "sponsored",
+    "promote": "promote",
+    "boost": "boost"
   },
   "entry-reblog": {
     "reblog": "Yeniden yayınla",
-    "reblogged": "Yeniden yayınlandı"
+    "reblogged": "Yeniden yayınlandı",
+    "modal-title": "Rebloggers ({n})",
+    "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
     "title": "Ayarlar",
@@ -84,10 +90,23 @@
     "error-user-fetch": "Kullanıcı verileri getirilemedi",
     "error-user-not-found": "Kullanıcı mevcut değil",
     "error-authenticate": "Yanlış kullanıcı adı veya şifre/WIF",
-    "create-account-text": "Hesabın yok mu? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Şimdi kaydol!</a>",
+    "create-account-text-1": "Don't have an account?",
+    "create-account-text-2": "Sign up now!",
     "login-with-sc": "İle oturum aç",
     "divider-text": "Veya",
     "sc-note": "Not: Steemconnect ödül işlemlerinde bazı ücretler alabilir"
+  },
+  "sign-up": {
+    "title": "Sign Up",
+    "username-placeholder": "pick a username",
+    "email-placeholder": "enter your email address",
+    "sign-up": "Sign Up",
+    "ref-code": "referral user (optional)",
+    "success-message-1": "We've sent an email to {email}.",
+    "success-message-2": "Follow instructions to complete signup process.",
+    "login-1": "Already a member?",
+    "login-2": "Login",
+    "login-btn-label": "Back to Login"
   },
   "create-pin-code": {
     "title": "PIN kodu oluştur",
@@ -128,6 +147,7 @@
     "section-blog": "Blog",
     "section-comments": "Yorumlar",
     "section-replies": "Yanıtlar",
+    "section-points": "Points",
     "section-wallet": "Cüzdan"
   },
   "follow-controls": {
@@ -146,6 +166,7 @@
     "section-comments": "Yorumlar",
     "section-replies": "Yanıtlar",
     "section-wallet": "Cüzdan",
+    "section-points": "Points",
     "top-posts": "En iyi gönderiler",
     "unclaimed-rewards": "Talep edilmemiş ödüller",
     "estimated-value": "Tahmini değer 7 günlük ortalama Steem değerine dayanmaktadır.",
@@ -179,7 +200,64 @@
     "power-up": "Güç yükselt",
     "withdraw-steem": "Steem Çek",
     "withdraw-sbd": "Steem Dollar Çek",
-    "delegate": "Devretme"
+    "delegate": "Devretme",
+    "power-down": "Power Down",
+    "point-history": "History",
+    "points-post-desc": "You can earn point by posting regularly. Posting gives you 15 points.",
+    "points-comment-desc": "Each comment you make helps you to grow your audience and make friendship but also earns you 5 points.",
+    "points-checkin-desc": "Checking in on eSteem app gives you 0.25 points and helps you stay connected with your friends.",
+    "points-vote-desc": "By voting you give reward to other creators and show your appreciation but also earn 0.01 x vote weight points.",
+    "points-reblog-desc": "  Share what post you like with your friends and earn 1 points.",
+    "points-login-desc": "When you login into eSteem app you are entitled to earn 100 points automatically.",
+    "points-checkin-extra-desc": "Consistent use of app gives you extra chances to earn more 10 points, be more active and earn more.",
+    "points-delegation-desc": "You can earn 1 point per day for each 100SP delegation.",
+    "points-post-list-desc": "Points for post",
+    "points-comment-list-desc": "Points for comment",
+    "points-vote-list-desc": "Points for vote",
+    "points-reblog-list-desc": "Points for reblog",
+    "points-login-list-desc": "Points for login",
+    "points-checkin-list-desc": "Points for heartbeat",
+    "points-checkin-extra-list-desc": "Usage bonus",
+    "points-transfer-sent-list-desc": "Transfer to {n}",
+    "points-transfer-incoming-list-desc": "Transfer from {n}",
+    "points-delegation-list-desc": "Delegation reward",
+    "points-referral-list-desc": "Referral reward",
+    "points-claim-ok": "Points claimed",
+    "points-promote": "Promote",
+    "points-boost": "Boost",
+    "points-transfer": "Gift to someone",
+    "points-get": "GET ESTM",
+    "witness-voting": "Witnesses",
+    "sps-voting": "SPS Voting",
+    "profile-editor": "Profile Editor",
+    "password": "Password"
+  },
+  "redeem": {
+    "user-label": "User",
+    "user-help-text": "Available Funds",
+    "post-label": "Post",
+    "post-input-placeholder": "author/permlink",
+    "post-input-title": "Suggestions",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "post-error": "Not a valid post address",
+    "post-error-exists": "The post is already promoted",
+    "funds-error": "Insufficient funds",
+    "submit": "Submit",
+    "go-back": "Go Back"
+  },
+  "redeem-promote": {
+    "page-title": "Promote",
+    "duration-label": "Duration",
+    "duration-help": "Drag the slider to change the duration",
+    "day": "day",
+    "days": "days",
+    "success-message": "Your request submitted. It will be activated in a couple minutes."
+  },
+  "redeem-boost": {
+    "page-title": "Boost",
+    "amount-label": "Amount",
+    "amount-help": "Drag the slider to change the amount",
+    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
     "title-placeholder": "Başlık",
@@ -226,7 +304,6 @@
     "update": "Güncelle",
     "updated": "Gönderi Güncellendi",
     "sync-scroll": "Kaydırma Senkronizasyonu",
-    "words-count": "{n} kelimeler",
     "no-suggestions": "Öneri yok",
     "emoji-filter-placeholder": "Filtre",
     "emoji-filter-no-match": "Eşleşme yok",
@@ -249,7 +326,9 @@
     "empty-list": "Burada hiçbir şey yok",
     "deleted": "Planlanmış gönderi silindi",
     "move": "Taslaklara taşı",
-    "moved": "Taslaklara taşındı"
+    "moved": "Taslaklara taşındı",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Yer imleri",
@@ -279,13 +358,18 @@
     "bookmarkRemoved": "Yer imlerinden kaldırıldı",
     "favorited": "Favorilere eklendi",
     "favoriteRemoved": "Favorilerden kaldırıldı",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Dahili bağlantıyı panoya kopyala",
     "copied-clipboard": "Kopyalandı",
     "comment-entry-title": "Tek bir yorum dizisini şuradan görüntülüyorsunuz: ",
     "comment-entry-go-root": "İçeriğin tamamını görüntüle",
     "comment-entry-go-parent": "Doğrudan kaynağı görüntüle",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Benzer gönderiler",
-    "fetch-error": "Sunucu zaman aşımı çünkü tepki boyutu çok büyük"
+    "fetch-error": "Sunucu zaman aşımı çünkü tepki boyutu çok büyük",
+    "promote": "promote",
+    "boost": "boost",
+    "more-replies": "show more replies"
   },
   "navbar": {
     "settings": "Ayarlar",
@@ -296,10 +380,12 @@
     "favorite": "Favorilere ekle",
     "favoriteRemove": "Favorilerden kaldırıldı",
     "wallet": "Cüzdanım",
+    "points": "My Points",
     "activities": "Aktiviteler",
     "address-enter-url": "Url girin",
     "address-enter-query": "Arama sorgusu girin",
     "unclaimed-reward-notice": "Talep etmediğiniz ödülleriniz var",
+    "unclaimed-points-notice": "You have unclaimed points",
     "search-no-matches": "Eşleşme yok"
   },
   "search": {
@@ -340,6 +426,7 @@
     "type-mentions": "Bahsedilmeler",
     "type-follows": "Takip ediyor",
     "type-reblogs": "Yeniden yayınlamalar",
+    "type-transfers": "Transfers",
     "vote-str": "{p}% gönderinizi beğendi:",
     "reply-str": "gönderini yanıtladı:",
     "mention-str": "senden bahsetti:",
@@ -347,11 +434,23 @@
     "unfollowed-str": "takibi bıraktı",
     "ignored-str": "engelledi",
     "reblog-str": "gönderini yeniden yayınladı:",
+    "transfer-str": "sent you",
+    "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
+    "inactive-str": "Be active! Write a post, continue earning",
+    "referral-str": "joined with your referral, welcome them",
     "empty-list": "Burada hiçbir şey yok",
     "refresh": "Yenile",
     "mark-all-read": "Tümünü Okundu olarak İşaretle",
     "leaderboard": "Lider Tablosu",
-    "leaderboard-title": "Günlük En İyi Kullanıcılar"
+    "leaderboard-title-daily": "Daily top users",
+    "leaderboard-title-weekly": "Weekly top users",
+    "leaderboard-title-monthly": "Monthly top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly",
+    "leaderboard-header-score": "Activities",
+    "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
+    "leaderboard-header-reward": "Reward"
   },
   "witnesses": {
     "page-title": "Şahit Oylaması",
@@ -377,8 +476,26 @@
     "proxy-removed": "Vekil kaldırıldı",
     "proxy-created": "@{n} vekil olarak belirlendi"
   },
+  "sps": {
+    "page-title": "Proposals Voting",
+    "duration": "Duration",
+    "requested": "Requested",
+    "total-votes": "Total Votes",
+    "status-active": "active",
+    "status-expired": "expired",
+    "status-inactive": "upcoming",
+    "duration-days": "{n} days",
+    "voters": "Proposal Voters",
+    "voter": "Voter",
+    "voter-sp": "SP",
+    "voter-proxy-sp": "Proxy SP",
+    "voter-total-sp": "Total SP",
+    "voted": "Proposal #{n} voted",
+    "vote-removed": "Vote removed for proposal #{n}"
+  },
   "transfer": {
     "transfer-title": "Hesaba aktar",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Fonları başka bir Steem hesabına taşı",
     "transfer-saving-title": "Tasarruflara transfer et",
     "transfer-saving-sub-title": "3 günlük geri çekme süresi ile fonlarınızı koruyun",
@@ -427,9 +544,69 @@
   "delegation-list": {
     "empty-list": "Burada hiçbir şey yok"
   },
+  "power-down": {
+    "title": "Power Down",
+    "sub-title": "Power Down Steem Power",
+    "account": "Account",
+    "incoming-funds": "Incoming Funds",
+    "begin": "Begin Power Down",
+    "stop": "Stop",
+    "estimated-note": "Estimated Weekly",
+    "withdraw-accounts": "Destination Account(s)",
+    "add-withdraw-account": "Add withdraw account"
+  },
+  "withdraw-route": {
+    "title": "Add withdraw account",
+    "to": "Account",
+    "percentage": "Percentage",
+    "slider-help": "Percentage of Power Down to this account",
+    "auto-power-down": "Automatically power up the target account"
+  },
   "friends": {
     "followers-title": "Takipçiler ({count})",
     "following-title": "Takip Ediliyor ({count})",
-    "load-more": "Daha Fazla Yükle"
+    "load-more": "Daha Fazla Yükle",
+    "empty-list": "Nothing here",
+    "search-placeholder": "Search users"
+  },
+  "delegated-list": {
+    "title": "Delegated steem power from @{n}"
+  },
+  "delegatee-list": {
+    "title": "Delegated steem power to @{n}"
+  },
+  "estm-purchase": {
+    "title": "ESTM purchase",
+    "purchase": "Purchase"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
+  },
+  "word-count": {
+    "label": "{n} words",
+    "read-time-less-1-min": "< 1 min read",
+    "read-time-n-min": "~ {n} min read"
+  },
+  "profile-edit": {
+    "title": "Profile Editor",
+    "name": "Display Name",
+    "about": "About",
+    "cover-image": "Cover Image",
+    "profile-image": "Profile Image",
+    "website": "Website",
+    "location": "Location",
+    "updated": "Profile updated successfully!"
+  },
+  "password-update": {
+    "title": "Password",
+    "cur-pass": "Current password",
+    "new-pass": "New password",
+    "new-pass2": "Confirm new password",
+    "error-current": "Enter current password",
+    "error-new": "Enter new password",
+    "error-new2": "Passwords must be same",
+    "updated": "Password updated successfully!"
   }
 }

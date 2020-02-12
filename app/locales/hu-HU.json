@@ -14,7 +14,8 @@
     "server-error": "A folyamat szerver hiba miatt nem hajtható végre",
     "save": "Mentés",
     "done": "Kész",
-    "select": "Kiválasztás"
+    "select": "Kiválasztás",
+    "update": "Frissítés"
   },
   "footer": {
     "faq": "GYÍK",
@@ -26,7 +27,7 @@
     "filter-hot": "Forró",
     "filter-created": "Új",
     "filter-active": "Aktív",
-    "filter-promoted": "Támogatott",
+    "filter-promoted": "Hirdetett",
     "filter-votes": "Szavazatok",
     "filter-children": "Hozzászólások",
     "filter-feed": "Hírfolyam"
@@ -47,11 +48,16 @@
     "modal-title": "({n}) Szavazó"
   },
   "entry-list-item": {
-    "reblogged": "megosztva {n} által"
+    "reblogged": "megosztva {n} által",
+    "promoted": "támogatott",
+    "promote": "hirdetés",
+    "boost": "felpörgetés"
   },
   "entry-reblog": {
     "reblog": "Megosztás",
-    "reblogged": "Megosztva"
+    "reblogged": "Megosztva",
+    "modal-title": "Megosztók ({n})",
+    "more-reblogs": "... +{n} megosztás"
   },
   "settings": {
     "title": "Beállítások",
@@ -84,14 +90,27 @@
     "error-user-fetch": "A felhasználó adatait nem sikerült betölteni",
     "error-user-not-found": "A felhasználó nem létezik",
     "error-authenticate": "Helytelen felhasználónév vagy jelszó/WIF",
-    "create-account-text": "Nincs fiókod? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">hozd létre most!</a>",
+    "create-account-text-1": "Nincs még fiókod?",
+    "create-account-text-2": "Regisztrálj most!",
     "login-with-sc": "Bejelentkezés mint",
     "divider-text": "VAGY",
-    "sc-note": "Megjegyzés: Steemconnect esetleg díjat számolhat fel néhány jutalom-tranzakcióért"
+    "sc-note": "Megjegyzés: Steemconnect díjat számolhat fel néhány jutalom-tranzakcióért"
+  },
+  "sign-up": {
+    "title": "Regisztráció",
+    "username-placeholder": "válassz egy felhasználónevet",
+    "email-placeholder": "add meg az e-mail címed",
+    "sign-up": "Regisztráció",
+    "ref-code": "ajánló felhasználó (opcionális)",
+    "success-message-1": "Küldtünk egy e-mailt ide {email}.",
+    "success-message-2": "A sikeres regisztrációhoz kövesd az utasításokat.",
+    "login-1": "Már tag vagy?",
+    "login-2": "Bejelentkezés",
+    "login-btn-label": "Vissza a belépéshez"
   },
   "create-pin-code": {
     "title": "PIN-kód létrehozása",
-    "desc1": "Állítsd be a PIN kódot az adatok titkosításához és egy további biztonsági réteg létrehozásához!",
+    "desc1": "Hozz létre egy PIN kódot az adatok titkosításához és egy további biztonsági réteg létrehozásához!",
     "input-placeholder": "PIN kód megadása",
     "desc2": "Át leszel irányítva a PIN kód beírásához a fontos tranzakciók és minden indítás esetén.",
     "created": "PIN kód létrehozva"
@@ -102,7 +121,7 @@
     "last-chance": "Utolsó lehetőség",
     "invalidate": "Ó, elfelejtettem...",
     "invalidate-confirm": "Biztosan érvényteleníted a PIN kódot?",
-    "invalidated": "PIN kód érvénytelenírve"
+    "invalidated": "PIN kód érvénytelenítve"
   },
   "user-menu": {
     "profile": "Profil",
@@ -128,6 +147,7 @@
     "section-blog": "Bejegyzés",
     "section-comments": "Hozzászólások",
     "section-replies": "Válaszok",
+    "section-points": "Pontok",
     "section-wallet": "Tárca"
   },
   "follow-controls": {
@@ -146,6 +166,7 @@
     "section-comments": "Hozzászólások",
     "section-replies": "Válaszok",
     "section-wallet": "Tárca",
+    "section-points": "Pontok",
     "top-posts": "Top Bejegyzések",
     "unclaimed-rewards": "Átvételre váró jutalmak",
     "estimated-value": "A becsült érték a Steem 7 napos átlagértékén alapszik.",
@@ -179,7 +200,64 @@
     "power-up": "Power up",
     "withdraw-steem": "Steem Visszavonás",
     "withdraw-sbd": "Steem Dollár Visszavonás",
-    "delegate": "Delegálás"
+    "delegate": "Delegálás",
+    "power-down": "Power Down",
+    "point-history": "Előzmény",
+    "points-post-desc": "Pontokat szerezhetsz rendszeres blogolással. Egy bejegyzés 15 pontot ér.",
+    "points-comment-desc": "Minden hozzászólásod segít abban, hogy növeld a táborod és követőket szerezz, továbbá 5 pontot hoz neked.",
+    "points-checkin-desc": "Az eSteem alkalmazásba történő bejelentkezés 0,25 pontot ér és segít abban, hogy kapcsolatban maradj a barátaiddal.",
+    "points-vote-desc": "Szavazás által megjutalmazol más alkotókat és elismerésed fejezed ki, de kaphatsz 0,01 x a szavazás értékéből.",
+    "points-reblog-desc": "  Ossz meg a barátaiddal bármilyen bejegyzést, ami tetszik és nyerj 1 pontot.",
+    "points-login-desc": "Minden eSteem bejelentkezés alkalmával automatikusan 100 pontra vagy jogosult.",
+    "points-checkin-extra-desc": "Az alkalmazás következetes használata extra esélyt kínál arra, hogy több 10 pontot nyerj, légy aktívabb és nyerj többet.",
+    "points-delegation-desc": "Minen 100SP delegálásért napi 1 pontot kaphatsz.",
+    "points-post-list-desc": "Bejegyzés pontok",
+    "points-comment-list-desc": "Hozzászólás pontok",
+    "points-vote-list-desc": "Szavazási pontok",
+    "points-reblog-list-desc": "Megosztási pontok",
+    "points-login-list-desc": "Bejelentkezés pontok",
+    "points-checkin-list-desc": "Életjel pontok",
+    "points-checkin-extra-list-desc": "Használati bónusz",
+    "points-transfer-sent-list-desc": "Átutalás ide {n}",
+    "points-transfer-incoming-list-desc": "Átutalás innen {n}",
+    "points-delegation-list-desc": "Delegálási jutalom",
+    "points-referral-list-desc": "Ajánlói jutalom",
+    "points-claim-ok": "Pontok átvéve",
+    "points-promote": "Hirdetés",
+    "points-boost": "Felpörgetés",
+    "points-transfer": "Ajándékozz meg valakit",
+    "points-get": "ESTM VÁSÁRLÁS",
+    "witness-voting": "Tanúk",
+    "sps-voting": "SPS szavazás",
+    "profile-editor": "Profil szerkesztés",
+    "password": "Jelszó"
+  },
+  "redeem": {
+    "user-label": "Felhasználó",
+    "user-help-text": "Elérhető tőke",
+    "post-label": "Bejegyzés",
+    "post-input-placeholder": "szerző/permlink",
+    "post-input-title": "Javaslatok",
+    "key-required-err": "Az aktív kulcs nem található a kijelölt fiókhoz. Kérjük, győződj meg arról, hogy a megfelelő hitelesítő adatokkal jelentkeztél be.",
+    "post-error": "Nem érvényes bejegyzés cím",
+    "post-error-exists": "A bejegyzés már hirdetett",
+    "funds-error": "Nincs elegendő fedezet",
+    "submit": "Küldés",
+    "go-back": "Vissza"
+  },
+  "redeem-promote": {
+    "page-title": "Hirdetés",
+    "duration-label": "Időtartam",
+    "duration-help": "A csúszka húzásával állítsd be a mennyiséget",
+    "day": "nap",
+    "days": "nap",
+    "success-message": "Kérésed rögzítve. Néhány perc múlva aktiválódik."
+  },
+  "redeem-boost": {
+    "page-title": "Felpörgetés",
+    "amount-label": "Összeg",
+    "amount-help": "A csúszka húzásával állítsd be a mennyiséget",
+    "success-message": "A bejegyzésed felpörgetés céljából beküldve, hamarosan megkapod a felpörgetést szavazat formájában"
   },
   "composer": {
     "title-placeholder": "Cím",
@@ -226,7 +304,6 @@
     "update": "Frissítés",
     "updated": "Bejegyzés Frissítve",
     "sync-scroll": "Görgetés Szinkron",
-    "words-count": "{n} szó",
     "no-suggestions": "Nincs javaslat",
     "emoji-filter-placeholder": "Szűrés",
     "emoji-filter-no-match": "Nincs találat",
@@ -248,8 +325,10 @@
     "title": "Beütemezett Bejegyzések",
     "empty-list": "Itt nincs semmi",
     "deleted": "A beütemezett bejegyzés törölve",
-    "move": "Áthelyezés a vázlatokhoz",
-    "moved": "Áthelyezve a vázlatokhoz"
+    "move": "Áthelyezés a piszkozatokhoz",
+    "moved": "Áthelyezve a piszkozatokhoz",
+    "success-message": "Sikeresen közzétéve.",
+    "error-message": "Szerver hiba miatt nem tehető közzé."
   },
   "bookmarks": {
     "title": "Könyvjelzők",
@@ -273,19 +352,24 @@
     "reply-sort-order-trending": "Népszerű",
     "reply-sort-order-reputation": "Reputáció",
     "reply-sort-order-votes": "Szavazatok",
-    "reply-sort-order-created": "Életkor",
+    "reply-sort-order-created": "Régiség",
     "reply-body-placeholder": "Ide írd a választ",
     "bookmarked": "Hozzáadva a könyvjelzőkhöz",
     "bookmarkRemoved": "Eltávolítva a könyvjelzőkből",
     "favorited": "Hozzáadva a kedvencekhez",
     "favoriteRemoved": "Eltávolítva a kedvencek közül",
+    "show-edit-history": "Előzmények megjelenítése",
     "copy-clipboard": "Másold a belső linket a vágólapra",
-    "copied-clipboard": "Lemásolva",
-    "comment-entry-title": "Egy hozzászólásos szál innen: ",
+    "copied-clipboard": "Másolva",
+    "comment-entry-title": "Egy hozzászólásos vonal innen: ",
     "comment-entry-go-root": "Teljes kontextus megtekintése",
     "comment-entry-go-parent": "Direkt felmenő megtekintése",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Hasonló bejegyzések",
-    "fetch-error": "Server timeout because response size is too big"
+    "fetch-error": "A szerver nem elérhető mert a válasz mérete túl nagy",
+    "promote": "hirdetés",
+    "boost": "felpörgetés",
+    "more-replies": "további hozzászólások betöltése"
   },
   "navbar": {
     "settings": "Beállítások",
@@ -296,10 +380,12 @@
     "favorite": "Hozzáadás a kedvencekhez",
     "favoriteRemove": "Eltávolítás a kedvencek közül",
     "wallet": "Saját Tárca",
+    "points": "Pontjaim",
     "activities": "Tevékenységek",
     "address-enter-url": "Url megadása",
     "address-enter-query": "Írd be a keresési paramétereket",
     "unclaimed-reward-notice": "Árvételre váró jutalmad van",
+    "unclaimed-points-notice": "Árvételre váró pontjaid vannak",
     "search-no-matches": "Nincs találat"
   },
   "search": {
@@ -314,7 +400,7 @@
     "update": "Frissítés",
     "dismiss": "Elvetés",
     "downloading": "Új verzió letöltése...",
-    "download-completed": "A letöltés befejeződött",
+    "download-completed": "Letöltés kész",
     "restart": "Újraindítás"
   },
   "context-menu": {
@@ -340,18 +426,31 @@
     "type-mentions": "Említések",
     "type-follows": "Követések",
     "type-reblogs": "Megosztások",
-    "vote-str": "{p}% nak tetszik a bejegyzésed:",
+    "type-transfers": "Átutalások",
+    "vote-str": "{p}% kedvencelte a bejegyzésed:",
     "reply-str": "válaszolt a bejegyzésedre:",
     "mention-str": "megemlített téged itt:",
     "followed-str": "követés",
     "unfollowed-str": "követés visszavonva",
     "ignored-str": "mellőzve",
     "reblog-str": "megosztotta a bejegyzésed:",
+    "transfer-str": "küldött neked",
+    "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
+    "inactive-str": "Be active! Write a post, continue earning",
+    "referral-str": "joined with your referral, welcome them",
     "empty-list": "Itt nincs semmi",
     "refresh": "Frissítés",
     "mark-all-read": "Összes Megjelölése Olvasottként",
     "leaderboard": "Ranglista",
-    "leaderboard-title": "Napi Top felhasználók"
+    "leaderboard-title-daily": "Napi top felhasználók",
+    "leaderboard-title-weekly": "Heti top felhasználók",
+    "leaderboard-title-monthly": "Havi top felhasználók",
+    "leaderboard-daily": "Napi",
+    "leaderboard-weekly": "Heti",
+    "leaderboard-monthly": "Havi",
+    "leaderboard-header-score": "Tevékenységek",
+    "leaderboard-header-score-tip": "A felhasználó bejegyzései + hozzászólásai a kiválasztott periódusban",
+    "leaderboard-header-reward": "Jutalom"
   },
   "witnesses": {
     "page-title": "Tanú szavazás",
@@ -362,14 +461,14 @@
     "fee": "Díj",
     "feed": "Hírfolyam",
     "block-size": "Blokk mérete",
-    "ac-avail": "AC elérhető",
+    "ac-avail": "AC avail",
     "ac-budget": "AC költségvetés",
     "version": "Verzió",
     "voted": "@{n} szavazott",
     "vote-removed": "szavazat visszavonva @{n} esetében",
     "username-placeholder": "felhasználónév",
     "extra-witnesses-exp": "Alul írd be a tanú nevét, ha az nem szerepel a <strong>Top 50</strong>-ben",
-    "proxy-exp": "Választhatsz egy proxy-t is, ami tanúkat fog szavazni helyetted. Ez a művelet felülírja a jelenlegi tanú listádat.",
+    "proxy-exp": "Választhatsz egy proxy-t is, aki tanúkat fog szavazni helyetted. Ez a művelet felülírja a jelenlegi tanú listádat.",
     "set-proxy": "Proxy beállítása",
     "proxy-active-exp": "Proxy szavazás beállítva. Ha újra kézi szavazást szeretnél, kérjük töröld a proxy-t.",
     "current-proxy": "A jelenlegi proxy-d: <strong>{n}</strong>",
@@ -377,8 +476,26 @@
     "proxy-removed": "Proxy törölve",
     "proxy-created": "@{n} proxy-ként beállítva"
   },
+  "sps": {
+    "page-title": "Javaslatok megszavazása",
+    "duration": "Időtartam",
+    "requested": "Kért",
+    "total-votes": "Össz szavazat",
+    "status-active": "aktív",
+    "status-expired": "lejárt",
+    "status-inactive": "közelgő",
+    "duration-days": "{n} nap",
+    "voters": "Javaslatot megszavazók",
+    "voter": "Szavazó",
+    "voter-sp": "SP",
+    "voter-proxy-sp": "Proxy SP",
+    "voter-total-sp": "Össz SP",
+    "voted": "Javaslatra #{n} szavazott",
+    "vote-removed": "Szavazat visszavonva #{n} javaslatra"
+  },
   "transfer": {
     "transfer-title": "Átutalás más fiókba",
+    "transfer-estm-title": "Ajándék neki",
     "transfer-sub-title": "Tőke átutalása egy másik Steem fiókba",
     "transfer-saving-title": "Átutalás a megtakarításokhoz",
     "transfer-saving-sub-title": "Tőkevédelem érdekében visszavonás esetén ígényelj 3 nap várakozási időt",
@@ -402,7 +519,7 @@
     "memo-placeholder": "megjegyzés ide",
     "memo-help": "Ez az üzenet nyilvános",
     "key-required-err": "Az aktív kulcs nem található a kijelölt fiókhoz. Kérjük, győződj meg arról, hogy a megfelelő hitelesítő adatokkal jelentkeztél be.",
-    "next": "Következő",
+    "next": "Tovább",
     "confirm-title": "Erősítsd meg az átutalást",
     "confirm-sub-title": "Kérjük ellenőrizd, hogy minden rendben",
     "confirm": "Megerősítés",
@@ -418,18 +535,78 @@
     "title": "Delegálás",
     "sub-title": "Steem Power Delegálás",
     "slider-help": "A csúszka húzásával állítsd be a mennyiséget",
-    "confirm-title": "Erősítsd meg a delegálást",
+    "confirm-title": "Delegálás Megerősítése",
     "confirm-sub-title": "Kérjük ellenőrizd, hogy minden rendben",
-    "delegation-summary": "<span class=\"sp\">{sp}</span><span class=\"to-user\">{to}</span>-nak delegálva",
+    "delegation-summary": "delegálva <span class=\"sp\">{sp}</span><span class=\"to-user\">{to}</span>-nak",
     "success-sub-title": "Delegálás teljesítve",
     "insufficient-vesting": "Elégtelen vesting shares {a} VESTS"
   },
   "delegation-list": {
     "empty-list": "Itt nincs semmi"
   },
+  "power-down": {
+    "title": "Power Down",
+    "sub-title": "Power Down Steem Power",
+    "account": "Fiók",
+    "incoming-funds": "Bejövő tőke",
+    "begin": "Power Down Elkezdése",
+    "stop": "Megállítás",
+    "estimated-note": "Heti Becslés",
+    "withdraw-accounts": "Cél Fiók(ok)",
+    "add-withdraw-account": "Adj hozzá visszavonási fiókot"
+  },
+  "withdraw-route": {
+    "title": "Adj hozzá visszavonási fiókot",
+    "to": "Fiók",
+    "percentage": "Százalék",
+    "slider-help": "Power Down százaléka ennek a fióknak",
+    "auto-power-down": "Automatikus power up a megadott fióknak"
+  },
   "friends": {
     "followers-title": "Követők ({count})",
     "following-title": "Követés ({count})",
-    "load-more": "Load More"
+    "load-more": "További betöltés",
+    "empty-list": "Itt nincs semmi",
+    "search-placeholder": "Tagok keresése"
+  },
+  "delegated-list": {
+    "title": "Delegált steem power tőle @{n}"
+  },
+  "delegatee-list": {
+    "title": "Delegált steem power neki @{n}"
+  },
+  "estm-purchase": {
+    "title": "ESTM vásárlás",
+    "purchase": "Vásárlás"
+  },
+  "edit-history": {
+    "title": "Szerkesztési előzmények",
+    "show-diff": "Különbség megjelenítése",
+    "version": "{n} Verzió"
+  },
+  "word-count": {
+    "label": "{n} szó",
+    "read-time-less-1-min": "< 1 perc olvasás",
+    "read-time-n-min": "~ {n} perc olvasás"
+  },
+  "profile-edit": {
+    "title": "Profil szerkesztés",
+    "name": "Megjelenítendő név",
+    "about": "Rólunk",
+    "cover-image": "Borítókép",
+    "profile-image": "Profil kép",
+    "website": "Weboldal",
+    "location": "Tartózkodási hely",
+    "updated": "Profil frissítése sikeresen megtörtént!"
+  },
+  "password-update": {
+    "title": "Jelszó",
+    "cur-pass": "Jelenlegi jelszó",
+    "new-pass": "Új jelszó",
+    "new-pass2": "Új jelszó megerősítése",
+    "error-current": "Add meg aktuális jelszavad",
+    "error-new": "Add meg az új jelszavadat",
+    "error-new2": "A jelszavaknak azonosnak kell lenniük",
+    "updated": "A jelszó sikeresen megváltoztatva!"
   }
 }

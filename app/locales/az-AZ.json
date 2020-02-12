@@ -1,93 +1,112 @@
 {
   "app": {
-    "no-internet-conn": "No Internet Connection"
+    "no-internet-conn": "İnternet Bağlantısı Yoxdur"
   },
   "g": {
-    "compose-entry": "Create Post",
-    "are-you-sure": "Are you sure?",
-    "yes": "Yes",
-    "no": "No",
-    "delete": "Delete",
-    "cancel": "Cancel",
-    "ok": "OK",
-    "edit": "Edit",
-    "server-error": "Process could not be completed due to server error",
-    "save": "Save",
-    "done": "Done",
-    "select": "Select"
+    "compose-entry": "Göndəriş Yarat",
+    "are-you-sure": "Əminsiniz?",
+    "yes": "Bəli",
+    "no": "Xeyr",
+    "delete": "Sil",
+    "cancel": "İmtina",
+    "ok": "Oldu",
+    "edit": "Düzəliş et",
+    "server-error": "Server xətasına görə proses tamamlana bilmədi",
+    "save": "Saxla",
+    "done": "Hazırdır",
+    "select": "Seç",
+    "update": "Yenilə"
   },
   "footer": {
-    "faq": "FAQ",
-    "about": "About"
+    "faq": "TSS",
+    "about": "Haqqında"
   },
   "entry-index": {
-    "tags": "Popular Tags",
-    "filter-trending": "Trending",
-    "filter-hot": "Hot",
-    "filter-created": "New",
-    "filter-active": "Active",
-    "filter-promoted": "Promoted",
-    "filter-votes": "Votes",
-    "filter-children": "Comments",
-    "filter-feed": "Feed"
+    "tags": "Məşhur Etiketlər",
+    "filter-trending": "Trend",
+    "filter-hot": "Gündəmdəkilər",
+    "filter-created": "Yeni",
+    "filter-active": "Aktiv",
+    "filter-promoted": "Tanıdılan",
+    "filter-votes": "Səslər",
+    "filter-children": "Rəylər",
+    "filter-feed": "Axın"
   },
   "entry-payout": {
-    "potential-payout": "Potential Payout",
-    "promoted": "Promoted",
-    "author-payout": "Author Payout",
-    "curation-payout": "Curation Payout",
-    "payout-date": "Payout"
+    "potential-payout": "Mümkün Ola Biləcək Ödəniş",
+    "promoted": "Tanıdılan",
+    "author-payout": "Müəllif Ödənişi",
+    "curation-payout": "Kurator Ödənişi",
+    "payout-date": "Ödəmə"
   },
   "entry-votes": {
-    "n-more": "{n} more",
-    "author": "Author",
-    "reward": "Reward",
-    "percent": "Percent",
-    "time": "Time",
-    "modal-title": "Voters ({n})"
+    "n-more": "{n} dənə",
+    "author": "Müəllif",
+    "reward": "Mükafat",
+    "percent": "Faiz",
+    "time": "Vaxt",
+    "modal-title": "Səsverənlər ({n})"
   },
   "entry-list-item": {
-    "reblogged": "reblogged by {n}"
+    "reblogged": "{n} təkrar paylaşdı",
+    "promoted": "sponsorlu",
+    "promote": "tanıtım",
+    "boost": "gücləndir"
   },
   "entry-reblog": {
-    "reblog": "Reblog",
-    "reblogged": "Reblogged"
+    "reblog": "Təkrar paylaş",
+    "reblogged": "Təkrar paylaşıldı",
+    "modal-title": "Rebloggers ({n})",
+    "more-reblogs": "... +{n} more reblogs"
   },
   "settings": {
-    "title": "Settings",
-    "currency": "Currency",
+    "title": "Tənzimləmələr",
+    "currency": "Pul vahidi",
     "currency-fetch-error": "Could not fetch currency rate for '{cur}'",
-    "currency-changed": "Currency Changed",
-    "locale": "Language",
-    "locale-changed": "Language changed",
+    "currency-changed": "Pul Vahidi Dəyişdirildi",
+    "locale": "Dil",
+    "locale-changed": "Dil dəyişdirildi",
     "server": "Server",
-    "server-invalid-address": "Invalid server address",
-    "server-connecting": "Connecting to '{server}'...",
-    "server-connect-error": "Could not connect to '{server}'. Make sure you have a good internet connection.",
+    "server-invalid-address": "Etibarsız server ünvanı",
+    "server-connecting": "'{server}' ilə bağlantı qurulur...",
+    "server-connect-error": "'{server}' ilə bağlantı qurula bilmədi. İnternet bağlantınızın yaxşı olduğundan əmin olun.",
     "server-timeout-error": "'{server}' looks like not alive",
-    "server-changed": "Server selection changed to {server}",
-    "server-custom-address": "Custom server address",
-    "server-list-fetch-error": "Could not fetch server list",
-    "push-notifications": "Push Notifications",
-    "push-notify-enabled": "Push notifications enabled",
-    "push-notify-disabled": "Push notifications disabled"
+    "server-changed": "Server seçimi {server} olaraq dəyişdirildi",
+    "server-custom-address": "Özəl server ünvanı",
+    "server-list-fetch-error": "Server siyahısı yüklənə bilmədi",
+    "push-notifications": "Ani Bildirişlər",
+    "push-notify-enabled": "Ani bildirişlər fəallaşdırıldı",
+    "push-notify-disabled": "Ani bildirişlər sıradan çıxarıldı"
   },
   "login": {
-    "title": "Welcome back!",
-    "accounts-title": "Login As",
-    "traditional-login-desc": "Sign in with your username and password to continue",
-    "username-placeholder": "username",
-    "password-placeholder": "password or WIF",
+    "title": "Yenidən Xoş Gəldiniz!",
+    "accounts-title": "Giriş et",
+    "traditional-login-desc": "Davam etmək üçün istifadəçi adı və şifrənizlə daxil olun",
+    "username-placeholder": "istifadəçi adı",
+    "password-placeholder": "şifrə və ya WIF",
     "login": "Login",
     "error-fields-required": "Please enter username and password/WIF",
     "error-public-key": "You entered a public key. Password/WIF required",
     "error-user-fetch": "User data could not be fetched",
     "error-user-not-found": "User does not exist",
     "error-authenticate": "Wrong username or password/WIF",
-    "create-account-text": "Don't have an account? <a href=\"https://signup.steemit.com/?ref=esteemapp\" target=\"_external\">Sign up now!</a>",
+    "create-account-text-1": "Don't have an account?",
+    "create-account-text-2": "Sign up now!",
     "login-with-sc": "Login with",
     "divider-text": "OR",
     "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+  },
+  "sign-up": {
+    "title": "Sign Up",
+    "username-placeholder": "pick a username",
+    "email-placeholder": "enter your email address",
+    "sign-up": "Sign Up",
+    "ref-code": "referral user (optional)",
+    "success-message-1": "We've sent an email to {email}.",
+    "success-message-2": "Follow instructions to complete signup process.",
+    "login-1": "Already a member?",
+    "login-2": "Login",
+    "login-btn-label": "Back to Login"
   },
   "create-pin-code": {
     "title": "Create PIN Code",
@@ -105,14 +124,14 @@
     "invalidated": "PIN code is invalidated"
   },
   "user-menu": {
-    "profile": "Profile",
-    "bookmarks": "Bookmarks",
-    "favorites": "Favorites",
-    "drafts": "Drafts",
-    "schedules": "Schedules",
-    "gallery": "Gallery",
-    "login-as": "Login As",
-    "logout": "Logout"
+    "profile": "Profil",
+    "bookmarks": "Əlfəcinlər",
+    "favorites": "Sevimlilər",
+    "drafts": "Qaralamalar",
+    "schedules": "Cədvəllər",
+    "gallery": "Qalereya",
+    "login-as": "Giriş et",
+    "logout": "Çıxış"
   },
   "login-required": {
     "default": "This action requires login",
@@ -128,6 +147,7 @@
     "section-blog": "Blog",
     "section-comments": "Comments",
     "section-replies": "Replies",
+    "section-points": "Points",
     "section-wallet": "Wallet"
   },
   "follow-controls": {
@@ -146,6 +166,7 @@
     "section-comments": "Comments",
     "section-replies": "Replies",
     "section-wallet": "Wallet",
+    "section-points": "Points",
     "top-posts": "Top Posts",
     "unclaimed-rewards": "Unclaimed rewards",
     "estimated-value": "The estimated value is based on a 7 day average value of Steem.",
@@ -179,7 +200,64 @@
     "power-up": "Power up",
     "withdraw-steem": "Withdraw Steem",
     "withdraw-sbd": "Withdraw Steem Dollar",
-    "delegate": "Delegate"
+    "delegate": "Delegate",
+    "power-down": "Power Down",
+    "point-history": "History",
+    "points-post-desc": "You can earn point by posting regularly. Posting gives you 15 points.",
+    "points-comment-desc": "Each comment you make helps you to grow your audience and make friendship but also earns you 5 points.",
+    "points-checkin-desc": "Checking in on eSteem app gives you 0.25 points and helps you stay connected with your friends.",
+    "points-vote-desc": "By voting you give reward to other creators and show your appreciation but also earn 0.01 x vote weight points.",
+    "points-reblog-desc": "  Share what post you like with your friends and earn 1 points.",
+    "points-login-desc": "When you login into eSteem app you are entitled to earn 100 points automatically.",
+    "points-checkin-extra-desc": "Consistent use of app gives you extra chances to earn more 10 points, be more active and earn more.",
+    "points-delegation-desc": "You can earn 1 point per day for each 100SP delegation.",
+    "points-post-list-desc": "Points for post",
+    "points-comment-list-desc": "Points for comment",
+    "points-vote-list-desc": "Points for vote",
+    "points-reblog-list-desc": "Points for reblog",
+    "points-login-list-desc": "Points for login",
+    "points-checkin-list-desc": "Points for heartbeat",
+    "points-checkin-extra-list-desc": "Usage bonus",
+    "points-transfer-sent-list-desc": "Transfer to {n}",
+    "points-transfer-incoming-list-desc": "Transfer from {n}",
+    "points-delegation-list-desc": "Delegation reward",
+    "points-referral-list-desc": "Referral reward",
+    "points-claim-ok": "Points claimed",
+    "points-promote": "Promote",
+    "points-boost": "Boost",
+    "points-transfer": "Gift to someone",
+    "points-get": "GET ESTM",
+    "witness-voting": "Witnesses",
+    "sps-voting": "SPS Voting",
+    "profile-editor": "Profile Editor",
+    "password": "Password"
+  },
+  "redeem": {
+    "user-label": "User",
+    "user-help-text": "Available Funds",
+    "post-label": "Post",
+    "post-input-placeholder": "author/permlink",
+    "post-input-title": "Suggestions",
+    "key-required-err": "Active key could not be found for selected account. Please make sure you are logged in with proper credentials.",
+    "post-error": "Not a valid post address",
+    "post-error-exists": "The post is already promoted",
+    "funds-error": "Insufficient funds",
+    "submit": "Submit",
+    "go-back": "Go Back"
+  },
+  "redeem-promote": {
+    "page-title": "Promote",
+    "duration-label": "Duration",
+    "duration-help": "Drag the slider to change the duration",
+    "day": "day",
+    "days": "days",
+    "success-message": "Your request submitted. It will be activated in a couple minutes."
+  },
+  "redeem-boost": {
+    "page-title": "Boost",
+    "amount-label": "Amount",
+    "amount-help": "Drag the slider to change the amount",
+    "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
   "composer": {
     "title-placeholder": "Title",
@@ -226,7 +304,6 @@
     "update": "Update",
     "updated": "Post Updated",
     "sync-scroll": "Scroll Sync",
-    "words-count": "{n} words",
     "no-suggestions": "No suggestions",
     "emoji-filter-placeholder": "Filter",
     "emoji-filter-no-match": "No match",
@@ -249,7 +326,9 @@
     "empty-list": "Nothing here",
     "deleted": "Scheduled post is deleted",
     "move": "Move to drafts",
-    "moved": "Moved to drafts"
+    "moved": "Moved to drafts",
+    "success-message": "Published successfully.",
+    "error-message": "Could not publish due to a server error."
   },
   "bookmarks": {
     "title": "Bookmarks",
@@ -279,13 +358,18 @@
     "bookmarkRemoved": "Removed from bookmarks",
     "favorited": "Added to favorites",
     "favoriteRemoved": "Removed from favorites",
+    "show-edit-history": "Show edit history",
     "copy-clipboard": "Copy internal link to clipboard",
     "copied-clipboard": "Copied",
     "comment-entry-title": "You are viewing a single comment's thread from: ",
     "comment-entry-go-root": "View the full context",
     "comment-entry-go-parent": "View the direct parent",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Similar Posts",
-    "fetch-error": "Server timeout because response size is too big"
+    "fetch-error": "Server timeout because response size is too big",
+    "promote": "promote",
+    "boost": "boost",
+    "more-replies": "show more replies"
   },
   "navbar": {
     "settings": "Settings",
@@ -296,10 +380,12 @@
     "favorite": "Add to favorites",
     "favoriteRemove": "Removed from favorites",
     "wallet": "My Wallet",
+    "points": "My Points",
     "activities": "Activities",
     "address-enter-url": "Enter url",
     "address-enter-query": "Enter search query",
     "unclaimed-reward-notice": "You have unclaimed rewards",
+    "unclaimed-points-notice": "You have unclaimed points",
     "search-no-matches": "No matches"
   },
   "search": {
@@ -340,6 +426,7 @@
     "type-mentions": "Mentions",
     "type-follows": "Follows",
     "type-reblogs": "Reblogs",
+    "type-transfers": "Transfers",
     "vote-str": "{p}% likes your post:",
     "reply-str": "replied to your post:",
     "mention-str": "mentioned you in:",
@@ -347,11 +434,23 @@
     "unfollowed-str": "unfollowed",
     "ignored-str": "ignored",
     "reblog-str": "reblogged your post:",
+    "transfer-str": "sent you",
+    "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
+    "inactive-str": "Be active! Write a post, continue earning",
+    "referral-str": "joined with your referral, welcome them",
     "empty-list": "Nothing here",
     "refresh": "Refresh",
     "mark-all-read": "Mark All as Read",
     "leaderboard": "Leaderboard",
-    "leaderboard-title": "Daily Top users"
+    "leaderboard-title-daily": "Daily top users",
+    "leaderboard-title-weekly": "Weekly top users",
+    "leaderboard-title-monthly": "Monthly top users",
+    "leaderboard-daily": "Daily",
+    "leaderboard-weekly": "Weekly",
+    "leaderboard-monthly": "Monthly",
+    "leaderboard-header-score": "Activities",
+    "leaderboard-header-score-tip": "Post + comments made by a user for selected period",
+    "leaderboard-header-reward": "Reward"
   },
   "witnesses": {
     "page-title": "Witness Voting",
@@ -377,8 +476,26 @@
     "proxy-removed": "Proxy is cleared",
     "proxy-created": "@{n} has set as proxy"
   },
+  "sps": {
+    "page-title": "Proposals Voting",
+    "duration": "Duration",
+    "requested": "Requested",
+    "total-votes": "Total Votes",
+    "status-active": "active",
+    "status-expired": "expired",
+    "status-inactive": "upcoming",
+    "duration-days": "{n} days",
+    "voters": "Proposal Voters",
+    "voter": "Voter",
+    "voter-sp": "SP",
+    "voter-proxy-sp": "Proxy SP",
+    "voter-total-sp": "Total SP",
+    "voted": "Proposal #{n} voted",
+    "vote-removed": "Vote removed for proposal #{n}"
+  },
   "transfer": {
     "transfer-title": "Transfer to Account",
+    "transfer-estm-title": "Gift to Account",
     "transfer-sub-title": "Move funds to another Steem account",
     "transfer-saving-title": "Transfer to Savings",
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
@@ -427,9 +544,69 @@
   "delegation-list": {
     "empty-list": "Nothing here"
   },
+  "power-down": {
+    "title": "Power Down",
+    "sub-title": "Power Down Steem Power",
+    "account": "Account",
+    "incoming-funds": "Incoming Funds",
+    "begin": "Begin Power Down",
+    "stop": "Stop",
+    "estimated-note": "Estimated Weekly",
+    "withdraw-accounts": "Destination Account(s)",
+    "add-withdraw-account": "Add withdraw account"
+  },
+  "withdraw-route": {
+    "title": "Add withdraw account",
+    "to": "Account",
+    "percentage": "Percentage",
+    "slider-help": "Percentage of Power Down to this account",
+    "auto-power-down": "Automatically power up the target account"
+  },
   "friends": {
     "followers-title": "Followers ({count})",
     "following-title": "Following ({count})",
-    "load-more": "Load More"
+    "load-more": "Load More",
+    "empty-list": "Nothing here",
+    "search-placeholder": "Search users"
+  },
+  "delegated-list": {
+    "title": "Delegated steem power from @{n}"
+  },
+  "delegatee-list": {
+    "title": "Delegated steem power to @{n}"
+  },
+  "estm-purchase": {
+    "title": "ESTM purchase",
+    "purchase": "Purchase"
+  },
+  "edit-history": {
+    "title": "Edit History",
+    "show-diff": "Show Difference",
+    "version": "Version {n}"
+  },
+  "word-count": {
+    "label": "{n} words",
+    "read-time-less-1-min": "< 1 min read",
+    "read-time-n-min": "~ {n} min read"
+  },
+  "profile-edit": {
+    "title": "Profile Editor",
+    "name": "Display Name",
+    "about": "About",
+    "cover-image": "Cover Image",
+    "profile-image": "Profile Image",
+    "website": "Website",
+    "location": "Location",
+    "updated": "Profile updated successfully!"
+  },
+  "password-update": {
+    "title": "Password",
+    "cur-pass": "Current password",
+    "new-pass": "New password",
+    "new-pass2": "Confirm new password",
+    "error-current": "Enter current password",
+    "error-new": "Enter new password",
+    "error-new2": "Passwords must be same",
+    "updated": "Password updated successfully!"
   }
 }
