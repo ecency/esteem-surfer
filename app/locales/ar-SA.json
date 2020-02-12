@@ -364,6 +364,7 @@
     "comment-entry-title": "أنت تعرض تعليقاً واحدأً من: ",
     "comment-entry-go-root": "عرض المحتوى الكامل",
     "comment-entry-go-parent": "عرض الرسالة الرئيسية",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "منشورات مماثلة",
     "fetch-error": "إنتهت مهلة الخادم لأن حجم الاستجابة كبير جدًا",
     "promote": "promote",
