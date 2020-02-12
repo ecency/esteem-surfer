@@ -364,6 +364,7 @@
     "comment-entry-title": "Tek bir yorum dizisini şuradan görüntülüyorsunuz: ",
     "comment-entry-go-root": "İçeriğin tamamını görüntüle",
     "comment-entry-go-parent": "Doğrudan kaynağı görüntüle",
+    "comment-reveal": "Reveal comment",
     "similar-entries": "Benzer gönderiler",
     "fetch-error": "Sunucu zaman aşımı çünkü tepki boyutu çok büyük",
     "promote": "promote",
