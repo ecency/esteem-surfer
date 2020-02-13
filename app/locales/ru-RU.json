@@ -221,7 +221,7 @@
     "points-transfer-sent-list-desc": "Получатель {n}",
     "points-transfer-incoming-list-desc": "Отправитель {n}",
     "points-delegation-list-desc": "Награда за делегирование",
-    "points-referral-list-desc": "Referral reward",
+    "points-referral-list-desc": "Реферальное вознаграждение",
     "points-claim-ok": "Очки зачислены",
     "points-promote": "Продвижение",
     "points-boost": "Boost",
@@ -255,7 +255,7 @@
   },
   "redeem-boost": {
     "page-title": "Boost",
-    "amount-label": "Amount",
+    "amount-label": "Сумма",
     "amount-help": "Drag the slider to change the amount",
     "success-message": "Your post has been submitted to boost queue, you will receive boost on your post via votes soon"
   },
@@ -364,7 +364,7 @@
     "comment-entry-title": "Вы просматриваете один комментарий ветки: ",
     "comment-entry-go-root": "Полный контекст",
     "comment-entry-go-parent": "Прямой родительский комментарий",
-    "comment-reveal": "Reveal comment",
+    "comment-reveal": "Показать комментарий",
     "similar-entries": "Похожие посты",
     "fetch-error": "Тайм-аут сервера, потому что размер ответа слишком большой",
     "promote": "продвинуть",
@@ -436,7 +436,7 @@
     "reblog-str": "сделал репост вашего поста:",
     "transfer-str": "перевел(а) вам",
     "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
-    "inactive-str": "Be active! Write a post, continue earning",
+    "inactive-str": "Будьте активны! Напишите пост, продолжайте зарабатывать",
     "referral-str": "joined with your referral, welcome them",
     "empty-list": "Здесь пусто",
     "refresh": "Обновить",
@@ -586,8 +586,8 @@
   },
   "word-count": {
     "label": "{n} слов",
-    "read-time-less-1-min": "< 1 min read",
-    "read-time-n-min": "~ {n} min read"
+    "read-time-less-1-min": "< 1 мин. чтения",
+    "read-time-n-min": "~ {n} мин. чтения"
   },
   "profile-edit": {
     "title": "Редактор профиля",
