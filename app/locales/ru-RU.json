@@ -216,7 +216,7 @@
     "points-vote-list-desc": "Очки за голос",
     "points-reblog-list-desc": "Очки за репост",
     "points-login-list-desc": "Очки за логин",
-    "points-checkin-list-desc": "Points for heartbeat",
+    "points-checkin-list-desc": "Баллы за присутствие",
     "points-checkin-extra-list-desc": "Бонус за использование",
     "points-transfer-sent-list-desc": "Получатель {n}",
     "points-transfer-incoming-list-desc": "Отправитель {n}",
