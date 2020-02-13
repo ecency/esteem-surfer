@@ -57,7 +57,7 @@
     "reblog": "Репост",
     "reblogged": "Репостнуто",
     "modal-title": "Реблогери ({n})",
-    "more-reblogs": "... +{n} більше реблогів"
+    "more-reblogs": "... + ще {n} репостів"
   },
   "settings": {
     "title": "Налаштування",
@@ -364,7 +364,7 @@
     "comment-entry-title": "Ви переглядаєте гілку одного коментарю із: ",
     "comment-entry-go-root": "Переглянути повний контекст",
     "comment-entry-go-parent": "Прямий батьківський коментар",
-    "comment-reveal": "Reveal comment",
+    "comment-reveal": "Показати коментар",
     "similar-entries": "Схожі пости",
     "fetch-error": "Тайм-аут сервера через завеликий розмір відповіді",
     "promote": "просувати",
@@ -436,7 +436,7 @@
     "reblog-str": "зробив репост вашого посту:",
     "transfer-str": "відправив вам",
     "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
-    "inactive-str": "Be active! Write a post, continue earning",
+    "inactive-str": "Будьте активними! Зробіть допис, продовжуйте заробляти",
     "referral-str": "joined with your referral, welcome them",
     "empty-list": "Тут порожньо",
     "refresh": "Оновити",
