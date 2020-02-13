@@ -364,7 +364,7 @@
     "comment-entry-title": "1つのコメントスレッドを表示しています: ",
     "comment-entry-go-root": "全文を表示",
     "comment-entry-go-parent": "親コメントを表示",
-    "comment-reveal": "Reveal comment",
+    "comment-reveal": "コメントを表示",
     "similar-entries": "似ている投稿",
     "fetch-error": "レスポンスサイズが大きすぎるためサーバータイムアウト",
     "promote": "プロモート",
