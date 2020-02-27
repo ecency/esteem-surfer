@@ -103,7 +103,7 @@
     "sign-up": "회원가입",
     "ref-code": "추천인(선택사항)",
     "success-message-1": "{email}로 이메일을 발송하였습니다.",
-    "success-message-2": "Follow instructions to complete signup process.",
+    "success-message-2": "지시에 따라 회원가입 절차를 진행하시기 바랍니다.",
     "login-1": "이미 회원이신가요?",
     "login-2": "로그인",
     "login-btn-label": "로그인 화면으로 돌아가기"
