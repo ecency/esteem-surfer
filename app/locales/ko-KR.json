@@ -597,16 +597,16 @@
     "profile-image": "프로필 사진",
     "website": "웹사이트",
     "location": "위치",
-    "updated": "프로필이 업데이트되었습니다!"
+    "updated": "프로필이 변경되었습니다!"
   },
   "password-update": {
     "title": "비밀번호",
-    "cur-pass": "기존 비밀번호",
+    "cur-pass": "현재 비밀번호",
     "new-pass": "새로운 비밀번호",
-    "new-pass2": "새로운 비밀번호 확인",
-    "error-current": "기존 비밀번호를 입력하세요",
+    "new-pass2": "새로운 비밀번호를 확인하세요",
+    "error-current": "현재 비밀번호를 입력하세요",
     "error-new": "새로운 비밀번호를 입력하세요",
-    "error-new2": "비밀번호는 같아야 합니다.",
-    "updated": "비밀번호가 업데이트되었습니다!"
+    "error-new2": "비밀번호는 동일해야 합니다.",
+    "updated": "비밀번호가 변경되었습니다!"
   }
 }
