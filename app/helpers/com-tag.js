@@ -14,7 +14,7 @@ export default tag =>
     }
 
     axios
-      .post('https://beta-api.steemit.com', {
+      .post('https://api.steemit.com', {
         jsonrpc: '2.0',
         method: 'bridge.get_community',
         params: { name: tag, observer: '' },
