@@ -72,7 +72,7 @@ export const scLogin = () =>
     const win = new remote.BrowserWindow(windowSettings);
     win.webContents.setUserAgent(`Chrome/77.0.3835.0`);
 
-    const authUrl = `https://steemconnect.com/oauth2/authorize?client_id=${APP_NAME}&redirect_uri=${encodeURIComponent(
+    const authUrl = `https://hivesigner.com/oauth2/authorize?client_id=${APP_NAME}&redirect_uri=${encodeURIComponent(
       REDIR_URL
     )}&response_type=code&scope=${encodeURIComponent(SCOPE)}`;
 
@@ -109,7 +109,7 @@ const standardScWindow = path =>
     const win = new remote.BrowserWindow(windowSettings);
     win.webContents.setUserAgent(`Chrome/77.0.3835.0`);
 
-    const authUrl = `https://steemconnect.com/${path}`;
+    const authUrl = `https://hivesigner.com/${path}`;
 
     win.loadURL(createWindowView(authUrl));
     const windowInt = setInterval(async () => {
