@@ -93,8 +93,7 @@
     "create-account-text-1": "Don't have an account?",
     "create-account-text-2": "Sign up now!",
     "login-with-sc": "登入方式",
-    "divider-text": "或",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "divider-text": "或"
   },
   "sign-up": {
     "title": "Sign Up",
