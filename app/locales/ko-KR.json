@@ -93,8 +93,7 @@
     "create-account-text-1": "계정이 없으신가요?",
     "create-account-text-2": "지금 가입해보세요.",
     "login-with-sc": "steemconnect를 이용해 로그인하세요",
-    "divider-text": "또는",
-    "sc-note": "주의: Steemconnect에서 당신의 보상 트랜잭션에 대해 일정 수수료를 부과할 수도 있습니다"
+    "divider-text": "또는"
   },
   "sign-up": {
     "title": "회원 가입",
