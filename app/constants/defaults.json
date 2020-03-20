@@ -9,7 +9,7 @@
   },
   "locale": "en-US",
   "pushNotify": 1,
-  "server": "https://api.hive.blog",
+  "server": "https://rpc.esteem.app",
   "minPinCode": 4,
   "maxPinCodeTry": 5,
   "searchSort": "popularity"

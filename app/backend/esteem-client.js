@@ -73,7 +73,7 @@ export const getCurrencyRate = cur =>
 
 export const getNodes = () =>
   axios
-    .get(`https://storage.googleapis.com/esteem/public_nodes.json`)
+    .get(`https://esteem.app/public-nodes.json`)
     .then(resp => resp.data.steemd);
 
 export const getActiveVotes = user =>
