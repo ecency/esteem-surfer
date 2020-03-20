@@ -93,8 +93,7 @@
     "create-account-text-1": "Ще не зареєстровані?",
     "create-account-text-2": "Зареєструйтеся зараз!",
     "login-with-sc": "Увійти через",
-    "divider-text": "АБО",
-    "sc-note": "Примітка: Steemconnect може стягувати деяку плату з ваших транзакцій винагород"
+    "divider-text": "АБО"
   },
   "sign-up": {
     "title": "Зареєструватися",
