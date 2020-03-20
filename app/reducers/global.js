@@ -27,7 +27,7 @@ const defaultState = {
   currencySymbol: getItem('currency-symbol', defaults.currency.symbol),
   locale: getItem('locale', defaults.locale),
   pushNotify: Number(getItem('push-notify', defaults.pushNotify)),
-  server: getItem('server', defaults.server),
+  server: getItem('server2', defaults.server),
   pin: null,
   intConn: navigator.onLine
 };

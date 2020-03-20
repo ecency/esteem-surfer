@@ -31,7 +31,7 @@ import { getItem } from '../helpers/storage';
 
 import { usrActivity } from './esteem-client';
 
-let client = new Client(getItem('server', defaults.server));
+let client = new Client(getItem('server2', defaults.server));
 
 export const setAddress = address => {
   client = new Client(address);

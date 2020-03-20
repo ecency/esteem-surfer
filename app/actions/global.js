@@ -61,7 +61,7 @@ export const changePushNotify = val => dispatch => {
 };
 
 export const changeServer = server => dispatch => {
-  setItem('server', server);
+  setItem('server2', server);
 
   setAddress(server);
 
