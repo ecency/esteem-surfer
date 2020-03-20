@@ -93,8 +93,7 @@
     "create-account-text-1": "Еще нет аккаунта?",
     "create-account-text-2": "Зарегистрируйтесь сейчас!",
     "login-with-sc": "Войти через",
-    "divider-text": "или",
-    "sc-note": "Примечание: Steemconnect может взимать некоторые сборы из ваших транзакций вознаграждений"
+    "divider-text": "или"
   },
   "sign-up": {
     "title": "Регистрация",
