@@ -93,8 +93,7 @@
     "create-account-text-1": "還沒有帳號嗎？",
     "create-account-text-2": "立刻註冊!",
     "login-with-sc": "登入方式",
-    "divider-text": "或",
-    "sc-note": "注意：SteemConnect 可能會從您的獎勵交易中收取一些費用"
+    "divider-text": "或"
   },
   "sign-up": {
     "title": "註冊",
