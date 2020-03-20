@@ -93,8 +93,7 @@
     "create-account-text-1": "Pas encore de compte ?",
     "create-account-text-2": "Enregistrez-vous maintenant !",
     "login-with-sc": "Se connecter avec",
-    "divider-text": "OU",
-    "sc-note": "Note: Steemconnect peut facturer des frais sur vos transactions de récompense"
+    "divider-text": "OU"
   },
   "sign-up": {
     "title": "Sign Up",
