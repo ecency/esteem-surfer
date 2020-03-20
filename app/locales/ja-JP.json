@@ -93,8 +93,7 @@
     "create-account-text-1": "アカウントがありませんか？",
     "create-account-text-2": "今すぐ登録！",
     "login-with-sc": "次のものでログイン",
-    "divider-text": "または",
-    "sc-note": "注意: Steemconnectはあなたの報酬から多少の手数料を徴収するかもしれません"
+    "divider-text": "または"
   },
   "sign-up": {
     "title": "サインアップ",
