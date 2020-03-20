@@ -49,7 +49,7 @@
     ]
   },
   "build": {
-    "productName": "eSteem Surfer",
+    "productName": "eSteem",
     "appId": "app.esteem.surfer",
     "files": [
       "dist/",
