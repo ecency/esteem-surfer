@@ -36,7 +36,7 @@ import {
 
 import { scLogin } from '../../helpers/sc';
 
-import scLogo from '../../img/steem-connect.svg';
+import hsLogo from '../../img/hivesigner.svg';
 
 import logo from '../../img/logo-big.png';
 
@@ -582,10 +582,7 @@ class Login extends Component {
             <FormattedMessage id="login.login-with-sc" />
           </p>
           <div className="logo">
-            <img src={scLogo} alt="Steem Connect" />
-          </div>
-          <div className="sc-note">
-            <FormattedMessage id="login.sc-note" />
+            <img src={hsLogo} alt="Hive Signer" /> hivesigner
           </div>
         </div>
       </div>
