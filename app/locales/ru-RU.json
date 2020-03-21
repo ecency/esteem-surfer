@@ -168,17 +168,17 @@
     "section-points": "Очки",
     "top-posts": "Лучшее",
     "unclaimed-rewards": "Зачислить награду",
-    "estimated-value": "Предполагаемая стоимость. Основана на средней стоимости Steem последние 7 дней.",
-    "steem": "Steem",
-    "steem-description": "Steem - это торгуемые токены, которые можно вывести в любое время. Steem можно конвертировать в Силу голоса, этот процесс называется Повышением силы.",
-    "steem-power": "Steem Power (Сила)",
-    "steem-power-description": "Steam Power (Сила) - это токены влияния, которые дают ещё больше силы, если их не выводить и использовать для голосования. Чем больше у вас Steem Power, тем больше ваше влияние на награды других и больше ваш заработок за удачные голосования.",
-    "steem-power-delegated": "Делегированная Сила Голоса",
-    "steem-power-received": "Полученная Сила Голоса",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "Следующее понижение силы",
-    "steem-power-total": "Всего Силы Голоса",
-    "steem-dollars": "Доллары Steem",
-    "steem-dollars-description": "Токены, стоимостью примерно $1 от токена Steem.",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "Сейф",
     "savings-description": "Сейф, баланс которого можно вывести в течение 3 дней после запроса.",
     "next-power-down": "Следующее понижение силы {amount} запланировано {time}",
@@ -197,8 +197,8 @@
     "transfer": "Перевод",
     "transfer-to-savings": "Перевод в сейф",
     "power-up": "Повысить Силу",
-    "withdraw-steem": "Снять Steem",
-    "withdraw-sbd": "Снять Steem Dollar",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "Делегировать",
     "power-down": "Понижение Силы",
     "point-history": "История",
@@ -227,7 +227,7 @@
     "points-transfer": "Подарить кому-то",
     "points-get": "ПОЛУЧИТЬ ESTM",
     "witness-voting": "Делегаты",
-    "sps-voting": "Голосование за SPS",
+    "sps-voting": "DHF Voting",
     "profile-editor": "Редактор профиля",
     "password": "Пароль"
   },
@@ -495,12 +495,12 @@
   "transfer": {
     "transfer-title": "Перевод на аккаунт",
     "transfer-estm-title": "Подарить аккаунту",
-    "transfer-sub-title": "Перевод средств на другой аккаунт Steem",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "Перевод в сейф",
     "transfer-saving-sub-title": "Защита средства от вывода трёхдневным периодом ожидания",
     "withdraw-saving-title": "Вывод из сейфа",
     "withdraw-saving-sub-title": "Снять средства после необходимого трёхдневного периода ожидания",
-    "power-up-title": "Перевести в Силу Голоса",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "Токены влияния, от которых зависит ваша сила голоса и заработок от курирования.",
     "from": "От",
     "from-placeholder": "Выберите пользователя",
@@ -532,7 +532,7 @@
   },
   "delegate": {
     "title": "Делегировать",
-    "sub-title": "Делегирование Силы Голоса",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "Потяните ползунок для регулировки количества",
     "confirm-title": "Подтвердите делегирование",
     "confirm-sub-title": "Пожалуйста, убедитесь что всё верно",
@@ -545,7 +545,7 @@
   },
   "power-down": {
     "title": "Понижение Силы",
-    "sub-title": "Перевод Силы Steem в токены Steem",
+    "sub-title": "Power Down Hive Power",
     "account": "Aккаунт",
     "incoming-funds": "Входящие средства",
     "begin": "Начать понижение Силы",
@@ -569,10 +569,10 @@
     "search-placeholder": "Поиск пользователей"
   },
   "delegated-list": {
-    "title": "Делегированная Сила голоса от @{n}"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "Делегированная Сила голоса к @{n}"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "Покупка ESTM",
