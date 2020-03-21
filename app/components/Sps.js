@@ -451,7 +451,7 @@ class SpsListItem extends PureComponent {
                 minimumFractionDigits={0}
                 maximumFractionDigits={0}
               />{' '}
-              {'SP'}
+              {'HP'}
             </a>
           </Col>
         </Row>
