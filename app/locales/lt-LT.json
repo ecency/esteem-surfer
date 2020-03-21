@@ -168,17 +168,17 @@
     "section-points": "Points",
     "top-posts": "TOP Įrašai",
     "unclaimed-rewards": "Neatsiimtas atlygis",
-    "estimated-value": "Apskaičiuota vertė yra pagrįsta 7 dienų vidutinei Steem vertei.",
-    "steem": "Steem",
-    "steem-description": "STEEM yra mainomi virtualūs žetonai, kurie gali būti pervesti bet kuriuo metu. STEEM gali būti pervestas į Steem Power, procesą vadinama jėgos kėlimu.",
-    "steem-power": "Steem Power",
-    "steem-power-description": "Steem Power yra įtakingi virtualūs žetonai, kurie įgauna daugiau galios juos kaupiant ir balsuojant. Kuo daugiau Steem Power vartotojas turi, tuo daugiau įtakos jis turi kitų vartotojų atlygiui ir gali pats gauti atlygį už tikslų balsavimą.",
-    "steem-power-delegated": "Deleguotas Steem Power",
-    "steem-power-received": "Gautas Steem Power",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "Kita galios mažinimo suma",
-    "steem-power-total": "Visas Steem Power",
-    "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "Žetonai verti apie $1.00 STEEM.",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "Santaupos",
     "savings-description": "Santaupos apsaugotos 3 dienų laikotarpiu išsiėmimui.",
     "next-power-down": "Kitas Power Down yra {time} {amount}",
@@ -197,8 +197,8 @@
     "transfer": "Pervesti",
     "transfer-to-savings": "Pervesti į santaupas",
     "power-up": "Galios kėlimas",
-    "withdraw-steem": "Išsiimti Steem",
-    "withdraw-sbd": "Išsiimti Steem Dollar",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "Deleguoti",
     "power-down": "Mažinti Galią",
     "point-history": "History",
@@ -227,7 +227,7 @@
     "points-transfer": "Gift to someone",
     "points-get": "GET ESTM",
     "witness-voting": "Witnesses",
-    "sps-voting": "SPS Voting",
+    "sps-voting": "DHF Voting",
     "profile-editor": "Profile Editor",
     "password": "Password"
   },
@@ -495,12 +495,12 @@
   "transfer": {
     "transfer-title": "Pervesti į Paskyrą",
     "transfer-estm-title": "Gift to Account",
-    "transfer-sub-title": "Perkelti lėšas į kitą Steem paskyrą",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "Pervesti į Santaupas",
     "transfer-saving-sub-title": "Apsaugoti lėšas reikalaujant 3 dienų atsiėmimui",
     "withdraw-saving-title": "Išsiimti Santaupas",
     "withdraw-saving-sub-title": "Atsiimti lėšas po 3 dienų laukimo periodo",
-    "power-up-title": "Konvertuoti į Steem Power",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "Įtakingi žetonai kurie vartotojui duoda daugiau kontrolės įrašų išmokom ir leidžia jums gauti kuracijos atlygį.",
     "from": "Nuo",
     "from-placeholder": "Pasirinkite vartotoją",
@@ -532,7 +532,7 @@
   },
   "delegate": {
     "title": "Deleguoti",
-    "sub-title": "Deleguoti Steem Power",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "Vilkite slankiklį, jog kad sureguliuotumėte suma",
     "confirm-title": "Patvirtinti delegaciją",
     "confirm-sub-title": "Prašome atidžiai patikrinti ar viskas teisinga",
@@ -545,7 +545,7 @@
   },
   "power-down": {
     "title": "Mažinti Galią",
-    "sub-title": "Mažinti Steem Power",
+    "sub-title": "Power Down Hive Power",
     "account": "Paskyra",
     "incoming-funds": "Gausimos Lėšos",
     "begin": "Pradėti Galios Mažinimą",
@@ -569,10 +569,10 @@
     "search-placeholder": "Ieškoti narių"
   },
   "delegated-list": {
-    "title": "Deleguota Steem Power nuo @{n}"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "Deleguota Steem Power vartotojui @{n}"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "ESTM purchase",
