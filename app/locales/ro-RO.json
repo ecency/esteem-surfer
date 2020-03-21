@@ -168,17 +168,17 @@
     "section-points": "Puncte",
     "top-posts": "Top Postări",
     "unclaimed-rewards": "Recompense nerevendicate",
-    "estimated-value": "Valoarea estimată se bazează pe o medie de 7 zile a valorii Steem.",
-    "steem": "Steem",
-    "steem-description": "STEEM sunt token-uri convertibile ce pot fi transferate oricând. STEEM pot fi transformați in Steem Power printr-un proces numit power up.",
-    "steem-power": "Steem Power",
-    "steem-power-description": "Steem Power sunt token-uri de influență ce câștigă mai multă putere pentru menținerea puterii de vot și votare. Cu cât deții mai mult Steem Power, cu atât poți influența recompensele altora si poti câștiga recompense pentru votare.",
-    "steem-power-delegated": "Steem Power Delegat",
-    "steem-power-received": "Steem Power Primit",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "Următoarea sumă power down",
-    "steem-power-total": "Steem Power Total",
-    "steem-dollars": "Steem Dolari",
-    "steem-dollars-description": "Token-uri în valoare de $1,00 STEEM.",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "Economii",
     "savings-description": "Soldul este supus unei perioade de așteptare de 3 zile în caz de retragere.",
     "next-power-down": "Următoarea power down este {time} {amount}",
@@ -197,8 +197,8 @@
     "transfer": "Transfer",
     "transfer-to-savings": "Transfer la economii",
     "power-up": "Power Up",
-    "withdraw-steem": "Retrage Steem",
-    "withdraw-sbd": "Retrage Steem Dolar",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "Delegare",
     "power-down": "Power Down",
     "point-history": "Istoric",
@@ -227,7 +227,7 @@
     "points-transfer": "Dăruiește cuiva",
     "points-get": "OBȚINE ESTM",
     "witness-voting": "Martori",
-    "sps-voting": "Votare SPS",
+    "sps-voting": "DHF Voting",
     "profile-editor": "Editare profil",
     "password": "Parolă"
   },
@@ -495,12 +495,12 @@
   "transfer": {
     "transfer-title": "Transfer către Cont",
     "transfer-estm-title": "Gift to Account",
-    "transfer-sub-title": "Tranferă fonduri către un alt cont Steem",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "Transfer la Economii",
     "transfer-saving-sub-title": "Protejează fondurile cerând o perioadă de așteptare de 3 zile",
     "withdraw-saving-title": "Retragere Economii",
     "withdraw-saving-sub-title": "Retrage fondurile după perioada de așteptare de 3 zile",
-    "power-up-title": "Convertește în Steem Power",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "Token-uri de influență care îți oferă mai mult control asupra plății postărilor și îți permit să câștigi recompense de curare.",
     "from": "De la",
     "from-placeholder": "Selectează un utilizator",
@@ -532,7 +532,7 @@
   },
   "delegate": {
     "title": "Delegare",
-    "sub-title": "Delegare Steem Power",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "Trage glisorul pentru a ajusta cantitatea",
     "confirm-title": "Confirmă Delegarea",
     "confirm-sub-title": "Te rugăm să verifici dacă totul este corect",
@@ -545,7 +545,7 @@
   },
   "power-down": {
     "title": "Putere Scăzută",
-    "sub-title": "Power Down Steem Power",
+    "sub-title": "Power Down Hive Power",
     "account": "Cont",
     "incoming-funds": "Fondurile Primite",
     "begin": "Începe Putere Scăzută",
@@ -569,10 +569,10 @@
     "search-placeholder": "Caută utilizatori"
   },
   "delegated-list": {
-    "title": "Steem power delegat de la @{n}"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "Steem power delegat pentru @{n}"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "Cumpără ESTM",
