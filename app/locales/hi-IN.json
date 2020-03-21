@@ -168,17 +168,17 @@
     "section-points": "Points",
     "top-posts": "मुख्य लेखें",
     "unclaimed-rewards": "बिना दावे के इनामें",
-    "estimated-value": "अनुमानित कीमत आधारित होता है स्टीम की ७ दिन का औसतन कीमत पर|",
-    "steem": "स्टीम",
-    "steem-description": "स्टीम एक व्यापार करने लायक टोकन होता है जिसे कभी भी स्थान्तरण किया जा सकता है| स्टीम को स्टीम शक्ति में परिवर्तन किया जा सकता है जिसे स्टीम शक्ति बढ़ाना कहते हैं|",
-    "steem-power": "स्टीम शक्ति",
-    "steem-power-description": "स्टीम शक्ति प्रभावी टोकन होतें है जो अधीक शक्ति कमाता है अधीक समय तक जमा रखने और पोस्ट में वोट करने से| जो अधीक स्टीम शक्ति जमा रखता है, वो दुशरे के इनाम को प्रभावित्त कर सकता है और कमाता है इनाम सही वोट करने से|",
-    "steem-power-delegated": "स्टीम शक्ति प्रदत हुवा",
-    "steem-power-received": "स्टीम शक्ति प्राप्त हुवा",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "अगला शक्तिक्षय रकम",
-    "steem-power-total": "कुल स्टीम शक्ति",
-    "steem-dollars": "स्टीम डॉलर्स",
-    "steem-dollars-description": "$१ स्टीम का सही कीमत|",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "बचत",
     "savings-description": "बचे राशि को आप ३ दिन बीतने के बाद निकाल सकते हैं|",
     "next-power-down": "अगला शक्तिक्षय है {time}{amount}",
@@ -197,8 +197,8 @@
     "transfer": "स्थान्तरण",
     "transfer-to-savings": "बचत खाते में स्थांतरण करें",
     "power-up": "शक्ति प्रापक",
-    "withdraw-steem": "स्टीम निकालें",
-    "withdraw-sbd": "स्टीम डॉलर निकालें",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "कार्यभार सौंपें",
     "power-down": "शक्तिक्षय करें",
     "point-history": "History",
@@ -227,7 +227,7 @@
     "points-transfer": "Gift to someone",
     "points-get": "GET ESTM",
     "witness-voting": "Witnesses",
-    "sps-voting": "SPS Voting",
+    "sps-voting": "DHF Voting",
     "profile-editor": "Profile Editor",
     "password": "Password"
   },
@@ -495,12 +495,12 @@
   "transfer": {
     "transfer-title": "Transfer to Account",
     "transfer-estm-title": "Gift to Account",
-    "transfer-sub-title": "Move funds to another Steem account",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "Transfer to Savings",
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
     "withdraw-saving-title": "Savings Withdraw",
     "withdraw-saving-sub-title": "Withdraw funds after the required 3 day waiting period",
-    "power-up-title": "Convert to Steem Power",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "Influence tokens which give you more control over post payouts and allow you to earn on curation rewards.",
     "from": "From",
     "from-placeholder": "Select a user",
@@ -532,7 +532,7 @@
   },
   "delegate": {
     "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "Drag the slider to adjust the amount",
     "confirm-title": "Confirm Delegation",
     "confirm-sub-title": "Please, check if everything is correct",
@@ -545,7 +545,7 @@
   },
   "power-down": {
     "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
+    "sub-title": "Power Down Hive Power",
     "account": "Account",
     "incoming-funds": "Incoming Funds",
     "begin": "Begin Power Down",
@@ -569,10 +569,10 @@
     "search-placeholder": "Search users"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "ESTM purchase",
