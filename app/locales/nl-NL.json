@@ -168,17 +168,17 @@
     "section-points": "Points",
     "top-posts": "Top-artikelen",
     "unclaimed-rewards": "Niet-opgeëiste beloningen",
-    "estimated-value": "De geschatte waarde is gebaseerd op een 7-daags gemiddelde waarde van STEEM.",
-    "steem": "Steem",
-    "steem-description": "STEEM zijn verhandelbare tokens die op elk moment kunnen worden overgedragen. STEEM kan worden geconverteerd naar Steem Power in een proces genaamd 'powering up'.",
-    "steem-power": "Steem Power",
-    "steem-power-description": "Steem Power zijn beïnvloedingstokens die meer kracht krijgen door ze vast te houden op lange termijn en te stemmen op artikelen. Hoe meer Steem Power iemand heeft, hoe meer hij/zij de beloningen van anderen kan beïnvloeden en hoe meer men beloningen kan verdienen voor accuraat stemmen.",
-    "steem-power-delegated": "Gedelegeerde Steem Power",
-    "steem-power-received": "Ontvangen Steem Power",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "Next power down amount",
-    "steem-power-total": "Totale Steem Power",
-    "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "Tokens zijn ongeveer $1.00 in STEEM waard.",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "Spaarrekening",
     "savings-description": "Opname van saldo onderhevig aan wachttijd van 3 dagen.",
     "next-power-down": "De volgende power down is {time}{amount}",
@@ -197,8 +197,8 @@
     "transfer": "Overschrijven",
     "transfer-to-savings": "Overschrijven naar spaarrekening",
     "power-up": "Power up",
-    "withdraw-steem": "Neem STEEM op",
-    "withdraw-sbd": "Steem Dollar opnemen",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "Delegeer",
     "power-down": "Power Down",
     "point-history": "History",
@@ -227,7 +227,7 @@
     "points-transfer": "Gift to someone",
     "points-get": "GET ESTM",
     "witness-voting": "Witnesses",
-    "sps-voting": "SPS Voting",
+    "sps-voting": "DHF Voting",
     "profile-editor": "Profile Editor",
     "password": "Password"
   },
@@ -495,12 +495,12 @@
   "transfer": {
     "transfer-title": "Overschrijven naar account",
     "transfer-estm-title": "Gift to Account",
-    "transfer-sub-title": "Fondsen verplaatsen naar een ander Steem account",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "Overschrijven naar spaarrekening",
     "transfer-saving-sub-title": "Bescherm fondsen door een 3-daagse wachtperiode in te stellen voor opname",
     "withdraw-saving-title": "Spaargeld opnemen",
     "withdraw-saving-sub-title": "Fondsen opnemen na een verplichte wachtperiode van 3 dagen",
-    "power-up-title": "Converteren naar Steem Power",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "Beïnvloedingstokens die je meer controle geven over je artikel-uitbetalingen en waarmee je kunt verdienen aan curatiebeloningen.",
     "from": "Van",
     "from-placeholder": "Selecteer een gebruiker",
@@ -532,7 +532,7 @@
   },
   "delegate": {
     "title": "Delegeer",
-    "sub-title": "Delegeer Steem Power",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "Sleep de schuifregelaar om de hoeveelheid aan te passen",
     "confirm-title": "Bevestig de delegatie",
     "confirm-sub-title": "Controleer of alles klopt",
@@ -545,7 +545,7 @@
   },
   "power-down": {
     "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
+    "sub-title": "Power Down Hive Power",
     "account": "Account",
     "incoming-funds": "Incoming Funds",
     "begin": "Begin Power Down",
@@ -569,10 +569,10 @@
     "search-placeholder": "Search users"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "ESTM purchase",
