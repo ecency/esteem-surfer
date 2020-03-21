@@ -6,6 +6,8 @@ import { Client, PrivateKey } from 'dsteem';
 
 import sc2 from 'sc2-sdk';
 
+import defaults from '../constants/defaults';
+
 import {
   scAppAuth,
   scAppRevoke,
@@ -29,7 +31,7 @@ import { getItem } from '../helpers/storage';
 
 import { usrActivity } from './esteem-client';
 
-let client = new Client(getItem('server', 'https://api.steemit.com'));
+let client = new Client(getItem('server2', defaults.server));
 
 export const setAddress = address => {
   client = new Client(address);

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { server } from '../constants/defaults';
 
 const cache = {};
 
@@ -14,7 +15,7 @@ export default tag =>
     }
 
     axios
-      .post('https://api.steemit.com', {
+      .post(server, {
         jsonrpc: '2.0',
         method: 'bridge.get_community',
         params: { name: tag, observer: '' },

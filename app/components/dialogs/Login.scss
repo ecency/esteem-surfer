@@ -128,7 +128,7 @@
 
     .login-title {
       font-weight: 700;
-      margin: 0 0 10px 0;
+      margin: 0 0 20px 0;
     }
 
     .logo {
@@ -137,6 +137,13 @@
       margin: 0 auto 14px auto;
       padding: 3px;
       width: 190px;
+      font-size: 22px;
+      font-weight: 400;
+
+      img {
+        height: 20px;
+        margin-right: 10px;
+      }
     }
 
     .sc-note {

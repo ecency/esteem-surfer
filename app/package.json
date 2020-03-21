@@ -1,8 +1,8 @@
 {
   "name": "esteem-surfer",
-  "productName": "eSteem Surfer",
+  "productName": "eSteem",
   "description": "eSteem desktop application reimagined for Windows, Mac, Linux users, start earning cryptocurrency!",
-  "version": "2.2.3",
+  "version": "2.2.5",
   "main": "./main.prod.js",
   "author": "eSteem <info@esteem.app>",
   "scripts": {

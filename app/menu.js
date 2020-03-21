@@ -30,17 +30,17 @@ export default class MenuBuilder {
 
   buildDarwinTemplate() {
     const subMenuAbout = {
-      label: 'eSteem Surfer',
+      label: 'eSteem',
       submenu: [
         {
-          label: 'About eSteem Surfer',
+          label: 'About eSteem',
           click() {
             shell.openExternal('https://esteem.app');
           }
         },
         { type: 'separator' },
         {
-          label: 'Hide eSteem Surfer',
+          label: 'Hide eSteem',
           accelerator: 'Command+H',
           selector: 'hide:'
         },

@@ -1,4 +1,4 @@
-const strShareSuffix = 'shared via eSteem Surfer';
+const strShareSuffix = 'shared via eSteem';
 
 export const makeEsteemUrl = (cat, author, permlink) =>
   `https://esteem.app/${cat}/@${author}/${permlink}`;

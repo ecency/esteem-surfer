@@ -1,10 +1,12 @@
 import { Client } from 'dsteem';
 
+import defaults from '../constants/defaults';
+
 export const TT_FETCH_BEGIN = 'TT_FETCH_BEGIN';
 export const TT_FETCH_OK = 'TT_FETCH_OK';
 export const TT_FETCH_ERROR = 'TT_FETCH_ERROR';
 
-const client = new Client('https://api.steemit.com');
+const client = new Client(defaults.server);
 
 const shuffle = arr => {
   const arry = arr;

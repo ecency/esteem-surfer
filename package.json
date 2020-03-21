@@ -1,8 +1,8 @@
 {
   "name": "esteem-surfer",
-  "productName": "eSteem Surfer",
+  "productName": "eSteem",
   "description": "eSteem desktop application reimagined for Windows, Mac, Linux users, start earning cryptocurrency!",
-  "version": "2.2.3",
+  "version": "2.2.5",
   "releasePost": "esteem/@esteemapp/esteem-surfer-changelog",
   "private": true,
   "author": "eSteem <info@esteem.app>",
@@ -50,7 +50,7 @@
     ]
   },
   "build": {
-    "productName": "eSteem Surfer",
+    "productName": "eSteem",
     "appId": "app.esteem.surfer",
     "files": [
       "dist/",
@@ -110,10 +110,10 @@
     },
     "protocols": [
       {
-        "name": "steem",
+        "name": "hive",
         "role": "Viewer",
         "schemes": [
-          "steem",
+          "hive",
           "esteem"
         ]
       }
