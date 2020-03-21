@@ -168,17 +168,17 @@
     "section-points": "Poäng",
     "top-posts": "Topp inlägg",
     "unclaimed-rewards": "Outbetald belöning",
-    "estimated-value": "Det uppskattade värdet är baserat på ett 7 dagars genomsnittlig värde av Steem.",
-    "steem": "Steem",
-    "steem-description": "STEEM är utbytsbara tokens som går att överföra när som helst. STEEM kan omvandlas till Steem Power i en process som kallas \"powering up\".",
-    "steem-power": "Steem Power",
-    "steem-power-description": "Steem Power är inflytande-tokens som ger högre rösteffekt för att du sparar dem långsiktigt och röstar på inlägg. Ju mer Steem Power du har, desto mer kan du påverka andras belöningar och du belönas för noggrann röstning.",
-    "steem-power-delegated": "Delegerad Steem Power",
-    "steem-power-received": "Mottagna Steem Power",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "Next power down amount",
-    "steem-power-total": "Totalt Steem Power",
-    "steem-dollars": "Steem Dollar",
-    "steem-dollars-description": "Tokens värda ca. $1.00 av STEEM.",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "Sparkonto",
     "savings-description": "Saldot föremål för 3 dagars uttag väntetiden.",
     "next-power-down": "Nästa power down är {time} {amount}",
@@ -197,8 +197,8 @@
     "transfer": "Överföring",
     "transfer-to-savings": "Överför till Sparkonto",
     "power-up": "Power Up",
-    "withdraw-steem": "Ta ut Steem",
-    "withdraw-sbd": "Ta ut Steem Dollar",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "Delegera",
     "power-down": "Power Down",
     "point-history": "Historik",
@@ -227,7 +227,7 @@
     "points-transfer": "Ge till någon",
     "points-get": "GET ESTM",
     "witness-voting": "Witnesses",
-    "sps-voting": "SPS Voting",
+    "sps-voting": "DHF Voting",
     "profile-editor": "Profile Editor",
     "password": "Lösenord"
   },
@@ -495,12 +495,12 @@
   "transfer": {
     "transfer-title": "Överför till konto",
     "transfer-estm-title": "Gift to Account",
-    "transfer-sub-title": "Flytta medel till ett annat Steem konto",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "För över till Sparkonto",
     "transfer-saving-sub-title": "Skydda medel genom att kräva en 3 dagars uttag väntetid",
     "withdraw-saving-title": "Sparkonto Uttag",
     "withdraw-saving-sub-title": "Ta ut medel efter den begärda 3 dagars väntetiden",
-    "power-up-title": "Konvertera till Steem Power",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "Inflytande-tokens som ger dig mer kontroll över inläggsutbetalningar och du kan tjäna på \"curation\" belöningar.",
     "from": "Från",
     "from-placeholder": "Välj en användare",
@@ -532,7 +532,7 @@
   },
   "delegate": {
     "title": "Delegera",
-    "sub-title": "Delegera Steem Power",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "Dra skjutreglaget för att justera mängden",
     "confirm-title": "Bekräfta Delegation",
     "confirm-sub-title": "Kontrollera om allt är korrekt",
@@ -545,7 +545,7 @@
   },
   "power-down": {
     "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
+    "sub-title": "Power Down Hive Power",
     "account": "Konto",
     "incoming-funds": "Incoming Funds",
     "begin": "Begin Power Down",
@@ -569,10 +569,10 @@
     "search-placeholder": "Sök användare"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "ESTM purchase",
