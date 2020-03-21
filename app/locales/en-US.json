@@ -168,17 +168,17 @@
     "section-points": "Points",
     "top-posts": "Top Posts",
     "unclaimed-rewards": "Unclaimed rewards",
-    "estimated-value": "The estimated value is based on a 7 day average value of Steem.",
-    "steem": "Steem",
-    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
-    "steem-power": "Steem Power",
-    "steem-power-description": "Steem Power are influence tokens that earn more power for holding long term and voting on posts. The more Steem Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
-    "steem-power-delegated": "Delegated Steem Power",
-    "steem-power-received": "Received Steem Power",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "Next power down amount",
-    "steem-power-total": "Total Steem Power",
-    "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "Savings",
     "savings-description": "Balance subject to 3 day withdraw waiting period.",
     "next-power-down": "The next power down is {time} {amount}",
@@ -197,8 +197,8 @@
     "transfer": "Transfer",
     "transfer-to-savings": "Transfer to savings",
     "power-up": "Power up",
-    "withdraw-steem": "Withdraw Steem",
-    "withdraw-sbd": "Withdraw Steem Dollar",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "Delegate",
     "power-down": "Power Down",
     "point-history": "History",
@@ -495,12 +495,12 @@
   "transfer": {
     "transfer-title": "Transfer to Account",
     "transfer-estm-title": "Gift to Account",
-    "transfer-sub-title": "Move funds to another Steem account",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "Transfer to Savings",
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
     "withdraw-saving-title": "Savings Withdraw",
     "withdraw-saving-sub-title": "Withdraw funds after the required 3 day waiting period",
-    "power-up-title": "Convert to Steem Power",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "Influence tokens which give you more control over post payouts and allow you to earn on curation rewards.",
     "from": "From",
     "from-placeholder": "Select a user",
@@ -532,7 +532,7 @@
   },
   "delegate": {
     "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "Drag the slider to adjust the amount",
     "confirm-title": "Confirm Delegation",
     "confirm-sub-title": "Please, check if everything is correct",
@@ -545,7 +545,7 @@
   },
   "power-down": {
     "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
+    "sub-title": "Power Down Hive Power",
     "account": "Account",
     "incoming-funds": "Incoming Funds",
     "begin": "Begin Power Down",
@@ -569,10 +569,10 @@
     "search-placeholder": "Search users"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "ESTM purchase",
