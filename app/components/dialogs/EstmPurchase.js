@@ -104,7 +104,7 @@ class EstmPurchase extends PureComponent {
                 this.selectCurr('STEEM');
               }}
             >
-              STEEM
+              HIVE
             </Button>
             <Button
               {...{ type: curr === 'SBD' ? 'primary' : '' }}
@@ -112,7 +112,7 @@ class EstmPurchase extends PureComponent {
                 this.selectCurr('SBD');
               }}
             >
-              SBD
+              HBD
             </Button>
           </Button.Group>
         </div>

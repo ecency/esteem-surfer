@@ -666,13 +666,13 @@ export class TransactionRow extends Component {
           {sbdPayout > 0 && (
             <span className="number">
               <FormattedNumber value={sbdPayout} minimumFractionDigits={3} />{' '}
-              {'SBD'}
+              {'HBD'}
             </span>
           )}
           {steemPayout > 0 && (
             <span className="number">
               <FormattedNumber value={steemPayout} minimumFractionDigits={3} />{' '}
-              {'STEEM'}
+              {'HIVE'}
             </span>
           )}
           {vestingPayout > 0 && (
@@ -714,13 +714,13 @@ export class TransactionRow extends Component {
           {rewardSbd > 0 && (
             <span className="number">
               <FormattedNumber value={rewardSbd} minimumFractionDigits={3} />{' '}
-              {'SBD'}
+              {'HBD'}
             </span>
           )}
           {rewardSteem > 0 && (
             <span className="number">
               <FormattedNumber value={rewardSteem} minimumFractionDigits={3} />{' '}
-              {'STEEM'}
+              {'HIVE'}
             </span>
           )}
           {rewardVests > 0 && (
@@ -1227,10 +1227,10 @@ export class SectionWallet extends Component {
                 </div>
                 <div className="rewards">
                   {rewardSteemBalance > 0 && (
-                    <span className="reward-type">{`${rewardSteemBalance} STEEM`}</span>
+                    <span className="reward-type">{`${rewardSteemBalance} HIVE`}</span>
                   )}
                   {rewardSbdBalance > 0 && (
-                    <span className="reward-type">{`${rewardSbdBalance} SBD`}</span>
+                    <span className="reward-type">{`${rewardSbdBalance} HBD`}</span>
                   )}
                   {rewardVestingSteem > 0 && (
                     <span className="reward-type">{`${rewardVestingSteem} SP`}</span>
@@ -1293,7 +1293,7 @@ export class SectionWallet extends Component {
                       value={balance}
                       minimumFractionDigits={3}
                     />{' '}
-                    {'STEEM'}
+                    {'HIVE'}
                   </div>
                   <div className="fund-action">
                     {isMyPage && (
@@ -1478,7 +1478,7 @@ export class SectionWallet extends Component {
                       minimumFractionDigits={3}
                       value={savingBalance}
                     />{' '}
-                    {'STEEM'}
+                    {'HIVE'}
                   </div>
                   <div className="fund-action">
                     {isMyPage && (

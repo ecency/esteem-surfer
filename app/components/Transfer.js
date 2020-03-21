@@ -65,14 +65,14 @@ class AssetSwitch extends PureComponent {
           role="none"
           className={`asset ${selected === 'STEEM' ? 'selected' : ''}`}
         >
-          STEEM
+          HIVE
         </a>
         <a
           onClick={() => this.clicked('SBD')}
           role="none"
           className={`asset ${selected === 'SBD' ? 'selected' : ''}`}
         >
-          SBD
+          HBD
         </a>
         <a
           onClick={() => this.clicked('ESTM')}
