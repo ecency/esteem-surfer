@@ -168,17 +168,17 @@
     "section-points": "포인트",
     "top-posts": "인기 글",
     "unclaimed-rewards": "아직 요청하지 않은 보상",
-    "estimated-value": "추정 가치는 7 일 간의 스팀 평균 가격을 토대로 산정합니다.",
-    "steem": "스팀",
-    "steem-description": "스팀은 언제든지 송금할 수 있기 때문에 쉽게 거래할 수 있는 토큰입니다. 스팀은 파워 업이라는 과정을 통해 스팀 파워로 전환할 수 있습니다.",
-    "steem-power": "스팀 파워",
-    "steem-power-description": "스팀 파워는 장기간 보유시 더 늘어날 수 있고, 글에 대한 보팅에 영향력을 행사하는 토큰입니다. 스팀 파워가 많을수록 다른 사람의 보상에 미치는 영향력이 더 커지고, 큐레이션 보상도 늘어납니다.",
-    "steem-power-delegated": "임대한 스팀 파워",
-    "steem-power-received": "임대받은 스팀 파워",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "다음 번 파워 다운 수량",
-    "steem-power-total": "스팀 파워 합계",
-    "steem-dollars": "스팀 달러",
-    "steem-dollars-description": "스팀으로 환산했을때 $1.00 만큼의 가치를 갖는 토큰",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "안전 금고",
     "savings-description": "잔액을 출금하려면 3일간 기다려야 합니다.",
     "next-power-down": "다음 번 파워 다운은 {time} {amount} 입니다",
@@ -197,8 +197,8 @@
     "transfer": "송금",
     "transfer-to-savings": "안전 금고로 송금",
     "power-up": "파워 업",
-    "withdraw-steem": "스팀 출금",
-    "withdraw-sbd": "스팀 달러 출금",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "임대",
     "power-down": "파워 다운",
     "point-history": "내역",
@@ -227,7 +227,7 @@
     "points-transfer": "포인트 선물하기",
     "points-get": "ESTM 구매",
     "witness-voting": "증인",
-    "sps-voting": "SPS 투표",
+    "sps-voting": "DHF Voting",
     "profile-editor": "프로필 편집기",
     "password": "비밀번호"
   },
@@ -495,12 +495,12 @@
   "transfer": {
     "transfer-title": "송금하기",
     "transfer-estm-title": "선물하기",
-    "transfer-sub-title": "다른 스팀 계정으로 자금 보내기",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "안전 금고로 송금",
     "transfer-saving-sub-title": "3일 간의 출금 대기 기간이 설정된 안전금고를 이용해 자금을 보호하세요",
     "withdraw-saving-title": "안전 금고 출금",
     "withdraw-saving-sub-title": "3일 간의 대기 기간이 지나야 자금을 출금할 수 있습니다",
-    "power-up-title": "스팀 파워로 전환하기",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "스팀 파워가 증가하면 글 보상, 큐레이션 보상에 더 큰 영향력을 발휘할 수 있습니다.",
     "from": "보낸 사람",
     "from-placeholder": "사용자 선택하기",
@@ -532,7 +532,7 @@
   },
   "delegate": {
     "title": "임대",
-    "sub-title": "스팀 파워 임대",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "슬라이드를 드래그해서 수량을 설정할 수 있습니다",
     "confirm-title": "임대 확인",
     "confirm-sub-title": "정보가 맞는지 다시 한 번 확인하세요",
@@ -545,7 +545,7 @@
   },
   "power-down": {
     "title": "파워 다운",
-    "sub-title": "SP 파워 다운",
+    "sub-title": "Power Down Hive Power",
     "account": "계정",
     "incoming-funds": "입금 예정 스팀",
     "begin": "파워 다운 시작",
@@ -569,10 +569,10 @@
     "search-placeholder": "검색하고 싶은 사용자 이름을 입력하세요"
   },
   "delegated-list": {
-    "title": "@{n} 님이 임대해 준 스팀 파워"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "@{n} 님에게 임대한 스팀 파워"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "ESTM 구매",
