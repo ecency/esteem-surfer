@@ -168,17 +168,17 @@
     "section-points": "Mata ganjaran",
     "top-posts": "Pos-pos Paling Terkenal",
     "unclaimed-rewards": "Ganjaran yang belum dituntut",
-    "estimated-value": "Nilai anggaran ini adalah berdasarkan kepada nilai Steem purata 7 hari {}.",
-    "steem": "Steem",
-    "steem-description": "Steem adalah token yang boleh dipindahkan pada bila-bila masa. Steem boleh ditukar kepada Steem Power dengan proses yang dipanggil Power Up.",
-    "steem-power": "Steem Power",
-    "steem-power-description": "Steem Power adalah token berkuasa untuk mempengaruhi dan pegangan jangka masa panjang. Seseorang yang memegang lebih Steem Power, maka lebih berkuasa mempengaruhi ganjaran bila dia mengundi.",
-    "steem-power-delegated": "Mewakilkan Steem Power",
-    "steem-power-received": "Steem Power diterima",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "Power down yang seterusnya akan terjadi pada",
-    "steem-power-total": "Jumlah Steem Power",
-    "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "Token bernilai kira-kira $1.00 daripada Steem.",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "Simpanan",
     "savings-description": "Baki tertakluk kepada 3 hari tempoh menunggu jika mengeluarkan.",
     "next-power-down": "Penurunan kuasa {amount} seterusnya pada masa {time}",
@@ -197,8 +197,8 @@
     "transfer": "Pindah",
     "transfer-to-savings": "Pindah kepada simpanan",
     "power-up": "Power Up",
-    "withdraw-steem": "Keluarkan Steem",
-    "withdraw-sbd": "Keluarkan Steem Dollar",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "Perwakilan",
     "power-down": "Power Down",
     "point-history": "Sejarah",
@@ -227,7 +227,7 @@
     "points-transfer": "Gift to someone",
     "points-get": "GET ESTM",
     "witness-voting": "Witnesses",
-    "sps-voting": "SPS Voting",
+    "sps-voting": "DHF Voting",
     "profile-editor": "Profile Editor",
     "password": "Password"
   },
@@ -495,12 +495,12 @@
   "transfer": {
     "transfer-title": "Transfer ke akaun",
     "transfer-estm-title": "Gift to Account",
-    "transfer-sub-title": "Pindahkan dana ke akaun steem lain",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "Pindah kepada simpanan",
     "transfer-saving-sub-title": "Melindungi dana dengan masa tunggu 3 hari bila ingin dikeluarkan",
     "withdraw-saving-title": "Mengeluarkan simpanan",
     "withdraw-saving-sub-title": "Keluarkan dana selepas menunggu 3 hari masa lindungan",
-    "power-up-title": "Menukar kepada Steem Power",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "Token berpengaruh untuk memberi anda penyelarasan atas ganjaran pos dan memungkinkan anda untuk menjana ganjaran kurasi.",
     "from": "Daripada",
     "from-placeholder": "Pilih pengguna",
@@ -532,7 +532,7 @@
   },
   "delegate": {
     "title": "Mewakilkan",
-    "sub-title": "Mewakilkan Steem Power",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "Seret penggelongsor untuk menyelaraskan amaun",
     "confirm-title": "Mengesahkan wakil",
     "confirm-sub-title": "Sila periksa, adakah semua betul",
@@ -545,7 +545,7 @@
   },
   "power-down": {
     "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
+    "sub-title": "Power Down Hive Power",
     "account": "Akaun",
     "incoming-funds": "Wang masuk",
     "begin": "Power Down Dimulakan",
@@ -569,10 +569,10 @@
     "search-placeholder": "Cari pengguna"
   },
   "delegated-list": {
-    "title": "Steem power delegasi daripada @{n}"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "Steem power delegasi leads @{n}"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "ESTM purchase",
