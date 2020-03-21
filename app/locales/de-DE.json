@@ -168,17 +168,17 @@
     "section-points": "eSteem Punkte",
     "top-posts": "die besten Beiträge",
     "unclaimed-rewards": "Nicht abgeholte Belohnungen",
-    "estimated-value": "Der erwartete Wert basiert auf einem 7-Tage-Durchschnittswert vom Steem.",
-    "steem": "Steem",
-    "steem-description": "STEEM sind handelbare Token, die man jederzeit transferieren kann. STEEM können ebenfalls auch durch einen Power-Up zu Steem Power konvertiert werden.",
-    "steem-power": "Steem-Power",
-    "steem-power-description": "Steem-Power zeigt deine Stärke und Votekraft. Je mehr Steem-Power du hast, umso mehr Einfluss hast du auf Beiträge und die Belohnung. Mit einer höheren Steem-Power kuratierst du besser und effektiver.",
-    "steem-power-delegated": "delegierte Steem-Power",
-    "steem-power-received": "erhaltene Steem-Power",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "Nächster Power-Down Betrag",
-    "steem-power-total": "gesamte Steem-Power",
-    "steem-dollars": "Steem-Dollar",
-    "steem-dollars-description": "Tokens mit einem Wert von $1.00 eines STEEM",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "Tresor",
     "savings-description": "Werte im Tresor unterliegen einer 3-Tagessperre.",
     "next-power-down": "Der nächste Power-Down ist in {time} {amount}",
@@ -197,8 +197,8 @@
     "transfer": "Überweisen",
     "transfer-to-savings": "Transfer zum Tresor",
     "power-up": "In Steem-Power umwandeln",
-    "withdraw-steem": "Steem auszahlen",
-    "withdraw-sbd": "Steem-Dollar auszahlen",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "Delegieren",
     "power-down": "Power-Down",
     "point-history": "Historie",
@@ -227,7 +227,7 @@
     "points-transfer": "Geschenk an jemanden",
     "points-get": "GET ESTM",
     "witness-voting": "Witnesses",
-    "sps-voting": "SPS-Abstimmung",
+    "sps-voting": "DHF Voting",
     "profile-editor": "Profile Editor",
     "password": "Password"
   },
@@ -495,12 +495,12 @@
   "transfer": {
     "transfer-title": "Zum Benutzerkonto transferieren",
     "transfer-estm-title": "Geschenk an Konto",
-    "transfer-sub-title": "Geld auf ein anderes Steem-Konto verschieben",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "In den Tresor transferieren",
     "transfer-saving-sub-title": "Guthaben wird durch eine 3-tägige Wartezeit geschützt",
     "withdraw-saving-title": "Aus dem Tresor auszahlen",
     "withdraw-saving-sub-title": "Auszahlungen werden durch eine 3-tägige Wartezeit geschützt",
-    "power-up-title": "in Steem-Power konvertieren",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "STEEM-Token geben dir mehr Kontrolle über Beitrags-Auszahlungen und erhöhen deine Kurations-Belohnungen.",
     "from": "Von",
     "from-placeholder": "Wähle einen Benutzer",
@@ -532,7 +532,7 @@
   },
   "delegate": {
     "title": "Delegieren",
-    "sub-title": "Steem-Power delegieren",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "Ziehe den Slider, um den Wert zu definieren",
     "confirm-title": "Bestätige die Delegation",
     "confirm-sub-title": "Bitte überprüfe, ob alles korrekt ist",
@@ -545,7 +545,7 @@
   },
   "power-down": {
     "title": "Power-Down",
-    "sub-title": "Power-Down Steem-Power",
+    "sub-title": "Power Down Hive Power",
     "account": "Konto",
     "incoming-funds": "Eingehend",
     "begin": "Power-Down beginnen",
@@ -569,10 +569,10 @@
     "search-placeholder": "Benutzer suchen"
   },
   "delegated-list": {
-    "title": "Delegierte Steem-Power von @{n}"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "Delegierte Steem-Power nach @{n}"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "ESTM purchase",
