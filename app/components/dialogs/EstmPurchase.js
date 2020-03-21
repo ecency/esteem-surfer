@@ -19,7 +19,7 @@ class EstmPurchase extends PureComponent {
     super(props);
 
     this.state = {
-      curr: 'STEEM',
+      curr: 'HIVE',
       amount: 250,
       estm: 0,
       usd: 0
@@ -99,17 +99,17 @@ class EstmPurchase extends PureComponent {
         <div className="curr-select">
           <Button.Group>
             <Button
-              {...{ type: curr === 'STEEM' ? 'primary' : '' }}
+              {...{ type: curr === 'HIVE' ? 'primary' : '' }}
               onClick={() => {
-                this.selectCurr('STEEM');
+                this.selectCurr('HIVE');
               }}
             >
               HIVE
             </Button>
             <Button
-              {...{ type: curr === 'SBD' ? 'primary' : '' }}
+              {...{ type: curr === 'HBD' ? 'primary' : '' }}
               onClick={() => {
-                this.selectCurr('SBD');
+                this.selectCurr('HBD');
               }}
             >
               HBD

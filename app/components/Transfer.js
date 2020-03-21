@@ -61,16 +61,16 @@ class AssetSwitch extends PureComponent {
     return (
       <div className="asset-switch">
         <a
-          onClick={() => this.clicked('STEEM')}
+          onClick={() => this.clicked('HIVE')}
           role="none"
-          className={`asset ${selected === 'STEEM' ? 'selected' : ''}`}
+          className={`asset ${selected === 'HIVE' ? 'selected' : ''}`}
         >
           HIVE
         </a>
         <a
-          onClick={() => this.clicked('SBD')}
+          onClick={() => this.clicked('HBD')}
           role="none"
-          className={`asset ${selected === 'SBD' ? 'selected' : ''}`}
+          className={`asset ${selected === 'HBD' ? 'selected' : ''}`}
         >
           HBD
         </a>
@@ -118,7 +118,7 @@ class Transfer extends PureComponent {
     const { mode } = this.props;
 
     if (mode === 'power-up') {
-      asset = 'STEEM';
+      asset = 'HIVE';
     }
 
     const { accounts } = this.props;
@@ -200,7 +200,7 @@ class Transfer extends PureComponent {
       amount: '0.001',
       amountError: null,
       balance: '0',
-      asset: 'STEEM',
+      asset: 'HIVE',
       memo: '',
       inProgress: false,
       recentList: this.recentDb
@@ -354,11 +354,11 @@ class Transfer extends PureComponent {
     }
 
     if (mode === 'withdraw-saving') {
-      const k = asset === 'STEEM' ? 'savings_balance' : 'savings_sbd_balance';
+      const k = asset === 'HIVE' ? 'savings_balance' : 'savings_sbd_balance';
       return parseToken(fromData[k]);
     }
 
-    const k = asset === 'STEEM' ? 'balance' : 'sbd_balance';
+    const k = asset === 'HIVE' ? 'balance' : 'sbd_balance';
     return parseToken(fromData[k]);
   };
 

@@ -1149,7 +1149,7 @@ export class SectionWallet extends Component {
         actionListSteem = (
           <Menu className="surfer-dropdown-menu">
             <Menu.Item key="transfer">
-              <Link to={`/@${activeAccount.username}/transfer/steem`}>
+              <Link to={`/@${activeAccount.username}/transfer/hive`}>
                 <FormattedMessage id="account.transfer" />
               </Link>
             </Menu.Item>
@@ -1184,7 +1184,7 @@ export class SectionWallet extends Component {
         actionListSbd = (
           <Menu className="surfer-dropdown-menu">
             <Menu.Item key="transfer">
-              <Link to={`/@${activeAccount.username}/transfer/sbd`}>
+              <Link to={`/@${activeAccount.username}/transfer/hbd`}>
                 <FormattedMessage id="account.transfer" />
               </Link>
             </Menu.Item>
