@@ -168,17 +168,17 @@
     "section-points": "Points",
     "top-posts": "پست های برتر",
     "unclaimed-rewards": "پاداش های دریافت نشده",
-    "estimated-value": "مقدار برآورد شده براساس ميانگين 7 روز ارزش STEEM است.",
-    "steem": "Steem",
-    "steem-description": "STEEM ها ژتون هایی هستند که در هر زمانی قابل انتقال هستند. STEEM را میتوان طی فرایندی به نام افزایش قدرت به Steem Power تبدیل کرد. ",
-    "steem-power": "استیم پاور",
-    "steem-power-description": "استیم پاور نماد قدرت و نفوذ شما بر پست ها و رای هاست که با فعالیت مستمر و یا رای های دریافتی برای پست ها بدست می آید. در اختیار داشتن مقدار بیشتری از آن برابر است با تاثیر گذاری بیشتر آن بر رای های داده شده و پاداش هاست.",
-    "steem-power-delegated": "Steem Power های اجاره داده شده",
-    "steem-power-received": "استیم پاور دریافت شده",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "مقدار کاهش قدرت بعدی",
-    "steem-power-total": "کل استیم پاور",
-    "steem-dollars": "دلار استیم",
-    "steem-dollars-description": "ارزش ژتون ها حدود 1.00$ استیم است.",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "پس انداز",
     "savings-description": "وقفه 3 روزه برای برداشت وجه.",
     "next-power-down": "{amount}{time} تا کاهش قدرت بعدی",
@@ -197,8 +197,8 @@
     "transfer": "انتقال",
     "transfer-to-savings": "انتقال به پس انداز",
     "power-up": "بالا بردن قدرت",
-    "withdraw-steem": "برداشت استیم",
-    "withdraw-sbd": "برداشت دلار استیم",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "اجاره",
     "power-down": "کم کردن قدرت",
     "point-history": "History",
@@ -227,7 +227,7 @@
     "points-transfer": "Gift to someone",
     "points-get": "GET ESTM",
     "witness-voting": "Witnesses",
-    "sps-voting": "SPS Voting",
+    "sps-voting": "DHF Voting",
     "profile-editor": "Profile Editor",
     "password": "Password"
   },
@@ -495,12 +495,12 @@
   "transfer": {
     "transfer-title": "انتقال به حساب",
     "transfer-estm-title": "Gift to Account",
-    "transfer-sub-title": "انتقال وجوه به حساب کاربری دیگر",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "انتقال به پس انداز",
     "transfer-saving-sub-title": "محافظت از سرمایه با ایجاد وقفه 3 روزه تا برداشت وجه",
     "withdraw-saving-title": "برداشت های انجام شده از پس انداز",
     "withdraw-saving-sub-title": "برداشت وجوه پس از وقفه 3 روزه",
-    "power-up-title": "تبدیل به به استیم پاور",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "نشانه قدرت نفوذ شماست، که به شما قدرت کنترل بیشتر بر پست ها و پاداش ها و میزان مشارکت در آنها را میدهد.",
     "from": "از",
     "from-placeholder": "کاربر را انتخاب کنید",
@@ -532,7 +532,7 @@
   },
   "delegate": {
     "title": "اجاره",
-    "sub-title": "اجاره Steem Power",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "کشیدن لغزنده برای تنظیم مقدار",
     "confirm-title": "تایید اجاره",
     "confirm-sub-title": "لطفاً بررسی کنید که همه چیز درست است",
@@ -545,7 +545,7 @@
   },
   "power-down": {
     "title": "کم کردن قدرت",
-    "sub-title": "کم کردن قدرت استیم",
+    "sub-title": "Power Down Hive Power",
     "account": "حساب کاربری",
     "incoming-funds": "وجوه دریافتی",
     "begin": "شروع کاهش قدرت",
@@ -569,10 +569,10 @@
     "search-placeholder": "جستجوی کاربران"
   },
   "delegated-list": {
-    "title": "Steem power محول شده (قرض داده شده) توسط @{n}"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "محول کردن(قرض دادن) steem power به @{n}"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "ESTM purchase",
