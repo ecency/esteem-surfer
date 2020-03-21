@@ -38,6 +38,18 @@ import amountFormatCheck from '../utils/amount-format-check';
 import badActors from '../data/bad-actors.json';
 import { arrowRight } from '../svg';
 
+// since dsteem doesn't support new assets
+const tempAssetChange = s => {
+  switch (s) {
+    case 'HIVE':
+      return 'STEEM';
+    case 'HBD':
+      return 'SBD';
+    default:
+      return '';
+  }
+};
+
 class AssetSwitch extends PureComponent {
   constructor(props) {
     super(props);
@@ -377,7 +389,7 @@ class Transfer extends PureComponent {
   confirm = pin => {
     const { accounts, mode } = this.props;
     const { from, to, amount, asset, memo } = this.state;
-    const fullAmount = `${amount} ${asset}`;
+    const fullAmount = `${amount} ${tempAssetChange(asset)}`;
 
     const account = accounts.find(x => x.username === from);
 
