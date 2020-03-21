@@ -277,7 +277,7 @@ class Address extends Component {
       }
 
       if (a === 'transfer' && activeAccount) {
-        const p = `/@${activeAccount.username}/transfer/steem`;
+        const p = `/@${activeAccount.username}/transfer/hive`;
         history.push(p);
         return;
       }

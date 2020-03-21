@@ -637,7 +637,7 @@ export class TransactionRow extends Component {
             value={vestsToSp(parseToken(vestingPayout), steemPerMVests)}
             minimumFractionDigits={3}
           />{' '}
-          {'SP'}
+          {'HP'}
         </Fragment>
       );
 
@@ -666,13 +666,13 @@ export class TransactionRow extends Component {
           {sbdPayout > 0 && (
             <span className="number">
               <FormattedNumber value={sbdPayout} minimumFractionDigits={3} />{' '}
-              {'SBD'}
+              {'HBD'}
             </span>
           )}
           {steemPayout > 0 && (
             <span className="number">
               <FormattedNumber value={steemPayout} minimumFractionDigits={3} />{' '}
-              {'STEEM'}
+              {'HIVE'}
             </span>
           )}
           {vestingPayout > 0 && (
@@ -681,7 +681,7 @@ export class TransactionRow extends Component {
                 value={vestsToSp(vestingPayout, steemPerMVests)}
                 minimumFractionDigits={3}
               />{' '}
-              {'SP'}
+              {'HP'}
             </span>
           )}
         </Fragment>
@@ -714,13 +714,13 @@ export class TransactionRow extends Component {
           {rewardSbd > 0 && (
             <span className="number">
               <FormattedNumber value={rewardSbd} minimumFractionDigits={3} />{' '}
-              {'SBD'}
+              {'HBD'}
             </span>
           )}
           {rewardSteem > 0 && (
             <span className="number">
               <FormattedNumber value={rewardSteem} minimumFractionDigits={3} />{' '}
-              {'STEEM'}
+              {'HIVE'}
             </span>
           )}
           {rewardVests > 0 && (
@@ -729,7 +729,7 @@ export class TransactionRow extends Component {
                 value={vestsToSp(rewardVests, steemPerMVests)}
                 minimumFractionDigits={3}
               />{' '}
-              {'SP'}
+              {'HP'}
             </span>
           )}
         </Fragment>
@@ -766,7 +766,7 @@ export class TransactionRow extends Component {
             value={vestsToSp(opVestingShares, steemPerMVests)}
             minimumFractionDigits={3}
           />{' '}
-          {'SP'}
+          {'HP'}
         </span>
       );
 
@@ -1149,12 +1149,12 @@ export class SectionWallet extends Component {
         actionListSteem = (
           <Menu className="surfer-dropdown-menu">
             <Menu.Item key="transfer">
-              <Link to={`/@${activeAccount.username}/transfer/steem`}>
+              <Link to={`/@${activeAccount.username}/transfer/hive`}>
                 <FormattedMessage id="account.transfer" />
               </Link>
             </Menu.Item>
             <Menu.Item key="transfer-saving">
-              <Link to={`/@${activeAccount.username}/transfer-saving/steem`}>
+              <Link to={`/@${activeAccount.username}/transfer-saving/hive`}>
                 <FormattedMessage id="account.transfer-to-savings" />
               </Link>
             </Menu.Item>
@@ -1184,7 +1184,7 @@ export class SectionWallet extends Component {
         actionListSbd = (
           <Menu className="surfer-dropdown-menu">
             <Menu.Item key="transfer">
-              <Link to={`/@${activeAccount.username}/transfer/sbd`}>
+              <Link to={`/@${activeAccount.username}/transfer/hbd`}>
                 <FormattedMessage id="account.transfer" />
               </Link>
             </Menu.Item>
@@ -1199,7 +1199,7 @@ export class SectionWallet extends Component {
         actionListWithdrawSteem = (
           <Menu className="surfer-dropdown-menu">
             <Menu.Item key="withdraw-saving">
-              <Link to={`/@${activeAccount.username}/withdraw-saving/steem`}>
+              <Link to={`/@${activeAccount.username}/withdraw-saving/hive`}>
                 <FormattedMessage id="account.withdraw-steem" />
               </Link>
             </Menu.Item>
@@ -1209,7 +1209,7 @@ export class SectionWallet extends Component {
         actionListWithdrawSbd = (
           <Menu className="surfer-dropdown-menu">
             <Menu.Item key="withdraw-saving">
-              <Link to={`/@${activeAccount.username}/withdraw-saving/sbd`}>
+              <Link to={`/@${activeAccount.username}/withdraw-saving/hbd`}>
                 <FormattedMessage id="account.withdraw-sbd" />
               </Link>
             </Menu.Item>
@@ -1227,13 +1227,13 @@ export class SectionWallet extends Component {
                 </div>
                 <div className="rewards">
                   {rewardSteemBalance > 0 && (
-                    <span className="reward-type">{`${rewardSteemBalance} STEEM`}</span>
+                    <span className="reward-type">{`${rewardSteemBalance} HIVE`}</span>
                   )}
                   {rewardSbdBalance > 0 && (
-                    <span className="reward-type">{`${rewardSbdBalance} SBD`}</span>
+                    <span className="reward-type">{`${rewardSbdBalance} HBD`}</span>
                   )}
                   {rewardVestingSteem > 0 && (
-                    <span className="reward-type">{`${rewardVestingSteem} SP`}</span>
+                    <span className="reward-type">{`${rewardVestingSteem} HP`}</span>
                   )}
                   {isMyPage && (
                     <Tooltip
@@ -1293,7 +1293,7 @@ export class SectionWallet extends Component {
                       value={balance}
                       minimumFractionDigits={3}
                     />{' '}
-                    {'STEEM'}
+                    {'HIVE'}
                   </div>
                   <div className="fund-action">
                     {isMyPage && (
@@ -1320,7 +1320,7 @@ export class SectionWallet extends Component {
                       value={vestsToSp(vestingShares, steemPerMVests)}
                       minimumFractionDigits={3}
                     />{' '}
-                    {'SP'}
+                    {'HP'}
                   </div>
                   <div className="fund-action">
                     {isMyPage && (
@@ -1350,7 +1350,7 @@ export class SectionWallet extends Component {
                             )}
                             minimumFractionDigits={3}
                           />{' '}
-                          {'SP'}
+                          {'HP'}
                         </span>
                       </Tooltip>
                     </div>
@@ -1379,7 +1379,7 @@ export class SectionWallet extends Component {
                             )}
                             minimumFractionDigits={3}
                           />{' '}
-                          {'SP'}
+                          {'HP'}
                         </span>
                       </Tooltip>
                     </div>
@@ -1403,7 +1403,7 @@ export class SectionWallet extends Component {
                           )}
                           minimumFractionDigits={3}
                         />{' '}
-                        {'SP'}
+                        {'HP'}
                       </Tooltip>
                     </div>
                     <div className="fund-action" />
@@ -1425,7 +1425,7 @@ export class SectionWallet extends Component {
                           value={vestsToSp(vestingSharesTotal, steemPerMVests)}
                           minimumFractionDigits={3}
                         />{' '}
-                        {'SP'}
+                        {'HP'}
                       </Tooltip>
                     </div>
                     <div className="fund-action" />
@@ -1478,7 +1478,7 @@ export class SectionWallet extends Component {
                       minimumFractionDigits={3}
                       value={savingBalance}
                     />{' '}
-                    {'STEEM'}
+                    {'HIVE'}
                   </div>
                   <div className="fund-action">
                     {isMyPage && (
@@ -1525,7 +1525,7 @@ export class SectionWallet extends Component {
                             )}
                             minimumFractionDigits={3}
                           />{' '}
-                          SP
+                          HP
                         </strong>
                       )
                     }}

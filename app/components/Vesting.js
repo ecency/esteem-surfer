@@ -796,7 +796,7 @@ class PowerDownCls extends PureComponent {
         title: 'Auto Vest',
         dataIndex: 'auto_vest',
         key: 'auto_vest',
-        render: (x, rec) => (rec.auto_vest ? 'VEST' : 'STEEM')
+        render: (x, rec) => (rec.auto_vest ? 'VEST' : 'HIVE')
       },
       {
         render: (x, rec) => (
@@ -958,7 +958,7 @@ class PowerDownCls extends PureComponent {
                         <div className="arrow-row">{arrowDown}</div>
                         <div className="second-row">
                           <div className="steem-num">
-                            {'+'} {fundPerWeek.toFixed(3)} STEEM
+                            {'+'} {fundPerWeek.toFixed(3)} HIVE
                           </div>
                           <div className="estimated-note">
                             <FormattedMessage id="power-down.estimated-note" />
@@ -993,7 +993,7 @@ class PowerDownCls extends PureComponent {
                         </div>
                         <div className="form-input incoming-funds">
                           <span className="steem">
-                            + {poweringDownFund.toFixed(3)} STEEM
+                            + {poweringDownFund.toFixed(3)} HIVE
                           </span>
                           <span className="vests">
                             - {formatVest(poweringDownVests)} VESTS

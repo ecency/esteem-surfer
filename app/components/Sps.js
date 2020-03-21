@@ -432,7 +432,7 @@ class SpsListItem extends PureComponent {
                   minimumFractionDigits={0}
                   maximumFractionDigits={1}
                 />{' '}
-                {'SBD'}
+                {'HBD'}
               </div>
               <div className="all">
                 <FormattedNumber
@@ -440,7 +440,7 @@ class SpsListItem extends PureComponent {
                   minimumFractionDigits={0}
                   maximumFractionDigits={1}
                 />{' '}
-                {'SBD'}
+                {'HBD'}
               </div>
             </div>
           </Col>
@@ -451,7 +451,7 @@ class SpsListItem extends PureComponent {
                 minimumFractionDigits={0}
                 maximumFractionDigits={0}
               />{' '}
-              {'SP'}
+              {'HP'}
             </a>
           </Col>
         </Row>
