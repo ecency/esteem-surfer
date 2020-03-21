@@ -637,7 +637,7 @@ export class TransactionRow extends Component {
             value={vestsToSp(parseToken(vestingPayout), steemPerMVests)}
             minimumFractionDigits={3}
           />{' '}
-          {'SP'}
+          {'HP'}
         </Fragment>
       );
 
@@ -681,7 +681,7 @@ export class TransactionRow extends Component {
                 value={vestsToSp(vestingPayout, steemPerMVests)}
                 minimumFractionDigits={3}
               />{' '}
-              {'SP'}
+              {'HP'}
             </span>
           )}
         </Fragment>
@@ -729,7 +729,7 @@ export class TransactionRow extends Component {
                 value={vestsToSp(rewardVests, steemPerMVests)}
                 minimumFractionDigits={3}
               />{' '}
-              {'SP'}
+              {'HP'}
             </span>
           )}
         </Fragment>
@@ -766,7 +766,7 @@ export class TransactionRow extends Component {
             value={vestsToSp(opVestingShares, steemPerMVests)}
             minimumFractionDigits={3}
           />{' '}
-          {'SP'}
+          {'HP'}
         </span>
       );
 
@@ -1154,7 +1154,7 @@ export class SectionWallet extends Component {
               </Link>
             </Menu.Item>
             <Menu.Item key="transfer-saving">
-              <Link to={`/@${activeAccount.username}/transfer-saving/steem`}>
+              <Link to={`/@${activeAccount.username}/transfer-saving/hive`}>
                 <FormattedMessage id="account.transfer-to-savings" />
               </Link>
             </Menu.Item>
@@ -1199,7 +1199,7 @@ export class SectionWallet extends Component {
         actionListWithdrawSteem = (
           <Menu className="surfer-dropdown-menu">
             <Menu.Item key="withdraw-saving">
-              <Link to={`/@${activeAccount.username}/withdraw-saving/steem`}>
+              <Link to={`/@${activeAccount.username}/withdraw-saving/hive`}>
                 <FormattedMessage id="account.withdraw-steem" />
               </Link>
             </Menu.Item>
@@ -1209,7 +1209,7 @@ export class SectionWallet extends Component {
         actionListWithdrawSbd = (
           <Menu className="surfer-dropdown-menu">
             <Menu.Item key="withdraw-saving">
-              <Link to={`/@${activeAccount.username}/withdraw-saving/sbd`}>
+              <Link to={`/@${activeAccount.username}/withdraw-saving/hbd`}>
                 <FormattedMessage id="account.withdraw-sbd" />
               </Link>
             </Menu.Item>
@@ -1233,7 +1233,7 @@ export class SectionWallet extends Component {
                     <span className="reward-type">{`${rewardSbdBalance} HBD`}</span>
                   )}
                   {rewardVestingSteem > 0 && (
-                    <span className="reward-type">{`${rewardVestingSteem} SP`}</span>
+                    <span className="reward-type">{`${rewardVestingSteem} HP`}</span>
                   )}
                   {isMyPage && (
                     <Tooltip
@@ -1320,7 +1320,7 @@ export class SectionWallet extends Component {
                       value={vestsToSp(vestingShares, steemPerMVests)}
                       minimumFractionDigits={3}
                     />{' '}
-                    {'SP'}
+                    {'HP'}
                   </div>
                   <div className="fund-action">
                     {isMyPage && (
@@ -1350,7 +1350,7 @@ export class SectionWallet extends Component {
                             )}
                             minimumFractionDigits={3}
                           />{' '}
-                          {'SP'}
+                          {'HP'}
                         </span>
                       </Tooltip>
                     </div>
@@ -1379,7 +1379,7 @@ export class SectionWallet extends Component {
                             )}
                             minimumFractionDigits={3}
                           />{' '}
-                          {'SP'}
+                          {'HP'}
                         </span>
                       </Tooltip>
                     </div>
@@ -1403,7 +1403,7 @@ export class SectionWallet extends Component {
                           )}
                           minimumFractionDigits={3}
                         />{' '}
-                        {'SP'}
+                        {'HP'}
                       </Tooltip>
                     </div>
                     <div className="fund-action" />
@@ -1425,7 +1425,7 @@ export class SectionWallet extends Component {
                           value={vestsToSp(vestingSharesTotal, steemPerMVests)}
                           minimumFractionDigits={3}
                         />{' '}
-                        {'SP'}
+                        {'HP'}
                       </Tooltip>
                     </div>
                     <div className="fund-action" />
@@ -1525,7 +1525,7 @@ export class SectionWallet extends Component {
                             )}
                             minimumFractionDigits={3}
                           />{' '}
-                          SP
+                          HP
                         </strong>
                       )
                     }}
