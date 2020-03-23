@@ -22,7 +22,7 @@
     "about": "소개"
   },
   "entry-index": {
-    "tags": "인기 태그",
+    "tags": "Popular",
     "filter-trending": "대세 글",
     "filter-hot": "인기 글",
     "filter-created": "최신 글",
