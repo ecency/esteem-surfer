@@ -22,7 +22,7 @@
     "about": "소개"
   },
   "entry-index": {
-    "tags": "인기 태그",
+    "tags": "Popular",
     "filter-trending": "대세 글",
     "filter-hot": "인기 글",
     "filter-created": "최신 글",
@@ -91,22 +91,21 @@
     "error-user-not-found": "존재하지 않는 사용자입니다",
     "error-authenticate": "사용자 이름 또는 비밀번호/WIF가 올바르지 않습니다",
     "create-account-text-1": "계정이 없으신가요?",
-    "create-account-text-2": "Sign up now!",
+    "create-account-text-2": "지금 가입해보세요.",
     "login-with-sc": "steemconnect를 이용해 로그인하세요",
-    "divider-text": "또는",
-    "sc-note": "주의: Steemconnect에서 당신의 보상 트랜잭션에 대해 일정 수수료를 부과할 수도 있습니다"
+    "divider-text": "또는"
   },
   "sign-up": {
     "title": "회원 가입",
-    "username-placeholder": "pick a username",
-    "email-placeholder": "enter your email address",
-    "sign-up": "Sign Up",
-    "ref-code": "referral user (optional)",
-    "success-message-1": "We've sent an email to {email}.",
-    "success-message-2": "Follow instructions to complete signup process.",
-    "login-1": "Already a member?",
+    "username-placeholder": "사용자 이름을 선택해주세요.",
+    "email-placeholder": "이메일 주소를 입력해주세요.",
+    "sign-up": "회원가입",
+    "ref-code": "추천인(선택사항)",
+    "success-message-1": "{email}로 이메일을 발송하였습니다.",
+    "success-message-2": "지시에 따라 회원가입 절차를 진행하시기 바랍니다.",
+    "login-1": "이미 회원이신가요?",
     "login-2": "로그인",
-    "login-btn-label": "Back to Login"
+    "login-btn-label": "로그인 화면으로 돌아가기"
   },
   "create-pin-code": {
     "title": "PIN 코드 만들기",
@@ -169,17 +168,17 @@
     "section-points": "포인트",
     "top-posts": "인기 글",
     "unclaimed-rewards": "아직 요청하지 않은 보상",
-    "estimated-value": "추정 가치는 7 일 간의 스팀 평균 가격을 토대로 산정합니다.",
-    "steem": "스팀",
-    "steem-description": "스팀은 언제든지 송금할 수 있기 때문에 쉽게 거래할 수 있는 토큰입니다. 스팀은 파워 업이라는 과정을 통해 스팀 파워로 전환할 수 있습니다.",
-    "steem-power": "스팀 파워",
-    "steem-power-description": "스팀 파워는 장기간 보유시 더 늘어날 수 있고, 글에 대한 보팅에 영향력을 행사하는 토큰입니다. 스팀 파워가 많을수록 다른 사람의 보상에 미치는 영향력이 더 커지고, 큐레이션 보상도 늘어납니다.",
-    "steem-power-delegated": "임대한 스팀 파워",
-    "steem-power-received": "임대받은 스팀 파워",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "다음 번 파워 다운 수량",
-    "steem-power-total": "스팀 파워 합계",
-    "steem-dollars": "스팀 달러",
-    "steem-dollars-description": "스팀으로 환산했을때 $1.00 만큼의 가치를 갖는 토큰",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "안전 금고",
     "savings-description": "잔액을 출금하려면 3일간 기다려야 합니다.",
     "next-power-down": "다음 번 파워 다운은 {time} {amount} 입니다",
@@ -198,8 +197,8 @@
     "transfer": "송금",
     "transfer-to-savings": "안전 금고로 송금",
     "power-up": "파워 업",
-    "withdraw-steem": "스팀 출금",
-    "withdraw-sbd": "스팀 달러 출금",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "임대",
     "power-down": "파워 다운",
     "point-history": "내역",
@@ -221,14 +220,14 @@
     "points-transfer-sent-list-desc": "{n} 님에게 송금",
     "points-transfer-incoming-list-desc": "{n} 님으로부터 받음",
     "points-delegation-list-desc": "임대 보상",
-    "points-referral-list-desc": "Referral reward",
+    "points-referral-list-desc": "추천인 보상",
     "points-claim-ok": "포인트 획득 완료",
     "points-promote": "홍보",
     "points-boost": "보팅 후원",
     "points-transfer": "포인트 선물하기",
-    "points-get": "GET ESTM",
+    "points-get": "ESTM 구매",
     "witness-voting": "증인",
-    "sps-voting": "SPS 투표",
+    "sps-voting": "DHF Voting",
     "profile-editor": "프로필 편집기",
     "password": "비밀번호"
   },
@@ -364,7 +363,7 @@
     "comment-entry-title": "단일 댓글 스레드 화면을 보고 있습니다: ",
     "comment-entry-go-root": "전체 글 보기",
     "comment-entry-go-parent": "상위 글 보기",
-    "comment-reveal": "Reveal comment",
+    "comment-reveal": "명성도가 낮은 사용자의 댓글 보기",
     "similar-entries": "유사한 글",
     "fetch-error": "응답 파일 크기가 너무 커서 서버 타임아웃이 발생했습니다",
     "promote": "홍보",
@@ -435,9 +434,9 @@
     "ignored-str": "무시",
     "reblog-str": "님이 이 글을 리블로그했습니다:",
     "transfer-str": "님에게 받은 금액:",
-    "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
-    "inactive-str": "Be active! Write a post, continue earning",
-    "referral-str": "joined with your referral, welcome them",
+    "spin-str": "더 많은 ESTM을 획득할 시간입니다. eSteem Mobile에서 스핀을 돌려보세요.",
+    "inactive-str": "포스트를 작성하고 활발하게 활동하여 꾸준하게 수익을 창출하세요.",
+    "referral-str": "귀하의 추천인 링크를 통해 가입한 사용자를 환영해주세요.",
     "empty-list": "빈 목록입니다",
     "refresh": "새로고침",
     "mark-all-read": "모두 읽음으로 표시",
@@ -496,12 +495,12 @@
   "transfer": {
     "transfer-title": "송금하기",
     "transfer-estm-title": "선물하기",
-    "transfer-sub-title": "다른 스팀 계정으로 자금 보내기",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "안전 금고로 송금",
     "transfer-saving-sub-title": "3일 간의 출금 대기 기간이 설정된 안전금고를 이용해 자금을 보호하세요",
     "withdraw-saving-title": "안전 금고 출금",
     "withdraw-saving-sub-title": "3일 간의 대기 기간이 지나야 자금을 출금할 수 있습니다",
-    "power-up-title": "스팀 파워로 전환하기",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "스팀 파워가 증가하면 글 보상, 큐레이션 보상에 더 큰 영향력을 발휘할 수 있습니다.",
     "from": "보낸 사람",
     "from-placeholder": "사용자 선택하기",
@@ -533,7 +532,7 @@
   },
   "delegate": {
     "title": "임대",
-    "sub-title": "스팀 파워 임대",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "슬라이드를 드래그해서 수량을 설정할 수 있습니다",
     "confirm-title": "임대 확인",
     "confirm-sub-title": "정보가 맞는지 다시 한 번 확인하세요",
@@ -546,7 +545,7 @@
   },
   "power-down": {
     "title": "파워 다운",
-    "sub-title": "SP 파워 다운",
+    "sub-title": "Power Down Hive Power",
     "account": "계정",
     "incoming-funds": "입금 예정 스팀",
     "begin": "파워 다운 시작",
@@ -570,10 +569,10 @@
     "search-placeholder": "검색하고 싶은 사용자 이름을 입력하세요"
   },
   "delegated-list": {
-    "title": "@{n} 님이 임대해 준 스팀 파워"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "@{n} 님에게 임대한 스팀 파워"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "ESTM 구매",
@@ -597,16 +596,16 @@
     "profile-image": "프로필 사진",
     "website": "웹사이트",
     "location": "위치",
-    "updated": "프로필이 업데이트되었습니다!"
+    "updated": "프로필이 변경되었습니다!"
   },
   "password-update": {
     "title": "비밀번호",
-    "cur-pass": "기존 비밀번호",
+    "cur-pass": "현재 비밀번호",
     "new-pass": "새로운 비밀번호",
-    "new-pass2": "새로운 비밀번호 확인",
-    "error-current": "기존 비밀번호를 입력하세요",
+    "new-pass2": "새로운 비밀번호를 확인하세요",
+    "error-current": "현재 비밀번호를 입력하세요",
     "error-new": "새로운 비밀번호를 입력하세요",
-    "error-new2": "비밀번호는 같아야 합니다.",
-    "updated": "비밀번호가 업데이트되었습니다!"
+    "error-new2": "비밀번호는 동일해야 합니다.",
+    "updated": "비밀번호가 변경되었습니다!"
   }
 }

@@ -22,7 +22,7 @@
     "about": "O nama"
   },
   "entry-index": {
-    "tags": "Popularni tagovi",
+    "tags": "Popular",
     "filter-trending": "Popularno",
     "filter-hot": "Aktuelno",
     "filter-created": "Novo",
@@ -93,8 +93,7 @@
     "create-account-text-1": "Don't have an account?",
     "create-account-text-2": "Sign up now!",
     "login-with-sc": "Prijavite se pomoću",
-    "divider-text": "ILI",
-    "sc-note": "Napomena: Steemconnect može naplatiti neke naknade od vaših transakcija za nagradu"
+    "divider-text": "ILI"
   },
   "sign-up": {
     "title": "Sign Up",
@@ -169,17 +168,17 @@
     "section-points": "Points",
     "top-posts": "Najbolji postovi",
     "unclaimed-rewards": "Nepotvrđene nagrade",
-    "estimated-value": "Procenjena vrednost se zasniva na prosečnoj vrednosti STEEM-a u periodu od 7 dana.",
-    "steem": "Steem",
-    "steem-description": "STEEM predstavlja tokene koje možeti razmenjivati u svakom trenutku. STEEM se može pretvoriti u Steem Power u procesu koji se naziva Powering Up.",
-    "steem-power": "Steem Power",
-    "steem-power-description": "Steem Power su tokeni uticaja koji dugoročno dobijaju više snage, kao i glasanjem postova. Što ih više imate to ćete imati više uticaja na nagrade drugih korisnika i više ćete zaraditi na vašim glasovima.",
-    "steem-power-delegated": "Delegirani Steem Power",
-    "steem-power-received": "Primljena Delegacija Steem Power-a",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "Sledeći iznos power down-a je",
-    "steem-power-total": "Ukupan Steem Power",
-    "steem-dollars": "Steem dolari",
-    "steem-dollars-description": "Tokeni vrednosti oko $1.00 u STEEM-u.",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "Ušteđevina",
     "savings-description": "Saldo je podložan trodnevnom periodu čekanja za povlačenje sredstava.",
     "next-power-down": "Sledeći power down je {time}{amount}",
@@ -198,8 +197,8 @@
     "transfer": "Prenos",
     "transfer-to-savings": "Premestite u ušteđevinu",
     "power-up": "Uložite u Steem Power",
-    "withdraw-steem": "Povucite Steem",
-    "withdraw-sbd": "Povucite Steem dolar",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "Delegiraj",
     "power-down": "Power Down",
     "point-history": "History",
@@ -228,7 +227,7 @@
     "points-transfer": "Gift to someone",
     "points-get": "GET ESTM",
     "witness-voting": "Witnesses",
-    "sps-voting": "SPS Voting",
+    "sps-voting": "DHF Voting",
     "profile-editor": "Profile Editor",
     "password": "Password"
   },
@@ -496,12 +495,12 @@
   "transfer": {
     "transfer-title": "Transfer na korisnički nalog",
     "transfer-estm-title": "Gift to Account",
-    "transfer-sub-title": "Prebaci sredstva na drugi Steem nalog",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "Premestite u ušteđevinu",
     "transfer-saving-sub-title": "Zaštitite sredstva tako što ćete zatražiti period čekanja od 3 dana za povlačenje sredstava",
     "withdraw-saving-title": "Povucite ušteđevinu",
     "withdraw-saving-sub-title": "Period čekanja za povlačenje sredstava traje 3 dana",
-    "power-up-title": "Pretvorite u Steem Power",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "Tokeni uticaja koji vam daju više kontrole nad isplatama postova i omogućavaju vam da zaradite na nagradama od glasova.",
     "from": "Šalje",
     "from-placeholder": "Izaberite korisnika",
@@ -533,7 +532,7 @@
   },
   "delegate": {
     "title": "Delegiraj",
-    "sub-title": "Delegirajte Steem Power",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "Prevucite klizač da biste prilagodili količinu",
     "confirm-title": "Potvrdite delegaciju",
     "confirm-sub-title": "Molimo, proverite da li je sve ispravno",
@@ -546,7 +545,7 @@
   },
   "power-down": {
     "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
+    "sub-title": "Power Down Hive Power",
     "account": "Nalog",
     "incoming-funds": "Dolazeća sredstva",
     "begin": "Započnite Power Down",
@@ -570,10 +569,10 @@
     "search-placeholder": "Search users"
   },
   "delegated-list": {
-    "title": "Steem power delegiran od strane @{n}"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "Steem power delegiran @{n}"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "ESTM purchase",

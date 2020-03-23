@@ -22,7 +22,7 @@
     "about": "關於"
   },
   "entry-index": {
-    "tags": "熱門標籤",
+    "tags": "Popular",
     "filter-trending": "焦點",
     "filter-hot": "熱門",
     "filter-created": "最新",
@@ -93,8 +93,7 @@
     "create-account-text-1": "Don't have an account?",
     "create-account-text-2": "Sign up now!",
     "login-with-sc": "登入方式",
-    "divider-text": "或",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "divider-text": "或"
   },
   "sign-up": {
     "title": "Sign Up",
@@ -169,17 +168,17 @@
     "section-points": "Points",
     "top-posts": "熱門帖子",
     "unclaimed-rewards": "未領取的報酬",
-    "estimated-value": "概估價值是以Steem7天之平均價為基礎",
-    "steem": "Steem",
-    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
-    "steem-power": "Steem Power",
-    "steem-power-description": "Steem Power 可視為具有影響力的股權，持有可長期增值並對文章投票。持有Steem Power數量越多對於其他人獎勵大小的影響力就越大，也更能從準確的投票行為中獲得獎勵。",
-    "steem-power-delegated": "Delegated Steem Power",
-    "steem-power-received": "Received Steem Power",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "Next power down amount",
-    "steem-power-total": "Total Steem Power",
-    "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "儲蓄",
     "savings-description": "餘額有3天的取款等待期。",
     "next-power-down": "The next power down is {time} {amount}",
@@ -198,8 +197,8 @@
     "transfer": "轉賬",
     "transfer-to-savings": "轉到儲蓄",
     "power-up": "Power Up",
-    "withdraw-steem": "取出Steem",
-    "withdraw-sbd": "取出Steem Dollar",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "Delegate",
     "power-down": "Power Down",
     "point-history": "History",
@@ -228,7 +227,7 @@
     "points-transfer": "Gift to someone",
     "points-get": "GET ESTM",
     "witness-voting": "Witnesses",
-    "sps-voting": "SPS Voting",
+    "sps-voting": "DHF Voting",
     "profile-editor": "Profile Editor",
     "password": "Password"
   },
@@ -496,12 +495,12 @@
   "transfer": {
     "transfer-title": "轉入賬戶",
     "transfer-estm-title": "Gift to Account",
-    "transfer-sub-title": "將資金移動到另一個 Steem 賬戶",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "轉到儲蓄",
     "transfer-saving-sub-title": "提款要求3天的取款等待期來保護資金",
     "withdraw-saving-title": "儲蓄提款",
     "withdraw-saving-sub-title": "必須在規定的3天等待期後提取資金",
-    "power-up-title": "Convert to Steem Power",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "有影響力的代幣，讓您對帖子的收益有更多的控制權，並讓您可以獲得審查獎勵。",
     "from": "從",
     "from-placeholder": "選擇使用者",
@@ -533,7 +532,7 @@
   },
   "delegate": {
     "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "Drag the slider to adjust the amount",
     "confirm-title": "Confirm Delegation",
     "confirm-sub-title": "Please, check if everything is correct",
@@ -546,7 +545,7 @@
   },
   "power-down": {
     "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
+    "sub-title": "Power Down Hive Power",
     "account": "Account",
     "incoming-funds": "Incoming Funds",
     "begin": "Begin Power Down",
@@ -570,10 +569,10 @@
     "search-placeholder": "Search users"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "ESTM purchase",

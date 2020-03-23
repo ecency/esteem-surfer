@@ -22,7 +22,7 @@
     "about": "אודות"
   },
   "entry-index": {
-    "tags": "תיוגים פופולאריים",
+    "tags": "Popular",
     "filter-trending": "פופולארי",
     "filter-hot": "לוהט",
     "filter-created": "חדש",
@@ -93,8 +93,7 @@
     "create-account-text-1": "Don't have an account?",
     "create-account-text-2": "Sign up now!",
     "login-with-sc": "התחבר/י עם",
-    "divider-text": "או",
-    "sc-note": "Steemconnect עשוי לגבות תשלומים מסוימים מיתרת תגמוליך"
+    "divider-text": "או"
   },
   "sign-up": {
     "title": "Sign Up",
@@ -169,17 +168,17 @@
     "section-points": "Points",
     "top-posts": "פוסטים עליונים",
     "unclaimed-rewards": "תגמולים שטרם נדרשו",
-    "estimated-value": "הערך המשוער מבוסס על ערך ממוצע של Steem במשך 7 ימים.",
-    "steem": "סטים",
-    "steem-description": "STEEM הינם מטבעות סחירים, אותם ניתן להעביר בכל עת. STEEM יכול להיות מומר לכוח Steem בתהליך הנקרא פאוור-אפ.",
-    "steem-power": "כוח Steem",
-    "steem-power-description": "כוח Steem הם מטבעות שכוחם עולה ככל שטווח ההחזקה בהם ארוך יותר, וככל שאתם מצביעים לפוסטים. יותר כוח Steem אצל משתמש אחד, כך גם יותר השפעה על התגמולים של אחרים, וקבלת פרסים על אופן הצבעה מדויק.",
-    "steem-power-delegated": "כוח Steem מיופה",
-    "steem-power-received": "כח Steem שהתקבל",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "כמות הנזלת היתרה הבאה",
-    "steem-power-total": "סך כל כוח הSteem",
-    "steem-dollars": "דולר Steem",
-    "steem-dollars-description": "אסימונים שערכם כדולר אחד של STEEM.",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "חסכונות",
     "savings-description": "יתרה כפופה לתקופת המתנה של שלושה ימים מעת ביצוע המשיכה.",
     "next-power-down": "הנזלת היתרה הבאה בעוד {time}{amount}",
@@ -198,8 +197,8 @@
     "transfer": "העבר",
     "transfer-to-savings": "העבר/י לחסכונות",
     "power-up": "פאוור-אפ",
-    "withdraw-steem": "משיכת Steem",
-    "withdraw-sbd": "משיכת דולר Steem",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "ליפות כח",
     "power-down": "המרת כוח הסטים ליתרה נזילה",
     "point-history": "History",
@@ -228,7 +227,7 @@
     "points-transfer": "Gift to someone",
     "points-get": "GET ESTM",
     "witness-voting": "Witnesses",
-    "sps-voting": "SPS Voting",
+    "sps-voting": "DHF Voting",
     "profile-editor": "Profile Editor",
     "password": "Password"
   },
@@ -496,12 +495,12 @@
   "transfer": {
     "transfer-title": "העבר/י לחשבון",
     "transfer-estm-title": "Gift to Account",
-    "transfer-sub-title": "העבר כספים לחשבון Steem אחר",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "תעביר\\י לחסכונות",
     "transfer-saving-sub-title": "הגן\\י על הכספים שלך על ידי דרישת תקופת המתנה של 3 ימים מעת בקשת המשיכה",
     "withdraw-saving-title": "משיכה מחסכונות",
     "withdraw-saving-sub-title": "משוך כספים לאחר תקופת ההמתנה הנדרשת של 3 ימים",
-    "power-up-title": "המר\\י לכוח Steem",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "אסימוני השפעה שנותנים לך יותר שליטה על זיכויי פוסטים, וכמו כן מאפשרים לכם להרוויח תגמולים על אוצרות תוכן.",
     "from": "מ",
     "from-placeholder": "בחר משתמש",
@@ -533,7 +532,7 @@
   },
   "delegate": {
     "title": "ליפות כח",
-    "sub-title": "ייפוי כוח הSteem",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "גרור את המחוון כדי להתאים כמות נחוצה",
     "confirm-title": "אשר ייפוי כוח",
     "confirm-sub-title": "בבקשה, בדוק אם הכל עובד כראוי",
@@ -546,7 +545,7 @@
   },
   "power-down": {
     "title": "המרת כוח הסטים ליתרה נזילה",
-    "sub-title": "המר יתרה נזילה לכוח Steem",
+    "sub-title": "Power Down Hive Power",
     "account": "חשבון",
     "incoming-funds": "כספים נכנסים",
     "begin": "התחל המרת כוח ליתרה נזילה",
@@ -570,10 +569,10 @@
     "search-placeholder": "חפש/י משתמשים"
   },
   "delegated-list": {
-    "title": "כוח Steem מיופה מ @{n}"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "כוח Steem מיופה ל @{n}"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "ESTM purchase",
