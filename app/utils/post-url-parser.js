@@ -26,8 +26,8 @@ export default url => {
   };
 
   if (
-    ['https://esteem.app', 'https://steemit.com', 'https://steempeak.com'].some(
-      x => url.startsWith(x)
+    ['https://esteem.app', 'https://hive.blog', 'https://peakd.com'].some(x =>
+      url.startsWith(x)
     )
   ) {
     return parseCatAuthorPermlink(url);
