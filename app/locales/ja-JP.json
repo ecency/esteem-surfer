@@ -22,7 +22,7 @@
     "about": "About"
   },
   "entry-index": {
-    "tags": "Popular",
+    "tags": "人気",
     "filter-trending": "トレンド",
     "filter-hot": "ホット",
     "filter-created": "新着",
@@ -170,9 +170,9 @@
     "unclaimed-rewards": "未請求の報酬",
     "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
     "steem": "Hive",
-    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
-    "steem-power": "Hive Power",
-    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-description": "HIVEはいつでも送金や取引が可能なトークンです。HIVEはパワーアップと呼ばれるプロセスで、Hiveパワーに変換することができます。",
+    "steem-power": "Hiveパワー",
+    "steem-power-description": "Hiveパワーは長期保有や投稿に投票することで、より大きな影響力を得ることができるトークンです。より多くのHiveパワーを保有することで、他の人の報酬に影響を与えることができ、投票による報酬を得ることができます。",
     "steem-power-delegated": "Delegated Hive Power",
     "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "次のパワーダウン額",
