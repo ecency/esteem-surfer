@@ -1,4 +1,4 @@
-import { Client } from 'dsteem';
+import { Client } from '@hivechain/dsteem';
 
 const client = new Client();
 

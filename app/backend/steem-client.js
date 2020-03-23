@@ -2,7 +2,7 @@
 eslint-disable no-underscore-dangle
 */
 
-import { Client, PrivateKey } from 'dsteem';
+import { Client, PrivateKey } from '@hivechain/dsteem';
 
 import sc2 from 'sc2-sdk';
 

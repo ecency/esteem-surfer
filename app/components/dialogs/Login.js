@@ -6,7 +6,7 @@ import React, { Component, Fragment } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { PrivateKey, PublicKey } from 'dsteem';
+import { PrivateKey, PublicKey } from '@hivechain/dsteem';
 
 import {
   Button,

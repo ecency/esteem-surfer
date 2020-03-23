@@ -154,7 +154,7 @@ app.on('window-all-closed', () => {
   app.quit();
 });
 
-app.setAsDefaultProtocolClient('steem');
+app.setAsDefaultProtocolClient('hive');
 app.setAsDefaultProtocolClient('esteem');
 
 app.on('activate', () => {

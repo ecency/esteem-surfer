@@ -10,6 +10,6 @@
     "postinstall": "yarn electron-rebuild"
   },
   "dependencies": {
-    "dsteem": "^0.11.3"
+    "@hivechain/dsteem": "^0.12.13"
   }
 }
