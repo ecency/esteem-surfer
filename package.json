@@ -1,12 +1,12 @@
 {
   "name": "esteem-surfer",
-  "productName": "eSteem",
-  "description": "eSteem desktop application reimagined for Windows, Mac, Linux users, start earning cryptocurrency!",
+  "productName": "Esteem",
+  "description": "Esteem desktop application reimagined for Windows, Mac, Linux users, start earning cryptocurrency!",
   "version": "2.2.5",
   "releasePost": "esteem/@esteemapp/esteem-surfer-changelog",
   "private": true,
-  "author": "eSteem <info@esteem.app>",
-  "copyright": "© 2020, eSteem",
+  "author": "Esteem <info@esteem.app>",
+  "copyright": "© 2020, Esteem",
   "homepage": "https://esteem.app",
   "scripts": {
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
@@ -50,7 +50,7 @@
     ]
   },
   "build": {
-    "productName": "eSteem",
+    "productName": "Esteem",
     "appId": "app.esteem.surfer",
     "files": [
       "dist/",
@@ -89,7 +89,7 @@
       ]
     },
     "win": {
-      "publisherName": "eSteem",
+      "publisherName": "Esteem",
       "target": [
         {
           "target": "nsis",
