@@ -173,12 +173,12 @@
     "steem-description": "HIVEはいつでも送金や取引が可能なトークンです。HIVEはパワーアップと呼ばれるプロセスで、Hiveパワーに変換することができます。",
     "steem-power": "Hiveパワー",
     "steem-power-description": "Hiveパワーは長期保有や投稿に投票することで、より大きな影響力を得ることができるトークンです。より多くのHiveパワーを保有することで、他の人の報酬に影響を与えることができ、投票による報酬を得ることができます。",
-    "steem-power-delegated": "Delegated Hive Power",
-    "steem-power-received": "Received Hive Power",
+    "steem-power-delegated": "委託されたHiveパワー",
+    "steem-power-received": "受領したHiveパワー",
     "next-power-down-amount": "次のパワーダウン額",
-    "steem-power-total": "Total Hive Power",
-    "steem-dollars": "Hive Dollars",
-    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
+    "steem-power-total": "Hiveパワーの合計",
+    "steem-dollars": "Hiveドル",
+    "steem-dollars-description": "約1ドル相当のHIVEと同じ価値を持つトークンです。",
     "savings": "貯蓄口座",
     "savings-description": "引き出しに3日間の待ち時間が必要となる貯蓄口座です。",
     "next-power-down": "次のパワーダウンは{time} {amount}",
@@ -197,8 +197,8 @@
     "transfer": "送金",
     "transfer-to-savings": "貯蓄口座に送る",
     "power-up": "パワーアップ",
-    "withdraw-steem": "Withdraw Hive",
-    "withdraw-sbd": "Withdraw Hive Dollar",
+    "withdraw-steem": "Hiveを引き出す",
+    "withdraw-sbd": "Hiveドルを引き出す",
     "delegate": "委託",
     "power-down": "パワーダウン",
     "point-history": "履歴",
@@ -227,7 +227,7 @@
     "points-transfer": "ポイントを贈る",
     "points-get": "ESTMを購入",
     "witness-voting": "Witness",
-    "sps-voting": "DHF Voting",
+    "sps-voting": "DHF投票",
     "profile-editor": "プロフィール編集",
     "password": "パスワード"
   },
@@ -495,12 +495,12 @@
   "transfer": {
     "transfer-title": "アカウントに送金",
     "transfer-estm-title": "アカウントへ贈る",
-    "transfer-sub-title": "Move funds to another Hive account",
+    "transfer-sub-title": "別のHiveアカウントに資金を移動します",
     "transfer-saving-title": "貯蓄口座に送る",
     "transfer-saving-sub-title": "引き出しに3日間の待ち時間を設けて資金を守ります",
     "withdraw-saving-title": "貯蓄を引き出す",
     "withdraw-saving-sub-title": "3日間の待ち時間の後に資金を引き出す",
-    "power-up-title": "Convert to Hive Power",
+    "power-up-title": "Hiveパワーに変換",
     "power-up-sub-title": "投稿への支払額の制御権を持ち、キュレーション報酬を得ることが可能になる、影響力を持つトークンです。",
     "from": "From",
     "from-placeholder": "ユーザーを選択",
@@ -532,7 +532,7 @@
   },
   "delegate": {
     "title": "委託",
-    "sub-title": "Delegate Hive Power",
+    "sub-title": "委託されたHiveパワー",
     "slider-help": "スライダーをドラッグして金額を調整",
     "confirm-title": "委託の確認",
     "confirm-sub-title": "すべて正しいか確認してください",
@@ -545,7 +545,7 @@
   },
   "power-down": {
     "title": "パワーダウン",
-    "sub-title": "Power Down Hive Power",
+    "sub-title": "Hiveパワーをパワーダウン",
     "account": "アカウント",
     "incoming-funds": "入ってくる資金",
     "begin": "パワーダウン開始",
@@ -569,7 +569,7 @@
     "search-placeholder": "ユーザーを検索"
   },
   "delegated-list": {
-    "title": "Delegated hive power from @{n}"
+    "title": "委託されたhiveパワー @{n}"
   },
   "delegatee-list": {
     "title": "Delegated hive power to @{n}"
