@@ -866,7 +866,7 @@ export class Exchange extends Component {
         </div>
 
         <div className="market-data">
-          <div className="market-data-title">Steem</div>
+          <div className="market-data-title">Hive</div>
 
           {marketData && (
             <Fragment>
@@ -926,7 +926,7 @@ export class Exchange extends Component {
         </div>
 
         <div className="market-data">
-          <div className="market-data-title">Steem Dollar</div>
+          <div className="market-data-title">Hive Dollar</div>
           {marketData && (
             <Fragment>
               <div className={`price change-${sbdUsdDir}`}>
