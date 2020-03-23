@@ -22,7 +22,7 @@
     "about": "Про додаток"
   },
   "entry-index": {
-    "tags": "Популярні теги",
+    "tags": "Popular",
     "filter-trending": "Популярне",
     "filter-hot": "Актуальне",
     "filter-created": "Нове",
