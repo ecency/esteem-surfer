@@ -835,9 +835,9 @@ export class Exchange extends Component {
     let sbdBtcDir;
 
     if (marketData) {
-      const { steem, sbd } = marketData;
-      const { usd: steemUsd, btc: steemBtc } = steem.quotes;
-      const { usd: sbdUsd, btc: sbdBtc } = sbd.quotes;
+      const { hive, hbd } = marketData;
+      const { usd: steemUsd, btc: steemBtc } = hive.quotes;
+      const { usd: sbdUsd, btc: sbdBtc } = hbd.quotes;
 
       steemUsdDir =
         (steemUsd.percent_change === 0 && 'same') ||
@@ -875,7 +875,7 @@ export class Exchange extends Component {
                   {usdIcon}{' '}
                   <FormattedNumber
                     maximumFractionDigits={2}
-                    value={marketData.steem.quotes.usd.price}
+                    value={marketData.hive.quotes.usd.price}
                   />
                 </div>
 
@@ -883,7 +883,7 @@ export class Exchange extends Component {
                   (
                   <FormattedNumber
                     maximumFractionDigits={2}
-                    value={marketData.steem.quotes.usd.percent_change}
+                    value={marketData.hive.quotes.usd.percent_change}
                   />
                   %)
                 </div>
@@ -901,7 +901,7 @@ export class Exchange extends Component {
                   {btcIcon}{' '}
                   <FormattedNumber
                     minimumFractionDigits={8}
-                    value={marketData.steem.quotes.btc.price}
+                    value={marketData.hive.quotes.btc.price}
                   />
                 </div>
 
@@ -909,7 +909,7 @@ export class Exchange extends Component {
                   (
                   <FormattedNumber
                     maximumFractionDigits={2}
-                    value={marketData.steem.quotes.btc.percent_change}
+                    value={marketData.hive.quotes.btc.percent_change}
                   />
                   %)
                 </div>
@@ -934,7 +934,7 @@ export class Exchange extends Component {
                   {usdIcon}{' '}
                   <FormattedNumber
                     maximumFractionDigits={2}
-                    value={marketData.sbd.quotes.usd.price}
+                    value={marketData.hbd.quotes.usd.price}
                   />
                 </div>
 
@@ -942,7 +942,7 @@ export class Exchange extends Component {
                   (
                   <FormattedNumber
                     maximumFractionDigits={2}
-                    value={marketData.sbd.quotes.usd.percent_change}
+                    value={marketData.hbd.quotes.usd.percent_change}
                   />
                   %)
                 </div>
@@ -959,14 +959,14 @@ export class Exchange extends Component {
                   {btcIcon}{' '}
                   <FormattedNumber
                     minimumFractionDigits={8}
-                    value={marketData.sbd.quotes.btc.price}
+                    value={marketData.hbd.quotes.btc.price}
                   />
                 </div>
                 <div className="price-change">
                   (
                   <FormattedNumber
                     maximumFractionDigits={2}
-                    value={marketData.sbd.quotes.btc.percent_change}
+                    value={marketData.hbd.quotes.btc.percent_change}
                   />
                   %)
                 </div>

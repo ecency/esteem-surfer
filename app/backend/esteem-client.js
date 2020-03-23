@@ -111,6 +111,14 @@ export const getMarketData = () =>
       data = Object.assign({}, data, { steem: fakeData });
     }
 
+    if (data.hbd === null || !data.hbd) {
+      data = Object.assign({}, data, { hbd: data.sbd });
+    }
+
+    if (data.hive === null || !data.hive) {
+      data = Object.assign({}, data, { hive: data.steem });
+    }
+
     return data;
   });
 
