@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Row, Col, Select, Switch, Input, Button, message } from 'antd';
 import { FormattedMessage } from 'react-intl';
 
-import { Client } from 'dsteem';
+import { Client } from '@hivechain/dsteem';
 
 import moment from 'moment';
 

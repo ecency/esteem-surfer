@@ -1,4 +1,4 @@
-import { Client } from 'dsteem';
+import { Client } from '@hivechain/dsteem';
 
 import defaults from '../constants/defaults';
 
