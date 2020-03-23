@@ -22,7 +22,7 @@
     "about": "Phần giới thiệu"
   },
   "entry-index": {
-    "tags": "Gắn những thẻ thường dùng",
+    "tags": "Popular",
     "filter-trending": "Bài viết theo xu thế",
     "filter-hot": "Bài viết hot",
     "filter-created": "Bài viết mới",
@@ -93,8 +93,7 @@
     "create-account-text-1": "Don't have an account?",
     "create-account-text-2": "Sign up now!",
     "login-with-sc": "Đăng nhập với",
-    "divider-text": "HOẶC",
-    "sc-note": "Lưu ý: Steemconnect có thể tính một số khoản phí từ các giao dịch phần thưởng của bạn"
+    "divider-text": "HOẶC"
   },
   "sign-up": {
     "title": "Sign Up",
@@ -169,17 +168,17 @@
     "section-points": "Các điểm thưởng",
     "top-posts": "Những bài viết hay nhất",
     "unclaimed-rewards": "Tiền thưởng chưa được yêu cầu",
-    "estimated-value": "Giá trị ước tính được dựa trên giá trị trung bình trong 7 ngày của Steem.",
-    "steem": "Đồng Steem",
-    "steem-description": "STEEM là đồng tiền mã hóa có thế giao dịch được và có thể chuyển khoản bất cứ lúc nào. STEEM có thể chuyển đổi qua Steem Power qua một quá trình được gọi là powering up.",
-    "steem-power": "Đồng Steem quyền lực",
-    "steem-power-description": "Đồng Steem quyền lực là những đồng tiền mã hóa có công dụng kiếm được nhiều quyền lực hơn khi nắm giữ lâu dài và bình chọn các bài đăng. Càng nắm giữ nhiều Steem Power hơn, càng có thể tác động đến các phần thưởng của người khác và kiếm được những phần thưởng cho việc bình chọn tốt.",
-    "steem-power-delegated": "Steem Power được ủy thác",
-    "steem-power-received": "Steem Power nhận được",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "Số lượng giảm tiếp theo",
-    "steem-power-total": "Tổng số Steem Power",
-    "steem-dollars": "Những đô la Steem",
-    "steem-dollars-description": "Những đồng tiền mã hóa trị giá khoảng 1 đô la STEEM.",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "Những khoản tích lũy",
     "savings-description": "Số dư tùy thuộc vào thời gian chờ rút 3 ngày.",
     "next-power-down": "Đợt giảm tiếp theo là {time} {amount}",
@@ -198,8 +197,8 @@
     "transfer": "Chuyển khoản",
     "transfer-to-savings": "Chuyển đến những phần tiết kiệm",
     "power-up": "Tăng lên",
-    "withdraw-steem": "Rút Steem",
-    "withdraw-sbd": "Rút đô la Steem",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "Ủy thác",
     "power-down": "Giảm xuống",
     "point-history": "Lịch sử",
@@ -228,7 +227,7 @@
     "points-transfer": "Gift to someone",
     "points-get": "GET ESTM",
     "witness-voting": "Witnesses",
-    "sps-voting": "SPS Voting",
+    "sps-voting": "DHF Voting",
     "profile-editor": "Profile Editor",
     "password": "Password"
   },
@@ -496,12 +495,12 @@
   "transfer": {
     "transfer-title": "Chuyển khoản đến tài khoản",
     "transfer-estm-title": "Gift to Account",
-    "transfer-sub-title": "Chuyển các quỹ sang tài khoản Steem khác",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "Chuyển đến những phần tiết kiệm",
     "transfer-saving-sub-title": "Bảo vệ các quỹ bằng cách yêu cầu thời gian chờ rút tiền trong 3 ngày",
     "withdraw-saving-title": "Rút các khoản dự trữ",
     "withdraw-saving-sub-title": "Rút các quỹ sau thời gian chờ bắt buộc là 3 ngày",
-    "power-up-title": "Chuyển đổi sang Steem quyền lực",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "Đồng tiền mã hóa có công dụng cho phép bạn có khả năng kiểm soát nhiều hơn đối với các khoản thanh toán cho bài viết và cũng cho phép bạn kiếm được những phần thưởng cho việc tuyển chọn.",
     "from": "Từ",
     "from-placeholder": "Lựa chọn một người dùng",
@@ -533,7 +532,7 @@
   },
   "delegate": {
     "title": "Ủy thác",
-    "sub-title": "Ủy thác Steem quyền lực",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "Kéo thanh trượt để điều chỉnh số lượng",
     "confirm-title": "Xác nhận sự ủy thác",
     "confirm-sub-title": "Xin vui lòng kiểm tra xem mọi thứ xem có đúng không",
@@ -546,7 +545,7 @@
   },
   "power-down": {
     "title": "Giảm xuống",
-    "sub-title": "Giảm Steem quyền lực",
+    "sub-title": "Power Down Hive Power",
     "account": "Tài khoản",
     "incoming-funds": "Các quỹ sắp có",
     "begin": "Bắt đầu giảm xuống",
@@ -570,10 +569,10 @@
     "search-placeholder": "Tìm kiếm những người dùng"
   },
   "delegated-list": {
-    "title": "Ủy thác steem quyền lực từ @{n}"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "Ủy thác steem quyền lực đến @{n}"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "ESTM purchase",

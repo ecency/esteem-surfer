@@ -22,7 +22,7 @@
     "about": "Nípa"
   },
   "entry-index": {
-    "tags": "Àwọn ìsàmì tó gbajúmọ̀",
+    "tags": "Popular",
     "filter-trending": "Tó ń gbilẹ̀",
     "filter-hot": "Tó ń gbóná",
     "filter-created": "Tuntun",
@@ -93,8 +93,7 @@
     "create-account-text-1": "Don't have an account?",
     "create-account-text-2": "Sign up now!",
     "login-with-sc": "Wọlé pẹ̀lú",
-    "divider-text": "TÀBÍ",
-    "sc-note": "Àkíyèsí: Steemconnect le gba àwọn owó kan lára àwọn ìdúnàádúrà ẹ̀san rẹ"
+    "divider-text": "TÀBÍ"
   },
   "sign-up": {
     "title": "Sign Up",
@@ -169,17 +168,17 @@
     "section-points": "Points",
     "top-posts": "Àwọn Àròkọ Òkè",
     "unclaimed-rewards": "Àwọn ẹ̀san tí ìwọ kò tíì gbà",
-    "estimated-value": "Iye tí a fojú díwọ̀n náà dá lórí ìpíndọ́gba iye Steem fún ọjọ́ méje kan.",
-    "steem": "Steem",
-    "steem-description": "STEEM jẹ́ àwọn token ìṣòwò tí ó lè fi ránṣẹ́ nígbà kúgbà. STEEM le yípadà sí Steem Power pẹ̀lú ìgbésẹ̀ kan tí a n pè ní powering up.",
-    "steem-power": "Steem Power",
-    "steem-power-description": "Steem Power jẹ́ àwọn token agbára tó n túbọ̀ lágbára si fún dídìmú ìgbà pípẹ́ àti dídìbò lórí àwọn àròkọ. Bí Steem Power ẹnìkan bá ṣe tó, bẹ́ẹ̀ ni ó ṣe lè nípa lórí ẹ̀san ẹlòmíràn àti rí àwọn ẹ̀san fún ìdìbò tó péye.",
-    "steem-power-delegated": "Steem Power tí a fi ránṣẹ́",
-    "steem-power-received": "Steem Power tí o gbà",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "Iye power down tó kàn",
-    "steem-power-total": "Gbogbo Steem Power",
-    "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "Àwọn Token tí iye wọn tó $1.00 ti STEEM.",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "Àwọn Owó tí o tọ́jú",
     "savings-description": "Owó ìyókù ní àkókò ìdádúró ọjọ́ 3 kí o tó lè gba.",
     "next-power-down": "Power down tó kàn náà jẹ́ {time} {amount}",
@@ -198,8 +197,8 @@
     "transfer": "Ìfiránṣẹ́",
     "transfer-to-savings": "Ìfiránṣẹ́ sí ààyè-ìtọ́jú",
     "power-up": "Power up",
-    "withdraw-steem": "Gba Steem",
-    "withdraw-sbd": "Gba Steem Dollar",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "Fi ránṣẹ́",
     "power-down": "Power Down",
     "point-history": "History",
@@ -228,7 +227,7 @@
     "points-transfer": "Gift to someone",
     "points-get": "GET ESTM",
     "witness-voting": "Witnesses",
-    "sps-voting": "SPS Voting",
+    "sps-voting": "DHF Voting",
     "profile-editor": "Profile Editor",
     "password": "Password"
   },
@@ -496,12 +495,12 @@
   "transfer": {
     "transfer-title": "Fi ránṣẹ́ sí Account",
     "transfer-estm-title": "Gift to Account",
-    "transfer-sub-title": "Gbé àwọn owó sí account Steem òmíràn",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "Ìfiránṣẹ́ sí Ààyè-ìtọ́jú",
     "transfer-saving-sub-title": "Dáàbòbo àwọn owó nípasẹ̀ lílo àkókò ìdádúró ọjọ́ 3 fún gbígbà kan",
     "withdraw-saving-title": "Gba àwọn Owó tí o tọ́jú",
     "withdraw-saving-sub-title": "Gba àwọn owó lẹ́yìn àkókò ìdádúró ọjọ́ 3 tí a nílò náà",
-    "power-up-title": "Ṣàyípadà sí Steem Power",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "Àwọn token agbára èyí tó túbọ̀ fún ẹ ní àkóso lórí àwọn ìsanwó àròkọ àti fún ẹ láàyè láti rówó lórí àwọn ẹ̀san alábòójútó.",
     "from": "Láti",
     "from-placeholder": "Yan aṣàmúlò kan",
@@ -533,7 +532,7 @@
   },
   "delegate": {
     "title": "Fi ránṣẹ́",
-    "sub-title": "Fi Steem Power ránṣẹ́",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "Wọ́ slider náà láti ṣàtúnṣe iye náà",
     "confirm-title": "Jẹrìí sí Ìfiránṣẹ́",
     "confirm-sub-title": "Jọ̀wọ́, ṣàyẹ̀wò tí gbogbo nnkan bá dára",
@@ -546,7 +545,7 @@
   },
   "power-down": {
     "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
+    "sub-title": "Power Down Hive Power",
     "account": "Account",
     "incoming-funds": "Àwọn Owó tó ń bọ̀",
     "begin": "Bẹ̀rẹ̀ Power Down",
@@ -570,10 +569,10 @@
     "search-placeholder": "Ṣàwárí àwọn aṣàmúlò"
   },
   "delegated-list": {
-    "title": "Steem power tí a fi ránṣẹ́ láti @{n}"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "Steem power tí a fi ránṣẹ́ sí @{n}"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "ESTM purchase",

@@ -22,7 +22,7 @@
     "about": "Про додаток"
   },
   "entry-index": {
-    "tags": "Популярні теги",
+    "tags": "Popular",
     "filter-trending": "Популярне",
     "filter-hot": "Актуальне",
     "filter-created": "Нове",
@@ -57,7 +57,7 @@
     "reblog": "Репост",
     "reblogged": "Репостнуто",
     "modal-title": "Реблогери ({n})",
-    "more-reblogs": "... +{n} більше реблогів"
+    "more-reblogs": "... + ще {n} репостів"
   },
   "settings": {
     "title": "Налаштування",
@@ -93,8 +93,7 @@
     "create-account-text-1": "Ще не зареєстровані?",
     "create-account-text-2": "Зареєструйтеся зараз!",
     "login-with-sc": "Увійти через",
-    "divider-text": "АБО",
-    "sc-note": "Примітка: Steemconnect може стягувати деяку плату з ваших транзакцій винагород"
+    "divider-text": "АБО"
   },
   "sign-up": {
     "title": "Зареєструватися",
@@ -169,17 +168,17 @@
     "section-points": "Бали",
     "top-posts": "Топ пости",
     "unclaimed-rewards": "Не отримана винагорода",
-    "estimated-value": "Оціночна вартість базується на 7-денній середній вартості STEEM.",
-    "steem": "Steem",
-    "steem-description": "STEEM - токени, що вільно торгуються та можуть бути передані будь-коли. STEEM можна конвертувати в Steem Power в процесі під назвою \"посилення голосу\" (Power Up).",
-    "steem-power": "Steem Power",
-    "steem-power-description": "Steem Power - це токени впливу, які надають більше сили при їх довгостроковому збереженні та голосуванні за пости. Чим більше Steem Power ви маєте, тим більший ваш вплив на винагороду за пост, і більша ваша винагорода за влучне голосування.",
-    "steem-power-delegated": "Делеговані Steem Power",
-    "steem-power-received": "Отримані Steem Power",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "Сума наступного power down",
-    "steem-power-total": "Всього Steem Power",
-    "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "Токени вартістю близько $1.00 в STEEM.",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "Заощадження",
     "savings-description": "Баланс, для якого діє 3-денний період очікування при знятті коштів.",
     "next-power-down": "Наступний power down {amount} відбудеться {time}",
@@ -198,8 +197,8 @@
     "transfer": "Передача",
     "transfer-to-savings": "Передача до заощаджень",
     "power-up": "Power Up",
-    "withdraw-steem": "Вивести Steem",
-    "withdraw-sbd": "Вивести Steem Dollar",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "Делегувати",
     "power-down": "Зменшення Сили Голосу",
     "point-history": "Історія",
@@ -228,7 +227,7 @@
     "points-transfer": "Подарувати комусь",
     "points-get": "Отримати ESTM",
     "witness-voting": "Делегати",
-    "sps-voting": "Голосування за SPS",
+    "sps-voting": "DHF Voting",
     "profile-editor": "Редактор профілів",
     "password": "Пароль"
   },
@@ -364,7 +363,7 @@
     "comment-entry-title": "Ви переглядаєте гілку одного коментарю із: ",
     "comment-entry-go-root": "Переглянути повний контекст",
     "comment-entry-go-parent": "Прямий батьківський коментар",
-    "comment-reveal": "Reveal comment",
+    "comment-reveal": "Показати коментар",
     "similar-entries": "Схожі пости",
     "fetch-error": "Тайм-аут сервера через завеликий розмір відповіді",
     "promote": "просувати",
@@ -436,7 +435,7 @@
     "reblog-str": "зробив репост вашого посту:",
     "transfer-str": "відправив вам",
     "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
-    "inactive-str": "Be active! Write a post, continue earning",
+    "inactive-str": "Будьте активними! Зробіть допис, продовжуйте заробляти",
     "referral-str": "joined with your referral, welcome them",
     "empty-list": "Тут порожньо",
     "refresh": "Оновити",
@@ -496,12 +495,12 @@
   "transfer": {
     "transfer-title": "Переведення на акаунт",
     "transfer-estm-title": "Перемістити на рахунок",
-    "transfer-sub-title": "Переведення коштів на інший Steem акаунт",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "Переведення до Заощаджень",
     "transfer-saving-sub-title": "Захищає кошти від зняття 3-денним періодом очікування",
     "withdraw-saving-title": "Зняття заощаджень",
     "withdraw-saving-sub-title": "Зняти кошти після обов'язкового 3-денного періоду очікування",
-    "power-up-title": "Конвертувати в Steem Power",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "Токени впливу, які дають вам можливість впливати на винагороду за публікації та дозволяють заробляти на кураторстві.",
     "from": "Від",
     "from-placeholder": "Виберіть користувача",
@@ -533,7 +532,7 @@
   },
   "delegate": {
     "title": "Делегувати",
-    "sub-title": "Делегування Steem Power",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "Перетягніть бігунок для регулювання кількості",
     "confirm-title": "Підтвердіть делегування",
     "confirm-sub-title": "Будь ласка, перевірте, чи все вірно",
@@ -546,7 +545,7 @@
   },
   "power-down": {
     "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
+    "sub-title": "Power Down Hive Power",
     "account": "Акаунт",
     "incoming-funds": "Надходження коштів",
     "begin": "Почати Power Down",
@@ -570,10 +569,10 @@
     "search-placeholder": "Пошук користувачів"
   },
   "delegated-list": {
-    "title": "Делеговані steem power від @{n}"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "Steem power делеговані @{n}"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "Закупівля ESTM",

@@ -22,7 +22,7 @@
     "about": "About"
   },
   "entry-index": {
-    "tags": "Tags wey popular",
+    "tags": "Popular",
     "filter-trending": "Wey dey reign",
     "filter-hot": "Wey dey hot",
     "filter-created": "Wey new",
@@ -93,8 +93,7 @@
     "create-account-text-1": "Don't have an account?",
     "create-account-text-2": "Sign up now!",
     "login-with-sc": "Login with",
-    "divider-text": "OR",
-    "sc-note": "Steemconnect fit charge you small from wetin you won transact"
+    "divider-text": "OR"
   },
   "sign-up": {
     "title": "Sign Up",
@@ -169,17 +168,17 @@
     "section-points": "Points",
     "top-posts": "Tori wey dey top",
     "unclaimed-rewards": "Reward Wey Dem Never Collect",
-    "estimated-value": "The calculated value dey base on the average of Steem for 7 days. ",
-    "steem": "Steem",
-    "steem-description": "STEEM na tokens wey you fit buy or sell, and you fit transfer am anytime wey you want. You fit change your STEEM to STEEM Power through wetin dem dey call powering up.",
-    "steem-power": "Steem Power",
-    "steem-power-description": "Steem Power na token wey dey give power and the power go dey plenty join if you hold am for long time and if you dey vote people tori. The plenty the Steem Power wey you dey hold, the plenty your power to affect reward for people tori and the more wey you go dey earn onto say you vote people tori wella. ",
-    "steem-power-delegated": "Delegated Steem Power",
-    "steem-power-received": "Steem Power wey you Receive",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "Amount of next power down",
-    "steem-power-total": "Total Steem Power",
-    "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "The tokens na about $1 of STEEM",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "Savings",
     "savings-description": "The balance go take 3 days to withdraw",
     "next-power-down": "The next power down na {time} {amount}",
@@ -198,8 +197,8 @@
     "transfer": "Transfer",
     "transfer-to-savings": "Transfer go savings",
     "power-up": "Power up",
-    "withdraw-steem": "Withdraw steem",
-    "withdraw-sbd": "Withdraw Steem Dollar",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "Delegate",
     "power-down": "Power Down",
     "point-history": "History",
@@ -228,7 +227,7 @@
     "points-transfer": "Gift to someone",
     "points-get": "GET ESTM",
     "witness-voting": "Witnesses",
-    "sps-voting": "SPS Voting",
+    "sps-voting": "DHF Voting",
     "profile-editor": "Profile Editor",
     "password": "Password"
   },
@@ -496,12 +495,12 @@
   "transfer": {
     "transfer-title": "Transfer go Account",
     "transfer-estm-title": "Gift to Account",
-    "transfer-sub-title": "Move money go another Steem account",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "Transfer go Savings",
     "transfer-saving-sub-title": "Protect your money by delaying am for 3 days before you see am withdraw",
     "withdraw-saving-title": "Withdraw Savings",
     "withdraw-saving-sub-title": "Withdraw money after the 3 days delay wey dey needed",
-    "power-up-title": "Convert am go Steem Power",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "Tokens wey dey give you power over payment wey dey on top every tori, and wey go allow you  earn reward onto say you upvote people tori.",
     "from": "From",
     "from-placeholder": "Oya choose the person",
@@ -533,7 +532,7 @@
   },
   "delegate": {
     "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "Drag the slider so that you go fit adjust the amount",
     "confirm-title": "Confam Delegation",
     "confirm-sub-title": "Abeg, check if everything dey correct",
@@ -546,7 +545,7 @@
   },
   "power-down": {
     "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
+    "sub-title": "Power Down Hive Power",
     "account": "Account",
     "incoming-funds": "Incoming Funds",
     "begin": "Begin Power Down",
@@ -570,10 +569,10 @@
     "search-placeholder": "Search users"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "ESTM purchase",
