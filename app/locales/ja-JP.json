@@ -168,7 +168,7 @@
     "section-points": "ポイント",
     "top-posts": "トップ記事",
     "unclaimed-rewards": "未請求の報酬",
-    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "estimated-value": "推定価格は、Hiveの7日間の平均価格に基づいています。",
     "steem": "Hive",
     "steem-description": "HIVEはいつでも送金や取引が可能なトークンです。HIVEはパワーアップと呼ばれるプロセスで、Hiveパワーに変換することができます。",
     "steem-power": "Hiveパワー",
@@ -572,7 +572,7 @@
     "title": "委託されたhiveパワー @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated hive power to @{n}"
+    "title": "委託したhiveパワー @{n}"
   },
   "estm-purchase": {
     "title": "ESTM購入",
