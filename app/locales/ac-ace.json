@@ -22,7 +22,7 @@
     "about": "Teuntang"
   },
   "entry-index": {
-    "tags": "Konfirmasi kireman droen",
+    "tags": "Popular",
     "filter-trending": "Yang teungoh Trend",
     "filter-hot": "Tingoeh hangat",
     "filter-created": "Baroo",
@@ -93,8 +93,7 @@
     "create-account-text-1": "Don't have an account?",
     "create-account-text-2": "Sign up now!",
     "login-with-sc": "Tamong deungon",
-    "divider-text": "Atawa",
-    "sc-note": "Note: Steemconnect may charge some fees from your reward transactions"
+    "divider-text": "Atawa"
   },
   "sign-up": {
     "title": "Sign Up",
@@ -169,17 +168,17 @@
     "section-points": "Points",
     "top-posts": "Teunuléh paleng ateuh",
     "unclaimed-rewards": "Upah Galoem Cöek",
-    "estimated-value": "Nilai yang ka dikira-kira meudasar nibak 7 uroe yuem rata-rata dari {}.",
-    "steem": "Steem",
-    "steem-description": "STEEM are tradeable tokens that may be transferred at anytime. STEEM can be converted to Steem Power in a process called powering up.",
-    "steem-power": "Teunaga Steem",
-    "steem-power-description": "{{platformpower}}, token meupengarouh yang meuhasee power leubeh untuk jangka trep dan vote dalam post. Leubeh leu geumat power leubeh leu peungarouh dalam reward ureung laen dan meutumee reward keu voting yang teupat.",
-    "steem-power-delegated": "Delegated Steem Power",
-    "steem-power-received": "Teurimong Teunaga Steem",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "Next power down amount",
-    "steem-power-total": "Total Teunaga Steem",
-    "steem-dollars": "Steem Dolar",
-    "steem-dollars-description": "Tokens worth about $1.00 of STEEM.",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "Keunëubah",
     "savings-description": "Balance subject to 3 day withdraw waiting period.",
     "next-power-down": "The next power down is {time} {amount}",
@@ -198,8 +197,8 @@
     "transfer": "Kirèm",
     "transfer-to-savings": "Keubah Peng",
     "power-up": "Tamah Teunaga",
-    "withdraw-steem": "Tarek Steem",
-    "withdraw-sbd": "Tarek Steem Dolar",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "Delegate",
     "power-down": "Power Down",
     "point-history": "History",
@@ -228,7 +227,7 @@
     "points-transfer": "Gift to someone",
     "points-get": "GET ESTM",
     "witness-voting": "Witnesses",
-    "sps-voting": "SPS Voting",
+    "sps-voting": "DHF Voting",
     "profile-editor": "Profile Editor",
     "password": "Password"
   },
@@ -496,12 +495,12 @@
   "transfer": {
     "transfer-title": "Kirem keu akun",
     "transfer-estm-title": "Gift to Account",
-    "transfer-sub-title": "Pinah peng keu akun Steem laen",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "Keubah Peng",
     "transfer-saving-sub-title": "Protect funds by requiring a 3 day withdraw waiting period",
     "withdraw-saving-title": "Savings Withdraw",
     "withdraw-saving-sub-title": "Withdraw funds after the required 3 day waiting period",
-    "power-up-title": "Convert to Steem Power",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "Influence tokens which give you more control over post payouts and allow you to earn on curation rewards.",
     "from": "Dari",
     "from-placeholder": "Pileh pengguna",
@@ -533,7 +532,7 @@
   },
   "delegate": {
     "title": "Delegate",
-    "sub-title": "Delegate Steem Power",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "Drag the slider to adjust the amount",
     "confirm-title": "Confirm Delegation",
     "confirm-sub-title": "Please, check if everything is correct",
@@ -546,7 +545,7 @@
   },
   "power-down": {
     "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
+    "sub-title": "Power Down Hive Power",
     "account": "Account",
     "incoming-funds": "Incoming Funds",
     "begin": "Begin Power Down",
@@ -570,10 +569,10 @@
     "search-placeholder": "Search users"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "ESTM purchase",

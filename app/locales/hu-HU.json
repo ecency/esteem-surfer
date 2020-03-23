@@ -22,7 +22,7 @@
     "about": "Rólunk"
   },
   "entry-index": {
-    "tags": "Népszerű címkék",
+    "tags": "Popular",
     "filter-trending": "Népszerű",
     "filter-hot": "Forró",
     "filter-created": "Új",
@@ -93,8 +93,7 @@
     "create-account-text-1": "Nincs még fiókod?",
     "create-account-text-2": "Regisztrálj most!",
     "login-with-sc": "Bejelentkezés mint",
-    "divider-text": "VAGY",
-    "sc-note": "Megjegyzés: Steemconnect díjat számolhat fel néhány jutalom-tranzakcióért"
+    "divider-text": "VAGY"
   },
   "sign-up": {
     "title": "Regisztráció",
@@ -169,17 +168,17 @@
     "section-points": "Pontok",
     "top-posts": "Top Bejegyzések",
     "unclaimed-rewards": "Átvételre váró jutalmak",
-    "estimated-value": "A becsült érték a Steem 7 napos átlagértékén alapszik.",
-    "steem": "Steem",
-    "steem-description": "A STEEM olyan értékesíthető token, amely bármikor átutalható. A STEEM átalakítható Steem Power-re egy olyan folyamatban, melyet powering up-nak nevezünk.",
-    "steem-power": "Steem Power",
-    "steem-power-description": "A Steem Power olyan befolyásos token, amely több erőt bistosít hosszú távú birtoklás esetén és a bejegyzések szavazásakor. Minél több Steem Power-t birtokolsz, annál több befolyásod lehet mások jutalma fölött, és annál tőbb jutalmat biztosít a megfelelő szavazásért.",
-    "steem-power-delegated": "Delegált Steem Power",
-    "steem-power-received": "Kapott Steem Power",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "A következő power down összeg",
-    "steem-power-total": "Össz Steem Power",
-    "steem-dollars": "Steem Dollár",
-    "steem-dollars-description": "Tokenek, melyek körülbelül $1.00-nyi STEEM-et érnek.",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "Megtakarítások",
     "savings-description": "Egyenleg visszavonás esetén 3 nap a várakozási idő.",
     "next-power-down": "A következő power down {time} {amount} múlva",
@@ -198,8 +197,8 @@
     "transfer": "Átutalás",
     "transfer-to-savings": "Átutalás a megtakarításokhoz",
     "power-up": "Power up",
-    "withdraw-steem": "Steem Visszavonás",
-    "withdraw-sbd": "Steem Dollár Visszavonás",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "Delegálás",
     "power-down": "Power Down",
     "point-history": "Előzmény",
@@ -228,7 +227,7 @@
     "points-transfer": "Ajándékozz meg valakit",
     "points-get": "ESTM VÁSÁRLÁS",
     "witness-voting": "Tanúk",
-    "sps-voting": "SPS szavazás",
+    "sps-voting": "DHF Voting",
     "profile-editor": "Profil szerkesztés",
     "password": "Jelszó"
   },
@@ -496,12 +495,12 @@
   "transfer": {
     "transfer-title": "Átutalás más fiókba",
     "transfer-estm-title": "Ajándék neki",
-    "transfer-sub-title": "Tőke átutalása egy másik Steem fiókba",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "Átutalás a megtakarításokhoz",
     "transfer-saving-sub-title": "Tőkevédelem érdekében visszavonás esetén ígényelj 3 nap várakozási időt",
     "withdraw-saving-title": "Megtakarítások Visszavonása",
     "withdraw-saving-sub-title": "Tőke visszavonás a kötelező 3 napos várakozási idő után",
-    "power-up-title": "Steem Power-re való váltás",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "Befolyásoló tokenek, melyek több hatalmat biztosítanak a bejegyzések kifizetése felett, és lehetővé teszik, hogy kurátori jutalomhoz juss.",
     "from": "Feladó",
     "from-placeholder": "Felhasználó kiválasztása",
@@ -533,7 +532,7 @@
   },
   "delegate": {
     "title": "Delegálás",
-    "sub-title": "Steem Power Delegálás",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "A csúszka húzásával állítsd be a mennyiséget",
     "confirm-title": "Delegálás Megerősítése",
     "confirm-sub-title": "Kérjük ellenőrizd, hogy minden rendben",
@@ -546,7 +545,7 @@
   },
   "power-down": {
     "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
+    "sub-title": "Power Down Hive Power",
     "account": "Fiók",
     "incoming-funds": "Bejövő tőke",
     "begin": "Power Down Elkezdése",
@@ -570,10 +569,10 @@
     "search-placeholder": "Tagok keresése"
   },
   "delegated-list": {
-    "title": "Delegált steem power tőle @{n}"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "Delegált steem power neki @{n}"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "ESTM vásárlás",

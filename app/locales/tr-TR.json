@@ -22,7 +22,7 @@
     "about": "Hakkında"
   },
   "entry-index": {
-    "tags": "Popüler Etiketler",
+    "tags": "Popular",
     "filter-trending": "Popüler",
     "filter-hot": "Sıcak",
     "filter-created": "Yeni",
@@ -93,8 +93,7 @@
     "create-account-text-1": "Don't have an account?",
     "create-account-text-2": "Sign up now!",
     "login-with-sc": "İle oturum aç",
-    "divider-text": "Veya",
-    "sc-note": "Not: Steemconnect ödül işlemlerinde bazı ücretler alabilir"
+    "divider-text": "Veya"
   },
   "sign-up": {
     "title": "Sign Up",
@@ -169,17 +168,17 @@
     "section-points": "Points",
     "top-posts": "En iyi gönderiler",
     "unclaimed-rewards": "Talep edilmemiş ödüller",
-    "estimated-value": "Tahmini değer 7 günlük ortalama Steem değerine dayanmaktadır.",
-    "steem": "Steem",
-    "steem-description": "STEEM istediniz zamanda transfer edilebilecek ticari jetonlardır. STEEM, güçlendirme olarak adlandırılan bir süreçte Steem Güç'e dönüştürülebilir.",
-    "steem-power": "Steem Gücü",
-    "steem-power-description": "Steem Gücü tokenleri uzun vadede tutarak ve gönderilerde oy kullanarak daha fazla güç kazanır. Steem Gücü ne kadar fazla olursa biri o diğerinin ödüllerini etkileyebilir ve doğru oylama için ödüller kazanabilir.",
-    "steem-power-delegated": "Devredilmiş Steem Gücü",
-    "steem-power-received": "Alınan Steem Gücü",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "Sonraki güç azaltma miktarı",
-    "steem-power-total": "Toplam Steem Gücü",
-    "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "Tokenler yaklaşık $1.00 STEEM değerindedir.",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "Tasarruflar",
     "savings-description": "Bakiye çekimi 3 gün bekleme süresine tabidir.",
     "next-power-down": "Bir sonraki güç azaltma {time} {amount}",
@@ -198,8 +197,8 @@
     "transfer": "Aktar",
     "transfer-to-savings": "Tasarruflara aktar",
     "power-up": "Güç yükselt",
-    "withdraw-steem": "Steem Çek",
-    "withdraw-sbd": "Steem Dollar Çek",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "Devretme",
     "power-down": "Power Down",
     "point-history": "History",
@@ -228,7 +227,7 @@
     "points-transfer": "Gift to someone",
     "points-get": "GET ESTM",
     "witness-voting": "Witnesses",
-    "sps-voting": "SPS Voting",
+    "sps-voting": "DHF Voting",
     "profile-editor": "Profile Editor",
     "password": "Password"
   },
@@ -496,12 +495,12 @@
   "transfer": {
     "transfer-title": "Hesaba aktar",
     "transfer-estm-title": "Gift to Account",
-    "transfer-sub-title": "Fonları başka bir Steem hesabına taşı",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "Tasarruflara transfer et",
     "transfer-saving-sub-title": "3 günlük geri çekme süresi ile fonlarınızı koruyun",
     "withdraw-saving-title": "Tasarrufları Çek",
     "withdraw-saving-sub-title": "Gereken 3 günlük bekleme süresinden sonra fonlarınızı çekin",
-    "power-up-title": "Steem Gücüne Dönüştür",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "STEEM Gücü, ödemeler sonrası ödemeler üzerinde daha fazla kontrol sahibi olmanıza ve kürasyon ödülleri kazanmanıza olanak tanır.",
     "from": "Kimden",
     "from-placeholder": "Kullanıcı seç",
@@ -533,7 +532,7 @@
   },
   "delegate": {
     "title": "Devretme",
-    "sub-title": "Steem Gücü Devret",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "Miktarı ayarlamak için kaydırıcıyı sürükleyin",
     "confirm-title": "Delegasyonu Onayla",
     "confirm-sub-title": "Lütfen, her şeyin doğru olup olmadığını kontrol edin",
@@ -546,7 +545,7 @@
   },
   "power-down": {
     "title": "Power Down",
-    "sub-title": "Power Down Steem Power",
+    "sub-title": "Power Down Hive Power",
     "account": "Account",
     "incoming-funds": "Incoming Funds",
     "begin": "Begin Power Down",
@@ -570,10 +569,10 @@
     "search-placeholder": "Search users"
   },
   "delegated-list": {
-    "title": "Delegated steem power from @{n}"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated steem power to @{n}"
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "ESTM purchase",

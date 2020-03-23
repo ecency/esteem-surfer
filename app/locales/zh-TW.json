@@ -22,7 +22,7 @@
     "about": "關於"
   },
   "entry-index": {
-    "tags": "熱門標籤",
+    "tags": "Popular",
     "filter-trending": "流行",
     "filter-hot": "熱門",
     "filter-created": "最新",
@@ -93,8 +93,7 @@
     "create-account-text-1": "還沒有帳號嗎？",
     "create-account-text-2": "立刻註冊!",
     "login-with-sc": "登入方式",
-    "divider-text": "或",
-    "sc-note": "注意：SteemConnect 可能會從您的獎勵交易中收取一些費用"
+    "divider-text": "或"
   },
   "sign-up": {
     "title": "註冊",
@@ -169,17 +168,17 @@
     "section-points": "點數",
     "top-posts": "熱門帖子",
     "unclaimed-rewards": "未領取的報酬",
-    "estimated-value": "概估價值是以Steem7天之平均價為基礎",
-    "steem": "Steem",
-    "steem-description": "STEEM是可以隨時轉帳的可交易數位貨幣。STEEM可通過名為“Power Up”的過程將STEEM轉換為Steem Power（SP）。",
-    "steem-power": "Steem Power",
-    "steem-power-description": "Steem Power 可視為具有影響力的股權，持有可長期增值並對文章投票。持有Steem Power數量越多對於其他人獎勵大小的影響力就越大，也更能從準確的投票行為中獲得獎勵。",
-    "steem-power-delegated": "已委託的 Steem Power(SP)",
-    "steem-power-received": "已接收的 Steem Power(SP)",
+    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "steem": "Hive",
+    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-power": "Hive Power",
+    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-received": "Received Hive Power",
     "next-power-down-amount": "下次釋放 Steem Power 數量",
-    "steem-power-total": "Steem Power(SP)總量",
-    "steem-dollars": "Steem Dollars",
-    "steem-dollars-description": "價值約1美元STEEM的代幣。",
+    "steem-power-total": "Total Hive Power",
+    "steem-dollars": "Hive Dollars",
+    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "儲蓄",
     "savings-description": "餘額有3天的取款等待期。",
     "next-power-down": "下次釋放 {amount} SP (Steem Power) 是在 {time}",
@@ -198,8 +197,8 @@
     "transfer": "轉賬",
     "transfer-to-savings": "轉到儲蓄",
     "power-up": "Power Up",
-    "withdraw-steem": "取出Steem",
-    "withdraw-sbd": "取出Steem Dollar",
+    "withdraw-steem": "Withdraw Hive",
+    "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "委託",
     "power-down": "釋放 Steem Power",
     "point-history": "歷史",
@@ -228,7 +227,7 @@
     "points-transfer": "贈送給他人",
     "points-get": "獲取 ESTM",
     "witness-voting": "見證人",
-    "sps-voting": "SPS 投票",
+    "sps-voting": "DHF Voting",
     "profile-editor": "編輯個人資料",
     "password": "密碼"
   },
@@ -496,12 +495,12 @@
   "transfer": {
     "transfer-title": "轉入賬戶",
     "transfer-estm-title": "贈給帳戶",
-    "transfer-sub-title": "將資金移動到另一個 Steem 賬戶",
+    "transfer-sub-title": "Move funds to another Hive account",
     "transfer-saving-title": "轉到儲蓄",
     "transfer-saving-sub-title": "提款要求3天的取款等待期來保護資金",
     "withdraw-saving-title": "儲蓄提款",
     "withdraw-saving-sub-title": "必須在規定的3天等待期後提取資金",
-    "power-up-title": "轉為 Steem Power(SP)",
+    "power-up-title": "Convert to Hive Power",
     "power-up-sub-title": "有影響力的代幣，讓您對帖子的收益有更多的控制權，並讓您可以獲得審查獎勵。",
     "from": "從",
     "from-placeholder": "選擇使用者",
@@ -533,7 +532,7 @@
   },
   "delegate": {
     "title": "委託",
-    "sub-title": "委託 Steem Power(SP)",
+    "sub-title": "Delegate Hive Power",
     "slider-help": "拖動滑塊來調整數量",
     "confirm-title": "確認委託",
     "confirm-sub-title": "請檢查是否一切正確。",
@@ -546,7 +545,7 @@
   },
   "power-down": {
     "title": "釋放 Steem Power",
-    "sub-title": "釋放 Steem Power",
+    "sub-title": "Power Down Hive Power",
     "account": "帳戶",
     "incoming-funds": "轉入資金",
     "begin": "開始釋放 Steem Power",
@@ -570,10 +569,10 @@
     "search-placeholder": "檢索用戶"
   },
   "delegated-list": {
-    "title": "來自 @{n} 的Steem Power（SP）授權"
+    "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "委託 Steem Power 給 @{n} "
+    "title": "Delegated hive power to @{n}"
   },
   "estm-purchase": {
     "title": "購買 ESTM",
