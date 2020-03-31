@@ -1,8 +1,8 @@
-# [eSteem Surfer 2][esteem_desktop] – Steem Desktop Client
+# [Esteem Desktop][esteem_desktop] – Hive Desktop Client
 
-🎉 This is the complete source code and the build instructions of the [Steem blockchain](https://steem.io/) desktop client **eSteem Surfer 2** founded by [Feruz M](https://steemit.com/@good-karma) and Lead Surfer [Talha](https://steemit.com/@talhasch), supported by [eSteem team](https://steemit.com/@esteemapp) and vast Steem community contibutors.
+🎉 This is the complete source code and the build instructions of the [Hive blockchain](https://hive.io/) desktop client **Esteem Desktop** founded by [Feruz M](https://esteem.app/@good-karma) and Lead Surfer [Talha](https://esteem.app/@talhasch), supported by [Esteem team](https://esteem.app/@esteemapp) and vast Hive community contibutors.
 
-![Preview of eSteem Surfer](https://user-images.githubusercontent.com/1177676/48030022-b4614000-e147-11e8-8204-f7c4355a6ac7.png)
+![Preview of Esteem Desktop](https://img.esteem.app/utif67.jpg)
 
 ## What is already implemented
 
@@ -11,10 +11,10 @@
 - Commenting
 - Voting with any %
 - Reading replies/comments/mentions
-- Drafts `synced with eSteem Mobile`
-- Post Schedules `synced with eSteem Mobile`
-- Bookmarks `synced with eSteem Mobile`
-- Favorites `synced with eSteem Mobile`
+- Drafts `synced with Esteem Mobile`
+- Post Schedules `synced with Esteem Mobile`
+- Bookmarks `synced with Esteem Mobile`
+- Favorites `synced with Esteem Mobile`
 - Comments/Memo Encryption
 - Night Mode (Dark Theme)
 - Wallet Transfers
@@ -27,8 +27,8 @@ More functions are coming!
 ## Supported systems
 
 - Windows XP - Windows 10
-- Mac OS X 10.6 - Mac OS X 10.14
-- Ubuntu 12.04 - Ubuntu 18.04
+- Mac OS X 10.6 - Mac OS X 10.15
+- Ubuntu 12.04 - Ubuntu 19.10
 - Fedora 22 - Fedora 24
 
 ## Build instructions
