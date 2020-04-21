@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AccountCover Render 1`] = `"<div class=\\"account-cover\\"><div class=\\"cover-image\\" style=\\"background-image: url(https://steemitimages.com/0x0/https://foo.bar/baz.png);\\"></div><div class=\\"follow-controls-holder\\"><div><button style=\\"margin-right: 5px;\\" type=\\"button\\" class=\\"ant-btn ant-btn-primary\\"><span>Follow</span></button><button type=\\"button\\" class=\\"ant-btn\\"><span>Mute</span></button></div></div></div>"`;
+exports[`AccountCover Render 1`] = `"<div class=\\"account-cover\\"><div class=\\"cover-image\\" style=\\"background-image: url(https://images.esteem.app.com/0x0/https://foo.bar/baz.png);\\"></div><div class=\\"follow-controls-holder\\"><div><button style=\\"margin-right: 5px;\\" type=\\"button\\" class=\\"ant-btn ant-btn-primary\\"><span>Follow</span></button><button type=\\"button\\" class=\\"ant-btn\\"><span>Mute</span></button></div></div></div>"`;
 
 exports[`AccountMenu Render 1`] = `"<div class=\\"account-menu\\"><div class=\\"account-menu-items\\"><a role=\\"none\\" class=\\"menu-item false\\"><span>Blog</span></a><a role=\\"none\\" class=\\"menu-item selected-item\\"><span>Comments</span></a><a role=\\"none\\" class=\\"menu-item false\\"><span>Replies</span></a><a role=\\"none\\" class=\\"menu-item false\\"><span>Points</span></a><a role=\\"none\\" class=\\"menu-item false\\"><span>Wallet</span></a></div><div class=\\"page-tools\\"><a class=\\"list-switch \\" role=\\"none\\"><i class=\\"mi\\">view_module</i></a></div></div>"`;
 

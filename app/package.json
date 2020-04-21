@@ -2,7 +2,7 @@
   "name": "esteem-surfer",
   "productName": "Esteem",
   "description": "Esteem desktop application reimagined for Windows, Mac, Linux users, start earning cryptocurrency!",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "main": "./main.prod.js",
   "author": "Esteem <info@esteem.app>",
   "scripts": {
@@ -10,6 +10,6 @@
     "postinstall": "yarn electron-rebuild"
   },
   "dependencies": {
-    "@hivechain/dsteem": "^0.12.13"
+    "@esteemapp/dhive": "^0.12.1"
   }
 }

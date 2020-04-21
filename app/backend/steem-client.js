@@ -2,7 +2,7 @@
 eslint-disable no-underscore-dangle
 */
 
-import { Client, PrivateKey } from '@hivechain/dsteem';
+import { Client, PrivateKey } from '@esteemapp/dhive';
 
 import sc2 from 'hivesigner';
 
@@ -31,7 +31,9 @@ import { getItem } from '../helpers/storage';
 
 import { usrActivity } from './esteem-client';
 
-let client = new Client(getItem('server2', defaults.server));
+let client = new Client(getItem('server2', defaults.servers), {
+  timeout: 3000
+});
 
 export const setAddress = address => {
   client = new Client(address);
@@ -105,7 +107,7 @@ export const getWitnessesByVote = (from = undefined, limit = 100) =>
 
 const _vote = (account, pin, author, permlink, weight) => {
   if (account.type === 's') {
-    const key = decryptKey(account.keys.posting, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
     const voter = account.username;
 
@@ -139,7 +141,7 @@ export const vote = (account, pin, author, permlink, weight) =>
 
 export const follow = (account, pin, following) => {
   if (account.type === 's') {
-    const key = decryptKey(account.keys.posting, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
     const follower = account.username;
 
@@ -174,7 +176,7 @@ export const follow = (account, pin, following) => {
 
 export const unFollow = (account, pin, following) => {
   if (account.type === 's') {
-    const key = decryptKey(account.keys.posting, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
     const follower = account.username;
 
@@ -209,7 +211,7 @@ export const unFollow = (account, pin, following) => {
 
 export const ignore = (account, pin, following) => {
   if (account.type === 's') {
-    const key = decryptKey(account.keys.posting, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
     const follower = account.username;
 
@@ -244,7 +246,7 @@ export const ignore = (account, pin, following) => {
 
 export const revokePostingPermission = (account, pin) => {
   if (account.type === 's') {
-    const key = decryptKey(account.keys.active, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
 
     const { accountData } = account;
@@ -277,7 +279,7 @@ export const revokePostingPermission = (account, pin) => {
 
 export const grantPostingPermission = (account, pin) => {
   if (account.type === 's') {
-    const key = decryptKey(account.keys.active, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
 
     const { accountData } = account;
@@ -318,7 +320,7 @@ export const grantPostingPermission = (account, pin) => {
 
 export const updateProfile = (account, pin, newProfile) => {
   if (account.type === 's') {
-    const key = decryptKey(account.keys.active, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
 
     const { accountData } = account;
@@ -394,7 +396,7 @@ export const deleteComment = (account, pin, permlink) => {
       ]
     ];
 
-    const key = decryptKey(account.keys.posting, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
 
     return client.broadcast.sendOperations(opArray, privateKey);
@@ -465,7 +467,7 @@ const _comment = (
       opArray.push(e);
     }
 
-    const key = decryptKey(account.keys.posting, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
 
     return client.broadcast.sendOperations(opArray, privateKey);
@@ -550,7 +552,7 @@ export const reblog = (account, pin, author, permlink) =>
 
 const _reblog = (account, pin, author, permlink) => {
   if (account.type === 's') {
-    const key = decryptKey(account.keys.posting, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
     const follower = account.username;
 
@@ -591,7 +593,7 @@ export const claimRewardBalance = (
   rewardVests
 ) => {
   if (account.type === 's') {
-    const key = decryptKey(account.keys.posting, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
 
     const opArray = [
@@ -637,7 +639,7 @@ export const witnessVote = (account, pin, witness, approve) => {
       ]
     ];
 
-    const key = decryptKey(account.keys.active, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
 
     return client.broadcast.sendOperations(opArray, privateKey);
@@ -660,7 +662,7 @@ export const witnessProxy = (account, pin, proxy) => {
       ]
     ];
 
-    const key = decryptKey(account.keys.active, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
 
     return client.broadcast.sendOperations(opArray, privateKey);
@@ -675,7 +677,7 @@ export const transfer = (account, pin, to, amount, memo) => {
   const { username: from } = account;
 
   if (account.type === 's') {
-    const key = decryptKey(account.keys.active, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
 
     const args = {
@@ -697,7 +699,7 @@ export const transferToSavings = (account, pin, to, amount, memo) => {
   const { username: from } = account;
 
   if (account.type === 's') {
-    const key = decryptKey(account.keys.active, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
 
     const opArray = [
@@ -731,7 +733,7 @@ export const transferFromSavings = (
   const { username: from } = account;
 
   if (account.type === 's') {
-    const key = decryptKey(account.keys.active, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
 
     const opArray = [
@@ -759,7 +761,7 @@ export const transferToVesting = (account, pin, to, amount) => {
   const { username: from } = account;
 
   if (account.type === 's') {
-    const key = decryptKey(account.keys.active, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
 
     const opArray = [
@@ -790,7 +792,7 @@ export const delegateVestingShares = (
   const { username: delegator } = account;
 
   if (account.type === 's') {
-    const key = decryptKey(account.keys.active, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
 
     const opArray = [
@@ -817,7 +819,7 @@ export const getVestingDelegations = (account, from = '', limit = 50) =>
 
 export const withdrawVesting = (account, pin, vestingShares) => {
   if (account.type === 's') {
-    const key = decryptKey(account.keys.active, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
 
     const opArray = [
@@ -849,7 +851,7 @@ export const setWithdrawVestingRoute = (
   autoVest
 ) => {
   if (account.type === 's') {
-    const key = decryptKey(account.keys.active, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
 
     const opArray = [
@@ -885,7 +887,7 @@ export const transferPoint = (account, pin, to, amount, memo) => {
   });
 
   if (account.type === 's') {
-    const key = decryptKey(account.keys.active, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
 
     const op = {
@@ -914,7 +916,7 @@ export const promote = (account, pin, user, author, permlink, duration) => {
   });
 
   if (account.type === 's') {
-    const key = decryptKey(account.keys.active, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
 
     const op = {
@@ -943,7 +945,7 @@ export const boost = (account, pin, user, author, permlink, amount) => {
   });
 
   if (account.type === 's') {
-    const key = decryptKey(account.keys.active, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
 
     const op = {
@@ -988,7 +990,7 @@ export const voteProposal = (account, pin, proposalId, approve) => {
   const { username: voter } = account;
 
   if (account.type === 's') {
-    const key = decryptKey(account.keys.active, pin);
+    const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
 
     const opArray = [

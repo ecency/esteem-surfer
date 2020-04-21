@@ -1,4 +1,4 @@
-import { Client } from '@hivechain/dsteem';
+import { Client } from '@esteemapp/dhive';
 
 import defaults from '../constants/defaults';
 
@@ -6,7 +6,9 @@ export const TT_FETCH_BEGIN = 'TT_FETCH_BEGIN';
 export const TT_FETCH_OK = 'TT_FETCH_OK';
 export const TT_FETCH_ERROR = 'TT_FETCH_ERROR';
 
-const client = new Client(defaults.server);
+const client = new Client(defaults.servers, {
+  timeout: 3000
+});
 
 const shuffle = arr => {
   const arry = arr;

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { Modal, Input, Button, message } from 'antd';
 import { FormattedMessage } from 'react-intl';
 
-import { PrivateKey } from '@hivechain/dsteem';
+import { PrivateKey } from '@esteemapp/dhive';
 
 import { updatePassword } from '../../backend/steem-client';
 

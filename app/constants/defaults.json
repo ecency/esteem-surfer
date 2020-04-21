@@ -10,6 +10,14 @@
   "locale": "en-US",
   "pushNotify": 1,
   "server": "https://rpc.esteem.app",
+  "servers": [
+    "https://rpc.esteem.app",
+    "https://api.hive.blog",
+    "https://anyx.io",
+    "https://api.hivekings.com",
+    "https://api.openhive.network",
+    "https://api.pharesim.me"
+  ],
   "minPinCode": 4,
   "maxPinCodeTry": 5,
   "searchSort": "popularity"

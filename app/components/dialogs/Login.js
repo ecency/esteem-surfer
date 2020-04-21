@@ -6,7 +6,7 @@ import React, { Component, Fragment } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { PrivateKey, PublicKey } from '@hivechain/dsteem';
+import { PrivateKey, PublicKey, cryptoUtils } from '@esteemapp/dhive';
 
 import {
   Button,
@@ -381,13 +381,7 @@ class Login extends Component {
     }
 
     // True if the code entered is password else false
-    // const codeIsPassword = !auth.isWif(code);
-    let codeIsPassword = false;
-    try {
-      PrivateKey.fromString(code);
-    } catch (e) {
-      codeIsPassword = true;
-    }
+    const codeIsPassword = !cryptoUtils.isWif(code);
 
     let accounts;
 

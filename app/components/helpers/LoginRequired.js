@@ -13,14 +13,31 @@ export const checkLogin = (activeAccount, requiredKeys) => {
   }
 
   // Traditional login. Check all required keys exists in user keys.
-  if (
-    activeAccount &&
-    activeAccount.type === 's' &&
-    requiredKeys.every(e => activeAccount.keys[e])
-  ) {
+  if (activeAccount && activeAccount.type === 's') {
+    if (requiredKeys.includes('memo')) {
+      return (
+        activeAccount.keys.memo ||
+        activeAccount.keys.posting ||
+        activeAccount.keys.active ||
+        activeAccount.keys.owner
+      );
+    }
+    if (requiredKeys.includes('posting')) {
+      return (
+        activeAccount.keys.posting ||
+        activeAccount.keys.active ||
+        activeAccount.keys.owner
+      );
+    }
+    if (requiredKeys.includes('active')) {
+      return activeAccount.keys.active || activeAccount.keys.owner;
+    }
+    if (requiredKeys.includes('owner')) {
+      return activeAccount.keys.owner || activeAccount.keys.master;
+    }
+
     return true;
   }
-
   return false;
 };
 

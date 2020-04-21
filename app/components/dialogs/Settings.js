@@ -5,11 +5,13 @@ import PropTypes from 'prop-types';
 import { Row, Col, Select, Switch, Input, Button, message } from 'antd';
 import { FormattedMessage } from 'react-intl';
 
-import { Client } from '@hivechain/dsteem';
+import { Client } from '@esteemapp/dhive';
 
 import moment from 'moment';
 
 import currencies from '../../constants/currencies';
+import defaults from '../../constants/defaults';
+
 import { locales } from '../../locales/index';
 
 import { getCurrencyRate, getNodes } from '../../backend/esteem-client';
@@ -98,6 +100,7 @@ class Settings extends Component {
 
   async setServer(server) {
     const { actions, intl } = this.props;
+    const selectedServer = defaults.servers;
 
     if (!/^((http|https):\/\/)/.test(server)) {
       message.error(
@@ -105,10 +108,10 @@ class Settings extends Component {
       );
       return false;
     }
-
     this.setState({ connectingServer: true });
+    selectedServer.unshift(server);
 
-    const client = new Client(server, { timeout: 3000 });
+    const client = new Client(selectedServer, { timeout: 3000 });
 
     const hideMsg = message.loading(
       intl.formatMessage({ id: 'settings.server-connecting' }, { server }),

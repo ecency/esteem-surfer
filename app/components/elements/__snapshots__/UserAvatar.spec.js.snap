@@ -7,7 +7,7 @@ exports[`UserAvatar (1) Should render small size 1`] = `
   role="none"
   style={
     Object {
-      "backgroundImage": "url('https://avatars.esteem.app/u/good-karma/avatar/medium')",
+      "backgroundImage": "url('https://images.esteem.app/u/good-karma/avatar/medium')",
     }
   }
 />
@@ -20,7 +20,7 @@ exports[`UserAvatar (2) Should render normal size 1`] = `
   role="none"
   style={
     Object {
-      "backgroundImage": "url('https://avatars.esteem.app/u/good-karma/avatar/medium')",
+      "backgroundImage": "url('https://images.esteem.app/u/good-karma/avatar/medium')",
     }
   }
 />
@@ -33,7 +33,7 @@ exports[`UserAvatar (3) Should render medium size 1`] = `
   role="none"
   style={
     Object {
-      "backgroundImage": "url('https://avatars.esteem.app/u/good-karma/avatar/medium')",
+      "backgroundImage": "url('https://images.esteem.app/u/good-karma/avatar/medium')",
     }
   }
 />
@@ -46,7 +46,7 @@ exports[`UserAvatar (4) Should render large size 1`] = `
   role="none"
   style={
     Object {
-      "backgroundImage": "url('https://avatars.esteem.app/u/good-karma/avatar/medium')",
+      "backgroundImage": "url('https://images.esteem.app/u/good-karma/avatar/medium')",
     }
   }
 />
@@ -59,7 +59,7 @@ exports[`UserAvatar (5) Should render xlarge size 1`] = `
   role="none"
   style={
     Object {
-      "backgroundImage": "url('https://avatars.esteem.app/u/good-karma/avatar/large')",
+      "backgroundImage": "url('https://images.esteem.app/u/good-karma/avatar/large')",
     }
   }
 />
