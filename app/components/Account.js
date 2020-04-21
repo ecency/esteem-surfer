@@ -1189,8 +1189,13 @@ export class SectionWallet extends Component {
               </Link>
             </Menu.Item>
             <Menu.Item key="transfer-saving">
-              <Link to={`/@${activeAccount.username}/transfer-saving/sbd`}>
+              <Link to={`/@${activeAccount.username}/transfer-saving/hbd`}>
                 <FormattedMessage id="account.transfer-to-savings" />
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="convert">
+              <Link to={`/@${activeAccount.username}/convert/hbd`}>
+                <FormattedMessage id="account.convert" />
               </Link>
             </Menu.Item>
           </Menu>

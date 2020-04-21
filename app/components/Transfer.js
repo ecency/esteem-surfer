@@ -24,6 +24,7 @@ import {
   getAccount,
   transfer,
   transferToSavings,
+  convert,
   transferFromSavings,
   transferToVesting,
   transferPoint
@@ -171,7 +172,11 @@ class Transfer extends PureComponent {
     );
 
     // auto fill
-    if (['transfer-saving', 'withdraw-saving', 'power-up'].includes(mode)) {
+    if (
+      ['transfer-saving', 'withdraw-saving', 'power-up', 'convert'].includes(
+        mode
+      )
+    ) {
       this.toChanged(username);
     }
   };
@@ -236,6 +241,9 @@ class Transfer extends PureComponent {
         break;
       case 'transfer-saving':
         u = `/@${from}/transfer-saving/${asset.toLowerCase()}`;
+        break;
+      case 'convert':
+        u = `/@${from}/convert/${asset.toLowerCase()}`;
         break;
       case 'withdraw-saving':
         u = `/@${from}/withdraw-saving/${asset.toLowerCase()}`;
@@ -406,6 +414,11 @@ class Transfer extends PureComponent {
       case 'transfer-saving':
         fn = transferToSavings;
         break;
+      case 'convert':
+        fn = convert;
+        const requestd = new Date().getTime() >>> 0;
+        args = [account, pin, fullAmount, requestd];
+        break;
       case 'withdraw-saving':
         fn = transferFromSavings;
         const requestId = new Date().getTime() >>> 0;
@@ -530,6 +543,9 @@ class Transfer extends PureComponent {
                       {mode === 'power-up' && (
                         <FormattedMessage id="transfer.power-up-title" />
                       )}
+                      {mode === 'convert' && (
+                        <FormattedMessage id="transfer.convert-title" />
+                      )}
                     </div>
                     <div className="sub-title">
                       {mode === 'transfer' && (
@@ -543,6 +559,9 @@ class Transfer extends PureComponent {
                       )}
                       {mode === 'power-up' && (
                         <FormattedMessage id="transfer.power-up-sub-title" />
+                      )}
+                      {mode === 'convert' && (
+                        <FormattedMessage id="transfer.convert-sub-title" />
                       )}
                     </div>
                   </div>
@@ -578,32 +597,36 @@ class Transfer extends PureComponent {
                         )}
                       </div>
                     </div>
-                    <div
-                      className={`form-item ${
-                        toWarning || toError ? 'has-error' : ''
-                      }`}
-                    >
-                      <div className="form-label">
-                        <FormattedMessage id="transfer.to" />
-                      </div>
-                      <div className="form-input">
-                        <AutoComplete
-                          onChange={this.toChanged}
-                          value={to}
-                          placeholder={intl.formatMessage({
-                            id: 'transfer.to-placeholder'
-                          })}
-                          spellCheck={false}
-                          dataSource={options}
-                        />
+                    {mode !== 'convert' && (
+                      <div
+                        className={`form-item ${
+                          toWarning || toError ? 'has-error' : ''
+                        }`}
+                      >
+                        <div className="form-label">
+                          <FormattedMessage id="transfer.to" />
+                        </div>
+                        <div className="form-input">
+                          <AutoComplete
+                            onChange={this.toChanged}
+                            value={to}
+                            placeholder={intl.formatMessage({
+                              id: 'transfer.to-placeholder'
+                            })}
+                            spellCheck={false}
+                            dataSource={options}
+                          />
 
-                        {toWarning && (
-                          <div className="input-help">{toWarning}</div>
-                        )}
+                          {toWarning && (
+                            <div className="input-help">{toWarning}</div>
+                          )}
 
-                        {toError && <div className="input-help">{toError}</div>}
+                          {toError && (
+                            <div className="input-help">{toError}</div>
+                          )}
+                        </div>
                       </div>
-                    </div>
+                    )}
                     <div
                       className={`form-item item-amount ${
                         amountError ? 'has-error' : ''
@@ -644,7 +667,7 @@ class Transfer extends PureComponent {
                         {balance} {asset}
                       </span>
                     </div>
-                    {mode !== 'power-up' && (
+                    {mode !== 'power-up' && mode !== 'convert' && (
                       <div className="form-item">
                         <div className="form-label">
                           <FormattedMessage id="transfer.memo" />

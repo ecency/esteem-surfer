@@ -17,6 +17,7 @@ import {
   scTransferToSavings,
   scTransferFromSavings,
   scTransferToVesting,
+  scConvert,
   scDelegateVestingShares,
   scWithdrawVesting,
   sctTransferPoint,
@@ -692,6 +693,28 @@ export const transfer = (account, pin, to, amount, memo) => {
 
   if (account.type === 'sc') {
     return scTransfer(from, to, amount, memo);
+  }
+};
+
+export const convert = (account, pin, amount, requestid) => {
+  const { username: from } = account;
+  if (account.type === 's') {
+    const key = decryptKey(account.keys, pin);
+    const privateKey = PrivateKey.fromString(key);
+    const opArray = [
+      [
+        'convert',
+        {
+          owner: from,
+          amount,
+          requestid
+        }
+      ]
+    ];
+    return client.broadcast.sendOperations(opArray, privateKey);
+  }
+  if (account.type === 'sc') {
+    return scConvert(from, amount, requestid);
   }
 };
 

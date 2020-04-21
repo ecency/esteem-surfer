@@ -58,6 +58,17 @@ export default () => (
       />
       <Route
         exact
+        path="/@:username/convert/:asset"
+        component={props => (
+          <TransferPage
+            timestamp={new Date().toString()}
+            {...props}
+            mode="convert"
+          />
+        )}
+      />
+      <Route
+        exact
         path="/@:username/withdraw-saving/:asset"
         component={props => (
           <TransferPage
