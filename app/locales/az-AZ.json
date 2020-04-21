@@ -102,25 +102,25 @@
     "sign-up": "Qeydiyyatdan keç",
     "ref-code": "referal istifadəçi (ixtiyari)",
     "success-message-1": "{email} ünvanına bir e-poçt göndərdik.",
-    "success-message-2": "Follow instructions to complete signup process.",
-    "login-1": "Already a member?",
-    "login-2": "Login",
-    "login-btn-label": "Back to Login"
+    "success-message-2": "Qeydiyyat prosesini tamamlamaq üçün təlimatları izləyin.",
+    "login-1": "Artıq üzvsünüz?",
+    "login-2": "Giriş et",
+    "login-btn-label": "Giriş səhifəsinə qayıt"
   },
   "create-pin-code": {
-    "title": "Create PIN Code",
-    "desc1": "Set PIN code to encrypt your data and enable extra layer of security!",
-    "input-placeholder": "Enter PIN code",
-    "desc2": "You will be prompted to enter PIN code for crucial transactions as well as on every launch.",
-    "created": "PIN code created"
+    "title": "PIN kod yarat",
+    "desc1": "Verilənlərinizi şifrələmək və ekstra təhlükəsizlik qatını fəallaşdırmaq üçün PIN kodu tənzimlə!",
+    "input-placeholder": "PIN kodu daxil edin",
+    "desc2": "Hər başlatmadan əlavə vacib əməliyyatlar üçün sizdən PIN kodunuzu daxil etməyiniz istəniləcək.",
+    "created": "PIN kod yaradıldı"
   },
   "confirm-pin-code": {
-    "title": "Enter PIN Code",
-    "input-placeholder": "Enter PIN code to continue",
-    "last-chance": "This is your last chance",
-    "invalidate": "Oh, I forgot it...",
-    "invalidate-confirm": "Do you really want to invalidate PIN code?",
-    "invalidated": "PIN code is invalidated"
+    "title": "PIN kodu daxil edin",
+    "input-placeholder": "Davam etmək üçün PIN kodu daxil edin",
+    "last-chance": "Bu sizin son şansınızdır",
+    "invalidate": "Ou, unutmuşam...",
+    "invalidate-confirm": "PIN kodunuzu etibarsız etmək istədiyinizə əminsiniz?",
+    "invalidated": "PIN kod etibarsız edildi"
   },
   "user-menu": {
     "profile": "Profil",
@@ -133,41 +133,41 @@
     "logout": "Çıxış"
   },
   "login-required": {
-    "default": "This action requires login",
-    "key-required": "This action requires {key} key or master password",
-    "keys-required": "This action requires {keys} keys or master password"
+    "default": "Bu əməliyyat giriş tələb edir",
+    "key-required": "Bu əməliyyat {key} açarını və ya əsas şifrəni tələb edir",
+    "keys-required": "Bu əməliyyat {keys} açarı və ya əsas şifrəni tələb edir"
   },
   "quick-profile": {
-    "fetch-error-profile": "Could not fetch profile data",
-    "fetch-error-content": "Could not fetch posts",
-    "post-count": "Post Count",
-    "followers": "Followers",
-    "following": "Following",
-    "section-blog": "Blog",
-    "section-comments": "Comments",
-    "section-replies": "Replies",
-    "section-points": "Points",
-    "section-wallet": "Wallet"
+    "fetch-error-profile": "Profil verilənləri alına bilmədi",
+    "fetch-error-content": "Göndərişlər alına bilmədi",
+    "post-count": "Göndəriş Sayı",
+    "followers": "İzləyici",
+    "following": "İzlənilir",
+    "section-blog": "Bloq",
+    "section-comments": "Rəylər",
+    "section-replies": "Cavablar",
+    "section-points": "Xallar",
+    "section-wallet": "Pulqabı"
   },
   "follow-controls": {
-    "follow": "Follow",
-    "unFollow": "Unfollow",
-    "mute": "Mute",
-    "unMute": "Unmute"
+    "follow": "İzlə",
+    "unFollow": "İzləmədən imtina",
+    "mute": "Səssiz et",
+    "unMute": "Səsini aç"
   },
   "account": {
-    "voting-power": "Voting Power",
-    "post-count": "Post Count",
-    "number-of-votes": "Number of votes in last 24 hours",
-    "followers": "Followers",
-    "following": "Following",
-    "section-blog": "Blog",
-    "section-comments": "Comments",
-    "section-replies": "Replies",
-    "section-wallet": "Wallet",
-    "section-points": "Points",
-    "top-posts": "Top Posts",
-    "unclaimed-rewards": "Unclaimed rewards",
+    "voting-power": "Səsvermə gücü",
+    "post-count": "Göndəriş Sayı",
+    "number-of-votes": "Son 24 saatdakı səsvermə sayı",
+    "followers": "İzləyici",
+    "following": "İzlənilir",
+    "section-blog": "Bloq",
+    "section-comments": "Rəylər",
+    "section-replies": "Cavablar",
+    "section-wallet": "Pulqabı",
+    "section-points": "Xallar",
+    "top-posts": "Ən Yaxşı Göndərişlər",
+    "unclaimed-rewards": "Tələb edilməmiş mükafatlar",
     "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
     "steem": "Hive",
     "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
