@@ -504,7 +504,7 @@
     "power-up-title": "Hiveパワーに変換",
     "convert-title": "変換",
     "power-up-sub-title": "投稿への支払額の制御権を持ち、キュレーション報酬を得ることが可能になる、影響力を持つトークンです。",
-    "convert-sub-title": "Only recommended when HBD is below $1. You will get $1 of HIVE in 3.5 days.",
+    "convert-sub-title": "HBDが$1以下の時のみ推奨。3.5日以内にHIVEを$1貰えます。",
     "from": "From",
     "from-placeholder": "ユーザーを選択",
     "to": "To",
