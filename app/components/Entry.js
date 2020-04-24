@@ -1145,7 +1145,6 @@ class Entry extends PureComponent {
       const reputation = authorReputation(entry.author_reputation);
       const created = parseDate(entry.created);
       const renderedBody = { __html: renderPostBody(entry) };
-
       let jsonMeta;
       try {
         jsonMeta = JSON.parse(entry.json_metadata);

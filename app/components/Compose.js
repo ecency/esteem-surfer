@@ -95,7 +95,7 @@ export class Preview extends Component {
         <div className="preview-content">
           <div className="preview-content-title">{title}</div>
           <div className="preview-content-tags">
-            {tags.slice(0, 7).map(t => (
+            {tags.slice(0, 10).map(t => (
               <div key={t} className="content-tag">
                 {t}
               </div>
@@ -542,7 +542,7 @@ class Compose extends Component {
     const canPublish =
       title.trim() !== '' &&
       tags.length > 0 &&
-      tags.length <= 7 &&
+      tags.length <= 10 &&
       body.trim() !== '';
 
     let scheduleMenu;

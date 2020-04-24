@@ -122,11 +122,15 @@ export const getMarketData = () =>
     return data;
   });
 
-export const uploadImage = file => {
+export const uploadImage = async (file, user, signature) => {
   const fData = new FormData();
-  fData.append('file', file);
+  if (file) {
+    fData.append('file', file);
+  }
 
-  return axios.post(`${IMAGE_URL}`, fData, {
+  // const fData = new FormData();
+  // fData.append('file', file);
+  return axios.post(`${IMAGE_URL}/${user}/${signature}`, fData, {
     headers: {
       'Content-Type': 'multipart/form-data'
     }

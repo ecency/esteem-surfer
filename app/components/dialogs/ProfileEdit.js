@@ -9,7 +9,7 @@ import { FormattedMessage } from 'react-intl';
 
 import PinRequired from '../helpers/PinRequired';
 
-import { updateProfile } from '../../backend/steem-client';
+import { updateProfile, signImage } from '../../backend/steem-client';
 import { uploadImage } from '../../backend/esteem-client';
 
 import formatChainError from '../../utils/format-chain-error';
@@ -39,12 +39,16 @@ class UploadIcon extends PureComponent {
 
     const file = files[0];
 
-    const { onBegin, onEnd } = this.props;
+    const { onBegin, onEnd, activeAccount, global } = this.props;
+    const { pin } = global;
 
     onBegin();
 
     this.setState({ inProgress: true });
-    const resp = await uploadImage(file).then(r => r.data);
+    const sign = await signImage(file, activeAccount, pin);
+    const resp = await uploadImage(file, activeAccount.username, sign).then(
+      r => r.data
+    );
     this.setState({ inProgress: false });
 
     onEnd(resp.url);
@@ -85,7 +89,11 @@ class UploadIcon extends PureComponent {
 
 UploadIcon.propTypes = {
   onBegin: PropTypes.func.isRequired,
-  onEnd: PropTypes.func.isRequired
+  onEnd: PropTypes.func.isRequired,
+  global: PropTypes.shape({
+    pin: PropTypes.string.isRequired
+  }).isRequired,
+  activeAccount: PropTypes.instanceOf(Object).isRequired
 };
 
 class ProfileEdit extends PureComponent {

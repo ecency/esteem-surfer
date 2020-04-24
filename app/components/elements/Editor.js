@@ -17,6 +17,8 @@ import GalleryModal from '../dialogs/Gallery';
 
 import { uploadImage, addMyImage } from '../../backend/esteem-client';
 
+import { signImage } from '../../backend/steem-client';
+
 import { getItem, setItem } from '../../helpers/storage';
 
 import emojiData from '../../data/emoji';
@@ -489,14 +491,23 @@ class Editor extends Component {
   };
 
   upload = async file => {
+    const { activeAccount } = this.props;
+    const { global } = this.props;
+    const { pin } = global;
+
     const tempImgTag = `![Uploading ${file.name} #${Math.floor(
       Math.random() * 99
     )}]()`;
     this.insertBlock(tempImgTag);
 
     let uploadResp;
+    let sign;
+
     try {
-      uploadResp = await uploadImage(file).then(resp => resp.data);
+      sign = await signImage(file, activeAccount, pin);
+      uploadResp = await uploadImage(file, activeAccount.username, sign).then(
+        resp => resp.data
+      );
     } catch (e) {
       message.error('Could not upload image');
       this.replaceRange(tempImgTag, '');
@@ -510,7 +521,6 @@ class Editor extends Component {
 
     this.replaceRange(tempImgTag, imgTag);
 
-    const { activeAccount } = this.props;
     if (activeAccount) {
       addMyImage(activeAccount.username, imageUrl);
     }
@@ -1109,6 +1119,9 @@ Editor.propTypes = {
     list: PropTypes.array.isRequired
   }).isRequired,
   activeAccount: PropTypes.instanceOf(Object),
+  global: PropTypes.shape({
+    pin: PropTypes.string.isRequired
+  }).isRequired,
   mode: PropTypes.string,
   autoFocus2Body: PropTypes.bool,
   bodyPlaceHolder: PropTypes.string,

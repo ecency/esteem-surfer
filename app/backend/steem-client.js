@@ -2,7 +2,7 @@
 eslint-disable no-underscore-dangle
 */
 
-import { Client, PrivateKey } from '@esteemapp/dhive';
+import { Client, PrivateKey, cryptoUtils } from '@esteemapp/dhive';
 
 import sc2 from 'hivesigner';
 
@@ -275,6 +275,32 @@ export const revokePostingPermission = (account, pin) => {
 
   if (account.type === 'sc') {
     return scAppRevoke();
+  }
+};
+
+export const signImage = async (file, account, pin) => {
+  const reader = new FileReader();
+  const data = await new Promise(resolve => {
+    reader.addEventListener('load', () => {
+      const result = Buffer.from(reader.result, 'binary');
+      resolve(result);
+    });
+    reader.readAsBinaryString(file);
+  });
+
+  const prefix = Buffer.from('ImageSigningChallenge');
+  const buf = Buffer.concat([prefix, data]);
+  const bufSha = cryptoUtils.sha256(buf);
+
+  if (account.type === 's') {
+    const key = decryptKey(account.keys, pin);
+    const privateKey = PrivateKey.fromString(key);
+    const signature = privateKey.sign(bufSha);
+    return signature;
+  }
+  if (account.type === 'sc') {
+    const token = decryptKey(account.accessToken, pin);
+    return `hive${token}signer`;
   }
 };
 
