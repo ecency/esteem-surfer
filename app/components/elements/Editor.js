@@ -1017,15 +1017,16 @@ class Editor extends Component {
             <div className="tags-input">
               <Select
                 mode="tags"
+                allowClear
                 placeholder={intl.formatMessage({
                   id: 'composer.tags-placeholder'
                 })}
-                maxTagCount={7}
+                maxTagCount={10}
                 maxTagPlaceholder={
                   <span style={{ color: 'red' }}>
                     <FormattedMessage
                       id="composer.max-n-tags"
-                      values={{ n: 7 }}
+                      values={{ n: 10 }}
                     />
                   </span>
                 }
