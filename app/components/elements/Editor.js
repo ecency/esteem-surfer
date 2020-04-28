@@ -23,6 +23,8 @@ import { getItem, setItem } from '../../helpers/storage';
 
 import emojiData from '../../data/emoji';
 
+import comTag from '../../helpers/com-tag';
+
 require('codemirror/addon/display/placeholder.js');
 require('codemirror/addon/search/searchcursor.js');
 require('codemirror/addon/search/match-highlighter.js');
@@ -37,6 +39,7 @@ const emojiFilterCache = Object.keys(emojiData.emojis).map(e => {
     keywords: em.j ? em.j : []
   };
 });
+const patt = /hive-\d\w+/g;
 
 class EmojiPicker extends Component {
   constructor(props) {
@@ -170,13 +173,14 @@ class Editor extends Component {
   constructor(props) {
     super(props);
 
-    const { defaultValues } = this.props;
+    const { defaultValues, trendingTags } = this.props;
 
     this.state = {
       title: defaultValues.title,
       tags: defaultValues.tags,
       body: defaultValues.body,
-      galleryModalVisible: false
+      galleryModalVisible: false,
+      tagOptions: trendingTags.list
     };
 
     this.editorInstance = null;
@@ -191,13 +195,32 @@ class Editor extends Component {
     this.syncTimer = setInterval(this.syncHeights, 1000);
     this.widgetTimer = setInterval(this.setWidgets, 1000);
 
-    const { syncWith } = this.props;
+    const { syncWith, trendingTags } = this.props;
     if (syncWith) {
       document
         .querySelector(syncWith)
         .addEventListener('scroll', this.onSyncElScroll);
 
       setTimeout(this.setWidgets, 500);
+    }
+
+    const tagO = {};
+    trendingTags.list.forEach(tag => {
+      const mm = tag.match(patt);
+      if (mm && mm.length > 0) {
+        comTag(tag)
+          .then(r => {
+            tagO[tag] = r;
+            return null;
+          })
+          .catch(() => {});
+      } else {
+        tagO[tag] = tag;
+      }
+    });
+
+    if (tagO) {
+      this.setState({ tagOptions: tagO }, () => this.changed());
     }
 
     document
@@ -791,17 +814,28 @@ class Editor extends Component {
   render() {
     const {
       defaultValues,
-      trendingTags,
       activeAccount,
       mode,
       bodyPlaceHolder,
       intl
     } = this.props;
-    const { galleryModalVisible, tags, title } = this.state;
+    const { galleryModalVisible, tags, title, tagOptions } = this.state;
 
-    const tagOptions = trendingTags.list.map(tag => (
-      <Select.Option key={tag}>{tag}</Select.Option>
-    ));
+    const tOptions = [];
+
+    if (typeof tagOptions === 'object') {
+      Object.keys(tagOptions).forEach(key => {
+        tOptions.push(
+          <Select.Option key={key} value={key}>
+            {key.match(patt) ? key : ''} {tagOptions[key]}
+          </Select.Option>
+        );
+      });
+    } else {
+      tagOptions.forEach(tag => {
+        tOptions.push(<Select.Option key={tag}>{tag}</Select.Option>);
+      });
+    }
 
     const toolbar = (
       <div className="editor-toolbar">
@@ -1036,7 +1070,7 @@ class Editor extends Component {
                 value={tags}
                 dropdownClassName="tag-select-options"
               >
-                {tagOptions}
+                {tOptions}
               </Select>
             </div>
           </Fragment>

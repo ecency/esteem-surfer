@@ -78,26 +78,21 @@ class Updater extends Component {
 
     return (
       <div className="updater-alert">
-        {!downloading &&
-          !completed && (
-            <Fragment>
-              <p className="info-text">
-                <FormattedMessage id="updater.new-version-available" />
-                <span className="release-name">{ver}</span>
-              </p>
-              <Button
-                type="primary"
-                className="btn-update"
-                onClick={this.begin}
-              >
-                <FormattedMessage id="updater.update" />
-              </Button>
+        {!downloading && !completed && (
+          <Fragment>
+            <p className="info-text">
+              <FormattedMessage id="updater.new-version-available" />
+              <span className="release-name">{ver}</span>
+            </p>
+            <Button type="primary" className="btn-update" onClick={this.begin}>
+              <FormattedMessage id="updater.update" />
+            </Button>
 
-              <Button className="btn-dismiss" onClick={this.dismiss}>
-                <FormattedMessage id="updater.dismiss" />
-              </Button>
-            </Fragment>
-          )}
+            <Button className="btn-dismiss" onClick={this.dismiss}>
+              <FormattedMessage id="updater.dismiss" />
+            </Button>
+          </Fragment>
+        )}
 
         {downloading && (
           <Fragment>

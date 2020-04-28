@@ -66,7 +66,13 @@ export default function searchResults(state = defaultState, action) {
         .setIn([groupKey, 'scrollId'], scrollId);
 
       newEntries.forEach(entry => {
-        if (!newState.hasIn([groupKey, 'results', `${entry.author}-${entry.permlink}`])) {
+        if (
+          !newState.hasIn([
+            groupKey,
+            'results',
+            `${entry.author}-${entry.permlink}`
+          ])
+        ) {
           newState = newState.setIn(
             [groupKey, 'results', `${entry.author}-${entry.permlink}`],
             entry

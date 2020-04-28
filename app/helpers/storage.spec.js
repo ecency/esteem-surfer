@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import {getItem, setItem, removeItem, getByPrefix} from './storage';
+import { getItem, setItem, removeItem, getByPrefix } from './storage';
 
 describe('storage', () => {
   it('(1) getItem', () => {
@@ -22,13 +22,13 @@ describe('storage', () => {
   });
 
   it('(5) setItem object', () => {
-    setItem('foo', {bar: 'baz'});
-    expect(getItem('foo')).toEqual({bar: 'baz'});
+    setItem('foo', { bar: 'baz' });
+    expect(getItem('foo')).toEqual({ bar: 'baz' });
   });
 
   it('(6) getByPrefix', () => {
-    setItem('zoo', {x: 'yyy'});
-    setItem('foooox', {m: 'nnn'});
-    expect(getByPrefix('fo')).toEqual([{bar: 'baz'}, {m: 'nnn'}]);
+    setItem('zoo', { x: 'yyy' });
+    setItem('foooox', { m: 'nnn' });
+    expect(getByPrefix('fo')).toEqual([{ bar: 'baz' }, { m: 'nnn' }]);
   });
 });

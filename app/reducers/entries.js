@@ -67,7 +67,13 @@ export default function entries(state = defaultState, action) {
         .setIn([groupKey, 'hasMore'], hasMore);
 
       newEntries.forEach(entry => {
-        if (!newState.hasIn([groupKey, 'entries', `${entry.author}-${entry.permlink}`])) {
+        if (
+          !newState.hasIn([
+            groupKey,
+            'entries',
+            `${entry.author}-${entry.permlink}`
+          ])
+        ) {
           newState = newState.setIn(
             [groupKey, 'entries', `${entry.author}-${entry.permlink}`],
             entry
@@ -95,8 +101,17 @@ export default function entries(state = defaultState, action) {
       let newState = state.asImmutable();
 
       newState.keySeq().forEach(groupKey => {
-        if (newState.hasIn([groupKey, 'entries', `${data.author}-${data.permlink}`])) {
-          newState = newState.setIn([groupKey, 'entries', `${data.author}-${data.permlink}`], data);
+        if (
+          newState.hasIn([
+            groupKey,
+            'entries',
+            `${data.author}-${data.permlink}`
+          ])
+        ) {
+          newState = newState.setIn(
+            [groupKey, 'entries', `${data.author}-${data.permlink}`],
+            data
+          );
         }
       });
 

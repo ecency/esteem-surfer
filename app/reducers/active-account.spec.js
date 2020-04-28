@@ -1,11 +1,8 @@
 /* eslint-disable */
 import activeAccount from './active-account';
-import {setItem, removeItem} from '../helpers/storage';
+import { setItem, removeItem } from '../helpers/storage';
 
-import {
-  ACCOUNT_ADDED,
-  ACCOUNT_DELETED
-} from '../actions/accounts';
+import { ACCOUNT_ADDED, ACCOUNT_DELETED } from '../actions/accounts';
 
 import deepFreeze from 'deep-freeze';
 
@@ -17,5 +14,4 @@ describe('active account reducer', () => {
 
     expect(state).toMatchSnapshot();
   });
-
 });

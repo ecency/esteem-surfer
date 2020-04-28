@@ -217,10 +217,10 @@
     ajv "^6.1.0"
     ajv-keywords "^3.1.0"
 
-"@esteemapp/esteem-render-helpers@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@esteemapp/esteem-render-helpers/-/esteem-render-helpers-1.4.0.tgz#2cc3bc13dfe6d5e15a196aa73c7d87d6fa6f0c12"
-  integrity sha512-eQObChUXc2Sn+7LdTlAYbrpTq/3FeK5+Fbsry4dIbE/PK7A93RNwjDF9LE74fHp2Zgf5nTWbC6LDXTRah/eT6A==
+"@esteemapp/esteem-render-helpers@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@esteemapp/esteem-render-helpers/-/esteem-render-helpers-1.4.1.tgz#f649245c6f9012e383e370f77cc9b827653d802b"
+  integrity sha512-NBG9FYigqnPNcSYEVe3PMmZw2dUtKMw9Az+RBH8vrcpyXIQ908MlFRc1F6t195WmCBK9Hz3QRJJ9yQHgfzkyAQ==
   dependencies:
     he "^1.2.0"
     lru-cache "^5.1.1"

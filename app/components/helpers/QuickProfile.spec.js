@@ -5,7 +5,7 @@ import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import QuickProfile from './QuickProfile';
 import { mountWithIntl } from '../../helpers/intl-test';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 Enzyme.configure({ adapter: new Adapter() });
 

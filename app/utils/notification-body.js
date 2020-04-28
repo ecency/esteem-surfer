@@ -1,15 +1,15 @@
 import formatMessage from './format-message';
 
-export default (data) => {
+export default data => {
   const { source } = data;
 
   switch (data.type) {
     case 'vote':
       return formatMessage('notification.voted', { source });
     case 'mention':
-      return data.extra.is_post ?
-        formatMessage('notification.mention-post', { source }) :
-        formatMessage('notification.mention-comment', { source });
+      return data.extra.is_post
+        ? formatMessage('notification.mention-post', { source })
+        : formatMessage('notification.mention-comment', { source });
     case 'follow':
       return formatMessage('notification.followed', { source });
     case 'reply':
@@ -19,7 +19,7 @@ export default (data) => {
     default:
       return '';
   }
-}
+};
 
 /*
 norificationBody = (data) => {

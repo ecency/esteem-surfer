@@ -28,9 +28,7 @@ describe('Notification Body', () => {
     const input = {
       type: 'mention',
       source: 'bar',
-      extra: {
-
-      }
+      extra: {}
     };
 
     expect(notificationBody(input)).toMatchSnapshot();
@@ -62,5 +60,4 @@ describe('Notification Body', () => {
 
     expect(notificationBody(input)).toMatchSnapshot();
   });
-
 });

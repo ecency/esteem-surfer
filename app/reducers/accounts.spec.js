@@ -1,6 +1,6 @@
 /* eslint-disable */
 import accounts from './accounts';
-import {setItem, removeItem} from '../helpers/storage';
+import { setItem, removeItem } from '../helpers/storage';
 
 import {
   ACCOUNT_ADDED,
@@ -25,11 +25,11 @@ describe('accounts reducer', () => {
   it('(2) account "foo" added ', () => {
     const username = 'foo';
 
-    setItem(`account_${username}`, {username});
+    setItem(`account_${username}`, { username });
 
     const action = {
       type: ACCOUNT_ADDED,
-      payload: {username}
+      payload: { username }
     };
 
     deepFreeze(state);
@@ -42,11 +42,11 @@ describe('accounts reducer', () => {
   it('(3) account "bar" added ', () => {
     const username = 'bar';
 
-    setItem(`account_${username}`, {username});
+    setItem(`account_${username}`, { username });
 
     const action = {
       type: ACCOUNT_ADDED,
-      payload: {username}
+      payload: { username }
     };
 
     deepFreeze(state);
@@ -59,11 +59,11 @@ describe('accounts reducer', () => {
   it('(4) account "baz" added', () => {
     const username = 'baz';
 
-    setItem(`account_${username}`, {username});
+    setItem(`account_${username}`, { username });
 
     const action = {
       type: ACCOUNT_ADDED,
-      payload: {username}
+      payload: { username }
     };
 
     deepFreeze(state);
@@ -80,7 +80,7 @@ describe('accounts reducer', () => {
 
     const action = {
       type: ACCOUNT_DELETED,
-      payload: {username}
+      payload: { username }
     };
 
     deepFreeze(state);
@@ -97,7 +97,7 @@ describe('accounts reducer', () => {
 
     const action = {
       type: ACCOUNT_DELETED,
-      payload: {username}
+      payload: { username }
     };
 
     deepFreeze(state);
@@ -110,11 +110,11 @@ describe('accounts reducer', () => {
   it('(10) account "bar" added ', () => {
     const username = 'bar';
 
-    setItem(`account_${username}`, {username});
+    setItem(`account_${username}`, { username });
 
     const action = {
       type: ACCOUNT_ADDED,
-      payload: {username}
+      payload: { username }
     };
 
     deepFreeze(state);

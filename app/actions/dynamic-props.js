@@ -29,7 +29,9 @@ export const fetchGlobalProps = () => async dispatch => {
   const fundRecentClaims = rewardFund.recent_claims;
   const fundRewardBalance = parseToken(rewardFund.reward_balance);
 
-  dispatch(fetched(steemPerMVests, base, quote, fundRecentClaims, fundRewardBalance));
+  dispatch(
+    fetched(steemPerMVests, base, quote, fundRecentClaims, fundRewardBalance)
+  );
 };
 
 /* action creators */

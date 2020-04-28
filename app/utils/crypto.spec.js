@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import {pinHasher} from './crypto';
+import { pinHasher } from './crypto';
 
 describe('Crypto', () => {
   it('(1) hash', () => {
