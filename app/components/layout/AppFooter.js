@@ -76,11 +76,7 @@ class AppFooter extends Component {
         </div>
 
         <div className="right-side">
-          <EntryLink
-            {...this.props}
-            author="good-karma"
-            permlink="esteem-faq-updated-e2baacf0a8475"
-          >
+          <EntryLink {...this.props} author="esteemapp" permlink="faq">
             <a className="faq">
               <FormattedMessage id="footer.faq" />
             </a>
