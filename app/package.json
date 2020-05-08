@@ -2,7 +2,7 @@
   "name": "esteem-surfer",
   "productName": "Esteem",
   "description": "Esteem desktop application reimagined for Windows, Mac, Linux users, start earning cryptocurrency!",
-  "version": "2.2.6",
+  "version": "2.2.7",
   "main": "./main.prod.js",
   "author": "Esteem <info@esteem.app>",
   "scripts": {

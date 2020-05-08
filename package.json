@@ -2,7 +2,7 @@
   "name": "esteem-surfer",
   "productName": "Esteem",
   "description": "Esteem desktop application reimagined for Windows, Mac, Linux users, start earning cryptocurrency!",
-  "version": "2.2.6",
+  "version": "2.2.7",
   "releasePost": "esteem/@esteemapp/esteem-surfer-changelog",
   "private": true,
   "author": "Esteem <info@esteem.app>",
@@ -94,7 +94,8 @@
         {
           "target": "nsis",
           "arch": [
-            "x64", "ia32"
+            "x64",
+            "ia32"
           ]
         }
       ]
