@@ -7,7 +7,7 @@ export const TT_FETCH_OK = 'TT_FETCH_OK';
 export const TT_FETCH_ERROR = 'TT_FETCH_ERROR';
 
 const client = new Client(defaults.servers, {
-  timeout: 3000
+  timeout: 5000
 });
 
 const shuffle = arr => {

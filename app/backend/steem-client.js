@@ -34,7 +34,7 @@ import { usrActivity } from './esteem-client';
 import { PIN_KEY } from '../config';
 
 let client = new Client(getItem('server2', defaults.servers), {
-  timeout: 3000
+  timeout: 5000
 });
 
 export const setAddress = address => {

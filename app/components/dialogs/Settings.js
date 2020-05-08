@@ -111,7 +111,7 @@ class Settings extends Component {
     this.setState({ connectingServer: true });
     selectedServer.unshift(server);
 
-    const client = new Client(selectedServer, { timeout: 3000 });
+    const client = new Client(selectedServer, { timeout: 5000 });
 
     const hideMsg = message.loading(
       intl.formatMessage({ id: 'settings.server-connecting' }, { server }),
