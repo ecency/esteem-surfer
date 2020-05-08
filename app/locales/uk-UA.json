@@ -3,7 +3,7 @@
     "no-internet-conn": "Немає з'єднання з інтернетом"
   },
   "g": {
-    "compose-entry": "Створити пост",
+    "compose-entry": "Створити допис",
     "are-you-sure": "Ви впевнені?",
     "yes": "Так",
     "no": "Ні",
@@ -168,7 +168,7 @@
     "section-points": "Бали",
     "top-posts": "Топ пости",
     "unclaimed-rewards": "Не отримана винагорода",
-    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "estimated-value": "Орієнтовна вартість базується на 7-денній середній вартості Hive.",
     "steem": "Hive",
     "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
     "steem-power": "Hive Power",
@@ -502,7 +502,7 @@
     "withdraw-saving-title": "Зняття заощаджень",
     "withdraw-saving-sub-title": "Зняти кошти після обов'язкового 3-денного періоду очікування",
     "power-up-title": "Stake Hive as Power",
-    "convert-title": "Convert",
+    "convert-title": "Конвертувати",
     "power-up-sub-title": "Токени впливу, які дають вам можливість впливати на винагороду за публікації та дозволяють заробляти на кураторстві.",
     "convert-sub-title": "Only recommended when HBD is below $1. You will get $1 of HIVE in 3.5 days.",
     "from": "Від",
@@ -535,7 +535,7 @@
   },
   "delegate": {
     "title": "Делегувати",
-    "sub-title": "Delegate Hive Power",
+    "sub-title": "Делегувати Hive Power",
     "slider-help": "Перетягніть бігунок для регулювання кількості",
     "confirm-title": "Підтвердіть делегування",
     "confirm-sub-title": "Будь ласка, перевірте, чи все вірно",
