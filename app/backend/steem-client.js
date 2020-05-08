@@ -31,6 +31,7 @@ import { decryptKey } from '../utils/crypto';
 import { getItem } from '../helpers/storage';
 
 import { usrActivity } from './esteem-client';
+import { PIN_KEY } from '../config';
 
 let client = new Client(getItem('server2', defaults.servers), {
   timeout: 3000
@@ -279,14 +280,7 @@ export const revokePostingPermission = (account, pin) => {
 };
 
 export const signImage = async (file, account, pin) => {
-  const reader = new FileReader();
-  const data = await new Promise(resolve => {
-    reader.addEventListener('load', () => {
-      const result = Buffer.from(reader.result, 'binary');
-      resolve(result);
-    });
-    reader.readAsBinaryString(file);
-  });
+  const data = Buffer.from(`${account.username}${PIN_KEY}`);
 
   const prefix = Buffer.from('ImageSigningChallenge');
   const buf = Buffer.concat([prefix, data]);

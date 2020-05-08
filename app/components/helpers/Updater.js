@@ -41,6 +41,12 @@ class Updater extends Component {
     this.setState({
       progress: perc
     });
+
+    if (perc >= 100) {
+      setTimeout(() => {
+        this.onUpdateDownloaded();
+      }, 10000);
+    }
   };
 
   onUpdateDownloaded = () => {
