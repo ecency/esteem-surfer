@@ -281,7 +281,6 @@ export const revokePostingPermission = (account, pin) => {
 
 export const signImage = async (file, account, pin) => {
   const data = Buffer.from(`${account.username}${PIN_KEY}`);
-
   const prefix = Buffer.from('ImageSigningChallenge');
   const buf = Buffer.concat([prefix, data]);
   const bufSha = cryptoUtils.sha256(buf);
@@ -290,7 +289,7 @@ export const signImage = async (file, account, pin) => {
     const key = decryptKey(account.keys, pin);
     const privateKey = PrivateKey.fromString(key);
     const signature = privateKey.sign(bufSha);
-    return signature;
+    return `stndt${signature}pupload`;
   }
   if (account.type === 'sc') {
     const token = decryptKey(account.accessToken, pin);
