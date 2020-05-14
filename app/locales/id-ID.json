@@ -22,7 +22,7 @@
     "about": "Tentang"
   },
   "entry-index": {
-    "tags": "Popular",
+    "tags": "Populer",
     "filter-trending": "Trending",
     "filter-hot": "Hot",
     "filter-created": "Baru",
@@ -168,7 +168,7 @@
     "section-points": "Poin",
     "top-posts": "Top Posting",
     "unclaimed-rewards": "Hadiah yang belum di klaim",
-    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "estimated-value": "Nilai dihitung berdasarkan pada nilai rata-rata Hive selama 7 Hari.",
     "steem": "Hive",
     "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
     "steem-power": "Hive Power",
