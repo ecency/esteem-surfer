@@ -1,11 +1,11 @@
 {
   "app": {
-    "no-internet-conn": "Tidak Ada Sambungan Internet"
+    "no-internet-conn": "Tidak Ada Koneksi Internet"
   },
   "g": {
-    "compose-entry": "Membuat posting",
-    "are-you-sure": "Apakah anda yakin?",
-    "yes": "Iya",
+    "compose-entry": "Buatlah Postingan",
+    "are-you-sure": "Anda yakin?",
+    "yes": "Ya",
     "no": "Tidak",
     "delete": "Hapus",
     "cancel": "Batal",
@@ -437,7 +437,7 @@
     "transfer-str": "mengirimi Anda",
     "spin-str": "Saatnya memperoleh lebih banyak ESTM, Mainkan Putaran di Esteem Mobile",
     "inactive-str": "Ayo aktif! Tulislah postingan, teruskan mengumpulkan pendapatan",
-    "referral-str": "joined with your referral, welcome them",
+    "referral-str": "bergabunglah dengan referral Anda, sambutlah mereka",
     "empty-list": "Kosong",
     "refresh": "Segarkan",
     "mark-all-read": "Tandai semua yang telah dibaca",
@@ -496,15 +496,15 @@
   "transfer": {
     "transfer-title": "Transfer ke akun",
     "transfer-estm-title": "Hadiah ke Akun",
-    "transfer-sub-title": "Move funds to another Hive account",
+    "transfer-sub-title": "Pindahkan dana ke akun Hive lainnya",
     "transfer-saving-title": "Transfer ke Tabungan",
     "transfer-saving-sub-title": "Lindungi dana dengan meminta masa tunggu penarikan 3 hari",
     "withdraw-saving-title": "Simpan Penarikan",
     "withdraw-saving-sub-title": "Diperlukan masa tunggu 3 hari untuk penarikan dana",
-    "power-up-title": "Stake Hive as Power",
-    "convert-title": "Convert",
+    "power-up-title": "Stake Hive sebagai Power",
+    "convert-title": "Konversi",
     "power-up-sub-title": "Token berpengaruh besar untuk memberi anda kontrol atas pembayaran pos dan memungkinkan anda untuk mendapat imbalan kurasi.",
-    "convert-sub-title": "Only recommended when HBD is below $1. You will get $1 of HIVE in 3.5 days.",
+    "convert-sub-title": "Lakukan ini bila HBD di bawah 1 Dolar. Anda akan menapatkan 1 Dolar HIVE dalam 3,5 Hari.",
     "from": "Dari",
     "from-placeholder": "Pilih pengguna",
     "to": "Kepada",
@@ -522,12 +522,12 @@
     "memo-help": "Memo ini bersifat publik",
     "key-required-err": "Kunci aktif tidak dapat di temukan untuk akun yang di pilih. Pastikan Anda masuk dengan kredensial yang tepat.",
     "next": "Lanjut",
-    "confirm-title": "Confirm your transaction",
+    "confirm-title": "Konfirmasikan transaksi Anda",
     "confirm-sub-title": "Silakan, periksa apakah semuanya benar",
     "confirm": "Konfirmasi",
     "back": "Kembali",
     "success-title": "Sukses",
-    "success-sub-title": "Transaction successful",
+    "success-sub-title": "Transaksinya berhasil",
     "transfer-summary": "Ditransfer <span class=\"amount\">{amount}</span> <span class=\"from-user\">{from}</span> - <span class=\"to-user\">{to}</span>",
     "reset": "Transfer lainnya",
     "finish": "Selesai",
@@ -535,7 +535,7 @@
   },
   "delegate": {
     "title": "Melimpahkan",
-    "sub-title": "Delegate Hive Power",
+    "sub-title": "Delegasikan Hive Power",
     "slider-help": "Seret penggeser untuk menyesuaikan jumlahnya",
     "confirm-title": "Konfirmasikan Delegasi",
     "confirm-sub-title": "Silakan, periksa jika semuanya sudah benar",
@@ -548,7 +548,7 @@
   },
   "power-down": {
     "title": "Menurunkan daya",
-    "sub-title": "Power Down Hive Power",
+    "sub-title": "Tarik Kembali Hive Power",
     "account": "Akun",
     "incoming-funds": "Dana masuk",
     "begin": "Memulai Menurunkan Daya",
@@ -572,10 +572,10 @@
     "search-placeholder": "Cari pengguna"
   },
   "delegated-list": {
-    "title": "Delegated hive power from @{n}"
+    "title": "Didelagasikan Hive Power dari @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated hive power to @{n}"
+    "title": "Delegasikan hive power untuk {n}"
   },
   "estm-purchase": {
     "title": "Pembelian ESTM",
