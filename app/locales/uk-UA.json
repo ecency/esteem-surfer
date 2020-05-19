@@ -22,7 +22,7 @@
     "about": "Про додаток"
   },
   "entry-index": {
-    "tags": "Popular",
+    "tags": "Популярне",
     "filter-trending": "Популярне",
     "filter-hot": "Актуальне",
     "filter-created": "Нове",
@@ -172,13 +172,13 @@
     "steem": "Hive",
     "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
     "steem-power": "Hive Power (Сила)",
-    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-description": "Hive Power - це токени впливу, які надають більше сили при їх довгостроковому збереженні та голосуванні за пости. Чим більше у вас Hive Power, тим більший ваш вплив на винагороду за пост, і більша ваша винагорода за влучне голосування.",
     "steem-power-delegated": "Делеговані Hive Power",
     "steem-power-received": "Отримані Hive Power",
     "next-power-down-amount": "Сума наступного power down",
-    "steem-power-total": "Total Hive Power",
+    "steem-power-total": "Всього Hive Power",
     "steem-dollars": "Hive Dollars",
-    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
+    "steem-dollars-description": "Токени вартістю близько $1.00 у HIVE.",
     "savings": "Заощадження",
     "savings-description": "Баланс, для якого діє 3-денний період очікування при знятті коштів.",
     "next-power-down": "Наступний power down {amount} відбудеться {time}",
@@ -196,10 +196,10 @@
     "claim-reward-balance-ok": "Винагорода зарахована на баланс",
     "transfer": "Передача",
     "transfer-to-savings": "Передача до заощаджень",
-    "convert": "Convert",
+    "convert": "Конвертувати",
     "power-up": "Power Up",
     "withdraw-steem": "Вивести Hive",
-    "withdraw-sbd": "Withdraw Hive Dollar",
+    "withdraw-sbd": "Вивести Hive Dollar",
     "delegate": "Делегувати",
     "power-down": "Зменшення Сили Голосу",
     "point-history": "Історія",
@@ -435,9 +435,9 @@
     "ignored-str": "ігнорується",
     "reblog-str": "зробив репост вашого посту:",
     "transfer-str": "відправив вам",
-    "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
+    "spin-str": "Час заробити більше ESTM, грайте в рулетку на eSteem Mobile",
     "inactive-str": "Будьте активними! Зробіть допис, продовжуйте заробляти",
-    "referral-str": "joined with your referral, welcome them",
+    "referral-str": "приєднався за вашим посиланням. Привітайте його",
     "empty-list": "Тут порожньо",
     "refresh": "Оновити",
     "mark-all-read": "Позначити всі як прочитані",
@@ -496,7 +496,7 @@
   "transfer": {
     "transfer-title": "Переведення на акаунт",
     "transfer-estm-title": "Перемістити на рахунок",
-    "transfer-sub-title": "Move funds to another Hive account",
+    "transfer-sub-title": "Перевести кошти на інший Hive акаунт",
     "transfer-saving-title": "Переведення до Заощаджень",
     "transfer-saving-sub-title": "Захищає кошти від зняття 3-денним періодом очікування",
     "withdraw-saving-title": "Зняття заощаджень",
@@ -522,7 +522,7 @@
     "memo-help": "Ця примітка є публічною",
     "key-required-err": "Не вдається знайти активний ключ для вибраного акаунту. Будь ласка, переконайтеся, що ви увійшли з відповідними повноваженнями.",
     "next": "Далі",
-    "confirm-title": "Confirm your transaction",
+    "confirm-title": "Підтвердіть транзакцію",
     "confirm-sub-title": "Будь ласка, перевірте, чи все вірно",
     "confirm": "Підтвердити",
     "back": "Назад",
@@ -575,7 +575,7 @@
     "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated hive power to @{n}"
+    "title": "Hive power делеговані @{n}"
   },
   "estm-purchase": {
     "title": "Закупівля ESTM",
