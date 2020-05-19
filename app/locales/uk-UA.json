@@ -527,7 +527,7 @@
     "confirm": "Підтвердити",
     "back": "Назад",
     "success-title": "Успіх",
-    "success-sub-title": "Transaction successful",
+    "success-sub-title": "Операція успішна",
     "transfer-summary": "Переказ <span class=\"amount\">{amount}</span> від <span class=\"from-user\">{from}</span> до <span class=\"to-user\">{to}</span>",
     "reset": "Ще один переказ",
     "finish": "Закінчити",
