@@ -100,12 +100,12 @@
     "username-placeholder": "Wähle einen Benutzernamen",
     "email-placeholder": "E-Mail Adresse eingeben",
     "sign-up": "Registrieren",
-    "ref-code": "referral user (optional)",
-    "success-message-1": "We've sent an email to {email}.",
-    "success-message-2": "Follow instructions to complete signup process.",
-    "login-1": "Already a member?",
-    "login-2": "Login",
-    "login-btn-label": "Back to Login"
+    "ref-code": "Referral Nutzer (optional)",
+    "success-message-1": "Wir haben eine E-Mail geschickt an {email}.",
+    "success-message-2": "Folge den Anweisungen, um den Anmeldeprozess abzuschließen.",
+    "login-1": "Du bist bereits Mitglied?",
+    "login-2": "Einloggen",
+    "login-btn-label": "Zurück zum Login"
   },
   "create-pin-code": {
     "title": "Erstelle einen PIN-Code",
@@ -168,7 +168,7 @@
     "section-points": "eSteem Punkte",
     "top-posts": "die besten Beiträge",
     "unclaimed-rewards": "Nicht abgeholte Belohnungen",
-    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "estimated-value": "Der erwartete Wert basiert auf einem 7 Tage Durchschnittswert von Hive.",
     "steem": "Hive",
     "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
     "steem-power": "Hive Power",
