@@ -170,14 +170,14 @@
     "unclaimed-rewards": "Nicht abgeholte Belohnungen",
     "estimated-value": "Der erwartete Wert basiert auf einem 7 Tage Durchschnittswert von Hive.",
     "steem": "Hive",
-    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-description": "HIVE sind handelbare Token, die man jederzeit transferieren kann. HIVE können ebenfalls auch durch einen Power-Up zu HIVE-Power konvertiert werden.",
     "steem-power": "Hive Power",
-    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
-    "steem-power-delegated": "Delegated Hive Power",
-    "steem-power-received": "Received Hive Power",
+    "steem-power-description": "Hive-Power zeigt deine Stärke und Votekraft. Je mehr Hive-Power du hast, umso mehr Einfluss hast du auf Beiträge und die Belohnung. Mit einer höheren Hive-Power kuratierst du besser und effektiver.",
+    "steem-power-delegated": "Delegierte Hive-Power",
+    "steem-power-received": "Erhaltene Hive-Power",
     "next-power-down-amount": "Nächster Power-Down Betrag",
-    "steem-power-total": "Total Hive Power",
-    "steem-dollars": "Hive Dollars",
+    "steem-power-total": "Gesamte Hive-Power",
+    "steem-dollars": "Hive-Dollar",
     "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
     "savings": "Tresor",
     "savings-description": "Werte im Tresor unterliegen einer 3-Tagessperre.",
@@ -572,14 +572,14 @@
     "search-placeholder": "Benutzer suchen"
   },
   "delegated-list": {
-    "title": "Delegated hive power from @{n}"
+    "title": "Delegierte Hive-Power von @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated hive power to @{n}"
+    "title": "Delegierte Hive-Power nach @{n}"
   },
   "estm-purchase": {
-    "title": "ESTM purchase",
-    "purchase": "Purchase"
+    "title": "ESTM-Kaufen",
+    "purchase": "Kaufen"
   },
   "edit-history": {
     "title": "Verlauf bearbeiten",
@@ -592,14 +592,14 @@
     "read-time-n-min": "~ {n} min. Lesezeit"
   },
   "profile-edit": {
-    "title": "Profile Editor",
-    "name": "Display Name",
-    "about": "About",
+    "title": "Profil-Editor",
+    "name": "Anzeige Name",
+    "about": "Info",
     "cover-image": "Titelbild",
     "profile-image": "Profilbild",
     "website": "Webseite",
     "location": "Standort",
-    "updated": "Profile updated successfully!"
+    "updated": "Profil wurde erfolgreich aktualisiert."
   },
   "password-update": {
     "title": "Passwort",
