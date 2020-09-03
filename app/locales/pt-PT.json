@@ -1,6 +1,6 @@
 {
   "app": {
-    "no-internet-conn": "Sem ligação à Internet"
+    "no-internet-conn": "Sem internet"
   },
   "g": {
     "compose-entry": "Criar Post",
@@ -170,15 +170,15 @@
     "unclaimed-rewards": "Recompensas não reclamadas",
     "estimated-value": "O valor estimado é sobre preço médio da Hive nos últimos 7 dias.",
     "steem": "Hive",
-    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-description": "HIVE são tokens comercializáveis que podem ser transferidos a qualquer momento. HIVE pode ser convertido para Hive Power, através do procedimento chamado Power Up.",
     "steem-power": "Hive Power",
     "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
-    "steem-power-delegated": "Delegated Hive Power",
+    "steem-power-delegated": "Hive Power Delegado",
     "steem-power-received": "Hive Power Recebido",
     "next-power-down-amount": "Quantia da próxima descarga de Poder Steem",
     "steem-power-total": "Total Hive Power",
     "steem-dollars": "Hive Dollars",
-    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
+    "steem-dollars-description": "Tokens que valem em média $1.00 em HIVE.",
     "savings": "Poupanças",
     "savings-description": "O saldo está sujeito a 3 dias de espera para retirá-lo,.",
     "next-power-down": "Próxima descarga de poder é em {time} {amount}",
@@ -196,9 +196,9 @@
     "claim-reward-balance-ok": "Balanço de Recompensa reclamado",
     "transfer": "Transferir",
     "transfer-to-savings": "Transferir para as poupanças",
-    "convert": "Convert",
+    "convert": "Converter",
     "power-up": "Carregar Poder",
-    "withdraw-steem": "Withdraw Hive",
+    "withdraw-steem": "Retirar Hive",
     "withdraw-sbd": "Withdraw Hive Dollar",
     "delegate": "Delegar",
     "power-down": "Decarregar Poder",
@@ -575,7 +575,7 @@
     "title": "Delegated hive power from @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated hive power to @{n}"
+    "title": "Hive Power Delegado para @{n}"
   },
   "estm-purchase": {
     "title": "Compra de ESTM",
