@@ -548,7 +548,7 @@
   },
   "power-down": {
     "title": "Descarregar poder Steem",
-    "sub-title": "Power Down Hive Power",
+    "sub-title": "Converter Hive Power em Hive.",
     "account": "Conta",
     "incoming-funds": "Fundos recebidos",
     "begin": "Iniciar Descarregamento",
