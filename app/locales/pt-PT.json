@@ -172,11 +172,11 @@
     "steem": "Hive",
     "steem-description": "HIVE são tokens comercializáveis que podem ser transferidos a qualquer momento. HIVE pode ser convertido para Hive Power, através do procedimento chamado Power Up.",
     "steem-power": "Hive Power",
-    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
+    "steem-power-description": "HIVE POWER são tokens que representam sua participação e influência, ganhando mais força quando guardados a longo prazo junto a curadoria de posts. Quanto mais Hive Power se detém, mais se pode influenciar na rede e ganhar recompensas por trabalho de curadoria.",
     "steem-power-delegated": "Hive Power Delegado",
     "steem-power-received": "Hive Power Recebido",
     "next-power-down-amount": "Quantia da próxima descarga de Poder Steem",
-    "steem-power-total": "Total Hive Power",
+    "steem-power-total": "Hive Power Total",
     "steem-dollars": "Hive Dollars",
     "steem-dollars-description": "Tokens que valem em média $1.00 em HIVE.",
     "savings": "Poupanças",
@@ -199,7 +199,7 @@
     "convert": "Converter",
     "power-up": "Carregar Poder",
     "withdraw-steem": "Retirar Hive",
-    "withdraw-sbd": "Withdraw Hive Dollar",
+    "withdraw-sbd": "Retirar Hive Dollar",
     "delegate": "Delegar",
     "power-down": "Decarregar Poder",
     "point-history": "Histórico",
@@ -228,7 +228,7 @@
     "points-transfer": "Presente a alguém",
     "points-get": "OBTER ESTM",
     "witness-voting": "Testemunha",
-    "sps-voting": "DHF Voting",
+    "sps-voting": "Votação DHF",
     "profile-editor": "Perfil do Editor",
     "password": "Senha"
   },
@@ -496,15 +496,15 @@
   "transfer": {
     "transfer-title": "Transferir para a conta",
     "transfer-estm-title": "Presente à Conta",
-    "transfer-sub-title": "Move funds to another Hive account",
+    "transfer-sub-title": "Enviar fundos para outra conta Hive",
     "transfer-saving-title": "Transferir para Poupanças",
     "transfer-saving-sub-title": "Proteger os fundos, requerendo 3 dias para retirar como período de espera",
     "withdraw-saving-title": "Retirar da poupança",
     "withdraw-saving-sub-title": "Retirar fundos após o período requerido de espera de 3 dias",
-    "power-up-title": "Stake Hive as Power",
+    "power-up-title": "Guardar Hive como HP (Power Up)",
     "convert-title": "Converter",
     "power-up-sub-title": "Tokens de influência que lhe dão mais controle sobre como postar os pagamentos e permitam ganhar na curadoria recompensas.",
-    "convert-sub-title": "Only recommended when HBD is below $1. You will get $1 of HIVE in 3.5 days.",
+    "convert-sub-title": "Apenas recomendado quando o valor de HBD está abaixo de $1. Você receberá $1 de HIVE em 3.5 dias.",
     "from": "De",
     "from-placeholder": "Selecione um usuário",
     "to": "Para",
@@ -522,7 +522,7 @@
     "memo-help": "Este memo é público",
     "key-required-err": "A chave ativa não foi encontrada para a conta selecionada. Verifique que se liga com as credencias corretas.",
     "next": "Seguinte",
-    "confirm-title": "Confirm your transaction",
+    "confirm-title": "Confirme sua transação",
     "confirm-sub-title": "Por favor, verfique se está tudo correto",
     "confirm": "Confirmar",
     "back": "Voltar",
@@ -572,7 +572,7 @@
     "search-placeholder": "Procurar utilizadores"
   },
   "delegated-list": {
-    "title": "Delegated hive power from @{n}"
+    "title": "Hive Power Delegado por @{n}"
   },
   "delegatee-list": {
     "title": "Hive Power Delegado para @{n}"
