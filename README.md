@@ -1,3 +1,4 @@
+# This is Legacy version new version is available here: [Ecency desktop][ecency_desktop]
 # [Esteem Desktop][esteem_desktop] – Hive Desktop Client
 
 🎉 This is the complete source code and the build instructions of the [Hive blockchain](https://hive.io/) desktop client **Esteem Desktop** founded by [Feruz M](https://esteem.app/@good-karma) and Lead Surfer [Talha](https://esteem.app/@talhasch), supported by [Esteem team](https://esteem.app/@esteemapp) and vast Hive community contibutors.
@@ -79,3 +80,4 @@ $ npm run test
 
 [//]: # 'LINKS'
 [esteem_desktop]: https://esteem.app
+[ecency_desktop]: https://github.com/ecency/ecency-vision
