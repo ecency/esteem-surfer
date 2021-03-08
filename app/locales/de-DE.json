@@ -15,14 +15,14 @@
     "save": "Speichern",
     "done": "Fertig!",
     "select": "Auswählen",
-    "update": "Update"
+    "update": "Aktualisieren"
   },
   "footer": {
     "faq": "FAQ",
     "about": "Über"
   },
   "entry-index": {
-    "tags": "Popular",
+    "tags": "Populär",
     "filter-trending": "im Trend",
     "filter-hot": "Hot",
     "filter-created": "Neu",
@@ -90,22 +90,22 @@
     "error-user-fetch": "Benutzerdaten konnten nicht abgerufen werden",
     "error-user-not-found": "Benutzer existiert nicht",
     "error-authenticate": "Falscher Benutzername oder Passwort/WIF",
-    "create-account-text-1": "Don't have an account?",
-    "create-account-text-2": "Sign up now!",
+    "create-account-text-1": "Noch keinen Account?",
+    "create-account-text-2": "Jetzt registrieren!",
     "login-with-sc": "Einloggen mit",
     "divider-text": "oder"
   },
   "sign-up": {
-    "title": "Sign Up",
-    "username-placeholder": "pick a username",
-    "email-placeholder": "enter your email address",
-    "sign-up": "Sign Up",
-    "ref-code": "referral user (optional)",
-    "success-message-1": "We've sent an email to {email}.",
-    "success-message-2": "Follow instructions to complete signup process.",
-    "login-1": "Already a member?",
-    "login-2": "Login",
-    "login-btn-label": "Back to Login"
+    "title": "Registrieren",
+    "username-placeholder": "Wähle einen Benutzernamen",
+    "email-placeholder": "E-Mail Adresse eingeben",
+    "sign-up": "Registrieren",
+    "ref-code": "Referral Nutzer (optional)",
+    "success-message-1": "Wir haben eine E-Mail geschickt an {email}.",
+    "success-message-2": "Folge den Anweisungen, um den Anmeldeprozess abzuschließen.",
+    "login-1": "Du bist bereits Mitglied?",
+    "login-2": "Einloggen",
+    "login-btn-label": "Zurück zum Login"
   },
   "create-pin-code": {
     "title": "Erstelle einen PIN-Code",
@@ -168,17 +168,17 @@
     "section-points": "eSteem Punkte",
     "top-posts": "die besten Beiträge",
     "unclaimed-rewards": "Nicht abgeholte Belohnungen",
-    "estimated-value": "The estimated value is based on a 7 day average value of Hive.",
+    "estimated-value": "Der erwartete Wert basiert auf einem 7 Tage Durchschnittswert von Hive.",
     "steem": "Hive",
-    "steem-description": "HIVE are tradeable tokens that may be transferred at anytime. HIVE can be converted to Hive Power in a process called powering up.",
+    "steem-description": "HIVE sind handelbare Token, die man jederzeit transferieren kann. HIVE können ebenfalls auch durch einen Power-Up zu HIVE-Power konvertiert werden.",
     "steem-power": "Hive Power",
-    "steem-power-description": "Hive Power are influence tokens that earn more power for holding long term and voting on posts. The more Hive Power one holds, the more one can influence other’s rewards and earn rewards for accurate voting.",
-    "steem-power-delegated": "Delegated Hive Power",
-    "steem-power-received": "Received Hive Power",
+    "steem-power-description": "Hive-Power zeigt deine Stärke und Votekraft. Je mehr Hive-Power du hast, umso mehr Einfluss hast du auf Beiträge und die Belohnung. Mit einer höheren Hive-Power kuratierst du besser und effektiver.",
+    "steem-power-delegated": "Delegierte Hive-Power",
+    "steem-power-received": "Erhaltene Hive-Power",
     "next-power-down-amount": "Nächster Power-Down Betrag",
-    "steem-power-total": "Total Hive Power",
-    "steem-dollars": "Hive Dollars",
-    "steem-dollars-description": "Tokens worth about $1.00 of HIVE.",
+    "steem-power-total": "Gesamte Hive-Power",
+    "steem-dollars": "Hive-Dollar",
+    "steem-dollars-description": "Tokens mit einem Wert von $1.00 eines HIVE.",
     "savings": "Tresor",
     "savings-description": "Werte im Tresor unterliegen einer 3-Tagessperre.",
     "next-power-down": "Der nächste Power-Down ist in {time} {amount}",
@@ -196,10 +196,10 @@
     "claim-reward-balance-ok": "Belohnungen abgeholt",
     "transfer": "Überweisen",
     "transfer-to-savings": "Transfer zum Tresor",
-    "convert": "Convert",
+    "convert": "Konvertieren",
     "power-up": "In Steem-Power umwandeln",
-    "withdraw-steem": "Withdraw Hive",
-    "withdraw-sbd": "Withdraw Hive Dollar",
+    "withdraw-steem": "Hive auszahlen",
+    "withdraw-sbd": "Hive-Dollar auszahlen",
     "delegate": "Delegieren",
     "power-down": "Power-Down",
     "point-history": "Historie",
@@ -221,16 +221,16 @@
     "points-transfer-sent-list-desc": "Transfer nach {n}",
     "points-transfer-incoming-list-desc": "Transfer von {n}",
     "points-delegation-list-desc": "Delegations-Belohnung",
-    "points-referral-list-desc": "Referral reward",
+    "points-referral-list-desc": "Empfehlungsprämie",
     "points-claim-ok": "Punkte eingesammelt",
     "points-promote": "Bewerben",
     "points-boost": "Boost",
     "points-transfer": "Geschenk an jemanden",
-    "points-get": "GET ESTM",
+    "points-get": "ESTM erhalten",
     "witness-voting": "Witnesses",
-    "sps-voting": "DHF Voting",
-    "profile-editor": "Profile Editor",
-    "password": "Password"
+    "sps-voting": "DHF Abstimmung",
+    "profile-editor": "Profil-Editor",
+    "password": "Passwort"
   },
   "redeem": {
     "user-label": "Benutzer",
@@ -364,7 +364,7 @@
     "comment-entry-title": "Du siehst den Thread eines einzelnen Kommentars von: ",
     "comment-entry-go-root": "kompletten Inhalt anzeigen",
     "comment-entry-go-parent": "Übergeordneten Beitrag ansehen",
-    "comment-reveal": "Reveal comment",
+    "comment-reveal": "Kommentar anzeigen",
     "similar-entries": "Ähnliche Beiträge",
     "fetch-error": "Server Timeout, weil die Antwortgröße zu groß ist",
     "promote": "Promote",
@@ -435,9 +435,9 @@
     "ignored-str": "ignoriert",
     "reblog-str": "teilte deinen Beitrag:",
     "transfer-str": "sendete dir",
-    "spin-str": "Time to earn more ESTM, Play Spin on eSteem Mobile",
-    "inactive-str": "Be active! Write a post, continue earning",
-    "referral-str": "joined with your referral, welcome them",
+    "spin-str": "Zeit um mehr ESTM zu verdienen, Spiele Spin auf eSteem Mobile",
+    "inactive-str": "Sei aktiv! Schreibe einen Beitrag, verdiene weiter",
+    "referral-str": "Mit Deiner Empfehlung beigetreten, heiße Ihn willkommen",
     "empty-list": "Hier ist nichts zu sehen.",
     "refresh": "Aktualisieren",
     "mark-all-read": "Alle als gelesen markieren",
@@ -496,15 +496,15 @@
   "transfer": {
     "transfer-title": "Zum Benutzerkonto transferieren",
     "transfer-estm-title": "Geschenk an Konto",
-    "transfer-sub-title": "Move funds to another Hive account",
+    "transfer-sub-title": "Guthaben auf ein anderes Hive-Konto verschieben",
     "transfer-saving-title": "In den Tresor transferieren",
     "transfer-saving-sub-title": "Guthaben wird durch eine 3-tägige Wartezeit geschützt",
     "withdraw-saving-title": "Aus dem Tresor auszahlen",
     "withdraw-saving-sub-title": "Auszahlungen werden durch eine 3-tägige Wartezeit geschützt",
-    "power-up-title": "Stake Hive as Power",
-    "convert-title": "Convert",
+    "power-up-title": "Stake Hive zu Hive-Power",
+    "convert-title": "Konvertieren",
     "power-up-sub-title": "STEEM-Token geben dir mehr Kontrolle über Beitrags-Auszahlungen und erhöhen deine Kurations-Belohnungen.",
-    "convert-sub-title": "Only recommended when HBD is below $1. You will get $1 of HIVE in 3.5 days.",
+    "convert-sub-title": "Nur empfohlen, wenn HBD unter $1 liegt. In 3,5 Tagen erhälst Du $1 in HIVE.",
     "from": "Von",
     "from-placeholder": "Wähle einen Benutzer",
     "to": "zu",
@@ -522,12 +522,12 @@
     "memo-help": "Dieses Memo ist öffentlich",
     "key-required-err": "Der Active-Key wurde für den ausgewählten Account nicht gefunden. Bitte stelle sicher, dass du mit den richtigen Zugangsdaten angemeldet bist.",
     "next": "Weiter",
-    "confirm-title": "Confirm your transaction",
+    "confirm-title": "Bestätige Deine Transaktion",
     "confirm-sub-title": "Bitte überprüfe ob alles korrekt ist",
     "confirm": "Bestätigen",
     "back": "Zurück",
     "success-title": "Perfekt!",
-    "success-sub-title": "Transaction successful",
+    "success-sub-title": "Transaktion erfolgreich",
     "transfer-summary": "Überwiesen! <span class=\"amount\">{amount}</span> Von <span class=\"from-user\">{from}</span> nach <span class=\"to-user\">{to}</span>",
     "reset": "eine weitere Überweisung",
     "finish": "Fertig!",
@@ -535,7 +535,7 @@
   },
   "delegate": {
     "title": "Delegieren",
-    "sub-title": "Delegate Hive Power",
+    "sub-title": "Delegierte Hive-Power",
     "slider-help": "Ziehe den Slider, um den Wert zu definieren",
     "confirm-title": "Bestätige die Delegation",
     "confirm-sub-title": "Bitte überprüfe, ob alles korrekt ist",
@@ -548,7 +548,7 @@
   },
   "power-down": {
     "title": "Power-Down",
-    "sub-title": "Power Down Hive Power",
+    "sub-title": "Power Down Hive-Power",
     "account": "Konto",
     "incoming-funds": "Eingehend",
     "begin": "Power-Down beginnen",
@@ -572,14 +572,14 @@
     "search-placeholder": "Benutzer suchen"
   },
   "delegated-list": {
-    "title": "Delegated hive power from @{n}"
+    "title": "Delegierte Hive-Power von @{n}"
   },
   "delegatee-list": {
-    "title": "Delegated hive power to @{n}"
+    "title": "Delegierte Hive-Power nach @{n}"
   },
   "estm-purchase": {
-    "title": "ESTM purchase",
-    "purchase": "Purchase"
+    "title": "ESTM-Kaufen",
+    "purchase": "Kaufen"
   },
   "edit-history": {
     "title": "Verlauf bearbeiten",
@@ -592,23 +592,23 @@
     "read-time-n-min": "~ {n} min. Lesezeit"
   },
   "profile-edit": {
-    "title": "Profile Editor",
-    "name": "Display Name",
-    "about": "About",
-    "cover-image": "Cover Image",
-    "profile-image": "Profile Image",
-    "website": "Website",
-    "location": "Location",
-    "updated": "Profile updated successfully!"
+    "title": "Profil-Editor",
+    "name": "Anzeige Name",
+    "about": "Info",
+    "cover-image": "Titelbild",
+    "profile-image": "Profilbild",
+    "website": "Webseite",
+    "location": "Standort",
+    "updated": "Profil wurde erfolgreich aktualisiert."
   },
   "password-update": {
-    "title": "Password",
-    "cur-pass": "Current password",
-    "new-pass": "New password",
-    "new-pass2": "Confirm new password",
-    "error-current": "Enter current password",
-    "error-new": "Enter new password",
-    "error-new2": "Passwords must be same",
-    "updated": "Password updated successfully!"
+    "title": "Passwort",
+    "cur-pass": "Aktuelles Passwort",
+    "new-pass": "Neues Passwort",
+    "new-pass2": "Neues Passwort bestätigen",
+    "error-current": "Aktuelles Passwort eingeben",
+    "error-new": "Neues Passwort eingeben",
+    "error-new2": "Passwörter müssen identisch sein",
+    "updated": "Passwort wurde erfolgreich aktualisiert"
   }
 }

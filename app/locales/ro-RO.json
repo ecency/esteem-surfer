@@ -527,7 +527,7 @@
     "confirm": "Confirmă",
     "back": "Înapoi",
     "success-title": "Succes",
-    "success-sub-title": "Transaction successful",
+    "success-sub-title": "Transfer efectuat cu succes",
     "transfer-summary": "Transferat <span class=\"amount\">{amount}</span> De la <span class=\"from-user\">{from}</span> către <span class=\"to-user\">{to}</span>",
     "reset": "Un alt transfer",
     "finish": "Finalizare",
